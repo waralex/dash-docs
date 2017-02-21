@@ -188,7 +188,7 @@ Div([
 ])
 ''', language='python', customStyle={'borderLeft': 'thin solid lightgrey'}),
 
-    html.Div('HTML elements have properties like `style`, `class`, and `id`.'
+    html.Div('HTML elements have properties like `style`, `class`, and `id`. '
              'All of these attributes are available in the Python classes.'),
     html.Div("The HTML elements and Dash classes are mostly the same. "
              "Here are a few key differences:"),
