@@ -124,7 +124,7 @@ app.component_suites=[
 if __name__ == '__main__':
     app.server.run(debug=True)
 ''', language='python', customStyle={'borderLeft': 'thin solid lightgrey'}),
-    html.Div('Then, run the app with'),
+    html.Div('Run the app with'),
     dcc.SyntaxHighlighter('''$ python app.py
 ...Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
 ''',  customStyle={'borderLeft': 'thin solid lightgrey'}),
