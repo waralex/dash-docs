@@ -147,7 +147,7 @@ section1 = html.Div([
 
     Instead of writing HTML or using an HTML templating engine,
     you compose your layout using Python structures.
-    It looks like this:
+    HTML in dash looks like this:
     '''),
     dcc.SyntaxHighlighter('''import dash_html_components as html
 
@@ -171,7 +171,7 @@ html.Div([
 </div>''', language='python', customStyle={'borderLeft': 'thin solid lightgrey'}),
     html.Div("If you're not comfortable with HTML, don't worry! "
              "You can get 95% of the way there with just a few elements. "
-             "View the Component Library in the appendix of this app "
+             "View the Component Library in the appendix of these docs "
              "to see what these components look like."),
 
     dcc.SyntaxHighlighter('''from dash_html_components import Div, H2, Span, Img
@@ -191,14 +191,13 @@ Div([
     html.Div('HTML elements have properties like `style`, `class`, and `id`.'
              'All of these attributes are available in the Python classes.'),
     html.Div("The HTML elements and Dash classes are mostly the same. "
-             "Here arew a few key differences:"),
+             "Here are a few key differences:"),
     html.Li('The `style` property is a dictionary'),
     html.Li('Properties in the `style` dictionary are camelCased'),
     html.Li('The `class` key is renamed as `className`'),
     html.Li('Style properties in pixel units can be supplied as just numbers without the `px` unit'),
     html.Div("Let's take a look at an example."),
-    dcc.SyntaxHighlighter('''
-from dash_html_components import Div
+    dcc.SyntaxHighlighter('''from dash_html_components import Div
 
 Div([
     Div('Example Div', style={'color': 'blue', fontSize: 14}),
@@ -687,7 +686,7 @@ section5 = html.Div([
 
 app.layout = html.Div([
     head, section1, section2, section3, section4, section5
-], className="container")
+], className="container", style={'fontSize': '1.7rem'})
 
 app.component_suites = [
     'dash_html_components',
