@@ -204,7 +204,7 @@ Div([
     P('Example P', className='my-class', id='my-p-element')
 ], style={'marginBottom': 50, 'marginTop': 25})
 ''', language='python', customStyle={'borderLeft': 'thin solid lightgrey'}),
-    html.Div("That dash code will end up getting rendered as this HTML markup:"),
+    html.Div("That dash code will render this HTML markup:"),
     dcc.SyntaxHighlighter('''
 <div style="margin-bottom: 50px; margin-top: 25px;">
 
