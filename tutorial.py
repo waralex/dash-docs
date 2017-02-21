@@ -643,9 +643,10 @@ section5 = html.Div([
 
 # Section 5 - HTML Component Appendix
 section5 = html.Div([
+    html.Div(style={'marginTop': '60px'}),
+
     html.H3('Appendix - Common HTML Components'),
 
-    html.Hr(),
     html.Hr(),
 
     dcc.SyntaxHighlighter('html.H1("H1 Element")', language='python', customStyle={'borderLeft': 'thin solid lightgrey'}),
