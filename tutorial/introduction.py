@@ -2,7 +2,7 @@ import dash_html_components as html
 import dash_core_components as dcc
 import datetime
 from pyorbital.orbital import Orbital
-import process
+import os
 
 from server import app
 
@@ -108,7 +108,7 @@ def update_graph(dropdown):
         }],
         'layout': {
             'mapbox': {
-                'accesstoken': process.env.accesstoken,
+                'accesstoken': os.environ.accesstoken,
                 'style': 'light'
             },
             'margin': {'l': 0, 'r': 0, 't': 0, 'b': 0}
