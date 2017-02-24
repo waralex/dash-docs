@@ -5,7 +5,7 @@ from server import app
 
 layout = html.Div(content=[
 
-    html.H4('Section 1 - HTML Attributes', id="html-attributes"),
+    html.H4('HTML Attributes', id="html-attributes"),
     html.Div('''
     Dash is a web application framework that provides pure Python abstraction
     around HTML, CSS, and Javascript.

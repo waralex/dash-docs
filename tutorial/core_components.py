@@ -9,7 +9,7 @@ import json
 from server import app
 
 layout = html.Div(content=[
-    html.H4('Section 2 - Supercharged Components'),
+    html.H4('Supercharged Components'),
 
     html.Div('''
         Dash ships with supercharged components for interactive user interfaces.

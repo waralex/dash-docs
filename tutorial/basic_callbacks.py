@@ -7,7 +7,7 @@ import plotly.graph_objs as go
 from server import app
 
 layout = html.Div(content=[
-    html.H4('Section 3 - Interactivity with Callbacks'),
+    html.H4('Interactivity with Callbacks'),
     html.Div('''
     The heart and soul of dash is providing an easy way to bind Python
     callbacks to web interfaces.

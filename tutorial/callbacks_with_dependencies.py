@@ -6,7 +6,7 @@ import time
 
 # Section 4 - Callbacks With Dependencies
 layout_list = [
-    html.H4('Section 4 - Callback Resolution'),
+    html.H4('Callback Resolution'),
 
     html.Div('''A core feature in Dash is callback dependency resolution.'''),
     html.Div('''Consider the following scenario:
