@@ -108,7 +108,7 @@ def update_graph(dropdown):
         }],
         'layout': {
             'mapbox': {
-                'accesstoken': os.environ.accesstoken,
+                'accesstoken': os.environ['accesstoken'],
                 'style': 'light'
             },
             'margin': {'l': 0, 'r': 0, 't': 0, 'b': 0}
