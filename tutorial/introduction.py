@@ -71,7 +71,7 @@ def update_metrics(dropdown):
     style = {'padding': '5px', 'fontSize': '16px'}
     return {
         'content': [
-            html.Span('Longitude: {0:.2f}'.format(lon), style=style),
+            html.Span('Real Time Longitude: {0:.2f}'.format(lon), style=style),
             html.Span('Latitude: {0:.2f}'.format(lat), style=style),
             html.Span('Altitude: {0:0.2f}'.format(alt), style=style)
         ]
