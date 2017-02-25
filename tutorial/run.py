@@ -10,6 +10,7 @@ import core_components
 import basic_callbacks
 import html_component_appendix
 import callbacks_with_dependencies
+import open_problems
 
 head = html.Div([
     html.Link(
@@ -37,7 +38,8 @@ def display_chapter(chapter_id):
         html.Div([core_components.layout], id='supercharged-components', style={'display': 'none'}),
         html.Div([basic_callbacks.layout], id='callbacks', style={'display': 'none'}),
         html.Div([callbacks_with_dependencies.layout], id='callback-resolution', style={'display': 'none'}),
-        html.Div([html_component_appendix.layout], id='html-component-library', style={'display': 'none'})
+        html.Div([html_component_appendix.layout], id='html-component-library', style={'display': 'none'}),
+        html.Div([open_problems.layout], id='open-problems', style={'display': 'none'})
     ])
 
     content[chapter_id].style = {'display': 'block'}
@@ -52,7 +54,8 @@ toc = html.Div([
         {'label': 'Supercharged Components', 'value': 'supercharged-components'},
         {'label': 'Basic Callbacks', 'value': 'callbacks'},
         {'label': 'Callback Resolution', 'value': 'callback-resolution'},
-        {'label': 'HTML Component Library', 'value': 'html-component-library'}
+        {'label': 'HTML Component Library', 'value': 'html-component-library'},
+        {'label': 'Open Problems', 'value': 'open-problems'}
     ], value='introduction', id='toc', labelStyle={'fontWeight': 400})
 ])
 
@@ -61,13 +64,14 @@ toc = html.Div([
 def display_content(toc):
     return {'content': [display_chapter(toc['value'])]}
 
+
 app.layout = html.Div([
     html.Div([
         toc
-    ], className="two columns"),
+    ], className="three columns"),
     html.Div([
         html.Div([display_chapter('introduction')], id="chapter")
-    ], className="ten columns")
+    ], className="nine columns")
 ], style={'fontSize': '1.7rem'})
 
 
@@ -76,7 +80,6 @@ app.component_suites = [
     'dash_html_components',
     'dash_core_components'
 ]
-
 
 if __name__ == '__main__':
     app.server.run(debug=True)
