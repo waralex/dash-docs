@@ -48,8 +48,8 @@ def render_content(*args, **kwargs):
 ])
 
 
-@app.react('button-dynamic-content', events=[{
-    'id': 'dynamic-content', 'event': 'onClick'
+@app.react('dynamic-content', events=[{
+    'id': 'button-dynamic-content', 'event': 'onClick'
 }])
 def render(*args, **kwargs):
     return {
