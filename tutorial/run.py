@@ -10,6 +10,7 @@ import core_components
 import basic_callbacks
 import html_component_appendix
 import callbacks_with_dependencies
+import dynamic_content
 import open_problems
 
 head = html.Div([
@@ -39,6 +40,7 @@ def display_chapter(chapter_id):
         html.Div([basic_callbacks.layout], id='callbacks', style={'display': 'none'}),
         html.Div([callbacks_with_dependencies.layout], id='callback-resolution', style={'display': 'none'}),
         html.Div([html_component_appendix.layout], id='html-component-library', style={'display': 'none'}),
+        html.Div([dynamic_content.layout], id='dynamic-content', style={'display': 'none'}),
         html.Div([open_problems.layout], id='open-problems', style={'display': 'none'})
     ])
 
@@ -55,6 +57,7 @@ toc = html.Div([
         {'label': 'Basic Callbacks', 'value': 'callbacks'},
         {'label': 'Callback Resolution', 'value': 'callback-resolution'},
         {'label': 'HTML Component Library', 'value': 'html-component-library'},
+        {'label': 'Dynamic Content', 'value': 'dynamic-content'},
         {'label': 'Open Problems', 'value': 'open-problems'}
     ], value='introduction', id='toc', labelStyle={'fontWeight': 400})
 ])
