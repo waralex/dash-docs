@@ -57,7 +57,20 @@ layout = html.Div([
         built with Dash.
         Find many more examples like this throughout this user guide.
         Dash is productive: this app weighs in at just 88 lines of pure python.
-    ''')
+    '''),
+
+    html.Hr(),
+
+    html.H3('Why Dash?'),
+    html.Span('Learn more about dash from our talk at '),
+    html.A('Plotcon', href="plotcon.plot.ly", target="_blank"),
+    html.Span('.'),
+    html.Iframe(
+        width="853",
+        height="480",
+        style={'border': 'none'},
+        src="https://www.youtube-nocookie.com/embed/5BAthiN0htc?rel=0"
+    )
 ])
 
 
