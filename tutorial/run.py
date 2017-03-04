@@ -31,22 +31,23 @@ head = html.Div([
 ])
 
 def display_chapter(chapter_id):
-    content = html.Div([
+    chapters = {
+        'introduction': introduction.layout,
+        'getting-started': getting_started.layout,
+        'html-attributes': html_components.layout,
+        'supercharged-components': core_components.layout,
+        'callbacks': basic_callbacks.layout,
+        'callback-resolution': callbacks_with_dependencies.layout,
+        'html-component-library': html_component_appendix.layout,
+        'dynamic-content': dynamic_content.layout,
+        'open-problems': open_problems.layout
+    }
+
+    return html.Div([
         head,
-        html.Div([introduction.layout], id='introduction', style={'display': 'none'}),
-        html.Div([getting_started.layout], id='getting-started', style={'display': 'none'}),
-        html.Div([html_components.layout], id='html-attributes', style={'display': 'none'}),
-        html.Div([core_components.layout], id='supercharged-components', style={'display': 'none'}),
-        html.Div([basic_callbacks.layout], id='callbacks', style={'display': 'none'}),
-        html.Div([callbacks_with_dependencies.layout], id='callback-resolution', style={'display': 'none'}),
-        html.Div([html_component_appendix.layout], id='html-component-library', style={'display': 'none'}),
-        html.Div([dynamic_content.layout], id='dynamic-content', style={'display': 'none'}),
-        html.Div([open_problems.layout], id='open-problems', style={'display': 'none'})
+        chapters[chapter_id]
     ])
 
-    content[chapter_id].style = {'display': 'block'}
-
-    return content
 
 toc = html.Div([
     dcc.RadioItems(options=[
@@ -85,4 +86,4 @@ app.component_suites = [
 ]
 
 if __name__ == '__main__':
-    app.server.run(debug=True)
+    app.server.run(debug=True, threaded=True)
