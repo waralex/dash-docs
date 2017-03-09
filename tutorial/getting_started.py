@@ -72,7 +72,7 @@ def update_graph(dropdown_properties):
 
 # Run the server
 if __name__ == '__main__':
-    app.server.run(debug=True)
+    app.run_server(debug=True)
 ''', language='python', customStyle={'borderLeft': 'thin solid lightgrey'}),
     html.Div('Run the app with'),
     dcc.SyntaxHighlighter('''$ python app.py

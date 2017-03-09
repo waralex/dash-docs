@@ -11,6 +11,7 @@ import basic_callbacks
 import html_component_appendix
 import callbacks_with_dependencies
 import dynamic_content
+import external_css_and_js
 import open_problems
 
 
@@ -24,6 +25,7 @@ def display_chapter(chapter_id):
         'callback-resolution': callbacks_with_dependencies.layout,
         'html-component-library': html_component_appendix.layout,
         'dynamic-content': dynamic_content.layout,
+        'custom-css-and-js': external_css_and_js.layout,
         'open-problems': open_problems.layout
     }
 
@@ -40,6 +42,7 @@ toc = html.Div([
         {'label': 'Callback Resolution', 'value': 'callback-resolution'},
         {'label': 'HTML Component Library', 'value': 'html-component-library'},
         {'label': 'Dynamic Content', 'value': 'dynamic-content'},
+        {'label': 'Custom CSS and Javascript', 'value': 'custom-css-and-js'},
         {'label': 'Open Problems', 'value': 'open-problems'}
     ], value='introduction', id='toc', labelStyle={'fontWeight': 400})
 ])
@@ -47,17 +50,20 @@ toc = html.Div([
 
 @app.react('chapter', ['toc'])
 def display_content(toc):
-    return {'content': [display_chapter(toc['value'])]}
+    return {'content': display_chapter(toc['value'])}
 
 
-app.layout = html.Div([
-    html.Div([
-        toc
-    ], className="three columns"),
-    html.Div([
-        html.Div([display_chapter('introduction')], id="chapter")
-    ], className="nine columns")
-], style={'fontSize': '1.7rem'})
+def layout():
+    return html.Div([
+        html.Div([
+            toc
+        ], className="three columns"),
+        html.Div([
+            html.Div(id="chapter")
+        ], className="nine columns")
+    ], style={'fontSize': '1.7rem'}, className="container")
+
+app.layout = layout
 
 
 app.css.append_css({

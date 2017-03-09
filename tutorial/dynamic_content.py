@@ -9,7 +9,7 @@ import json
 from server import app
 
 layout = html.Div(content=[
-    html.H1('Loading Content Dynamically'),
+    html.H2('Loading Content Dynamically'),
 
     html.Div('''Dash callbacks can return any type of property.
     By returning `content`, they can even dyanimcally
@@ -19,7 +19,7 @@ layout = html.Div(content=[
     html.Div('''This allows you to build a lot of neat interactions.
     Here are some examples.'''),
 
-    html.H3('Render content by clicking a button'),
+    html.H5('Render content by clicking a button'),
 
     html.Div('''This is a clever hack that can make development a lot easier.
     Instead of refreshing the page to view your layout,
@@ -37,7 +37,9 @@ def render_content(*args, **kwargs):
         'content': html.Div([
             html.H1('Hello Dash')
         ])
-    }''', language='python'),
+    }''',
+    language='python',
+    customStyle={'borderLeft': 'thin solid lightgrey'}),
 
     html.Div([
         html.Button('Click to load content', id='button-dynamic-content'),
