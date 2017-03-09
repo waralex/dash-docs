@@ -17,7 +17,7 @@ layout = html.Div([
     '''),
 
     html.Div('''This is an exclusive developer preview of Dash.
-    Dash is currently in an unreleased and unannounced. Call it a Beta.
+    Dash is currently unreleased and unannounced. Call it a Beta.
     Please do not share Dash without Plotly's constent.'''),
 
     html.Div('''The core functionality of Dash will be open sourced.

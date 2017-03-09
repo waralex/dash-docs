@@ -77,5 +77,5 @@ app = Dash('')
 app.css.config.serve_locally = True
 app.scripts.config.serve_locally = True''',
     language='python',
-    customStyle={'borderLeft': 'thin grey solid'})
+    customStyle={'borderLeft': 'thin lightgrey solid'})
 ])
