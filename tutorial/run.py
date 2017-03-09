@@ -13,22 +13,6 @@ import callbacks_with_dependencies
 import dynamic_content
 import open_problems
 
-head = html.Div([
-    html.Link(
-        rel="stylesheet",
-        href="https://rawgit.com/chriddyp/0247653a7c52feb4c48437e1c1837f75"
-             "/raw/d4f178bc09f253251135aeb2141aa077300d1b3f/dash.css"
-    ),
-    html.Link(
-        rel="stylesheet",
-        href="https://unpkg.com/react-select@1.0.0-rc.3/dist/react-select.css"
-    ),
-    html.Link(
-        rel="stylesheet",
-        href="https://cdn.rawgit.com/chriddyp/abcbc02565dd495b676c3269240e09ca"
-             "/raw/816de7d5c5d5626e3f3cac8e967070aa15da77e2/rc-slider.css"
-    )
-])
 
 def display_chapter(chapter_id):
     chapters = {
@@ -43,10 +27,7 @@ def display_chapter(chapter_id):
         'open-problems': open_problems.layout
     }
 
-    return html.Div([
-        head,
-        chapters[chapter_id]
-    ])
+    return chapters[chapter_id]
 
 
 toc = html.Div([
@@ -79,11 +60,12 @@ app.layout = html.Div([
 ], style={'fontSize': '1.7rem'})
 
 
-# Run the app
-app.component_suites = [
-    'dash_html_components',
-    'dash_core_components'
-]
+app.css.append_css({
+    'external_url': (
+        "https://rawgit.com/chriddyp/0247653a7c52feb4c48437e1c1837f75"
+        "/raw/d4f178bc09f253251135aeb2141aa077300d1b3f/dash.css"
+    )
+})
 
 if __name__ == '__main__':
     app.server.run(debug=True, threaded=True)
