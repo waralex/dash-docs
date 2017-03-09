@@ -67,5 +67,6 @@ app.css.append_css({
     )
 })
 
+app._setup_server()
 if __name__ == '__main__':
     app.server.run(debug=True, threaded=True)
