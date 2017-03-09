@@ -68,7 +68,11 @@ def update_graph(dropdown_properties):
                 'y': df.Close
             }]
         )
-    }''', language='python', customStyle={'borderLeft': 'thin solid lightgrey'}),
+    }
+
+# Run the server
+if __name__ == '__main__':
+    app.server.run(debug=True)''', language='python', customStyle={'borderLeft': 'thin solid lightgrey'}),
     html.Div('This code will generate an app like this:'),
 
     html.Div([

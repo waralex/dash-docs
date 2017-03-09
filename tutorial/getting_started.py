@@ -41,12 +41,6 @@ app = dash.react.Dash('Hello World')
 
 # Describe the layout, or the UI, of the app
 app.layout = Div([
-    # Include Dropdown's CSS - Won't be necessary in upcoming version
-    Link(
-        rel="stylesheet",
-        href="https://unpkg.com/react-select@1.0.0-rc.3/dist/react-select.css"
-    ),
-
     H3('Hello World'),
     Dropdown(
         id='my-dropdown',
@@ -75,12 +69,6 @@ def update_graph(dropdown_properties):
             }]
         )
     }
-
-# Boiler plate
-app.component_suites=[
-    'dash_core_components',
-    'dash_html_components'
-]
 
 # Run the server
 if __name__ == '__main__':

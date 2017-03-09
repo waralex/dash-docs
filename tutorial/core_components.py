@@ -51,23 +51,6 @@ Dropdown(
         {'label': 'Montréal', 'value': 'MTL'},
         {'label': 'San Francisco', 'value': 'SF'}
     ], multi=True, value="MTL", id='section2-dropdown-2'),
-    html.Div('''
-    Heads up!
-    Dropdown requires some special CSS to render properly.
-    Include this CSS by `Link`'ing it in your app's `layout`:
-    '''),
-    dcc.SyntaxHighlighter('''import dash_html_components as html
-from dash_core_components import Dropdown
-
-app.layout = html.Div([
-    html.Link(
-        rel="stylesheet",
-        href="https://unpkg.com/react-select@1.0.0-rc.3/dist/react-select.css"
-    ),
-
-    # And then the rest of your dash layout:
-    Dropdown(...)
-])'''),
 
     html.Hr(),
     html.Strong('Slider'),
@@ -102,23 +85,6 @@ Slider(
         value=5,
         id='section2-slider-2'
     ),
-    html.Div('''Heads up!
-    Slider and RangeSlider requires some special CSS to render properly.
-    Include this CSS by `Link`'ing it in your app's `layout`:
-    ''', style={'marginTop': 40}),
-    dcc.SyntaxHighlighter('''import dash_html_components as html
-from dash_core_components import Slider
-
-app.layout = html.Div([
-    html.Link(
-        rel="stylesheet",
-        href="https://cdn.rawgit.com/chriddyp/abcbc02565dd495b676c3269240e09ca"
-             "/raw/816de7d5c5d5626e3f3cac8e967070aa15da77e2/rc-slider.css"
-    ),
-
-    # And then the rest of your dash layout:
-    Slider(...)
-])''', language='python'),
     html.Hr(),
     html.Strong('RangeSlider'),
     dcc.SyntaxHighlighter('''from dash_core_components import RangeSlider
