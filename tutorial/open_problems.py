@@ -81,15 +81,6 @@ dash.stylesheets = [
 
     html.Hr(),
 
-    html.H3('Dynamic paths'),
-
-    html.Div('''
-    Need to recompute paths of components in the front-end if callbacks
-    return new `content`
-    '''),
-
-    html.Hr(),
-
     html.H3('Circular dependencies'),
 
     html.Hr(),
