@@ -24,7 +24,8 @@ layout = html.Div([
     For enterprises, Plotly offers a platform for
     deploying, orchestrating, and permissioning dash apps behind
     your firewall. If you're interested,
-    please get in touch at <sales@plot.ly> to register for early access.'''),
+    please get in touch at https://plot.ly/products/consulting-and-oem/
+    to register for early access.'''),
 
     html.Hr(),
 
