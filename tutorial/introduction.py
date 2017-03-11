@@ -7,27 +7,31 @@ import os
 from server import app
 
 layout = html.Div([
-    html.H2('Dash Developer Preview'),
+    dcc.Markdown('''
+        ## Dash Developer Preview
 
-    html.Div('''Dash is a productive python framework for building web applications.
 
-    Written on top of Plotly.js and React.js,
-    Dash is ideal for building data visualization apps
-    with highly custom user interfaces.
-    '''),
 
-    html.Div('''This is an exclusive developer preview of Dash.
-    Dash is currently unreleased and unannounced. Call it a Beta.
-    Please do not share Dash without Plotly's constent.'''),
+        Dash is a productive python framework for building web applications.
 
-    html.Div('''The core functionality of Dash will be open sourced.
-    For enterprises, Plotly offers a platform for
-    deploying, orchestrating, and permissioning dash apps behind
-    your firewall. If you're interested,
-    please get in touch at https://plot.ly/products/consulting-and-oem/
-    to register for early access.'''),
+        Written on top of Plotly.js and React.js,
+        Dash is ideal for building data visualization apps
+        with highly custom user interfaces.
 
-    html.Hr(),
+
+        This is an exclusive developer preview of Dash.
+        Dash is currently unreleased and unannounced. Call it a Beta.
+        Please do not share Dash without Plotly's constent.
+
+        The core functionality of Dash will be open sourced.
+        For enterprises, Plotly offers a platform for
+        deploying, orchestrating, and permissioning dash apps behind
+        your firewall. If you're interested,
+        please get in touch at https://plot.ly/products/consulting-and-oem/
+        to register for early access.
+
+        ***
+    '''.replace('    ', '')),
 
     html.Div([
         dcc.Dropdown(
@@ -45,29 +49,28 @@ layout = html.Div([
             ],
             value='NOAA 19'
         ),
-        html.Div([
-            html.Span(i) for i in
-            ['  ', '  ', '  ']
-        ], id='metrics'),
+        html.Div(id='metrics'),
         dcc.Graph(id='satellite-graph'),
         dcc.Interval(id='satellite-interval', interval=2000)
     ]),
 
-    html.Div('''
+    dcc.Markdown('''
         This real-time satellite viewer is an example of an app
         built with Dash.
         Find many more examples like this throughout this user guide.
         Dash is productive: this app weighs in at just 88 lines of pure python.
-    '''),
 
-    html.Hr(),
+        ***
 
-    html.H3('Why Dash?'),
-    html.Span('Learn more about dash from our talk at '),
-    html.A('Plotcon', href="plotcon.plot.ly", target="_blank"),
-    html.Span('.'),
+        ### Why Dash?
+
+        Learn more about dash from our talk at
+        [Plotcon](https://plotcon.plot.ly).
+
+    '''.replace('  ', '')),
+
     html.Iframe(
-        width="853",
+        width="100%",
         height="480",
         style={'border': 'none'},
         src="https://www.youtube-nocookie.com/embed/5BAthiN0htc?rel=0"

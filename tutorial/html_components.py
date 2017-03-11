@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import dash_core_components as dcc
 import dash_html_components as html
+import styles
 from server import app
 
 layout = html.Div(content=[
@@ -34,26 +35,43 @@ html.Div([
         <p>This conversion happens behind the scenes by Dash's Javascript front-end</p>
     </div>
 </div>''', language='python', customStyle={'borderLeft': 'thin solid lightgrey'}),
-    html.Div("If you're not comfortable with HTML, don't worry! "
-             "You can get 95% of the way there with just a few elements. "
-             "View the Component Library in the appendix of these docs "
-             "to see what these components look like."),
+    dcc.Markdown('''
+        If you're not comfortable with HTML, don't worry!
+        You can get 95% of the way there with just a few elements
+        and attributes.
+        Dash's core component library also supports
+        [Markdown](http://commonmark.org/help).
+    '''.replace('  ', '')),
 
-    dcc.SyntaxHighlighter('''from dash_html_components import Div, H2, Span, Img
+    dcc.SyntaxHighlighter('''import dash_core_components as dcc
 
-Div([
-    # H1 - H6 are for headings
-    H2('Dash App'),
+    dcc.Markdown(\'\'\'
+    #### Dash and Markdown
 
-    # Div is generic - use it to encapsulate other components or just for text
-    Div('A description of your dash app'),
+    Dash supports [Markdown](http://commonmark.org/help).
 
-    # Embed images with the Img tag and the `src` key
-    Img(src="https://plot.ly/~chris/1638.png")
-])
-''', language='python', customStyle={'borderLeft': 'thin solid lightgrey'}),
+    Markdown is a simple way to write and format text.
+    It includes a syntax for things like **bold text** and *italics*,
+    [links](http://commonmark.org/help), inline `code` snippets, lists,
+    quotes, and more.
+    \'\'\')
+    '''.replace('  ', ''),
+        customStyle=styles.code_container,
+        language='python'
+    ),
 
-    html.Div('HTML elements have properties like `style`, `class`, and `id`. '
+    dcc.Markdown('''
+    #### Dash and Markdown
+
+    Dash supports [Markdown](http://commonmark.org/help).
+
+    Markdown is a simple way to write and format text.
+    It includes a syntax for things like **bold text** and *italics*,
+    [links](http://commonmark.org/help), inline `code` snippets, lists,
+    quotes, and more.'''.replace('  ', ''), containerProps={'style': styles.example_container}),
+
+    html.Div('If you\'re using HTML components, then you also access to '
+             'properties like `style`, `class`, and `id`. '
              'All of these attributes are available in the Python classes.'),
     html.Div("The HTML elements and Dash classes are mostly the same. "
              "Here are a few key differences:"),
@@ -68,7 +86,7 @@ Div([
     Div('Example Div', style={'color': 'blue', fontSize: 14}),
     P('Example P', className='my-class', id='my-p-element')
 ], style={'marginBottom': 50, 'marginTop': 25})
-''', language='python', customStyle={'borderLeft': 'thin solid lightgrey'}),
+''', language='python', customStyle=styles.code_container),
     html.Div("That dash code will render this HTML markup:"),
     dcc.SyntaxHighlighter('''
 <div style="margin-bottom: 50px; margin-top: 25px;">
@@ -82,5 +100,5 @@ Div([
     </p>
 
 </div>
-''', language='html', customStyle={'borderLeft': 'thin solid lightgrey'})
+''', language='html', customStyle=styles.code_container)
 ])

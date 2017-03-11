@@ -5,6 +5,7 @@ from pandas_datareader import data as web
 from datetime import datetime as dt
 import plotly.graph_objs as go
 import json
+import styles
 
 from server import app
 
@@ -224,6 +225,35 @@ RadioItems(
         id='section2-radioitems-2'
     ),
 
+    html.Hr(),
+    html.Strong('Markdown'),
+    dcc.SyntaxHighlighter('''import dash_core_components as dcc
+
+    dcc.Markdown(\'\'\'
+    #### Dash and Markdown
+
+    Dash supports [Markdown](http://commonmark.org/help).
+
+    Markdown is a simple way to write and format text.
+    It includes a syntax for things like **bold text** and *italics*,
+    [links](http://commonmark.org/help), inline `code` snippets, lists,
+    quotes, and more.
+    \'\'\')
+    '''.replace('  ', ''),
+        customStyle=styles.code_container,
+        language='python'
+    ),
+
+    dcc.Markdown('''
+    #### Markdown
+
+    Dash supports [Markdown](http://commonmark.org/help).
+
+    Markdown is a simple way to write and format text.
+    It includes a syntax for things like **bold text** and *italics*,
+    [links](http://commonmark.org/help), inline `code` snippets, lists,
+    quotes, and more.'''.replace('  ', ''),
+    containerProps={'style': styles.example_container}),
 
     html.Hr(),
     html.Strong('Graphs'),
@@ -268,6 +298,19 @@ Graph(
     html.Div(id='hidden', style={'display': 'none'})
 ])
 
+
+for k in layout.keys():
+    if k == 'hidden':
+        continue
+
+    if k in ['section2-rangeslider-2', 'section2-slider-2']:
+        layout[k] = html.Div(layout[k], style=dict(
+            styles.example_container,
+            **({'padding': '25px'})
+        ))
+
+    else:
+        layout[k] = html.Div(layout[k], style=styles.example_container)
 
 # add dependencies to all of section2's elements so that they become controlled
 @app.react('hidden', [k for k in layout.keys() if k != 'hidden'])
