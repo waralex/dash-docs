@@ -63,13 +63,14 @@ def layout():
         ], className="nine columns")
     ], style={'fontSize': '1.7rem'}, className="container")
 
+
 app.layout = layout
 
 
 app.css.append_css({
     'external_url': (
-        "https://rawgit.com/chriddyp/0247653a7c52feb4c48437e1c1837f75"
-        "/raw/d4f178bc09f253251135aeb2141aa077300d1b3f/dash.css"
+        'https://rawgit.com/chriddyp/0247653a7c52feb4c48437e1c1837f75'
+        '/raw/9ee5fa299197c90bb1a94a1e7711e22c28533812/dash.css'
     )
 })
 
