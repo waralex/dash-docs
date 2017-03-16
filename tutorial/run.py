@@ -13,6 +13,7 @@ import callbacks_with_dependencies
 import dynamic_content
 import external_css_and_js
 import open_problems
+import architecture
 
 
 def display_chapter(chapter_id):
@@ -26,7 +27,8 @@ def display_chapter(chapter_id):
         'html-component-library': html_component_appendix.layout,
         'dynamic-content': dynamic_content.layout,
         'custom-css-and-js': external_css_and_js.layout,
-        'open-problems': open_problems.layout
+        'open-problems': open_problems.layout,
+        'architecture': architecture.layout
     }
 
     return chapters[chapter_id]
@@ -43,7 +45,8 @@ toc = html.Div([
         {'label': 'HTML Component Library', 'value': 'html-component-library'},
         {'label': 'Dynamic Content', 'value': 'dynamic-content'},
         {'label': 'Custom CSS and Javascript', 'value': 'custom-css-and-js'},
-        {'label': 'Open Problems', 'value': 'open-problems'}
+        {'label': 'Open Problems', 'value': 'open-problems'},
+        {'label': 'Architecture Drafts', 'value': 'architecture'},
     ], value='introduction', id='toc', labelStyle={'fontWeight': 400})
 ])
 

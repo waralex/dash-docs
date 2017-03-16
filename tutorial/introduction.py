@@ -10,8 +10,6 @@ layout = html.Div([
     dcc.Markdown('''
         ## Dash Developer Preview
 
-
-
         Dash is a productive python framework for building web applications.
 
         Written on top of Plotly.js and React.js,
