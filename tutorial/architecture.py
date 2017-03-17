@@ -16,19 +16,19 @@ This is typical of the circular React data flow:
 - Updates to the central store trigger a re-rendering of components,
 - passing the data from the store throughout the components.
 
-In Dash, these actions are fired through a prop called `valueChanged`.
+In Dash, these actions are fired through a prop called `setProps`.
 
-Component authors are required to call `valueChanged` with an object
+Component authors are required to call `setProps` with an object
 containing the new props for that component.
 
 For example, a simple input component would look something like this:
 
 ```
 function Input(props) {
-    const {valueChanged} = props;
+    const {setProps} = props;
     return (
         <input
-            onChange={e => valueChanged({value: e.target.value})}
+            onChange={e => setProps({value: e.target.value})}
             {...props}
         />
     );
@@ -37,7 +37,7 @@ function Input(props) {
 
 Here's what happens when a user types a value into the input:
 - React calls the input's `onChange` function
-- This input calls `valueChanged` with e.g. `{value: 'new value'}`
+- This input calls `setProps` with e.g. `{value: 'new value'}`
 - `dash renderer` merges that object into its store
 - `dash renderer` re-renders the input component with the new props,
   passing in `new value` as the Input's `value` property.
@@ -47,7 +47,7 @@ Here's what happens when a user types a value into the input:
 In `dash`, updating the values in a component can update other components
 ("observers") through API calls to a dash server. Here's the flow:
 1. User types a value into the input
-2. `valueChanged` is called.
+2. `setProps` is called.
 3. The new properties are merged into the store and the input gets re-rendered.
 4. `dash renderer` checks if any components "depend" on this "input updating event".
    If they do, then `dash renderer` makes an API call to the `dash server`
