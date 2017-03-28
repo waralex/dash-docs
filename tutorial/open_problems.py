@@ -1,144 +1,93 @@
 import dash_html_components as html
 import dash_core_components as dcc
 
-layout = html.Div([
-    html.H2('Open Problems'),
+layout = dcc.Markdown('''
+# Open Problems
 
-    html.Div('This is a diary of unsolved problems and proposals for Dash.'),
+### Multi-Page Apps
 
-    html.Hr(),
+- An abstraction over react-router?
+- Roll our own?
+- Support anchor links?
 
-    html.H3('Circular dependencies'),
+### Saving and Loading Views
 
-    html.Hr(),
+- If URLs are state, can this tie into multi-page apps?
+- Ties into multi-page apps
 
-    html.H3('Expose available events in python classes'),
+### Front-end store
 
-    html.Div('React docgen?'),
+- Allow users to modify data through events
 
-    html.Hr(),
+### Hotloading
 
-    html.H3('Multi-page apps'),
+- Use flask-sockets
+- Re-run the initialization steps in the front-end
+- Tie into general websockets framework?
 
-    html.Hr(),
+### Layouts
 
-    html.H3('Event meta information'),
+- Report layout
+- App layout
+- Container layout
 
-    dcc.SyntaxHighlighter('''
-Div('Tab 1', id='1'),
-Div('Tab 2', id='2'),
-Div(id='content')
+### Authentication and saving
 
+- Oauth
+- Keep as much logic in front end so that other languages can just use
+  dash-renderer
 
-@app.callback('content',
-           state=[{'id': 'dropdown'}],
-           events=[{'id': '1', 'event': 'click'},
-                   {'id': '2', 'event': 'click'}])
-def display_content(dropdown, id1, id2):
-    id1['event'] # '' || 'click'
-    id2['event'] # '' || 'click'
-    dropdown['event'] # '' || 'propChange' || 'select'
+### ID-Groups
 
-    if id1['event'] == 'click':
-        return content1
-    elif id2['event'] == 'click':
-        return content2
+- Register callbacks on groups of elements
+- Allows arbitrary number of elements to be created, e.g. TODO MVP
 
-# If state shares events,
-# then events get merged with the state object.
-# This keeps the default case simple.
-app.callback('content', ['dropdown'], events=[{'id': '1', 'event': 'click'}])
+### Caching requests in front end
 
-# Is equivalent to
-app.callback('content',
-          state=[{'id': 'dropdown', 'props': '*'}],
-          events=[
-              {'id': 'dropdown', 'event': 'propChange'},
-              {'id': '1', 'event': 'click'}])
+- Caching on by default, turn it off with a decorator
 
-def update_content(dropdownProps, clickEvent)
-    dropdownProps # {'event': 'propChange', 'value': 'my-val'}
-    clickEvent    # {'event': ''}
-''', language='python'),
+```
+@dash.caching('off')
+@dash.callback(...)
+def realtime_data(...):
+    ...
+```
 
-    html.Hr(),
+### Finalize variable names
 
-    html.H3('Specificity in props and events'),
+**`Input`, `Output`**
+```
+from dash.dependencies import Input, Output
 
-    dcc.SyntaxHighlighter('''
-# Nice and simple.
-@app.callback('s', ['dropdown', 'graph'])
+from dash.decorators import Input, Output
+```
 
-# Object is too complicated.
-@app.callback('s', {
-    'dropdown': {
-        'state': ['value', 'options']}},
-        'events': ['onSelect']
-    'graph': {
-        'state': ['hoverData'],
-        'events': ['hover']
-    }
-})
+### New Components
 
-## Something like this is nice but it's unordered.
-@app.callback('s',
-           state={'dropdown': ['value', 'options']},
-           events={'graph': ['onSelect', 'onHover']})
-
-# Propositions for all props
-@app.callback('s',
-           state={
-                'dropdown': Dropdown._prop_names, # explicit. easy to update.
-                'input': '*' # implicit but easy to understand.
-           },
-           event={
-                'dropdown': Dropdown.events, # all events
-                'input': [Dash.events.propChange],
-                'slider': [Slider.events.onSlide]
-           })
-
-# Unordered state and events - call signature is too implicit
-def update_content(**state_and_events):
-    dropdown = state_and_events['dropdown']
-
-## Ordered dicts include order but are a lil ugly and hard...
+**Typeahead Input**
+```
 @app.callback(
-    's',
-    state=OrderedDict([
-        ('dropdown', Dropdown._prop_names),
-        ('input', '*')
-    ])
+    Input('my-input', 'typeaheadOptions'),
+    [Input('my-input', 'value')]
 )
+def update_typeahead_options(value):
+    return get_list_of_options(startsWith=value)[0:5]
+```
 
-## Leaves us with lists...
-@app.callback('s',
-            state=[
-                dict(id='dropdown', props=Dropdown._prop_names),
-                dict(id='input', props=['value'])
-            ])
-'''),
+**Interactive Table**
 
-    html.Hr(),
+- Specify types for numbers, decimal places, dates, categories
+- Editable
+- Sortable
 
-    html.H3('Optional front-end state store'),
+**Date, Time, Week Inputs**
 
-    html.Div('''
-        Some users might want to store additional data that isn't
-        stored in any components.
-    '''),
+- [http://react-component.github.io/calendar/](http://react-component.github.io/calendar/)
 
-    html.Ul([
-        html.Li('Last item clicked'),
-        html.Li('Username'),
-        html.Li('Data that was hidden')
-    ]),
+**Upload**
 
-    html.Hr(),
 
-    html.H3('Hotloading'),
+**Tabs**
 
-    html.Div('''
-    Use flask-sockets and re-run the initialization steps in the front-end.
-    ''')
 
-])
+''')
