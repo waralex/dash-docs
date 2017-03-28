@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import dash_core_components as dcc
 import dash_html_components as html
+from dash.dependencies import Input, Output, State, Event
 from pandas_datareader import data as web
 from datetime import datetime as dt
 import plotly.graph_objs as go
@@ -12,7 +13,7 @@ layout = html.Div(content=[
     html.H2('Loading Content Dynamically'),
 
     html.Div('''Dash callbacks can return any type of property.
-    By returning `content`, they can even dyanimcally
+    By returning `content`, they can even dynamically
     render their content.
     '''),
 
@@ -31,13 +32,14 @@ layout = html.Div(content=[
 ])
 
 # When you click the button, this content gets loaded
-@app.react('content', events=[{'id': 'button', 'event': 'onClick'}])
-def render_content(*args, **kwargs):
-    return {
-        'content': html.Div([
-            html.H1('Hello Dash')
-        ])
-    }''',
+@app.callback(
+    Output('dynamic-content', 'content'),
+    events=[Event('button-dynamic-content', 'click')])
+def render():
+    return html.Div([
+        html.H3('Hello Dash')
+    ])
+    ''',
     language='python',
     customStyle={'borderLeft': 'thin solid lightgrey'}),
 
@@ -50,12 +52,10 @@ def render_content(*args, **kwargs):
 ])
 
 
-@app.react('dynamic-content', events=[{
-    'id': 'button-dynamic-content', 'event': 'onClick'
-}])
+@app.callback(
+    Output('dynamic-content', 'content'),
+    events=[Event('button-dynamic-content', 'click')])
 def render(*args, **kwargs):
-    return {
-        'content': html.Div([
-            html.H3('Hello Dash')
-        ])
-    }
+    return html.Div([
+        html.H3('Hello Dash')
+    ])

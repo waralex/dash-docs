@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import dash_core_components as dcc
 import dash_html_components as html
+from dash.dependencies import State, Event, Input, Output
 from server import app
 import time
 
@@ -49,7 +50,12 @@ layout_list = [
     ''')
 ]
 
-dropdown_example = dcc.SyntaxHighlighter("""all_options = {
+dropdown_example = dcc.SyntaxHighlighter("""import dash
+from dash.dependencies import Input, Output
+import dash_core_components as dcc
+import dash_html_components as html
+
+all_options = {
     'NYC': {
         'Places': [
             'Statue of Liberty', 'Wall Street'
@@ -86,40 +92,55 @@ app.layout = html.Div([
     html.Div(id='display')
 ])
 
-# Update the categories dropdown when the cities dropdown changes
-@app.react('category', ['cities'])
-def update_category(city_props):
+# Update the category dropdown's 'options'
+# when the input dropdown's 'value' changes
+@app.callback(Output('category', 'options'),
+              [Input('cities', 'value')])
+def update_category_options(selected_city):
     time.sleep(2)
-    selected_city = city_props['value']
     filtered_options = all_options[selected_city].keys()
-    return {
-        'options': [{'label': k, 'value': k} for k in filtered_options],
-        'value': filtered_options[0]
-    }
+    return [{'label': k, 'value': k} for k in filtered_options]
 
-# Update the sub-categories dropdown when the categories dropdown changes
-@app.react('sub-category', ['cities', 'category'])
-def update_category(city_props, category_props):
+
+# Update the category dropdown's 'value'
+# when its 'options' get changed
+@app.callback(Output('category', 'value'),
+              [Input('category', 'options')])
+def update_category_value(new_options):
+    return new_options[0]['value']
+
+
+# Update the sub-category dropdown's 'options'
+# when the cities dropdown's 'value' changes or
+# when the categories dropdown's value changes
+@app.callback(Output('sub-category', 'options'), [
+    Input('cities', 'value'),
+    Input('category', 'value')])
+def update_sub_category_options(selected_city, selected_category):
     time.sleep(2)
-    selected_city = city_props['value']
-    selected_category = category_props['value']
     filtered_options = all_options[selected_city][selected_category]
-    return {
-        'options': [{'label': k, 'value': k} for k in filtered_options],
-        'value': filtered_options[0]
-    }
+    return [{'label': k, 'value': k} for k in filtered_options]
 
-# Update the text display when all dropdowns finish updating
-@app.react('display', ['cities', 'category', 'sub-category'])
-def update_display(city_props, category_props, sub_category_props):
+# Update the sub-category dropdown's 'value'
+# when its options change
+@app.callback(
+    Output('sub-category', 'value'),
+    [Input('sub-category', 'options')])
+def update_sub_category_value(new_options):
+    return new_options[0]['value']
+
+# Display the selected value when all of the
+# dropdown's values have finished updating.
+@app.callback(
+    Output('display', 'content'),
+    [Input(id, 'value') for id in ['cities', 'category', 'sub-category']])
+def update_display(selected_city, selected_category, selected_sub_category):
     time.sleep(2)
-    return {
-        'content': u"You've selected {}, {}, and {}".format(
-            city_props['value'],
-            category_props['value'],
-            sub_category_props['value']
-        )
-    }
+    return u"You've selected {}, {}, and {}".format(
+        selected_city,
+        selected_category,
+        selected_sub_category
+    )
 """, language='python', customStyle={'borderLeft': 'thin solid lightgrey'})
 
 
@@ -159,36 +180,41 @@ layout_list.extend([
 layout = html.Div(layout_list)
 
 
-@app.react('category', ['cities'])
-def update_category(city_props):
+@app.callback(Output('category', 'options'), [Input('cities', 'value')])
+def update_category_options(selected_city):
     time.sleep(2)
-    selected_city = city_props['value']
     filtered_options = all_options[selected_city].keys()
-    return {
-        'options': [{'label': k, 'value': k} for k in filtered_options],
-        'value': filtered_options[0]
-    }
+    return [{'label': k, 'value': k} for k in filtered_options]
 
 
-@app.react('sub-category', ['cities', 'category'])
-def update_sub_category(city_props, category_props):
+@app.callback(Output('category', 'value'), [Input('category', 'options')])
+def update_category_value(new_options):
+    return new_options[0]['value']
+
+
+@app.callback(Output('sub-category', 'options'), [
+    Input('cities', 'value'),
+    Input('category', 'value')])
+def update_sub_category_options(selected_city, selected_category):
     time.sleep(2)
-    selected_city = city_props['value']
-    selected_category = category_props['value']
     filtered_options = all_options[selected_city][selected_category]
-    return {
-        'options': [{'label': k, 'value': k} for k in filtered_options],
-        'value': filtered_options[0]
-    }
+    return [{'label': k, 'value': k} for k in filtered_options]
 
 
-@app.react('display', ['cities', 'category', 'sub-category'])
-def update_display(city_props, category_props, sub_category_props):
+@app.callback(
+    Output('sub-category', 'value'),
+    [Input('sub-category', 'options')])
+def update_sub_category_value(new_options):
+    return new_options[0]['value']
+
+
+@app.callback(
+    Output('display', 'content'),
+    [Input(id, 'value') for id in ['cities', 'category', 'sub-category']])
+def update_display(selected_city, selected_category, selected_sub_category):
     time.sleep(2)
-    return {
-        'content': u"You've selected {}, {}, and {}".format(
-            city_props['value'],
-            category_props['value'],
-            sub_category_props['value']
-        )
-    }
+    return u"You've selected {}, {}, and {}".format(
+        selected_city,
+        selected_category,
+        selected_sub_category
+    )

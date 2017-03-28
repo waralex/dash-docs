@@ -1,5 +1,6 @@
 import dash_html_components as html
 import dash_core_components as dcc
+from dash.dependencies import Input, Output, Event, State
 import datetime
 from pyorbital.orbital import Orbital
 import os
@@ -76,26 +77,23 @@ layout = html.Div([
 ])
 
 
-@app.react('metrics',
-           ['satellite-dropdown'],
-           events=[{'id': 'satellite-interval', 'event': 'setInterval'}])
-def update_metrics(dropdown):
-    satellite_name = dropdown['value']
+@app.callback(Output('metrics', 'content'),
+              [Input('satellite-dropdown', 'value')],
+              events=[Event('satellite-interval', 'interval')])
+def update_metrics(satellite_name):
     satellite = Orbital(satellite_name)
     lon, lat, alt = satellite.get_lonlatalt(datetime.datetime.now())
     style = {'padding': '5px', 'fontSize': '16px'}
-    return {
-        'content': [
-            html.Span('Real Time Longitude: {0:.2f}'.format(lon), style=style),
-            html.Span('Latitude: {0:.2f}'.format(lat), style=style),
-            html.Span('Altitude: {0:0.2f}'.format(alt), style=style)
-        ]
-    }
+    return [
+        html.Span('Real Time Longitude: {0:.2f}'.format(lon), style=style),
+        html.Span('Latitude: {0:.2f}'.format(lat), style=style),
+        html.Span('Altitude: {0:0.2f}'.format(alt), style=style)
+    ]
 
 
-@app.react('satellite-graph', ['satellite-dropdown'])
-def update_graph(dropdown):
-    satellite_name = dropdown['value']
+@app.callback(Output('satellite-graph', 'figure'),
+              inputs=[Input('satellite-dropdown', 'value')])
+def update_graph(satellite_name):
     satellite = Orbital(satellite_name)
     data = [[], [], [], []]
     for i in range(100):
@@ -111,7 +109,7 @@ def update_graph(dropdown):
         else:
             data[3].append('{} minutes ago'.format(i))
 
-    return {'figure': {
+    return {
         'data': [{
             'lat': data[1],
             'lon': data[0],
@@ -128,4 +126,4 @@ def update_graph(dropdown):
             },
             'margin': {'l': 0, 'r': 0, 't': 0, 'b': 0}
         }
-    }}
+    }

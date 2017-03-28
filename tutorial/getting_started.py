@@ -4,6 +4,7 @@ import dash_html_components as html
 from pandas_datareader import data as web
 from datetime import datetime as dt
 import plotly.graph_objs as go
+from dash.dependencies import Input, Output, Event, State
 
 from server import app
 
@@ -30,7 +31,8 @@ $ pip install pandas_datareader # Pandas extension used in some examples
         In a file called app.py, write:
     '''),
     dcc.SyntaxHighlighter('''import dash
-from dash_core_components import Dropdown, Graph
+from dash.dependencies import Input, Output
+import dash_core_components as dcc Dropdown, Graph
 from dash_html_components import Div, H3, Link
 
 from plotly import graph_objs as go
@@ -42,7 +44,7 @@ app = dash.react.Dash('Hello World')
 # Describe the layout, or the UI, of the app
 app.layout = Div([
     H3('Hello World'),
-    Dropdown(
+    dcc.Dropdown(
         id='my-dropdown',
         options=[
             {'label': 'Coke', 'value': 'COKE'},
@@ -51,24 +53,23 @@ app.layout = Div([
         ],
         value='COKE'
     ),
-    Graph(id='my-graph')
+    dcc.Graph(id='my-graph')
 ])
 
-# Register a callback to update 'my-graph' component when 'my-dropdown' changes
-@app.react('my-graph', ['my-dropdown'])
+# Register a callback to update the 'figure' property of the 'my-graph'
+# component when the 'value' property of the 'my-dropdown' component changes
+@app.callback(Output('my-graph', 'figure'), [Input('my-dropdown', 'value')])
 def update_graph(dropdown_properties):
     df = web.DataReader(
         dropdown_properties['value'], 'yahoo',
         dt(2017, 1, 1), dt.now()
     )
-    return {
-        'figure': go.Figure(
-            data=[{
-                'x': df.index,
-                'y': df.Close
-            }]
-        )
-    }
+    return go.Figure(
+        data=[{
+            'x': df.index,
+            'y': df.Close
+        }]
+    )
 
 # Run the server
 if __name__ == '__main__':
@@ -100,17 +101,16 @@ if __name__ == '__main__':
 
 
 # Register a callback to update 'my-graph' component when 'my-dropdown' changes
-@app.react('my-graph-getting-started', ['my-dropdown-getting-started'])
-def update_graph(dropdown_properties):
+@app.callback(Output('my-graph-getting-started', 'figure'),
+              [Input('my-dropdown-getting-started', 'value')])
+def update_graph(dropdown_value):
     df = web.DataReader(
-        dropdown_properties['value'], 'yahoo',
+        dropdown_value, 'yahoo',
         dt(2017, 1, 1), dt.now()
     )
-    return {
-        'figure': go.Figure(
-            data=[{
-                'x': df.index,
-                'y': df.Close
-            }]
-        )
-    }
+    return go.Figure(
+        data=[{
+            'x': df.index,
+            'y': df.Close
+        }]
+    )

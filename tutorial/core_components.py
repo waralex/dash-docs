@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import dash_core_components as dcc
 import dash_html_components as html
+from dash.dependencies import Input, Output, State, Event
 from pandas_datareader import data as web
 from datetime import datetime as dt
 import plotly.graph_objs as go
@@ -313,6 +314,9 @@ for k in layout.keys():
         layout[k] = html.Div(layout[k], style=styles.example_container)
 
 # add dependencies to all of section2's elements so that they become controlled
-@app.react('hidden', [k for k in layout.keys() if k != 'hidden'])
+@app.callback(
+    Output('hidden', 'content'),
+    [Input(k, 'value' if 'checklist' not in k else 'values')
+     for k in layout.keys() if k != 'hidden'])
 def update_hidden_div(*args):
-    return {'content': json.dumps(args, indent=4)}
+    return ''

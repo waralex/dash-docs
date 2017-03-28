@@ -30,7 +30,7 @@ Div('Tab 2', id='2'),
 Div(id='content')
 
 
-@app.react('content',
+@app.callback('content',
            state=[{'id': 'dropdown'}],
            events=[{'id': '1', 'event': 'click'},
                    {'id': '2', 'event': 'click'}])
@@ -47,10 +47,10 @@ def display_content(dropdown, id1, id2):
 # If state shares events,
 # then events get merged with the state object.
 # This keeps the default case simple.
-app.react('content', ['dropdown'], events=[{'id': '1', 'event': 'click'}])
+app.callback('content', ['dropdown'], events=[{'id': '1', 'event': 'click'}])
 
 # Is equivalent to
-app.react('content',
+app.callback('content',
           state=[{'id': 'dropdown', 'props': '*'}],
           events=[
               {'id': 'dropdown', 'event': 'propChange'},
@@ -67,10 +67,10 @@ def update_content(dropdownProps, clickEvent)
 
     dcc.SyntaxHighlighter('''
 # Nice and simple.
-@app.react('s', ['dropdown', 'graph'])
+@app.callback('s', ['dropdown', 'graph'])
 
 # Object is too complicated.
-@app.react('s', {
+@app.callback('s', {
     'dropdown': {
         'state': ['value', 'options']}},
         'events': ['onSelect']
@@ -81,12 +81,12 @@ def update_content(dropdownProps, clickEvent)
 })
 
 ## Something like this is nice but it's unordered.
-@app.react('s',
+@app.callback('s',
            state={'dropdown': ['value', 'options']},
            events={'graph': ['onSelect', 'onHover']})
 
 # Propositions for all props
-@app.react('s',
+@app.callback('s',
            state={
                 'dropdown': Dropdown._prop_names, # explicit. easy to update.
                 'input': '*' # implicit but easy to understand.
@@ -102,7 +102,7 @@ def update_content(**state_and_events):
     dropdown = state_and_events['dropdown']
 
 ## Ordered dicts include order but are a lil ugly and hard...
-@app.react(
+@app.callback(
     's',
     state=OrderedDict([
         ('dropdown', Dropdown._prop_names),
@@ -111,7 +111,7 @@ def update_content(**state_and_events):
 )
 
 ## Leaves us with lists...
-@app.react('s',
+@app.callback('s',
             state=[
                 dict(id='dropdown', props=Dropdown._prop_names),
                 dict(id='input', props=['value'])
