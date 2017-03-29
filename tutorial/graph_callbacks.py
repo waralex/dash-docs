@@ -65,14 +65,14 @@ app.layout = html.Div([
 
     Mouse over values in the graph to see this data update.
     """),
-    html.Pre(id='hover-data', style={'border': 'thin grey solid'}),
+    html.Pre(id='hover-data', style={'border': 'thin lightgrey solid'}),
 
     dcc.Markdown("""
     **Click Data**
 
     Click on points in the graph to see this data update.
     """),
-    html.Pre(id='click-data', style={'border': 'thin grey solid'}),
+    html.Pre(id='click-data', style={'border': 'thin lightgrey solid'}),
 
     dcc.Markdown("""
     **Selction Data**
@@ -81,7 +81,7 @@ app.layout = html.Div([
     bar and then select points in the graph to see this
     data update.
     """),
-    html.Pre(id='selected-data', style={'border': 'thin grey solid'}),
+    html.Pre(id='selected-data', style={'border': 'thin lightgrey solid'}),
 ])
 
 @app.callback(
@@ -140,14 +140,14 @@ def display_selected_data(selectedData):
 
 Mouse over values in the graph to see this data update.
         """),
-        html.Pre(id='hover-data', style={'border': 'thin grey solid'}),
+        html.Pre(id='hover-data', style={'border': 'thin lightgrey solid'}),
 
         dcc.Markdown("""
 **Click Data**
 
 Click on points in the graph to see this data update.
         """),
-        html.Pre(id='click-data', style={'border': 'thin grey solid'}),
+        html.Pre(id='click-data', style={'border': 'thin lightgrey solid'}),
 
         dcc.Markdown("""
 **Selction Data**
@@ -156,7 +156,7 @@ Choose the lasso or rectangle tool in the graph's menu
 bar and then select points in the graph to see this
 data update.
         """),
-        html.Pre(id='selected-data', style={'border': 'thin grey solid'}),
+        html.Pre(id='selected-data', style={'border': 'thin lightgrey solid'}),
     ], style=styles.example_container)
 ]
 
