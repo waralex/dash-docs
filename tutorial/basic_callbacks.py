@@ -363,6 +363,7 @@ def update_graph(stock_ticker, column):
     ], style=styles.example_container)
 ])
 
+
 @app.callback(
     Output('section3-multi-dropdowns-graph-2', 'figure'),
     events=[Event('section3-my-button', 'click')],

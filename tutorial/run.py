@@ -15,7 +15,7 @@ import dynamic_content
 import external_css_and_js
 import open_problems
 import architecture
-
+import graph_callbacks
 
 toc = html.Div([
     dcc.RadioItems(options=[
@@ -24,6 +24,7 @@ toc = html.Div([
         {'label': 'HTML Attributes', 'value': 'html-attributes'},
         {'label': 'Supercharged Components', 'value': 'supercharged-components'},
         {'label': 'Basic Callbacks', 'value': 'callbacks'},
+        {'label': 'Graphs with Callbacks', 'value': 'graph-callbacks'},
         {'label': 'Callback Resolution', 'value': 'callback-resolution'},
         {'label': 'HTML Component Library', 'value': 'html-component-library'},
         {'label': 'Dynamic Content', 'value': 'dynamic-content'},
@@ -56,6 +57,7 @@ def display_chapter(chapter_id):
         'html-attributes': html_components.layout,
         'supercharged-components': core_components.layout,
         'callbacks': basic_callbacks.layout,
+        'graph-callbacks': graph_callbacks.layout,
         'callback-resolution': callbacks_with_dependencies.layout,
         'html-component-library': html_component_appendix.layout,
         'dynamic-content': dynamic_content.layout,
