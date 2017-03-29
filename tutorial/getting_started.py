@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+import dash
+import dash_renderer
 import dash_core_components as dcc
 import dash_html_components as html
 from pandas_datareader import data as web
@@ -19,11 +21,16 @@ layout = html.Div([
         3.x will be supported in the stable release.
     '''),
     dcc.SyntaxHighlighter('''$ pip install dash.ly --upgrade  # The core dash backend
-$ pip install dash-renderer --upgrade  # The dash front-end
-$ pip install dash-html-components --upgrade  # HTML components
-$ pip install dash-core-components --upgrade  # Supercharged components
+$ pip install dash-renderer=={}  # The dash front-end
+$ pip install dash-html-components=={}  # HTML components
+$ pip install dash-core-components=={}  # Supercharged components
 $ pip install pandas_datareader # Pandas extension used in some examples
-''', language='bash', customStyle={'borderLeft': 'thin solid lightgrey'}),
+'''.format(dash_renderer.__version__,
+           html.__version__,
+           dcc.__version__),
+          language='bash',
+          customStyle={'borderLeft': 'thin solid lightgrey'}
+    ),
 
     html.Strong('Hello World'),
     html.Div('''
