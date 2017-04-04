@@ -230,10 +230,10 @@ years = sorted(list(df.year.unique()))
 
 layout = html.Div([
         html.Div([
-            dcc.Graph(id='graph-left'),
+            dcc.Graph(id='graph-left', animate=True),
         ], className='six columns'),
         html.Div([
-            dcc.Graph(id='graph-right')
+            dcc.Graph(id='graph-right', animate=True)
         ], className='six columns')
     ], className='row'),
     dcc.Slider(
@@ -350,10 +350,10 @@ years = sorted(list(df.year.unique()))
 layout.extend([html.Div([
     html.Div([
         html.Div([
-            dcc.Graph(id='graph-left'),
+            dcc.Graph(id='graph-left', animate=True),
         ], className='six columns'),
         html.Div([
-            dcc.Graph(id='graph-right')
+            dcc.Graph(id='graph-right', animate=True)
         ], className='six columns')
     ], className='row'),
     dcc.Slider(
@@ -490,7 +490,7 @@ df = pd.read_csv(
 years = sorted(list(df.year.unique()))
 
 app.layout = html.Div([
-    dcc.Graph(id='graph-with-history'),
+    dcc.Graph(id='graph-with-history', animate=True),
     dcc.Slider(
         id='year-slider-2',
         marks={
@@ -571,7 +571,7 @@ def filterTimeSeries(hoverData, selectedData, year):
 ''', customStyle=styles.code_container),
 
     html.Div([
-        dcc.Graph(id='graph-with-history'),
+        dcc.Graph(id='graph-with-history', animate=True),
         dcc.Slider(
             id='year-slider-2',
             marks={
