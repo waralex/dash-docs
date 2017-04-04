@@ -16,6 +16,7 @@ import external_css_and_js
 import open_problems
 import architecture
 import graph_callbacks
+import urls
 
 toc = html.Div([
     dcc.RadioItems(options=[
@@ -29,6 +30,7 @@ toc = html.Div([
         {'label': 'HTML Component Library', 'value': 'html-component-library'},
         {'label': 'Dynamic Content', 'value': 'dynamic-content'},
         {'label': 'Custom CSS and Javascript', 'value': 'custom-css-and-js'},
+        {'label': 'URLs', 'value': 'urls'},
         {'label': 'Open Problems', 'value': 'open-problems'},
         {'label': 'Architecture Drafts', 'value': 'architecture'},
     ], value='introduction', id='toc', labelStyle={'fontWeight': 400})
@@ -62,6 +64,7 @@ def display_chapter(chapter_id):
         'html-component-library': html_component_appendix.layout,
         'dynamic-content': dynamic_content.layout,
         'custom-css-and-js': external_css_and_js.layout,
+        'urls': urls.layout,
         'open-problems': open_problems.layout,
         'architecture': architecture.layout
     }
@@ -73,6 +76,32 @@ def display_chapter(chapter_id):
 def display_content(selected_chapter):
     return display_chapter(selected_chapter)
 
+
+app.routes = [
+    {
+        'pathname': ('/{}'.format(option['value'])
+                     if option['value'] != 'introduction'
+                     else '/'),
+        'state': {'toc.value': option['value']}
+    } for option in toc['toc'].options
+]
+
+app.routes.extend([
+    {
+        'pathname': '/callbacks/coke',
+        'state': {
+            'toc.value': 'callbacks',
+            'section3-dropdown.value': 'COKE'
+        }
+    },
+    {
+        'pathname': '/callbacks/apple',
+        'state': {
+            'toc.value': 'callbacks',
+            'section3-dropdown.value': 'AAPL'
+        }
+    }
+])
 
 app.css.append_css({
     'external_url': (
