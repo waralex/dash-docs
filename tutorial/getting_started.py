@@ -41,17 +41,17 @@ $ pip install pandas_datareader # Pandas extension used in some examples
     dcc.SyntaxHighlighter('''import dash
 from dash.dependencies import Input, Output
 import dash_core_components as dcc Dropdown, Graph
-from dash_html_components import Div, H3, Link
+import dash_html_components as html
 
 from plotly import graph_objs as go
 from pandas_datareader import data as web
 from datetime import datetime as dt
 
-app = dash.react.Dash('Hello World')
+app = dash.Dash('Hello World')
 
 # Describe the layout, or the UI, of the app
-app.layout = Div([
-    H3('Hello World'),
+app.layout = html.Div([
+    html.H3('Hello World'),
     dcc.Dropdown(
         id='my-dropdown',
         options=[
@@ -67,9 +67,13 @@ app.layout = Div([
 # Register a callback to update the 'figure' property of the 'my-graph'
 # component when the 'value' property of the 'my-dropdown' component changes
 @app.callback(Output('my-graph', 'figure'), [Input('my-dropdown', 'value')])
-def update_graph(dropdown_properties):
+def update_graph(selected_dropdown_value):
     df = web.DataReader(
-        dropdown_properties['value'], 'yahoo',
+
+        # this is going to be equal to `COKE`, `TSLA`, or `AAPL`
+        selected_dropdown_value,
+
+        'yahoo',
         dt(2017, 1, 1), dt.now()
     )
     return go.Figure(
