@@ -19,15 +19,15 @@ layout = html.Div(content=[
     when other components change values. Here's a practical example.
     View the interactive app below the code.
     '''),
-    dcc.SyntaxHighlighter('''
-import dash
+    dcc.SyntaxHighlighter('''import dash
+from dash.dependencies import Input, Output
 import dash_core_components as dcc
 import dash_html_components as html
 
 from pandas_datareader import data as web
 from datetime import datetime as dt
 
-app = dash.react.Dash('')
+app = dash.Dash('')
 
 # Describe the layout of the app
 app.layout = html.Div([
@@ -142,7 +142,17 @@ the callback functions will get called
 automatically.
 
 '''),
-    dcc.SyntaxHighlighter('''app.layout = html.Div([
+    dcc.SyntaxHighlighter('''import dash
+from dash.dependencies import Input, Output
+import dash_core_components as dcc
+import dash_html_components as html
+
+from pandas_datareader import data as web
+from datetime import datetime as dt
+
+app = dash.Dash('')
+
+app.layout = html.Div([
     dcc.Dropdown(
         id='stock-ticker-dropdown',
         options=[
@@ -259,7 +269,7 @@ snappy.
 
 An alternative to these types of reactive interfaces is subscribing
 explicitly to events. Subscribing to events is great when your
-callbacks take a at least a couple of seconds to run or when
+callbacks takes at least a couple of seconds to run or when
 you would like your users to update a set of controls before showing
 them the output.
 
@@ -287,6 +297,8 @@ import dash_html_components as html
 import dash_core_components as dcc
 
 from dash.dependencies import State, Event
+
+app = dash.Dash('')
 
 app.layout = html.Div([
     dcc.Dropdown(
