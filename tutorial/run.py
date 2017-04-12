@@ -16,6 +16,7 @@ import external_css_and_js
 import open_problems
 import architecture
 import graph_callbacks
+import live_updates
 import urls
 
 toc = html.Div([
@@ -26,6 +27,7 @@ toc = html.Div([
         {'label': 'Supercharged Components', 'value': 'supercharged-components'},
         {'label': 'Basic Callbacks', 'value': 'callbacks'},
         {'label': 'Graphs with Callbacks', 'value': 'graph-callbacks'},
+        {'label': 'Live Updating Graphs', 'value': 'live-updating-graphs'},
         {'label': 'Callback Resolution', 'value': 'callback-resolution'},
         {'label': 'HTML Component Library', 'value': 'html-component-library'},
         {'label': 'Dynamic Content', 'value': 'dynamic-content'},
@@ -60,6 +62,7 @@ def display_chapter(chapter_id):
         'supercharged-components': core_components.layout,
         'callbacks': basic_callbacks.layout,
         'graph-callbacks': graph_callbacks.layout,
+        'live-updating-graphs': live_updates.layout,
         'callback-resolution': callbacks_with_dependencies.layout,
         'html-component-library': html_component_appendix.layout,
         'dynamic-content': dynamic_content.layout,
@@ -106,7 +109,7 @@ app.routes.extend([
 app.css.append_css({
     'external_url': (
         'https://rawgit.com/chriddyp/0247653a7c52feb4c48437e1c1837f75'
-        '/raw/9ee5fa299197c90bb1a94a1e7711e22c28533812/dash.css'
+        '/raw/a68333b876edaf62df2efa7bac0e9b3613258851/dash.css'
     )
 })
 
