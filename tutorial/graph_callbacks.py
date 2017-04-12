@@ -212,6 +212,7 @@ metadata for the points that we've hovered over or selected.
 '''),
 
 dcc.SyntaxHighlighter('''import dash
+from dash.dependencies import Input, Output
 import dash_core_components as dcc
 import dash_html_components as html
 import pandas as pd
@@ -476,6 +477,7 @@ chart with that country's historical trajectory.
 '''),
 
     dcc.SyntaxHighlighter('''import dash
+from dash.dependencies import Input, Output    
 import dash_core_components as dcc
 import dash_html_components as html
 import pandas as pd
