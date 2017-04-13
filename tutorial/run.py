@@ -51,7 +51,6 @@ def layout():
 
 
 app.layout = layout
-app.scripts.config.serve_locally = True
 
 
 def display_chapter(chapter_id):
