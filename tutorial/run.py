@@ -30,7 +30,7 @@ toc = html.Div([
         {'label': 'Live Updating Graphs', 'value': 'live-updating-graphs'},
         {'label': 'Callback Resolution', 'value': 'callback-resolution'},
         {'label': 'HTML Component Library', 'value': 'html-component-library'},
-        {'label': 'Dynamic Content', 'value': 'dynamic-content'},
+        # {'label': 'Dynamic Content', 'value': 'dynamic-content'},
         {'label': 'Custom CSS and Javascript', 'value': 'custom-css-and-js'},
         {'label': 'URLs', 'value': 'urls'},
         {'label': 'Open Problems', 'value': 'open-problems'},

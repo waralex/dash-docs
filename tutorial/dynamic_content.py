@@ -8,54 +8,36 @@ import plotly.graph_objs as go
 import json
 
 from server import app
+import styles
+import tools
+
+examples = [
+    tools.load_example(s) for s in [
+        'tutorial/examples/dynamic_content.py'
+    ]
+]
+
 
 layout = html.Div(content=[
-    html.H2('Loading Content Dynamically'),
+    dcc.Markdown('''
+    ## Loading Content Dynamically
 
-    html.Div('''Dash callbacks can return any type of property.
+    Dash callbacks can return any type of property.
     By returning `content`, they can even dynamically
     render their content.
-    '''),
 
-    html.Div('''This allows you to build a lot of neat interactions.
-    Here are some examples.'''),
-
-    html.H5('Render content by clicking a button'),
-
-    html.Div('''This is a clever hack that can make development a lot easier.
+    This is an example that can be used in app development for
+    quicker feedback.
     Instead of refreshing the page to view your layout,
-    just render the layout as a response to clicking on a button.'''),
+    just render the layout as a response to clicking on a button.
+    '''.replace('    ', '')),
 
-    dcc.SyntaxHighlighter('''app.layout = html.Div([
-    html.Button('Click to load content', id='button'),
-    html.Div(id='content')
-])
+    dcc.SyntaxHighlighter(
+        examples[0][0],
+        language='python',
+        customStyle=styles.code_container
+    ),
 
-# When you click the button, this content gets loaded
-@app.callback(
-    Output('dynamic-content', 'content'),
-    events=[Event('button-dynamic-content', 'click')])
-def render():
-    return html.Div([
-        html.H3('Hello Dash')
-    ])
-    ''',
-    language='python',
-    customStyle={'borderLeft': 'thin solid lightgrey'}),
-
-    html.Div([
-        html.Button('Click to load content', id='button-dynamic-content'),
-        html.Br(),
-        html.Div(id='dynamic-content')
-    ], style={'border': 'thin lightgrey solid', 'padding': '15px'})
+    html.Div(examples[0][1], style=styles.example_container)
 
 ])
-
-
-@app.callback(
-    Output('dynamic-content', 'content'),
-    events=[Event('button-dynamic-content', 'click')])
-def render(*args, **kwargs):
-    return html.Div([
-        html.H3('Hello Dash')
-    ])

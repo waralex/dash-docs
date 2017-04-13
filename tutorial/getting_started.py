@@ -3,13 +3,12 @@ import dash
 import dash_renderer
 import dash_core_components as dcc
 import dash_html_components as html
-from pandas_datareader import data as web
-from datetime import datetime as dt
-import plotly.graph_objs as go
+
 from dash.dependencies import Input, Output, Event, State
+import styles
+from tools import load_example
 
-from server import app
-
+source, _example_layout = load_example('tutorial/examples/getting_started.py')
 
 layout = html.Div([
     html.Strong('Installation'),
@@ -38,91 +37,22 @@ $ pip install pandas_datareader # Pandas extension used in some examples
         Here's a quick example to get you started.
         In a file called app.py, write:
     '''),
-    dcc.SyntaxHighlighter('''import dash
-from dash.dependencies import Input, Output
-import dash_core_components as dcc Dropdown, Graph
-import dash_html_components as html
-
-from plotly import graph_objs as go
-from pandas_datareader import data as web
-from datetime import datetime as dt
-
-app = dash.Dash('Hello World')
-
-# Describe the layout, or the UI, of the app
-app.layout = html.Div([
-    html.H3('Hello World'),
-    dcc.Dropdown(
-        id='my-dropdown',
-        options=[
-            {'label': 'Coke', 'value': 'COKE'},
-            {'label': 'Tesla', 'value': 'TSLA'},
-            {'label': 'Apple', 'value': 'AAPL'}
-        ],
-        value='COKE'
+    dcc.SyntaxHighlighter(
+        source,
+        language='python',
+        customStyle={'borderLeft': 'thin solid lightgrey'}
     ),
-    dcc.Graph(id='my-graph')
+    dcc.Markdown('''
+    Run the app with
+
+    ```
+    $ python app.py
+    ...Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+    ```
+
+    and visit [http://127.0.0.1:5000/](http://127.0.0.1:5000/)
+    in your web browser.
+    '''.replace('    ', '')),
+
+    html.Div(_example_layout, style=styles.example_container)
 ])
-
-# Register a callback to update the 'figure' property of the 'my-graph'
-# component when the 'value' property of the 'my-dropdown' component changes
-@app.callback(Output('my-graph', 'figure'), [Input('my-dropdown', 'value')])
-def update_graph(selected_dropdown_value):
-    df = web.DataReader(
-
-        # this is going to be equal to `COKE`, `TSLA`, or `AAPL`
-        selected_dropdown_value,
-
-        'yahoo',
-        dt(2017, 1, 1), dt.now()
-    )
-    return go.Figure(
-        data=[{
-            'x': df.index,
-            'y': df.Close
-        }]
-    )
-
-# Run the server
-if __name__ == '__main__':
-    app.run_server(debug=True)
-''', language='python', customStyle={'borderLeft': 'thin solid lightgrey'}),
-    html.Div('Run the app with'),
-    dcc.SyntaxHighlighter('''$ python app.py
-...Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
-''',  customStyle={'borderLeft': 'thin solid lightgrey'}),
-    html.Div([
-        html.Span('and visit '),
-        html.A('http://localhost:5000/', href='http://localhost:5000/', target='_blank'),
-        html.Span(' in your web browser.')
-    ]),
-    html.Div([
-        html.H3('Hello World'),
-        dcc.Dropdown(
-            id='my-dropdown-getting-started',
-            options=[
-                {'label': 'Coke', 'value': 'COKE'},
-                {'label': 'Tesla', 'value': 'TSLA'},
-                {'label': 'Apple', 'value': 'AAPL'}
-            ],
-            value='COKE'
-        ),
-        dcc.Graph(id='my-graph-getting-started')
-    ], style={'border': 'thin lightgrey solid', 'padding': '15px'})
-])
-
-
-# Register a callback to update 'my-graph' component when 'my-dropdown' changes
-@app.callback(Output('my-graph-getting-started', 'figure'),
-              [Input('my-dropdown-getting-started', 'value')])
-def update_graph(dropdown_value):
-    df = web.DataReader(
-        dropdown_value, 'yahoo',
-        dt(2017, 1, 1), dt.now()
-    )
-    return go.Figure(
-        data=[{
-            'x': df.index,
-            'y': df.Close
-        }]
-    )
