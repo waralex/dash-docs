@@ -38,6 +38,7 @@ toc = html.Div([
     ], value='introduction', id='toc', labelStyle={'fontWeight': 400})
 ])
 
+app.scripts.config.serve_locally = True
 
 def layout():
     return html.Div([
