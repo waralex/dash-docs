@@ -17,16 +17,16 @@ layout = html.Div([
         Dash is ideal for building data visualization apps
         with highly custom user interfaces.
 
-
         This is an exclusive developer preview of Dash.
-        Dash is currently unreleased and unannounced. Call it a Beta.
+        Dash is currently unreleased and unannounced.
         Please do not share Dash without Plotly's constent.
 
         The core functionality of Dash will be open sourced.
         For enterprises, Plotly offers a platform for
         deploying, orchestrating, and permissioning dash apps behind
         your firewall. If you're interested,
-        please get in touch at https://plot.ly/products/consulting-and-oem/
+        please get in touch at
+        [https://plot.ly/products/consulting-and-oem/](https://plot.ly/products/consulting-and-oem/)
         to register for early access.
 
         ***
