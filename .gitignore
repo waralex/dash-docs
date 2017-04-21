@@ -13,7 +13,7 @@ venv/
 *.egg-info
 *.log
 .DS_Store
-
+cache
 bundle.js
 
 .env

@@ -52,7 +52,7 @@ automatically.
     html.Div(examples[1][1], style=styles.example_container)
 ])
 
-"""
+
 layout.content.extend([
     dcc.Markdown('''
 ## Events and States
@@ -92,4 +92,3 @@ the `state` arguments.
     ),
     html.Div(examples[2][1], style=styles.example_container)
 ])
-"""
