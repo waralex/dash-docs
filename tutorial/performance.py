@@ -86,7 +86,7 @@ cache that allows expiration. For example, you could expire the cache on an
 hourly or daily basis.
 
 The [Flask-Caching](https://pythonhosted.org/Flask-Caching/) library allows
-time-based expiry and also storesp stores the cache on the filesystem or
+time-based expiry and also stores the cache on the filesystem or
 in a shared memory database like Redis instead of in the worker's memory.
 This means that it may be a little bit slower than `lru_cache` but the cache
 will be shared across workers.'''),
