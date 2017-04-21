@@ -9,12 +9,13 @@ from flask_caching import Cache
 
 app = dash.Dash(__name__)
 cache = Cache(app.server, config={
-    'CACHE_TYPE': 'redis',  # try 'filesystem' for local development
+    # try 'filesystem' if you don't want to setup redis
+    'CACHE_TYPE': 'redis',
     'CACHE_REDIS_URL': os.environ['REDIS_URL']
 })
 app.config.supress_callback_exceptions = True
 
-timeout = 45
+timeout = 20
 app.layout = html.Div([
     html.Div(id='flask-cache-memoized-content'),
     dcc.RadioItems(
