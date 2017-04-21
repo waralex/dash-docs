@@ -12,7 +12,7 @@ cache = Cache(app.server, config={
 })
 app.config.supress_callback_exceptions = True
 
-timeout = 10
+timeout = 45
 app.layout = html.Div([
     html.Div(id='flask-cache-memoized-content'),
     dcc.RadioItems(
