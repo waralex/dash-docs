@@ -3,12 +3,14 @@ from dash.dependencies import Input, Output
 import dash_html_components as html
 import dash_core_components as dcc
 import datetime
+import os
 from flask_caching import Cache
+
 
 app = dash.Dash(__name__)
 cache = Cache(app.server, config={
-    'CACHE_TYPE': 'filesystem',
-    'CACHE_DIR': './cache'
+    'CACHE_TYPE': 'redis',  # try 'filesystem' for local development
+    'CACHE_REDIS_URL': os.environ['REDIS_URL']
 })
 app.config.supress_callback_exceptions = True
 
