@@ -13,7 +13,7 @@ app.layout = html.Div([
 
 # When you click the button, this content gets loaded
 @app.callback(
-    Output('dynamic-content', 'content'),
+    Output('display-content', 'content'),
     events=[Event('display-content-button', 'click')])
 def render():
     return html.Div([
