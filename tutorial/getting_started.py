@@ -19,11 +19,11 @@ layout = html.Div([
         Note that dash currently only supports Python 2.7.
         3.x will be supported in the stable release.
     '''),
-    dcc.SyntaxHighlighter('''$ pip install dash.ly=={}  # The core dash backend
-$ pip install dash-renderer=={}  # The dash front-end
-$ pip install dash-html-components=={}  # HTML components
-$ pip install dash-core-components=={}  # Supercharged components
-$ pip install pandas_datareader # Pandas extension used in some examples
+    dcc.SyntaxHighlighter('''pip install dash.ly=={}  # The core dash backend
+pip install dash-renderer=={}  # The dash front-end
+pip install dash-html-components=={}  # HTML components
+pip install dash-core-components=={}  # Supercharged components
+pip install pandas_datareader # Pandas extension used in some examples
 '''.format(dash.__version__,
            dash_renderer.__version__,
            html.__version__,

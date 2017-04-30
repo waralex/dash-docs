@@ -80,11 +80,11 @@ html.Div([
     html.Li('The `class` key is renamed as `className`'),
     html.Li('Style properties in pixel units can be supplied as just numbers without the `px` unit'),
     html.Div("Let's take a look at an example."),
-    dcc.SyntaxHighlighter('''from dash_html_components import Div
+    dcc.SyntaxHighlighter('''import dash_html_components as html
 
-Div([
-    Div('Example Div', style={'color': 'blue', fontSize: 14}),
-    P('Example P', className='my-class', id='my-p-element')
+html.Div([
+    html.Div('Example Div', style={'color': 'blue', 'fontSize': 14}),
+    html.P('Example P', className='my-class', id='my-p-element')
 ], style={'marginBottom': 50, 'marginTop': 25})
 ''', language='python', customStyle=styles.code_container),
     html.Div("That dash code will render this HTML markup:"),

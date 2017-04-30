@@ -22,11 +22,11 @@ layout = Div([
 
     Hr(),
 
-    H4('Including custom CSS and Javascript in your dash app'),
+    H4('Including custom CSS and Javascript in your Dash app'),
 
-    dcc.SyntaxHighlighter('''from dash.react import Dash
+    dcc.SyntaxHighlighter('''from dash import Dash
 
-app = Dash('')
+app = Dash()
 
 # Append an externally hosted CSS stylesheet
 my_css_url = "https://unpkg.com/normalize.css@5.0.0"
@@ -70,9 +70,9 @@ app.scripts.append_script({
     Here's how to enable this option:
     '''),
 
-    dcc.SyntaxHighlighter('''from dash.react import Dash
+    dcc.SyntaxHighlighter('''from dash import Dash
 
-app = Dash('')
+app = Dash()
 
 app.css.config.serve_locally = True
 app.scripts.config.serve_locally = True''',

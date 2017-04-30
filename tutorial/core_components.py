@@ -21,15 +21,15 @@ layout = html.Div(content=[
 
     html.Hr(),
     html.Strong('Dropdown'),
-    dcc.SyntaxHighlighter('''from dash_core_components import Dropdown
+    dcc.SyntaxHighlighter('''import dash_core_components as dcc
 
-Dropdown(
+dcc.Dropdown(
     options=[
         {'label': 'New York City', 'value': 'NYC'},
         {'label': 'Montréal', 'value': 'MTL'},
         {'label': 'San Francisco', 'value': 'SF'}
     ],
-    value="MTL"
+    value='MTL'
 )''', language='python', customStyle={'borderLeft': 'thin solid lightgrey'}),
     dcc.Dropdown(options=[
         {'label': 'New York City', 'value': 'NYC'},
@@ -37,9 +37,9 @@ Dropdown(
         {'label': 'San Francisco', 'value': 'SF'}
     ], value="MTL", id='section2-dropdown-1'),
 
-    dcc.SyntaxHighlighter('''from dash_core_components import Dropdown
+    dcc.SyntaxHighlighter('''import dash_core_components as dcc
 
-Dropdown(
+dcc.Dropdown(
     options=[
         {'label': 'New York City', 'value': 'NYC'},
         {'label': 'Montréal', 'value': 'MTL'},
@@ -56,9 +56,9 @@ Dropdown(
 
     html.Hr(),
     html.Strong('Slider'),
-    dcc.SyntaxHighlighter('''from dash_core_components import Slider
+    dcc.SyntaxHighlighter('''import dash_core_components as dcc
 
-Slider(
+dcc.Slider(
     min=-5,
     max=10,
     step=0.5,
@@ -72,9 +72,9 @@ Slider(
         id='section2-slider-1'
     ),
 
-    dcc.SyntaxHighlighter('''from dash_core_components import Slider
+    dcc.SyntaxHighlighter('''import dash_core_components as dcc
 
-Slider(
+dcc.Slider(
     min=0,
     max=9,
     marks={i: 'Label {}'.format(i) for i in range(10)},
@@ -89,9 +89,9 @@ Slider(
     ),
     html.Hr(),
     html.Strong('RangeSlider'),
-    dcc.SyntaxHighlighter('''from dash_core_components import RangeSlider
+    dcc.SyntaxHighlighter('''import dash_core_components as dcc
 
-RangeSlider(
+dcc.RangeSlider(
     count=1,
     min=-5,
     max=10,
@@ -107,9 +107,9 @@ RangeSlider(
         id='section2-rangeslider-1'
     ),
 
-    dcc.SyntaxHighlighter('''from dash_core_components import RangeSlider
+    dcc.SyntaxHighlighter('''import dash_core_components as dcc
 
-RangeSlider(
+dcc.RangeSlider(
     marks={i: 'Label {}'.format(i) for i in range(-5, 7)},
     min=-5,
     max=6,
@@ -125,11 +125,11 @@ RangeSlider(
 
     html.Hr(),
     html.Strong('Input'),
-    dcc.SyntaxHighlighter('''from dash_core_components import Input
+    dcc.SyntaxHighlighter('''import dash_core_components as dcc
 
-Input(
-    placeholder="Enter a value...",
-    value=""
+dcc.Input(
+    placeholder='Enter a value...',
+    value=''
 )''', language='python', customStyle={'borderLeft': 'thin solid lightgrey'}),
     dcc.Input(
         placeholder="Enter a value...",
@@ -139,9 +139,9 @@ Input(
 
     html.Hr(),
     html.Strong('Checkboxes'),
-    dcc.SyntaxHighlighter('''from dash_core_components import Checklist
+    dcc.SyntaxHighlighter('''import dash_core_components as dcc
 
-Checklist(
+dcc.Checklist(
     options=[
         {'label': 'New York City', 'value': 'NYC'},
         {'label': 'Montréal', 'value': 'MTL'},
@@ -159,9 +159,9 @@ Checklist(
         id='section2-checklist-1'
     ),
 
-    dcc.SyntaxHighlighter('''from dash_core_components import Checklist
+    dcc.SyntaxHighlighter('''import dash_core_components as dcc
 
-Checklist(
+dcc.Checklist(
     options=[
         {'label': 'New York City', 'value': 'NYC'},
         {'label': 'Montréal', 'value': 'MTL'},
@@ -184,9 +184,9 @@ Checklist(
 
     html.Hr(),
     html.Strong('Radio Items'),
-    dcc.SyntaxHighlighter('''from dash_core_components import RadioItems
+    dcc.SyntaxHighlighter('''import dash_core_components as dcc
 
-RadioItems(
+dcc.RadioItems(
     options=[
         {'label': 'New York City', 'value': 'NYC'},
         {'label': 'Montréal', 'value': 'MTL'},
@@ -204,9 +204,9 @@ RadioItems(
         id='section2-radioitems-1'
     ),
 
-    dcc.SyntaxHighlighter('''from dash_core_components import RadioItems
+    dcc.SyntaxHighlighter('''import dash_core_components as dcc
 
-RadioItems(
+dcc.RadioItems(
     options=[
         {'label': 'New York City', 'value': 'NYC'},
         {'label': 'Montréal', 'value': 'MTL'},
@@ -258,10 +258,10 @@ RadioItems(
 
     html.Hr(),
     html.Strong('Graphs'),
-    dcc.SyntaxHighlighter('''from dash_core_components import Graph
+    dcc.SyntaxHighlighter('''import dash_core_components as dcc
 import plotly.graph_objs as go
 
-Graph(
+dcc.Graph(
     figure=go.Figure(
         data=[
             go.Scatter(x=[1, 2, 3], y=[3, 2, 4], mode='lines'),
@@ -274,7 +274,7 @@ Graph(
         )
     ),
     style={'height': 300},
-    id="my-graph"
+    id='my-graph'
 )''', language='python', customStyle={'borderLeft': 'thin solid lightgrey'}),
     dcc.Graph(
         figure=go.Figure(

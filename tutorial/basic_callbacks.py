@@ -16,7 +16,7 @@ layout = html.Div(content=[
     dcc.Markdown('''
     ## Interactivity with Callbacks
 
-    The heart and soul of dash is providing an easy way to bind Python
+    The heart and soul of Dash is providing an easy way to bind Python
     callbacks to web interfaces.
 
     With Dash's callback decorators, you can update certain components
