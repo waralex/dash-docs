@@ -34,9 +34,7 @@ toc = html.Div([
         {'label': 'Dynamic Content', 'value': 'dynamic-content'},
         {'label': 'Custom CSS and Javascript', 'value': 'custom-css-and-js'},
         {'label': 'URLs', 'value': 'urls'},
-        {'label': 'Performance', 'value': 'performance'},
-        {'label': 'Open Problems', 'value': 'open-problems'},
-        {'label': 'Architecture Drafts', 'value': 'architecture'},
+        {'label': 'Performance', 'value': 'performance'}
     ], value='introduction', id='toc', labelStyle={'fontWeight': 400})
 ])
 
