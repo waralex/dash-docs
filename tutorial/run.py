@@ -19,6 +19,7 @@ import graph_callbacks
 import live_updates
 import urls
 import performance
+import changelog
 
 toc = html.Div([
     dcc.RadioItems(options=[
@@ -34,7 +35,8 @@ toc = html.Div([
         {'label': 'Dynamic Content', 'value': 'dynamic-content'},
         {'label': 'Custom CSS and Javascript', 'value': 'custom-css-and-js'},
         {'label': 'URLs', 'value': 'urls'},
-        {'label': 'Performance', 'value': 'performance'}
+        {'label': 'Performance', 'value': 'performance'},
+        {'label': 'Changelog', 'value': 'changelog'}
     ], value='introduction', id='toc', labelStyle={'fontWeight': 400})
 ])
 
@@ -70,7 +72,8 @@ def display_chapter(chapter_id):
         'urls': urls.layout,
         'performance': performance.layout,
         'open-problems': open_problems.layout,
-        'architecture': architecture.layout
+        'architecture': architecture.layout,
+        'changelog': changelog.layout
     }
 
     return chapters[chapter_id]
