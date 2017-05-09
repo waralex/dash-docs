@@ -4,6 +4,8 @@ import dash_renderer
 import dash_core_components as dcc
 import dash_html_components as html
 
+import plotly
+
 from dash.dependencies import Input, Output, Event, State
 import styles
 from tools import load_example
@@ -24,10 +26,12 @@ pip install dash-renderer=={}  # The dash front-end
 pip install dash-html-components=={}  # HTML components
 pip install dash-core-components=={}  # Supercharged components
 pip install pandas_datareader # Pandas extension used in some examples
+pip install plotly=={}  # Plotly graphing library used in examples
 '''.format(dash.__version__,
            dash_renderer.__version__,
            html.__version__,
-           dcc.__version__),
+           dcc.__version__,
+           plotly.__version__),
           language='bash',
           customStyle={'borderLeft': 'thin solid lightgrey'}
     ),
