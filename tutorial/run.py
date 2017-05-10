@@ -115,8 +115,7 @@ app.routes.extend([
 
 app.css.append_css({
     'external_url': (
-        'https://rawgit.com/chriddyp/0247653a7c52feb4c48437e1c1837f75'
-        '/raw/a68333b876edaf62df2efa7bac0e9b3613258851/dash.css'
+        'https://codepen.io/chriddyp/pen/bWLwgP.css'
     )
 })
 
