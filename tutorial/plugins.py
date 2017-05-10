@@ -146,13 +146,14 @@ and this step needs to be run every time you make a modification to the source.
 To create a build, run `npm install`:
 '''),
 
-dcc.SyntaxHighlighter('''$ npm install''',
+dcc.SyntaxHighlighter('''$ cd my-component-library # replace with the name of your component library
+$ npm install''',
     language='bash', customStyle=styles.code_container),
 
 dcc.Markdown('''
 
 This will perform several tasks:
-- Install the necessary package
+- Install the necessary packages
 - Run tests
 - Create a build
 
@@ -164,18 +165,17 @@ after your package alongside an `__init__.py` file.
 The package is now ready to install. You can install your package locally
 by running
 
-```
-python setup.py install
-```
+'''),
+dcc.SyntaxHighlighter('''python setup.py install''', customStyle=styles.code_container),
+dcc.Markdown('''
 
 inside the folder of your package.
 You will be able to import your package into a Dash app.
 
 For example, if you named your package `acme-components`, then you will be able
 to import the components like this:
-
-```
-import acme_components
+'''),
+dcc.SyntaxHighlighter('''import acme_components
 import dash
 
 app = dash.Dash('')
@@ -186,8 +186,8 @@ app.scripts.config.serve_locally = True
 
 if __name__ == '__main__':
     app.run_server(debug=True)
-```
-
+''', customStyle=styles.code_container, language='python'),
+dcc.Markdown('''
 If you open your web browser, you should see a simple app displayed with your component.
 
 #### Step 6 - Customize Your Component
@@ -207,8 +207,9 @@ match the comments in the React component.
 For example, the default component `ExampleComponent.react.js` looks something
 like this:
 
-```
-import React, {Component} from 'react';
+'''),
+
+dcc.SyntaxHighlighter('''import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
 /**
@@ -232,14 +233,15 @@ ExampleComponent.propTypes = {
      */
     label: PropTypes.string.isRequired
 };
-```
+''', language='javascript', customStyle=styles.code_container),
 
+dcc.Markdown('''
 Dash converts this component into a python class automatically. If you import
 this class into your python context, you'll be able to interact with it like
 this:
+'''),
 
-```
->>> import acme_components
+dcc.SyntaxHighlighter('''>>> import acme_components
 >>> help(acme_components.ExampleComponent)
 class ExampleComponent(dash.development.base_component.Component)
  |  A ExampleComponent component.
@@ -264,8 +266,9 @@ Traceback (most recent call last):
     ', '.join(self._prop_names)
 Exception: Unexpected keyword argument `foo`
 Allowed arguments: label
-```
+''', customStyle=styles.code_container),
 
+dcc.Markdown('''
 Notice how the comments in the `ExampleComponent.react` match the docstring
 of the `ExampleComponent` python class. Also notie how the docstring includes
 the types of the arguments (extracted from `propTypes`) and how the classes
@@ -279,20 +282,24 @@ classes.
 
 Once you've made some changes or created a new component, you can recreate
 your bundle and re-install your package locally by running:
+'''),
 
-```
-$ npm run prepublish
+dcc.SyntaxHighlighter('''$ npm run prepublish
 $ python setup.py install
-```
+''', customStyle=styles.code_container),
+
+dcc.Markdown('''
 
 #### Step 7 - Publish Your Component
 
 Finally, you can publish your component to both NPM and PyPI by running:
 
-```
-npm run publish-all
-```
+'''),
 
+dcc.SyntaxHighlighter('''npm run publish-all
+''', customStyle=styles.code_container),
+
+dcc.Markdown('''
 The version of the package is set in both `package.json` and a `verison.py` file.
 
 By convention, dash components should adhere to [semver](http://semver.org/).
