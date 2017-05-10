@@ -49,8 +49,8 @@ app.scripts.append_script({
 
     In future releases, Dash may incldue a default (removable) stylesheet.
 
-    For now, you can use or fork a a work-in-progress CSS stylesheet hosted
-    on [Codepen](https://codepen.io/chriddyp/pen/bWLwgP?editors=1100).
+    For now, you can use or fork a [work-in-progress CSS stylesheet](https://codepen.io/chriddyp/pen/bWLwgP?editors=1100) hosted
+    on [Codepen](https://codepen.io).
 
     You can embed this stylesheet with this URL
     [https://codepen.io/chriddyp/pen/bWLwgP.css](https://codepen.io/chriddyp/pen/bWLwgP.css).
