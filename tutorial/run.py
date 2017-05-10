@@ -79,7 +79,7 @@ def display_chapter(chapter_id):
         'plugins': plugins.layout
     }
 
-    return chapters[chapter_id]
+    return html.Div(chapters[chapter_id], style={'marginBottom': '100px'})
 
 
 @app.callback(Output('chapter', 'content'), [Input('toc', 'value')])
