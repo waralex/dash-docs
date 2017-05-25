@@ -40,7 +40,7 @@ app.layout = html.Div([
            State('column-selector-events-example', 'value')])
 def update_graph(stock_ticker, column):
     df = web.DataReader(
-        stock_ticker, 'yahoo',
+        stock_ticker, 'google',
         dt(2017, 1, 1), dt.now()
     )
 
