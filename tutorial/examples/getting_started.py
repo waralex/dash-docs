@@ -33,7 +33,7 @@ def update_graph(selected_dropdown_value):
         # this is going to be equal to `COKE`, `TSLA`, or `AAPL`
         selected_dropdown_value,
 
-        'yahoo',
+        'google',
         dt(2017, 1, 1), dt.now()
     )
     return go.Figure(
