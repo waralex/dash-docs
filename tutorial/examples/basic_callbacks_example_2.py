@@ -42,7 +42,7 @@ def update_graph(stock_ticker, column):
     # arguments of the function
 
     df = web.DataReader(
-        stock_ticker, 'yahoo',
+        stock_ticker, 'google',
         dt(2017, 1, 1), dt.now()
     )
 
