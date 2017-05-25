@@ -45,9 +45,9 @@ app.layout = html.Div([
     Output('section3-graph', 'figure'),
     [Input('section3-dropdown', 'value')])
 def update_graph(selected_dropdown_value):
-    # Get some new data from Yahoo finance with Pandas
+    # Get some new data from Google finance with Pandas
     df = web.DataReader(
-        selected_dropdown_value, 'yahoo',
+        selected_dropdown_value, 'google',
         dt(2017, 1, 1), dt.now()
     )
 
