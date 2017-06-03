@@ -1,7 +1,7 @@
 import dash
 import dash_html_components as html
 import dash_core_components as dcc
-from dash.dependencies import State, Event
+from dash.dependencies import State, Event, Output
 
 from pandas_datareader import data as web
 from datetime import datetime as dt

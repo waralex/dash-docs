@@ -6,6 +6,17 @@ import json
 
 app = dash.Dash(__name__)
 
+styles = {
+    'column': {
+        'display': 'inline-block',
+        'width': '33%',
+        'padding': 10,
+        'boxSizing': 'border-box',
+        'minHeight': '200px'
+    },
+    'pre': {'border': 'thin lightgrey solid'}
+}
+
 app.layout = html.Div([
     dcc.Graph(
         id='basic-interactions',
@@ -15,6 +26,7 @@ app.layout = html.Div([
                     'x': [1, 2, 3, 4],
                     'y': [4, 1, 3, 5],
                     'text': ['a', 'b', 'c', 'd'],
+                    'customdata': ['c.a', 'c.b', 'c.c', 'c.d'],
                     'name': 'Trace 1',
                     'mode': 'markers',
                     'marker': {'size': 12}
@@ -23,6 +35,7 @@ app.layout = html.Div([
                     'x': [1, 2, 3, 4],
                     'y': [9, 4, 1, 4],
                     'text': ['w', 'x', 'y', 'z'],
+                    'customdata': ['c.w', 'c.x', 'c.y', 'c.z'],
                     'name': 'Trace 2',
                     'mode': 'markers',
                     'marker': {'size': 12}
@@ -31,30 +44,33 @@ app.layout = html.Div([
         }
     ),
 
-    # display the result of the interactions
-    # of the graph in these divs
-    dcc.Markdown("""
-        **Hover Data**
-
-        Mouse over values in the graph to see this data update.
-        """),
-        html.Pre(id='hover-data', style={'border': 'thin lightgrey solid'}),
-
+    html.Div([
         dcc.Markdown("""
-        **Click Data**
+            **Hover Data**
 
-        Click on points in the graph to see this data update.
-    """.replace('    ', '')),
-    html.Pre(id='click-data', style={'border': 'thin lightgrey solid'}),
+            Mouse over values in the graph.
+        """.replace('   ', '')),
+        html.Pre(id='hover-data', style=styles['pre'])
+    ], style=styles['column']),
 
-    dcc.Markdown("""
-        **Selction Data**
+    html.Div([
+        dcc.Markdown("""
+            **Click Data**
 
-        Choose the lasso or rectangle tool in the graph's menu
-        bar and then select points in the graph to see this
-        data update.
-    """.replace('    ', '')),
-    html.Pre(id='selected-data', style={'border': 'thin lightgrey solid'}),
+            Click on points in the graph.
+        """.replace('    ', '')),
+        html.Pre(id='click-data', style=styles['pre']),
+    ], style=styles['column']),
+
+    html.Div([
+        dcc.Markdown("""
+            **Selection Data**
+
+            Choose the lasso or rectangle tool in the graph's menu
+            bar and then select points in the graph.
+        """.replace('    ', '')),
+        html.Pre(id='selected-data', style=styles['pre']),
+    ], style=styles['column'])
 ])
 
 
@@ -77,6 +93,7 @@ def display_click_data(clickData):
     [Input('basic-interactions', 'selectedData')])
 def display_selected_data(selectedData):
     return json.dumps(selectedData, indent=2)
+
 
 if __name__ == '__main__':
     app.run_server(debug=True)

@@ -9,7 +9,7 @@ from server import app
 
 layout = html.Div([
     dcc.Markdown('''
-        ## Dash Developer Preview
+        ## Dash User Guide
 
         Dash is a productive python framework for building web applications.
 

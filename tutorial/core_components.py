@@ -11,7 +11,7 @@ import styles
 from server import app
 
 layout = html.Div(content=[
-    html.H4('Supercharged Components'),
+    html.H1('Dash Core Components'),
 
     html.Div('''
         Dash ships with supercharged components for interactive user interfaces.
@@ -30,7 +30,7 @@ dcc.Dropdown(
         {'label': 'San Francisco', 'value': 'SF'}
     ],
     value='MTL'
-)''', language='python', customStyle={'borderLeft': 'thin solid lightgrey'}),
+)''', language='python', customStyle=styles.code_container),
     dcc.Dropdown(options=[
         {'label': 'New York City', 'value': 'NYC'},
         {'label': 'Montréal', 'value': 'MTL'},
@@ -47,7 +47,7 @@ dcc.Dropdown(
     ],
     multi=True,
     value="MTL"
-)''', language='python', customStyle={'borderLeft': 'thin solid lightgrey'}),
+)''', language='python', customStyle=styles.code_container),
     dcc.Dropdown(options=[
         {'label': 'New York City', 'value': 'NYC'},
         {'label': 'Montréal', 'value': 'MTL'},
@@ -63,7 +63,7 @@ dcc.Slider(
     max=10,
     step=0.5,
     value=-3,
-)''', language='python', customStyle={'borderLeft': 'thin solid lightgrey'}),
+)''', language='python', customStyle=styles.code_container),
     dcc.Slider(
         min=-5,
         max=10,
@@ -79,14 +79,14 @@ dcc.Slider(
     max=9,
     marks={i: 'Label {}'.format(i) for i in range(10)},
     value=5,
-)''', language='python', customStyle={'borderLeft': 'thin solid lightgrey'}),
-    dcc.Slider(
+)''', language='python', customStyle=styles.code_container),
+    html.Div(dcc.Slider(
         min=0,
         max=9,
         marks={i: 'Label {}'.format(i) for i in range(10)},
         value=5,
         id='section2-slider-2'
-    ),
+    ), style={'padding': 20}),
     html.Hr(),
     html.Strong('RangeSlider'),
     dcc.SyntaxHighlighter('''import dash_core_components as dcc
@@ -97,7 +97,7 @@ dcc.RangeSlider(
     max=10,
     step=0.5,
     value=[-3, 7]
-)''', language='python', customStyle={'borderLeft': 'thin solid lightgrey'}),
+)''', language='python', customStyle=styles.code_container),
     dcc.RangeSlider(
         count=1,
         min=-5,
@@ -114,14 +114,14 @@ dcc.RangeSlider(
     min=-5,
     max=6,
     value=[-3, 4]
-)''', language='python', customStyle={'borderLeft': 'thin solid lightgrey'}),
-    dcc.RangeSlider(
+)''', language='python', customStyle=styles.code_container),
+    html.Div(dcc.RangeSlider(
         marks={i: 'Label {}'.format(i) for i in range(-5, 7)},
         min=-5,
         max=6,
         value=[-3, 4],
         id='section2-rangeslider-2'
-    ),
+    ), style={'padding': 20}),
 
     html.Hr(),
     html.Strong('Input'),
@@ -129,11 +129,13 @@ dcc.RangeSlider(
 
 dcc.Input(
     placeholder='Enter a value...',
+    type='text',
     value=''
-)''', language='python', customStyle={'borderLeft': 'thin solid lightgrey'}),
+)''', language='python', customStyle=styles.code_container),
     dcc.Input(
         placeholder="Enter a value...",
         value="",
+        type='text',
         id='section2-input'
     ),
 
@@ -148,7 +150,7 @@ dcc.Checklist(
         {'label': 'San Francisco', 'value': 'SF'}
     ],
     values=['MTL', 'SF']
-)''', language='python', customStyle={'borderLeft': 'thin solid lightgrey'}),
+)''', language='python', customStyle=styles.code_container),
     dcc.Checklist(
         options=[
             {'label': 'New York City', 'value': 'NYC'},
@@ -169,7 +171,7 @@ dcc.Checklist(
     ],
     values=['MTL', 'SF'],
     labelStyle={'display': 'inline-block'}
-)''', language='python', customStyle={'borderLeft': 'thin solid lightgrey'}),
+)''', language='python', customStyle=styles.code_container),
     dcc.Checklist(
         options=[
             {'label': 'New York City', 'value': 'NYC'},
@@ -193,7 +195,7 @@ dcc.RadioItems(
         {'label': 'San Francisco', 'value': 'SF'}
     ],
     value='MTL'
-)''', language='python', customStyle={'borderLeft': 'thin solid lightgrey'}),
+)''', language='python', customStyle=styles.code_container),
     dcc.RadioItems(
         options=[
             {'label': 'New York City', 'value': 'NYC'},
@@ -214,7 +216,7 @@ dcc.RadioItems(
     ],
     value='MTL',
     labelStyle={'display': 'inline-block'}
-)''', language='python', customStyle={'borderLeft': 'thin solid lightgrey'}),
+)''', language='python', customStyle=styles.code_container),
     dcc.RadioItems(
         options=[
             {'label': 'New York City', 'value': 'NYC'},
@@ -275,7 +277,7 @@ dcc.Graph(
     ),
     style={'height': 300},
     id='my-graph'
-)''', language='python', customStyle={'borderLeft': 'thin solid lightgrey'}),
+)''', language='python', customStyle=styles.code_container),
     dcc.Graph(
         figure=go.Figure(
             data=[

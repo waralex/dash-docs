@@ -17,3 +17,5 @@ cache
 bundle.js
 
 .env
+
+ignore/indicators.csv

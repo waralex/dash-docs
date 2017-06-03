@@ -27,9 +27,20 @@ def load_example(path):
             'print("Running")\n    # app.run_server'
         )
 
-        exec(_example, globals(), globals())
+        scope = {'app': app}
+        exec(_example, scope)
 
     return (
         _source,
-        layout      # layout is a global created from the app
+        scope['layout']      # layout is a global created from the app
     )
+
+def merge(*dict_args):
+    """
+    Given any number of dicts, shallow copy and merge into a new dict,
+    precedence goes to key value pairs in latter dicts.
+    """
+    result = {}
+    for dictionary in dict_args:
+        result.update(dictionary)
+    return result
