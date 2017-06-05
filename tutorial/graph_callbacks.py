@@ -38,7 +38,7 @@ update your Dash application in response to these events.
 '''),
     dcc.SyntaxHighlighter(examples[0][0], customStyle=styles.code_container),
 
-    html.Div(examples[0][1], style=styles.example_container)
+    html.Div(examples[0][1], className="example-container")
 ]
 
 

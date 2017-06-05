@@ -38,6 +38,6 @@ layout = html.Div(content=[
         customStyle=styles.code_container
     ),
 
-    html.Div(examples[0][1], style=styles.example_container)
+    html.Div(examples[0][1], className="example-container")
 
 ])

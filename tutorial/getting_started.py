@@ -114,7 +114,7 @@ layout = html.Div([
     in your web browser. You should see an app that looks like this.
     '''.replace('    ', '')),
 
-    html.Div(examples[0][1], style=styles.example_container),
+    html.Div(examples[0][1], className="example-container"),
 
     # TODO - Comment about the default CSS of the graph?
 
@@ -162,7 +162,7 @@ layout = html.Div([
         customStyle=styles.code_container
     ),
 
-    html.Div(examples[1][1], style=styles.example_container),
+    html.Div(examples[1][1], className="example-container"),
 
     dcc.Markdown('''
         In this example, we modified the inline styles of the `html.Div`
@@ -201,7 +201,7 @@ layout = html.Div([
         customStyle=styles.code_container
     ),
 
-    html.Div(examples[2][1], style=styles.example_container),
+    html.Div(examples[2][1], className="example-container"),
 
     dcc.Markdown('''
         ## More about visualization
@@ -227,7 +227,7 @@ layout = html.Div([
         customStyle=styles.code_container
     ),
 
-    html.Div(examples[3][1], style=styles.example_container),
+    html.Div(examples[3][1], className="example-container"),
 
     dcc.Markdown('''
         *These graphs are interactive and responsive.
@@ -250,7 +250,7 @@ layout = html.Div([
         customStyle=styles.code_container
     ),
 
-    html.Div(examples[4][1], style=styles.example_container),
+    html.Div(examples[4][1], className="example-container"),
 
     dcc.Markdown('''
         ## Core Components
@@ -267,7 +267,7 @@ layout = html.Div([
         [Dash Core Components Gallery](https://dash-docs.herokuapp.com/core-components)
     '''.replace('    ', '')),
 
-    html.Div(examples[5][1], style=styles.example_container),
+    html.Div(examples[5][1], className="example-container"),
 
     dcc.SyntaxHighlighter(
         examples[5][0],
@@ -356,7 +356,7 @@ layout = html.Div([
         customStyle=styles.code_container
     ),
 
-    html.Div(examples[6][1], style=styles.example_container),
+    html.Div(examples[6][1], className="example-container"),
 
     dcc.Markdown('''
     Try typing in the text box. The content of the output component updates
@@ -501,7 +501,7 @@ layout = html.Div([
         customStyle=styles.code_container
     ),
 
-    html.Div(examples[9][1], style=styles.example_container),
+    html.Div(examples[9][1], className="example-container"),
 
     dcc.Markdown('''
     You can also chain outputs and inputs together, the output of one callback
@@ -518,7 +518,7 @@ layout = html.Div([
         customStyle=styles.code_container
     ),
 
-    html.Div(examples[10][1], style=styles.example_container),
+    html.Div(examples[10][1], className="example-container"),
 
     dcc.Markdown(u'''
     The first callback updates the available options in the second `RadioItems`
@@ -552,7 +552,7 @@ layout = html.Div([
     Here's an simple example that prints these attributes in the screen.
     '''.replace('    ', '')),
 
-    html.Div(examples[11][1], style=styles.example_container),
+    html.Div(examples[11][1], className="example-container"),
 
     dcc.SyntaxHighlighter(
         examples[11][0],

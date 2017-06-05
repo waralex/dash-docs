@@ -313,7 +313,7 @@ for k in layout.keys():
         ))
 
     else:
-        layout[k] = html.Div(layout[k], style=styles.example_container)
+        layout[k] = html.Div(layout[k], className="example-container")
 
 # add dependencies to all of section2's elements so that they become controlled
 @app.callback(

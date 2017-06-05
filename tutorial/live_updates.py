@@ -35,5 +35,5 @@ and the text every second.
         language='python',
         customStyle={'borderLeft': 'thin solid lightgrey'}
     ),
-    html.Div(examples[0][1], style=styles.example_container)
+    html.Div(examples[0][1], className="example-container")
 ]

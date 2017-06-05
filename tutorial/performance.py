@@ -70,7 +70,7 @@ and the cached version of the result was available.
 dcc.SyntaxHighlighter(
     examples[0][0], language='python', customStyle=styles.code_container
 ),
-html.Div(examples[0][1], style=styles.example_container),
+html.Div(examples[0][1], className="example-container"),
 
 dcc.Markdown('''
 
@@ -94,7 +94,7 @@ will be shared across workers.'''),
 dcc.SyntaxHighlighter(
     examples[1][0], language='python', customStyle=styles.code_container
 ),
-html.Div(examples[1][1], style=styles.example_container),
+html.Div(examples[1][1], className="example-container"),
 
 dcc.Markdown('''
 

@@ -40,7 +40,7 @@ html.Div([
         {'label': i, 'value': i} for i in ['Chapter 1', 'Chapter 2']
     ], value='Chapter 1', id='navigation-links-urls'),
     html.Div(id='body-urls')
-], id='urls-example', style=styles.example_container),
+], id='urls-example', className="example-container"),
 
 dcc.Markdown('''
 Hiding and showing content like this gives the effect of
