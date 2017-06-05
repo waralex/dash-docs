@@ -70,7 +70,6 @@ layout = html.Div([
         pip install dash-renderer=={}  # The dash front-end
         pip install dash-html-components=={}  # HTML components
         pip install dash-core-components=={}  # Supercharged components
-        pip install pandas_datareader # Pandas extension used in some examples
         pip install plotly=={}  # Plotly graphing library used in examples
     '''.replace('    ', '').format(
         dash.__version__,
