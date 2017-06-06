@@ -5,7 +5,7 @@ certifi==2017.4.17
 chardet==3.0.3
 click==6.7
 colorlover==0.2.1
-dash-core-components==0.3.5
+dash-core-components==0.4.2
 dash-html-components==0.4.1
 dash-renderer==0.6.2
 dash.ly==0.16.0
