@@ -25,7 +25,7 @@ app.layout = html.Div(
 # The `dcc.Interval` component emits an event called "interval"
 # every `interval` number of milliseconds.
 # Subscribe to this event with the `events` argument of `app.callback`
-@app.callback(Output('live-update-text', 'content'),
+@app.callback(Output('live-update-text', 'children'),
               events=[Event('interval-component', 'interval')])
 def update_metrics():
     lon, lat, alt = satellite.get_lonlatalt(datetime.datetime.now())

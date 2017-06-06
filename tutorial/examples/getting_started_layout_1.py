@@ -4,10 +4,10 @@ import dash_html_components as html
 
 app = dash.Dash()
 
-app.layout = html.Div(content=[
-    html.H1(content='Hello Dash'),
+app.layout = html.Div(children=[
+    html.H1(children='Hello Dash'),
 
-    html.Div(content='''
+    html.Div(children='''
         Dash: A web application framework for Python.
     '''),
 

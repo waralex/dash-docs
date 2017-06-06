@@ -12,7 +12,7 @@ examples = [
     ]
 ]
 
-layout = html.Div(content=[
+layout = html.Div(children=[
     dcc.Markdown('''
     ## Interactivity with Callbacks
 
@@ -33,7 +33,7 @@ layout = html.Div(content=[
 ])
 
 
-layout.content.extend([
+layout.children.extend([
     dcc.Markdown('''
 ## Multiple Inputs
 
@@ -53,7 +53,7 @@ automatically.
 ])
 
 
-layout.content.extend([
+layout.children.extend([
     dcc.Markdown('''
 ## Events and States
 

@@ -4,7 +4,7 @@ import dash_html_components as html
 import styles
 from server import app
 
-layout = html.Div(content=[
+layout = html.Div(children=[
 
     html.H4('HTML Attributes', id="html-attributes"),
     html.Div('''

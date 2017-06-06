@@ -13,7 +13,7 @@ the application does not completely reload when the user navigates the
 application, making browsing very fast.
 
 Navigation is supported through Dash's native callbacks by
-simply hiding and showing content in response to clicking on links,
+simply hiding and showing children in response to clicking on links,
 radio buttons, or tabs.
 
 For example, here is a simple "navigation" implementation using
@@ -28,8 +28,8 @@ dcc.SyntaxHighlighter('''app.layout = html.Div([
     html.Div(id='body')
 ])
 
-@app.callback(Output('body', 'content'), [Input('navigation-links', 'value')])
-def display_content(chapter):
+@app.callback(Output('body', 'children'), [Input('navigation-links', 'value')])
+def display_children(chapter):
     if chapter == 'Chapter 1':
         return Div('Welcome to Chapter 1')
     elif chapter == 'Chapter 2':
@@ -43,11 +43,11 @@ html.Div([
 ], id='urls-example', className="example-container"),
 
 dcc.Markdown('''
-Hiding and showing content like this gives the effect of
+Hiding and showing children like this gives the effect of
 navigating to new pages.
 
 The second part of navigation is updating the browser's navigation bar
-with a new URL and loading the correct content when the user navigates
+with a new URL and loading the correct children when the user navigates
 to a particular URL pathname.
 
 Dash supports URLs like this by mapping values in the application's state
@@ -95,8 +95,8 @@ app.routes = [
     }
 ]
 
-@app.callback(Output('body', 'content'), [Input('navigation-links', 'value')])
-def display_content(chapter):
+@app.callback(Output('body', 'children'), [Input('navigation-links', 'value')])
+def display_children(chapter):
     if chapter == 'Chapter 1':
         return Div('Welcome to Chapter 1')
     elif chapter == 'Chapter 2':
@@ -112,9 +112,9 @@ the concepts will remain the same.
 
 
 @app.callback(
-    Output('body-urls', 'content'),
+    Output('body-urls', 'children'),
     [Input('navigation-links-urls', 'value')])
-def display_content(chapter):
+def display_children(chapter):
     if chapter == 'Chapter 1':
         return html.Div('Welcome to Chapter 1')
     elif chapter == 'Chapter 2':

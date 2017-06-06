@@ -15,7 +15,7 @@ if this is your first introduction to Markdown!
 '''
 
 app.layout = html.Div([
-    dcc.Markdown(content=markdown_text)
+    dcc.Markdown(children=markdown_text)
 ])
 
 if __name__ == '__main__':

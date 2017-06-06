@@ -39,10 +39,10 @@ def set_cities_value(available_options):
     return available_options[0]['value']
 
 @app.callback(
-    dash.dependencies.Output('display-selected-values', 'content'),
+    dash.dependencies.Output('display-selected-values', 'children'),
     [dash.dependencies.Input('countries-dropdown', 'value'),
      dash.dependencies.Input('cities-dropdown', 'value')])
-def set_display_content(selected_country, selected_city):
+def set_display_children(selected_country, selected_city):
     return u'{} is a city in {}'.format(
         selected_city, selected_country,
     )

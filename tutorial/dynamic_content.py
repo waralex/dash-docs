@@ -18,12 +18,12 @@ examples = [
 ]
 
 
-layout = html.Div(content=[
+layout = html.Div(children=[
     dcc.Markdown('''
     ## Loading Content Dynamically
 
     Dash callbacks can return any type of property.
-    By returning `content`, they can even dynamically
+    By returning `children`, they can even dynamically
     render their content.
 
     This is an example that can be used in app development for

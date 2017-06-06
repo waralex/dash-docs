@@ -25,7 +25,7 @@ import plugins
 import advanced_features
 
 
-app.scripts.config.serve_locally = False
+app.scripts.config.serve_locally = True
 dcc._js_dist[0]['external_url'] = 'https://cdn.plot.ly/plotly-basic-1.27.1.min.js'
 
 def create_contents(contents):
@@ -181,7 +181,7 @@ app.layout = html.Div([
 
 
 
-@app.callback(Output('chapter', 'content'), [Input('toc', 'value')])
+@app.callback(Output('chapter', 'children'), [Input('toc', 'value')])
 def display_content(selected_chapter):
     return chapters[selected_chapter]['content']
 

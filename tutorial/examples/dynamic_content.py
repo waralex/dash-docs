@@ -6,15 +6,15 @@ app = dash.Dash(__name__)
 app.config.supress_callback_exceptions = True
 
 app.layout = html.Div([
-    html.Button('Click to load content', id='display-content-button'),
-    html.Div('-', id='display-content')
+    html.Button('Click to load children', id='display-children-button'),
+    html.Div('-', id='display-children')
 ])
 
 
 # When you click the button, this content gets loaded
 @app.callback(
-    Output('display-content', 'content'),
-    events=[Event('display-content-button', 'click')])
+    Output('display-children', 'children'),
+    events=[Event('display-children-button', 'click')])
 def render():
     return html.Div([
         html.H3('Hello Dash')

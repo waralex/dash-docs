@@ -9,7 +9,7 @@ app = dash.Dash(__name__)
 app.config.supress_callback_exceptions = True
 
 app.layout = html.Div([
-    html.Div(id='memoized-content'),
+    html.Div(id='memoized-children'),
     dcc.RadioItems(
         id='memoized-dropdown',
         options=[
@@ -23,7 +23,7 @@ app.layout = html.Div([
 
 # When you click the button, this content gets loaded
 @app.callback(
-    Output('memoized-content', 'content'),
+    Output('memoized-children', 'children'),
     [Input('memoized-dropdown', 'value')])
 @functools32.lru_cache()
 def render(value):

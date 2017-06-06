@@ -87,7 +87,7 @@ def update_sub_category_value(new_options):
 # Display the selected value when all of the
 # dropdown's values have finished updating.
 @app.callback(
-    Output('display', 'content'),
+    Output('display', 'children'),
     [Input(id, 'value') for id in
      ['cities-dropdown', 'category-dropdown', 'sub-category-dropdown']])
 def update_display(selected_city, selected_category, selected_sub_category):

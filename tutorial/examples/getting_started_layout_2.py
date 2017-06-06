@@ -9,16 +9,16 @@ colors = {
     'text': '#7FDBFF'
 }
 
-app.layout = html.Div(style={'backgroundColor': colors['background']}, content=[
+app.layout = html.Div(style={'backgroundColor': colors['background']}, children=[
     html.H1(
-        content='Hello Dash',
+        children='Hello Dash',
         style={
             'textAlign': 'center',
             'color': colors['text']
         }
     ),
 
-    html.Div(content='Dash: A web application framework for Python.', style={
+    html.Div(children='Dash: A web application framework for Python.', style={
         'textAlign': 'center',
         'color': colors['text']
     }),

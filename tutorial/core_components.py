@@ -10,7 +10,7 @@ import styles
 
 from server import app
 
-layout = html.Div(content=[
+layout = html.Div(children=[
     html.H1('Dash Core Components'),
 
     html.Div('''
@@ -317,7 +317,7 @@ for k in layout.keys():
 
 # add dependencies to all of section2's elements so that they become controlled
 @app.callback(
-    Output('hidden', 'content'),
+    Output('hidden', 'children'),
     [Input(k, 'value' if 'checklist' not in k else 'values')
      for k in layout.keys() if k != 'hidden'])
 def update_hidden_div(*args):

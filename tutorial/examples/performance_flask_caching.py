@@ -17,7 +17,7 @@ app.config.supress_callback_exceptions = True
 
 timeout = 20
 app.layout = html.Div([
-    html.Div(id='flask-cache-memoized-content'),
+    html.Div(id='flask-cache-memoized-children'),
     dcc.RadioItems(
         id='flask-cache-memoized-dropdown',
         options=[
@@ -30,9 +30,9 @@ app.layout = html.Div([
 ])
 
 
-# When you click the button, this content gets loaded
+# When you click the button, this children gets loaded
 @app.callback(
-    Output('flask-cache-memoized-content', 'content'),
+    Output('flask-cache-memoized-children', 'children'),
     [Input('flask-cache-memoized-dropdown', 'value')])
 @cache.memoize(timeout=timeout)  # in seconds
 def render(value):

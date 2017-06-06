@@ -11,7 +11,7 @@ app.layout = html.Div([
 ])
 
 @app.callback(
-    Output(component_id='my-div', component_property='content'),
+    Output(component_id='my-div', component_property='children'),
     [Input(component_id='my-id', component_property='value')]
 )
 def update_output_div(input_value):
