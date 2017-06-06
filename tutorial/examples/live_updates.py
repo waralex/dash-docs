@@ -50,7 +50,7 @@ def update_graph_live():
     }
 
     # Collect some data
-    for i in range(120):
+    for i in range(20):
         time = datetime.datetime.now() - datetime.timedelta(seconds=i*20)
         lon, lat, alt = satellite.get_lonlatalt(
             time

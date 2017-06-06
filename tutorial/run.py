@@ -25,8 +25,8 @@ import plugins
 import advanced_features
 
 
-app.scripts.config.serve_locally = True
-
+app.scripts.config.serve_locally = False
+dcc._js_dist[0]['external_url'] = 'https://cdn.plot.ly/plotly-basic-1.27.1.min.js'
 
 def create_contents(contents):
     h = []
