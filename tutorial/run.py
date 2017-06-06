@@ -1,4 +1,5 @@
 import time
+import six
 
 import dash_html_components as html
 import dash_core_components as dcc
@@ -19,7 +20,6 @@ import architecture
 import graph_callbacks
 # import live_updates
 import urls
-import performance
 import changelog
 import plugins
 import advanced_features
@@ -189,7 +189,7 @@ app.routes = [
     {
         'pathname': chapter_object['url'],
         'state': {'toc.value': chapter_id}
-    } for chapter_id, chapter_object in chapters.iteritems()
+    } for chapter_id, chapter_object in six.iteritems(chapters)
 ]
 
 app.css.append_css({

@@ -63,8 +63,7 @@ layout = html.Div([
     In your terminal, install several dash libraries.
     These libraries are under active development,
     so install and upgrade frequently.
-    Note that dash currently only supports Python 2.7.
-    3.x will be supported in the stable release.'''.replace('    ', '')),
+    Python 2 and 3 are supported.'''.replace('    ', '')),
 
     dcc.SyntaxHighlighter('''pip install dash.ly=={}  # The core dash backend
         pip install dash-renderer=={}  # The dash front-end
