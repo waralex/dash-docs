@@ -117,33 +117,33 @@ layout = html.Div([
     # TODO - Comment about the default CSS of the graph?
 
     dcc.Markdown('''
-        A few things to note about the `layout`:
-        - The `layout` is composed of a tree of "components" like `html.Div`
-          and `dcc.Graph`.
-        - The `dash_html_components` library has a component for every HTML
-          tag. The `html.H1(content='Hello Dash')` component generates
-          a `<h1>Hello Dash</h1>` HTML element in your application.
-        - Not all components are pure HTML. The `dash_core_components` describe
-          higher-level components that are interactive and are generated with
-          Javascript, HTML, and CSS through the React.js library.
-        - Each component is described entirely through keyword attributes.
-          Dash is _declarative_: you will primarily describe your application
-          through these attributes.
-        - The `content` property is special. By convention, it's always the
-          first attribute, which means that you can omit it:
-          `html.H1(content='Hello Dash')` is the same as `html.H1('Hello Dash')`.
-          Also, it can contain a string, a number, a single component, or a
-          list of components.
-        - The fonts in your application will look a little bit different than
-          what is displayed here. This application is using a
-          custom CSS stylesheet to modify the default styles of the elements.
-          We'll get into more of this later, but for you can add
-          `app.stylesheets.append_stylesheet("codepen.io/asdf")`
-          to your file to get the same look and feel as these examples.
+        Note:
+        1. The `layout` is composed of a tree of "components" like `html.Div`
+           and `dcc.Graph`.
+        2. The `dash_html_components` library has a component for every HTML
+           tag. The `html.H1(content='Hello Dash')` component generates
+           a `<h1>Hello Dash</h1>` HTML element in your application.
+        3. Not all components are pure HTML. The `dash_core_components` describe
+           higher-level components that are interactive and are generated with
+           Javascript, HTML, and CSS through the React.js library.
+        4. Each component is described entirely through keyword attributes.
+           Dash is _declarative_: you will primarily describe your application
+           through these attributes.
+        5. The `content` property is special. By convention, it's always the
+           first attribute, which means that you can omit it:
+           `html.H1(content='Hello Dash')` is the same as `html.H1('Hello Dash')`.
+           Also, it can contain a string, a number, a single component, or a
+           list of components.
+        6. The fonts in your application will look a little bit different than
+           what is displayed here. This application is using a
+           custom CSS stylesheet to modify the default styles of the elements.
+           You can learn more in the [css tutorial](/external-resources),
+           but for you can add `app.css.append_css({"external_url": "https://codepen.io/chriddyp/pen/bWLwgP.css")`
+           to your file to get the same look and feel as these examples.
 
     By default, the items in the layout are arranged one on top of the other.
     You can create different arrangements using CSS and stylesheets in the
-    [custom layout arrangements in Dash apps](TODO) tutorial.
+    custom layout arrangements in Dash apps tutorial (coming soon!).
 
     ## More about HTML
 
@@ -172,13 +172,13 @@ layout = html.Div([
 
         There are a few important differences between the `dash_html_components`
         and the HTML attributes:
-        - The `style` property in HTML is a semicolon-separated string. In Dash,
-          you can just supply a dictionary.
-        - The keys in the `style` dictionary are camelCased.
-          So, instead of `text-align`, it's `textAlign`.
-        - The HTML `class` attribute is `className` in Dash.
-        - The content of the HTML tag is specified through the `content` keyword
-          argument.
+        1. The `style` property in HTML is a semicolon-separated string. In Dash,
+           you can just supply a dictionary.
+        2. The keys in the `style` dictionary are camelCased.
+           So, instead of `text-align`, it's `textAlign`.
+        3. The HTML `class` attribute is `className` in Dash.
+        4. The content of the HTML tag is specified through the `content` keyword
+           argument.
 
         Besides that, all of the available HTML attributes and tags are available
         to you within your Python context.
@@ -262,7 +262,7 @@ layout = html.Div([
 
         We'll see many of these components throughout the tutorial.
         You can view all of the available components in the
-        [Dash Core Components Gallery](https://dash-docs.herokuapp.com/core-components)
+        [Dash Core Components Gallery](dash-core-components)
     '''.replace('    ', '')),
 
     html.Div(examples[5][1], className="example-container"),
@@ -316,7 +316,7 @@ layout = html.Div([
         |  multiple values can be selected at once, and `value` is an
         |  array of items with values corresponding to those in the
         |  `options` prop.
-    '''.replace('    ', '')),
+    '''.replace('    ', ''), customStyle=styles.code_container),
 
     dcc.Markdown('''
         ### Resources
@@ -329,20 +329,15 @@ layout = html.Div([
         `className`, and `id`. The `dash_core_components` library
         generates higher-level components like controls and graphs.
 
-        There is a lot more to creating complex layouts in Dash.
-        If you want to read ahead, check out these chapters in this user guide:
-        - [Gridded layouts in Dash]
-        - [Reusable Dash templates]
-        - [Custom CSS in Dash apps]
-
         ***
 
         # Part 2 - Interactivity
 
         Part 1 described the appearance of the application and
-        the available components.
-        Part 2 describes the second part of Dash apps:
-        how to make your apps interactive.
+        the available components through the `layout` property and
+        declarative components.
+
+        Part 2 describes how to make these apps interactive.
 
         Let's get started with a simple example.
 
@@ -359,32 +354,32 @@ layout = html.Div([
     dcc.Markdown('''
     Try typing in the text box. The content of the output component updates
     right away. Let's break down what's happening here:
-    - The "inputs" and "outputs" of our application interface are described
-      declaratively through the `app.callback` decorator.
-    - In Dash, the inputs and outputs of our application are simply the
-      properties of a particular component. In this example,
-      our input is the "`value`" property of the component that has the ID
-      "`my-id`". Our output is the "`content`" property of the
-      component with the ID "`my-div`".
-    - Whenver an input property changes, the function that the
-      callback decorator wraps will get called automatically.
-      Dash provides the function with the new value of the input property as
-      an input argument and Dash updates the property of the output component
-      with whatever was returned by the function.
-    - The `component_id` and `component_property` keywords are optional
-     (there are only two arguments for each of those objects).
-      I have included them here for clarity but I will omit them from here on
-      out for brevity and readability.
-    - Don't confuse the `dash.dependencies.Input` object from the
-      `dash_core_components.Input` object. The former is just used in these
-      callbacks and the latter is an actual component.
-    - Notice how we the layout doesn't set a value for the `content` property
-      in the `my-div` output component. When the Dash app starts, it
-      automatically calls all of the callbacks with the initial values of the
-      input components in order to populate the initial state of the output
-      components. In this example, if you specified something like
-      `html.Div(id='my-div', content='Hello world')`, it would get overwritten
-      when the app starts.
+    1. The "inputs" and "outputs" of our application interface are described
+       declaratively through the `app.callback` decorator.
+    2. In Dash, the inputs and outputs of our application are simply the
+       properties of a particular component. In this example,
+       our input is the "`value`" property of the component that has the ID
+       "`my-id`". Our output is the "`content`" property of the
+       component with the ID "`my-div`".
+    3. Whenver an input property changes, the function that the
+       callback decorator wraps will get called automatically.
+       Dash provides the function with the new value of the input property as
+       an input argument and Dash updates the property of the output component
+       with whatever was returned by the function.
+    4. The `component_id` and `component_property` keywords are optional
+       (there are only two arguments for each of those objects).
+       I have included them here for clarity but I will omit them from here on
+       out for brevity and readability.
+    5. Don't confuse the `dash.dependencies.Input` object from the
+       `dash_core_components.Input` object. The former is just used in these
+       callbacks and the latter is an actual component.
+    6. Notice how we the layout doesn't set a value for the `content` property
+       in the `my-div` output component. When the Dash app starts, it
+       automatically calls all of the callbacks with the initial values of the
+       input components in order to populate the initial state of the output
+       components. In this example, if you specified something like
+       `html.Div(id='my-div', content='Hello world')`, it would get overwritten
+       when the app starts.
 
     It's sort of like programming with Microsoft Excel:
     whenever an input cell changes, all of the cells that depend on that cell
@@ -424,26 +419,26 @@ layout = html.Div([
     and returns it to the Dash application.
 
     There are a few nice patterns in this example:
-    - We're using the [Pandas](http://pandas.pydata.org/) libary for importing
-      and filtering datasets in memory.
-    - We load our dataframe at the start of the app: `df = pd.read_csv('...')`.
-      This dataframe `df` is in the global state of the app and can be
-      read inside the callback functions.
-    - Loading data into memory can be expensive. By loading querying data at
-      the start of the app instead of inside the callback functions, we ensure
-      that this operation is only done when the app server starts. When a user
-      visits the app or interacts with the app, that data (the `df`)
-      is already in memory.
-      If possible, expensive initialization (like downloading or querying data)
-      should be done in the global scope of the app instead of within the
-      callback functions.
-    - The callback does not modify the original data, it just creates copies
-      of the dataframe by filtered through pandas filters.
-      This is important: your callbacks should never mutate variables
-      outside of their scope. If your callbacks modify global state, then one
-      user's session might affect the next user's session and if the app is
-      deployed on multiple processes or threads, those modifications will not
-      be shared across instances.
+    1. We're using the [Pandas](http://pandas.pydata.org/) libary for importing
+       and filtering datasets in memory.
+    2. We load our dataframe at the start of the app: `df = pd.read_csv('...')`.
+       This dataframe `df` is in the global state of the app and can be
+       read inside the callback functions.
+    3. Loading data into memory can be expensive. By loading querying data at
+       the start of the app instead of inside the callback functions, we ensure
+       that this operation is only done when the app server starts. When a user
+       visits the app or interacts with the app, that data (the `df`)
+       is already in memory.
+       If possible, expensive initialization (like downloading or querying data)
+       should be done in the global scope of the app instead of within the
+       callback functions.
+    4. The callback does not modify the original data, it just creates copies
+       of the dataframe by filtered through pandas filters.
+       This is important: your callbacks should never mutate variables
+       outside of their scope. If your callbacks modify global state, then one
+       user's session might affect the next user's session and if the app is
+       deployed on multiple processes or threads, those modifications will not
+       be shared across instances.
 
     ### Multiple inputs
 
@@ -588,12 +583,8 @@ layout = html.Div([
     And that's basically it. There are lots of places to go from here to make
     your Dash apps look and feel great.
 
-    - Check out some gallery apps
-    - Learn more about CSS
-    - Performance of dash apps
-    - Deploying dash apps
+    [Back to the table of contents](/)
 
     '''.replace('    ', ''))
-
 
 ])
