@@ -41,24 +41,26 @@ layout = html.Div([
 
     dcc.Markdown('''***
 
-1. Installation
-2. Dash App Layout
+1. [Installation](#installation)
+2. [Dash App Layout](#dash-app-layout)
     - Generating HTML with Dash
-    - Data visualization in Dash
+    - Data Visualization in Dash
     - Markdown
     - Core Components
     - Calling `help`
-3. Interactivity
+3. [Interactivity](#interactivity)
     - Fundamentals
-    - Multiple inputs
-    - Multiple outputs
+    - Multiple Inputs
+    - Multiple Outputs
     - Graph Crossfiltering
 
   ***'''),
 
-    dcc.Markdown('''
+    html.H2('''
+    Installation
+    ''', id='installation'),
 
-    ## Installation
+    dcc.Markdown('''
 
     In your terminal, install several dash libraries.
     These libraries are under active development,
@@ -78,9 +80,11 @@ layout = html.Div([
         plotly.__version__
     ), customStyle=styles.code_container),
 
-    dcc.Markdown('''***
+    html.H2('''
+    Dash App Layout
+    ''', id='dash-app-layout'),
 
-    ## Dash App Layout
+    dcc.Markdown('''***
 
     Dash apps are composed of two parts. The first part is the "`layout`" of
     the app and it describes what the application looks like.
@@ -92,7 +96,7 @@ layout = html.Div([
     but you can also [build your own](https://github.com/plotly/dash-components-archetype)
     with Javascript and React.js.
 
-    To get started, create an file named `app.py` with the following code:
+    To get started, create a file named `app.py` with the following code:
     '''.replace('    ', '')),
 
     dcc.SyntaxHighlighter(
@@ -108,8 +112,8 @@ layout = html.Div([
     ...Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
     ```
 
-    and visit [http://127.0.0.1:5000/](http://127.0.0.1:5000/)
-    in your web browser. You should see an app that looks like this.
+    and visit the url that shows up. For the example above, the localhost url is
+    http://127.0.0.1:5000/ but it will differ. You should see an app that looks like this.
     '''.replace('    ', '')),
 
     html.Div(examples[0][1], className="example-container"),
@@ -138,8 +142,8 @@ layout = html.Div([
            what is displayed here. This application is using a
            custom CSS stylesheet to modify the default styles of the elements.
            You can learn more in the [css tutorial](/external-resources),
-           but for you can add `app.css.append_css({"external_url": "https://codepen.io/chriddyp/pen/bWLwgP.css")`
-           to your file to get the same look and feel as these examples.
+           but for now you can add `app.css.append_css({"external_url": "https://codepen.io/chriddyp/pen/bWLwgP.css")`
+           to your file to get the same look and feel of these examples.
 
     By default, the items in the layout are arranged one on top of the other.
     You can create different arrangements using CSS and stylesheets in the
@@ -330,8 +334,13 @@ layout = html.Div([
         generates higher-level components like controls and graphs.
 
         ***
+    '''.replace('    ', '')),
 
-        # Part 2 - Interactivity
+    html.H2('''
+    Interactivity
+    ''', id='interactivity'),
+
+    dcc.Markdown('''
 
         Part 1 described the appearance of the application and
         the available components through the `layout` property and
@@ -342,6 +351,10 @@ layout = html.Div([
         Let's get started with a simple example.
 
     '''.replace('    ', '')),
+
+    html.H2('''
+    Dash App Layout
+    ''', id='dash-app-layout'),
 
     dcc.SyntaxHighlighter(
         examples[6][0],
