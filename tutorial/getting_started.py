@@ -41,15 +41,15 @@ layout = html.Div([
 
     dcc.Markdown('''***
 
-1. [Installation](#installation)
-2. [Dash App Layout](#dash-app-layout)
+    [Installation](#installation)
+1. [Dash App Layout](#dash-app-layout)
     - Generating HTML with Dash
     - Data Visualization in Dash
     - Markdown
     - Core Components
     - Calling `help`
-3. [Interactivity](#interactivity)
-    - Fundamentals
+2. [Interactivity](#interactivity)
+    - The Basics
     - Multiple Inputs
     - Multiple Outputs
     - Graph Crossfiltering
@@ -86,6 +86,8 @@ layout = html.Div([
 
     dcc.Markdown('''***
 
+    #### Generating HTML with Dash
+
     Dash apps are composed of two parts. The first part is the "`layout`" of
     the app and it describes what the application looks like.
     The second part describes the interactivity of the application.
@@ -113,7 +115,7 @@ layout = html.Div([
     ```
 
     and visit the url that shows up. For the example above, the localhost url is
-    http://127.0.0.1:5000/ but it will differ. You should see an app that looks like this.
+    http://127.0.0.1:5000/ but it may be different. You should see an app that looks like this.
     '''.replace('    ', '')),
 
     html.Div(examples[0][1], className="example-container"),
@@ -134,7 +136,7 @@ layout = html.Div([
            Dash is _declarative_: you will primarily describe your application
            through these attributes.
         5. The `children` property is special. By convention, it's always the
-           first attribute, which means that you can omit it:
+           first attribute which means that you can omit it:
            `html.H1(children='Hello Dash')` is the same as `html.H1('Hello Dash')`.
            Also, it can contain a string, a number, a single component, or a
            list of components.
@@ -145,11 +147,11 @@ layout = html.Div([
            but for now you can add `app.css.append_css({"external_url": "https://codepen.io/chriddyp/pen/bWLwgP.css")`
            to your file to get the same look and feel of these examples.
 
-    By default, the items in the layout are arranged one on top of the other.
+    By default, the items in your layout are arranged one on top of the other.
     You can create different arrangements using CSS and stylesheets in the
     custom layout arrangements in Dash apps tutorial (coming soon!).
 
-    ## More about HTML
+    #### More about HTML
 
     The `dash_html_components` library contains a component class for every
     HTML tag as well as keyword arguments for all of the HTML arguments.
@@ -189,6 +191,8 @@ layout = html.Div([
 
         ***
 
+        #### Data Visualization in Dash
+
         By writing our markup in Python, we can create complex resuable
         components like tables without switching contexts or languages.
 
@@ -206,7 +210,7 @@ layout = html.Div([
     html.Div(examples[2][1], className="example-container"),
 
     dcc.Markdown('''
-        ## More about visualization
+        #### More about Visualization
 
         The `dash_core_components` library includes a component called `Graph`.
 
@@ -238,7 +242,7 @@ layout = html.Div([
          **click and drag** to zoom,
          **hold down shift and click** to pan.*
 
-        ## Markdown too
+        #### Markdown
 
         While Dash exposes HTML through the `dash_html_components` library,
         it can be tedious to write your copy in HTML.
@@ -255,7 +259,7 @@ layout = html.Div([
     html.Div(examples[4][1], className="example-container"),
 
     dcc.Markdown('''
-        ## Core Components
+        #### Core Components
 
         The `dash_core_components` includes a set a higher-level components like
         dropdowns, graphs, markdown blocks, and more.
@@ -285,7 +289,7 @@ layout = html.Div([
         These components will become interactive in the second part
         of this tutorial on interactivity.
 
-        ### Calling `help`
+        #### Calling `help`
 
         Dash components are declarative: every configurable aspect of these
         components is set during instantiation as a keyword argument.
