@@ -90,7 +90,7 @@ layout = html.Div([
     the app and it describes what the application looks like.
     The second part describes the interactivity of the application.
 
-    Dash provides Python classes for the all of the visual components of
+    Dash provides Python classes for all of the visual components of
     the application. We maintain a set of components in the
     `dash_core_components` and the `dash_html_components` library
     but you can also [build your own](https://github.com/plotly/dash-components-archetype)
