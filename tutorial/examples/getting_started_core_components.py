@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import dash
 import dash_html_components as html
 import dash_core_components as dcc
@@ -9,7 +10,7 @@ app.layout = html.Div([
     dcc.Dropdown(
         options=[
             {'label': 'New York City', 'value': 'NYC'},
-            {'label': 'Montréal', 'value': 'MTL'},
+            {'label': u'Montréal', 'value': 'MTL'},
             {'label': 'San Francisco', 'value': 'SF'}
         ],
         value='MTL'
@@ -19,7 +20,7 @@ app.layout = html.Div([
     dcc.Dropdown(
         options=[
             {'label': 'New York City', 'value': 'NYC'},
-            {'label': 'Montréal', 'value': 'MTL'},
+            {'label': u'Montréal', 'value': 'MTL'},
             {'label': 'San Francisco', 'value': 'SF'}
         ],
         value=['MTL', 'SF'],
@@ -30,7 +31,7 @@ app.layout = html.Div([
     dcc.RadioItems(
         options=[
             {'label': 'New York City', 'value': 'NYC'},
-            {'label': 'Montréal', 'value': 'MTL'},
+            {'label': u'Montréal', 'value': 'MTL'},
             {'label': 'San Francisco', 'value': 'SF'}
         ],
         value='MTL'
@@ -40,7 +41,7 @@ app.layout = html.Div([
     dcc.Checklist(
         options=[
             {'label': 'New York City', 'value': 'NYC'},
-            {'label': 'Montréal', 'value': 'MTL'},
+            {'label': u'Montréal', 'value': 'MTL'},
             {'label': 'San Francisco', 'value': 'SF'}
         ],
         values=['MTL', 'SF']

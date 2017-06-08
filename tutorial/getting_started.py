@@ -284,8 +284,8 @@ layout = html.Div([
     dcc.Markdown('''
 
         Notice that these elements aren't interactive yet:
-        clicking on the checkboxes, dragging the slider,
-        or entering text in the input doesn't update the component.
+        clicking on the checkboxes, dragging the slider
+        and entering text in the input doesn't update the component.
         These components will become interactive in the second part
         of this tutorial on interactivity.
 
@@ -348,7 +348,7 @@ layout = html.Div([
 
         While Part 2 above described the appearance of the application and
         the available components through the `layout` property and
-        declarative components, Part 3 describes how to make these apps interactive.
+        declarative components, this section explains how to make these apps interactive.
 
         Let's get started with a simple example.
 
@@ -388,7 +388,7 @@ layout = html.Div([
     5. Don't confuse the `dash.dependencies.Input` object from the
        `dash_core_components.Input` object. The former is just used in these
        callbacks and the latter is an actual component.
-    6. Notice how we the layout doesn't set a value for the `children` property
+    6. Notice how the layout doesn't set a value for the `children` property
        in the `my-div` output component. When the Dash app starts, it
        automatically calls all of the callbacks with the initial values of the
        input components in order to populate the initial state of the output
@@ -446,15 +446,15 @@ layout = html.Div([
        callback functions.
     4. The callback does not modify the original data, it just creates copies
        of the dataframe by filtered through pandas filters.
-       This is important: your callbacks should never mutate variables
-       outside of their scope. If your callbacks modify global state, then one
+       This is important: *your callbacks should never mutate variables
+       outside of their scope*. If your callbacks modify global state, then one
        user's session might affect the next user's session and if the app is
        deployed on multiple processes or threads, those modifications will not
        be shared across instances.
 
     #### Multiple inputs
 
-    In Dash, any "`Output`" can have multiple "`Input`" components.
+    In Dash any "`Output`" can have multiple "`Input`" components.
     Here's a simple example that binds 5 Inputs
     (the `value` property of 2 `Dropdown` components, 2 `RadioItems` components,
     and 1 `Slider` component) to 1 Output component
@@ -506,7 +506,7 @@ layout = html.Div([
     html.Div(examples[9][1], style=styles.example_container_thick),
 
     dcc.Markdown('''
-    You can also chain outputs and inputs together, the output of one callback
+    You can also chain outputs and inputs together: the output of one callback
     function could be the input of another callback function.
 
     This pattern can be used to create dynamic UIs where one input component
@@ -554,29 +554,29 @@ layout = html.Div([
     Here's an simple example that prints these attributes in the screen.
     '''.replace('    ', '')),
 
-    html.Div(examples[11][1], style=styles.example_container_thick),
-
     dcc.SyntaxHighlighter(
         examples[11][0],
         language='python',
         customStyle=styles.code_container_thick
     ),
 
+    html.Div(examples[11][1], style=styles.example_container_thick),
+
     dcc.Markdown('''***
     Let's update our world indicators example by displaying time series when
     we hover over points in our scatter plot.
     '''.replace('    ', '')),
-
-    html.Div(examples[12][1], style=merge(
-        styles.example_container,
-        {'padding': 0, 'paddingBottom': '15px'}
-    )),
 
     dcc.SyntaxHighlighter(
         examples[12][0],
         language='python',
         customStyle=styles.code_container_thick
     ),
+
+    html.Div(examples[12][1], style=merge(
+        styles.example_container_thick,
+        #{'padding': 0, 'paddingBottom': '15px'}
+    )),
 
     dcc.Markdown('''
 
