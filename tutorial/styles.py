@@ -1,6 +1,6 @@
 code_container = {'borderLeft': 'thin lightgrey solid'}
 
-code_container_2 = {'borderLeft': 'thick lightgrey solid'}
+code_container_thick = {'borderLeft': 'thick lightgrey solid'}
 
 example_container = {
     'border': 'thin lightgrey solid',
@@ -8,8 +8,13 @@ example_container = {
     'overflowX': 'scroll'
 }
 
-example_container_2 = {
-    'border': 'thin lightgrey solid',
-    'padding': '10px',
+example_container_thick = {
+    'border': 'thick lightgrey solid',
+    'padding': '40px',
     'overflowX': 'scroll'
+}
+
+container_padding_bottom = {
+    'padding': 0,
+    'paddingBottom': '15px'
 }

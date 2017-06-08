@@ -78,7 +78,7 @@ layout = html.Div([
         html.__version__,
         dcc.__version__,
         plotly.__version__
-    ), customStyle=styles.code_container),
+    ), customStyle=styles.code_container_thick),
 
     html.H2('''
     2. Dash App Layout
@@ -118,7 +118,7 @@ layout = html.Div([
     http://127.0.0.1:5000/ but it may be vary. You should see an app that looks like this.
     '''.replace('    ', '')),
 
-    html.Div(examples[0][1], className="example-container"),
+    html.Div(examples[0][1], className="example-container"),  # "example-container"
 
     # TODO - Comment about the default CSS of the graph?
 
@@ -163,7 +163,7 @@ layout = html.Div([
     dcc.SyntaxHighlighter(
         examples[1][0],
         language='python',
-        customStyle=styles.code_container
+        customStyle=styles.code_container_thick
     ),
 
     html.Div(examples[1][1], className="example-container"),
@@ -204,7 +204,7 @@ layout = html.Div([
     dcc.SyntaxHighlighter(
         examples[2][0],
         language='python',
-        customStyle=styles.code_container
+        customStyle=styles.code_container_thick
     ),
 
     html.Div(examples[2][1], className="example-container"),
@@ -230,7 +230,7 @@ layout = html.Div([
     dcc.SyntaxHighlighter(
         examples[3][0],
         language='python',
-        customStyle=styles.code_container
+        customStyle=styles.code_container_thick
     ),
 
     html.Div(examples[3][1], className="example-container"),
@@ -253,10 +253,10 @@ layout = html.Div([
     dcc.SyntaxHighlighter(
         examples[4][0],
         language='python',
-        customStyle=styles.code_container
+        customStyle=styles.code_container_thick
     ),
 
-    html.Div(examples[4][1], className="example_container"),  # example-container
+    html.Div(examples[4][1], className="example_container"),
 
     dcc.Markdown('''
         #### Core Components
@@ -278,7 +278,7 @@ layout = html.Div([
     dcc.SyntaxHighlighter(
         examples[5][0],
         language='python',
-        customStyle=styles.code_container
+        customStyle=styles.code_container_thick
     ),
 
     dcc.Markdown('''
@@ -324,7 +324,7 @@ layout = html.Div([
         |  multiple values can be selected at once, and `value` is an
         |  array of items with values corresponding to those in the
         |  `options` prop.
-    '''.replace('    ', ''), customStyle=styles.code_container),
+    '''.replace('    ', ''), customStyle=styles.code_container_thick),
 
     dcc.Markdown('''
         ### Resources
@@ -361,7 +361,7 @@ layout = html.Div([
     dcc.SyntaxHighlighter(
         examples[6][0],
         language='python',
-        customStyle=styles.code_container
+        customStyle=styles.code_container_thick
     ),
 
     html.Div(examples[6][1], className="example-container"),
@@ -417,7 +417,7 @@ layout = html.Div([
     dcc.SyntaxHighlighter(
         examples[7][0],
         language='python',
-        customStyle=styles.code_container
+        customStyle=styles.code_container_thick
     ),
 
     html.Div(examples[7][1], style=merge(
@@ -470,7 +470,7 @@ layout = html.Div([
     dcc.SyntaxHighlighter(
         examples[8][0],
         language='python',
-        customStyle=styles.code_container
+        customStyle=styles.code_container_thick
     ),
 
     html.Div(examples[8][1], style=merge(
@@ -506,7 +506,7 @@ layout = html.Div([
     dcc.SyntaxHighlighter(
         examples[9][0],
         language='python',
-        customStyle=styles.code_container
+        customStyle=styles.code_container_thick
     ),
 
     html.Div(examples[9][1], className="example-container"),
@@ -523,7 +523,7 @@ layout = html.Div([
     dcc.SyntaxHighlighter(
         examples[10][0],
         language='python',
-        customStyle=styles.code_container
+        customStyle=styles.code_container_thick
     ),
 
     html.Div(examples[10][1], className="example-container"),
@@ -565,7 +565,7 @@ layout = html.Div([
     dcc.SyntaxHighlighter(
         examples[11][0],
         language='python',
-        customStyle=styles.code_container
+        customStyle=styles.code_container_thick
     ),
 
     dcc.Markdown('''***
@@ -581,7 +581,7 @@ layout = html.Div([
     dcc.SyntaxHighlighter(
         examples[12][0],
         language='python',
-        customStyle=styles.code_container
+        customStyle=styles.code_container_thick
     ),
 
     dcc.Markdown('''
