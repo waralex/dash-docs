@@ -104,7 +104,7 @@ layout = html.Div([
     dcc.SyntaxHighlighter(
         examples[0][0],
         language='python',
-        customStyle={'borderLeft': 'thin solid lightgrey'}
+        customStyle=styles.code_container_thick
     ),
     dcc.Markdown('''
     Run the app with
@@ -118,7 +118,7 @@ layout = html.Div([
     http://127.0.0.1:5000/ but it may be vary. You should see an app that looks like this.
     '''.replace('    ', '')),
 
-    html.Div(examples[0][1], className="example-container"),  # "example-container"
+    html.Div(examples[0][1], style=styles.example_container_thick),
 
     # TODO - Comment about the default CSS of the graph?
 
@@ -166,7 +166,7 @@ layout = html.Div([
         customStyle=styles.code_container_thick
     ),
 
-    html.Div(examples[1][1], className="example-container"),
+    html.Div(examples[1][1], style=styles.example_container_thick),
 
     dcc.Markdown('''
         In this example, we modified the inline styles of the `html.Div`
@@ -207,7 +207,7 @@ layout = html.Div([
         customStyle=styles.code_container_thick
     ),
 
-    html.Div(examples[2][1], className="example-container"),
+    html.Div(examples[2][1], style=styles.example_container_thick),
 
     dcc.Markdown('''
         #### More about Visualization
@@ -233,7 +233,7 @@ layout = html.Div([
         customStyle=styles.code_container_thick
     ),
 
-    html.Div(examples[3][1], className="example-container"),
+    html.Div(examples[3][1], style=styles.example_container_thick),
 
     dcc.Markdown('''
         *These graphs are interactive and responsive.
@@ -256,7 +256,7 @@ layout = html.Div([
         customStyle=styles.code_container_thick
     ),
 
-    html.Div(examples[4][1], className="example_container"),
+    html.Div(examples[4][1], style=styles.example_container_thick),
 
     dcc.Markdown('''
         #### Core Components
@@ -273,13 +273,13 @@ layout = html.Div([
         [Dash Core Components Gallery](dash-core-components)
     '''.replace('    ', '')),
 
-    html.Div(examples[5][1], className="example-container"),
-
     dcc.SyntaxHighlighter(
         examples[5][0],
         language='python',
         customStyle=styles.code_container_thick
     ),
+
+    html.Div(examples[5][1], style=styles.example_container_thick),
 
     dcc.Markdown('''
 
@@ -331,7 +331,7 @@ layout = html.Div([
 
         We've taken in a dip into the first part of Dash apps, the `layout`
         of the apps. The `layout` of the apps describe what the app looks like.
-        The `layout` is composed of a heirarichal tree of components.
+        The `layout` is composed of a hierarchical tree of components.
         The `dash_html_components` library provides classes for all of the HTML
         tags and the keyword arguments describe the HTML attributes like `style`,
         `className`, and `id`. The `dash_core_components` library
@@ -364,7 +364,7 @@ layout = html.Div([
         customStyle=styles.code_container_thick
     ),
 
-    html.Div(examples[6][1], className="example-container"),
+    html.Div(examples[6][1], style=styles.example_container_thick),
 
     dcc.Markdown('''
     Try typing in the text box. The children of the output component updates
@@ -420,10 +420,7 @@ layout = html.Div([
         customStyle=styles.code_container_thick
     ),
 
-    html.Div(examples[7][1], style=merge(
-        styles.example_container,
-        {'padding': '40px'}
-    )),
+    html.Div(examples[7][1], style=styles.example_container_thick),
 
     dcc.Markdown('''
     In this example, the `"value"` property of the `Slider` is the input of the app
@@ -473,10 +470,7 @@ layout = html.Div([
         customStyle=styles.code_container_thick
     ),
 
-    html.Div(examples[8][1], style=merge(
-        styles.example_container,
-        {'padding': '40px'}
-    )),
+    html.Div(examples[8][1], style=styles.example_container_thick),
 
     dcc.Markdown('''
 
@@ -509,7 +503,7 @@ layout = html.Div([
         customStyle=styles.code_container_thick
     ),
 
-    html.Div(examples[9][1], className="example-container"),
+    html.Div(examples[9][1], style=styles.example_container_thick),
 
     dcc.Markdown('''
     You can also chain outputs and inputs together, the output of one callback
@@ -560,7 +554,7 @@ layout = html.Div([
     Here's an simple example that prints these attributes in the screen.
     '''.replace('    ', '')),
 
-    html.Div(examples[11][1], className="example-container"),
+    html.Div(examples[11][1], style=styles.example_container_thick),
 
     dcc.SyntaxHighlighter(
         examples[11][0],

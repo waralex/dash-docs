@@ -1,6 +1,6 @@
 code_container = {'borderLeft': 'thin lightgrey solid'}
 
-code_container_thick = {'borderLeft': 'thick lightgrey solid'}
+code_container_thick = {'borderLeft': 'thin lightgrey solid'}
 
 example_container = {
     'border': 'thin lightgrey solid',
