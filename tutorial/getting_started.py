@@ -41,15 +41,15 @@ layout = html.Div([
 
     dcc.Markdown('''***
 
-    [Installation](#installation)
-1. [Dash App Layout](#dash-app-layout)
+1. [Installation](#installation)
+2. [Dash App Layout](#dash-app-layout)
     - Generating HTML with Dash
     - Data Visualization in Dash
     - Markdown
     - Core Components
     - Calling `help`
-2. [Interactivity](#interactivity)
-    - The Basics
+3. [Interactivity](#interactivity)
+    - Fundamentals
     - Multiple Inputs
     - Multiple Outputs
     - Graph Crossfiltering
@@ -57,7 +57,7 @@ layout = html.Div([
   ***'''),
 
     html.H2('''
-    Installation
+    1. Installation
     ''', id='installation'),
 
     dcc.Markdown('''
@@ -81,7 +81,7 @@ layout = html.Div([
     ), customStyle=styles.code_container),
 
     html.H2('''
-    Dash App Layout
+    2. Dash App Layout
     ''', id='dash-app-layout'),
 
     dcc.Markdown('''***
@@ -114,8 +114,8 @@ layout = html.Div([
     ...Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
     ```
 
-    and visit the url that shows up. For the example above, the localhost url is
-    http://127.0.0.1:5000/ but it may be different. You should see an app that looks like this.
+    and visit the localhost url that is printed on the next line. In the example above, url is
+    http://127.0.0.1:5000/ but it may be vary. You should see an app that looks like this.
     '''.replace('    ', '')),
 
     html.Div(examples[0][1], className="example-container"),
@@ -180,13 +180,13 @@ layout = html.Div([
         and the HTML attributes:
         1. The `style` property in HTML is a semicolon-separated string. In Dash,
            you can just supply a dictionary.
-        2. The keys in the `style` dictionary are camelCased.
+        2. The keys in the `style` dictionary are [camelCased](https://en.wikipedia.org/wiki/Camel_case).
            So, instead of `text-align`, it's `textAlign`.
         3. The HTML `class` attribute is `className` in Dash.
         4. The children of the HTML tag is specified through the `children` keyword
            argument.
 
-        Besides that, all of the available HTML attributes and tags are available
+        Besides these, all of the available HTML attributes and tags are available
         to you within your Python context.
 
         ***
@@ -240,7 +240,7 @@ layout = html.Div([
          **Hover** over points to see their values,
          **click** on legend items to toggle traces,
          **click and drag** to zoom,
-         **hold down shift and click** to pan.*
+         **hold down shift, and click and drag** to pan.*
 
         #### Markdown
 
@@ -256,7 +256,7 @@ layout = html.Div([
         customStyle=styles.code_container
     ),
 
-    html.Div(examples[4][1], className="example-container"),
+    html.Div(examples[4][1], className="example_container"),  # example-container
 
     dcc.Markdown('''
         #### Core Components
@@ -341,22 +341,20 @@ layout = html.Div([
     '''.replace('    ', '')),
 
     html.H2('''
-    Interactivity
+    3. Interactivity
     ''', id='interactivity'),
 
     dcc.Markdown('''
 
-        Part 1 described the appearance of the application and
+        While Part 2 above described the appearance of the application and
         the available components through the `layout` property and
-        declarative components.
-
-        Part 2 describes how to make these apps interactive.
+        declarative components, Part 3 describes how to make these apps interactive.
 
         Let's get started with a simple example.
 
     '''.replace('    ', '')),
 
-    html.H2('''
+    html.H4('''
     Dash App Layout
     ''', id='dash-app-layout'),
 
@@ -457,7 +455,7 @@ layout = html.Div([
        deployed on multiple processes or threads, those modifications will not
        be shared across instances.
 
-    ### Multiple inputs
+    #### Multiple inputs
 
     In Dash, any "`Output`" can have multiple "`Input`" components.
     Here's a simple example that binds 5 Inputs
@@ -498,7 +496,7 @@ layout = html.Div([
 
     Let's extend our example to include multiple outputs.
 
-    ### Multiple Outputs
+    #### Multiple Outputs
 
     Each Dash callback function can only update a single Output property.
     To update multiple Outputs, just write multiple functions.
@@ -546,7 +544,7 @@ layout = html.Div([
     '''.replace('    ', '')),
 
     dcc.Markdown('''
-    ### Graph Crossfiltering
+    #### Graph Crossfiltering
 
     Dash components are described declaratively by a set of attributes.
     All of these attributes can be updated by callback functions but only
