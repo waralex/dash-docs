@@ -89,6 +89,7 @@ create_contents([
         'Markdown'
     ],
     html.A('Dash HTML Component Library Reference', href="/dash-html-components"),
+    html.A('Build Your Own Components', href="/plugins"),
     'Base Component API',
     'Best Practices',
     [
@@ -158,8 +159,12 @@ chapters = {
     'external': {
         'url': '/external-resources',
         'content': external_css_and_js.layout
-    }
+    },
 
+    'plugins': {
+        'url': '/plugins',
+        'content': plugins.layout
+    }
 }
 
 
