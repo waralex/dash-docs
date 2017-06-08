@@ -575,7 +575,6 @@ layout = html.Div([
 
     html.Div(examples[12][1], style=merge(
         styles.example_container_thick,
-        #{'padding': 0, 'paddingBottom': '15px'}
     )),
 
     dcc.Markdown('''
