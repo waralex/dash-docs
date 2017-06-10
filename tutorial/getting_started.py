@@ -104,7 +104,7 @@ layout = html.Div([
     dcc.SyntaxHighlighter(
         examples[0][0],
         language='python',
-        customStyle=styles.code_container_thick
+        customStyle=styles.code_container
     ),
     dcc.Markdown('''
     Run the app with
@@ -114,11 +114,11 @@ layout = html.Div([
     ...Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
     ```
 
-    and visit the localhost url that is printed on the next line. In the example above, url is
-    http://127.0.0.1:5000/ but it may be vary. You should see an app that looks like this.
+    and visit [http:127.0.0.1:8050/](http:127.0.0.1:8050/)
+    in your web browser. You should see an app that looks like this.
     '''.replace('    ', '')),
 
-    html.Div(examples[0][1], style=styles.example_container_thick),
+    html.Div(examples[0][1], style=styles.example_container),
 
     # TODO - Comment about the default CSS of the graph?
 
@@ -166,7 +166,7 @@ layout = html.Div([
         customStyle=styles.code_container_thick
     ),
 
-    html.Div(examples[1][1], style=styles.example_container_thick),
+    html.Div(examples[1][1], style=styles.example_container),
 
     dcc.Markdown('''
         In this example, we modified the inline styles of the `html.Div`
@@ -186,7 +186,7 @@ layout = html.Div([
         4. The children of the HTML tag is specified through the `children` keyword
            argument.
 
-        Besides these, all of the available HTML attributes and tags are available
+        Besides that, all of the available HTML attributes and tags are available
         to you within your Python context.
 
         ***
@@ -207,7 +207,7 @@ layout = html.Div([
         customStyle=styles.code_container_thick
     ),
 
-    html.Div(examples[2][1], style=styles.example_container_thick),
+    html.Div(examples[2][1], style=styles.example_container),
 
     dcc.Markdown('''
         #### More about Visualization
@@ -233,7 +233,7 @@ layout = html.Div([
         customStyle=styles.code_container_thick
     ),
 
-    html.Div(examples[3][1], style=styles.example_container_thick),
+    html.Div(examples[3][1], style=styles.example_container),
 
     dcc.Markdown('''
         *These graphs are interactive and responsive.
@@ -256,7 +256,7 @@ layout = html.Div([
         customStyle=styles.code_container_thick
     ),
 
-    html.Div(examples[4][1], style=styles.example_container_thick),
+    html.Div(examples[4][1], style=styles.example_container),
 
     dcc.Markdown('''
         #### Core Components
@@ -279,12 +279,12 @@ layout = html.Div([
         customStyle=styles.code_container_thick
     ),
 
-    html.Div(examples[5][1], style=styles.example_container_thick),
+    html.Div(examples[5][1], style=styles.example_container),
 
     dcc.Markdown('''
 
         Notice that these elements aren't interactive yet:
-        clicking on the checkboxes, dragging the slider
+        clicking on the checkboxes, dragging the slider,
         and entering text in the input doesn't update the component.
         These components will become interactive in the second part
         of this tutorial on interactivity.
@@ -364,7 +364,7 @@ layout = html.Div([
         customStyle=styles.code_container_thick
     ),
 
-    html.Div(examples[6][1], style=styles.example_container_thick),
+    html.Div(examples[6][1], style=styles.example_container),
 
     dcc.Markdown('''
     Try typing in the text box. The children of the output component updates
@@ -388,8 +388,8 @@ layout = html.Div([
     5. Don't confuse the `dash.dependencies.Input` object from the
        `dash_core_components.Input` object. The former is just used in these
        callbacks and the latter is an actual component.
-    6. Notice how the layout doesn't set a value for the `children` property
-       in the `my-div` output component. When the Dash app starts, it
+    6. Notice how we don't set a value for the `children` property of the
+       `my-div` component in the `layout`. When the Dash app starts, it
        automatically calls all of the callbacks with the initial values of the
        input components in order to populate the initial state of the output
        components. In this example, if you specified something like
@@ -420,7 +420,7 @@ layout = html.Div([
         customStyle=styles.code_container_thick
     ),
 
-    html.Div(examples[7][1], style=styles.example_container_thick),
+    html.Div(examples[7][1], style=styles.example_container),
 
     dcc.Markdown('''
     In this example, the `"value"` property of the `Slider` is the input of the app
@@ -470,7 +470,7 @@ layout = html.Div([
         customStyle=styles.code_container_thick
     ),
 
-    html.Div(examples[8][1], style=styles.example_container_thick),
+    html.Div(examples[8][1], style=styles.example_container),
 
     dcc.Markdown('''
 
@@ -503,7 +503,7 @@ layout = html.Div([
         customStyle=styles.code_container_thick
     ),
 
-    html.Div(examples[9][1], style=styles.example_container_thick),
+    html.Div(examples[9][1], style=styles.example_container),
 
     dcc.Markdown('''
     You can also chain outputs and inputs together: the output of one callback
@@ -560,7 +560,7 @@ layout = html.Div([
         customStyle=styles.code_container_thick
     ),
 
-    html.Div(examples[11][1], style=styles.example_container_thick),
+    html.Div(examples[11][1], style=styles.example_container),
 
     dcc.Markdown('''***
     Let's update our world indicators example by displaying time series when
