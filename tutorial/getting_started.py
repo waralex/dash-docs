@@ -41,24 +41,26 @@ layout = html.Div([
 
     dcc.Markdown('''***
 
-1. Installation
-2. Dash App Layout
+1. [Installation](#installation)
+2. [Dash App Layout](#dash-app-layout)
     - Generating HTML with Dash
-    - Data visualization in Dash
+    - Data Visualization in Dash
     - Markdown
     - Core Components
     - Calling `help`
-3. Interactivity
+3. [Interactivity](#interactivity)
     - Fundamentals
-    - Multiple inputs
-    - Multiple outputs
+    - Multiple Inputs
+    - Multiple Outputs
     - Graph Crossfiltering
 
   ***'''),
 
-    dcc.Markdown('''
+    html.H2('''
+    1. Installation
+    ''', id='installation'),
 
-    ## Installation
+    dcc.Markdown('''
 
     In your terminal, install several dash libraries.
     These libraries are under active development,
@@ -76,29 +78,33 @@ layout = html.Div([
         html.__version__,
         dcc.__version__,
         plotly.__version__
-    ), customStyle=styles.code_container),
+    ), customStyle=styles.code_container_thick),
+
+    html.H2('''
+    2. Dash App Layout
+    ''', id='dash-app-layout'),
 
     dcc.Markdown('''***
 
-    ## Dash App Layout
+    #### Generating HTML with Dash
 
     Dash apps are composed of two parts. The first part is the "`layout`" of
     the app and it describes what the application looks like.
     The second part describes the interactivity of the application.
 
-    Dash provides Python classes for the all of the visual components of
+    Dash provides Python classes for all of the visual components of
     the application. We maintain a set of components in the
     `dash_core_components` and the `dash_html_components` library
     but you can also [build your own](https://github.com/plotly/dash-components-archetype)
     with Javascript and React.js.
 
-    To get started, create an file named `app.py` with the following code:
+    To get started, create a file named `app.py` with the following code:
     '''.replace('    ', '')),
 
     dcc.SyntaxHighlighter(
         examples[0][0],
         language='python',
-        customStyle={'borderLeft': 'thin solid lightgrey'}
+        customStyle=styles.code_container
     ),
     dcc.Markdown('''
     Run the app with
@@ -108,11 +114,11 @@ layout = html.Div([
     ...Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
     ```
 
-    and visit [http://127.0.0.1:5000/](http://127.0.0.1:5000/)
+    and visit [http:127.0.0.1:8050/](http:127.0.0.1:8050/)
     in your web browser. You should see an app that looks like this.
     '''.replace('    ', '')),
 
-    html.Div(examples[0][1], className="example-container"),
+    html.Div(examples[0][1], style=styles.example_container),
 
     # TODO - Comment about the default CSS of the graph?
 
@@ -130,7 +136,7 @@ layout = html.Div([
            Dash is _declarative_: you will primarily describe your application
            through these attributes.
         5. The `children` property is special. By convention, it's always the
-           first attribute, which means that you can omit it:
+           first attribute which means that you can omit it:
            `html.H1(children='Hello Dash')` is the same as `html.H1('Hello Dash')`.
            Also, it can contain a string, a number, a single component, or a
            list of components.
@@ -138,14 +144,14 @@ layout = html.Div([
            what is displayed here. This application is using a
            custom CSS stylesheet to modify the default styles of the elements.
            You can learn more in the [css tutorial](/external-resources),
-           but for you can add `app.css.append_css({"external_url": "https://codepen.io/chriddyp/pen/bWLwgP.css")`
-           to your file to get the same look and feel as these examples.
+           but for now you can add `app.css.append_css({"external_url": "https://codepen.io/chriddyp/pen/bWLwgP.css")`
+           to your file to get the same look and feel of these examples.
 
-    By default, the items in the layout are arranged one on top of the other.
+    By default, the items in your layout are arranged one on top of the other.
     You can create different arrangements using CSS and stylesheets in the
     custom layout arrangements in Dash apps tutorial (coming soon!).
 
-    ## More about HTML
+    #### More about HTML
 
     The `dash_html_components` library contains a component class for every
     HTML tag as well as keyword arguments for all of the HTML arguments.
@@ -157,10 +163,10 @@ layout = html.Div([
     dcc.SyntaxHighlighter(
         examples[1][0],
         language='python',
-        customStyle=styles.code_container
+        customStyle=styles.code_container_thick
     ),
 
-    html.Div(examples[1][1], className="example-container"),
+    html.Div(examples[1][1], style=styles.example_container),
 
     dcc.Markdown('''
         In this example, we modified the inline styles of the `html.Div`
@@ -174,7 +180,7 @@ layout = html.Div([
         and the HTML attributes:
         1. The `style` property in HTML is a semicolon-separated string. In Dash,
            you can just supply a dictionary.
-        2. The keys in the `style` dictionary are camelCased.
+        2. The keys in the `style` dictionary are [camelCased](https://en.wikipedia.org/wiki/Camel_case).
            So, instead of `text-align`, it's `textAlign`.
         3. The HTML `class` attribute is `className` in Dash.
         4. The children of the HTML tag is specified through the `children` keyword
@@ -184,6 +190,8 @@ layout = html.Div([
         to you within your Python context.
 
         ***
+
+        #### Data Visualization in Dash
 
         By writing our markup in Python, we can create complex resuable
         components like tables without switching contexts or languages.
@@ -196,13 +204,13 @@ layout = html.Div([
     dcc.SyntaxHighlighter(
         examples[2][0],
         language='python',
-        customStyle=styles.code_container
+        customStyle=styles.code_container_thick
     ),
 
-    html.Div(examples[2][1], className="example-container"),
+    html.Div(examples[2][1], style=styles.example_container),
 
     dcc.Markdown('''
-        ## More about visualization
+        #### More about Visualization
 
         The `dash_core_components` library includes a component called `Graph`.
 
@@ -222,19 +230,19 @@ layout = html.Div([
     dcc.SyntaxHighlighter(
         examples[3][0],
         language='python',
-        customStyle=styles.code_container
+        customStyle=styles.code_container_thick
     ),
 
-    html.Div(examples[3][1], className="example-container"),
+    html.Div(examples[3][1], style=styles.example_container),
 
     dcc.Markdown('''
         *These graphs are interactive and responsive.
          **Hover** over points to see their values,
          **click** on legend items to toggle traces,
          **click and drag** to zoom,
-         **hold down shift and click** to pan.*
+         **hold down shift, and click and drag** to pan.*
 
-        ## Markdown too
+        #### Markdown
 
         While Dash exposes HTML through the `dash_html_components` library,
         it can be tedious to write your copy in HTML.
@@ -245,13 +253,13 @@ layout = html.Div([
     dcc.SyntaxHighlighter(
         examples[4][0],
         language='python',
-        customStyle=styles.code_container
+        customStyle=styles.code_container_thick
     ),
 
-    html.Div(examples[4][1], className="example-container"),
+    html.Div(examples[4][1], style=styles.example_container),
 
     dcc.Markdown('''
-        ## Core Components
+        #### Core Components
 
         The `dash_core_components` includes a set a higher-level components like
         dropdowns, graphs, markdown blocks, and more.
@@ -265,23 +273,23 @@ layout = html.Div([
         [Dash Core Components Gallery](dash-core-components)
     '''.replace('    ', '')),
 
-    html.Div(examples[5][1], className="example-container"),
-
     dcc.SyntaxHighlighter(
         examples[5][0],
         language='python',
-        customStyle=styles.code_container
+        customStyle=styles.code_container_thick
     ),
+
+    html.Div(examples[5][1], style=styles.example_container),
 
     dcc.Markdown('''
 
         Notice that these elements aren't interactive yet:
         clicking on the checkboxes, dragging the slider,
-        or entering text in the input doesn't update the component.
+        and entering text in the input doesn't update the component.
         These components will become interactive in the second part
         of this tutorial on interactivity.
 
-        ### Calling `help`
+        #### Calling `help`
 
         Dash components are declarative: every configurable aspect of these
         components is set during instantiation as a keyword argument.
@@ -316,40 +324,47 @@ layout = html.Div([
         |  multiple values can be selected at once, and `value` is an
         |  array of items with values corresponding to those in the
         |  `options` prop.
-    '''.replace('    ', ''), customStyle=styles.code_container),
+    '''.replace('    ', ''), customStyle=styles.code_container_thick),
 
     dcc.Markdown('''
         ### Resources
 
         We've taken in a dip into the first part of Dash apps, the `layout`
         of the apps. The `layout` of the apps describe what the app looks like.
-        The `layout` is composed of a heirarichal tree of components.
+        The `layout` is composed of a hierarchical tree of components.
         The `dash_html_components` library provides classes for all of the HTML
         tags and the keyword arguments describe the HTML attributes like `style`,
         `className`, and `id`. The `dash_core_components` library
         generates higher-level components like controls and graphs.
 
         ***
+    '''.replace('    ', '')),
 
-        # Part 2 - Interactivity
+    html.H2('''
+    3. Interactivity
+    ''', id='interactivity'),
 
-        Part 1 described the appearance of the application and
+    dcc.Markdown('''
+
+        While Part 2 above described the appearance of the application and
         the available components through the `layout` property and
-        declarative components.
-
-        Part 2 describes how to make these apps interactive.
+        declarative components, this section explains how to make these apps interactive.
 
         Let's get started with a simple example.
 
     '''.replace('    ', '')),
 
+    html.H4('''
+    Dash App Layout
+    ''', id='dash-app-layout'),
+
     dcc.SyntaxHighlighter(
         examples[6][0],
         language='python',
-        customStyle=styles.code_container
+        customStyle=styles.code_container_thick
     ),
 
-    html.Div(examples[6][1], className="example-container"),
+    html.Div(examples[6][1], style=styles.example_container),
 
     dcc.Markdown('''
     Try typing in the text box. The children of the output component updates
@@ -373,8 +388,8 @@ layout = html.Div([
     5. Don't confuse the `dash.dependencies.Input` object from the
        `dash_core_components.Input` object. The former is just used in these
        callbacks and the latter is an actual component.
-    6. Notice how we the layout doesn't set a value for the `children` property
-       in the `my-div` output component. When the Dash app starts, it
+    6. Notice how we don't set a value for the `children` property of the
+       `my-div` component in the `layout`. When the Dash app starts, it
        automatically calls all of the callbacks with the initial values of the
        input components in order to populate the initial state of the output
        components. In this example, if you specified something like
@@ -402,13 +417,10 @@ layout = html.Div([
     dcc.SyntaxHighlighter(
         examples[7][0],
         language='python',
-        customStyle=styles.code_container
+        customStyle=styles.code_container_thick
     ),
 
-    html.Div(examples[7][1], style=merge(
-        styles.example_container,
-        {'padding': '40px'}
-    )),
+    html.Div(examples[7][1], style=styles.example_container),
 
     dcc.Markdown('''
     In this example, the `"value"` property of the `Slider` is the input of the app
@@ -434,15 +446,15 @@ layout = html.Div([
        callback functions.
     4. The callback does not modify the original data, it just creates copies
        of the dataframe by filtered through pandas filters.
-       This is important: your callbacks should never mutate variables
-       outside of their scope. If your callbacks modify global state, then one
+       This is important: *your callbacks should never mutate variables
+       outside of their scope*. If your callbacks modify global state, then one
        user's session might affect the next user's session and if the app is
        deployed on multiple processes or threads, those modifications will not
        be shared across instances.
 
-    ### Multiple inputs
+    #### Multiple inputs
 
-    In Dash, any "`Output`" can have multiple "`Input`" components.
+    In Dash any "`Output`" can have multiple "`Input`" components.
     Here's a simple example that binds 5 Inputs
     (the `value` property of 2 `Dropdown` components, 2 `RadioItems` components,
     and 1 `Slider` component) to 1 Output component
@@ -455,13 +467,10 @@ layout = html.Div([
     dcc.SyntaxHighlighter(
         examples[8][0],
         language='python',
-        customStyle=styles.code_container
+        customStyle=styles.code_container_thick
     ),
 
-    html.Div(examples[8][1], style=merge(
-        styles.example_container,
-        {'padding': '40px'}
-    )),
+    html.Div(examples[8][1], style=styles.example_container),
 
     dcc.Markdown('''
 
@@ -481,7 +490,7 @@ layout = html.Div([
 
     Let's extend our example to include multiple outputs.
 
-    ### Multiple Outputs
+    #### Multiple Outputs
 
     Each Dash callback function can only update a single Output property.
     To update multiple Outputs, just write multiple functions.
@@ -491,13 +500,13 @@ layout = html.Div([
     dcc.SyntaxHighlighter(
         examples[9][0],
         language='python',
-        customStyle=styles.code_container
+        customStyle=styles.code_container_thick
     ),
 
-    html.Div(examples[9][1], className="example-container"),
+    html.Div(examples[9][1], style=styles.example_container),
 
     dcc.Markdown('''
-    You can also chain outputs and inputs together, the output of one callback
+    You can also chain outputs and inputs together: the output of one callback
     function could be the input of another callback function.
 
     This pattern can be used to create dynamic UIs where one input component
@@ -508,7 +517,7 @@ layout = html.Div([
     dcc.SyntaxHighlighter(
         examples[10][0],
         language='python',
-        customStyle=styles.code_container
+        customStyle=styles.code_container_thick
     ),
 
     html.Div(examples[10][1], className="example-container"),
@@ -529,7 +538,7 @@ layout = html.Div([
     '''.replace('    ', '')),
 
     dcc.Markdown('''
-    ### Graph Crossfiltering
+    #### Graph Crossfiltering
 
     Dash components are described declaratively by a set of attributes.
     All of these attributes can be updated by callback functions but only
@@ -545,29 +554,28 @@ layout = html.Div([
     Here's an simple example that prints these attributes in the screen.
     '''.replace('    ', '')),
 
-    html.Div(examples[11][1], className="example-container"),
-
     dcc.SyntaxHighlighter(
         examples[11][0],
         language='python',
-        customStyle=styles.code_container
+        customStyle=styles.code_container_thick
     ),
+
+    html.Div(examples[11][1], style=styles.example_container),
 
     dcc.Markdown('''***
     Let's update our world indicators example by displaying time series when
     we hover over points in our scatter plot.
     '''.replace('    ', '')),
 
-    html.Div(examples[12][1], style=merge(
-        styles.example_container,
-        {'padding': 0, 'paddingBottom': '15px'}
-    )),
-
     dcc.SyntaxHighlighter(
         examples[12][0],
         language='python',
-        customStyle=styles.code_container
+        customStyle=styles.code_container_thick
     ),
+
+    html.Div(examples[12][1], style=merge(
+        styles.example_container_thick,
+    )),
 
     dcc.Markdown('''
 
