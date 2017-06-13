@@ -12,8 +12,50 @@ layout = html.Div([
     The [Dash Getting Started Guide](/getting-started) contains
     many applications that range in complexity.
 
-    The first interactive app that you'll create combines a `Dropdown`
+    The first interactive app that you'll create combines a `Slider`
     with a `Graph` and filters data using a Pandas `DataFrame`.
+    The `animate` property in the `Graph` component was set to `True`
+    so that the points transition smoothly.
+    Some interactivity is built-in to the `Graph` component including
+    hovering over values, clicking on legend items to toggle traces, and
+    zooming into regions.
+
+    [![Screenshot of simple Dash app](https://github.com/plotly/dash-docs/raw/master/images/gapminder-animation.gif)](/getting-started)
+
+    [View the getting started guide](/getting-started)
+
+    ## Goldman Sachs Remake: Portfolio Report
+
+    This app recreates the look and feel of a Goldman Sachs report.
+    It includes a Print to PDF button and the styles were optimized
+    to look good on the web and in PDF form.
+
+    The charts in the report on the web version are interactive.
+    You can hover over points to see their values and zoom into
+    regions. Since this report was built on top of Dash, you could
+    adapt this report to include even more interactive elements, like
+    a dropdown or a search box.
+
+    With PDF styles, you can hide and show elements depending on whether
+    the app is being viewed in the web browser or in print, using the
+    same framework for the rich interactive applications as the static
+    PDF reports.
+
+    [![Screenshot of Goldman Sachs report](https://github.com/plotly/dash-docs/raw/master/images/gapminder-animation.gif)](https://damp-stream-82875.herokuapp.com)
+
+    [View the app](https://damp-stream-82875.herokuapp.com)
+
+    ## Drug Discovery App
+
+    This app displays a description of the drug as you hover over points in the
+    graph.
+
+    Selecting drugs in the dropdown highlights their position in the chart and
+     appends their symbol in the table below.
+
+     Built in a few hundred lines of Python code.
+
+    ![Screenshot of drug discovery app](https://github.com/plotly/dash-docs/raw/master/images/drug-discovery-app.gif)
 
     ## NYTimes Remake: Recession in 255 Charts
 
@@ -41,26 +83,6 @@ layout = html.Div([
 
     [View the app](dash-showcase-report.herokuapp.com)
 
-    ## Goldman Sachs Remake: Earnings Report
-
-    This app recreates the look and feel of a Goldman Sachs report.
-    It includes a Print to PDF button and the styles were optimized
-    to look good on the web and in PDF form.
-
-    The charts in the report on the web version are interactive.
-    You can hover over points to see their values and zoom into
-    regions. Since this report was built on top of Dash, you could
-    adapt this report to include even more interactive elements, like
-    a dropdown or a search box.
-
-    With PDF styles, you can hide and show elements depending on whether
-    the app is being viewed in the web browser or in print, using the
-    same framework for the rich interactive applications as the static
-    PDF reports.
-
-    ![Screenshot of Goldman Sachs report]()
-
-    ##
 
     '''.replace('    ', ''))
 
