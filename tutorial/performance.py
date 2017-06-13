@@ -41,7 +41,7 @@ import functools32
 def slow_function(input):
     time.sleep(10)
     return 'Input was {}'.format(input)
-''', language='python',  customStyle=styles.code_container)
+''', language='python', customStyle=styles.code_container),
 
 dcc.Markdown('''
 
