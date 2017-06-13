@@ -18,12 +18,11 @@ import external_css_and_js
 import open_problems
 import architecture
 import graph_callbacks
-# import live_updates
-import urls
+import live_updates
 import changelog
 import plugins
-import advanced_features
 import gallery
+import performance
 
 app.scripts.config.serve_locally = True
 dcc._js_dist[0]['external_url'] = 'https://cdn.plot.ly/plotly-basic-1.27.1.min.js'
@@ -82,7 +81,6 @@ create_contents([
     [
         'Caching',
         'Fast Charting with WebGL',
-#        'URLs and Single Page Apps',
     ],
 
     html.A('Live Updates', href="/live-updates"),
@@ -152,11 +150,6 @@ chapters = {
         'content': getting_started.layout
     },
 
-    'advanced-features': {
-        'url': '/advanced',
-        'content': advanced_features.layout
-    },
-
     'dash-core-components': {
         'url': '/dash-core-components',
         'content': core_components.layout
@@ -183,6 +176,16 @@ chapters = {
     'gallery': {
         'url': '/gallery',
         'content': gallery.layout
+    },
+
+    'live-updates': {
+        'url': '/live-updates',
+        'content': live_updates.layout
+    },
+
+    'performance': {
+        'url': '/performance',
+        'content': performance.layout
     }
 }
 
@@ -194,14 +197,7 @@ app.layout = html.Div([
         ], value='index', id='toc', labelStyle={'fontWeight': 400})
     ], style={'display': 'none'}),
     html.Div(id="chapter")
-    ], style={
-        'fontSize': '1.7rem',
-        'backgroundColor': 'white',
-        'boxShadow': '5px 5px 5px 0px rgb(240, 240, 240)',
-        'borderRadius': '5px',
-        'border': 'thin solid rgb(240, 240, 240)',
-        'padding': 20
-    }, className="container")
+    ], className="container")
 
 
 
