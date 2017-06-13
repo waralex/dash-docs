@@ -41,7 +41,7 @@ layout = html.Div([
     same framework for the rich interactive applications as the static
     PDF reports.
 
-    [![Screenshot of Goldman Sachs report](https://github.com/plotly/dash-docs/raw/master/images/gapminder-animation.gif)](https://damp-stream-82875.herokuapp.com)
+    [![Screenshot of Goldman Sachs report](https://github.com/plotly/dash-docs/raw/master/images/goldman-sachs.png)](https://damp-stream-82875.herokuapp.com)
 
     [View the app](https://damp-stream-82875.herokuapp.com)
 
