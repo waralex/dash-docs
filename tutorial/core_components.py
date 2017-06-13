@@ -256,7 +256,7 @@ dcc.RadioItems(
     It includes a syntax for things like **bold text** and *italics*,
     [links](http://commonmark.org/help), inline `code` snippets, lists,
     quotes, and more.'''.replace('  ', ''),
-    containerProps={'style': styles.example_container}),
+    containerProps={'className': 'example-container'}),
 
     html.Hr(),
     html.Strong('Graphs'),
@@ -307,10 +307,10 @@ for k in layout.keys():
         continue
 
     if k in ['section2-rangeslider-2', 'section2-slider-2']:
-        layout[k] = html.Div(layout[k], style=dict(
-            styles.example_container,
-            **({'padding': '25px'})
-        ))
+        layout[k] = html.Div(layout[k],
+            className="example-container",
+            style=dict({'padding': '25px'})
+        )
 
     else:
         layout[k] = html.Div(layout[k], className="example-container")

@@ -23,7 +23,7 @@ import urls
 import changelog
 import plugins
 import advanced_features
-
+import gallery
 
 app.scripts.config.serve_locally = True
 dcc._js_dist[0]['external_url'] = 'https://cdn.plot.ly/plotly-basic-1.27.1.min.js'
@@ -39,12 +39,17 @@ def create_contents(contents):
 
 toc = html.Div(
 create_contents([
+
     html.A('Introduction', href="/introduction"),
     [
         'Why Dash?',
         'Licensing'
     ],
-    'Gallery',
+
+    html.A('Announcement Letter', href="https://medium.com/@chriddyp/introducing-dash-a-web-app-framework-for-python-data-science-942e37f38ce1"),
+
+    html.A('Gallery', href="/gallery"),
+
     html.A('Create Your First App', href="/getting-started"),
     [
         'Installation',
@@ -64,21 +69,27 @@ create_contents([
             'Crossfiltering'
         ]
     ],
-    'Deploying',
+
+    html.A('Deploying', href="/deployment"),
     [
         'On Premise',
         'Cloud PaaS'
     ],
-    html.A('Advanced Features', href="/advanced"),
+
+    html.A('Authentication', href="/authentication"),
+
+    html.A('Performance', href="/performance"),
     [
         'Caching',
         'Fast Charting with WebGL',
-        'URLs and Single Page Apps',
-        'Live Updates'
+#        'URLs and Single Page Apps',
     ],
+
+    html.A('Live Updates', href="/live-updates"),
+
     html.A('External CSS and JS', href="/external-resources"),
 
-    html.A('Dash Core Component Library Reference', href="/dash-core-components"),
+    html.A('Dash Core Components', href="/dash-core-components"),
     [
         'Graph',
         'Dropdown',
@@ -88,34 +99,37 @@ create_contents([
         'RangeSlider',
         'Markdown'
     ],
-    html.A('Dash HTML Component Library Reference', href="/dash-html-components"),
+
+    html.A('Dash HTML Components', href="/dash-html-components"),
+
     html.A('Build Your Own Components', href="/plugins"),
-    'Base Component API',
-    'Best Practices',
-    [
-        'Virtual Environments',
-        'Styling Apps',
-        'Basic User Interface',
-        'Initial State'
-    ],
-    'Roadmap',
-    [
-        'Sponsoring Development',
-        'Near Term',
-        [
-            'App Templates',
-            'Authentication'
-        ],
-        'Long Term',
-        [
-            'Dash in Other Languages',
-            'GUI App Builder',
-            'Client-side Apps'
-        ]
-    ],
-    'Get Involved',
-    'Credits',
-    'Support and Contact'
+
+    html.A('Base Components', href="/base-components"),
+    # 'Best Practices',
+    # [
+    #     'Virtual Environments',
+    #     'Styling Apps',
+    #     'Basic User Interface',
+    #     'Initial State'
+    # ],
+    # 'Roadmap',
+    # [
+    #     'Sponsoring Development',
+    #     'Near Term',
+    #     [
+    #         'App Templates',
+    #         'Authentication'
+    #     ],
+    #     'Long Term',
+    #     [
+    #         'Dash in Other Languages',
+    #         'GUI App Builder',
+    #         'Client-side Apps'
+    #     ]
+    # ],
+    # 'Get Involved',
+    html.A('Support and Contact', href="/support")
+
 ]), style={'columnCount': 2}
 )
 
@@ -164,6 +178,11 @@ chapters = {
     'plugins': {
         'url': '/plugins',
         'content': plugins.layout
+    },
+
+    'gallery': {
+        'url': '/gallery',
+        'content': gallery.layout
     }
 }
 

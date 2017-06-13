@@ -62,7 +62,8 @@ metadata for the points that we've hovered over or selected.
     dcc.SyntaxHighlighter(examples[1][0], customStyle=styles.code_container),
     html.Div(
         examples[1][1],
-        style=dict({'paddingBottom': '30px'}, **styles.example_container)
+        className="example-container",
+        style=dict({'paddingBottom': '30px'})
     )
 ])
 
@@ -91,6 +92,7 @@ chart with that country's historical trajectory.
 
     html.Div(
         examples[2][1],
-        style=dict({'paddingBottom': '30px'}, **styles.example_container)
+        className="example-container",
+        style=dict(paddingBottom='30px')
     )
 ])

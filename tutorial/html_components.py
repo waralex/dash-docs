@@ -68,7 +68,8 @@ html.Div([
     Markdown is a simple way to write and format text.
     It includes a syntax for things like **bold text** and *italics*,
     [links](http://commonmark.org/help), inline `code` snippets, lists,
-    quotes, and more.'''.replace('  ', ''), containerProps={'style': styles.example_container}),
+    quotes, and more.'''.replace('  ', ''),
+    containerProps={'className': 'example-container'}),
 
     html.Div('If you\'re using HTML components, then you also access to '
              'properties like `style`, `class`, and `id`. '
