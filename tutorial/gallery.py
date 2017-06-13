@@ -7,6 +7,8 @@ layout = html.Div([
 
     # Dash Gallery
 
+    ***
+
     ## Getting Started Example
 
     The [Dash Getting Started Guide](/getting-started) contains
@@ -23,6 +25,8 @@ layout = html.Div([
     [![Screenshot of simple Dash app](https://github.com/plotly/dash-docs/raw/master/images/gapminder-animation.gif)](/getting-started)
 
     [View the getting started guide](/getting-started)
+
+    ***
 
     ## Goldman Sachs Remake: Portfolio Report
 
@@ -45,6 +49,8 @@ layout = html.Div([
 
     [View the app](https://damp-stream-82875.herokuapp.com)
 
+    ***
+
     ## Drug Discovery App
 
     This app displays a description of the drug as you hover over points in the
@@ -56,6 +62,8 @@ layout = html.Div([
      Built in a few hundred lines of Python code.
 
     ![Screenshot of drug discovery app](https://github.com/plotly/dash-docs/raw/master/images/drug-discovery-app.gif)
+
+    ***
 
     ## NYTimes Remake: Recession in 255 Charts
 
@@ -82,7 +90,6 @@ layout = html.Div([
     [![Screenshot of NYTimes Dash app](https://github.com/plotly/dash-docs/raw/master/images/nytimes.png)](dash-showcase-report.herokuapp.com)
 
     [View the app](dash-showcase-report.herokuapp.com)
-
 
     '''.replace('    ', ''))
 
