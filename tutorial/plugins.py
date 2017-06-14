@@ -38,7 +38,7 @@ On a high level, this is how that works:
   write _any_ Python in order to generate a component that can be used in the
   Dash ecosystem.
 - The Python component package includes the JSON file and the JavaScript bundle
-  as extra files.
+  as extra files through the `MANIFEST.in` file.
 - The Dash app will crawl through the app's `layout` property and check which
   component packages are included in the layout and it will extract that
   component's necessary JavaScript or CSS bundles. Dash will serve these bundles
@@ -53,12 +53,13 @@ The Dash ecosystem includes a command-line tool for
 generating component package templates with all of the necessary
 boiler plate.
 
-We use the package [https://github.com/FormidableLabs/builder] built by
+We use the package [builder](https://github.com/FormidableLabs/builder) built by
 the excellent team at [Formidable Labs](https://formidable.com/) to manage
 these templates.
 
-The code behind the template is available in the [dash-components-archetype repository on GitHub](https://github.com/plotly/dash-components-archetype)
-repository.
+The code behind the template is available in the
+[plotly/dash-components-archetype](https://github.com/plotly/dash-components-archetype)
+repository on GitHub.
 
 ### Step 1 - Prerequisites
 
@@ -66,8 +67,7 @@ You'll need Node, NPM, and Python installed.
 Components are built with [React.js](https://facebook.github.io/react/).
 
 > If you're just getting started, we've written a great
-[React.js tutorial](https://academy.plot.ly/) as part of our academy
-that uses [plotly.js](https://github.com/plotly/plotly.js).
+[React.js tutorial](https://academy.plot.ly/) as part of our open source academy.
 
 ### Step 2 - Install Builder
 '''),
@@ -159,7 +159,7 @@ This will perform several tasks:
 The JavaScript bundle and the react-docgen JSON file will be in a folder named
 after your package alongside an `__init__.py` file.
 
-#### Step 5 - Test Components in a Dash App
+### Step 5 - Test Components in a Dash App
 
 The package is now ready to install. You can install your package locally
 by running
@@ -269,7 +269,7 @@ Allowed arguments: label
 
 dcc.Markdown('''
 Notice how the comments in the `ExampleComponent.react` match the docstring
-of the `ExampleComponent` Python class. Also notie how the docstring includes
+of the `ExampleComponent` Python class. Also notice how the docstring includes
 the types of the arguments (extracted from `propTypes`) and how the classes
 perform keyword validation. All of this logic and translation is provided
 to you automatically through dash through React-docgen and your comments
