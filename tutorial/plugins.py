@@ -10,12 +10,11 @@ One of the really cool things about dash is that
 it is built on top of [React.js](https://facebook.github.io/react/),
 a JavaScript library for building web components.
 
-React has a huge community and open source ecosystem.
-There are thousands of components that have been built
-by community members and released under open source licenses.
-For example, here are implementations of
+The React community is huge. Thousands of components have been built and
+released with open source licenses. For example, here are just some of the
 [slider components](https://react.rocks/?q=slider) and
-[table components](https://react.rocks/?q=tables) built by the community.
+[table components](https://react.rocks/?q=tables) that have been published
+by the community.
 
 ## From React.js to Python
 
@@ -25,20 +24,20 @@ compatible with the Dash ecosystem.
 
 On a high level, this is how that works:
 - Components in dash are serialized as [JSON](www.json.org).
-  To write a dash-compatabile component, all of the properties
+  To write a dash-compatible component, all of the properties
   of the component must be serializable as JSON. For example,
   JavaScript functions are not valid input arguments.
 - By annotating components with React docstrings, Dash extracts
   the information about the component's name, properties, and a description
   of the components through [React Docgen](https://github.com/reactjs/react-docgen).
   This is exported as a JSON file.
-- Dash reads this JSON file and dynamically creates python classes that subclass
+- Dash reads this JSON file and dynamically creates Python classes that subclass
   a core Dash component. These classes include argument validation,
-  python docstrings, types, and a basic set of methods. _These classes are
+  Python docstrings, types, and a basic set of methods. _These classes are
   generated entirely automatically._ A JavaScript developer does not need to
-  write _any_ python in order to generate a component that can be used in the
+  write _any_ Python in order to generate a component that can be used in the
   Dash ecosystem.
-- The python component package includes the JSON file and the JavaScript bundle
+- The Python component package includes the JSON file and the JavaScript bundle
   as extra files.
 - The Dash app will crawl through the app's `layout` property and check which
   component packages are included in the layout and it will extract that
@@ -85,8 +84,8 @@ of a dash component package.
 
 This will walk you through a series of prompts about your package like
 the name and description of the project. The name of the project will be
-the name of the python package, with hyphens replaced by underscores.
-For example, if the name is `acme-components` then the python package will
+the name of the Python package, with hyphens replaced by underscores.
+For example, if the name is `acme-components` then the Python package will
 end up being `acme_components`, importable like `import acme_components`.
 
 > One cool thing about this Builder archetype is that it will
@@ -134,11 +133,11 @@ dcc.Markdown('''
 ### Step 4 - Test the Generated Boilerplate
 
 At this point, Builder has created a folder that contains the necessary
-JavaScript and python code to build a valid component.
+JavaScript and Python code to build a valid component.
 
 The component is in the `components/ExampleComponent.react.js` file.
 
-The source code in this folder can't be used directly as a python package.
+The source code in this folder can't be used directly as a Python package.
 The JavaScript source will need to get transpiled into a single bundle and
 react-docgen will need to generate a valid JSON file. This is the "build step"
 and this step needs to be run every time you make a modification to the source.
@@ -166,7 +165,7 @@ The package is now ready to install. You can install your package locally
 by running
 
 '''),
-dcc.SyntaxHighlighter('''python setup.py install''', customStyle=styles.code_container),
+dcc.SyntaxHighlighter('''Python setup.py install''', customStyle=styles.code_container),
 dcc.Markdown('''
 
 inside the folder of your package.
@@ -186,7 +185,7 @@ app.scripts.config.serve_locally = True
 
 if __name__ == '__main__':
     app.run_server(debug=True)
-''', customStyle=styles.code_container, language='python'),
+''', customStyle=styles.code_container, language='Python'),
 dcc.Markdown('''
 If you open your web browser, you should see a simple app displayed with your component.
 
@@ -197,7 +196,7 @@ archetype. The source of this component is available in the
 `src/components/ExampleComponent.react.js` file.
 
 Edit this source to modify the component. You can rename this file to change
-the name of the component and the python class. If you rename the file or
+the name of the component and the Python class. If you rename the file or
 add a new file, be sure to make those changes to to the `src/index.js` file
 as well.
 
@@ -236,8 +235,8 @@ ExampleComponent.propTypes = {
 ''', language='JavaScript', customStyle=styles.code_container),
 
 dcc.Markdown('''
-Dash converts this component into a python class automatically. If you import
-this class into your python context, you'll be able to interact with it like
+Dash converts this component into a Python class automatically. If you import
+this class into your Python context, you'll be able to interact with it like
 this:
 '''),
 
@@ -262,7 +261,7 @@ ExampleComponent('My label')
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
   File "<string>", line 25, in __init__
-  File "/Users/chriddyp/Repos/venvpy27/lib/python2.7/site-packages/dash/development/base_component.py", line 23, in __init__
+  File "/Users/chriddyp/Repos/venvpy27/lib/Python2.7/site-packages/dash/development/base_component.py", line 23, in __init__
     ', '.join(self._prop_names)
 Exception: Unexpected keyword argument `foo`
 Allowed arguments: label
@@ -270,14 +269,14 @@ Allowed arguments: label
 
 dcc.Markdown('''
 Notice how the comments in the `ExampleComponent.react` match the docstring
-of the `ExampleComponent` python class. Also notie how the docstring includes
+of the `ExampleComponent` Python class. Also notie how the docstring includes
 the types of the arguments (extracted from `propTypes`) and how the classes
 perform keyword validation. All of this logic and translation is provided
 to you automatically through dash through React-docgen and your comments
 that you include around your `propTypes` and component definition.
 
 So, if you add new components, you'll need annotate the components properties
-with these docstrings, otherwise Dash won't be able to generate python dash
+with these docstrings, otherwise Dash won't be able to generate Python dash
 classes.
 
 Once you've made some changes or created a new component, you can recreate
