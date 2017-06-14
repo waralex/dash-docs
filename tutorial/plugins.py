@@ -20,14 +20,14 @@ For example, here are implementations of
 ## From React.js to Python
 
 Dash provides a framework that converts React components
-(written in Javascript) into Python classes that are
+(written in JavaScript) into Python classes that are
 compatible with the Dash ecosystem.
 
 On a high level, this is how that works:
 - Components in dash are serialized as [JSON](www.json.org).
   To write a dash-compatabile component, all of the properties
   of the component must be serializable as JSON. For example,
-  Javascript functions are not valid input arguments.
+  JavaScript functions are not valid input arguments.
 - By annotating components with React docstrings, Dash extracts
   the information about the component's name, properties, and a description
   of the components through [React Docgen](https://github.com/reactjs/react-docgen).
@@ -38,7 +38,7 @@ On a high level, this is how that works:
   generated entirely automatically._ A javascript developer does not need to
   write _any_ python in order to generate a component that can be used in the
   Dash ecosystem.
-- The python component package includes the JSON file and the Javascript bundle
+- The python component package includes the JSON file and the JavaScript bundle
   as extra files.
 - The Dash app will crawl through the app's `layout` property and check which
   component packages are included in the layout and it will extract that

@@ -203,7 +203,14 @@ app.layout = html.Div([
 
 @app.callback(Output('chapter', 'children'), [Input('toc', 'value')])
 def display_content(selected_chapter):
-    return chapters[selected_chapter]['content']
+    content = chapters[selected_chapter]['content']
+    if selected_chapter != 'index':
+        content = html.Div([
+            html.Div(content),
+            html.Hr(),
+            html.A(href='/', children='Back to the Table of Contents')
+        ])
+    return content
 
 app.routes = [
     {

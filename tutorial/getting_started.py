@@ -96,7 +96,7 @@ layout = html.Div([
     the application. We maintain a set of components in the
     `dash_core_components` and the `dash_html_components` library
     but you can also [build your own](https://github.com/plotly/dash-components-archetype)
-    with Javascript and React.js.
+    with JavaScript and React.js.
 
     To get started, create a file named `app.py` with the following code:
     '''.replace('    ', '')),
@@ -131,7 +131,7 @@ layout = html.Div([
            a `<h1>Hello Dash</h1>` HTML element in your application.
         3. Not all components are pure HTML. The `dash_core_components` describe
            higher-level components that are interactive and are generated with
-           Javascript, HTML, and CSS through the React.js library.
+           JavaScript, HTML, and CSS through the React.js library.
         4. Each component is described entirely through keyword attributes.
            Dash is _declarative_: you will primarily describe your application
            through these attributes.
@@ -215,7 +215,7 @@ layout = html.Div([
         The `dash_core_components` library includes a component called `Graph`.
 
         `Graph` renders interactive data visualizations using the open source
-        [plotly.js](https://github.com/plotly/plotly.js) Javascript graphing
+        [plotly.js](https://github.com/plotly/plotly.js) JavaScript graphing
         library. Plotly.js supports over 35 chart types and renders charts in
         both vector-quality SVG and high-performance WebGL.
 
@@ -587,8 +587,6 @@ layout = html.Div([
     Every element attribute of the declarative components can be updated through
     a callback and a subset of the attributes, like the `value` properties of
     the `dcc.Dropdown`, are editable by the user in the interface.
-
-    [Back to the table of content](/)
 
     '''.replace('    ', ''))
 

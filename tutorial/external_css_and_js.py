@@ -5,20 +5,18 @@ import dash_html_components as html
 layout = html.Div([
 
     dcc.Markdown('''
-    # All About CSS and Javascript Bundles in Dash
+    # External CSS and JavaScript
 
     The component libraries that you use with dash, like `dash_core_components`
-    and `dash_html_components`, are python packages that include Javascript
-    and CSS bundles.
-
-    Dash automatically checks which javascript and CSS bundles are necessary
+    and `dash_html_components`, include JavaScript and CSS bundles. Dash
+    automatically checks which javascript and CSS bundles are necessary
     to render the application.
 
     Some of this functionality is customizable and extendable.
 
     ***
 
-    ## Including custom CSS and Javascript in your Dash app
+    ## Including custom CSS and JavaScript in your Dash app
     '''.replace('    ', '')),
 
     dcc.SyntaxHighlighter('''from dash import Dash
@@ -38,7 +36,7 @@ app.scripts.append_script({
 })''', language='python', customStyle={'borderLeft': 'thin solid lightgrey'}),
 
     dcc.Markdown('''
-    Dash currently only supports loading CSS and Javascript bundles
+    Dash currently only supports loading CSS and JavaScript bundles
     that are externally hosted.
 
     ***
@@ -49,7 +47,7 @@ app.scripts.append_script({
 
     In future releases, Dash may incldue a default (removable) stylesheet.
 
-    For now, you can use or fork a [work-in-progress CSS stylesheet](https://codepen.io/chriddyp/pen/bWLwgP?editors=1100) hosted
+    For now, you can use or fork this [CSS stylesheet](https://codepen.io/chriddyp/pen/bWLwgP?editors=1100) hosted
     on [Codepen](https://codepen.io).
 
     You can embed this stylesheet with this URL
@@ -68,14 +66,13 @@ app.scripts.append_script({
 
     ***
 
+    ## Rendering dash apps offline
 
-    ### Rendering dash apps offline
-
-    The Javascript and CSS bundles that are included in
+    The JavaScript and CSS bundles that are included in
     Dash component libraries are hosted on the web
     (on the unpkg CDN) and in the Python packages that you install.
 
-    By default, dash serves the Javascript and CSS resources from the
+    By default, dash serves the JavaScript and CSS resources from the
     online CDNs. This is usually much faster than loading the resources
     from the file system.
 

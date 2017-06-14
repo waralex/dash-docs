@@ -9,7 +9,7 @@ layout = html.Div(children=[
     html.H4('HTML Attributes', id="html-attributes"),
     html.Div('''
     Dash is a web application framework that provides pure Python abstraction
-    around HTML, CSS, and Javascript.
+    around HTML, CSS, and JavaScript.
 
     Instead of writing HTML or using an HTML templating engine,
     you compose your layout using Python structures.
@@ -21,7 +21,7 @@ html.Div([
     html.H1('Hello Dash'),
     html.Div([
         html.P('Dash converts Python classes into HTML'),
-        html.P('This conversion happens behind the scenes by Dash\'s Javascript front-end')
+        html.P('This conversion happens behind the scenes by Dash\'s JavaScript front-end')
     ])
 ])''', language='python', customStyle={'borderLeft': 'thin solid lightgrey'}),
     html.Div(
@@ -32,7 +32,7 @@ html.Div([
     <h1>Hello</h1>
     <div>
         <p>Dash converts Python classes into HTML</p>
-        <p>This conversion happens behind the scenes by Dash's Javascript front-end</p>
+        <p>This conversion happens behind the scenes by Dash's JavaScript front-end</p>
     </div>
 </div>''', language='python', customStyle={'borderLeft': 'thin solid lightgrey'}),
     dcc.Markdown('''
