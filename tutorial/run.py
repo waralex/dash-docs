@@ -159,7 +159,7 @@ chapters = {
         'url': '/dash-html-components',
         'content': [
             html_components.layout,
-            html_component_appendix.layout
+            # html_component_appendix.layout
         ]
     },
 

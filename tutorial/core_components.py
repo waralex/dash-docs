@@ -13,14 +13,16 @@ from server import app
 layout = html.Div(children=[
     html.H1('Dash Core Components'),
 
-    html.Div('''
+    dcc.Markdown('''
         Dash ships with supercharged components for interactive user interfaces.
-        A core set of components, written and maintained by the authors of dash,
-        is available in the `dash-core-components` library. Let's take a look:
-    '''),
+        A core set of components, written and maintained by the Dash team,
+        is available in the `dash-core-components` library.
+
+        The source is on GitHub at [plotly/dash-core-components](https://github.com/plotly/dash-core-components).
+    '''.replace('    ', '')),
 
     html.Hr(),
-    html.Strong('Dropdown'),
+    html.H3('Dropdown'),
     dcc.SyntaxHighlighter('''import dash_core_components as dcc
 
 dcc.Dropdown(
@@ -55,7 +57,7 @@ dcc.Dropdown(
     ], multi=True, value="MTL", id='section2-dropdown-2'),
 
     html.Hr(),
-    html.Strong('Slider'),
+    html.H3('Slider'),
     dcc.SyntaxHighlighter('''import dash_core_components as dcc
 
 dcc.Slider(
@@ -86,9 +88,9 @@ dcc.Slider(
         marks={i: 'Label {}'.format(i) for i in range(10)},
         value=5,
         id='section2-slider-2'
-    ), style={'padding': 20}),
+    )),
     html.Hr(),
-    html.Strong('RangeSlider'),
+    html.H3('RangeSlider'),
     dcc.SyntaxHighlighter('''import dash_core_components as dcc
 
 dcc.RangeSlider(
@@ -121,10 +123,10 @@ dcc.RangeSlider(
         max=6,
         value=[-3, 4],
         id='section2-rangeslider-2'
-    ), style={'padding': 20}),
+    )),
 
     html.Hr(),
-    html.Strong('Input'),
+    html.H3('Input'),
     dcc.SyntaxHighlighter('''import dash_core_components as dcc
 
 dcc.Input(
@@ -140,7 +142,7 @@ dcc.Input(
     ),
 
     html.Hr(),
-    html.Strong('Checkboxes'),
+    html.H3('Checkboxes'),
     dcc.SyntaxHighlighter('''import dash_core_components as dcc
 
 dcc.Checklist(
@@ -185,7 +187,7 @@ dcc.Checklist(
 
 
     html.Hr(),
-    html.Strong('Radio Items'),
+    html.H3('Radio Items'),
     dcc.SyntaxHighlighter('''import dash_core_components as dcc
 
 dcc.RadioItems(
@@ -229,7 +231,7 @@ dcc.RadioItems(
     ),
 
     html.Hr(),
-    html.Strong('Markdown'),
+    html.H3('Markdown'),
     dcc.SyntaxHighlighter('''import dash_core_components as dcc
 
     dcc.Markdown(\'\'\'
@@ -259,7 +261,12 @@ dcc.RadioItems(
     containerProps={'className': 'example-container'}),
 
     html.Hr(),
-    html.Strong('Graphs'),
+    html.H3('Graphs'),
+    dcc.Markdown('''
+    The `Graph` component shares the same syntax as the open-source
+    `plotly.py` library. View the [plotly.py docs](https://plot.ly/python)
+    to learn more.
+    '''.replace('    ', '')),
     dcc.SyntaxHighlighter('''import dash_core_components as dcc
 import plotly.graph_objs as go
 
@@ -309,7 +316,7 @@ for k in layout.keys():
     if k in ['section2-rangeslider-2', 'section2-slider-2']:
         layout[k] = html.Div(layout[k],
             className="example-container",
-            style=dict({'padding': '25px'})
+            style=dict({'padding': '40px'})
         )
 
     else:

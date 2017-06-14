@@ -6,15 +6,21 @@ from server import app
 
 layout = html.Div(children=[
 
-    html.H4('HTML Attributes', id="html-attributes"),
-    html.Div('''
+    dcc.Markdown('''
+    # Dash HTML Components
+
     Dash is a web application framework that provides pure Python abstraction
     around HTML, CSS, and JavaScript.
 
     Instead of writing HTML or using an HTML templating engine,
-    you compose your layout using Python structures.
-    HTML in dash looks like this:
-    '''),
+    you compose your layout using Python structures with the
+    `dash-html-components` library.
+
+    The source for this library is on GitHub: [plotly/dash-html-components](https://github.com/plotly/dash-html-components).
+
+    Here is an example of a simple HTML structure:
+    '''.replace('    ', '')),
+
     dcc.SyntaxHighlighter('''import dash_html_components as html
 
 html.Div([
@@ -39,7 +45,7 @@ html.Div([
         If you're not comfortable with HTML, don't worry!
         You can get 95% of the way there with just a few elements
         and attributes.
-        Dash's core component library also supports
+        Dash's [core component library](/dash-core-components) also supports
         [Markdown](http://commonmark.org/help).
     '''.replace('  ', '')),
 
@@ -71,16 +77,21 @@ html.Div([
     quotes, and more.'''.replace('  ', ''),
     containerProps={'className': 'example-container'}),
 
-    html.Div('If you\'re using HTML components, then you also access to '
-             'properties like `style`, `class`, and `id`. '
-             'All of these attributes are available in the Python classes.'),
-    html.Div("The HTML elements and Dash classes are mostly the same. "
-             "Here are a few key differences:"),
-    html.Li('The `style` property is a dictionary'),
-    html.Li('Properties in the `style` dictionary are camelCased'),
-    html.Li('The `class` key is renamed as `className`'),
-    html.Li('Style properties in pixel units can be supplied as just numbers without the `px` unit'),
-    html.Div("Let's take a look at an example."),
+    dcc.Markdown('''
+        If you're using HTML components, then you also access to
+        properties like `style`, `class`, and `id`.
+        All of these attributes are available in the Python classes.
+
+        The HTML elements and Dash classes are mostly the same but there are
+        a few key differences:
+        - The `style` property is a dictionary
+        - Properties in the `style` dictionary are camelCased
+        - The `class` key is renamed as `className`
+        - Style properties in pixel units can be supplied as just numbers without the `px` unit
+
+        Let's take a look at an example.
+    '''.replace('    ', '')),
+
     dcc.SyntaxHighlighter('''import dash_html_components as html
 
 html.Div([
@@ -88,7 +99,9 @@ html.Div([
     html.P('Example P', className='my-class', id='my-p-element')
 ], style={'marginBottom': 50, 'marginTop': 25})
 ''', language='python', customStyle=styles.code_container),
+
     html.Div("That dash code will render this HTML markup:"),
+
     dcc.SyntaxHighlighter('''
 <div style="margin-bottom: 50px; margin-top: 25px;">
 

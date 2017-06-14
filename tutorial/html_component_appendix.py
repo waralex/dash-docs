@@ -4,7 +4,7 @@ import dash_html_components as html
 layout = html.Div([
     html.Div(style={'marginTop': '60px'}),
 
-    html.H3('Appendix - Common HTML Components'),
+    html.H2('Appendix - Common HTML Components'),
 
     html.Hr(),
 
