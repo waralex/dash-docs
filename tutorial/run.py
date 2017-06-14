@@ -24,6 +24,9 @@ import plugins
 import gallery
 import performance
 import support
+import deployment
+import authentication
+
 
 app.scripts.config.serve_locally = True
 dcc._js_dist[0]['external_url'] = 'https://cdn.plot.ly/plotly-basic-1.27.1.min.js'
@@ -192,6 +195,16 @@ chapters = {
     'support': {
         'url': '/support',
         'content': support.layout
+    },
+
+    'deployment': {
+        'url': '/deployment',
+        'content': deployment.layout
+    },
+
+    'authentication': {
+        'url': '/authentication',
+        'content': authentication.layout
     }
 }
 
