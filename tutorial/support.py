@@ -7,15 +7,6 @@ layout = dcc.Markdown('''
 Dash is an open-source product that is
 developed and maintained by [Plotly](https://plot.ly).
 
-### One-on-one Support
-
-If you are using Dash extensively at your company, you and your team can
-get one-on-one help with a dedicated Plotly engineer through a
-[support plan](https://support.plot.ly).
-
-Support plans are the fastest way to get help with your project and to ensure
-its success.
-
 ### Dash Demos and Enterprise Trials
 
 If you would like to trial or purchase a Dash Enterprise server,
