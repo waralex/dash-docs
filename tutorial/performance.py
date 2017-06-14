@@ -63,12 +63,12 @@ a file on your filesystem. Flask-Caching also has other nice features like
 time-based expiry. Time-based expiry is helpful if you want to update your
 data (clear your cache) every hour or every day.
 
-.'''),
+Here is an example of `Flask-Caching` with Redis:
+'''),
 
 dcc.SyntaxHighlighter(
     examples[1][0], language='python', customStyle=styles.code_container
 ),
-html.Div(examples[1][1], className="example-container"),
 
 dcc.Markdown('''
 
@@ -81,7 +81,7 @@ dcc.Markdown('''
 Most plotly charts are rendered with SVG. This provides crisp rendering,
 publication-quality image export, and wide browser support.
 Unfortunately, rendering graphics in SVG can be slow for large datasets
-(like those with more than 5k-10k points).
+(like those with more than 15k points).
 To overcome this limitation, plotly.js has WebGL alternatives to
 some chart types. WebGL uses the GPU to render graphics.
 

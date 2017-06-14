@@ -30,7 +30,6 @@ app.layout = html.Div([
 ])
 
 
-# When you click the button, this children gets loaded
 @app.callback(
     Output('flask-cache-memoized-children', 'children'),
     [Input('flask-cache-memoized-dropdown', 'value')])
