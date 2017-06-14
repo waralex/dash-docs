@@ -23,6 +23,7 @@ import changelog
 import plugins
 import gallery
 import performance
+import support
 
 app.scripts.config.serve_locally = True
 dcc._js_dist[0]['external_url'] = 'https://cdn.plot.ly/plotly-basic-1.27.1.min.js'
@@ -102,7 +103,7 @@ create_contents([
 
     html.A('Build Your Own Components', href="/plugins"),
 
-    html.A('Base Components', href="/base-components"),
+    # html.A('Base Components', href="/base-components"),
     # 'Best Practices',
     # [
     #     'Virtual Environments',
@@ -135,7 +136,7 @@ chapters = {
     'index': {
         'url': '/',
         'content': html.Div([
-            html.H1('Dash Developer Preview'),
+            html.H1('Dash User Guide'),
             toc
         ])
     },
@@ -186,6 +187,11 @@ chapters = {
     'performance': {
         'url': '/performance',
         'content': performance.layout
+    },
+
+    'support': {
+        'url': '/support',
+        'content': support.layout
     }
 }
 
