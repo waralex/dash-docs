@@ -47,7 +47,7 @@ dcc.Markdown('''
 
 Calling `slow_function('test')` the first time will take 10 seconds.
 Calling it a second time with the same argument will take almost no time
-since the previously computed result was saved in memory and resused.
+since the previously computed result was saved in memory and reused.
 
 ***
 
@@ -60,10 +60,8 @@ Instead, we can use the
 [Flask-Caching](https://pythonhosted.org/Flask-Caching/)
 library which saves the results in a shared memory database like Redis or as
 a file on your filesystem. Flask-Caching also has other nice features like
-time-based expiry.
-
-With time-based expiry, you could, for example, expire the cache on an
-hourly or daily basis.
+time-based expiry. Time-based expiry is helpful if you want to update your
+data (clear your cache) every hour or every day.
 
 .'''),
 

@@ -191,7 +191,7 @@ layout = html.Div([
 
         ***
 
-        #### Data Visualization in Dash
+        #### Reusable Components
 
         By writing our markup in Python, we can create complex resuable
         components like tables without switching contexts or languages.
@@ -220,8 +220,8 @@ layout = html.Div([
         both vector-quality SVG and high-performance WebGL.
 
         The `figure` argument in the `dash_core_components.Graph` component is
-        the same `figure` argument that is used by `plotly.py`, Plotly's Python
-        library.
+        the same `figure` argument that is used by `plotly.py`, Plotly's
+        open source Python graphing library.
         Check out the [plotly.py documentation and gallery](https://plot.ly/python)
         to learn more.
 
@@ -270,7 +270,7 @@ layout = html.Div([
 
         We'll see many of these components throughout the tutorial.
         You can view all of the available components in the
-        [Dash Core Components Gallery](dash-core-components)
+        [Dash Core Components Gallery](/dash-core-components)
     '''.replace('    ', '')),
 
     dcc.SyntaxHighlighter(
@@ -286,7 +286,7 @@ layout = html.Div([
         Notice that these elements aren't interactive yet:
         clicking on the checkboxes, dragging the slider,
         and entering text in the input doesn't update the component.
-        These components will become interactive in the second part
+        These components will become interactive in the final section
         of this tutorial on interactivity.
 
         #### Calling `help`
@@ -298,33 +298,34 @@ layout = html.Div([
 
     '''.replace('    ', '')),
 
-    dcc.SyntaxHighlighter('''
-        >>> help(dcc.Dropdown)
-        class Dropdown(dash.development.base_component.Component)
-        |  A Dropdown component.
-        |  Dropdown is an interactive dropdown element for selecting one or more
-        |  items.
-        |  The values and labels of the dropdown items are specified in the `options`
-        |  property and the selected item(s) are specified with the `value` property.
-        |
-        |  Use a dropdown when you have many options (more than 5) or when you are
-        |  constrained for space. Otherwise, you can use RadioItems or a Checklist,
-        |  which have the benefit of showing the users all of the items at once.
-        |
-        |  Keyword arguments:
-        |  - id (string; optional)
-        |  - className (string; optional)
-        |  - disabled (boolean; optional): If true, the option is disabled
-        |  - multi (boolean; optional): If true, the user can select multiple values
-        |  - options (list; optional)
-        |  - placeholder (string; optional): The grey, default text shown when no option is selected
-        |  - value (string | list; optional): The value of the input. If `multi` is false (the default)
-        |  then value is just a string that corresponds to the values
-        |  provided in the `options` property. If `multi` is true, then
-        |  multiple values can be selected at once, and `value` is an
-        |  array of items with values corresponding to those in the
-        |  `options` prop.
-    '''.replace('    ', ''), customStyle=styles.code_container),
+    html.Div(
+        dcc.Markdown('''
+            >>> help(dcc.Dropdown)
+            class Dropdown(dash.development.base_component.Component)
+            |  A Dropdown component.
+            |  Dropdown is an interactive dropdown element for selecting one or more
+            |  items.
+            |  The values and labels of the dropdown items are specified in the `options`
+            |  property and the selected item(s) are specified with the `value` property.
+            |
+            |  Use a dropdown when you have many options (more than 5) or when you are
+            |  constrained for space. Otherwise, you can use RadioItems or a Checklist,
+            |  which have the benefit of showing the users all of the items at once.
+            |
+            |  Keyword arguments:
+            |  - id (string; optional)
+            |  - className (string; optional)
+            |  - disabled (boolean; optional): If true, the option is disabled
+            |  - multi (boolean; optional): If true, the user can select multiple values
+            |  - options (list; optional)
+            |  - placeholder (string; optional): The grey, default text shown when no option is selected
+            |  - value (string | list; optional): The value of the input. If `multi` is false (the default)
+            |  then value is just a string that corresponds to the values
+            |  provided in the `options` property. If `multi` is true, then
+            |  multiple values can be selected at once, and `value` is an
+            |  array of items with values corresponding to those in the
+            |  `options` prop.
+        '''.replace('    ', '')), style=styles.code_container),
 
     dcc.Markdown('''
         ### Summary
@@ -432,7 +433,7 @@ layout = html.Div([
     and returns it to the Dash application.
 
     There are a few nice patterns in this example:
-    1. We're using the [Pandas](http://pandas.pydata.org/) libary for importing
+    1. We're using the [Pandas](http://pandas.pydata.org/) library for importing
        and filtering datasets in memory.
     2. We load our dataframe at the start of the app: `df = pd.read_csv('...')`.
        This dataframe `df` is in the global state of the app and can be
@@ -449,9 +450,9 @@ layout = html.Div([
        of the dataframe by filtered through pandas filters.
        This is important: *your callbacks should never mutate variables
        outside of their scope*. If your callbacks modify global state, then one
-       user's session might affect the next user's session and if the app is
+       user's session might affect the next user's session and when the app is
        deployed on multiple processes or threads, those modifications will not
-       be shared across instances.
+       be shared across sessions.
 
     #### Multiple inputs
 
@@ -460,7 +461,7 @@ layout = html.Div([
     (the `value` property of 2 `Dropdown` components, 2 `RadioItems` components,
     and 1 `Slider` component) to 1 Output component
     (the `figure` property of the `Graph` component).
-    Notice how the `app.callback` lists all 5 `dash.depdnencies.Input` inside
+    Notice how the `app.callback` lists all 5 `dash.dependencies.Input` inside
     a list in the second argument.
 
     '''.replace('    ', '')),
@@ -475,7 +476,7 @@ layout = html.Div([
 
     dcc.Markdown('''
 
-    In this example, the `update_graph` function gets called whenver the
+    In this example, the `update_graph` function gets called whenever the
     `value` property of the `Dropdown`, `Slider`, or `RadioItems` components
     change.
 
@@ -543,11 +544,11 @@ layout = html.Div([
 
     Dash components are described declaratively by a set of attributes.
     All of these attributes can be updated by callback functions but only
-    a subset of these attributes can be updated through user interaction.
+    a subset of these attributes are updated through user interaction.
     For example, when you click on an option in a `dcc.Dropdown` component, the
     `value` property of that component changes.
 
-    The `dcc.Graph` component has three attributes that similarly change
+    The `dcc.Graph` component has three attributes that can change
     through user-interaction: `hoverData`, `clickData`, and `selectedData`.
     These properties update when you hover over points, click on points, or
     select regions of points in a graph.
@@ -578,7 +579,7 @@ layout = html.Div([
 
     dcc.Markdown('''
 
-    ### Where to go from here
+    ### Summary
 
     We've covered the fundamentals of Dash. Dash apps are built off of a set
     of simple but powerful principles: declarative UIs that are customizable
@@ -586,9 +587,6 @@ layout = html.Div([
     Every element attribute of the declarative components can be updated through
     a callback and a subset of the attributes, like the `value` properties of
     the `dcc.Dropdown`, are editable by the user in the interface.
-
-    And that's basically it. There are lots of places to go from here to make
-    your Dash apps look and feel great.
 
     [Back to the table of content](/)
 
