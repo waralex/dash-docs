@@ -103,7 +103,7 @@ your company would like to sponsor this work,
 
 There are many other ways that we can improve the performance of dash apps,
 like caching front-end requests, pre-filling the cache, improving plotly.js's
-webgl capabilities, reducing javascript bundle sizes, and more.
+webgl capabilities, reducing JavaScript bundle sizes, and more.
 
 Historically, many of these performance related features have been funded
 through company sponorship. If you or your company would like to sponsor

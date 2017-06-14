@@ -8,7 +8,7 @@ layout = [dcc.Markdown('''
 
 One of the really cool things about dash is that
 it is built on top of [React.js](https://facebook.github.io/react/),
-a javascript library for building web components.
+a JavaScript library for building web components.
 
 React has a huge community and open source ecosystem.
 There are thousands of components that have been built
@@ -35,17 +35,17 @@ On a high level, this is how that works:
 - Dash reads this JSON file and dynamically creates python classes that subclass
   a core Dash component. These classes include argument validation,
   python docstrings, types, and a basic set of methods. _These classes are
-  generated entirely automatically._ A javascript developer does not need to
+  generated entirely automatically._ A JavaScript developer does not need to
   write _any_ python in order to generate a component that can be used in the
   Dash ecosystem.
 - The python component package includes the JSON file and the JavaScript bundle
   as extra files.
 - The Dash app will crawl through the app's `layout` property and check which
   component packages are included in the layout and it will extract that
-  component's necessary javascript or CSS bundles. Dash will serve these bundles
-  to Dash's front-end. These javascript bundles are used to render the components.
+  component's necessary JavaScript or CSS bundles. Dash will serve these bundles
+  to Dash's front-end. These JavaScript bundles are used to render the components.
 - Dash's `layout` is serialized as JSON and served to Dash's front-end. This
-  `layout` is recursively rendered with these javascript bundles and React.
+  `layout` is recursively rendered with these JavaScript bundles and React.
 
 
 ## Step-by-step guide
@@ -134,12 +134,12 @@ dcc.Markdown('''
 ### Step 4 - Test the Generated Boilerplate
 
 At this point, Builder has created a folder that contains the necessary
-javascript and python code to build a valid component.
+JavaScript and python code to build a valid component.
 
 The component is in the `components/ExampleComponent.react.js` file.
 
 The source code in this folder can't be used directly as a python package.
-The javascript source will need to get transpiled into a single bundle and
+The JavaScript source will need to get transpiled into a single bundle and
 react-docgen will need to generate a valid JSON file. This is the "build step"
 and this step needs to be run every time you make a modification to the source.
 
@@ -157,7 +157,7 @@ This will perform several tasks:
 - Run tests
 - Create a build
 
-The javascript bundle and the react-docgen JSON file will be in a folder named
+The JavaScript bundle and the react-docgen JSON file will be in a folder named
 after your package alongside an `__init__.py` file.
 
 #### Step 5 - Test Components in a Dash App
@@ -233,7 +233,7 @@ ExampleComponent.propTypes = {
      */
     label: PropTypes.string.isRequired
 };
-''', language='javascript', customStyle=styles.code_container),
+''', language='JavaScript', customStyle=styles.code_container),
 
 dcc.Markdown('''
 Dash converts this component into a python class automatically. If you import

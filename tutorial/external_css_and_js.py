@@ -9,7 +9,7 @@ layout = html.Div([
 
     The component libraries that you use with dash, like `dash_core_components`
     and `dash_html_components`, include JavaScript and CSS bundles. Dash
-    automatically checks which javascript and CSS bundles are necessary
+    automatically checks which JavaScript and CSS bundles are necessary
     to render the application.
 
     Some of this functionality is customizable and extendable.
