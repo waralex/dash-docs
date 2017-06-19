@@ -1,5 +1,6 @@
 import time
 import six
+import os
 
 import dash_html_components as html
 import dash_core_components as dcc
@@ -244,9 +245,10 @@ app.css.append_css({
     )
 })
 
-app.scripts.append_script({
-    'external_url': 'https://gist.github.com/chriddyp/ca0d8f02a1659981a0ea7f013a378bbd'
-})
+if 'DYNO' in os.environ:
+    app.scripts.append_script({
+        'external_url': 'https://gist.github.com/chriddyp/ca0d8f02a1659981a0ea7f013a378bbd'
+    })
 
 if __name__ == '__main__':
     app.run_server(debug=True, threaded=True, port=8050)
