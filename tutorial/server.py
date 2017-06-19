@@ -8,7 +8,6 @@ import json
 import plotly.graph_objs as go
 
 server = Flask(__name__)
-print(__name__)
-app = Dash(__name__, server=server)
+app = Dash(__name__, server=server, url_base_pathname='/dash/')
 
 app.config.supress_callback_exceptions = True

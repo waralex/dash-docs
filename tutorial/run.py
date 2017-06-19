@@ -17,7 +17,6 @@ import dynamic_content
 import external_css_and_js
 import open_problems
 import architecture
-import graph_callbacks
 import live_updates
 import changelog
 import plugins
@@ -43,7 +42,7 @@ def create_contents(contents):
 toc = html.Div(
 create_contents([
 
-    html.A('Introduction', href="/introduction"),
+    html.A('Introduction', href="introduction"),
     [
         'Why Dash?',
         'Licensing'
@@ -51,9 +50,9 @@ create_contents([
 
     html.A('Announcement Letter', href="https://medium.com/@chriddyp/introducing-dash-a-web-app-framework-for-python-data-science-942e37f38ce1"),
 
-    html.A('Gallery', href="/gallery"),
+    html.A('Gallery', href="gallery"),
 
-    html.A('Create Your First App', href="/getting-started"),
+    html.A('Create Your First App', href="getting-started"),
     [
         'Installation',
         'Part 1 - Dash Layout',
@@ -73,25 +72,25 @@ create_contents([
         ]
     ],
 
-    html.A('Deploying', href="/deployment"),
-    [
-        'On Premise',
-        'Cloud PaaS'
-    ],
+    # html.A('Deploying', href="deployment"),
+    # [
+    #     'On Premise',
+    #     'Cloud PaaS'
+    # ],
+    #
+    # html.A('Authentication', href="authentication"),
 
-    html.A('Authentication', href="/authentication"),
-
-    html.A('Performance', href="/performance"),
+    html.A('Performance', href="performance"),
     [
         'Caching',
         'Fast Charting with WebGL',
     ],
 
-    html.A('Live Updates', href="/live-updates"),
+    html.A('Live Updates', href="live-updates"),
 
-    html.A('External CSS and JS', href="/external-resources"),
+    html.A('External CSS and JS', href="external-resources"),
 
-    html.A('Dash Core Components', href="/dash-core-components"),
+    html.A('Dash Core Components', href="dash-core-components"),
     [
         'Graph',
         'Dropdown',
@@ -102,9 +101,9 @@ create_contents([
         'Markdown'
     ],
 
-    html.A('Dash HTML Components', href="/dash-html-components"),
+    html.A('Dash HTML Components', href="dash-html-components"),
 
-    html.A('Build Your Own Components', href="/plugins"),
+    html.A('Build Your Own Components', href="plugins"),
 
     # html.A('Base Components', href="/base-components"),
     # 'Best Practices',
@@ -130,14 +129,14 @@ create_contents([
     #     ]
     # ],
     # 'Get Involved',
-    html.A('Support and Contact', href="/support")
+    html.A('Support and Contact', href="support")
 
 ]), style={'columnCount': 2}
 )
 
 chapters = {
     'index': {
-        'url': '/',
+        'url': '',
         'content': html.Div([
             html.H1('Dash User Guide'),
             toc
@@ -145,22 +144,22 @@ chapters = {
     },
 
     'introduction': {
-        'url': '/introduction',
+        'url': 'introduction',
         'content': introduction.layout
     },
 
     'getting-started': {
-        'url': '/getting-started',
+        'url': 'getting-started',
         'content': getting_started.layout
     },
 
     'dash-core-components': {
-        'url': '/dash-core-components',
+        'url': 'dash-core-components',
         'content': core_components.layout
     },
 
     'dash-html-components': {
-        'url': '/dash-html-components',
+        'url': 'dash-html-components',
         'content': [
             html_components.layout,
             # html_component_appendix.layout
@@ -168,44 +167,44 @@ chapters = {
     },
 
     'external': {
-        'url': '/external-resources',
+        'url': 'external-resources',
         'content': external_css_and_js.layout
     },
 
     'plugins': {
-        'url': '/plugins',
+        'url': 'plugins',
         'content': plugins.layout
     },
 
     'gallery': {
-        'url': '/gallery',
+        'url': 'gallery',
         'content': gallery.layout
     },
 
     'live-updates': {
-        'url': '/live-updates',
+        'url': 'live-updates',
         'content': live_updates.layout
     },
 
     'performance': {
-        'url': '/performance',
+        'url': 'performance',
         'content': performance.layout
     },
 
     'support': {
-        'url': '/support',
+        'url': 'support',
         'content': support.layout
     },
 
-    'deployment': {
-        'url': '/deployment',
-        'content': deployment.layout
-    },
-
-    'authentication': {
-        'url': '/authentication',
-        'content': authentication.layout
-    }
+    # 'deployment': {
+    #     'url': 'deployment',
+    #     'content': deployment.layout
+    # },
+    #
+    # 'authentication': {
+    #     'url': 'authentication',
+    #     'content': authentication.layout
+    # }
 }
 
 
@@ -227,7 +226,7 @@ def display_content(selected_chapter):
         content = html.Div([
             html.Div(content),
             html.Hr(),
-            html.A(href='/', children='Back to the Table of Contents')
+            html.A(href='/dash/', children='Back to the Table of Contents')
         ])
     return content
 
@@ -245,6 +244,5 @@ app.css.append_css({
     )
 })
 
-app._setup_server()
 if __name__ == '__main__':
-    app.server.run(debug=True, threaded=True)
+    app.run_server(debug=True, threaded=True, port=8050)

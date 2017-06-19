@@ -34,12 +34,6 @@ If you have found a bug, you can open an issue on GitHub at
 If you have specific questions, you can also open an issue on StackOverflow
 with the tags `dash-plotly` and `plotly`.
 
-### Security
-
-Plotly maintains a security vulnerability bounty program.
-Visit our [bounty program's main site](https://help.plot.ly/security/)
-for more details.
-
 ### Direct Contact
 
 If you would like to reach out to me directly,
