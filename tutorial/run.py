@@ -244,5 +244,9 @@ app.css.append_css({
     )
 })
 
+app.scripts.append_script({
+    'external_url': 'https://gist.github.com/chriddyp/ca0d8f02a1659981a0ea7f013a378bbd'
+})
+
 if __name__ == '__main__':
     app.run_server(debug=True, threaded=True, port=8050)
