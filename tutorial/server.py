@@ -10,12 +10,6 @@ import os
 
 server = Flask(__name__)
 server.secret_key = os.environ.get('secret_key', 'secret')
-app = Dash(__name__, server=server, url_base_pathname='/dash/')
-
-def print_cookies():
-    print request.headers
-    print request.cookies
-
-server.before_request(print_cookies)
+app = Dash(__name__, server=server, url_base_pathname='/dash/', csrf_protect=False)
 
 app.config.supress_callback_exceptions = True
