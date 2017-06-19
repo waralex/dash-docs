@@ -6,6 +6,7 @@ import dash_core_components as dcc
 from flask import Flask
 import json
 import plotly.graph_objs as go
+import os
 
 server = Flask(__name__)
 server.secret_key = os.environ.get('secret_key', 'secret')
