@@ -54,24 +54,24 @@ create_contents([
     html.A('Gallery', href="gallery"),
 
     html.A('Create Your First App', href="getting-started"),
-    [
-        'Installation',
-        'Part 1 - Dash Layout',
-        [
-            'HTML Components',
-            'Data Visualization in Dash',
-            'Markdown',
-            'Core Component Library',
-            'Calling `help`'
-        ],
-        'Part 2 - Interactivity',
-        [
-            'Fundamentals',
-            'Multiple Inputs',
-            'Multiple Outputs',
-            'Crossfiltering'
-        ]
-    ],
+    # [
+    #     'Installation',
+    #     'Part 1 - Dash Layout',
+    #     [
+    #         'HTML Components',
+    #         'Data Visualization in Dash',
+    #         'Markdown',
+    #         'Core Component Library',
+    #         'Calling `help`'
+    #     ],
+    #     'Part 2 - Interactivity',
+    #     [
+    #         'Fundamentals',
+    #         'Multiple Inputs',
+    #         'Multiple Outputs',
+    #         'Crossfiltering'
+    #     ]
+    # ],
 
     # html.A('Deploying', href="deployment"),
     # [
@@ -82,25 +82,25 @@ create_contents([
     # html.A('Authentication', href="authentication"),
 
     html.A('Performance', href="performance"),
-    [
-        'Caching',
-        'Fast Charting with WebGL',
-    ],
+    # [
+    #     'Caching',
+    #     'Fast Charting with WebGL',
+    # ],
 
     html.A('Live Updates', href="live-updates"),
 
     html.A('External CSS and JS', href="external-resources"),
 
     html.A('Dash Core Components', href="dash-core-components"),
-    [
-        'Graph',
-        'Dropdown',
-        'RadioItems',
-        'TextInput',
-        'Slider',
-        'RangeSlider',
-        'Markdown'
-    ],
+    # [
+    #     'Graph',
+    #     'Dropdown',
+    #     'RadioItems',
+    #     'TextInput',
+    #     'Slider',
+    #     'RangeSlider',
+    #     'Markdown'
+    # ],
 
     html.A('Dash HTML Components', href="dash-html-components"),
 
