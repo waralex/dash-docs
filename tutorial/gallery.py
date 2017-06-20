@@ -11,7 +11,7 @@ layout = html.Div([
 
     ## Getting Started Example
 
-    The [Dash Getting Started Guide](/getting-started) contains
+    The [Dash Getting Started Guide](/dash/getting-started) contains
     many applications that range in complexity.
 
     The first interactive app that you'll create combines a `Slider`
@@ -24,7 +24,22 @@ layout = html.Div([
 
     [![Screenshot of simple Dash app](https://github.com/plotly/dash-docs/raw/master/images/gapminder-animation.gif)](/getting-started)
 
-    [View the getting started guide](/getting-started)
+    [View the getting started guide](/dash/getting-started)
+
+    ***
+
+    ## Oil and Gas Explorer
+
+    This Dash app displays well data from New York State. As you hover over
+    values in the map, a time series is displayed showing production values
+    over time. As you change the years in the range slider, the aggregate
+    time series is updated with the sum of all production over time.
+    The histogram chart is also selectable, serving as an alternative
+    control for selecting a range of time.
+
+    [![Screenshot of an oil and gas app](https://github.com/plotly/dash-docs/raw/master/images/oil-and-gas.gif)](/dash/gallery/new-york-oil-and-gas)
+
+    [View the app](/dash/gallery/new-york-oil-and-gas)
 
     ***
 
@@ -45,9 +60,36 @@ layout = html.Div([
     same framework for the rich interactive applications as the static
     PDF reports.
 
-    [![Screenshot of Goldman Sachs report](https://github.com/plotly/dash-docs/raw/master/images/goldman-sachs.png)](https://damp-stream-82875.herokuapp.com)
+    [![Screenshot of Goldman Sachs report](https://github.com/plotly/dash-docs/raw/master/images/goldman-sachs.png)](/dash/gallery/goldman-sachs-report)
 
-    [View the app](https://damp-stream-82875.herokuapp.com)
+    [View the app](/dash/gallery/goldman-sachs-report)
+
+    ***
+
+    ## Uber Rides
+
+    This app displays all of the Uber rides in New York City in 2007.
+    The original datafile is almost 500MB large and all of the filtering is
+    done in memory with Pandas. Buttons on the chart itself highlight
+    different regions in the city.
+
+    [![Screenshot of an Uber rides app](https://github.com/plotly/dash-docs/raw/master/images/uber-rides.gif)](/dash/gallery/uber-rides)
+
+    [View the app](https://plot.ly/dash/gallery/goldman-sachs-report)
+
+    ***
+
+    ## Simple Stock Tickers App
+
+    This app queries data from Google Finance and displays the results as candlestick
+    charts. Dash comes with several financial chart types including candlestick
+    charts, OHLC graphs, time series, and range sliders.
+
+    This app was written in just around 100 lines of code.
+
+    [![Screenshot of stock tickers app](https://github.com/plotly/dash-docs/raw/master/images/stock-tickers.png)](/dash/gallery/stock-tickers)
+
+    [View the app](https://plot.ly/dash/gallery/stock-tickers)
 
     ***
 
@@ -61,7 +103,9 @@ layout = html.Div([
 
      Built in a few hundred lines of Python code.
 
-    ![Screenshot of drug discovery app](https://github.com/plotly/dash-docs/raw/master/images/drug-discovery-app.gif)
+    [![Screenshot of drug discovery app](https://github.com/plotly/dash-docs/raw/master/images/drug-discovery-app.gif)](https://plot.ly/dash/gallery/drug-explorer)
+
+    [View the app](https://plot.ly/dash/gallery/drug-explorer)
 
     ***
 
@@ -87,12 +131,10 @@ layout = html.Div([
     to improve the reading experience. The graphs are full bleed:
     the extend past the narrow column of text the edges of page.
 
-    [![Screenshot of NYTimes Dash app](https://github.com/plotly/dash-docs/raw/master/images/nytimes.png)](dash-showcase-report.herokuapp.com)
+    [![Screenshot of NYTimes Dash app](https://github.com/plotly/dash-docs/raw/master/images/nytimes.png)](https://plot.ly/dash/gallery/recession-report)
 
-    [View the app](dash-showcase-report.herokuapp.com)
+    [View the app](https://plot.ly/dash/gallery/recession-report)
 
     '''.replace('    ', ''))
-
-
 
 ])
