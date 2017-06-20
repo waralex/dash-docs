@@ -237,8 +237,11 @@ app.layout = html.Div([
                     {'label': i, 'value': i} for i in chapters.keys()
                 ], value='index', id='toc', labelStyle={'fontWeight': 400})
             ], style={'display': 'none'}),
-            html.Div(id="chapter")
-        ], className="container-width content")
+            html.Div(
+                html.Div(id="chapter", className="content"),
+                className="content-container"
+            ),
+        ], className="container-width")
     ], className="background")
 ])
 
