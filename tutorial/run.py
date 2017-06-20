@@ -28,7 +28,6 @@ import deployment
 import authentication
 
 
-app.scripts.config.serve_locally = True
 dcc._js_dist[0]['external_url'] = 'https://cdn.plot.ly/plotly-basic-1.27.1.min.js'
 
 def create_contents(contents):
@@ -273,9 +272,12 @@ app.css.append_css({
 })
 
 if 'DYNO' in os.environ:
+    app.scripts.config.serve_locally = False
     app.scripts.append_script({
         'external_url': 'https://gist.github.com/chriddyp/ca0d8f02a1659981a0ea7f013a378bbd'
     })
+else:
+    app.scripts.config.serve_locally = True
 
 if __name__ == '__main__':
     app.run_server(debug=True, threaded=True, port=8050)
