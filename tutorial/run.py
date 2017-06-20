@@ -227,8 +227,16 @@ header = html.Div(
     )
 )
 
+app.title = 'Dash User Guide and Documentation - Dash by Plotly'
+
 app.layout = html.Div([
     html.Meta(name='viewport', content='width=device-width, initial-scale=1.0'),
+    html.Meta(
+        name='description',
+        content=('Dash User Guide and Documentation. '
+                 'Dash is a Python framework for building '
+                 'reactive web apps developed by Plotly.')
+    ),
     header,
     html.Div([
         html.Div([
