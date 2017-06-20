@@ -49,7 +49,7 @@ create_contents([
         'Licensing'
     ],
 
-    html.A('Announcement Letter', href="https://medium.com/@chriddyp/introducing-dash-a-web-app-framework-for-python-data-science-942e37f38ce1"),
+    html.A('Announcement Letter', href="https://medium.com/@plotlygraphs/introducing-dash-reactive-web-apps-for-python-5ecf7191b503"),
 
     html.A('Gallery', href="gallery"),
 
@@ -208,16 +208,35 @@ chapters = {
     # }
 }
 
+header = html.Div(
+    className='header',
+    children=html.Div(
+        className='content-width',
+        children=[
+            html.Div(),
+
+            html.Div(className="links", children=[
+                html.A('pricing', className="link", href="https://plot.ly/products/on-premise"),
+                html.A('docs', className="link active", href="https://plot.ly/dash/"),
+                html.A('plotly', className="link", href="https://plot.ly/")
+            ])
+        ]
+    )
+)
 
 app.layout = html.Div([
+    header,
     html.Div([
-        dcc.RadioItems(options=[
-            {'label': i, 'value': i} for i in chapters.keys()
-        ], value='index', id='toc', labelStyle={'fontWeight': 400})
-    ], style={'display': 'none'}),
-    html.Div(id="chapter")
-    ], className="container")
-
+        html.Div([
+            html.Div([
+                dcc.RadioItems(options=[
+                    {'label': i, 'value': i} for i in chapters.keys()
+                ], value='index', id='toc', labelStyle={'fontWeight': 400})
+            ], style={'display': 'none'}),
+            html.Div(id="chapter")
+        ], className="container")
+    ], className="background")
+])
 
 
 @app.callback(Output('chapter', 'children'), [Input('toc', 'value')])
