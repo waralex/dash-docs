@@ -22,22 +22,42 @@ layout = html.Div(className="gallery", children=[
     hovering over values, clicking on legend items to toggle traces, and
     zooming into regions.
 
-    [![Screenshot of simple Dash app](https://github.com/plotly/dash-docs/raw/master/images/gapminder-animation.gif)](/getting-started)
+    '''.replace('    ', '')),
 
-    [View the getting started guide](/dash/getting-started)
+    html.A(
+        className="image-link",
+        href="https://plot.ly/dash/getting-started/",
+        children=html.Img(
+            src="https://github.com/plotly/dash-docs/raw/master/images/gapminder-animation.gif",
+            alt="Screenshot of simple Dash app"
+        )
+    ),
+
+    dcc.Markdown('''
+    [View the getting started guide](https://plot.ly/dash/getting-started)
 
     ***
 
-    ## Oil and Gas Explorer
+    ## Oil and Gas Explore)
 
-    This Dash app displays well data from New York State. As you hover over
+    This Dash app displays well data from New York State. As you hover ove)r
     values in the map, a time series is displayed showing production values
     over time. As you change the years in the range slider, the aggregate
     time series is updated with the sum of all production over time.
     The histogram chart is also selectable, serving as an alternative
     control for selecting a range of time.
+    '''.replace('    ', '')),
 
-    [![Screenshot of an oil and gas app](https://github.com/plotly/dash-docs/raw/master/images/oil-and-gas.gif)](/dash/gallery/new-york-oil-and-gas)
+    html.A(
+        className="image-link",
+        href="https://plot.ly/dash/gallery/new-york-oil-and-gas",
+        children=html.Img(
+            src="https://github.com/plotly/dash-docs/raw/master/images/oil-and-gas.gif",
+            alt="Screenshot of an oil and gas Dash app"
+        )
+    ),
+
+    dcc.Markdown('''
 
     [View the app](/dash/gallery/new-york-oil-and-gas)
 
@@ -60,7 +80,18 @@ layout = html.Div(className="gallery", children=[
     same framework for the rich interactive applications as the static
     PDF reports.
 
-    [![Screenshot of Goldman Sachs report](https://github.com/plotly/dash-docs/raw/master/images/goldman-sachs.png)](/dash/gallery/goldman-sachs-report)
+    '''.replace('    ', '')),
+
+    html.A(
+        className="image-link",
+        href="https://plot.ly/dash/gallery/goldman-sachs-report",
+        children=html.Img(
+            src="https://github.com/plotly/dash-docs/raw/master/images/goldman-sachs.png",
+            alt="Screenshot of Goldman Sachs report"
+        )
+    ),
+
+    dcc.Markdown('''
 
     [View the app](/dash/gallery/goldman-sachs-report)
 
@@ -68,12 +99,22 @@ layout = html.Div(className="gallery", children=[
 
     ## Uber Rides
 
-    This app displays all of the Uber rides in New York City in 2007.
+    This app displays all of the Uber rides in New York City in 2007).
     The original datafile is almost 500MB large and all of the filtering is
     done in memory with Pandas. Buttons on the chart itself highlight
     different regions in the city.
+    '''.replace('    ', '')),
 
-    [![Screenshot of an Uber rides app](https://github.com/plotly/dash-docs/raw/master/images/uber-rides.gif)](/dash/gallery/uber-rides)
+    html.A(
+        className="image-link",
+        href="https://plot.ly/dash/gallery/uber-rides",
+        children=html.Img(
+            src="https://github.com/plotly/dash-docs/raw/master/images/uber-rides.gif",
+            alt="Screenshot of an Uber rides Dash app"
+        )
+    ),
+
+    dcc.Markdown('''
 
     [View the app](https://plot.ly/dash/gallery/goldman-sachs-report)
 
@@ -87,13 +128,23 @@ layout = html.Div(className="gallery", children=[
 
     This app was written in just around 100 lines of code.
 
-    [![Screenshot of stock tickers app](https://github.com/plotly/dash-docs/raw/master/images/stock-tickers.png)](/dash/gallery/stock-tickers)
+    '''.replace('    ', '')),
 
+    html.A(
+        className="image-link",
+        href="https://plot.ly/dash/gallery/stock-tickers",
+        children=html.Img(
+            src="https://github.com/plotly/dash-docs/raw/master/images/stock-tickers.png",
+            alt="Screenshot of a stock tickers Dash app"
+        )
+    ),
+
+    dcc.Markdown('''
     [View the app](https://plot.ly/dash/gallery/stock-tickers)
 
     ***
 
-    ## Drug Discovery App
+    ## Drug Discovery Ap)
 
     This app displays a description of the drug as you hover over points in the
     graph.
@@ -103,13 +154,23 @@ layout = html.Div(className="gallery", children=[
 
      Built in a few hundred lines of Python code.
 
-    [![Screenshot of drug discovery app](https://github.com/plotly/dash-docs/raw/master/images/drug-discovery-app.gif)](https://plot.ly/dash/gallery/drug-explorer)
+    '''.replace('    ', '')),
 
+    html.A(
+        className="image-link",
+        href="https://plot.ly/dash/gallery/drug-explorer",
+        children=html.Img(
+            src="https://github.com/plotly/dash-docs/raw/master/images/drug-discovery-app.gif",
+            alt="Screenshot of a drug discovery Dash app"
+        )
+    ),
+
+    dcc.Markdown('''
     [View the app](https://plot.ly/dash/gallery/drug-explorer)
 
     ***
 
-    ## NYTimes Remake: Recession in 255 Charts
+    ## NYTimes Remake: Recession in 255 Chart)
 
     485 lines of Python code, including text copy.
 
@@ -131,7 +192,18 @@ layout = html.Div(className="gallery", children=[
     to improve the reading experience. The graphs are full bleed:
     the extend past the narrow column of text the edges of page.
 
-    [![Screenshot of NYTimes Dash app](https://github.com/plotly/dash-docs/raw/master/images/nytimes.png)](https://plot.ly/dash/gallery/recession-report)
+    '''.replace('    ', '')),
+
+    html.A(
+        className="image-link",
+        href="https://plot.ly/dash/gallery/recession-report",
+        children=html.Img(
+            src="https://github.com/plotly/dash-docs/raw/master/images/nytimes.png",
+            alt="Screenshot of a reession reports"
+        )
+    ),
+
+    dcc.Markdown('''
 
     [View the app](https://plot.ly/dash/gallery/recession-report)
 

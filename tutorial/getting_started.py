@@ -166,7 +166,10 @@ layout = html.Div([
         customStyle=styles.code_container
     ),
 
-    html.Div(examples[1][1], className="example-container"),
+    html.Div(examples[1][1], className="example-container", style={
+        'padding-right': '35px',
+        'padding-bottom': '30px'
+    }),
 
     dcc.Markdown('''
         In this example, we modified the inline styles of the `html.Div`
@@ -421,7 +424,11 @@ class Dropdown(dash.development.base_component.Component)
         customStyle=styles.code_container
     ),
 
-    html.Div(examples[7][1], className="example-container"),
+    html.Div(examples[7][1], className="example-container", style={
+        'paddingLeft': '20px',
+        'paddingRight': '35px',
+        'paddingBottom': '30px'
+    }),
 
     dcc.Markdown('''
     In this example, the `"value"` property of the `Slider` is the input of the app
@@ -471,7 +478,10 @@ class Dropdown(dash.development.base_component.Component)
         customStyle=styles.code_container
     ),
 
-    html.Div(examples[8][1], className="example-container"),
+    html.Div(examples[8][1], className="example-container", style={
+        'padding-right': '35px',
+        'padding-bottom': '30px'
+    }),
 
     dcc.Markdown('''
 

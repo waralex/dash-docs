@@ -267,7 +267,8 @@ app.routes = [
 app.css.append_css({
     'external_url': (
         'https://codepen.io/chriddyp/pen/bWLwgP.css?timestamp=' + str(int(time.time())),
-        'https://codepen.io/chriddyp/pen/LLYbXR.css?timestamp=' + str(int(time.time()))
+        'https://codepen.io/chriddyp/pen/LLYbXR.css?timestamp=' + str(int(time.time())),
+        'https://fonts.googleapis.com/css?family=Dosis'
     )
 })
 
