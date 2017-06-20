@@ -46,11 +46,11 @@ layout = html.Div(className="gallery", children=[
     time series is updated with the sum of all production over time.
     The histogram chart is also selectable, serving as an alternative
     control for selecting a range of time.
-    
-    This application is also mobile-friendly. Dash apps are built and 
-    published in the Web, so the full power of CSS is available. 
-    The Dash core team maintains a core style guide here that 
-    includes a responsive 12 column grid.
+
+    This application is also mobile-friendly. Dash apps are built and
+    published in the Web, so the full power of CSS is available.
+    The Dash core team maintains a [core style guide here](https://codepen.io/chriddyp/pen/bWLwgP)
+    that  includes a responsive 12 column grid.
     '''.replace('    ', '')),
 
     html.A(
