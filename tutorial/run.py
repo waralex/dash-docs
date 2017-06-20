@@ -228,6 +228,7 @@ header = html.Div(
 )
 
 app.layout = html.Div([
+    html.Meta(name='viewport', content='width=device-width, initial-scale=1.0'),
     header,
     html.Div([
         html.Div([
