@@ -38,14 +38,19 @@ layout = html.Div(className="gallery", children=[
 
     ***
 
-    ## Oil and Gas Explore)
+    ## Oil and Gas Explorer
 
-    This Dash app displays well data from New York State. As you hover ove)r
+    This Dash app displays well data from New York State. As you hover over
     values in the map, a time series is displayed showing production values
     over time. As you change the years in the range slider, the aggregate
     time series is updated with the sum of all production over time.
     The histogram chart is also selectable, serving as an alternative
     control for selecting a range of time.
+    
+    This application is also mobile-friendly. Dash apps are built and 
+    published in the Web, so the full power of CSS is available. 
+    The Dash core team maintains a core style guide here that 
+    includes a responsive 12 column grid.
     '''.replace('    ', '')),
 
     html.A(
@@ -99,7 +104,7 @@ layout = html.Div(className="gallery", children=[
 
     ## Uber Rides
 
-    This app displays all of the Uber rides in New York City in 2007).
+    This app displays all of the Uber rides in New York City in 2007.
     The original datafile is almost 500MB large and all of the filtering is
     done in memory with Pandas. Buttons on the chart itself highlight
     different regions in the city.
@@ -144,7 +149,7 @@ layout = html.Div(className="gallery", children=[
 
     ***
 
-    ## Drug Discovery Ap)
+    ## Drug Discovery App
 
     This app displays a description of the drug as you hover over points in the
     graph.
@@ -170,7 +175,7 @@ layout = html.Div(className="gallery", children=[
 
     ***
 
-    ## NYTimes Remake: Recession in 255 Chart)
+    ## NYTimes Remake: Recession in 255 Charts
 
     485 lines of Python code, including text copy.
 
