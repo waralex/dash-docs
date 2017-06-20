@@ -131,7 +131,7 @@ create_contents([
     # 'Get Involved',
     html.A('Support and Contact', href="support")
 
-]), style={'columnCount': 2}
+]), className="toc-chapters"
 )
 
 chapters = {
