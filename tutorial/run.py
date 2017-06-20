@@ -141,7 +141,7 @@ chapters = {
         'content': html.Div([
             html.H1('Dash User Guide'),
             toc
-        ])
+        ], className="toc")
     },
 
     'introduction': {
@@ -211,7 +211,7 @@ chapters = {
 header = html.Div(
     className='header',
     children=html.Div(
-        className='content-width',
+        className='container-width',
         style={'height': '100%'},
         children=[
             html.Img(
@@ -238,7 +238,7 @@ app.layout = html.Div([
                 ], value='index', id='toc', labelStyle={'fontWeight': 400})
             ], style={'display': 'none'}),
             html.Div(id="chapter")
-        ], className="container")
+        ], className="container-width content")
     ], className="background")
 ])
 
