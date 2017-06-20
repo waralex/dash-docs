@@ -214,10 +214,10 @@ header = html.Div(
         className='container-width',
         style={'height': '100%'},
         children=[
-            html.Img(
+            html.A(html.Img(
                 src="https://github.com/plotly/dash-docs/raw/master/images/dash-logo-stripe.png",
                 className="logo"
-            ),
+            ), href='https://plot.ly/products/dash', className="logo-link"),
 
             html.Div(className="links", children=[
                 html.A('pricing', className="link", href="https://plot.ly/products/on-premise"),
