@@ -116,7 +116,7 @@ layout = html.Div(className="gallery", children=[
     This Dash app was adapted from NYTimes's excellent
     [How the Recession Reshaped the Economy in 255 Charts](https://www.nytimes.com/interactive/2014/06/05/upshot/how-the-recession-reshaped-the-economy-in-255-charts.html).
 
-    This Dash app is displays its content linearly, like an
+    This Dash app displays its content linearly, like an
     interactive report. The report highlights several notable
     views of the data and then invites the user to highlight
     their own regions at the end. This method of highlighting

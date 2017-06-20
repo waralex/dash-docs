@@ -17,7 +17,7 @@ is happy to give you or your team a demo of Dash and Dash Enterprise too.
 
 ### Sponsored Feature Requests and Customizations
 
-If you or your company would like to a specific feature or enterprise
+If you or your company would like to sponsor a specific feature or enterprise
 customization, get in touch with our
 [advanced development team](http://plot.ly/products/consulting-and-oem/).
 
