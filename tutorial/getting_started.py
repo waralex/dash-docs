@@ -67,7 +67,7 @@ layout = html.Div([
     so install and upgrade frequently.
     Python 2 and 3 are supported.'''.replace('    ', '')),
 
-    dcc.SyntaxHighlighter('''pip install dash.ly=={}  # The core dash backend
+    dcc.SyntaxHighlighter('''pip install dash=={}  # The core dash backend
         pip install dash-renderer=={}  # The dash front-end
         pip install dash-html-components=={}  # HTML components
         pip install dash-core-components=={}  # Supercharged components
