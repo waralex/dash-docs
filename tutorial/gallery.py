@@ -47,9 +47,10 @@ layout = html.Div(className="gallery", children=[
     The histogram chart is also selectable, serving as an alternative
     control for selecting a range of time.
     
-    This application is also mobile-friendly. Dash apps support CSS
-    frameworks like Skeleton. By simply entering those framework 'classNames'
-    a Dash app can be made to be responsive.
+    This application is also mobile-friendly. Dash apps are built and 
+    published in the Web, so the full power of CSS is available. 
+    The Dash core team maintains a core style guide here that 
+    includes a responsive 12 column grid.
     '''.replace('    ', '')),
 
     html.A(
