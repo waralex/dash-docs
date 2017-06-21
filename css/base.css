@@ -15,6 +15,12 @@
 - Media Queries
 */
 
+/* PLotly.js
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+/* plotly.js's modebar's z-index is outta the roof by default - lower it down */
+.js-plotly-plot .plotly .modebar {
+    z-index: 1;
+}
 
 /* Grid
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
