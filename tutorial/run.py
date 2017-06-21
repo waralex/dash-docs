@@ -8,7 +8,6 @@ from dash.dependencies import Input, State, Event, Output
 
 from server import app, server
 import introduction
-import getting_started
 import html_components
 import core_components
 import basic_callbacks
@@ -26,7 +25,9 @@ import performance
 import support
 import deployment
 import authentication
-
+import installation
+import getting_started_part_1
+import getting_started_part_2
 
 dcc._js_dist[0]['external_url'] = 'https://cdn.plot.ly/plotly-basic-1.27.1.min.js'
 
@@ -52,7 +53,11 @@ create_contents([
 
     html.A('Gallery', href="gallery"),
 
-    html.A('Create Your First App', href="getting-started"),
+    html.A('Create Your First App - Installation', href="installation"),
+
+    html.A('Create Your First App - Part 1: App Layout', href="getting-started"),
+
+    html.A('Create Your First App - Part 2: Interactivity', href="getting-started-part-2"),
     # [
     #     'Installation',
     #     'Part 1 - Dash Layout',
@@ -148,9 +153,19 @@ chapters = {
         'content': introduction.layout
     },
 
+    'installation': {
+        'url': 'installation',
+        'content': installation.layout
+    },
+
     'getting-started': {
         'url': 'getting-started',
-        'content': getting_started.layout
+        'content': getting_started_part_1.layout
+    },
+
+    'getting-started-part-2': {
+        'url': 'getting-started-part-2',
+        'content': getting_started_part_2.layout
     },
 
     'dash-core-components': {
