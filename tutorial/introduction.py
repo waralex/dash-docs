@@ -35,8 +35,7 @@ layout = html.Div([
         Dash is an open source library, released under the permissive MIT license.
         [Plotly](https://plot.ly) develops Dash and offers a platform for
         deploying, orchestrating, and permissioning dash apps in an enterprise
-        environment. If you're interested, please get in touch at
-        [https://plot.ly/products/consulting-and-oem/](https://plot.ly/products/consulting-and-oem/).
+        environment. If you're interested, [please get in touch](https://plotly.typeform.com/to/seG7Vb).
 
         ***
 
