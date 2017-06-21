@@ -7,6 +7,7 @@ import styles
 from server import app
 import tools
 
+print('Loading examples')
 examples = [
     tools.load_example(s) for s in [
         'tutorial/examples/graph_callbacks_simple.py',
