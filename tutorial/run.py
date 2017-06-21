@@ -274,8 +274,8 @@ app.routes = [
 
 app.css.append_css({
     'external_url': (
-        'https://cdn.rawgit.com/plotly/dash-docs/d8e7057c5c3e3f11d93a4a8f8e65a07df1f90d5e/css/base.css',
-        'https://cdn.rawgit.com/plotly/dash-docs/6758ebbbf371061cf9d9cb3b261ce22a88847d6e/css/custom.css',
+        'https://cdn.rawgit.com/plotly/dash-app-stylesheets/f6fed04e3f23c2ac5b4ea88819c2c14c07e88442/dash-docs-base.css',
+        'https://cdn.rawgit.com/plotly/dash-app-stylesheets/30b641e2e89753b13e6557b9d65649f13ea7c64c/dash-docs-custom.css',
         'https://fonts.googleapis.com/css?family=Dosis'
     )
 })
