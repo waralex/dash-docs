@@ -149,7 +149,7 @@ layout = html.Div([
     The `dash_html_components` library contains a component class for every
     HTML tag as well as keyword arguments for all of the HTML arguments.
 
-    Let's customize the text in our app by modify the inline styles of the
+    Let's customize the text in our app by modifying the inline styles of the
     components:
     '''.replace('    ', '')),
 
