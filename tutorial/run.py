@@ -49,7 +49,7 @@ create_contents([
         'Licensing'
     ],
 
-    html.A('Announcement Letter', href="https://medium.com/@plotlygraphs/introducing-dash-reactive-web-apps-for-python-5ecf7191b503"),
+    html.A('Announcement Letter', href="https://medium.com/@plotlygraphs/introducing-dash-5ecf7191b503"),
 
     html.A('Gallery', href="gallery"),
 
