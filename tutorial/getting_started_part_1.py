@@ -266,7 +266,7 @@ layout = html.Div([
 
         We'll see many of these components throughout the tutorial.
         You can view all of the available components in the
-        [Dash Core Components Gallery](/dash-core-components)
+        [Dash Core Components Gallery](/dash/dash-core-components)
     '''.replace('    ', '')),
 
     dcc.SyntaxHighlighter(
@@ -333,8 +333,8 @@ class Dropdown(dash.development.base_component.Component)
         generates higher-level components like controls and graphs.
 
         For reference, see:
-        - [`dash_core_components` gallery](/dash-core-components)
-        - [`dash_html_components` reference](/dash-html-components)
+        - [`dash_core_components` gallery](/dash/dash-core-components)
+        - [`dash_html_components` reference](/dash/dash-html-components)
 
         The second part of the Dash tutorial covers how to make these apps
         interactive.
