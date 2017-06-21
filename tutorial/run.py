@@ -235,7 +235,7 @@ header = html.Div(
 
             html.Div(className="links", children=[
                 html.A('pricing', className="link", href="https://plot.ly/products/on-premise"),
-                html.A('docs', className="link active", href="https://plot.ly/dash/"),
+                html.A('user guide', className="link active", href="https://plot.ly/dash/"),
                 html.A('plotly', className="link", href="https://plot.ly/")
             ])
         ]
