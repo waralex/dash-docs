@@ -1,6 +1,7 @@
 import dash_html_components as html
 import dash_core_components as dcc
 
+
 layout = html.Div(className="gallery", children=[
 
     dcc.Markdown('''
@@ -64,7 +65,7 @@ layout = html.Div(className="gallery", children=[
 
     dcc.Markdown('''
 
-    [View the app](/dash/gallery/new-york-oil-and-gas)
+    [View the app](/dash/gallery/new-york-oil-and-gas) | [View the source code](https://github.com/plotly/dash-oil-and-gas-demo)
 
     ***
 
@@ -98,7 +99,7 @@ layout = html.Div(className="gallery", children=[
 
     dcc.Markdown('''
 
-    [View the app](/dash/gallery/goldman-sachs-report)
+    [View the app](/dash/gallery/goldman-sachs-report) | [View the source code](https://github.com/plotly/dash-goldman-sachs-report-demo)
 
     ***
 
@@ -121,7 +122,8 @@ layout = html.Div(className="gallery", children=[
 
     dcc.Markdown('''
 
-    [View the app](https://plot.ly/dash/gallery/uber-rides)
+    [View the app](https://plot.ly/dash/gallery/uber-rides) | [View the source code](https://github.com/plotly/dash-uber-rides-demo)
+
 
     ***
 
@@ -145,7 +147,7 @@ layout = html.Div(className="gallery", children=[
     ),
 
     dcc.Markdown('''
-    [View the app](https://plot.ly/dash/gallery/stock-tickers)
+    [View the app](https://plot.ly/dash/gallery/stock-tickers) | [View the source code](https://github.com/plotly/dash-stock-tickers-demo-app)
 
     ***
 
@@ -171,7 +173,8 @@ layout = html.Div(className="gallery", children=[
     ),
 
     dcc.Markdown('''
-    [View the app](https://plot.ly/dash/gallery/drug-explorer)
+    [View the app](https://plot.ly/dash/gallery/drug-explorer) | [View the source code](https://github.com/plotly/dash-drug-discovery-demo)
+
 
     ***
 
@@ -204,14 +207,38 @@ layout = html.Div(className="gallery", children=[
         href="https://plot.ly/dash/gallery/recession-report",
         children=html.Img(
             src="https://github.com/plotly/dash-docs/raw/master/images/nytimes.png",
-            alt="Screenshot of a reession reports"
+            alt="Screenshot of a recession reports"
         )
     ),
 
     dcc.Markdown('''
 
-    [View the app](https://plot.ly/dash/gallery/recession-report)
+    [View the app](https://plot.ly/dash/gallery/recession-report) | [View the source code](https://github.com/plotly/dash-recession-report-demo)
 
-    '''.replace('    ', ''))
+
+    ***
+
+    ## Dash Documentation
+
+    Dash is a versatile framework that works well in creating
+    a diverse set of reactive applications.
+
+    The user guide itself is no exception with it being constructed entirely using Dash.
+    '''.replace('    ', '')),
+
+    html.A(
+        className="image-link",
+        href="https://plot.ly/dash/",
+        children=html.Img(
+            src="https://github.com/plotly/dash-docs/raw/master/images/dash-home-page.png",
+            alt="Screenshot of a dash home page"
+        )
+    ),
+    dcc.Markdown('''
+
+
+    [Back to the Table of Contents](https://plot.ly/dash/) | [View Dash User Guide source code](https://github.com/plotly/dash-docs)
+
+    '''.replace('    ', '')),
 
 ])
