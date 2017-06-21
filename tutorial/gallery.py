@@ -121,7 +121,7 @@ layout = html.Div(className="gallery", children=[
 
     dcc.Markdown('''
 
-    [View the app](https://plot.ly/dash/gallery/goldman-sachs-report)
+    [View the app](https://plot.ly/dash/gallery/uber-rides)
 
     ***
 
