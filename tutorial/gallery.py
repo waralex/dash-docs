@@ -1,6 +1,7 @@
 import dash_html_components as html
 import dash_core_components as dcc
 
+
 layout = html.Div(className="gallery", children=[
 
     dcc.Markdown('''
@@ -64,7 +65,7 @@ layout = html.Div(className="gallery", children=[
 
     dcc.Markdown('''
 
-    [View the app](/dash/gallery/new-york-oil-and-gas)
+    [View the app](/dash/gallery/new-york-oil-and-gas) | [View the source code](https://github.com/plotly/dash-oil-and-gas-demo)
 
     ***
 
@@ -98,7 +99,7 @@ layout = html.Div(className="gallery", children=[
 
     dcc.Markdown('''
 
-    [View the app](/dash/gallery/goldman-sachs-report)
+    [View the app](/dash/gallery/goldman-sachs-report) | [View the source code](https://github.com/plotly/dash-goldman-sachs-report-demo)
 
     ***
 
@@ -121,7 +122,8 @@ layout = html.Div(className="gallery", children=[
 
     dcc.Markdown('''
 
-    [View the app](https://plot.ly/dash/gallery/uber-rides)
+    [View the app](https://plot.ly/dash/gallery/uber-rides) | [View the source code](https://github.com/plotly/dash-uber-rides-demo)
+
 
     ***
 
@@ -145,7 +147,7 @@ layout = html.Div(className="gallery", children=[
     ),
 
     dcc.Markdown('''
-    [View the app](https://plot.ly/dash/gallery/stock-tickers)
+    [View the app](https://plot.ly/dash/gallery/stock-tickers) | [View the source code](https://github.com/plotly/dash-stock-tickers-demo-app)
 
     ***
 
@@ -171,7 +173,8 @@ layout = html.Div(className="gallery", children=[
     ),
 
     dcc.Markdown('''
-    [View the app](https://plot.ly/dash/gallery/drug-explorer)
+    [View the app](https://plot.ly/dash/gallery/drug-explorer) | [View the source code](https://github.com/plotly/dash-drug-discovery-demo)
+
 
     ***
 
@@ -210,7 +213,7 @@ layout = html.Div(className="gallery", children=[
 
     dcc.Markdown('''
 
-    [View the app](https://plot.ly/dash/gallery/recession-report)
+    [View the app](https://plot.ly/dash/gallery/recession-report) | [View the source code](https://github.com/plotly/dash-recession-report-demo)
 
     '''.replace('    ', ''))
 
