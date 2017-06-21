@@ -274,8 +274,8 @@ app.routes = [
 
 app.css.append_css({
     'external_url': (
-        'https://codepen.io/chriddyp/pen/bWLwgP.css?timestamp=' + str(int(time.time())),
-        'https://codepen.io/chriddyp/pen/LLYbXR.css?timestamp=' + str(int(time.time())),
+        'https://cdn.rawgit.com/plotly/dash-docs/2848060d33177cd195cadb44ee8abce9393cda9e/css/base.css?token=ABOJhRaBwMcvlISLIzL1Q2199CPpaFwhks5ZUvaywA%3D%3D',
+        'https://cdn.rawgit.com/plotly/dash-docs/6758ebbbf371061cf9d9cb3b261ce22a88847d6e/css/custom.css?token=ABOJhap-e6O8F8079usqfHTPw_VETYydks5ZUvb7wA%3D%3D',
         'https://fonts.googleapis.com/css?family=Dosis'
     )
 })
