@@ -237,7 +237,7 @@ layout = html.Div(className="gallery", children=[
     dcc.Markdown('''
 
 
-    [Back to the Table of Contents](https://plot.ly/dash/) | [View Dash User Guide source code](https://github.com/plotly/dash-docs)
+    [View Dash User Guide source code](https://github.com/plotly/dash-docs)
 
     '''.replace('    ', '')),
 
