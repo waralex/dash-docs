@@ -104,7 +104,7 @@ layout = html.Div([
 
     ```
     $ python app.py
-    ...Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+    ...Running on http://127.0.0.1:8050/ (Press CTRL+C to quit)
     ```
 
     and visit [http:127.0.0.1:8050/](http:127.0.0.1:8050/)
