@@ -207,7 +207,7 @@ layout = html.Div(className="gallery", children=[
         href="https://plot.ly/dash/gallery/recession-report",
         children=html.Img(
             src="https://github.com/plotly/dash-docs/raw/master/images/nytimes.png",
-            alt="Screenshot of a reession reports"
+            alt="Screenshot of a recession reports"
         )
     ),
 
@@ -215,6 +215,30 @@ layout = html.Div(className="gallery", children=[
 
     [View the app](https://plot.ly/dash/gallery/recession-report) | [View the source code](https://github.com/plotly/dash-recession-report-demo)
 
-    '''.replace('    ', ''))
+
+    ***
+
+    ## Dash Documentation
+
+    Dash is a versatile framework that works well in creating
+    a diverse set of reactive applications.
+
+    The user guide itself is no exception with it being constructed entirely using Dash.
+    '''.replace('    ', '')),
+
+    html.A(
+        className="image-link",
+        href="https://plot.ly/dash/",
+        children=html.Img(
+            src="https://github.com/plotly/dash-docs/raw/master/images/dash-home-page.png",
+            alt="Screenshot of a dash home page"
+        )
+    ),
+    dcc.Markdown('''
+
+
+    [View Dash User Guide source code](https://github.com/plotly/dash-docs)
+
+    '''.replace('    ', '')),
 
 ])
