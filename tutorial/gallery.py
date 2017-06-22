@@ -27,7 +27,7 @@ layout = html.Div(className="gallery", children=[
 
     html.A(
         className="image-link",
-        href="https://plot.ly/dash/getting-started/",
+        href="https://plot.ly/dash/getting-started",
         children=html.Img(
             src="https://github.com/plotly/dash-docs/raw/master/images/gapminder-animation.gif",
             alt="Screenshot of simple Dash app"
@@ -220,10 +220,8 @@ layout = html.Div(className="gallery", children=[
 
     ## Dash Documentation
 
-    Dash is a versatile framework that works well in creating
-    a diverse set of reactive applications.
-
-    The user guide itself is no exception with it being constructed entirely using Dash.
+    These Dash that you're looking at? They are itself a Dash app!
+    
     '''.replace('    ', '')),
 
     html.A(
