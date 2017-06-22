@@ -137,7 +137,7 @@ layout = html.Div([
            what is displayed here. This application is using a
            custom CSS stylesheet to modify the default styles of the elements.
            You can learn more in the [css tutorial](/external-resources),
-           but for now you can add `app.css.append_css({"external_url": "https://codepen.io/chriddyp/pen/bWLwgP.css")`
+           but for now you can add `app.css.append_css({"external_url": "https://codepen.io/chriddyp/pen/bWLwgP.css"})`
            to your file to get the same look and feel of these examples.
 
     By default, the items in your layout are arranged one on top of the other.
