@@ -13,6 +13,13 @@ To run an app locally:
 1. (optional) create and activate new virtualenv or conda env (Python 2.7):
 
 ```
+pip install virtualenv
+virtualenv venv 
+source venv/bin/activate
+```
+
+or, with conda:
+```
 conda create --yes -n dash_docs python=2.7
 source activate dash_docs
 ```
