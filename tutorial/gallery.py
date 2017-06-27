@@ -220,7 +220,7 @@ layout = html.Div(className="gallery", children=[
 
     ## Dash Documentation
 
-    These Dash that you're looking at? They are itself a Dash app!
+    These Dash docs that you're looking at? They are itself a Dash app!
     
     '''.replace('    ', '')),
 
