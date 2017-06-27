@@ -18,6 +18,8 @@ Flask-Compress==1.4.0
 Flask-Cors==3.0.2
 Flask-SeaSurf==0.2.2
 functools32==3.2.3.post2
+gevent==1.2.2
+greenlet==0.4.12
 gunicorn==19.6.0
 idna==2.5
 ipython==5.3.0
