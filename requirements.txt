@@ -6,7 +6,7 @@ chardet==3.0.4
 click==6.7
 colorlover==0.2.1
 dash==0.17.7
-dash-core-components==0.5.1
+dash-core-components==0.5.3
 dash-html-components==0.6.2
 dash-renderer==0.7.3
 decorator==4.0.11
@@ -36,7 +36,7 @@ pandas-datareader==0.3.0.post0
 pathlib2==2.2.1
 pexpect==4.2.1
 pickleshare==0.7.4
-plotly==2.0.11
+plotly==2.0.12
 prompt-toolkit==1.0.14
 ptyprocess==0.5.1
 Pygments==2.2.0
