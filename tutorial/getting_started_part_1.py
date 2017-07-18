@@ -136,7 +136,7 @@ layout = html.Div([
         6. The fonts in your application will look a little bit different than
            what is displayed here. This application is using a
            custom CSS stylesheet to modify the default styles of the elements.
-           You can learn more in the [css tutorial](/external-resources),
+           You can learn more in the [css tutorial](/dash/external-resources),
            but for now you can add `app.css.append_css({"external_url": "https://codepen.io/chriddyp/pen/bWLwgP.css"})`
            to your file to get the same look and feel of these examples.
 
