@@ -279,12 +279,6 @@ layout = html.Div([
 
     dcc.Markdown('''
 
-        Notice that these elements aren't interactive yet:
-        clicking on the checkboxes, dragging the slider,
-        and entering text in the input doesn't update the component.
-        These components will become interactive in the final section
-        of this tutorial on interactivity.
-
         #### Calling `help`
 
         Dash components are declarative: every configurable aspect of these

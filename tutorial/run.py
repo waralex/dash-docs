@@ -40,108 +40,44 @@ def create_contents(contents):
             h.append(html.Li(i))
     return html.Ul(h)
 
+
 toc = html.Div(
 create_contents([
 
-    html.A('Introduction', href="introduction"),
-    [
-        'Why Dash?',
-        'Licensing'
-    ],
+    dcc.Link(html.A('Introduction'), href="/dash/introduction"),
 
-    html.A('Announcement Letter', href="https://medium.com/@plotlygraphs/introducing-dash-5ecf7191b503"),
+    dcc.Link(
+        html.A('Announcement Letter'),
+        href="https://medium.com/@plotlygraphs/introducing-dash-5ecf7191b503"),
 
-    html.A('Gallery', href="gallery"),
+    dcc.Link(html.A('Gallery'), href="/dash/gallery"),
 
-    html.A('Create Your First App - Installation', href="installation"),
+    dcc.Link(html.A('Installation'), href="/dash/installation"),
 
-    html.A('Create Your First App - Part 1: App Layout', href="getting-started"),
+    dcc.Link(html.A('Create Your First App - Part 1'), href="/dash/getting-started"),
 
-    html.A('Create Your First App - Part 2: Interactivity', href="getting-started-part-2"),
-    # [
-    #     'Installation',
-    #     'Part 1 - Dash Layout',
-    #     [
-    #         'HTML Components',
-    #         'Data Visualization in Dash',
-    #         'Markdown',
-    #         'Core Component Library',
-    #         'Calling `help`'
-    #     ],
-    #     'Part 2 - Interactivity',
-    #     [
-    #         'Fundamentals',
-    #         'Multiple Inputs',
-    #         'Multiple Outputs',
-    #         'Crossfiltering'
-    #     ]
-    # ],
+    dcc.Link(html.A('Create Your First App - Part 2'), href="/dash/getting-started-part-2"),
 
-    # html.A('Deploying', href="deployment"),
-    # [
-    #     'On Premise',
-    #     'Cloud PaaS'
-    # ],
-    #
-    # html.A('Authentication', href="authentication"),
+    dcc.Link(html.A('Performance'), href="/dash/performance"),
 
-    html.A('Performance', href="performance"),
-    # [
-    #     'Caching',
-    #     'Fast Charting with WebGL',
-    # ],
+    dcc.Link(html.A('Live Updates'), href="/dash/live-updates"),
 
-    html.A('Live Updates', href="live-updates"),
+    dcc.Link(html.A('External CSS and JS'), href="/dash/external-resources"),
 
-    html.A('External CSS and JS', href="external-resources"),
+    dcc.Link(html.A('Dash Core Components'), href="/dash/dash-core-components"),
 
-    html.A('Dash Core Components', href="dash-core-components"),
-    # [
-    #     'Graph',
-    #     'Dropdown',
-    #     'RadioItems',
-    #     'TextInput',
-    #     'Slider',
-    #     'RangeSlider',
-    #     'Markdown'
-    # ],
+    dcc.Link(html.A('Dash HTML Components'), href="/dash/dash-html-components"),
 
-    html.A('Dash HTML Components', href="dash-html-components"),
+    dcc.Link(html.A('Build Your Own Components'), href="/dash/plugins"),
 
-    html.A('Build Your Own Components', href="plugins"),
-
-    # html.A('Base Components', href="/base-components"),
-    # 'Best Practices',
-    # [
-    #     'Virtual Environments',
-    #     'Styling Apps',
-    #     'Basic User Interface',
-    #     'Initial State'
-    # ],
-    # 'Roadmap',
-    # [
-    #     'Sponsoring Development',
-    #     'Near Term',
-    #     [
-    #         'App Templates',
-    #         'Authentication'
-    #     ],
-    #     'Long Term',
-    #     [
-    #         'Dash in Other Languages',
-    #         'GUI App Builder',
-    #         'Client-side Apps'
-    #     ]
-    # ],
-    # 'Get Involved',
-    html.A('Support and Contact', href="support")
+    dcc.Link(html.A('Support and Contact'), href="/dash/support")
 
 ]), className="toc-chapters"
 )
 
 chapters = {
     'index': {
-        'url': '',
+        'url': '/dash/',
         'content': html.Div([
             html.H1('Dash User Guide'),
             toc
@@ -149,32 +85,32 @@ chapters = {
     },
 
     'introduction': {
-        'url': 'introduction',
+        'url': '/dash/introduction',
         'content': introduction.layout
     },
 
     'installation': {
-        'url': 'installation',
+        'url': '/dash/installation',
         'content': installation.layout
     },
 
     'getting-started': {
-        'url': 'getting-started',
+        'url': '/dash/getting-started',
         'content': getting_started_part_1.layout
     },
 
     'getting-started-part-2': {
-        'url': 'getting-started-part-2',
+        'url': '/dash/getting-started-part-2',
         'content': getting_started_part_2.layout
     },
 
     'dash-core-components': {
-        'url': 'dash-core-components',
+        'url': '/dash/dash-core-components',
         'content': core_components.layout
     },
 
     'dash-html-components': {
-        'url': 'dash-html-components',
+        'url': '/dash/dash-html-components',
         'content': [
             html_components.layout,
             # html_component_appendix.layout
@@ -182,44 +118,34 @@ chapters = {
     },
 
     'external': {
-        'url': 'external-resources',
+        'url': '/dash/external-resources',
         'content': external_css_and_js.layout
     },
 
     'plugins': {
-        'url': 'plugins',
+        'url': '/dash/plugins',
         'content': plugins.layout
     },
 
     'gallery': {
-        'url': 'gallery',
+        'url': '/dash/gallery',
         'content': gallery.layout
     },
 
     'live-updates': {
-        'url': 'live-updates',
+        'url': '/dash/live-updates',
         'content': live_updates.layout
     },
 
     'performance': {
-        'url': 'performance',
+        'url': '/dash/performance',
         'content': performance.layout
     },
 
     'support': {
-        'url': 'support',
+        'url': '/dash/support',
         'content': support.layout
-    },
-
-    # 'deployment': {
-    #     'url': 'deployment',
-    #     'content': deployment.layout
-    # },
-    #
-    # 'authentication': {
-    #     'url': 'authentication',
-    #     'content': authentication.layout
-    # }
+    }
 }
 
 header = html.Div(
@@ -255,37 +181,34 @@ app.layout = html.Div([
     header,
     html.Div([
         html.Div([
-            html.Div([
-                dcc.RadioItems(options=[
-                    {'label': i, 'value': i} for i in chapters.keys()
-                ], value='index', id='toc', labelStyle={'fontWeight': 400})
-            ], style={'display': 'none'}),
             html.Div(
                 html.Div(id="chapter", className="content"),
                 className="content-container"
             ),
         ], className="container-width")
-    ], className="background")
+    ], className="background"),
+    dcc.Location(id='location', refresh=False)
 ])
 
 
-@app.callback(Output('chapter', 'children'), [Input('toc', 'value')])
-def display_content(selected_chapter):
-    content = chapters[selected_chapter]['content']
-    if selected_chapter != 'index':
+@app.callback(Output('chapter', 'children'), [Input('location', 'pathname')])
+def display_content(pathname):
+    if pathname is None:
+        return html.Div()
+    matched = [c for c in chapters.keys()
+               if chapters[c]['url'] == pathname]
+
+    if matched:
         content = html.Div([
-            html.Div(content),
+            html.Div(chapters[matched[0]]['content']),
             html.Hr(),
-            html.A(href='/dash/', children='Back to the Table of Contents')
+            dcc.Link(html.A('Back to the Table of Contents'), href='/dash/')
         ])
+    else:
+        content = chapters['index']['content']
+
     return content
 
-app.routes = [
-    {
-        'pathname': chapter_object['url'],
-        'state': {'toc.value': chapter_id}
-    } for chapter_id, chapter_object in six.iteritems(chapters)
-]
 
 app.css.append_css({
     'external_url': (

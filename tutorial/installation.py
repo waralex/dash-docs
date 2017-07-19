@@ -33,10 +33,10 @@ layout = html.Div([
         plotly.__version__
     ), customStyle=styles.code_container),
 
-    dcc.Markdown('''
-
-    Ready? Now, get started with the [Dash Tutorial - Part 1](/dash/getting-started).
-
-    '''.replace('    ', ''))
+    html.Div([
+        'Ready? Now, get started with the ',
+        dcc.Link('Dash Tutorial - Part 1', href='/dash/getting-started'),
+        '.'
+    ])
 
 ])
