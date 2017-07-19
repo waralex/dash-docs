@@ -6,8 +6,6 @@ The Dash Userguide is hosted online at: [https://plot.ly/dash](https://plot.ly/d
 
 ### Running an app locally
 
-[`tutorial/run.py`](https://github.com/plotly/dash-docs/blob/master/tutorial/run.py) imports the chapters toggles them on and off with the radio button table of contents. `tutorial/server.py` is the entry point of the app.
-
 To run an app locally:
 
 1. (optional) create and activate new virtualenv or conda env (Python 2.7):
