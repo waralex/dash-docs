@@ -28,6 +28,7 @@ import authentication
 import installation
 import getting_started_part_1
 import getting_started_part_2
+import urls
 
 dcc._js_dist[0]['external_url'] = 'https://cdn.plot.ly/plotly-basic-1.27.1.min.js'
 
@@ -69,6 +70,8 @@ create_contents([
     dcc.Link(html.A('Dash HTML Components'), href="/dash/dash-html-components"),
 
     dcc.Link(html.A('Build Your Own Components'), href="/dash/plugins"),
+
+    dcc.Link(html.A('URL Support'), href="/dash/urls"),
 
     dcc.Link(html.A('Support and Contact'), href="/dash/support")
 
@@ -140,6 +143,12 @@ chapters = {
     'performance': {
         'url': '/dash/performance',
         'content': performance.layout
+    },
+
+
+    'urls': {
+        'url': '/dash/urls',
+        'content': urls.layout
     },
 
     'support': {

@@ -31,9 +31,6 @@ and general questions.
 If you have found a bug, you can open an issue on GitHub at
 [plotly/dash](https://github.com/plotly/dash).
 
-If you have specific questions, you can also open an issue on StackOverflow
-with the tags `dash-plotly` and `plotly`.
-
 ### Direct Contact
 
 If you would like to reach out to me directly,

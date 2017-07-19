@@ -53,6 +53,10 @@ app.scripts.append_script({
     You can embed this stylesheet with this URL
     [https://codepen.io/chriddyp/pen/bWLwgP.css](https://codepen.io/chriddyp/pen/bWLwgP.css).
 
+```
+app.scripts.append_css({'external_url': 'https://codepen.io/chriddyp/pen/bWLwgP.css'})
+```
+
     Here is an embedded version of this stylesheet.
     '''.replace('    ', '')),
 

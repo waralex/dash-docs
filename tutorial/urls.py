@@ -6,116 +6,181 @@ import styles
 from server import app
 
 layout = [dcc.Markdown('''
-## URLs
+# Multi-Page Apps and URL Support
 
 Dash renders web applications as a "single-page app". This means that
 the application does not completely reload when the user navigates the
 application, making browsing very fast.
 
-Navigation is supported through Dash's native callbacks by
-simply hiding and showing children in response to clicking on links,
-radio buttons, or tabs.
+There are two new components that aid page navigation:
+`dash_core_components.Location` and `dash_core_components.Link`.
 
-For example, here is a simple "navigation" implementation using
-radio buttons.
+`dash_core_components.Location` represents the location bar in your web browser
+through the `pathname` property. Here's a simple example:
+
 '''),
 
-dcc.SyntaxHighlighter('''app.layout = html.Div([
-    dcc.RadioItems(options=[
-        {'label': i, 'value': i} for i in ['Chapter 1', 'Chapter 2']
-    ], value='Chapter 1',
-    id='navigation-links'),
-    html.Div(id='body')
+dcc.SyntaxHighlighter('''import dash
+import dash_core_components as dcc
+import dash_html_components as html
+
+print(dcc.__version__) # 0.6.0 or above is required
+
+app = dash.Dash()
+
+app.layout = html.Div([
+    # represents the URL bar, doesn't render anything
+    dcc.Location(id='url', refresh=False),
+
+    dcc.Link('Navigate to "/"', href='/'),
+    html.Br(),
+    dcc.Link('Navigate to "/page-2"', href='/page-2'),
+
+    # content will be rendered in this element
+    html.Div(id='page-content')
 ])
 
-@app.callback(Output('body', 'children'), [Input('navigation-links', 'value')])
-def display_children(chapter):
-    if chapter == 'Chapter 1':
-        return Div('Welcome to Chapter 1')
-    elif chapter == 'Chapter 2':
-        return Div('Welcome to Chapter 2')
+
+@app.callback(dash.dependencies.Output('page-content', 'children'),
+              [dash.dependencies.Input('url', 'pathname')])
+def display_page(pathname):
+    return html.Div([
+        html.H3('You are on page {}'.format(pathname))
+    ])
+
+
+app.css.append_css({
+    'external_url': 'https://codepen.io/chriddyp/pen/bWLwgP.css'
+})
+
+
+if __name__ == '__main__':
+    app.run_server(debug=True)
 ''', language='python', customStyle=styles.code_container),
-html.Div([
-    dcc.RadioItems(options=[
-        {'label': i, 'value': i} for i in ['Chapter 1', 'Chapter 2']
-    ], value='Chapter 1', id='navigation-links-urls'),
-    html.Div(id='body-urls')
-], id='urls-example', className="example-container"),
 
 dcc.Markdown('''
-Hiding and showing children like this gives the effect of
-navigating to new pages.
+In this example, the callback `display_page` receives the current pathname
+(the last part of the URL) of the page. The callback simply displays the
+`pathname` on page but it could use the `pathname` to display different
+content.
 
-The second part of navigation is updating the browser's navigation bar
-with a new URL and loading the correct children when the user navigates
-to a particular URL pathname.
+The `Link` element updates the `pathname` of the browser _without refreshing the
+page_. If you used a `html.A` element instead, the `pathname` would update but
+the page would refresh.
 
-Dash supports URLs like this by mapping values in the application's state
-to named URL paths. When the application's state matches an entry in these
-routes, Dash will update the address bar with the matching pathname.
+Here is a GIF of what this example looks like. Note how clicking on the `Link`
+doesn't refresh the page even though it updates the URL!
 
-If an application is loaded with a pathname in the URL, then dash will
-look up the state that is associated with that URL and prefill the initial
-controls with that state.
+![Example of a multi-page Dash app using the Location and Link components](https://github.com/plotly/dash-docs/raw/master/images/url-support.gif)
 
-This mapping between state and URL pathnames is done through an application
-variable named `routes`. In this example, navigating to `/chapter-1`
-will prefill the RadioItem's value with the `Chapter 1` value and
-navigating to `/chapter-2` will prefil its value with `Chapter 2`.
-As you click between these values in the radio item, the browser's
-URL path will get updated with the associated pathname without preloading
-the page.
+***
+
+You can modify the example above to display different pages depending on the URL:
 '''),
 
-dcc.SyntaxHighlighter('''app.layout = html.Div([
-    dcc.RadioItems(options=[
-        {'label': i, 'value': i} for i in ['Chapter 1', 'Chapter 2']
-    ], value='Chapter 1',
-    id='navigation-links'),
-    html.Div(id='body')
+dcc.SyntaxHighlighter('''import dash
+import dash_core_components as dcc
+import dash_html_components as html
+
+print(dcc.__version__) # 0.6.0 or above is required
+
+app = dash.Dash()
+
+# Since we're adding callbacks to elements that don't exist in the app.layout,
+# Dash will raise an exception to warn us that we might be
+# doing something wrong.
+# In this case, we're adding the elements through a callback, so we can ignore
+# the exception.
+app.config.supress_callback_exceptions = True
+
+app.layout = html.Div([
+    dcc.Location(id='url', refresh=False),
+    html.Div(id='page-content')
 ])
 
 
-app.routes = [
-    {
-        # The relative URL pathname that this entry is synced with
-        'pathname': '/chapter-1',
-        'state': {
-            # The key is the ID and the property combined with a '.',
-            # the value is the value of that ID and property.
-            'toc.value': 'Chapter 1'
-        }
-    },
+index_page = html.Div([
+    dcc.Link('Go to Page 1', href='/page-1'),
+    html.Br(),
+    dcc.Link('Go to Page 2', href='/page-2'),
+])
 
-    {
-        'pathname': '/chapter-2',
-        'state': {
-            'toc.value': 'Chapter 2'
-        }
-    }
+page_1_layout = html.Div([
+    html.H1('Page 1'),
+    dcc.Dropdown(
+        id='page-1-dropdown',
+        options=[{'label': i, 'value': i} for i in ['LA', 'NYC', 'MTL']],
+        value='LA'
+    ),
+    html.Div(id='page-1-content'),
+    html.Br(),
+    dcc.Link('Go to Page 2', href='/page-2'),
+    html.Br(),
+    dcc.Link('Go back to home', href='/'),
+
+])
+
+@app.callback(dash.dependencies.Output('page-1-content', 'children'),
+              [dash.dependencies.Input('page-1-dropdown', 'value')])
+def page_1_dropdown(value):
+    return 'You have selected "{}"'.format(value)
+
+
+page_2_layout = html.Div([
+    html.H1('Page 2'),
+    dcc.RadioItems(
+        id='page-2-radios',
+        options=[{'label': i, 'value': i} for i in ['Orange', 'Blue', 'Red']],
+        value='Orange'
+    ),
+    html.Div(id='page-2-content'),
+    html.Br(),
+    dcc.Link('Go to Page 1', href='/page-1'),
+    html.Br(),
+    dcc.Link('Go back to home', href='/')
+])
+
+@app.callback(dash.dependencies.Output('page-2-content', 'children'),
+              [dash.dependencies.Input('page-2-radios', 'value')])
+def page_2_radios(value):
+    return 'You have selected "{}"'.format(value)
+
+
+# Update the index
+@app.callback(dash.dependencies.Output('page-content', 'children'),
+              [dash.dependencies.Input('url', 'pathname')])
+def display_page(pathname):
+    if pathname == '/page-1':
+        return page_1_layout
+    elif pathname == '/page-2':
+        return page_2_layout
+    else:
+        return index_page
+    # You could also return a 404 "URL not found" page here
+
+app.css.append_css({
+    'external_url': 'https://codepen.io/chriddyp/pen/bWLwgP.css'
+})
+
+
+if __name__ == '__main__':
+    app.run_server(debug=True)
+''', language='python', customStyle=styles.code_container),
+
+dcc.Markdown('''![Dash app with multiple pages](https://github.com/plotly/dash-docs/raw/master/images/url-support-pages.gif)
+
+In this example, we're displaying different layouts through the `display_page`
+function. A few notes:
+- Each page can have interactive elements even though those elements may not
+be in the initial view. Dash handles these "dynamically generated" components
+gracefully: as they are rendered, they will trigger the
+callbacks with their initial values.
+- Since we're adding callbacks to elements that don't exist in the app.layout,
+Dash will raise an exception to warn us that we might be doing something
+wrong.  In this case, we're adding the elements through a callback, so we can
+ignore the exception by setting `app.config.supress_callback_exceptions = True`
+- You can modify this example to import the different page's `layout`s in different files.
+- This Dash Userguide that you're looking at is itself a multi-page Dash app, using
+rendered with these same principles.
+''')
 ]
-
-@app.callback(Output('body', 'children'), [Input('navigation-links', 'value')])
-def display_children(chapter):
-    if chapter == 'Chapter 1':
-        return Div('Welcome to Chapter 1')
-    elif chapter == 'Chapter 2':
-        return Div('Welcome to Chapter 2')''',
-language='python',
-customStyle=styles.code_container
-),
-
-dcc.Markdown('''
-This is experimental beta behaviour. The interface may change slightly but
-the concepts will remain the same.
-''')]
-
-
-@app.callback(
-    Output('body-urls', 'children'),
-    [Input('navigation-links-urls', 'value')])
-def display_children(chapter):
-    if chapter == 'Chapter 1':
-        return html.Div('Welcome to Chapter 1')
-    elif chapter == 'Chapter 2':
-        return html.Div('Welcome to Chapter 2')
