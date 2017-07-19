@@ -87,9 +87,9 @@ some chart types. WebGL uses the GPU to render graphics.
 
 The high performance, WebGL alternatives include:
 - `scattergl`: A webgl implementation of the `scatter` chart type. [Examples](https://plot.ly/python/webgl-vs-svg/), [reference](https://plot.ly/python/reference/#scattergl)
-- `pointcloud`: A lightweight version of `scattergl` with limited chart. [Reference](https://plot.ly/python/reference/#pointcloud)
-    attributes but even faster rendering. [Reference](https://plot.ly/python/reference/#pointcloud)
+- `pointcloud`: A lightweight version of `scattergl` with limited customizability but even faster rendering. [Reference](https://plot.ly/python/reference/#pointcloud)
 - `heatmapgl`: A webgl implementation of the `heatmap` chart type. [Reference](https://plot.ly/python/reference/#heatmapgl)
+
 
 Currently, dash redraws the entire graph on update using the `plotly.js`
 `newPlot` call. The performance of updating a chart could be improved
