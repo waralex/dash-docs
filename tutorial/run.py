@@ -198,7 +198,7 @@ def display_content(pathname):
     matched = [c for c in chapters.keys()
                if chapters[c]['url'] == pathname]
 
-    if matched:
+    if matched and matched[0] != 'index':
         content = html.Div([
             html.Div(chapters[matched[0]]['content']),
             html.Hr(),
