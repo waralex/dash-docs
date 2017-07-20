@@ -119,9 +119,11 @@ Create the following files in your project folder:
 dcc.SyntaxHighlighter('''import dash
 import dash_core_components as dcc
 import dash_html_components as html
+import os
 
 app = dash.Dash(__name__)
 server = app.server
+server.secret_key = os.environ.get('SECRET_KEY', 'my-secret-key')
 
 app.layout = html.Div([
     html.H2('Hello World'),
@@ -151,6 +153,7 @@ dcc.Markdown('''
 dcc.SyntaxHighlighter('''venv
 *.pyc
 .DS_Store
+.env
 ''', customStyle=styles.code_container),
 
 dcc.Markdown('''
@@ -188,6 +191,8 @@ dcc.SyntaxHighlighter('''$ heroku create my-dash-app # change my-dash-app to a u
 $ git add . # add all files to git
 $ git commit -m 'Initial app boilerplate'
 $ git push heroku master # deploy code to heroku
+$ heroku ps:scale web=1  # run the app with a 1 heroku "dyno"
+$ heroku config:set SECRET_KEY=my_secret_key # replace my_secret_key with a random string
 ''', customStyle=styles.code_container, language='python'),
 
 dcc.Markdown('''
