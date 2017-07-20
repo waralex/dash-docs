@@ -73,6 +73,8 @@ create_contents([
 
     dcc.Link(html.A('URL Support'), href="/dash/urls"),
 
+    dcc.Link(html.A('Deployment'), href="/dash/deployment"),
+
     dcc.Link(html.A('Support and Contact'), href="/dash/support")
 
 ]), className="toc-chapters"
@@ -145,10 +147,14 @@ chapters = {
         'content': performance.layout
     },
 
-
     'urls': {
         'url': '/dash/urls',
         'content': urls.layout
+    },
+
+    'deployment': {
+        'url': '/dash/deployment',
+        'content': deployment.layout
     },
 
     'support': {
