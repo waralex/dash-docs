@@ -160,7 +160,7 @@ dcc.Markdown('''
 
 '''),
 
-dcc.SyntaxHighlighter('''gunicorn app:server
+dcc.SyntaxHighlighter('''web: gunicorn app:server
 ''', customStyle=styles.code_container),
 
 dcc.Markdown('''
