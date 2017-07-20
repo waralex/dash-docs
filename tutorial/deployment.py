@@ -9,7 +9,7 @@ own machine. To share a Dash app, you need to "deploy" your Dash app to a
 server and open up the server's firewall to the public or to a restricted
 set of IP addresses.
 
-### 3rd Party Dash App Hosting
+### Public Dash App Hosting
 
 Dash apps can be hosted on a variety of third-party services: Digital Ocean,
 Python Anywhere, Heroku, Google Cloud, Amazon Web Services, Azure, and more.
@@ -20,11 +20,13 @@ a Dash app just like you would deploy a Flask app.
 Almost every cloud server provider has a guide for deploying
 Flask apps. For more, see the official [Flask Guide to Deployment](http://flask.pocoo.org/docs/0.12/deploying/).
 
+### Private Dash Apps
+
 You can restrict access to Dash apps through the forthcoming `dash-auth`
 package, which provides authentication through HTTP Basic Auth and through
-your Plotly Cloud account.
+your Plotly Cloud account. [Plotly Cloud](https://plot.ly/)
 
-### On-Premise Dash App Hosting
+### On-Premise Dash Apps
 
 You can use [Plotly On-Premise](https://plot.ly/products/on-premise).
 It offers an enterprise-wide
