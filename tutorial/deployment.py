@@ -9,21 +9,27 @@ own machine. To share a Dash app, you need to "deploy" your Dash app to a
 server and open up the server's firewall to the public or to a restricted
 set of IP addresses.
 
-Plotly Cloud ([plot.ly](https://plot.ly)) does not offer public Dash app
-hosting. You can host public Dash apps on a variety of services: Digital Ocean,
+### 3rd Party Dash App Hosting
+
+Dash apps can be hosted on a variety of third-party services: Digital Ocean,
 Python Anywhere, Heroku, Google Cloud, Amazon Web Services, Azure, and more.
+You can also deploy Dash apps directly on your own infrastructure.
 
 Dash uses Flask under the hood. This makes deployment easy: you can deploy
 a Dash app just like you would deploy a Flask app.
 Almost every cloud server provider has a guide for deploying
 Flask apps. For more, see the official [Flask Guide to Deployment](http://flask.pocoo.org/docs/0.12/deploying/).
 
-If you are deploying Dash apps behind your firewall, consider licensing the
-Dash Deployment Server. The Dash Deployment Server is part of
-[Plotly On-Premise](https://plot.ly/products/on-premise).
-It offers easy git-based deployment, automatic URL
-namespacing, built-in SSL support, LDAP authentication, and an enterprise-wide
-Dash App Portal.
+You can restrict access to Dash apps through the forthcoming `dash-auth`
+package, which provides authentication through HTTP Basic Auth and through
+your Plotly Cloud account.
+
+### On-Premise Dash App Hosting
+
+You can use [Plotly On-Premise](https://plot.ly/products/on-premise).
+It offers an enterprise-wide
+Dash App Portal, easy git-based deployment, automatic URL
+namespacing, built-in SSL support, LDAP authentication, and more.
 [Request a Dash Enterprise demo](https://plot.ly/products/on-premise).
 
 ### Dash and Flask
@@ -124,6 +130,8 @@ import os
 app = dash.Dash(__name__)
 server = app.server
 server.secret_key = os.environ.get('SECRET_KEY', 'my-secret-key')
+
+app.css.append_css({"external_url": "https://codepen.io/chriddyp/pen/bWLwgP.css"})
 
 app.layout = html.Div([
     html.H2('Hello World'),
