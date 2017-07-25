@@ -36,19 +36,19 @@ namespacing, built-in SSL support, LDAP authentication, and more.
 
 ### Dash and Flask
 
-Dash apps are web applications. Dash uses [Flask]() as the web server.
-The underlying web server instance is available at `app.server`, that is:
+Dash apps are web applications. Dash uses [Flask]() as the web framework.
+The underlying Flask app is available at `app.server`, that is:
 '''),
 
 dcc.SyntaxHighlighter('''import dash
 
 app = dash.Dash(__name__)
 
-server = app.server # the flask server
+server = app.server # the Flask app
 ''', language='python', customStyle=styles.code_container),
 
 dcc.Markdown('''
-You can also pass your own flask server instance into Dash:
+You can also pass your own flask app instance into Dash:
 '''),
 
 dcc.SyntaxHighlighter('''import flask
