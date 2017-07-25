@@ -29,6 +29,7 @@ import installation
 import getting_started_part_1
 import getting_started_part_2
 import urls
+import auth
 
 dcc._js_dist[0]['external_url'] = 'https://cdn.plot.ly/plotly-basic-1.27.1.min.js'
 
@@ -155,6 +156,11 @@ chapters = {
     'deployment': {
         'url': '/dash/deployment',
         'content': deployment.layout
+    },
+
+    'auth': {
+        'url': '/dash/authentication',
+        'content': auth.layout
     },
 
     'support': {
