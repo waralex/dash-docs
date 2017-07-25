@@ -10,7 +10,7 @@ layout = html.Div([
     [`dash-auth`](https://github.com/plotly/dash-auth) package.
 
     `dash-auth` provides two methods of authentication:
-    HTTP Basic Auth and Plotly OAuth.
+    **HTTP Basic Auth** and **Plotly OAuth**.
 
     HTTP Basic Auth is one of the simplest forms of authentication on the web.
     As a Dash developer, you hardcode a set of usernames and passwords in your
@@ -45,13 +45,27 @@ layout = html.Div([
     ## Basic Auth Example
 
     Logging in through Basic Auth looks like this:
-    ![Dash Basic Auth Example](https://github.com/plotly/dash-docs/raw/master/images/basic-auth.gif)
+    '''.replace('    ', '')),
 
-    Auth requires a couple of package updates:
+    html.Img(
+        src="https://github.com/plotly/dash-docs/raw/master/images/basic-auth.gif",
+        alt="Dash Basic Auth Example",
+        style={
+            'width': '100%', 'border': 'thin lightgrey solid',
+            'border-radius': '4px'
+        }),
+
+
+    dcc.Markdown('''
+    Installation:
     '''.replace('    ', '')),
 
     dcc.SyntaxHighlighter('''pip install dash==0.17.8rc2
 pip install dash-auth==0.0.2''', customStyle=styles.code_container),
+
+    dcc.Markdown('''
+    Example Code:
+    '''.replace('    ', '')),
 
     dcc.SyntaxHighlighter('''
 import dash
@@ -110,13 +124,26 @@ if __name__ == '__main__':
     ## Plotly OAuth Example
 
     Logging in through Plotly OAuth looks like this:
-    ![Dash OAuth Example](https://github.com/plotly/dash-docs/raw/master/images/plotly-auth.gif)
+    '''.replace('   ', '')),
 
-    Auth requires a couple of package updates:
+    html.Img(
+        src="https://github.com/plotly/dash-docs/raw/master/images/plotly-auth.gif",
+        alt="Dash Plotly OAuth Example",
+        style={
+            'width': '100%', 'border': 'thin lightgrey solid',
+            'border-radius': '4px'
+        }),
+
+    dcc.Markdown('''
+    Installation:
     '''.replace('    ', '')),
 
     dcc.SyntaxHighlighter('''pip install dash==0.17.8rc2
 pip install dash-auth==0.0.2''', customStyle=styles.code_container),
+
+    dcc.Markdown('''
+    Example Code:
+    '''.replace('    ', '')),
 
     dcc.SyntaxHighlighter('''
 import dash
