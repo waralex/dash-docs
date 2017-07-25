@@ -67,8 +67,7 @@ pip install dash-auth==0.0.2''', customStyle=styles.code_container),
     Example Code:
     '''.replace('    ', '')),
 
-    dcc.SyntaxHighlighter('''
-import dash
+    dcc.SyntaxHighlighter('''import dash
 import dash_auth
 import dash_html_components as html
 import dash_core_components as dcc
@@ -145,8 +144,7 @@ pip install dash-auth==0.0.2''', customStyle=styles.code_container),
     Example Code:
     '''.replace('    ', '')),
 
-    dcc.SyntaxHighlighter('''
-import dash
+    dcc.SyntaxHighlighter('''import dash
 import dash_auth
 import dash_html_components as html
 import dash_core_components as dcc
