@@ -18,8 +18,8 @@ If you would like to learn more about Plotly On-Premise or start a trial,
 For example:
 '''),
 
-dcc.SyntaxHighlighter('''$ mkdir dash_app_example
-$ cd dash_app_example
+dcc.SyntaxHighlighter('''mkdir dash_app_example
+cd dash_app_example
 ''', customStyle=styles.code_container),
 
 dcc.Markdown('''
@@ -28,9 +28,9 @@ dcc.Markdown('''
 
 '''),
 
-dcc.SyntaxHighlighter('''$ git init        # initializes an empty git repo
-$ virtualenv venv # creates a virtualenv called "venv"
-$ source venv/bin/activate # uses the virtualenv
+dcc.SyntaxHighlighter('''git init        # initializes an empty git repo
+virtualenv venv # creates a virtualenv called "venv"
+source venv/bin/activate # uses the virtualenv
 ''', customStyle=styles.code_container),
 
 dcc.Markdown('''
@@ -38,13 +38,13 @@ dcc.Markdown('''
 app's dependencies with this virtualenv:
 '''),
 
-dcc.SyntaxHighlighter('''$ pip install dash==0.17.8rc2
-$ pip install dash-auth==0.0.2
-$ pip install dash-renderer
-$ pip install dash-core-components
-$ pip install dash-html-components
-$ pip install plotly
-$ pip install gunicorn
+dcc.SyntaxHighlighter('''pip install dash==0.17.8rc2
+pip install dash-auth==0.0.2
+pip install dash-renderer
+pip install dash-core-components
+pip install dash-html-components
+pip install plotly
+pip install gunicorn
 ''', customStyle=styles.code_container),
 
 dcc.Markdown('''
@@ -53,7 +53,7 @@ Anytime that you want to do work on this app inside this folder, you should
 make sure that you're using this project's `virtualenv`.
 Activate the `virtualenv` with
 ```
-$ source venv/bin/activate
+source venv/bin/activate
 ```
 
 #### Step 3 - Add the following sample files to that folder
@@ -193,7 +193,7 @@ Description: `requirements.txt` describes your Python dependencies.
 You can fill this file in automatically with:
 '''),
 
-dcc.SyntaxHighlighter('''$ pip freeze > requirements.txt
+dcc.SyntaxHighlighter('''pip freeze > requirements.txt
 ''', customStyle=styles.code_container),
 
 dcc.Markdown('''
@@ -233,7 +233,7 @@ dcc.Markdown('''
 The SSH key is a way to authenticate you against the Plotly On Premise server.
 
 ```
-$ ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
 ```
 
 This will create two files in the location that you have specified.
@@ -283,7 +283,7 @@ dcc.Markdown('''
 
 '''),
 
-dcc.SyntaxHighlighter('''$ git remote add plotly https://your-dash-app-name.your-dash-app-manager.com.git
+dcc.SyntaxHighlighter('''git remote add plotly https://your-dash-app-name.your-dash-app-manager.com.git
 ''', customStyle=styles.code_container, language='python'),
 
 dcc.Markdown('''
@@ -291,7 +291,7 @@ For example, if your dash-app manager URL is `dash-app-manager.acme.com` and you
 dash app name is `my-dash-app`, then this command would be:
 '''),
 
-dcc.SyntaxHighlighter('''$ git remote add https://my-dash-app.dash-app-manager.acme.com.git'''),
+dcc.SyntaxHighlighter('''git remote add https://my-dash-app.dash-app-manager.acme.com.git'''),
 
 dcc.Markdown('''
 #### Step 7. Add the Code and Deploy
@@ -301,9 +301,9 @@ Deploy your code by commiting it and pushing it to the repository:
 '''),
 
 
-dcc.SyntaxHighlighter('''$ git add .
-$ git commit -m 'initial app'
-$ git push plotly master
+dcc.SyntaxHighlighter('''git add .
+git commit -m 'initial app'
+git push plotly master
 ''', customStyle=styles.code_container, language='python'),
 
 dcc.Markdown('''
@@ -313,10 +313,10 @@ When you modify `app.py` with your own code, you will need to add the changes
 to git and push those changes to heroku.
 '''),
 
-dcc.SyntaxHighlighter('''$ git status # view the changes
-$ git add .  # add all the changes
-$ git commit -m 'a description of the changes'
-$ git push heroku master
+dcc.SyntaxHighlighter('''git status # view the changes
+git add .  # add all the changes
+git commit -m 'a description of the changes'
+git push heroku master
 ''', customStyle=styles.code_container, language='python'),
 
 ]
