@@ -208,8 +208,8 @@ that shouldn't be added to your code version control history, like API keys.
 File content:
 '''),
 
-dcc.SyntaxHighlighter('''PLOTLY_USERNAME="my-plotly-username"
-PLOTLY_API_KEY="my-plotly-api-key"
+dcc.SyntaxHighlighter('''PLOTLY_USERNAME=my-plotly-username
+PLOTLY_API_KEY=my-plotly-api-key
 ''', language='python', customStyle=styles.code_container),
 
 dcc.Markdown('''
