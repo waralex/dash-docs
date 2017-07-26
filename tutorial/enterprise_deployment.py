@@ -13,6 +13,8 @@ If you would like to learn more about Plotly On-Premise or start a trial,
 
 ### Getting Started Guide
 
+***
+
 #### Step 1. Create a new folder for your project
 
 For example:
@@ -23,6 +25,7 @@ cd dash_app_example
 ''', customStyle=styles.code_container),
 
 dcc.Markdown('''
+***
 
 #### Step 2. Initialize that folder with `git` and a `virtualenv`
 
@@ -55,6 +58,8 @@ Activate the `virtualenv` with
 ```
 source venv/bin/activate
 ```
+
+***
 
 #### Step 3 - Add the following sample files to that folder
 
@@ -293,7 +298,8 @@ dash app name is `my-dash-app`, then this command would be:
 
 dcc.SyntaxHighlighter('''git remote add https://my-dash-app.dash-app-manager.acme.com.git'''),
 
-dcc.Markdown('''
+dcc.Markdown('''***
+
 #### Step 7. Add the Code and Deploy
 
 Deploy your code by commiting it and pushing it to the repository:
@@ -306,7 +312,8 @@ git commit -m 'initial app'
 git push plotly master
 ''', customStyle=styles.code_container, language='python'),
 
-dcc.Markdown('''
+dcc.Markdown('''***
+
 #### Step 9. Update the code and redeploy
 
 When you modify `app.py` with your own code, you will need to add the changes
