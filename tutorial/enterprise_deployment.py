@@ -38,7 +38,8 @@ dcc.Markdown('''
 app's dependencies with this virtualenv:
 '''),
 
-dcc.SyntaxHighlighter('''$ pip install dash
+dcc.SyntaxHighlighter('''$ pip install dash==0.17.8rc2
+$ pip install dash-auth==0.0.2
 $ pip install dash-renderer
 $ pip install dash-core-components
 $ pip install dash-html-components
