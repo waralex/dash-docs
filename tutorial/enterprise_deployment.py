@@ -318,12 +318,4 @@ $ git commit -m 'a description of the changes'
 $ git push heroku master
 ''', customStyle=styles.code_container, language='python'),
 
-dcc.Markdown('''
-
-***
-
-This workflow for deploying apps on heroku is very similar to how deployment
-works with the Plotly On-Premise's Dash Deployment Server.
-If you'd like to learn more, [please reach out](https://plot.ly/products/on-premise).
-''')
 ]
