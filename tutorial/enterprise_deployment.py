@@ -195,7 +195,7 @@ Description: `requirements.txt` describes your Python dependencies.
 You can fill this file in automatically with:
 '''),
 
-dcc.SyntaxHighlighter('''pip freeze > requirements.txt
+dcc.SyntaxHighlighter('''$ pip freeze > requirements.txt
 ''', customStyle=styles.code_container),
 
 dcc.Markdown('''
@@ -210,8 +210,7 @@ app to app.
 File content:
 '''),
 
-dcc.SyntaxHighlighter('''
-# Fill in with your Plotly On-Premise username
+dcc.SyntaxHighlighter('''# Fill in with your Plotly On-Premise username
 PLOTLY_USERNAME='my-plotly-username'
 
 # Fill in with your Plotly On-Premise API key
