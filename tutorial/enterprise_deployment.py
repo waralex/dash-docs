@@ -85,7 +85,8 @@ import dash_auth
 import dash_core_components as dcc
 import dash_html_components as html
 import plotly.plotly as py
-import os
+
+import config
 
 app = dash.Dash(__name__)
 
@@ -99,14 +100,11 @@ app.config.css.serve_locally = True
 # Set the server secret key - this variable is set through the `.env` file
 server.secret_key = os.environ.get('SECRET_KEY', 'my-secret-key')
 
-# Set the credentials to your plotly account
-# credentials are provided through the .env file
-PLOTLY_DOMAIN = 'https://your-plotly-domain.com'
 py.sign_in(
-    os.environ.get('PLOTLY_USERNAME'),
-    os.environ.get('PLOTLY_API_KEY'),
-    plotly_domain=PLOTLY_DOMAIN,
-    plotly_api_domain=PLOTLY_DOMAIN, # same as plotly_domain
+    config.PLOTLY_USERNAME,
+    config.PLOTLY_API_KEY,
+    plotly_domain=config.PLOTLY_DOMAIN,
+    plotly_api_domain=config.PLOTLY_DOMAIN, # same as plotly_domain
 )
 
 # Set the privacy of your Dash app. This also saves the app to your
@@ -168,7 +166,6 @@ File content:
 dcc.SyntaxHighlighter('''venv
 *.pyc
 .DS_Store
-.env
 ''', customStyle=styles.code_container),
 
 dcc.Markdown('''
@@ -204,22 +201,34 @@ dcc.SyntaxHighlighter('''pip freeze > requirements.txt
 dcc.Markdown('''
 ***
 
-Filename: **`.env`**
+Filename: **`config`**
 
-Description: This file contains "environment" variables that are accessible
-in your python script with `os.environ.get`. This file contains "secrets"
-that shouldn't be added to your code version control history, like API keys.
+Description: This file contains several settings that are used in your app.
+It's kept in a separate file so that it's easy for you to transfer from
+app to app.
 
 File content:
 '''),
 
-dcc.SyntaxHighlighter('''PLOTLY_USERNAME=my-plotly-username
-PLOTLY_API_KEY=my-plotly-api-key
+dcc.SyntaxHighlighter('''
+# Fill in with your Plotly On-Premise username
+PLOTLY_USERNAME='my-plotly-username'
+
+# Fill in with your Plotly On-Premise API key
+# See <your-plotly-server>/settings/api to generate a key
+# If you have already created a key and saved it on your own machine
+# (from the Plotly-Python library instructions at https://plot.ly/python/getting-started)
+# then you can view that key in your ~/.plotly/.config file or by running:
+# `python -c import plotly; print(plotly.tools.get_config_file())`
+PLOTLY_API_KEY='my-plotly-api-key'
+
+# Fill in with your Plotly On-Premise domain
+PLOTLY_DOMAIN='https://plotly.acme-corporation.com'
 ''', language='python', customStyle=styles.code_container),
 
 dcc.Markdown('''
-Fill in both of those variables with your on-premise username and API key.
-You can generate your API key by visiting <your-plotly-server>.com/settings/api.
+As mentioned in the comments, if you can generate your API key by
+visiting <your-plotly-server>.com/settings/api.
 If you have already generated an API key and saved it, then you can view it in
 python with:
 '''),
@@ -237,17 +246,37 @@ dcc.Markdown('''
 
 The SSH key is a way to authenticate you against the Plotly On Premise server.
 
-```
-ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
-```
+To create an SSH key, run the following command. The command will walk you
+through a few instructions. You can modify `~/.ssh/plotly-ssh-key` to a
+different location if you would like.
+'''),
 
+dcc.SyntaxHighlighter(
+    ('$ ssh-keygen -t rsa -b 4096 -C "your_email@example.com" '
+     '-f "~/.ssh/plotly-ssh-key"'),
+    customStyle=styles.code_container,
+    language='python'
+),
+
+dcc.Markdown('''
 This will create two files in the location that you have specified.
 One of these files is the "public key" and it contains the ".pub" suffix.
 
+Add this SSH key to your system with the `ssh-add` command.
+For example, if your key was created in the location `~/.ssh/plotly-ssh-key`,
+then run:
+'''),
+
+dcc.SyntaxHighlighter(
+    '$ ssh-add ~/.ssh/plotly-ssh-key',
+    customStyle=styles.code_container,
+    language='python'
+),
+
+dcc.Markdown('''
 Open up the Dash App Manager and copy and paste this key.
 You can find the Dash App Manager by clicking on "Dash App" in your
 Plotly On-Premise's "Create" dropdown.
-
 '''),
 
 html.Img(
@@ -284,19 +313,43 @@ html.Img(
 dcc.Markdown('''
 ***
 
-#### Step 6. Add the app as a git remote
+#### Step 6. Configure your Plotly Enterprise server to be your Git remote
 
+Your application code will be transferred to the Dash Enterprise server through
+`git` and `ssh`.
+
+The following command will create a remote host to your new app on
+Plotly Enterprise.
 '''),
 
-dcc.SyntaxHighlighter('''git remote add plotly https://your-dash-app-name.your-dash-app-manager.com.git
-''', customStyle=styles.code_container, language='python'),
 
 dcc.Markdown('''
-For example, if your dash-app manager URL is `dash-app-manager.acme.com` and your
-dash app name is `my-dash-app`, then this command would be:
+Replace `your-dash-app-name` with the name of your Dash app that you supplied
+in the Dash app manager and `your-dash-app-manager` with the domain of the
+Dash App Manager. For example, if your Dash app name was `my-first-dash-app`
+and the domain of your organizations Dash App Manager was `dash.plotly.acme-corporation.com`,
+then this command would be
+`git remote add plotly dokku@dash.plotly.acme-corporation.com:my-first-dash-app`:
 '''),
 
-dcc.SyntaxHighlighter('''git remote add https://my-dash-app.dash-app-manager.acme.com.git'''),
+dcc.SyntaxHighlighter(
+    '$ git remote add plotly dokku@your-dash-app-manager:your-dash-app-name',
+    customStyle=styles.code_container,
+    language='python'
+),
+
+dcc.Markdown('''
+Next, specify a custom port in your SSH config. By default, this should be
+`3022` but your server administrator may set it to something different.
+
+This file is located in `~/.ssh/config`. If it's not there, then create it.
+You can open this file with `$ open ~/.ssh/config`. Add the following lines to
+this file, replacing `your-dash-app-manager` with the domain of your
+dash app manager (as you specified above):'''),
+
+dcc.SyntaxHighlighter('''Host your-dash-app-manager
+    Port 3022
+'''),
 
 dcc.Markdown('''***
 
@@ -312,18 +365,20 @@ git commit -m 'initial app'
 git push plotly master
 ''', customStyle=styles.code_container, language='python'),
 
+
 dcc.Markdown('''***
 
-#### Step 9. Update the code and redeploy
+#### Step 8. Update the code and redeploy
 
 When you modify `app.py` with your own code, you will need to add the changes
 to git and push those changes to heroku.
 '''),
 
-dcc.SyntaxHighlighter('''git status # view the changes
-git add .  # add all the changes
-git commit -m 'a description of the changes'
-git push heroku master
-''', customStyle=styles.code_container, language='python'),
+dcc.SyntaxHighlighter('''$ git status # view the changed files
+$ git diff # view the actual changed lines of code
+$ git add .  # add all the changes
+$ git commit -m 'a description of the changes'
+$ git push plotly master
+''', customStyle=styles.code_container, language='python')
 
 ]
