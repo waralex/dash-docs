@@ -42,7 +42,7 @@ app's dependencies with this virtualenv:
 '''),
 
 dcc.SyntaxHighlighter('''pip install dash==0.17.8rc2
-pip install dash-auth==0.0.4rc1
+pip install dash-auth==0.0.4rc4
 pip install dash-renderer
 pip install dash-core-components
 pip install dash-html-components
@@ -73,13 +73,6 @@ Filename: **`app.py`**
 
 Description: This file contains the actual Dash app code.
 
-Dash code that is deployed on Plotly Enteprise requires a few modifications.
-These modifications are noted in the code below:
-- Signing in to your Plotly account
-- Adding a secret key
-- Adding Plotly authentication
-- Serving source files locally (optional)
-
 File Content:
 '''),
 
@@ -87,6 +80,7 @@ dcc.SyntaxHighlighter('''import dash
 import dash_auth
 import dash_core_components as dcc
 import dash_html_components as html
+import os
 import plotly.plotly as py
 
 import config
@@ -97,32 +91,14 @@ app = dash.Dash(__name__)
 server = app.server
 
 # Serve JS and CSS files locally instead of from global CDN
-app.config.scripts.serve_locally = True
-app.config.css.serve_locally = True
-
-# Set the server secret key - this variable is set through the `.env` file
-server.secret_key = os.environ.get('SECRET_KEY', 'my-secret-key')
-
-py.sign_in(
-    config.PLOTLY_USERNAME,
-    config.PLOTLY_API_KEY,
-    plotly_domain=config.PLOTLY_DOMAIN,
-    plotly_api_domain=config.PLOTLY_DOMAIN, # same as plotly_domain
-    plotly_ssl_verification=config.PLOTLY_SSL_VERIFICATION
-)
-
+app.scripts.config.serve_locally = True
+app.css.config.serve_locally = True
+# https://my-dash-app-5.dash-qa.plotly.systems/_oauth
 APP_URL = '{}://{}.{}'.format(
-    PLOTLY_DOMAIN.split('://')[0],
+    config.PLOTLY_DASH_DOMAIN.split('://')[0],
     config.DASH_APP_NAME,
-    PLOTLY_DOMAIN.split('://')[1]
+    config.PLOTLY_DASH_DOMAIN.split('://')[1]
 )
-
-# 'private' means that you need to login to view it. You can authorize other
-# viewers to your app in your list of files at
-# https://<your-plotly-server>/organize
-# 'public' means that anyone who has access to your
-# plotly server can view the app
-APP_PRIVACY = 'private'
 
 dash_auth.PlotlyAuth(
     app,
@@ -212,36 +188,39 @@ app to app. *Read through this file and modify the variables as appropriate.*
 File content:
 '''),
 
-dcc.SyntaxHighlighter('''
+dcc.SyntaxHighlighter('''import os
+
 # Replace with the name of your Dash app
 # This will end up being part of the URL of your deployed app,
 # so it can't contain any spaces, capitalizations, or special characters
-DASH_APP_NAME='my-dash-app-5'
+DASH_APP_NAME = 'my-dash-app'
 
-DASH_APP_PRIVACY='private'
-
-# Fill in with your Plotly On-Premise username
-PLOTLY_USERNAME='chris'
+DASH_APP_PRIVACY = 'private'
 
 # Fill in with your Plotly On-Premise username
-PLOTLY_USERNAME='my-plotly-username'
+os.environ['PLOTLY_USERNAME'] = 'your-plotly-username'
 
 # Fill in with your Plotly On-Premise API key
 # See <your-plotly-server>/settings/api to generate a key
 # If you have already created a key and saved it on your own machine
 # (from the Plotly-Python library instructions at https://plot.ly/python/getting-started)
 # then you can view that key in your ~/.plotly/.config file or by running:
-# `python -c "import plotly; print(plotly.tools.get_config_file())"`
-PLOTLY_API_KEY='my-plotly-api-key'
+# `python -c import plotly; print(plotly.tools.get_config_file())`
+os.environ['PLOTLY_API_KEY'] = 'your-plotly-api-key'
 
 # Fill in with your Plotly On-Premise domain
-PLOTLY_DOMAIN='https://plotly.acme-corporation.com'
+os.environ['PLOTLY_DOMAIN'] = 'https://your-plotly-domain.com'
+os.environ['PLOTLY_API_DOMAIN'] = os.environ['PLOTLY_DOMAIN']
+
+# Fill in with the domain of your Dash subdomain.
+# This matches the domain of the Dash App Manager
+PLOTLY_DASH_DOMAIN='https://your-dash-manager-plotly-domain.com'
 
 # Keep as True if your SSL certificates are valid.
 # If you are just trialing Plotly On-Premise with self signed certificates,
 # then you can set this to False. Note that self-signed certificates are not
 # safe for production.
-PLOTLY_SSL_VERIFICATION=True
+os.environ['PLOTLY_SSL_VERIFICATION'] = 'False'
 ''', language='python', customStyle=styles.code_container),
 
 dcc.Markdown('''
@@ -258,6 +237,37 @@ print(tls.get_config_file())
 
 dcc.Markdown('''
 
+***
+
+#### Step 5. Test the app locally
+
+Test that the files that you copied and pasted from the steps above work.
+
+You can run the app locally with:
+'''),
+
+dcc.SyntaxHighlighter(
+    '''$ python app.py''',
+    language='python',
+    customStyle=styles.code_container
+),
+
+dcc.Markdown('''
+The default `DASH_APP_PRIVACY` setting in the `config.py` file adds a login
+screen to this app. Your app should look like this and you should be able
+to successfully log in.
+'''),
+
+html.Img(
+    alt="Dash App Log In",
+    src="https://github.com/plotly/dash-docs/raw/master/images/on-premise-local-login.gif",
+    style={
+        'width': '100%', 'border': 'thin lightgrey solid',
+        'border-radius': '4px'
+    }
+),
+
+dcc.Markdown('''
 ***
 
 #### Step 5. Create an SSH key and add the SSH public key to the Dash App Manager
@@ -296,6 +306,8 @@ of your ssh key).
 
 You can find the Dash App Manager by clicking on "Dash App" in your
 Plotly On-Premise's "Create" menu.
+
+> *The Dash App item in the Create menu takes you to the Dash App Manager*
 '''),
 
 html.Img(
@@ -306,6 +318,11 @@ html.Img(
         'border-radius': '4px'
     }
 ),
+
+dcc.Markdown('''
+> *The Dash App Manager's SSH Key Interface. Copy and paste
+> your public key in this interface and click "Update".*
+'''),
 
 html.Img(
     alt="Dash App Manager Public Key Interface",
@@ -319,19 +336,17 @@ html.Img(
 dcc.Markdown('''
 ***
 
-#### Step 6. Create a Dash App in the Dash App Manager
+#### Step 6. Add your App to the Dash App Manager
 
-Visit the Dash App Manager and create a Dash app. The app name will be used
-in the URL of the app. For example, an app with the name `my-dash-app` will be
-accessible at the URL
-`my-dash-app.your-dash-app-manager.your-plotly-server.com`
-or, if path-based routing is set up, 'your-plotly-server/my-dash-app'.
-
+Visit the Dash App Manager. An item with the name that you specified in
+the `config.py` file should appear. This item was created when you ran your
+app locally in Step 5. Click on the `Add To This Server` button to register
+the app to the Dash App Manager.
 '''),
 
 html.Img(
     alt="Dash App Manager Add App Interface",
-    src="https://github.com/plotly/dash-docs/raw/master/images/dash-app-manager-add-app-interface.gif",
+    src="https://github.com/plotly/dash-docs/raw/master/images/dash-app-manager-launch-app.png",
     style={
         'width': '100%', 'border': 'thin lightgrey solid',
         'border-radius': '4px'
@@ -368,7 +383,7 @@ dcc.SyntaxHighlighter(
 
 dcc.Markdown('''
 Next, specify a custom port in your SSH config. By default, this should be
-`3022` but your server administrator may set it to something different.
+`3022` but your server administrator may have set it to something different.
 
 This file is located in `~/.ssh/config`. If it's not there, then create it.
 You can open this file with `$ open ~/.ssh/config`. Add the following lines to
