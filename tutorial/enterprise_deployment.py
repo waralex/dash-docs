@@ -342,6 +342,9 @@ Visit the Dash App Manager. An item with the name that you specified in
 the `config.py` file should appear. This item was created when you ran your
 app locally in Step 5. Click on the `Add To This Server` button to register
 the app to the Dash App Manager.
+
+Once registered, you'll still need to add the Dash Enterprise server as your
+git remote and push to fully deploy.
 '''),
 
 html.Img(
