@@ -30,7 +30,7 @@ import getting_started_part_1
 import getting_started_part_2
 import urls
 import auth
-import enterprise_deployment
+import on_premise_deployment
 
 dcc._js_dist[0]['external_url'] = 'https://cdn.plot.ly/plotly-basic-1.27.1.min.js'
 
@@ -161,7 +161,7 @@ chapters = {
 
     'deployment-onpremise': {
         'url': '/dash/deployment/on-premise',
-        'content': enterprise_deployment.layout
+        'content': on_premise_deployment.layout
     },
 
     'auth': {
