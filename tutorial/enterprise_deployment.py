@@ -342,6 +342,7 @@ Visit the Dash App Manager. An item with the name that you specified in
 the `config.py` file should appear. This item was created when you ran your
 app locally in Step 5. Click on the `Add To This Server` button to register
 the app to the Dash App Manager.
+
 '''),
 
 html.Img(
@@ -354,6 +355,10 @@ html.Img(
 ),
 
 dcc.Markdown('''
+At this point, your app is registered on Plotly but no code has been added to the server yet.
+
+The next steps will show you how to copy your code onto the server through `git`.
+
 ***
 
 #### Step 7. Configure your Plotly Enterprise server to be your Git remote
