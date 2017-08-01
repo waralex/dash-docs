@@ -356,13 +356,13 @@ html.Img(
 dcc.Markdown('''
 ***
 
-#### Step 7. Configure your Plotly Enterprise server to be your Git remote
+#### Step 7. Configure your Plotly On-Premise server to be your Git remote
 
-Your application code will be transferred to the Dash Enterprise server through
+Your application code will be transferred to the Dash On-Premise server through
 `git` and `ssh`.
 
 The following command will create a remote host to your new app on
-Plotly Enterprise.
+Plotly On-Premise.
 '''),
 
 
