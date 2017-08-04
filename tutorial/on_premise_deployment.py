@@ -52,12 +52,22 @@ pip install gunicorn
 
 dcc.Markdown('''
 
+After installing, create a `requirements.txt` file to snapshot the
+versions of these packages:
+'''),
+
+dcc.SyntaxHighlighter('''pip freeze > requirements.txt'''),
+
+dcc.Markdown('''
 Anytime that you want to do work on this app inside this folder, you should
 make sure that you're using this project's `virtualenv`.
 Activate the `virtualenv` with
 ```
 $ source venv/bin/activate
 ```
+
+Anytime that you install a new package, make sure to write it to the `requirements.txt`
+file with `pip freeze > requirements.txt`.
 
 ***
 
@@ -169,7 +179,8 @@ Description: `requirements.txt` describes your Python dependencies.
 You can fill this file in automatically with:
 '''),
 
-dcc.SyntaxHighlighter('''$ pip freeze > requirements.txt
+dcc.SyntaxHighlighter('''$ source venv/bin/activate
+$ pip freeze > requirements.txt
 ''', customStyle=styles.code_container),
 
 
@@ -220,7 +231,7 @@ PLOTLY_DASH_DOMAIN='https://your-dash-manager-plotly-domain.com'
 # If you are just trialing Plotly On-Premise with self signed certificates,
 # then you can set this to False. Note that self-signed certificates are not
 # safe for production.
-os.environ['PLOTLY_SSL_VERIFICATION'] = 'False'
+os.environ['PLOTLY_SSL_VERIFICATION'] = 'True'
 ''', language='python', customStyle=styles.code_container),
 
 dcc.Markdown('''
