@@ -2,8 +2,13 @@ import dash
 from dash.dependencies import Input, Output
 import dash_html_components as html
 import dash_core_components as dcc
-import functools32
+import sys
 import time
+
+if sys.version_info < (3, 2, 0):
+    from functools32 import lru_cache
+else:
+    from functools import lru_cache
 
 app = dash.Dash(__name__)
 app.config.supress_callback_exceptions = True
@@ -25,7 +30,7 @@ app.layout = html.Div([
 @app.callback(
     Output('memoized-children', 'children'),
     [Input('memoized-dropdown', 'value')])
-@functools32.lru_cache()
+@lru_cache()
 def render(value):
     time.sleep(2)
     return 'You have selected "{}"'.format(value)
