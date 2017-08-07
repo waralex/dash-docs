@@ -76,8 +76,6 @@ create_contents([
 
     dcc.Link(html.A('Deployment'), href="/dash/deployment"),
 
-    dcc.Link(html.A('Deployment'), href="/dash/deployment"),
-
     html.A('FAQ', href="https://community.plot.ly/c/dash"),
 
     dcc.Link(html.A('Support and Contact'), href="/dash/support")
