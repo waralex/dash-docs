@@ -49,9 +49,8 @@ create_contents([
 
     dcc.Link(html.A('Introduction'), href="/dash/introduction"),
 
-    dcc.Link(
-        html.A('Announcement Letter'),
-        href="https://medium.com/@plotlygraphs/introducing-dash-5ecf7191b503"),
+    html.A('Announcement Letter',
+           href="https://medium.com/@plotlygraphs/introducing-dash-5ecf7191b503"),
 
     dcc.Link(html.A('Gallery'), href="/dash/gallery"),
 
@@ -76,6 +75,10 @@ create_contents([
     dcc.Link(html.A('URL Support'), href="/dash/urls"),
 
     dcc.Link(html.A('Deployment'), href="/dash/deployment"),
+
+    dcc.Link(html.A('Deployment'), href="/dash/deployment"),
+
+    html.A('FAQ', href="https://community.plot.ly/c/dash"),
 
     dcc.Link(html.A('Support and Contact'), href="/dash/support")
 
