@@ -161,33 +161,17 @@ after your package alongside an `__init__.py` file.
 
 ### Step 5 - Test Components in a Dash App
 
-The package is now ready to install. You can install your package locally
-by running
-
+The package is now ready to test. You can test this component by running the
+`usage.py` file that is included in the repository:
 '''),
-dcc.SyntaxHighlighter('''Python setup.py install''', customStyle=styles.code_container),
+
+dcc.SyntaxHighlighter('''$ python usage.py''', language='bash', customStyle=styles.code_container),
+
 dcc.Markdown('''
-
-inside the folder of your package.
-You will be able to import your package into a Dash app.
-
-For example, if you named your package `acme-components`, then you will be able
-to import the components like this:
-'''),
-dcc.SyntaxHighlighter('''import acme_components
-import dash
-
-app = dash.Dash('')
-
-app.layout = acme_components.ExampleComponent(label='My label')
-
-app.scripts.config.serve_locally = True
-
-if __name__ == '__main__':
-    app.run_server(debug=True)
-''', customStyle=styles.code_container, language='Python'),
-dcc.Markdown('''
-If you open your web browser, you should see a simple app displayed with your component.
+You are free to edit this file as you develop your component. Note that
+this file is importing the package locally (as it is in the root folder of
+the package). If you want to test the installation of your package and run a
+Dash app in a separate folder, you can install the package with `python setup.py install`.
 
 #### Step 6 - Customize Your Component
 
@@ -213,24 +197,59 @@ import PropTypes from 'prop-types';
 
 /**
  * ExampleComponent is an example component.
- * It takes a single property, `label`, and
+ * It takes a property, `label`, and
  * displays it.
+ * It renders an input with the property `value`
+ * which is editable by the user.
  */
 export default class ExampleComponent extends Component {
     render() {
-        const {label} = this.props;
+        const {id, label, setProps, value} = this.props;
 
         return (
-            <div>ExampleComponent: {label}</div>
+            <div id={id}>
+                ExampleComponent: {label}
+                <input
+                    value={value}
+                    onChange={e => {
+                        /*
+                         * Send the new value to the parent component.
+                         * In a Dash app, this will send the data back to the
+                         * Python Dash app server.
+                         */
+                         if (setProps) {
+                             setProps({
+                                value: e.target.value
+                            });
+                         }
+                    }}
+                />
+            </div>
         );
     }
 }
 
 ExampleComponent.propTypes = {
     /**
+     * The ID used to identify this compnent in Dash callbacks
+     */
+    id: PropTypes.string,
+
+    /**
      * A label that will be printed when this component is rendered.
      */
-    label: PropTypes.string.isRequired
+    label: PropTypes.string.isRequired,
+
+    /**
+     * The value displayed in the input
+     */
+    value: PropTypes.string,
+
+    /**
+     * Dash-assigned callback that should be called whenever any of the
+     * properties change
+     */
+    setProps: PropTypes.func
 };
 ''', language='JavaScript', customStyle=styles.code_container),
 
@@ -242,14 +261,20 @@ this:
 
 dcc.SyntaxHighlighter('''>>> import acme_components
 >>> help(acme_components.ExampleComponent)
+Help on class ExampleComponent in module __builtin__:
+
 class ExampleComponent(dash.development.base_component.Component)
  |  A ExampleComponent component.
  |  ExampleComponent is an example component.
- |  It takes a single property, `label`, and
+ |  It takes a property, `label`, and
  |  displays it.
+ |  It renders an input with the property `value`
+ |  which is editable by the user.
  |
  |  Keyword arguments:
- |  - label (optional): A label that will be printed when this component is rendered.
+ |  - id (string; optional): The ID used to identify this compnent in Dash callbacks
+ |  - label (string; required): A label that will be printed when this component is rendered.
+ |  - value (string; optional): The value displayed in the input
 
 >>> acme_components.ExampleComponent(label='My label')
 ExampleComponent('My label')
@@ -257,7 +282,7 @@ ExampleComponent('My label')
 >>> acme_components.ExampleComponent(label='My label')
 ExampleComponent('My label')
 
->>> acme_components.ExampleComponent(foo='bar')
+>>> acme_components.ExampleComponent(foo='bar') # foo is not a property of this component
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
   File "<string>", line 25, in __init__
@@ -279,6 +304,14 @@ So, if you add new components, you'll need annotate the components properties
 with these docstrings, otherwise Dash won't be able to generate Python dash
 classes.
 
+Dash components are described declaratively through that set of component
+properties. Some of these properties are editable by the user. For example,
+in the `ExampleComponent`, the `value` property is editable by the user.
+To propagate changes that are made to properties through the user interface to
+Dash, your component code must call `props.setProps({name_of_the_property: new_value_of_the_property})`.
+This will update the property of that component, will rerender the component with that property,
+and will send that new value to the appropriate Python Dash app callback.
+
 Once you've made some changes or created a new component, you can recreate
 your bundle and re-install your package locally by running:
 '''),
@@ -286,6 +319,19 @@ your bundle and re-install your package locally by running:
 dcc.SyntaxHighlighter('''$ npm run prepublish
 $ python setup.py install
 ''', customStyle=styles.code_container),
+
+dcc.Markdown('''
+You can also interact with your component in pure JavaScript by running
+'''),
+
+dcc.SyntaxHighlighter('''$ builder run demo
+''', customStyle=styles.code_container),
+
+dcc.Markdown('''
+and then opening your web browser to `http://localhost:9000`. This command
+sets up hot-reloading, so changes that you make the code will be visible
+in your web browser immediately.
+'''),
 
 dcc.Markdown('''
 
@@ -302,5 +348,7 @@ dcc.Markdown('''
 The version of the package is set in both `package.json` and a `verison.py` file.
 
 By convention, dash components should adhere to [semver](http://semver.org/).
+Finally, if you'd like, share your component suite with other Dash users in the
+[Dash community forum](https://community.plot.ly/c/dash)!
 ''')
 ]
