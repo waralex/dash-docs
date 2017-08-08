@@ -155,12 +155,12 @@ layout = html.Div(className="gallery", children=[
 
     ## Volatility Surface Explorer
 
-    This demo fetches CBOE options chain data through Pandas Datareader/Yahoo,
-    and calculates the implied volatility of each option using the py_vollib
+    This demo fetches CBOE options chain data from Yahoo Finance with Pandas Datareader
+    and calculates the implied volatility of each option using the [`py_vollib`](https://github.com/vollib/py_vollib)
     library.
 
     All parameters of the IV calculation are adjustable and the
-    resulting volatility curve is rendered using a Mesh3D object
+    resulting volatility curve is rendered using a [Mesh 3D chart](https://plot.ly/python/3d-mesh/)
     with several subplots showing subsections of the 3D plot.
 
     Initially fetching the options data and calculating the IV might take a
@@ -204,15 +204,15 @@ layout = html.Div(className="gallery", children=[
     ),
 
     dcc.Markdown('''
-    [View the app](https://plot.ly/dash/gallery/volatility-surface) | [View the source code](https://github.com/plotly/dash-volatility-surface)
+    [View the app](https://plot.ly/dash/gallery/drug-explorer) | [View the source code](https://github.com/plotly/dash-drug-discovery-demo/)
 
     ***
 
     ## Live Wind Streaming
 
-    This app continually queries an SQL database, and updates the Wind Speed,
-    and Wind Direction plots in realtime. The wind histogram is then binned
-    from the currently plotted wind speed data.
+    This app continually queries a SQL database and displays live charts of
+    wind speed and wind direction. In Dash, the [dcc.Interval](https://plot.ly/dash/live-upates)
+    component can be used to update any element on a recurring interval.
 
     '''.replace('    ', '')),
 
@@ -277,9 +277,9 @@ layout = html.Div(className="gallery", children=[
     report [A 3-D View of a Chart That Predicts The Economic Future: The Yield Curve](https://www.nytimes.com/interactive/2015/03/19/upshot/3d-yield-curve-economic-growth.html).
 
 
-    Dash comes with a wide range of 3D chart types, such as scatter plots,
-    surface plots, network graphs and ribbon plots, you can find out about what
-    other 3D chart types Dash supports [here](https://plot.ly/python/3d-charts/).
+    Dash comes with a wide range of interactive 3D chart types,
+    such as 3D scatter plots, surface plots, network graphs and ribbon plots.
+    [View more 3D chart examples](https://plot.ly/python/3d-charts/).
 
 
     '''.replace('    ', '')),
