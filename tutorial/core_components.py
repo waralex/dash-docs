@@ -72,16 +72,19 @@ dcc.DatePickerRange(
     end_date_placeholder_text='Select a date!'
 )
 ''', language='python', customStyle=styles.code_container),
-    dcc.DatePickerSingle(
-        id='section2-datepickersingle-1',
-        date=dt(1997, 5, 10)
-    ),
+    html.Div([
+        dcc.DatePickerSingle(
+            id='section2-datepickersingle-1',
+            date=dt(1997, 5, 10)
+        ),
 
-    dcc.DatePickerRange(
-        id='section2-datepickerrange-1',
-        start_date=dt(1997, 5, 3),
-        end_date_placeholder_text='Select a date!'
-    ),
+        dcc.DatePickerRange(
+            id='section2-datepickerrange-1',
+            start_date=dt(1997, 5, 3),
+            end_date_placeholder_text='Select a date!'
+        ),
+    ]),
+
 
     dcc.SyntaxHighlighter('''import dash_core_components as dcc
     from datetime import datetime as dt
@@ -110,7 +113,7 @@ dcc.DatePickerRange(
         number_of_months_shown=2,
         clearable=True,
         stay_open_on_select=True,
-        open_calendar_on_clear=True,
+        reopen_calendar_on_clear=True,
         month_format='MM YY',
         display_format='MMMM D, Y'
     )''', language='python', customStyle=styles.code_container),
@@ -138,7 +141,7 @@ dcc.DatePickerRange(
         number_of_months_shown=2,
         clearable=True,
         stay_open_on_select=True,
-        open_calendar_on_clear=True,
+        reopen_calendar_on_clear=True,
         month_format='MM YY',
         display_format='MMMM D, Y'
     ),
@@ -405,10 +408,11 @@ for k in layout.keys():
             className="example-container",
             style=dict({'padding': '40px'})
         )
-    elif(k in ['section2-dropdown-1', 'section2-dropdown-2',
-               'section2-datepickersingle-1', 'section2-datepickersingle-2',
-               'section2-datepickerrange-1', 'section2-datepickerrange-2']):
+    elif(k in ['section2-dropdown-1', 'section2-dropdown-2']):
         layout[k] = html.Div(layout[k])
+    elif(k in ['section2-datepickersingle-1', 'section2-datepickersingle-2',
+               'section2-datepickerrange-1', 'section2-datepickerrange-2']):
+        layout[k] = html.Div(layout[k], style={'display': 'inline-block'})
     else:
         layout[k] = html.Div(layout[k], className="example-container")
 
