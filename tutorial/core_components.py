@@ -59,7 +59,7 @@ dcc.Dropdown(
     html.Hr(),
     html.H3('Date Picker'),
     dcc.SyntaxHighlighter('''import dash_core_components as dcc
-    from datetime import datetime as dt
+    from datetime import *
 
 dcc.DatePickerSingle(
     id='date-picker-single',
@@ -73,24 +73,24 @@ dcc.DatePickerRange(
 )
 ''', language='python', customStyle=styles.code_container),
     dcc.DatePickerSingle(
-        id='date-picker-single',
-        date=dt.datetime(1997, 5, 10)
+        id='section2-datepickersingle-1',
+        date=dt(1997, 5, 10)
     ),
 
     dcc.DatePickerRange(
-        id='date-picker-range',
-        start_date=dt.datetime(1997, 5, 3),
+        id='section2-datepickerrange-1',
+        start_date=dt(1997, 5, 3),
         end_date_placeholder_text='Select a date!'
     ),
 
     dcc.SyntaxHighlighter('''import dash_core_components as dcc
-    from datetime import datetime as dt
+    import datetime
 
     dcc.DatePickerSingle(
         id='date-picker-single',
-        initial_visible_month=dt.datetime(1997, 5, 5),
-        min_date_range=dt.datetime(1997, 4, 29),
-        max_date_range=dt.datetime(1997, 6, 3),
+        initial_visible_month=datetime.datetime(1997, 5, 5),
+        min_date_range=datetime.datetime(1997, 4, 29),
+        max_date_range=datetime.datetime(1997, 6, 3),
         show_outside_days=True,
         with_portal=True,
         number_of_months_shown=1,
@@ -99,12 +99,12 @@ dcc.DatePickerRange(
 
     dcc.DatePickerRange(
         id='date-picker-range',
-        start_date=dt.datetime(1997, 5, 10),
+        start_date=datetime.datetime(1997, 5, 10),
         end_date_placeholder_text="Clear the date!",
         first_day_of_week=3,
         minimum_nights=2,
-        min_date_range=dt.datetime(1997, 4, 29),
-        max_date_range=dt.datetime(1997, 6, 3),
+        min_date_range=datetime.datetime(1997, 4, 29),
+        max_date_range=datetime.datetime(1997, 6, 3),
         show_outside_days=True,
         with_portal=True,
         number_of_months_shown=2,
@@ -115,10 +115,10 @@ dcc.DatePickerRange(
         display_format='MMMM D, Y'
     )''', language='python', customStyle=styles.code_container),
     dcc.DatePickerSingle(
-        id='date-picker-single',
-        initial_visible_month=dt.datetime(1997, 5, 5),
-        min_date_range=dt.datetime(1997, 4, 29),
-        max_date_range=dt.datetime(1997, 6, 3),
+        id='section2-datepickersingle-2',
+        initial_visible_month=datetime.datetime(1997, 5, 5),
+        min_date_range=datetime.datetime(1997, 4, 29),
+        max_date_range=datetime.datetime(1997, 6, 3),
         show_outside_days=True,
         with_portal=True,
         number_of_months_shown=1,
@@ -126,13 +126,13 @@ dcc.DatePickerRange(
     ),
 
     dcc.DatePickerRange(
-        id='date-picker-range',
-        start_date=dt.datetime(1997, 5, 10),
+        id='section2-datepickerrange-2',
+        start_date=datetime.datetime(1997, 5, 10),
         end_date_placeholder_text="Clear the date!",
         first_day_of_week=3,
         minimum_nights=2,
-        min_date_range=dt.datetime(1997, 4, 29),
-        max_date_range=dt.datetime(1997, 6, 3),
+        min_date_range=datetime.datetime(1997, 4, 29),
+        max_date_range=datetime.datetime(1997, 6, 3),
         show_outside_days=True,
         with_portal=True,
         number_of_months_shown=2,
@@ -399,13 +399,16 @@ dcc.Graph(
 for k in layout.keys():
     if k == 'hidden':
         continue
-
+    print(k)
     if k in ['section2-rangeslider-2', 'section2-slider-2']:
         layout[k] = html.Div(layout[k],
             className="example-container",
             style=dict({'padding': '40px'})
         )
-
+    elif(k in ['section2-dropdown-1', 'section2-dropdown-2',
+               'section2-datepickersingle-1', 'section2-datepickersingle-2',
+               'section2-datepickerrange-1', 'section2-datepickerrange-2']):
+        layout[k] = html.Div(layout[k], className="no-border-container")
     else:
         layout[k] = html.Div(layout[k], className="example-container")
 
