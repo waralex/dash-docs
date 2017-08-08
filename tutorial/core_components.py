@@ -399,7 +399,7 @@ dcc.Graph(
 for k in layout.keys():
     if k == 'hidden':
         continue
-        
+
     if k in ['section2-rangeslider-2', 'section2-slider-2']:
         layout[k] = html.Div(layout[k],
             className="example-container",
@@ -408,7 +408,7 @@ for k in layout.keys():
     elif(k in ['section2-dropdown-1', 'section2-dropdown-2',
                'section2-datepickersingle-1', 'section2-datepickersingle-2',
                'section2-datepickerrange-1', 'section2-datepickerrange-2']):
-        layout[k] = html.Div(layout[k], className="no-border-container")
+        layout[k] = html.Div(layout[k])
     else:
         layout[k] = html.Div(layout[k], className="example-container")
 
