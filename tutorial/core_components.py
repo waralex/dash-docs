@@ -399,7 +399,7 @@ dcc.Graph(
 for k in layout.keys():
     if k == 'hidden':
         continue
-    print(k)
+        
     if k in ['section2-rangeslider-2', 'section2-slider-2']:
         layout[k] = html.Div(layout[k],
             className="example-container",
