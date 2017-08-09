@@ -105,7 +105,7 @@ layout = html.Div(className="gallery", children=[
 
     ## Uber Rides
 
-    This app displays all of the Uber rides in New York City in 2007.
+    This app displays all of the Uber rides in New York City in 2014.
     The original datafile is almost 500MB large and all of the filtering is
     done in memory with Pandas. Buttons on the chart itself highlight
     different regions in the city.
@@ -147,7 +147,38 @@ layout = html.Div(className="gallery", children=[
     ),
 
     dcc.Markdown('''
+
     [View the app](https://plot.ly/dash/gallery/stock-tickers) | [View the source code](https://github.com/plotly/dash-stock-tickers-demo-app)
+
+
+    ***
+
+    ## Volatility Surface Explorer
+
+    This demo fetches CBOE options chain data from Yahoo Finance with Pandas Datareader
+    and calculates the implied volatility of each option using the [`py_vollib`](https://github.com/vollib/py_vollib)
+    library.
+
+    All parameters of the IV calculation are adjustable and the
+    resulting volatility curve is rendered using a [Mesh 3D chart](https://plot.ly/python/3d-mesh/)
+    with several subplots showing subsections of the 3D plot.
+
+    Initially fetching the options data and calculating the IV might take a
+    few seconds due to the scale of the calculations required.
+
+    '''.replace('    ', '')),
+
+    html.A(
+        className="image-link",
+        href="https://plot.ly/dash/gallery/volatility-surface",
+        children=html.Img(
+            src="https://raw.githubusercontent.com/plotly/dash-docs/master/images/dash-volatility-surface.gif",
+            alt="Screenshot of volatility surface"
+        )
+    ),
+
+    dcc.Markdown('''
+    [View the app](https://plot.ly/dash/gallery/volatility-surface) | [View the source code](https://github.com/plotly/dash-volatility-surface)
 
     ***
 
@@ -157,9 +188,9 @@ layout = html.Div(className="gallery", children=[
     graph.
 
     Selecting drugs in the dropdown highlights their position in the chart and
-     appends their symbol in the table below.
+    appends their symbol in the table below.
 
-     Built in a few hundred lines of Python code.
+    Built in a few hundred lines of Python code.
 
     '''.replace('    ', '')),
 
@@ -173,7 +204,29 @@ layout = html.Div(className="gallery", children=[
     ),
 
     dcc.Markdown('''
-    [View the app](https://plot.ly/dash/gallery/drug-explorer) | [View the source code](https://github.com/plotly/dash-drug-discovery-demo)
+    [View the app](https://plot.ly/dash/gallery/drug-explorer) | [View the source code](https://github.com/plotly/dash-drug-discovery-demo/)
+
+    ***
+
+    ## Live Wind Streaming
+
+    This app continually queries a SQL database and displays live charts of
+    wind speed and wind direction. In Dash, the [dcc.Interval](https://plot.ly/dash/live-upates)
+    component can be used to update any element on a recurring interval.
+
+    '''.replace('    ', '')),
+
+    html.A(
+        className="image-link",
+        href="https://plot.ly/dash/gallery/live-wind-data",
+        children=html.Img(
+            src="https://cdn.rawgit.com/plotly/dash-wind-streaming/d84b15eebf2c502372740416d445e8e3f23d0619/Gif/dash-wind-streaming.gif",
+            alt="gif of a wind streaming Dash app"
+        )
+    ),
+
+    dcc.Markdown('''
+    [View the app](https://plot.ly/dash/gallery/live-wind-data) | [View the source code](https://github.com/plotly/dash-wind-streaming)
 
 
     ***
@@ -218,10 +271,38 @@ layout = html.Div(className="gallery", children=[
 
     ***
 
+    ## NYTimes Remake: Yield Curve
+
+    This Dash app adapts the excellent NY Times
+    report [A 3-D View of a Chart That Predicts The Economic Future: The Yield Curve](https://www.nytimes.com/interactive/2015/03/19/upshot/3d-yield-curve-economic-growth.html).
+
+
+    Dash comes with a wide range of interactive 3D chart types,
+    such as 3D scatter plots, surface plots, network graphs and ribbon plots.
+    [View more 3D chart examples](https://plot.ly/python/3d-charts/).
+
+
+    '''.replace('    ', '')),
+
+    html.A(
+        className="image-link",
+        href="https://plot.ly/dash/volatility-surface",
+        children=html.Img(
+            src="https://raw.githubusercontent.com/plotly/dash-docs/master/images/dash-yield-curve-app.png",
+            alt="Screenshot of a dash home page"
+        )
+    ),
+    dcc.Markdown('''
+
+    [View the app](https://plot.ly/dash/gallery/yield-curve) | [View the source code](https://github.com/plotly/dash-yield-curve)
+
+
+    ***
+
     ## Dash Documentation
 
     These Dash docs that you're looking at? They are itself a Dash app!
-    
+
     '''.replace('    ', '')),
 
     html.A(
