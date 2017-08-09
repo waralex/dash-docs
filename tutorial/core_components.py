@@ -57,6 +57,98 @@ dcc.Dropdown(
     ], multi=True, value="MTL", id='section2-dropdown-2'),
 
     html.Hr(),
+    html.H3('Date Picker'),
+    dcc.SyntaxHighlighter('''import dash_core_components as dcc
+from datetime import datetime as dt
+
+dcc.DatePickerSingle(
+    id='date-picker-single',
+    date=dt(1997, 5, 10)
+),
+
+dcc.DatePickerRange(
+    id='date-picker-range',
+    start_date=dt(1997, 5, 3),
+    end_date_placeholder_text='Select a date!'
+)
+''', language='python', customStyle=styles.code_container),
+    html.Div([
+        dcc.DatePickerSingle(
+            id='section2-datepickersingle-1',
+            date=dt(1997, 5, 10)
+        ),
+
+        dcc.DatePickerRange(
+            id='section2-datepickerrange-1',
+            start_date=dt(1997, 5, 3),
+            end_date_placeholder_text='Select a date!'
+        ),
+    ]),
+
+
+    dcc.SyntaxHighlighter('''import dash_core_components as dcc
+from datetime import datetime as dt
+
+dcc.DatePickerSingle(
+    id='date-picker-single',
+    initial_visible_month=dt(1997, 5, 5),
+    min_date_allowed=dt(1997, 4, 29),
+    max_date_allowed=dt(1997, 6, 3),
+    show_outside_days=True,
+    with_portal=True,
+    number_of_months_shown=1,
+    placeholder='Try it out!'
+),
+
+dcc.DatePickerRange(
+    id='date-picker-range',
+    start_date=dt(1997, 5, 10),
+    end_date_placeholder_text="Clear the date!",
+    first_day_of_week=3,
+    minimum_nights=2,
+    min_date_allowed=dt(1997, 4, 29),
+    max_date_allowed=dt(1997, 6, 3),
+    show_outside_days=True,
+    calendar_orientation='vertical',
+    number_of_months_shown=2,
+    clearable=True,
+    day_size=45,
+    stay_open_on_select=True,
+    reopen_calendar_on_clear=True,
+    month_format='MM YY',
+    display_format='MMMM D, Y'
+)''', language='python', customStyle=styles.code_container),
+    dcc.DatePickerSingle(
+        id='section2-datepickersingle-2',
+        initial_visible_month=dt(1997, 5, 5),
+        min_date_allowed=dt(1997, 4, 29),
+        max_date_allowed=dt(1997, 6, 3),
+        show_outside_days=True,
+        with_portal=True,
+        number_of_months_shown=1,
+        placeholder='Try it out!'
+    ),
+
+    dcc.DatePickerRange(
+        id='section2-datepickerrange-2',
+        start_date=dt(1997, 5, 10),
+        end_date_placeholder_text="Clear the date!",
+        first_day_of_week=3,
+        minimum_nights=2,
+        min_date_allowed=dt(1997, 4, 29),
+        max_date_allowed=dt(1997, 6, 3),
+        show_outside_days=True,
+        day_size=45,
+        number_of_months_shown=2,
+        calendar_orientation='vertical',
+        clearable=True,
+        stay_open_on_select=True,
+        reopen_calendar_on_clear=True,
+        month_format='MM YY',
+        display_format='MMMM D, Y'
+    ),
+
+    html.Hr(),
     html.H3('Slider'),
     dcc.SyntaxHighlighter('''import dash_core_components as dcc
 
@@ -318,7 +410,11 @@ for k in layout.keys():
             className="example-container",
             style=dict({'padding': '40px'})
         )
-
+    elif(k in ['section2-dropdown-1', 'section2-dropdown-2']):
+        layout[k] = html.Div(layout[k])
+    elif(k in ['section2-datepickersingle-1', 'section2-datepickersingle-2',
+               'section2-datepickerrange-1', 'section2-datepickerrange-2']):
+        layout[k] = html.Div(layout[k], style={'display': 'inline-block'})
     else:
         layout[k] = html.Div(layout[k], className="example-container")
 
