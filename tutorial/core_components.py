@@ -138,7 +138,6 @@ dcc.DatePickerRange(
         min_date_allowed=dt(1997, 4, 29),
         max_date_allowed=dt(1997, 6, 3),
         show_outside_days=True,
-        with_portal=True,
         day_size=45,
         number_of_months_shown=2,
         calendar_orientation='vertical',
