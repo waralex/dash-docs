@@ -188,9 +188,9 @@ layout = html.Div(className="gallery", children=[
     graph.
 
     Selecting drugs in the dropdown highlights their position in the chart and
-     appends their symbol in the table below.
+    appends their symbol in the table below.
 
-     Built in a few hundred lines of Python code.
+    Built in a few hundred lines of Python code.
 
     '''.replace('    ', '')),
 
