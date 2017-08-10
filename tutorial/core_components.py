@@ -64,7 +64,16 @@ from datetime import datetime as dt
 dcc.DatePickerSingle(
     id='date-picker-single',
     date=dt(1997, 5, 10)
-),
+)
+''', language='python', customStyle=styles.code_container),
+
+    dcc.DatePickerSingle(
+        id='section2-datepickersingle-1',
+        date=dt(1997, 5, 10)
+    ),
+
+    dcc.SyntaxHighlighter('''import dash_core_components as dcc
+from datetime import datetime as dt
 
 dcc.DatePickerRange(
     id='date-picker-range',
@@ -72,19 +81,12 @@ dcc.DatePickerRange(
     end_date_placeholder_text='Select a date!'
 )
 ''', language='python', customStyle=styles.code_container),
-    html.Div([
-        dcc.DatePickerSingle(
-            id='section2-datepickersingle-1',
-            date=dt(1997, 5, 10)
-        ),
 
-        dcc.DatePickerRange(
-            id='section2-datepickerrange-1',
-            start_date=dt(1997, 5, 3),
-            end_date_placeholder_text='Select a date!'
-        ),
-    ]),
-
+    dcc.DatePickerRange(
+        id='section2-datepickerrange-1',
+        start_date=dt(1997, 5, 3),
+        end_date_placeholder_text='Select a date!'
+    ),
 
     dcc.SyntaxHighlighter('''import dash_core_components as dcc
 from datetime import datetime as dt
@@ -98,7 +100,20 @@ dcc.DatePickerSingle(
     with_portal=True,
     number_of_months_shown=1,
     placeholder='Try it out!'
-),
+)''', language='python', customStyle=styles.code_container),
+    dcc.DatePickerSingle(
+        id='section2-datepickersingle-2',
+        initial_visible_month=dt(1997, 5, 5),
+        min_date_allowed=dt(1997, 4, 29),
+        max_date_allowed=dt(1997, 6, 3),
+        show_outside_days=True,
+        with_portal=True,
+        number_of_months_shown=1,
+        placeholder='Try it out!'
+    ),
+
+    dcc.SyntaxHighlighter('''import dash_core_components as dcc
+from datetime import datetime as dt
 
 dcc.DatePickerRange(
     id='date-picker-range',
@@ -118,16 +133,6 @@ dcc.DatePickerRange(
     month_format='MM YY',
     display_format='MMMM D, Y'
 )''', language='python', customStyle=styles.code_container),
-    dcc.DatePickerSingle(
-        id='section2-datepickersingle-2',
-        initial_visible_month=dt(1997, 5, 5),
-        min_date_allowed=dt(1997, 4, 29),
-        max_date_allowed=dt(1997, 6, 3),
-        show_outside_days=True,
-        with_portal=True,
-        number_of_months_shown=1,
-        placeholder='Try it out!'
-    ),
 
     dcc.DatePickerRange(
         id='section2-datepickerrange-2',
