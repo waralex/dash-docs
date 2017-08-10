@@ -18,13 +18,15 @@ You can also deploy Dash apps directly on your own infrastructure.
 Dash uses Flask under the hood. This makes deployment easy: you can deploy
 a Dash app just like you would deploy a Flask app.
 Almost every cloud server provider has a guide for deploying
-Flask apps. For more, see the official [Flask Guide to Deployment](http://flask.pocoo.org/docs/0.12/deploying/).
+Flask apps. For more, see the official [Flask Guide to Deployment](http://flask.pocoo.org/docs/0.12/deploying/)
+or view the tutorial on deploying to Heroku below.
 
 ### Private Dash Apps
 
-You can restrict access to Dash apps through the forthcoming `dash-auth`
+You can restrict access to Dash apps through the `dash-auth`
 package, which provides authentication through HTTP Basic Auth and through
-your Plotly Cloud account. [Plotly Cloud](https://plot.ly/)
+your [Plotly Cloud account](https://plot.ly/).
+[Tutorial on Dash Authentication](/dash/authentication).
 
 ### On-Premise Dash Apps
 
@@ -32,7 +34,10 @@ You can use [Plotly On-Premise](https://plot.ly/products/on-premise).
 It offers an enterprise-wide
 Dash App Portal, easy git-based deployment, automatic URL
 namespacing, built-in SSL support, LDAP authentication, and more.
-[Request a Dash Enterprise demo](https://plot.ly/products/on-premise).
+[Request a Dash On-Premises demo](https://plot.ly/products/on-premise).
+
+For existing customers, view the
+[tutorial on deploying Dash Apps on Plotly On-Premise](/dash/deployment/on-premise).
 
 ### Dash and Flask
 
