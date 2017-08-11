@@ -352,11 +352,14 @@ def generate_instructions(chapter, platform):
                 # safe for production.
                 os.environ['PLOTLY_SSL_VERIFICATION'] = 'True'
 
-                # Dash On-Premise is configured with either "Subdomain based routing"
-                # or "Path based routing". As your server administrator which
-                # version was set up. If a separate subdomain was created,
+                # Dash On-Premise is configured with either "Path based routing" 
+                # or "Domain based routing"
+                # Ask your server administrator which version was set up.
+                # If a separate subdomain was created,
                 # then set this to `False`. If it was not, set this to 'True'.
-                PATH_BASED_ROUTING = 'False'
+                # Path based routing is the default option and most On-Premise
+                # users use this option.
+                PATH_BASED_ROUTING = 'True'
             '''), language='python', customStyle=styles.code_container),
 
             dcc.Markdown(s('''
