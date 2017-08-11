@@ -1,114 +1,393 @@
+from dash.dependencies import Input, Output
 import dash_core_components as dcc
 import dash_html_components as html
 import styles
+from server import app
 
-layout = [dcc.Markdown('''
-# Deploying Dash Apps on Plotly On-Premise
 
-By default, Dash apps run on `localhost` - you can only access them on your
-own machine. With Plotly On-Premise, you can easily deploy your Dash code
-to your organization's behind-the-firewall server.
-If you would like to learn more about Plotly On-Premise or start a trial,
-[please reach out](https://plotly.typeform.com/to/seG7Vb).
+def s(string_block):
+    return string_block.replace('    ', '')
 
-### Getting Started Guide
+STEPS = [
+    {'label': 'Part 1 - Authenticating to Plotly On-Premise with SSH',
+     'value': 'ssh'},
 
-***
+    {'label': 'Part 2 - Initializing App on Plotly On-Premise',
+     'value': 'create-app'},
 
-#### Step 1. Create a new folder for your project
+    {'label': 'Part 3 - Deploying App to Plotly On-Premise',
+     'value': 'deployment'},
 
-For example:
-'''),
+    {'label': 'Part 4 - Adding Authentication to your Dash App (Optional)',
+     'value': 'auth'},
 
-dcc.SyntaxHighlighter('''mkdir dash_app_example
-cd dash_app_example
-''', customStyle=styles.code_container),
+]
 
-dcc.Markdown('''
-***
+def generate_instructions(chapter, platform):
+    if chapter == 'ssh':
+        return [
+            dcc.Markdown(s('''
+                You will deploy your Dash code to Plotly On-Premise using Git
+                with SSH.
+            ''')),
 
-#### Step 2. Initialize that folder with `git` and a `virtualenv`
+            (dcc.Markdown(s('''
+                These instructions assume that you are using
+                **Git Bash** on Windows, which is included in the
+                official [Git for Windows release](https://git-scm.com/download/win).
+            ''')) if platform == 'Windows' else
+            ''),
 
-'''),
+            dcc.Markdown(s('''
 
-dcc.SyntaxHighlighter('''git init        # initializes an empty git repo
-virtualenv venv # creates a virtualenv called "venv"
-source venv/bin/activate # uses the virtualenv
-''', customStyle=styles.code_container),
+                ***
 
-dcc.Markdown('''
-`virtualenv` creates a fresh Python instance. You will need to reinstall your
-app's dependencies with this virtualenv:
-'''),
+                ### Generate a new SSH key
 
-dcc.SyntaxHighlighter('''pip install dash==0.17.8rc2
-pip install dash-auth==0.0.4rc4
-pip install dash-renderer
-pip install dash-core-components
-pip install dash-html-components
-pip install plotly
-pip install gunicorn
-''', customStyle=styles.code_container),
+                If you already have an SSH key that you've used in other
+                services, you can use that key instead of generating a new one.
 
-dcc.Markdown('''
+            ''')),
 
-After installing, create a `requirements.txt` file to snapshot the
-versions of these packages:
-'''),
+            dcc.Markdown(
+                '**1. Open Git Bash**' if platform == 'Windows' else
+                '**1. Open Terminal**'
+            ),
 
-dcc.SyntaxHighlighter('''pip freeze > requirements.txt'''),
+             dcc.Markdown(s('''
+                **2. Generate Key**
 
-dcc.Markdown('''
-Anytime that you want to do work on this app inside this folder, you should
-make sure that you're using this project's `virtualenv`.
-Activate the `virtualenv` with
-```
-$ source venv/bin/activate
-```
+                This command will walk you
+                through a few instructions.
+            ''')),
 
-Anytime that you install a new package, make sure to write it to the `requirements.txt`
-file with `pip freeze > requirements.txt`.
+            dcc.SyntaxHighlighter(
+                ('$ ssh-keygen -t rsa -b 4096 -C "your_email@example.com"'),
+                customStyle=styles.code_container,
+                language='python'
+            ),
 
-***
+            dcc.Markdown(s('''
+                ***
 
-#### Step 3 - Add the following sample files to that folder
+                ### Add your SSH key to the ssh-agent
 
-On your computer, create a new folder and add the
-following files to that folder.
-'''),
+                **1. Ensure the ssh-agent is running:**
+            ''')),
 
-dcc.Markdown('''
+            dcc.SyntaxHighlighter(
+                ('$ eval $(ssh-agent -s)' if platform == 'Windows' else
+                 '$ eval "$(ssh-agent -s)"'),
+                customStyle=styles.code_container,
+                language='python'
+            ),
 
-Filename: **`app.py`**
+            dcc.Markdown(s('''
+                **2. Run `ssh-add`**
 
-Description: This file contains the actual Dash app code.
+                Replace `id_rsa` with the name of the key that you
+                created above if it is different.
+            ''')),
 
-File Content:
-'''),
+            dcc.SyntaxHighlighter(
+                ('$ ssh-add ~/.ssh/id_rsa' if platform == 'Windows' else
+                 '$ ssh-add -K ~/.ssh/id_rsa'),
+                customStyle=styles.code_container,
+                language='python'
+            ),
 
-dcc.SyntaxHighlighter('''import dash
-import dash_auth
-import dash_core_components as dcc
-import dash_html_components as html
-import os
-import plotly.plotly as py
+            dcc.Markdown(s('''
+                ***
 
-import config
+                ### Add your SSH public key your Dash App Manager
+            ''')),
 
-app = dash.Dash(__name__)
+            dcc.Markdown(s('''
+                **1. Copy the SSH key to your clipboard.**
 
-# Expose the server variable
-server = app.server
+                Replace `id_rsa.pub` with the name of the key that you
+                created above if it is different.
 
-# Serve JS and CSS files locally instead of from global CDN
-app.scripts.config.serve_locally = True
-app.css.config.serve_locally = True
-# https://my-dash-app-5.dash-qa.plotly.systems/_oauth
-APP_URL = '{}://{}.{}'.format(
-    config.PLOTLY_DASH_DOMAIN.split('://')[0],
-    config.DASH_APP_NAME,
-    config.PLOTLY_DASH_DOMAIN.split('://')[1]
-)
+            ''')),
+
+            dcc.SyntaxHighlighter(
+                ('$ clip < ~/.ssh/id_rsa.pub' if platform == 'Windows' else
+                 '$ pbcopy < ~/.ssh/id_rsa.pub' if platform == 'Mac' else
+                 '$ sudo apt-get install xclip\n$ xclip -sel clip < ~/.ssh/id_rsa.pub'),
+                customStyle=styles.code_container,
+                language='python'
+            ),
+
+            dcc.Markdown(s('''
+                **2. Open the Dash App Manager**
+
+                You can find the Dash App Manager by clicking on "Dash App" in your
+                Plotly On-Premise's "Create" menu.
+
+                > *The Dash App item in the Create menu takes you to the Dash App Manager*
+            ''')),
+
+            html.Img(
+                alt="Dash App Create Menu",
+                src="https://github.com/plotly/dash-docs/raw/master/images/dash-create-menu.png",
+                style={
+                    'width': '100%', 'border': 'thin lightgrey solid',
+                    'border-radius': '4px'
+                }
+            ),
+
+            dcc.Markdown(s('''
+                **3. Paste your key into the Dash App Manager's SSH key field.**
+            ''')),
+
+            dcc.Markdown(s('''
+                > *The Dash App Manager's SSH Key Interface. Copy and paste
+                > your public key in this interface and click "Update".*
+            ''')),
+
+            html.Img(
+                alt="Dash App Manager Public Key Interface",
+                src="https://github.com/plotly/dash-docs/raw/master/images/dash-app-manager-ssh-key.png",
+                style={
+                    'width': '100%', 'border': 'thin lightgrey solid',
+                    'border-radius': '4px'
+                }
+            ),
+
+            dcc.Markdown(s('''
+                ***
+
+                ### Modify SSH Config
+                Next, specify a custom port in your SSH config. By default, this should be
+                `3022` but your server administrator may have set it to something different.
+
+                This file is located in `~/.ssh/config`. If it's not there, then create it.
+                Add the following lines to
+                this file, replacing `your-dash-app-manager` with the domain of
+                your Dash App Manager (without `http://` or `https://`).
+            ''')),
+
+            dcc.SyntaxHighlighter('''Host your-dash-app-manager
+    Port 3022''', customStyle=styles.code_container),
+
+            (dcc.Markdown('''If you're having trouble opening this file, you can run `$ open ~/.ssh/config`
+            which will open the file using your default editor. If the file doesn't exist,
+            then you can open that hidden folder with just `$ open ~/.ssh`''')
+            if platform == 'Mac' else ''),
+
+            dcc.Markdown(s('''
+                ***
+
+                Next, proceed to Part 2 to intialize your app on Plotly On-Premise.
+
+            '''))
+        ]
+    elif chapter == 'create-app':
+        return [
+            dcc.Markdown(s('''
+
+                **1. Visit the Dash App Manager**
+
+                **2. Add an app**
+
+                Click on `Add an app` and enter a name for your app.
+                The app's name will be part of the URL of your app.
+            ''')),
+
+            html.Img(
+                alt="Dash App Manager Add App Interface",
+                src="https://github.com/plotly/dash-docs/raw/master/images/dash-app-manager-empty.png",
+                style={
+                    'width': '100%', 'border': 'thin lightgrey solid',
+                    'border-radius': '4px'
+                }
+            ),
+
+            dcc.Markdown(s('''
+                ***
+
+                Next, proceed to Part 3 to deploy your app
+
+            '''))
+
+        ]
+
+    elif chapter == 'deployment':
+        return [
+            dcc.Markdown(s('''
+
+                #### Download the Sample App from GitHub
+
+                Clone the [Dash On Premise Sample App](https://github.com/plotly/dash-on-premise-sample-app) from GitHub.
+
+            ''')),
+
+            ('In Git Bash, run: ' if platform == 'Windows' else ''),
+
+            dcc.SyntaxHighlighter(
+                '$ git clone https://github.com/plotly/dash-on-premise-sample-app.git',
+                customStyle=styles.code_container
+            ),
+
+            dcc.Markdown(s('''
+
+                ***
+
+                #### Configure your Plotly On-Premise server to be your Git remote
+
+                The following command will create a remote host to your new app on
+                Plotly On-Premise.
+            ''')),
+
+            dcc.SyntaxHighlighter(
+                '$ git remote add plotly dokku@your-dash-app-manager:your-dash-app-name',
+                customStyle=styles.code_container,
+                language='python'
+            ),
+
+            dcc.Markdown(s('''
+                Replace `your-dash-app-name` with the name of your Dash app that you supplied
+                in the Dash app manager and `your-dash-app-manager` with the domain of the
+                Dash App Manager.
+
+                For example, if your Dash app name was `my-first-dash-app`
+                and the domain of your organizations Dash App Manager was `dash.plotly.acme-corporation.com`,
+                then this command would be
+                `git remote add plotly dokku@dash.plotly.acme-corporation.com:my-first-dash-app`.
+
+            ''')),
+
+            dcc.Markdown(s('''***
+
+                #### Deploy
+
+                Deploy your code by commiting it and pushing it to the repository:
+
+            ''')),
+
+
+            dcc.SyntaxHighlighter(s('''$ git push plotly master'''), customStyle=styles.code_container, language='python'),
+
+
+            dcc.Markdown(s('''
+                Once this command finishes running, you will be able to view
+                your app in your web browser. The command will print out the URL
+                of the app. The URL will look look
+                `https://your-dash-app-name.your-dash-app-manager.com` or
+                `https://your-dash-app-manager.com/your-dash-app-name`, depending
+                on whether your Plotly On-Premise administrator set up
+                subdomain-based routing or path-based routing.
+
+                ***
+
+                #### Deploying Changes
+
+                When you modify `app.py` with your own code, you will need to add the changes
+                to git and push those changes to Plotly On-Premise.
+            ''')),
+
+            dcc.SyntaxHighlighter(s('''$ git status # view the changed files
+                $ git diff # view the actual changed lines of code
+                $ git add .  # add all the changes
+                $ git commit -m 'a description of the changes'
+                $ git push plotly master
+                '''), customStyle=styles.code_container, language='python'),
+
+            dcc.Markdown(s('''
+                If you install any other Python packages, add those packages to
+                the `requirements.txt` file. Packages that are included in this
+                file will be installed automatically by the Plotly On-Premise
+                server.
+            '''))
+        ]
+    elif chapter == 'auth':
+        return [
+            dcc.Markdown(s('''
+            The `dash-auth` package provides login through your Plotly
+            On-Premise accounts.
+
+            #### Add a `config.py` file
+
+            This file contains several settings that are used in your app.
+            It's kept in a separate file so that it's easy for you to
+            transfer from app to app.
+            *Read through this file and modify the variables as appropriate.*
+
+            ''')),
+
+            dcc.SyntaxHighlighter(s('''import os
+
+                # Replace with the name of your Dash app
+                # This will end up being part of the URL of your deployed app,
+                # so it can't contain any spaces, capitalizations, or special characters
+                #
+                # This name MUST match the name that you specified in the
+                # Dash App Manager
+                DASH_APP_NAME = 'my-dash-app'
+
+                DASH_APP_PRIVACY = 'private'
+
+                # Fill in with your Plotly On-Premise username
+                os.environ['PLOTLY_USERNAME'] = 'your-plotly-username'
+
+                # Fill in with your Plotly On-Premise API key
+                # See <your-plotly-server>/settings/api to generate a key
+                # If you have already created a key and saved it on your own machine
+                # (from the Plotly-Python library instructions at https://plot.ly/python/getting-started)
+                # then you can view that key in your ~/.plotly/.config file or by running:
+                # `python -c import plotly; print(plotly.tools.get_config_file())`
+                os.environ['PLOTLY_API_KEY'] = 'your-plotly-api-key'
+
+                # Fill in with your Plotly On-Premise domain
+                os.environ['PLOTLY_DOMAIN'] = 'https://your-plotly-domain.com'
+                os.environ['PLOTLY_API_DOMAIN'] = os.environ['PLOTLY_DOMAIN']
+
+                # Fill in with the domain of your Dash subdomain.
+                # This matches the domain of the Dash App Manager
+                PLOTLY_DASH_DOMAIN='https://your-dash-manager-plotly-domain.com'
+
+                # Keep as True if your SSL certificates are valid.
+                # If you are just trialing Plotly On-Premise with self signed certificates,
+                # then you can set this to False. Note that self-signed certificates are not
+                # safe for production.
+                os.environ['PLOTLY_SSL_VERIFICATION'] = 'True'
+
+                # Dash On-Premise is configured with either "Subdomain based routing"
+                # or "Path based routing". As your server administrator which
+                # version was set up. If a separate subdomain was created,
+                # then set this to `False`. If it was not, set this to 'True'.
+                PATH_BASED_ROUTING = 'False'
+            '''), language='python', customStyle=styles.code_container),
+
+            dcc.Markdown(s('''
+            #### Add a `dash_auth` code block in your `app.py` file
+
+            In your Dash `app.py` file, add the following blocks code after you
+            initialize your app. This will register an oauth login entry
+            for your Dash app and save a reference to your app in your Plotly
+            account's list of files.
+
+            First, add two imports to `app.py`:
+            ''')),
+
+            dcc.SyntaxHighlighter(s('''import dash_auth\nimport config
+            '''), language='python', customStyle=styles.code_container),
+
+            dcc.Markdown(
+                'Then, add this block after you initialize your `app`:'
+            ),
+
+            dcc.SyntaxHighlighter('''if config.PATH_BASED_ROUTING:
+    APP_URL = '{}/{}'.format(
+        config.PLOTLY_DASH_DOMAIN,
+        config.DASH_APP_NAME,
+    )
+else:
+    APP_URL = '{}://{}.{}'.format(
+        config.PLOTLY_DASH_DOMAIN.split('://')[0],
+        config.DASH_APP_NAME,
+        config.PLOTLY_DASH_DOMAIN.split('://')[1]
+    )
 
 dash_auth.PlotlyAuth(
     app,
@@ -116,323 +395,62 @@ dash_auth.PlotlyAuth(
     config.DASH_APP_PRIVACY,
     APP_URL
 )
+''', language='python', customStyle=styles.code_container),
 
-# Standard Dash app code below
-app.layout = html.Div([
-    html.H2('Hello World'),
-    dcc.Dropdown(
-        id='dropdown',
-        options=[{'label': i, 'value': i} for i in ['LA', 'NYC', 'MTL']],
-        value='LA'
+            dcc.Markdown(s('''
+            #### Redeploy your app
+
+            Your app should now have a Plotly On-Premise login screen.
+            You can manage the permissions of the app in your list of files
+            at `https://<your-plotly-domain>/organize`.
+            '''))
+        ]
+
+layout = html.Div([
+    dcc.Markdown(s('''
+        # Deploying Dash Apps on Plotly On-Premise
+
+        By default, Dash apps run on `localhost` - you can only access them on your
+        own machine. With Plotly On-Premise, you can easily deploy your Dash code
+        to your organization's behind-the-firewall server.
+        If you would like to learn more about Plotly On-Premise or start a trial,
+        [please reach out](https://plotly.typeform.com/to/seG7Vb).
+    ''')),
+
+    html.Hr(),
+
+    dcc.RadioItems(
+        id='step',
+        options=STEPS,
+        value='ssh'
     ),
-    html.Div(id='display-value')
+
+    html.Hr(),
+
+    html.H2(id='header'),
+
+    dcc.RadioItems(
+        id='platform',
+        options=[
+            {'label': i, 'value': i} for i in
+            ['Windows', 'Mac', 'Linux']],
+        value='Windows',
+        labelStyle={'display': 'inline-block'}
+    ),
+
+    html.Hr(),
+
+    html.Div(id='deployment-instructions')
 ])
 
-@app.callback(dash.dependencies.Output('display-value', 'children'),
-              [dash.dependencies.Input('dropdown', 'value')])
-def display_value(value):
-    return 'You have selected "{}"'.format(value)
-
-if __name__ == '__main__':
-    app.run_server(debug=True)
-''', customStyle=styles.code_container, language='python'),
-
-dcc.Markdown('''
-***
-
-Filename: **`.gitignore`**
-
-Description: This file specifies which files should not be included in the Git repository.
-
-File content:
-'''),
-
-dcc.SyntaxHighlighter('''venv
-*.pyc
-.DS_Store
-''', customStyle=styles.code_container),
-
-dcc.Markdown('''
-***
-
-Filename: **`Procfile`**
-
-Description: This file provides the Dash deployment server with the set of commands to run
-the server. In this case, we're running a "web" process and runs the command
-`gunicorn app:server`. You can test this yourself by running that command in
-your terminal. Note that `app` refers to the filename `app.py` and `server`
-refers to the variable `server` inside that file.
-
-File content:
-'''),
-
-dcc.SyntaxHighlighter('''web: gunicorn app:server
-''', customStyle=styles.code_container),
-
-dcc.Markdown('''
-
-***
-
-Filename **`requirements.txt`**
-
-Description: `requirements.txt` describes your Python dependencies.
-You can fill this file in automatically with:
-'''),
-
-dcc.SyntaxHighlighter('''$ source venv/bin/activate
-$ pip freeze > requirements.txt
-''', customStyle=styles.code_container),
-
-
-
-dcc.Markdown('''
-***
-
-#### Step 4. Add a `config.py` file and modify with your account settings
-
-Filename: **`config.py`**
-
-Description: This file contains several settings that are used in your app.
-It's kept in a separate file so that it's easy for you to transfer from
-app to app. *Read through this file and modify the variables as appropriate.*
-
-File content:
-'''),
-
-dcc.SyntaxHighlighter('''import os
-
-# Replace with the name of your Dash app
-# This will end up being part of the URL of your deployed app,
-# so it can't contain any spaces, capitalizations, or special characters
-DASH_APP_NAME = 'my-dash-app'
-
-DASH_APP_PRIVACY = 'private'
-
-# Fill in with your Plotly On-Premise username
-os.environ['PLOTLY_USERNAME'] = 'your-plotly-username'
-
-# Fill in with your Plotly On-Premise API key
-# See <your-plotly-server>/settings/api to generate a key
-# If you have already created a key and saved it on your own machine
-# (from the Plotly-Python library instructions at https://plot.ly/python/getting-started)
-# then you can view that key in your ~/.plotly/.config file or by running:
-# `python -c import plotly; print(plotly.tools.get_config_file())`
-os.environ['PLOTLY_API_KEY'] = 'your-plotly-api-key'
-
-# Fill in with your Plotly On-Premise domain
-os.environ['PLOTLY_DOMAIN'] = 'https://your-plotly-domain.com'
-os.environ['PLOTLY_API_DOMAIN'] = os.environ['PLOTLY_DOMAIN']
-
-# Fill in with the domain of your Dash subdomain.
-# This matches the domain of the Dash App Manager
-PLOTLY_DASH_DOMAIN='https://your-dash-manager-plotly-domain.com'
-
-# Keep as True if your SSL certificates are valid.
-# If you are just trialing Plotly On-Premise with self signed certificates,
-# then you can set this to False. Note that self-signed certificates are not
-# safe for production.
-os.environ['PLOTLY_SSL_VERIFICATION'] = 'True'
-''', language='python', customStyle=styles.code_container),
-
-dcc.Markdown('''
-As mentioned in the comments of the file, if you can generate your API key by
-visiting <your-plotly-server>.com/settings/api.
-If you have already generated an API key and saved it, then you can view it in
-python with:
-'''),
-
-dcc.SyntaxHighlighter('''import plotly.tools as tls
-
-print(tls.get_config_file())
-''', language='python', customStyle=styles.code_container),
-
-dcc.Markdown('''
-
-***
-
-#### Step 5. Test the app locally
-
-Test that the files that you copied and pasted from the steps above work.
-
-You can run the app locally with:
-'''),
-
-dcc.SyntaxHighlighter(
-    '''$ python app.py''',
-    language='python',
-    customStyle=styles.code_container
-),
-
-dcc.Markdown('''
-The default `DASH_APP_PRIVACY` setting in the `config.py` file adds a login
-screen to this app. Your app should look like this and you should be able
-to successfully log in.
-'''),
-
-html.Img(
-    alt="Dash App Log In",
-    src="https://github.com/plotly/dash-docs/raw/master/images/on-premise-local-login.gif",
-    style={
-        'width': '100%', 'border': 'thin lightgrey solid',
-        'border-radius': '4px'
-    }
-),
-
-dcc.Markdown('''
-***
-
-#### Step 5. Create an SSH key and add the SSH public key to the Dash App Manager
-
-The SSH key is a way to authenticate you against the Plotly On Premise server.
-
-To create an SSH key, run the following command. The command will walk you
-through a few instructions.
-'''),
-
-dcc.SyntaxHighlighter(
-    ('$ ssh-keygen -t rsa -b 4096 -C "your_email@example.com"'),
-    customStyle=styles.code_container,
-    language='python'
-),
-
-dcc.Markdown('''
-This will create two files in the location that you have specified.
-One of these files is the "public key" and it contains the ".pub" suffix.
-
-Add this SSH key to your system with the `ssh-add` command.
-For example, if your key was created in the location `~/.ssh/plotly-ssh-key`,
-then run:
-'''),
-
-dcc.SyntaxHighlighter(
-    '$ ssh-add ~/.ssh/plotly-ssh-key',
-    customStyle=styles.code_container,
-    language='python'
-),
-
-dcc.Markdown('''
-Open up the Dash App Manager and copy and paste this key. You can view this
-key by running `$ cat ~/.ssh/plotly-ssh-key.pub` (replacing with the name
-of your ssh key).
-
-You can find the Dash App Manager by clicking on "Dash App" in your
-Plotly On-Premise's "Create" menu.
-
-> *The Dash App item in the Create menu takes you to the Dash App Manager*
-'''),
-
-html.Img(
-    alt="Dash App Create Menu",
-    src="https://github.com/plotly/dash-docs/raw/master/images/dash-create-menu.png",
-    style={
-        'width': '100%', 'border': 'thin lightgrey solid',
-        'border-radius': '4px'
-    }
-),
-
-dcc.Markdown('''
-> *The Dash App Manager's SSH Key Interface. Copy and paste
-> your public key in this interface and click "Update".*
-'''),
-
-html.Img(
-    alt="Dash App Manager Public Key Interface",
-    src="https://github.com/plotly/dash-docs/raw/master/images/dash-app-manager-ssh-key.png",
-    style={
-        'width': '100%', 'border': 'thin lightgrey solid',
-        'border-radius': '4px'
-    }
-),
-
-dcc.Markdown('''
-***
-
-#### Step 6. Add your App to the Dash App Manager
-
-Visit the Dash App Manager. An item with the name that you specified in
-the `config.py` file should appear. This item was created when you ran your
-app locally in Step 5. Click on the `Add To This Server` button to register
-the app to the Dash App Manager.
-'''),
-
-html.Img(
-    alt="Dash App Manager Add App Interface",
-    src="https://github.com/plotly/dash-docs/raw/master/images/dash-app-manager-launch-app.png",
-    style={
-        'width': '100%', 'border': 'thin lightgrey solid',
-        'border-radius': '4px'
-    }
-),
-
-dcc.Markdown('''
-***
-
-#### Step 7. Configure your Plotly On-Premise server to be your Git remote
-
-Your application code will be transferred to the Dash On-Premises server through
-`git` and `ssh`.
-
-The following command will create a remote host to your new app on
-Plotly On-Premise.
-'''),
-
-
-dcc.Markdown('''
-Replace `your-dash-app-name` with the name of your Dash app that you supplied
-in the Dash app manager and `your-dash-app-manager` with the domain of the
-Dash App Manager. For example, if your Dash app name was `my-first-dash-app`
-and the domain of your organizations Dash App Manager was `dash.plotly.acme-corporation.com`,
-then this command would be
-`git remote add plotly dokku@dash.plotly.acme-corporation.com:my-first-dash-app`:
-'''),
-
-dcc.SyntaxHighlighter(
-    '$ git remote add plotly dokku@your-dash-app-manager:your-dash-app-name',
-    customStyle=styles.code_container,
-    language='python'
-),
-
-dcc.Markdown('''
-Next, specify a custom port in your SSH config. By default, this should be
-`3022` but your server administrator may have set it to something different.
-
-This file is located in `~/.ssh/config`. If it's not there, then create it.
-You can open this file with `$ open ~/.ssh/config`. Add the following lines to
-this file, replacing `your-dash-app-manager` with the domain of your
-dash app manager (as you specified above):'''),
-
-dcc.SyntaxHighlighter('''Host your-dash-app-manager
-    Port 3022
-'''),
-
-dcc.Markdown('''***
-
-#### Step 8. Add the Code and Deploy
-
-Deploy your code by commiting it and pushing it to the repository:
-
-'''),
-
-
-dcc.SyntaxHighlighter('''git add .
-git commit -m 'initial app'
-git push plotly master
-''', customStyle=styles.code_container, language='python'),
-
-
-dcc.Markdown('''***
-
-#### Step 9. Update the code and redeploy
-
-When you modify `app.py` with your own code, you will need to add the changes
-to git and push those changes to heroku.
-'''),
-
-dcc.SyntaxHighlighter('''$ git status # view the changed files
-$ git diff # view the actual changed lines of code
-$ git add .  # add all the changes
-$ git commit -m 'a description of the changes'
-$ git push plotly master
-''', customStyle=styles.code_container, language='python')
-
-]
+@app.callback(Output('header', 'children'),
+              [Input('step', 'value')])
+def display_header(value):
+    return [i['label'] for i in STEPS if i['value'] == value][0]
+
+
+@app.callback(Output('deployment-instructions', 'children'),
+              [Input('step', 'value'),
+               Input('platform', 'value')])
+def display_instructions(chapter, platform):
+    return generate_instructions(chapter, platform)
