@@ -306,7 +306,7 @@ def generate_instructions(chapter, platform):
             The `dash-auth` package provides login through your Plotly
             On-Premise accounts.
 
-            #### Add a `config.py` file
+            #### Modify the `config.py` file
 
             This file contains several settings that are used in your app.
             It's kept in a separate file so that it's easy for you to
@@ -314,88 +314,6 @@ def generate_instructions(chapter, platform):
             *Read through this file and modify the variables as appropriate.*
 
             ''')),
-
-            dcc.SyntaxHighlighter(s('''import os
-
-                # Replace with the name of your Dash app
-                # This will end up being part of the URL of your deployed app,
-                # so it can't contain any spaces, capitalizations, or special characters
-                #
-                # This name MUST match the name that you specified in the
-                # Dash App Manager
-                DASH_APP_NAME = 'my-dash-app'
-
-                DASH_APP_PRIVACY = 'private'
-
-                # Fill in with your Plotly On-Premise username
-                os.environ['PLOTLY_USERNAME'] = 'your-plotly-username'
-
-                # Fill in with your Plotly On-Premise API key
-                # See <your-plotly-server>/settings/api to generate a key
-                # If you have already created a key and saved it on your own machine
-                # (from the Plotly-Python library instructions at https://plot.ly/python/getting-started)
-                # then you can view that key in your ~/.plotly/.config file or by running:
-                # `python -c import plotly; print(plotly.tools.get_config_file())`
-                os.environ['PLOTLY_API_KEY'] = 'your-plotly-api-key'
-
-                # Fill in with your Plotly On-Premise domain
-                os.environ['PLOTLY_DOMAIN'] = 'https://your-plotly-domain.com'
-                os.environ['PLOTLY_API_DOMAIN'] = os.environ['PLOTLY_DOMAIN']
-
-                # Fill in with the domain of your Dash subdomain.
-                # This matches the domain of the Dash App Manager
-                PLOTLY_DASH_DOMAIN='https://your-dash-manager-plotly-domain.com'
-
-                # Keep as True if your SSL certificates are valid.
-                # If you are just trialing Plotly On-Premise with self signed certificates,
-                # then you can set this to False. Note that self-signed certificates are not
-                # safe for production.
-                os.environ['PLOTLY_SSL_VERIFICATION'] = 'True'
-
-                # Dash On-Premise is configured with either "Subdomain based routing"
-                # or "Path based routing". As your server administrator which
-                # version was set up. If a separate subdomain was created,
-                # then set this to `False`. If it was not, set this to 'True'.
-                PATH_BASED_ROUTING = 'False'
-            '''), language='python', customStyle=styles.code_container),
-
-            dcc.Markdown(s('''
-            #### Add a `dash_auth` code block in your `app.py` file
-
-            In your Dash `app.py` file, add the following blocks code after you
-            initialize your app. This will register an oauth login entry
-            for your Dash app and save a reference to your app in your Plotly
-            account's list of files.
-
-            First, add two imports to `app.py`:
-            ''')),
-
-            dcc.SyntaxHighlighter(s('''import dash_auth\nimport config
-            '''), language='python', customStyle=styles.code_container),
-
-            dcc.Markdown(
-                'Then, add this block after you initialize your `app`:'
-            ),
-
-            dcc.SyntaxHighlighter('''if config.PATH_BASED_ROUTING:
-    APP_URL = '{}/{}'.format(
-        config.PLOTLY_DASH_DOMAIN,
-        config.DASH_APP_NAME,
-    )
-else:
-    APP_URL = '{}://{}.{}'.format(
-        config.PLOTLY_DASH_DOMAIN.split('://')[0],
-        config.DASH_APP_NAME,
-        config.PLOTLY_DASH_DOMAIN.split('://')[1]
-    )
-
-dash_auth.PlotlyAuth(
-    app,
-    config.DASH_APP_NAME,
-    config.DASH_APP_PRIVACY,
-    APP_URL
-)
-''', language='python', customStyle=styles.code_container),
 
             dcc.Markdown(s('''
             #### Redeploy your app
