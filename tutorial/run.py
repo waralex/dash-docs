@@ -222,7 +222,8 @@ app.layout = html.Div([
 ])
 
 
-@app.callback(Output('chapter', 'children'), [Input('location', 'pathname')])
+@app.callback(Output('chapter', 'children'),
+    [Input('location', 'pathname')])
 def display_content(pathname):
     if pathname is None:
         return html.Div()
