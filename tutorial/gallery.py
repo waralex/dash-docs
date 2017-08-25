@@ -286,7 +286,7 @@ layout = html.Div(className="gallery", children=[
 
     html.A(
         className="image-link",
-        href="https://plot.ly/dash/volatility-surface",
+        href="https://plot.ly/dash/gallery/yield-curve",
         children=html.Img(
             src="https://raw.githubusercontent.com/plotly/dash-docs/master/images/dash-yield-curve-app.png",
             alt="Screenshot of a dash home page"
