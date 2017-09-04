@@ -3,12 +3,22 @@ import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output, State, Event
 from pandas_datareader import data as web
+import core_component_examples as examples
 from datetime import datetime as dt
 import plotly.graph_objs as go
 import json
 import styles
 
+import tools
+from utils.component_block import ComponentBlock
+
 from server import app
+
+examples = {
+    'button': tools.load_example('tutorial/examples/core_components/button.py')
+}
+
+
 
 layout = html.Div(children=[
     html.H1('Dash Core Components'),
@@ -19,7 +29,14 @@ layout = html.Div(children=[
         is available in the `dash-core-components` library.
 
         The source is on GitHub at [plotly/dash-core-components](https://github.com/plotly/dash-core-components).
-    '''.replace('    ', '')),
+
+        These docs are using version {}.
+    '''.replace('    ', '').format(dcc.__version__)),
+
+    dcc.SyntaxHighlighter('''>>> import dash_core_components as dcc
+    >>> print(dcc.__version__)
+    {}'''.replace('    ', '').format(dcc.__version__),
+    customStyle=styles.code_container),
 
     html.Hr(),
     html.H3('Dropdown'),
@@ -55,9 +72,11 @@ dcc.Dropdown(
         {'label': 'Montréal', 'value': 'MTL'},
         {'label': 'San Francisco', 'value': 'SF'}
     ], multi=True, value="MTL", id='section2-dropdown-2'),
-
+    html.Br(),
+    dcc.Link(html.A('More Dropdown Examples and Reference'),
+             href="/dash/dash-core-components/dropdown"),
     html.Hr(),
-    html.H3('Date Picker'),
+    html.H3('DatePickerSingle'),
     dcc.SyntaxHighlighter('''import dash_core_components as dcc
 from datetime import datetime as dt
 
@@ -70,22 +89,6 @@ dcc.DatePickerSingle(
     dcc.DatePickerSingle(
         id='section2-datepickersingle-1',
         date=dt(1997, 5, 10)
-    ),
-
-    dcc.SyntaxHighlighter('''import dash_core_components as dcc
-from datetime import datetime as dt
-
-dcc.DatePickerRange(
-    id='date-picker-range',
-    start_date=dt(1997, 5, 3),
-    end_date_placeholder_text='Select a date!'
-)
-''', language='python', customStyle=styles.code_container),
-
-    dcc.DatePickerRange(
-        id='section2-datepickerrange-1',
-        start_date=dt(1997, 5, 3),
-        end_date_placeholder_text='Select a date!'
     ),
 
     dcc.SyntaxHighlighter('''import dash_core_components as dcc
@@ -110,6 +113,27 @@ dcc.DatePickerSingle(
         with_portal=True,
         number_of_months_shown=1,
         placeholder='Try it out!'
+    ),
+    html.Br(),
+    html.Br(),
+    dcc.Link(html.A('More DatePickerSingle Examples and Reference'),
+             href="/dash/dash-core-components/datepickersingle"),
+    html.Hr(),
+    html.H3('DatePickerRange'),
+    dcc.SyntaxHighlighter('''import dash_core_components as dcc
+from datetime import datetime as dt
+
+dcc.DatePickerRange(
+    id='date-picker-range',
+    start_date=dt(1997, 5, 3),
+    end_date_placeholder_text='Select a date!'
+)
+''', language='python', customStyle=styles.code_container),
+
+    dcc.DatePickerRange(
+        id='section2-datepickerrange-1',
+        start_date=dt(1997, 5, 3),
+        end_date_placeholder_text='Select a date!'
     ),
 
     dcc.SyntaxHighlighter('''import dash_core_components as dcc
@@ -152,7 +176,10 @@ dcc.DatePickerRange(
         month_format='MM YY',
         display_format='MMMM D, Y'
     ),
-
+    html.Br(),
+    html.Br(),
+    dcc.Link(html.A('More DatePickerRange Examples and Reference'),
+             href="/dash/dash-core-components/datepickerrange"),
     html.Hr(),
     html.H3('Slider'),
     dcc.SyntaxHighlighter('''import dash_core_components as dcc
@@ -186,6 +213,9 @@ dcc.Slider(
         value=5,
         id='section2-slider-2'
     )),
+    html.Br(),
+    dcc.Link(html.A('More Slider Examples and Reference'),
+             href="/dash/dash-core-components/slider"),
     html.Hr(),
     html.H3('RangeSlider'),
     dcc.SyntaxHighlighter('''import dash_core_components as dcc
@@ -221,7 +251,9 @@ dcc.RangeSlider(
         value=[-3, 4],
         id='section2-rangeslider-2'
     )),
-
+    html.Br(),
+    dcc.Link(html.A('More RangeSlider Examples and Reference'),
+             href="/dash/dash-core-components/rangeslider"),
     html.Hr(),
     html.H3('Input'),
     dcc.SyntaxHighlighter('''import dash_core_components as dcc
@@ -238,6 +270,27 @@ dcc.Input(
         id='section2-input'
     ),
 
+    html.Br(),
+    dcc.Link(html.A('Input Reference'),
+             href="/dash/dash-core-components/input"),
+    html.Hr(),
+    html.H3('Textarea'),
+    dcc.SyntaxHighlighter('''import dash_core_components as dcc
+
+dcc.Textarea(
+    placeholder='Enter a value...',
+    value='This is a TextArea component',
+    style={'width': '100%'}
+)''', language='python', customStyle=styles.code_container),
+    dcc.Textarea(
+        placeholder='Enter a value...',
+        style={'width': '100%'}
+    ),
+
+    html.Br(),
+    html.Br(),
+    dcc.Link(html.A('Textarea Reference'),
+             href="/dash/dash-core-components/textarea"),
     html.Hr(),
     html.H3('Checkboxes'),
     dcc.SyntaxHighlighter('''import dash_core_components as dcc
@@ -282,7 +335,9 @@ dcc.Checklist(
         id='section2-checklist-2'
     ),
 
-
+    html.Br(),
+    dcc.Link(html.A('Checklist Properties'),
+             href="/dash/dash-core-components/checklist"),
     html.Hr(),
     html.H3('Radio Items'),
     dcc.SyntaxHighlighter('''import dash_core_components as dcc
@@ -326,7 +381,16 @@ dcc.RadioItems(
         labelStyle={'display': 'inline-block'},
         id='section2-radioitems-2'
     ),
-
+    html.Br(),
+    dcc.Link(html.A('RadioItems Reference'),
+             href="/dash/dash-core-components/radioitems"),
+    html.Hr(),
+    html.H3("Button"),
+    dcc.SyntaxHighlighter(
+        examples['button'][0],
+        customStyle=styles.code_container, language='python'
+    ),
+    html.Div(examples['button'][1], className='example-container'),
     html.Hr(),
     html.H3('Markdown'),
     dcc.SyntaxHighlighter('''import dash_core_components as dcc
@@ -355,8 +419,12 @@ dcc.RadioItems(
     It includes a syntax for things like **bold text** and *italics*,
     [links](http://commonmark.org/help), inline `code` snippets, lists,
     quotes, and more.'''.replace('  ', ''),
-    containerProps={'className': 'example-container'}),
+    containerProps={'className': 'example-container',
+                    'style': {'overflow': 'hidden'}}),
 
+    html.Br(),
+    dcc.Link(html.A('More Markdown Examples and Reference'),
+             href="/dash/dash-core-components/markdown"),
     html.Hr(),
     html.H3('Graphs'),
     dcc.Markdown('''
@@ -400,20 +468,22 @@ dcc.Graph(
         id="my-graph"
     ),
 
-    html.Div(style={'marginBottom': 50}),
+    html.Br(),
+    dcc.Markdown('View the [plotly.py docs](https://plot.ly/python).'),
 
     html.Div(id='hidden', style={'display': 'none'})
 ])
 
 
 for k in layout.keys():
-    if k == 'hidden':
+    if (k == 'hidden' or k == 'page-content' or k == 'url'
+       or k == 'input-box' or k == 'button' or k == 'output-container-button'):
         continue
 
     if k in ['section2-rangeslider-2', 'section2-slider-2']:
         layout[k] = html.Div(layout[k],
             className="example-container",
-            style=dict({'padding': '40px'})
+            style=dict({'padding': '40px', 'overflow': 'hidden'})
         )
     elif(k in ['section2-dropdown-1', 'section2-dropdown-2']):
         layout[k] = html.Div(layout[k])
@@ -421,7 +491,8 @@ for k in layout.keys():
                'section2-datepickerrange-1', 'section2-datepickerrange-2']):
         layout[k] = html.Div(layout[k], style={'display': 'inline-block'})
     else:
-        layout[k] = html.Div(layout[k], className="example-container")
+        layout[k] = html.Div(layout[k], className="example-container",
+                             style={'overflow': 'hidden'})
 
 # add dependencies to all of section2's elements so that they become controlled
 @app.callback(
@@ -430,3 +501,14 @@ for k in layout.keys():
      for k in layout.keys() if k != 'hidden'])
 def update_hidden_div(*args):
     return ''
+
+
+@app.callback(Output('page-content', 'children'),
+              [Input('url', 'pathname')])
+def display_page(pathname):
+    print(pathname)
+    if pathname == 'dash/dash-core-components/dropdown':
+        return examples.dropdown
+    else:
+        return html.Div([html.P('hello')])
+    # You could also return a 404 "URL not found" page here
