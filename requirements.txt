@@ -6,7 +6,7 @@ chardet==3.0.4
 click==6.7
 colorlover==0.2.1
 dash==0.17.7
-dash-core-components==0.12.0
+dash-core-components==0.12.4
 dash-html-components==0.7.0
 dash-renderer==0.7.4
 decorator==4.1.2
@@ -21,7 +21,7 @@ functools32==3.2.3.post2
 gevent==1.2.2
 greenlet==0.4.12
 gunicorn==19.6.0
-idna==2.5
+idna==2.6
 ipython==5.3.0
 ipython-genutils==0.2.0
 itsdangerous==0.24
@@ -29,14 +29,14 @@ Jinja2==2.9.6
 jsonschema==2.6.0
 jupyter-core==4.3.0
 MarkupSafe==1.0
-nbformat==4.3.0
+nbformat==4.4.0
 numpy==1.12.0
 pandas==0.19.2
 pandas-datareader==0.3.0.post0
 pathlib2==2.2.1
 pexpect==4.2.1
 pickleshare==0.7.4
-plotly==2.0.13
+plotly==2.0.15
 prompt-toolkit==1.0.14
 ptyprocess==0.5.1
 Pygments==2.2.0
@@ -44,7 +44,7 @@ pyorbital==1.1.1
 python-dateutil==2.6.0
 pytz==2017.2
 redis==2.10.5
-requests==2.18.3
+requests==2.18.4
 requests-file==1.4.1
 requests-ftp==0.3.1
 scandir==1.5
