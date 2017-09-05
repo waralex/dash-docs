@@ -26,7 +26,7 @@ examples = {
 Dropdown = html.Div(children=[
     html.H1('Dropdown Examples and Reference'),
     html.Hr(),
-    html.H4('Default Dropdown'),
+    html.H3('Default Dropdown'),
     html.P("An example of a default dropdown without \
             any extra properties."),
     dcc.SyntaxHighlighter(
@@ -40,7 +40,7 @@ Dropdown = html.Div(children=[
     ),
 
     html.Hr(),
-    html.H4('Multi-Value Dropdown'),
+    html.H3('Multi-Value Dropdown'),
     dcc.Markdown("A dropdown component with the `multi` property set to `True` \
                   will allow the user to select more than one value \
                   at a time."),
@@ -57,7 +57,7 @@ dcc.Dropdown(
 )''', customStyle=styles.code_container, language='python'),
     html.Hr(),
 
-    html.H4('Disable Search'),
+    html.H3('Disable Search'),
     dcc.Markdown("The `searchable` property is set to `True` by default on all \
             `Dropdown` components. To prevent searching the dropdown \
             value, just set the `searchable` property to `False`. \
@@ -75,7 +75,7 @@ dcc.Dropdown(
 )''', customStyle=styles.code_container, language='python'),
     html.Hr(),
 
-    html.H4('Dropdown Clear'),
+    html.H3('Dropdown Clear'),
     dcc.Markdown("The `clearable` property is set to `True` by default on all \
             `Dropdown` components. To prevent the clearing of the selected dropdwon \
             value, just set the `clearable` property to `False`"),
@@ -92,7 +92,7 @@ dcc.Dropdown(
 )''', customStyle=styles.code_container, language='python'),
 
     html.Hr(),
-    html.H4('Placeholder Text'),
+    html.H3('Placeholder Text'),
     dcc.Markdown("The `placeholder` property allows you to define \
                  default text shown when no value is selected."),
     ComponentBlock('''import dash_core_components as dcc
@@ -107,7 +107,7 @@ dcc.Dropdown(
 )''', customStyle=styles.code_container, language='python'),
 
     html.Hr(),
-    html.H4('Disable Dropdown'),
+    html.H3('Disable Dropdown'),
     dcc.Markdown("To disable the dropdown just set `disabled=True`."),
     ComponentBlock('''import dash_core_components as dcc
 
@@ -121,7 +121,7 @@ dcc.Dropdown(
 )''', customStyle=styles.code_container, language='python'),
 
     html.Hr(),
-    html.H4('Disable Options'),
+    html.H3('Disable Options'),
     dcc.Markdown("To disable certain options displayed inside the dropdown \
                  menu. Just set define the `disabled` property in the options \
                  declaration."),
@@ -136,7 +136,7 @@ dcc.Dropdown(
 )''', customStyle=styles.code_container, language='python'),
 
     html.Hr(),
-    html.H4("Dropdown Properties"),
+    html.H3("Dropdown Properties"),
     generate_prop_table('Dropdown')
 ])
 
@@ -144,7 +144,7 @@ dcc.Dropdown(
 Slider = html.Div(children=[
     html.H1('Slider Examples and Reference'),
     html.Hr(),
-    html.H4('Simple Slider Example'),
+    html.H3('Simple Slider Example'),
     html.P("An example of a basic slider tied to a callback."),
     dcc.SyntaxHighlighter(
         examples['slider'][0],
@@ -154,7 +154,7 @@ Slider = html.Div(children=[
 
     html.Div(examples['slider'][1], className='example-container'),
     html.Hr(),
-    html.H4('Marks and Steps'),
+    html.H3('Marks and Steps'),
     dcc.Markdown("If slider `marks` are defined and `step` is set to `None` \
                  then the slider will only be able to select values that \
                  have been predefined by the `marks`. `marks` is a `dict` \
@@ -177,7 +177,7 @@ dcc.Slider(
 )''', customStyle=styles.code_container, language='python'),
     html.Hr(),
 
-    html.H4('Included and Styling Marks'),
+    html.H3('Included and Styling Marks'),
     dcc.Markdown("By default, `included=True`, meaning the rail trailing the \
                  handle will be highlighted. To have the handle act as a \
                  discrete value set `included=False`. To style `marks`, \
@@ -213,7 +213,7 @@ dcc.Slider(
 )'''),
 
     html.Hr(),
-    html.H4('Non-Linear Slider and Updatemode'),
+    html.H3('Non-Linear Slider and Updatemode'),
     dcc.Markdown("Create a logarithmic slider by setting the labels of the \
                  `marks` property \
                  to be logarithmic and adjusting the slider's output \
@@ -234,7 +234,7 @@ dcc.Slider(
         style={'overflow': 'hidden', 'padding': '20px'}
     ),
     html.Hr(),
-    html.H4("Slider Properties"),
+    html.H3("Slider Properties"),
     generate_prop_table('Slider')
 ])
 
@@ -242,7 +242,7 @@ dcc.Slider(
 RangeSlider = html.Div(children=[
     html.H1("RangeSlider Examples and Reference"),
     html.Hr(),
-    html.H4('Simple RangeSlider Example'),
+    html.H3('Simple RangeSlider Example'),
     html.P("An example of a basic RangeSlider tied to a callback."),
     dcc.SyntaxHighlighter(
         examples['rangeslider'][0],
@@ -256,7 +256,7 @@ RangeSlider = html.Div(children=[
         style={'overflow': 'hidden'}),
 
     html.Hr(),
-    html.H4('Marks and Steps'),
+    html.H3('Marks and Steps'),
     dcc.Markdown("If slider `marks` are defined and `step` is set to `None` \
                  then the slider will only be able to select values that \
                  have been predefined by the `marks`."),
@@ -277,7 +277,7 @@ dcc.RangeSlider(
 )''', customStyle=styles.code_container, language='python'),
     html.Hr(),
 
-    html.H4('Included and Styling Marks'),
+    html.H3('Included and Styling Marks'),
     dcc.Markdown("By default, `included=True`, meaning the rail trailing the \
                  handle will be highlighted. To have the handle act as a \
                  discrete value set `included=False`. To style `marks`, \
@@ -313,7 +313,7 @@ dcc.RangeSlider(
 )''', customStyle=styles.code_container, language='python'),
     html.Hr(),
 
-    html.H4('Multiple Handles'),
+    html.H3('Multiple Handles'),
     dcc.Markdown('To create multiple handles \
                   just define more values for `value`!'),
     ComponentBlock('''import dash_core_components as dcc
@@ -333,7 +333,7 @@ dcc.RangeSlider(
     ], className='example-container',
        style={'overflow': 'hidden'}),
     html.Hr(),
-    html.H4('Pushable Handles'),
+    html.H3('Pushable Handles'),
     dcc.Markdown("The `pushable` property is either a `boolean` or a numerical value. \
                 The numerical value determines the minimum distance between \
                 the handles. Try moving the handles around!"),
@@ -347,7 +347,7 @@ dcc.RangeSlider(
     ''', customStyle=styles.code_container, language='python'),
     html.Hr(),
 
-    html.H4('Crossing Handles'),
+    html.H3('Crossing Handles'),
     dcc.Markdown("If `allowCross=False`, the handles will not be allowed to\
                   cross over each other"),
     ComponentBlock('''import dash_core_components as dcc
@@ -361,7 +361,7 @@ dcc.RangeSlider(
     ''', customStyle=styles.code_container, language='python'),
     html.Hr(),
 
-    html.H4('Non-Linear Slider and Updatemode'),
+    html.H3('Non-Linear Slider and Updatemode'),
     dcc.Markdown("Create a logarithmic slider by setting `marks`\
                  to be logarithmic and adjusting the slider's output \
                  `value` in the callbacks. The `updatemode` property \
@@ -415,7 +415,7 @@ Markdown = html.Div(children=[
     The Dash Markdown component uses the \
     [CommonMark](http://commonmark.org/) specification of Markdown."),
     html.Br(),
-    html.H4("Headers"),
+    html.H3("Headers"),
     ComponentBlock("""import dash_core_components as dcc
 
 dcc.Markdown('''
@@ -426,7 +426,7 @@ dcc.Markdown('''
 
 ###### This is an <h6> tag
 ''')"""),
-    html.H4("Emphasis"),
+    html.H3("Emphasis"),
     ComponentBlock("""import dash_core_components as dcc
 
 dcc.Markdown('''
@@ -443,7 +443,7 @@ _You **can** combine them_
 ''')"""),
     html.Hr(),
     html.H3("Lists"),
-    html.H4("Unordered"),
+    html.H3("Unordered"),
     ComponentBlock("""import dash_core_components as dcc
 
 dcc.Markdown('''
@@ -498,7 +498,7 @@ app = dash.Dash()
 DatePickerRange = html.Div(children=[
     html.H1("DatePickerRange Examples and Reference"),
     html.Hr(),
-    html.H4("Simple DatePickerRange Example"),
+    html.H3("Simple DatePickerRange Example"),
     dcc.Markdown("This is a simple example of a `DatePickerRange` \
                  component tied to a callback. The `min_date_allowed` and \
                  `max_date_allowed` properties define the minimum and \
@@ -589,7 +589,7 @@ DatePickerRange = html.Div(children=[
         ]),
     ], style={'margin': 'auto'}),
     html.Br(),
-    html.H4("Display Format Examples"),
+    html.H3("Display Format Examples"),
     dcc.Markdown("You can utilize any permutation of the string tokens \
                  shown in the table above to change how selected dates are \
                  displayed in the `DatePickerRange` component."),
@@ -630,7 +630,7 @@ dcc.DatePickerRange(
 
     html.Br(),
 
-    html.H4("Month Format Examples"),
+    html.H3("Month Format Examples"),
     dcc.Markdown("Similar to the `display_format`, you can set `month_format` \
                  to any permutation of the string tokens \
                  shown in the table above to change how calendar titles \
@@ -666,7 +666,7 @@ dcc.DatePickerRange(
 
     html.Hr(),
 
-    html.H4("Vertical Calendar and Placholder Text"),
+    html.H3("Vertical Calendar and Placholder Text"),
     dcc.Markdown("The `DatePickerRange` component can be rendered in two \
                   orientations, either horizontally or vertically. \
                   If `calendar_orientation` is set to `'vertical'`, it will \
@@ -687,7 +687,7 @@ dcc.DatePickerRange(
 
     html.Hr(),
 
-    html.H4("Minimum Nights, Calendar Clear, and Portals"),
+    html.H3("Minimum Nights, Calendar Clear, and Portals"),
     dcc.Markdown("The `minimum_nights` property defines the number of \
                   nights that must be in between the range of two \
                   selected dates."),
@@ -709,7 +709,7 @@ dcc.DatePickerRange(
 
     html.Hr(),
 
-    html.H4("Right to Left Calendars and First Day of Week"),
+    html.H3("Right to Left Calendars and First Day of Week"),
     dcc.Markdown("When the `is_RTL` property is set to `True` \
                   the calendar will be rendered from right to left."),
     dcc.Markdown("The `first_day_of_week` property allows you to \
@@ -732,7 +732,7 @@ dcc.DatePickerRange(
 DatePickerSingle = html.Div(children=[
     html.H1("DatePickerSingle Examples and Reference"),
     html.Hr(),
-    html.H4("Simple DatePickerSingle Example"),
+    html.H3("Simple DatePickerSingle Example"),
     dcc.Markdown("This is a simple example of a `DatePickerSingle` \
                  component tied to a callback. The `min_date_allowed` and \
                  `max_date_allowed` properties define the minimum and \
@@ -827,7 +827,7 @@ DatePickerSingle = html.Div(children=[
 
     html.Br(),
 
-    html.H4("Display Format Examples"),
+    html.H3("Display Format Examples"),
     dcc.Markdown("You can utilize any permutation of the string tokens \
                  shown in the table above to change how selected dates are \
                  displayed in the `DatePickerSingle` component."),
@@ -863,7 +863,7 @@ dcc.DatePickerSingle(
     display_format='X',
 )''', language='python', customStyle=styles.code_container),
     html.Br(),
-    html.H4("Month Format Examples"),
+    html.H3("Month Format Examples"),
     dcc.Markdown("Similar to the `display_format`, you can set `month_format` \
                  to any permutation of the string tokens \
                  shown in the table above to change how calendar titles \
@@ -899,7 +899,7 @@ dcc.DatePickerSingle(
     placeholder='X'
 )''', language='python', customStyle=styles.code_container),
     html.Hr(),
-    html.H4("Vertical Calendar and Placholder Text"),
+    html.H3("Vertical Calendar and Placholder Text"),
     dcc.Markdown("The `DatePickerSingle` component can be rendered in two \
                   orientations, either horizontally or vertically. \
                   If `calendar_orientation` is set to `'vertical'`, it will \
@@ -918,7 +918,7 @@ dcc.DatePickerSingle(
 
     html.Hr(),
 
-    html.H4("Calendar Clear and Portals"),
+    html.H3("Calendar Clear and Portals"),
     dcc.Markdown("When the `clearable` property is set to `True` \
                   the component will be rendered with a small 'x' \
                   that will remove all selected dates when selected."),
@@ -936,7 +936,7 @@ dcc.DatePickerSingle(
 
     html.Hr(),
 
-    html.H4("Right to Left Calendars and First Day of Week"),
+    html.H3("Right to Left Calendars and First Day of Week"),
     dcc.Markdown("When the `is_RTL` property is set to `True` \
                   the calendar will be rendered from right to left."),
     dcc.Markdown("The `first_day_of_week` property allows you to \
