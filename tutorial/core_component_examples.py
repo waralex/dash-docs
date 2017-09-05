@@ -24,7 +24,7 @@ examples = {
 
 # Dropdown
 Dropdown = html.Div(children=[
-    html.H2('Dropdown Examples and Reference'),
+    html.H1('Dropdown Examples and Reference'),
     html.Hr(),
     html.H4('Default Dropdown'),
     html.P("An example of a default dropdown without \
@@ -142,7 +142,7 @@ dcc.Dropdown(
 
 # Slider
 Slider = html.Div(children=[
-    html.H3('Slider Examples and Reference'),
+    html.H1('Slider Examples and Reference'),
     html.Hr(),
     html.H4('Simple Slider Example'),
     html.P("An example of a basic slider tied to a callback."),
@@ -240,7 +240,7 @@ dcc.Slider(
 
 # RangeSlider
 RangeSlider = html.Div(children=[
-    html.H2("RangeSlider Examples and Reference"),
+    html.H1("RangeSlider Examples and Reference"),
     html.Hr(),
     html.H4('Simple RangeSlider Example'),
     html.P("An example of a basic RangeSlider tied to a callback."),
@@ -407,7 +407,7 @@ RadioItems = html.Div(children=[
 
 # Markdown
 Markdown = html.Div(children=[
-    html.H2("Markdown Examples and Reference"),
+    html.H1("Markdown Examples and Reference"),
     html.Hr(),
     html.H3("Syntax Guide"),
     dcc.Markdown("These examples are based on the \
@@ -496,7 +496,7 @@ app = dash.Dash()
 
 # DatePickerRange
 DatePickerRange = html.Div(children=[
-    html.H2("DatePickerRange Examples and Reference"),
+    html.H1("DatePickerRange Examples and Reference"),
     html.Hr(),
     html.H4("Simple DatePickerRange Example"),
     dcc.Markdown("This is a simple example of a `DatePickerRange` \
@@ -730,7 +730,7 @@ dcc.DatePickerRange(
 
 # DatePickerSingle
 DatePickerSingle = html.Div(children=[
-    html.H3("DatePickerSingle Examples and Reference"),
+    html.H1("DatePickerSingle Examples and Reference"),
     html.Hr(),
     html.H4("Simple DatePickerSingle Example"),
     dcc.Markdown("This is a simple example of a `DatePickerSingle` \
