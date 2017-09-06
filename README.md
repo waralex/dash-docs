@@ -12,7 +12,7 @@ To run an app locally:
 
 ```
 pip install virtualenv
-virtualenv venv 
+virtualenv venv
 source venv/bin/activate
 ```
 
@@ -23,13 +23,12 @@ source activate dash_docs
 ```
 
 2. `pip install -r requirements.txt`
-3. `python tutorial/run.py`
-4. open http://127.0.0.1:8050/dash/ in your browser
+3. `gunicorn tutorial.run:server`
+4. open http://127.0.0.1:8000/dash/ in your browser
 
 
 ### Contributing
 
-PRs accepted! The Dash user guide is itself a Dash app. Each file `tutorial` represents a "chapter" of the docs.
+PRs accepted! The Dash user guide is itself a Dash app. Each file in `tutorial` represents a "chapter" of the docs.
 
 Changes to master will get deployed automatically.
-
