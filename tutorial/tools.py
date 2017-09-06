@@ -1,5 +1,6 @@
 from server import app
 
+
 def load_example(path):
     with open(path, 'r') as _f:
         _source = _f.read()
@@ -41,6 +42,7 @@ def load_example(path):
         _source,
         scope['layout']      # layout is a global created from the app
     )
+
 
 def merge(*dict_args):
     """

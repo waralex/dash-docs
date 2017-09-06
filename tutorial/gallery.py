@@ -124,6 +124,31 @@ layout = html.Div(className="gallery", children=[
 
     [View the app](https://plot.ly/dash/gallery/uber-rides) | [View the source code](https://github.com/plotly/dash-uber-rides-demo)
 
+    ***
+
+    ## Dash DataTable
+
+    Dash is currently incubating an interactive table component that provides
+    built-in filtering, row-selection, editing, and sorting.
+    Prototypes of this component are being developed in the
+    [`dash-table-experiments`](https://github.com/plotly/dash-table-experiments)
+    repository. Join the discussion in the
+    [Dash Community Forum](https://community.plot.ly/t/display-tables-in-dash/4707/38).
+
+    '''.replace('    ', '')),
+
+    html.A(
+        className="image-link",
+        href="https://github.com/plotly/dash-table-experiments",
+        children=html.Img(
+            src="https://github.com/plotly/dash-table-experiments/raw/master/images/DataTable.gif",
+            alt="Example of a Dash Interactive Table"
+        )
+    ),
+
+    dcc.Markdown('''
+
+    [View the Dash Table Experiments Project](https://github.com/plotly/dash-table-experiments) | [Join the discussion](https://community.plot.ly/t/display-tables-in-dash/4707/38)
 
     ***
 

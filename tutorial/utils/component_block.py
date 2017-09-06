@@ -3,6 +3,7 @@ import dash_html_components as html
 
 from tutorial import styles
 
+
 def ComponentBlock(example_string, **kwargs):
     scope = {}
     converted_string = example_string.replace('dcc.', 'component = dcc.')
