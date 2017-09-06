@@ -135,6 +135,8 @@ layout = html.Div(className="gallery", children=[
     repository. Join the discussion in the
     [Dash Community Forum](https://community.plot.ly/t/display-tables-in-dash/4707/38).
 
+    This example was written in ~100 lines of code.
+
     '''.replace('    ', '')),
 
     html.A(
