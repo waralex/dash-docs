@@ -1,4 +1,4 @@
-p# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 import dash_core_components as dcc
 
 layout = dcc.Markdown('''
