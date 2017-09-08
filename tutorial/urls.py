@@ -182,5 +182,107 @@ ignore the exception by setting `app.config.supress_callback_exceptions = True`
 - You can modify this example to import the different page's `layout`s in different files.
 - This Dash Userguide that you're looking at is itself a multi-page Dash app, using
 rendered with these same principles.
-''')
+'''),
+
+dcc.Markdown('''***
+
+# Structuring a Multi-Page App
+
+Here's how to structure a multi-page app, where each app is contained in a
+separate file.
+
+
+File structure:
+```
+- app.py
+- index.py
+- apps
+   |-- __init__.py
+   |-- app1.py
+   |-- app2.py
+```
+
+***
+
+`app.py`
+'''),
+
+dcc.SyntaxHighlighter('''import dash
+
+app = dash.Dash()
+server = app.server
+app.config.supress_callback_exceptions = True
+''', language='python', customStyle=styles.code_container),
+
+dcc.Markdown('''
+***
+
+`apps/app1.py`
+'''),
+
+dcc.SyntaxHighlighter('''from dash.dependencies import Input, Output
+import dash_html_components as html
+import dash_core_components as dcc
+
+from app import app
+
+layout = html.Div([
+    html.H3('App 1'),
+    dcc.Dropdown(
+        id='app-1-dropdown',
+        options=[
+            {'label': 'App 1 - {}'.format(i), 'value': i} for i in [
+                'NYC', 'MTL', 'LA'
+            ]
+        ]
+    ),
+    html.Div(id='app-1-display-value'),
+    dcc.Link('Go to App 2', href='/apps/app2')
+])
+
+
+@app.callback(
+    Output('app-1-display-value', 'children'),
+    [Input('app-1-dropdown', 'value')])
+def display_value(value):
+    return 'You have selected "{}"'.format(value)
+''', language='python', customStyle=styles.code_container),
+
+dcc.Markdown('''
+And similarly for other apps
+***
+
+`index.py`
+
+`index.py` loads different apps on different urls like this:
+'''),
+
+dcc.SyntaxHighlighter('''
+from dash.dependencies import Input, Output
+import dash_core_components as dcc
+import dash_html_components as html
+
+from app import app
+from apps import app1, app2
+
+
+app.layout = html.Div([
+    dcc.Location(id='url', refresh=False),
+    html.Div(id='page-content')
+])
+
+
+@app.callback(Output('page-content', 'children'),
+              [Input('url', 'pathname')])
+def display_page(pathname):
+    if pathname == '/apps/app1':
+         return app1.layout
+    elif pathname == '/apps/app2':
+         return app2.layout
+    else:
+        return '404'
+
+if __name__ == '__main__':
+    app.run_server(debug=True)
+''', language='python', customStyle=styles.code_container)
 ]
