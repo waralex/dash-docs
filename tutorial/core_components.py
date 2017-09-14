@@ -291,8 +291,35 @@ dcc.DatePickerRange(
         )
     ),
 
+
     dcc.Markdown('''
     [View the Dash Table Experiments Project](https://github.com/plotly/dash-table-experiments) | [Join the discussion](https://community.plot.ly/t/display-tables-in-dash/4707/38)
+
+    ***
+    '''.replace('    ', '')),
+
+    html.H3('Upload Component'),
+    dcc.Markdown('''
+
+    The `dcc.Upload` component is currently available in the prerelease
+    channel of the `dash-core-components` package. The prerelease channel is
+    used to solicit feedback from the community before releasing on the
+    long-term support stable channel.
+    To try it out, see the upload component
+    [Pull Request on GitHub](https://github.com/plotly/dash-core-components/pull/73).
+    '''.replace('    ', '')),
+
+    html.A(
+        className="image-link",
+        href="https://github.com/plotly/dash-core-components/pull/73",
+        children=html.Img(
+            src="https://user-images.githubusercontent.com/1280389/30351245-6b93ee62-97e8-11e7-8e85-0411e9d6c98c.gif",
+            alt="Dash Upload Component"
+        )
+    ),
+
+    dcc.Markdown('''
+    [Upload Component Pre-Release](https://github.com/plotly/dash-core-components/pull/73)
 
     ***
     '''.replace('    ', '')),
