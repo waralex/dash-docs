@@ -324,6 +324,40 @@ dcc.DatePickerRange(
     ***
     '''.replace('    ', '')),
 
+    html.H3('Tabs'),
+    dcc.Markdown('''
+
+    The `dcc.Tabs` component is currently available in the prerelease
+    channel of the `dash-core-components` package.
+    To try it out, see the tab component
+    [Pull Request on GitHub](https://github.com/plotly/dash-core-components/pull/74).
+    '''.replace('    ', '')),
+
+    html.A(
+        className="image-link",
+        href="https://github.com/plotly/dash-core-components/pull/74",
+        children=html.Img(
+            src="https://user-images.githubusercontent.com/1280389/30461515-0022526c-998d-11e7-8fcc-66ba308c8b38.gif",
+            alt="Dash Vertical Tabs Component"
+        )
+    ),
+
+    html.A(
+        className="image-link",
+        href="https://github.com/plotly/dash-core-components/pull/74",
+        children=html.Img(
+            src="https://user-images.githubusercontent.com/1280389/30497812-46cc1910-9a22-11e7-8baa-9df0191bc828.png",
+            alt="Dash Horizontal Tabs Component"
+        )
+    ),
+
+
+    dcc.Markdown('''
+    [Tab Component Pre-Release](https://github.com/plotly/dash-core-components/pull/74)
+
+    ***
+    '''.replace('    ', '')),
+
     html.H3('Graphs'),
     dcc.Markdown('''
     The `Graph` component shares the same syntax as the open-source
