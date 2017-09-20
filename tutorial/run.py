@@ -285,6 +285,8 @@ app.layout = html.Div([
 def display_content(pathname):
     if pathname is None:
         return ''
+    if pathname.endswith('/') and pathname != '/':
+        pathname = pathname[:len(pathname) - 1]
     matched = [c for c in chapters.keys()
                if chapters[c]['url'] == pathname]
 
