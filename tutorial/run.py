@@ -284,7 +284,7 @@ app.layout = html.Div([
     [Input('location', 'pathname')])
 def display_content(pathname):
     if pathname is None:
-        return chapters['index']['content']
+        return ''
     matched = [c for c in chapters.keys()
                if chapters[c]['url'] == pathname]
 
