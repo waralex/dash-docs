@@ -1,1 +1,1 @@
-web: gunicorn tutorial.run:server --log-file=- --worker-class gevent --worker-connections 1000
+web: gunicorn --threads 2 --workers 8 tutorial.run:server
