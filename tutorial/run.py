@@ -284,7 +284,7 @@ app.layout = html.Div([
     [Input('location', 'pathname')])
 def display_content(pathname):
     if pathname is None:
-        return chapters['index']['content']
+        return ''
     if pathname.endswith('/') and pathname != '/':
         pathname = pathname[:len(pathname) - 1]
     matched = [c for c in chapters.keys()
