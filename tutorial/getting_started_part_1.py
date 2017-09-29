@@ -67,7 +67,7 @@ layout = html.Div([
         pip install plotly --upgrade  # Latest Plotly graphing library
     '''.replace('    ', '').format(
         dash.__version__,
-        '0.10.0',
+        dash_renderer.__version__,
         html.__version__,
         dcc.__version__,
         plotly.__version__
