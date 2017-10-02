@@ -8,6 +8,7 @@ from dash.dependencies import Input, State, Event, Output
 
 from server import app, server
 import introduction
+import home
 import html_components
 import core_components
 import basic_callbacks
@@ -45,56 +46,10 @@ def create_contents(contents):
             h.append(html.Li(i))
     return html.Ul(h)
 
-
-toc = html.Div(
-create_contents([
-
-    dcc.Link(html.A('Introduction'), href="/dash/introduction"),
-
-    html.A('Announcement Letter',
-           href="https://medium.com/@plotlygraphs/introducing-dash-5ecf7191b503"),
-
-    dcc.Link(html.A('Gallery'), href="/dash/gallery"),
-
-    dcc.Link(html.A('Installation'), href="/dash/installation"),
-
-    dcc.Link(html.A('Create Your First App - Part 1'), href="/dash/getting-started"),
-
-    dcc.Link(html.A('Create Your First App - Part 2'), href="/dash/getting-started-part-2"),
-
-    dcc.Link(html.A('Performance'), href="/dash/performance"),
-
-    dcc.Link(html.A('Live Updates'), href="/dash/live-updates"),
-
-    dcc.Link(html.A('External CSS and JS'), href="/dash/external-resources"),
-
-    dcc.Link(html.A('Dash Core Components'), href="/dash/dash-core-components"),
-
-    dcc.Link(html.A('Dash HTML Components'), href="/dash/dash-html-components"),
-
-    dcc.Link(html.A('Build Your Own Components'), href="/dash/plugins"),
-
-    dcc.Link(html.A('URL Support'), href="/dash/urls"),
-
-    dcc.Link(html.A('Authentication'), href="/dash/authentication"),
-
-    dcc.Link(html.A('Deployment'), href="/dash/deployment"),
-
-
-    html.A('FAQ', href="https://community.plot.ly/c/dash"),
-
-    dcc.Link(html.A('Support and Contact'), href="/dash/support")
-
-]), className="toc-chapters"
-)
-
 chapters = {
     'index': {
         'url': '/dash/',
-        'content': html.Div([
-            html.H1('Dash User Guide'),
-            toc
-        ], className="toc")
+        'content': home.layout
     },
 
     'introduction': {
