@@ -1,40 +1,43 @@
 import time
 import six
 import os
+from datetime import datetime as dt
 
 import dash_html_components as html
 import dash_core_components as dcc
 from dash.dependencies import Input, State, Event, Output
 
 from server import app, server
-import introduction
-import home
-import html_components
-import core_components
+
+import architecture
+import auth
+import authentication
 import basic_callbacks
-import html_component_appendix
 import callbacks_with_dependencies
+import changelog
+import core_component_examples as examples
+import core_components
+import deployment
 import dynamic_content
 import external_css_and_js
-import open_problems
-import architecture
-import live_updates
-import changelog
-import plugins
 import gallery
-import performance
-import support
-import deployment
-import authentication
-import installation
 import getting_started_part_1
 import getting_started_part_2
-import urls
-import auth
+import graphing
+import home
+import html_component_appendix
+import html_components
+import installation
+import introduction
+import live_updates
 import on_premise_deployment
-import core_component_examples as examples
-from datetime import datetime as dt
+import open_problems
+import performance
+import plugins
 import state
+import support
+import urls
+
 
 dcc._js_dist[0]['external_url'] = 'https://cdn.plot.ly/plotly-basic-1.27.1.min.js'
 
