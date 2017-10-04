@@ -9,6 +9,7 @@ import plotly
 from dash.dependencies import Input, Output, Event, State
 import styles
 from tools import load_example, merge
+from components import Example, Syntax
 
 examples = [
     load_example(s) for s in [
@@ -91,14 +92,11 @@ layout = html.Div([
     but you can also [build your own](https://github.com/plotly/dash-components-archetype)
     with JavaScript and React.js.
 
-    To get started, create a file named `app.py` with the following code:
     '''.replace('    ', '')),
 
-    dcc.SyntaxHighlighter(
-        examples[0][0],
-        language='python',
-        customStyle=styles.code_container
-    ),
+    Syntax(examples[0][0], summary='''
+        To get started, create a file named `app.py` with the following code:
+    '''),
     dcc.Markdown('''
     Run the app with
 
@@ -111,9 +109,7 @@ layout = html.Div([
     in your web browser. You should see an app that looks like this.
     '''.replace('    ', '')),
 
-    html.Div(examples[0][1], className="example-container"),
-
-    # TODO - Comment about the default CSS of the graph?
+    Example(examples[0][1]),
 
     dcc.Markdown('''
         Note:
@@ -137,27 +133,23 @@ layout = html.Div([
            what is displayed here. This application is using a
            custom CSS stylesheet to modify the default styles of the elements.
            You can learn more in the [css tutorial](/dash/external-resources),
-           but for now you can add `app.css.append_css({"external_url": "https://codepen.io/chriddyp/pen/bWLwgP.css"})`
+           but for now you can add
+           ```
+           app.css.append_css({"external_url": "https://codepen.io/chriddyp/pen/bWLwgP.css"})
+           ```
            to your file to get the same look and feel of these examples.
-
-    By default, the items in your layout are arranged one on top of the other.
-    You can create different arrangements using CSS and stylesheets in the
-    custom layout arrangements in Dash apps tutorial (coming soon!).
 
     #### More about HTML
 
     The `dash_html_components` library contains a component class for every
     HTML tag as well as keyword arguments for all of the HTML arguments.
 
-    Let's customize the text in our app by modifying the inline styles of the
-    components:
     '''.replace('    ', '')),
 
-    dcc.SyntaxHighlighter(
-        examples[1][0],
-        language='python',
-        customStyle=styles.code_container
-    ),
+    Syntax(examples[1][0], summary='''
+        Let's customize the text in our app by modifying the inline styles of the
+        components:
+    '''),
 
     html.Div(examples[1][1], className="example-container", style={
         'padding-right': '35px',
@@ -180,7 +172,8 @@ layout = html.Div([
            So, instead of `text-align`, it's `textAlign`.
         3. The HTML `class` attribute is `className` in Dash.
         4. The children of the HTML tag is specified through the `children` keyword
-           argument.
+           argument. By convention, this is always the _first_ argument and
+           so it is often omitted.
 
         Besides that, all of the available HTML attributes and tags are available
         to you within your Python context.
@@ -192,18 +185,17 @@ layout = html.Div([
         By writing our markup in Python, we can create complex resuable
         components like tables without switching contexts or languages.
 
-        Here's a quick example that generates a `Table` from a Pandas dataframe.
-        If you don't have Pandas installed, install with `pip install pandas`.
-
     '''.replace('   ', '')),
 
-    dcc.SyntaxHighlighter(
+    Syntax(
         examples[2][0],
-        language='python',
-        customStyle=styles.code_container
+        summary="""
+            Here's a quick example that
+            generates a `Table` from a Pandas dataframe.
+        """
     ),
 
-    html.Div(examples[2][1], className="example-container"),
+    Example(examples[2][1]),
 
     dcc.Markdown('''
         #### More about Visualization
@@ -223,13 +215,11 @@ layout = html.Div([
 
     '''.replace('    ', '')),
 
-    dcc.SyntaxHighlighter(
-        examples[3][0],
-        language='python',
-        customStyle=styles.code_container
-    ),
+    Syntax(examples[3][0], summary='''
+    Here's an example that creates a scatter plot from a Pandas dataframe.
+    '''),
 
-    html.Div(examples[3][1], className="example-container"),
+    Example(examples[3][1]),
 
     dcc.Markdown('''
         *These graphs are interactive and responsive.
@@ -246,13 +236,9 @@ layout = html.Div([
         `dash_core_components` library.
     '''.replace('    ', '')),
 
-    dcc.SyntaxHighlighter(
-        examples[4][0],
-        language='python',
-        customStyle=styles.code_container
-    ),
+    Syntax(examples[4][0]),
 
-    html.Div(examples[4][1], className="example-container"),
+    Example(examples[4][1]),
 
     dcc.Markdown('''
         #### Core Components
@@ -263,17 +249,19 @@ layout = html.Div([
         Like all Dash components, they are described entirely declaratively.
         Every option that is configurable is available as a keyword argument
         of the component.
-
-        We'll see many of these components throughout the tutorial.
-        You can view all of the available components in the
-        [Dash Core Components Gallery](/dash/dash-core-components)
     '''.replace('    ', '')),
 
-    dcc.SyntaxHighlighter(
+    html.P(['''
+        We'll see many of these components throughout the tutorial.
+        You can view all of the available components in the
+    ''', dcc.Link(
+        'Dash Core Components Gallery',
+        href='/dash/dash-core-components'
+    )]),
+
+    Syntax(
         examples[5][0],
-        language='python',
-        customStyle=styles.code_container
-    ),
+        summary="Here are a few of the available components:"),
 
     html.Div(examples[5][1], className="example-container"),
 
@@ -284,7 +272,7 @@ layout = html.Div([
         Dash components are declarative: every configurable aspect of these
         components is set during instantiation as a keyword argument.
         Call `help` in your Python console on any of the components to
-        learn more about a component and its available arguments:
+        learn more about a component and its available arguments.
 
     '''.replace('    ', '')),
 
@@ -323,17 +311,36 @@ class Dropdown(dash.development.base_component.Component)
         The `layout` is a hierarchical tree of components.
         The `dash_html_components` library provides classes for all of the HTML
         tags and the keyword arguments describe the HTML attributes like `style`,
-        `className`, and `id`. The `dash_core_components` library
-        generates higher-level components like controls and graphs.
+        `className`, and `id`.
+        The `dash_core_components` library generates higher-level
+          components like controls and graphs.
 
         For reference, see:
-        - [`dash_core_components` gallery](/dash/dash-core-components)
-        - [`dash_html_components` reference](/dash/dash-html-components)
-
-        The second part of the Dash tutorial covers how to make these apps
-        interactive.
-
-        [Dash Tutorial - Part 2: Interactivity](/dash/getting-started-part-2)
     '''.replace('    ', '')),
+
+    html.Ul([
+        html.Li(
+            dcc.Link(
+                [html.Code('dash_core_components'), ' gallery'],
+                href='/dash/dash-core-components'
+            )
+        ),
+        html.Li(
+            dcc.Link(
+                [html.Code('dash_html_components'), ' gallery'],
+                href='/dash/dash-html-components'
+            )
+        )
+    ]),
+
+    html.P('''
+        The next part of the Dash tutorial covers how to make these apps
+        interactive.
+    '''),
+
+    dcc.Link(
+        'Dash Tutorial - Part 2: Basic Callbacks',
+        href="/dash/getting-started-part-2"
+    )
 
 ])
