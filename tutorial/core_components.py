@@ -210,6 +210,12 @@ dcc.RadioItems(
     ),
     html.Div(examples['button'][1], className='example-container'),
 
+    html.P([
+        '''For more on `dash.dependencies.State`, see the tutorial on ''',
+        dcc.Link('Dash State', href='/dash/state'),
+        '.'
+    ]),
+
     html.Hr(),
 
     html.H3(dcc.Link('DatePickerSingle', href='/dash/dash-core-components/datepickersingle')),
