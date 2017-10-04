@@ -3,18 +3,16 @@ from dash.dependencies import Input, Output
 import dash_core_components as dcc
 import dash_html_components as html
 import json
+from textwrap import dedent as d
+
 
 app = dash.Dash(__name__)
 
 styles = {
-    'column': {
-        'display': 'inline-block',
-        'width': '33%',
-        'padding': 10,
-        'boxSizing': 'border-box',
-        'minHeight': '200px'
-    },
-    'pre': {'border': 'thin lightgrey solid'}
+    'pre': {
+        'border': 'thin lightgrey solid',
+        'overflowX': 'scroll'
+    }
 }
 
 app.layout = html.Div([
@@ -44,33 +42,47 @@ app.layout = html.Div([
         }
     ),
 
-    html.Div([
-        dcc.Markdown("""
-            **Hover Data**
+    html.Div(className="row", children=[
+        html.Div([
+            dcc.Markdown(d("""
+                **Hover Data**
 
-            Mouse over values in the graph.
-        """.replace('   ', '')),
-        html.Pre(id='hover-data', style=styles['pre'])
-    ], style=styles['column']),
+                Mouse over values in the graph.
+            """)),
+            html.Pre(id='hover-data', style=styles['pre'])
+        ], className="three columns"),
 
-    html.Div([
-        dcc.Markdown("""
-            **Click Data**
+        html.Div([
+            dcc.Markdown(d("""
+                **Click Data**
 
-            Click on points in the graph.
-        """.replace('    ', '')),
-        html.Pre(id='click-data', style=styles['pre']),
-    ], style=styles['column']),
+                Click on points in the graph.
+            """)),
+            html.Pre(id='click-data', style=styles['pre']),
+        ], className="three columns"),
 
-    html.Div([
-        dcc.Markdown("""
-            **Selection Data**
+        html.Div([
+            dcc.Markdown(d("""
+                **Selection Data**
 
-            Choose the lasso or rectangle tool in the graph's menu
-            bar and then select points in the graph.
-        """.replace('    ', '')),
-        html.Pre(id='selected-data', style=styles['pre']),
-    ], style=styles['column'])
+                Choose the lasso or rectangle tool in the graph's menu
+                bar and then select points in the graph.
+            """)),
+            html.Pre(id='selected-data', style=styles['pre']),
+        ], className="three columns"),
+
+        html.Div([
+            dcc.Markdown(d("""
+                **Zoom and Relayout Data**
+
+                Click and drag on the graph to zoom or click on the zoom
+                buttons in the graph's menu bar.
+                Clicking on legend items will also fire
+                this event.
+            """)),
+            html.Pre(id='relayout-data', style=styles['pre']),
+        ], className="three columns")
+    ])
 ])
 
 
@@ -93,6 +105,13 @@ def display_click_data(clickData):
     [Input('basic-interactions', 'selectedData')])
 def display_selected_data(selectedData):
     return json.dumps(selectedData, indent=2)
+
+
+@app.callback(
+    Output('relayout-data', 'children'),
+    [Input('basic-interactions', 'relayoutData')])
+def display_selected_data(relayoutData):
+    return json.dumps(relayoutData, indent=2)
 
 
 if __name__ == '__main__':
