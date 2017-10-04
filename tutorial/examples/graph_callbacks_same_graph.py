@@ -14,7 +14,7 @@ df = pd.read_csv(
 years = sorted(list(df.year.unique()))
 
 app.layout = html.Div([
-    dcc.Graph(id='graph-with-history', animate=True),
+    dcc.Graph(id='graph-with-history'),
     dcc.Slider(
         id='year-slider-id',
         marks={

@@ -19,10 +19,10 @@ years = sorted(list(df.year.unique()))
 app.layout = html.Div([
     html.Div([
         html.Div([
-            dcc.Graph(id='graph-left', animate=True),
+            dcc.Graph(id='graph-left'),
         ], className='six columns'),
         html.Div([
-            dcc.Graph(id='graph-right', animate=True)
+            dcc.Graph(id='graph-right')
         ], className='six columns')
     ], className='row'),
     dcc.Slider(

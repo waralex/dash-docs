@@ -11,7 +11,7 @@ df = pd.read_csv(
 app = dash.Dash()
 
 app.layout = html.Div([
-    dcc.Graph(id='graph-with-slider', animate=True),
+    dcc.Graph(id='graph-with-slider'),
     dcc.Slider(
         id='year-slider',
         min=df['year'].min(),
