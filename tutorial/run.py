@@ -38,8 +38,10 @@ import state
 import support
 import urls
 
+dcc._js_dist[0]['external_url'] = (
+    'https://cdn.plot.ly/plotly-basic-1.27.1.min.js'
+)
 
-dcc._js_dist[0]['external_url'] = 'https://cdn.plot.ly/plotly-basic-1.27.1.min.js'
 
 def create_contents(contents):
     h = []
@@ -49,6 +51,7 @@ def create_contents(contents):
         else:
             h.append(html.Li(i))
     return html.Ul(h)
+
 
 chapters = {
     'index': {
