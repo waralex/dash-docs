@@ -38,7 +38,7 @@ layout = html.Div(className="gallery", children=[
     customStyle=styles.code_container),
 
     html.Hr(),
-    html.H3('Dropdown'),
+    html.H3(dcc.Link('Dropdown', href='/dash/dash-core-components/dropdown')),
     ComponentBlock('''import dash_core_components as dcc
 
 dcc.Dropdown(
@@ -67,7 +67,7 @@ dcc.Dropdown(
 
     html.Hr(),
 
-    html.H3('Slider'),
+    html.H3(dcc.Link('Slider', href='/dash/dash-core-components/slider')),
     ComponentBlock('''import dash_core_components as dcc
 
 dcc.Slider(
@@ -91,7 +91,7 @@ dcc.Slider(
 
     html.Hr(),
 
-    html.H3('RangeSlider'),
+    html.H3(dcc.Link('RangeSlider', href='/dash/dash-core-components/rangeslider')),
     ComponentBlock('''import dash_core_components as dcc
 
 dcc.RangeSlider(
@@ -116,7 +116,7 @@ dcc.RangeSlider(
 
     html.Hr(),
 
-    html.H3('Input'),
+    html.H3(dcc.Link('Input', href='/dash/dash-core-components/input')),
     ComponentBlock('''import dash_core_components as dcc
 
 dcc.Input(
@@ -130,7 +130,7 @@ dcc.Input(
 
     html.Hr(),
 
-    html.H3('Textarea'),
+    html.H3(dcc.Link('Textarea', href='/dash/dash-core-components/textarea')),
     ComponentBlock('''import dash_core_components as dcc
 
 dcc.Textarea(
@@ -146,7 +146,7 @@ dcc.Textarea(
 
     html.Hr(),
 
-    html.H3('Checkboxes'),
+    html.H3(dcc.Link('Checkboxes', href='/dash/dash-core-components/checklist')),
     ComponentBlock('''import dash_core_components as dcc
 
 dcc.Checklist(
@@ -174,7 +174,7 @@ dcc.Checklist(
     dcc.Link(html.A('Checklist Properties'),
              href="/dash/dash-core-components/checklist"),
     html.Hr(),
-    html.H3('Radio Items'),
+    html.H3(dcc.Link('Radio Items', href='/dash/dash-core-components/radioitems')),
     ComponentBlock('''import dash_core_components as dcc
 
 dcc.RadioItems(
@@ -212,7 +212,7 @@ dcc.RadioItems(
 
     html.Hr(),
 
-    html.H3('DatePickerSingle'),
+    html.H3(dcc.Link('DatePickerSingle', href='/dash/dash-core-components/datepickersingle')),
     ComponentBlock('''import dash_core_components as dcc
 from datetime import datetime as dt
 
@@ -225,7 +225,7 @@ dcc.DatePickerSingle(
              href="/dash/dash-core-components/datepickersingle"),
     html.Hr(),
 
-    html.H3('DatePickerRange'),
+    html.H3(dcc.Link('DatePickerRange', href='/dash/dash-core-components/datepickerrange')),
     ComponentBlock('''import dash_core_components as dcc
 from datetime import datetime as dt
 
@@ -241,7 +241,7 @@ dcc.DatePickerRange(
 
     html.Hr(),
 
-    html.H3('Markdown'),
+    html.H3(dcc.Link('Markdown', href='/dash/dash-core-components/markdown')),
     ComponentBlock('''import dash_core_components as dcc
 
     dcc.Markdown(\'\'\'
@@ -350,7 +350,6 @@ dcc.DatePickerRange(
             alt="Dash Horizontal Tabs Component"
         )
     ),
-
 
     dcc.Markdown('''
     [Tab Component Pre-Release](https://github.com/plotly/dash-core-components/pull/74)
