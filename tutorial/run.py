@@ -34,6 +34,7 @@ import auth
 import on_premise_deployment
 import core_component_examples as examples
 from datetime import datetime as dt
+import state
 
 dcc._js_dist[0]['external_url'] = 'https://cdn.plot.ly/plotly-basic-1.27.1.min.js'
 
@@ -70,6 +71,11 @@ chapters = {
     'getting-started-part-2': {
         'url': '/dash/getting-started-part-2',
         'content': getting_started_part_2.layout
+    },
+
+    'state': {
+        'url': '/dash/state',
+        'content': state.layout
     },
 
     'dash-core-components': {
