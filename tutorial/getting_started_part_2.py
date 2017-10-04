@@ -17,8 +17,6 @@ examples = [
         'tutorial/examples/getting_started_multiple_viz.py',
         'tutorial/examples/getting_started_multiple_outputs_1.py',
         'tutorial/examples/getting_started_callback_chain.py',
-        'tutorial/examples/graph_callbacks_simple.py',
-        'tutorial/examples/getting_started_crossfilter.py'
     ]
 ]
 
@@ -287,54 +285,29 @@ layout = html.Div([
     '''.replace('    ', '')),
 
     dcc.Markdown('''
-    #### Graph Crossfiltering
-
-    Dash components are described declaratively by a set of attributes.
-    All of these attributes can be updated by callback functions but only
-    a subset of these attributes are updated through user interaction.
-    For example, when you click on an option in a `dcc.Dropdown` component, the
-    `value` property of that component changes.
-
-    The `dcc.Graph` component has three attributes that can change
-    through user-interaction: `hoverData`, `clickData`, and `selectedData`.
-    These properties update when you hover over points, click on points, or
-    select regions of points in a graph.
-
-    Here's an simple example that prints these attributes in the screen.
-    '''.replace('    ', '')),
-
-    dcc.SyntaxHighlighter(
-        examples[5][0],
-        language='python',
-        customStyle=styles.code_container
-    ),
-
-    html.Div(examples[5][1], className="example-container"),
-
-    dcc.Markdown('''***
-    Let's update our world indicators example by displaying time series when
-    we hover over points in our scatter plot.
-    '''.replace('    ', '')),
-
-    dcc.SyntaxHighlighter(
-        examples[6][0],
-        language='python',
-        customStyle=styles.code_container
-    ),
-
-    html.Div(examples[6][1], className="example-container"),
-
-    dcc.Markdown('''
 
     ### Summary
 
-    We've covered the fundamentals of Dash. Dash apps are built off of a set
+    We've covered the fundamentals of callbacks in Dash.
+    Dash apps are built off of a set
     of simple but powerful principles: declarative UIs that are customizable
     through reactive and functional Python callbacks.
     Every element attribute of the declarative components can be updated through
     a callback and a subset of the attributes, like the `value` properties of
     the `dcc.Dropdown`, are editable by the user in the interface.
 
-    '''.replace('    ', ''))
+    ***
+
+    '''.replace('    ', '')),
+
+    dcc.Markdown('''
+    The next chapter explains how to use these principles with the
+    `dash_core_components.Graph` component to make applications that
+    respond to interactions with graphs on the page.
+    '''.replace('    ', '')),
+
+    dcc.Link(
+        html.A('Part 3 - Interactive Graphing'),
+        href='/dash/interactive-graphing')
 
 ])

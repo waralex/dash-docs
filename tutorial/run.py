@@ -78,6 +78,11 @@ chapters = {
         'content': state.layout
     },
 
+    'graphing': {
+        'url': '/dash/interactive-graphing',
+        'content': graphing.layout
+    },
+
     'dash-core-components': {
         'url': '/dash/dash-core-components',
         'content': core_components.layout
