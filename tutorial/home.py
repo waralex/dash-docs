@@ -24,7 +24,6 @@ def Chapter(name, href=None, caption=None):
     ])
 
 
-
 def Section(title, links, description=None, headerStyle={}):
     return html.Div([
         html.H2(title, style=merge(styles['underline'], headerStyle)),
@@ -75,6 +74,15 @@ layout = html.Div(className="toc", children=[
             '/dash/interactive-graphing',
             '''Bind interactivity to the Dash `Graph` component whenever you
             hover, click, or select points on your chart.'''
+        ),
+        Chapter(
+            'Part 6. Sharing Data Between Callbacks',
+            '/dash/sharing-data-between-callbacks',
+            '''`global` variables will break your Dash apps. However, there
+            are other ways to share data between callbacks. This chapter is
+            useful for callbacks that run expensive data processing tasks or
+            process large data.
+            '''
         )
     ]),
 

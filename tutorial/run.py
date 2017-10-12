@@ -34,6 +34,7 @@ import on_premise_deployment
 import open_problems
 import performance
 import plugins
+import sharing_state
 import state
 import support
 import urls
@@ -87,6 +88,11 @@ chapters = {
     'graphing': {
         'url': '/dash/interactive-graphing',
         'content': graphing.layout
+    },
+
+    'shared-state': {
+        'url': '/dash/sharing-data-between-callbacks',
+        'content': sharing_state.layout
     },
 
     'dash-core-components': {
