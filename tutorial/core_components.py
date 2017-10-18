@@ -304,15 +304,11 @@ dcc.DatePickerRange(
     ***
     '''.replace('    ', '')),
 
-    html.H3('Upload Component'),
+    html.H3(dcc.Link('Upload Component', href='/dash/dash-core-components/upload')),
     dcc.Markdown('''
 
-    The `dcc.Upload` component is currently available in the prerelease
-    channel of the `dash-core-components` package. The prerelease channel is
-    used to solicit feedback from the community before releasing on the
-    long-term support stable channel.
-    To try it out, see the upload component
-    [Pull Request on GitHub](https://github.com/plotly/dash-core-components/pull/73).
+    The `dcc.Upload` component allows users to upload files into your app
+    through drag-and-drop or the system's native file explorer.
     '''.replace('    ', '')),
 
     html.A(
@@ -324,9 +320,10 @@ dcc.DatePickerRange(
         )
     ),
 
-    dcc.Markdown('''
-    [Upload Component Pre-Release](https://github.com/plotly/dash-core-components/pull/73)
+    dcc.Link(html.A('More Upload Examples and Reference'),
+             href="/dash/dash-core-components/upload"),
 
+    dcc.Markdown('''
     ***
     '''.replace('    ', '')),
 

@@ -5,6 +5,7 @@ from datetime import datetime as dt
 
 import dash_html_components as html
 import dash_core_components as dcc
+import dash_table_experiments as dt
 from dash.dependencies import Input, State, Event, Output
 
 from server import app, server
@@ -211,6 +212,11 @@ chapters = {
     'textarea-examples': {
         'url': '/dash/dash-core-components/textarea',
         'content': examples.Textarea
+    },
+
+    'upload-examples': {
+        'url': '/dash/dash-core-components/upload',
+        'content': examples.Upload
     }
 }
 
@@ -254,7 +260,8 @@ app.layout = html.Div([
             ),
         ], className="container-width")
     ], className="background"),
-    dcc.Location(id='location', refresh=False)
+    dcc.Location(id='location', refresh=False),
+    html.Div(dt.DataTable(rows=[{}]), style={'display': 'none'})
 ])
 
 

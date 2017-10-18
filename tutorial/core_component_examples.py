@@ -6,10 +6,12 @@ import pandas as pd
 import styles
 from datetime import datetime as dt
 import dash
+from textwrap import dedent as s
 
 import tools
 from utils.convert_props_to_table import generate_prop_table
 from utils.component_block import ComponentBlock
+from components import Syntax, Example
 
 examples = {
     'date_picker_single': tools.load_example('tutorial/examples/core_components/date_picker_single.py'),
@@ -19,6 +21,9 @@ examples = {
     'slider-updatemode': tools.load_example('tutorial/examples/core_components/slider_updatemode.py'),
     'rangeslider': tools.load_example('tutorial/examples/core_components/rangeslider.py'),
     'rangeslider-nonlinear': tools.load_example('tutorial/examples/core_components/rangeslider_nonlinear.py'),
+    'upload-image':  tools.load_example('tutorial/examples/core_components/upload-image.py'),
+    'upload-datafile':  tools.load_example('tutorial/examples/core_components/upload-datafile.py'),
+    'upload-gallery':  tools.load_example('tutorial/examples/core_components/upload-gallery.py'),
 }
 
 
@@ -968,4 +973,52 @@ Link = html.Div(children=[
 Textarea = html.Div(children=[
     html.H3('Textarea Properties'),
     generate_prop_table('Textarea')
+])
+
+# Upload
+Upload = html.Div([
+    html.H1('Upload Component'),
+    dcc.Markdown(s('''
+    The Dash upload component allows your app's veiwers to upload files,
+    like excel spreadsheets or images, into your application.
+    Your Dash app can access the contents of an upload by listening to
+    the `contents` property of the `dcc.Upload` component.
+
+    `contents` is a base64 encoded string that contains the files contents,
+    no matter what type of file: text files, images, zip files,
+    excel spreadsheets, etc.
+
+    ''')),
+
+    Syntax(examples['upload-datafile'][0], summary=dcc.Markdown(s('''
+        Here's an example that parses CSV or Excel files and displays
+        the results in a table. Note that this example uses the
+        `DataTable` prototype from the
+        [dash-table-experiments](https://github.com/plotly/dash-table-experiments)
+        project.
+    '''))),
+
+    Example(examples['upload-datafile'][1]),
+
+    html.Hr(),
+
+    Syntax(examples['upload-image'][0], summary=dcc.Markdown(s('''
+        This next example responds to image uploads by displaying them
+        in the app with the `html.Img` component.
+    '''))),
+    Example(examples['upload-image'][1]),
+
+    Syntax(examples['upload-gallery'][0], summary=dcc.Markdown(s('''
+        The `children` attribute of the `Upload` component accepts any
+        Dash component. Clicking on the children element will trigger the
+        upload action, as will dragging and dropping files.
+        Here are a few different ways that you could style the upload
+        component using standard dash components.
+    '''))),
+    Example(examples['upload-gallery'][1]),
+
+    html.Hr(),
+
+    html.H2('Upload Component Properties'),
+    generate_prop_table('Upload')
 ])
