@@ -8,7 +8,7 @@ import json
 import plotly.graph_objs as go
 import os
 
-server = Flask(__name__, static_url_path='', static_folder='./static')
+server = Flask(__name__, static_url_path='/dash', static_folder='./static')
 server.secret_key = os.environ.get('secret_key', 'secret')
 app = Dash(__name__, server=server, url_base_pathname='/dash/', csrf_protect=False)
 
