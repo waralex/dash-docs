@@ -223,9 +223,9 @@ def update_output_1(value):
              df_2 = cleaned_df[cleaned_df == 'oranges']
              df_3 = cleaned_df[cleaned_df == 'figs']
              return {
-                 df_1: df_1.to_json(orient='split'),
-                 df_2: df_2.to_json(orient='split'),
-                 df_3: df_3.to_json(orient='split'),
+                 'df_1': df_1.to_json(orient='split'),
+                 'df_2': df_2.to_json(orient='split'),
+                 'df_3': df_3.to_json(orient='split'),
              }
 
         @app.callback(
