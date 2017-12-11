@@ -1,6 +1,6 @@
+from textwrap import dedent as s
 import dash_core_components as dcc
 import dash_html_components as html
-from textwrap import dedent as s
 
 from tools import load_example
 from components import Example, Syntax
@@ -121,6 +121,6 @@ layout = html.Div([
     `State` is useful for UIs that contain forms or buttons.
     ''')),
 
-    dcc.Link('Dash Tutorial Part 4. Callbacks With State', href="/dash/state")
+    dcc.Link('Dash Tutorial Part 4. Callbacks With State', href='/dash/state')
 
 ])
