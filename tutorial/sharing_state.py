@@ -175,21 +175,21 @@ def update_output_1(value):
 
              # more generally, this line would be
              # json.dumps(cleaned_df)
-             return cleaned_df.to_json()
+             return cleaned_df.to_json(date_format='iso', orient='split')
 
         @app.callback(Output('graph', 'figure'), [Input('intermediate-value', 'children'])
         def update_graph(jsonified_cleaned_data):
 
             # more generally, this line would be
             # json.loads(jsonified_cleaned_data)
-            dff = pd.read_json(jsonified_cleaned_data)
+            dff = pd.read_json(jsonified_cleaned_data, orient='split')
 
             figure = create_figure(dff)
             return figure
 
         @app.callback(Output('table', 'children'), [Input('intermediate-value', 'children'])
         def update_table(jsonified_cleaned_data):
-            dff = pd.read_json(jsonified_cleaned_data)
+            dff = pd.read_json(jsonified_cleaned_data, orient='split')
             table = create_table(dff)
             return table
     ''')),
@@ -223,16 +223,16 @@ def update_output_1(value):
              df_2 = cleaned_df[cleaned_df == 'oranges']
              df_3 = cleaned_df[cleaned_df == 'figs']
              return {
-                 'df_1': df_1.to_json(orient='split'),
-                 'df_2': df_2.to_json(orient='split'),
-                 'df_3': df_3.to_json(orient='split'),
+                 'df_1': df_1.to_json(orient='split', date_format='iso'),
+                 'df_2': df_2.to_json(orient='split', date_format='iso'),
+                 'df_3': df_3.to_json(orient='split', date_format='iso'),
              }
 
         @app.callback(
             Output('graph', 'figure'),
             [Input('intermediate-value', 'children'])
         def update_graph_1(jsonified_cleaned_data):
-            dff = pd.read_json(jsonified_cleaned_data['df_1'])
+            dff = pd.read_json(jsonified_cleaned_data['df_1'], orient='split')
             figure = create_figure_1(dff)
             return figure
 
@@ -240,7 +240,7 @@ def update_output_1(value):
             Output('graph', 'figure'),
             [Input('intermediate-value', 'children'])
         def update_graph_2(jsonified_cleaned_data):
-            dff = pd.read_json(jsonified_cleaned_data['df_2'])
+            dff = pd.read_json(jsonified_cleaned_data['df_2'], orient='split')
             figure = create_figure_2(dff)
             return figure
 
@@ -248,7 +248,7 @@ def update_output_1(value):
             Output('graph', 'figure'),
             [Input('intermediate-value', 'children'])
         def update_graph_3(jsonified_cleaned_data):
-            dff = pd.read_json(jsonified_cleaned_data['df_3'])
+            dff = pd.read_json(jsonified_cleaned_data['df_3'], orient='split')
             figure = create_figure_3(dff)
             return figure
         '''), summary='''Here's a simple example of how you might transport
