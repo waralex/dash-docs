@@ -105,10 +105,26 @@ layout = html.Div(className='toc', children=[
     ]),
 
     Section('Advanced Usage', [
-        Chapter('Performance', '/dash/performance'),
-        Chapter('Live Updates', '/dash/live-updates'),
-        Chapter('External CSS and JS', '/dash/external-resources'),
-        Chapter('URL Routing and Multiple Apps', '/dash/urls')
+        Chapter('Performance', '/dash/performance', '''
+        There are two main ways to speed up dash apps: caching and using
+        WebGL chart types.
+        '''),
+        Chapter('Live Updates', '/dash/live-updates', '''
+        Update your apps on page load or on a predefined interval
+        (e.g. every 30 seconds).
+        '''),
+        Chapter('External CSS and JS', '/dash/external-resources', '''
+        By default, Dash loads CSS and JS assets from a fast, global CDN -
+        but you can optionally these resources locally,
+        making your apps completely self contained (no internet access required!).
+        Also, learn how to append your own CSS styleseets or JS scripts to
+        your apps.
+        '''),
+        Chapter('URL Routing and Multiple Apps', '/dash/urls', '''
+        Dash provides two components (`dcc.Link` and `dcc.Location`) that allow
+        you to easily make fast multipage apps using its own
+        "Single Page App (SPA)" design pattern.
+        ''')
     ]),
 
     Section('Production', [
