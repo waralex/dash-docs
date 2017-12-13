@@ -27,13 +27,16 @@ If you're building an application for monitoring, you may want to update
 components in your application every few seconds or minutes.
 
 The `dash_core_components.Interval` element allows you to update components
-on a predefined interval.
+on a predefined interval. The `n_interval` property is an integer that is
+automatically incremented every time `interval` millseconds pass.
+You can listen to this variable inside your app's `callback` to fire
+the callback on a predefined interval.
 
 This example pulls data from live satellite feeds and updates the graph
 and the text every second.
 '''),
     dcc.SyntaxHighlighter('''import dash
-from dash.dependencies import Input, Output, Event
+from dash.dependencies import Input, Output
 import dash_core_components as dcc
 import dash_html_components as html
 import datetime
@@ -51,17 +54,16 @@ app.layout = html.Div(
         dcc.Graph(id='live-update-graph'),
         dcc.Interval(
             id='interval-component',
-            interval=1*1000 # in milliseconds
+            interval=1*1000, # in milliseconds
+            n_interval=0
         )
     ])
 )
 
-# The `dcc.Interval` component emits an event called "interval"
-# every `interval` number of milliseconds.
-# Subscribe to this event with the `events` argument of `app.callback`
+
 @app.callback(Output('live-update-text', 'children'),
-              events=[Event('interval-component', 'interval')])
-def update_metrics():
+              [Input('interval-component', 'n_interval')])
+def update_metrics(n):
     lon, lat, alt = satellite.get_lonlatalt(datetime.datetime.now())
     style = {'padding': '5px', 'fontSize': '16px'}
     return [
@@ -73,8 +75,8 @@ def update_metrics():
 
 # Multiple components can update everytime interval gets fired.
 @app.callback(Output('live-update-graph', 'figure'),
-              events=[Event('interval-component', 'interval')])
-def update_graph_live():
+              [Input('interval-component', 'n_interval')])
+def update_graph_live(n):
     satellite = Orbital('TERRA')
     data = {
         'time': [],
