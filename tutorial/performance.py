@@ -2,16 +2,18 @@ import dash_html_components as html
 import dash_core_components as dcc
 import functools32
 
+from components import Example, Syntax
 import styles
 import tools
 
-examples = [
-    tools.load_example(s) for s in [
-        'tutorial/examples/performance_memoization.py',
-        'tutorial/examples/performance_flask_caching.py'
-    ]
-]
-
+examples = {
+    'memoization': tools.load_example(
+        'tutorial/examples/performance_memoization.py'),
+    'performance_flask_caching': tools.load_example(
+        'tutorial/examples/performance_flask_caching.py'),
+    'performance_flask_caching_dataset': open(
+        'tutorial/examples/performance_flask_caching_dataset.py').read()
+}
 
 layout = [
 dcc.Markdown('''# Performance
@@ -34,14 +36,14 @@ To better understand how memoization works, let's start with a simple example.
 
 '''),
 
-dcc.SyntaxHighlighter('''import time
+Syntax('''import time
 import functools32
 
 @functools32.lru_cache(maxsize=32)
 def slow_function(input):
     time.sleep(10)
     return 'Input was {}'.format(input)
-''', language='python', customStyle=styles.code_container),
+'''),
 
 dcc.Markdown('''
 
@@ -66,9 +68,21 @@ data (clear your cache) every hour or every day.
 Here is an example of `Flask-Caching` with Redis:
 '''),
 
-dcc.SyntaxHighlighter(
-    examples[1][0], language='python', customStyle=styles.code_container
-),
+Syntax(examples['performance_flask_caching'][0]),
+
+dcc.Markdown('''
+
+***
+
+Here is an example that **caches a dataset** instead of a callback.
+It uses the FileSystem cache, saving the cached results to the filesystem.
+
+This approach works well if there is one dataset that is used to update
+several callbacks.
+
+'''),
+
+Syntax(examples['performance_flask_caching_dataset']),
 
 dcc.Markdown('''
 
