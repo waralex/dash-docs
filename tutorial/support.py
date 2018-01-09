@@ -10,7 +10,7 @@ developed and maintained by [Plotly](https://plot.ly).
 ### Dash Demos and Enterprise Trials
 
 If you would like to trial or purchase a Dash On-Premises server,
-[get in touch with us directly](https://plotly.typeform.com/to/seG7Vb).
+[get in touch with us directly](https://plotly.typeform.com/to/rkO85m).
 
 Our sales engineering team is happy to give you or your team
 a demo of Dash and Dash On-Premises too.
@@ -31,7 +31,7 @@ Last Fall's workshops sold out, so if you are interested,
 
 If you or your company would like to sponsor a specific feature or enterprise
 customization, get in touch with our
-[advanced development team](http://plot.ly/products/consulting-and-oem/).
+[advanced development team](https://plot.ly/dash/pricing/).
 
 ### Community Support
 
