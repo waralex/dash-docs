@@ -117,7 +117,7 @@ like caching front-end requests, pre-filling the cache, improving plotly.js's
 webgl capabilities, reducing JavaScript bundle sizes, and more.
 
 Historically, many of these performance related features have been funded
-through company sponorship. If you or your company would like to sponsor
+through company sponsorship. If you or your company would like to sponsor
 these types of enhancements, [please get in touch](https://plot.ly/products/consulting-and-oem/),
 we'd love to help.
 
