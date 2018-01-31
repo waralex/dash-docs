@@ -44,6 +44,7 @@ class Tests(IntegrationTests):
                     return False
             wait_for(find_element_by_id)
             find_element_by_id()
+
         self.wait_for_element_by_id = wait_for_element_by_id
 
         def wait_for_element_by_css_selector(css_selector):
@@ -88,3 +89,13 @@ class Tests(IntegrationTests):
         for link in links:
             if link.startswith('/'):
                 visit_and_snapshot(link)
+
+        # test search page
+        self.driver.get('http://localhost:8050/dash/search')
+        self.wait_for_element_by_id('search-input')
+        self.snapshot('search-blank')
+        search_element = self.driver.find_element_by_id('search-input')
+        search_element.clear()
+        search_element.send_keys('dropdown')
+        time.sleep(5)
+        self.snapshot('search-dropdown')
