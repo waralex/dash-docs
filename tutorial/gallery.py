@@ -69,40 +69,6 @@ layout = html.Div(className='gallery', children=[
 
     ***
 
-    ## Goldman Sachs Remake: Portfolio Report
-
-    This app recreates the look and feel of a Goldman Sachs report.
-    It includes a Print to PDF button and the styles were optimized
-    to look good on the web and in PDF form.
-
-    The charts in the report on the web version are interactive.
-    You can hover over points to see their values and zoom into
-    regions. Since this report was built on top of Dash, you could
-    adapt this report to include even more interactive elements, like
-    a dropdown or a search box.
-
-    With PDF styles, you can hide and show elements depending on whether
-    the app is being viewed in the web browser or in print, using the
-    same framework for the rich interactive applications as the static
-    PDF reports.
-
-    '''.replace('    ', '')),
-
-    html.A(
-        className='image-link',
-        href='https://plot.ly/dash/gallery/goldman-sachs-report',
-        children=html.Img(
-            src='https://github.com/plotly/dash-docs/raw/master/images/goldman-sachs.png',
-            alt='Screenshot of Goldman Sachs report'
-        )
-    ),
-
-    dcc.Markdown('''
-
-    [View the app](/dash/gallery/goldman-sachs-report) | [View the source code](https://github.com/plotly/dash-goldman-sachs-report-demo)
-
-    ***
-
     ## Uber Rides
 
     This app displays all of the Uber rides in New York City in 2014.
