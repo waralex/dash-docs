@@ -475,7 +475,7 @@ dcc.Markdown('''
 ''')"""),
     html.Hr(),
     html.H3("Inline Code"),
-    html.P("Any block of text surronded by ` ` will rendered as inline-code. "),
+    html.P("Any block of text surrounded by ` ` will rendered as inline-code. "),
 
     ComponentBlock("""import dash_core_components as dcc
 
@@ -674,7 +674,7 @@ dcc.DatePickerRange(
 
     html.Hr(),
 
-    html.H3("Vertical Calendar and Placholder Text"),
+    html.H3("Vertical Calendar and Placeholder Text"),
     dcc.Markdown("The `DatePickerRange` component can be rendered in two \
                   orientations, either horizontally or vertically. \
                   If `calendar_orientation` is set to `'vertical'`, it will \
@@ -913,7 +913,7 @@ dcc.DatePickerSingle(
     date=dt.now()
 )''', language='python', customStyle=styles.code_container),
     html.Hr(),
-    html.H3("Vertical Calendar and Placholder Text"),
+    html.H3("Vertical Calendar and Placeholder Text"),
     dcc.Markdown("The `DatePickerSingle` component can be rendered in two \
                   orientations, either horizontally or vertically. \
                   If `calendar_orientation` is set to `'vertical'`, it will \
