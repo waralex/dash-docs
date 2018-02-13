@@ -1,1 +1,1 @@
-web: gunicorn --threads 2 --workers 8 tutorial.run:server
+web: gunicorn --threads 2 --workers 12 tutorial.run:server
