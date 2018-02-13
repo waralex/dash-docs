@@ -116,13 +116,13 @@ layout = html.Div(className='toc', children=[
                 chapters['support']['url'])
     ]),
 
-    Section('Plotly On-Premises', [
-        Chapter('About Plotly On-Premises',
-                'https://plot.ly/products/on-premise'),
+    Section('Dash Deployment Server', [
+        Chapter('About Dash Deployment Server',
+                'https://plot.ly/dash/pricing/'),
         Chapter(chapters['deployment-onpremise']['name'],
                 chapters['deployment-onpremise']['url'])],
-        description="""Plotly On-Premises is Plotly's commercial offering for
-                       hosting and sharing Dash apps.""",
+        description="""Dash Deployment Server is Plotly's commercial offering for
+                       hosting and sharing Dash apps on-premises or in the cloud.""",
         headerStyle={'color': '#0D76BF'}
     )
 ])
