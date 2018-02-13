@@ -17,8 +17,8 @@ app = Dash(
     csrf_protect=False,
     url_base_pathname='/dash/'
 )
-# app.config.requests_pathname_prefix = 'https://dash-docs.herokuapp.com/dash/'
-# app.config.routes_pathname_prefix = '/dash/'
+app.config.requests_pathname_prefix = 'https://dash-docs.herokuapp.com/dash/'
+app.config.routes_pathname_prefix = '/dash/'
 
 app.css.config.serve_locally = False
 app.scripts.config.serve_locally = False
