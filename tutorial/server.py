@@ -14,11 +14,10 @@ server.secret_key = os.environ.get('secret_key', 'secret')
 app = Dash(
     __name__,
     server=server,
-    csrf_protect=False,
-    url_base_pathname='/dash/'
+    csrf_protect=False
 )
-# app.config.requests_pathname_prefix = 'https://dash-docs.herokuapp.com/dash/'
-# app.config.routes_pathname_prefix = '/dash/'
+app.config.requests_pathname_prefix = 'https://dash-docs.herokuapp.com/dash/'
+app.config.routes_pathname_prefix = '/dash/'
 
 app.css.config.serve_locally = False
 app.scripts.config.serve_locally = False
