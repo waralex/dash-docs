@@ -146,32 +146,9 @@ layout = html.Div(className='gallery', children=[
 
     ***
 
-    ## Volatility Surface Explorer
-
-    This demo fetches CBOE options chain data from Yahoo Finance with Pandas Datareader
-    and calculates the implied volatility of each option using the [`py_vollib`](https://github.com/vollib/py_vollib)
-    library.
-
-    All parameters of the IV calculation are adjustable and the
-    resulting volatility curve is rendered using a [Mesh 3D chart](https://plot.ly/python/3d-mesh/)
-    with several subplots showing subsections of the 3D plot.
-
-    Initially fetching the options data and calculating the IV might take a
-    few seconds due to the scale of the calculations required.
-
     '''.replace('    ', '')),
 
-    html.A(
-        className='image-link',
-        href='https://plot.ly/dash/gallery/volatility-surface',
-        children=html.Img(
-            src='https://raw.githubusercontent.com/plotly/dash-docs/master/images/dash-volatility-surface.gif',
-            alt='Screenshot of volatility surface'
-        )
-    ),
-
     dcc.Markdown('''
-    [View the app](https://plot.ly/dash/gallery/volatility-surface) | [View the source code](https://github.com/plotly/dash-volatility-surface)
 
     ***
 
