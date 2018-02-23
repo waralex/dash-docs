@@ -22,10 +22,10 @@ Plotly Headquarters this February!
 The workshop will start with the foundations and guiding principles of Dash
 and move into advanced Dash practices with plenty of time for individual
 questions. You can register for the workshop and see more information at:
-[https://plotcon.plot.ly/workshops](https://plotcon.plot.ly/workshops).
+[https://plotcon.plot.ly/](https://plotcon.plot.ly/).
 
 Last Fall's workshops sold out, so if you are interested,
-[register soon](https://plotcon.plot.ly/workshops)!
+[register soon](https://plotcon.plot.ly/)!
 
 ### Sponsored Feature Requests and Customizations
 
