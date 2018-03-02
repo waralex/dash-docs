@@ -49,7 +49,7 @@ def create_contents(contents):
 
 chapters = {
     'index': {
-        'url': '/dash/',
+        'url': '/',
         'content': home.layout,
         'name': 'Index',
         'description': ''
@@ -72,9 +72,9 @@ header = html.Div(
             html.Div(className='links', children=[
                 html.A('pricing', className='link', href='https://plot.ly/dash/pricing'),
                 html.A('workshops', className='link', href='https://plotcon.plot.ly/'),
-                html.A('user guide', className='link active', href='https://plot.ly/dash/'),
+                html.A('user guide', className='link active', href='/'),
                 html.A('plotly', className='link', href='https://plot.ly/'),
-                html.A(children=[html.I(className="fa fa-search")], className='link', href='https://plot.ly/dash/search')
+                html.A(children=[html.I(className="fa fa-search")], className='link', href='/search')
             ])
         ]
     )
@@ -122,7 +122,7 @@ def display_content(pathname):
         content = html.Div([
             html.Div(chapters[matched[0]]['content']),
             html.Hr(),
-            dcc.Link(html.A('Back to the Table of Contents'), href='/dash/'),
+            dcc.Link(html.A('Back to the Table of Contents'), href='/'),
             html.Div(id='wait-for-page-{}'.format(pathname)),
         ])
     else:
