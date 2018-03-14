@@ -23,7 +23,7 @@ import html_component_appendix
 import open_problems
 
 dcc._js_dist[0]['external_url'] = (
-    'https://cdn.plot.ly/plotly-basic-1.31.0.min.js'
+    'https://cdn.plot.ly/plotly-basic-1.35.2.min.js'
 )
 
 css = [
