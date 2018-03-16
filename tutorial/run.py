@@ -22,10 +22,6 @@ import home
 import html_component_appendix
 import open_problems
 
-dcc._js_dist[0]['external_url'] = (
-    'https://cdn.plot.ly/plotly-basic-1.35.2.min.js'
-)
-
 css = [
     'https://cdn.rawgit.com/plotly/dash-app-stylesheets/8485c028c19c393e9ab85e1a4fafd78c489609c2/dash-docs-base.css',
     'https://cdn.rawgit.com/plotly/dash-app-stylesheets/30b641e2e89753b13e6557b9d65649f13ea7c64c/dash-docs-custom.css',
