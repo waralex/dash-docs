@@ -291,6 +291,46 @@ layout = html.Div(className='gallery', children=[
 
     ***
 
+    ## Opioid Epidemic
+
+    Interactively explore the affect of the opioid epidemic in North America.
+
+    '''.replace('    ', '')),
+
+    html.A(
+        className='image-link',
+        href='https://opioid-epidemic.herokuapp.com/',
+        children=html.Img(
+            src='https://raw.githubusercontent.com/plotly/dash-docs/master/images/opioid-epidemic.png',
+            alt='Screenshot of opioid epidemic'
+        )
+    ),
+    dcc.Markdown('''
+
+    [View the app](https://opioid-epidemic.herokuapp.com/) | [View the source code](https://github.com/plotly/dash-opioid-epidemic-demo)
+
+    ***
+
+    ## Vanguard Report
+
+    This app illustrates the ability to create interactive reports with Dash. View, interact and then print the report in either single page or full view.
+
+    '''.replace('    ', '')),
+
+    html.A(
+        className='image-link',
+        href='https://vanguard-report.herokuapp.com/',
+        children=html.Img(
+            src='https://raw.githubusercontent.com/plotly/dash-docs/master/images/vanguard.gif',
+            alt='Screenshot of vanguard report'
+        )
+    ),
+    dcc.Markdown('''
+
+    [View the app](https://vanguard-report.herokuapp.com/) | [View the source code](https://github.com/plotly/dash-vanguard-report)
+
+    ***
+
     ## Dash Documentation
 
     These Dash docs that you're looking at? They are itself a Dash app!
