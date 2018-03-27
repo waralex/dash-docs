@@ -293,7 +293,7 @@ layout = html.Div(className='gallery', children=[
 
     ## Opioid Epidemic
 
-    Interactively explore the affect of the opioid epidemic in North America.
+    Interactively explore the effect of the opioid epidemic in North America.
 
     '''.replace('    ', '')),
 
@@ -313,7 +313,20 @@ layout = html.Div(className='gallery', children=[
 
     ## Vanguard Report
 
-    This app illustrates the ability to create interactive reports with Dash. View, interact and then print the report in either single page or full view.
+    This app recreates the look and feel of a Vanguard report.
+    It includes a Print to PDF button and the styles were optimized
+    to look good on the web and in PDF form.
+
+    The charts in the report on the web version are interactive.
+    You can hover over points to see their values and zoom into
+    regions. Since this report was built on top of Dash, you could
+    adapt this report to include even more interactive elements, like
+    a dropdown or a search box.
+
+    With PDF styles, you can hide and show elements depending on whether
+    the app is being viewed in the web browser or in print, using the
+    same framework for the rich interactive applications as the static
+    PDF reports.
 
     '''.replace('    ', '')),
 
