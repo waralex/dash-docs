@@ -81,7 +81,13 @@ layout = html.Div([
     underlying dataset.
     """),
 
-    Example(examples['crossfilter-recipe'][1]),
+    html.Img(
+        src='https://github.com/plotly/dash-docs/raw/master/images/select.gif',
+        alt='Dash Data Selection Example',
+        style={
+            'width': '100%', 'border': 'thin lightgrey solid',
+            'border-radius': '4px'
+        }),
 
     dcc.Markdown(s('''
     Try clicking and dragging in any of the plots to filter different regions.
