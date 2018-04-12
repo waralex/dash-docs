@@ -351,7 +351,8 @@ layout = html.Div(className='gallery', children=[
 
     ## Dash Datashader
 
-    Visualize millions of points with Datashader and Plotly.
+    Visualize hundreds of millions of points interactively \
+    with Dash and Datashader.
 
     '''.replace('    ', '')),
 
