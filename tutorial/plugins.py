@@ -66,8 +66,9 @@ repository on GitHub.
 You'll need Node, NPM, and Python installed.
 Components are built with [React.js](https://facebook.github.io/react/).
 
-> If you're just getting started, we've written a great
-[React.js tutorial](https://academy.plot.ly/) as part of our open source academy.
+> If you're just getting started, here's a great
+[React.js tutorial](https://reactjs.org/tutorial/tutorial.html) you can use to get up 
+to speed.
 
 ### Step 2 - Install Builder
 '''),
