@@ -2,7 +2,15 @@
 from textwrap import dedent as s
 import dash_core_components as dcc
 import dash_html_components as html
-from components import Syntax
+
+from components import Example, Syntax
+import tools
+
+examples = {
+    'filesystem-session-cache': tools.load_example(
+        'tutorial/examples/sharing_state_filesystem_sessions.py'
+    )
+}
 
 
 layout = html.Div([
@@ -44,8 +52,11 @@ layout = html.Div([
     workers** so that callbacks can be executed in parallel.
     This is commonly done with `gunicorn` using syntax like
     ```
-    $ gunicorn --workers 4 --threads 2 app:server
+    $ gunicorn --workers 4 app:server
     ```
+
+    (`app` refers to a file named `app.py` and `server` refers to a variable
+    in that file named `server`: `server = app.server`).
 
     When Dash apps run across multiple workers, their memory
     _is not shared_. This means that if you modify a global
@@ -117,7 +128,9 @@ def update_output_1(value):
 
         In order for to share data safely across multiple python
         processes, we need to store the data somewhere that is accessible to
-        each of the processes. There are 3 places to store this data:
+        each of the processes.
+
+        There are 3 main places to store this data:
 
         1 - In the user's browser session
 
@@ -127,7 +140,7 @@ def update_output_1(value):
 
         The following three examples illustrate these approaches.
 
-        ## Example 1 - Storing Data in Hidden Div
+        ## Example 1 - Storing Data in the Browser with a Hidden Div
 
         To save data in user's browser's session:
         - Implemented by saving the data as part of Dash's front-end store
@@ -293,7 +306,7 @@ def update_output_1(value):
         - Once the computation is complete, the signal is sent and 4 callbacks
           are executed in parallel to render the graphs.
           Each of these callbacks retrieves the data from the
-          “global store”: the redis cache.
+          “global store”: the redis or filesystem cache.
         - I’ve set processes=6 in app.run_server so that multiple callbacks
           can be executed in parallel. In production, this is done with
           something like $ gunicorn --workers 6 --threads 2 app:server
@@ -457,6 +470,73 @@ def update_output_1(value):
         if __name__ == '__main__':
             app.run_server(debug=True, processes=6)
         '''
-    ))
+    )),
 
+
+    dcc.Markdown(s('''
+        ***
+
+        ## Example 4 - User-Based Session Data on the Server
+
+        The previous example cached computations on the filesystem and
+        those computations were accessible for all users.
+
+        In some cases, you want to keep the data isolated to user sessions:
+        one user's derived data shouldn't update the next user's derived data.
+        One way to do this is to save the data in a hidden `Div`,
+        as demonstrated in the first example.
+
+        Another way to do this is to save the data on the
+        filesystem cache with with a seession id and reference the data
+        using that session id. In this method, since data is saved on the server,
+        instead of transported over the network, it is generally faster than the
+        "hidden div" method.
+
+
+        This example was originally discussed in a
+        [Dash Community Forum thread](https://community.plot.ly/t/capture-window-tab-closing-event/7375/2?u=chriddyp).
+
+        This example:
+        - Caches data using the `flask_caching` filesystem cache. You can also save to an in-memory database like Redis..
+        - Serializes the data as JSON.
+            - If you are using Pandas, consider serializing
+            with Apache Arrow. [Community thread](https://community.plot.ly/t/fast-way-to-share-data-between-callbacks/8024/2)
+        - Saves session data up to the number of expected concurrent users.
+        This prevents the cache from being overfilled with data.
+        - Creates unique session IDs by embedding a hidden random string into
+        the app's layout and serving a unique layout on every page load.
+
+        > Note: As with all examples that send data to the client, be aware
+        > that these sessions aren't necessarily secure or encrypted.
+        > These session IDs may be vulnerable to
+        > [Session Fixation](https://en.wikipedia.org/wiki/Session_fixation)
+        > style attacks.
+
+        ''')),
+
+    Syntax(
+        examples['filesystem-session-cache'][0],
+        summary="Here's what this example looks like in code"
+    ),
+
+    html.Div(
+        children=html.Img(
+            src='https://user-images.githubusercontent.com/1280389/37941518-8f47b71a-313c-11e8-8b00-80ffbb012c4a.gif',
+            alt='Example of a Dash App that uses User Session Caching'
+        )
+    ),
+
+    dcc.Markdown(s('''
+        There are three things to notice in this example:
+        - The timestamps of the dataframe don't update when we retrieve
+        the data. This data is cached as part of the user's session.
+        - Retrieving the data initially takes 5 seconds but successive queries
+        are instant, as the data has been cached.
+        - The second session displays different data than the first session:
+        the data that is shared between callbacks is isolated to individual
+        user sessions.
+
+        Questions? Discuss these examples on the
+        [Dash Community Forum](https://community.plot.ly/c/dash)
+    '''))
 ])
