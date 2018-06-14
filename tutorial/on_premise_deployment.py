@@ -22,7 +22,10 @@ STEPS = [
     {'label': 'Part 4 - Adding Authentication to your Dash App (Optional)',
      'value': 'auth'},
 
-    {'label': 'Part 5 - Troubleshooting App Deployment',
+    {'label': 'Part 5 - Adding and Configuring System Dependencies (Optional)',
+     'value': 'system'},
+
+    {'label': 'Part 6 - Troubleshooting App Deployment',
      'value': 'troubleshooting'},
 
 ]
@@ -338,6 +341,82 @@ def generate_instructions(chapter, platform):
             at `https://<your-plotly-domain>/organize`.
             '''))
         ]
+
+    elif chapter == 'system':
+        return [
+            dcc.Markdown(s('''
+            In some cases you may need to install and configure system
+            dependencies. Examples include installing and configuring
+            database drivers or the Java JRE environment.
+            Plotly On-Premise supports these actions through an
+            `apt-packages` file and a `predeploy` script.
+
+            #### Install Apt Packages
+
+            In the root of your application folder create a file called
+            `apt-packages`. Here you may specify apt packages to be
+            installed with one package per line. For example to install
+            the ODBC driver we could include an `apt-packages` file that
+            looks like:
+
+            ''')),
+
+            dcc.SyntaxHighlighter(s('''unixodbc
+            unixodbc-dev
+            '''), customStyle=styles.code_container, language="text"),
+
+            dcc.Markdown(s('''
+
+            #### Configure System Dependencies
+
+            You may include a pre-deploy script that executes in
+            your Dash App's environment. For the case of adding an
+            ODBC driver we may want to copy ODBC initialization files
+            from our application folder into system paths where the
+            ODBC driver expects them to be.
+
+            ##### Add A Pre-Deploy Script
+            Let's generate a file to do this. Note that the file can
+            have any name as we must specify the name in an application
+            configuration file `app.json`.
+            For the purposes of this example we assume we have
+            named it `setup_pyodbc`.
+
+            ''')),
+
+            dcc.SyntaxHighlighter(s('''cp /app/odbc.ini /etc/odbc.ini
+            cp /app/odbcinst.ini /etc/odbcinst.ini
+            '''), customStyle=styles.code_container, language="text"),
+
+            dcc.Markdown(s('''
+
+            ##### Run Pre-Deploy Script Using `app.json`
+
+            Next we must instruct Plotly OnPremise to run our `setup_pyodbc`
+            file by adding a JSON configuration file named `app.json`
+            into the root of our application folder.
+
+            ''')),
+
+            dcc.SyntaxHighlighter(s('''{
+            \t"scripts": {
+            \t\t"dokku": {
+            \t\t\t"predeploy": "/app/setup_pyodbc"
+            \t\t}
+            \t}
+            }
+            '''), customStyle=styles.code_container, language='json'),
+
+            dcc.Markdown(s('''
+            ***
+
+            Now when the application is deployed it will install the apt
+            packages specified in `apt-packages` and run the setup file
+            specified in `app.json`. In this case it allows us to install
+            and then configure the ODBC driver.
+            '''))
+        ]
+
     elif chapter == 'troubleshooting':
         return [
             dcc.Markdown(s('''
