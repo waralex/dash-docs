@@ -371,16 +371,18 @@ def generate_instructions(chapter, platform):
 
             You may include a pre-deploy script that executes in
             your Dash App's environment. For the case of adding an
-            ODBC driver we may want to copy ODBC initialization files
-            from our application folder into system paths where the
-            ODBC driver expects them to be.
+            ODBC driver we need to add ODBC initialization files into
+            the correct systems paths. To do so we include the ODBC
+            initialization files in the application folder and then
+            copy them into system paths in the pre-deploy script.
 
             ##### Add A Pre-Deploy Script
             Let's generate a file to do this. Note that the file can
             have any name as we must specify the name in an application
             configuration file `app.json`.
             For the purposes of this example we assume we have
-            named it `setup_pyodbc`.
+            named it `setup_pyodbc` and installed it in the root of our
+            application folder.
 
             ''')),
 
@@ -414,6 +416,10 @@ def generate_instructions(chapter, platform):
             packages specified in `apt-packages` and run the setup file
             specified in `app.json`. In this case it allows us to install
             and then configure the ODBC driver.
+
+            To see this example code in action
+            [check out our ODBC example](https://github.com/plotly/dash-on-premise-sample-app/pull/3#issue-144272510)
+             OnPremise application.
             '''))
         ]
 
