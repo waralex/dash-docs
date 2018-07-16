@@ -423,12 +423,12 @@ layout = html.Div(className='gallery', children=[
             src_code_link='https://github.com/plotly/dash-object-detection',
             img_src='https://raw.githubusercontent.com/xhlulu/dash-docs/master/images/dash-object-detection.gif',
             description='''
-                For every Deep Learning models, keeping track of accuracy 
-                and loss is an essential part of the training process, 
-                since they indicate how good your models are. This app is 
-                a real-time visualization app that monitors core metrics 
-                of your Tensorflow graphs during the training, so that you 
-                can quickly detect anomalies within your model.
+                This object-detection app provides useful visualizations about what's happening inside a complex video in 
+                real-time. The data is generated using 
+                [MobileNet v1](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/detection_model_zoo.md) 
+                in Tensorflow, trained on the COCO dataset. The video 
+                is displayed using the community-maintained 
+                [video component](https://community.plot.ly/t/modifying-a-dom-property-in-html-video-dash-video-component/7649).
             '''
         ),
 
@@ -438,12 +438,12 @@ layout = html.Div(className='gallery', children=[
             src_code_link='https://github.com/plotly/dash-live-model-training',
             img_src='https://raw.githubusercontent.com/xhlulu/dash-docs/master/images/dash-live-model-training.gif',
             description='''
-                This object-detection app provides useful visualizations about what's happening inside a complex video in 
-                real-time. The data is generated using 
-                [MobileNet v1](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/detection_model_zoo.md) 
-                in Tensorflow, trained on the COCO dataset. The video 
-                is displayed using the community-maintained 
-                [video component](https://community.plot.ly/t/modifying-a-dom-property-in-html-video-dash-video-component/7649).
+                For every Deep Learning models, keeping track of accuracy 
+                and loss is an essential part of the training process, 
+                since they indicate how good your models are. This app is 
+                a real-time visualization app that monitors core metrics 
+                of your Tensorflow graphs during the training, so that you 
+                can quickly detect anomalies within your model.
             '''
         ),
     ]),
@@ -484,7 +484,7 @@ layout = html.Div(className='gallery', children=[
     html.Div(className='row', children=[
         AppSection(
             app_name='Support Vector Machine Explorer',
-            app_link='https://dash-svm-dev.plot.ly/',
+            app_link='https://dash-svm.plot.ly/',
             src_code_link='https://github.com/plotly/dash-svm',
             img_src='https://raw.githubusercontent.com/xhlulu/dash-docs/master/images/dash-svm.gif',
             description='''
