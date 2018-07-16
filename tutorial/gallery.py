@@ -3,6 +3,39 @@ import dash_html_components as html
 import dash_core_components as dcc
 from textwrap import dedent
 
+
+def AppSection(app_name,
+               app_link,
+               src_code_link,
+               img_src,
+               description,
+               className='six columns'):
+    return html.Div(
+        className=className,
+        children=[
+            html.A(
+                className='image-link',
+                href=app_link,
+                children=html.Img(
+                    src=img_src,
+                    alt='Screenshot of {}'.format(app_name)
+                )
+            ),
+
+            dcc.Markdown(
+                className="markdown-links",
+                children=dedent(
+                    '''
+                    [{}]({}) | [Source code]({})
+                    '''.format(app_name, app_link, src_code_link)
+                )
+            ),
+
+            dcc.Markdown(dedent(description))
+        ]
+    )
+
+
 layout = html.Div(className='gallery', children=[
 
     # Getting Started Section
@@ -384,61 +417,84 @@ layout = html.Div(className='gallery', children=[
     ''')),
 
     html.Div(className="row", children=[
-        html.Div(className="six columns", children=[
-            html.A(
-                className='image-link',
-                href='https://github.com/plotly/dash-object-detection',
-                children=html.Img(
-                    src='https://raw.githubusercontent.com/plotly/dash-docs/master/images/dash-object-detection-app.png',
-                    alt='Link to Object Detection App'
-                )
-            ),
+        AppSection(
+            app_name='Object Detection App',
+            app_link='https://dash-object-detection.plot.ly/',
+            src_code_link='https://github.com/plotly/dash-object-detection',
+            img_src='https://raw.githubusercontent.com/xhlulu/dash-docs/xhlulu-gallery-update-1/images/dash-object-detection.gif',
+            description='''
+                For every Deep Learning models, keeping track of accuracy 
+                and loss is an essential part of the training process, 
+                since they indicate how good your models are. This app is 
+                a real-time visualization app that monitors core metrics 
+                of your Tensorflow graphs during the training, so that you 
+                can quickly detect anomalies within your model.
+            '''
+        ),
 
-            dcc.Markdown(
-                className="markdown-links",
-                children=dedent('''
-            [Object Detection App](https://dash-object-detection.plot.ly/)| [Source Code](https://github.com/plotly/dash-object-detection)
-            ''')
-            ),
+        AppSection(
+            app_name='Live Model Training Viewer',
+            app_link='https://dash-live-model-training.plot.ly/',
+            src_code_link='https://github.com/plotly/dash-live-model-training',
+            img_src='https://raw.githubusercontent.com/xhlulu/dash-docs/xhlulu-gallery-update-1/images/dash-live-model-training.gif',
+            description='''
+                This object-detection app provides useful visualizations about what's happening inside a complex video in 
+                real-time. The data is generated using 
+                [MobileNet v1](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/detection_model_zoo.md) 
+                in Tensorflow, trained on the COCO dataset. The video 
+                is displayed using the community-maintained 
+                [video component](https://community.plot.ly/t/modifying-a-dom-property-in-html-video-dash-video-component/7649).
+            '''
+        ),
+    ]),
 
-            dcc.Markdown(dedent('''
-            
-            For every Deep Learning models, keeping track of accuracy and loss is an essential part of the training 
-            process, since they indicate how good your models are. This app is a real-time visualization app that 
-            monitors core metrics of your Tensorflow graphs during the training, so that you can quickly detect 
-            anomalies within your model.
-    
-            ''')),
-        ]),
+    html.Div(className='row', children=[
+        AppSection(
+            app_name='Image Processing App',
+            app_link='http://dash-image-processing.plot.ly/',
+            src_code_link='https://github.com/plotly/dash-image-processing',
+            img_src='https://raw.githubusercontent.com/xhlulu/dash-docs/xhlulu-gallery-update-1/images/dash-image-processing.gif',
+            description='''
+                This app wraps Pillow, a powerful image processing library in 
+                Python, and abstracts all the operations through an 
+                easy-to-use GUI. All the computation is done on the back-end 
+                through Dash, and image transfer is optimized through 
+                session-based Redis caching and S3 storage.
+            '''
+        ),
 
-        html.Div(className="six columns", children=[
-            html.A(
-                className='image-link',
-                href='https://github.com/plotly/dash-live-model-training',
-                children=html.Img(
-                    src="https://raw.githubusercontent.com/plotly/dash-docs/master/images/dash-live-model-training-viewer.png",
-                    alt='Link to Live Model Training Viewer'
-                )
-            ),
+        AppSection(
+            app_name='t-SNE Explorer',
+            app_link='https://dash-tsne.plot.ly/',
+            src_code_link='https://github.com/plotly/dash-tsne',
+            img_src='https://raw.githubusercontent.com/xhlulu/dash-docs/xhlulu-gallery-update-1/images/dash-tsne.gif',
+            description='''
+                t-SNE is a visualization algorithm that projects your 
+                high-dimensional data into a 2D or 3D space so that you can 
+                explore the spatial distribution of your data. The t-SNE 
+                Explorer lets you interactively explore iconic image datasets 
+                such as MNIST, and state-of-the-art word embeddings such as 
+                GloVe, with all the computation done ahead of time. Data 
+                point previews and graphs help you better understand the 
+                dataset.
+            '''
+        ),
+    ]),
 
-            dcc.Markdown(
-                className="markdown-links",
-                children=dedent('''
-            [Live Model Training Viewer](https://dash-live-model-training.plot.ly/)| [Source Code](https://github.com/plotly/dash-live-model-training)
-            ''')
-            ),
-
-            dcc.Markdown(dedent('''
-            
-            This object-detection app provides useful visualizations about what's happening inside a complex video in 
-            real-time. The data is generated using 
-            [MobileNet v1](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/detection_model_zoo.md) 
-            in Tensorflow, trained on the COCO dataset. The video 
-            is displayed using the community-maintained 
-            [video component](https://community.plot.ly/t/modifying-a-dom-property-in-html-video-dash-video-component/7649).
-
-            '''))
-        ]),
+    html.Div(className='row', children=[
+        AppSection(
+            app_name='Support Vector Machine Explorer',
+            app_link='https://dash-svm-dev.plot.ly/',
+            src_code_link='https://github.com/plotly/dash-svm',
+            img_src='https://raw.githubusercontent.com/xhlulu/dash-docs/xhlulu-gallery-update-1/images/dash-svm.gif',
+            description='''
+                This app lets you explore Support Vector Clustering (a type 
+                of SVM) with UI input parameters. Toy datasets and useful ML 
+                metrics plots are included. It is fully written in Dash + 
+                scikit-learn.
+            ''',
+            className='twelve columns'
+        )
     ]),
 
     # BIG DATA
@@ -474,7 +530,6 @@ layout = html.Div(className='gallery', children=[
         ''')),
 
     ]),
-
 
     # LIVE UPDATES SECTION
     dcc.Markdown(dedent('''    
