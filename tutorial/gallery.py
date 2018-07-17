@@ -3,15 +3,25 @@ import dash_html_components as html
 import dash_core_components as dcc
 from textwrap import dedent
 
+import reusable_components as reusable
+
+
+def SectionTitle(title):
+    return dcc.Markdown(dedent('''    
+    ***
+
+    ## {}
+    '''.format(title)))
+
 
 def AppSection(app_name,
                app_link,
-               src_code_link,
+               code_link,
                img_src,
                description,
-               className='six columns'):
-    return html.Div(
-        className=className,
+               width=6):
+    return reusable.Column(
+        width=width,
         children=[
             html.A(
                 className='image-link',
@@ -21,16 +31,14 @@ def AppSection(app_name,
                     alt='Screenshot of {}'.format(app_name)
                 )
             ),
-
             dcc.Markdown(
                 className="markdown-links",
                 children=dedent(
                     '''
                     [{}]({}) | [Source code]({})
-                    '''.format(app_name, app_link, src_code_link)
+                    '''.format(app_name, app_link, code_link)
                 )
             ),
-
             dcc.Markdown(dedent(description))
         ]
     )
@@ -48,7 +56,7 @@ layout = html.Div(className='gallery', children=[
     ## Getting Started
     ''')),
 
-    html.Div(className="row", children=[
+    reusable.Row([
         html.A(
             className='image-link',
             href='https://dash.plot.ly/getting-started',
@@ -82,62 +90,29 @@ layout = html.Div(className='gallery', children=[
     ]),
 
     # FINANCE SECTION
-    dcc.Markdown(dedent('''    
-    ***
+    SectionTitle('Finance'),
 
-    ## Finance
-    ''')),
-
-    html.Div(className="row", children=[
-        html.Div(className="six columns", children=[
-            # Stock Tickers
-            html.A(
-                className='image-link',
-                href='https://dash-stock-tickers.plot.ly',
-                children=html.Img(
-                    src='https://github.com/plotly/dash-docs/raw/master/images/stock-tickers.png',
-                    alt='Screenshot of a stock tickers Dash app'
-                )
-            ),
-
-            dcc.Markdown(
-                className="markdown-links",
-                children=dedent('''
-                [Stock Tickers](https://dash-stock-tickers.plot.ly) | [Source code](https://github.com/plotly/dash-stock-tickers-demo-app)
-                ''')
-            ),
-
-            dcc.Markdown(dedent('''
-        
+    reusable.Row([
+        AppSection(
+            app_name='Stock Tickers',
+            app_link='https://dash-stock-tickers.plot.ly',
+            code_link='https://github.com/plotly/dash-stock-tickers-demo-app',
+            img_src='https://raw.githubusercontent.com/plotly/dash-docs/master/images/stock-tickers.png',
+            description='''
             This app queries data from Google Finance and displays the results as candlestick
             charts. Dash comes with several financial chart types including candlestick
             charts, OHLC graphs, time series, and range sliders.
         
             This app was written in just around 100 lines of code.
-        
-            '''))
-        ]),
+            '''
+        ),
 
-        html.Div(className="six columns", children=[
-            # Vanguard Report
-            html.A(
-                className='image-link',
-                href='https://vanguard-report.herokuapp.com/',
-                children=html.Img(
-                    src='https://raw.githubusercontent.com/plotly/dash-docs/master/images/vanguard.gif',
-                    alt='Screenshot of vanguard report'
-                )
-            ),
-
-            dcc.Markdown(
-                className="markdown-links",
-                children=dedent('''
-                [Financial Report](https://vanguard-report.herokuapp.com/) | [Source code](https://github.com/plotly/dash-vanguard-report)
-                
-                ''')
-            ),
-
-            dcc.Markdown(dedent('''
+        AppSection(
+            app_name='Vanguard Report',
+            app_link='https://vanguard-report.herokuapp.com/',
+            code_link='https://github.com/plotly/dash-vanguard-report',
+            img_src='https://raw.githubusercontent.com/plotly/dash-docs/master/images/vanguard.gif',
+            description='''
             This app recreates the look and feel of a Vanguard report.
             It includes a Print to PDF button and the styles were optimized
             to look good on the web and in PDF form.
@@ -152,63 +127,33 @@ layout = html.Div(className='gallery', children=[
             the app is being viewed in the web browser or in print, using the
             same framework for the rich interactive applications as the static
             PDF reports.
-        
-            ''')),
-        ]),
+            '''
+
+        )
     ]),
 
-    html.Div(className="row", children=[
-        html.Div(className="six columns", children=[
-            # Yield Curve
-            html.A(
-                className='image-link',
-                href='https://dash-yield-curve.plot.ly',
-                children=html.Img(
-                    src='https://raw.githubusercontent.com/plotly/dash-docs/master/images/dash-yield-curve-app.png',
-                    alt='Screenshot of a dash home page'
-                )
-            ),
-
-            dcc.Markdown(
-                className="markdown-links",
-                children=dedent('''
-                [3D Yield Curve](https://dash-yield-curve.plot.ly) | [Source code](https://github.com/plotly/dash-yield-curve)
-                ''')
-            ),
-
-            dcc.Markdown(dedent('''
-        
+    reusable.Row([
+        AppSection(
+            app_name='3D Yield Curve',
+            app_link='https://dash-yield-curve.plot.ly',
+            code_link='https://github.com/plotly/dash-yield-curve',
+            img_src='https://raw.githubusercontent.com/plotly/dash-docs/master/images/dash-yield-curve-app.png',
+            description='''
             This Dash app adapts the excellent NY Times
             report [A 3-D View of a Chart That Predicts The Economic Future: The Yield Curve](https://www.nytimes.com/interactive/2015/03/19/upshot/3d-yield-curve-economic-growth.html).
 
             Dash comes with a wide range of interactive 3D chart types,
             such as 3D scatter plots, surface plots, network graphs and ribbon plots.
             [View more 3D chart examples](https://plot.ly/python/3d-charts/).
-        
-        
-            '''))
-        ]),
+            '''
+        ),
 
-        html.Div(className="six columns", children=[
-            # Recession Report
-            html.A(
-                className='image-link',
-                href='https://dash-recession-report.plot.ly',
-                children=html.Img(
-                    src='https://github.com/plotly/dash-docs/raw/master/images/nytimes.png',
-                    alt='Screenshot of a recession reports'
-                )
-            ),
-
-            dcc.Markdown(
-                className="markdown-links",
-                children=dedent('''
-                [Recession in 255 Charts](https://dash-recession-report.plot.ly) | [View the source code](https://github.com/plotly/dash-recession-report-demo)
-                ''')
-            ),
-
-            dcc.Markdown(dedent('''
-        
+        AppSection(
+            app_name='Recession in 255 Charts',
+            app_link='https://dash-recession-report.plot.ly',
+            code_link='https://github.com/plotly/dash-recession-report-demo',
+            img_src='https://raw.githubusercontent.com/plotly/dash-docs/master/images/nytimes.png',
+            description='''
             485 lines of Python code, including text copy.
         
             This Dash app was adapted from NYTimes's excellent
@@ -228,9 +173,8 @@ layout = html.Div(className='gallery', children=[
             The text in the application is centered and its width is restricted
             to improve the reading experience. The graphs are full bleed:
             the extend past the narrow column of text the edges of page.
-        
-            ''')),
-        ]),
+            '''
+        )
     ]),
 
     # ENERGY AND TRANSPORT SECTION
@@ -244,7 +188,7 @@ layout = html.Div(className='gallery', children=[
         ''')),
     ]),
 
-    html.Div(className="row", children=[
+    reusable.Row([
         html.Div(className="six columns", children=[
             html.A(
                 className='image-link',
@@ -315,7 +259,7 @@ layout = html.Div(className='gallery', children=[
     
     ''')),
 
-    html.Div(className="row", children=[
+    reusable.Row([
         html.Div(className="six columns", children=[
             html.A(
                 className='image-link',
@@ -383,7 +327,7 @@ layout = html.Div(className='gallery', children=[
     
     ''')),
 
-    html.Div(className="row", children=[
+    reusable.Row([
         html.A(
             className='image-link',
             href='https://opioid-epidemic.herokuapp.com/',
@@ -416,11 +360,11 @@ layout = html.Div(className='gallery', children=[
     
     ''')),
 
-    html.Div(className="row", children=[
+    reusable.Row([
         AppSection(
             app_name='Object Detection App',
             app_link='https://dash-object-detection.plot.ly/',
-            src_code_link='https://github.com/plotly/dash-object-detection',
+            code_link='https://github.com/plotly/dash-object-detection',
             img_src='https://raw.githubusercontent.com/xhlulu/dash-docs/master/images/dash-object-detection.gif',
             description='''
                 This object-detection app provides useful visualizations about what's happening inside a complex video in 
@@ -435,7 +379,7 @@ layout = html.Div(className='gallery', children=[
         AppSection(
             app_name='Live Model Training Viewer',
             app_link='https://dash-live-model-training.plot.ly/',
-            src_code_link='https://github.com/plotly/dash-live-model-training',
+            code_link='https://github.com/plotly/dash-live-model-training',
             img_src='https://raw.githubusercontent.com/xhlulu/dash-docs/master/images/dash-live-model-training.gif',
             description='''
                 For every Deep Learning models, keeping track of accuracy 
@@ -448,11 +392,11 @@ layout = html.Div(className='gallery', children=[
         ),
     ]),
 
-    html.Div(className='row', children=[
+    reusable.Row([
         AppSection(
             app_name='Image Processing App',
             app_link='http://dash-image-processing.plot.ly/',
-            src_code_link='https://github.com/plotly/dash-image-processing',
+            code_link='https://github.com/plotly/dash-image-processing',
             img_src='https://raw.githubusercontent.com/xhlulu/dash-docs/master/images/dash-image-processing.gif',
             description='''
                 This app wraps Pillow, a powerful image processing library in 
@@ -466,7 +410,7 @@ layout = html.Div(className='gallery', children=[
         AppSection(
             app_name='t-SNE Explorer',
             app_link='https://dash-tsne.plot.ly/',
-            src_code_link='https://github.com/plotly/dash-tsne',
+            code_link='https://github.com/plotly/dash-tsne',
             img_src='https://raw.githubusercontent.com/xhlulu/dash-docs/master/images/dash-tsne.gif',
             description='''
                 t-SNE is a visualization algorithm that projects your 
@@ -481,11 +425,11 @@ layout = html.Div(className='gallery', children=[
         ),
     ]),
 
-    html.Div(className='row', children=[
+    reusable.Row([
         AppSection(
             app_name='Support Vector Machine Explorer',
             app_link='https://dash-svm.plot.ly/',
-            src_code_link='https://github.com/plotly/dash-svm',
+            code_link='https://github.com/plotly/dash-svm',
             img_src='https://raw.githubusercontent.com/xhlulu/dash-docs/master/images/dash-svm.gif',
             description='''
                 This app lets you explore Support Vector Clustering (a type 
@@ -493,7 +437,7 @@ layout = html.Div(className='gallery', children=[
                 metrics plots are included. It is fully written in Dash + 
                 scikit-learn.
             ''',
-            className='twelve columns'
+            width=12
         )
     ]),
 
@@ -506,7 +450,7 @@ layout = html.Div(className='gallery', children=[
     
     ''')),
 
-    html.Div(className="row", children=[
+    reusable.Row([
         html.A(
             className='image-link',
             href='https://dash-datashader.herokuapp.com/',
@@ -540,7 +484,7 @@ layout = html.Div(className='gallery', children=[
     
     ''')),
 
-    html.Div(className="row", children=[
+    reusable.Row([
         html.A(
             className='image-link',
             href='https://dash-live-wind-data.plot.ly',
@@ -576,7 +520,7 @@ layout = html.Div(className='gallery', children=[
     
     ''')),
 
-    html.Div(className="row", children=[
+    reusable.Row([
         html.Div(className="six columns", children=[
             html.A(
                 className='image-link',
@@ -632,7 +576,7 @@ layout = html.Div(className='gallery', children=[
         ]),
     ]),
 
-    html.Div(className="row", children=[
+    reusable.Row([
         html.Div(className="six columns", children=[
             html.A(
                 className='image-link',
@@ -662,7 +606,7 @@ layout = html.Div(className='gallery', children=[
     ]),
 
     # DASH DOC SECTION
-    html.Div(className="row", children=[
+    reusable.Row([
         dcc.Markdown(dedent('''
         
         ***
