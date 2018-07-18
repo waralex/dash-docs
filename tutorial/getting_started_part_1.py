@@ -25,7 +25,7 @@ examples = [
 layout = html.Div([
 
     dcc.Markdown('''
-    # Dash Tutorial - Part 1: App Layout
+    # The Dash Layout
 
     This tutorial will walk you through the fundamentals of creating Dash apps
     through {} self-contained apps.
@@ -338,7 +338,7 @@ class Dropdown(dash.development.base_component.Component)
     '''),
 
     dcc.Link(
-        'Dash Tutorial - Part 2: Basic Callbacks',
+        'Dash Tutorial - Basic Callbacks',
         href="/getting-started-part-2"
     )
 
