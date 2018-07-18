@@ -1046,7 +1046,7 @@ Tabs = html.Div(children=[
 Upload = html.Div([
     html.H1('Upload Component'),
     dcc.Markdown(s('''
-    The Dash upload component allows your app's veiwers to upload files,
+    The Dash upload component allows your app's viewers to upload files,
     like excel spreadsheets or images, into your application.
     Your Dash app can access the contents of an upload by listening to
     the `contents` property of the `dcc.Upload` component.
