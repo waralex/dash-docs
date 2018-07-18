@@ -20,6 +20,19 @@ def AppSection(app_name,
                img_src,
                description,
                width=6):
+    if code_link:
+        links = dedent(
+            '''
+            [{}]({}) | [Source code]({})
+            '''.format(app_name, app_link, code_link)
+        )
+    else:
+        links = dedent(
+            '''
+            [{}]({})
+            '''.format(app_name, app_link)
+        )
+
     return reusable.Column(
         width=width,
         children=[
@@ -33,11 +46,7 @@ def AppSection(app_name,
             ),
             dcc.Markdown(
                 className="markdown-links",
-                children=dedent(
-                    '''
-                    [{}]({}) | [Source code]({})
-                    '''.format(app_name, app_link, code_link)
-                )
+                children=links
             ),
             dcc.Markdown(dedent(description))
         ]
@@ -178,36 +187,15 @@ layout = html.Div(className='gallery', children=[
     ]),
 
     # ENERGY AND TRANSPORT SECTION
-    html.Div([
-        dcc.Markdown(dedent('''
-        
-        ***
-        
-        ## Energy and Transportation
-        
-        ''')),
-    ]),
+    SectionTitle('Energy and Transportation'),
 
     reusable.Row([
-        html.Div(className="six columns", children=[
-            html.A(
-                className='image-link',
-                href='https://dash-oil-and-gas.plot.ly',
-                children=html.Img(
-                    src='https://github.com/plotly/dash-docs/raw/master/images/oil-and-gas.gif',
-                    alt='Screenshot of an oil and gas Dash app'
-                )
-            ),
-
-            dcc.Markdown(
-                className="markdown-links",
-                children=dedent('''
-                [Natural gas well production](https://dash-oil-and-gas.plot.ly) | [Source code](https://github.com/plotly/dash-oil-and-gas-demo)
-                ''')
-            ),
-
-            dcc.Markdown(dedent('''
-            
+        AppSection(
+            app_name='Natural Gas Well Production',
+            app_link='https://dash-oil-and-gas.plot.ly',
+            code_link='https://github.com/plotly/dash-oil-and-gas-demo',
+            img_src='https://raw.githubusercontent.com/plotly/dash-docs/master/images/oil-and-gas.gif',
+            description='''
             This Dash app displays well data from New York State. As you hover over
             values in the map, a time series is displayed showing production values
             over time. As you change the years in the range slider, the aggregate
@@ -219,66 +207,33 @@ layout = html.Div(className='gallery', children=[
             published in the Web, so the full power of CSS is available.
             The Dash core team maintains a [core style guide here](https://codepen.io/chriddyp/pen/bWLwgP)
             that  includes a responsive 12 column grid.
-            
-            ''')),
-        ]),
+            '''
+        ),
 
-        html.Div(className="six columns", children=[
-            html.A(
-                className='image-link',
-                href='https://dash-uber-rides.plot.ly',
-                children=html.Img(
-                    src='https://github.com/plotly/dash-docs/raw/master/images/uber-rides.gif',
-                    alt='Screenshot of an Uber rides Dash app'
-                )
-            ),
-
-            dcc.Markdown(
-                className="markdown-links",
-                children=dedent('''
-                [NYC Uber rides](https://dash-uber-rides.plot.ly) | [Source code](https://github.com/plotly/dash-uber-rides-demo)
-                ''')
-            ),
-
-            dcc.Markdown(dedent('''
-            
+        AppSection(
+            app_name='NYC Uber Rides',
+            app_link='https://dash-uber-rides.plot.ly',
+            code_link='https://github.com/plotly/dash-uber-rides-demo',
+            img_src='https://raw.githubusercontent.com/plotly/dash-docs/master/images/uber-rides.gif',
+            description='''
             This app displays all of the Uber rides in New York City in 2014.
             The original datafile is almost 500MB large and all of the filtering is
             done in memory with Pandas. Buttons on the chart itself highlight
             different regions in the city.
-            ''')),
-        ]),
+            '''
+        )
     ]),
 
     # LIFE SCIENCES SECTION
-    dcc.Markdown(dedent('''
-    
-    ***
-
-    ## Life sciences
-    
-    ''')),
+    SectionTitle('Life sciences'),
 
     reusable.Row([
-        html.Div(className="six columns", children=[
-            html.A(
-                className='image-link',
-                href='https://dash-drug-explorer.plot.ly',
-                children=html.Img(
-                    src='https://github.com/plotly/dash-docs/raw/master/images/drug-discovery-app.gif',
-                    alt='Screenshot of a drug discovery Dash app'
-                )
-            ),
-
-            dcc.Markdown(
-                className="markdown-links",
-                children=dedent('''
-                [Drug precursors](https://dash-drug-explorer.plot.ly) | [Source code](https://github.com/plotly/dash-drug-discovery-demo/)
-                ''')
-            ),
-
-            dcc.Markdown(dedent('''
-        
+        AppSection(
+            app_name='Drug Precursors',
+            app_link='https://dash-drug-explorer.plot.ly',
+            code_link='https://github.com/plotly/dash-drug-discovery-demo/',
+            img_src='https://github.com/plotly/dash-docs/raw/master/images/drug-discovery-app.gif',
+            description='''
             This app displays a description of the drug as you hover over points in the
             graph.
         
@@ -286,260 +241,168 @@ layout = html.Div(className='gallery', children=[
             appends their symbol in the table below.
         
             Built in a few hundred lines of Python code.
-        
-            ''')),
-        ]),
+            '''
 
-        html.Div(className="six columns", children=[
-            html.A(
-                className='image-link',
-                href='http://brain-surface-viewer.herokuapp.com/',
-                children=html.Img(
-                    src='https://raw.githubusercontent.com/plotly/dash-brain-surface-viewer/master/ZOMBIE_BRAIN.png',
-                    alt='Screenshot of brain surface viewer'
-                )
-            ),
+        ),
 
-            dcc.Markdown(
-                className="markdown-links",
-                children=dedent('''
-                [MRI reconstruction](http://brain-surface-viewer.herokuapp.com/) | [Source code](https://github.com/plotly/dash-brain-surface-viewer)
-                ''')
-            ),
-
-            dcc.Markdown(dedent('''
-            
+        AppSection(
+            app_name='MRI Reconstruction',
+            app_link='http://brain-surface-viewer.herokuapp.com/',
+            code_link='https://github.com/plotly/dash-brain-surface-viewer',
+            img_src='https://raw.githubusercontent.com/plotly/dash-brain-surface-viewer/master/ZOMBIE_BRAIN.png',
+            description='''
             🐭 Explore human and mice brains in 3d.
             
             Add interactive labels to points on the brain surface and change the surface colorscale.
-            
-            ''')),
-        ]),
+            '''
+        )
     ]),
 
     # GOVERNMENT AND PUBLIC HEALTH
-
-    dcc.Markdown(dedent('''
-        
-    ***
-    
-    ## Government & Public Health
-    
-    ''')),
-
-    reusable.Row([
-        html.A(
-            className='image-link',
-            href='https://opioid-epidemic.herokuapp.com/',
-            children=html.Img(
-                src='https://raw.githubusercontent.com/plotly/dash-docs/master/images/opioid-epidemic.png',
-                alt='Screenshot of opioid epidemic'
-            )
-        ),
-
-        dcc.Markdown(
-            className="markdown-links",
-            children=dedent('''
-            [US Opioid Epidemic](https://opioid-epidemic.herokuapp.com/) | [Source code](https://github.com/plotly/dash-opioid-epidemic-demo)
-            ''')
-        ),
-
-        dcc.Markdown(dedent('''
-        
-        Interactively explore the effect of the opioid epidemic in North America.
-        
-        ''')),
-    ]),
-
-    # MACHINE LEARNING AND COMPUTER VISION
-    dcc.Markdown(dedent('''
-    
-    ***
-    
-    ## Machine Learning & Computer Vision
-    
-    ''')),
+    SectionTitle('Government & Public Health'),
 
     reusable.Row([
         AppSection(
-            app_name='Object Detection App',
+            app_name='US Opioid Epidemic',
+            app_link='https://opioid-epidemic.herokuapp.com/',
+            code_link='https://github.com/plotly/dash-opioid-epidemic-demo',
+            img_src='https://raw.githubusercontent.com/plotly/dash-docs/master/images/opioid-epidemic.png',
+            description='''
+            Interactively explore the effect of the opioid epidemic in North America.
+            ''',
+            width=12
+        )
+    ]),
+
+    # MACHINE LEARNING AND COMPUTER VISION
+    SectionTitle('Machine Learning & Computer Vision'),
+
+    reusable.Row([
+        AppSection(
+            app_name='Object Detection',
             app_link='https://dash-object-detection.plot.ly/',
             code_link='https://github.com/plotly/dash-object-detection',
             img_src='https://raw.githubusercontent.com/xhlulu/dash-docs/master/images/dash-object-detection.gif',
             description='''
-                This object-detection app provides useful visualizations about what's happening inside a complex video in 
-                real-time. The data is generated using 
-                [MobileNet v1](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/detection_model_zoo.md) 
-                in Tensorflow, trained on the COCO dataset. The video 
-                is displayed using the community-maintained 
-                [video component](https://community.plot.ly/t/modifying-a-dom-property-in-html-video-dash-video-component/7649).
+            This object-detection app provides useful visualizations about 
+            what's happening inside a complex video in real-time. The data 
+            is generated using 
+            [MobileNet v1](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/detection_model_zoo.md) 
+            in Tensorflow, trained on the COCO dataset. The video is 
+            displayed using the community-maintained 
+            [video component](https://community.plot.ly/t/modifying-a-dom-property-in-html-video-dash-video-component/7649).
             '''
         ),
 
         AppSection(
-            app_name='Live Model Training Viewer',
+            app_name='Visualize Model Training',
             app_link='https://dash-live-model-training.plot.ly/',
             code_link='https://github.com/plotly/dash-live-model-training',
             img_src='https://raw.githubusercontent.com/xhlulu/dash-docs/master/images/dash-live-model-training.gif',
             description='''
-                For every Deep Learning models, keeping track of accuracy 
-                and loss is an essential part of the training process, 
-                since they indicate how good your models are. This app is 
-                a real-time visualization app that monitors core metrics 
-                of your Tensorflow graphs during the training, so that you 
-                can quickly detect anomalies within your model.
+            For every Deep Learning models, keeping track of accuracy 
+            and loss is an essential part of the training process, 
+            since they indicate how good your models are. This app is 
+            a real-time visualization app that monitors core metrics 
+            of your Tensorflow graphs during the training, so that you 
+            can quickly detect anomalies within your model.
             '''
         ),
     ]),
 
     reusable.Row([
         AppSection(
-            app_name='Image Processing App',
+            app_name='Image Processing',
             app_link='http://dash-image-processing.plot.ly/',
             code_link='https://github.com/plotly/dash-image-processing',
             img_src='https://raw.githubusercontent.com/xhlulu/dash-docs/master/images/dash-image-processing.gif',
             description='''
-                This app wraps Pillow, a powerful image processing library in 
-                Python, and abstracts all the operations through an 
-                easy-to-use GUI. All the computation is done on the back-end 
-                through Dash, and image transfer is optimized through 
-                session-based Redis caching and S3 storage.
+            This app wraps Pillow, a powerful image processing library in 
+            Python, and abstracts all the operations through an 
+            easy-to-use GUI. All the computation is done on the back-end 
+            through Dash, and image transfer is optimized through 
+            session-based Redis caching and S3 storage.
             '''
         ),
 
         AppSection(
-            app_name='t-SNE Explorer',
+            app_name='Interactive t-SNE',
             app_link='https://dash-tsne.plot.ly/',
             code_link='https://github.com/plotly/dash-tsne',
             img_src='https://raw.githubusercontent.com/xhlulu/dash-docs/master/images/dash-tsne.gif',
             description='''
-                t-SNE is a visualization algorithm that projects your 
-                high-dimensional data into a 2D or 3D space so that you can 
-                explore the spatial distribution of your data. The t-SNE 
-                Explorer lets you interactively explore iconic image datasets 
-                such as MNIST, and state-of-the-art word embeddings such as 
-                GloVe, with all the computation done ahead of time. Data 
-                point previews and graphs help you better understand the 
-                dataset.
+            t-SNE is a visualization algorithm that projects your 
+            high-dimensional data into a 2D or 3D space so that you can 
+            explore the spatial distribution of your data. The t-SNE 
+            Explorer lets you interactively explore iconic image datasets 
+            such as MNIST, and state-of-the-art word embeddings such as 
+            GloVe, with all the computation done ahead of time. Data 
+            point previews and graphs help you better understand the 
+            dataset.
             '''
         ),
     ]),
 
     reusable.Row([
         AppSection(
-            app_name='Support Vector Machine Explorer',
+            app_name='Explore SVMs',
             app_link='https://dash-svm.plot.ly/',
             code_link='https://github.com/plotly/dash-svm',
             img_src='https://raw.githubusercontent.com/xhlulu/dash-docs/master/images/dash-svm.gif',
             description='''
-                This app lets you explore Support Vector Clustering (a type 
-                of SVM) with UI input parameters. Toy datasets and useful ML 
-                metrics plots are included. It is fully written in Dash + 
-                scikit-learn.
+            This app lets you explore Support Vector Clustering (a type 
+            of Support Vector Machine) with UI input parameters. Toy datasets 
+            and useful ML metrics plots are included. It is fully written in 
+            Dash + scikit-learn.
             ''',
             width=12
         )
     ]),
 
     # BIG DATA
-    dcc.Markdown(dedent('''
-    
-    ***
-    
-    ## Big Data
-    
-    ''')),
+    SectionTitle('Big Data'),
 
     reusable.Row([
-        html.A(
-            className='image-link',
-            href='https://dash-datashader.herokuapp.com/',
-            children=html.Img(
-                src='https://raw.githubusercontent.com/plotly/dash-docs/master/images/dash-datashader.png',
-                alt='Screenshot of dash datashader'
-            )
-        ),
-
-        dcc.Markdown(
-            className="markdown-links",
-            children=dedent('''
-            [Dash Datashader](https://dash-datashader.herokuapp.com/) | [Source code](https://github.com/plotly/dash-datashader)
-            ''')
-        ),
-
-        dcc.Markdown(dedent('''
-
-        Visualize hundreds of millions of points interactively with Dash and Datashader.
-
-        ''')),
-
+        AppSection(
+            app_name='Dash Datashader',
+            app_link='https://dash-datashader.herokuapp.com',
+            code_link='https://github.com/plotly/dash-datashader',
+            img_src='https://raw.githubusercontent.com/plotly/dash-docs/master/images/dash-datashader.png',
+            description='''
+            Visualize hundreds of millions of points interactively with Dash and Datashader.
+            ''',
+            width=12
+        )
     ]),
 
     # LIVE UPDATES SECTION
-    dcc.Markdown(dedent('''    
-    
-    ***
-    
-    ## Live Updates
-    
-    ''')),
+    SectionTitle('Live Updates'),
 
     reusable.Row([
-        html.A(
-            className='image-link',
-            href='https://dash-live-wind-data.plot.ly',
-            children=html.Img(
-                src='https://cdn.rawgit.com/plotly/dash-wind-streaming/d84b15eebf2c502372740416d445e8e3f23d0619/Gif/dash-wind-streaming.gif',
-                alt='gif of a wind streaming Dash app'
-            )
-        ),
-
-        dcc.Markdown(
-            className="markdown-links",
-            children=dedent('''
-            [Window speed measurement](https://dash-live-wind-data.plot.ly) | [Source code](https://github.com/plotly/dash-wind-streaming)
-            ''')
-        ),
-
-        dcc.Markdown(dedent('''
-        
-        This app continually queries a SQL database and displays live charts of
-        wind speed and wind direction. In Dash, the [dcc.Interval](https://dash.plot.ly/live-upates)
-        component can be used to update any element on a recurring interval.
-    
-        ''')),
+        AppSection(
+            app_name='Window Speed Measurement',
+            app_link='https://dash-live-wind-data.plot.ly',
+            code_link='https://github.com/plotly/dash-wind-streaming',
+            img_src='https://raw.githubusercontent.com/plotly/dash-wind-streaming/d84b15eebf2c502372740416d445e8e3f23d0619/Gif/dash-wind-streaming.gif',
+            description='''
+            This app continually queries a SQL database and displays live charts of
+            wind speed and wind direction. In Dash, the [dcc.Interval](https://dash.plot.ly/live-upates)
+            component can be used to update any element on a recurring interval.
+            ''',
+            width=12
+        )
     ]),
 
     # COMPONENT LIBRARIES SECTION
-
-    dcc.Markdown(dedent('''
-
-    ***
-    
-    ## Component Libraries
-    
-    ''')),
+    SectionTitle('Component Libraries'),
 
     reusable.Row([
-        html.Div(className="six columns", children=[
-            html.A(
-                className='image-link',
-                href='https://github.com/plotly/dash-table-experiments',
-                children=html.Img(
-                    src='https://github.com/plotly/dash-table-experiments/raw/master/images/DataTable.gif',
-                    alt='Example of a Dash Interactive Table'
-                )
-            ),
-
-            dcc.Markdown(
-                className="markdown-links",
-                children=dedent('''
-                [Join the discussion](https://community.plot.ly/t/display-tables-in-dash/4707/38)| [Source Code](https://github.com/plotly/dash-table-experiments)
-                ''')
-            ),
-
-            dcc.Markdown(dedent('''
-        
+        AppSection(
+            app_name='Join the discussion',
+            app_link='https://community.plot.ly/t/display-tables-in-dash/4707/38',
+            code_link='https://github.com/plotly/dash-table-experiments',
+            img_src='https://raw.githubusercontent.com/plotly/dash-table-experiments/master/images/DataTable.gif',
+            description='''
             Dash is currently incubating an interactive table component that provides
             built-in filtering, row-selection, editing, and sorting.
             Prototypes of this component are being developed in the
@@ -547,90 +410,56 @@ layout = html.Div(className='gallery', children=[
             repository. Join the discussion in the
             [Dash Community Forum](https://community.plot.ly/t/display-tables-in-dash/4707/38).
         
-            This example was written in ~100 lines of code. 
-        
-            ''')),
-        ]),
+            This example was written in ~100 lines of code.
+            '''
+        ),
 
-        html.Div(className="six columns", children=[
-            html.A(
-                className='image-link',
-                href='https://dash.plot.ly/dash-core-components',
-                children=html.Img(
-                    src="https://raw.githubusercontent.com/plotly/dash-docs/master/images/dash-core-components.png",
-                    alt='Link to Dash Core Components'
-                )
-            ),
-
-            dcc.Markdown(
-                className="markdown-links",
-                children=dedent('''
-                [Dash Core Components](https://dash.plot.ly/dash-core-components)| [Source Code](https://github.com/plotly/dash-core-components)
-                ''')
-            ),
-
-            dcc.Markdown(dedent('''
-            Dash comes with a set of rich components like sliders, dropdowns, graphs, and more. 
-            [View the official Dash documentation to learn more](https://dash.plot.ly/dash-core-components).
-            '''))
-        ]),
-    ]),
-
-    reusable.Row([
-        html.Div(className="six columns", children=[
-            html.A(
-                className='image-link',
-                href='https://community.plot.ly/t/show-and-tell-community-thread/7554',
-                children=html.Img(
-                    src="https://raw.githubusercontent.com/plotly/dash-docs/master/images/dash-community-components.png",
-                    alt='Link to Dash Core Components'
-                )
-            ),
-
-            dcc.Markdown(
-                className="markdown-links",
-                children=dedent('''
-                [Dash Community Components](https://community.plot.ly/t/show-and-tell-community-thread/7554)
-                ''')
-            ),
-
-            dcc.Markdown(dedent('''
+        AppSection(
+            app_name='Dash Community Components',
+            app_link='https://community.plot.ly/t/show-and-tell-community-thread/7554',
+            code_link=None,
+            img_src='https://raw.githubusercontent.com/plotly/dash-docs/master/images/dash-community-components.png',
+            description='''
             Dash has a [plugin system](https://dash.plot.ly/plugins) for integrating your own React.js components. 
             The Dash community has built many of their component libraries, like 
             [Video Components](https://community.plot.ly/t/modifying-a-dom-property-in-html-video/7649/11) 
             and [Large File Upload](https://community.plot.ly/t/show-and-tell-dash-resumable-upload/9519). 
             View more community maintained components and other projects in the Dash Community Forum’s 
             [Show and Tell Thread](https://community.plot.ly/t/show-and-tell-community-thread/7554)
-            '''))
-        ]),
+            '''
+        )
+    ]),
+
+    reusable.Row([
+        AppSection(
+            app_name='Dash Core Components',
+            app_link='https://dash.plot.ly/dash-core-components',
+            code_link='https://github.com/plotly/dash-core-components',
+            img_src='https://raw.githubusercontent.com/plotly/dash-docs/master/images/dash-core-components.png',
+            description='''
+            Dash comes with a set of rich components like sliders, dropdowns, graphs, and more. 
+            [View the official Dash documentation to learn more](https://dash.plot.ly/dash-core-components).
+            ''',
+            width=12
+        )
+
     ]),
 
     # DASH DOC SECTION
+    SectionTitle('Dash Documentation'),
+
     reusable.Row([
         dcc.Markdown(dedent('''
-        
-        ***
-    
-        ## Dash Documentation
-    
         These Dash docs that you're looking at? They are itself a Dash app!
-    
         ''')),
 
-        html.A(
-            className='image-link',
-            href='https://dash.plot.ly/',
-            children=html.Img(
-                src='https://github.com/plotly/dash-docs/raw/master/images/dash-home-page.png',
-                alt='Screenshot of a dash home page'
-            )
-        ),
-
-        dcc.Markdown(
-            className="markdown-links",
-            children=dedent('''
-            [View Dash User Guide source code](https://github.com/plotly/dash-docs)
-            ''')
-        ),
+        AppSection(
+            app_name='View Dash User Guide Source Code',
+            app_link='https://github.com/plotly/dash-docs',
+            code_link=None,
+            img_src='https://raw.githubusercontent.com/plotly/dash-docs/master/images/dash-home-page.png',
+            description='',
+            width=12
+        )
     ]),
 ])
