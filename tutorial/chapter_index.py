@@ -341,4 +341,18 @@ chapters = {
         'name': '',
         'description': 'Search the Dash Docs'
     },
+
+    'confirm-examples': {
+        'url': '/dash-core-components/confirm',
+        'content': examples.ConfirmDialog,
+        'name': 'ConfirmDialog Component',
+        'description': 'ConfirmDialog examples, properties, and reference'
+    },
+
+    'confirm-provider-examples': {
+        'url': '/dash-core-components/confirm-provider',
+        'content': examples.ConfirmDialogProvider,
+        'name': 'ConfirmDialogProvider Component',
+        'description': 'ConfirmDialogProvider examples, properties and reference'
+    }
 }
