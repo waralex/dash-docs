@@ -282,7 +282,7 @@ layout = html.Div(className='gallery', children=[
             app_name='Object Detection',
             app_link='https://dash-object-detection.plot.ly/',
             code_link='https://github.com/plotly/dash-object-detection',
-            img_src='https://raw.githubusercontent.com/xhlulu/dash-docs/master/images/dash-object-detection.gif',
+            img_src='https://raw.githubusercontent.com/plotly/dash-docs/master/images/dash-object-detection.gif',
             description='''
             This object-detection app provides useful visualizations about 
             what's happening inside a complex video in real-time. The data 
@@ -298,7 +298,7 @@ layout = html.Div(className='gallery', children=[
             app_name='Visualize Model Training',
             app_link='https://dash-live-model-training.plot.ly/',
             code_link='https://github.com/plotly/dash-live-model-training',
-            img_src='https://raw.githubusercontent.com/xhlulu/dash-docs/master/images/dash-live-model-training.gif',
+            img_src='https://raw.githubusercontent.com/plotly/dash-docs/master/images/dash-live-model-training.gif',
             description='''
             For every Deep Learning models, keeping track of accuracy 
             and loss is an essential part of the training process, 
@@ -315,7 +315,7 @@ layout = html.Div(className='gallery', children=[
             app_name='Image Processing',
             app_link='http://dash-image-processing.plot.ly/',
             code_link='https://github.com/plotly/dash-image-processing',
-            img_src='https://raw.githubusercontent.com/xhlulu/dash-docs/master/images/dash-image-processing.gif',
+            img_src='https://raw.githubusercontent.com/plotly/dash-docs/master/images/dash-image-processing.gif',
             description='''
             This app wraps Pillow, a powerful image processing library in 
             Python, and abstracts all the operations through an 
@@ -329,7 +329,7 @@ layout = html.Div(className='gallery', children=[
             app_name='Interactive t-SNE',
             app_link='https://dash-tsne.plot.ly/',
             code_link='https://github.com/plotly/dash-tsne',
-            img_src='https://raw.githubusercontent.com/xhlulu/dash-docs/master/images/dash-tsne.gif',
+            img_src='https://raw.githubusercontent.com/plotly/dash-docs/master/images/dash-tsne.gif',
             description='''
             t-SNE is a visualization algorithm that projects your 
             high-dimensional data into a 2D or 3D space so that you can 
@@ -348,7 +348,7 @@ layout = html.Div(className='gallery', children=[
             app_name='Explore SVMs',
             app_link='https://dash-svm.plot.ly/',
             code_link='https://github.com/plotly/dash-svm',
-            img_src='https://raw.githubusercontent.com/xhlulu/dash-docs/master/images/dash-svm.gif',
+            img_src='https://raw.githubusercontent.com/plotly/dash-docs/master/images/dash-svm.gif',
             description='''
             This app lets you explore Support Vector Clustering (a type 
             of Support Vector Machine) with UI input parameters. Toy datasets 
