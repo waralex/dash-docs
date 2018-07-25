@@ -452,7 +452,7 @@ layout = html.Div(className='gallery', children=[
             """
             Dash DAQ is a Dash component library for building custom data 
             acquisition interfaces with Dash in Python. Dash DAQ is a licensed 
-            product. [Learn more about Dash DAQ](dashdaq.io).
+            product. [Learn more about Dash DAQ](https://www.dashdaq.io/).
             """
         ))
     ),
