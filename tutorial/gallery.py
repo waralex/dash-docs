@@ -447,6 +447,16 @@ layout = html.Div(className='gallery', children=[
     # DASH DAQ SECTION
     SectionTitle('Data Acquisition (DAQ)'),
 
+    reusable.Row(
+        dcc.Markdown(dedent(
+            """
+            Dash DAQ is a Dash component library for building custom data 
+            acquisition interfaces with Dash in Python. Dash DAQ is a licensed 
+            product. [Learn more about Dash DAQ](dashdaq.io).
+            """
+        ))
+    ),
+
     reusable.Row([
         AppSection(
             app_name='Control an Ocean Optics Spectrometer in Python',
