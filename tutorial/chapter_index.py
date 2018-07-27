@@ -195,8 +195,8 @@ chapters = {
     'deployment-onpremise': {
         'url': '/deployment/on-premise',
         'content': on_premise_deployment.layout,
-        'name': 'Deploying Dash Apps on Plotly On-Premises',
-        'description': "Plotly On-Premises is Plotly's commercial " \
+        'name': 'Deploying Dash Apps on Plotly Enterprise',
+        'description': "Plotly Enterprise is Plotly's commercial " \
                        "offering for hosting and sharing Dash apps."
     },
 
@@ -204,7 +204,7 @@ chapters = {
         'url': '/support',
         'content': support.layout,
         'name': 'Support and Contact',
-        'description': 'More information for Dash demos, On-Premise trials, ' \
+        'description': 'More information for Dash demos, Enterprise trials, ' \
                        'Dash workshops, sponsored feature requests and ' \
                        'customizations.'
     },

@@ -30,14 +30,14 @@ your [Plotly Cloud account](https://plot.ly/).
 
 ### On-Premise Dash Apps
 
-You can use [Plotly On-Premise](https://plot.ly/products/on-premise).
+You can use [Plotly Enterprise](https://plot.ly/products/on-premise).
 It offers an enterprise-wide
 Dash App Portal, easy git-based deployment, automatic URL
 namespacing, built-in SSL support, LDAP authentication, and more.
-[Request a Dash On-Premises demo](https://plot.ly/products/on-premise).
+[Request a Dash Deployment Server demo](https://plot.ly/products/on-premise).
 
 For existing customers, view the
-[tutorial on deploying Dash Apps on Plotly On-Premise](/deployment/on-premise).
+[tutorial on deploying Dash Apps on Plotly Enterprise](/deployment/on-premise).
 
 ### Dash and Flask
 
@@ -232,7 +232,7 @@ $ git push heroku master
 ***
 
 This workflow for deploying apps on heroku is very similar to how deployment
-works with the Plotly On-Premise's Dash Deployment Server.
+works with the Plotly Enterprise's Dash Deployment Server.
 If you'd like to learn more, [please reach out](https://plot.ly/products/on-premise).
 ''')
 ]
