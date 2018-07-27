@@ -258,6 +258,19 @@ layout = html.Div(className='gallery', children=[
         )
     ]),
 
+    reusable.Row([
+        AppSection(
+            app_name='Phylogeny trees and global spread of 6 viruses',
+            app_link='https://dash-phylogeny.herokuapp.com/',
+            code_link='https://github.com/plotly/dash-phylogeny',
+            img_src='https://raw.githubusercontent.com/plotly/dash-docs/master/images/dash-phylo-tree.gif',
+            description='''
+            Interactively explore the propagation of 6 viruses, by time and/or by geolocalisation.
+        ''',
+            width=12
+        )
+    ]),
+
     # GOVERNMENT AND PUBLIC HEALTH
     SectionTitle('Government & Public Health'),
 
