@@ -164,12 +164,11 @@ h1, h2, h3, h4, h5, h6 {
 
     2 - The following file types will automatically be included:
     
-    - CSS files suffixed with `.css`
+    A - CSS files suffixed with `.css`
     
-    - JavaScript files suffixed with `.js`
+    B - JavaScript files suffixed with `.js`
         
-    - A single file named `favicon.io` (the page tab's icon)
-
+    C - A single file named `favicon.io` (the page tab's icon)
 
     3 - Dash will include the files in alphanumerical order by filename.
     So, we recommend prefixing your filenames with numbers if you need to ensure
