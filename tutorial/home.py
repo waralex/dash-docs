@@ -48,7 +48,7 @@ layout = html.Div(className='toc', children=[
     Section("What's Dash?", [
         Chapter(chapters['introduction']['name'],
                 chapters['introduction']['url']),
-        Chapter('Announcement',
+        Chapter('Announcement Essay',
                 'https://medium.com/@plotlygraphs/introducing-dash-5ecf7191b503'),
         Chapter(chapters['gallery']['name'],
                 chapters['gallery']['url']),
@@ -88,7 +88,7 @@ layout = html.Div(className='toc', children=[
                 chapters['plugins']['description'])
     ]),
 
-    Section('Advanced Usage', [
+    Section('Beyond the Basics', [
         Chapter(chapters['performance']['name'],
                 chapters['performance']['url'],
                 chapters['performance']['description']),
