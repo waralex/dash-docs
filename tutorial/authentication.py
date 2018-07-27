@@ -5,6 +5,6 @@ layout = dcc.Markdown('''
 
 Dash provides authentication and user-based logins through the Plotly platform.
 Dash Authentication works in both [Plotly Cloud](https://plot.ly/products/cloud)
-and in [Plotly On-Premise](https://plot.ly/products/on-premise).
+and in [Plotly Enterprise](https://plot.ly/products/on-premise).
 
 ''')

@@ -28,16 +28,16 @@ layout = html.Div([
       your code.
 
     Plotly OAuth provides authentication through your online Plotly account
-    or through your company's [Plotly On-Premise server](https://plot.ly/products/on-premise).
+    or through your company's [Plotly Enterprise server](https://plot.ly/products/on-premise).
     As a Dash developer, this requires a paid Plotly subscription.
     Here's where you can [subscribe to Plotly Cloud](https://plot.ly/products/cloud),
     and here's where you can
-    [contact us about Plotly On-Premise](https://plotly.typeform.com/to/seG7Vb).
+    [contact us about Plotly Enterprise](https://plotly.typeform.com/to/seG7Vb).
     The viewers of your app will need a Plotly account but they do not need to
     upgrade to a paid subscription.
 
     Plotly OAuth allows you to share your apps with other users who have Plotly
-    accounts. With Plotly On-Premise, this includes sharing apps through
+    accounts. With Plotly Enterprise, this includes sharing apps through
     the integrated LDAP system. Apps that you have saved will appear in your
     list of files at [https://plot.ly/organize](https://plot.ly/organize)
     and you can manage the permissions of the apps there. Viewers create and
