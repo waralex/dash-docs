@@ -163,9 +163,13 @@ h1, h2, h3, h4, h5, h6 {
     Note that we plan on fixing this issue, [track our progress in dash#303](https://github.com/plotly/dash/issues/303).
 
     2 - The following file types will automatically be included:
+    
         - CSS files suffixed with `.css`
+    
         - JavaScript files suffixed with `.js`
+        
         - A single file named `favicon.io` (the page tab's icon)
+
 
     3 - Dash will include the files in alphanumerical order by filename.
     So, we recommend prefixing your filenames with numbers if you need to ensure
