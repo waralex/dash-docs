@@ -156,6 +156,7 @@ h1, h2, h3, h4, h5, h6 {
     dcc.Markdown(s('''
 
     There are a few things to keep in mind when including assets automatically:
+
     1 - Currently, the files are automatically cached by the browser. So, if
     you make changes to the file you may need to disable your browser's cache.
     [Learn how to disable your browser cache](https://stackoverflow.com/questions/5690269/).
