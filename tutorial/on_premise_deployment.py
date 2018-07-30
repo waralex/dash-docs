@@ -99,7 +99,7 @@ def generate_instructions(chapter, platform):
 
             dcc.SyntaxHighlighter(
                 ('$ ssh-add ~/.ssh/id_rsa' if platform == 'Windows' else
-                 '$ ssh-add -K ~/.ssh/id_rsa'),
+                 '$ ssh-add -k ~/.ssh/id_rsa'),
                 customStyle=styles.code_container,
                 language='python'
             ),
