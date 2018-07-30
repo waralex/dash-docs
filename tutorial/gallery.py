@@ -403,30 +403,29 @@ layout = html.Div(className='gallery', children=[
             code_link='https://github.com/plotly/dash-table-experiments',
             img_src='https://raw.githubusercontent.com/plotly/dash-table-experiments/master/images/DataTable.gif',
             description='''
-            Dash is currently incubating an interactive table component that provides
-            built-in filtering, row-selection, editing, and sorting.
-            Prototypes of this component are being developed in the
-            [`dash-table-experiments`](https://github.com/plotly/dash-table-experiments)
-            repository. Join the discussion in the
-            [Dash Community Forum](https://community.plot.ly/t/display-tables-in-dash/4707/38).
-        
-            This example was written in ~100 lines of code.
-            '''
-        ),
+        Dash is currently incubating an interactive table component that provides
+        built-in filtering, row-selection, editing, and sorting.
+        Prototypes of this component are being developed in the
+        [`dash-table-experiments`](https://github.com/plotly/dash-table-experiments)
+        repository. Join the discussion in the
+        [Dash Community Forum](https://community.plot.ly/t/display-tables-in-dash/4707/38).
 
+        This example was written in ~100 lines of code.
+        '''
+        ),
         AppSection(
             app_name='Dash Community Components',
             app_link='https://community.plot.ly/t/show-and-tell-community-thread/7554',
             code_link=None,
             img_src='https://raw.githubusercontent.com/plotly/dash-docs/master/images/dash-community-components.png',
             description='''
-            Dash has a [plugin system](https://dash.plot.ly/plugins) for integrating your own React.js components. 
-            The Dash community has built many of their component libraries, like 
-            [Video Components](https://community.plot.ly/t/modifying-a-dom-property-in-html-video/7649/11) 
-            and [Large File Upload](https://community.plot.ly/t/show-and-tell-dash-resumable-upload/9519). 
-            View more community maintained components and other projects in the Dash Community Forum’s 
-            [Show and Tell Thread](https://community.plot.ly/t/show-and-tell-community-thread/7554)
-            '''
+        Dash has a [plugin system](https://dash.plot.ly/plugins) for integrating your own React.js components. 
+        The Dash community has built many of their component libraries, like 
+        [Video Components](https://community.plot.ly/t/modifying-a-dom-property-in-html-video/7649/11) 
+        and [Large File Upload](https://community.plot.ly/t/show-and-tell-dash-resumable-upload/9519). 
+        View more community maintained components and other projects in the Dash Community Forum’s 
+        [Show and Tell Thread](https://community.plot.ly/t/show-and-tell-community-thread/7554)
+        '''
         )
     ]),
 
@@ -437,12 +436,150 @@ layout = html.Div(className='gallery', children=[
             code_link='https://github.com/plotly/dash-core-components',
             img_src='https://raw.githubusercontent.com/plotly/dash-docs/master/images/dash-core-components.png',
             description='''
-            Dash comes with a set of rich components like sliders, dropdowns, graphs, and more. 
-            [View the official Dash documentation to learn more](https://dash.plot.ly/dash-core-components).
-            ''',
+        Dash comes with a set of rich components like sliders, dropdowns, graphs, and more. 
+        [View the official Dash documentation to learn more](https://dash.plot.ly/dash-core-components).
+        ''',
             width=12
         )
 
+    ]),
+
+    # DASH DAQ SECTION
+    SectionTitle('Data Acquisition (DAQ)'),
+
+    reusable.Row(
+        dcc.Markdown(dedent(
+            """
+            Dash DAQ is a Dash component library for building custom data 
+            acquisition interfaces with Dash in Python. Dash DAQ is a licensed 
+            product. [Learn more about Dash DAQ](https://www.dashdaq.io/).
+            """
+        ))
+    ),
+
+    reusable.Row([
+        AppSection(
+            app_name='Control an Ocean Optics Spectrometer in Python',
+            app_link='https://www.dashdaq.io/control-an-ocean-optics-spectrometer-in-python',
+            code_link=None,
+            img_src='https://www.dashdaq.io/wp-content/uploads/2018/06/Dash-DAQ-_-Ocean-Optics-2@05x.jpg',
+            description='''
+            Here at Plotly, we wrote a Dash DAQ application in Python to 
+            control and read an Ocean Optics spectrometer with interactive UI 
+            components.
+            '''
+        ),
+        AppSection(
+            app_name='Read a Kurt J. Lesker Pressure Gauge Controller in Python',
+            app_link='https://www.dashdaq.io/read-pressure-from-kurt-j-lesker-gauge-controller-in-python',
+            code_link=None,
+            img_src='https://www.dashdaq.io/wp-content/uploads/2018/06/Dash-DAQ-Kurt@05x.jpg',
+            description='''
+            A Dash DAQ application, written in Python, gives you clean, modern 
+            UI components to facilitate the readout of a Kurt J. Lesker 
+            pressure gauge controller.
+            '''
+        )
+    ]),
+
+    reusable.Row([
+        AppSection(
+            app_name='Read Accelerometer Data in Python',
+            app_link='https://www.dashdaq.io/read-phidgets-accelerometer-in-python',
+            code_link=None,
+            img_src='https://www.dashdaq.io/wp-content/uploads/2018/06/Dash-DAQ-_-Accelerometer@05x.jpg',
+            description='''
+            Running tests with an accelerometer? Dash DAQ gives you the 
+            components you need to write rich, flexible GUIs for interfacing 
+            with your instruments in Python.
+            '''
+        ),
+        AppSection(
+            app_name='Control an LED Strip in Python',
+            app_link='https://www.dashdaq.io/control-an-led-strip-in-python',
+            code_link=None,
+            img_src='https://www.dashdaq.io/wp-content/uploads/2018/05/Dash-DAQ-_-Blank-Stick-main@05x.jpg',
+            description='''
+            Team Plotly is getting colorful with Dash DAQ! This application 
+            controls the colored LED lights in a BlinkStick. We even wrote a 
+            Rainbow mode🌈
+            '''
+        )
+    ]),
+
+    reusable.Row([
+        AppSection(
+            app_name='Control a Stepper Motor in Python',
+            app_link='https://www.dashdaq.io/stepper-motor-control-in-python',
+            code_link=None,
+            img_src='https://www.dashdaq.io/wp-content/uploads/2018/04/Dash-DAQ-_-Stepper-Motor@05x.jpg',
+            description='''
+            From 3D printers, to mirror mounts, to machine tools – stepper 
+            motors are ubiquitous. Using Dash DAQ, we created a GUI to control 
+            a Silverpak 17C Lin Engineering stepper motor.
+            '''
+        ),
+        AppSection(
+            app_name='Tektronix Oscilloscope Data Logging in Python',
+            app_link='https://www.dashdaq.io/oscilloscope-logging-in-python',
+            code_link=None,
+            img_src='https://www.dashdaq.io/wp-content/uploads/2018/04/Dash-DAQ-_-Tektronix-Oscilloscope-Tektronic-Function-Generator@05x-1.jpg',
+            description='''
+            Whether testing your power supply or monitoring a heartbeat, if 
+            you have an oscilloscope, Dash DAQ will help you control and read 
+            your instrument with user-friendly GUIs.
+            '''
+        )
+    ]),
+
+    reusable.Row([
+        AppSection(
+            app_name='Control a B&K Precision Power Supply in Python',
+            app_link='https://www.dashdaq.io/control-bk-precision-1785b-power-supply-in-python',
+            code_link=None,
+            img_src='https://www.dashdaq.io/wp-content/uploads/2018/03/Dash-DAQ-_-BKprecision@05x-1.jpg',
+            description='''
+            This Dash DAQ app controls a B&K Precision power supply using a 
+            clean and functional UI, written in just over 300 lines of Python 
+            code.
+            '''
+        ),
+        AppSection(
+            app_name='Read an Agilent 34401A Multimeter in Python',
+            app_link='https://www.dashdaq.io/read-agilent-34401a-multimeter-in-python',
+            code_link=None,
+            img_src='https://www.dashdaq.io/wp-content/uploads/2018/03/Dash-DAQ-_-Multimeter-zoom@05x.jpg',
+            description='''
+            Just as it sounds, a multimeter is multi-functional. Here’s how we 
+            used Dash DAQ’s interactive UI components to control the HP Agilent 
+            34401A Multimeter.
+            '''
+        )
+    ]),
+
+    reusable.Row([
+        AppSection(
+            app_name='Control a Tektronix Function Generator in Python',
+            app_link='https://www.dashdaq.io/control-tektronix-function-generator-in-python',
+            code_link=None,
+            img_src='https://www.dashdaq.io/wp-content/uploads/2018/03/Dash-DAQ-_-Tektronix-Oscilloscope-Tektronic-Function-Generator-zoom@05x.jpg',
+            description='''
+            A function generator generates a variety of electrical waveforms. 
+            This Dash DAQ application facilitates the control of a Tektronix 
+            AFG3021 function generator.
+            '''
+        ),
+        AppSection(
+            app_name='Read Pressure from a Pfeiffer Vacuum Gauge in Python',
+            app_link='https://www.dashdaq.io/read-pfeiffer-vacuum-gauge-pressure-in-python',
+            code_link=None,
+            img_src='https://www.dashdaq.io/wp-content/uploads/2018/03/Dash-DAQ-_-Pfeiffer@05x.jpg',
+            description='''
+            Dash DAQ helps you make interactive, modern UI components in 
+            Python. In just over 300 lines of code, this app helps you control 
+            and read a Pfeiffer vacuum gauge controller.
+            '''
+        )
     ]),
 
     # DASH DOC SECTION
