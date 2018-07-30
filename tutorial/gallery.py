@@ -19,12 +19,13 @@ def AppSection(app_name,
                code_link,
                img_src,
                description,
+               code_name_display_text='Source code',
                width=6):
     if code_link:
         links = dedent(
             '''
-            [{}]({}) | [Source code]({})
-            '''.format(app_name, app_link, code_link)
+            [{}]({}) | [{}]({})
+            '''.format(app_name, app_link, code_name_display_text, code_link)
         )
     else:
         links = dedent(
@@ -459,9 +460,64 @@ layout = html.Div(className='gallery', children=[
 
     reusable.Row([
         AppSection(
-            app_name='Control an Ocean Optics Spectrometer in Python',
+            app_name='Omega CN32PT-440-DC PID Controller',
+            app_link='https://www.dashdaq.io/operate-an-omega-cn32pt-440-dc-pid-controller-in-python',
+            code_name_display_text='Try the app',
+            code_link='https://dash-daq-omega-pid.herokuapp.com/',
+            img_src='https://www.dashdaq.io/wp-content/uploads/2018/07/Dash-DAQ-Omega-Platnium-Controller-146@05x.jpg',
+            description='''
+            Let’s heat things up with Dash DAQ! With this application, we use 
+            Python to monitor and manage a PID controller connected to a water 
+            heater 🔥
+            '''
+        ),
+
+        AppSection(
+            app_name='Wireless Arduino Robot',
+            app_link='https://www.dashdaq.io/control-a-wireless-arduino-robot-in-python',
+            code_name_display_text='Try the app',
+            code_link='http://dash-daq-sparki.herokuapp.com/',
+            img_src='https://www.dashdaq.io/wp-content/uploads/2018/07/Dash-DAQ-Sparki-11-Edit@05x.jpg',
+            description='''
+            We love our robots here at Plotly! This Dash DAQ app wirelessly 
+            controls Sparki, an Arduino-based robot 🤖
+            '''
+        )
+    ]),
+
+    reusable.Row([
+        AppSection(
+            app_name='I-V curve tracer with a Keithley 2400 SourceMeter',
+            app_link='https://www.dashdaq.io/build-an-i-v-curve-tracer-with-a-keithley-2400-sourcemeter-in-python',
+            code_name_display_text='Try the app',
+            code_link='https://dash-daq-iv-tracer.herokuapp.com/',
+            img_src='https://www.dashdaq.io/wp-content/uploads/2018/07/IMG_0345@05x.jpg',
+            description='''
+            With this Dash DAQ application written in Python, you can create 
+            UI components to interface with a Keithley 2400 SourceMeter.
+            '''
+        ),
+
+        AppSection(
+            app_name='Control a Robotic Arm',
+            app_link='https://www.dashdaq.io/control-a-robotic-arm-in-python',
+            code_name_display_text='Try the app',
+            code_link='https://dash-daq-robotic-arm-edge.herokuapp.com/',
+            img_src='https://www.dashdaq.io/wp-content/uploads/2018/07/Dash-DAQ-Robotic-Arm-Edge-19@05x.jpg',
+            description='''
+            Dash DAQ’s GUI components let you interface with all the robot’s 
+            motors and LED, even from a mobile device… just as if it were a 
+            real remote control! 🤖
+            '''
+        )
+    ]),
+
+    reusable.Row([
+        AppSection(
+            app_name='Ocean Optics Spectrometer',
             app_link='https://www.dashdaq.io/control-an-ocean-optics-spectrometer-in-python',
-            code_link=None,
+            code_name_display_text='Try the app',
+            code_link='http://dash-ocean-optics.herokuapp.com/',
             img_src='https://www.dashdaq.io/wp-content/uploads/2018/06/Dash-DAQ-_-Ocean-Optics-2@05x.jpg',
             description='''
             Here at Plotly, we wrote a Dash DAQ application in Python to 
@@ -470,9 +526,10 @@ layout = html.Div(className='gallery', children=[
             '''
         ),
         AppSection(
-            app_name='Read a Kurt J. Lesker Pressure Gauge Controller in Python',
+            app_name='Kurt J. Lesker Pressure Gauge Controller',
             app_link='https://www.dashdaq.io/read-pressure-from-kurt-j-lesker-gauge-controller-in-python',
-            code_link=None,
+            code_name_display_text='Try the app',
+            code_link='https://dash-daq-pressure-gauge-kjl.herokuapp.com/',
             img_src='https://www.dashdaq.io/wp-content/uploads/2018/06/Dash-DAQ-Kurt@05x.jpg',
             description='''
             A Dash DAQ application, written in Python, gives you clean, modern 
@@ -484,9 +541,10 @@ layout = html.Div(className='gallery', children=[
 
     reusable.Row([
         AppSection(
-            app_name='Read Accelerometer Data in Python',
+            app_name='Read Accelerometer Data',
             app_link='https://www.dashdaq.io/read-phidgets-accelerometer-in-python',
-            code_link=None,
+            code_name_display_text='Try the app',
+            code_link='https://dash-accelerometer.herokuapp.com/',
             img_src='https://www.dashdaq.io/wp-content/uploads/2018/06/Dash-DAQ-_-Accelerometer@05x.jpg',
             description='''
             Running tests with an accelerometer? Dash DAQ gives you the 
@@ -495,9 +553,10 @@ layout = html.Div(className='gallery', children=[
             '''
         ),
         AppSection(
-            app_name='Control an LED Strip in Python',
+            app_name='Control an LED Strip',
             app_link='https://www.dashdaq.io/control-an-led-strip-in-python',
-            code_link=None,
+            code_name_display_text='Try the app',
+            code_link='https://dash-daq-led.herokuapp.com/',
             img_src='https://www.dashdaq.io/wp-content/uploads/2018/05/Dash-DAQ-_-Blank-Stick-main@05x.jpg',
             description='''
             Team Plotly is getting colorful with Dash DAQ! This application 
@@ -509,9 +568,10 @@ layout = html.Div(className='gallery', children=[
 
     reusable.Row([
         AppSection(
-            app_name='Control a Stepper Motor in Python',
+            app_name='Control a Stepper Motor',
             app_link='https://www.dashdaq.io/stepper-motor-control-in-python',
-            code_link=None,
+            code_name_display_text='Try the app',
+            code_link='https://dash-daq-stepper-motor.herokuapp.com/',
             img_src='https://www.dashdaq.io/wp-content/uploads/2018/04/Dash-DAQ-_-Stepper-Motor@05x.jpg',
             description='''
             From 3D printers, to mirror mounts, to machine tools – stepper 
@@ -520,9 +580,10 @@ layout = html.Div(className='gallery', children=[
             '''
         ),
         AppSection(
-            app_name='Tektronix Oscilloscope Data Logging in Python',
+            app_name='Tektronix Oscilloscope Data Logging',
             app_link='https://www.dashdaq.io/oscilloscope-logging-in-python',
-            code_link=None,
+            code_name_display_text='Try the app',
+            code_link='https://dash-tektronix-350.herokuapp.com/',
             img_src='https://www.dashdaq.io/wp-content/uploads/2018/04/Dash-DAQ-_-Tektronix-Oscilloscope-Tektronic-Function-Generator@05x-1.jpg',
             description='''
             Whether testing your power supply or monitoring a heartbeat, if 
@@ -534,9 +595,10 @@ layout = html.Div(className='gallery', children=[
 
     reusable.Row([
         AppSection(
-            app_name='Control a B&K Precision Power Supply in Python',
+            app_name='B&K Precision Power Supply',
             app_link='https://www.dashdaq.io/control-bk-precision-1785b-power-supply-in-python',
-            code_link=None,
+            code_name_display_text='Try the app',
+            code_link='http://dash-daq-bkprecision.herokuapp.com/',
             img_src='https://www.dashdaq.io/wp-content/uploads/2018/03/Dash-DAQ-_-BKprecision@05x-1.jpg',
             description='''
             This Dash DAQ app controls a B&K Precision power supply using a 
@@ -545,9 +607,10 @@ layout = html.Div(className='gallery', children=[
             '''
         ),
         AppSection(
-            app_name='Read an Agilent 34401A Multimeter in Python',
+            app_name='Agilent 34401A Multimeter',
             app_link='https://www.dashdaq.io/read-agilent-34401a-multimeter-in-python',
-            code_link=None,
+            code_name_display_text='Try the app',
+            code_link='https://dash-daq-hp-multimeter.herokuapp.com/',
             img_src='https://www.dashdaq.io/wp-content/uploads/2018/03/Dash-DAQ-_-Multimeter-zoom@05x.jpg',
             description='''
             Just as it sounds, a multimeter is multi-functional. Here’s how we 
@@ -559,9 +622,10 @@ layout = html.Div(className='gallery', children=[
 
     reusable.Row([
         AppSection(
-            app_name='Control a Tektronix Function Generator in Python',
+            app_name='Tektronix Function Generator',
             app_link='https://www.dashdaq.io/control-tektronix-function-generator-in-python',
-            code_link=None,
+            code_name_display_text='Try the app',
+            code_link='https://dash-tektronix-350.herokuapp.com/',
             img_src='https://www.dashdaq.io/wp-content/uploads/2018/03/Dash-DAQ-_-Tektronix-Oscilloscope-Tektronic-Function-Generator-zoom@05x.jpg',
             description='''
             A function generator generates a variety of electrical waveforms. 
@@ -570,15 +634,31 @@ layout = html.Div(className='gallery', children=[
             '''
         ),
         AppSection(
-            app_name='Read Pressure from a Pfeiffer Vacuum Gauge in Python',
+            app_name='Pfeiffer Vacuum Gauge',
             app_link='https://www.dashdaq.io/read-pfeiffer-vacuum-gauge-pressure-in-python',
-            code_link=None,
+            code_name_display_text='Try the app',
+            code_link='https://dash-daq-pressure-gauge-pv.herokuapp.com/',
             img_src='https://www.dashdaq.io/wp-content/uploads/2018/03/Dash-DAQ-_-Pfeiffer@05x.jpg',
             description='''
             Dash DAQ helps you make interactive, modern UI components in 
             Python. In just over 300 lines of code, this app helps you control 
             and read a Pfeiffer vacuum gauge controller.
             '''
+        )
+    ]),
+
+    reusable.Row([
+        AppSection(
+            app_name='Analyze Frequency Responses using a Tektronix Function Generator and Oscilloscope',
+            app_link='https://www.dashdaq.io/analyze-frequency-responses-in-python-using-a-tektronix-function-generator-and-oscilloscope',
+            code_name_display_text='Try the app',
+            code_link='https://freq-response-plotter.herokuapp.com/',
+            img_src='https://www.dashdaq.io/wp-content/uploads/2018/07/Dash-DAQ-_-Tektronix-Oscilloscope-Tektronic-Function-Generator.jpg',
+            description='''
+            With this Dash DAQ app, you can create a user-friendly GUI for 
+            analyzing the frequency responses of circuits.
+            ''',
+            width=12
         )
     ]),
 
