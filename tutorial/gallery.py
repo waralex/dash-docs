@@ -452,7 +452,7 @@ layout = html.Div(className='gallery', children=[
         dcc.Markdown(dedent(
             """
             Dash DAQ is a Dash component library for building custom data 
-            acquisition interfaces with Dash in Python. Dash DAQ is a licensed 
+            acquisition interfaces with Dash in Python. Dash DAQ is a commercially licensed 
             product. [Learn more about Dash DAQ](https://www.dashdaq.io/).
             """
         ))
@@ -520,7 +520,7 @@ layout = html.Div(className='gallery', children=[
             code_link='http://dash-ocean-optics.herokuapp.com/',
             img_src='https://www.dashdaq.io/wp-content/uploads/2018/06/Dash-DAQ-_-Ocean-Optics-2@05x.jpg',
             description='''
-            Here at Plotly, we wrote a Dash DAQ application in Python to 
+            We wrote a Dash DAQ application in Python to 
             control and read an Ocean Optics spectrometer with interactive UI 
             components.
             '''
@@ -613,9 +613,8 @@ layout = html.Div(className='gallery', children=[
             code_link='https://dash-daq-hp-multimeter.herokuapp.com/',
             img_src='https://www.dashdaq.io/wp-content/uploads/2018/03/Dash-DAQ-_-Multimeter-zoom@05x.jpg',
             description='''
-            Just as it sounds, a multimeter is multi-functional. Here’s how we 
-            used Dash DAQ’s interactive UI components to control the HP Agilent 
-            34401A Multimeter.
+            Here’s how we used Dash DAQ’s interactive UI components to 
+            control the HP Agilent 34401A Multimeter.
             '''
         )
     ]),
@@ -640,8 +639,7 @@ layout = html.Div(className='gallery', children=[
             code_link='https://dash-daq-pressure-gauge-pv.herokuapp.com/',
             img_src='https://www.dashdaq.io/wp-content/uploads/2018/03/Dash-DAQ-_-Pfeiffer@05x.jpg',
             description='''
-            Dash DAQ helps you make interactive, modern UI components in 
-            Python. In just over 300 lines of code, this app helps you control 
+            In just over 300 lines of code, this app helps you control 
             and read a Pfeiffer vacuum gauge controller.
             '''
         )
