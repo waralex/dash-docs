@@ -130,5 +130,34 @@ def display_content(pathname):
 app.css.append_css({'external_url': css})
 app.scripts.append_script({'external_url': js})
 
+
+app.index_string = '''
+<!DOCTYPE html>
+<html>
+    <head>
+        {%metas%}
+        <title>{%title%}</title>
+        {%favicon%}
+        {%css%}
+        <!-- Global site tag (gtag.js) - AdWords: 1009791370 -->
+        <script async src=""https://www.googletagmanager.com/gtag/js?id=AW-1009791370""></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'AW-1009791370');
+        </script>
+    </head>
+    <body>
+        {%app_entry%}
+        <footer>
+            {%config%}
+            {%scripts%}
+        </footer>
+    </body>
+</html>
+'''
+
 if __name__ == '__main__':
     app.run_server(debug=True, threaded=True, port=8050)
