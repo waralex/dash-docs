@@ -1,6 +1,8 @@
 import auth
 import core_component_examples as examples
 import core_components
+import dash_deployment_server
+import dash_deployment_server_examples as dds_examples
 import deployment
 import external_css_and_js
 import gallery
@@ -200,6 +202,15 @@ chapters = {
                        "offering for hosting and sharing Dash apps."
     },
 
+    'dash-deployment-server': {
+        'url': '/dash-deployment-server',
+        'content': dash_deployment_server.layout,
+        'name': 'Dash Deployment Server Documentation',
+        'description': "Dash Deployment Server is Plotly's commercial " \
+                       "offering for hosting and sharing Dash apps with " \
+                       "Plotly Enterprise."
+    },
+
     'support': {
         'url': '/support',
         'content': support.layout,
@@ -210,6 +221,7 @@ chapters = {
     },
 ### End of home.py ###
 
+### Start Components ###
     'dropdown-examples': {
         'url': '/dash-core-components/dropdown',
         'content': examples.Dropdown,
@@ -300,7 +312,29 @@ chapters = {
         'name': 'Upload Component',
         'description': 'Upload examples, properties, and reference.'
     },
+### End Components ###
+### Start Dash Deployment Server ###
+    'redis-examples': {
+        'url': '/dash-deployment-server/redis-database',
+        'content': dds_examples.Redis,
+        'name': 'Text Area Component',
+        'description': 'Redis Database.'
+    },
 
+    'env-var-examples': {
+        'url': '/dash-deployment-server/enviornment-variables',
+        'content': dds_examples.EnvVars,
+        'name': 'Setting Enviornment Variables',
+        'description': 'Upload examples, properties, and reference.'
+    },
+
+    'local-dir-examples': {
+        'url': '/dash-deployment-server/map-local-directories',
+        'content': dds_examples.LocalDir,
+        'name': 'Upload Component',
+        'description': 'Mapping Local Directories'
+    },
+### End Dash Deployment Server ###
     'search': {
         'url': '/search',
         'content': search.layout,
