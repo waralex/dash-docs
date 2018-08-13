@@ -25,7 +25,7 @@ examples = {
     'upload-datafile':  tools.load_example('tutorial/examples/core_components/upload-datafile.py'),
     'upload-gallery':  tools.load_example('tutorial/examples/core_components/upload-gallery.py'),
     'confirm': tools.load_example('tutorial/examples/core_components/confirm.py'),
-    'confirm-provider': tools.load_example('tutorial/examples/core_components/confirm_provider.py')
+    'confirm-provider': tools.load_example('tutorial/examples/core_components/confirm_provider.py'),
     'tabs_simple':  tools.load_example('tutorial/examples/core_components/tabs_simple.py'),
     'tabs_callback':  tools.load_example('tutorial/examples/core_components/tabs_callback_graph.py'),
 }
