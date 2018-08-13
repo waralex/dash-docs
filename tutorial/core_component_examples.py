@@ -24,6 +24,8 @@ examples = {
     'upload-image':  tools.load_example('tutorial/examples/core_components/upload-image.py'),
     'upload-datafile':  tools.load_example('tutorial/examples/core_components/upload-datafile.py'),
     'upload-gallery':  tools.load_example('tutorial/examples/core_components/upload-gallery.py'),
+    'confirm': tools.load_example('tutorial/examples/core_components/confirm.py'),
+    'confirm-provider': tools.load_example('tutorial/examples/core_components/confirm_provider.py'),
     'tabs_simple':  tools.load_example('tutorial/examples/core_components/tabs_simple.py'),
     'tabs_callback':  tools.load_example('tutorial/examples/core_components/tabs_callback_graph.py'),
 }
@@ -1046,7 +1048,7 @@ Tabs = html.Div(children=[
 Upload = html.Div([
     html.H1('Upload Component'),
     dcc.Markdown(s('''
-    The Dash upload component allows your app's veiwers to upload files,
+    The Dash upload component allows your app's viewers to upload files,
     like excel spreadsheets or images, into your application.
     Your Dash app can access the contents of an upload by listening to
     the `contents` property of the `dcc.Upload` component.
@@ -1088,4 +1090,30 @@ Upload = html.Div([
 
     html.H2('Upload Component Properties'),
     generate_prop_table('Upload')
+])
+
+# ConfirmDialog
+ConfirmDialog = html.Div([
+    html.H1('ConfirmDialog component'),
+    dcc.Markdown(s('''
+    ConfirmDialog is used to display the browser's native "confirm" modal,
+    with an optional message and two buttons ("OK" and "Cancel").
+    This ConfirmDialog can be used in conjunction with buttons when the user
+    is performing an action that should require an extra step of verification.
+    ''')),
+    Syntax(examples['confirm'][0]),
+    Example(examples['confirm'][1]),
+    generate_prop_table('ConfirmDialog')
+])
+
+# ConfirmDialogProvider
+ConfirmDialogProvider = html.Div([
+    html.H1('ConfirmDialogProvider component'),
+    dcc.Markdown(s('''
+    Send a [ConfirmDialog](/dash-core-components/confirm) when the user
+    clicks the children of this component, usually a button.
+    ''')),
+    Syntax(examples['confirm-provider'][0]),
+    Example(examples['confirm-provider'][1]),
+    generate_prop_table('ConfirmDialogProvider')
 ])
