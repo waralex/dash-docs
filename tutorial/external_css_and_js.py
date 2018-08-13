@@ -157,12 +157,7 @@ h1, h2, h3, h4, h5, h6 {
 
     There are a few things to keep in mind when including assets automatically:
 
-    1 - Currently, the files are automatically cached by the browser. So, if
-    you make changes to the file you may need to disable your browser's cache.
-    [Learn how to disable your browser cache](https://stackoverflow.com/questions/5690269/).
-    Note that we plan on fixing this issue, [track our progress in dash#303](https://github.com/plotly/dash/issues/303).
-
-    2 - The following file types will automatically be included:
+    1 - The following file types will automatically be included:
     
     A - CSS files suffixed with `.css`
     
@@ -170,16 +165,16 @@ h1, h2, h3, h4, h5, h6 {
         
     C - A single file named `favicon.io` (the page tab's icon)
 
-    3 - Dash will include the files in alphanumerical order by filename.
+    2 - Dash will include the files in alphanumerical order by filename.
     So, we recommend prefixing your filenames with numbers if you need to ensure
     their order (e.g. `10_typography.css`, `20_header.css`)
 
-    4 - If you want to include CSS from a remote URL, then we recommend
+    3 - If you want to include CSS from a remote URL, then we recommend
     overriding the app's HTML template, as described in the next section.
     We are working on an easier method for including remote CSS urls in
     [dash#302](https://github.com/plotly/dash/issues/302)
 
-    5 - Your custom CSS will be included _after_ the Dash component CSS
+    4 - Your custom CSS will be included _after_ the Dash component CSS
 
     ***
 
