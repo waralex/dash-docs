@@ -20,7 +20,9 @@ examples = {
     'dash-meta-tags': read_file(
         'tutorial/examples/external_css_and_js/dash-meta-tags.py'
     ),
-
+    'external-resources-init': read_file(
+        'tutorial/examples/external_css_and_js/external-resources-init.py'
+    ),
 }
 
 
@@ -37,6 +39,7 @@ layout = html.Div([
 
     **Table of Contents**
     - Adding Your Own CSS and JavaScript to Dash Apps
+    - Adding external CSS and JavaScript
     - Customizing Dash's HTML Index Template
     - Adding Meta Tags
     - Serving Dash's Component Libraries Locally or from a CDN
@@ -178,6 +181,28 @@ h1, h2, h3, h4, h5, h6 {
 
     ***
 
+    ## Adding external CSS/Javascript
+    
+    You can add resources hosted externally to your Dash app with the 
+    `external_scripts/stylesheets` init keywords.
+    
+    The resources can be either a string or a dict containing the tag attributes
+    (`src`, `integrity`, `crossorigin`, etc). You can mix both.
+
+    External css/js files are loaded before the assets.
+
+    **Example:**
+    ''')),
+
+    dcc.SyntaxHighlighter(
+        examples['external-resources-init'],
+        language='python',
+        customStyle=styles.code_container
+    ),
+
+    dcc.Markdown(s('''
+    ***
+    
     ## Customizing Dash's HTML Index Template
 
     **New in dash 0.22.0**
