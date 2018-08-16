@@ -27,7 +27,7 @@ examples = {
 
 
 layout = html.Div([
-    html.H1('Adding Local CSS & JS and Overriding the Page-Load Template'),
+    html.H1('Adding CSS & JS and Overriding the Page-Load Template'),
 
     dcc.Markdown(s('''
     Dash applications are rendered in the web browser with CSS and JavaScript.
@@ -39,7 +39,7 @@ layout = html.Div([
 
     **Table of Contents**
     - Adding Your Own CSS and JavaScript to Dash Apps
-    - Adding external CSS and JavaScript
+    - Adding External CSS and JavaScript
     - Customizing Dash's HTML Index Template
     - Adding Meta Tags
     - Serving Dash's Component Libraries Locally or from a CDN
