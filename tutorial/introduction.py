@@ -29,9 +29,9 @@ layout = html.Div([
         or read our [announcement letter](https://medium.com/@plotlygraphs/introducing-dash-5ecf7191b503).
 
         Dash is an open source library, released under the permissive MIT license.
-        [Plotly](https://plot.ly) develops Dash and offers a platform for
-        deploying, orchestrating, and permissioning dash apps in an enterprise
-        environment. If you're interested, [please get in touch](https://plotly.typeform.com/to/seG7Vb).
+        [Plotly](https://plot.ly) develops Dash and offers a [platform for easily deploying Dash 
+        apps in an enterprise environment](https://plot.ly/dash/pricing).
+        If you're interested, [please get in touch](https://plotly.typeform.com/to/rkO85m).
 
         ***
 
