@@ -194,20 +194,20 @@ chapters = {
                        'app to a server'
     },
 
-    'deployment-onpremise': {
-        'url': '/deployment/on-premise',
-        'content': on_premise_deployment.layout,
-        'name': 'Deploying Dash Apps on Plotly Enterprise',
-        'description': "Plotly Enterprise is Plotly's commercial " \
-                       "offering for hosting and sharing Dash apps."
-    },
+    # 'deployment-onpremise': {
+    #     'url': '/deployment/on-premise',
+    #     'content': on_premise_deployment.layout,
+    #     'name': 'Deploying Dash Apps on Plotly Enterprise',
+    #     'description': "Plotly Enterprise is Plotly's commercial " \
+    #                    "offering for hosting and sharing Dash apps."
+    # },
 
     'dash-deployment-server': {
         'url': '/dash-deployment-server',
         'content': dash_deployment_server.layout,
         'name': 'Dash Deployment Server Documentation',
         'description': "Dash Deployment Server is Plotly's commercial " \
-                       "offering for hosting and sharing Dash apps with " \
+                       "offering for hosting and sharing Dash Apps with " \
                        "Plotly Enterprise."
     },
 
@@ -313,28 +313,122 @@ chapters = {
         'description': 'Upload examples, properties, and reference.'
     },
 ### End Components ###
+
 ### Start Dash Deployment Server ###
+    'ssh-examples': {
+        'url': '/dash-deployment-server/ssh',
+        'content': dds_examples.Ssh,
+        'name': 'Authenticating to Dash Deployment Server with SSH',
+        'description': "There are two methods to deploy Dash Apps: HTTPS and SSH "
+        "and we recommend getting started with the HTTPS method."
+    },
+
+    'initialize-examples': {
+        'url': '/dash-deployment-server/initialize',
+        'content': dds_examples.Initialize,
+        'name': 'Part 1. Initialize Dash Apps on Dash Deployment Server',
+        'description': 'Initialize Dash Apps on Plotly Enterprise'
+    },
+
+    'requirements-examples': {
+        'url': '/dash-deployment-server/application-structure',
+        'content': dds_examples.Requirements,
+        'name': 'Application Structure',
+        'description': 'Ensure that your app meets all the requirements for deployment.'
+    },
+
+    'create-deploy-examples': {
+        'url': '/dash-deployment-server/deployment',
+        'content': dds_examples.Deploy,
+        'name': 'Part 2. Deploy Dash Apps on Dash Deployment Server',
+        'description': 'Deploy Dash Apps on Dash Deployment Server'
+    },
+
+    'app-auth-examples': {
+        'url': '/dash-deployment-server/app-authentication',
+        'content': dds_examples.Authentication,
+        'name': 'Dash App Authentication',
+        'description': 'Adding Authentication to your Dash App'
+    },
+
+    'config-sys-examples': {
+        'url': '/dash-deployment-server/configure-system-dependencies',
+        'content': dds_examples.ConfigSys,
+        'name': 'Configuring System Dependencie',
+        'description': 'Install and configure system dependencies such '
+        'as database drivers or the Java JRE environment.'
+    },
+
     'redis-examples': {
         'url': '/dash-deployment-server/redis-database',
         'content': dds_examples.Redis,
-        'name': 'Text Area Component',
-        'description': 'Redis Database.'
+        'name': 'Linking a Redis Database',
+        'description': 'Create and link an in-memory database to your Dash Apps.'
+    },
+
+    'celery-examples': {
+        'url': '/dash-deployment-server/celery-process',
+        'content': dds_examples.Celery,
+        'name': 'Linking a Celery Process',
+        'description': 'Add a task queue to your Dash Apps.'
     },
 
     'env-var-examples': {
         'url': '/dash-deployment-server/enviornment-variables',
         'content': dds_examples.EnvVars,
         'name': 'Setting Enviornment Variables',
-        'description': 'Upload examples, properties, and reference.'
+        'description': 'Environment variables are commonly used to store '
+        'secret variables like database passwords.'
     },
 
     'local-dir-examples': {
         'url': '/dash-deployment-server/map-local-directories',
         'content': dds_examples.LocalDir,
-        'name': 'Upload Component',
-        'description': 'Mapping Local Directories'
+        'name': 'Mapping Local Directories',
+        'description': 'Directory mappings allow you to make directories '
+        'on the Dash Deployment Server available to your app.'
+    },
+
+    'stage-examples': {
+        'url': '/dash-deployment-server/staging-app',
+        'content': dds_examples.StagingApp,
+        'name': 'Create a Staging Dash App ',
+        'description': 'Use a staged Dash App to test changes before updating '
+        'your prodcution Dash App.'
+    },
+
+    'troubleshooting-examples': {
+        'url': '/dash-deployment-server/troubleshooting',
+        'content': dds_examples.Troubleshooting,
+        'name': 'Common Errors',
+        'description': 'Common errors when deploying Dash Apps.'
+    },
+
+    'analytics-examples': {
+        'url': '/dash-deployment-server/analytics',
+        'content': dds_examples.Analytics,
+        'name': 'App Analytics',
+        'description': 'View app analytics such as last updated, '
+        'CPU usage, Memory Usage, and more.'
+    },
+
+    'logs-examples': {
+        'url': '/dash-deployment-server/logs',
+        'content': dds_examples.Logs,
+        'name': 'App Logs',
+        'description': """Check your Dash App's logs via the Dash
+        Deployment Server UI or via the command line."""
+    },
+
+    'support-examples': {
+        'url': '/dash-deployment-server/support',
+        'content': dds_examples.Support,
+        'name': 'Support',
+        'description': 'Having trouble deploying your app? Our dedicated '
+        'support team is available to help you out.'
     },
 ### End Dash Deployment Server ###
+
     'search': {
         'url': '/search',
         'content': search.layout,

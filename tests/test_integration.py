@@ -90,6 +90,23 @@ class Tests(IntegrationTests):
             '/dash-core-components/markdown',
             '/dash-core-components/upload',
             '/dash-core-components/tabs'
+
+        ] + [
+            '/dash-deployment-server/ssh',
+            '/dash-deployment-server/initialize',
+            '/dash-deployment-server/application-structure',
+            '/dash-deployment-server/deployment',
+            '/dash-deployment-server/app-authentication',
+            '/dash-deployment-server/configure-system-dependencies',
+            '/dash-deployment-server/redis-database',
+            '/dash-deployment-server/celery-process',
+            '/dash-deployment-server/enviornment-variables',
+            '/dash-deployment-server/map-local-directories',
+            '/dash-deployment-server/staging-app',
+            '/dash-deployment-server/troubleshooting',
+            '/dash-deployment-server/analytics',
+            '/dash-deployment-server/logs',
+            '/dash-deployment-server/support'
         ]
 
         def visit_and_snapshot(href):
