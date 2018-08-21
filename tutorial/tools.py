@@ -1,4 +1,4 @@
-from server import app
+from tutorial.server import app
 
 
 def load_example(path):

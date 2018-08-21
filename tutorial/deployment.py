@@ -1,5 +1,5 @@
 import dash_core_components as dcc
-import styles
+from tutorial import styles
 
 layout = [dcc.Markdown('''
 # Deploying Dash Apps

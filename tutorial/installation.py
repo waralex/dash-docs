@@ -6,7 +6,7 @@ import dash_html_components as html
 
 import plotly
 
-import styles
+from tutorial import styles
 
 layout = html.Div([
 

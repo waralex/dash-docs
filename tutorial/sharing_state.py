@@ -3,8 +3,8 @@ from textwrap import dedent as s
 import dash_core_components as dcc
 import dash_html_components as html
 
-from components import Example, Syntax
-import tools
+from tutorial.components import Example, Syntax
+from tutorial import tools
 
 examples = {
     'filesystem-session-cache': tools.load_example(

@@ -2,7 +2,7 @@ from dash.dependencies import Input, Output
 import dash_core_components as dcc
 import dash_html_components as html
 import styles
-from server import app
+from tutorial.server import app
 
 
 def s(string_block):
