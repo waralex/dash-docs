@@ -1409,7 +1409,7 @@ LocalDir = html.Div(children=[
     allows for one app's dependencies to not impact the next app's and,
     from a security perspective, ensures that applications can't modify or
     access the underlying server. One part of this isolation is that each app
-    has it's own "ephemeral" filesystem. This means that:
+    has its own "ephemeral" filesystem. This means that:
 
     - By default, files that are saved in the app's environment aren't
     persisted across deploys.
@@ -1518,7 +1518,7 @@ else:
 
     If you are mounting a filesystem, we have the following recommendations:
 
-    - Try to isolate the data that you need into it's own, app-specific folder
+    - Try to isolate the data that you need into its own, app-specific folder
     - Do not mount the entire filesystem
     - Do not mount system directories, like those under `/usr`.
     - As per the
