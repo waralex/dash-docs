@@ -39,6 +39,7 @@ layout = html.Div([
 
     **Table of Contents**
     - Adding Your Own CSS and JavaScript to Dash Apps
+    - Embedding Images in Your Dash Apps
     - Adding External CSS and JavaScript
     - Customizing Dash's HTML Index Template
     - Adding Meta Tags
@@ -161,11 +162,11 @@ h1, h2, h3, h4, h5, h6 {
     There are a few things to keep in mind when including assets automatically:
 
     1 - The following file types will automatically be included:
-    
+
     A - CSS files suffixed with `.css`
-    
+
     B - JavaScript files suffixed with `.js`
-        
+
     C - A single file named `favicon.io` (the page tab's icon)
 
     2 - Dash will include the files in alphanumerical order by filename.
@@ -181,11 +182,45 @@ h1, h2, h3, h4, h5, h6 {
 
     ***
 
+    ## Embedding Images in Your Dash Apps
+
+    In addition to CSS and javascript files, you can include images in
+    the `assets` folder. An example of the folder structure:
+
+    ```
+    - app.py
+    - assets/
+        |-- image.png
+
+    ```
+
+    In your `app.py` file you can use the relative path to that image:
+    ''')),
+
+    dcc.SyntaxHighlighter(
+        """import dash
+import dash_html_components as html
+
+app = dash.Dash()
+
+app.layout = html.Div([
+    html.Img(src='/assets/image.png')
+])
+
+if __name__ == '__main__':
+    app.run_server(debug=True)""",
+        language='python',
+        customStyle=styles.code_container
+    ),
+
+    dcc.Markdown(s('''
+    ***
+
     ## Adding external CSS/Javascript
-    
-    You can add resources hosted externally to your Dash app with the 
+
+    You can add resources hosted externally to your Dash app with the
     `external_scripts/stylesheets` init keywords.
-    
+
     The resources can be either a string or a dict containing the tag attributes
     (`src`, `integrity`, `crossorigin`, etc). You can mix both.
 
@@ -202,7 +237,7 @@ h1, h2, h3, h4, h5, h6 {
 
     dcc.Markdown(s('''
     ***
-    
+
     ## Customizing Dash's HTML Index Template
 
     **New in dash 0.22.0**
