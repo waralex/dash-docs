@@ -51,9 +51,7 @@ layout = html.Div(className='toc', children=[
         Chapter('Announcement Essay',
                 'https://medium.com/@plotlygraphs/introducing-dash-5ecf7191b503'),
         Chapter(chapters['gallery']['name'],
-                chapters['gallery']['url']),
-        Chapter(u'2018 Dash Workshops in Montréal',
-                'https://plotcon.plot.ly/'),
+                chapters['gallery']['url'])
     ]),
 
     Section('Dash Tutorial', [
