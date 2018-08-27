@@ -264,7 +264,7 @@ layout = html.Div(className='gallery', children=[
             app_name='Phylogeny trees and global spread of 6 viruses',
             app_link='https://dash-phylogeny.herokuapp.com/',
             code_link='https://github.com/plotly/dash-phylogeny',
-            img_src='https://github.com/plotly/dash-phylogeny/blob/dev/images/dash-phylo-tree.gif',
+            img_src='https://raw.githubusercontent.com/plotly/dash-docs/master/images/dash-phylo-tree.gif',
             description='''
             Interactively explore the propagation of 6 viruses, by time and/or by geolocalisation. 
             In the online app, you can select a virus, and the evolution of the virus as a phylogeny tree will display with a map and time series of the virus's global spread.
