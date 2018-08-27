@@ -374,7 +374,7 @@ chapters = {
     },
 
     'env-var-examples': {
-        'url': '/dash-deployment-server/enviornment-variables',
+        'url': '/dash-deployment-server/environment-variables',
         'content': dds_examples.EnvVars,
         'name': 'Setting Enviornment Variables',
         'description': 'Environment variables are commonly used to store '

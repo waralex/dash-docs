@@ -24,3 +24,7 @@ app.config.suppress_callback_exceptions = True
 @app.server.route('/deployment/on-premise')
 def redirectDDS():
     return redirect("/dash-deployment-server", code=302)
+
+@app.server.route('/dash-deployment-server/enviornment-variables')
+def redirectEnvVar():
+    return redirect("/dash-deployment-server/environment-variables", code=302)
