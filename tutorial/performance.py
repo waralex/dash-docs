@@ -1,7 +1,7 @@
 import dash_core_components as dcc
 
-from components import Syntax
-import tools
+from tutorial.components import Syntax
+from tutorial import tools
 
 examples = {
     'memoization': tools.load_example(

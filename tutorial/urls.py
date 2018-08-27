@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import dash_core_components as dcc
-import styles
+from tutorial import styles
 
 layout = [dcc.Markdown('''
 # Multi-Page Apps and URL Support
