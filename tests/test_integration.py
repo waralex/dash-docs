@@ -100,7 +100,7 @@ class Tests(IntegrationTests):
             '/dash-deployment-server/configure-system-dependencies',
             '/dash-deployment-server/redis-database',
             '/dash-deployment-server/celery-process',
-            '/dash-deployment-server/enviornment-variables',
+            '/dash-deployment-server/environment-variables',
             '/dash-deployment-server/map-local-directories',
             '/dash-deployment-server/staging-app',
             '/dash-deployment-server/troubleshooting',
