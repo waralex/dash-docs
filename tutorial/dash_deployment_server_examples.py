@@ -817,10 +817,17 @@ def display_instructions2(method):
         dcc.Markdown(s('''
         &nbsp;
 
-        Plotly recommends using HTTPS, but if you would like to use SSH then you
-        need to [Configure SSH Authentication](/dash-deployment-server/ssh).
+        If SAML authentication is disabled, Plotly recommends using HTTPS.
+        That said, if you would like to use SSH then you need to
+        [Configure SSH Authentication](/dash-deployment-server/ssh).
 
-        ''') if method == 'SSH' else ('')),
+        ''') if method == 'SSH' else s('''
+        &nbsp;
+
+        Note: HTTPS deployments only work if SAML authentication is disabled.
+        If SAML authentication is enabled, Plotly recommends using SSH.
+
+        ''')),
 
         dcc.SyntaxHighlighter(s(
         '''$ git remote add plotly dokku@your-dash-deployment-server:your-dash-app-name''' if method == 'SSH' else
