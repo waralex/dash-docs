@@ -4,7 +4,7 @@ import dash_table_experiments as dt
 
 from dash.dependencies import Input, Output
 
-from tutorial.server import app
+from tutorial.server import app, server
 
 from tutorial import chapter_index
 from tutorial import home
