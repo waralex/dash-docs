@@ -411,7 +411,7 @@ layout = html.Div(className='gallery', children=[
             app_name='Forex Trader Demo ',
             app_link='https://dash-web-trader.herokuapp.com',
             code_link='https://github.com/plotly/dash-web-trader',
-            img_src='https://raw.githubusercontent.com/plotly/dash-web-trader/images/dash-web-trader.gif',
+            img_src='https://raw.githubusercontent.com/plotly/dash-docs/master/images/dash-web-trader.gif',
             description='''
             This app continually queries csv files and updates Ask and Bid prices for major currency pairs as well as Stock Charts.
             You can also virtually buy and sell stocks and see the profit updates.
