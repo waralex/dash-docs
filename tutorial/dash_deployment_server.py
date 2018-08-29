@@ -36,8 +36,8 @@ layout = html.Div(className='toc', children=[
         reusable_components.Chapter('Configuring System Dependencies',
                 '/dash-deployment-server/configure-system-dependencies',
                 'Install and configure system dependencies such as database drivers or the Java JRE environment.'),
-        reusable_components.Chapter('Setting Enviornment Variables',
-                '/dash-deployment-server/enviornment-variables',
+        reusable_components.Chapter('Setting Environment Variables',
+                '/dash-deployment-server/environment-variables',
                 'Environment variables are commonly used to store secret '
                 'variables like database passwords.'),
         reusable_components.Chapter('Mapping Local Directories',

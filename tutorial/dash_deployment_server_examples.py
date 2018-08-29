@@ -40,11 +40,15 @@ Ssh = html.Div(children=[
     dcc.Markdown(s('''
     #### Why Deploy with SSH?
 
-    We recommend deploying with HTTPS for most of our users.
-    However, if your Dash Deployment Server is using a **self-signed
-    certificate**, deploying with HTTPS
+    We recommend deploying with HTTPS for most of our users. However, there
+    are a few cases where deploying with SSH is advantageous:
+
+    - If your Dash Deployment Server is using a **self-signed certificate**,
+    deploying with HTTPS
     [requires some extra, challenging configuration](https://stackoverflow.com/questions/11621768/).
     In these cases, it will be easier to set up deploying with SSH.
+    - If your Dash Deployment Server is configured with **SAML**, then the
+    HTTPS method will not work.
 
     ***
 
@@ -580,6 +584,14 @@ def display_instructions2(platform):
 
                     ##### Which Deployment Method Are You Using?
 
+                    For most use cases, Plotly recommends using HTTPS as it
+                    doesn't require any extra configuration. However, if
+                    you are using self-signed certificates or if your server
+                    has SAML enabled, then you should deploy with SSH.
+                    [Configure SSH Authentication](/dash-deployment-server/ssh).
+
+                    &nbsp;
+
                     ''')),
                 ])
             ]),
@@ -765,6 +777,14 @@ if __name__ == '__main__':
 
                     ##### Which Deployment Method Are You Using?
 
+                    For most use cases, Plotly recommends using HTTPS as it
+                    doesn't require any extra configuration. However, if
+                    you are using self-signed certificates or if your server
+                    has SAML enabled, then you should deploy with SSH.
+                    [Configure SSH Authentication](/dash-deployment-server/ssh).
+
+                    &nbsp;
+
                     ''')),
                 ])
             ]),
@@ -805,6 +825,14 @@ $ git init # initializes an empty git repo''', customStyle=styles.code_container
 
                     ##### Which Deployment Method Are You Using?
 
+                    For most use cases, Plotly recommends using HTTPS as it
+                    doesn't require any extra configuration. However, if
+                    you are using self-signed certificates or if your server
+                    has SAML enabled, then you should deploy with SSH.
+                    [Configure SSH Authentication](/dash-deployment-server/ssh).
+
+                    &nbsp;
+
                     ''')),
                 ])
             ]),
@@ -817,12 +845,10 @@ $ git init # initializes an empty git repo''', customStyle=styles.code_container
 def display_instructions2(method):
     return [
         dcc.Markdown(s('''
+
         &nbsp;
 
-        Plotly recommends using HTTPS, but if you would like to use SSH then you
-        need to [Configure SSH Authentication](/dash-deployment-server/ssh).
-
-        ''') if method == 'SSH' else ('')),
+        ''')),
 
         dcc.SyntaxHighlighter(s(
         '''$ git remote add plotly dokku@your-dash-deployment-server:your-dash-app-name''' if method == 'SSH' else
