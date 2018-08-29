@@ -1770,7 +1770,10 @@ Troubleshooting = html.Div(children=[
             ''''
             &nbsp;
 
-            This error might occur if you are trying to push from a branch that is not your `master` branch. Get the name of your current branch by running `git branch`. Then, to push from this branch to the remote server, run `git push plotly your-branch-name:master`. 
+            This error might occur if you are trying to push from a branch
+            that is not your `master` branch. Get the name of your current
+            branch by running `git branch`. Then, to push from this branch
+            to the remote server, run `git push plotly your-branch-name:master`. 
 
             &nbsp; 
             ''')
