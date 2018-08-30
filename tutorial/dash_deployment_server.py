@@ -49,8 +49,8 @@ layout = html.Div(className='toc', children=[
     reusable_components.Section("Advanced", [
         reusable_components.Chapter('Authenticating to Dash Deployment Server with SSH',
                 '/dash-deployment-server/ssh',
-                "There are two methods to deploy Dash Apps: HTTPS and SSH "
-                "and we recommend getting started with the HTTPS method. "
+                "There are two methods to deploy Dash Apps: HTTPS and SSH. "
+                "We recommend getting started with the HTTPS method. "
                 "In this section, you'll learn more about deploying with SSH."),
         reusable_components.Chapter('Dash App Authentication',
                 '/dash-deployment-server/app-authentication',
@@ -65,7 +65,7 @@ layout = html.Div(className='toc', children=[
         reusable_components.Chapter('Create a Staging Dash App',
                 '/dash-deployment-server/staging-app',
                 'Use a staged Dash App to test changes before updating your '
-                'prodcution Dash App.')
+                'production Dash App.')
     ]),
 
     reusable_components.Section("Troubleshooting", [
