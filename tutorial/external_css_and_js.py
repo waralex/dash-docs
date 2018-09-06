@@ -167,7 +167,7 @@ h1, h2, h3, h4, h5, h6 {
 
     B - JavaScript files suffixed with `.js`
 
-    C - A single file named `favicon.io` (the page tab's icon)
+    C - A single file named `favicon.ico` (the page tab's icon)
 
     2 - Dash will include the files in alphanumerical order by filename.
     So, we recommend prefixing your filenames with numbers if you need to ensure
