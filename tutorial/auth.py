@@ -42,6 +42,7 @@ layout = html.Div([
     list of files at [https://plot.ly/organize](https://plot.ly/organize)
     and you can manage the permissions of the apps there. Viewers create and
     manage their own accounts.
+    
     '''.replace('    ', '')),
 
     dcc.Markdown('''
@@ -196,6 +197,125 @@ def update_graph(dropdown_value):
         },
         'data': [{'x': [1, 2, 3], 'y': [4, 1, 2]}]
     }
+
+app.scripts.config.serve_locally = True
+app.css.append_css({'external_url': 'https://codepen.io/chriddyp/pen/bWLwgP.css'})
+
+if __name__ == '__main__':
+    app.run_server(debug=True)
+
+    ''', language='python', customStyle=styles.code_container),
+
+dcc.Markdown('''
+    ## Methods on PlotlyAuth Objects
+    
+        
+    With Plotly OAuth, it is possible to create create cookies that store information
+    persionalized to a user. In the example below we use the `@auth.is_authorized_hook` and
+    `auth.set_user_data` to create a cookie containing an LDAP_DN object associated with
+    their account and then we determine whether they can view the graph by checking their
+    permissions in that cookie using `auth.get_user_data`.
+    
+    Finally, we clear auth cookies and invalidate the plotly_oauth_token using `auth.create_logout_button`
+    
+    '''.replace('   ', '')),
+
+    html.Img(
+        src='https://raw.githubusercontent.com/michaelbabyn/plot_data/master/dash-auth-user-data.gif',
+        alt='Dash Plotly OAuth User Data and Logout',
+        style={
+            'width': '100%', 'border': 'thin lightgrey solid',
+            'border-radius': '4px'
+        }),
+
+    dcc.Markdown('''
+    Installation:
+    '''.replace('    ', '')),
+
+    dcc.SyntaxHighlighter('''pip install dash==0.26.3
+pip install dash-auth==1.1.2''', customStyle=styles.code_container),
+
+    dcc.Markdown('''
+    Example Code:
+    '''.replace('    ', '')),
+
+    dcc.SyntaxHighlighter('''import dash
+import dash_auth
+import dash_core_components as dcc
+import dash_html_components as html
+from dash.dependencies import Output, Input
+import plotly
+
+# Modify these variables with your own info
+APP_NAME = 'Dash Authentication Sample App'
+APP_URL = 'https://my-dash-app.herokuapps.com'
+
+app = dash.Dash('auth')
+auth = dash_auth.PlotlyAuth(
+    app,
+    APP_NAME,
+    'public',
+    APP_URL
+)
+
+app.layout = html.Div([
+    html.H1('Welcome to the app', id='title'),
+    html.Div(id='authorized'),
+    html.Button('View Graph', id='btn'),
+    dcc.Graph(id='graph', figure={
+        'layout': {
+            'title': 'Private Graph',
+            'margin': {
+                'l': 20,
+                'b': 20,
+                'r': 10,
+                't': 60
+            }
+        },
+        'data': [{'x': [1, 2, 3], 'y': [4, 1, 2]}]
+    }, style={'display': 'none'}),
+    auth.create_logout_button(
+        label='Sign out',
+        redirect_to='https://plot.ly')],
+     className='container')
+
+
+@app.callback(Output('title', 'children'), [Input('title', 'id')])
+def _give_name(title):
+    username = auth.get_username()
+    return 'Welcome to the app, {}'.format(username)
+
+
+@auth.is_authorized_hook
+def _is_authorized(data):
+    active = data.get('is_active')
+    if active:
+        auth.set_user_data(data.get('ldap_dn'))
+    return active
+
+@app.callback(Output('authorized', 'children'), [Input('btn', 'n_clicks')])
+def _check_perms(n_clicks):
+    if n_clicks:
+        perms = auth.get_user_data()
+        perm_view_graph = perms.get('graph_1')
+        if not perm_view_graph:
+            return 'You are not authorized to view this content'
+        else:
+            return 'You\'re authorized!'
+
+
+@app.callback(Output('graph', 'style'), [Input('btn', 'n_clicks')])
+def _check_perms(n_clicks):
+    if n_clicks:
+        perms = auth.get_user_data()
+        perm_view_graph = perms.get('graph_1')
+        if perm_view_graph:
+            return {}
+        else:
+            return {'display': 'none'}
+    else:
+        return {'display': 'none'}
+
 
 app.scripts.config.serve_locally = True
 app.css.append_css({'external_url': 'https://codepen.io/chriddyp/pen/bWLwgP.css'})
