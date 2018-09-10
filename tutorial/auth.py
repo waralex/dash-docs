@@ -211,12 +211,13 @@ dcc.Markdown('''
     
         
     With Plotly OAuth, it is possible to create create cookies that store information
-    persionalized to a user. In the example below we use the `@auth.is_authorized_hook` and
+    related to a user. In the example below we use the `@auth.is_authorized_hook` and
     `auth.set_user_data` to create a cookie containing an LDAP_DN object associated with
     their account and then we determine whether they can view the graph by checking their
     permissions in that cookie using `auth.get_user_data`.
     
-    Finally, we clear auth cookies and invalidate the plotly_oauth_token using `auth.create_logout_button`
+    Finally, we can logout the user by clearing the cookies. To do so, you can create a 
+    logout button and insert it in the layout or use `auth.logout()` in a callback.
     
     '''.replace('   ', '')),
 
@@ -232,8 +233,12 @@ dcc.Markdown('''
     Installation:
     '''.replace('    ', '')),
 
-    dcc.SyntaxHighlighter('''pip install dash==0.26.3
-pip install dash-auth==1.1.2''', customStyle=styles.code_container),
+    dcc.SyntaxHighlighter('''pip install dash=={}  # The core dash backend
+        pip install dash-html-components=={}  # Dash Auth components
+    '''.replace('    ', '').format(
+        dash.__version__,
+        dash_auth.__version__,
+    ), customStyle=styles.code_container),
 
     dcc.Markdown('''
     Example Code:
@@ -244,11 +249,14 @@ import dash_auth
 import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Output, Input
-import plotly
 
+import os
 # Modify these variables with your own info
 APP_NAME = 'Dash Authentication Sample App'
-APP_URL = 'https://my-dash-app.herokuapps.com'
+APP_URL = 'http://127.0.0.1:8050/'
+
+#os.environ['PLOTLY_USERNAME'] = 'dash-test-user'
+#os.environ['PLOTLY_API_KEY'] = '9kCBELqYp54Dygjn7zhH'
 
 app = dash.Dash('auth')
 auth = dash_auth.PlotlyAuth(
@@ -281,31 +289,32 @@ app.layout = html.Div([
 
 
 @app.callback(Output('title', 'children'), [Input('title', 'id')])
-def _give_name(title):
+def give_name(title):
     username = auth.get_username()
     return 'Welcome to the app, {}'.format(username)
 
 
 @auth.is_authorized_hook
-def _is_authorized(data):
+def is_authorized(data):
+    print(data)
     active = data.get('is_active')
     if active:
-        auth.set_user_data(data.get('ldap_dn'))
+        auth.set_user_data({'graph_1': True})
     return active
 
 @app.callback(Output('authorized', 'children'), [Input('btn', 'n_clicks')])
-def _check_perms(n_clicks):
+def check_perms(n_clicks):
     if n_clicks:
         perms = auth.get_user_data()
         perm_view_graph = perms.get('graph_1')
         if not perm_view_graph:
             return 'You are not authorized to view this content'
         else:
-            return 'You\'re authorized!'
+            return 'You are authorized!'
 
 
 @app.callback(Output('graph', 'style'), [Input('btn', 'n_clicks')])
-def _check_perms(n_clicks):
+def check_perms_graph_update(n_clicks):
     if n_clicks:
         perms = auth.get_user_data()
         perm_view_graph = perms.get('graph_1')
