@@ -212,7 +212,7 @@ dcc.Markdown('''
         
     With Plotly OAuth, it is possible to create create cookies that store information
     related to a user. In the example below we use the `@auth.is_authorized_hook` and
-    `auth.set_user_data` to create a cookie containing an LDAP_DN object associated with
+    `auth.set_user_data` to create a cookie containing an object associated with
     their account and then we determine whether they can view the graph by checking their
     permissions in that cookie using `auth.get_user_data`.
     
@@ -255,8 +255,6 @@ import os
 APP_NAME = 'Dash Authentication Sample App'
 APP_URL = 'http://127.0.0.1:8050/'
 
-#os.environ['PLOTLY_USERNAME'] = 'dash-test-user'
-#os.environ['PLOTLY_API_KEY'] = '9kCBELqYp54Dygjn7zhH'
 
 app = dash.Dash('auth')
 auth = dash_auth.PlotlyAuth(
