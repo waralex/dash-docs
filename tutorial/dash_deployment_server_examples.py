@@ -4,6 +4,7 @@ import dash_core_components as dcc
 import dash_html_components as html
 from tutorial import styles
 from tutorial.server import app
+import reusable_components as rc
 
 
 def s(string_block):
@@ -15,6 +16,8 @@ def s(string_block):
 # # # # # # #
 Initialize = html.Div(children=[
     html.H1('Part 1. Initialize Dash Apps on Dash Deployment Server'),
+
+    rc.Blockquote(),
 
     dcc.Markdown(s('''
         > This is the *1st* deployment chapter of the [Dash Deployment Server Documentation](/dash-deployment-server).
@@ -117,6 +120,8 @@ Initialize = html.Div(children=[
 # # # # # # #
 Deploy = html.Div(children=[
     html.H1('Part 2. Deploy Dash Apps on Dash Deployment Server'),
+
+    rc.Blockquote(),
 
     dcc.Markdown(s(
     '''
@@ -587,6 +592,8 @@ $ git push plotly master'''), customStyle=styles.code_container, language='pytho
 Requirements = html.Div(children=[
     html.H1('Application Structure'),
 
+    rc.Blockquote(),
+
     dcc.Markdown(s(
     '''
     To deploy dash apps to the Dash Deployment Server, there
@@ -680,6 +687,8 @@ Requirements = html.Div(children=[
 staticAssets = html.Div(children=[
     html.H1('Adding Static Assets'),
 
+    rc.Blockquote(),
+
     dcc.Markdown(s(
     '''
     Coming Soon
@@ -691,6 +700,9 @@ staticAssets = html.Div(children=[
 # # # # # # #
 ConfigSys = html.Div(children=[
     html.H1('Configuring System Dependencies'),
+
+    rc.Blockquote(),
+
     dcc.Markdown(s('''
     In some cases you may need to install and configure system
     dependencies. Examples include installing and configuring
@@ -797,6 +809,8 @@ ConfigSys = html.Div(children=[
 # # # # # # #
 EnvVars = html.Div(children=[
     html.H1('Setting Environment Variables'),
+
+    rc.Blockquote(),
 
     dcc.Markdown(s('''
     In Plotly Enterprise 2.5.0, you can store secrets as environment variables
@@ -915,6 +929,8 @@ EnvVars = html.Div(children=[
 # # # # # # #
 LocalDir = html.Div(children=[
     html.H1('Mapping Local Directories Examples and Reference'),
+
+    rc.Blockquote(),
 
     dcc.Markdown(s('''
     In Dash Deployment Server, Dash Apps are run in isolated containers.
@@ -1077,6 +1093,8 @@ else:
 # # # # # # #
 Ssh = html.Div(children=[
     html.H1('Authenticating to Dash Deployment Server with SSH'),
+
+    rc.Blockquote(),
 
     dcc.Markdown(s('''
 
@@ -1337,6 +1355,9 @@ def display_instructions(platform):
 # # # # # # #
 Authentication = html.Div(children=[
     html.H1('Dash App Authentication'),
+
+    rc.Blockquote(),
+
     dcc.Markdown(s('''
     The `dash-auth` package provides login through your Plotly
     Enterprise accounts. For example, the discussion below describes how
@@ -1371,6 +1392,8 @@ Authentication = html.Div(children=[
 # # # # # # #
 Redis = html.Div(children=[
     html.H1('Create and Link Redis Database'),
+
+    rc.Blockquote(),
 
     dcc.Markdown(s('''
     Redis is a powerful in-memory database that is well-suited for many Dash
@@ -1582,6 +1605,8 @@ Redis = html.Div(children=[
 Celery = html.Div(children=[
     html.H1('Linking a Celery Process'),
 
+    rc.Blockquote(),
+
     dcc.Markdown(s(
     '''
     Celery is a reliable asynchronous task queue/job queue that supports both
@@ -1607,6 +1632,8 @@ Celery = html.Div(children=[
 # # # # # # #
 StagingApp = html.Div(children=[
     html.H1('Create a Staging Dash App'),
+
+    rc.Blockquote(),
 
     dcc.Markdown(s(
     '''
@@ -1663,6 +1690,8 @@ StagingApp = html.Div(children=[
 # # # # # # #
 pdfService = html.Div(children=[
     html.H1('Dash Deployment Server PDF Service'),
+
+        rc.Blockquote(),
 
         dcc.Markdown(s(
         '''
@@ -1856,6 +1885,9 @@ if __name__ == '__main__':
 # # # # # # #
 Analytics = html.Div(children=[
     html.H1('Dash App Analytics'),
+
+    rc.Blockquote(),
+
     dcc.Markdown(s('''
     #### Dash App Analytics
 
@@ -1881,6 +1913,9 @@ Analytics = html.Div(children=[
 # # # # # # #
 Logs = html.Div(children=[
     html.H1('Dash App Logs'),
+
+    rc.Blockquote(),
+
     dcc.Markdown(s('''
     ***
 
@@ -1941,6 +1976,9 @@ Logs = html.Div(children=[
 # # # # # # #
 Troubleshooting = html.Div(children=[
     html.H1('Common Errors'),
+
+    rc.Blockquote(),
+
     dcc.Markdown(s(
     '''
     This section describes some of the common errors you may encounter when
@@ -2088,6 +2126,9 @@ Troubleshooting = html.Div(children=[
 # # # # # # #
 Support = html.Div(children=[
     html.H1('Plotly Enterprise Support'),
+
+    rc.Blockquote(),
+    
     dcc.Markdown(s('''
     ***
 
