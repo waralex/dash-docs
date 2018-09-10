@@ -675,6 +675,18 @@ Requirements = html.Div(children=[
 ])
 
 # # # # # # #
+# Adding Static Assets
+# # # # # # #
+staticAssets = html.Div(children=[
+    html.H1('Adding Static Assets'),
+
+    dcc.Markdown(s(
+    '''
+    Coming Soon
+    '''))
+])
+
+# # # # # # #
 # Configuring System Dependencies
 # # # # # # #
 ConfigSys = html.Div(children=[
@@ -731,6 +743,7 @@ ConfigSys = html.Div(children=[
     &nbsp;
 
     ##### Add A Pre-Deploy Script
+
     Let's generate a file to do this. Note that the file can
     have any name as we must specify the name in an application
     configuration file `app.json`.
@@ -1645,6 +1658,198 @@ StagingApp = html.Div(children=[
 
 ])
 
+# # # # # # #
+# Dash Deployment Server PDF Service
+# # # # # # #
+pdfService = html.Div(children=[
+    html.H1('Dash Deployment Server PDF Service'),
+
+        dcc.Markdown(s(
+        '''
+
+        The Dash Deployment Server has an API endpoint for creating PDF exports
+        of your Dash applications. The API is simple: pass in the URL of your
+        Dash app and the sizing parameters and get back a PDF print out. You can
+        automate PDF generation with
+        [Dash Deployment Server's Celery task queues](https://dash.plot.ly/dash-deployment-server/celery-process)
+        or you can generate these PDFs on-the-fly.
+
+        ***
+
+        #### API Parameters
+
+        ''')),
+
+        dcc.SyntaxHighlighter('''POST https://<your-plotly-enterprise-server>/api/dash-apps/image
+content-type: application/json
+plotly-client-platform: dash
+Authorization: Basic ...
+
+{
+    "url": "...",
+    "pdf_options": {
+        "pageSize": "Letter",
+        "marginsType": 1
+    },
+    "wait_selector": "body"
+}''',
+        customStyle=styles.code_container, language='python'),
+
+        dcc.Markdown(s(
+        '''
+
+        - `url` - The URL to download
+        - `wait_selector` - A string that specifies a
+        [CSS selector](https://developer.mozilla.org/en-US/docs/Learn/CSS/Introduction_to_CSS/Simple_selectors).
+        The API will wait until an element that matches this CSS selector
+        appears on the screen before taking a screenshot. This ensures that
+        the page has finished loading before taking a screenshot.
+        In general, we recommend:
+            - If there are no graphs on the page, then embed an
+            `html.Div(id='waitfor')` in your `app.layout` or return it from
+            the callback that gets executed last. With the id `waitfor`, the
+            `wait_selector` would be `"#waitfor"`.
+            - If the page has `dcc.Graph` elements on it, then you'll want
+            to wait until these graphs have finished renderering. To do this,
+            set the `wait_selector` to be `#graph_id .svg-container` where
+            `"graph_id"` corresponds to the ID of the `dcc.Graph` component.
+            `.svg-container` refers to a CSS class of an element that plotly
+            inserts in the graph when it has finished rendering.
+        - `pdf_options` - PDF sizing options. These options are similar to the
+        options that you see when you print a web page using your web browser.
+        They include:
+            - `pageSize`: Page size of the generated PDF. Available options:
+            `A3`, `A4`, `A5`, `Legal`, `Tabloid` or
+            `{"width": ..., "height": ...}` where `width` and `height` are
+            integers specified in microns.
+            - `marginsType`: Specifies the type of margins to use. `0` for
+            default margin, `1` for no margin, and `2` for minimum margin. We
+            recommend using `1` and controlling the margins yourself through
+            your app's CSS.
+            - `landscape` (optional): `True` for landscape, `False` for portrait.
+
+        ***
+
+        #### Basic Example
+
+        This example provides a simple UI around the PDF API. You can run this
+        example locally or you can deploy this example to Dash
+        Deployment Server. A few things to note:
+
+        - Find your API key by visiting https://<your-plotly-server>/settings/api
+        - The username and API key are read from environment variables.
+        [Learn how to set environment variables on Dash Deployment Server](https://dash.plot.ly/dash-deployment-server/environment-variables).
+        ''')),
+
+        dcc.SyntaxHighlighter('''import dash
+from dash.dependencies import Input, Output, State
+import dash_core_components as dcc
+import dash_html_components as html
+
+import base64
+import json
+import os
+import requests
+
+app = dash.Dash(__name__)
+server = app.server
+
+with open('snapshot.pdf', 'rb') as f:
+    pdf = f.read()
+
+
+app.layout = html.Div([
+    html.Label('Website URL'),
+    dcc.Input(
+        id='website',
+        value='https://dash.plot.ly'
+    ),
+
+    html.Div(html.B('CSS Selector')),
+    html.Div(
+        'Wait until an element targeted by this selector appears '
+        'before taking a snapshot. These are standard CSS query selectors'.
+    ),
+    dcc.Input(
+        id='wait_selector',
+        value='#wait-for-layout'
+    ),
+
+    html.Button(id='run', children='Snapshot', n_clicks=0),
+
+    html.Div(id='output'),
+
+])
+
+
+@app.callback(Output('output', 'children'),
+              [Input('run', 'n_clicks')],
+              [State('website', 'value'),
+               State('wait_selector', 'value')])
+def snapshot_page(n_clicks, url, wait_selector):
+    if n_clicks == 0:
+        return ''
+    payload = {
+        'url': url,
+        'pdf_options': {
+            'pageSize': 'Letter',
+            'marginsType': 1
+        },
+        'wait_selector': wait_selector
+    }
+
+    res = requests.post(
+        '{}/v2/dash-apps/image'.format(
+            os.environ.get('PLOTLY_BASE_URL', '')
+        ),
+        headers={
+            'plotly-client-platform': 'dash',
+            'content-type': 'application/json',
+        },
+        auth=(
+            os.environ.get('PLOTLY_USERNAME', ''),
+            os.environ.get('PLOTLY_API_KEY', ''),
+        ),
+        data=json.dumps(payload)
+    )
+    if res.status_code == 200:
+        return html.A(
+            'Download',
+            href='data:application/pdf;base64,{}'.format(
+                base64.b64encode(res.content).decode('utf-8')
+            ),
+            download='dash.pdf',
+            target='_blank'
+        )
+
+    return html.Pre('Status: {}\nResponse: {}'.format(
+        res.status_code, res.content
+    ))
+
+
+if __name__ == '__main__':
+    app.run_server(debug=True)''',
+        customStyle=styles.code_container, language='python'),
+
+        dcc.Markdown(s('''
+
+        ***
+
+        #### Custom Reporting Solutions
+
+        Plotly helps companies modernize their reporting infrastructure with
+        Dash. In particular, we help organizations with:
+        - Our modules for saving and loading reports in Dash Deployment Server
+        - Converting existing PDF reports into Dash application code
+        - Creating high-quality, branded PDF templates
+
+        Get in touch with your sales rep or
+        [reach out to us directly](https://plotly.typeform.com/to/rkO85m)
+        to learn more.
+
+        ''')),
+
+])
 
 # # # # # # #
 # Analytics

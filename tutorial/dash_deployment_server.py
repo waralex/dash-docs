@@ -33,6 +33,9 @@ layout = html.Div(className='toc', children=[
         reusable_components.Chapter('Application Structure',
                 '/dash-deployment-server/application-structure',
                 'Ensure that your app meets all the requirements for deployment.'),
+        reusable_components.Chapter('Adding Static Assets',
+                '/dash-deployment-server/static-assets',
+                'Learn how to include custom CSS, JS, and images with the `assets` directory.'),
         reusable_components.Chapter('Configuring System Dependencies',
                 '/dash-deployment-server/configure-system-dependencies',
                 'Install and configure system dependencies such as database drivers or the Java JRE environment.'),
@@ -65,7 +68,11 @@ layout = html.Div(className='toc', children=[
         reusable_components.Chapter('Create a Staging Dash App',
                 '/dash-deployment-server/staging-app',
                 'Use a staged Dash App to test changes before updating your '
-                'production Dash App.')
+                'production Dash App.'),
+        reusable_components.Chapter('Dash Deployment Server PDF Service',
+                '/dash-deployment-server/pdf-service',
+                'Utilize the Dash Deployment Server API endpoint for creating '
+                'PDF exports of your Dash applications')
     ]),
 
     reusable_components.Section("Troubleshooting", [
