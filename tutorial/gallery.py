@@ -92,7 +92,7 @@ layout = html.Div(className='gallery', children=[
         with a `Graph` and filters data using a Pandas `DataFrame`.
         The `animate` property in the `Graph` component was set to `True`
         so that the points transition smoothly.
-        Some interactivity is built-in to the `Graph` component including
+        Some interactivity is built into the `Graph` component, including
         hovering over values, clicking on legend items to toggle traces, and
         zooming into regions.
     
@@ -110,7 +110,7 @@ layout = html.Div(className='gallery', children=[
             img_src='https://raw.githubusercontent.com/plotly/dash-docs/master/images/stock-tickers.png',
             description='''
             This app queries data from Google Finance and displays the results as candlestick
-            charts. Dash comes with several financial chart types including candlestick
+            charts. Dash comes with several financial chart types including: candlestick
             charts, OHLC graphs, time series, and range sliders.
         
             This app was written in just around 100 lines of code.
@@ -135,7 +135,7 @@ layout = html.Div(className='gallery', children=[
         
             With PDF styles, you can hide and show elements depending on whether
             the app is being viewed in the web browser or in print, using the
-            same framework for the rich interactive applications as the static
+            same framework for both the rich interactive applications and the static
             PDF reports.
             '''
 
@@ -145,17 +145,17 @@ layout = html.Div(className='gallery', children=[
 
     reusable.Row([
         AppSection(
-            app_name='3D Yield Curve',
+            app_name='3-D Yield Curve',
             app_link='https://dash-yield-curve.plot.ly',
             code_link='https://github.com/plotly/dash-yield-curve',
             img_src='https://raw.githubusercontent.com/plotly/dash-docs/master/images/dash-yield-curve-app.png',
             description='''
-            This Dash app adapts the excellent NY Times
-            report [A 3-D View of a Chart That Predicts The Economic Future: The Yield Curve](https://www.nytimes.com/interactive/2015/03/19/upshot/3d-yield-curve-economic-growth.html).
+            This Dash app adapts the New York Times' excellent
+            report: [A 3-D View of a Chart That Predicts The Economic Future: The Yield Curve](https://www.nytimes.com/interactive/2015/03/19/upshot/3d-yield-curve-economic-growth.html).
 
-            Dash comes with a wide range of interactive 3D chart types,
-            such as 3D scatter plots, surface plots, network graphs and ribbon plots.
-            [View more 3D chart examples](https://plot.ly/python/3d-charts/).
+            Dash comes with a wide range of interactive 3-D chart types,
+            such as 3-D scatter plots, surface plots, network graphs and ribbon plots.
+            [View more 3-D chart examples](https://plot.ly/python/3d-charts/).
             '''
         ),
 
@@ -167,7 +167,7 @@ layout = html.Div(className='gallery', children=[
             description='''
             485 lines of Python code, including text copy.
         
-            This Dash app was adapted from NYTimes's excellent
+            This Dash app was adapted from The New York Times' excellent report: 
             [How the Recession Reshaped the Economy in 255 Charts](https://www.nytimes.com/interactive/2014/06/05/upshot/how-the-recession-reshaped-the-economy-in-255-charts.html).
         
             This Dash app displays its content linearly, like an
@@ -183,7 +183,7 @@ layout = html.Div(className='gallery', children=[
         
             The text in the application is centered and its width is restricted
             to improve the reading experience. The graphs are full bleed:
-            the extend past the narrow column of text the edges of page.
+            they extend past the narrow column of text to the edges of the page.
             '''
         )
     ]),
@@ -242,7 +242,7 @@ layout = html.Div(className='gallery', children=[
     ]),
 
     # LIFE SCIENCES SECTION
-    SectionTitle('Life sciences'),
+    SectionTitle('Life Sciences'),
 
     reusable.Row([
         AppSection(
@@ -268,7 +268,7 @@ layout = html.Div(className='gallery', children=[
             code_link='https://github.com/plotly/dash-brain-surface-viewer',
             img_src='https://raw.githubusercontent.com/plotly/dash-brain-surface-viewer/master/ZOMBIE_BRAIN.png',
             description='''
-            🐭 Explore human and mice brains in 3d.
+            🐭 Explore human and mice brains in 3-D.
             
             Add interactive labels to points on the brain surface and change the surface colorscale.
             '''
@@ -277,13 +277,13 @@ layout = html.Div(className='gallery', children=[
 
     reusable.Row([
         AppSection(
-            app_name='Phylogeny trees and global spread of 6 viruses',
+            app_name='Phylogeny trees and global spread of six viruses',
             app_link='https://dash-phylogeny.herokuapp.com/',
             code_link='https://github.com/plotly/dash-phylogeny',
             img_src='https://raw.githubusercontent.com/plotly/dash-docs/master/images/dash-phylo-tree.gif',
             description='''
-            Interactively explore the propagation of 6 viruses, by time and/or by geolocalisation. 
-            In the online app, you can select a virus, and the evolution of the virus as a phylogeny tree will display with a map and time series of the virus's global spread.
+            Interactively explore the propagation of six viruses, by time and/or by location. 
+            In the online app, you can select a virus to display its evolution as a phylogeny tree, along with a map and time series of the virus's global spread.
         ''',
             width=12
         )
@@ -316,7 +316,7 @@ layout = html.Div(className='gallery', children=[
             img_src='https://raw.githubusercontent.com/plotly/dash-docs/master/images/dash-object-detection.gif',
             description='''
             This object-detection app provides useful visualizations about 
-            what's happening inside a complex video in real-time. The data 
+            what's happening inside a complex video in real time. The data 
             is generated using 
             [MobileNet v1](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/detection_model_zoo.md) 
             in Tensorflow, trained on the COCO dataset. The video is 
@@ -331,11 +331,9 @@ layout = html.Div(className='gallery', children=[
             code_link='https://github.com/plotly/dash-live-model-training',
             img_src='https://raw.githubusercontent.com/plotly/dash-docs/master/images/dash-live-model-training.gif',
             description='''
-            For every Deep Learning models, keeping track of accuracy 
-            and loss is an essential part of the training process, 
-            since they indicate how good your models are. This app is 
-            a real-time visualization app that monitors core metrics 
-            of your Tensorflow graphs during the training, so that you 
+            Tracking accuracy and loss is an essential part of the training process 
+            for deep learning models. This real-time visualization app monitors 
+            core metrics of your Tensorflow graphs during the training so that you 
             can quickly detect anomalies within your model.
             '''
         ),
@@ -381,8 +379,8 @@ layout = html.Div(className='gallery', children=[
             code_link='https://github.com/plotly/dash-svm',
             img_src='https://raw.githubusercontent.com/plotly/dash-docs/master/images/dash-svm.gif',
             description='''
-            This app lets you explore Support Vector Clustering (a type 
-            of Support Vector Machine) with UI input parameters. Toy datasets 
+            This app lets you explore support vector clustering (a type 
+            of support vector machine) with UI input parameters. Toy datasets 
             and useful ML metrics plots are included. It is fully written in 
             Dash + scikit-learn.
             ''',
@@ -411,7 +409,7 @@ layout = html.Div(className='gallery', children=[
 
     reusable.Row([
         AppSection(
-            app_name='Window Speed Measurement',
+            app_name='Wind Speed Measurement',
             app_link='https://dash-live-wind-data.plot.ly',
             code_link='https://github.com/plotly/dash-wind-streaming',
             img_src='https://raw.githubusercontent.com/plotly/dash-wind-streaming/d84b15eebf2c502372740416d445e8e3f23d0619/Gif/dash-wind-streaming.gif',
@@ -466,8 +464,8 @@ layout = html.Div(className='gallery', children=[
         The Dash community has built many of their component libraries, like 
         [Video Components](https://community.plot.ly/t/modifying-a-dom-property-in-html-video/7649/11) 
         and [Large File Upload](https://community.plot.ly/t/show-and-tell-dash-resumable-upload/9519). 
-        View more community maintained components and other projects in the Dash Community Forum’s 
-        [Show and Tell Thread](https://community.plot.ly/t/show-and-tell-community-thread/7554)
+        View more community-maintained components and other projects in the Dash Community Forum’s 
+        [Show and Tell Thread](https://community.plot.ly/t/show-and-tell-community-thread/7554).
         '''
         )
     ]),
@@ -707,7 +705,7 @@ layout = html.Div(className='gallery', children=[
 
     reusable.Row([
         dcc.Markdown(dedent('''
-        These Dash docs that you're looking at? They are itself a Dash app!
+        These Dash docs that you're looking at? They themselves are a Dash app!
         ''')),
 
         AppSection(
