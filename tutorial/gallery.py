@@ -198,7 +198,8 @@ layout = html.Div(className='gallery', children=[
             This app uses Salesforce API in order to implement a custom CRM dashboard.
             The API is used via the module [Simple-Salesforce](https://pypi.org/project/simple-salesforce/) and allows you to retrieve
             and to push data.
-            '''
+            ''',
+            width=12
         )        
     ]),
     
