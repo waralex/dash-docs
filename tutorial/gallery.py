@@ -139,7 +139,20 @@ layout = html.Div(className='gallery', children=[
             PDF reports.
             '''
 
-        )
+        ),
+        
+        AppSection(
+            app_name='Salesforce Dashboard',
+            app_link='https://dash-gallery.plotly.host/dash-salesforce-crm',
+            code_link='https://github.com/plotly/dash-salesforce-crm',
+            img_src='https://raw.githubusercontent.com/plotly/dash-docs/master/images/dash-salesforce-crm.gif',
+            description='''
+            This app uses Salesforce API in order to implement a custom CRM dashboard.
+            The API is used via the module [Simple-Salesforce](https://pypi.org/project/simple-salesforce/) and allows you to retrieve
+            and to push data.
+            '''
+
+        )        
     ]),
 
     reusable.Row([
