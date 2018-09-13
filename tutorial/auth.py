@@ -219,6 +219,11 @@ dcc.Markdown('''
     Finally, we can logout the user by clearing the cookies. To do so, you can create a 
     logout button and insert it in the layout or use `auth.logout()` in a callback.
     
+    Note that `PlotlyAuth` uses your plot.ly user credentials. If it does not find 
+    `PLOTLY_USERNAME` and `PLOTLY_API_KEY` in your environment variables, it will search 
+    for them in `~/.plotly/.credentials`. See [here](https://plot.ly/python/getting-started/#initialization-for-online-plotting) for more details on setting your plotly
+    credentials.
+    
     '''.replace('   ', '')),
 
     html.Img(
