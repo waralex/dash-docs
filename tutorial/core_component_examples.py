@@ -1020,14 +1020,10 @@ Tabs = html.Div(children=[
     ),
     html.Div(examples['tabs_simple'][1], className='example-container'),
     dcc.Markdown(s('''
-    Note that this method has a couple of drawbacks:
-    - It requires that you compute the children property for each individual
+    Note that this method has a slight drawback: it requires that you compute the children property for each individual
     tab _upfront_ and send all of the tab's content over the network _at once_.
     The callback method allows you to compute the tab's content _on the fly_
     (that is, when the tab is clicked).
-    - There have been some bug reports that graphs are not getting resized
-    properly if this method is being used. See [dash-core-components#256](https://github.com/plotly/dash-core-components/issues/256)
-    for more details.
     ''')),
 
     html.Hr(),
