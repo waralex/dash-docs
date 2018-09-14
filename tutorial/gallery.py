@@ -422,7 +422,7 @@ layout = html.Div(className='gallery', children=[
 
         AppSection(
             app_name='Forex Trader Demo ',
-            app_link='https://dash-web-trader.herokuapp.com',
+            app_link='https://dash-gallery.plotly.host/dash-web-trader',
             code_link='https://github.com/plotly/dash-web-trader',
             img_src='https://raw.githubusercontent.com/plotly/dash-docs/master/images/dash-web-trader.gif',
             description='''
