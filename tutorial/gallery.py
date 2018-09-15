@@ -417,7 +417,8 @@ layout = html.Div(className='gallery', children=[
             This app continually queries a SQL database and displays live charts of
             wind speed and wind direction. In Dash, the [dcc.Interval](https://dash.plot.ly/live-upates)
             component can be used to update any element on a recurring interval.
-            '''
+            ''',
+            width=6
         ),
 
         AppSection(
@@ -428,7 +429,8 @@ layout = html.Div(className='gallery', children=[
             description='''
             This app continually queries csv files and updates Ask and Bid prices for major currency pairs as well as Stock Charts.
             You can also virtually buy and sell stocks and see the profit updates.
-            '''
+            ''',
+            width=6
         )
     ]),
 
