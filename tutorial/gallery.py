@@ -418,19 +418,19 @@ layout = html.Div(className='gallery', children=[
             wind speed and wind direction. In Dash, the [dcc.Interval](https://dash.plot.ly/live-upates)
             component can be used to update any element on a recurring interval.
             ''',
-            width=12
+            width=6
         ),
 
         AppSection(
             app_name='Forex Trader Demo ',
-            app_link='https://dash-web-trader.herokuapp.com',
+            app_link='https://dash-gallery.plotly.host/dash-web-trader',
             code_link='https://github.com/plotly/dash-web-trader',
             img_src='https://raw.githubusercontent.com/plotly/dash-docs/master/images/dash-web-trader.gif',
             description='''
             This app continually queries csv files and updates Ask and Bid prices for major currency pairs as well as Stock Charts.
             You can also virtually buy and sell stocks and see the profit updates.
             ''',
-            width=12
+            width=6
         )
     ]),
 
