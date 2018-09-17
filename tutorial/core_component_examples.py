@@ -24,6 +24,8 @@ examples = {
     'confirm-provider': tools.load_example('tutorial/examples/core_components/confirm_provider.py'),
     'tabs_simple':  tools.load_example('tutorial/examples/core_components/tabs_simple.py'),
     'tabs_callback':  tools.load_example('tutorial/examples/core_components/tabs_callback_graph.py'),
+    'tabs_styled_with_classes':  tools.load_example('tutorial/examples/core_components/tabs_styled_with_classes.py'),
+    'tabs_styled_with_inline':  tools.load_example('tutorial/examples/core_components/tabs_styled_with_inline.py'),
 }
 
 
@@ -1025,6 +1027,29 @@ Tabs = html.Div(children=[
     The callback method allows you to compute the tab's content _on the fly_
     (that is, when the tab is clicked).
     ''')),
+
+    html.H2('Styling the Tabs component'),
+    dcc.Markdown(s('''
+    Styling the Tabs (and Tab) component can either be done using CSS classes by providing your own to the `className` property:
+    ''')),
+
+    dcc.SyntaxHighlighter(
+        examples['tabs_styled_with_classes'][0],
+        customStyle=styles.code_container
+    ),
+    html.Div(examples['tabs_styled_with_classes'][1], className='example-container'),
+
+    html.Br(),
+
+    dcc.Markdown(s('''
+    or by providing a `styles` dict to the `style` prop:
+    ''')),
+
+    dcc.SyntaxHighlighter(
+        examples['tabs_styled_with_inline'][0],
+        customStyle=styles.code_container
+    ),
+    html.Div(examples['tabs_styled_with_inline'][1], className='example-container'),
 
     html.Hr(),
 
