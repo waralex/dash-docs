@@ -438,5 +438,21 @@ confirm = dcc.ConfirmDialogProvider(
 
     html.Br(),
 
+    dcc.Markdown('***'),
+
+    html.A(
+        className="image-link",
+        href="http://dash-daq.netlify.com/#Gauge",
+        children=html.Img(
+            src="https://s3-us-west-1.amazonaws.com/plotly-tutorials/static/marketing/dash/guage.png",
+            alt="Dash DAQ Guage Component"
+        )
+    ),
+
+    dcc.Link('More Guage Examples and Reference',
+             href='http://dash-daq.netlify.com/#Gauge'),
+
+    html.Br(),
+
     html.Div(id='hidden', style={'display': 'none'})
 ])
