@@ -6,15 +6,6 @@
     border-top-left-radius: 10px;
 }
 
-.custom-tabs-content {
-    padding: 8rem 2rem;
-    background-color: #656565;
-}
-
-.custom-tabs-content h1{
-    color: white;
-    font-style: italic;
-}
 .custom-tab {
     color:lightgrey;
     border-top-left-radius: 10px;
