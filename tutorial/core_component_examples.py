@@ -26,6 +26,7 @@ examples = {
     'tabs_callback':  tools.load_example('tutorial/examples/core_components/tabs_callback_graph.py'),
     'tabs_styled_with_classes':  tools.load_example('tutorial/examples/core_components/tabs_styled_with_classes.py'),
     'tabs_styled_with_inline':  tools.load_example('tutorial/examples/core_components/tabs_styled_with_inline.py'),
+    'tabs_styled_with_props':  tools.load_example('tutorial/examples/core_components/tabs_styled_with_props.py'),
 }
 
 
@@ -1050,6 +1051,19 @@ Tabs = html.Div(children=[
         customStyle=styles.code_container
     ),
     html.Div(examples['tabs_styled_with_inline'][1], className='example-container'),
+
+    html.Br(),
+
+    dcc.Markdown(s('''
+    Lastly, you can set the colors of the Tabs components in the `color` prop, by specifying the "border", "primary", and "background" colors in a dict. Make sure you set them 
+    all, if you're using them!
+    ''')),
+
+    dcc.SyntaxHighlighter(
+        examples['tabs_styled_with_props'][0],
+        customStyle=styles.code_container
+    ),
+    html.Div(examples['tabs_styled_with_props'][1], className='example-container'),
 
     html.Hr(),
 

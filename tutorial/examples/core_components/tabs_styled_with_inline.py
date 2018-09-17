@@ -30,7 +30,7 @@ tab_selected_style = {
 }
 
 app.layout = html.Div([
-    dcc.Tabs(id="tabs", value='tab-1', children=[
+    dcc.Tabs(id="tabs-styled-with-inline", value='tab-1', children=[
         dcc.Tab(label='1', value='tab-1', style=tab_style, selected_style=tab_selected_style),
         dcc.Tab(label='2', value='tab-2', style=tab_style, selected_style=tab_selected_style),
     ], style=tabs_styles),
@@ -38,7 +38,7 @@ app.layout = html.Div([
 ])
 
 @app.callback(Output('tabs-content-inline', 'children'),
-              [Input('tabs', 'value')])
+              [Input('tabs-styled-with-inline', 'value')])
 def render_content(tab):
     if tab == 'tab-1':
         return html.Div([
