@@ -1020,7 +1020,7 @@ Tabs = html.Div(children=[
     ),
     html.Div(examples['tabs_simple'][1], className='example-container'),
     dcc.Markdown(s('''
-    Note that this method has a slight drawback: it requires that you compute the children property for each individual
+    Note that this method has a drawback: it requires that you compute the children property for each individual
     tab _upfront_ and send all of the tab's content over the network _at once_.
     The callback method allows you to compute the tab's content _on the fly_
     (that is, when the tab is clicked).
