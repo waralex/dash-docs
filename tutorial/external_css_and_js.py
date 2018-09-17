@@ -177,6 +177,13 @@ h1, h2, h3, h4, h5, h6 {
 
     4 - Your custom CSS will be included _after_ the Dash component CSS
 
+    5 - It is recommended to add `__name__` to the dash init to ensure the resources
+    in the assets folder are loaded, eg: `app = dash.Dash(__name__, meta_tags=[...])`.
+    When you run your application through some other command line (like the
+    flask command or gunicorn/waitress), the `__main__` module wil no
+    longer located where `app.py` is. By explicitly setting `__name__`, 
+    Dash will be able to locate the relative `assets` folder correctly.
+
     ***
 
     ## Embedding Images in Your Dash Apps
