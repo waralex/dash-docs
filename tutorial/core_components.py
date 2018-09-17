@@ -449,7 +449,7 @@ confirm = dcc.ConfirmDialogProvider(
         )
     ),
 
-    dcc.Link('More Guage Examples and Reference',
+    html.A('More Guage Examples and Reference',
              href='http://dash-daq.netlify.com/#Gauge'),
 
     html.Br(),
