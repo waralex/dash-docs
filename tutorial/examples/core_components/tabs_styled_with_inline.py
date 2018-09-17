@@ -14,21 +14,19 @@ tabs_styles = {
 }
 tab_style = {
     "padding": "11px",
-    "transition": "all 0.2s",
     "margin": "0px 12px",
     "borderRadius": "100%",
-    "width": "50px"
+    "width": "50px",
+    "box-shadow": "0 8px 17px 2px rgba(0,0,0,0.14), 0 3px 14px 2px rgba(0,0,0,0.12), 0 5px 5px -3px rgba(0,0,0,0.2)"
 }
 
 tab_selected_style = {
     "padding": "11px",
-    "transition": "all 0.2s",
     "margin": "0px 12px",
     "borderRadius": "100%",
     "width": "50px",
     "fontWeight": "bold",
-    "border": "none",
-    "box-shadow": "0 8px 17px 2px rgba(0,0,0,0.14), 0 3px 14px 2px rgba(0,0,0,0.12), 0 5px 5px -3px rgba(0,0,0,0.2)"
+    "border": "1px solid lightgrey"
 }
 
 app.layout = html.Div([
