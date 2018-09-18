@@ -12,7 +12,7 @@ app.layout = html.Div([
         dcc.Tab(label='2', value='tab-2'),
     ], colors={
         "border": "white",
-        "primary": "orangered",
+        "primary": "gold",
         "background": "cornsilk"
     }),
     html.Div(id='tabs-content-props')
