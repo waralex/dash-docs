@@ -25,14 +25,30 @@ app.layout = html.Div([
             ])
         ]),
         dcc.Tab(label='Tab two', children=[
-            html.Div([
-                html.H1("This is the content in tab 2"),
-            ])
+                dcc.Graph(
+                    id='example-graph-1',
+                    figure={
+                        'data': [
+                            {'x': [1, 2, 3], 'y': [1, 4, 1],
+                                'type': 'bar', 'name': 'SF'},
+                            {'x': [1, 2, 3], 'y': [1, 2, 3],
+                             'type': 'bar', 'name': u'Montréal'},
+                        ]
+                    }
+                )
         ]),
         dcc.Tab(label='Tab three', children=[
-            html.Div([
-                html.H1("This is the content in tab 3"),
-            ])
+                dcc.Graph(
+                    id='example-graph-2',
+                    figure={
+                        'data': [
+                            {'x': [1, 2, 3], 'y': [2, 4, 3],
+                                'type': 'bar', 'name': 'SF'},
+                            {'x': [1, 2, 3], 'y': [5, 4, 3],
+                             'type': 'bar', 'name': u'Montréal'},
+                        ]
+                    }
+                )
         ]),
     ])
 ])
