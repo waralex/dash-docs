@@ -691,8 +691,45 @@ staticAssets = html.Div(children=[
 
     dcc.Markdown(s(
     '''
-    Coming Soon
-    '''))
+    ***
+
+    #### Adding Your Own CSS and JavaScript to Dash Apps
+
+    Including custom CSS or JavaScript in your Dash apps is simple. Just
+    create a folder named `assets` in the root of your app directory and include
+    your CSS and JavaScript files in that folder. Dash will automatically
+    serve all of the files that are included in this folder.
+
+    For more information about custom CSS, JavaScripts, HTML index template,
+    meta tags, or serving Dash's component libaries locally, see
+    [Dash Docs](https://dash.plot.ly/external-resources).
+
+    ***
+
+    #### Embedding Images in Your Dash Apps
+
+    Apps deployed on the Dash Deployment Server are deployed under an app name
+    prefix. As a consequence, images that are added to the `assets` folder will
+    require the app name prefix in the relative path. For example, with the
+    below folder structure:
+
+
+    ```
+    -- app.py
+    -- assets/
+       |-- my-image.png
+    ```
+
+    &nbsp;
+
+    your `app.py` file you would include:
+
+    ''')),
+
+    dcc.SyntaxHighlighter(s(
+    ''''/{}/my-image.png'.format(app.get_asset_url)
+    '''), customStyle=styles.code_container, language="text")
+
 ])
 
 # # # # # # #
@@ -2128,7 +2165,7 @@ Support = html.Div(children=[
     html.H1('Plotly Enterprise Support'),
 
     rc.Blockquote(),
-    
+
     dcc.Markdown(s('''
     ***
 
