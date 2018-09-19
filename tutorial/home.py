@@ -2,9 +2,9 @@
 from textwrap import dedent as s
 import dash_core_components as dcc
 import dash_html_components as html
-from chapter_index import chapters
+from tutorial.chapter_index import chapters
 
-from tools import merge
+from tutorial.tools import merge
 
 styles = {
     'underline': {
@@ -47,13 +47,18 @@ layout = html.Div(className='toc', children=[
 
     Section("What's Dash?", [
         Chapter(chapters['introduction']['name'],
-                chapters['introduction']['url']),
-        Chapter('Announcement',
-                'https://medium.com/@plotlygraphs/introducing-dash-5ecf7191b503'),
+                chapters['introduction']['url'],
+                "A quick paragraph about Dash and a link to the talk at Plotcon that started it all."),
+        Chapter('Announcement Essay',
+                'https://medium.com/@plotlygraphs/introducing-dash-5ecf7191b503',
+                ("Our extended essay on Dash. An extended discussion of Dash's architecture "
+                 "and our motivation behind the project.")),
         Chapter(chapters['gallery']['name'],
-                chapters['gallery']['url']),
-        Chapter(u'2018 Dash Workshops in Montréal',
-                'https://plotcon.plot.ly/'),
+                chapters['gallery']['url'],
+                "A glimpse into what's possible with Dash."),
+        Chapter('Dash Club',
+                'http://eepurl.com/dE7CHT',
+                'A fortnightly email newsletter by chriddyp, the creator of Dash.'),
     ]),
 
     Section('Dash Tutorial', [
@@ -95,7 +100,6 @@ layout = html.Div(className='toc', children=[
         Chapter(chapters['dashdaq']['name'],
                 chapters['dashdaq']['url'],
                 chapters['dashdaq']['description'])
-        
     ]),
 
     Section('Beyond the Basics', [
@@ -126,13 +130,14 @@ layout = html.Div(className='toc', children=[
                 chapters['support']['url'])
     ]),
 
-    Section('Dash Deployment Platform', [
-        Chapter('About Dash Deployment Platform',
+    Section('Dash Deployment Server', [
+        Chapter('About Dash Deployment Server',
                 'https://plot.ly/dash/pricing/'),
-        Chapter(chapters['deployment-onpremise']['name'],
-                chapters['deployment-onpremise']['url'])],
-        description="""Dash Deployment Platform is Plotly's commercial offering for
-                       hosting and sharing Dash apps on-premises or in the cloud.""",
+        Chapter(chapters['dash-deployment-server']['name'],
+                chapters['dash-deployment-server']['url'])],
+        description="""Dash Deployment Server is Plotly's commercial offering
+                       for hosting and sharing Dash apps on-premises or in the
+                       cloud.""",
         headerStyle={'color': '#0D76BF'}
     )
 ])

@@ -1,36 +1,36 @@
-import auth
-import core_component_examples as examples
-import core_components
-import deployment
-import external_css_and_js
-import gallery
-import getting_started_part_1
-import getting_started_part_2
-import graphing
-import html_components
-import installation
-import introduction
-import live_updates
-import on_premise_deployment
-import performance
-import plugins
-import search
-import sharing_state
-import state
-import support
-import urls
-import react_for_python_developers
+from tutorial import auth
+from tutorial import core_component_examples as examples
+from tutorial import core_components
+from tutorial import dash_deployment_server
+from tutorial import dash_deployment_server_examples as dds_examples
+from tutorial import deployment
+from tutorial import external_css_and_js
+from tutorial import gallery
+from tutorial import getting_started_part_1
+from tutorial import getting_started_part_2
+from tutorial import graphing
+from tutorial import html_components
+from tutorial import installation
+from tutorial import introduction
+from tutorial import live_updates
+from tutorial import performance
+from tutorial import plugins
+from tutorial import search
+from tutorial import sharing_state
+from tutorial import state
+from tutorial import support
+from tutorial import urls
 
-# The chapters dict is used to generate the dash-docs search index
-# If edited, update the search index by running `python dash_search_index.py`
-# in the root of this repo.
+## The chapters dict is used to generate the dash-docs search index
+## If edited, update the search index by running `python dash_search_index.py`
+## in the root of this repo.
 
 chapters = {
     ### home.py ###
     'introduction': {
         'url': '/introduction',
         'content': introduction.layout,
-        'name': 'Introduction',
+        'name':'Introduction',
         'description': 'Dash is a productive Python framework for ' \
                        'building web applications written on top of ' \
                        'Flask, Plotly.js, and React.js.'
@@ -156,13 +156,13 @@ chapters = {
     'external': {
         'url': '/external-resources',
         'content': external_css_and_js.layout,
-        'name': 'External CSS and JS',
-        'description': 'By default, Dash loads CSS and JS assets from a ' \
-                       'fast, global CDN - but you can optionally these ' \
-                       'resources locally, making your apps completely self ' \
-                       'contained (no internet access required!). Also, ' \
-                       'learn how to append your own CSS styleseets or JS ' \
-                       'scripts to your apps.'
+        'name': 'Adding CSS & JS and Overriding the Page-Load Template',
+        'description': '''
+            New in dash v0.22.0! Learn how to add custom CSS and JS to your
+            application with the `assets` directory. Also, learn how to
+            customize the HTML template that Dash serves on page load in order
+            to add custom meta tags, customize the page's title, and more.
+        '''
     },
 
     'urls': {
@@ -193,31 +193,40 @@ chapters = {
                        'app to a server'
     },
 
-    'deployment-onpremise': {
-        'url': '/deployment/on-premise',
-        'content': on_premise_deployment.layout,
-        'name': 'Deploying Dash Apps on Plotly On-Premises',
-        'description': "Plotly On-Premises is Plotly's commercial " \
-                       "offering for hosting and sharing Dash apps."
+    # 'deployment-onpremise': {
+    #     'url': '/deployment/on-premise',
+    #     'content': on_premise_deployment.layout,
+    #     'name': 'Deploying Dash Apps on Plotly Enterprise',
+    #     'description': "Plotly Enterprise is Plotly's commercial " \
+    #                    "offering for hosting and sharing Dash apps."
+    # },
+
+    'dash-deployment-server': {
+        'url': '/dash-deployment-server',
+        'content': dash_deployment_server.layout,
+        'name': 'Dash Deployment Server Documentation',
+        'description': "Dash Deployment Server is Plotly's commercial " \
+                       "offering for hosting and sharing Dash Apps with " \
+                       "Plotly Enterprise."
     },
 
     'support': {
         'url': '/support',
         'content': support.layout,
         'name': 'Support and Contact',
-        'description': 'More information for Dash demos, On-Premise trials, ' \
+        'description': 'More information for Dash demos, Enterprise trials, ' \
                        'Dash workshops, sponsored feature requests and ' \
                        'customizations.'
     },
-
     'react-for-python-developers': {
         'url': '/react-for-python-developers',
         'content': react_for_python_developers.layout,
         'name': 'React for Python Developers',
         'description': 'A tutorial on how to program in React and JavaScript for Python developers.'
     },
-    ### End of home.py ###
+### End of home.py ###
 
+### Start Components ###
     'dropdown-examples': {
         'url': '/dash-core-components/dropdown',
         'content': examples.Dropdown,
@@ -288,6 +297,13 @@ chapters = {
         'description': 'Link examples, properties, and reference.'
     },
 
+    'tabs-example': {
+        'url': '/dash-core-components/tabs',
+        'content': examples.Tabs,
+        'name': 'Tabs & Tab Component',
+        'description': 'Tabs examples, properties, and reference.'
+    },
+
     'textarea-examples': {
         'url': '/dash-core-components/textarea',
         'content': examples.Textarea,
@@ -300,14 +316,6 @@ chapters = {
         'content': examples.Upload,
         'name': 'Upload Component',
         'description': 'Upload examples, properties, and reference.'
-    },
-    ### dash-daq ###
-    'dashdaq': {
-        'url': 'https://www.dashdaq.io/',
-        'content': introduction.layout,
-        'name':'Dash DAQ Components',
-        'description': '$840/developer/year. ' \
-                       'Beautifully styled, premium components for data acquisition user interfaces.' 
     },
 ### End Components ###
 
@@ -432,4 +440,18 @@ chapters = {
         'name': '',
         'description': 'Search the Dash Docs'
     },
+
+    'confirm-examples': {
+        'url': '/dash-core-components/confirm',
+        'content': examples.ConfirmDialog,
+        'name': 'ConfirmDialog Component',
+        'description': 'ConfirmDialog examples, properties, and reference'
+    },
+
+    'confirm-provider-examples': {
+        'url': '/dash-core-components/confirm-provider',
+        'content': examples.ConfirmDialogProvider,
+        'name': 'ConfirmDialogProvider Component',
+        'description': 'ConfirmDialogProvider examples, properties and reference'
+    }
 }
