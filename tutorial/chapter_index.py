@@ -20,6 +20,7 @@ from tutorial import sharing_state
 from tutorial import state
 from tutorial import support
 from tutorial import urls
+from tutorial import react_for_python_developers
 
 ## The chapters dict is used to generate the dash-docs search index
 ## If edited, update the search index by running `python dash_search_index.py`
