@@ -1432,7 +1432,61 @@ PrivatePackages = html.Div(children=[
     rc.Blockquote(),
 
     dcc.Markdown(s('''
-    Coming Soon!
+
+    When a Dash App is deployed on the Dash Deployment Server, the
+    `requirements.txt` will install the relevant python dependecies. If you
+    want to add private python packages you will need amend the
+    `requirements.txt` file. This can be done via two methods: (1) using
+    tarballs or (2) using environment variables.
+
+    ***
+
+    #### Using Tarballs
+
+    To add private python packages to a Dash App using tarballs, you need to
+    include the `tar.gz` file in your App's root folder. For example,
+
+    ```
+    -- .gitignore
+    -- app.py
+    -- Procfile
+    -- requiremnents.txt
+    -- myPackage.tar.gz
+    ```
+
+    &nbsp;
+
+    Then in the `requirements.txt` include:
+
+    ```
+    myPackage.tar.gz
+    ```
+
+
+    ***
+
+    #### Using Environment Variables
+
+    As of `pip==10.0.0`, it is possible to use environment variables within
+    the `requirements.txt` file. Thus, private python packages can be added by
+    using the `${VARIABLE}` syntax. For example,
+
+    ''')),
+
+    dcc.SyntaxHighlighter(s(
+    """git+http://${AUTH_USER}:${AUTH_PASSWORD}@git.example.com/MyProject#egg=MyProject"""),
+    customStyle=styles.code_container,
+    language='python'
+    ),
+
+    dcc.Markdown(s('''
+    &nbsp;
+
+    `AUTH_USER` and `AUTH_PASSWORD` variables can be added to your Dash App via
+    the Dash Deployment Server UI. For more information about adding
+    environment variables to your Dash Apps, see
+    [Setting Environment Variables](/dash-deployment-server/environment-variables)
+
     '''))
 ])
 
