@@ -97,9 +97,6 @@ layout = html.Div(className='toc', children=[
         Chapter(chapters['plugins']['name'],
                 chapters['plugins']['url'],
                 chapters['plugins']['description']),
-        Chapter(chapters['dashdaq']['name'],
-                chapters['dashdaq']['url'],
-                chapters['dashdaq']['description'])
     ]),
 
     Section('Beyond the Basics', [
