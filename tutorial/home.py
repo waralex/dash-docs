@@ -90,7 +90,11 @@ layout = html.Div(className='toc', children=[
                 chapters['dash-html-components']['description']),
         Chapter(chapters['plugins']['name'],
                 chapters['plugins']['url'],
-                chapters['plugins']['description'])
+                chapters['plugins']['description']),
+        Chapter(chapters['dashdaq']['name'],
+                chapters['dashdaq']['url'],
+                chapters['dashdaq']['description'])
+        
     ]),
 
     Section('Beyond the Basics', [

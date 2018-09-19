@@ -311,6 +311,14 @@ chapters = {
         'name': 'Upload Component',
         'description': 'Upload examples, properties, and reference.'
     },
+    ### dash-daq ###
+    'dashdaq': {
+        'url': 'https://www.dashdaq.io/',
+        'content': introduction.layout,
+        'name':'Dash DAQ Components',
+        'description': '$840/developer/year. ' \
+                       'Beautifully styled, premium components for data acquisition user interfaces.' 
+    },
 ### End Components ###
 
 ### Start Dash Deployment Server ###

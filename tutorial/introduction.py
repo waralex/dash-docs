@@ -24,7 +24,7 @@ layout = html.Div([
         cross-platform and mobile ready.
 
         There is a lot behind the framework. To learn more about how it is built
-        and what motivated dash, watch our talk from
+        and what motivated Dash, watch our talk from
         [Plotcon](https://plotcon.plot.ly) below
         or read our [announcement letter](https://medium.com/@plotlygraphs/introducing-dash-5ecf7191b503).
 
