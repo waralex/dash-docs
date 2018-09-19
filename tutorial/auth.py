@@ -59,16 +59,15 @@ layout = html.Div([
             'border-radius': '4px'
         }),
 
-
     dcc.Markdown('''
     Installation:
     '''.replace('    ', '')),
 
     dcc.SyntaxHighlighter('''pip install dash=={}
         pip install dash-auth=={}'''.replace('    ', '').format(
-            dash.__version__,
-            dash_auth.__version__
-        ), customStyle=styles.code_container),
+        dash.__version__,
+        dash_auth.__version__
+    ), customStyle=styles.code_container),
 
     dcc.Markdown('''
     Example Code:
@@ -206,7 +205,7 @@ if __name__ == '__main__':
 
     ''', language='python', customStyle=styles.code_container),
 
-dcc.Markdown('''
+    dcc.Markdown('''
     ## Methods on PlotlyAuth Objects
     
         
@@ -219,11 +218,23 @@ dcc.Markdown('''
     Finally, we can logout the user by clearing the cookies. To do so, you can create a 
     logout button and insert it in the layout or use `auth.logout()` in a callback.
     
-    Note that `PlotlyAuth` uses your plot.ly user credentials. If it does not find 
-    `PLOTLY_USERNAME` and `PLOTLY_API_KEY` in your environment variables, it will search 
-    for them in `~/.plotly/.credentials`. See [here](https://plot.ly/python/getting-started/#initialization-for-online-plotting) for more details on setting your plotly
-    credentials.
-    
+    Plotly Auth uses the environment variables `PLOTLY_USERNAME` and `PLOTLY_API_KEY`. 
+    You can find your username and API key at [https://plot.ly/settings/api](https://plot.ly/settings/api) or,
+    if you are using [Dash Deployment Server](https://plotly/dash/pricing), at https://your-plotly-server.com/settings/api.
+
+    You can set these variables directly in your code with:
+    '''.replace('   ', '')),
+
+    dcc.SyntaxHighlighter(
+        '''import os
+        
+        os.environ['PLOTLY_USERNAME'] = 'your-username'
+        os.environ['PLOTLY_API_KEY'] = 'your-api-key' '''.replace('   ', ''),
+        language='python', customStyle=styles.code_container),
+
+    dcc.Markdown('''
+    or, if you are using [Dash Deployment Server, you can keep your environment variables secret (view the docs)](https://dash.plot.ly/dash-deployment-server/environment-variables).
+        
     '''.replace('   ', '')),
 
     html.Img(
@@ -239,7 +250,7 @@ dcc.Markdown('''
     '''.replace('    ', '')),
 
     dcc.SyntaxHighlighter('''pip install dash=={}  # The core dash backend
-        pip install dash-html-components=={}  # Dash Auth components
+        pip install dash-auth=={}  # Dash Auth components
     '''.replace('    ', '').format(
         dash.__version__,
         dash_auth.__version__,
@@ -327,9 +338,6 @@ def check_perms_graph_update(n_clicks):
     else:
         return {'display': 'none'}
 
-
-app.scripts.config.serve_locally = True
-app.css.append_css({'external_url': 'https://codepen.io/chriddyp/pen/bWLwgP.css'})
 
 if __name__ == '__main__':
     app.run_server(debug=True)
