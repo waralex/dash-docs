@@ -59,6 +59,9 @@ layout = html.Div(className='toc', children=[
                 '/dash-deployment-server/app-authentication',
                 'Using `dash-auth` package to provide login through '
                 'Plotly Enterprise.'),
+        reusable_components.Chapter('Adding Private Python Packages',
+                '/dash-deployment-server/private-packages',
+                'Intsall private python packages in your Dash Apps.'),
         reusable_components.Chapter('Linking a Redis Database',
                 '/dash-deployment-server/redis-database',
                 'Create and link an in-memory database to your Dash Apps.'),

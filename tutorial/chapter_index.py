@@ -357,6 +357,13 @@ chapters = {
         'description': 'Adding Authentication to your Dash App'
     },
 
+    'private-packages-examples': {
+        'url': '/dash-deployment-server/private-packages',
+        'content': dds_examples.PrivatePackages,
+        'name': 'Adding Private Python Packages',
+        'description': 'Intsall private python packages in your Dash Apps.'
+    },
+
     'config-sys-examples': {
         'url': '/dash-deployment-server/configure-system-dependencies',
         'content': dds_examples.ConfigSys,

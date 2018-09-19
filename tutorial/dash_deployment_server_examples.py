@@ -1423,6 +1423,19 @@ Authentication = html.Div(children=[
     '''))
 ])
 
+# # # # # # #
+# Adding Private Python Packages
+# # # # # # #
+PrivatePackages = html.Div(children=[
+    html.H1('Adding Private Python Packages'),
+
+    rc.Blockquote(),
+
+    dcc.Markdown(s('''
+    Coming Soon!
+    '''))
+])
+
 
 # # # # # # #
 # Redis
