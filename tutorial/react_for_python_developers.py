@@ -1,8 +1,6 @@
 import dash_core_components as dcc
 import dash_html_components as html
 
-import styles
-
 layout = html.Div([dcc.Markdown('''
   # React for Python Developers: a primer
 
