@@ -7,22 +7,22 @@ layout = html.Div([dcc.Markdown('''
   ## Introduction
 
   If you're a Dash developer, at some point or another you probably have thought about writing your own set of components for Dash. 
-  You might have even taken a peek at some of our source code, or taken the `dash-component-archetype` for a spin. However, if you've 
-  never programmed in JavaScript and/or used React before, you might feel slightly confused. This guide hopes to bridge the gap between 
-  your knowledge of Python and Dash and the languages and frameworks we use to create awesome Dash components!
+  You might have even taken a peek at some of our source code, or taken the `dash-component-boilerplate` for a spin. However, if you've 
+  never programmed in JavaScript and/or used React before, you might feel slightly confused. By the end of this guide, you should feel comfortable 
+  creating your own Dash component in React and JavaScript, even if you have never programmed in those languages before. [Let us know how it went by commenting in this thread](https://github.com/plotly/dash-docs/issues/194).
 
-  #### JavaScript
+  ##### JavaScript
   JavaScript is the language of the web - all modern browsers can run it, and most modern web pages use it to make their pages interactive.
-  It is the de-facto standard of front end development, and has come a long way since it's inception. Today, modern JavaScript features
+  It is the de-facto standard of front end development, and has come a long way since its inception. Today, modern JavaScript features
   a rich set of features, designed to create a development experience perfectly suited for the web. 
 
-  #### React
+  ##### React
   React is JavaScript library for building user interfaces, written and maintained by Facebook. It has been very popular over the last few
   years, mainly because it brings the power of reactive, declarative programming to the world of front end development. 
-  What this means is that it brings power to those programming complex applications on the web, giving them the ability to write highly 
-  interactive web pages in a single language.
+  React has made it easier to reason about user interface code and it's programming model encourages code that's modular and reusable. It also has a 
+  huge, vibrant open source community that has published all sorts of reusable UI components, from sliders to data tables, dropdowns to buttons.
 
-  It is important to realise that React is just JavaScript. React is not a language on it's own, nor is it any sort of domain-specific framework
+  It is important to realise that React is just JavaScript. React is not a language on its own, nor is it any sort of domain-specific framework
   that takes years to master. It has a relatively small API to learn, with just a few functions and paradigms to get your head around before
   you too can use it to write applications for the web. That being said, all unfamiliar technology will have a learning curve, but with practice
   and patience you will master it!
@@ -38,15 +38,19 @@ layout = html.Div([dcc.Markdown('''
   `python my-code.py` to run Python code in a terminal, you'd run `node my-code.js` to run JavaScript code in a terminal. 
   Node comes in very handy when developing, even when you intend to run the code in the browser.
 
-  #### NPM
-  With Node we can take advantage of the extensive tooling, provided by NPM, which stands for Node Package Manager. Besides being a package manager 
-  (not unlike `pip` for Python), `npm` also allows you to do other stuff like run scripts and perform tasks, such as creating a project for you by running `npm init`, starting up a project by running `npm start`, or firing custom scripts by running `npm run custom-script`. These scripts are defined in a `package.json` file, which every project that uses `npm` has. The `package.json` file holds your `requirements` and `devRequirements`, which can be installed using `npm install`, the same way `pip` has a `requirements.txt` option you can use in `pip install -r requirements.txt`. `package.json` also holds a `scripts` section, where custom scripts can be defined. It is usually a good idea to check out a new project's `package.json` file, to see what kind of scripts you can run!
+  ##### NPM
+  NPM is the "Node Package Manager" and it is used to install packages and run scripts. Besides being a package manager 
+  (not unlike `pip` for Python), `npm` also allows you to do other stuff like run scripts and perform tasks, such as creating a project for you by running `npm init`, 
+  starting up a project by running `npm start`, or firing custom scripts by running `npm run custom-script`. These scripts are defined in a `package.json` file, which every project 
+  that uses `npm` has. The `package.json` file holds your `requirements` and `devRequirements`, which can be installed using `npm install`, the same way `pip` has a `requirements.txt`
+  option you can use in `pip install -r requirements.txt`. `package.json` also holds a `scripts` section, where custom scripts can be defined. It is usually a good idea to check out a new project's `package.json` file to see which scripts the
+  project uses.
 
   If you go to the [dash-component-boilerplate repo](https://github.com/plotly/dash-component-boilerplate), you'll find the instructions to need to set up some React boilerplate code
-  that helps you quickly get up a React development environment, complete with the scripts we need to finally build our React component for Dash. It also sets up Babel, a transpiler for React so that we can write JSX, and Webpack, a tool
-  that bundles all of our code into one `bundle.js` file, optimized for speed.
+  that helps you quickly get up a React development environment, complete with the scripts that are necessary to build our React component for Dash. These scripts will use a variety of technologies (e.g. Babel, Webpack, and more) to compile
+  our code into a web-ready package.
 
-  - To install Node.js, go to [the Node.js website](https://nodejs.org/en/) to download the latest version. 
+  - To install Node.js, go to [the Node.js website](https://nodejs.org/en/) to download the latest version.  We recommend installing the LTS version.
   - Node.js will automatically install the Node Package Manager `npm` on your machine
   - Verify that node is installed by running: `node -v`
   - Verify that npm is installed by running: `npm -v`
@@ -55,41 +59,252 @@ layout = html.Div([dcc.Markdown('''
 
   ## Quick intro to React
 
-  Now, let's go ahead and see what the code for our new React application looks like. Open up your favourite code editor, and open the `src/lib/components/ExampleComponent.react.js` file.
-  This is our first React component! In React, most of the code you write will reside in some sort of a component. This component is being called in `src/demo/App.js`, which is the top-level component, apptly named `App`. It's job is to basically be the entry point of the app.
-  Here you will render all other components that you want to be displayed. Try making some changes to both the top-level `App` component, and the `ExampleComponent`, like adding a `<h1>Hello, Dash!</h1>` in between the `<div></div>` tags, and notice how the page hot-reloads on changes!
+  Now, let's go ahead and see what the code for our new React application looks like. In your favorite code editor open the `src/lib/components/ExampleComponent.react.js` file.
+  This is our first React component! In React, our user interfaces are composed of "components" and by convention there will usually be one main component per file. This project imports the ExampleComponent in src/demo/App.js, the demo application. 
+ 
+  The demo application `src/demo/App.js` is what you see after you run `npm run demo`. To see how `src/demoApp.js` and `ExampleComponent.react.js` work, try adding `<h1>Hello, Dash!</h1>` inside the `render()` function of either of the files.
+  When you save the files, your browser should automatically refresh and you should see your change.
 
-  #### JSX
-  The `<h1>` and `<div>` tags you see look exactly like HTML tags, however, they are slightly different! These tags are   
-  what is called JSX - a syntax extension to JavaScript developed by the React team to have easy, inline, HTML-like markup in your JavaScript components. It is mostly exactly the same as regular HTML. The main difference lies in the naming of attributes - `class` (for appending a CSS class to an HTML tag) is
-  named `className` here, as to avoid confusion with the actual `class` keyword in JavaScript (yes, JavaScript has classes, just like in Python!). Under the hood, React will call `React.createElement('h1')` for our `<h1>` JSX tags. React doesn't require you to use JSX, 
-  but most people find it helpful as a visual aid when working with UI inside JavaScript. 
-  To learn more about how JSX works and why people use it, read the [documentation here!](https://reactjs.org/docs/introducing-jsx)
+  ##### JSX
+  The `<h1>` and `<div>` tags you see look exactly like HTML tags however they are slightly different. These tags are   
+  what is called JSX - a syntax extension to JavaScript developed by the React team to have easy, inline, HTML-like markup in your JavaScript components. There are a few key differences between JSX tags and HTML tags:   
+  - The `class` keyword is renamed `className` (similarly as in Dash)
+  - In HTML, we write inline styles with strings like `<h1 style="color: hotpink; font-size: 12px">Hello Dash</h1>`. In JSX (as in Dash), we use objects with camelCased properties: `<h1 style={{"color": "hotpink", "fontSize": "12px"}}>Hello Dash<h1>`
+  - In JSX, we can embed variables in our markup. To embed a variable in the markup, wrap the variable in `{}`. For example:
+  ```
+  render() {
+      var myText = 'Hello Dash!';
+      return (
+            <h1>{myText}</h1>
+      );
+  }
+  ```
+  - In addition to the HTML tags like `<h1>` and `<div>`, we can also reference other React classes. For example, in our `src/demo/App.js`, we render the `ExampleComponent` component by referencing it as `<ExampleComponent>`.
 
+  ## A Quick Primer on the JavaScript Language
 
-  #### Virtual DOM
+  ##### Variable Declaration
+
+  In JavaScript, we have to declare our variables with `let` or `const`. `const` is used when the variable shouldn't changed, `let` is used elsewhere:
+  ```
+  const color = 'blue';
+  let someText = 'Hello World';
+  let myText;
+  myText = 'Hello Dash';
+  ```
+
+  ##### Comments
+
+  Single line comments are prefixed with `//`. Multi-line comments are wrapped in `/* */`
+  ```
+  /*
+  * This is a multi line comment
+  * By convention, we use a `*` on each line, but it's
+  * not strictly necessary.
+  */
+  const color = 'blue'; // This is a single line comment
+  ```
+
+  ##### Strings
+
+  Strings are defined the same way in JavaScript: single or double quotes:
+  ```
+  const someString = 'Hello Dash';
+  const anotherString = 'Hello Dash';
+  ```
+
+  Instead of Python's `format`, JavaScript allows you to embed variables directly into strings by wrapping the variable in `${}` and wrapping the string in backticks:
+  ```
+  const name = 'Dash';
+  const someString = `Hello ${name}`;
+  ```
+
+  ##### Dictionaries
+
+  In Python, we use dictionaries for key-value pairs. In JavaScript, we use "objects" and they are instantiated and accessed very similarly:
+  ```
+  const myObject = {"color": "blue", "size": 20};
+  myObject['color']; // is blue
+  myObject.color;  // another way to access the color variable
+  ```
+
+  In Python, the keys of a dictionary can be any type. But in JavaScript, the keys can only be strings. JavaScript allows you to omit the quotes around the strings and we frequently do:
+  ```
+  const myObject = {color: "blue"}; // notice how there are no strings around color
+  ```
+
+  So, if you want to set a dynamic key in an object, you have to wrap it in square brackets:
+  ```
+  const styleProperty = "color";
+  const myObject = {[styleProperty]: "blue"};
+  myObject.color;
+  ```
+
+  ##### Lists
+
+  In JavaScript, lists are called "arrays" and they're instantiated and accessed the same way:
+  ```
+  const myList = ["Hello", "Dash", "!"];
+  myList[0];  // Hello
+  myList[1];  // Dash
+  myList[myList.length - 1]; // -1 references aren't allowed in JavaScript
+  ```
+
+  ##### Semicolons
+
+  In JavaScript, the convention is to end each line in a semicolon. It's not strictly necessary to do so anymore but it's still the convention.
+
+  ##### Print Statements, Errors, and the Console
+
+  In JavaScript, we use `console.log` to print statements into the "console":
+
+  ```
+  console.log("Hello Dash");
+  ```
+
+  Since JavaScript runs in the web browser, we won't see these statements in our terminal like we would in Python.
+  Instead, we'll see these statements in the browser's "dev tools console". To access the console:
+  1. Right click on the web page
+  2. Click "Inspect Element"
+  3. Click on the "Console" tab.
+
+  To see for yourself, add a `console.log` statement inside the `render` method of `ExampleComponent`, refresh the page, and then inspect your browser's console.
+
+  Like Python, error messages and exceptions will also appear inside this console.
+
+  ##### If, For, While
+
+  `if`
+  ```
+  if (color === 'red') {
+    console.log("the color is red");
+  } else if (color === 'blue') {
+    console.log("the color is blue");
+  } else {
+    console.log("the color is something else");
+  }
+  ```
+
+  `for`
+  ```
+  for (let i = 0; i < 10; i++) {
+    console.log(i);
+  }
+  ```
+
+  `while`
+  let i = 0;
+  while (i < 10) {
+    i += 1;
+  }
+
+  ##### Functions
+
+  In JavaScript, you'll see functions defined in two ways:
+
+  The new style way:
+  ```
+  const add = (a, b) => {
+    // The inside of the function
+    const c = a + b;
+    return c;
+  }
+
+  console.log(add(4, 6)); // 10
+  ```
+
+  The traditional way:
+  ```
+  function (a, b) {
+    // The inside of the function
+    const c = a + b;
+    return c;
+  }
+
+  console.log(add(4, 6)); // 10
+  ```
+
+  ##### Classes
+  > Heads up! Classes, among other features, are new language features in JavaScript. Technically, they're part of a new version of JavaScript called ES6. When we build our JavaScript code, a tool called Babel will convert these new language features into simpler JavaScript that older browsers like IE11 can understand.
+
+  JavaScript classes are very similar to Python classes. For example, this Python class:
+  ```
+  class MyComponent(Component):
+      def __init__(self, a):
+          self.a = a;
+          super().__init__(a)
+
+      def render(this):
+          return self.a;
+  ```
+
+  would be written in JavaScript as:
+  ```
+  class MyComponent extends Component {
+      init() {
+          super();
+          this.a = a;
+      }
+
+      render() {
+          return this.a;
+      }
+  }
+  ```
+
+  ##### Importing and Exporting
+
+  In Python, we can import any variable from any file. In JavaScript, we have to explicitly specify which variables we want to make "importable" by "exporting" the variables.
+
+  If we only want to export a single variable, we'll write `export default`:
+
+  `some_file.js`
+  ```
+  const text = 'hello world';
+  export default text;
+  ```
+
+  `another_file.js`
+  ```
+  import text from './some_file.js';
+  ```
+
+  If we want to export multiple variables, we'll just write `export`:
+  `some_file.js`
+  ```
+  const text = 'hello world';
+  const color = 'blue';
+  const size = '12px';
+
+  export text;
+  export color;
+  ```
+
+  `another_file.js`
+  ```
+  import {text, color} from './some_file.js';  // note that we can't import size because we didn't export it
+  ```
+
+  ##### The Standard Library and Ramda
+
+  Unlike Python, JavaScript's "standard library" is pretty small. At Plotly, we use the 3rd party library [`ramda`](https://ramdajs.com/docs/) for many of our common data manipulations.
+
+  ##### Virtual DOM
   If we look at the `App` component again, we see that it is `export`ed at the bottom, and if you open up the `src/demo/index.js` file you can see that it's imported there, so it can be used in a call to `ReactDOM.render()`. 
-  This `ReactDOM.render()` method is only called here, and only once. All it does is render our `App` component in a `div` element with the `id` of `root`. React handles all of the rendering of 
-  components internally, using a very smart system called the Virtual DOM. It does this so it can update DOM nodes internally in the most efficient and fast way, meaning we
-  only have to concentrate on declaring how we want things to look like, and how we want things to behave! 
+  This `ReactDOM.render()` method is only called here, and only once. ReactDOM.render() is what actually renders our React code into HTML on the web page. This ReactDOM.render() method is only called here, and only called once. 
 
-  #### Classes
-  Now, as a Python developer, classes are probably nothing new to you. In the JavaScript community, however, classes are a relatively new addition. They've become available to us
-  in `ES6`, which stands for EcmaScript 6 - an updated version of JavaScript. React greatly benefits from this enhanced versions of JavaScript, so they decided
-  to set us up with a transpiler called Babel. Babel is nothing more than a tool that converts (or transpiles) your ES6 (or ES7 and ES8) code into JavaScript
-  all browsers can understand (even older ones like Internet Explorer!). This allows us to write modern JavaScript - which includes classes - whilest not having to worry (too much) about browser support. Babel comes included with `create-react-app`.
-
+  ##### Classes
   We see here in our `App` component that it is defined as a `class` which `extends` from the `Component` class of React. This provides some methods to us, for example the `render()` method we're using here. `render()` is the method that is called by the *component that is rendering it*. In our case, `render()` is called
   by the `ReactDOM.render()` call in `index.js`. Notice how the `<App />` is called in the `ReactDOM.render()` method: our `App` component is used as a JSX tag!
 
-  #### Other methods on React.Component
-  Other methods provided by React are mostly related to component state management. We've got lifecycle hooks like `shouldComponentUpdate` and `componentDidMount` which allow you to better specify when and how a component should update. For these methods, please refer to the [React documentation](https://reactjs.org/docs/state-and-lifecycle.html)
+  ##### Other methods on React.Component
+  Other methods provided by React are mostly related to component state management. We've got lifecycle hooks like `shouldComponentUpdate` and `componentDidMount` which allow you to better specify when and how a 
+  component should update. For these methods, please refer to the [React documentation](https://reactjs.org/docs/state-and-lifecycle.html).
 
   ## Our very own React component
-  Now, let's create our very own component. Create a file in `src`, and let's name it `TextInput.js`. In the `TextInput.js` file, let's first import React 
-  and React.Component (the { Component } syntax is a shorthand) the same way as in `App.js` by writing `import React, { Component } from 'react'`.
-
-  Next, let's define our component by writing it as a class, which extends React.Component. 
+  ##### Creating a boilerplate component
+  Now, let's create our very own component. Create a file named `TextInput.react.js` inside the `src/lib/components/` folder. 
+  In `TextInput.react.js` write:
 
   ```
   import React, { Component } from 'react';
@@ -119,14 +334,15 @@ layout = html.Div([dcc.Markdown('''
   `props` are a component's properties. They are passed down from a component's parent, and are available as the `props` attribute. Calling `super()` on `props` in the constructor, makes our props available in the component as `this.props`. The `this` keyword in JavaScript is Python's `self`. We'll show you how to pass down
   `props` a bit later on.
 
-  We're also defining `this.state` here, which is an `object`. `object`'s in JavaScript are a lot like `dict`'s in Python. They are specified in a notation
-  called `JSON`, which stands for JavaScript Object Notation. We're setting a `key` on our `state` object, called `value`, to be a string, 'default'.
+  ##### Defining the `render` method
 
   Next, let's define our `render()` method for our new component. In React, we are declaring UI components, and the `render()` method is the method that is called
-  when React wants to render those component. React is in charge of keeping track of our components and all of it's state, so it keeps up-to-date. It does this very efficiently, with the use of something called the virtual DOM and React Fiber ([here](https://reactjs.org/docs/faq-internals.html) is a good place to start if you want to learn more about this).
+  when React wants to render those component. 
 
-  A component's `render` method can return a basic string, for example `return "Hello, World!"`. When this component is used somewhere, it's `render()` method is called and "Hello, World!" will be displayed on our page. Likewise, you can return a React element (specified using JSX) and React will render that element.
-  There are more things you can do in `render()`, but typically you shouldn't modify state in this method. Read more [here](https://reactjs.org/docs/react-component.html#render)
+  A component's `render` method can return a basic string, for example `return "Hello, World!"`. When this component is used somewhere, it's `render()` method is called and "Hello, World!" will be displayed on our page. 
+  Likewise, you can return a React element (specified using JSX) and React will render that element.
+
+  ##### Exporting and importing a component
 
   We'll also go ahead and `export` our component, as the `default`. This means whenever we're trying to `import` something from this file, and we don't specify a name, we'll get the `default` export.
 
@@ -154,14 +370,18 @@ layout = html.Div([dcc.Markdown('''
   Tada!
 
   We've got a text input. 
+
+  ##### Updating state with the `setState()` method
   
   However, this input doesn't really do much - it's not connected to anything, nor does it save what you type in. Let's change our `render()` method of `TextInput` to
   set the HTML `value` attribute on our `<input />` tag, so it looks like this: `<input value='dash' />`. Save it, and we should now see that the value of our <input> tag
   is set to 'dash'! We can also change our value to be that which is defined in our `state` object, so `<input value={this.state.value} />`. The `{}` syntax in JSX means 
-  that we want to write inline JavaScript in our JSX/HTML, so our `this.state.value` statement can be computed. Great! Now our input says 'default'! Unfortunately, our input
+  that we want to write inline JavaScript in our JSX, so our `this.state.value` statement can be computed. Great! Now our input says 'default'! Unfortunately, our input
   is still not very useful, because we can't change our input's value, try as we might.  
-
-  We'll need to write some sort of event handler for this.  We can define methods on our component's class, and use those in our `<input/>` tag.
+  
+  It may seem odd to you that we can't type anything into the `<input/>` box. However, it's consistent with the React model: in our render method, we are telling React to render an input 
+  with a particular value set. React will faithfully render this input with that value no matter what, even if we try typing in it. In order to have the input update when we type, we have to make sure
+  that the `value` variable is updated with whatever we're typing in the input. To do that, we can listen for changes to the input and update our state accordingly: 
 
   ```
   import React, { Component } from 'react';
@@ -188,18 +408,13 @@ layout = html.Div([dcc.Markdown('''
   
   export default TextInput;
   ```
-  Here we wrote a method which we set on our HTML's input `onchange` attribute (written as `onChange` in JSX), which will fire
-  every time an `onchange` event happens on our input. This method has a parameter we named `e` for event, on which certain attributes are
+  Here we wrote a method which we set on our input's `onChange` attribute, which will fire
+  every time we type into the input. This method has a parameter we named `e` for event, on which certain attributes are
   set: `target.value` is what we need. This is how the HTML DOM works - for more information check out [these docs](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/text).
 
-  You might also wonder what the `const` keyword means. In JavaScript, we have a variety of keywords used to define *in which scope a variable lives*. I won't go into the details too deeply, but
-  the basic idea is that we have a `const` keyword to make a variable constant, i.e. you cannot modify it after creation. You can use the `let` keyword, which is not constant, but is bound to
-  the scope of the enclosing method, or the `var` keyword, which is also not constant, but, it's scope is broader. In React, it's best to just use `let` for normal variables, and `const` if 
-  you want the variable to be unchangable after definition.
-
-  Next, we use a method called `setState()` on our class, provided by `React.Component`. This method will handle updates to our `state` object. Because of how JavaScript works, setting `state`
-  directly will result in the *component not updating, thus not firing render() again, so we are not able to see our changes!*. This has to do with the updating of the internal state array - because
-  it is not a new object (as happens in `setState()`, it is not recognized as new) [here's a good article on the subject.](https://daveceddia.com/why-not-modify-react-state-directly/)
+  Next, we use a method called `setState()`, that's provided by `React.Component`. This method will handle updates to our `state` object. This method is really special, it'll do two things:
+  1. It'll merge the object that you provide with whatever was currently in this.state.
+  2. Then, it'll rerender the component. That is, it'll tell React to call the components render method again with the new data set in `this.state`.
 
   See how this now allows you to type in our input component? We can also display our state, by writing our `render()` method something like:
 
@@ -213,6 +428,8 @@ layout = html.Div([dcc.Markdown('''
   ``` 
 
   Notice that we're not allowed to return multiple elements from `render()`, but an element with children is totally fine.
+
+  ##### Component props
 
   We can also pass along properties to our components, via the before mentioned `props`. This works the same as assigning attributes on a component, as we'll demonstrate by adding a `label` prop to our `TextInput` component!
   Let's edit our call to `<TextInput />` in `App.js` to say `<TextInput label='dash-input' />`. This means we now have a `prop` called `label` available on our `TextInput` component! 
@@ -235,151 +452,186 @@ layout = html.Div([dcc.Markdown('''
   ## Using your React components in Dash
 
   We can use most, if not all, components build in React in Dash! Dash uses React under the hood, specifically in the `dash-renderer`. The `dash-renderer` is basically just a React app, that renders the
-  layout defined in your Dash app as `app.layout`! It is also responsible for assigning the callbacks you write in Dash to the proper components, and keeping everything up-to-date. The `App` component
-  we have been working with so far can simply be thought of as `dash-renderer`!
+  layout defined in your Dash app as `app.layout`. It is also responsible for assigning the callbacks you write in Dash to the proper components, and keeping everything up-to-date. 
 
-  There are, of course, some steps you must take for your component to work nicely with Dash. The `props` you want to be available in Dash, should be specified as `propTypes` on the React component, so that the
-  Dash Component Archetype (note: this here will need some clarification) can read them and convert them to React. In our example, we can easily do this by changing our code like so:
+  ##### Control the state in the parent
+
+  Let's modify our previous example to control `state` in the parent `App` component, instead of in the `TextInput` component. Let's start by moving the `value` in `state` up to the parent component.
+
+  In `src/demo/App.js`, add state and pass the value into the component:
   ```
-  // other imports
-  import PropTypes from 'prop-types';
-
-  class TextInput extends Component {
-    // class definition here
-  }
-
-  TextInput.propTypes = {
-    /** 
-    * This comment will also get parsed by Dash, 
-    * so that it is available in help(component.TextInput)
-    **/
-    label: PropTypes.string
-  }
-  ```
-
-  Because we specified what props our component will recieve, Dash is able to read this and make those props available in Dash!
-  This means we could use our component in Dash:
-  ```
-  app.layout = html.Div[
-    ourCustomComponent.TextInput(label='great!')
-  ]
-  ```
-
-  We also have a special prop available called `setProps`. This is Dash's way of keeping state *within Dash* (so not internally in our React component). You can think of it
-  as `setState()`, but for Dash. In your React component, you can thus call `this.props.setProps` (if it is set) *instead* of `this.setState()`, and the state will be handled
-  in Dash instead of in React! We can re-write our `TextInput` component as follows:
-  ```
-  import React, { Component } from 'react';
-  import PropTypes from 'prop-types';
-
-  class TextInput extends Component {
-    constructor(props) {
-      super(props);
-    }
-    handleInputChange = (e) => {
-      // get the value from the DOM node
-      const newValue = e.target.value;
-
-      // update the props!
-      this.props.setProps({
-        value: newValue
-      })
-    }
-    render() {
-      return <input value={this.props.value} onChange={this.handleInputChange}/mg
-      >
-    }
-  }
-
-  TextInput.propTypes = {
-    /** 
-    * This comment will also get parsed by Dash, 
-    * so that it is available in help(component.TextInput)
-    **/
-    label: PropTypes.string,
-
-    /** 
-    * The value of the text input (coming from Dash)
-    **/
-    value: PropTypes.string,
-
-    /** 
-    * Dash-provided callback for keeping state
-    **/
-    setProps: PropTypes.function
-  }
-  
-  export default TextInput;
-```
-
-Note that if you run this example above in the demo provided by `dash-component-boilerplate`, `setProps` is defined in `demo/App.js`. In Dash however, `setProps` will be injected in our component by Dash, when it passes it to `dash-renderer`. The `setProps` method *lifts up* the state from being handled *in the React component itself* (via `setState`) to being handled *from within your Dash application*. This means that if we use `setProps` in our React component, the
-values passed into `setProps` are also being updated inside Dash. This is very useful if you want users of your component to be able to change the props of your component from within Dash.
-'''),
-
-html.Img(
-    src='https://github.com/plotly/dash-docs/raw/59b68fc42d018d8533385530f9f32b73b1618741/images/setProps_example.png',
-    alt='setProps example',
-    style={
-        'width': '100%', 'border': 'thin lightgrey solid',
-        'border-radius': '4px'
-    }),
-
-dcc.Markdown('''
-The flow of `setState` works like this - which is handy for keeping state internally, so that Dash users don't have to deal with it:
-'''),
-
-html.Img(
-    src='https://github.com/plotly/dash-docs/raw/59b68fc42d018d8533385530f9f32b73b1618741/images/setState_example.png',
-    alt='setProps example',
-    style={
-        'width': '100%', 'border': 'thin lightgrey solid',
-        'border-radius': '4px'
-    }),
-
-dcc.Markdown('''
-When developing, we're usually not running our Dash application - we're running our component somewhere else, in our case, we're running it in the demo app in `dash-component-boilerplate`, `src/demo/App.js`. 
-
-```
-import React, {Component} from 'react';
-import PropTypes from 'prop-types';
-import * as R from 'ramda';
-
-import {ExampleComponent} from '../lib';
-
-class App extends Component {
-
+  component App extends Component {
     constructor() {
-        super();
-        this.state = {
-            value: ''
-        }
-        this.setProps = this.setProps.bind(this);
+      super(props)
+
+      this.state = {
+          value: 'dash'
+      };
     }
 
-    setProps(newProps) {
-        this.setState(newProps);
+      render() {
+        return <TextInput label={'Dash'} value={this.state.value}/>
+      }
+  }
+  ```
+
+  In `src/lib/components/TextInput.react.js`, use the `value` prop instead of the state:
+  ```
+  component TextInput extends Component {
+    constructor() {
+      super(props)
     }
 
-    render() {
+      render() {
         return (
             <div>
-              <TextInput
-                label="dash-input"
-                value={this.state.value}
-                setProps={this.setProps}
-              />
+              <label>{this.props.label}</label>
+              <input value={this.props.value}/>
+              <p>{this.props.value}</p>
             </div>
-        )
-    }
-}
+          )
+      }
+  }
+  ```
 
-export default App;
+  Now, as before, the `<input/>` won't actually update when you type into it. We need to update the component's `value` property as we type. To do this, we'll define a function in our parent component
+  that will update the parent's component state and we'll pass that function down into our component.
+  We'll call this function `setProps`:
+
+  ```
+  component App extends Component {
+    constructor() {
+      super(props)
+
+      this.state = {
+          value: 'dash'
+      };
+    }
+
+      setProps(newProps) {
+        this.setState(newProps);
+      }
+
+      render() {
+        return (
+          <TextInput
+            label={'Dash'}
+            value={this.state.inputValue}
+            setProps={this.setProps}
+          />
+      }
+  }
+  ```
+
+  and in `TextInput`, we'll call this function when the `value` of our `input` changes. That is, when we type into the input:
+
+  ```
+  component TextInput extends Component {
+    constructor() {
+      super(props)
+
+    }
+
+      handleInputChange = (e) => {
+        const newValue = e.target.value;
+        this.props.setProps({value: newValue});
+      }
+
+      render() {
+        return (
+            <div>
+              <label>{this.props.label}</label>
+              <input value={this.props.value} onChange={this.handleInputChange}/>
+              <p>{this.props.value}</p>
+            </div>
+          )
+      }
+  }
+  ```
+
+  To review, this is what happens when we type into our `<input>`:
+  1. The `handleInputChange` is called with whatever value we typed into the `<input/>`
+  2. `this.props.setProps` is called which in turn calls the `setState` property of the `App` component.
+  3. `this.setState` in `App` is called. This updates the `this.state` of `App` _and_ implicitly calls the `render` method of `App`
+  4. When `App.render` is called, it calls `TextInput.render` with the new properties, rerendering the `<input/>` with the new `value`.
+
+  In Dash apps, the `dash-renderer` project is very similar to `App.js`. It contains all of the "state" of the application and it passes those properties into the individual components. When a component's properties change through user interaction (e.g. typing into an `<input/>` or hovering on a graph), the component needs to call `setProps` with the new values of the property. Dash's frontend (`dash-renderer`) will then rerender the component with the new property _and_ make the necessary API calls to Dash's Python server callbacks.
+
+  ##### Handling the case when `setProps` isn't defined
+
+  In Dash, `setProps` *is only defined if the particular component is referenced in an `@app.callback`*. If the component isn't referenced in a callback, then Dash's frontend will not pass in the `setProps` property, it will be undefined.
+
+  > As an aside, why does Dash do that? In some cases, it could be computationally expensive to determine the new properties. In these cases, Dash allows component authors to skip doing these computations if the Dash app author doesn't actually need the properties. That is, if the component isn't in any `@app.callback`, then it doesn't need to through the "effort" to compute it's new properties and inform Dash.
+  >
+
+  In most cases, this is a non-issue. After all, why would you render an `Input` on the page if you didn't want to use it as an `@app.callback`? However, sometimes we still want to be able to interact with the component, even if it isn't connected to Dash's backend. In this case, we'll manage our state locally _or_ through the parent. That is:
+  1. If `setProps` is defined, then the component will call this function when its properties change and Dash will faithfully rerender the component with the new properties that it passed up.
+  2. If `setProps` isn't defined, then the component isn't "connected" to Dash's backend through a callback and it will manage its state locally.
+
+  Here's an example with our `TextInput` component:
+  ```
+  component TextInput extends Component {
+    constructor() {
+      super(props)
+      this.state = props;
+    }
+
+      handleInputChange = (e) => {
+        const newValue = e.target.value;
+        this.props.setProps({value: newValue});
+      }
+
+      render() {
+        let value;
+        if (this.props.setProps) {
+          value = this.props.value;
+        } else {
+          value = this.state.value;
+        }
+        return (
+            <div>
+              <label>{this.props.label}</label>
+              <input value={value} onChange={this.handleInputChange}/>
+              <p>{value}</p>
+            </div>
+          )
+      }
+  }
+  ```
+
+##### Annotate your function with `propTypes`
+
+The final step in authoring your Dash component is to describe which properties are available.
+
+This is done through React's `propTypes`. At the end of your file, write:
+```
+TextInput.propTypes = {
+  ...
+}
 ```
 
-We pass `setProps` here to our component so that it can use it (this is what is called "prop drilling" - passing props around to allow children components to use them). We also set the `value` of our `TextInput` component to be equal to `this.state.value`. 
+(fill that in with the actual ones)
 
-If all is well, and you're happy with your component, the next step is building our component for Dash, and using it in an actual Dash app. Luckily, the `dash-component-boilerplate` project provides the scripts for us that we need to build our component.
-Please check out the [dash-component-boilerplate repo](https://github.com/plotly/dash-component-boilerplate) again, and follow the steps required for building.
+These `propTypes` describe the input properties of the component, their types, and whether or not they are required. These are required. Dash's React-to-Python toolchain looks for these `propTypes` in order to automatically generate the Dash component Python classes. A few notes:
+- The comments above each property are translated directly into the Python component's docstrings. For example, compare the output of `>>> help(dcc.Dropdown)` with [that component's propTypes](https://github.com/plotly/dash-core-components/blob/c82bea0696dfa7af7f6a665bae81051523fff8b2/src/components/Dropdown.react.js).
+- The `id` property is required in all Dash components.
+- The list of available types are available [here](https://reactjs.org/docs/typechecking-with-proptypes.html).
+- In the future, we will use these propTypes to provide validation in Python. That is, if you specify that a property is a `PropTypes.string`, then Dash's Python code will throw an error if you supply something else. Track our progress in this issue: [264](https://github.com/plotly/dash/issues/264).
+
+##### Build your component in Python
+
+Now that you have your React component, you can build it and import it into your Dash program. View instructions on how to build the component in [the boilerplate repo](https://github.com/plotly/dash-component-boilerplate). 
+
+In this tutorial, we rebuilt the `ExampleComponent` that was provided in [the boilerplate](https://github.com/plotly/dash-component-boilerplate/). So, the Python component code in `usage.py` should look familar - the properties and behaviour of `ExampleComponent` are exactly the same as our `TextInput`.
+
+***
+
+Feedback, questions? Let us know in on GitHub in our [dedicated feedback issue](https://github.com/plotly/dash-docs/issues/194).
+
+Here are some helpful links:
+- [The React docs](https://reactjs.org/docs)
+- [dash-core-components](https://github.com/plotly/dash-core-components)
+- [dash-component-boilerplate](https://github.com/plotly/dash-component-boilerplate)
 
 ''')
 ])
