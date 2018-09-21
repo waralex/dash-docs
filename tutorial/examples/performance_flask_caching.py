@@ -7,7 +7,7 @@ import dash_html_components as html
 from dash.dependencies import Input, Output
 from flask_caching import Cache
 
-app = dash.Dash(__name__)
+app = dash.Dash(__name__, external_stylesheets=['https://codepen.io/chriddyp/pen/bWLwgP.css'])
 cache = Cache(app.server, config={
     # try 'filesystem' if you don't want to setup redis
     'CACHE_TYPE': 'redis',

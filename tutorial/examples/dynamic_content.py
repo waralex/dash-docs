@@ -2,7 +2,7 @@ import dash
 from dash.dependencies import Event, Output
 import dash_html_components as html
 
-app = dash.Dash(__name__)
+app = dash.Dash(__name__, external_stylesheets=['https://codepen.io/chriddyp/pen/bWLwgP.css'])
 app.config.suppress_callback_exceptions = True
 
 app.layout = html.Div([

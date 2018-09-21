@@ -4,7 +4,7 @@ import dash_html_components as html
 import pandas as pd
 import plotly.graph_objs as go
 
-app = dash.Dash(__name__)
+app = dash.Dash(__name__, external_stylesheets=['https://codepen.io/chriddyp/pen/bWLwgP.css'])
 
 df = pd.read_csv(
     'https://gist.githubusercontent.com/chriddyp/' +

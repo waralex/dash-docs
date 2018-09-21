@@ -8,7 +8,7 @@ df = pd.read_csv(
     'https://raw.githubusercontent.com/plotly/'
     'datasets/master/gapminderDataFiveYear.csv')
 
-app = dash.Dash(__name__)
+app = dash.Dash(__name__, external_stylesheets=['https://codepen.io/chriddyp/pen/bWLwgP.css'])
 
 app.layout = html.Div([
     dcc.Graph(id='graph-with-slider'),
