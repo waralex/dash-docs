@@ -2,7 +2,7 @@ import dash
 import dash_html_components as html
 import dash_core_components as dcc
 
-app = dash.Dash()
+app = dash.Dash(__name__)
 app.layout = html.Div([
     dcc.RangeSlider(
         id='my-range-slider',

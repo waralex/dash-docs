@@ -205,7 +205,7 @@ h1, h2, h3, h4, h5, h6 {
         """import dash
 import dash_html_components as html
 
-app = dash.Dash()
+app = dash.Dash(__name__)
 
 app.layout = html.Div([
     html.Img(src='/assets/image.png')
@@ -223,7 +223,7 @@ if __name__ == '__main__':
     ## Adding external CSS/Javascript
 
     You can add resources hosted externally to your Dash app with the
-    `external_scripts/stylesheets` init keywords.
+    `external_stylesheets/stylesheets` init keywords.
 
     The resources can be either a string or a dict containing the tag attributes
     (`src`, `integrity`, `crossorigin`, etc). You can mix both.

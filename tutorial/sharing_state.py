@@ -349,7 +349,13 @@ def update_output_1(value):
         from flask_caching import Cache
 
 
-        app = dash.Dash(__name__)
+        external_stylesheets = [
+            # Dash CSS
+            'https://codepen.io/chriddyp/pen/bWLwgP.css',
+            # Loading screen CSS
+            'https://codepen.io/chriddyp/pen/brPBPO.css']
+        
+        app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
         CACHE_CONFIG = {
             # try 'filesystem' if you don't want to setup redis
             'CACHE_TYPE': 'redis',
@@ -466,13 +472,6 @@ def update_output_1(value):
                 }]
             })
 
-
-        # Dash CSS
-        app.css.append_css({
-            "external_url": "https://codepen.io/chriddyp/pen/bWLwgP.css"})
-        # Loading screen CSS
-        app.css.append_css({
-            "external_url": "https://codepen.io/chriddyp/pen/brPBPO.css"})
 
         if __name__ == '__main__':
             app.run_server(debug=True, processes=6)

@@ -685,8 +685,6 @@ from dash.dependencies import Input, Output
 app = dash.Dash(__name__, external_stylesheets=['https://codepen.io/chriddyp/pen/bWLwgP.css'])
 server = app.server
 
-app.css.append_css({"external_url": "https://codepen.io/chriddyp/pen/bWLwgP.css"})
-
 app.layout = html.Div([
   html.H2('Hello World'),
   dcc.Dropdown(

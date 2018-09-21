@@ -4,7 +4,7 @@ import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output, State
 
-app = dash.Dash()
+app = dash.Dash(__name__)
 
 app.layout = html.Div([
     dcc.Input(id='input-1-state', type='text', value='Montréal'),

@@ -1,7 +1,7 @@
 import dash
 import dash_html_components as html
 
-app = dash.Dash()
+app = dash.Dash(__name__)
 
 app.index_string = '''
 <!DOCTYPE html>

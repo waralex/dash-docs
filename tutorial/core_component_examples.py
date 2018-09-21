@@ -487,7 +487,7 @@ Block code snippet:
 ```
 import dash
 
-app = dash.Dash()
+app = dash.Dash(__name__)
 ```
 ''')
 

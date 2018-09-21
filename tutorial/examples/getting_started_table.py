@@ -22,7 +22,7 @@ def generate_table(dataframe, max_rows=10):
     )
 
 
-app = dash.Dash()
+app = dash.Dash(__name__)
 
 app.layout = html.Div(children=[
     html.H4(children='US Agriculture Exports (2011)'),

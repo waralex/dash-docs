@@ -84,7 +84,9 @@ VALID_USERNAME_PASSWORD_PAIRS = [
     ['hello', 'world']
 ]
 
-app = dash.Dash('auth')
+external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
+
+app = dash.Dash('auth', external_stylesheets=external_stylesheets)
 auth = dash_auth.BasicAuth(
     app,
     VALID_USERNAME_PASSWORD_PAIRS
@@ -119,7 +121,7 @@ def update_graph(dropdown_value):
     }
 
 app.scripts.config.serve_locally = True
-app.css.append_css({'external_url': 'https://codepen.io/chriddyp/pen/bWLwgP.css'})
+
 
 if __name__ == '__main__':
     app.run_server(debug=True)
@@ -161,7 +163,9 @@ import plotly
 APP_NAME = 'Dash Authentication Sample App'
 APP_URL = 'https://my-dash-app.herokuapps.com'
 
-app = dash.Dash('auth')
+external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
+
+app = dash.Dash('auth', external_stylesheets=external_stylesheets)
 auth = dash_auth.PlotlyAuth(
     app,
     APP_NAME,
@@ -198,7 +202,6 @@ def update_graph(dropdown_value):
     }
 
 app.scripts.config.serve_locally = True
-app.css.append_css({'external_url': 'https://codepen.io/chriddyp/pen/bWLwgP.css'})
 
 if __name__ == '__main__':
     app.run_server(debug=True)
@@ -272,7 +275,9 @@ APP_NAME = 'Dash Authentication Sample App'
 APP_URL = 'http://127.0.0.1:8050/'
 
 
-app = dash.Dash('auth')
+external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
+
+app = dash.Dash('auth', external_stylesheets=external_stylesheets)
 auth = dash_auth.PlotlyAuth(
     app,
     APP_NAME,

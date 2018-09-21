@@ -3,7 +3,7 @@ import dash_html_components as html
 from dash.dependencies import Input, Output
 import dash
 
-app = dash.Dash()
+app = dash.Dash(__name__)
 
 # Use the following function when accessing the value of 'my-slider'
 # in callbacks to transform the output value to logarithmic
