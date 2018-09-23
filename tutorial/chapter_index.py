@@ -8,6 +8,7 @@ from tutorial import external_css_and_js
 from tutorial import gallery
 from tutorial import getting_started_part_1
 from tutorial import getting_started_part_2
+from tutorial import faqs
 from tutorial import graphing
 from tutorial import html_components
 from tutorial import installation
@@ -103,6 +104,15 @@ chapters = {
                        'between callbacks. This chapter is useful for ' \
                        'callbacks that run expensive data processing ' \
                        'tasks or process large data.'
+    },
+
+    'faqs': {
+        'url': '/faqs',
+        'content': faqs.layout,
+        'name': 'Part 7. FAQs and Gotchas',
+        'description': 'If you have read through the rest of the ' \
+        'tutorial and still have questions or are encountering ' \
+        'unexpected behaviour, this chapter may be useful.'
     },
 
     'dash-core-components': {

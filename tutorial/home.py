@@ -78,7 +78,10 @@ layout = html.Div(className='toc', children=[
                 chapters['graphing']['description']),
         Chapter(chapters['shared-state']['name'],
                 chapters['shared-state']['url'],
-                chapters['shared-state']['description'])
+                chapters['shared-state']['description']),
+        Chapter(chapters['faqs']['name'],
+                chapters['faqs']['url'],
+                chapters['faqs']['description'])        
     ]),
 
     Section('Component Libraries', [
@@ -125,7 +128,7 @@ layout = html.Div(className='toc', children=[
     ]),
 
     Section('Getting Help', [
-        Chapter('FAQ', 'https://community.plot.ly/c/dash'),
+        Chapter('The Dash Community Forum', 'https://community.plot.ly/c/dash'),
         Chapter(chapters['support']['name'],
                 chapters['support']['url'])
     ]),
