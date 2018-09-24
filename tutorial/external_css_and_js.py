@@ -167,18 +167,22 @@ h1, h2, h3, h4, h5, h6 {
 
     B - JavaScript files suffixed with `.js`
 
-    C - A single file named `favicon.io` (the page tab's icon)
+    C - A single file named `favicon.ico` (the page tab's icon)
 
     2 - Dash will include the files in alphanumerical order by filename.
     So, we recommend prefixing your filenames with numbers if you need to ensure
     their order (e.g. `10_typography.css`, `20_header.css`)
 
-    3 - If you want to include CSS from a remote URL, then we recommend
-    overriding the app's HTML template, as described in the next section.
-    We are working on an easier method for including remote CSS urls in
-    [dash#302](https://github.com/plotly/dash/issues/302)
+    3 - If you want to include CSS from a remote URL, then see the next section.
 
     4 - Your custom CSS will be included _after_ the Dash component CSS
+
+    5 - It is recommended to add `__name__` to the dash init to ensure the resources
+    in the assets folder are loaded, eg: `app = dash.Dash(__name__, meta_tags=[...])`.
+    When you run your application through some other command line (like the
+    flask command or gunicorn/waitress), the `__main__` module wil no
+    longer located where `app.py` is. By explicitly setting `__name__`, 
+    Dash will be able to locate the relative `assets` folder correctly.
 
     ***
 

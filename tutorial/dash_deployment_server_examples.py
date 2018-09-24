@@ -6,9 +6,8 @@ import dash_html_components as html
 from dash.dependencies import Input, Output
 import plotly
 from tutorial import styles
-from tutorial.server import app
 import reusable_components as rc
-
+from server import app
 
 def s(string_block):
     return string_block.replace('    ', '')

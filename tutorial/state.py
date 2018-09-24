@@ -16,14 +16,15 @@ layout = html.Div([
     dcc.Markdown(s('''
         > This is the *4th* chapter of the [Dash Tutorial](/).
         > The [previous chapter](/getting-started-part-2) covered Dash Callbacks
-        > and the [next chapter](/interactive-graphing) covers interactive
+        > and the [next chapter](/interactive-graphing) covers interactive 
+        > graphing and crossfiltering.
         > Just getting started? Make sure to
         > [install the necessary dependencies](/installation).
     ''')),
 
     dcc.Markdown(s('''
         In the previous chapter on
-        [basic dash callbacks](/getting-started-part-2),
+        [basic Dash callbacks](/getting-started-part-2),
         our callbacks looked something like:
     ''')),
     Syntax(examples['basic-input'][0]),
@@ -59,7 +60,7 @@ layout = html.Div([
     dcc.Markdown('''
     ***
 
-    The next chapter of the user guide explains how to use callbacks
+    The next chapter of the user guide explains how to use callback
     principles with the `dash_core_components.Graph` component
     to make applications that
     respond to interactions with graphs on the page.

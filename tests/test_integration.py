@@ -21,7 +21,7 @@ import unittest
 
 from .IntegrationTests import IntegrationTests
 from .utils import assert_clean_console, invincible, wait_for
-from tutorial.run import app
+from run import app
 
 # Download geckodriver: https://github.com/mozilla/geckodriver/releases
 # And add to path:
@@ -58,8 +58,9 @@ class Tests(IntegrationTests):
     def snapshot(self, name):
         if 'PERCY_PROJECT' in os.environ and 'PERCY_TOKEN' in os.environ:
             python_version = sys.version.split(' ')[0]
-            print('Percy Snapshot {}'.format(python_version))
-            self.percy_runner.snapshot(name=name)
+            if '2.7' in python_version:
+                print('>>> Percy Snapshot {} - {}'.format(python_version, name))
+                self.percy_runner.snapshot(name=name)
 
     def test_docs(self):
         self.startServer(app, '/')

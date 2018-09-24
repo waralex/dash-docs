@@ -17,12 +17,13 @@ layout = html.Div([
     dcc.Markdown(s('''
     # Sharing State Between Callbacks
 
-    > This is the *6th* and final chapter of the essential [Dash Tutorial](/).
-    > The [previous chapter](/interactive-graphing) covered how to use callbacks
-    > with the `dash_core_components.Graph` component.
-    > The [rest of the Dash documentation](/) covers other topics like multi-page
-    > apps and component libraries.
-    > Just getting started? Make sure to [install the necessary dependencies](/installation).
+    > This is the *6th* chapter of the essential [Dash Tutorial](/).  The
+    > [previous chapter](/interactive-graphing) covered how to use callbacks
+    > with the `dash_core_components.Graph` component.  The [rest of the Dash
+    > documentation](/) covers other topics like multi-page apps and component
+    > libraries.  Just getting started? Make sure to [install the necessary
+    > dependencies](/installation). The [next and final chapter](/faq) covers
+    > frequently asked questions and gotchas.
 
     One of the core Dash principles explained in the
     [Getting Started Guide on Callbacks](/getting-started-part-2)
@@ -127,17 +128,17 @@ def update_output_1(value):
     return len(filtered_df)
 ''', summary='''
     To fix this example, simply re-assign the filter to a new
-    variable inside the callback or follow one of the strategies
+    variable inside the callback, or follow one of the strategies
     outlined in the next part of this guide.'''),
 
     dcc.Markdown(s('''
         ## Sharing Data Between Callbacks
 
-        In order for to share data safely across multiple python
+        In order to share data safely across multiple python
         processes, we need to store the data somewhere that is accessible to
         each of the processes.
 
-        There are 3 main places to store this data:
+        There are three main places to store this data:
 
         1 - In the user's browser session
 
@@ -161,7 +162,7 @@ def update_output_1(value):
             callbacks within the session.
           - As such, unlike with caching, this method doesn't increase the
             memory footprint of the app.
-          - There could be a cost in network transport. If your sharing 10MB
+          - There could be a cost in network transport. If you're sharing 10MB
             of data between callbacks, then that data will be transported over
             the network between each callback.
            - If the network cost is too high, then compute the aggregations
@@ -174,7 +175,7 @@ def update_output_1(value):
         summary=('''
         This example outlines how you can perform an expensive data processing
         step in one callback, serialize the output at JSON, and provide it
-        as an input to the other callbacks. This example uses standard dash
+        as an input to the other callbacks. This example uses standard Dash
         callbacks and stores the JSON-ified data inside a hidden div in
         the app.
     '''), children=s('''
@@ -288,10 +289,10 @@ def update_output_1(value):
 
         This example:
         - Uses Redis via Flask-Cache for storing “global variables”.
-          This data is accessed through a function who’s output is
+          This data is accessed through a function, the output of which is
           cached and keyed by its input arguments.
         - Uses the hidden div solution to send a signal to the other
-          callbacks when the expensive computation is complete
+          callbacks when the expensive computation is complete.
         - Note that instead of Redis, you could also save this to the file
           system. See https://flask-caching.readthedocs.io/en/latest/
           for more details.
@@ -299,25 +300,25 @@ def update_output_1(value):
           computation to only take up one process.
           Without this type of signaling, each callback could end up
           computing the expensive computation in parallel,
-          locking 4 processes instead of 1.
+          locking four processes instead of one.
 
-        This approach also has the advantage that future sessions
+        This approach is also advantageous in that future sessions can 
         use the pre-computed value.
         This will work well for apps that have a small number of inputs.
 
         Here’s what this example looks like. Some things to note:
 
         - I’ve simulated an expensive process by using a time.sleep(5).
-        - When the app loads, it takes 5 seconds to render all 4 graphs
-        - The initial computation only blocks 1 process
-        - Once the computation is complete, the signal is sent and 4 callbacks
+        - When the app loads, it takes five seconds to render all four graphs.
+        - The initial computation only blocks one process.
+        - Once the computation is complete, the signal is sent and four callbacks
           are executed in parallel to render the graphs.
           Each of these callbacks retrieves the data from the
-          “global store”: the redis or filesystem cache.
+          “global store”: the Redis or filesystem cache.
         - I’ve set processes=6 in app.run_server so that multiple callbacks
           can be executed in parallel. In production, this is done with
           something like $ gunicorn --workers 6 --threads 2 app:server
-        - Selecting a value in the dropdown will take less than 5 seconds
+        - Selecting a value in the dropdown will take less than five seconds
           if it has already been selected in the past.
           This is because the value is being pulled from the cache.
         - Similarly, reloading the page or opening the app in a new window
@@ -333,7 +334,7 @@ def update_output_1(value):
         className="gallery"
     ),
 
-    Syntax(summary="Here's what this example looks like in code",
+    Syntax(summary="Here's what this example looks like in code:",
            children=s('''
         import os
         import copy
@@ -494,16 +495,16 @@ def update_output_1(value):
         as demonstrated in the first example.
 
         Another way to do this is to save the data on the
-        filesystem cache with with a seession id and reference the data
-        using that session id. In this method, since data is saved on the server,
-        instead of transported over the network, it is generally faster than the
+        filesystem cache with a session ID and then reference the data
+        using that session ID. Because data is saved on the server
+        instead of transported over the network, this method is generally faster than the
         "hidden div" method.
 
         This example was originally discussed in a
         [Dash Community Forum thread](https://community.plot.ly/t/capture-window-tab-closing-event/7375/2?u=chriddyp).
 
         This example:
-        - Caches data using the `flask_caching` filesystem cache. You can also save to an in-memory database like Redis..
+        - Caches data using the `flask_caching` filesystem cache. You can also save to an in-memory database like Redis.
         - Serializes the data as JSON.
             - If you are using Pandas, consider serializing
             with Apache Arrow. [Community thread](https://community.plot.ly/t/fast-way-to-share-data-between-callbacks/8024/2)
@@ -522,7 +523,7 @@ def update_output_1(value):
 
     Syntax(
         examples['filesystem-session-cache'][0],
-        summary="Here's what this example looks like in code"
+        summary="Here's what this example looks like in code:"
     ),
 
     html.Div(
@@ -536,13 +537,13 @@ def update_output_1(value):
         There are three things to notice in this example:
         - The timestamps of the dataframe don't update when we retrieve
         the data. This data is cached as part of the user's session.
-        - Retrieving the data initially takes 5 seconds but successive queries
+        - Retrieving the data initially takes five seconds but successive queries
         are instant, as the data has been cached.
         - The second session displays different data than the first session:
         the data that is shared between callbacks is isolated to individual
         user sessions.
 
         Questions? Discuss these examples on the
-        [Dash Community Forum](https://community.plot.ly/c/dash)
+        [Dash Community Forum](https://community.plot.ly/c/dash).
     '''))
 ])

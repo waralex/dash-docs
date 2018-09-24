@@ -78,7 +78,10 @@ layout = html.Div(className='toc', children=[
                 chapters['graphing']['description']),
         Chapter(chapters['shared-state']['name'],
                 chapters['shared-state']['url'],
-                chapters['shared-state']['description'])
+                chapters['shared-state']['description']),
+        Chapter(chapters['faqs']['name'],
+                chapters['faqs']['url'],
+                chapters['faqs']['description'])        
     ]),
 
     Section('Component Libraries', [
@@ -88,9 +91,18 @@ layout = html.Div(className='toc', children=[
         Chapter(chapters['dash-html-components']['name'],
                 chapters['dash-html-components']['url'],
                 chapters['dash-html-components']['description']),
+        Chapter(chapters['dashdaq']['name'],
+                chapters['dashdaq']['url'],
+                chapters['dashdaq']['description'])
+    ]),
+
+    Section('Creating Your Own Components', [
+        Chapter(chapters['react-for-python-developers']['name'],
+                chapters['react-for-python-developers']['url'],
+                chapters['react-for-python-developers']['description']),
         Chapter(chapters['plugins']['name'],
                 chapters['plugins']['url'],
-                chapters['plugins']['description'])
+                chapters['plugins']['description']),
     ]),
 
     Section('Beyond the Basics', [
@@ -116,7 +128,7 @@ layout = html.Div(className='toc', children=[
     ]),
 
     Section('Getting Help', [
-        Chapter('FAQ', 'https://community.plot.ly/c/dash'),
+        Chapter('The Dash Community Forum', 'https://community.plot.ly/c/dash'),
         Chapter(chapters['support']['name'],
                 chapters['support']['url'])
     ]),
