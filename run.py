@@ -73,7 +73,7 @@ app.layout = html.Div(
 
 
 @app.callback(Output('chapter', 'children'),
-    [Input('location', 'pathname')])
+              [Input('location', 'pathname')])
 def display_content(pathname):
     if pathname is None:
         return ''
@@ -103,8 +103,8 @@ def display_content(pathname):
 
     return content
 
-app.index_string = '''
-<!DOCTYPE html>
+
+app.index_string = '''<!DOCTYPE html>
 <html>
     <head>
         {%metas%}
@@ -117,7 +117,7 @@ app.index_string = '''
         {%favicon%}
         {%css%}
         <!-- Global site tag (gtag.js) - AdWords: 1009791370 -->
-        <script async src=""https://www.googletagmanager.com/gtag/js?id=AW-1009791370""></script>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=AW-1009791370"></script>
         <script>
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
@@ -133,8 +133,7 @@ app.index_string = '''
             {%scripts%}
         </footer>
     </body>
-</html>
-'''
+</html>'''
 
 if __name__ == '__main__':
     app.run_server(debug=True, threaded=True, port=8050)
