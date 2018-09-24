@@ -3,7 +3,7 @@ import dash_html_components as html
 from dash.dependencies import *
 import dash
 
-app = dash.Dash('')
+app = dash.Dash(__name__, external_stylesheets=['https://codepen.io/chriddyp/pen/bWLwgP.css'])
 
 
 # Use the following function when accessing the value of 'my-range-slider'

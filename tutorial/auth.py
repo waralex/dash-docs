@@ -86,7 +86,7 @@ VALID_USERNAME_PASSWORD_PAIRS = [
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
-app = dash.Dash('auth', external_stylesheets=external_stylesheets)
+app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 auth = dash_auth.BasicAuth(
     app,
     VALID_USERNAME_PASSWORD_PAIRS
@@ -165,7 +165,7 @@ APP_URL = 'https://my-dash-app.herokuapps.com'
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
-app = dash.Dash('auth', external_stylesheets=external_stylesheets)
+app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 auth = dash_auth.PlotlyAuth(
     app,
     APP_NAME,
@@ -277,7 +277,7 @@ APP_URL = 'http://127.0.0.1:8050/'
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
-app = dash.Dash('auth', external_stylesheets=external_stylesheets)
+app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 auth = dash_auth.PlotlyAuth(
     app,
     APP_NAME,

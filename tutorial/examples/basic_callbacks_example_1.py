@@ -7,7 +7,7 @@ import plotly.graph_objs as go
 from dash.dependencies import Input, Output
 from pandas_datareader import data as web
 
-app = dash.Dash('')
+app = dash.Dash(__name__, external_stylesheets=['https://codepen.io/chriddyp/pen/bWLwgP.css'])
 
 # Describe the layout of the app
 app.layout = html.Div([

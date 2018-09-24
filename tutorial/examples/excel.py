@@ -9,7 +9,7 @@ external_stylesheets = [
 ]
 
 
-app = dash.Dash('excel example', external_stylesheets=external_stylesheets)
+app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
 app.layout = html.Div([
     html.Label('Hours per Day'),
