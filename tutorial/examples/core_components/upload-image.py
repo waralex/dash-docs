@@ -1,7 +1,7 @@
 import datetime
 
 import dash
-from dash.dependencies import Input, Output
+from dash.dependencies import Input, Output, State
 import dash_core_components as dcc
 import dash_html_components as html
 
@@ -51,9 +51,9 @@ def parse_contents(contents, filename, date):
 
 
 @app.callback(Output('output-image-upload', 'children'),
-              [Input('upload-image', 'contents'),
-               Input('upload-image', 'filename'),
-               Input('upload-image', 'last_modified')])
+              [Input('upload-image', 'contents')],
+              [State('upload-image', 'filename'),
+               State('upload-image', 'last_modified')])
 def update_output(list_of_contents, list_of_names, list_of_dates):
     if list_of_contents is not None:
         children = [
