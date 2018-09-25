@@ -170,4 +170,110 @@ if __name__ == '__main__':
 You can combine this with [time-expiring caching](/performance) and serve
 a unique `layout` every hour or every day and serve the computed `layout`
 from memory in between.
-''')]
+'''),
+
+          dcc.Markdown('''
+
+***
+
+## Dynamically Create Layout for Multi-page App Validation
+
+Dash applies validation to your callbacks, which performs checks such as 
+validating the types of callback arguments and checking to see whether the 
+specified Input and Output components actually have the specified properties. 
+
+For full validation, all components within your callback must therefore appear 
+in the initial layout of your app, and you will see an error if they do not.
+However, in the case of more complex Dash apps that involve dynamic modification 
+of the layout (such as multi-page apps), not every component appearing in your 
+callbacks will be included in the initial layout.
+
+Since this validation is done before flask has any request context, you can create 
+a layout function that checks `flask.has_request_context()` and returns a complete
+layout to the validator if there is no request context and returns the incomplete
+index layout otherwise:
+'''),
+    dcc.SyntaxHighlighter(
+        '''
+import dash
+import dash_html_components as html
+import dash_core_components as dcc
+from dash.dependencies import Input, Output, State
+
+import flask
+
+app = dash.Dash(__name__, external_stylesheets=['https://codepen.io/chriddyp/pen/bWLwgP.css'])
+
+layout_index = html.Div([
+    dcc.Tabs(id="tabs", value='tab-1', children=[
+        dcc.Tab(label='Tab one', value='tab-1'),
+        dcc.Tab(label='Tab two', value='tab-2'),
+    ]),
+    html.Div(id='tabs-content')])
+
+layout_tab_1 = html.Div([
+    html.H3('Tab content 1'),
+    dcc.Input(id='input-1-state', type='text', value='Montreal'),
+    dcc.Input(id='input-2-state', type='text', value='Canada'),
+    html.Button(id='submit-button', n_clicks=0, children='Submit'),
+    html.Div(id='output-state')
+])
+
+layout_tab_2 = html.Div([
+    html.H2('Tab 2'),
+    dcc.Dropdown(
+        id='tab-2-dropdown',
+        options=[{'label': i, 'value': i} for i in ['LA', 'NYC', 'MTL']],
+        value='LA'
+    ),
+    html.Div(id='tab-2-display-value')])
+
+
+def serve_layout():
+    if flask.has_request_context():
+        return layout_index
+    return html.Div([
+        layout_index,
+        layout_tab_1,
+        layout_tab_2,
+    ])
+
+
+app.layout = serve_layout
+
+
+# Index callbacks
+@app.callback(Output('tabs-content', 'children'),
+              [Input('tabs', 'value')])
+def render_content(tab):
+    if tab == 'tab-1':
+        return layout_tab_1
+    elif tab == 'tab-2':
+        return layout_tab_2
+
+
+# Tab 1 Callbacks
+@app.callback(Output('output-state', 'children'),
+              [Input('submit-button', 'n_clicks')],
+              [State('input-1-state', 'value'),
+               State('input-2-state', 'value')])
+def update_output(n_clicks, input1, input2):
+    return ('The Button has been pressed {} times,'
+            'Input 1 is "{}",'
+            'and Input 2 is "{}"').format(n_clicks, input1, input2)
+
+
+# Tab 2 Callbacks
+@app.callback(dash.dependencies.Output('tab-2-display-value', 'children'),
+              [dash.dependencies.Input('tab-2-dropdown', 'value')])
+def display_value(value):
+    return 'You have selected "{}"'.format(value)
+
+
+if __name__ == '__main__':
+    app.run_server(debug=True)
+    
+        ''',
+        language='python',
+        customStyle={'borderLeft': 'thin solid lightgrey'}
+    )]
