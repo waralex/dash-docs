@@ -202,7 +202,10 @@ from dash.dependencies import Input, Output, State
 
 import flask
 
-app = dash.Dash(__name__, external_stylesheets=['https://codepen.io/chriddyp/pen/bWLwgP.css'])
+app = dash.Dash(
+    __name__, 
+    external_stylesheets=['https://codepen.io/chriddyp/pen/bWLwgP.css']
+)
 
 url_bar_and_content_div = html.Div([
     dcc.Location(id='url', refresh=False),
