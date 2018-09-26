@@ -9,7 +9,9 @@ import plotly
 from pyorbital.orbital import Orbital
 satellite = Orbital('TERRA')
 
-app = dash.Dash(__name__, external_stylesheets=['https://codepen.io/chriddyp/pen/bWLwgP.css'])
+external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
+
+app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 app.layout = html.Div(
     html.Div([
         html.H4('TERRA Satellite Live Feed'),
