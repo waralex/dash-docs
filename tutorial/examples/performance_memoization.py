@@ -11,7 +11,10 @@ if sys.version_info < (3, 2, 0):
 else:
     from functools import lru_cache
 
-app = dash.Dash(__name__, external_stylesheets=['https://codepen.io/chriddyp/pen/bWLwgP.css'])
+app = dash.Dash(
+    __name__,
+    external_stylesheets=['https://codepen.io/chriddyp/pen/bWLwgP.css']
+)
 app.config.suppress_callback_exceptions = True
 
 app.layout = html.Div([
