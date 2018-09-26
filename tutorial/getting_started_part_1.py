@@ -95,10 +95,7 @@ layout = html.Div([
            You can learn more in the [css tutorial](/external-resources),
            but for now you can initialize your app with
            ```
-           app = dash.Dash(
-               __name__, 
-               external_stylesheets=['https://codepen.io/chriddyp/pen/bWLwgP.css']
-               )
+           app = dash.Dash(__name__, external_stylesheets=['https://codepen.io/chriddyp/pen/bWLwgP.css'])
            ```
            to get the same look and feel of these examples.
 
