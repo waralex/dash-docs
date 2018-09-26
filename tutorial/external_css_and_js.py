@@ -56,6 +56,10 @@ layout = html.Div([
     and include your CSS and JavaScript
     files in that folder. Dash will automatically serve all of the files that
     are included in this folder.
+    
+    **Important: For these examples, you need to include `__name__` in your Dash constructor.**
+    
+    That is, `app = dash.Dash(__name__)` instead of `app = dash.Dash()`. [Here's why](https://community.plot.ly/t/dash-app-does-not-load-assets-and-app-index-string/12178/10?u=chriddyp).
 
     ### Example: Including Local CSS and JavaScript
 
