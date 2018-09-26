@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import dash_core_components as dcc
+import dash_html_components as html
 from tutorial import styles
 
 layout = [dcc.Markdown('''
@@ -171,11 +172,15 @@ function. A few notes:
 - Each page can have interactive elements even though those elements may not
 be in the initial view. Dash handles these "dynamically generated" components
 gracefully: as they are rendered, they will trigger the
-callbacks with their initial values.
-- Since we're adding callbacks to elements that don't exist in the app.layout,
+callbacks with their initial values.'''),
+    html.Ul(html.Li(['''Since we're adding callbacks to elements that don't exist in the app.layout,
 Dash will raise an exception to warn us that we might be doing something
 wrong.  In this case, we're adding the elements through a callback, so we can
-ignore the exception by setting `app.config.suppress_callback_exceptions = True`
+ignore the exception by setting `app.config.suppress_callback_exceptions = True`.
+It is also possible to do this without suppressing callback exceptions. See the example
+"Dynamically Create a Layout for Multi-Page App Validation" in ''',
+    dcc.Link('Live Updates', href='/live-updates'), 'for more details.'])),
+    dcc.Markdown('''
 - You can modify this example to import the different page's `layout`s in different files.
 - This Dash Userguide that you're looking at is itself a multi-page Dash app, using
 rendered with these same principles.
