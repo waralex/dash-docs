@@ -176,7 +176,7 @@ from memory in between.
 
 ***
 
-## Dynamically Create Layout for Multi-page App Validation
+## Dynamically Create a Layout for Multi-Page App Validation
 
 Dash applies validation to your callbacks, which performs checks such as 
 validating the types of callback arguments and checking to see whether the 
@@ -191,51 +191,65 @@ callbacks will be included in the initial layout.
 Since this validation is done before flask has any request context, you can create 
 a layout function that checks `flask.has_request_context()` and returns a complete
 layout to the validator if there is no request context and returns the incomplete
-index layout otherwise:
+index layout otherwise.
 '''),
     dcc.SyntaxHighlighter(
         '''
 import dash
-import dash_html_components as html
 import dash_core_components as dcc
+import dash_html_components as html
 from dash.dependencies import Input, Output, State
 
 import flask
 
 app = dash.Dash(__name__, external_stylesheets=['https://codepen.io/chriddyp/pen/bWLwgP.css'])
 
-layout_index = html.Div([
-    dcc.Tabs(id="tabs", value='tab-1', children=[
-        dcc.Tab(label='Tab one', value='tab-1'),
-        dcc.Tab(label='Tab two', value='tab-2'),
-    ]),
-    html.Div(id='tabs-content')])
+url_bar_and_content_div = html.Div([
+    dcc.Location(id='url', refresh=False),
+    html.Div(id='page-content')
+])
 
-layout_tab_1 = html.Div([
-    html.H3('Tab content 1'),
+layout_index = html.Div([
+    dcc.Link('Navigate to "/page-1"', href='/page-1'),
+    html.Br(),
+    dcc.Link('Navigate to "/page-2"', href='/page-2'),
+])
+
+layout_page_1 = html.Div([
+    html.H2('Page 1'),
     dcc.Input(id='input-1-state', type='text', value='Montreal'),
     dcc.Input(id='input-2-state', type='text', value='Canada'),
     html.Button(id='submit-button', n_clicks=0, children='Submit'),
-    html.Div(id='output-state')
+    html.Div(id='output-state'),
+    html.Br(),
+    dcc.Link('Navigate to "/"', href='/'),
+    html.Br(),
+    dcc.Link('Navigate to "/page-2"', href='/page-2'),
 ])
 
-layout_tab_2 = html.Div([
-    html.H2('Tab 2'),
+layout_page_2 = html.Div([
+    html.H2('Page 2'),
     dcc.Dropdown(
-        id='tab-2-dropdown',
+        id='page-2-dropdown',
         options=[{'label': i, 'value': i} for i in ['LA', 'NYC', 'MTL']],
         value='LA'
     ),
-    html.Div(id='tab-2-display-value')])
+    html.Div(id='page-2-display-value'),
+    html.Br(),
+    dcc.Link('Navigate to "/"', href='/'),
+    html.Br(),
+    dcc.Link('Navigate to "/page-1"', href='/page-1'),
+])
 
 
 def serve_layout():
     if flask.has_request_context():
-        return layout_index
+        return url_bar_and_content_div
     return html.Div([
+        url_bar_and_content_div,
         layout_index,
-        layout_tab_1,
-        layout_tab_2,
+        layout_page_1,
+        layout_page_2,
     ])
 
 
@@ -243,16 +257,18 @@ app.layout = serve_layout
 
 
 # Index callbacks
-@app.callback(Output('tabs-content', 'children'),
-              [Input('tabs', 'value')])
-def render_content(tab):
-    if tab == 'tab-1':
-        return layout_tab_1
-    elif tab == 'tab-2':
-        return layout_tab_2
+@app.callback(Output('page-content', 'children'),
+              [Input('url', 'pathname')])
+def display_page(pathname):
+    if pathname == "/page-1":
+        return layout_page_1
+    elif pathname == "/page-2":
+        return layout_page_2
+    else:
+        return layout_index
 
 
-# Tab 1 Callbacks
+# Page 1 callbacks
 @app.callback(Output('output-state', 'children'),
               [Input('submit-button', 'n_clicks')],
               [State('input-1-state', 'value'),
@@ -263,10 +279,11 @@ def update_output(n_clicks, input1, input2):
             'and Input 2 is "{}"').format(n_clicks, input1, input2)
 
 
-# Tab 2 Callbacks
-@app.callback(dash.dependencies.Output('tab-2-display-value', 'children'),
-              [dash.dependencies.Input('tab-2-dropdown', 'value')])
+# Page 2 callbacks
+@app.callback(Output('page-2-display-value', 'children'),
+              [Input('page-2-dropdown', 'value')])
 def display_value(value):
+    print('display_value')
     return 'You have selected "{}"'.format(value)
 
 
