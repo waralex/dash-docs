@@ -93,11 +93,13 @@ layout = html.Div([
            what is displayed here. This application is using a
            custom CSS stylesheet to modify the default styles of the elements.
            You can learn more in the [css tutorial](/external-resources),
-           but for now you can add
+           but for now you can initialize your app with
            ```
-           app.css.append_css({"external_url": "https://codepen.io/chriddyp/pen/bWLwgP.css"})
+           external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
+           
+           app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
            ```
-           to your file to get the same look and feel of these examples.
+           to get the same look and feel of these examples.
 
     #### More about HTML
 

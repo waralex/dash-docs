@@ -11,7 +11,9 @@ import dash_table_experiments as dt
 import pandas as pd
 
 
-app = dash.Dash()
+external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
+
+app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
 app.scripts.config.serve_locally = True
 
@@ -89,9 +91,6 @@ def update_output(list_of_contents, list_of_names, list_of_dates):
         return children
 
 
-app.css.append_css({
-    'external_url': 'https://codepen.io/chriddyp/pen/bWLwgP.css'
-})
 
 if __name__ == '__main__':
     app.run_server(debug=True)

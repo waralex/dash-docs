@@ -4,7 +4,9 @@ import dash_html_components as html
 
 print(dcc.__version__) # 0.6.0 or above is required
 
-app = dash.Dash()
+external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
+
+app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
 # Since we're adding callbacks to elements that don't exist in the app.layout,
 # Dash will raise an exception to warn us that we might be
@@ -80,10 +82,6 @@ def display_page(pathname):
         return index_page
     # You could also return a 404 "URL not found" page here
 
-
-app.css.append_css({
-    'external_url': 'https://codepen.io/chriddyp/pen/bWLwgP.css'
-})
 
 
 if __name__ == '__main__':
