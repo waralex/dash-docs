@@ -182,8 +182,8 @@ It is also possible to do this without suppressing callback exceptions. See the 
     dcc.Link('Live Updates', href='/live-updates'), 'for more details.'])),
     dcc.Markdown('''
 - You can modify this example to import the different page's `layout`s in different files.
-- This Dash Userguide that you're looking at is itself a multi-page Dash app, using
-rendered with these same principles.
+- This Dash Userguide that you're looking at is itself a multi-page Dash app, using 
+these same principles.
 '''),
 
           dcc.Markdown('''***
