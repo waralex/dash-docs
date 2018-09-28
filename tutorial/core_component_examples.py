@@ -994,10 +994,23 @@ Textarea = html.Div(children=[
 # Tabs
 Tabs = html.Div(children=[
     html.H1('Tabs Examples and Reference'),
-    html.H2('Method 1. Content as Callback'),
     dcc.Markdown(s('''
+    The Tabs and Tab components can be used to create tabbed sections in your app.
     The `Tab` component controls the style and value of the individual tab
     and the `Tabs` component hold a collection of `Tab` components.
+
+    **Table of Contents**
+    -  Method 1. Content as Callback
+    -  Method 2. Content as Tab children 
+    - Styling the Tabs component
+        - with CSS classes
+        - with inline styles
+        - with props
+    ***
+    ''')),
+
+    html.H2('Method 1. Content as Callback'),
+    dcc.Markdown(s('''
     Attach a callback to the Tabs `value` prop and update a container's `children`
     property in your callback.
     ''')),
