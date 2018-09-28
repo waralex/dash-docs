@@ -25,10 +25,10 @@ tab_selected_style = {
 
 app.layout = html.Div([
     dcc.Tabs(id="tabs-styled-with-inline", value='tab-1', children=[
-        dcc.Tab(label='Dash', value='tab-1', style=tab_style, selected_style=tab_selected_style),
-        dcc.Tab(label='Plotly', value='tab-2', style=tab_style, selected_style=tab_selected_style),
-        dcc.Tab(label='DAQ', value='tab-3', style=tab_style, selected_style=tab_selected_style),
-        dcc.Tab(label='Deployment', value='tab-4', style=tab_style, selected_style=tab_selected_style),
+        dcc.Tab(label='Tab 1', value='tab-1', style=tab_style, selected_style=tab_selected_style),
+        dcc.Tab(label='Tab 2', value='tab-2', style=tab_style, selected_style=tab_selected_style),
+        dcc.Tab(label='Tab 3', value='tab-3', style=tab_style, selected_style=tab_selected_style),
+        dcc.Tab(label='Tab 4', value='tab-4', style=tab_style, selected_style=tab_selected_style),
     ], style=tabs_styles),
     html.Div(id='tabs-content-inline')
 ])
@@ -43,6 +43,14 @@ def render_content(tab):
     elif tab == 'tab-2':
         return html.Div([
             html.H3('Tab content 2')
+        ])
+    elif tab == 'tab-3':
+        return html.Div([
+            html.H3('Tab content 3')
+        ])
+    elif tab == 'tab-4':
+        return html.Div([
+            html.H3('Tab content 4')
         ])
 
 if __name__ == '__main__':
