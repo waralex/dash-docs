@@ -3,7 +3,9 @@
 }
 .custom-tabs {
     border-top-left-radius: 3px;
-    background-color: #fafbfc;
+    background-color: white;
+    padding: 0px 24px;
+    border-bottom: 1px solid #d6d6d6;
 }
 
 .custom-tab {
@@ -12,13 +14,12 @@
     border-top-right-radius: 3px;
     border: none !important;
     background-color: #fafbfc;
-    border-bottom: 1px solid lightgrey !important;
     padding: 12px !important;
     font-family: "system-ui";
 }
 .custom-tab--selected {
     color: black;
-    border-bottom: none !important;
+    box-shadow: 1px 1px 0px white;
     border-left: 1px solid lightgrey !important;
     border-right: 1px solid lightgrey !important;
     border-top: 3px solid #e36209 !important;

@@ -25,6 +25,7 @@ examples = {
     'tabs_simple':  tools.load_example('tutorial/examples/core_components/tabs_simple.py'),
     'tabs_callback':  tools.load_example('tutorial/examples/core_components/tabs_callback_graph.py'),
     'tabs_styled_with_classes':  tools.load_example('tutorial/examples/core_components/tabs_styled_with_classes.py'),
+    'tabs_styled_with_classes_css':  tools.read_file('assets/tabs-styled-with-classes.css'),
     'tabs_styled_with_inline':  tools.load_example('tutorial/examples/core_components/tabs_styled_with_inline.py'),
     'tabs_styled_with_props':  tools.load_example('tutorial/examples/core_components/tabs_styled_with_props.py'),
 }
@@ -1039,6 +1040,19 @@ Tabs = html.Div(children=[
         customStyle=styles.code_container
     ),
     html.Div(examples['tabs_styled_with_classes'][1], className='example-container'),
+
+    html.Br(),
+
+    dcc.Markdown(s('''
+    The corresponding CSS file (`assets/tabs.css`) looks like this. Save the file in an `assets` folder (it can be named anything you want). Dash will automatically include this CSS when the app is loaded [learn more about including CSS in your app](/external-resources)
+    ''')),
+
+    dcc.SyntaxHighlighter(
+        examples['tabs_styled_with_classes_css'],
+        language='css',
+        customStyle=styles.code_container
+    ),
+
 
     html.Br(),
 
