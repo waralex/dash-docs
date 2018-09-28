@@ -17,12 +17,13 @@ layout = html.Div([
     dcc.Markdown(s('''
     # Sharing State Between Callbacks
 
-    > This is the *6th* and final chapter of the essential [Dash Tutorial](/).
-    > The [previous chapter](/interactive-graphing) covered how to use callbacks
-    > with the `dash_core_components.Graph` component.
-    > The [rest of the Dash documentation](/) covers other topics like multi-page
-    > apps and component libraries.
-    > Just getting started? Make sure to [install the necessary dependencies](/installation).
+    > This is the *6th* chapter of the essential [Dash Tutorial](/).  The
+    > [previous chapter](/interactive-graphing) covered how to use callbacks
+    > with the `dash_core_components.Graph` component.  The [rest of the Dash
+    > documentation](/) covers other topics like multi-page apps and component
+    > libraries.  Just getting started? Make sure to [install the necessary
+    > dependencies](/installation). The [next and final chapter](/faq) covers
+    > frequently asked questions and gotchas.
 
     One of the core Dash principles explained in the
     [Getting Started Guide on Callbacks](/getting-started-part-2)
@@ -349,7 +350,13 @@ def update_output_1(value):
         from flask_caching import Cache
 
 
-        app = dash.Dash(__name__)
+        external_stylesheets = [
+            # Dash CSS
+            'https://codepen.io/chriddyp/pen/bWLwgP.css',
+            # Loading screen CSS
+            'https://codepen.io/chriddyp/pen/brPBPO.css']
+        
+        app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
         CACHE_CONFIG = {
             # try 'filesystem' if you don't want to setup redis
             'CACHE_TYPE': 'redis',
@@ -466,13 +473,6 @@ def update_output_1(value):
                 }]
             })
 
-
-        # Dash CSS
-        app.css.append_css({
-            "external_url": "https://codepen.io/chriddyp/pen/bWLwgP.css"})
-        # Loading screen CSS
-        app.css.append_css({
-            "external_url": "https://codepen.io/chriddyp/pen/brPBPO.css"})
 
         if __name__ == '__main__':
             app.run_server(debug=True, processes=6)

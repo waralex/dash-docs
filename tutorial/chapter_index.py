@@ -8,6 +8,7 @@ from tutorial import external_css_and_js
 from tutorial import gallery
 from tutorial import getting_started_part_1
 from tutorial import getting_started_part_2
+from tutorial import faqs
 from tutorial import graphing
 from tutorial import html_components
 from tutorial import installation
@@ -20,6 +21,7 @@ from tutorial import sharing_state
 from tutorial import state
 from tutorial import support
 from tutorial import urls
+from tutorial import react_for_python_developers
 
 ## The chapters dict is used to generate the dash-docs search index
 ## If edited, update the search index by running `python dash_search_index.py`
@@ -102,6 +104,15 @@ chapters = {
                        'between callbacks. This chapter is useful for ' \
                        'callbacks that run expensive data processing ' \
                        'tasks or process large data.'
+    },
+
+    'faqs': {
+        'url': '/faqs',
+        'content': faqs.layout,
+        'name': 'Part 7. FAQs and Gotchas',
+        'description': 'If you have read through the rest of the ' \
+        'tutorial and still have questions or are encountering ' \
+        'unexpected behaviour, this chapter may be useful.'
     },
 
     'dash-core-components': {
@@ -218,6 +229,12 @@ chapters = {
                        'Dash workshops, sponsored feature requests and ' \
                        'customizations.'
     },
+    'react-for-python-developers': {
+        'url': '/react-for-python-developers',
+        'content': react_for_python_developers.layout,
+        'name': 'React for Python Developers',
+        'description': 'A tutorial on how to program in React and JavaScript for Python developers.'
+    },
 ### End of home.py ###
 
 ### Start Components ###
@@ -310,6 +327,14 @@ chapters = {
         'content': examples.Upload,
         'name': 'Upload Component',
         'description': 'Upload examples, properties, and reference.'
+    },
+    ### dash-daq ###
+    'dashdaq': {
+        'url': 'https://www.dashdaq.io/',
+        'content': introduction.layout,
+        'name':'Dash DAQ Components',
+        'description': '$840/developer/year. ' \
+                       'Beautifully styled, premium components for data acquisition user interfaces.' 
     },
 ### End Components ###
 
