@@ -201,8 +201,10 @@ h1, h2, h3, h4, h5, h6 {
 
 If you duplicate the file structure of your local assets folder to a folder hosted 
 externally to your Dash app, you can use `assets_external_path='http://your-external-assets-folder-url'` 
-init keyword in the Dash constructor to load the files from there instead of locally. 
-`app.scripts.config.serve_locally = False` must also be set in order for this to work.  
+in the Dash constructor to load the files from there instead of locally. Dash will index your local
+assets folder to find all of your assets, map their relative path onto `assets_external_path` 
+and then request the resources from there. 
+`app.scripts.config.serve_locally = False` must also be set in order for this to work. 
 
 **Example:**
 ''')),
