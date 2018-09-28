@@ -1031,6 +1031,7 @@ Tabs = html.Div(children=[
     ''')),
 
     html.H2('Styling the Tabs component'),
+    html.H3('With CSS classes'),
     dcc.Markdown(s('''
     Styling the Tabs (and Tab) component can either be done using CSS classes by providing your own to the `className` property:
     ''')),
@@ -1044,7 +1045,10 @@ Tabs = html.Div(children=[
     html.Br(),
 
     dcc.Markdown(s('''
-    The corresponding CSS file (`assets/tabs.css`) looks like this. Save the file in an `assets` folder (it can be named anything you want). Dash will automatically include this CSS when the app is loaded [learn more about including CSS in your app](/external-resources)
+    Notice how the container of the Tabs can be styled as well by supplying a class to the `parent_className` prop, which we use here to draw a border below it, positioning the actual Tabs (with padding) more in the center. 
+    We also added `display: flex` and `justify-content: center` to the regular `Tab` components, so that labels with multiple lines will not break the flow of the text.
+
+    The corresponding CSS file (`assets/tabs.css`) looks like this. Save the file in an `assets` folder (it can be named anything you want). Dash will automatically include this CSS when the app is loaded. [Learn more about including CSS in your app here.](/external-resources)
     ''')),
 
     dcc.SyntaxHighlighter(
@@ -1056,6 +1060,7 @@ Tabs = html.Div(children=[
 
     html.Br(),
 
+    html.H3('With inline styles'),
     dcc.Markdown(s('''
     or by providing a `styles` dict to the `style` prop:
     ''')),
