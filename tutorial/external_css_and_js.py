@@ -213,7 +213,10 @@ and then request the resources from there.
         """import dash
 import dash_html_components as html
 
-app = dash.Dash(__name__, assets_external_path='http://your-external-assets-folder-url/')
+app = dash.Dash(
+    __name__, 
+    assets_external_path='http://your-external-assets-folder-url/'
+)
 app.scripts.config.serve_locally = False
 
 """,
