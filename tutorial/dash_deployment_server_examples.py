@@ -1818,12 +1818,21 @@ Logs = html.Div(children=[
     html.H1('Dash App Logs'),
     dcc.Markdown(s('''
     ***
+    
+    Dash apps create a log of usage data as well as any `print` statements 
+    called from your app. These logs can be accessed via the DDS UI or from the
+    command line. Note that they will be cleared each time you re-deploy 
+    your app.
+    
+    ***
 
     #### Dash App Logs (via UI)
 
     If you have successfully deployed a Dash App to the Dash Deployment
-    Server, you can view the app's logs via the Dash Deployment Server UI.
-    From your list of apps, open the app and then select **Logs**.
+    Server, you can view the app's logs via the Dash Deployment Server UI. 
+    From your list of apps, open the app and then select **Logs**. This will
+    display the most recent 500 log entries for your app. For the complete list,
+    use the command line method outlined below.
     ''')),
 
     html.Img(
