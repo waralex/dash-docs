@@ -951,6 +951,10 @@ Authentication = html.Div(children=[
     It's kept in a separate file so that it's easy for you to
     transfer from app to app.
     *Read through this file and modify the variables as appropriate.*
+    
+    Note, changes to privacy from `your-plotly-domain/organize/home` only
+    update the privacy of the redirect to your app from `your-plotly-domain`
+    and so any changes here will not affect your dash app.
 
     ''')),
 
@@ -962,6 +966,20 @@ Authentication = html.Div(children=[
     Your app should now have a Dash Deployment Server login screen.
     You can manage the permissions of the app in your list of files
     at `https://<your-plotly-domain>/organize`.
+    ''')),
+
+dcc.Markdown(s('''
+    ***
+
+    #### Secret Key Access
+
+    If you set privacy to `'secret'` in your dash app's `config.py`
+    file, login by an authorized user will be required by default
+    but it can be bypassed with a link containing a `share_key` parameter.  
+    
+    Once the app is visited using a `share_key` link, an auth cookie 
+    is generated and saved to the browser which will permit access
+    to the app until it's expiry even if the `share_key` is omitted.
     '''))
 ])
 
