@@ -24,6 +24,10 @@ examples = {
     'confirm-provider': tools.load_example('tutorial/examples/core_components/confirm_provider.py'),
     'tabs_simple':  tools.load_example('tutorial/examples/core_components/tabs_simple.py'),
     'tabs_callback':  tools.load_example('tutorial/examples/core_components/tabs_callback_graph.py'),
+    'tabs_styled_with_classes':  tools.load_example('tutorial/examples/core_components/tabs_styled_with_classes.py'),
+    'tabs_styled_with_classes_css':  tools.read_file('assets/tabs-styled-with-classes.css'),
+    'tabs_styled_with_inline':  tools.load_example('tutorial/examples/core_components/tabs_styled_with_inline.py'),
+    'tabs_styled_with_props':  tools.load_example('tutorial/examples/core_components/tabs_styled_with_props.py'),
 }
 
 
@@ -989,10 +993,23 @@ Textarea = html.Div(children=[
 # Tabs
 Tabs = html.Div(children=[
     html.H1('Tabs Examples and Reference'),
-    html.H2('Method 1. Content as Callback'),
     dcc.Markdown(s('''
+    The Tabs and Tab components can be used to create tabbed sections in your app.
     The `Tab` component controls the style and value of the individual tab
     and the `Tabs` component hold a collection of `Tab` components.
+
+    **Table of Contents**
+    -  Method 1. Content as Callback
+    -  Method 2. Content as Tab children 
+    - Styling the Tabs component
+        - with CSS classes
+        - with inline styles
+        - with props
+    ***
+    ''')),
+
+    html.H2('Method 1. Content as Callback'),
+    dcc.Markdown(s('''
     Attach a callback to the Tabs `value` prop and update a container's `children`
     property in your callback.
     ''')),
@@ -1019,15 +1036,65 @@ Tabs = html.Div(children=[
     ),
     html.Div(examples['tabs_simple'][1], className='example-container'),
     dcc.Markdown(s('''
-    Note that this method has a couple of drawbacks:
-    - It requires that you compute the children property for each individual
+    Note that this method has a drawback: it requires that you compute the children property for each individual
     tab _upfront_ and send all of the tab's content over the network _at once_.
     The callback method allows you to compute the tab's content _on the fly_
     (that is, when the tab is clicked).
-    - There have been some bug reports that graphs are not getting resized
-    properly if this method is being used. See [dash-core-components#256](https://github.com/plotly/dash-core-components/issues/256)
-    for more details.
     ''')),
+
+    html.H2('Styling the Tabs component'),
+    html.H3('With CSS classes'),
+    dcc.Markdown(s('''
+    Styling the Tabs (and Tab) component can either be done using CSS classes by providing your own to the `className` property:
+    ''')),
+
+    dcc.SyntaxHighlighter(
+        examples['tabs_styled_with_classes'][0],
+        customStyle=styles.code_container
+    ),
+    html.Div(examples['tabs_styled_with_classes'][1], className='example-container'),
+
+    html.Br(),
+
+    dcc.Markdown(s('''
+    Notice how the container of the Tabs can be styled as well by supplying a class to the `parent_className` prop, which we use here to draw a border below it, positioning the actual Tabs (with padding) more in the center. 
+    We also added `display: flex` and `justify-content: center` to the regular `Tab` components, so that labels with multiple lines will not break the flow of the text.
+
+    The corresponding CSS file (`assets/tabs.css`) looks like this. Save the file in an `assets` folder (it can be named anything you want). Dash will automatically include this CSS when the app is loaded. [Learn more about including CSS in your app here.](/external-resources)
+    ''')),
+
+    dcc.SyntaxHighlighter(
+        examples['tabs_styled_with_classes_css'],
+        language='css',
+        customStyle=styles.code_container
+    ),
+
+
+    html.Br(),
+
+    html.H3('With inline styles'),
+    dcc.Markdown(s('''
+    An alternative to providing CSS classes is to provide style dictionaries directly:
+    ''')),
+
+    dcc.SyntaxHighlighter(
+        examples['tabs_styled_with_inline'][0],
+        customStyle=styles.code_container
+    ),
+    html.Div(examples['tabs_styled_with_inline'][1], className='example-container'),
+
+    html.Br(),
+
+    dcc.Markdown(s('''
+    Lastly, you can set the colors of the Tabs components in the `color` prop, by specifying the "border", "primary", and "background" colors in a dict. Make sure you set them 
+    all, if you're using them!
+    ''')),
+
+    dcc.SyntaxHighlighter(
+        examples['tabs_styled_with_props'][0],
+        customStyle=styles.code_container
+    ),
+    html.Div(examples['tabs_styled_with_props'][1], className='example-container'),
 
     html.Hr(),
 
