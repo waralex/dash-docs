@@ -1076,7 +1076,7 @@ Tabs = html.Div(children=[
 
     html.H3('With inline styles'),
     dcc.Markdown(s('''
-    or by providing a `styles` dict to the `style` prop:
+    An alternative to providing CSS classes is to provide style dictionaries directly:
     ''')),
 
     dcc.SyntaxHighlighter(
