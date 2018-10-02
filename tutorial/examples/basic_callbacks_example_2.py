@@ -7,7 +7,9 @@ from dash.dependencies import Input, Output
 from pandas_datareader import data as web
 import plotly.graph_objs as go
 
-app = dash.Dash('')
+external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
+
+app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
 app.layout = html.Div([
     dcc.Dropdown(

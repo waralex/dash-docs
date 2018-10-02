@@ -133,9 +133,9 @@ dcc.Dropdown(
 
 dcc.Dropdown(
     options=[
-        {'label': 'New York City', 'value': 'NYC', 'disabled': 'True'},
+        {'label': 'New York City', 'value': 'NYC', 'disabled': True},
         {'label': 'Montreal', 'value': 'MTL'},
-        {'label': 'San Francisco', 'value': 'SF', 'disabled': 'True'}
+        {'label': 'San Francisco', 'value': 'SF', 'disabled': True}
     ],
 )''', customStyle=styles.code_container, language='python'),
 
@@ -169,7 +169,6 @@ Slider = html.Div(children=[
 dcc.Slider(
     min=0,
     max=10,
-    step=None,
     marks={
         0: '0 °F',
         3: '3 °F',
@@ -269,7 +268,6 @@ RangeSlider = html.Div(children=[
 dcc.RangeSlider(
     min=0,
     max=10,
-    step=None,
     marks={
         0: '0 °F',
         3: '3 °F',
@@ -487,8 +485,9 @@ Block code snippet:
 ```
 import dash
 
-app = dash.Dash()
-```
+external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
+           
+app = dash.Dash(__name__, external_stylesheets=external_stylesheets)```
 ''')
 
 """),

@@ -55,7 +55,13 @@ layout = html.Div([
     Just create a folder named `assets` in the root of your app directory
     and include your CSS and JavaScript
     files in that folder. Dash will automatically serve all of the files that
-    are included in this folder.
+    are included in this folder. By default the url to request the assets will
+    be `/assets` but you can customize this with the `assets_url_path` argument
+    to `dash.Dash`.
+    
+    **Important: For these examples, you need to include `__name__` in your Dash constructor.**
+    
+    That is, `app = dash.Dash(__name__)` instead of `app = dash.Dash()`. [Here's why](https://community.plot.ly/t/dash-app-does-not-load-assets-and-app-index-string/12178/10?u=chriddyp).
 
     ### Example: Including Local CSS and JavaScript
 
@@ -172,18 +178,54 @@ h1, h2, h3, h4, h5, h6 {
     2 - Dash will include the files in alphanumerical order by filename.
     So, we recommend prefixing your filenames with numbers if you need to ensure
     their order (e.g. `10_typography.css`, `20_header.css`)
+    
+    3 - You can ignore certain files in your `assets` folder with a regex filter 
+    using `app = dash.Dash(assets_ignore='.*ignored.*')`. This will prevent Dash from 
+    loading files which contain the above pattern.
 
-    3 - If you want to include CSS from a remote URL, then see the next section.
+    4 - If you want to include CSS from a remote URL, then see the next section.
 
-    4 - Your custom CSS will be included _after_ the Dash component CSS
+    5 - Your custom CSS will be included _after_ the Dash component CSS
 
-    5 - It is recommended to add `__name__` to the dash init to ensure the resources
+    6 - It is recommended to add `__name__` to the dash init to ensure the resources
     in the assets folder are loaded, eg: `app = dash.Dash(__name__, meta_tags=[...])`.
     When you run your application through some other command line (like the
     flask command or gunicorn/waitress), the `__main__` module wil no
     longer located where `app.py` is. By explicitly setting `__name__`, 
-    Dash will be able to locate the relative `assets` folder correctly.
+    Dash will be able to locate the relative `assets` folder correctly.''')),
 
+    dcc.Markdown(s('''
+***
+
+## Load Assets from a Folder Hosted on a CDN
+
+If you duplicate the file structure of your local assets folder to a folder hosted 
+externally to your Dash app, you can use `assets_external_path='http://your-external-assets-folder-url'` 
+in the Dash constructor to load the files from there instead of locally. Dash will index your local
+assets folder to find all of your assets, map their relative path onto `assets_external_path` 
+and then request the resources from there. 
+`app.scripts.config.serve_locally = False` must also be set in order for this to work. 
+
+**Example:**
+''')),
+
+    dcc.SyntaxHighlighter(
+        """import dash
+import dash_html_components as html
+
+app = dash.Dash(
+    __name__, 
+    assets_external_path='http://your-external-assets-folder-url/'
+)
+app.scripts.config.serve_locally = False
+
+""",
+        language='python',
+        customStyle=styles.code_container
+    ),
+
+
+    dcc.Markdown(s('''
     ***
 
     ## Embedding Images in Your Dash Apps
@@ -205,7 +247,7 @@ h1, h2, h3, h4, h5, h6 {
         """import dash
 import dash_html_components as html
 
-app = dash.Dash()
+app = dash.Dash(__name__)
 
 app.layout = html.Div([
     html.Img(src='/assets/image.png')
@@ -223,7 +265,7 @@ if __name__ == '__main__':
     ## Adding external CSS/Javascript
 
     You can add resources hosted externally to your Dash app with the
-    `external_scripts/stylesheets` init keywords.
+    `external_stylesheets/stylesheets` init keywords.
 
     The resources can be either a string or a dict containing the tag attributes
     (`src`, `integrity`, `crossorigin`, etc). You can mix both.

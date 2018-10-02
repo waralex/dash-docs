@@ -1987,97 +1987,6 @@ if __name__ == '__main__':
 ])
 
 # # # # # # #
-# Analytics
-# # # # # # #
-Analytics = html.Div(children=[
-    html.H1('Dash App Analytics'),
-
-    rc.Blockquote(),
-
-    dcc.Markdown(s('''
-    #### Dash App Analytics
-
-    After you have successfully deployed a Dash App to the Dash Deployment
-    Server, you can monitor app performance via the app analytics and logs.
-    Here, navigate to the Dash Deployment Server UI and select the app to
-    display analytics.
-
-    ''')),
-
-    html.Img(
-        alt='App Analytics',
-        src='/assets/images/dds/analytics.png',
-        style={
-            'width': '100%', 'border': 'thin lightgrey solid',
-            'border-radius': '4px'
-        }
-    ),
-])
-
-# # # # # # #
-# Logs
-# # # # # # #
-Logs = html.Div(children=[
-    html.H1('Dash App Logs'),
-
-    rc.Blockquote(),
-
-    dcc.Markdown(s('''
-    ***
-
-    #### Dash App Logs (via UI)
-
-    If you have successfully deployed a Dash App to the Dash Deployment
-    Server, you can view the app's logs via the Dash Deployment Server UI.
-    From your list of apps, open the app and then select **Logs**.
-    ''')),
-
-    html.Img(
-        alt='App Logs',
-        src='/assets/images/dds/logs.png',
-        style={
-            'width': '100%', 'border': 'thin lightgrey solid',
-            'border-radius': '4px'
-        }
-    ),
-
-    dcc.Markdown(s('''
-    ***
-
-    #### Dash App Logs (via Command Line)
-
-    Alternatively, the above can be accomplished via the command line.
-    To view the logs for a specific Dash App, run the following command
-    in your terminal:
-
-    ''')),
-
-    dcc.SyntaxHighlighter(s(
-    '''$ ssh dokku@<your-dash-domain> logs <your-app-name> --num -1'''),
-    customStyle=styles.code_container, language='python'),
-
-    dcc.Markdown(s('''
-
-    &nbsp;
-
-    This will work for any application that you own. This command
-    authenticates with the server with ssh.
-    [Configure SSH Authentication](/dash-deployment-server/ssh).
-
-    &nbsp;
-
-    **Options**
-    - `--num`, `-n`: The number of lines to display. By default, 100
-    lines are displayed.
-       Set to -1 to display _all_ of the logs. Note that we only store logs
-       from the latest app deploy.
-    - `--tail`, `-t`: Continuously stream the logs.
-    - `--quiet`, `-q`: Display the raw logs without colors, times, and names.
-    ''')),
-])
-
-
-# # # # # # #
 # Common Errors
 # # # # # # #
 Troubleshooting = html.Div(children=[
@@ -2272,6 +2181,106 @@ Troubleshooting = html.Div(children=[
         '''))
     ]),
 
+])
+
+
+# # # # # # #
+# Analytics
+# # # # # # #
+Analytics = html.Div(children=[
+    html.H1('Dash App Analytics'),
+  
+    rc.Blockquote(),
+  
+    dcc.Markdown(s('''
+    #### Dash App Analytics
+
+    After you have successfully deployed a Dash App to the Dash Deployment
+    Server, you can monitor app performance via the app analytics and logs.
+    Here, navigate to the Dash Deployment Server UI and select the app to
+    display analytics.
+
+    ''')),
+
+    html.Img(
+        alt='App Analytics',
+        src='/assets/images/dds/analytics.png',
+        style={
+            'width': '100%', 'border': 'thin lightgrey solid',
+            'border-radius': '4px'
+        }
+    ),
+])
+
+# # # # # # #
+# Logs
+# # # # # # #
+Logs = html.Div(children=[
+    html.H1('Dash App Logs'),
+    
+    rc.Blockquote(),
+  
+    dcc.Markdown(s('''
+    ***
+    
+    Dash apps create a log of usage data as well as any `print` statements 
+    called from your app. These logs can be accessed via the DDS UI or from the
+    command line. Note that they will be cleared each time you re-deploy 
+    your app.
+    
+    ***
+
+    #### Dash App Logs (via UI)
+
+    If you have successfully deployed a Dash App to the Dash Deployment
+    Server, you can view the app's logs via the Dash Deployment Server UI. 
+    From your list of apps, open the app and then select **Logs**. This will
+    display the most recent 500 log entries for your app. For the complete list,
+    use the command line method outlined below.
+    ''')),
+
+    html.Img(
+        alt='App Logs',
+        src='/assets/images/dds/logs.png',
+        style={
+            'width': '100%', 'border': 'thin lightgrey solid',
+            'border-radius': '4px'
+        }
+    ),
+
+    dcc.Markdown(s('''
+    ***
+
+    #### Dash App Logs (via Command Line)
+
+    Alternatively, the above can be accomplished via the command line.
+    To view the logs for a specific Dash App run the following command
+    in your terminal:
+
+    ''')),
+
+    dcc.SyntaxHighlighter(s(
+    '''$ ssh dokku@<your-dash-domain> logs <your-app-name> --num -1'''),
+    customStyle=styles.code_container, language='python'),
+
+    dcc.Markdown(s('''
+
+    &nbsp;
+
+    This will work for any application that you own. This command
+    authenticates with the server with ssh.
+    [Configure SSH Authentication](/dash-deployment-server/ssh).
+
+    &nbsp;
+
+    **Options**
+    - `--num`, `-n`: The number of lines to display. By default, 100
+    lines are displayed.
+       Set to -1 to display _all_ of the logs. Note that we only store logs
+       from the latest app deploy.
+    - `--tail`, `-t`: Continuously stream the logs.
+    - `--quiet`, `-q`: Display the raw logs without colors, times, and names.
+    ''')),
 ])
 
 

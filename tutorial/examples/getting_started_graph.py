@@ -8,7 +8,9 @@ df = pd.read_csv(
     'https://raw.githubusercontent.com/plotly/'
     'datasets/master/gapminderDataFiveYear.csv')
 
-app = dash.Dash()
+external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
+
+app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
 app.layout = html.Div([
     dcc.Graph(id='graph-with-slider'),
@@ -17,7 +19,6 @@ app.layout = html.Div([
         min=df['year'].min(),
         max=df['year'].max(),
         value=df['year'].min(),
-        step=None,
         marks={str(year): str(year) for year in df['year'].unique()}
     )
 ])

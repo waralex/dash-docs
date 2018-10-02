@@ -9,19 +9,25 @@ import pandas as pd
 import time
 import uuid
 
+external_stylesheets = [
+    # Dash CSS
+    'https://codepen.io/chriddyp/pen/bWLwgP.css',
+    # Loading screen CSS
+    'https://codepen.io/chriddyp/pen/brPBPO.css']
 
-app = dash.Dash()
+app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 cache = Cache(app.server, config={
     'CACHE_TYPE': 'redis',
     # Note that filesystem cache doesn't work on systems with ephemeral
     # filesystems like Heroku.
     'CACHE_TYPE': 'filesystem',
     'CACHE_DIR': 'cache-directory',
-    
+
     # should be equal to maximum number of users on the app at a single time
     # higher numbers will store more data in the filesystem / redis cache
     'CACHE_THRESHOLD': 200
 })
+
 
 def get_dataframe(session_id):
     @cache.memoize()
@@ -48,6 +54,7 @@ def get_dataframe(session_id):
 
     return pd.read_json(query_and_serialize_data(session_id))
 
+
 def serve_layout():
     session_id = str(uuid.uuid4())
 
@@ -57,6 +64,7 @@ def serve_layout():
         html.Div(id='output-1'),
         html.Div(id='output-2')
     ])
+
 
 app.layout = serve_layout
 
@@ -72,7 +80,6 @@ def display_value_1(value, session_id):
     ])
 
 
-
 @app.callback(Output('output-2', 'children'),
               [Input('button', 'n_clicks'),
                Input('session-id', 'children')])
@@ -82,14 +89,6 @@ def display_value_2(value, session_id):
         'Output 2 - Button has been clicked {} times'.format(value),
         html.Pre(df.to_csv())
     ])
-
-
-# Dash CSS
-app.css.append_css({
-    "external_url": "https://codepen.io/chriddyp/pen/bWLwgP.css"})
-# Loading screen CSS
-app.css.append_css({
-    "external_url": "https://codepen.io/chriddyp/pen/brPBPO.css"})
 
 
 if __name__ == '__main__':

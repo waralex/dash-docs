@@ -1,11 +1,13 @@
 import datetime
 
 import dash
-from dash.dependencies import Input, Output
+from dash.dependencies import Input, Output, State
 import dash_core_components as dcc
 import dash_html_components as html
 
-app = dash.Dash()
+external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
+
+app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
 app.scripts.config.serve_locally = True
 
@@ -51,9 +53,9 @@ def parse_contents(contents, filename, date):
 
 
 @app.callback(Output('output-image-upload', 'children'),
-              [Input('upload-image', 'contents'),
-               Input('upload-image', 'filename'),
-               Input('upload-image', 'last_modified')])
+              [Input('upload-image', 'contents')],
+              [State('upload-image', 'filename'),
+               State('upload-image', 'last_modified')])
 def update_output(list_of_contents, list_of_names, list_of_dates):
     if list_of_contents is not None:
         children = [
@@ -62,9 +64,6 @@ def update_output(list_of_contents, list_of_names, list_of_dates):
         return children
 
 
-app.css.append_css({
-    'external_url': 'https://codepen.io/chriddyp/pen/bWLwgP.css'
-})
 
 if __name__ == '__main__':
     app.run_server(debug=True)

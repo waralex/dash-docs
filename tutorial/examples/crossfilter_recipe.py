@@ -5,7 +5,9 @@ import numpy as np
 import pandas as pd
 from dash.dependencies import Input, Output
 
-app = dash.Dash()
+external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
+
+app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
 np.random.seed(0)
 df = pd.DataFrame({
@@ -122,8 +124,6 @@ def highlight(x, y):
     return callback
 
 
-app.css.append_css({
-    'external_url': 'https://codepen.io/chriddyp/pen/bWLwgP.css'})
 
 # app.callback is a decorator which means that it takes a function
 # as its argument.
