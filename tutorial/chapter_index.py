@@ -361,6 +361,13 @@ chapters = {
         'description': 'Ensure that your app meets all the requirements for deployment.'
     },
 
+    'static-assets-examples': {
+        'url': '/dash-deployment-server/static-assets',
+        'content': dds_examples.staticAssets,
+        'name': 'Adding Static Assets',
+        'description': 'Learn how to include custom CSS, JS, and images with the `assets` directory.'
+    },
+
     'create-deploy-examples': {
         'url': '/dash-deployment-server/deployment',
         'content': dds_examples.Deploy,
@@ -373,6 +380,13 @@ chapters = {
         'content': dds_examples.Authentication,
         'name': 'Dash App Authentication',
         'description': 'Adding Authentication to your Dash App'
+    },
+
+    'private-packages-examples': {
+        'url': '/dash-deployment-server/private-packages',
+        'content': dds_examples.PrivatePackages,
+        'name': 'Adding Private Python Packages',
+        'description': 'Intsall private python packages in your Dash Apps.'
     },
 
     'config-sys-examples': {
@@ -421,6 +435,13 @@ chapters = {
         'your prodcution Dash App.'
     },
 
+    'pdf-service-examples': {
+        'url': '/dash-deployment-server/pdf-service',
+        'content': dds_examples.pdfService,
+        'name': 'Dash Deployment Server PDF Service',
+        'description': 'Utilize the Dash Deployment Server API endpoint for '
+        'creating PDF exports of your Dash applications'
+    },
     'troubleshooting-examples': {
         'url': '/dash-deployment-server/troubleshooting',
         'content': dds_examples.Troubleshooting,
