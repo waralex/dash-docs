@@ -410,6 +410,16 @@ RadioItems = html.Div(children=[
     generate_prop_table('RadioItems')
 ])
 
+# Button
+Button = html.Div(children=[
+    html.H3('Button Examples'),
+    html.Hr(),
+    
+    html.H3('Button Properties'),
+    html.Hr(),
+    # generate_prop_table('Button')
+])
+
 
 # Markdown
 Markdown = html.Div(children=[
@@ -490,7 +500,7 @@ Block code snippet:
 import dash
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
-           
+
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)```
 ''')
 
@@ -1000,7 +1010,7 @@ Tabs = html.Div(children=[
 
     **Table of Contents**
     -  Method 1. Content as Callback
-    -  Method 2. Content as Tab children 
+    -  Method 2. Content as Tab children
     - Styling the Tabs component
         - with CSS classes
         - with inline styles
@@ -1057,7 +1067,7 @@ Tabs = html.Div(children=[
     html.Br(),
 
     dcc.Markdown(s('''
-    Notice how the container of the Tabs can be styled as well by supplying a class to the `parent_className` prop, which we use here to draw a border below it, positioning the actual Tabs (with padding) more in the center. 
+    Notice how the container of the Tabs can be styled as well by supplying a class to the `parent_className` prop, which we use here to draw a border below it, positioning the actual Tabs (with padding) more in the center.
     We also added `display: flex` and `justify-content: center` to the regular `Tab` components, so that labels with multiple lines will not break the flow of the text.
 
     The corresponding CSS file (`assets/tabs.css`) looks like this. Save the file in an `assets` folder (it can be named anything you want). Dash will automatically include this CSS when the app is loaded. [Learn more about including CSS in your app here.](/external-resources)
@@ -1086,7 +1096,7 @@ Tabs = html.Div(children=[
     html.Br(),
 
     dcc.Markdown(s('''
-    Lastly, you can set the colors of the Tabs components in the `color` prop, by specifying the "border", "primary", and "background" colors in a dict. Make sure you set them 
+    Lastly, you can set the colors of the Tabs components in the `color` prop, by specifying the "border", "primary", and "background" colors in a dict. Make sure you set them
     all, if you're using them!
     ''')),
 
