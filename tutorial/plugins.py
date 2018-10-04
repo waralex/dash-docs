@@ -33,14 +33,15 @@ compatible with the Dash ecosystem.
 
 On a high level, this is how that works:
 - Components in dash are serialized as [JSON](www.json.org).
-  To write a dash-compatible component, all of the properties
-  of the component must be serializable as JSON. For example,
-  JavaScript functions are not valid input arguments.
+  To write a dash-compatible component, all of the props
+  shared between the python code and the react code must be serializable as JSON.
+  Numbers, Strings, Booleans, or Arrays or Objects containing Numbers, Strings, Booleans.
+  For example, JavaScript functions are not valid input arguments.
   In fact, if you try to add a function as a prop to your Dash component, you
   will see that the generated Python code for your component will not include
   that prop as part of your component's accepted list of props.
-  (It's not going to be listed in the "Keyword arguments" enumeration or in the
-  self._prop_names array of the generated Python file).
+  (It's not going to be listed in the `Keyword arguments` enumeration or in the
+  `self._prop_names` array of the generated Python file for your component).
 - By annotating components with React docstrings (not required but helpful
   and encouraged), Dash extracts the information about the component's name,
   properties, and description through [React Docgen](https://github.com/reactjs/react-docgen).
@@ -51,9 +52,14 @@ On a high level, this is how that works:
   generated entirely automatically._ A JavaScript developer does not need to
   write _any_ Python in order to generate a component that can be used in the
   Dash ecosystem.
-- When inspecting the generated files for your React component, on top of the
-  metadata.json file, and the generated Python code for your component (YourComponentName.py),
-  you will also find the JavaScript bundle (bundle.js) of your component.
+- You will find all of the auto-generated files from the build process in the
+  folder named after your component. When you create your Python package, by default any
+  non-Python files won't be included in the actual package. To include these files
+  in the package, you must list them explicitly in `MANIFEST.in`. That is, `MANIFEST.in`
+  needs to contain each JavaScript, JSON, and CSS file that you have included in
+  your `my_dash_component/` folder. In the `dash-component-boilerplate` repository,
+  you can see that all the javascript for your react component is included in the
+  build.js file.
 - The Dash app will crawl through the app's `layout` property and check which
   component packages are included in the layout and it will extract that
   component's necessary JavaScript or CSS bundles. Dash will serve these bundles
