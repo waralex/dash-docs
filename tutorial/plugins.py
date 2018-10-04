@@ -34,7 +34,7 @@ compatible with the Dash ecosystem.
 On a high level, this is how that works:
 - Components in dash are serialized as [JSON](www.json.org).
   To write a dash-compatible component, all of the props
-  shared between the python code and the react code must be serializable as JSON.
+  shared between the Python code and the React code must be serializable as JSON.
   Numbers, Strings, Booleans, or Arrays or Objects containing Numbers, Strings, Booleans.
   For example, JavaScript functions are not valid input arguments.
   In fact, if you try to add a function as a prop to your Dash component, you
@@ -58,7 +58,7 @@ On a high level, this is how that works:
   in the package, you must list them explicitly in `MANIFEST.in`. That is, `MANIFEST.in`
   needs to contain each JavaScript, JSON, and CSS file that you have included in
   your `my_dash_component/` folder. In the `dash-component-boilerplate` repository,
-  you can see that all the javascript for your react component is included in the
+  you can see that all the javascript for your React component is included in the
   build.js file.
 - The Dash app will crawl through the app's `layout` property and check which
   component packages are included in the layout and it will extract that
