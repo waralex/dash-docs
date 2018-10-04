@@ -119,7 +119,7 @@ layout = html.Div(className='gallery', children=[
 
         AppSection(
             app_name='Vanguard Report',
-            app_link='https://vanguard-report.herokuapp.com/dash-vanguard-report',
+            app_link='https://dash-gallery.plotly.host/dash-vanguard-report',
             code_link='https://github.com/plotly/dash-vanguard-report',
             img_src='https://raw.githubusercontent.com/plotly/dash-docs/master/images/vanguard.gif',
             description='''
