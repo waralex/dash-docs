@@ -13,7 +13,7 @@ The React community is huge. Thousands of components have been built and
 released with open source licenses. For example, here are just some of the
 [slider components](https://react.rocks/?q=slider) and
 [table components](https://react.rocks/?q=tables) that have been published
-by the community.
+by the React community, any of which could be adapted into a Dash Component.
 
 ## Creating a Component
 
@@ -36,18 +36,24 @@ On a high level, this is how that works:
   To write a dash-compatible component, all of the properties
   of the component must be serializable as JSON. For example,
   JavaScript functions are not valid input arguments.
-- By annotating components with React docstrings, Dash extracts
-  the information about the component's name, properties, and a description
-  of the components through [React Docgen](https://github.com/reactjs/react-docgen).
-  This is exported as a JSON file.
-- Dash reads this JSON file and dynamically creates Python classes that subclass
-  a core Dash component. These classes include argument validation,
+  In fact, if you try to add a function as a prop to your Dash component, you
+  will see that the generated Python code for your component will not include
+  that prop as part of your component's accepted list of props.
+  (It's not going to be listed in the "Keyword arguments" enumeration or in the
+  self._prop_names array of the generated Python file).
+- By annotating components with React docstrings (not required but helpful
+  and encouraged), Dash extracts the information about the component's name,
+  properties, and description through [React Docgen](https://github.com/reactjs/react-docgen).
+  This is exported as a JSON file (metadata.json).
+- At build time, Dash reads this JSON file and dynamically creates Python classes
+  that subclass a core Dash component. These classes include argument validation,
   Python docstrings, types, and a basic set of methods. _These classes are
   generated entirely automatically._ A JavaScript developer does not need to
   write _any_ Python in order to generate a component that can be used in the
   Dash ecosystem.
-- The Python component package includes the JSON file and the JavaScript bundle
-  as extra files through the `MANIFEST.in` file.
+- When inspecting the generated files for your React component, on top of the
+  metadata.json file, and the generated Python code for your component (YourComponentName.py),
+  you will also find the JavaScript bundle (bundle.js) of your component.
 - The Dash app will crawl through the app's `layout` property and check which
   component packages are included in the layout and it will extract that
   component's necessary JavaScript or CSS bundles. Dash will serve these bundles
