@@ -7,7 +7,7 @@ import reusable_components as reusable
 
 
 def SectionTitle(title):
-    return dcc.Markdown(dedent('''    
+    return dcc.Markdown(dedent('''
     ***
 
     ## {}
@@ -84,10 +84,10 @@ layout = html.Div(className='gallery', children=[
         ),
 
         dcc.Markdown(dedent('''
-        
+
         The [Dash Getting Started Guide](/getting-started) contains
         many applications that range in complexity.
-    
+
         The first interactive app that you'll create combines a `Slider`
         with a `Graph` and filters data using a Pandas `DataFrame`.
         The `animate` property in the `Graph` component was set to `True`
@@ -95,7 +95,7 @@ layout = html.Div(className='gallery', children=[
         Some interactivity is built into the `Graph` component, including
         hovering over values, clicking on legend items to toggle traces, and
         zooming into regions.
-    
+
         ''')),
     ]),
 
@@ -112,27 +112,27 @@ layout = html.Div(className='gallery', children=[
             This app queries data from Google Finance and displays the results as candlestick
             charts. Dash comes with several financial chart types including: candlestick
             charts, OHLC graphs, time series, and range sliders.
-        
+
             This app was written in just around 100 lines of code.
             '''
         ),
 
         AppSection(
             app_name='Vanguard Report',
-            app_link='https://vanguard-report.herokuapp.com/',
+            app_link='https://dash-gallery.plotly.host/dash-vanguard-report',
             code_link='https://github.com/plotly/dash-vanguard-report',
             img_src='https://raw.githubusercontent.com/plotly/dash-docs/master/images/vanguard.gif',
             description='''
             This app recreates the look and feel of a Vanguard report.
             It includes a Print to PDF button and the styles were optimized
             to look good on the web and in PDF form.
-        
+
             The charts in the report on the web version are interactive.
             You can hover over points to see their values and zoom into
             regions. Since this report was built on top of Dash, you could
             adapt this report to include even more interactive elements, like
             a dropdown or a search box.
-        
+
             With PDF styles, you can hide and show elements depending on whether
             the app is being viewed in the web browser or in print, using the
             same framework for both the rich interactive applications and the static
@@ -140,7 +140,7 @@ layout = html.Div(className='gallery', children=[
             '''
 
         )
-                
+
     ]),
 
     reusable.Row([
@@ -166,21 +166,21 @@ layout = html.Div(className='gallery', children=[
             img_src='https://raw.githubusercontent.com/plotly/dash-docs/master/images/nytimes.png',
             description='''
             485 lines of Python code, including text copy.
-        
-            This Dash app was adapted from The New York Times' excellent report: 
+
+            This Dash app was adapted from The New York Times' excellent report:
             [How the Recession Reshaped the Economy in 255 Charts](https://www.nytimes.com/interactive/2014/06/05/upshot/how-the-recession-reshaped-the-economy-in-255-charts.html).
-        
+
             This Dash app displays its content linearly, like an
             interactive report. The report highlights several notable
             views of the data and then invites the user to highlight
             their own regions at the end. This method of highlighting
             views is a great strategy for walking your readers through
             your complex analysis.
-        
+
             The height of the charts was specified in viewport units (`vh`),
             scaling the size of the chart to the height of the screen. It
             looks great on monitors big and small.
-        
+
             The text in the application is centered and its width is restricted
             to improve the reading experience. The graphs are full bleed:
             they extend past the narrow column of text to the edges of the page.
@@ -200,9 +200,9 @@ layout = html.Div(className='gallery', children=[
             and to push data.
             ''',
             width=12
-        )        
+        )
     ]),
-    
+
     # ENERGY AND TRANSPORT SECTION
     SectionTitle('Energy and Transportation'),
 
@@ -219,7 +219,7 @@ layout = html.Div(className='gallery', children=[
             time series is updated with the sum of all production over time.
             The histogram chart is also selectable, serving as an alternative
             control for selecting a range of time.
-            
+
             This application is also mobile-friendly. Dash apps are built and
             published in the Web, so the full power of CSS is available.
             The Dash core team maintains a [core style guide here](https://codepen.io/chriddyp/pen/bWLwgP)
@@ -253,10 +253,10 @@ layout = html.Div(className='gallery', children=[
             description='''
             This app displays a description of the drug as you hover over points in the
             graph.
-        
+
             Selecting drugs in the dropdown highlights their position in the chart and
             appends their symbol in the table below.
-        
+
             Built in a few hundred lines of Python code.
             '''
 
@@ -269,7 +269,7 @@ layout = html.Div(className='gallery', children=[
             img_src='https://raw.githubusercontent.com/plotly/dash-brain-surface-viewer/master/ZOMBIE_BRAIN.png',
             description='''
             🐭 Explore human and mice brains in 3-D.
-            
+
             Add interactive labels to points on the brain surface and change the surface colorscale.
             '''
         )
@@ -282,7 +282,7 @@ layout = html.Div(className='gallery', children=[
             code_link='https://github.com/plotly/dash-phylogeny',
             img_src='https://raw.githubusercontent.com/plotly/dash-docs/master/images/dash-phylo-tree.gif',
             description='''
-            Interactively explore the propagation of six viruses, by time and/or by location. 
+            Interactively explore the propagation of six viruses, by time and/or by location.
             In the online app, you can select a virus to display its evolution as a phylogeny tree, along with a map and time series of the virus's global spread.
         ''',
             width=12
@@ -315,12 +315,12 @@ layout = html.Div(className='gallery', children=[
             code_link='https://github.com/plotly/dash-object-detection',
             img_src='https://raw.githubusercontent.com/plotly/dash-docs/master/images/dash-object-detection.gif',
             description='''
-            This object-detection app provides useful visualizations about 
-            what's happening inside a complex video in real time. The data 
-            is generated using 
-            [MobileNet v1](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/detection_model_zoo.md) 
-            in Tensorflow, trained on the COCO dataset. The video is 
-            displayed using the community-maintained 
+            This object-detection app provides useful visualizations about
+            what's happening inside a complex video in real time. The data
+            is generated using
+            [MobileNet v1](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/detection_model_zoo.md)
+            in Tensorflow, trained on the COCO dataset. The video is
+            displayed using the community-maintained
             [video component](https://community.plot.ly/t/modifying-a-dom-property-in-html-video-dash-video-component/7649).
             '''
         ),
@@ -331,9 +331,9 @@ layout = html.Div(className='gallery', children=[
             code_link='https://github.com/plotly/dash-live-model-training',
             img_src='https://raw.githubusercontent.com/plotly/dash-docs/master/images/dash-live-model-training.gif',
             description='''
-            Tracking accuracy and loss is an essential part of the training process 
-            for deep learning models. This real-time visualization app monitors 
-            core metrics of your Tensorflow graphs during the training so that you 
+            Tracking accuracy and loss is an essential part of the training process
+            for deep learning models. This real-time visualization app monitors
+            core metrics of your Tensorflow graphs during the training so that you
             can quickly detect anomalies within your model.
             '''
         ),
@@ -346,10 +346,10 @@ layout = html.Div(className='gallery', children=[
             code_link='https://github.com/plotly/dash-image-processing',
             img_src='https://raw.githubusercontent.com/plotly/dash-docs/master/images/dash-image-processing.gif',
             description='''
-            This app wraps Pillow, a powerful image processing library in 
-            Python, and abstracts all the operations through an 
-            easy-to-use GUI. All the computation is done on the back-end 
-            through Dash, and image transfer is optimized through 
+            This app wraps Pillow, a powerful image processing library in
+            Python, and abstracts all the operations through an
+            easy-to-use GUI. All the computation is done on the back-end
+            through Dash, and image transfer is optimized through
             session-based Redis caching and S3 storage.
             '''
         ),
@@ -360,13 +360,13 @@ layout = html.Div(className='gallery', children=[
             code_link='https://github.com/plotly/dash-tsne',
             img_src='https://raw.githubusercontent.com/plotly/dash-docs/master/images/dash-tsne.gif',
             description='''
-            t-SNE is a visualization algorithm that projects your 
-            high-dimensional data into a 2D or 3D space so that you can 
-            explore the spatial distribution of your data. The t-SNE 
-            Explorer lets you interactively explore iconic image datasets 
-            such as MNIST, and state-of-the-art word embeddings such as 
-            GloVe, with all the computation done ahead of time. Data 
-            point previews and graphs help you better understand the 
+            t-SNE is a visualization algorithm that projects your
+            high-dimensional data into a 2D or 3D space so that you can
+            explore the spatial distribution of your data. The t-SNE
+            Explorer lets you interactively explore iconic image datasets
+            such as MNIST, and state-of-the-art word embeddings such as
+            GloVe, with all the computation done ahead of time. Data
+            point previews and graphs help you better understand the
             dataset.
             '''
         ),
@@ -379,9 +379,9 @@ layout = html.Div(className='gallery', children=[
             code_link='https://github.com/plotly/dash-svm',
             img_src='https://raw.githubusercontent.com/plotly/dash-docs/master/images/dash-svm.gif',
             description='''
-            This app lets you explore support vector clustering (a type 
-            of support vector machine) with UI input parameters. Toy datasets 
-            and useful ML metrics plots are included. It is fully written in 
+            This app lets you explore support vector clustering (a type
+            of support vector machine) with UI input parameters. Toy datasets
+            and useful ML metrics plots are included. It is fully written in
             Dash + scikit-learn.
             ''',
             width=12
@@ -460,11 +460,11 @@ layout = html.Div(className='gallery', children=[
             code_link=None,
             img_src='https://raw.githubusercontent.com/plotly/dash-docs/master/images/dash-community-components.png',
             description='''
-        Dash has a [plugin system](https://dash.plot.ly/plugins) for integrating your own React.js components. 
-        The Dash community has built many of their component libraries, like 
-        [Video Components](https://community.plot.ly/t/modifying-a-dom-property-in-html-video/7649/11) 
-        and [Large File Upload](https://community.plot.ly/t/show-and-tell-dash-resumable-upload/9519). 
-        View more community-maintained components and other projects in the Dash Community Forum’s 
+        Dash has a [plugin system](https://dash.plot.ly/plugins) for integrating your own React.js components.
+        The Dash community has built many of their component libraries, like
+        [Video Components](https://community.plot.ly/t/modifying-a-dom-property-in-html-video/7649/11)
+        and [Large File Upload](https://community.plot.ly/t/show-and-tell-dash-resumable-upload/9519).
+        View more community-maintained components and other projects in the Dash Community Forum’s
         [Show and Tell Thread](https://community.plot.ly/t/show-and-tell-community-thread/7554).
         '''
         )
@@ -477,7 +477,7 @@ layout = html.Div(className='gallery', children=[
             code_link='https://github.com/plotly/dash-core-components',
             img_src='https://raw.githubusercontent.com/plotly/dash-docs/master/images/dash-core-components.png',
             description='''
-        Dash comes with a set of rich components like sliders, dropdowns, graphs, and more. 
+        Dash comes with a set of rich components like sliders, dropdowns, graphs, and more.
         [View the official Dash documentation to learn more](https://dash.plot.ly/dash-core-components).
         ''',
             width=12
@@ -491,8 +491,8 @@ layout = html.Div(className='gallery', children=[
     reusable.Row(
         dcc.Markdown(dedent(
             """
-            Dash DAQ is a Dash component library for building custom data 
-            acquisition interfaces with Dash in Python. Dash DAQ is a commercially licensed 
+            Dash DAQ is a Dash component library for building custom data
+            acquisition interfaces with Dash in Python. Dash DAQ is a commercially licensed
             product. [Learn more about Dash DAQ](https://www.dashdaq.io/).
             """
         ))
@@ -506,8 +506,8 @@ layout = html.Div(className='gallery', children=[
             code_link='https://dash-daq-omega-pid.herokuapp.com/',
             img_src='https://www.dashdaq.io/wp-content/uploads/2018/07/Dash-DAQ-Omega-Platnium-Controller-146@05x.jpg',
             description='''
-            Let’s heat things up with Dash DAQ! With this application, we use 
-            Python to monitor and manage a PID controller connected to a water 
+            Let’s heat things up with Dash DAQ! With this application, we use
+            Python to monitor and manage a PID controller connected to a water
             heater 🔥
             '''
         ),
@@ -519,7 +519,7 @@ layout = html.Div(className='gallery', children=[
             code_link='http://dash-daq-sparki.herokuapp.com/',
             img_src='https://www.dashdaq.io/wp-content/uploads/2018/07/Dash-DAQ-Sparki-11-Edit@05x.jpg',
             description='''
-            We love our robots here at Plotly! This Dash DAQ app wirelessly 
+            We love our robots here at Plotly! This Dash DAQ app wirelessly
             controls Sparki, an Arduino-based robot 🤖
             '''
         )
@@ -533,7 +533,7 @@ layout = html.Div(className='gallery', children=[
             code_link='https://dash-daq-iv-tracer.herokuapp.com/',
             img_src='https://www.dashdaq.io/wp-content/uploads/2018/07/IMG_0345@05x.jpg',
             description='''
-            With this Dash DAQ application written in Python, you can create 
+            With this Dash DAQ application written in Python, you can create
             UI components to interface with a Keithley 2400 SourceMeter.
             '''
         ),
@@ -545,8 +545,8 @@ layout = html.Div(className='gallery', children=[
             code_link='https://dash-daq-robotic-arm-edge.herokuapp.com/',
             img_src='https://www.dashdaq.io/wp-content/uploads/2018/07/Dash-DAQ-Robotic-Arm-Edge-19@05x.jpg',
             description='''
-            Dash DAQ’s GUI components let you interface with all the robot’s 
-            motors and LED, even from a mobile device… just as if it were a 
+            Dash DAQ’s GUI components let you interface with all the robot’s
+            motors and LED, even from a mobile device… just as if it were a
             real remote control! 🤖
             '''
         )
@@ -560,8 +560,8 @@ layout = html.Div(className='gallery', children=[
             code_link='http://dash-ocean-optics.herokuapp.com/',
             img_src='https://www.dashdaq.io/wp-content/uploads/2018/06/Dash-DAQ-_-Ocean-Optics-2@05x.jpg',
             description='''
-            We wrote a Dash DAQ application in Python to 
-            control and read an Ocean Optics spectrometer with interactive UI 
+            We wrote a Dash DAQ application in Python to
+            control and read an Ocean Optics spectrometer with interactive UI
             components.
             '''
         ),
@@ -572,8 +572,8 @@ layout = html.Div(className='gallery', children=[
             code_link='https://dash-daq-pressure-gauge-kjl.herokuapp.com/',
             img_src='https://www.dashdaq.io/wp-content/uploads/2018/06/Dash-DAQ-Kurt@05x.jpg',
             description='''
-            A Dash DAQ application, written in Python, gives you clean, modern 
-            UI components to facilitate the readout of a Kurt J. Lesker 
+            A Dash DAQ application, written in Python, gives you clean, modern
+            UI components to facilitate the readout of a Kurt J. Lesker
             pressure gauge controller.
             '''
         )
@@ -587,8 +587,8 @@ layout = html.Div(className='gallery', children=[
             code_link='https://dash-accelerometer.herokuapp.com/',
             img_src='https://www.dashdaq.io/wp-content/uploads/2018/06/Dash-DAQ-_-Accelerometer@05x.jpg',
             description='''
-            Running tests with an accelerometer? Dash DAQ gives you the 
-            components you need to write rich, flexible GUIs for interfacing 
+            Running tests with an accelerometer? Dash DAQ gives you the
+            components you need to write rich, flexible GUIs for interfacing
             with your instruments in Python.
             '''
         ),
@@ -599,8 +599,8 @@ layout = html.Div(className='gallery', children=[
             code_link='https://dash-daq-led.herokuapp.com/',
             img_src='https://www.dashdaq.io/wp-content/uploads/2018/05/Dash-DAQ-_-Blank-Stick-main@05x.jpg',
             description='''
-            Team Plotly is getting colorful with Dash DAQ! This application 
-            controls the colored LED lights in a BlinkStick. We even wrote a 
+            Team Plotly is getting colorful with Dash DAQ! This application
+            controls the colored LED lights in a BlinkStick. We even wrote a
             Rainbow mode🌈
             '''
         )
@@ -614,8 +614,8 @@ layout = html.Div(className='gallery', children=[
             code_link='https://dash-daq-stepper-motor.herokuapp.com/',
             img_src='https://www.dashdaq.io/wp-content/uploads/2018/04/Dash-DAQ-_-Stepper-Motor@05x.jpg',
             description='''
-            From 3D printers, to mirror mounts, to machine tools – stepper 
-            motors are ubiquitous. Using Dash DAQ, we created a GUI to control 
+            From 3D printers, to mirror mounts, to machine tools – stepper
+            motors are ubiquitous. Using Dash DAQ, we created a GUI to control
             a Silverpak 17C Lin Engineering stepper motor.
             '''
         ),
@@ -626,8 +626,8 @@ layout = html.Div(className='gallery', children=[
             code_link='https://dash-tektronix-350.herokuapp.com/',
             img_src='https://www.dashdaq.io/wp-content/uploads/2018/04/Dash-DAQ-_-Tektronix-Oscilloscope-Tektronic-Function-Generator@05x-1.jpg',
             description='''
-            Whether testing your power supply or monitoring a heartbeat, if 
-            you have an oscilloscope, Dash DAQ will help you control and read 
+            Whether testing your power supply or monitoring a heartbeat, if
+            you have an oscilloscope, Dash DAQ will help you control and read
             your instrument with user-friendly GUIs.
             '''
         )
@@ -641,8 +641,8 @@ layout = html.Div(className='gallery', children=[
             code_link='http://dash-daq-bkprecision.herokuapp.com/',
             img_src='https://www.dashdaq.io/wp-content/uploads/2018/03/Dash-DAQ-_-BKprecision@05x-1.jpg',
             description='''
-            This Dash DAQ app controls a B&K Precision power supply using a 
-            clean and functional UI, written in just over 300 lines of Python 
+            This Dash DAQ app controls a B&K Precision power supply using a
+            clean and functional UI, written in just over 300 lines of Python
             code.
             '''
         ),
@@ -653,7 +653,7 @@ layout = html.Div(className='gallery', children=[
             code_link='https://dash-daq-hp-multimeter.herokuapp.com/',
             img_src='https://www.dashdaq.io/wp-content/uploads/2018/03/Dash-DAQ-_-Multimeter-zoom@05x.jpg',
             description='''
-            Here’s how we used Dash DAQ’s interactive UI components to 
+            Here’s how we used Dash DAQ’s interactive UI components to
             control the HP Agilent 34401A Multimeter.
             '''
         )
@@ -667,8 +667,8 @@ layout = html.Div(className='gallery', children=[
             code_link='https://dash-tektronix-350.herokuapp.com/',
             img_src='https://www.dashdaq.io/wp-content/uploads/2018/03/Dash-DAQ-_-Tektronix-Oscilloscope-Tektronic-Function-Generator-zoom@05x.jpg',
             description='''
-            A function generator generates a variety of electrical waveforms. 
-            This Dash DAQ application facilitates the control of a Tektronix 
+            A function generator generates a variety of electrical waveforms.
+            This Dash DAQ application facilitates the control of a Tektronix
             AFG3021 function generator.
             '''
         ),
@@ -679,7 +679,7 @@ layout = html.Div(className='gallery', children=[
             code_link='https://dash-daq-pressure-gauge-pv.herokuapp.com/',
             img_src='https://www.dashdaq.io/wp-content/uploads/2018/03/Dash-DAQ-_-Pfeiffer@05x.jpg',
             description='''
-            In just over 300 lines of code, this app helps you control 
+            In just over 300 lines of code, this app helps you control
             and read a Pfeiffer vacuum gauge controller.
             '''
         )
@@ -693,7 +693,7 @@ layout = html.Div(className='gallery', children=[
             code_link='https://freq-response-plotter.herokuapp.com/',
             img_src='https://www.dashdaq.io/wp-content/uploads/2018/07/Dash-DAQ-_-Tektronix-Oscilloscope-Tektronic-Function-Generator.jpg',
             description='''
-            With this Dash DAQ app, you can create a user-friendly GUI for 
+            With this Dash DAQ app, you can create a user-friendly GUI for
             analyzing the frequency responses of circuits.
             ''',
             width=12
