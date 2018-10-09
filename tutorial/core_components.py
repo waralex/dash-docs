@@ -205,7 +205,7 @@ dcc.RadioItems(
     ),
     html.Div(examples['button'][1], className='example-container'),
     html.Br(),
-    dcc.Link(html.A('Button Reference'),
+    dcc.Link(html.A('More Button Examples and Reference'),
              href="/dash-core-components/button"),
     html.P([
         '''For more on `dash.dependencies.State`, see the tutorial on ''',
