@@ -6,7 +6,10 @@ import dash_core_components as dcc
 import pandas as pd
 
 
-_current_path = os.path.join(os.path.dirname(os.path.abspath(dcc.__file__)),
+_current_dcc_path = os.path.join(os.path.dirname(os.path.abspath(dcc.__file__)),
+                             'metadata.json')
+
+_current_html_path = os.path.join(os.path.dirname(os.path.abspath(html.__file__)),
                              'metadata.json')
 
 
@@ -132,16 +135,23 @@ def object_hook_handler(obj):
     return obj
 
 
-with open(_current_path, 'r') as f:
-    metadata = json.load(f, object_hook=object_hook_handler)
+with open(_current_dcc_path, 'r') as f:
+    metadata_dcc = json.load(f, object_hook=object_hook_handler)
+
+with open(_current_html_path, 'r') as f:
+    metadata_html = json.load(f, object_hook=object_hook_handler)
 
 
 def get_dataframe(component_name):
     prefix = 'src/components/'
     suffix = '.react.js'
     fullString = prefix+component_name+suffix
-    df = pd.DataFrame(metadata[fullString]
-                      ['props']).transpose()
+    if fullString in metadata_dcc:
+        df = pd.DataFrame(metadata_dcc[fullString]
+                          ['props']).transpose()
+    else:
+        df = pd.DataFrame(metadata_html[fullString]
+                          ['props']).transpose()
     if 'dashEvents' in df.index.tolist():
         df.drop(['dashEvents'], inplace=True)
     if 'fireEvent' in df.index:
