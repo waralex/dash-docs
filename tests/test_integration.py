@@ -89,7 +89,8 @@ class Tests(IntegrationTests):
             '/dash-core-components/datepickerrange',
             '/dash-core-components/markdown',
             '/dash-core-components/upload',
-            '/dash-core-components/tabs'
+            '/dash-core-components/tabs',
+            '/dash-core-components/button'
 
         ] + [
             '/dash-deployment-server/ssh',
