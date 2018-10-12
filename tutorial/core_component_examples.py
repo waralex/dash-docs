@@ -419,11 +419,18 @@ Button = html.Div(children=[
     html.Br(),
     html.H3('Button Basic Example'),
     html.Hr(),
+    dcc.Markdown("An example of a default button without any extra properties \
+    and `n_clicks` in the callback. `n_clicks` is an integer that represents \
+    that number of times the button has been clicked. Note that the original \
+    value is `None`."),
     Syntax(examples['button_basic'][0]),
     Example(examples['button_basic'][1]),
     html.Br(),
     html.H3('Button with n_clicks_timestamp'),
     html.Hr(),
+    dcc.Markdown("This example utilizes the `n_clicks_timestamp` property, \
+    which returns an integer representation of time. This is useful for \
+    determining when the button was last clicked."),
     Syntax(examples['button_n_clicks_timestamp'][0]),
     Example(examples['button_n_clicks_timestamp'][1]),
     html.Br(),
