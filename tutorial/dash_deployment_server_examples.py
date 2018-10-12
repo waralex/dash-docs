@@ -496,7 +496,7 @@ $ git init # initializes an empty git repo''', customStyle=styles.code_container
 
 @app.callback(Output('remote-and-deploy-instructions', 'children'),
               [Input('deploy-method', 'value')])
-def display_instructions2(method):
+def display_instructions_deploy(method):
     return [
         dcc.Markdown(s('''
 
