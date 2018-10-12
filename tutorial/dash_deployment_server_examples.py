@@ -2329,9 +2329,9 @@ Git = html.Div(children=[
 
     ***
 
-    Plotly ueses [Git](https://git-scm.com/) to manage Dash App deployments.
+    Plotly uses [Git](https://git-scm.com/) to manage Dash App deployments.
     This section serves as a reference for what git commands are utilized,
-    when to use them, and why we use them.
+    when to use them, and why.
 
     &nbsp;
 
@@ -2349,9 +2349,9 @@ Git = html.Div(children=[
 
     #### Initialize a Repository
 
-    If you have created a new folder for your Dash App, or have an exisiting
+    If you have created a new folder for your Dash App, or have an existing
     folder on your local machine, you need to initialize a local Git
-    respository before you can deploy your Dash App to the Dash Deployment
+    repository before you can deploy your Dash App to the Dash Deployment
     Server. You need to initialize the local Git repository from your app's
     root folder, thus:
 
@@ -2368,7 +2368,7 @@ Git = html.Div(children=[
 
     #### Cloning a Repository
 
-    If you have an exisiting repository hosted on Github, or would like to
+    If you have an existing repository hosted on Github, or would like to
     utilize one the demo Dash Apps from [Plotly's Gallery](/gallery), then you
     you'll need to clone the repository. You can achieve this by using the
     `git clone` command:
@@ -2397,7 +2397,7 @@ Git = html.Div(children=[
 
     #### Remote Repositories
 
-    Once you have initialized your local Git repository or cloned an exisintg
+    Once you have initialized your local Git repository or cloned an existing
     repository from Github, you need to create a remote repository on the
     Dash Deployment Server, which you will deploy your changes to.
     Note that this remote repository will be your live / production Dash App.
@@ -2409,7 +2409,7 @@ Git = html.Div(children=[
     ''')),
 
     dcc.SyntaxHighlighter(s(
-    '''$ git remote add <repository-name> '''),
+    '''$ git remote add <remote-name> <remote-URL>'''),
     customStyle=styles.code_container, language='python'),
 
     dcc.Markdown(s('''
@@ -2428,12 +2428,24 @@ Git = html.Div(children=[
 
     &nbsp;
 
+    To rename a remote repository:
+
+    ''')),
+
+    dcc.SyntaxHighlighter(s(
+    '''$ git remote rename <existing-name> <new-name> '''),
+    customStyle=styles.code_container, language='python'),
+    
+    dcc.Markdown(s('''
+
+    &nbsp;
+
     To remove a remote repository:
 
     ''')),
 
     dcc.SyntaxHighlighter(s(
-    '''$ git remote rm <remote-repository> '''),
+    '''$ git remote rm <remote-name> '''),
     customStyle=styles.code_container, language='python'),
 
     dcc.Markdown(s('''
@@ -2451,12 +2463,23 @@ Git = html.Div(children=[
     - `git diff` prints out changes within the files.
     - `git add .` will add all your changes.
     - `git commit -m "a description of the changes"` will commit you changes.
-    - `git push <respository-name> master` will deploy you code to
+    - `git push <repository-name> master` will deploy your code to
     Dash Deployment Server.
 
-    The first two, `git status` and `git diff` are optional and are only
-    required if you wish to inspect before adding changes. The demonstration
-    below is a common way to deploy your changes:
+    &nbsp;
+
+    ''')),
+
+    rc.Notebox(s('''
+    `git status` and `git diff` are optional and are only required if you 
+    wish to inspect before adding changes.
+    ''')),
+
+    dcc.Markdown(s('''
+
+    &nbsp; 
+    
+    The demonstration below is a common way to deploy your changes:
 
     ''')),
 
@@ -2525,8 +2548,21 @@ Git = html.Div(children=[
     dcc.SyntaxHighlighter(s(
     '''$ git add .
     $ git commit -m "a description of changes"
-    $ git push <remote-respository> <branchname>:master'''),
+    $ git push <remote-name> <branchname>:master'''),
     customStyle=styles.code_container, language='python'),
+
+    dcc.Markdown(s('''
+
+    &nbsp;
+
+    To rename a branch:
+
+    ''')),
+
+    dcc.SyntaxHighlighter(s(
+    '''$ git branch -m <existing-name> <new-name> '''),
+    customStyle=styles.code_container, language='python'),
+
 
     dcc.Markdown(s('''
 
@@ -2539,6 +2575,14 @@ Git = html.Div(children=[
     dcc.SyntaxHighlighter(s(
     '''$ git branch -D <branch-name> '''),
     customStyle=styles.code_container, language='python'),
+
+    dcc.Markdown(s('''&nbsp;''')),
+
+    rc.Notebox(s('''
+
+    **Note:** using `-D` will delete the branch and all unmerged changes.
+
+    ''')),
 
     dcc.Markdown(s('''
 
