@@ -10,24 +10,24 @@ from tutorial.utils.component_block import ComponentBlock
 from tutorial.components import Syntax, Example
 
 examples = {
+    'confirm': tools.load_example('tutorial/examples/core_components/confirm.py'),
+    'confirm-provider': tools.load_example('tutorial/examples/core_components/confirm_provider.py'),
     'date_picker_single': tools.load_example('tutorial/examples/core_components/date_picker_single.py'),
     'date_picker_range': tools.load_example('tutorial/examples/core_components/date_picker_range.py'),
     'dropdown': tools.load_example('tutorial/examples/core_components/dropdown.py'),
-    'slider': tools.load_example('tutorial/examples/core_components/slider.py'),
-    'slider-updatemode': tools.load_example('tutorial/examples/core_components/slider_updatemode.py'),
     'rangeslider': tools.load_example('tutorial/examples/core_components/rangeslider.py'),
     'rangeslider-nonlinear': tools.load_example('tutorial/examples/core_components/rangeslider_nonlinear.py'),
-    'upload-image':  tools.load_example('tutorial/examples/core_components/upload-image.py'),
-    'upload-datafile':  tools.load_example('tutorial/examples/core_components/upload-datafile.py'),
-    'upload-gallery':  tools.load_example('tutorial/examples/core_components/upload-gallery.py'),
-    'confirm': tools.load_example('tutorial/examples/core_components/confirm.py'),
-    'confirm-provider': tools.load_example('tutorial/examples/core_components/confirm_provider.py'),
-    'tabs_simple':  tools.load_example('tutorial/examples/core_components/tabs_simple.py'),
+    'slider': tools.load_example('tutorial/examples/core_components/slider.py'),
+    'slider-updatemode': tools.load_example('tutorial/examples/core_components/slider_updatemode.py'),
     'tabs_callback':  tools.load_example('tutorial/examples/core_components/tabs_callback_graph.py'),
+    'tabs_simple':  tools.load_example('tutorial/examples/core_components/tabs_simple.py'),
     'tabs_styled_with_classes':  tools.load_example('tutorial/examples/core_components/tabs_styled_with_classes.py'),
     'tabs_styled_with_classes_css':  tools.read_file('assets/tabs-styled-with-classes.css'),
     'tabs_styled_with_inline':  tools.load_example('tutorial/examples/core_components/tabs_styled_with_inline.py'),
     'tabs_styled_with_props':  tools.load_example('tutorial/examples/core_components/tabs_styled_with_props.py'),
+    'upload-datafile':  tools.load_example('tutorial/examples/core_components/upload-datafile.py'),
+    'upload-gallery':  tools.load_example('tutorial/examples/core_components/upload-gallery.py'),
+    'upload-image':  tools.load_example('tutorial/examples/core_components/upload-image.py'),
 }
 
 
@@ -490,7 +490,7 @@ Block code snippet:
 import dash
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
-           
+
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)```
 ''')
 
@@ -1000,7 +1000,7 @@ Tabs = html.Div(children=[
 
     **Table of Contents**
     -  Method 1. Content as Callback
-    -  Method 2. Content as Tab children 
+    -  Method 2. Content as Tab children
     - Styling the Tabs component
         - with CSS classes
         - with inline styles
@@ -1057,7 +1057,7 @@ Tabs = html.Div(children=[
     html.Br(),
 
     dcc.Markdown(s('''
-    Notice how the container of the Tabs can be styled as well by supplying a class to the `parent_className` prop, which we use here to draw a border below it, positioning the actual Tabs (with padding) more in the center. 
+    Notice how the container of the Tabs can be styled as well by supplying a class to the `parent_className` prop, which we use here to draw a border below it, positioning the actual Tabs (with padding) more in the center.
     We also added `display: flex` and `justify-content: center` to the regular `Tab` components, so that labels with multiple lines will not break the flow of the text.
 
     The corresponding CSS file (`assets/tabs.css`) looks like this. Save the file in an `assets` folder (it can be named anything you want). Dash will automatically include this CSS when the app is loaded. [Learn more about including CSS in your app here.](/external-resources)
@@ -1086,7 +1086,7 @@ Tabs = html.Div(children=[
     html.Br(),
 
     dcc.Markdown(s('''
-    Lastly, you can set the colors of the Tabs components in the `color` prop, by specifying the "border", "primary", and "background" colors in a dict. Make sure you set them 
+    Lastly, you can set the colors of the Tabs components in the `color` prop, by specifying the "border", "primary", and "background" colors in a dict. Make sure you set them
     all, if you're using them!
     ''')),
 
