@@ -1,6 +1,7 @@
 # Update dash-doc search index: https://www.algolia.com/apps/7EK9KHJW8M/explorer/browse/dash_docs
 
 import os
+import sys
 
 from algoliasearch import algoliasearch
 from tutorial.chapter_index import chapters
@@ -16,14 +17,19 @@ for chapter in chapters:
     chap['name'] = chapters[chapter]['name']
     chap['permalink'] = 'https://plot.ly'+chapters[chapter]['url']
     chap['description'] = chapters[chapter]['description']
-    if chapter not in ['getting-started', 'getting-started-part-2', 'graphing']:
-        chap_content = str(chapters[chapter]['content'])
-        chap_content = chap_content.replace("'", '')
-        chap_content = chap_content.replace('"', '')
-        chap_content = chap_content.replace('\\n', '')
+    chap_content = str(chapters[chapter]['content'])
+    chap_content = chap_content.replace("'", '')
+    chap_content = chap_content.replace('"', '')
+    chap_content = chap_content.replace('\\n', '')
+    # Algolia limits records to ~20000 bytes
+    # This will check content size & reduce chap_content for those pages
+    # that surpass the limit.
+    # Note the chap_content section is just used to beef up search options,
+    # it is not user-facing like the above attributes
+    if sys.getsizeof(chap_content) < 19000:
         chap['content'] = chap_content
     else:
-        chap['content'] = ''
+        chap['content'] = chap_content[0:10000]
     dash_index.append(chap)
 
 # clear existing remote index and push dash_index to algolia
