@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import dash
+import dash_auth
 import dash_renderer
 import dash_core_components as dcc
 import dash_html_components as html
@@ -659,11 +660,11 @@ Requirements = html.Div(children=[
     Describes the app's python dependencies. For example,
 
     ```
-    dash==0.21.1
-    dash-auth==1.0.1
-    dash-renderer==0.11.3
-    dash-core-components==0.22.1
-    dash-html-components==0.9.0
+    dash=={}
+    dash-auth=={}
+    dash-renderer=={}
+    dash-core-components=={}
+    dash-html-components=={}
     ```
 
     ***
@@ -680,7 +681,13 @@ Requirements = html.Div(children=[
     An optional folder that contains CSS stylesheets, images, or
     custom JavaScript files. [Learn more about assets](/external-resources).
 
-    '''))
+    ''').format(
+        dash.__version__,
+        dash_auth.__version__,
+        dash_renderer.__version__,
+        dcc.__version__,
+        html.__version__,
+    ))
 ])
 
 # # # # # # #
