@@ -10,18 +10,15 @@ external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
-# Give a default data dict with 0 clicks.
-default_data = {'clicks': 0}
-
 app.layout = html.Div([
     # The memory store will always get the default on page refreshes
-    dcc.Store(id='memory', data=default_data),
+    dcc.Store(id='memory'),
     # The local store will take the initial data
     # only the first time the page is loaded
     # and keep it until it is cleared.
-    dcc.Store(id='local', storage_type='local', data=default_data),
+    dcc.Store(id='local', storage_type='local'),
     # Same as the local store but will lose the data when the browser exits.
-    dcc.Store(id='session', storage_type='session', data=default_data),
+    dcc.Store(id='session', storage_type='session'),
 
     html.Div([
         html.Button('Click to store in memory', id='memory-button'),
@@ -40,9 +37,9 @@ app.layout = html.Div([
             ]),
             html.Tbody([
                 html.Tr([
-                    html.Td(id='memory-clicks'),
-                    html.Td(id='local-clicks'),
-                    html.Td(id='session-clicks')
+                    html.Td(0, id='memory-clicks'),
+                    html.Td(0, id='local-clicks'),
+                    html.Td(0, id='session-clicks')
                 ])
             ])
         ])
@@ -62,6 +59,9 @@ for store in ('memory', 'local', 'session'):
             # you don't want to update the store for nothing.
             raise PreventUpdate
 
+        # Give a default data dict with 0 clicks if there's no data.
+        data = data or {'clicks': 0}
+
         data['clicks'] = data['clicks'] + 1
         return data
 
@@ -79,7 +79,9 @@ for store in ('memory', 'local', 'session'):
         if ts is None:
             raise PreventUpdate
 
-        return data['clicks']
+        data = data or {}
+
+        return data.get('clicks', 0)
 
 
 if __name__ == '__main__':
