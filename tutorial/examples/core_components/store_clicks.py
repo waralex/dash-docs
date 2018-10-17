@@ -51,7 +51,7 @@ app.layout = html.Div([
 
 # Create two callback for every store.
 for store in ('memory', 'local', 'session'):
-    
+
     # add a click to the appropriate store.
     @app.callback(Output(store, 'data'),
                   [Input('{}-button'.format(store), 'n_clicks')],
@@ -67,6 +67,12 @@ for store in ('memory', 'local', 'session'):
 
     # output the stored clicks in the table cell.
     @app.callback(Output('{}-clicks'.format(store), 'children'),
+                  # Since we use the data prop in an output,
+                  # we cannot get the initial data on load with the data prop.
+                  # To counter this, you can use the modified_timestamp
+                  # as Input and the data as State.
+                  # This limitation is due to the initial None callbacks
+                  # https://github.com/plotly/dash-renderer/pull/81
                   [Input(store, 'modified_timestamp')],
                   [State(store, 'data')])
     def on_data(ts, data):

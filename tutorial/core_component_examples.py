@@ -19,6 +19,7 @@ examples = {
     'rangeslider-nonlinear': tools.load_example('tutorial/examples/core_components/rangeslider_nonlinear.py'),
     'slider': tools.load_example('tutorial/examples/core_components/slider.py'),
     'slider-updatemode': tools.load_example('tutorial/examples/core_components/slider_updatemode.py'),
+    'store-clicks': tools.load_example('tutorial/examples/core_components/store_clicks.py'),
     'tabs_callback':  tools.load_example('tutorial/examples/core_components/tabs_callback_graph.py'),
     'tabs_simple':  tools.load_example('tutorial/examples/core_components/tabs_simple.py'),
     'tabs_styled_with_classes':  tools.load_example('tutorial/examples/core_components/tabs_styled_with_classes.py'),
@@ -1176,4 +1177,15 @@ ConfirmDialogProvider = html.Div([
     Syntax(examples['confirm-provider'][0]),
     Example(examples['confirm-provider'][1]),
     generate_prop_table('ConfirmDialogProvider')
+])
+
+
+Store = html.Div([
+    html.H1('Store component'),
+    dcc.Markdown(s('''
+    Store json data.
+    ''')),
+    Syntax(examples['store-clicks'][0]),
+    Example(examples['store-clicks'][1]),
+    generate_prop_table('Store'),
 ])
