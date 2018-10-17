@@ -11,14 +11,7 @@ external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
 app.layout = html.Div([
-    # The memory store will always get the default on page refreshes
-    dcc.Store(id='memory'),
-    # The local store will take the initial data
-    # only the first time the page is loaded
-    # and keep it until it is cleared.
-    dcc.Store(id='local', storage_type='local'),
-    # Same as the local store but will lose the data when the browser exits.
-    dcc.Store(id='session', storage_type='session'),
+
 
     html.Div([
         html.Button('Click to store in memory', id='memory-button'),
