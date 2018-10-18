@@ -1183,8 +1183,28 @@ ConfirmDialogProvider = html.Div([
 Store = html.Div([
     html.H1('Store component'),
     dcc.Markdown(s('''
-    Store json data.
+    Store json data on the browser.
+    
+    ## limitations.
+    
+    - The store will not work properly if there is no callback associated.
+    
+    ### local/session specifics
+    - The store will not work properly if it's not included in the initial layout.
+    - The total data of all stores should not exceed 10MB.
+    
+    ### Retrieving the initial store data
+    
+    If you use the `data` prop in an output, you cannot get the 
+    initial data on load with the `data` prop. To counter this, 
+    you can use the modified_timestamp as Input and the data as State.
+    
+    This limitation is due to the initial None callbacks blocking the true
+    data callback in the request queue.
+    
+    https://github.com/plotly/dash-renderer/pull/81
     ''')),
+    html.H2('Store clicks example'),
     Syntax(s('''
     import dash
 
@@ -1255,12 +1275,6 @@ Store = html.Div([
     
         # output the stored clicks in the table cell.
         @app.callback(Output('{}-clicks'.format(store), 'children'),
-                      # Since we use the data prop in an output,
-                      # we cannot get the initial data on load with the data prop.
-                      # To counter this, you can use the modified_timestamp
-                      # as Input and the data as State.
-                      # This limitation is due to the initial None callbacks
-                      # https://github.com/plotly/dash-renderer/pull/81
                       [Input(store, 'modified_timestamp')],
                       [State(store, 'data')])
         def on_data(ts, data):
