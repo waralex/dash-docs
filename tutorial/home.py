@@ -63,9 +63,12 @@ layout = html.Div(className='toc', children=[
         Chapter(chapters['dash-html-components']['name'],
                 chapters['dash-html-components']['url'],
                 chapters['dash-html-components']['description']),
+        Chapter(chapters['dash-table']['name'],
+                chapters['dash-table']['url'],
+                chapters['dash-table']['description']),
         Chapter(chapters['dashdaq']['name'],
                 chapters['dashdaq']['url'],
-                chapters['dashdaq']['description'])
+                chapters['dashdaq']['description']),
     ]),
 
     Section('Creating Your Own Components', [
