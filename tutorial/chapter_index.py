@@ -1,9 +1,11 @@
+import tutorial
 from tutorial import auth
 from tutorial import core_component_examples as examples
 from tutorial import core_components
 from tutorial import d3
 from tutorial import dash_deployment_server
 from tutorial import dash_deployment_server_examples as dds_examples
+from tutorial import dash_table_index
 from tutorial import deployment
 from tutorial import external_css_and_js
 from tutorial import gallery
@@ -23,6 +25,7 @@ from tutorial import state
 from tutorial import support
 from tutorial import urls
 from tutorial import react_for_python_developers
+from tutorial import table
 
 ## The chapters dict is used to generate the dash-docs search index
 ## If edited, update the search index by running `python dash_search_index.py`
@@ -129,7 +132,6 @@ chapters = {
         'url': '/dash-html-components',
         'content': [
             html_components.layout,
-            # html_component_appendix.layout,
         ],
         'name': 'Dash HTML Components',
         'description': 'Dash provides all of the available HTML tags ' \
@@ -137,6 +139,16 @@ chapters = {
                        'explains how this works and the few important ' \
                        'key differences between Dash HTML components ' \
                        'and standard html.'
+    },
+
+    'dash-table': {
+        'url': '/dash-table',
+        'content': dash_table_index.layout,
+        'name': 'Dash Interactive Table',
+        'description': '(New!) The Dash Interactive Table is our latest and ' \
+                       'most advanced component. It supports rich styling, ' \
+                       'conditional formatting, editing, sorting, filtering, ' \
+                       'and more.'
     },
 
     'plugins': {
@@ -484,6 +496,67 @@ chapters = {
         'support team is available to help you out.'
     },
 ### End Dash Deployment Server ###
+
+### Start Dash Table Docs
+
+    'dash-table-styling': {
+        'url': '/dash-table/styling',
+        'content': tutorial.table.styling_chapter.layout,
+        'name': 'Styling and Sizing - Dash Table',
+        'description': """
+            All about sizing and styling the Dash table.
+            Examples on how to change the size of the column widths,
+            the colors, and more.
+        """
+    },
+
+    'dash-table-fixed': {
+        'url': '/dash-table/fixed-rows-and-columns',
+        'content': tutorial.table.fixed_rows_chapter.layout,
+        'name': 'Fixed Rows and Columns - Dash Table',
+        'description': '''
+            How to fix rows and columns in the Dash Table component.
+        '''
+    },
+
+    'recipes': {
+        'url': '/dash-table/recipes',
+        'content': tutorial.table.editing_recipes_chapter.layout,
+        'name': 'Advanced Editing Recipes - Dash Table',
+        'description': '''
+        Dash Table examples for determining which cell has changed,
+        filtering null values, adding or removing columns, and more.
+        '''
+    },
+
+    'callbacks': {
+        'url': 'dash-table/callbacks',
+        'content': tutorial.table.table_callbacks_chapter.layout,
+        'name': 'Python-Driven Filtering, Paging, Sorting - Dash Table',
+        'description': '''
+        Examples on filtering, sorting, and paging data with Python.
+        '''
+    },
+
+    'dropdowns': {
+        'url': 'dash-table/dropdowns',
+        'content': tutorial.table.dropdowns_chapter.layout,
+        'name': 'Dropdowns Inside Dash Table',
+        'description': '''
+        Learn how to embed dropdowns inside the Dash Table.
+        '''
+    },
+
+    'roadmap': {
+        'url': 'dash-table/reference',
+        'content': tutorial.table.reference_chapter.layout,
+        'name': 'Dash Table Reference',
+        'description': '''
+        A comprehensive list of all of the Dash Table properties.
+        '''
+    },
+
+### End Dash Table Docs
 
     'search': {
         'url': '/search',
