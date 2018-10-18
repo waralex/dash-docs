@@ -1188,6 +1188,7 @@ Store = html.Div([
     ## limitations.
     
     - The store will not work properly if there is no callback associated.
+    - `modified_timestamp` is read only.
     
     ### local/session specifics
     - The store will not work properly if it's not included in the initial layout.
@@ -1197,7 +1198,7 @@ Store = html.Div([
     
     If you use the `data` prop in an output, you cannot get the 
     initial data on load with the `data` prop. To counter this, 
-    you can use the modified_timestamp as Input and the data as State.
+    you can use the `modified_timestamp` as `Input` and the `data` as `State`.
     
     This limitation is due to the initial None callbacks blocking the true
     data callback in the request queue.
@@ -1225,7 +1226,8 @@ Store = html.Div([
         # only the first time the page is loaded
         # and keep it until it is cleared.
         dcc.Store(id='local', storage_type='local'),
-        # Same as the local store but will lose the data when the browser exits.
+        # Same as the local store but will lose the data 
+        # when the browser/tab closes.
         dcc.Store(id='session', storage_type='session'),
     
         html.Div([
