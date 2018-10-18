@@ -4,10 +4,14 @@ import dash_table
 
 from dash.dependencies import Input, Output
 
-from server import app, server
+#from server import app, server
+# Circular imports are bad mkay, should refactor the whole thing to factories
+from tutorial.tools import app
 
 from tutorial import chapter_index
 from tutorial import home
+
+server = app.server
 
 
 def create_contents(contents):
@@ -57,6 +61,7 @@ app.title = 'Dash User Guide and Documentation - Dash by Plotly'
 app.layout = html.Div(
     [
         # Stores used by examples.
+        dcc.Store(id='memory-output'),
         dcc.Store(id='memory'),
         dcc.Store(id='local', storage_type='local'),
         dcc.Store(id='session', storage_type='session'),
