@@ -398,6 +398,22 @@ if __name__ == '__main__':
 
                     dcc.Markdown(s(
                     '''
+                    For some applications, you may require using the `worker` 
+                    process. For example, the [Dash Redis Demo](https://github.com/plotly/dash-redis-demo) 
+                    includes Celery - an asynchronous task queue/job queue. 
+                    When using a `worker` process in your `Procfile`, 
+                    you will have to explicitly start it after deploying. To 
+                    scale a `worker` process: 
+
+                    `ssh dokku@dash-server ps:scale APP-NAME worker=1`. 
+                    
+                    Note that this requires 
+                    [Authenticating to Dash Deployment Server with SSH](/dash-deployment-server/ssh).
+
+                    ''')),
+
+                    dcc.Markdown(s(
+                    '''
                     ***
 
                     **`requirements.txt`**
