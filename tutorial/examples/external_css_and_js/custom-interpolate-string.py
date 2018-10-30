@@ -13,10 +13,7 @@ class CustomDash(dash.Dash):
                 <title>My App</title>
             </head>
             <body>
-                <!-- Google Tag Manager (noscript) -->
-                <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N6T2RXG"
-                height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-                <!-- End Google Tag Manager (noscript) -->
+                
 
                 <div id="custom-header">My custom header</div>
                 {app_entry}

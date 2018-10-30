@@ -15,8 +15,6 @@ app.index_string = '''
         {%css%}
     </head>
     <body>
-         <!-- Google Tag Manager Tag -->
-        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N6T2RXG" height="0" width="0" style="display:none visibility:hidden"></iframe></noscript>
         <div>My Custom header</div>
         {%app_entry%}
         <footer>
