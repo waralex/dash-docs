@@ -13,7 +13,6 @@ class CustomDash(dash.Dash):
                 <title>My App</title>
             </head>
             <body>
-                
 
                 <div id="custom-header">My custom header</div>
                 {app_entry}
