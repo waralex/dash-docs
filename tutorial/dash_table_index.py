@@ -59,7 +59,7 @@ layout = html.Div([
     > behavior within the next couple of months.
     > Once the community feels good about its API, we'll lock it down
     >  and we'll commit to reducing the frequency of breaking changes.
-    > Please subscribe to [dash-table#207](https://github.com/plotly/dash-table/207)
+    > Please subscribe to [dash-table#207](https://github.com/plotly/dash-table/issues/207)
     > and the [CHANGELOG.md](https://github.com/plotly/dash-table/blob/master/CHANGELOG.md) to stay up-to-date with any breaking changes.
     >
     > So, check out DataTable and let us know what you think.

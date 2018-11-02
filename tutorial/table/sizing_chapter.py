@@ -551,7 +551,7 @@ layout = html.Div(
         > columns are rendered or sized.
         > In particular, you'll need to set an explicit pixel-based widths
         > for each of the columns.
-        > For more information, subscribe to [dash-table#201](https://github.com/plotly/dash-table/issues/new).
+        > For more information, subscribe to [dash-table#201](https://github.com/plotly/dash-table/issues/201).
         ''')),
         Display(
         '''
