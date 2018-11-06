@@ -17,7 +17,7 @@ or view the tutorial on deploying to Heroku below.
 
 ### Dash Deployment Server
 
-[Dash Deployment Server](https://plot.ly/products/pricing)
+[Dash Deployment Server](https://plot.ly/dash/pricing/)
 is Plotly's commercial product for deploying 
 Dash Apps on your company's servers or on AWS, Google Cloud, or Azure.
 It offers an enterprise-wide Dash App Portal,
