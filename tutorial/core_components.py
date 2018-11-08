@@ -440,7 +440,7 @@ confirm = dcc.ConfirmDialogProvider(
     html.H3(dcc.Link('Store', href='/dash-core-components/store')),
 
     dcc.Markdown(s('''
-    The store component can be used to keep data in the visitor browser. 
+    The store component can be used to keep data in the visitor's browser. 
     The data is scoped to the user accessing the page.
     
     **Three types of storage (`storage_type` prop):**
