@@ -14,8 +14,6 @@ PAGE_SIZE = 5
 app.layout = html.Div(
     className="row",
     children=[
-        # embed `dcc` input in initial layout (https://github.com/plotly/dash-renderer/issues/46)
-        html.Div(dcc.Input(), style={'display': 'none'}),
         html.Div(
             dash_table.DataTable(
                 id='table-paging-with-graph',

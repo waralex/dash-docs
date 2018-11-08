@@ -10,8 +10,6 @@ df = pd.read_csv('https://raw.githubusercontent.com/plotly/datasets/master/gapmi
 app = dash.Dash(__name__)
 
 app.layout = html.Div([
-    # embed `dcc` input in initial layout (https://github.com/plotly/dash-renderer/issues/46)
-    html.Div(dcc.Input(), style={'display': 'none'}),
     dash_table.DataTable(
         id='datatable-interactivity',
         columns=[
