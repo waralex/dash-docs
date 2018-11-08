@@ -600,5 +600,12 @@ chapters = {
         'content': examples.ConfirmDialogProvider,
         'name': 'ConfirmDialogProvider Component',
         'description': 'ConfirmDialogProvider examples, properties and reference'
+    },
+
+    'store-examples': {
+        'url': '/dash-core-components/store',
+        'content': examples.Store,
+        'name': 'Store component',
+        'description': 'Store examples, properties and reference'
     }
 }

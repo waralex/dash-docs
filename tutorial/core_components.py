@@ -437,6 +437,36 @@ confirm = dcc.ConfirmDialogProvider(
 
     dcc.Markdown('***'),
 
+    html.H3(dcc.Link('Store', href='/dash-core-components/store')),
+
+    dcc.Markdown(s('''
+    The store component can be used to keep data in the visitor's browser. 
+    The data is scoped to the user accessing the page.
+    
+    **Three types of storage (`storage_type` prop):**
+    
+    - `memory`: default, keep the data as long the page is not refreshed.
+    - `local`: keep the data until it is manually cleared.
+    - `session`: keep the data until the browser/tab closes.
+    
+    _For `local`/`session`, the data is serialized as json when stored._
+    ''')),
+
+    ComponentBlock(s('''
+    import dash_core_components as dcc
+    
+    store = dcc.Store(id='my-store', data={'my-data': 'data'})
+    ''')),
+
+    dcc.Markdown('_The store must be used with callbacks_'),
+
+    dcc.Link('More Store Examples and Reference',
+             href='/dash-core-components/store'),
+
+    html.Br(),
+
+    dcc.Markdown('***'),
+
     html.A(
         className="image-link",
         href="http://dash-daq.netlify.com/#Gauge",

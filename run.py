@@ -56,6 +56,10 @@ app.title = 'Dash User Guide and Documentation - Dash by Plotly'
 
 app.layout = html.Div(
     [
+        # Stores used by examples.
+        dcc.Store(id='memory'),
+        dcc.Store(id='local', storage_type='local'),
+        dcc.Store(id='session', storage_type='session'),
         header,
         html.Div([
             html.Div(id='wait-for-layout'),
