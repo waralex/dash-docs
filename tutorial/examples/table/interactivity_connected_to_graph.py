@@ -30,17 +30,20 @@ app.layout = html.Div([
 @app.callback(
     Output('datatable-interactivity-container', "children"),
     [Input('datatable-interactivity', "derived_virtual_data"),
-     Input('datatable-interactivity', "selected_rows")])
-def update_graph(rows, selected_rows):
-    # When the table is first rendered, `derived_virtual_data`
-    # will be `None`. This is due to an idiosyncracy in Dash
-    # (unsupplied properties are always None and Dash calls the dependent
-    # callbacks when the component is first rendered).
-    # So, if `selected_rows` is `None`, then the component was just rendered
+     Input('datatable-interactivity', "derived_virtual_selected_rows")])
+def update_graph(rows, derived_virtual_selected_rows):
+    # When the table is first rendered, `derived_virtual_data` and
+    # `derived_virtual_selected_rows` will be `None`. This is due to an
+    # idiosyncracy in Dash (unsupplied properties are always None and Dash
+    # calls the dependent callbacks when the component is first rendered).
+    # So, if `rows` is `None`, then the component was just rendered
     # and its value will be the same as the component's dataframe.
     # Instead of setting `None` in here, you could also set
     # `derived_virtual_data=df.to_rows('dict')` when you initialize
     # the component.
+    if derived_virtual_selected_rows is None:
+        derived_virtual_selected_rows = []
+
     if rows is None:
         dff = df
     else:
@@ -48,7 +51,7 @@ def update_graph(rows, selected_rows):
 
     colors = []
     for i in range(len(dff)):
-        if i in selected_rows:
+        if i in derived_virtual_selected_rows:
             colors.append("#7FDBFF")
         else:
             colors.append("#0074D9")
