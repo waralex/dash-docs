@@ -762,6 +762,12 @@ A few notes:
 - The list of available types are available [here](https://reactjs.org/docs/typechecking-with-proptypes.html).
 - In the future, we will use these `propTypes` to provide validation in Python. That is, if you specify that a property is a `PropTypes.string`, then Dash's Python code will throw an error if you supply something else. Track our progress in this issue: [264](https://github.com/plotly/dash/issues/264).
 
+##### React as a peer dependency
+
+React and reactDOM are included as peer dependencies, your editor may warn you that react is not installed. 
+You can safely ignore those warnings as they are served by the `dash-renderer` 
+and they don't need to be bundled with your components.
+
 ##### Build your component in Python
 
 Now that you have your React component, you can build it and import it into your Dash program. View instructions on how to build the component in [the boilerplate repo](https://github.com/plotly/dash-component-boilerplate). 
