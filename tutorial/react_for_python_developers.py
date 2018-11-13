@@ -68,7 +68,7 @@ layout = html.Div([dcc.Markdown('''
   
   ## Python
   
-  You will need python to generate your components classes to work with dash.
+  You will need python to generate your components classes to work with Dash.
   
   Download python on the official website or through your os distribution package manager.
   
@@ -77,26 +77,25 @@ layout = html.Div([dcc.Markdown('''
   
   ### Virtual environments
   
-  It is best to use virtual environments when working in projects, create one for each project you have 
-  so they can have different requirements and be isolated from the main python environment.
+  It is best to use virtual environments when working on projects, we recommend creating a fresh virtual environment for each project you have so they can have specific requirements and remain isolated from your main python environment.
   
-  On python 2 you have to use `virtualenv`:
+  In Python 2 you have to use `virtualenv`:
   
   `pip install virtualenv`
-  Then you create a create venv with the command `virtualenv venv`, 
-  it will create a folder `venv in the current directory with your new environment.
+  Then you create a venv with the command `virtualenv venv`, 
+  it will create a folder `venv` in the current directory with your new environment.
   
-  On python 3 you can use the builtin module `venv`:
+  In Python 3 you can use the builtin module `venv`:
   
   `python -m venv venv`
   
   ## Cookiecutter boilerplate
   
-  Now that we have Node.js and python up and running, we can generate a dash component project using the [cookiecutter dash-component-boilerplate](https://github.com/plotly/dash-component-boilerplate).
+  Now that we have Node.js and Python up and running, we can generate a dash component project using the [cookiecutter dash-component-boilerplate](https://github.com/plotly/dash-component-boilerplate).
   
   The boilerplate is built using [cookiecutter](https://github.com/audreyr/cookiecutter),
   a project template renderer made with jinja2.
-  This allows to create a project with custom values formatted for the project.
+  This allows users to create a project with custom values formatted for the project.
   
   **Install cookiecutter:**
   
@@ -133,10 +132,10 @@ layout = html.Div([dcc.Markdown('''
     - package.json              # npm package info and build commands.
     - setup.py                  # Python package info
     - requirements.txt          # Python requirements for building the components and running usage.py
-    - usage.py                  # Sample python dash app to run the custom component.
+    - usage.py                  # Sample Python dash app to run the custom component.
     - webpack.config.js         # The webpack configs used to generate the bundles.
     - webpack.serve.config.js   # webpack configs to run the demo.
-    - MANIFEST.in               # Contains a list of files to include in the python package.
+    - MANIFEST.in               # Contains a list of files to include in the Python package.
     - LICENSE                   # License info
   ```
   
@@ -145,7 +144,7 @@ layout = html.Div([dcc.Markdown('''
   - `npm run build:js` generate the production bundle `project_shortname.min.js`
   - `npm run build:js-dev` generate the development bundle `project_shortname.dev.js`, use with `app.run_server(debug=True)`
   - `npm run build:py` generate the python classes files for the components.
-  - `npm run build:all` will generate both bundles and the languages classes files.
+  - `npm run build:all` generate both bundles and the languages classes files.
   
   ### Release the project
   
