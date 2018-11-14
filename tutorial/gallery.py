@@ -238,9 +238,25 @@ layout = html.Div(className='gallery', children=[
             done in memory with Pandas. Buttons on the chart itself highlight
             different regions in the city.
             '''
-        )
+        ),
     ]),
 
+    reusable.Row([
+        AppSection(
+            app_name='LAStoDash',
+            app_link='https://dash-gallery.plotly.host/dash-lastodash',
+            code_link='https://github.com/n-riesco/lastodash',
+            img_src='https://raw.githubusercontent.com/plotly/dash-lastodash/master/alcor1.gif?token=Af6ihbal0uF5h5s1C2N8eo2SZFulAMJpks5b71HSwA%3D%3D',
+            description='''
+            This dash app takes a Log ASCII Standard (LAS) file, and generates a
+            web report application, making it easy to share. The report can be printed.
+    
+            [Copyright 2018 Nicolas Riesco](https://github.com/n-riesco/lastodash/blob/master/LICENSE)
+            ''',
+            width=12,
+        )
+    ]),
+        
     # LIFE SCIENCES SECTION
     SectionTitle('Life Sciences'),
 
