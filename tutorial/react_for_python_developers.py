@@ -65,8 +65,105 @@ layout = html.Div([dcc.Markdown('''
   - Node.js will automatically install the Node Package Manager `npm` on your machine
   - Verify that node is installed by running: `node -v`
   - Verify that npm is installed by running: `npm -v`
+  
+  ## Python
+  
+  You will need python to generate your components classes to work with Dash.
+  
+  Download python on the official website or through your os distribution package manager.
+  
+  - https://www.python.org/
+  - `apt-get install python`/`yum install python`
+  
+  ### Virtual environments
+  
+  It is best to use virtual environments when working on projects, we recommend creating a fresh virtual environment for each project you have so they can have specific requirements and remain isolated from your main python environment.
+  
+  In Python 2 you have to use `virtualenv`:
+  
+  `pip install virtualenv`
+  Then you create a venv with the command `virtualenv venv`, 
+  it will create a folder `venv` in the current directory with your new environment.
+  
+  In Python 3 you can use the builtin module `venv`:
+  
+  `python -m venv venv`
+  
+  ## Cookiecutter boilerplate
+  
+  Now that we have Node.js and Python up and running, we can generate a dash component project using the [cookiecutter dash-component-boilerplate](https://github.com/plotly/dash-component-boilerplate).
+  
+  The boilerplate is built using [cookiecutter](https://github.com/audreyr/cookiecutter),
+  a project template renderer made with jinja2.
+  This allows users to create a project with custom values formatted for the project.
+  
+  **Install cookiecutter:**
+  
+  `pip install cookiecutter`
+  
+  ### Generate a new dash component project
+  
+  - Run the cookiecutter: `cookiecutter https://github.com/plotly/dash-component-boilerplate.git`
+  - Answer the questions about the project:
+    - `project_name`: A display name for the project, can contain spaces and uppercase letters.
+    - `project_shortname`: A variable derived from project_name without spaces and all lowercase letters.
+    - `component_name`: Derived from project without spaces and `-`, it will be the default component class name and as such should be PascalCase for naming.
+    - `author_name`/`author_email`: Your name/email to be included in `package.json` and `setup.py`.
+    - `description`: A short description for the project.
+    - `license`: Choose a license from the list.
+    - `publish_on_npm`: Set to false if you don't want to publish on npm, your component will always be loaded locally.
+    - `install_dependencies`: Install the npm packages and `requirements.txt` and build the initial component so it's ready for a spin.
 
-  Now that we have Node.js up and running, go ahead and follow the instructions on the [dash-component-boilerplate repo](https://github.com/plotly/dash-component-boilerplate) to set up your component.
+  ### Project structure
+  
+  ```
+  - project_shortname           # Root of the project
+    - project_shortname         # The python package, output folder for the bundles/classes.
+    - src                       # The javascript source directory for the components.
+        - lib
+            - components        # Where to put the react component classes.
+        - demo
+            - App.js            # A sample react demo, only use for quick tests.
+            - index.js          # A reactDOM entry point for the demo App.
+        - index.js              # The index for the components exported by the bundle.
+    - tests                     # 
+        - requirements.txt      # python requirements for testing.
+        - test_usage.py         # Runs `usage.py` as a pytest integration test.
+    - package.json              # npm package info and build commands.
+    - setup.py                  # Python package info
+    - requirements.txt          # Python requirements for building the components and running usage.py
+    - usage.py                  # Sample Python dash app to run the custom component.
+    - webpack.config.js         # The webpack configs used to generate the bundles.
+    - webpack.serve.config.js   # webpack configs to run the demo.
+    - MANIFEST.in               # Contains a list of files to include in the Python package.
+    - LICENSE                   # License info
+  ```
+  
+  ### Build the project
+  
+  - `npm run build:js` generate the production bundle `project_shortname.min.js`
+  - `npm run build:js-dev` generate the development bundle `project_shortname.dev.js`, use with `app.run_server(debug=True)`
+  - `npm run build:py` generate the python classes files for the components.
+  - `npm run build:all` generate both bundles and the languages classes files.
+  
+  ### Release the project
+  
+  If you choose `publish_on_npm`, you will have to publish on npm first. 
+  Publishing your component on npm will rebuild the bundles, 
+  do not rebuild between that and publishing on pypi as the bundle will be different when serving locally and externally.
+  
+  #### Publish on npm
+  
+  `npm publish`
+  If you have 2 factor enabled, you will need to enter the otp argument.
+  
+  #### Publish on pypi
+  
+  `python setup.py sdist` will build the python tarball package locally in the dist folder.
+  
+  You can then upload the package using twine (`pip install twine`):
+  
+  `twine upload dist/*`
 
   ## Quick intro to React
 
@@ -663,6 +760,12 @@ A few notes:
 - The `id` property is required in all Dash components.
 - The list of available types are available [here](https://reactjs.org/docs/typechecking-with-proptypes.html).
 - In the future, we will use these `propTypes` to provide validation in Python. That is, if you specify that a property is a `PropTypes.string`, then Dash's Python code will throw an error if you supply something else. Track our progress in this issue: [264](https://github.com/plotly/dash/issues/264).
+
+##### React as a peer dependency
+
+React and reactDOM are included as peer dependencies, your editor may warn you that react is not installed. 
+You can safely ignore those warnings as they are served by the `dash-renderer` 
+and they don't need to be bundled with your components.
 
 ##### Build your component in Python
 
