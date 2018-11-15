@@ -105,7 +105,7 @@ layout = html.Div([dcc.Markdown('''
   
   - Run the cookiecutter: `cookiecutter https://github.com/plotly/dash-component-boilerplate.git`
   - Answer the questions about the project:
-    - `project_name`: A display name for the project, can contain spaces and uppercase letters, for example `example_component`.
+    - `project_name`: A display name for the project, can contain spaces and uppercase letters, for example `Example Component`.
     - `project_shortname`: A variable derived from project_name without spaces and all lowercase letters.
     - `component_name`: Derived from project without spaces and `-`, it will be the default component class name and as such should be PascalCase for naming.
     - `author_name`/`author_email`: Your name/email to be included in `package.json` and `setup.py`.
