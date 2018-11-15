@@ -13,6 +13,8 @@ layout = html.Div([
     
     ## Hot Reloading
     
+    **New in dash 0.30.0 and dash-renderer 0.15.0**
+    
     By default, Dash includes "hot-reloading". This means that Dash will automatically refresh your browser when you make a change in your Python or CSS code.
     
     Hot reloading works by running a "file watcher" that examines your working directory to check for changes. When a change is detected, Dash reloads your application in an efficient way automatically. A few notes:
