@@ -26,6 +26,8 @@ from tutorial import support
 from tutorial import urls
 from tutorial import react_for_python_developers
 from tutorial import table
+from tutorial import devtools
+
 
 ## The chapters dict is used to generate the dash-docs search index
 ## If edited, update the search index by running `python dash_search_index.py`
@@ -607,5 +609,13 @@ chapters = {
         'content': examples.Store,
         'name': 'Store component',
         'description': 'Store examples, properties and reference'
+    },
+
+    'devtools': {
+        'url': '/devtools',
+        'content': devtools.layout,
+        'name': 'Dev tools',
+        'description': 'Dash dev tools reference'
     }
+
 }

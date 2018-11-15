@@ -110,7 +110,7 @@ layout = html.Div([
     Give it a try: change the title "Hello Dash" in your application or change the `x` or the `y` data. Your app should auto-refresh with your change.
 
     > Don't like hot-reloading? You can turn this off with `app.run_server(dev_tools_hot_reload=False)`. 
-    > Learn more in [Dash Dev Tools documentation](...). Questions? See the [community forum hot reloading discussion](https://community.plot.ly/t/announcing-hot-reload/14177).
+    > Learn more in [Dash Dev Tools documentation](/devtools) Questions? See the [community forum hot reloading discussion](https://community.plot.ly/t/announcing-hot-reload/14177).
 
     #### More about HTML
 
