@@ -29,7 +29,7 @@ layout = html.Div([
     
     ## Serving the dev bundles
     
-    Component libraries bundles are minified by default, if you encounter a front-end error in your code, the variables names will be mangled.
+    Component library bundles are minified by default, if you encounter a front-end error in your code, the variables names will be mangled.
     By serving the dev bundles, you will get the full names.
     
     ## Reference
@@ -37,18 +37,18 @@ layout = html.Div([
     
     - `debug`, bool, activate all the dev tools.
     - `dev_tools_hot_reload`, bool, set to true to enable hot reload (default=False).
-    - `dev_tools_hot_reload_interval`, int, interval at which the renderer will request the reload hash (default=3000).
-    - `dev_tools_hot_reload_watch_interval`, float, delay between each walk of the assets folder to detect file changes.
-    - `dev_tools_hot_reload_max_retry`, int, number of times the reloader is allowed to fail before stopping and sending an alert.
-    - `dev_tools_silence_routes_logging`, bool, remove the routes access logging from the console..
-    - `dev_tools_serve_dev_bundles`, serve the dev bundles.
+    - `dev_tools_hot_reload_interval`, int, interval in millisecond at which the renderer will request the reload hash (default=3000).
+    - `dev_tools_hot_reload_watch_interval`, float, delay in seconds between each walk of the assets folder to detect file changes. (default=0.5 seconds)
+    - `dev_tools_hot_reload_max_retry`, int, number of times the reloader is allowed to fail before stopping and sending an alert. (default=8)
+    - `dev_tools_silence_routes_logging`, bool, remove the routes access logging from the console.
+    - `dev_tools_serve_dev_bundles`, bool, serve the dev bundles.
     
     ### Settings with environment variables
     
-    All the `dev_tools` variables can set with environment variables, just replace the `dev_tools_` with `dash_`.
+    All the `dev_tools` variables can be set with environment variables, just replace the `dev_tools_` with `dash_`.
     This allows you to have different run configs without changing the code.
     
-    Linux:
+    Linux/macOS:
     
     `export DASH_HOT_RELOAD=false`
     
