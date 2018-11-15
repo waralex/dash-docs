@@ -21,7 +21,7 @@ layout = html.Div([dcc.Markdown('''
   React is JavaScript library for building user interfaces, written and maintained by Facebook. It has been very popular over the last few
   years because it brings the power of reactive, declarative programming to the world of front end development. 
   
-  React has made it easier to think about user interface code, and it's programming model encourages code that's modular and reusable. It also has a 
+  React has made it easier to think about user interface code, and its programming model encourages code that's modular and reusable. It also has a 
   huge, vibrant open-source community that has published all sorts of reusable UI components, from sliders to data tables, dropdowns to buttons.
 
   It is important to realise that React is just JavaScript. React is not a language on its own, nor is it a domain-specific framework
@@ -105,7 +105,7 @@ layout = html.Div([dcc.Markdown('''
   
   - Run the cookiecutter: `cookiecutter https://github.com/plotly/dash-component-boilerplate.git`
   - Answer the questions about the project:
-    - `project_name`: A display name for the project, can contain spaces and uppercase letters.
+    - `project_name`: A display name for the project, can contain spaces and uppercase letters, for example `example_component`.
     - `project_shortname`: A variable derived from project_name without spaces and all lowercase letters.
     - `component_name`: Derived from project without spaces and `-`, it will be the default component class name and as such should be PascalCase for naming.
     - `author_name`/`author_email`: Your name/email to be included in `package.json` and `setup.py`.
@@ -167,12 +167,12 @@ layout = html.Div([dcc.Markdown('''
 
   ## Quick intro to React
 
-  Now, let's go ahead and see what the code for our new React application looks like. In your favorite code editor, open the `src/lib/components/ExampleComponent.react.js` file.
+  Now, let's go ahead and see what the code for our new React application looks like. In your favorite code editor, open the `src/lib/components/ExampleComponent.react.js` file (supposing you named your project `example_component`).
   This is our first React component!
   
   In React, user interfaces are made of "components," and by convention there will usually be one main component per file. This project imports the `ExampleComponent` in `src/demo/App.js`, the demo application. 
  
-  The demo application `src/demo/App.js` is what you see after you run `npm run demo`. To see how `src/demo/App.js` and `ExampleComponent.react.js` work, try adding `<h1>Hello, Dash!</h1>` inside the `render()` function of either of the files.
+  The demo application `src/demo/App.js` is what you see after you run `npm run start`. To see how `src/demo/App.js` and `ExampleComponent.react.js` work, try adding `<h1>Hello, Dash!</h1>` inside the `render()` function of either of the files.
   
   When you save the files, your browser should automatically refresh and you should see your change.
 
@@ -501,7 +501,9 @@ layout = html.Div([dcc.Markdown('''
 
   Tada!
 
-  We've got a text input. 
+  We've got a text input.
+
+  In order to use our component from Python, you also need to import and export the component in `src/lib/index.js` (see how it is done for ExampleComponent).
 
   ##### Updating state with the `setState()` method
   
