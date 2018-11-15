@@ -192,7 +192,18 @@ h1, h2, h3, h4, h5, h6 {
     When you run your application through some other command line (like the
     flask command or gunicorn/waitress), the `__main__` module wil no
     longer located where `app.py` is. By explicitly setting `__name__`, 
-    Dash will be able to locate the relative `assets` folder correctly.''')),
+    Dash will be able to locate the relative `assets` folder correctly.
+    
+    ### Hot Reloading
+
+    By default, Dash includes "hot-reloading". This means that Dash will automatically refresh your browser when you make a change in your Python code _and_ your CSS code.
+    
+    Give it a try: Change the color in `typography.css` from `hotpink` to `orange` and see your application update.
+    
+    > Don't like hot-reloading? You can turn this off with `app.run_server(dev_tools_hot_reload=False)`. 
+    > Learn more in [Dash Dev Tools documentation](/devtools). Questions? See the [community forum hot reloading discussion](https://community.plot.ly/t/announcing-hot-reload/14177).
+    
+    ''')),
 
     dcc.Markdown(s('''
 ***
