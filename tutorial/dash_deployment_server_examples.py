@@ -735,10 +735,9 @@ staticAssets = html.Div(children=[
 
     ''')),
 
-    dcc.SyntaxHighlighter(s(
-    ''''/{}/my-image.png'.format(app.get_asset_url)
-    '''), customStyle=styles.code_container, language="text")
-
+    dcc.SyntaxHighlighter(s('''
+    html.Img(src=app.get_asset_url('my-image.png'))
+    '''), customStyle=styles.code_container, language="python")
 ])
 
 # # # # # # #
