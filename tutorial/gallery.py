@@ -71,7 +71,7 @@ layout = html.Div(className='gallery', children=[
             className='image-link',
             href='https://dash.plot.ly/getting-started',
             children=html.Img(
-                src='https://github.com/plotly/dash-docs/raw/master/images/gapminder-animation.gif',
+                src='assets/images/gallery/gapminder-animation.gif',
                 alt='Screenshot of simple Dash app'
             )
         ),
@@ -107,7 +107,7 @@ layout = html.Div(className='gallery', children=[
             app_name='Stock Tickers',
             app_link='https://dash-stock-tickers.plot.ly',
             code_link='https://github.com/plotly/dash-stock-tickers-demo-app',
-            img_src='https://raw.githubusercontent.com/plotly/dash-docs/master/images/stock-tickers.png',
+            img_src='assets/images/gallery/stock-tickers.png',
             description='''
             This app queries data from Google Finance and displays the results as candlestick
             charts. Dash comes with several financial chart types including: candlestick
@@ -121,7 +121,7 @@ layout = html.Div(className='gallery', children=[
             app_name='Vanguard Report',
             app_link='https://dash-gallery.plotly.host/dash-vanguard-report',
             code_link='https://github.com/plotly/dash-vanguard-report',
-            img_src='https://raw.githubusercontent.com/plotly/dash-docs/master/images/vanguard.gif',
+            img_src='assets/images/gallery/vanguard.gif',
             description='''
             This app recreates the look and feel of a Vanguard report.
             It includes a Print to PDF button and the styles were optimized
@@ -148,7 +148,7 @@ layout = html.Div(className='gallery', children=[
             app_name='3-D Yield Curve',
             app_link='https://dash-yield-curve.plot.ly',
             code_link='https://github.com/plotly/dash-yield-curve',
-            img_src='https://raw.githubusercontent.com/plotly/dash-docs/master/images/dash-yield-curve-app.png',
+            img_src='assets/images/gallery/dash-yield-curve-app.png',
             description='''
             This Dash app adapts the New York Times' excellent
             report: [A 3-D View of a Chart That Predicts The Economic Future: The Yield Curve](https://www.nytimes.com/interactive/2015/03/19/upshot/3d-yield-curve-economic-growth.html).
@@ -163,7 +163,7 @@ layout = html.Div(className='gallery', children=[
             app_name='Recession in 255 Charts',
             app_link='https://dash-recession-report.plot.ly',
             code_link='https://github.com/plotly/dash-recession-report-demo',
-            img_src='https://raw.githubusercontent.com/plotly/dash-docs/master/images/nytimes.png',
+            img_src='assets/images/gallery/nytimes.png',
             description='''
             485 lines of Python code, including text copy.
 
@@ -193,7 +193,7 @@ layout = html.Div(className='gallery', children=[
             app_name='Salesforce Dashboard',
             app_link='https://dash-gallery.plotly.host/dash-salesforce-crm',
             code_link='https://github.com/plotly/dash-salesforce-crm',
-            img_src='https://raw.githubusercontent.com/plotly/dash-docs/master/images/dash-salesforce-crm.gif',
+            img_src='assets/images/gallery/dash-salesforce-crm.gif',
             description='''
             This app uses Salesforce API in order to implement a custom CRM dashboard.
             The API is used via the module [Simple-Salesforce](https://pypi.org/project/simple-salesforce/) and allows you to retrieve
@@ -211,7 +211,7 @@ layout = html.Div(className='gallery', children=[
             app_name='Natural Gas Well Production',
             app_link='https://dash-oil-and-gas.plot.ly',
             code_link='https://github.com/plotly/dash-oil-and-gas-demo',
-            img_src='https://raw.githubusercontent.com/plotly/dash-docs/master/images/oil-and-gas.gif',
+            img_src='assets/images/gallery/oil-and-gas.gif',
             description='''
             This Dash app displays well data from New York State. As you hover over
             values in the map, a time series is displayed showing production values
@@ -231,7 +231,7 @@ layout = html.Div(className='gallery', children=[
             app_name='NYC Uber Rides',
             app_link='https://dash-uber-rides.plot.ly',
             code_link='https://github.com/plotly/dash-uber-rides-demo',
-            img_src='https://raw.githubusercontent.com/plotly/dash-docs/master/images/uber-rides.gif',
+            img_src='assets/images/gallery/uber-rides.gif',
             description='''
             This app displays all of the Uber rides in New York City in 2014.
             The original datafile is almost 500MB large and all of the filtering is
@@ -246,7 +246,7 @@ layout = html.Div(className='gallery', children=[
             app_name='LAStoDash',
             app_link='https://dash-gallery.plotly.host/dash-lastodash',
             code_link='https://github.com/n-riesco/lastodash',
-            img_src='https://raw.githubusercontent.com/plotly/dash-lastodash/master/alcor1.gif?token=Af6ihbal0uF5h5s1C2N8eo2SZFulAMJpks5b71HSwA%3D%3D',
+            img_src='assets/images/gallery/dash-lastodash.gif',
             description='''
             This dash app takes a Log ASCII Standard (LAS) file, and generates a
             web report application, making it easy to share. The report can be printed.
@@ -265,7 +265,7 @@ layout = html.Div(className='gallery', children=[
             app_name='Drug Precursors',
             app_link='https://dash-drug-explorer.plot.ly',
             code_link='https://github.com/plotly/dash-drug-discovery-demo/',
-            img_src='https://github.com/plotly/dash-docs/raw/master/images/drug-discovery-app.gif',
+            img_src='assets/images/gallery/drug-discovery-app.gif',
             description='''
             This app displays a description of the drug as you hover over points in the
             graph.
@@ -282,7 +282,7 @@ layout = html.Div(className='gallery', children=[
             app_name='MRI Reconstruction',
             app_link='http://brain-surface-viewer.herokuapp.com/',
             code_link='https://github.com/plotly/dash-brain-surface-viewer',
-            img_src='https://raw.githubusercontent.com/plotly/dash-brain-surface-viewer/master/ZOMBIE_BRAIN.png',
+            img_src='assets/images/gallery/dash-brain-surface-viewer.png',
             description='''
             🐭 Explore human and mice brains in 3-D.
 
@@ -296,7 +296,7 @@ layout = html.Div(className='gallery', children=[
             app_name='Phylogeny trees and global spread of six viruses',
             app_link='https://dash-phylogeny.herokuapp.com/',
             code_link='https://github.com/plotly/dash-phylogeny',
-            img_src='https://raw.githubusercontent.com/plotly/dash-docs/master/images/dash-phylo-tree.gif',
+            img_src='assets/images/gallery/dash-phylo-tree.gif',
             description='''
             Interactively explore the propagation of six viruses, by time and/or by location.
             In the online app, you can select a virus to display its evolution as a phylogeny tree, along with a map and time series of the virus's global spread.
@@ -313,7 +313,7 @@ layout = html.Div(className='gallery', children=[
             app_name='US Opioid Epidemic',
             app_link='https://opioid-epidemic.herokuapp.com/',
             code_link='https://github.com/plotly/dash-opioid-epidemic-demo',
-            img_src='https://raw.githubusercontent.com/plotly/dash-docs/master/images/opioid-epidemic.png',
+            img_src='assets/images/gallery/opioid-epidemic.png',
             description='''
             Interactively explore the effect of the opioid epidemic in North America.
             ''',
@@ -329,7 +329,7 @@ layout = html.Div(className='gallery', children=[
             app_name='Object Detection',
             app_link='https://dash-object-detection.plot.ly/',
             code_link='https://github.com/plotly/dash-object-detection',
-            img_src='https://raw.githubusercontent.com/plotly/dash-docs/master/images/dash-object-detection.gif',
+            img_src='assets/images/gallery/dash-object-detection.gif',
             description='''
             This object-detection app provides useful visualizations about
             what's happening inside a complex video in real time. The data
@@ -345,7 +345,7 @@ layout = html.Div(className='gallery', children=[
             app_name='Visualize Model Training',
             app_link='https://dash-live-model-training.plot.ly/',
             code_link='https://github.com/plotly/dash-live-model-training',
-            img_src='https://raw.githubusercontent.com/plotly/dash-docs/master/images/dash-live-model-training.gif',
+            img_src='assets/images/gallery/dash-live-model-training.gif',
             description='''
             Tracking accuracy and loss is an essential part of the training process
             for deep learning models. This real-time visualization app monitors
@@ -360,7 +360,7 @@ layout = html.Div(className='gallery', children=[
             app_name='Image Processing',
             app_link='http://dash-image-processing.plot.ly/',
             code_link='https://github.com/plotly/dash-image-processing',
-            img_src='https://raw.githubusercontent.com/plotly/dash-docs/master/images/dash-image-processing.gif',
+            img_src='assets/images/gallery/dash-image-processing.gif',
             description='''
             This app wraps Pillow, a powerful image processing library in
             Python, and abstracts all the operations through an
@@ -374,7 +374,7 @@ layout = html.Div(className='gallery', children=[
             app_name='Interactive t-SNE',
             app_link='https://dash-tsne.plot.ly/',
             code_link='https://github.com/plotly/dash-tsne',
-            img_src='https://raw.githubusercontent.com/plotly/dash-docs/master/images/dash-tsne.gif',
+            img_src='assets/images/gallery/dash-tsne.gif',
             description='''
             t-SNE is a visualization algorithm that projects your
             high-dimensional data into a 2D or 3D space so that you can
@@ -393,7 +393,7 @@ layout = html.Div(className='gallery', children=[
             app_name='Explore SVMs',
             app_link='https://dash-svm.plot.ly/',
             code_link='https://github.com/plotly/dash-svm',
-            img_src='https://raw.githubusercontent.com/plotly/dash-docs/master/images/dash-svm.gif',
+            img_src='assets/images/gallery/dash-svm.gif',
             description='''
             This app lets you explore support vector clustering (a type
             of support vector machine) with UI input parameters. Toy datasets
@@ -412,7 +412,7 @@ layout = html.Div(className='gallery', children=[
             app_name='Dash Datashader',
             app_link='https://dash-datashader.herokuapp.com',
             code_link='https://github.com/plotly/dash-datashader',
-            img_src='https://raw.githubusercontent.com/plotly/dash-docs/master/images/dash-datashader.png',
+            img_src='assets/images/gallery/dash-datashader.png',
             description='''
             Visualize hundreds of millions of points interactively with Dash and Datashader.
             ''',
@@ -428,7 +428,7 @@ layout = html.Div(className='gallery', children=[
             app_name='Wind Speed Measurement',
             app_link='https://dash-live-wind-data.plot.ly',
             code_link='https://github.com/plotly/dash-wind-streaming',
-            img_src='https://raw.githubusercontent.com/plotly/dash-wind-streaming/d84b15eebf2c502372740416d445e8e3f23d0619/Gif/dash-wind-streaming.gif',
+            img_src='assets/images/gallery/dash-wind-streaming.gif',
             description='''
             This app continually queries a SQL database and displays live charts of
             wind speed and wind direction. In Dash, the [dcc.Interval](https://dash.plot.ly/live-upates)
@@ -441,7 +441,7 @@ layout = html.Div(className='gallery', children=[
             app_name='Forex Trader Demo ',
             app_link='https://dash-gallery.plotly.host/dash-web-trader',
             code_link='https://github.com/plotly/dash-web-trader',
-            img_src='https://raw.githubusercontent.com/plotly/dash-docs/master/images/dash-web-trader.gif',
+            img_src='assets/images/gallery/dash-web-trader.gif',
             description='''
             This app continually queries csv files and updates Ask and Bid prices for major currency pairs as well as Stock Charts.
             You can also virtually buy and sell stocks and see the profit updates.
@@ -458,7 +458,7 @@ layout = html.Div(className='gallery', children=[
             app_name='Dash DataTable',
             app_link='/datatable',
             code_link='https://github.com/plotly/dash-table',
-            img_src='https://github.com/plotly/dash-table-experiments/raw/master/images/DataTable.gif',
+            img_src='assets/images/gallery/DataTable.gif',
             description='''
         Dash provides an interactive `DataTable` as part of the `data-table`
         project. This table includes built-in filtering, row-selection,
@@ -471,7 +471,7 @@ layout = html.Div(className='gallery', children=[
             app_name='Dash Community Components',
             app_link='https://community.plot.ly/t/show-and-tell-community-thread/7554',
             code_link=None,
-            img_src='https://raw.githubusercontent.com/plotly/dash-docs/master/images/dash-community-components.png',
+            img_src='assets/images/gallery/dash-community-components.png',
             description='''
         Dash has a [plugin system](https://dash.plot.ly/plugins) for integrating your own React.js components.
         The Dash community has built many of their component libraries, like
@@ -488,7 +488,7 @@ layout = html.Div(className='gallery', children=[
             app_name='Dash Core Components',
             app_link='https://dash.plot.ly/dash-core-components',
             code_link='https://github.com/plotly/dash-core-components',
-            img_src='https://raw.githubusercontent.com/plotly/dash-docs/master/images/dash-core-components.png',
+            img_src='assets/images/gallery/dash-core-components.png',
             description='''
         Dash comes with a set of rich components like sliders, dropdowns, graphs, and more.
         [View the official Dash documentation to learn more](https://dash.plot.ly/dash-core-components).
@@ -517,7 +517,7 @@ layout = html.Div(className='gallery', children=[
             app_link='https://www.dashdaq.io/operate-an-omega-cn32pt-440-dc-pid-controller-in-python',
             code_name_display_text='Try the app',
             code_link='https://dash-gallery.plotly.host/dash-daq-omega-pid',
-            img_src='https://www.dashdaq.io/wp-content/uploads/2018/07/Dash-DAQ-Omega-Platnium-Controller-146@05x.jpg',
+            img_src='assets/images/gallery/Dash-DAQ-Omega-Platnium-Controller.jpg',
             description='''
             Let’s heat things up with Dash DAQ! With this application, we use
             Python to monitor and manage a PID controller connected to a water
@@ -530,7 +530,7 @@ layout = html.Div(className='gallery', children=[
             app_link='https://www.dashdaq.io/control-a-wireless-arduino-robot-in-python',
             code_name_display_text='Try the app',
             code_link='https://dash-gallery.plotly.host/dash-daq-sparki',
-            img_src='https://www.dashdaq.io/wp-content/uploads/2018/07/Dash-DAQ-Sparki-11-Edit@05x.jpg',
+            img_src='assets/images/gallery/Dash-DAQ-Sparki.jpg',
             description='''
             We love our robots here at Plotly! This Dash DAQ app wirelessly
             controls Sparki, an Arduino-based robot 🤖
@@ -544,7 +544,7 @@ layout = html.Div(className='gallery', children=[
             app_link='https://www.dashdaq.io/build-an-i-v-curve-tracer-with-a-keithley-2400-sourcemeter-in-python',
             code_name_display_text='Try the app',
             code_link='https://dash-gallery.plotly.host/dash-daq-iv-tracer',
-            img_src='https://www.dashdaq.io/wp-content/uploads/2018/07/IMG_0345@05x.jpg',
+            img_src='assets/images/gallery/Dash-DAQ-IV-Curve-Tracer.jpg',
             description='''
             With this Dash DAQ application written in Python, you can create
             UI components to interface with a Keithley 2400 SourceMeter.
@@ -556,7 +556,7 @@ layout = html.Div(className='gallery', children=[
             app_link='https://www.dashdaq.io/control-a-robotic-arm-in-python',
             code_name_display_text='Try the app',
             code_link='https://dash-gallery.plotly.host/dash-daq-robotic-arm',
-            img_src='https://www.dashdaq.io/wp-content/uploads/2018/07/Dash-DAQ-Robotic-Arm-Edge-19@05x.jpg',
+            img_src='assets/images/gallery/Dash-DAQ-Robotic-Arm-Edge.jpg',
             description='''
             Dash DAQ’s GUI components let you interface with all the robot’s
             motors and LED, even from a mobile device… just as if it were a
@@ -571,7 +571,7 @@ layout = html.Div(className='gallery', children=[
             app_link='https://www.dashdaq.io/control-an-ocean-optics-spectrometer-in-python',
             code_name_display_text='Try the app',
             code_link='https://dash-gallery.plotly.host/dash-ocean-optics',
-            img_src='https://www.dashdaq.io/wp-content/uploads/2018/06/Dash-DAQ-_-Ocean-Optics-2@05x.jpg',
+            img_src='assets/images/gallery/Dash-DAQ-Ocean-Optics.jpg',
             description='''
             We wrote a Dash DAQ application in Python to
             control and read an Ocean Optics spectrometer with interactive UI
@@ -583,7 +583,7 @@ layout = html.Div(className='gallery', children=[
             app_link='https://www.dashdaq.io/read-pressure-from-kurt-j-lesker-gauge-controller-in-python',
             code_name_display_text='Try the app',
             code_link='https://dash-gallery.plotly.host/dash-daq-pressure-gauge-kjl',
-            img_src='https://www.dashdaq.io/wp-content/uploads/2018/06/Dash-DAQ-Kurt@05x.jpg',
+            img_src='assets/images/gallery/Dash-DAQ-Kurt.jpg',
             description='''
             A Dash DAQ application, written in Python, gives you clean, modern
             UI components to facilitate the readout of a Kurt J. Lesker
@@ -598,7 +598,7 @@ layout = html.Div(className='gallery', children=[
             app_link='https://www.dashdaq.io/read-phidgets-accelerometer-in-python',
             code_name_display_text='Try the app',
             code_link='https://dash-gallery.plotly.host/dash-daq-accelerometer',
-            img_src='https://www.dashdaq.io/wp-content/uploads/2018/06/Dash-DAQ-_-Accelerometer@05x.jpg',
+            img_src='assets/images/gallery/Dash-DAQ-Accelerometer.jpg',
             description='''
             Running tests with an accelerometer? Dash DAQ gives you the
             components you need to write rich, flexible GUIs for interfacing
@@ -610,7 +610,7 @@ layout = html.Div(className='gallery', children=[
             app_link='https://www.dashdaq.io/control-an-led-strip-in-python',
             code_name_display_text='Try the app',
             code_link='https://dash-gallery.plotly.host/dash-daq-led',
-            img_src='https://www.dashdaq.io/wp-content/uploads/2018/05/Dash-DAQ-_-Blank-Stick-main@05x.jpg',
+            img_src='assets/images/gallery/Dash-DAQ-Blank-Stick.jpg',
             description='''
             Team Plotly is getting colorful with Dash DAQ! This application
             controls the colored LED lights in a BlinkStick. We even wrote a
@@ -625,7 +625,7 @@ layout = html.Div(className='gallery', children=[
             app_link='https://www.dashdaq.io/stepper-motor-control-in-python',
             code_name_display_text='Try the app',
             code_link='https://dash-gallery.plotly.host/dash-daq-stepper-motor',
-            img_src='https://www.dashdaq.io/wp-content/uploads/2018/04/Dash-DAQ-_-Stepper-Motor@05x.jpg',
+            img_src='assets/images/gallery/Dash-DAQ-Stepper-Motor.jpg',
             description='''
             From 3D printers, to mirror mounts, to machine tools – stepper
             motors are ubiquitous. Using Dash DAQ, we created a GUI to control
@@ -637,7 +637,7 @@ layout = html.Div(className='gallery', children=[
             app_link='https://www.dashdaq.io/oscilloscope-logging-in-python',
             code_name_display_text='Try the app',
             code_link='https://dash-gallery.plotly.host/dash-daq-tektronix350',
-            img_src='https://www.dashdaq.io/wp-content/uploads/2018/04/Dash-DAQ-_-Tektronix-Oscilloscope-Tektronic-Function-Generator@05x-1.jpg',
+            img_src='assets/images/gallery/Dash-DAQ-Tektronix-Oscilloscope.jpg',
             description='''
             Whether testing your power supply or monitoring a heartbeat, if
             you have an oscilloscope, Dash DAQ will help you control and read
@@ -652,7 +652,7 @@ layout = html.Div(className='gallery', children=[
             app_link='https://www.dashdaq.io/control-bk-precision-1785b-power-supply-in-python',
             code_name_display_text='Try the app',
             code_link='http://dash-daq-bkprecision.herokuapp.com/',
-            img_src='https://www.dashdaq.io/wp-content/uploads/2018/03/Dash-DAQ-_-BKprecision@05x-1.jpg',
+            img_src='assets/images/gallery/Dash-DAQ-BKprecision.jpg',
             description='''
             This Dash DAQ app controls a B&K Precision power supply using a
             clean and functional UI, written in just over 300 lines of Python
@@ -664,7 +664,7 @@ layout = html.Div(className='gallery', children=[
             app_link='https://www.dashdaq.io/read-agilent-34401a-multimeter-in-python',
             code_name_display_text='Try the app',
             code_link='https://dash-gallery.plotly.host/dash-daq-hp-multimeter',
-            img_src='https://www.dashdaq.io/wp-content/uploads/2018/03/Dash-DAQ-_-Multimeter-zoom@05x.jpg',
+            img_src='assets/images/gallery/Dash-DAQ-Multimeter.jpg',
             description='''
             Here’s how we used Dash DAQ’s interactive UI components to
             control the HP Agilent 34401A Multimeter.
@@ -678,7 +678,7 @@ layout = html.Div(className='gallery', children=[
             app_link='https://www.dashdaq.io/control-tektronix-function-generator-in-python',
             code_name_display_text='Try the app',
             code_link='https://dash-gallery.plotly.host/dash-daq-tektronix350',
-            img_src='https://www.dashdaq.io/wp-content/uploads/2018/03/Dash-DAQ-_-Tektronix-Oscilloscope-Tektronic-Function-Generator-zoom@05x.jpg',
+            img_src='assets/images/gallery/Dash-DAQ-Tektronic-Function-Generator.jpg',
             description='''
             A function generator generates a variety of electrical waveforms.
             This Dash DAQ application facilitates the control of a Tektronix
@@ -690,7 +690,7 @@ layout = html.Div(className='gallery', children=[
             app_link='https://www.dashdaq.io/read-pfeiffer-vacuum-gauge-pressure-in-python',
             code_name_display_text='Try the app',
             code_link='https://dash-gallery.plotly.host/dash-daq-pressure-gauge-pv/',
-            img_src='https://www.dashdaq.io/wp-content/uploads/2018/03/Dash-DAQ-_-Pfeiffer@05x.jpg',
+            img_src='assets/images/gallery/Dash-DAQ-Pfeiffer.jpg',
             description='''
             In just over 300 lines of code, this app helps you control
             and read a Pfeiffer vacuum gauge controller.
@@ -704,7 +704,7 @@ layout = html.Div(className='gallery', children=[
             app_link='https://www.dashdaq.io/analyze-frequency-responses-in-python-using-a-tektronix-function-generator-and-oscilloscope',
             code_name_display_text='Try the app',
             code_link='https://freq-response-plotter.herokuapp.com/',
-            img_src='https://www.dashdaq.io/wp-content/uploads/2018/07/Dash-DAQ-_-Tektronix-Oscilloscope-Tektronic-Function-Generator.jpg',
+            img_src='assets/images/gallery/Dash-DAQ-Frequency-Response.jpg',
             description='''
             With this Dash DAQ app, you can create a user-friendly GUI for
             analyzing the frequency responses of circuits.
@@ -725,7 +725,7 @@ layout = html.Div(className='gallery', children=[
             app_name='View Dash User Guide Source Code',
             app_link='https://github.com/plotly/dash-docs',
             code_link=None,
-            img_src='https://raw.githubusercontent.com/plotly/dash-docs/master/images/dash-home-page.png',
+            img_src='assets/images/gallery/dash-home-page.png',
             description='',
             width=12
         )
