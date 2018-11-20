@@ -168,6 +168,8 @@ app.layout = serve_layout
 if __name__ == '__main__':
     app.run_server(debug=True)
 ```
+> **Heads up! You need to write** `app.layout = serve_layout` **_not_** `app.layout = serve_layout()`.
+> **That is, define** `app.layout` **to the actual function instance.**
 
 You can combine this with [time-expiring caching](/performance) and serve
 a unique `layout` every hour or every day and serve the computed `layout`
