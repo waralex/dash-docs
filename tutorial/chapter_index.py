@@ -498,6 +498,14 @@ chapters = {
         'description': 'Having trouble deploying your app? Our dedicated '
         'support team is available to help you out.'
     },
+
+    'git-examples': {
+        'url': '/dash-deployment-server/git',
+        'content': dds_examples.Git,
+        'name': 'Advanced Git',
+        'description': 'A reference for git commands and how they are used '
+        'with Dash Deployment Server.'
+    },
 ### End Dash Deployment Server ###
 
 ### Start DataTable Docs

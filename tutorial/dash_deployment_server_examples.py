@@ -13,7 +13,6 @@ from server import app
 def s(string_block):
     return string_block.replace('    ', '')
 
-
 # # # # # # #
 # Initialize
 # # # # # # #
@@ -498,7 +497,7 @@ $ git init # initializes an empty git repo''', customStyle=styles.code_container
 
 @app.callback(Output('remote-and-deploy-instructions', 'children'),
               [Input('deploy-method', 'value')])
-def display_instructions2(method):
+def display_instructions_deploy(method):
     return [
         dcc.Markdown(s('''
 
@@ -2335,9 +2334,9 @@ Troubleshooting = html.Div(children=[
 # # # # # # #
 Analytics = html.Div(children=[
     html.H1('Dash App Analytics'),
-  
+
     rc.Blockquote(),
-  
+
     dcc.Markdown(s('''
     #### Dash App Analytics
 
@@ -2363,23 +2362,23 @@ Analytics = html.Div(children=[
 # # # # # # #
 Logs = html.Div(children=[
     html.H1('Dash App Logs'),
-    
+
     rc.Blockquote(),
-  
+
     dcc.Markdown(s('''
     ***
-    
-    Dash apps create a log of usage data as well as any `print` statements 
+
+    Dash apps create a log of usage data as well as any `print` statements
     called from your app. These logs can be accessed via the DDS UI or from the
-    command line. Note that they will be cleared each time you re-deploy 
+    command line. Note that they will be cleared each time you re-deploy
     your app.
-    
+
     ***
 
     #### Dash App Logs (via UI)
 
     If you have successfully deployed a Dash App to the Dash Deployment
-    Server, you can view the app's logs via the Dash Deployment Server UI. 
+    Server, you can view the app's logs via the Dash Deployment Server UI.
     From your list of apps, open the app and then select **Logs**. This will
     display the most recent 500 log entries for your app. For the complete list,
     use the command line method outlined below.
@@ -2461,5 +2460,286 @@ Support = html.Div(children=[
     will need admin permissions to access the Server Manager.
     Navigate to the Server Manager and then select the Support tab.
     There you will see the option to download the support bundle.
+    '''))
+])
+
+# # # # # # #
+# Advanced Git
+# # # # # # #
+Git = html.Div(children=[
+    html.H1('Advanced Git'),
+
+    rc.Blockquote(),
+
+    dcc.Markdown(s('''
+
+    ***
+
+    Plotly uses [Git](https://git-scm.com/) to manage Dash App deployments.
+    This section serves as a reference for what git commands are utilized,
+    when to use them, and why.
+
+    &nbsp;
+
+    - Initialize a Repository
+    - Cloning a Repository
+    - Remote Repositories
+    - Deploying Changes
+    - Using Branches
+
+    ***
+
+    ''')),
+
+    dcc.Markdown(s('''
+
+    #### Initialize a Repository
+
+    If you have created a new folder for your Dash App, or have an existing
+    folder on your local machine, you need to initialize a local Git
+    repository before you can deploy your Dash App to the Dash Deployment
+    Server. You need to initialize the local Git repository from your app's
+    root folder, thus:
+
+    ''')),
+
+    dcc.SyntaxHighlighter(s(
+    '''$ cd myDashApp
+    $ git init
+    Initialized empty Git repository in .git/'''),
+    customStyle=styles.code_container, language='python'),
+
+    dcc.Markdown(s('''
+    ***
+
+    #### Cloning a Repository
+
+    If you have an existing repository hosted on Github, or would like to
+    utilize one the demo Dash Apps from [Plotly's Gallery](/gallery), then you
+    you'll need to clone the repository. You can achieve this by using the
+    `git clone` command:
+
+    ''')),
+
+    dcc.SyntaxHighlighter(s(
+    '''$ git clone <respository-name>'''),
+    customStyle=styles.code_container, language='python'),
+
+    dcc.Markdown(s('''&nbsp;''')),
+
+    rc.Notebox(s('''
+
+    **Note:** the above command will generate a local Git repository on your
+    machine, which by default will include the remote Github repository
+    `origin`. If you're concerned that you may accidently push to this
+    repository, you can remove it. See the next section **Remote Repositories**
+    for how to view and remove remote repositories.
+
+    ''')),
+
+    dcc.Markdown(s('''
+
+    ***
+
+    #### Remote Repositories
+
+    Once you have initialized your local Git repository or cloned an existing
+    repository from Github, you need to create a remote repository on the
+    Dash Deployment Server, which you will deploy your changes to.
+    Note that this remote repository will be your live / production Dash App.
+
+    &nbsp;
+
+    To create a remote repository
+
+    ''')),
+
+    dcc.SyntaxHighlighter(s(
+    '''$ git remote add <remote-name> <remote-URL>'''),
+    customStyle=styles.code_container, language='python'),
+
+    dcc.Markdown(s('''
+
+    &nbsp;
+
+    To view all remotes:
+
+    ''')),
+
+    dcc.SyntaxHighlighter(s(
+    '''$ git remote -v '''),
+    customStyle=styles.code_container, language='python'),
+
+    dcc.Markdown(s('''
+
+    &nbsp;
+
+    To rename a remote repository:
+
+    ''')),
+
+    dcc.SyntaxHighlighter(s(
+    '''$ git remote rename <existing-name> <new-name> '''),
+    customStyle=styles.code_container, language='python'),
+    
+    dcc.Markdown(s('''
+
+    &nbsp;
+
+    To remove a remote repository:
+
+    ''')),
+
+    dcc.SyntaxHighlighter(s(
+    '''$ git remote rm <remote-name> '''),
+    customStyle=styles.code_container, language='python'),
+
+    dcc.Markdown(s('''
+
+    ***
+
+    #### Deploying Changes
+
+    By default, Dash apps run on `localhost` - you can only access them on
+    your local machine. To share a Dash app, you need to "deploy" your Dash app
+    to the Dash Deployment Server. This can be achieved via a series of
+    commands. Namely,
+
+    - `git status` allows you to view which files have been changed.
+    - `git diff` prints out changes within the files.
+    - `git add .` will add all your changes.
+    - `git commit -m "a description of the changes"` will commit you changes.
+    - `git push <repository-name> master` will deploy your code to
+    Dash Deployment Server.
+
+    &nbsp;
+
+    ''')),
+
+    rc.Notebox(s('''
+    `git status` and `git diff` are optional and are only required if you 
+    wish to inspect before adding changes.
+    ''')),
+
+    dcc.Markdown(s('''
+
+    &nbsp; 
+    
+    The demonstration below is a common way to deploy your changes:
+
+    ''')),
+
+    dcc.SyntaxHighlighter(s(
+    '''$ git add .
+    $ git commit -m "a description of the changes"
+    $ git push <respository-name> master'''),
+    customStyle=styles.code_container, language='python'),
+
+    dcc.Markdown(s('''
+
+    ***
+
+    #### Using Branches
+
+    If you want to try out a new feature or test something different with your
+    Dash App but don't want to alter your `master` code, you can create a
+    branch to encapsulate these changes.
+
+    &nbsp;
+
+    To view all branches:
+
+    ''')),
+
+    dcc.SyntaxHighlighter(s(
+    '''$ git branch'''),
+    customStyle=styles.code_container, language='python'),
+
+    dcc.Markdown(s('''
+
+    &nbsp;
+
+    To create a new branch:
+
+    ''')),
+
+    dcc.SyntaxHighlighter(s(
+    '''$ git branch <branchname> '''),
+    customStyle=styles.code_container, language='python'),
+
+    dcc.Markdown(s('''
+
+    &nbsp;
+
+    Once you've created a new branch, you need to check it out (i.e. navigate
+    to it).
+
+    ''')),
+
+    dcc.SyntaxHighlighter(s(
+    '''$ git checkout <branchname>'''),
+    customStyle=styles.code_container, language='python'),
+
+    dcc.Markdown(s('''
+
+    &nbsp;
+
+    If you have created a new branch and are happy with the changes, you can
+    add and commit these changes using the common `git add . ` and
+    `git commit -m "description"` commands. To deploy these to Dash Deployment
+    Server, you will need to deploy the branch into master:
+
+    ''')),
+
+    dcc.SyntaxHighlighter(s(
+    '''$ git add .
+    $ git commit -m "a description of changes"
+    $ git push <remote-name> <branchname>:master'''),
+    customStyle=styles.code_container, language='python'),
+
+    dcc.Markdown(s('''
+
+    &nbsp;
+
+    To rename a branch:
+
+    ''')),
+
+    dcc.SyntaxHighlighter(s(
+    '''$ git branch -m <existing-name> <new-name> '''),
+    customStyle=styles.code_container, language='python'),
+
+
+    dcc.Markdown(s('''
+
+    &nbsp;
+
+    If you no longer require the branch, you can remove a branch:
+
+    ''')),
+
+    dcc.SyntaxHighlighter(s(
+    '''$ git branch -D <branch-name> '''),
+    customStyle=styles.code_container, language='python'),
+
+    dcc.Markdown(s('''&nbsp;''')),
+
+    rc.Notebox(s('''
+
+    **Note:** using `-D` will delete the branch and all unmerged changes.
+
+    ''')),
+
+    dcc.Markdown(s('''
+
+    ***
+
+    #### Additional Resources
+
+    For more information regarding version control and Git commands, see Git's
+    [documentation](https://git-scm.com/).
+
+
+
     '''))
 ])
