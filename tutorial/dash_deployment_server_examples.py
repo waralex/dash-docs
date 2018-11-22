@@ -397,6 +397,22 @@ if __name__ == '__main__':
 
                     dcc.Markdown(s(
                     '''
+                    For some applications, you may require using the `worker` 
+                    process. For example, the [Dash Redis Demo](https://github.com/plotly/dash-redis-demo) 
+                    includes Celery - an asynchronous task queue/job queue. 
+                    When using a `worker` process in your `Procfile`, 
+                    you will have to explicitly start it after deploying. To 
+                    scale a `worker` process: 
+
+                    `ssh dokku@dash-server ps:scale APP-NAME worker=1`. 
+                    
+                    Note that this requires 
+                    [Authenticating to Dash Deployment Server with SSH](/dash-deployment-server/ssh).
+
+                    ''')),
+
+                    dcc.Markdown(s(
+                    '''
                     ***
 
                     **`requirements.txt`**
@@ -2324,6 +2340,46 @@ Troubleshooting = html.Div(children=[
         If you're receiving the above user permission error, please
         [contact support](/dash-deployment-server/support).
         '''))
+    ]),
+
+dcc.Markdown(s('''
+    ***
+
+    #### Problems Using a Celery Process?
+
+    ''')),
+
+    html.Details([
+        html.Summary("Callbacks using async processes aren't running and `Celery` is not present in app logs"),
+
+        html.Br(),
+
+        dcc.Markdown(s(
+            '''
+            These applications require using a `worker` 
+            process. When using a `worker` process in your `Procfile`, 
+            you will have to explicitly start it after deploying. To 
+            scale a `worker` process: 
+            ''')),
+
+        dcc.SyntaxHighlighter('$ ssh dokku@dash-server ps:scale APP-NAME worker=1',
+                              customStyle=styles.code_container, language='python'),
+        dcc.Markdown(s(
+            '''
+            
+            If you have multiple `worker` processes in your `Procfile`
+            (e.g `worker-default` *and* `worker-beat`) you can scale them
+            up simultaneously with:
+            ''')),
+
+        dcc.SyntaxHighlighter('$ ssh dokku@YOUR_DASH_SERVER ps:scale APP-NAME worker-default=1 worker-beat=1',
+                              customStyle=styles.code_container, language='python'),
+
+        dcc.Markdown(s(
+            '''
+            Note that this requires 
+            [Authenticating to Dash Deployment Server with SSH](/dash-deployment-server/ssh).
+             ''')),
     ]),
 
 ])
