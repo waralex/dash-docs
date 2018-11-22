@@ -284,7 +284,7 @@ dcc.DatePickerRange(
         className="image-link",
         href="https://github.com/plotly/dash-table-experiments",
         children=html.Img(
-            src="https://github.com/plotly/dash-table-experiments/raw/master/images/DataTable.gif",
+            src="assets/images/gallery/DataTable.gif",
             alt="Example of a Dash Interactive Table"
         )
     ),
