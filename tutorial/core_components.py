@@ -120,7 +120,7 @@ dcc.Input(
     value=''
 )''', language='python', customStyle=styles.code_container),
     html.Br(),
-    dcc.Link(html.A('Input Reference'),
+    dcc.Link(html.A('More Input Examples and Reference'),
              href="/dash-core-components/input"),
 
     html.Hr(),

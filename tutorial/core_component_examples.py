@@ -15,6 +15,8 @@ examples = {
     'date_picker_single': tools.load_example('tutorial/examples/core_components/date_picker_single.py'),
     'date_picker_range': tools.load_example('tutorial/examples/core_components/date_picker_range.py'),
     'dropdown': tools.load_example('tutorial/examples/core_components/dropdown.py'),
+    'input-basic': tools.load_example('tutorial/examples/core_components/input-basic.py'),
+    'input-n_submit': tools.load_example('tutorial/examples/core_components/input-n_submit.py'),
     'rangeslider': tools.load_example('tutorial/examples/core_components/rangeslider.py'),
     'rangeslider-nonlinear': tools.load_example('tutorial/examples/core_components/rangeslider_nonlinear.py'),
     'slider': tools.load_example('tutorial/examples/core_components/slider.py'),
@@ -401,6 +403,18 @@ Checklist = html.Div(children=[
 
 # Input
 Input = html.Div(children=[
+    html.H1('Input Examples and Reference'),
+    html.Hr(),
+    html.H3('Update Value on Keypress'),
+    Syntax(examples['input-basic'][0]),
+    Example(examples['input-basic'][1]),
+    html.Br(),
+    html.H3('Update Value on Enter/Blur'),
+    dcc.Markdown("`dcc.Input` has properties `n_submit`, which updates when the enter button is pressed, and `n_blur`"
+                 " , which updates when the component loses focus (e.g tab is pressed or the user clicks away)."),
+    Syntax(examples['input-n_submit'][0]),
+    Example(examples['input-n_submit'][1]),
+    html.Br(),
     html.H3('Input Properties'),
     generate_prop_table('Input')
 ])
