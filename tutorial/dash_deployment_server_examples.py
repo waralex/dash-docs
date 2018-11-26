@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import dash
+import dash_auth
 import dash_renderer
 import dash_core_components as dcc
 import dash_html_components as html
@@ -11,7 +12,6 @@ from server import app
 
 def s(string_block):
     return string_block.replace('    ', '')
-
 
 # # # # # # #
 # Initialize
@@ -397,6 +397,22 @@ if __name__ == '__main__':
 
                     dcc.Markdown(s(
                     '''
+                    For some applications, you may require using the `worker` 
+                    process. For example, the [Dash Redis Demo](https://github.com/plotly/dash-redis-demo) 
+                    includes Celery - an asynchronous task queue/job queue. 
+                    When using a `worker` process in your `Procfile`, 
+                    you will have to explicitly start it after deploying. To 
+                    scale a `worker` process: 
+
+                    `ssh dokku@dash-server ps:scale APP-NAME worker=1`. 
+                    
+                    Note that this requires 
+                    [Authenticating to Dash Deployment Server with SSH](/dash-deployment-server/ssh).
+
+                    ''')),
+
+                    dcc.Markdown(s(
+                    '''
                     ***
 
                     **`requirements.txt`**
@@ -497,7 +513,7 @@ $ git init # initializes an empty git repo''', customStyle=styles.code_container
 
 @app.callback(Output('remote-and-deploy-instructions', 'children'),
               [Input('deploy-method', 'value')])
-def display_instructions2(method):
+def display_instructions_deploy(method):
     return [
         dcc.Markdown(s('''
 
@@ -659,11 +675,11 @@ Requirements = html.Div(children=[
     Describes the app's python dependencies. For example,
 
     ```
-    dash==0.21.1
-    dash-auth==1.0.1
-    dash-renderer==0.11.3
-    dash-core-components==0.22.1
-    dash-html-components==0.9.0
+    dash=={}
+    dash-auth=={}
+    dash-renderer=={}
+    dash-core-components=={}
+    dash-html-components=={}
     ```
 
     ***
@@ -680,7 +696,13 @@ Requirements = html.Div(children=[
     An optional folder that contains CSS stylesheets, images, or
     custom JavaScript files. [Learn more about assets](/external-resources).
 
-    '''))
+    ''').format(
+        dash.__version__,
+        dash_auth.__version__,
+        dash_renderer.__version__,
+        dcc.__version__,
+        html.__version__,
+    ))
 ])
 
 # # # # # # #
@@ -728,10 +750,9 @@ staticAssets = html.Div(children=[
 
     ''')),
 
-    dcc.SyntaxHighlighter(s(
-    ''''/{}/my-image.png'.format(app.get_asset_url)
-    '''), customStyle=styles.code_container, language="text")
-
+    dcc.SyntaxHighlighter(s('''
+    html.Img(src=app.get_asset_url('my-image.png'))
+    '''), customStyle=styles.code_container, language="python")
 ])
 
 # # # # # # #
@@ -1398,12 +1419,152 @@ Authentication = html.Div(children=[
     rc.Blockquote(),
 
     dcc.Markdown(s('''
-    The `dash-auth` package provides login through your Plotly
-    Enterprise accounts. For example, the discussion below describes how
-    `dash-auth` works in the
-    [On-Premise Sample App](https://github.com/plotly/dash-on-premise-sample-app/).
+    The `dash-auth` package provides login through your Plotly Enterprise 
+    accounts. As such, this includes sharing apps through the integrated 
+    LDAP system. Apps that you have saved will appear in your list of 
+    files at `https://<your-plotly-server>.com/organize/home`
+    and you can manage the permissions of the apps there. Viewers create and 
+    manage their own accounts. 
+    
+    In the first section we will discuss how to add `dash-auth` to your 
+    existing Dash apps. In the second, we will illustrate how `dash-auth` works 
+    for the 
+    [On-Premise Sample App](https://github.com/plotly/dash-on-premise-sample-app/). 
+    For more discussion and examples about authentication and available 
+    methods, see [authentication](/authentication). 
 
     ***
+
+    ''')),
+
+    dcc.Markdown(s('''
+
+    ## Adding `dash-auth` to an Existing Dash App
+
+    If you have previously deployed your Dash app to your Dash Deployment 
+    Server, then you can follow the instructions below to add Plotly OAuth to 
+    your Dash app. If you have an existing Dash app on your local machine that 
+    you haven't deployed yet, then you first need to 
+    [initialize](/dash-deployment-server/initialize) a Dash app on your Dash 
+    Deployment Server.
+
+
+    #### Adding Environment Variables
+
+    Plotly Auth uses the environment variables `PLOTLY_USERNAME` and 
+    `PLOTLY_API_KEY`. You can find your username and API key at 
+    `https://<your-plotly-server>.com/settings/api`.
+    You can either set these 
+    variables directly in your code or by using the Dash Deployment Server.
+
+    &nbsp;
+
+    To set these variables directly in your code:
+
+    ''')),
+
+    dcc.SyntaxHighlighter(s("""import os
+
+os.environ['PLOTLY_USERNAME'] = 'your-username'
+os.environ['PLOTLY_API_KEY'] = 'your-api-key'
+    """),
+    customStyle=styles.code_container,
+    language='python'
+    ),
+
+    dcc.Markdown(s('''
+
+    &nbsp;
+
+    However, if you prefer not to expose these variables in your code, then you 
+    can add them via the Dash Deployment Server. In the Environment Variables 
+    section of your Dash app's settings 
+    (`https://<your-dash-domain>.com/MANAGER/apps/<your-dash-app>/settings`), 
+    use the text input boxes to set the variables and their values.
+
+    ''')),
+
+    html.Img(
+        alt='Enable Redis Databases',
+        src='/assets/images/dds/auth-variables.PNG',
+        style={
+            'width': '100%', 'border': 'thin lightgrey solid',
+            'border-radius': '4px'
+        }
+    ),
+
+    dcc.Markdown(s('''
+
+    #### Adding PlotlyAuth to Your `app.py`
+
+    Once you've added the environment variables `PLOTLY_USERNAME` and 
+    `PLOTLY_API_KEY`, you can add the below code to your `app.py` file.
+
+    ''')),
+
+    dcc.SyntaxHighlighter(s(
+        """import dash_auth
+        
+        auth = dash_auth.PlotlyAuth(
+               app,
+               'add your Dash app name',
+               'private',
+               'https://<your-dash-domain>.com/MANAGER/apps/<your-dash-app>'
+        )"""),
+    customStyle=styles.code_container,
+    language='python'
+    ),
+
+    dcc.Markdown(s('''
+
+    &nbsp;
+
+    #### Adding PlotlyAuth Logout
+
+    Optionally, you may want to add a logout button to your Dash app. This 
+    can be achieved by inlcuding the following in the `app.layout`:
+
+    ''')),
+
+    dcc.SyntaxHighlighter(s(
+        """auth.create_logout_button(
+               label='Sign out',
+               redirect_to='https://<your-plotly-server>.com'
+        )"""),
+    customStyle=styles.code_container,
+    language='python'
+    ),
+
+    dcc.Markdown(s('''
+
+    &nbsp;
+
+    For more information about Plotly OAuth methods, see 
+    [authentication](/authentication). 
+
+    #### Deploy Your App
+
+    After adding PlotlyAuth to your `app.py` file, you can commit your changes 
+    and deploy your Dash app. For more information about how to deploy your 
+    Dash app, see 
+    [Part 2. Deploy Dash Apps on Dash Deployment Server](/dash-deployment-server/deployment).
+
+    #### Manage Permissions
+
+    Your app should now have a Dash Deployment Server login screen.
+    You can manage the permissions of the app in your list of files
+    at `https://<your-plotly-domain>/organize/home`.
+
+    ''')),
+
+    dcc.Markdown(s('''
+    ***
+
+    ## Using `dash-auth` in the On-Premise Sample App
+
+    This section is relevant for those that have 
+    [cloned and deployed](/deployment) the 
+    [On-Premise Sample App](https://github.com/plotly/dash-on-premise-sample-app/).
 
     #### Modify the `config.py` File
 
@@ -1415,7 +1576,7 @@ Authentication = html.Div(children=[
     ''')),
 
     dcc.Markdown(s('''
-    ***
+    
 
     #### Redeploy Your App
 
@@ -2181,6 +2342,46 @@ Troubleshooting = html.Div(children=[
         '''))
     ]),
 
+dcc.Markdown(s('''
+    ***
+
+    #### Problems Using a Celery Process?
+
+    ''')),
+
+    html.Details([
+        html.Summary("Callbacks using async processes aren't running and `Celery` is not present in app logs"),
+
+        html.Br(),
+
+        dcc.Markdown(s(
+            '''
+            These applications require using a `worker` 
+            process. When using a `worker` process in your `Procfile`, 
+            you will have to explicitly start it after deploying. To 
+            scale a `worker` process: 
+            ''')),
+
+        dcc.SyntaxHighlighter('$ ssh dokku@dash-server ps:scale APP-NAME worker=1',
+                              customStyle=styles.code_container, language='python'),
+        dcc.Markdown(s(
+            '''
+            
+            If you have multiple `worker` processes in your `Procfile`
+            (e.g `worker-default` *and* `worker-beat`) you can scale them
+            up simultaneously with:
+            ''')),
+
+        dcc.SyntaxHighlighter('$ ssh dokku@YOUR_DASH_SERVER ps:scale APP-NAME worker-default=1 worker-beat=1',
+                              customStyle=styles.code_container, language='python'),
+
+        dcc.Markdown(s(
+            '''
+            Note that this requires 
+            [Authenticating to Dash Deployment Server with SSH](/dash-deployment-server/ssh).
+             ''')),
+    ]),
+
 ])
 
 
@@ -2189,9 +2390,9 @@ Troubleshooting = html.Div(children=[
 # # # # # # #
 Analytics = html.Div(children=[
     html.H1('Dash App Analytics'),
-  
+
     rc.Blockquote(),
-  
+
     dcc.Markdown(s('''
     #### Dash App Analytics
 
@@ -2217,23 +2418,23 @@ Analytics = html.Div(children=[
 # # # # # # #
 Logs = html.Div(children=[
     html.H1('Dash App Logs'),
-    
+
     rc.Blockquote(),
-  
+
     dcc.Markdown(s('''
     ***
-    
-    Dash apps create a log of usage data as well as any `print` statements 
+
+    Dash apps create a log of usage data as well as any `print` statements
     called from your app. These logs can be accessed via the DDS UI or from the
-    command line. Note that they will be cleared each time you re-deploy 
+    command line. Note that they will be cleared each time you re-deploy
     your app.
-    
+
     ***
 
     #### Dash App Logs (via UI)
 
     If you have successfully deployed a Dash App to the Dash Deployment
-    Server, you can view the app's logs via the Dash Deployment Server UI. 
+    Server, you can view the app's logs via the Dash Deployment Server UI.
     From your list of apps, open the app and then select **Logs**. This will
     display the most recent 500 log entries for your app. For the complete list,
     use the command line method outlined below.
@@ -2315,5 +2516,286 @@ Support = html.Div(children=[
     will need admin permissions to access the Server Manager.
     Navigate to the Server Manager and then select the Support tab.
     There you will see the option to download the support bundle.
+    '''))
+])
+
+# # # # # # #
+# Advanced Git
+# # # # # # #
+Git = html.Div(children=[
+    html.H1('Advanced Git'),
+
+    rc.Blockquote(),
+
+    dcc.Markdown(s('''
+
+    ***
+
+    Plotly uses [Git](https://git-scm.com/) to manage Dash App deployments.
+    This section serves as a reference for what git commands are utilized,
+    when to use them, and why.
+
+    &nbsp;
+
+    - Initialize a Repository
+    - Cloning a Repository
+    - Remote Repositories
+    - Deploying Changes
+    - Using Branches
+
+    ***
+
+    ''')),
+
+    dcc.Markdown(s('''
+
+    #### Initialize a Repository
+
+    If you have created a new folder for your Dash App, or have an existing
+    folder on your local machine, you need to initialize a local Git
+    repository before you can deploy your Dash App to the Dash Deployment
+    Server. You need to initialize the local Git repository from your app's
+    root folder, thus:
+
+    ''')),
+
+    dcc.SyntaxHighlighter(s(
+    '''$ cd myDashApp
+    $ git init
+    Initialized empty Git repository in .git/'''),
+    customStyle=styles.code_container, language='python'),
+
+    dcc.Markdown(s('''
+    ***
+
+    #### Cloning a Repository
+
+    If you have an existing repository hosted on Github, or would like to
+    utilize one the demo Dash Apps from [Plotly's Gallery](/gallery), then you
+    you'll need to clone the repository. You can achieve this by using the
+    `git clone` command:
+
+    ''')),
+
+    dcc.SyntaxHighlighter(s(
+    '''$ git clone <respository-name>'''),
+    customStyle=styles.code_container, language='python'),
+
+    dcc.Markdown(s('''&nbsp;''')),
+
+    rc.Notebox(s('''
+
+    **Note:** the above command will generate a local Git repository on your
+    machine, which by default will include the remote Github repository
+    `origin`. If you're concerned that you may accidently push to this
+    repository, you can remove it. See the next section **Remote Repositories**
+    for how to view and remove remote repositories.
+
+    ''')),
+
+    dcc.Markdown(s('''
+
+    ***
+
+    #### Remote Repositories
+
+    Once you have initialized your local Git repository or cloned an existing
+    repository from Github, you need to create a remote repository on the
+    Dash Deployment Server, which you will deploy your changes to.
+    Note that this remote repository will be your live / production Dash App.
+
+    &nbsp;
+
+    To create a remote repository
+
+    ''')),
+
+    dcc.SyntaxHighlighter(s(
+    '''$ git remote add <remote-name> <remote-URL>'''),
+    customStyle=styles.code_container, language='python'),
+
+    dcc.Markdown(s('''
+
+    &nbsp;
+
+    To view all remotes:
+
+    ''')),
+
+    dcc.SyntaxHighlighter(s(
+    '''$ git remote -v '''),
+    customStyle=styles.code_container, language='python'),
+
+    dcc.Markdown(s('''
+
+    &nbsp;
+
+    To rename a remote repository:
+
+    ''')),
+
+    dcc.SyntaxHighlighter(s(
+    '''$ git remote rename <existing-name> <new-name> '''),
+    customStyle=styles.code_container, language='python'),
+    
+    dcc.Markdown(s('''
+
+    &nbsp;
+
+    To remove a remote repository:
+
+    ''')),
+
+    dcc.SyntaxHighlighter(s(
+    '''$ git remote rm <remote-name> '''),
+    customStyle=styles.code_container, language='python'),
+
+    dcc.Markdown(s('''
+
+    ***
+
+    #### Deploying Changes
+
+    By default, Dash apps run on `localhost` - you can only access them on
+    your local machine. To share a Dash app, you need to "deploy" your Dash app
+    to the Dash Deployment Server. This can be achieved via a series of
+    commands. Namely,
+
+    - `git status` allows you to view which files have been changed.
+    - `git diff` prints out changes within the files.
+    - `git add .` will add all your changes.
+    - `git commit -m "a description of the changes"` will commit you changes.
+    - `git push <repository-name> master` will deploy your code to
+    Dash Deployment Server.
+
+    &nbsp;
+
+    ''')),
+
+    rc.Notebox(s('''
+    `git status` and `git diff` are optional and are only required if you 
+    wish to inspect before adding changes.
+    ''')),
+
+    dcc.Markdown(s('''
+
+    &nbsp; 
+    
+    The demonstration below is a common way to deploy your changes:
+
+    ''')),
+
+    dcc.SyntaxHighlighter(s(
+    '''$ git add .
+    $ git commit -m "a description of the changes"
+    $ git push <respository-name> master'''),
+    customStyle=styles.code_container, language='python'),
+
+    dcc.Markdown(s('''
+
+    ***
+
+    #### Using Branches
+
+    If you want to try out a new feature or test something different with your
+    Dash App but don't want to alter your `master` code, you can create a
+    branch to encapsulate these changes.
+
+    &nbsp;
+
+    To view all branches:
+
+    ''')),
+
+    dcc.SyntaxHighlighter(s(
+    '''$ git branch'''),
+    customStyle=styles.code_container, language='python'),
+
+    dcc.Markdown(s('''
+
+    &nbsp;
+
+    To create a new branch:
+
+    ''')),
+
+    dcc.SyntaxHighlighter(s(
+    '''$ git branch <branchname> '''),
+    customStyle=styles.code_container, language='python'),
+
+    dcc.Markdown(s('''
+
+    &nbsp;
+
+    Once you've created a new branch, you need to check it out (i.e. navigate
+    to it).
+
+    ''')),
+
+    dcc.SyntaxHighlighter(s(
+    '''$ git checkout <branchname>'''),
+    customStyle=styles.code_container, language='python'),
+
+    dcc.Markdown(s('''
+
+    &nbsp;
+
+    If you have created a new branch and are happy with the changes, you can
+    add and commit these changes using the common `git add . ` and
+    `git commit -m "description"` commands. To deploy these to Dash Deployment
+    Server, you will need to deploy the branch into master:
+
+    ''')),
+
+    dcc.SyntaxHighlighter(s(
+    '''$ git add .
+    $ git commit -m "a description of changes"
+    $ git push <remote-name> <branchname>:master'''),
+    customStyle=styles.code_container, language='python'),
+
+    dcc.Markdown(s('''
+
+    &nbsp;
+
+    To rename a branch:
+
+    ''')),
+
+    dcc.SyntaxHighlighter(s(
+    '''$ git branch -m <existing-name> <new-name> '''),
+    customStyle=styles.code_container, language='python'),
+
+
+    dcc.Markdown(s('''
+
+    &nbsp;
+
+    If you no longer require the branch, you can remove a branch:
+
+    ''')),
+
+    dcc.SyntaxHighlighter(s(
+    '''$ git branch -D <branch-name> '''),
+    customStyle=styles.code_container, language='python'),
+
+    dcc.Markdown(s('''&nbsp;''')),
+
+    rc.Notebox(s('''
+
+    **Note:** using `-D` will delete the branch and all unmerged changes.
+
+    ''')),
+
+    dcc.Markdown(s('''
+
+    ***
+
+    #### Additional Resources
+
+    For more information regarding version control and Git commands, see Git's
+    [documentation](https://git-scm.com/).
+
+
+
     '''))
 ])

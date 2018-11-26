@@ -3,24 +3,19 @@ import json
 import os
 import dash_html_components as html
 import dash_core_components as dcc
+import dash_table
 import pandas as pd
 
-
-_current_dcc_path = os.path.join(os.path.dirname(os.path.abspath(dcc.__file__)),
-                             'metadata.json')
-
-_current_html_path = os.path.join(os.path.dirname(os.path.abspath(html.__file__)),
-                             'metadata.json')
-
-
 def js_to_py_type(type_object):
-    js_type_name = type_object['name']
+    js_type_name = type_object if (type(type_object) is str) else type_object['name']
 
     # wrapping everything in lambda to prevent immediate execution
     js_to_py_types = {
         'array': lambda: 'list',
         'bool': lambda: 'boolean',
+        'func': lambda: 'func',
         'number': lambda: 'number',
+        'string': lambda: 'string',
         'component_name': lambda: 'component_name',
         'object': lambda: 'dict',
 
@@ -62,11 +57,11 @@ def js_to_py_type(type_object):
                 ),
                 '\n. Those keys have the following types: \n{}'.format(
                     '\n'.join([
-                        '  - ' + argument_doc(
+                        '  - ' + (argument_doc(
                             prop_name,
                             prop,
-                            prop.get('description', '')
-                        ) for
+                            '' if (type(prop) is str) else prop.get('description', '')
+                        )) for
                         prop_name, prop in list(type_object['value'].items())
                     ])
                 )
@@ -135,23 +130,21 @@ def object_hook_handler(obj):
     return obj
 
 
-with open(_current_dcc_path, 'r') as f:
-    metadata_dcc = json.load(f, object_hook=object_hook_handler)
+def get_dataframe(component_name, lib=dcc):
+    path = os.path.join(os.path.dirname(os.path.abspath(lib.__file__)),
+                        'metadata.json')
+    with open(path, 'r') as f:
+        metadata = json.load(f, object_hook=object_hook_handler)
 
-with open(_current_html_path, 'r') as f:
-    metadata_html = json.load(f, object_hook=object_hook_handler)
+    if lib in [dcc, html]:
+        prefix = 'src/components/'
+        suffix = '.react.js'
+        fullString = prefix+component_name+suffix
+    elif lib == dash_table:
+        fullString = 'src/dash-table/{}.js'.format(component_name)
 
-
-def get_dataframe(component_name):
-    prefix = 'src/components/'
-    suffix = '.react.js'
-    fullString = prefix+component_name+suffix
-    if fullString in metadata_dcc:
-        df = pd.DataFrame(metadata_dcc[fullString]
-                          ['props']).transpose()
-    else:
-        df = pd.DataFrame(metadata_html[fullString]
-                          ['props']).transpose()
+    df = pd.DataFrame(metadata[fullString]
+                      ['props']).transpose()
     if 'dashEvents' in df.index.tolist():
         df.drop(['dashEvents'], inplace=True)
     if 'fireEvent' in df.index:
@@ -230,5 +223,5 @@ def generate_table(dataframe):
     return table
 
 
-def generate_prop_table(component_name):
-    return generate_table(get_dataframe(component_name))
+def generate_prop_table(component_name, lib=dcc):
+    return generate_table(get_dataframe(component_name, lib))

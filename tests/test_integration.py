@@ -110,7 +110,8 @@ class Tests(IntegrationTests):
             '/dash-deployment-server/troubleshooting',
             '/dash-deployment-server/analytics',
             '/dash-deployment-server/logs',
-            '/dash-deployment-server/support'
+            '/dash-deployment-server/support',
+            '/dash-deployment-server/git'
         ]
 
         def visit_and_snapshot(href):

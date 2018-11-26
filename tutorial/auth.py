@@ -145,8 +145,11 @@ if __name__ == '__main__':
     Installation:
     '''.replace('    ', '')),
 
-    dcc.SyntaxHighlighter('''pip install dash==0.17.8rc2
-pip install dash-auth==0.0.4''', customStyle=styles.code_container),
+    dcc.SyntaxHighlighter('''pip install dash=={}
+        pip install dash-auth=={}'''.replace('    ', '').format(
+        dash.__version__,
+        dash_auth.__version__
+    ), customStyle=styles.code_container),
 
     dcc.Markdown('''
     Example Code:

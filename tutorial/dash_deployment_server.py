@@ -92,5 +92,12 @@ layout = html.Div(className='toc', children=[
         reusable_components.Chapter('Support',
                 '/dash-deployment-server/support',
                 """Having trouble deploying your app? Our dedicated support team is available to help you out.""")
+    ]),
+
+    reusable_components.Section("Reference", [
+        reusable_components.Chapter('Advanced Git',
+                '/dash-deployment-server/git',
+                'A reference for git commands and how they are used '
+                'with Dash Deployment Server.')
     ])
 ])

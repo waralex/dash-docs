@@ -1,6 +1,6 @@
 import dash_html_components as html
 import dash_core_components as dcc
-import dash_table_experiments as dt
+import dash_table
 
 from dash.dependencies import Input, Output
 
@@ -56,6 +56,10 @@ app.title = 'Dash User Guide and Documentation - Dash by Plotly'
 
 app.layout = html.Div(
     [
+        # Stores used by examples.
+        dcc.Store(id='memory'),
+        dcc.Store(id='local', storage_type='local'),
+        dcc.Store(id='session', storage_type='session'),
         header,
         html.Div([
             html.Div(id='wait-for-layout'),
@@ -67,7 +71,6 @@ app.layout = html.Div(
             ], className='container-width')
         ], className='background'),
         dcc.Location(id='location', refresh=False),
-        html.Div(dt.DataTable(rows=[{}]), style={'display': 'none'})
     ]
 )
 
@@ -83,18 +86,33 @@ def display_content(pathname):
                if chapters[c]['url'] == pathname]
 
     if matched and matched[0] != 'index':
-        if 'dash-deployment-server/' not in pathname:
+        if 'dash-deployment-server/' in pathname:
             content = html.Div([
                 html.Div(chapters[matched[0]]['content']),
                 html.Hr(),
-                dcc.Link(html.A('Back to the Table of Contents'), href='/'),
+                dcc.Link(html.A('Back to Dash Deployment Server Documentation'), href='/dash-deployment-server'),
+                html.Div(id='wait-for-page-{}'.format(pathname)),
+            ])
+        elif 'datatable/' in pathname:
+            content = html.Div([
+                html.Div(chapters[matched[0]]['content']),
+                html.Hr(),
+                dcc.Link(
+                    'Back to DataTable Documentation',
+                    href='/datatable'
+                ),
+                html.Br(),
+                dcc.Link(
+                    'Back to Dash Documentation',
+                    href='/'
+                ),
                 html.Div(id='wait-for-page-{}'.format(pathname)),
             ])
         else:
             content = html.Div([
                 html.Div(chapters[matched[0]]['content']),
                 html.Hr(),
-                dcc.Link(html.A('Back to Dash Deployment Server Documentation'), href='/dash-deployment-server'),
+                dcc.Link(html.A('Back to the Table of Contents'), href='/'),
                 html.Div(id='wait-for-page-{}'.format(pathname)),
             ])
 
@@ -116,17 +134,17 @@ app.index_string = '''
         <title>{%title%}</title>
         {%favicon%}
         {%css%}
-        <!-- Global site tag (gtag.js) - AdWords: 1009791370 -->
-        <script async src=""https://www.googletagmanager.com/gtag/js?id=AW-1009791370""></script>
-        <script>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-
-          gtag('config', 'AW-1009791370');
-        </script>
+        <!-- Google Tag Manager Tag -->
+        <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-N6T2RXG');</script>
     </head>
     <body>
+        <!-- Google Tag Manager Tag -->
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N6T2RXG"
+            height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         {%app_entry%}
         <footer>
             {%config%}
@@ -137,4 +155,4 @@ app.index_string = '''
 '''
 
 if __name__ == '__main__':
-    app.run_server(debug=True, threaded=True, port=8050)
+    app.run_server(debug=True, threaded=True, port=8060)
