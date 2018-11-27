@@ -1551,9 +1551,10 @@ os.environ['PLOTLY_API_KEY'] = 'your-api-key'
 
     #### Manage Permissions
 
-    Your app should now have a Dash Deployment Server login screen.
-    You can manage the permissions of the app in your list of files
-    at `https://<your-plotly-domain>/organize/home`.
+    Your app should now have a Dash Deployment Server login screen. If your app privacy
+    was set to `private` or `secret` in your config.py file, manage the permissions of 
+    the app in your list of files at `https://<your-plotly-domain>/organize/home`. See
+    [Dash App Privacy](/dash-deployment-server/privacy) for more information.
 
     ''')),
 
@@ -1590,7 +1591,94 @@ os.environ['PLOTLY_API_KEY'] = 'your-api-key'
 # Dash App Privacy
 # # # # # # #
 AppPrivacy = html.Div(children=[
-    html.H1('Dash App Privacy')
+    html.H1('Dash App Privacy'),
+
+    rc.Blockquote(),
+
+    dcc.Markdown(s('''
+    `dash-auth` gives you the ability to select one of three privacy 
+    modes for your Dash App. `Public`, `Private`, and `Secret` modes will are
+    explained below, followed by a section outlining how to manage users that
+    can view your app.
+    
+    For more details/examples on `dash-auth` see [Authentication](/authentication).
+
+    ***
+    
+    ## Privacy Modes
+    
+    #### Public
+    
+    An app using `dash-auth` with PlotlyOAuth set to `public` will require a login from
+    a valid Plotly Enterprise user to view the app but every user will have access.
+    
+    #### Private
+    
+    If PlotlyOAuth is set to `private`, only the user that created the app and Plotly Enterprise
+    users specifically added by them will be able to view the app. See "Managing Collaborators"
+    below for information about how to give another user view access to your app.
+    
+    #### Secret
+
+    Privacy to `secret` is equivalent to `private` above but it can
+    be bypassed with a link containing a `share_key` parameter. This
+    link can be found in the `https://<your-plotly-enterprise-server>.com/organize/home`
+    page.
+    
+    Once the app is visited using a `share_key` link, an auth cookie 
+    is generated and saved to the browser which will permit access
+    to the app until it's expiry even if the `share_key` is omitted.
+    
+    ***
+    
+    ## Managing Collaborators
+    
+    This can be done either from the UI at `https://<your-plotly-enterprise-server>.com/organize/home`
+    or using the API. Both methods are demonstrated below.
+    
+    #### Managing Collaborators from the UI
+    
+    Go to `https://<your-plotly-enterprise-server>.com/organize/home` and find your
+    app from your list of files. Then click on the share button and add
+    viewers that you want to give access to your app using the "viewers"
+    tab of the pop-up modal.
+    
+    ''')),
+
+    html.Img(
+        alt='Share App Button in the Organize Screen',
+        src='/assets/images/dds/share-app-organize.png',
+        style={
+            'width': '100%', 'border': 'thin lightgrey solid',
+            'border-radius': '4px'
+        }
+    ),
+
+    dcc.Markdown(s('''
+
+    > **Note that you can get the secret link from the "Link & Privacy" tab
+    of the above modal but setting the privacy of your app must be done in `config.py`
+    or when `dash-auth` is initialized in your app.**
+    
+    #### Managing Collaborators using the API
+    
+    App permissions can also be managed using the api endpoint 
+    `https://<your-plotly-enterprise-server>/v2/files/<fid>/collaborators` where `<fid>` is `username:id`
+    of your app. This endpoint supports a few types of requests: `GET` (list collaborators), `POST` (add new collaborators)
+    and `DELETE` (removes collaborators). For more information see `https://<your-plotly-enterprise-server>/v2/files#collaborators`
+    
+    You can find the info to form your app's `fid` at `https://<your-plotly-enterprise-server>.com/organize/home`:
+
+    ''')),
+
+    html.Img(
+        alt='Dash App fid',
+        src='/assets/images/dds/dash-app-fid.png',
+        style={
+            'width': '100%', 'border': 'thin lightgrey solid',
+            'border-radius': '4px'
+        }
+    ),
 ])
 
 
