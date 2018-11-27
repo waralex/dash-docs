@@ -95,18 +95,22 @@ class Tests(IntegrationTests):
             '/dash-deployment-server/ssh',
             '/dash-deployment-server/initialize',
             '/dash-deployment-server/application-structure',
+            '/dash-deployment-server/static-assets',
             '/dash-deployment-server/deployment',
             '/dash-deployment-server/app-authentication',
+            '/dash-deployment-server/private-packages',
             '/dash-deployment-server/configure-system-dependencies',
             '/dash-deployment-server/redis-database',
             '/dash-deployment-server/celery-process',
             '/dash-deployment-server/environment-variables',
             '/dash-deployment-server/map-local-directories',
             '/dash-deployment-server/staging-app',
+            '/dash-deployment-server/pdf-service',
             '/dash-deployment-server/troubleshooting',
             '/dash-deployment-server/analytics',
             '/dash-deployment-server/logs',
-            '/dash-deployment-server/support'
+            '/dash-deployment-server/support',
+            '/dash-deployment-server/git'
         ]
 
         def visit_and_snapshot(href):

@@ -37,7 +37,9 @@ from dash.dependencies import Input, Output
 from pyorbital.orbital import Orbital
 satellite = Orbital('TERRA')
 
-app = dash.Dash(__name__)
+external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
+
+app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 app.layout = html.Div(
     html.Div([
         html.H4('TERRA Satellite Live Feed'),
@@ -144,7 +146,7 @@ import dash_html_components as html
 app.layout = html.H1('The time is: ' + str(datetime.datetime.now()))
 
 if __name__ == '__main__':
-    app.run_server()
+    app.run_server(debug=True)
 ```
 
 then your app would display the time when the app was started.
@@ -164,7 +166,7 @@ def serve_layout():
 app.layout = serve_layout
 
 if __name__ == '__main__':
-    app.run_server()
+    app.run_server(debug=True)
 ```
 
 You can combine this with [time-expiring caching](/performance) and serve

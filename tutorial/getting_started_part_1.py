@@ -93,11 +93,26 @@ layout = html.Div([
            what is displayed here. This application is using a
            custom CSS stylesheet to modify the default styles of the elements.
            You can learn more in the [css tutorial](/external-resources),
-           but for now you can add
+           but for now you can initialize your app with
            ```
-           app.css.append_css({"external_url": "https://codepen.io/chriddyp/pen/bWLwgP.css"})
+           external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
+           
+           app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
            ```
-           to your file to get the same look and feel of these examples.
+           to get the same look and feel of these examples.
+           
+    ### Making your first change
+    
+    **New in dash 0.30.0 and dash-renderer 0.15.0**
+
+    Dash includes "hot-reloading", this features is activated by default when
+    you run your app with `app.run_server(debug=True)`. This means that Dash
+    will automatically refresh your browser when you make a change in your code.
+
+    Give it a try: change the title "Hello Dash" in your application or change the `x` or the `y` data. Your app should auto-refresh with your change.
+
+    > Don't like hot-reloading? You can turn this off with `app.run_server(dev_tools_hot_reload=False)`. 
+    > Learn more in [Dash Dev Tools documentation](/devtools) Questions? See the [community forum hot reloading discussion](https://community.plot.ly/t/announcing-hot-reload/14177).
 
     #### More about HTML
 

@@ -10,20 +10,28 @@ from tutorial.utils.component_block import ComponentBlock
 from tutorial.components import Syntax, Example
 
 examples = {
+    'confirm': tools.load_example('tutorial/examples/core_components/confirm.py'),
+    'confirm-provider': tools.load_example('tutorial/examples/core_components/confirm_provider.py'),
     'date_picker_single': tools.load_example('tutorial/examples/core_components/date_picker_single.py'),
     'date_picker_range': tools.load_example('tutorial/examples/core_components/date_picker_range.py'),
     'dropdown': tools.load_example('tutorial/examples/core_components/dropdown.py'),
-    'slider': tools.load_example('tutorial/examples/core_components/slider.py'),
-    'slider-updatemode': tools.load_example('tutorial/examples/core_components/slider_updatemode.py'),
+    'input-basic': tools.load_example('tutorial/examples/core_components/input-basic.py'),
+    'input-n_submit': tools.load_example('tutorial/examples/core_components/input-n_submit.py'),
     'rangeslider': tools.load_example('tutorial/examples/core_components/rangeslider.py'),
     'rangeslider-nonlinear': tools.load_example('tutorial/examples/core_components/rangeslider_nonlinear.py'),
-    'upload-image':  tools.load_example('tutorial/examples/core_components/upload-image.py'),
+    'slider': tools.load_example('tutorial/examples/core_components/slider.py'),
+    'slider-updatemode': tools.load_example('tutorial/examples/core_components/slider_updatemode.py'),
+    'store-clicks': tools.load_example('tutorial/examples/core_components/store_clicks.py'),
+    'store-share': tools.load_example('tutorial/examples/core_components/store_share.py'),
+    'tabs_callback':  tools.load_example('tutorial/examples/core_components/tabs_callback_graph.py'),
+    'tabs_simple':  tools.load_example('tutorial/examples/core_components/tabs_simple.py'),
+    'tabs_styled_with_classes':  tools.load_example('tutorial/examples/core_components/tabs_styled_with_classes.py'),
+    'tabs_styled_with_classes_css':  tools.read_file('assets/tabs-styled-with-classes.css'),
+    'tabs_styled_with_inline':  tools.load_example('tutorial/examples/core_components/tabs_styled_with_inline.py'),
+    'tabs_styled_with_props':  tools.load_example('tutorial/examples/core_components/tabs_styled_with_props.py'),
     'upload-datafile':  tools.load_example('tutorial/examples/core_components/upload-datafile.py'),
     'upload-gallery':  tools.load_example('tutorial/examples/core_components/upload-gallery.py'),
-    'confirm': tools.load_example('tutorial/examples/core_components/confirm.py'),
-    'confirm-provider': tools.load_example('tutorial/examples/core_components/confirm_provider.py'),
-    'tabs_simple':  tools.load_example('tutorial/examples/core_components/tabs_simple.py'),
-    'tabs_callback':  tools.load_example('tutorial/examples/core_components/tabs_callback_graph.py'),
+    'upload-image':  tools.load_example('tutorial/examples/core_components/upload-image.py'),
 }
 
 
@@ -133,9 +141,9 @@ dcc.Dropdown(
 
 dcc.Dropdown(
     options=[
-        {'label': 'New York City', 'value': 'NYC', 'disabled': 'True'},
+        {'label': 'New York City', 'value': 'NYC', 'disabled': True},
         {'label': 'Montreal', 'value': 'MTL'},
-        {'label': 'San Francisco', 'value': 'SF', 'disabled': 'True'}
+        {'label': 'San Francisco', 'value': 'SF', 'disabled': True}
     ],
 )''', customStyle=styles.code_container, language='python'),
 
@@ -169,7 +177,6 @@ Slider = html.Div(children=[
 dcc.Slider(
     min=0,
     max=10,
-    step=None,
     marks={
         0: '0 °F',
         3: '3 °F',
@@ -269,7 +276,6 @@ RangeSlider = html.Div(children=[
 dcc.RangeSlider(
     min=0,
     max=10,
-    step=None,
     marks={
         0: '0 °F',
         3: '3 °F',
@@ -397,6 +403,18 @@ Checklist = html.Div(children=[
 
 # Input
 Input = html.Div(children=[
+    html.H1('Input Examples and Reference'),
+    html.Hr(),
+    html.H3('Update Value on Keypress'),
+    Syntax(examples['input-basic'][0]),
+    Example(examples['input-basic'][1]),
+    html.Br(),
+    html.H3('Update Value on Enter/Blur'),
+    dcc.Markdown("`dcc.Input` has properties `n_submit`, which updates when the enter button is pressed, and `n_blur`"
+                 " , which updates when the component loses focus (e.g tab is pressed or the user clicks away)."),
+    Syntax(examples['input-n_submit'][0]),
+    Example(examples['input-n_submit'][1]),
+    html.Br(),
     html.H3('Input Properties'),
     generate_prop_table('Input')
 ])
@@ -487,8 +505,9 @@ Block code snippet:
 ```
 import dash
 
-app = dash.Dash()
-```
+external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
+
+app = dash.Dash(__name__, external_stylesheets=external_stylesheets)```
 ''')
 
 """),
@@ -990,10 +1009,23 @@ Textarea = html.Div(children=[
 # Tabs
 Tabs = html.Div(children=[
     html.H1('Tabs Examples and Reference'),
-    html.H2('Method 1. Content as Callback'),
     dcc.Markdown(s('''
+    The Tabs and Tab components can be used to create tabbed sections in your app.
     The `Tab` component controls the style and value of the individual tab
     and the `Tabs` component hold a collection of `Tab` components.
+
+    **Table of Contents**
+    -  Method 1. Content as Callback
+    -  Method 2. Content as Tab children
+    - Styling the Tabs component
+        - with CSS classes
+        - with inline styles
+        - with props
+    ***
+    ''')),
+
+    html.H2('Method 1. Content as Callback'),
+    dcc.Markdown(s('''
     Attach a callback to the Tabs `value` prop and update a container's `children`
     property in your callback.
     ''')),
@@ -1020,15 +1052,65 @@ Tabs = html.Div(children=[
     ),
     html.Div(examples['tabs_simple'][1], className='example-container'),
     dcc.Markdown(s('''
-    Note that this method has a couple of drawbacks:
-    - It requires that you compute the children property for each individual
+    Note that this method has a drawback: it requires that you compute the children property for each individual
     tab _upfront_ and send all of the tab's content over the network _at once_.
     The callback method allows you to compute the tab's content _on the fly_
     (that is, when the tab is clicked).
-    - There have been some bug reports that graphs are not getting resized
-    properly if this method is being used. See [dash-core-components#256](https://github.com/plotly/dash-core-components/issues/256)
-    for more details.
     ''')),
+
+    html.H2('Styling the Tabs component'),
+    html.H3('With CSS classes'),
+    dcc.Markdown(s('''
+    Styling the Tabs (and Tab) component can either be done using CSS classes by providing your own to the `className` property:
+    ''')),
+
+    dcc.SyntaxHighlighter(
+        examples['tabs_styled_with_classes'][0],
+        customStyle=styles.code_container
+    ),
+    html.Div(examples['tabs_styled_with_classes'][1], className='example-container'),
+
+    html.Br(),
+
+    dcc.Markdown(s('''
+    Notice how the container of the Tabs can be styled as well by supplying a class to the `parent_className` prop, which we use here to draw a border below it, positioning the actual Tabs (with padding) more in the center.
+    We also added `display: flex` and `justify-content: center` to the regular `Tab` components, so that labels with multiple lines will not break the flow of the text.
+
+    The corresponding CSS file (`assets/tabs.css`) looks like this. Save the file in an `assets` folder (it can be named anything you want). Dash will automatically include this CSS when the app is loaded. [Learn more about including CSS in your app here.](/external-resources)
+    ''')),
+
+    dcc.SyntaxHighlighter(
+        examples['tabs_styled_with_classes_css'],
+        language='css',
+        customStyle=styles.code_container
+    ),
+
+
+    html.Br(),
+
+    html.H3('With inline styles'),
+    dcc.Markdown(s('''
+    An alternative to providing CSS classes is to provide style dictionaries directly:
+    ''')),
+
+    dcc.SyntaxHighlighter(
+        examples['tabs_styled_with_inline'][0],
+        customStyle=styles.code_container
+    ),
+    html.Div(examples['tabs_styled_with_inline'][1], className='example-container'),
+
+    html.Br(),
+
+    dcc.Markdown(s('''
+    Lastly, you can set the colors of the Tabs components in the `color` prop, by specifying the "border", "primary", and "background" colors in a dict. Make sure you set them
+    all, if you're using them!
+    ''')),
+
+    dcc.SyntaxHighlighter(
+        examples['tabs_styled_with_props'][0],
+        customStyle=styles.code_container
+    ),
+    html.Div(examples['tabs_styled_with_props'][1], className='example-container'),
 
     html.Hr(),
 
@@ -1110,4 +1192,213 @@ ConfirmDialogProvider = html.Div([
     Syntax(examples['confirm-provider'][0]),
     Example(examples['confirm-provider'][1]),
     generate_prop_table('ConfirmDialogProvider')
+])
+
+
+Store = html.Div([
+    html.H1('Store component'),
+    dcc.Markdown(s('''
+    Store json data in the browser.
+    
+    ## limitations.
+    
+    - The store will not work properly if there is no callback associated.
+    - `modified_timestamp` is read only.
+    
+    ### local/session specifics
+    - The store will not work properly if it's not included in the initial layout.
+    - The total data of all stores should not exceed 10MB.
+    
+    ### Retrieving the initial store data
+    
+    If you use the `data` prop as an output, you cannot get the 
+    initial data on load with the `data` prop. To counter this, 
+    you can use the `modified_timestamp` as `Input` and the `data` as `State`.
+    
+    This limitation is due to the initial None callbacks blocking the true
+    data callback in the request queue.
+    
+    See https://github.com/plotly/dash-renderer/pull/81 for further discussion.
+    ''')),
+    html.H2('Store clicks example'),
+    Syntax(s('''
+    import dash
+
+    import dash_html_components as html
+    import dash_core_components as dcc
+    from dash.dependencies import Output, Input, State
+    from dash.exceptions import PreventUpdate
+    
+    # This stylesheet makes the buttons and table pretty.
+    external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
+    
+    app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
+    
+    app.layout = html.Div([
+        # The memory store will always get the default on page refreshes
+        dcc.Store(id='memory'),
+        # The local store will take the initial data
+        # only the first time the page is loaded
+        # and keep it until it is cleared.
+        dcc.Store(id='local', storage_type='local'),
+        # Same as the local store but will lose the data 
+        # when the browser/tab closes.
+        dcc.Store(id='session', storage_type='session'),
+    
+        html.Div([
+            html.Button('Click to store in memory', id='memory-button'),
+            html.Button('Click to store in localStorage', id='local-button'),
+            html.Button('Click to store in sessionStorage', id='session-button')
+        ]),
+    
+        html.Div([
+            html.Table([
+                html.Thead([
+                    html.Tr([
+                        html.Th('Memory clicks'),
+                        html.Th('Local clicks'),
+                        html.Th('Session clicks')
+                    ])
+                ]),
+                html.Tbody([
+                    html.Tr([
+                        html.Td(0, id='memory-clicks'),
+                        html.Td(0, id='local-clicks'),
+                        html.Td(0, id='session-clicks')
+                    ])
+                ])
+            ])
+        ])
+    ])
+    
+    # Create two callback for every store.
+    for store in ('memory', 'local', 'session'):
+    
+        # add a click to the appropriate store.
+        @app.callback(Output(store, 'data'),
+                      [Input('{}-button'.format(store), 'n_clicks')],
+                      [State(store, 'data')])
+        def on_click(n_clicks, data):
+            if n_clicks is None:
+                # Preventing the None callbacks is important with the store component,
+                # you don't want to update the store for nothing.
+                raise PreventUpdate
+    
+            # Give a default data dict with 0 clicks if there's no data.
+            data = data or {'clicks': 0}
+    
+            data['clicks'] = data['clicks'] + 1
+            return data
+    
+        # output the stored clicks in the table cell.
+        @app.callback(Output('{}-clicks'.format(store), 'children'),
+                      [Input(store, 'modified_timestamp')],
+                      [State(store, 'data')])
+        def on_data(ts, data):
+            if ts is None:
+                raise PreventUpdate
+    
+            data = data or {}
+    
+            return data.get('clicks', 0)
+    
+    
+    if __name__ == '__main__':
+        app.run_server(debug=True, port=8077, threaded=True)
+
+    ''')),
+    Example(examples['store-clicks'][1]),
+
+    html.H2('Share data between callbacks'),
+
+    Syntax(s('''
+    import collections
+    import dash
+    import pandas as pd
+    
+    from dash.dependencies import Output, Input
+    from dash.exceptions import PreventUpdate
+    
+    import dash_html_components as html
+    import dash_core_components as dcc
+    import dash_table_experiments as dte
+    
+    app = dash.Dash(__name__)
+    
+    df = pd.read_csv(
+        'https://raw.githubusercontent.com/'
+        'plotly/datasets/master/gapminderDataFiveYear.csv')
+    
+    countries = set(df['country'])
+    
+    
+    app.layout = html.Div([
+        dcc.Store(id='memory-output'),
+        dcc.Dropdown(id='memory-countries', options=[
+            {'value': x, 'label': x} for x in countries
+        ], multi=True, value=['Canada', 'United States']),
+        dcc.Dropdown(id='memory-field', options=[
+            {'value': 'lifeExp', 'label': 'Life expectancy'},
+            {'value': 'gdpPercap', 'label': 'GDP per capita'},
+        ], value='lifeExp'),
+        html.Div([
+            dcc.Graph(id='memory-graph'),
+            dte.DataTable(rows=[{}], id='memory-table'),
+        ])
+    ])
+    
+    
+    @app.callback(Output('memory-output', 'data'),
+                  [Input('memory-countries', 'value')])
+    def filter_countries(countries_selected):
+        if not countries_selected:
+            # Return all the records on initial load/no country selected.
+            return df.to_dict('records')
+    
+        filtered = df.query('country in @countries_selected')
+    
+        return filtered.to_dict('records')
+    
+    
+    @app.callback(Output('memory-table', 'rows'),
+                  [Input('memory-output', 'data')])
+    def on_data_set_table(data):
+        if data is None:
+            raise PreventUpdate
+    
+        return data
+    
+    
+    @app.callback(Output('memory-graph', 'figure'),
+                  [Input('memory-output', 'data'),
+                   Input('memory-field', 'value')])
+    def on_data_set_graph(data, field):
+        if data is None:
+            raise PreventUpdate
+    
+        aggregation = collections.defaultdict(
+            lambda: collections.defaultdict(list)
+        )
+    
+        for row in data:
+    
+            a = aggregation[row['country']]
+    
+            a['name'] = row['country']
+            a['mode'] = 'lines+markers'
+    
+            a['x'].append(row[field])
+            a['y'].append(row['year'])
+    
+        return {
+            'data': aggregation.values()
+        }
+    
+    
+    if __name__ == '__main__':
+        app.run_server(debug=True, threaded=True, port=10450)
+    ''')),
+    Example(examples['store-share'][1]),
+
+    generate_prop_table('Store'),
 ])
