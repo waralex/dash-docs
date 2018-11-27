@@ -1587,6 +1587,14 @@ os.environ['PLOTLY_API_KEY'] = 'your-api-key'
 ])
 
 # # # # # # #
+# Dash App Privacy
+# # # # # # #
+AppPrivacy = html.Div(children=[
+    html.H1('Dash App Privacy')
+])
+
+
+# # # # # # #
 # Adding Private Python Packages
 # # # # # # #
 PrivatePackages = html.Div(children=[
