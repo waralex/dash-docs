@@ -306,6 +306,13 @@ chapters = {
         'description': 'Radio item examples, properties, and reference.'
     },
 
+    'button-examples': {
+        'url': '/dash-core-components/button',
+        'content': examples.Button,
+        'name': 'Button Component',
+        'description': 'Button examples, properties, and reference.'
+    },
+
     'datepickersingle-examples': {
         'url': '/dash-core-components/datepickersingle',
         'content': examples.DatePickerSingle,

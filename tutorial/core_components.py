@@ -198,13 +198,15 @@ dcc.RadioItems(
 
     html.Hr(),
 
-    html.H3("Button"),
+    html.H3(dcc.Link('Button', href='/dash-core-components/button')),
     dcc.SyntaxHighlighter(
         examples['button'][0],
         customStyle=styles.code_container, language='python'
     ),
     html.Div(examples['button'][1], className='example-container'),
-
+    html.Br(),
+    dcc.Link(html.A('More Button Examples and Reference'),
+             href="/dash-core-components/button"),
     html.P([
         '''For more on `dash.dependencies.State`, see the tutorial on ''',
         dcc.Link('Dash State', href='/state'),
