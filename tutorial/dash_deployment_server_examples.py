@@ -1597,7 +1597,7 @@ AppPrivacy = html.Div(children=[
 
     dcc.Markdown(s('''
     `dash-auth` gives you the ability to select one of three privacy 
-    modes for your Dash App. `Public`, `Private`, and `Secret` modes will are
+    modes for your Dash App via PlotlyOAuth. `Public`, `Private`, and `Secret` modes are
     explained below, followed by a section outlining how to manage users that
     can view your app.
     
@@ -1612,6 +1612,11 @@ AppPrivacy = html.Div(children=[
     An app using `dash-auth` with PlotlyOAuth set to `public` will require a login from
     a valid Plotly Enterprise user to view the app but every user will have access.
     
+    > *If you are using the [Dash On Premise Sample App](https://github.com/plotly/dash-on-premise-sample-app)
+    as a template for your app, you will need to set `REQUIRE_LOGIN = True` in your `config.py` file
+    to initialize PlotlyOAuth when privacy is set to `public`. Otherwise, everyone with access
+    to the Dash server will be able to view the app.*
+    
     #### Private
     
     If PlotlyOAuth is set to `private`, only the user that created the app and Plotly Enterprise
@@ -1620,7 +1625,7 @@ AppPrivacy = html.Div(children=[
     
     #### Secret
 
-    Privacy to `secret` is equivalent to `private` above but it can
+    Privacy set to `secret` is equivalent to `private` above but it can
     be bypassed with a link containing a `share_key` parameter. This
     link can be found in the `https://<your-plotly-enterprise-server>.com/organize/home`
     page.
