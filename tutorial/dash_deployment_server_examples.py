@@ -1607,6 +1607,13 @@ AppPrivacy = html.Div(children=[
     
     ## Privacy Modes
     
+    #### No Authentication
+    
+    Dash Apps that don't initialize PlotlyOAuth will be viewable by everyone with access
+    to your Dash Server. If you are using the [Dash On Premise Sample App](https://github.com/plotly/dash-on-premise-sample-app),
+    this is achieved when `REQUIRE_LOGIN = True` and `privacy = 'public'` in your
+    `config.py` file (which is the default configuration).
+    
     #### Public
     
     An app using `dash-auth` with PlotlyOAuth set to `public` will require a login from
@@ -1614,8 +1621,7 @@ AppPrivacy = html.Div(children=[
     
     > *If you are using the [Dash On Premise Sample App](https://github.com/plotly/dash-on-premise-sample-app)
     as a template for your app, you will need to set `REQUIRE_LOGIN = True` in your `config.py` file
-    to initialize PlotlyOAuth when privacy is set to `public`. Otherwise, everyone with access
-    to the Dash server will be able to view the app.*
+    to initialize PlotlyOAuth when privacy is set to `public`.*
     
     #### Private
     
