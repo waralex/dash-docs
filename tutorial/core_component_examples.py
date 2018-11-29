@@ -1434,3 +1434,19 @@ Store = html.Div([
 
     generate_prop_table('Store'),
 ])
+
+
+LogoutButton = html.Div([
+    html.H1('LogoutButton'),
+    dcc.Markdown(s('''
+    
+    
+    ''')),
+
+    Syntax('''
+    import dash
+    import dash_html_components as dcc
+    import dash_core_components
+    '''),
+    generate_prop_table('LogoutButton')
+])
