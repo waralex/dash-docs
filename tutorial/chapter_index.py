@@ -638,6 +638,13 @@ chapters = {
         'content': devtools.layout,
         'name': 'Dev tools',
         'description': 'Dash dev tools reference'
+    },
+
+    'logout-button': {
+        'url': '/dash-core-components/logout_button',
+        'content': examples.LogoutButton,
+        'name': 'Logout button',
+        'description': 'LogoutButton examples, properties and reference'
     }
 
 }

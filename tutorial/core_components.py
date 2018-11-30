@@ -483,5 +483,22 @@ confirm = dcc.ConfirmDialogProvider(
 
     html.Br(),
 
+    dcc.Markdown('***'),
+    html.H3(dcc.Link('Logout Button'),
+            href='/dash-core-components/logout_button'),
+
+    dcc.Markdown(s('''
+    The logout button can be used to perform logout mechanism.
+    
+    It's a simple form with a submit button, when the button is clicked,
+    it will submit the form to the `logout_url` props.
+    
+    Please note that no authentication is performed in dash by default
+    and you have to implements the authentication yourself.
+    ''')),
+
+    html.Link('More Logout Button Examples and Reference',
+              href='/dash-core-components/logout_button'),
+
     html.Div(id='hidden', style={'display': 'none'})
 ])
