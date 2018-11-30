@@ -497,8 +497,8 @@ confirm = dcc.ConfirmDialogProvider(
     and you have to implements the authentication yourself.
     ''')),
 
-    html.Link('More Logout Button Examples and Reference',
-              href='/dash-core-components/logout_button'),
+    dcc.Link('More Logout Button Examples and Reference',
+             href='/dash-core-components/logout_button'),
 
     html.Div(id='hidden', style={'display': 'none'})
 ])
