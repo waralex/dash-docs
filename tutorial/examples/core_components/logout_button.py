@@ -21,9 +21,14 @@ def route_login():
         flask.abort(401)
 
     # actual implementation should verify the password.
+    # Recommended to only keep a hash in database and use something like
+    # bcrypt to encrypt the password and check the hashed results.
 
     # Return a redirect with
     rep = flask.redirect(_app_route)
+
+    # Here we just store the given username in a cookie.
+    # Actual session cookies should be signed or use a JWT token.
     rep.set_cookie('custom-auth-session', username)
     return rep
 
@@ -49,10 +54,12 @@ login_form = html.Div([
 
 def dynamic_layout():
     if not flask.has_request_context():
-        # return a full layout
+        # Functions layout get validated before the first request.
         return login_form
     session_cookie = flask.request.cookies.get('custom-auth-session')
+
     if not session_cookie:
+        # If there's no cookie we need to login.
         return login_form
     return html.Div([
         html.Div('Hello {}'.format(session_cookie)),
