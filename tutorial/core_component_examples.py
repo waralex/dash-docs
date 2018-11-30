@@ -1458,6 +1458,7 @@ LogoutButton = html.Div([
     ### Session/cookies
     - [flask-session](https://pythonhosted.org/Flask-Session/)
     - [itsdangerous](https://pythonhosted.org/itsdangerous/)
+    - [pyjwt](https://github.com/jpadilla/pyjwt)
     ''')),
 
     html.H2('Custom authentication example'),
