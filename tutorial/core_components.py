@@ -484,8 +484,8 @@ confirm = dcc.ConfirmDialogProvider(
     html.Br(),
 
     dcc.Markdown('***'),
-    html.H3(dcc.Link('Logout Button'),
-            href='/dash-core-components/logout_button'),
+    html.H3(dcc.Link('Logout Button',
+                     href='/dash-core-components/logout_button')),
 
     dcc.Markdown(s('''
     The logout button can be used to perform logout mechanism.
