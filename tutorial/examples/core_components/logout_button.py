@@ -70,6 +70,4 @@ def dynamic_layout():
 app.layout = dynamic_layout
 
 if __name__ == '__main__':
-    app.scripts.config.serve_locally = True
     app.run_server(debug=True)
-
