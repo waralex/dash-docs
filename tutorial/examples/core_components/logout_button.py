@@ -3,6 +3,7 @@ import flask
 import dash
 import dash_html_components as html
 import dash_core_components as dcc
+from dash.dependencies import Output, Input
 
 app = dash.Dash(__name__)
 
@@ -52,7 +53,12 @@ login_form = html.Div([
 ])
 
 
-def dynamic_layout():
+app.layout = html.Div(id='custom-auth-frame')
+
+
+@app.callback(Output('custom-auth-frame', 'children'),
+              [Input('custom-auth-frame', 'id')])
+def dynamic_layout(_):
     if not flask.has_request_context():
         # Functions layout get validated before the first request.
         return login_form
@@ -66,8 +72,6 @@ def dynamic_layout():
         dcc.LogoutButton(logout_url='/custom-auth/logout')
     ])
 
-
-app.layout = dynamic_layout
 
 if __name__ == '__main__':
     app.run_server(debug=True)

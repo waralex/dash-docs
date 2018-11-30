@@ -1462,7 +1462,7 @@ LogoutButton = html.Div([
 
     html.H2('Custom authentication example'),
 
-    Example(examples['logout_button'][0]),
+    Syntax(examples['logout_button'][0]),
     Example(examples['logout_button'][1]),
 
     generate_prop_table('LogoutButton')
