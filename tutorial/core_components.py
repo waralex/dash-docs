@@ -120,7 +120,7 @@ dcc.Input(
     value=''
 )''', language='python', customStyle=styles.code_container),
     html.Br(),
-    dcc.Link(html.A('Input Reference'),
+    dcc.Link(html.A('More Input Examples and Reference'),
              href="/dash-core-components/input"),
 
     html.Hr(),
@@ -198,13 +198,15 @@ dcc.RadioItems(
 
     html.Hr(),
 
-    html.H3("Button"),
+    html.H3(dcc.Link('Button', href='/dash-core-components/button')),
     dcc.SyntaxHighlighter(
         examples['button'][0],
         customStyle=styles.code_container, language='python'
     ),
     html.Div(examples['button'][1], className='example-container'),
-
+    html.Br(),
+    dcc.Link(html.A('More Button Examples and Reference'),
+             href="/dash-core-components/button"),
     html.P([
         '''For more on `dash.dependencies.State`, see the tutorial on ''',
         dcc.Link('Dash State', href='/state'),
@@ -284,7 +286,7 @@ dcc.DatePickerRange(
         className="image-link",
         href="https://github.com/plotly/dash-table-experiments",
         children=html.Img(
-            src="https://github.com/plotly/dash-table-experiments/raw/master/images/DataTable.gif",
+            src="assets/images/gallery/DataTable.gif",
             alt="Example of a Dash Interactive Table"
         )
     ),

@@ -15,6 +15,8 @@ examples = {
     'date_picker_single': tools.load_example('tutorial/examples/core_components/date_picker_single.py'),
     'date_picker_range': tools.load_example('tutorial/examples/core_components/date_picker_range.py'),
     'dropdown': tools.load_example('tutorial/examples/core_components/dropdown.py'),
+    'input-basic': tools.load_example('tutorial/examples/core_components/input-basic.py'),
+    'input-n_submit': tools.load_example('tutorial/examples/core_components/input-n_submit.py'),
     'rangeslider': tools.load_example('tutorial/examples/core_components/rangeslider.py'),
     'rangeslider-nonlinear': tools.load_example('tutorial/examples/core_components/rangeslider_nonlinear.py'),
     'slider': tools.load_example('tutorial/examples/core_components/slider.py'),
@@ -30,6 +32,8 @@ examples = {
     'upload-datafile':  tools.load_example('tutorial/examples/core_components/upload-datafile.py'),
     'upload-gallery':  tools.load_example('tutorial/examples/core_components/upload-gallery.py'),
     'upload-image':  tools.load_example('tutorial/examples/core_components/upload-image.py'),
+    'button_basic': tools.load_example('tutorial/examples/core_components/button_basic.py'),
+    'button_n_clicks_timestamp': tools.load_example('tutorial/examples/core_components/button_n_clicks_timestamp.py')
 }
 
 
@@ -401,6 +405,18 @@ Checklist = html.Div(children=[
 
 # Input
 Input = html.Div(children=[
+    html.H1('Input Examples and Reference'),
+    html.Hr(),
+    html.H3('Update Value on Keypress'),
+    Syntax(examples['input-basic'][0]),
+    Example(examples['input-basic'][1]),
+    html.Br(),
+    html.H3('Update Value on Enter/Blur'),
+    dcc.Markdown("`dcc.Input` has properties `n_submit`, which updates when the enter button is pressed, and `n_blur`"
+                 " , which updates when the component loses focus (e.g tab is pressed or the user clicks away)."),
+    Syntax(examples['input-n_submit'][0]),
+    Example(examples['input-n_submit'][1]),
+    html.Br(),
     html.H3('Input Properties'),
     generate_prop_table('Input')
 ])
@@ -410,6 +426,33 @@ Input = html.Div(children=[
 RadioItems = html.Div(children=[
     html.H3('RadioItem Properties'),
     generate_prop_table('RadioItems')
+])
+
+# Button
+Button = html.Div(children=[
+    html.H1('Button Examples and Reference'),
+    html.Hr(),
+    html.Br(),
+    html.H3('Button Basic Example'),
+    html.Hr(),
+    dcc.Markdown("An example of a default button without any extra properties \
+    and `n_clicks` in the callback. `n_clicks` is an integer that represents \
+    that number of times the button has been clicked. Note that the original \
+    value is `None`."),
+    Syntax(examples['button_basic'][0]),
+    Example(examples['button_basic'][1]),
+    html.Br(),
+    html.H3('Button with n_clicks_timestamp'),
+    html.Hr(),
+    dcc.Markdown("This example utilizes the `n_clicks_timestamp` property, \
+    which returns an integer representation of time. This is useful for \
+    determining when the button was last clicked."),
+    Syntax(examples['button_n_clicks_timestamp'][0]),
+    Example(examples['button_n_clicks_timestamp'][1]),
+    html.Br(),
+    html.H3('Button Properties'),
+    html.Hr(),
+    generate_prop_table('Button', html)
 ])
 
 

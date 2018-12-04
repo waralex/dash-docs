@@ -136,7 +136,7 @@ def get_dataframe(component_name, lib=dcc):
     with open(path, 'r') as f:
         metadata = json.load(f, object_hook=object_hook_handler)
 
-    if lib is dcc:
+    if lib in [dcc, html]:
         prefix = 'src/components/'
         suffix = '.react.js'
         fullString = prefix+component_name+suffix

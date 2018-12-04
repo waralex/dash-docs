@@ -306,6 +306,13 @@ chapters = {
         'description': 'Radio item examples, properties, and reference.'
     },
 
+    'button-examples': {
+        'url': '/dash-core-components/button',
+        'content': examples.Button,
+        'name': 'Button Component',
+        'description': 'Button examples, properties, and reference.'
+    },
+
     'datepickersingle-examples': {
         'url': '/dash-core-components/datepickersingle',
         'content': examples.DatePickerSingle,
@@ -497,6 +504,14 @@ chapters = {
         'name': 'Support',
         'description': 'Having trouble deploying your app? Our dedicated '
         'support team is available to help you out.'
+    },
+
+    'git-examples': {
+        'url': '/dash-deployment-server/git',
+        'content': dds_examples.Git,
+        'name': 'Advanced Git',
+        'description': 'A reference for git commands and how they are used '
+        'with Dash Deployment Server.'
     },
 ### End Dash Deployment Server ###
 

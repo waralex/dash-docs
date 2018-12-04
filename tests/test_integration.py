@@ -89,7 +89,8 @@ class Tests(IntegrationTests):
             '/dash-core-components/datepickerrange',
             '/dash-core-components/markdown',
             '/dash-core-components/upload',
-            '/dash-core-components/tabs'
+            '/dash-core-components/tabs',
+            '/dash-core-components/button'
 
         ] + [
             '/dash-deployment-server/ssh',
@@ -109,7 +110,8 @@ class Tests(IntegrationTests):
             '/dash-deployment-server/troubleshooting',
             '/dash-deployment-server/analytics',
             '/dash-deployment-server/logs',
-            '/dash-deployment-server/support'
+            '/dash-deployment-server/support',
+            '/dash-deployment-server/git'
         ]
 
         def visit_and_snapshot(href):
