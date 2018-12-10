@@ -1776,7 +1776,9 @@ Troubleshooting = html.Div(children=[
             to the remote server, run `git push plotly your-branch-name:master`. 
 
             &nbsp; 
-            ''')
+            '''
+        ))
+    ])
 ])
 
 # # # # # # #
