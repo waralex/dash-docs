@@ -6,7 +6,9 @@ from tutorial import styles
 
 def ComponentBlock(example_string, **kwargs):
     scope = {}
-    converted_string = example_string.replace('dcc.', 'component = dcc.')
+    converted_string = example_string.replace(
+        'dcc.', 'component = dcc.').replace(
+            'daq.', 'component = daq.')
     try:
         exec(converted_string, scope)
     except Exception as e:
@@ -35,3 +37,4 @@ def ComponentBlock(example_string, **kwargs):
             }) if 'Slider' in example_string else {})
         )
     ])
+
