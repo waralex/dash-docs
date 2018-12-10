@@ -2362,8 +2362,9 @@ Troubleshooting = html.Div(children=[
             &nbsp; 
             '''
         )),
-
-dcc.Markdown(s('''
+    ]),
+        
+    dcc.Markdown(s('''
     ***
 
     #### Problems Using a Celery Process?
