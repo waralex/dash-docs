@@ -467,7 +467,5 @@ confirm = dcc.ConfirmDialogProvider(
 
     html.Br(),
 
-    dcc.Markdown('***'),
-
     html.Div(id='hidden', style={'display': 'none'})
 ])
