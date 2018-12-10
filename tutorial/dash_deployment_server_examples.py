@@ -2361,8 +2361,7 @@ Troubleshooting = html.Div(children=[
 
             &nbsp; 
             '''
-        ))
-    ])
+        )),
 
 dcc.Markdown(s('''
     ***
@@ -2403,7 +2402,6 @@ dcc.Markdown(s('''
             [Authenticating to Dash Deployment Server with SSH](/dash-deployment-server/ssh).
              ''')),
     ]),
-
 
 ])
 
