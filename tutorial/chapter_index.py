@@ -6,6 +6,7 @@ from tutorial import d3
 from tutorial import dash_deployment_server
 from tutorial import dash_deployment_server_examples as dds_examples
 from tutorial import dash_table_index
+from tutorial import daq
 from tutorial import deployment
 from tutorial import external_css_and_js
 from tutorial import gallery
@@ -154,6 +155,15 @@ chapters = {
                        'and more.'
     },
 
+    'dashdaq': {
+        'url': '/dash-daq',
+        'content': daq.layout,
+        'name': 'Dash DAQ Components',
+        'description': 'Beautifully styled, premium components for data \
+        acquisition user interfaces.'
+    },
+
+    
     'plugins': {
         'url': '/plugins',
         'content': plugins.layout,
@@ -361,14 +371,7 @@ chapters = {
         'name': 'Upload Component',
         'description': 'Upload examples, properties, and reference.'
     },
-    ### dash-daq ###
-    'dashdaq': {
-        'url': 'https://www.dashdaq.io/',
-        'content': introduction.layout,
-        'name':'Dash DAQ Components',
-        'description': '$840/developer/year. ' \
-                       'Beautifully styled, premium components for data acquisition user interfaces.'
-    },
+
 ### End Components ###
 
 ### Start Dash Deployment Server ###
