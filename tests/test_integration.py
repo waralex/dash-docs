@@ -98,6 +98,7 @@ class Tests(IntegrationTests):
             '/dash-deployment-server/static-assets',
             '/dash-deployment-server/deployment',
             '/dash-deployment-server/app-authentication',
+            '/dash-deployment-server/privacy',
             '/dash-deployment-server/private-packages',
             '/dash-deployment-server/configure-system-dependencies',
             '/dash-deployment-server/redis-database',

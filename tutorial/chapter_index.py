@@ -415,6 +415,13 @@ chapters = {
         'description': 'Adding Authentication to your Dash App'
     },
 
+    'app-privacy': {
+        'url': '/dash-deployment-server/privacy',
+        'content': dds_examples.AppPrivacy,
+        'name': 'Dash App Privacy',
+        'description': 'Dash App Privacy and Managing Collaborators'
+    },
+
     'private-packages-examples': {
         'url': '/dash-deployment-server/private-packages',
         'content': dds_examples.PrivatePackages,
