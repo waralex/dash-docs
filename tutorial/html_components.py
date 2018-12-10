@@ -34,7 +34,7 @@ html.Div([
         'following HTML in your web-app:'
     ),
     dcc.SyntaxHighlighter('''<div>
-    <h1>Hello</h1>
+    <h1>Hello Dash</h1>
     <div>
         <p>Dash converts Python classes into HTML</p>
         <p>This conversion happens behind the scenes by Dash's JavaScript front-end</p>
@@ -77,7 +77,7 @@ html.Div([
                  containerProps={'className': 'example-container'}),
 
     dcc.Markdown('''
-        If you're using HTML components, then you also access to
+        If you're using HTML components, then you also have access to
         properties like `style`, `class`, and `id`.
         All of these attributes are available in the Python classes.
 

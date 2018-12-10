@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 import dash_core_components as dcc
 import dash_html_components as html
-import dash_table_experiments as dt
 import dash
 from dash.dependencies import Input, Output
 
@@ -21,7 +20,7 @@ import unittest
 
 from .IntegrationTests import IntegrationTests
 from .utils import assert_clean_console, invincible, wait_for
-from tutorial.run import app
+from run import app
 
 # Download geckodriver: https://github.com/mozilla/geckodriver/releases
 # And add to path:
@@ -58,8 +57,9 @@ class Tests(IntegrationTests):
     def snapshot(self, name):
         if 'PERCY_PROJECT' in os.environ and 'PERCY_TOKEN' in os.environ:
             python_version = sys.version.split(' ')[0]
-            print('Percy Snapshot {}'.format(python_version))
-            self.percy_runner.snapshot(name=name)
+            if '2.7' in python_version:
+                print('>>> Percy Snapshot {} - {}'.format(python_version, name))
+                self.percy_runner.snapshot(name=name)
 
     def test_docs(self):
         self.startServer(app, '/')
@@ -88,24 +88,29 @@ class Tests(IntegrationTests):
             '/dash-core-components/datepickerrange',
             '/dash-core-components/markdown',
             '/dash-core-components/upload',
-            '/dash-core-components/tabs'
+            '/dash-core-components/tabs',
+            '/dash-core-components/button'
 
         ] + [
             '/dash-deployment-server/ssh',
             '/dash-deployment-server/initialize',
             '/dash-deployment-server/application-structure',
+            '/dash-deployment-server/static-assets',
             '/dash-deployment-server/deployment',
             '/dash-deployment-server/app-authentication',
+            '/dash-deployment-server/private-packages',
             '/dash-deployment-server/configure-system-dependencies',
             '/dash-deployment-server/redis-database',
             '/dash-deployment-server/celery-process',
-            '/dash-deployment-server/enviornment-variables',
+            '/dash-deployment-server/environment-variables',
             '/dash-deployment-server/map-local-directories',
             '/dash-deployment-server/staging-app',
+            '/dash-deployment-server/pdf-service',
             '/dash-deployment-server/troubleshooting',
             '/dash-deployment-server/analytics',
             '/dash-deployment-server/logs',
-            '/dash-deployment-server/support'
+            '/dash-deployment-server/support',
+            '/dash-deployment-server/git'
         ]
 
         def visit_and_snapshot(href):

@@ -120,7 +120,7 @@ dcc.Input(
     value=''
 )''', language='python', customStyle=styles.code_container),
     html.Br(),
-    dcc.Link(html.A('Input Reference'),
+    dcc.Link(html.A('More Input Examples and Reference'),
              href="/dash-core-components/input"),
 
     html.Hr(),
@@ -198,13 +198,15 @@ dcc.RadioItems(
 
     html.Hr(),
 
-    html.H3("Button"),
+    html.H3(dcc.Link('Button', href='/dash-core-components/button')),
     dcc.SyntaxHighlighter(
         examples['button'][0],
         customStyle=styles.code_container, language='python'
     ),
     html.Div(examples['button'][1], className='example-container'),
-
+    html.Br(),
+    dcc.Link(html.A('More Button Examples and Reference'),
+             href="/dash-core-components/button"),
     html.P([
         '''For more on `dash.dependencies.State`, see the tutorial on ''',
         dcc.Link('Dash State', href='/state'),
@@ -274,12 +276,9 @@ dcc.DatePickerRange(
     [Create Your First Dash App, Part 1](/getting-started-part-1)
     for an example.
 
-    Dash is currently incubating an interactive table component that provides
-    built-in filtering, row-selection, editing, and sorting.
-    Prototypes of this component are being developed in the
-    [`dash-table-experiments`](https://github.com/plotly/dash-table-experiments)
-    repository. Join the discussion in the
-    [Dash Community Forum](https://community.plot.ly/t/display-tables-in-dash/4707/38).
+    Dash provides an interactive `DataTable` as part of the `data-table`
+    project. This table includes built-in filtering, row-selection,
+    editing, and sorting.
 
     '''.replace('    ', '')),
 
@@ -287,14 +286,14 @@ dcc.DatePickerRange(
         className="image-link",
         href="https://github.com/plotly/dash-table-experiments",
         children=html.Img(
-            src="https://github.com/plotly/dash-table-experiments/raw/master/images/DataTable.gif",
+            src="assets/images/gallery/DataTable.gif",
             alt="Example of a Dash Interactive Table"
         )
     ),
 
 
     dcc.Markdown('''
-    [View the Dash Table Experiments Project](https://github.com/plotly/dash-table-experiments) | [Join the discussion](https://community.plot.ly/t/display-tables-in-dash/4707/38)
+    [View the docs](/datatable) or [View the source](https://github.com/plotly/dash-table)
 
     ***
     '''.replace('    ', '')),
@@ -357,7 +356,7 @@ dcc.Graph(
                 y=[219, 146, 112, 127, 124, 180, 236, 207, 236, 263,
                    350, 430, 474, 526, 488, 537, 500, 439],
                 name='Rest of world',
-                marker=go.Marker(
+                marker=go.bar.Marker(
                     color='rgb(55, 83, 109)'
                 )
             ),
@@ -367,7 +366,7 @@ dcc.Graph(
                 y=[16, 13, 10, 11, 28, 37, 43, 55, 56, 88, 105, 156, 270,
                    299, 340, 403, 549, 499],
                 name='China',
-                marker=go.Marker(
+                marker=go.bar.Marker(
                     color='rgb(26, 118, 255)'
                 )
             )
@@ -375,11 +374,11 @@ dcc.Graph(
         layout=go.Layout(
             title='US Export of Plastic Scrap',
             showlegend=True,
-            legend=go.Legend(
+            legend=go.layout.Legend(
                 x=0,
                 y=1.0
             ),
-            margin=go.Margin(l=40, r=0, t=40, b=30)
+            margin=go.layout.Margin(l=40, r=0, t=40, b=30)
         )
     ),
     style={'height': 300},
@@ -394,7 +393,7 @@ dcc.Graph(
     html.H3(dcc.Link('ConfirmDialog', href='/dash-core-components/confirm')),
 
     dcc.Markdown('''
-The `dcc.ConfirmDialog` component send a dialog to the browser 
+The `dcc.ConfirmDialog` component send a dialog to the browser
 asking the user to confirm or cancel with a custom message.
     '''),
 
@@ -435,6 +434,52 @@ confirm = dcc.ConfirmDialogProvider(
 
     dcc.Link('More ConfirmDialogProvider Examples and Reference',
              href='/dash-core-components/confirm-provider'),
+
+    html.Br(),
+
+    dcc.Markdown('***'),
+
+    html.H3(dcc.Link('Store', href='/dash-core-components/store')),
+
+    dcc.Markdown(s('''
+    The store component can be used to keep data in the visitor's browser. 
+    The data is scoped to the user accessing the page.
+    
+    **Three types of storage (`storage_type` prop):**
+    
+    - `memory`: default, keep the data as long the page is not refreshed.
+    - `local`: keep the data until it is manually cleared.
+    - `session`: keep the data until the browser/tab closes.
+    
+    _For `local`/`session`, the data is serialized as json when stored._
+    ''')),
+
+    ComponentBlock(s('''
+    import dash_core_components as dcc
+    
+    store = dcc.Store(id='my-store', data={'my-data': 'data'})
+    ''')),
+
+    dcc.Markdown('_The store must be used with callbacks_'),
+
+    dcc.Link('More Store Examples and Reference',
+             href='/dash-core-components/store'),
+
+    html.Br(),
+
+    dcc.Markdown('***'),
+
+    html.A(
+        className="image-link",
+        href="http://dash-daq.netlify.com/#Gauge",
+        children=html.Img(
+            src="https://s3-us-west-1.amazonaws.com/plotly-tutorials/static/marketing/dash/guage.png",
+            alt="Dash DAQ Guage Component"
+        )
+    ),
+
+    html.A('More Guage Examples and Reference',
+             href='http://dash-daq.netlify.com/#Gauge'),
 
     html.Br(),
 

@@ -2,7 +2,7 @@ from dash.dependencies import Input, Output
 import dash_core_components as dcc
 import dash_html_components as html
 import styles
-from tutorial.server import app
+from server import app
 
 
 def s(string_block):
@@ -276,11 +276,8 @@ def generate_instructions(chapter, platform):
 
                 #### Modify `config.py`
 
+                You only need to modify this file if you want your app to be private/secret or you want to use PlotlyAuth.
                 Read through `config.py` and modify the values as necessary.
-                If Dash Deployment Server was set up with "path-based routing"
-                (the default), then you will just need to change the
-                `DASH_APP_NAME` to be equal to the name of the Dash app that you
-                set earlier.
             ''')),
 
             dcc.Markdown(s('''

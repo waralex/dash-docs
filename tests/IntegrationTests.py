@@ -2,8 +2,16 @@ from __future__ import absolute_import
 import multiprocessing
 import time
 import unittest
+import logging
+import os
 import percy
 from selenium import webdriver
+import sys
+import warnings
+
+log = logging.getLogger('werkzeug')
+log.disabled = True
+warnings.filterwarnings("ignore")
 
 
 class IntegrationTests(unittest.TestCase):
@@ -13,15 +21,33 @@ class IntegrationTests(unittest.TestCase):
         super(IntegrationTests, cls).setUpClass()
 
         cls.driver = webdriver.Chrome()
-        loader = percy.ResourceLoader(webdriver=cls.driver)
-        cls.percy_runner = percy.Runner(loader=loader)
-        cls.percy_runner.initialize_build()
+
+        python_version = sys.version.split(' ')[0]
+        if '2.7' in python_version:
+            root_static_dir = os.path.abspath(
+                os.path.join(
+                    os.path.dirname(__file__),
+                    '..',
+                    'assets'
+                )
+            )
+            loader = percy.ResourceLoader(
+                webdriver=cls.driver,
+                base_url='/assets',
+                root_dir=root_static_dir
+            )
+            cls.percy_runner = percy.Runner(loader=loader)
+            print('>>> initialize_build {}'.format(python_version))
+            cls.percy_runner.initialize_build()
 
     @classmethod
     def tearDownClass(cls):
         super(IntegrationTests, cls).tearDownClass()
         cls.driver.quit()
-        cls.percy_runner.finalize_build()
+        python_version = sys.version.split(' ')[0]
+        if '2.7' in python_version:
+            print('>>> finalize_build {}'.format(python_version))
+            cls.percy_runner.finalize_build()
 
     def setUp(self):
         pass
@@ -31,6 +57,11 @@ class IntegrationTests(unittest.TestCase):
 
     def startServer(self, app, path='/'):
         def run():
+            # Use CDN so that we don't have to reconfigure percy to find the
+            # component assets
+            app.css.config.serve_locally = False
+            app.scripts.config.serve_locally = False
+            app.server.logger.disabled = True
             app.run_server(
                 port=8050,
                 debug=False,

@@ -40,9 +40,9 @@ layout = html.Div([
     to learn more.
 
     Dash components are described declaratively by a set of attributes.
-    All of these attributes can be updated by callback functions but only
-    a subset of these attributes are updated through user interaction.
-    For example, when you click on an option in a `dcc.Dropdown` component, the
+    All of these attributes can be updated by callback functions, but only
+    a subset of these attributes are updated through user interaction, such as  
+    when you click on an option in a `dcc.Dropdown` component and the
     `value` property of that component changes.
 
     The `dcc.Graph` component has four attributes that can change
@@ -83,7 +83,7 @@ layout = html.Div([
 
     Syntax(examples['crossfilter-recipe'][0], summary="""
     Here's a slightly more generic example for crossfiltering across
-    a six column data set. Each scatter plot's selection filters the
+    a six-column data set. Each scatter plot's selection filters the
     underlying dataset.
     """),
 
@@ -114,7 +114,7 @@ layout = html.Div([
 
     There are a few limitations in graph interactions right now.
     - Clicking points does not accumulate: you cannot accumulate the number
-      of points that you have clicked on nor is there the concept of
+      of points that you have clicked on, nor is there the concept of
       "unselecting" a point. This issue is being worked on in [https://github.com/plotly/plotly.js/issues/1848](https://github.com/plotly/plotly.js/issues/1848).
     - It is not currently possible to customize the style of the hover
       interactions or the select box.

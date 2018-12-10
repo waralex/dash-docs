@@ -37,7 +37,7 @@ layout = html.Div([
         that the `app.layout` describes what the app looks like and is
         a hierarchical tree of components.
         The `dash_html_components` library provides classes for all of the HTML
-        tags and the keyword arguments describe the HTML attributes like `style`,
+        tags, and the keyword arguments describe the HTML attributes like `style`,
         `className`, and `id`. The `dash_core_components` library
         generates higher-level components like controls and graphs.
 
@@ -152,12 +152,12 @@ layout = html.Div([
 
     #### Multiple inputs
 
-    In Dash any "`Output`" can have multiple "`Input`" components.
-    Here's a simple example that binds 5 Inputs
+    In Dash, any "`Output`" can have multiple "`Input`" components.
+    Here's a simple example that binds five Inputs
     (the `value` property of 2 `Dropdown` components, 2 `RadioItems` components,
     and 1 `Slider` component) to 1 Output component
     (the `figure` property of the `Graph` component).
-    Notice how the `app.callback` lists all 5 `dash.dependencies.Input` inside
+    Notice how the `app.callback` lists all five `dash.dependencies.Input` inside
     a list in the second argument.
 
     '''.replace('    ', '')),
@@ -180,7 +180,7 @@ layout = html.Div([
     change.
 
     The input arguments of the `update_graph` function are the new or current
-    value of the each of the `Input` properties, in the order that they were
+    value of each of the `Input` properties, in the order that they were
     specified.
 
     Even though only a single `Input` changes at a time (a user can only change

@@ -7,7 +7,9 @@ from dash.dependencies import Input, Output
 from pandas_datareader import data as web
 import plotly.graph_objs as go
 
-app = dash.Dash('')
+external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
+
+app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
 app.layout = html.Div([
     dcc.Dropdown(
@@ -55,7 +57,7 @@ def update_graph(stock_ticker, column):
         data=[go.Scatter(x=df.index, y=y)],
         layout=go.Layout(
             yaxis=go.YAxis(title=column),
-            margin=go.Margin(l=40, r=0, t=10, b=30)
+            margin=go.layout.Margin(l=40, r=0, t=10, b=30)
         )
     )
 

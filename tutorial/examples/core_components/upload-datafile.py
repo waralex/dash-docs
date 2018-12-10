@@ -3,17 +3,17 @@ import datetime
 import io
 
 import dash
-from dash.dependencies import Input, Output
+from dash.dependencies import Input, Output, State
 import dash_core_components as dcc
 import dash_html_components as html
-import dash_table_experiments as dt
+import dash_table
 
 import pandas as pd
 
 
-app = dash.Dash()
+external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
-app.scripts.config.serve_locally = True
+app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
 app.layout = html.Div([
     dcc.Upload(
@@ -36,7 +36,6 @@ app.layout = html.Div([
         multiple=True
     ),
     html.Div(id='output-data-upload'),
-    html.Div(dt.DataTable(rows=[{}]), style={'display': 'none'})
 ])
 
 
@@ -62,9 +61,7 @@ def parse_contents(contents, filename, date):
         html.H5(filename),
         html.H6(datetime.datetime.fromtimestamp(date)),
 
-        # Use the DataTable prototype component:
-        # github.com/plotly/dash-table-experiments
-        dt.DataTable(rows=df.to_dict('records')),
+        dash_table.DataTable(data=df.to_dict('rows')),
 
         html.Hr(),  # horizontal line
 
@@ -78,9 +75,9 @@ def parse_contents(contents, filename, date):
 
 
 @app.callback(Output('output-data-upload', 'children'),
-              [Input('upload-data', 'contents'),
-               Input('upload-data', 'filename'),
-               Input('upload-data', 'last_modified')])
+              [Input('upload-data', 'contents')],
+              [State('upload-data', 'filename'),
+               State('upload-data', 'last_modified')])
 def update_output(list_of_contents, list_of_names, list_of_dates):
     if list_of_contents is not None:
         children = [
@@ -89,9 +86,6 @@ def update_output(list_of_contents, list_of_names, list_of_dates):
         return children
 
 
-app.css.append_css({
-    'external_url': 'https://codepen.io/chriddyp/pen/bWLwgP.css'
-})
 
 if __name__ == '__main__':
     app.run_server(debug=True)

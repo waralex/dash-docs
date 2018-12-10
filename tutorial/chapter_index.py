@@ -1,13 +1,17 @@
+import tutorial
 from tutorial import auth
 from tutorial import core_component_examples as examples
 from tutorial import core_components
+from tutorial import d3
 from tutorial import dash_deployment_server
 from tutorial import dash_deployment_server_examples as dds_examples
+from tutorial import dash_table_index
 from tutorial import deployment
 from tutorial import external_css_and_js
 from tutorial import gallery
 from tutorial import getting_started_part_1
 from tutorial import getting_started_part_2
+from tutorial import faqs
 from tutorial import graphing
 from tutorial import html_components
 from tutorial import installation
@@ -20,6 +24,10 @@ from tutorial import sharing_state
 from tutorial import state
 from tutorial import support
 from tutorial import urls
+from tutorial import react_for_python_developers
+from tutorial import table
+from tutorial import devtools
+
 
 ## The chapters dict is used to generate the dash-docs search index
 ## If edited, update the search index by running `python dash_search_index.py`
@@ -104,6 +112,15 @@ chapters = {
                        'tasks or process large data.'
     },
 
+    'faqs': {
+        'url': '/faqs',
+        'content': faqs.layout,
+        'name': 'Part 7. FAQs and Gotchas',
+        'description': 'If you have read through the rest of the ' \
+        'tutorial and still have questions or are encountering ' \
+        'unexpected behaviour, this chapter may be useful.'
+    },
+
     'dash-core-components': {
         'url': '/dash-core-components',
         'content': core_components.layout,
@@ -117,7 +134,6 @@ chapters = {
         'url': '/dash-html-components',
         'content': [
             html_components.layout,
-            # html_component_appendix.layout,
         ],
         'name': 'Dash HTML Components',
         'description': 'Dash provides all of the available HTML tags ' \
@@ -125,6 +141,17 @@ chapters = {
                        'explains how this works and the few important ' \
                        'key differences between Dash HTML components ' \
                        'and standard html.'
+    },
+
+    'datatable': {
+        'url': '/datatable',
+        'content': dash_table_index.layout,
+        'name': 'Dash DataTable',
+        'description': '(New! Released Nov 2, 2018) The Dash DataTable is our latest and ' \
+                       'most advanced component. It is an interactive table that ' \
+                       'supports rich styling, ' \
+                       'conditional formatting, editing, sorting, filtering, ' \
+                       'and more.'
     },
 
     'plugins': {
@@ -135,6 +162,16 @@ chapters = {
                        '[React.js](https://reactjs.org/). Dash provides ' \
                        'a React &rarr; Dash toolchain that generates a Dash-' \
                        'compatible interface to these components in Python.'
+    },
+
+    'd3-plugins': {
+        'url': '/d3-react-components',
+        'content': d3.layout,
+        'name': 'Integrating D3.js into Dash Components',
+        'description': 'Tutorials and resources on encapsulating ' \
+                       'D3.js graphs in Dash-friendly React components. '\
+                       'Includes two sample components: a D3.js network graph '\
+                       'and a D3.js sunburst chart.'
     },
 
     'performance': {
@@ -218,6 +255,12 @@ chapters = {
                        'Dash workshops, sponsored feature requests and ' \
                        'customizations.'
     },
+    'react-for-python-developers': {
+        'url': '/react-for-python-developers',
+        'content': react_for_python_developers.layout,
+        'name': 'React for Python Developers',
+        'description': 'A tutorial on how to program in React and JavaScript for Python developers.'
+    },
 ### End of home.py ###
 
 ### Start Components ###
@@ -261,6 +304,13 @@ chapters = {
         'content': examples.RadioItems,
         'name': 'Radio Item Component',
         'description': 'Radio item examples, properties, and reference.'
+    },
+
+    'button-examples': {
+        'url': '/dash-core-components/button',
+        'content': examples.Button,
+        'name': 'Button Component',
+        'description': 'Button examples, properties, and reference.'
     },
 
     'datepickersingle-examples': {
@@ -311,6 +361,14 @@ chapters = {
         'name': 'Upload Component',
         'description': 'Upload examples, properties, and reference.'
     },
+    ### dash-daq ###
+    'dashdaq': {
+        'url': 'https://www.dashdaq.io/',
+        'content': introduction.layout,
+        'name':'Dash DAQ Components',
+        'description': '$840/developer/year. ' \
+                       'Beautifully styled, premium components for data acquisition user interfaces.'
+    },
 ### End Components ###
 
 ### Start Dash Deployment Server ###
@@ -336,6 +394,13 @@ chapters = {
         'description': 'Ensure that your app meets all the requirements for deployment.'
     },
 
+    'static-assets-examples': {
+        'url': '/dash-deployment-server/static-assets',
+        'content': dds_examples.staticAssets,
+        'name': 'Adding Static Assets',
+        'description': 'Learn how to include custom CSS, JS, and images with the `assets` directory.'
+    },
+
     'create-deploy-examples': {
         'url': '/dash-deployment-server/deployment',
         'content': dds_examples.Deploy,
@@ -348,6 +413,13 @@ chapters = {
         'content': dds_examples.Authentication,
         'name': 'Dash App Authentication',
         'description': 'Adding Authentication to your Dash App'
+    },
+
+    'private-packages-examples': {
+        'url': '/dash-deployment-server/private-packages',
+        'content': dds_examples.PrivatePackages,
+        'name': 'Adding Private Python Packages',
+        'description': 'Intsall private python packages in your Dash Apps.'
     },
 
     'config-sys-examples': {
@@ -373,7 +445,7 @@ chapters = {
     },
 
     'env-var-examples': {
-        'url': '/dash-deployment-server/enviornment-variables',
+        'url': '/dash-deployment-server/environment-variables',
         'content': dds_examples.EnvVars,
         'name': 'Setting Enviornment Variables',
         'description': 'Environment variables are commonly used to store '
@@ -396,6 +468,13 @@ chapters = {
         'your prodcution Dash App.'
     },
 
+    'pdf-service-examples': {
+        'url': '/dash-deployment-server/pdf-service',
+        'content': dds_examples.pdfService,
+        'name': 'Dash Deployment Server PDF Service',
+        'description': 'Utilize the Dash Deployment Server API endpoint for '
+        'creating PDF exports of your Dash applications'
+    },
     'troubleshooting-examples': {
         'url': '/dash-deployment-server/troubleshooting',
         'content': dds_examples.Troubleshooting,
@@ -426,7 +505,98 @@ chapters = {
         'description': 'Having trouble deploying your app? Our dedicated '
         'support team is available to help you out.'
     },
+
+    'git-examples': {
+        'url': '/dash-deployment-server/git',
+        'content': dds_examples.Git,
+        'name': 'Advanced Git',
+        'description': 'A reference for git commands and how they are used '
+        'with Dash Deployment Server.'
+    },
 ### End Dash Deployment Server ###
+
+### Start DataTable Docs
+
+    'datatable-sizing': {
+        'url': '/datatable/sizing',
+        'content': tutorial.table.sizing_chapter.layout,
+        'name': 'Sizing - DataTable',
+        'description': """
+            All about sizing the DataTable.
+            Examples on how to change the width and height of the table,
+            the widths of the individual columns columns, handling
+            text overflow, and more.
+        """
+    },
+
+    'datatable-styling': {
+        'url': '/datatable/style',
+        'content': tutorial.table.styling_chapter.layout,
+        'name': 'Style - DataTable',
+        'description': """
+            All about styling the DataTable.
+            Examples on how to change the colors, conditional formatting,
+            styling the table as a list view, and more.
+        """
+    },
+
+    'interactivity': {
+        'url': '/datatable/interactivity',
+        'content': tutorial.table.interactivity_chapter.layout,
+        'name': 'Interactive DataTable',
+        'description': '''
+        A showcase of the interactive features of the DataTable.
+        '''
+    },
+
+    'recipes': {
+        'url': '/datatable/editable',
+        'content': tutorial.table.editing_recipes_chapter.layout,
+        'name': 'Editable DataTable',
+        'description': '''
+        DataTable as a Spreadsheet: examples for determining which
+        cell has changed, filtering null values, adding or removing
+        columns, and more.
+        '''
+    },
+
+    'callbacks': {
+        'url': '/datatable/callbacks',
+        'content': tutorial.table.table_callbacks_chapter.layout,
+        'name': 'Python-Driven Filtering, Paging, Sorting - DataTable',
+        'description': '''
+        Examples on filtering, sorting, and paging data with Python.
+        '''
+    },
+
+    'dropdowns': {
+        'url': '/datatable/dropdowns',
+        'content': tutorial.table.dropdowns_chapter.layout,
+        'name': 'Dropdowns Inside DataTable',
+        'description': '''
+        Learn how to embed dropdowns inside the DataTable.
+        '''
+    },
+
+    'filtering': {
+        'url': '/datatable/filtering',
+        'content': tutorial.table.filtering_chapter.layout,
+        'name': 'Filtering Syntax',
+        'description': '''
+        Reference for frontend and backend filtering syntax for the DataTable.
+        '''
+    },
+
+    'roadmap': {
+        'url': '/datatable/reference',
+        'content': tutorial.table.reference_chapter.layout,
+        'name': 'DataTable Reference',
+        'description': '''
+        A comprehensive list of all of the DataTable properties.
+        '''
+    },
+
+### End DataTable Docs
 
     'search': {
         'url': '/search',
@@ -447,5 +617,20 @@ chapters = {
         'content': examples.ConfirmDialogProvider,
         'name': 'ConfirmDialogProvider Component',
         'description': 'ConfirmDialogProvider examples, properties and reference'
+    },
+
+    'store-examples': {
+        'url': '/dash-core-components/store',
+        'content': examples.Store,
+        'name': 'Store component',
+        'description': 'Store examples, properties and reference'
+    },
+
+    'devtools': {
+        'url': '/devtools',
+        'content': devtools.layout,
+        'name': 'Dev tools',
+        'description': 'Dash dev tools reference'
     }
+
 }

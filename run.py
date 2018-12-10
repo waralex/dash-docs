@@ -1,24 +1,14 @@
 import dash_html_components as html
 import dash_core_components as dcc
-import dash_table_experiments as dt
+import dash_table
 
 from dash.dependencies import Input, Output
 
-from tutorial.server import app, server
+from server import app, server
 
 from tutorial import chapter_index
 from tutorial import home
 
-css = [
-    'https://cdn.rawgit.com/plotly/dash-app-stylesheets/8485c028c19c393e9ab85e1a4fafd78c489609c2/dash-docs-base.css',
-    'https://cdn.rawgit.com/plotly/dash-app-stylesheets/30b641e2e89753b13e6557b9d65649f13ea7c64c/dash-docs-custom.css',
-    'https://fonts.googleapis.com/css?family=Dosis',
-    'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'
-]
-js = ['https://cdn.rawgit.com/chriddyp/ca0d8f02a1659981a0ea7f013a378bbd/raw/e79f3f789517deec58f41251f7dbb6bee72c44ab/plotly_ga.js',
-      'https://cdn.jsdelivr.net/npm/instantsearch.js@2.3/dist/instantsearch.min.js',
-      'https://codepen.io/plotly/pen/ZvPmYv.js'
-]
 
 def create_contents(contents):
     h = []
@@ -65,15 +55,11 @@ header = html.Div(
 app.title = 'Dash User Guide and Documentation - Dash by Plotly'
 
 app.layout = html.Div(
-    [html.Link(rel='stylesheet', href=css_link) for css_link in css] +
     [
-        html.Meta(name='viewport', content='width=device-width, initial-scale=1.0'),
-        html.Meta(
-            name='description',
-            content=('Dash User Guide and Documentation. '
-                     'Dash is a Python framework for building '
-                     'reactive web apps developed by Plotly.')
-        ),
+        # Stores used by examples.
+        dcc.Store(id='memory'),
+        dcc.Store(id='local', storage_type='local'),
+        dcc.Store(id='session', storage_type='session'),
         header,
         html.Div([
             html.Div(id='wait-for-layout'),
@@ -85,7 +71,6 @@ app.layout = html.Div(
             ], className='container-width')
         ], className='background'),
         dcc.Location(id='location', refresh=False),
-        html.Div(dt.DataTable(rows=[{}]), style={'display': 'none'})
     ]
 )
 
@@ -101,18 +86,33 @@ def display_content(pathname):
                if chapters[c]['url'] == pathname]
 
     if matched and matched[0] != 'index':
-        if 'dash-deployment-server/' not in pathname:
+        if 'dash-deployment-server/' in pathname:
             content = html.Div([
                 html.Div(chapters[matched[0]]['content']),
                 html.Hr(),
-                dcc.Link(html.A('Back to the Table of Contents'), href='/'),
+                dcc.Link(html.A('Back to Dash Deployment Server Documentation'), href='/dash-deployment-server'),
+                html.Div(id='wait-for-page-{}'.format(pathname)),
+            ])
+        elif 'datatable/' in pathname:
+            content = html.Div([
+                html.Div(chapters[matched[0]]['content']),
+                html.Hr(),
+                dcc.Link(
+                    'Back to DataTable Documentation',
+                    href='/datatable'
+                ),
+                html.Br(),
+                dcc.Link(
+                    'Back to Dash Documentation',
+                    href='/'
+                ),
                 html.Div(id='wait-for-page-{}'.format(pathname)),
             ])
         else:
             content = html.Div([
                 html.Div(chapters[matched[0]]['content']),
                 html.Hr(),
-                dcc.Link(html.A('Back to Dash Deployment Server Documentation'), href='/dash-deployment-server'),
+                dcc.Link(html.A('Back to the Table of Contents'), href='/'),
                 html.Div(id='wait-for-page-{}'.format(pathname)),
             ])
 
@@ -121,30 +121,30 @@ def display_content(pathname):
 
     return content
 
-
-app.css.append_css({'external_url': css})
-app.scripts.append_script({'external_url': js})
-
-
 app.index_string = '''
 <!DOCTYPE html>
 <html>
     <head>
         {%metas%}
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta
+            name="description"
+            content="Dash User Guide and Documentation. Dash is a Python framework for building analytical web apps in Python."
+        >
         <title>{%title%}</title>
         {%favicon%}
         {%css%}
-        <!-- Global site tag (gtag.js) - AdWords: 1009791370 -->
-        <script async src=""https://www.googletagmanager.com/gtag/js?id=AW-1009791370""></script>
-        <script>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-
-          gtag('config', 'AW-1009791370');
-        </script>
+        <!-- Google Tag Manager Tag -->
+        <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-N6T2RXG');</script>
     </head>
     <body>
+        <!-- Google Tag Manager Tag -->
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N6T2RXG"
+            height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         {%app_entry%}
         <footer>
             {%config%}
@@ -155,4 +155,4 @@ app.index_string = '''
 '''
 
 if __name__ == '__main__':
-    app.run_server(debug=True, threaded=True, port=8050)
+    app.run_server(debug=True, threaded=True, port=8060)
