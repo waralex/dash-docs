@@ -1441,10 +1441,10 @@ LogoutButton = html.Div([
     html.H1('LogoutButton'),
 
     dcc.Markdown(s('''
-    Please note that no authentication is performed in dash by default
-    and you have to implements the authentication yourself.
+    Please note that no authentication is performed in Dash by default
+    and you have to implement the authentication yourself.
     
-    ## List of package that provides authentication methods:
+    ## List of packages that provide authentication methods:
     
     - [flask-login](https://flask-login.readthedocs.io/en/latest/)
     - [dash-auth](https://github.com/plotly/dash-auth)
