@@ -59,9 +59,6 @@ app.layout = html.Div(id='custom-auth-frame')
 @app.callback(Output('custom-auth-frame', 'children'),
               [Input('custom-auth-frame', 'id')])
 def dynamic_layout(_):
-    if not flask.has_request_context():
-        # Functions layout get validated before the first request.
-        return login_form
     session_cookie = flask.request.cookies.get('custom-auth-session')
 
     if not session_cookie:
