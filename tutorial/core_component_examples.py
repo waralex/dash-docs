@@ -33,7 +33,8 @@ examples = {
     'upload-gallery':  tools.load_example('tutorial/examples/core_components/upload-gallery.py'),
     'upload-image':  tools.load_example('tutorial/examples/core_components/upload-image.py'),
     'button_basic': tools.load_example('tutorial/examples/core_components/button_basic.py'),
-    'button_n_clicks_timestamp': tools.load_example('tutorial/examples/core_components/button_n_clicks_timestamp.py')
+    'button_n_clicks_timestamp': tools.load_example('tutorial/examples/core_components/button_n_clicks_timestamp.py'),
+    'logout_button': tools.load_example('tutorial/examples/core_components/logout_button.py')
 }
 
 
@@ -1433,4 +1434,37 @@ Store = html.Div([
     Example(examples['store-share'][1]),
 
     generate_prop_table('Store'),
+])
+
+
+LogoutButton = html.Div([
+    html.H1('LogoutButton'),
+
+    dcc.Markdown(s('''
+    Please note that no authentication is performed in Dash by default
+    and you have to implement the authentication yourself.
+    
+    ## List of packages that provide authentication methods:
+    
+    - [flask-login](https://flask-login.readthedocs.io/en/latest/)
+    - [dash-auth](https://github.com/plotly/dash-auth)
+    
+    You can also use these packages for custom authentication:
+    
+    ### Password hashes:
+    - [bcrypt](https://github.com/pyca/bcrypt/)
+    - [passlib](https://passlib.readthedocs.io/en/stable/)
+    
+    ### Session/cookies
+    - [flask-session](https://pythonhosted.org/Flask-Session/)
+    - [itsdangerous](https://pythonhosted.org/itsdangerous/)
+    - [pyjwt](https://github.com/jpadilla/pyjwt)
+    ''')),
+
+    html.H2('Custom authentication example'),
+
+    Syntax(examples['logout_button'][0]),
+    Example(examples['logout_button'][1]),
+
+    generate_prop_table('LogoutButton')
 ])
