@@ -1,63 +1,8 @@
 import dash_core_components as dcc
-import dash_html_components as html
-
-from tutorial import styles
-from textwrap import dedent as s
-
-from tutorial.utils.component_block import ComponentBlock
+from tutorial.utils.simple_doc_generator import generate_docs
 
 
-def gen_code_container(componentName, description='', props=None, style=None):
-
-    propString = '\n  ' + 'id=\'my-dashdaq-{}\', '.format(
-        componentName.lower())
-
-    if props is not None:
-        for key in props.keys():
-            propString += '{}={}, '.format(key, props[key])
-
-    if style is not None:
-        styleString = 'style={\n  '
-        for key in style.keys():
-            styleString += '  \'{}\': \'{}\', '.format(
-                key,
-                str(style[key])
-            )
-        styleString = styleString[:-2]
-        styleString += '\n  }, '
-        propString += styleString
-
-    propString = propString.replace(', ', ',\n  ')
-    propString = propString[:-4] + '\n'
-    
-    return [
-
-        html.Hr(),
-
-        html.H3(dcc.Link(componentName,
-                         href='/dash-daq/{}'.format(componentName.lower()))),
-        
-        dcc.Markdown(s(description)),
-        
-        ComponentBlock(
-            '''import dash_daq as daq
-
-daq.{}({})'''.format(componentName,
-                     propString),
-            language='python',
-            customStyle=styles.code_container
-        ),
-
-        html.Br(), 
-        
-        dcc.Link('More {} Examples and Reference'.format(componentName),
-                 href='/dash-daq/{}'.format(componentName.lower()))
-    ]
-
-
-layoutChildren = [
-
-    dcc.Markdown(''' 
+daq_library_heading =  dcc.Markdown('''
     # Dash DAQ 
 
     Dash is a web application framework that provides pure Python abstraction 
@@ -69,16 +14,15 @@ layoutChildren = [
     The source is on GitHub at [plotly/dash-daq](https://github.com/plotly/dash-daq). 
 
     These docs are using version {}.
-    '''.replace('    ', '').format(dcc.__version__))
-]
-
+    '''.replace('    ', '').format(dcc.__version__)
+)
 
 dash_daq_components = {
     'BooleanSwitch': {
         'description': '''A switch component that toggles between on \
         and off.''',
         'props': {
-            'on': True
+          'on': True
         }
     },
     'ColorPicker': {
@@ -189,9 +133,9 @@ dash_daq_components = {
     }
 }
 
-
-for k in dash_daq_components.keys():
-    layoutChildren += gen_code_container(k, **dash_daq_components[k])
-
-layout = html.Div(className='gallery', children=layoutChildren)
-
+layout = generate_docs(
+    'dash-daq',
+    'daq',
+    daq_library_heading,
+    dash_daq_components
+)
