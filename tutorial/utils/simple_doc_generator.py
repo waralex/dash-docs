@@ -15,6 +15,23 @@ def generate_code_container(
         props=None,
         style=None
 ):
+    '''
+    Generates a section for the component specified, including pretty-printed 
+    code containing top-level props (not dicts) and style dictionaries.
+
+    :param (str) component_name: The component name in camelcase with the first 
+                                 letter also capitalized. 
+    :param (str) library_name: Name of the library the component belongs to,
+                               with words separated by dashes ('-'). 
+    :param (str) library_short: A short name for the library (e.g., "dcc"). 
+    :param (bool) default_id: Whether or not to generate an id for the
+                              component. Can be useful for custom styling. 
+    :param (dict) props: A dictionary of the component's keys and the values 
+                         corresponding to those keys. 
+    :param (dict) style: A dictionary that determines the styling of the 
+                         component, if 'style' is a property of that component.
+                         (Will fail if this is not true.) 
+    '''
     propString = '\n  '
     if(default_id):
         propString += 'id=\'my-{}-{}\', '.format(
@@ -81,6 +98,18 @@ def generate_docs(
         library_heading,
         component_dict
 ):
+    ''' 
+    A function that generates documentation. 
+    
+    :param (str) library_name: The name of the library, with first letter
+                               capitalized.
+    :param (str) library_short: A short name for the library, with words
+                                separated by dashes ('-'). 
+    :param (object) library_heading: An object that contains a description of
+                                     the library and its components. Usually
+                                     a dcc.Markdown() object.
+    ''' 
+
     layout_children = [library_heading]
 
     for component in component_dict.keys():
