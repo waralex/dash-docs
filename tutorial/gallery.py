@@ -114,7 +114,23 @@ layout = html.Div(className='gallery', children=[
                     and to push data.
                     ''',
         ),
+        AppSection(
+            app_name='3-D Yield Curve',
+            app_link='https://dash-yield-curve.plot.ly',
+            code_link='https://github.com/plotly/dash-yield-curve',
+            img_src='assets/images/gallery/dash-yield-curve-app.png',
+            description='''
+            This Dash app adapts the New York Times' excellent
+            report: [A 3-D View of a Chart That Predicts The Economic Future: The Yield Curve](https://www.nytimes.com/interactive/2015/03/19/upshot/3d-yield-curve-economic-growth.html).
 
+            Dash comes with a wide range of interactive 3-D chart types,
+            such as 3-D scatter plots, surface plots, network graphs and ribbon plots.
+            [View more 3-D chart examples](https://plot.ly/python/3d-charts/).
+            '''
+        )
+    ]),
+
+    reusable.Row([
         AppSection(
             app_name='Vanguard Report',
             app_link='https://dash-gallery.plotly.host/dash-vanguard-report',
@@ -136,26 +152,8 @@ layout = html.Div(className='gallery', children=[
             same framework for both the rich interactive applications and the static
             PDF reports.
             '''
-
         )
-
-    ]),
-
-    reusable.Row([
-        AppSection(
-            app_name='3-D Yield Curve',
-            app_link='https://dash-yield-curve.plot.ly',
-            code_link='https://github.com/plotly/dash-yield-curve',
-            img_src='assets/images/gallery/dash-yield-curve-app.png',
-            description='''
-            This Dash app adapts the New York Times' excellent
-            report: [A 3-D View of a Chart That Predicts The Economic Future: The Yield Curve](https://www.nytimes.com/interactive/2015/03/19/upshot/3d-yield-curve-economic-growth.html).
-
-            Dash comes with a wide range of interactive 3-D chart types,
-            such as 3-D scatter plots, surface plots, network graphs and ribbon plots.
-            [View more 3-D chart examples](https://plot.ly/python/3d-charts/).
-            '''
-        ),
+        ,
 
         AppSection(
             app_name='Recession in 255 Charts',
