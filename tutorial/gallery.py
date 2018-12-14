@@ -104,17 +104,15 @@ layout = html.Div(className='gallery', children=[
 
     reusable.Row([
         AppSection(
-            app_name='Stock Tickers',
-            app_link='https://dash-stock-tickers.plot.ly',
-            code_link='https://github.com/plotly/dash-stock-tickers-demo-app',
-            img_src='assets/images/gallery/stock-tickers.png',
+            app_name='Salesforce Dashboard',
+            app_link='https://dash-gallery.plotly.host/dash-salesforce-crm',
+            code_link='https://github.com/plotly/dash-salesforce-crm',
+            img_src='assets/images/gallery/dash-salesforce-crm-portrait.gif',
             description='''
-            This app queries data from Google Finance and displays the results as candlestick
-            charts. Dash comes with several financial chart types including: candlestick
-            charts, OHLC graphs, time series, and range sliders.
-
-            This app was written in just around 100 lines of code.
-            '''
+                    This app uses Salesforce API in order to implement a custom CRM dashboard.
+                    The API is used via the module [Simple-Salesforce](https://pypi.org/project/simple-salesforce/) and allows you to retrieve
+                    and to push data.
+                    ''',
         ),
 
         AppSection(
@@ -188,20 +186,6 @@ layout = html.Div(className='gallery', children=[
         )
     ]),
 
-    reusable.Row([
-        AppSection(
-            app_name='Salesforce Dashboard',
-            app_link='https://dash-gallery.plotly.host/dash-salesforce-crm',
-            code_link='https://github.com/plotly/dash-salesforce-crm',
-            img_src='assets/images/gallery/dash-salesforce-crm.gif',
-            description='''
-            This app uses Salesforce API in order to implement a custom CRM dashboard.
-            The API is used via the module [Simple-Salesforce](https://pypi.org/project/simple-salesforce/) and allows you to retrieve
-            and to push data.
-            ''',
-            width=12
-        )
-    ]),
 
     # ENERGY AND TRANSPORT SECTION
     SectionTitle('Energy and Transportation'),
