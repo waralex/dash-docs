@@ -13,7 +13,7 @@ daq_library_heading =  dcc.Markdown('''
 
     The source is on GitHub at [plotly/dash-daq](https://github.com/plotly/dash-daq). 
 
-    These docs are using version {}.
+    These docs are using Dash version {}.
     '''.replace('    ', '').format(dcc.__version__)
 )
 
@@ -53,7 +53,8 @@ dash_daq_components = {
     'Indicator': {
         'description': '''A boolean indicator LED.''', 
         'props': {
-            'value': True
+            'value': True,
+            'color': '\"#00cc96\"'
         }
     },
     'Knob': {
