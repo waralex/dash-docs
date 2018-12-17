@@ -437,49 +437,55 @@ chapters = {
         'description': 'Power button examples, properties, and reference.'
     },
 
-    # 'precisioninput-examples': {
-    #     'url': '/dash-daq/precisioninput',
-    #     'content': daq_examples.PrecisionInput,
-    #     'name': 'Precision input Component',
-    #     'description': 'Precision input examples, properties, and reference.'
-    # },
+    'precisioninput-examples': {
+        'url': '/dash-daq/precisioninput',
+        'content': daq_examples.PrecisionInput,
+        'name': 'Precision input Component',
+        'description': 'Precision input examples, properties, and reference.'
+    },
 
-    # 'stopbutton-examples': {
-    #     'url': '/dash-daq/stopbutton',
-    #     'content': daq_examples.StopButton,
-    #     'name': 'StopButton Component',
-    #     'description': 'StopButton examples, properties, and reference.'
-    # },
+    'stopbutton-examples': {
+        'url': '/dash-daq/stopbutton',
+        'content': daq_examples.StopButton,
+        'name': 'Stop button Component',
+        'description': 'StopButton examples, properties, and reference.'
+    },
 
-    # 'slider-examples': {
-    #     'url': '/dash-daq/slider',
-    #     'content': daq_examples.Slider,
-    #     'name': 'Slider Component',
-    #     'description': 'Slider examples, properties, and reference.'
-    # },
+    'slider-examples': {
+        'url': '/dash-daq/slider',
+        'content': daq_examples.Slider,
+        'name': 'Slider Component',
+        'description': 'Slider examples, properties, and reference.'
+    },
 
-    # 'tank-examples': {
-    #     'url': '/dash-daq/tank',
-    #     'content': daq_examples.Tank,
-    #     'name': 'Tank Component',
-    #     'description': 'Tank examples, properties, and reference.'
-    # },
+    'tank-examples': {
+        'url': '/dash-daq/tank',
+        'content': daq_examples.Tank,
+        'name': 'Tank Component',
+        'description': 'Tank examples, properties, and reference.'
+    },
 
-    # 'thermometer-examples': {
-    #     'url': '/dash-daq/Thermometer',
-    #     'content': daq_examples.Thermometer,
-    #     'name': 'Thermometer Component',
-    #     'description': 'Thermometer examples, properties, and reference.'
-    # },
+    'thermometer-examples': {
+        'url': '/dash-daq/thermometer',
+        'content': daq_examples.Thermometer,
+        'name': 'Thermometer Component',
+        'description': 'Thermometer examples, properties, and reference.'
+    },
 
-    # 'toggleswitch-examples': {
-    #     'url': '/dash-daq/toggleswitch',
-    #     'content': daq_examples.ToggleSwitch,
-    #     'name': 'Toggle switch Component',
-    #     'description': 'Toggle switch examples, properties, and reference.'
-    # },
-    
-    
+    'toggleswitch-examples': {
+        'url': '/dash-daq/toggleswitch',
+        'content': daq_examples.ToggleSwitch,
+        'name': 'Toggle switch Component',
+        'description': 'Toggle switch examples, properties, and reference.'
+    },
+
+    'darkthemeprovider-examples': {
+        'url': '/dash-daq/darkthemeprovider',
+        'content': daq_examples.DarkThemeProvider,
+        'name': 'Dark theme provider Component',
+        'description': 'Dark theme provider examples, properties, and reference.'
+    },
+      
 ### End Components ###
 
 ### Start Dash Deployment Server ###

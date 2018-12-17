@@ -19,12 +19,13 @@ examples = {
     'LED-display': tools.load_example('tutorial/examples/daq_components/LED_display.py'),
     'numeric-input': tools.load_example('tutorial/examples/daq_components/numeric_input.py'),
     'power-button': tools.load_example('tutorial/examples/daq_components/power_button.py'),
-    # 'precision-input': tools.load_example('tutorial/examples/daq_components/precision_input.py'),
-    # 'stop-button': tools.load_example('tutorial/examples/daq_components/stop_button.py'),
-    # 'slider': tools.load_example('tutorial/examples/daq_components/slider.py'),
-    # 'tank': tools.load_example('tutorial/examples/daq_components/tank.py'),
-    # 'thermometer': tools.load_example('tutorial/examples/daq_components/thermometer.py'),
-    # 'toggle-switch': tools.load_example('tutorial/examples/daq_components/toggle-switch.py')
+    'precision-input': tools.load_example('tutorial/examples/daq_components/precision_input.py'),
+    'stop-button': tools.load_example('tutorial/examples/daq_components/stop_button.py'),
+    'slider': tools.load_example('tutorial/examples/daq_components/slider.py'),
+    'tank': tools.load_example('tutorial/examples/daq_components/tank.py'),
+    'thermometer': tools.load_example('tutorial/examples/daq_components/thermometer.py'),
+    'toggle-switch': tools.load_example('tutorial/examples/daq_components/toggle_switch.py'),
+    'dark-theme-provider': tools.load_example('tutorial/examples/daq_components/dark_theme_provider.py')
     
 }
 
@@ -387,4 +388,284 @@ PowerButton = html.Div(children=[
     html.Hr(),
     html.H3("Power Button Properties"),
     generate_prop_table('PowerButton')
+])
+
+# Precision Input
+PrecisionInput = html.Div(children=[
+    html.H1('Precision Input Examples and Reference'),
+    html.Hr(),
+    html.H3('Default Precision Input'),
+    html.P("An example of a default precision input without \
+            any extra properties."),
+    dcc.SyntaxHighlighter(
+        examples['precision-input'][0],
+        customStyle=styles.code_container
+    ),
+    html.Div(
+        examples['precision-input'][1],
+        className='example-container',
+        style={'overflow-x': 'initial'}
+    ),
+
+    html.Hr(),
+#     html.H3('Multi-Value Dropdown'),
+#     dcc.Markdown("A dropdown component with the `multi` property set to `True` \
+#                   will allow the user to select more than one value \
+#                   at a time."),
+#     ComponentBlock('''import dash_core_components as dcc
+
+# dcc.Dropdown(
+#     options=[
+#         {'label': 'New York City', 'value': 'NYC'},
+#         {'label': 'Montreal', 'value': 'MTL'},
+#         {'label': 'San Francisco', 'value': 'SF'}
+#     ],
+#     value=['MTL', 'NYC'],
+#     multi=True
+# )''', customStyle=styles.code_container, language='python'),
+#     html.Hr(),
+
+    html.Hr(),
+    html.H3("Precision Input Properties"),
+    generate_prop_table('PrecisionInput')
+])
+
+# Stop Button
+StopButton = html.Div(children=[
+    html.H1('Stop Button Examples and Reference'),
+    html.Hr(),
+    html.H3('Default Stop Button'),
+    html.P("An example of a default stop button without \
+            any extra properties."),
+    dcc.SyntaxHighlighter(
+        examples['stop-button'][0],
+        customStyle=styles.code_container
+    ),
+    html.Div(
+        examples['stop-button'][1],
+        className='example-container',
+        style={'overflow-x': 'initial'}
+    ),
+
+    html.Hr(),
+#     html.H3('Multi-Value Dropdown'),
+#     dcc.Markdown("A dropdown component with the `multi` property set to `True` \
+#                   will allow the user to select more than one value \
+#                   at a time."),
+#     ComponentBlock('''import dash_core_components as dcc
+
+# dcc.Dropdown(
+#     options=[
+#         {'label': 'New York City', 'value': 'NYC'},
+#         {'label': 'Montreal', 'value': 'MTL'},
+#         {'label': 'San Francisco', 'value': 'SF'}
+#     ],
+#     value=['MTL', 'NYC'],
+#     multi=True
+# )''', customStyle=styles.code_container, language='python'),
+#     html.Hr(),
+
+    html.Hr(),
+    html.H3("Stop Button Properties"),
+    generate_prop_table('StopButton')
+])
+
+# Slider
+Slider = html.Div(children=[
+    html.H1('Slider Examples and Reference'),
+    html.Hr(),
+    html.H3('Default Slider'),
+    html.P("An example of a default slider without \
+            any extra properties."),
+    dcc.SyntaxHighlighter(
+        examples['slider'][0],
+        customStyle=styles.code_container
+    ),
+    html.Div(
+        examples['slider'][1],
+        className='example-container',
+        style={'overflow-x': 'initial'}
+    ),
+
+    html.Hr(),
+#     html.H3('Multi-Value Dropdown'),
+#     dcc.Markdown("A dropdown component with the `multi` property set to `True` \
+#                   will allow the user to select more than one value \
+#                   at a time."),
+#     ComponentBlock('''import dash_core_components as dcc
+
+# dcc.Dropdown(
+#     options=[
+#         {'label': 'New York City', 'value': 'NYC'},
+#         {'label': 'Montreal', 'value': 'MTL'},
+#         {'label': 'San Francisco', 'value': 'SF'}
+#     ],
+#     value=['MTL', 'NYC'],
+#     multi=True
+# )''', customStyle=styles.code_container, language='python'),
+#     html.Hr(),
+
+    html.Hr(),
+    html.H3("Slider Properties"),
+    generate_prop_table('Slider')
+])
+
+# Tank
+Tank = html.Div(children=[
+    html.H1('Tank Examples and Reference'),
+    html.Hr(),
+    html.H3('Default Tank'),
+    html.P("An example of a default tank without \
+            any extra properties."),
+    dcc.SyntaxHighlighter(
+        examples['tank'][0],
+        customStyle=styles.code_container
+    ),
+    html.Div(
+        examples['tank'][1],
+        className='example-container',
+        style={'overflow-x': 'initial'}
+    ),
+
+    html.Hr(),
+#     html.H3('Multi-Value Dropdown'),
+#     dcc.Markdown("A dropdown component with the `multi` property set to `True` \
+#                   will allow the user to select more than one value \
+#                   at a time."),
+#     ComponentBlock('''import dash_core_components as dcc
+
+# dcc.Dropdown(
+#     options=[
+#         {'label': 'New York City', 'value': 'NYC'},
+#         {'label': 'Montreal', 'value': 'MTL'},
+#         {'label': 'San Francisco', 'value': 'SF'}
+#     ],
+#     value=['MTL', 'NYC'],
+#     multi=True
+# )''', customStyle=styles.code_container, language='python'),
+#     html.Hr(),
+
+    html.Hr(),
+    html.H3("Tank Properties"),
+    generate_prop_table('Tank')
+])
+
+# Thermometer
+Thermometer = html.Div(children=[
+    html.H1('Thermometer Examples and Reference'),
+    html.Hr(),
+    html.H3('Default Thermometer'),
+    html.P("An example of a default Thermometer without \
+            any extra properties."),
+    dcc.SyntaxHighlighter(
+        examples['thermometer'][0],
+        customStyle=styles.code_container
+    ),
+    html.Div(
+        examples['thermometer'][1],
+        className='example-container',
+        style={'overflow-x': 'initial'}
+    ),
+
+    html.Hr(),
+#     html.H3('Multi-Value Dropdown'),
+#     dcc.Markdown("A dropdown component with the `multi` property set to `True` \
+#                   will allow the user to select more than one value \
+#                   at a time."),
+#     ComponentBlock('''import dash_core_components as dcc
+
+# dcc.Dropdown(
+#     options=[
+#         {'label': 'New York City', 'value': 'NYC'},
+#         {'label': 'Montreal', 'value': 'MTL'},
+#         {'label': 'San Francisco', 'value': 'SF'}
+#     ],
+#     value=['MTL', 'NYC'],
+#     multi=True
+# )''', customStyle=styles.code_container, language='python'),
+#     html.Hr(),
+
+    html.Hr(),
+    html.H3("Thermometer Properties"),
+    generate_prop_table('Thermometer')
+])
+
+# Toggle Switch
+ToggleSwitch = html.Div(children=[
+    html.H1('Toggle Switch Examples and Reference'),
+    html.Hr(),
+    html.H3('Default Toggle Switch'),
+    html.P("An example of a default toggle switch without \
+            any extra properties."),
+    dcc.SyntaxHighlighter(
+        examples['toggle-switch'][0],
+        customStyle=styles.code_container
+    ),
+    html.Div(
+        examples['toggle-switch'][1],
+        className='example-container',
+        style={'overflow-x': 'initial'}
+    ),
+
+    html.Hr(),
+#     html.H3('Multi-Value Dropdown'),
+#     dcc.Markdown("A dropdown component with the `multi` property set to `True` \
+#                   will allow the user to select more than one value \
+#                   at a time."),
+#     ComponentBlock('''import dash_core_components as dcc
+
+# dcc.Dropdown(
+#     options=[
+#         {'label': 'New York City', 'value': 'NYC'},
+#         {'label': 'Montreal', 'value': 'MTL'},
+#         {'label': 'San Francisco', 'value': 'SF'}
+#     ],
+#     value=['MTL', 'NYC'],
+#     multi=True
+# )''', customStyle=styles.code_container, language='python'),
+#     html.Hr(),
+
+    html.Hr(),
+    html.H3("Toggle Switch Properties"),
+    generate_prop_table('ToggleSwitch')
+])
+
+# Dark Theme Provider
+DarkThemeProvider = html.Div(children=[
+    html.H1('Dark Theme Provider Examples and Reference'),
+    html.Hr(),
+    html.H3('Default Dark Theme Provider'),
+    html.P("An example of a default dark theme provider without \
+            any extra properties."),
+    dcc.SyntaxHighlighter(
+        examples['dark-theme-provider'][0],
+        customStyle=styles.code_container
+    ),
+    html.Div(
+        examples['dark-theme-provider'][1],
+        className='example-container',
+        style={'overflow-x': 'initial'}
+    ),
+
+    html.Hr(),
+#     html.H3('Multi-Value Dropdown'),
+#     dcc.Markdown("A dropdown component with the `multi` property set to `True` \
+#                   will allow the user to select more than one value \
+#                   at a time."),
+#     ComponentBlock('''import dash_core_components as dcc
+
+# dcc.Dropdown(
+#     options=[
+#         {'label': 'New York City', 'value': 'NYC'},
+#         {'label': 'Montreal', 'value': 'MTL'},
+#         {'label': 'San Francisco', 'value': 'SF'}
+#     ],
+#     value=['MTL', 'NYC'],
+#     multi=True
+# )''', customStyle=styles.code_container, language='python'),
+#     html.Hr(),
+
+    html.Hr(),
+    html.H3("Dark Theme Provider Properties"),
+    generate_prop_table('DarkThemeProvider')
 ])
