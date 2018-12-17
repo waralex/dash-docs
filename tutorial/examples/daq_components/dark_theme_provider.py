@@ -1,73 +1,144 @@
 import dash
-import dash_core_components as dcc
 import dash_daq as daq
 import dash_html_components as html
 
-external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
+external_stylesheets = ['https://codepen.io/anon/pen/mardKv.css']
 
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
-root_layout = html.Div(
-    [
-        dcc.Location(id="url", refresh=False),
-        html.Div(
-            [
-                daq.ToggleSwitch(
-                    id="toggleTheme",
-                    style={"position": "absolute", "transform": "translate(-50%, 20%)"},
-                    size=25,
-                )
-            ],
-            id="toggleDiv",
-            style={"width": "fit-content", "margin": "0 auto"},
-        ),
-        html.Div(id="page-content"),
-    ]
-)
+theme =  {
+    'dark': True,
+    'detail': '#007439',
+    'primary': '#00EA64', 
+    'secondary': '#6E6E6E'
+}
 
-base_layout = html.Div(
-    [
-        'Hello World'
-    ]
-)
+rootLayout = html.Div([
+    daq.BooleanSwitch(
+        on=True,
+        className='dark-theme-control'
+    ), html.Br(), 
+    daq.ColorPicker(
+        value=17,
+        className='dark-theme-control'
+    ), html.Br(), 
+    daq.Gauge(
+        min=0,
+        max=10,
+        value=6,
+        color=theme['primary'],
+        className='dark-theme-control'
+    ), html.Br(), 
+    daq.GraduatedBar(
+        min=0,
+        max=100,
+        value=42,
+        color=theme['primary'],
+        className='dark-theme-control'
+    ), html.Br(), 
+    daq.Indicator(
+        value=True,
+        color=theme['primary'],
+        className='dark-theme-control'
+    ), html.Br(), 
+    daq.Knob(
+        min=0,
+        max=10,
+        className='dark-theme-control'
+    ), html.Br(), 
+    daq.LEDDisplay(
+        value="3.14159",
+        color=theme['primary'],
+        className='dark-theme-control'
+    ), html.Br(), 
+    daq.NumericInput(
+        min=0,
+        max=10,
+        value=4, 
+        className='dark-theme-control'
+    ), html.Br(), 
+    daq.PowerButton(
+        on=True,
+        color=theme['primary'],
+        className='dark-theme-control'
+    ), html.Br(), 
+    daq.PrecisionInput(
+        precision=4,
+        value=299792458,
+        className='dark-theme-control'
+    ), html.Br(), 
+    daq.StopButton(
+        className='dark-theme-control'
+    ), html.Br(), 
+    daq.Slider(
+        min=0,
+        max=100,
+        targets = {"25": {"label": "TARGET"}},
+        color=theme['primary'],
+        className='dark-theme-control'
+    ), html.Br(), 
+    daq.Tank(
+        min=0,
+        max=10,
+        value=5,
+        className='dark-theme-control'
+    ), html.Br(), 
+    daq.Thermometer(
+        min=95,
+        max=105,
+        value=98.6,
+        className='dark-theme-control'
+    ), html.Br(), 
+    daq.ToggleSwitch(
+        className='dark-theme-control'
+    )
+])
 
 
-light_layout = html.Div(id="container", children=[base_layout])
-
-dark_layout = daq.DarkThemeProvider(
-    [
-        html.Link(
-            href="https://cdn.rawgit.com/matthewchan15/dash-css-style-sheets/e84db719/dash-dark-hp-multimeter.css",
-            rel="stylesheet",
-        ),
-        html.Div([base_layout]),
-    ]
-)
-
-app.layout = root_layout
+app.layout = html.Div(id='dark-theme-container', children=[
+    daq.ToggleSwitch(
+        id='toggleTheme',
+        label=['Light', 'Dark']
+    ), 
+    html.Div(id='dark-theme-components', children=[
+        daq.DarkThemeProvider(theme=theme, children=rootLayout)
+    ], style={'border': 'solid 1px #A2B1C6', 'border-radius': '5px', 'padding': '20px', 'margin-top': '20px'})
+], style={'padding': '50px'})
 
 
 @app.callback(
-    dash.dependencies.Output("toggleTheme", "value"),
-    [dash.dependencies.Input("url", "pathname")]
+    dash.dependencies.Output('dark-theme-components', 'children'),
+    [dash.dependencies.Input('toggleTheme', 'value')]
 )
-def display_page(pathname):
-
-    if pathname == "/dark":
-        return True
-    else:
-        return False
+def switch_to_dark(dark):
+    if(dark):
+        theme.update(
+            dark=True
+        )
+    else: 
+        theme.update(
+            dark=False
+        )
+        
+    return daq.DarkThemeProvider(theme=theme, children=rootLayout)
 
 
 @app.callback(
-    dash.dependencies.Output("page-content", "children"),
-    [dash.dependencies.Input("toggleTheme", "value")]
+    dash.dependencies.Output('dark-theme-components', 'style'),
+    [dash.dependencies.Input('toggleTheme', 'value')],
+    state=[dash.dependencies.State('dark-theme-components', 'style')]
 )
-def page_layout(value):
-    if value:
-        return dark_layout
+def switch_bg(dark, currentStyle):
+    if(dark):
+        currentStyle.update(
+            backgroundColor='#303030', color='white'
+        )
     else:
-        return light_layout
+        currentStyle.update(
+            backgroundColor='white', color='#303030'
+        )
+    return currentStyle
+
 
 if __name__ == '__main__':
     app.run_server(debug=True)
