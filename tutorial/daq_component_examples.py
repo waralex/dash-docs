@@ -48,23 +48,47 @@ BooleanSwitch = html.Div(children=[
     ),
 
     html.Hr(),
-#     html.H3('Multi-Value Dropdown'),
-#     dcc.Markdown("A dropdown component with the `multi` property set to `True` \
-#                   will allow the user to select more than one value \
-#                   at a time."),
-#     ComponentBlock('''import dash_core_components as dcc
+    html.H3('Color'),
+    dcc.Markdown("Set the color of the boolean switch by specifing a hex value in to the `color` property. \
+    `color=#<hex_value>`"),
+    ComponentBlock('''import dash_daq as daq
 
-# dcc.Dropdown(
-#     options=[
-#         {'label': 'New York City', 'value': 'NYC'},
-#         {'label': 'Montreal', 'value': 'MTL'},
-#         {'label': 'San Francisco', 'value': 'SF'}
-#     ],
-#     value=['MTL', 'NYC'],
-#     multi=True
-# )''', customStyle=styles.code_container, language='python'),
-#     html.Hr(),
+daq.BooleanSwitch(
+  on=True,
+  color="#9B51E0",
+)''', customStyle=styles.code_container, language='python'),
+    html.Hr(),
+    html.H3('Label'),
+    dcc.Markdown("Define the label and label position using the `label` and `labelPosition` \
+    properties."),
+    ComponentBlock('''import dash_daq as daq
 
+daq.BooleanSwitch(
+  on=True,
+  label="Label",
+  labelPosition="top"
+)''', customStyle=styles.code_container, language='python'),
+    html.Hr(),
+    html.H3('Vertical Switch'),
+    dcc.Markdown("The `vertical` property is set to `False` by default. Create a vertical \
+    oriented switch by setting `vertical=True`."),
+    ComponentBlock('''import dash_daq as daq
+
+daq.BooleanSwitch(
+  on=True,
+  label="Vertical",
+  vertical=True
+)''', customStyle=styles.code_container, language='python'),
+html.Hr(),
+    html.H3('Disabled Switch'),
+    dcc.Markdown("To disable the Boolean Switch set `disabled` to `True`."),
+    ComponentBlock('''import dash_daq as daq
+
+daq.BooleanSwitch(
+  disabled=True,
+  label="Disabled",
+  labelPosition="bottom"
+)''', customStyle=styles.code_container, language='python'),
     html.Hr(),
     html.H3("Boolean Switch Properties"),
     generate_prop_table('BooleanSwitch')
@@ -88,23 +112,53 @@ ColorPicker = html.Div(children=[
     ),
 
     html.Hr(),
-#     html.H3('Multi-Value Dropdown'),
-#     dcc.Markdown("A dropdown component with the `multi` property set to `True` \
-#                   will allow the user to select more than one value \
-#                   at a time."),
-#     ComponentBlock('''import dash_core_components as dcc
+    html.H3('Size'),
+    dcc.Markdown("Set the size (width) of the color picker in pixels using the `size` property."),
+    ComponentBlock('''import dash_daq as daq
 
-# dcc.Dropdown(
-#     options=[
-#         {'label': 'New York City', 'value': 'NYC'},
-#         {'label': 'Montreal', 'value': 'MTL'},
-#         {'label': 'San Francisco', 'value': 'SF'}
-#     ],
-#     value=['MTL', 'NYC'],
-#     multi=True
-# )''', customStyle=styles.code_container, language='python'),
-#     html.Hr(),
+daq.ColorPicker(
+  label="Small",
+  size=164,
+)''', customStyle=styles.code_container, language='python'),
+    html.Hr(),
+    html.H3('Label'),
+    dcc.Markdown("Define the label and label position using the `label` and `labelPosition` \
+    properties."),
+    ComponentBlock('''import dash_daq as daq
 
+daq.ColorPicker(
+  label="Label",
+  labelPosition="bottom"
+)''', customStyle=styles.code_container, language='python'),
+    html.Hr(),
+html.H3('Disabled'),
+    dcc.Markdown("To disable the Color Picker set `disabled` to `True`."),
+    ComponentBlock('''import dash_daq as daq
+
+daq.ColorPicker(
+  label='Color Picker',  
+  disabled=True,
+)''', customStyle=styles.code_container, language='python'),
+    html.Hr(),
+html.H3('Hex Colors'),
+    dcc.Markdown("Use hex values with the Color Picker by setting `value=dict(hex='#<hex_color>')`"),
+    ComponentBlock('''import dash_daq as daq
+
+daq.ColorPicker(
+  label='Color Picker',  
+  value=dict(hex="#0000FF"),
+)''', customStyle=styles.code_container, language='python'),
+    html.Hr(),
+html.H3('RGB Colors'),
+    dcc.Markdown("Use RGB color values with the Color Picker by setting \
+    `value=(rgb=dict(r=<r_value>, g=<g_value>, b=<b_value>, a=<a_value>)`"),
+    ComponentBlock('''import dash_daq as daq
+
+daq.ColorPicker(
+label='Color Picker',  
+value=dict(rgb=dict(r=255, g=0, b=0, a=0))
+)''', customStyle=styles.code_container, language='python'),
+    html.Hr(),
     html.Hr(),
     html.H3("Color Picker Properties"),
     generate_prop_table('ColorPicker')
@@ -128,23 +182,93 @@ Gauge = html.Div(children=[
     ),
 
     html.Hr(),
-#     html.H3('Multi-Value Dropdown'),
-#     dcc.Markdown("A dropdown component with the `multi` property set to `True` \
-#                   will allow the user to select more than one value \
-#                   at a time."),
-#     ComponentBlock('''import dash_core_components as dcc
+    html.H3('Minimum and Maximum'),
+    dcc.Markdown("Specifiy the minimum and maximum values of the gauge, using the `min` and `max` properties. If \
+    the scale is logarithmic the minimum and maximum will represent an exponent."),
+    ComponentBlock('''import dash_daq as daq
 
-# dcc.Dropdown(
-#     options=[
-#         {'label': 'New York City', 'value': 'NYC'},
-#         {'label': 'Montreal', 'value': 'MTL'},
-#         {'label': 'San Francisco', 'value': 'SF'}
-#     ],
-#     value=['MTL', 'NYC'],
-#     multi=True
-# )''', customStyle=styles.code_container, language='python'),
-#     html.Hr(),
+daq.Gauge(
+    value=5,
+    label='Default',
+    max=20,
+    min=0,
+)''', customStyle=styles.code_container, language='python'),
+    html.Hr(),
+    html.H3('Current Value and Units'),
+    dcc.Markdown("Show the current value of the gauge and the units by setting the property `showCurrentValue=True` \
+    and `units=<units>`."),
+    ComponentBlock('''import dash_daq as daq
 
+daq.Gauge(
+    showCurrentValue=True,
+    units="MPH",
+    value=5,
+    label='Default',
+    max=10,
+    min=0,
+)''', customStyle=styles.code_container, language='python'),
+    html.Hr(),
+    html.H3('Logarithmic Gauge'),
+    dcc.Markdown("To set the scale of the gauge to logarithmic use the property `logarithmic=True`."),
+    ComponentBlock('''import dash_daq as daq
+
+daq.Gauge(
+    logarithmic=True,
+    value=5,
+    label='Default',
+    max=10,
+    min=0,
+)''', customStyle=styles.code_container, language='python'),
+    html.Hr(),
+    html.H3('Color'),
+    dcc.Markdown("Set the color of the gauge by using the property `color=<hex_color>`."),
+    ComponentBlock('''import dash_daq as daq
+
+daq.Gauge(
+    color="#9B51E0",
+    value=2,
+    label='Default',
+    max=5,
+    min=0,
+)''', customStyle=styles.code_container, language='python'),
+    html.Hr(),
+    html.H3('Gradient Color'),
+    dcc.Markdown("Apply a color gradient to the gauge using the property \
+    `color={'gradient':True,'ranges':{'<color>':[<value>, <value>],'<color>':[<value>, <value>],'<color>':[<value>, <value>]}}`."),
+    ComponentBlock('''import dash_daq as daq
+
+daq.Gauge(
+    color={"gradient":True,"ranges":{"green":[0,6],"yellow":[6,8],"red":[8,10]}},
+    value=2,
+    label='Default',
+    max=10,
+    min=0,
+)''', customStyle=styles.code_container, language='python'),
+    html.Hr(),
+    html.H3('Size'),
+    dcc.Markdown("Adjust the size of the gauge in pixels `size=200`."),
+    ComponentBlock('''import dash_daq as daq
+
+daq.Gauge(
+    size=200,
+    value=2,
+    label='Default',
+
+)''', customStyle=styles.code_container, language='python'),
+    html.Hr(),
+    html.H3('Scale'),
+    dcc.Markdown("Modify where the scale starts, the label interval, and actual interval \
+    with the `scale` property."),
+    ComponentBlock('''import dash_daq as daq
+
+daq.Gauge(
+  label='Scale',
+  value=3,
+  min=0,
+  max=24,
+  scale={"start":0,"interval":3,"labelInterval":3},
+
+)''', customStyle=styles.code_container, language='python'),
     html.Hr(),
     html.H3("Gauge Properties"),
     generate_prop_table('Gauge')
