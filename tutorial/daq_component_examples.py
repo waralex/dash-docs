@@ -232,7 +232,7 @@ daq.Gauge(
     min=0,
 )''', customStyle=styles.code_container, language='python'),
     html.Hr(),
-    html.H3('Gradient Color'),
+    html.H3('Color Gradient'),
     dcc.Markdown("Apply a color gradient to the gauge using the property \
     `color={'gradient':True,'ranges':{'<color>':[<value>, <value>],'<color>':[<value>, <value>],'<color>':[<value>, <value>]}}`."),
     ComponentBlock('''import dash_daq as daq
@@ -290,25 +290,73 @@ GraduatedBar = html.Div(children=[
         className='example-container',
         style={'overflow-x': 'initial'}
     ),
-
     html.Hr(),
-#     html.H3('Multi-Value Dropdown'),
-#     dcc.Markdown("A dropdown component with the `multi` property set to `True` \
-#                   will allow the user to select more than one value \
-#                   at a time."),
-#     ComponentBlock('''import dash_core_components as dcc
+    html.H3('Orientation'),
+    dcc.Markdown("Change the orientation of the bar to vertical `vertical=True`."),
+    ComponentBlock('''import dash_daq as daq
 
-# dcc.Dropdown(
-#     options=[
-#         {'label': 'New York City', 'value': 'NYC'},
-#         {'label': 'Montreal', 'value': 'MTL'},
-#         {'label': 'San Francisco', 'value': 'SF'}
-#     ],
-#     value=['MTL', 'NYC'],
-#     multi=True
-# )''', customStyle=styles.code_container, language='python'),
-#     html.Hr(),
+daq.GraduatedBar(
+    vertical=True,
+    value=10
+)''', customStyle=styles.code_container, language='python'),
+    html.Hr(),
+    html.H3('Size'),
+    dcc.Markdown("By default `size=250`. Manually adjust the size of the bar in pixels with `size=200`."),
+    ComponentBlock('''import dash_daq as daq
 
+daq.GraduatedBar(
+    size=200,
+    value=10
+)''', customStyle=styles.code_container, language='python'),
+    html.Hr(),
+    html.H3('Max'),
+    dcc.Markdown("By default `max=10`. Manually set a maximum value with `max=100`."),
+    ComponentBlock('''import dash_daq as daq
+
+daq.GraduatedBar(
+    max=100,
+    value=50
+)''', customStyle=styles.code_container, language='python'),
+    html.Hr(),
+    html.H3('Step'),
+    dcc.Markdown("By default `step=0.5`. Manually set the step size of each bar with `step=2`."),
+    ComponentBlock('''import dash_daq as daq
+
+daq.GraduatedBar(
+    step=2,
+    max=100,
+    value=50
+)''', customStyle=styles.code_container, language='python'),
+    html.Hr(),
+    html.H3('Show Current Value'),
+    dcc.Markdown("Display the current value of the graduated bar `showCurrentValue=True`."),
+    ComponentBlock('''import dash_daq as daq
+
+daq.GraduatedBar(
+    showCurrentValue=True,
+    max=100,
+    value=38
+)''', customStyle=styles.code_container, language='python'),
+    html.Hr(),
+    html.H3('Color Range'),
+    dcc.Markdown("Set a color range with the `color` property. `color={'ranges':{'<color>':[<value>, <value>],'<color>':[<value>, <value>],'<color>':[<value>, <value>]}}`"),
+    ComponentBlock('''import dash_daq as daq
+
+daq.GraduatedBar(
+    color={"ranges":{"green":[0,4],"yellow":[4,7],"red":[7,10]}},
+    showCurrentValue=True,
+    value=10
+)''', customStyle=styles.code_container, language='python'),
+    html.Hr(),
+    html.H3('Color Gradient'),
+    dcc.Markdown("Set a color gradient with the `color` property. `color={'gradient':{'<color>':[<value>, <value>],'<color>':[<value>, <value>],'<color>':[<value>, <value>]}}`"),
+    ComponentBlock('''import dash_daq as daq
+
+daq.GraduatedBar(
+    color={"gradient":True,"ranges":{"green":[0,4],"yellow":[4,7],"red":[7,10]}},
+    showCurrentValue=True,
+    value=10
+)''', customStyle=styles.code_container, language='python'),
     html.Hr(),
     html.H3("Graduated Bar Properties"),
     generate_prop_table('GraduatedBar')
@@ -332,28 +380,49 @@ Indicator = html.Div(children=[
     ),
 
     html.Hr(),
-#     html.H3('Multi-Value Dropdown'),
-#     dcc.Markdown("A dropdown component with the `multi` property set to `True` \
-#                   will allow the user to select more than one value \
-#                   at a time."),
-#     ComponentBlock('''import dash_core_components as dcc
+    html.H3('Label'),
+    dcc.Markdown(
+        "Define a `label='Label'` and the orientation with respect to the boolean indicator with `labelPosition='bottom`."),
+    ComponentBlock('''import dash_daq as daq
 
-# dcc.Dropdown(
-#     options=[
-#         {'label': 'New York City', 'value': 'NYC'},
-#         {'label': 'Montreal', 'value': 'MTL'},
-#         {'label': 'San Francisco', 'value': 'SF'}
-#     ],
-#     value=['MTL', 'NYC'],
-#     multi=True
-# )''', customStyle=styles.code_container, language='python'),
-#     html.Hr(),
+daq.Indicator(
+  label="Label",
+  labelPosition="bottom",
+  value=True
+)''', customStyle=styles.code_container, language='python'),
+    html.H3('Boolean Indicator Off'),
+    dcc.Markdown("A boolean indicator set to off `value=False`."),
+    ComponentBlock('''import dash_daq as daq
 
+daq.Indicator(
+  label="Off",
+  value=False
+)''', customStyle=styles.code_container, language='python'),
+    html.Hr(),
+    html.H3('Square'),
+    dcc.Markdown("Create a square boolean indicator by setting the `width` and `height` to the same value."),
+    ComponentBlock('''import dash_daq as daq
+
+daq.Indicator(
+  label="Square",
+  width=16,
+  height=16
+)''', customStyle=styles.code_container, language='python'),
+    html.Hr(),
+    html.H3('Color'),
+    dcc.Markdown(
+        "Define the color of the boolean indicator `color='#<color>'`"),
+    ComponentBlock('''import dash_daq as daq
+
+daq.Indicator(
+  label="Purple",
+  color="#551A8B",
+  value=True
+)''', customStyle=styles.code_container, language='python'),
     html.Hr(),
     html.H3("Indicator Properties"),
     generate_prop_table('Indicator')
 ])
-
 # Knob
 Knob = html.Div(children=[
     html.H1('Knob Examples and Reference'),
@@ -372,23 +441,56 @@ Knob = html.Div(children=[
     ),
 
     html.Hr(),
-#     html.H3('Multi-Value Dropdown'),
-#     dcc.Markdown("A dropdown component with the `multi` property set to `True` \
-#                   will allow the user to select more than one value \
-#                   at a time."),
-#     ComponentBlock('''import dash_core_components as dcc
+    html.H3('Size'),
+    dcc.Markdown("Set the size(diameter) of the knob in pixels `size=100`."),
+    ComponentBlock('''import dash_daq as daq
 
-# dcc.Dropdown(
-#     options=[
-#         {'label': 'New York City', 'value': 'NYC'},
-#         {'label': 'Montreal', 'value': 'MTL'},
-#         {'label': 'San Francisco', 'value': 'SF'}
-#     ],
-#     value=['MTL', 'NYC'],
-#     multi=True
-# )''', customStyle=styles.code_container, language='python'),
-#     html.Hr(),
+daq.Knob(
+    size=140,
+    value=3
+)''', customStyle=styles.code_container, language='python'),
+    html.Hr(),
+    html.H3('Max'),
+    dcc.Markdown("Set the maximum value of the knob `max=100`."),
+    ComponentBlock('''import dash_daq as daq
 
+daq.Knob(
+    max=100,
+    value=3
+)''', customStyle=styles.code_container, language='python'),
+    html.Hr(),
+    html.H3('Color Ranges'),
+    dcc.Markdown("Control color ranges with \
+    `color={'ranges':{'<color>':[<value>,<value>],'<color>':[<value>,<value>], '<color>':[<value>,<value>]}}`."),
+    ComponentBlock('''import dash_daq as daq
+
+daq.Knob(
+  label="Color Ranges",
+  value=3,
+  color={"ranges":{"green":[0,5],"yellow":[5,9],"red":[9,10]}}
+)''', customStyle=styles.code_container, language='python'),
+    html.Hr(),
+    html.H3('Color Gradient'),
+    dcc.Markdown("Set up a color gradient with \
+    `color={'ranges':{'gradient': True,'ranges' <color>':[<value>,<value>],'<color>':[<value>,<value>], '<color>':[<value>,<value>]}}`."),
+    ComponentBlock('''import dash_daq as daq
+
+daq.Knob(
+  label="Gradient Ranges",
+  value=7,
+  color={"gradient":True,"ranges":{"green":[0,5],"yellow":[5,9],"red":[9,10]}}
+)''', customStyle=styles.code_container, language='python'),
+    html.Hr(),
+    html.H3('Scale'),
+    dcc.Markdown("Adjust the scale interval, labelInterval, and start (fix this description)."),
+    ComponentBlock('''import dash_daq as daq
+
+daq.Knob(
+  label="Gradient Ranges",
+  value=7,
+  max=18,
+  scale={'start':0, 'labelInterval': 3, 'interval': 3}
+)''', customStyle=styles.code_container, language='python'),
     html.Hr(),
     html.H3("Knob Properties"),
     generate_prop_table('Knob')
@@ -416,7 +518,7 @@ LEDDisplay = html.Div(children=[
 #     dcc.Markdown("A dropdown component with the `multi` property set to `True` \
 #                   will allow the user to select more than one value \
 #                   at a time."),
-#     ComponentBlock('''import dash_core_components as dcc
+#     ComponentBlock('''import dash_daq as daq
 
 # dcc.Dropdown(
 #     options=[
@@ -456,7 +558,7 @@ NumericInput = html.Div(children=[
 #     dcc.Markdown("A dropdown component with the `multi` property set to `True` \
 #                   will allow the user to select more than one value \
 #                   at a time."),
-#     ComponentBlock('''import dash_core_components as dcc
+#     ComponentBlock('''import dash_daq as daq
 
 # dcc.Dropdown(
 #     options=[
@@ -496,7 +598,7 @@ PowerButton = html.Div(children=[
 #     dcc.Markdown("A dropdown component with the `multi` property set to `True` \
 #                   will allow the user to select more than one value \
 #                   at a time."),
-#     ComponentBlock('''import dash_core_components as dcc
+#     ComponentBlock('''import dash_daq as daq
 
 # dcc.Dropdown(
 #     options=[
@@ -536,7 +638,7 @@ PrecisionInput = html.Div(children=[
 #     dcc.Markdown("A dropdown component with the `multi` property set to `True` \
 #                   will allow the user to select more than one value \
 #                   at a time."),
-#     ComponentBlock('''import dash_core_components as dcc
+#     ComponentBlock('''import dash_daq as daq
 
 # dcc.Dropdown(
 #     options=[
@@ -576,7 +678,7 @@ StopButton = html.Div(children=[
 #     dcc.Markdown("A dropdown component with the `multi` property set to `True` \
 #                   will allow the user to select more than one value \
 #                   at a time."),
-#     ComponentBlock('''import dash_core_components as dcc
+#     ComponentBlock('''import dash_daq as daq
 
 # dcc.Dropdown(
 #     options=[
@@ -616,7 +718,7 @@ Slider = html.Div(children=[
 #     dcc.Markdown("A dropdown component with the `multi` property set to `True` \
 #                   will allow the user to select more than one value \
 #                   at a time."),
-#     ComponentBlock('''import dash_core_components as dcc
+#     ComponentBlock('''import dash_daq as daq
 
 # dcc.Dropdown(
 #     options=[
@@ -656,7 +758,7 @@ Tank = html.Div(children=[
 #     dcc.Markdown("A dropdown component with the `multi` property set to `True` \
 #                   will allow the user to select more than one value \
 #                   at a time."),
-#     ComponentBlock('''import dash_core_components as dcc
+#     ComponentBlock('''import dash_daq as daq
 
 # dcc.Dropdown(
 #     options=[
@@ -696,7 +798,7 @@ Thermometer = html.Div(children=[
 #     dcc.Markdown("A dropdown component with the `multi` property set to `True` \
 #                   will allow the user to select more than one value \
 #                   at a time."),
-#     ComponentBlock('''import dash_core_components as dcc
+#     ComponentBlock('''import dash_daq as daq
 
 # dcc.Dropdown(
 #     options=[
@@ -736,7 +838,7 @@ ToggleSwitch = html.Div(children=[
 #     dcc.Markdown("A dropdown component with the `multi` property set to `True` \
 #                   will allow the user to select more than one value \
 #                   at a time."),
-#     ComponentBlock('''import dash_core_components as dcc
+#     ComponentBlock('''import dash_daq as daq
 
 # dcc.Dropdown(
 #     options=[
@@ -776,7 +878,7 @@ DarkThemeProvider = html.Div(children=[
 #     dcc.Markdown("A dropdown component with the `multi` property set to `True` \
 #                   will allow the user to select more than one value \
 #                   at a time."),
-#     ComponentBlock('''import dash_core_components as dcc
+#     ComponentBlock('''import dash_daq as daq
 
 # dcc.Dropdown(
 #     options=[
