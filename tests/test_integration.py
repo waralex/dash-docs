@@ -64,12 +64,7 @@ class Tests(IntegrationTests):
     def test_docs(self):
         self.startServer(app, '/')
 
-        try:
-            self.wait_for_element_by_id('wait-for-layout')
-        except Exception as e:
-            print(self.wait_for_element_by_id(
-                '_dash-app-content').get_attribute('innerHTML'))
-            raise e
+        time.sleep(5000)
 
         self.snapshot('index - 1')
 
