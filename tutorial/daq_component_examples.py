@@ -514,23 +514,44 @@ LEDDisplay = html.Div(children=[
     ),
 
     html.Hr(),
-#     html.H3('Multi-Value Dropdown'),
-#     dcc.Markdown("A dropdown component with the `multi` property set to `True` \
-#                   will allow the user to select more than one value \
-#                   at a time."),
-#     ComponentBlock('''import dash_daq as daq
+    html.H3('Label'),
+    dcc.Markdown("Set the `label='Label'` and `labelPosition='bottom'`"),
+    ComponentBlock('''import dash_daq as daq
 
-# dcc.Dropdown(
-#     options=[
-#         {'label': 'New York City', 'value': 'NYC'},
-#         {'label': 'Montreal', 'value': 'MTL'},
-#         {'label': 'San Francisco', 'value': 'SF'}
-#     ],
-#     value=['MTL', 'NYC'],
-#     multi=True
-# )''', customStyle=styles.code_container, language='python'),
-#     html.Hr(),
+daq.LEDDisplay(
+    label="Label",
+    labelPosition='bottom',
+    value='12:34'
+)''', customStyle=styles.code_container, language='python'),
+    html.H3('Size'),
+    dcc.Markdown("Adjust the size of the LED display `size=100`"),
+    ComponentBlock('''import dash_daq as daq
 
+daq.LEDDisplay(
+    label="Large",
+    value="9:34",
+    size=64,
+)''', customStyle=styles.code_container, language='python'),
+    html.Hr(),
+    html.H3('Color'),
+    dcc.Markdown("Adjust the color of the LED display `color=#<hex_color>`"),
+    ComponentBlock('''import dash_daq as daq
+
+daq.LEDDisplay(
+    label="color",
+    value='1.001',
+    color="#FF5E5E"
+)''', customStyle=styles.code_container, language='python'),
+    html.Hr(),
+    html.H3('Background Color'),
+    dcc.Markdown("Adjust the background color of the LED display `backgroundColor=#<hex_color>`"),
+    ComponentBlock('''import dash_daq as daq
+
+daq.LEDDisplay(
+    label="color",
+    value='1.001',
+    backgroundColor="#FF5E5E"
+)''', customStyle=styles.code_container, language='python'),
     html.Hr(),
     html.H3("LED Display Properties"),
     generate_prop_table('LEDDisplay')
@@ -552,25 +573,47 @@ NumericInput = html.Div(children=[
         className='example-container',
         style={'overflow-x': 'initial'}
     ),
-
     html.Hr(),
-#     html.H3('Multi-Value Dropdown'),
-#     dcc.Markdown("A dropdown component with the `multi` property set to `True` \
-#                   will allow the user to select more than one value \
-#                   at a time."),
-#     ComponentBlock('''import dash_daq as daq
+    html.H3('Label'),
+    dcc.Markdown("Set the label and label position with `label='Label'` and `labelPosition='bottom'`."),
+    ComponentBlock('''import dash_daq as daq
 
-# dcc.Dropdown(
-#     options=[
-#         {'label': 'New York City', 'value': 'NYC'},
-#         {'label': 'Montreal', 'value': 'MTL'},
-#         {'label': 'San Francisco', 'value': 'SF'}
-#     ],
-#     value=['MTL', 'NYC'],
-#     multi=True
-# )''', customStyle=styles.code_container, language='python'),
-#     html.Hr(),
+daq.NumericInput(
+    label='Label',
+    labelPosition='bottom',
+    value=10,
+)''', customStyle=styles.code_container, language='python'),
+    html.Hr(),
+    html.H3('Size'),
+    dcc.Markdown("Extend the size with `size=120`."),
+    ComponentBlock('''import dash_daq as daq
 
+daq.NumericInput(
+    value=10,
+    size=120
+)''', customStyle=styles.code_container, language='python'),
+    html.Hr(),
+    html.H3('Max and Min'),
+    dcc.Markdown("Set the minimum and maximum bounds with `min=0`, `max=10`."),
+    ComponentBlock('''import dash_daq as daq
+
+daq.NumericInput(
+    min=0,
+    max=100,
+    value=20
+)''', customStyle=styles.code_container, language='python'),
+    html.Hr(),
+    html.H3('Disable'),
+    dcc.Markdown("Disable the numeric input by setting `disabled=True`."),
+    ComponentBlock('''import dash_daq as daq
+
+daq.NumericInput(
+    disabled=True,
+    min=0,
+    max=10,
+    value=2
+)''', customStyle=styles.code_container, language='python'),
+    html.Hr(),
     html.Hr(),
     html.H3("Numeric Input Properties"),
     generate_prop_table('NumericInput')
@@ -594,23 +637,32 @@ PowerButton = html.Div(children=[
     ),
 
     html.Hr(),
-#     html.H3('Multi-Value Dropdown'),
-#     dcc.Markdown("A dropdown component with the `multi` property set to `True` \
-#                   will allow the user to select more than one value \
-#                   at a time."),
-#     ComponentBlock('''import dash_daq as daq
+    html.H3('Label'),
+    dcc.Markdown("Set the label and label position with `label` and `labelPosition`."),
+    ComponentBlock('''import dash_daq as daq
 
-# dcc.Dropdown(
-#     options=[
-#         {'label': 'New York City', 'value': 'NYC'},
-#         {'label': 'Montreal', 'value': 'MTL'},
-#         {'label': 'San Francisco', 'value': 'SF'}
-#     ],
-#     value=['MTL', 'NYC'],
-#     multi=True
-# )''', customStyle=styles.code_container, language='python'),
-#     html.Hr(),
+daq.PowerButton(
+    on='True',
+    label='Label',
+    labelPosition='top'
+)''', customStyle=styles.code_container, language='python'),
+    html.Hr(),
+    html.H3('Size'),
+    dcc.Markdown("Adjust the size (diameter in pixels) of the power button with `size`."),
+    ComponentBlock('''import dash_daq as daq
 
+daq.PowerButton(
+    on='True',
+    size=100
+)''', customStyle=styles.code_container, language='python'),
+    html.H3('Color'),
+    dcc.Markdown("Set the color of the power button with `color`."),
+    ComponentBlock('''import dash_daq as daq
+
+daq.PowerButton(
+    on='True',
+    color='#FF5E5E'
+)''', customStyle=styles.code_container, language='python'),
     html.Hr(),
     html.H3("Power Button Properties"),
     generate_prop_table('PowerButton')
@@ -632,25 +684,58 @@ PrecisionInput = html.Div(children=[
         className='example-container',
         style={'overflow-x': 'initial'}
     ),
-
     html.Hr(),
-#     html.H3('Multi-Value Dropdown'),
-#     dcc.Markdown("A dropdown component with the `multi` property set to `True` \
-#                   will allow the user to select more than one value \
-#                   at a time."),
-#     ComponentBlock('''import dash_daq as daq
+    html.H3('Label'),
+    dcc.Markdown("Set the label and label position with `label` and `labelPosition`."),
+    ComponentBlock('''import dash_daq as daq
 
-# dcc.Dropdown(
-#     options=[
-#         {'label': 'New York City', 'value': 'NYC'},
-#         {'label': 'Montreal', 'value': 'MTL'},
-#         {'label': 'San Francisco', 'value': 'SF'}
-#     ],
-#     value=['MTL', 'NYC'],
-#     multi=True
-# )''', customStyle=styles.code_container, language='python'),
-#     html.Hr(),
+daq.PrecisionInput(
+    label='Label',
+    labelPosition='top',
+    precision=2,
+    value=12
+)''', customStyle=styles.code_container, language='python'),
+    html.Hr(),
+    html.H3('Precision'),
+    dcc.Markdown("The `precision` property is mandatory for this component. The `precision` property \
+    indicates the accuracy of the specified number."),
+    ComponentBlock('''import dash_daq as daq
 
+daq.PrecisionInput(
+    precision=2,
+    value=125
+)''', customStyle=styles.code_container, language='python'),
+    html.Hr(),
+    html.H3('Max and Min'),
+    dcc.Markdown("Set the maximum and minimum value of the numeric input with `max` and `min`."),
+    ComponentBlock('''import dash_daq as daq
+
+daq.PrecisionInput(
+    precision=2,
+    value=15,
+    max=20,
+    min=10
+)''', customStyle=styles.code_container, language='python'),
+    html.Hr(),
+    html.H3('Size'),
+    dcc.Markdown("Set the length (in pixels) of the numeric input `size`."),
+    ComponentBlock('''import dash_daq as daq
+
+daq.PrecisionInput(
+    size=120,
+    precision=4,
+    value=245
+)''', customStyle=styles.code_container, language='python'),
+    html.Hr(),
+    html.H3('Disabled'),
+    dcc.Markdown("Disable the precision input by setting `disabled=True`"),
+    ComponentBlock('''import dash_daq as daq
+
+daq.PrecisionInput(
+    disabled=True,
+    precision=4,
+    value=9999
+)''', customStyle=styles.code_container, language='python'),
     html.Hr(),
     html.H3("Precision Input Properties"),
     generate_prop_table('PrecisionInput')
@@ -674,23 +759,38 @@ StopButton = html.Div(children=[
     ),
 
     html.Hr(),
-#     html.H3('Multi-Value Dropdown'),
-#     dcc.Markdown("A dropdown component with the `multi` property set to `True` \
-#                   will allow the user to select more than one value \
-#                   at a time."),
-#     ComponentBlock('''import dash_daq as daq
+    html.H3('Label'),
+    dcc.Markdown("Set the label and label position with `label` and `labelPosition`."),
+    ComponentBlock('''import dash_daq as daq
 
-# dcc.Dropdown(
-#     options=[
-#         {'label': 'New York City', 'value': 'NYC'},
-#         {'label': 'Montreal', 'value': 'MTL'},
-#         {'label': 'San Francisco', 'value': 'SF'}
-#     ],
-#     value=['MTL', 'NYC'],
-#     multi=True
-# )''', customStyle=styles.code_container, language='python'),
-#     html.Hr(),
+daq.StopButton(
+    label='Label',
+    labelPosition='top'
+)''', customStyle=styles.code_container, language='python'),
+    html.Hr(),
+    html.H3('Size'),
+    dcc.Markdown("Adjust the size (width in pixels) of the stop button with `size`."),
+    ComponentBlock('''import dash_daq as daq
 
+daq.StopButton(
+    size=120,
+)''', customStyle=styles.code_container, language='python'),
+    html.Hr(),
+    html.H3('Button Text'),
+    dcc.Markdown("Set the text displayed in the button `buttonText`."),
+    ComponentBlock('''import dash_daq as daq
+
+daq.StopButton(
+    buttonText='text',
+)''', customStyle=styles.code_container, language='python'),
+    html.Hr(),
+    html.H3('Disabled'),
+    dcc.Markdown("Disable the button by setting `disabled=True`."),
+    ComponentBlock('''import dash_daq as daq
+
+daq.StopButton(
+    disabled=True,
+)''', customStyle=styles.code_container, language='python'),
     html.Hr(),
     html.H3("Stop Button Properties"),
     generate_prop_table('StopButton')
