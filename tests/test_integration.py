@@ -64,7 +64,7 @@ class Tests(IntegrationTests):
     def test_docs(self):
         self.startServer(app, '/')
 
-        time.sleep(5000)
+        time.sleep(5)
 
         self.snapshot('index - 1')
 
