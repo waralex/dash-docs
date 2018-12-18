@@ -168,14 +168,20 @@ layout = html.Div([
             of.
             '''),
 
-        Chapter('Part 7. Filtering Syntax',
+        Chapter('Part 7. Virtualization',
+            '/datatable/virtualization',
+            '''
+            Examples using DataTable virtualization.
+            '''),
+
+        Chapter('Part 8. Filtering Syntax',
             '/datatable/filtering',
             '''
             An explanation and examples of filtering syntax for both frontend
             and backend filtering in the DataTable.
             '''),
 
-        Chapter('Part 8. Table Reference',
+        Chapter('Part 9. Table Reference',
             '/datatable/reference',
             '''
             The full list of Table properties and their settings.

@@ -7,3 +7,5 @@ from .import reference_chapter
 from .import styling_chapter
 from .import sizing_chapter
 from .import table_callbacks_chapter
+from .import virtualization_chapter
+
