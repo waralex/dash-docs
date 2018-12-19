@@ -266,9 +266,7 @@ daq.Gauge(
   value=3,
   min=0,
   max=24,
-  scale={"start":0,"interval":3,"labelInterval":3},
-
-)''', customStyle=styles.code_container, language='python'),
+)''' , customStyle=styles.code_container, language='python'),
     html.Hr(),
     html.H3("Gauge Properties"),
     generate_prop_table('Gauge')
@@ -279,7 +277,7 @@ GraduatedBar = html.Div(children=[
     html.H1('Graduated bar Examples and Reference'),
     html.Hr(),
     html.H3('Default Graduated bar'),
-    html.P("An example of a default Graduated bar without \
+    dcc.Markdown("An example of a default Graduated bar without \
             any extra properties."),
     dcc.SyntaxHighlighter(
         examples['graduated-bar'][0],
@@ -367,7 +365,7 @@ Indicator = html.Div(children=[
     html.H1('Indicator Examples and Reference'),
     html.Hr(),
     html.H3('Default Indicator'),
-    html.P("An example of a default Indicator without \
+    dcc.Markdown("An example of a default Indicator without \
             any extra properties."),
     dcc.SyntaxHighlighter(
         examples['indicator'][0],
@@ -428,7 +426,7 @@ Knob = html.Div(children=[
     html.H1('Knob Examples and Reference'),
     html.Hr(),
     html.H3('Default Knob'),
-    html.P("An example of a default Knob without \
+    dcc.Markdown("An example of a default Knob without \
             any extra properties."),
     dcc.SyntaxHighlighter(
         examples['knob'][0],
@@ -501,7 +499,7 @@ LEDDisplay = html.Div(children=[
     html.H1('LED display Examples and Reference'),
     html.Hr(),
     html.H3('Default LED display'),
-    html.P("An example of a default LED display without \
+    dcc.Markdown("An example of a default LED display without \
             any extra properties."),
     dcc.SyntaxHighlighter(
         examples['LED-display'][0],
@@ -562,7 +560,7 @@ NumericInput = html.Div(children=[
     html.H1('LED display Examples and Reference'),
     html.Hr(),
     html.H3('Default Numeric Input'),
-    html.P("An example of a default numeric input without \
+    dcc.Markdown("An example of a default numeric input without \
             any extra properties."),
     dcc.SyntaxHighlighter(
         examples['numeric-input'][0],
@@ -624,7 +622,7 @@ PowerButton = html.Div(children=[
     html.H1('LED display Examples and Reference'),
     html.Hr(),
     html.H3('Default Power Button'),
-    html.P("An example of a default power button without \
+    dcc.Markdown("An example of a default power button without \
             any extra properties."),
     dcc.SyntaxHighlighter(
         examples['power-button'][0],
@@ -673,7 +671,7 @@ PrecisionInput = html.Div(children=[
     html.H1('Precision Input Examples and Reference'),
     html.Hr(),
     html.H3('Default Precision Input'),
-    html.P("An example of a default precision input without \
+    dcc.Markdown("An example of a default precision input without \
             any extra properties."),
     dcc.SyntaxHighlighter(
         examples['precision-input'][0],
@@ -746,7 +744,7 @@ StopButton = html.Div(children=[
     html.H1('Stop Button Examples and Reference'),
     html.Hr(),
     html.H3('Default Stop Button'),
-    html.P("An example of a default stop button without \
+    dcc.Markdown("An example of a default stop button without \
             any extra properties."),
     dcc.SyntaxHighlighter(
         examples['stop-button'][0],
@@ -801,7 +799,7 @@ Slider = html.Div(children=[
     html.H1('Slider Examples and Reference'),
     html.Hr(),
     html.H3('Default Slider'),
-    html.P("An example of a default slider without \
+    dcc.Markdown("An example of a default slider without \
             any extra properties."),
     dcc.SyntaxHighlighter(
         examples['slider'][0],
@@ -859,6 +857,15 @@ daq.Slider(
 
     html.Hr(), 
 
+    html.H3('Vertical orientation'),
+    dcc.Markdown("Make the slider display vertically."),
+    ComponentBlock('''import dash_daq as daq 
+daq.Slider(
+    vertical=True
+)''', customStyle=styles.code_container, language='python'),
+
+    html.Hr(),
+    
     html.H3("Slider Properties"),
     generate_prop_table("Slider")
     
@@ -869,7 +876,7 @@ Tank = html.Div(children=[
     html.H1('Tank Examples and Reference'),
     html.Hr(),
     html.H3('Default Tank'),
-    html.P("An example of a default tank without \
+    dcc.Markdown("An example of a default tank without \
             any extra properties."),
     dcc.SyntaxHighlighter(
         examples['tank'][0],
@@ -882,6 +889,75 @@ Tank = html.Div(children=[
     ),
 
     html.Hr(),
+
+    html.H3('Current value with units'),
+    dcc.Markdown("Display the current value, along with optional \
+    units."),
+    ComponentBlock('''import dash_daq as daq 
+daq.Tank(
+    value=6,
+    showCurrentValue=True,
+    units='gallons',
+    style={'margin-left': '50px'}
+)''', customStyle=styles.code_container, language='python'),
+    
+    html.Hr(),
+
+    html.H3('Size') ,
+    dcc.Markdown("Control the height of the tank."),
+    ComponentBlock('''import dash_daq as daq
+daq.Tank(
+    size=100,
+    value=6,
+    style={'margin-left': '50px'}
+)
+''', customStyle=styles.code_container, language='python'),
+
+    html.Hr(), 
+    
+    html.H3('Label'),
+    dcc.Markdown("Display a label alongside your tank in the \
+    specified position."),
+    ComponentBlock('''import dash_daq as daq
+daq.Tank(
+    value=3,
+    label='Tank label', 
+    labelPosition='bottom'
+)''', customStyle=styles.code_container, language='python'),
+
+    html.Hr(),
+
+    html.H3('Custom scales'),
+    dcc.Markdown("Control the intervals at which labels are displayed, \
+    as well as the labels themselves."),
+    ComponentBlock('''import dash_daq as daq
+daq.Tank(
+    value=3, 
+    scale={'interval': 2, 'labelInterval': 2, 
+           'custom': {'5': 'Set point'}},
+    style={'margin-left': '50px'}
+)''', customStyle=styles.code_container, language='python'),
+
+    html.Hr(), 
+    
+    html.H3('Logarithmic'),
+    dcc.Markdown("Use a logarithmic scale for the tank with the specified \
+    base."),
+    ComponentBlock('''import dash_daq as daq
+daq.Tank(
+    min=0, 
+    max=10, 
+    value=300,
+    logarithmic=True,
+    base=3,
+    style={'margin-left': '50px'}
+)''', customStyle=styles.code_container, language='python'),
+
+    html.Hr(),
+
+    html.H3('Tank properties'),
+    
+    generate_prop_table("Tank")
 ])
 
 # Thermometer
@@ -889,7 +965,7 @@ Thermometer = html.Div(children=[
     html.H1('Thermometer Examples and Reference'),
     html.Hr(),
     html.H3('Default Thermometer'),
-    html.P("An example of a default Thermometer without \
+    dcc.Markdown("An example of a default Thermometer without \
             any extra properties."),
     dcc.SyntaxHighlighter(
         examples['thermometer'][0],
@@ -903,6 +979,60 @@ Thermometer = html.Div(children=[
 
     html.Hr(),
 
+    html.H3('Current value with units'),
+    dcc.Markdown("Display the value of the thermometer along with \
+    optional units."),
+    ComponentBlock('''import dash_daq as daq
+daq.Thermometer(
+    min=95, 
+    max=105,
+    value=100,
+    showCurrentValue=True,
+    units="C"
+)''', customStyle=styles.code_container, language='python'),
+    
+    html.Hr(),
+
+    html.H3('Size'),
+    dcc.Markdown("Control the size of the thermometer."),
+    ComponentBlock('''import dash_daq as daq 
+daq.Thermometer(
+    value=5, 
+    size=100
+)''', customStyle=styles.code_container, language='python'),
+
+    html.Hr(),
+
+    html.H3('Label'),
+    dcc.Markdown("Display a label alongside the thermometer in \
+    the specified positon."),
+    ComponentBlock('''import dash_daq as daq 
+daq.Thermometer(
+    value=5,
+    label='Current temperature', 
+    labelPosition='top'
+)''', customStyle=styles.code_container, language='python'),
+
+    html.Hr(), 
+
+    html.H3('Custom scales'),
+    dcc.Markdown("Control the intervals at which labels are displayed, \
+    as well as the labels themselves."),
+    ComponentBlock('''import dash_daq as daq 
+daq.Thermometer(
+    value=5,
+    scale={'start': 2, 'interval': 3,
+    'labelInterval': 2, 'custom': {
+        '2': 'ideal temperature',
+        '5': 'projected temperature'
+    }}
+)''', customStyle=styles.code_container, language='python'),
+
+    html.Hr(),
+
+    html.H3('Thermometer properties'),    
+    generate_prop_table("Thermometer")
+    
 ])
 
 # Toggle Switch
@@ -910,7 +1040,7 @@ ToggleSwitch = html.Div(children=[
     html.H1('Toggle Switch Examples and Reference'),
     html.Hr(),
     html.H3('Default Toggle Switch'),
-    html.P("An example of a default toggle switch without \
+    dcc.Markdown("An example of a default toggle switch without \
             any extra properties."),
     dcc.SyntaxHighlighter(
         examples['toggle-switch'][0],
@@ -924,6 +1054,36 @@ ToggleSwitch = html.Div(children=[
 
     html.Hr(),
 
+    html.H3('Vertical orientation'),
+    dcc.Markdown("Make the switch display vertically."),
+    ComponentBlock('''import dash_daq as daq
+daq.ToggleSwitch(
+    vertical=True
+)''', customStyle=styles.code_container, language='python'),
+
+    html.Hr(),
+
+    html.H3('Size'),
+    dcc.Markdown("Adjust the size of the toggle switch."),
+    ComponentBlock('''import dash_daq as daq 
+daq.ToggleSwitch(
+    size=100
+)''', customStyle=styles.code_container, language='python'),
+
+    html.Hr(),
+
+    html.H3('Label'),
+    dcc.Markdown("Add a label to the toggle switch and specify \
+    its position."),
+    ComponentBlock('''import dash_daq as daq 
+daq.ToggleSwitch(
+    label='My toggle switch', 
+    labelPosition='bottom'
+)''', customStyle=styles.code_container, language='python'),
+    
+    html.Hr(),
+    generate_prop_table("ToggleSwitch")
+    
 ])
 
 # Dark Theme Provider
@@ -931,7 +1091,7 @@ DarkThemeProvider = html.Div(children=[
     html.H1('Dark Theme Provider Examples and Reference'),
     html.Hr(),
     html.H3('Default Dark Theme Provider'),
-    html.P("An example of a default dark theme provider without \
+    dcc.Markdown("An example of a default dark theme provider without \
             any extra properties."),
     dcc.SyntaxHighlighter(
         examples['dark-theme-provider'][0],
@@ -944,5 +1104,5 @@ DarkThemeProvider = html.Div(children=[
     ),
 
     html.Hr(),
-                   
+    generate_prop_table("DarkThemeProvider")
 ])

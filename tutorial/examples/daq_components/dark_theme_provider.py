@@ -17,7 +17,10 @@ rootLayout = html.Div([
     daq.BooleanSwitch(
         on=True,
         className='dark-theme-control'
-    ), html.Br(), 
+    ), html.Br(),
+    daq.ToggleSwitch(
+        className='dark-theme-control'
+    ), html.Br(),
     daq.ColorPicker(
         value=17,
         className='dark-theme-control'
@@ -44,6 +47,7 @@ rootLayout = html.Div([
     daq.Knob(
         min=0,
         max=10,
+        value=6,
         className='dark-theme-control'
     ), html.Br(), 
     daq.LEDDisplay(
@@ -73,6 +77,7 @@ rootLayout = html.Div([
     daq.Slider(
         min=0,
         max=100,
+        value=30,
         targets = {"25": {"label": "TARGET"}},
         color=theme['primary'],
         className='dark-theme-control'
@@ -88,10 +93,8 @@ rootLayout = html.Div([
         max=105,
         value=98.6,
         className='dark-theme-control'
-    ), html.Br(), 
-    daq.ToggleSwitch(
-        className='dark-theme-control'
-    )
+    ), html.Br() 
+
 ])
 
 
@@ -102,7 +105,7 @@ app.layout = html.Div(id='dark-theme-container', children=[
     ), 
     html.Div(id='dark-theme-components', children=[
         daq.DarkThemeProvider(theme=theme, children=rootLayout)
-    ], style={'border': 'solid 1px #A2B1C6', 'border-radius': '5px', 'padding': '20px', 'margin-top': '20px'})
+    ], style={'border': 'solid 1px #A2B1C6', 'border-radius': '5px', 'padding': '50px', 'margin-top': '20px'})
 ], style={'padding': '50px'})
 
 
@@ -131,11 +134,11 @@ def switch_to_dark(dark):
 def switch_bg(dark, currentStyle):
     if(dark):
         currentStyle.update(
-            backgroundColor='#303030', color='white'
+            backgroundColor='#303030'
         )
     else:
         currentStyle.update(
-            backgroundColor='white', color='#303030'
+            backgroundColor='white'
         )
     return currentStyle
 

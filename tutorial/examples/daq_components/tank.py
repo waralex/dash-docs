@@ -13,6 +13,7 @@ app.layout = html.Div([
         value=5,
         min=0,
         max=10,
+        style={'margin-left': '50px'}
     ),
     dcc.Slider(
         id='tank-slider',
