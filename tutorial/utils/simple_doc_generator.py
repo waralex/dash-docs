@@ -120,6 +120,6 @@ def generate_docs(
             **component_dict[component]
         )
 
-    return html.Div(className='gallery', children=layout_children)
+    return layout_children 
 
     
