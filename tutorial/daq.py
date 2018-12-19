@@ -1,4 +1,12 @@
 import dash_core_components as dcc
+import dash_html_components as html
+from tutorial import styles
+from textwrap import dedent as s
+from tutorial.utils.component_block import ComponentBlock
+from tutorial.tools import load_example
+
+import dash_daq as daq
+
 from tutorial.utils.simple_doc_generator import generate_docs
 
 
@@ -131,12 +139,42 @@ dash_daq_components = {
     'ToggleSwitch': {
         'description': '''A switch component that toggles between \
         two values.'''
-    }
+    },
 }
 
-layout = generate_docs(
+
+layout_children = generate_docs(
     'dash-daq',
     'daq',
     daq_library_heading,
     dash_daq_components
 )
+
+dtp = load_example(
+    'tutorial/examples/daq_components/darkthemeprovider_daq.py'
+)
+
+layout_children += [
+    html.Hr(),
+
+    html.H3(dcc.Link('DarkThemeProvider',
+                     href='/dash-daq/darkthemeprovider')),
+
+    dcc.Markdown(s(
+        '''A component placed at the root of the component \
+        tree to make all components match the dark theme. '''
+    )),
+
+    
+    dcc.SyntaxHighlighter(dtp[0],
+                          language='python',
+                          customStyle=styles.code_container),
+    html.Div(dtp[1]),
+    
+    dcc.Link('More DarkThemeProvider Examples and Reference',
+             href='dash-daq/darkthemeprovider'),
+]  
+
+
+layout = html.Div(id='gallery', children=layout_children)
+    
