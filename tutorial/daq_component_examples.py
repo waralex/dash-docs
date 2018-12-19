@@ -814,26 +814,54 @@ Slider = html.Div(children=[
     ),
 
     html.Hr(),
-#     html.H3('Multi-Value Dropdown'),
-#     dcc.Markdown("A dropdown component with the `multi` property set to `True` \
-#                   will allow the user to select more than one value \
-#                   at a time."),
-#     ComponentBlock('''import dash_daq as daq
-
-# dcc.Dropdown(
-#     options=[
-#         {'label': 'New York City', 'value': 'NYC'},
-#         {'label': 'Montreal', 'value': 'MTL'},
-#         {'label': 'San Francisco', 'value': 'SF'}
-#     ],
-#     value=['MTL', 'NYC'],
-#     multi=True
-# )''', customStyle=styles.code_container, language='python'),
-#     html.Hr(),
+    
+    html.H3('Marks'),
+    dcc.Markdown("Set custom marks on the slider using a dictionary."),
+    ComponentBlock('''import dash_daq as daq
+daq.Slider(
+    min=0, max=100, value=30,
+    marks={'25': 'mark', '50': '50'}
+)''', customStyle=styles.code_container, language='python'),
 
     html.Hr(),
+
+    html.H3('Size'),
+    dcc.Markdown("Change the size of the slider."),
+    ComponentBlock('''import dash_daq as daq
+daq.Slider(
+    size=50
+)''', customStyle=styles.code_container, language='python'),
+
+    html.Hr(),
+
+    html.H3('Handle Label'),
+    dcc.Markdown("Set the labels for the handle that is dragged."),
+    ComponentBlock('''import dash_daq as daq
+
+daq.Slider(
+    id='my-slider', 
+    value=17,
+    handleLabel='Handle'
+)''', customStyle=styles.code_container, language='python'),
+
+    html.Hr(),
+
+    html.H3('Step'),
+    dcc.Markdown("Change the value by which increments or decrements are made."),
+    ComponentBlock('''import dash_daq as daq
+daq.Slider(
+    min=0, 
+    max=100,
+    value=50,
+    handleLabel={"showCurrentValue": True,"label": "VALUE"}, 
+    step=10
+)''', customStyle=styles.code_container, language='python'),
+
+    html.Hr(), 
+
     html.H3("Slider Properties"),
-    generate_prop_table('Slider')
+    generate_prop_table("Slider")
+    
 ])
 
 # Tank
@@ -854,26 +882,6 @@ Tank = html.Div(children=[
     ),
 
     html.Hr(),
-#     html.H3('Multi-Value Dropdown'),
-#     dcc.Markdown("A dropdown component with the `multi` property set to `True` \
-#                   will allow the user to select more than one value \
-#                   at a time."),
-#     ComponentBlock('''import dash_daq as daq
-
-# dcc.Dropdown(
-#     options=[
-#         {'label': 'New York City', 'value': 'NYC'},
-#         {'label': 'Montreal', 'value': 'MTL'},
-#         {'label': 'San Francisco', 'value': 'SF'}
-#     ],
-#     value=['MTL', 'NYC'],
-#     multi=True
-# )''', customStyle=styles.code_container, language='python'),
-#     html.Hr(),
-
-    html.Hr(),
-    html.H3("Tank Properties"),
-    generate_prop_table('Tank')
 ])
 
 # Thermometer
@@ -894,26 +902,7 @@ Thermometer = html.Div(children=[
     ),
 
     html.Hr(),
-#     html.H3('Multi-Value Dropdown'),
-#     dcc.Markdown("A dropdown component with the `multi` property set to `True` \
-#                   will allow the user to select more than one value \
-#                   at a time."),
-#     ComponentBlock('''import dash_daq as daq
 
-# dcc.Dropdown(
-#     options=[
-#         {'label': 'New York City', 'value': 'NYC'},
-#         {'label': 'Montreal', 'value': 'MTL'},
-#         {'label': 'San Francisco', 'value': 'SF'}
-#     ],
-#     value=['MTL', 'NYC'],
-#     multi=True
-# )''', customStyle=styles.code_container, language='python'),
-#     html.Hr(),
-
-    html.Hr(),
-    html.H3("Thermometer Properties"),
-    generate_prop_table('Thermometer')
 ])
 
 # Toggle Switch
@@ -934,26 +923,7 @@ ToggleSwitch = html.Div(children=[
     ),
 
     html.Hr(),
-#     html.H3('Multi-Value Dropdown'),
-#     dcc.Markdown("A dropdown component with the `multi` property set to `True` \
-#                   will allow the user to select more than one value \
-#                   at a time."),
-#     ComponentBlock('''import dash_daq as daq
 
-# dcc.Dropdown(
-#     options=[
-#         {'label': 'New York City', 'value': 'NYC'},
-#         {'label': 'Montreal', 'value': 'MTL'},
-#         {'label': 'San Francisco', 'value': 'SF'}
-#     ],
-#     value=['MTL', 'NYC'],
-#     multi=True
-# )''', customStyle=styles.code_container, language='python'),
-#     html.Hr(),
-
-    html.Hr(),
-    html.H3("Toggle Switch Properties"),
-    generate_prop_table('ToggleSwitch')
 ])
 
 # Dark Theme Provider
@@ -974,24 +944,5 @@ DarkThemeProvider = html.Div(children=[
     ),
 
     html.Hr(),
-#     html.H3('Multi-Value Dropdown'),
-#     dcc.Markdown("A dropdown component with the `multi` property set to `True` \
-#                   will allow the user to select more than one value \
-#                   at a time."),
-#     ComponentBlock('''import dash_daq as daq
-
-# dcc.Dropdown(
-#     options=[
-#         {'label': 'New York City', 'value': 'NYC'},
-#         {'label': 'Montreal', 'value': 'MTL'},
-#         {'label': 'San Francisco', 'value': 'SF'}
-#     ],
-#     value=['MTL', 'NYC'],
-#     multi=True
-# )''', customStyle=styles.code_container, language='python'),
-#     html.Hr(),
-
-    html.Hr(),
-    html.H3("Dark Theme Provider Properties"),
-    generate_prop_table('DarkThemeProvider')
+                   
 ])

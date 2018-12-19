@@ -9,10 +9,7 @@ app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 app.layout = html.Div([
     daq.Slider(
         id='my-slider',
-        value=17,
-        min=0,
-        max=100,
-        targets={"80": {"label": "TARGET"}}
+        value=17
     ),
     html.Div(id='slider-output')
 ])
