@@ -87,6 +87,7 @@ def highlight(x, y):
                 },
             ],
             'layout': {
+                'clickmode': 'event+select',
                 'margin': {'l': 15, 'r': 0, 'b': 15, 't': 5},
                 'dragmode': 'select',
                 'hovermode': 'closest',
