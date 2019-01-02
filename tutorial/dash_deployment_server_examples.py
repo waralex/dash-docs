@@ -1070,7 +1070,7 @@ LocalDir = html.Div(children=[
 
     #### Referencing the File System in Your Code
 
-    If you have mapped the directory from `/srv` to `/srv/app-data`, then you
+    If you have mapped the directory from `/srv/app-data` to `/data`, then you
     can read files from this folder in your application with the following code:
 
     ''')),
