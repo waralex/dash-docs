@@ -2340,77 +2340,6 @@ Troubleshooting = html.Div(children=[
         '''))
     ]),
 
-dcc.Markdown(s('''
-    ***
-
-    #### SSH
-
-    ''')),
-
-    html.Details([
-        html.Summary("git push is asking for password."),
-
-        dcc.SyntaxHighlighter(
-        '''
-        $ git push multipage master
-        dokku@dash.local's password: 
-        ''',
-        customStyle=styles.code_container, language='python'),
-
-        dcc.Markdown(s(
-        '''
-        &nbsp;
-
-        If you're seeing a request for a password for dokku@your-dash-server, that
-        means that the ssh authentication has failed. This can be for a variety of 
-        reasons so it is useful to run git push again with ssh debugging enabled by 
-        adding `GIT_SSH_COMMAND='ssh -v'` before your `git push` command.
-        ''')),
-
-        dcc.SyntaxHighlighter('''
-        $ GIT_SSH_COMMAND='ssh -v' git push plotly master
-        
-        # OpenSSH_7.6p1 Ubuntu-4ubuntu0.1, OpenSSL 1.0.2n  7 Dec 2017
-        # debug1: Reading configuration data /home/michael/.ssh/config
-        # debug1: /home/michael/.ssh/config line 1: Applying options for dash.local
-        # debug1: Reading configuration data /etc/ssh/ssh_config
-        # debug1: /etc/ssh/ssh_config line 19: Applying options for *
-        debug1: Connecting to dash.local [192.168.233.240] port 3022.
-        # debug1: Connection established.
-        # ...
-        # ...
-        # debug1: Authentications that can continue: publickey,password
-        # debug1: Next authentication method: publickey
-        debug1: Offering public key: RSA SHA256:NWVDKQ /home/michael/.ssh/test
-        # debug1: Authentications that can continue: publickey,password
-        debug1: Offering public key: RSA SHA256:zessB4 /home/michael/.ssh/google_compute_engine
-        # debug1: Authentications that can continue: publickey,password
-        # debug1: Trying private key: /home/michael/.ssh/id_rsa
-        # debug1: Trying private key: /home/michael/.ssh/id_dsa
-        # debug1: Trying private key: /home/michael/.ssh/id_ecdsa
-        # debug1: Trying private key: /home/michael/.ssh/id_ed25519
-        # debug1: Next authentication method: password
-        dokku@dash.local's password:  
-        ''', customStyle=styles.code_container, language='python'),
-
-        dcc.Markdown(s(
-        '''
-        &nbsp;
-        
-        Above, you can see the output of the debugging logs where unimportant lines 
-        have been commented out or omitted. Check the first uncommented out line in the sample 
-        output above to ensure that the domain is your Dash server's domain and that port is 3022. 
-        If it isn't, you will need to update your `~/.ssh/config` file to set the
-        correct port. You can see how to do that in our [ssh chapter](/dash-deployment-server/ssh)
-        under the "Modify SSH Config" heading.
-        
-        The next two emphasized lines show the public keys that were offered (and
-        in this case rejected) by the server. If the RSA key that you added to Dash Deployment
-        Server is not among those offered you will need to add it to your `ssh-agent`
-        with `ssh-add ~/path/to/your/key`. More details on `ssh-agent` are included in the 
-        [ssh chapter](/dash-deployment-server/ssh).
-        '''))
-    ]),
 
     dcc.Markdown(s('''
     ***
@@ -2503,6 +2432,71 @@ dcc.Markdown(s('''
 
         &nbsp;
         '''))
+    ]),
+
+    html.Details([
+        html.Summary("SSH deploy: git push is asking for password."),
+
+        dcc.SyntaxHighlighter(
+            '''
+            $ git push multipage master
+            dokku@dash.local's password: 
+            ''',
+            customStyle=styles.code_container, language='python'),
+
+        dcc.Markdown(s(
+            '''
+            &nbsp;
+    
+            If you're seeing a request for a password for dokku@your-dash-server, that
+            means that the ssh authentication has failed. This can be for a variety of 
+            reasons so it is useful to run git push again with ssh debugging enabled by 
+            adding `GIT_SSH_COMMAND='ssh -v'` before your `git push` command.
+            ''')),
+
+        dcc.SyntaxHighlighter('''
+        $ GIT_SSH_COMMAND='ssh -v' git push plotly master
+
+        # OpenSSH_7.6p1 Ubuntu-4ubuntu0.1, OpenSSL 1.0.2n  7 Dec 2017
+        # debug1: Reading configuration data /home/michael/.ssh/config
+        # debug1: /home/michael/.ssh/config line 1: Applying options for dash.local
+        # debug1: Reading configuration data /etc/ssh/ssh_config
+        # debug1: /etc/ssh/ssh_config line 19: Applying options for *
+        debug1: Connecting to dash.local [192.168.233.240] port 3022.
+        # debug1: Connection established.
+        # ...
+        # ...
+        # debug1: Authentications that can continue: publickey,password
+        # debug1: Next authentication method: publickey
+        debug1: Offering public key: RSA SHA256:NWVDKQ /home/michael/.ssh/test
+        # debug1: Authentications that can continue: publickey,password
+        debug1: Offering public key: RSA SHA256:zessB4 /home/michael/.ssh/google_compute_engine
+        # debug1: Authentications that can continue: publickey,password
+        # debug1: Trying private key: /home/michael/.ssh/id_rsa
+        # debug1: Trying private key: /home/michael/.ssh/id_dsa
+        # debug1: Trying private key: /home/michael/.ssh/id_ecdsa
+        # debug1: Trying private key: /home/michael/.ssh/id_ed25519
+        # debug1: Next authentication method: password
+        dokku@dash.local's password:  
+        ''', customStyle=styles.code_container, language='python'),
+
+        dcc.Markdown(s(
+            '''
+            &nbsp;
+    
+            Above, you can see the output of the debugging logs where unimportant lines 
+            have been commented out or omitted. Check the first uncommented out line in the sample 
+            output above to ensure that the domain is your Dash server's domain and that port is 3022. 
+            If it isn't, you will need to update your `~/.ssh/config` file to set the
+            correct port. You can see how to do that in our [ssh chapter](/dash-deployment-server/ssh)
+            under the "Modify SSH Config" heading.
+    
+            The next two emphasized lines show the public keys that were offered (and
+            in this case rejected) by the server. If the RSA key that you added to Dash Deployment
+            Server is not among those offered you will need to add it to your `ssh-agent`
+            with `ssh-add ~/path/to/your/key`. More details on `ssh-agent` are included in the 
+            [ssh chapter](/dash-deployment-server/ssh).
+            '''))
     ]),
 
     html.Details([
