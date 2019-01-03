@@ -532,6 +532,13 @@ chapters = {
         'description': 'Adding Authentication to your Dash App'
     },
 
+    'app-privacy': {
+        'url': '/dash-deployment-server/privacy',
+        'content': dds_examples.AppPrivacy,
+        'name': 'Dash App Privacy',
+        'description': 'Dash App Privacy and Managing Collaborators'
+    },
+
     'private-packages-examples': {
         'url': '/dash-deployment-server/private-packages',
         'content': dds_examples.PrivatePackages,
@@ -695,6 +702,15 @@ chapters = {
         '''
     },
 
+    'virtualization': {
+        'url': '/datatable/virtualization',
+        'content': tutorial.table.virtualization_chapter.layout,
+        'name': 'Virtualization',
+        'description': '''
+        Examples using DataTable virtualization.
+        '''
+    },
+
     'filtering': {
         'url': '/datatable/filtering',
         'content': tutorial.table.filtering_chapter.layout,
@@ -748,6 +764,13 @@ chapters = {
         'content': devtools.layout,
         'name': 'Dev tools',
         'description': 'Dash dev tools reference'
+    },
+
+    'logout-button': {
+        'url': '/dash-core-components/logout_button',
+        'content': examples.LogoutButton,
+        'name': 'Logout button',
+        'description': 'LogoutButton examples, properties and reference'
     }
 
 }

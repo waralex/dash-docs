@@ -104,19 +104,33 @@ layout = html.Div(className='gallery', children=[
 
     reusable.Row([
         AppSection(
-            app_name='Stock Tickers',
-            app_link='https://dash-stock-tickers.plot.ly',
-            code_link='https://github.com/plotly/dash-stock-tickers-demo-app',
-            img_src='assets/images/gallery/stock-tickers.png',
+            app_name='Salesforce Dashboard',
+            app_link='https://dash-gallery.plotly.host/dash-salesforce-crm',
+            code_link='https://github.com/plotly/dash-salesforce-crm',
+            img_src='assets/images/gallery/dash-salesforce-crm-portrait.gif',
             description='''
-            This app queries data from Google Finance and displays the results as candlestick
-            charts. Dash comes with several financial chart types including: candlestick
-            charts, OHLC graphs, time series, and range sliders.
-
-            This app was written in just around 100 lines of code.
-            '''
+                    This app uses Salesforce API in order to implement a custom CRM dashboard.
+                    The API is used via the module [Simple-Salesforce](https://pypi.org/project/simple-salesforce/) and allows you to retrieve
+                    and to push data.
+                    ''',
         ),
+        AppSection(
+            app_name='3-D Yield Curve',
+            app_link='https://dash-yield-curve.plot.ly',
+            code_link='https://github.com/plotly/dash-yield-curve',
+            img_src='assets/images/gallery/dash-yield-curve-app.png',
+            description='''
+            This Dash app adapts the New York Times' excellent
+            report: [A 3-D View of a Chart That Predicts The Economic Future: The Yield Curve](https://www.nytimes.com/interactive/2015/03/19/upshot/3d-yield-curve-economic-growth.html).
 
+            Dash comes with a wide range of interactive 3-D chart types,
+            such as 3-D scatter plots, surface plots, network graphs and ribbon plots.
+            [View more 3-D chart examples](https://plot.ly/python/3d-charts/).
+            '''
+        )
+    ]),
+
+    reusable.Row([
         AppSection(
             app_name='Vanguard Report',
             app_link='https://dash-gallery.plotly.host/dash-vanguard-report',
@@ -138,26 +152,8 @@ layout = html.Div(className='gallery', children=[
             same framework for both the rich interactive applications and the static
             PDF reports.
             '''
-
         )
-
-    ]),
-
-    reusable.Row([
-        AppSection(
-            app_name='3-D Yield Curve',
-            app_link='https://dash-yield-curve.plot.ly',
-            code_link='https://github.com/plotly/dash-yield-curve',
-            img_src='assets/images/gallery/dash-yield-curve-app.png',
-            description='''
-            This Dash app adapts the New York Times' excellent
-            report: [A 3-D View of a Chart That Predicts The Economic Future: The Yield Curve](https://www.nytimes.com/interactive/2015/03/19/upshot/3d-yield-curve-economic-growth.html).
-
-            Dash comes with a wide range of interactive 3-D chart types,
-            such as 3-D scatter plots, surface plots, network graphs and ribbon plots.
-            [View more 3-D chart examples](https://plot.ly/python/3d-charts/).
-            '''
-        ),
+        ,
 
         AppSection(
             app_name='Recession in 255 Charts',
@@ -188,20 +184,6 @@ layout = html.Div(className='gallery', children=[
         )
     ]),
 
-    reusable.Row([
-        AppSection(
-            app_name='Salesforce Dashboard',
-            app_link='https://dash-gallery.plotly.host/dash-salesforce-crm',
-            code_link='https://github.com/plotly/dash-salesforce-crm',
-            img_src='assets/images/gallery/dash-salesforce-crm.gif',
-            description='''
-            This app uses Salesforce API in order to implement a custom CRM dashboard.
-            The API is used via the module [Simple-Salesforce](https://pypi.org/project/simple-salesforce/) and allows you to retrieve
-            and to push data.
-            ''',
-            width=12
-        )
-    ]),
 
     # ENERGY AND TRANSPORT SECTION
     SectionTitle('Energy and Transportation'),

@@ -1070,7 +1070,7 @@ LocalDir = html.Div(children=[
 
     #### Referencing the File System in Your Code
 
-    If you have mapped the directory from `/srv` to `/srv/app-data`, then you
+    If you have mapped the directory from `/srv/app-data` to `/data`, then you
     can read files from this folder in your application with the following code:
 
     ''')),
@@ -1551,9 +1551,10 @@ os.environ['PLOTLY_API_KEY'] = 'your-api-key'
 
     #### Manage Permissions
 
-    Your app should now have a Dash Deployment Server login screen.
-    You can manage the permissions of the app in your list of files
-    at `https://<your-plotly-domain>/organize/home`.
+    Your app should now have a Dash Deployment Server login screen. If your app privacy
+    was set to `private` or `secret` in your config.py file, manage the permissions of 
+    the app in your list of files at `https://<your-plotly-domain>/organize/home`. See
+    [Dash App Privacy](/dash-deployment-server/privacy) for more information.
 
     ''')),
 
@@ -1585,6 +1586,112 @@ os.environ['PLOTLY_API_KEY'] = 'your-api-key'
     at `https://<your-plotly-domain>/organize`.
     '''))
 ])
+
+# # # # # # #
+# Dash App Privacy
+# # # # # # #
+AppPrivacy = html.Div(children=[
+    html.H1('Dash App Privacy'),
+
+    rc.Blockquote(),
+
+    dcc.Markdown(s('''
+    `dash-auth` gives you the ability to select one of three privacy 
+    modes for your Dash App via PlotlyOAuth. `Public`, `Private`, and `Secret` modes are
+    explained below, followed by a section outlining how to manage users that
+    can view your app.
+    
+    For more details/examples on `dash-auth` see [Authentication](/authentication).
+
+    ***
+    
+    ## Privacy Modes
+    
+    #### No Authentication
+    
+    Dash Apps that don't initialize PlotlyOAuth will be viewable by everyone with access
+    to your Dash Server. If you are using the [Dash On Premise Sample App](https://github.com/plotly/dash-on-premise-sample-app),
+    this is achieved when `REQUIRE_LOGIN = True` and `privacy = 'public'` in your
+    `config.py` file (which is the default configuration).
+    
+    #### Public
+    
+    An app using `dash-auth` with PlotlyOAuth set to `public` will require a login from
+    a valid Plotly Enterprise user to view the app but every user will have access.
+    
+    > *If you are using the [Dash On Premise Sample App](https://github.com/plotly/dash-on-premise-sample-app)
+    as a template for your app, you will need to set `REQUIRE_LOGIN = True` in your `config.py` file
+    to initialize PlotlyOAuth when privacy is set to `public`.*
+    
+    #### Private
+    
+    If PlotlyOAuth is set to `private`, only the user that created the app and Plotly Enterprise
+    users specifically added by them will be able to view the app. See "Managing Collaborators"
+    below for information about how to give another user view access to your app.
+    
+    #### Secret
+
+    Privacy set to `secret` is equivalent to `private` above but it can
+    be bypassed with a link containing a `share_key` parameter. This
+    link can be found in the `https://<your-plotly-enterprise-server>.com/organize/home`
+    page.
+    
+    Once the app is visited using a `share_key` link, an auth cookie 
+    is generated and saved to the browser which will permit access
+    to the app until it's expiry even if the `share_key` is omitted.
+    
+    ***
+    
+    ## Managing Collaborators
+    
+    This can be done either from the UI at `https://<your-plotly-enterprise-server>.com/organize/home`
+    or using the API. Both methods are demonstrated below.
+    
+    #### Managing Collaborators from the UI
+    
+    Go to `https://<your-plotly-enterprise-server>.com/organize/home` and find your
+    app from your list of files. Then click on the share button and add
+    viewers that you want to give access to your app using the "viewers"
+    tab of the pop-up modal.
+    
+    ''')),
+
+    html.Img(
+        alt='Share App Button in the Organize Screen',
+        src='/assets/images/dds/share-app-organize.png',
+        style={
+            'width': '100%', 'border': 'thin lightgrey solid',
+            'border-radius': '4px'
+        }
+    ),
+
+    dcc.Markdown(s('''
+
+    > **Note that you can get the secret link from the "Link & Privacy" tab
+    of the above modal but setting the privacy of your app must be done in `config.py`
+    or when `dash-auth` is initialized in your app.**
+    
+    #### Managing Collaborators using the API
+    
+    App permissions can also be managed using the api endpoint 
+    `https://<your-plotly-enterprise-server>/v2/files/<fid>/collaborators` where `<fid>` is `username:id`
+    of your app. This endpoint supports a few types of requests: `GET` (list collaborators), `POST` (add new collaborators)
+    and `DELETE` (removes collaborators). For more information see `https://<your-plotly-enterprise-server>/v2/files#collaborators`
+    
+    You can find the info to form your app's `fid` at `https://<your-plotly-enterprise-server>.com/organize/home`:
+
+    ''')),
+
+    html.Img(
+        alt='Dash App fid',
+        src='/assets/images/dds/dash-app-fid.png',
+        style={
+            'width': '100%', 'border': 'thin lightgrey solid',
+            'border-radius': '4px'
+        }
+    ),
+])
+
 
 # # # # # # #
 # Adding Private Python Packages
@@ -2233,6 +2340,7 @@ Troubleshooting = html.Div(children=[
         '''))
     ]),
 
+
     dcc.Markdown(s('''
     ***
 
@@ -2324,6 +2432,71 @@ Troubleshooting = html.Div(children=[
 
         &nbsp;
         '''))
+    ]),
+
+    html.Details([
+        html.Summary("SSH deploy: git push is asking for password."),
+
+        dcc.SyntaxHighlighter(
+            '''
+            $ git push multipage master
+            dokku@dash.local's password: 
+            ''',
+            customStyle=styles.code_container, language='python'),
+
+        dcc.Markdown(s(
+            '''
+            &nbsp;
+    
+            If you're seeing a request for a password for dokku@your-dash-server, that
+            means that the ssh authentication has failed. This can be for a variety of 
+            reasons so it is useful to run git push again with ssh debugging enabled by 
+            adding `GIT_SSH_COMMAND='ssh -v'` before your `git push` command.
+            ''')),
+
+        dcc.SyntaxHighlighter('''
+        $ GIT_SSH_COMMAND='ssh -v' git push plotly master
+
+        # OpenSSH_7.6p1 Ubuntu-4ubuntu0.1, OpenSSL 1.0.2n  7 Dec 2017
+        # debug1: Reading configuration data /home/michael/.ssh/config
+        # debug1: /home/michael/.ssh/config line 1: Applying options for dash.local
+        # debug1: Reading configuration data /etc/ssh/ssh_config
+        # debug1: /etc/ssh/ssh_config line 19: Applying options for *
+        debug1: Connecting to dash.local [192.168.233.240] port 3022.
+        # debug1: Connection established.
+        # ...
+        # ...
+        # debug1: Authentications that can continue: publickey,password
+        # debug1: Next authentication method: publickey
+        debug1: Offering public key: RSA SHA256:NWVDKQ /home/michael/.ssh/test
+        # debug1: Authentications that can continue: publickey,password
+        debug1: Offering public key: RSA SHA256:zessB4 /home/michael/.ssh/google_compute_engine
+        # debug1: Authentications that can continue: publickey,password
+        # debug1: Trying private key: /home/michael/.ssh/id_rsa
+        # debug1: Trying private key: /home/michael/.ssh/id_dsa
+        # debug1: Trying private key: /home/michael/.ssh/id_ecdsa
+        # debug1: Trying private key: /home/michael/.ssh/id_ed25519
+        # debug1: Next authentication method: password
+        dokku@dash.local's password:  
+        ''', customStyle=styles.code_container, language='python'),
+
+        dcc.Markdown(s(
+            '''
+            &nbsp;
+    
+            Above, you can see the output of the debugging logs where unimportant lines 
+            have been commented out or omitted. Check the first uncommented out line in the sample 
+            output above to ensure that the domain is your Dash server's domain and that port is 3022. 
+            If it isn't, you will need to update your `~/.ssh/config` file to set the
+            correct port. You can see how to do that in our [ssh chapter](/dash-deployment-server/ssh)
+            under the "Modify SSH Config" heading.
+    
+            The next two emphasized lines show the public keys that were offered (and
+            in this case rejected) by the server. If the RSA key that you added to Dash Deployment
+            Server is not among those offered you will need to add it to your `ssh-agent`
+            with `ssh-add ~/path/to/your/key`. More details on `ssh-agent` are included in the 
+            [ssh chapter](/dash-deployment-server/ssh).
+            '''))
     ]),
 
     html.Details([

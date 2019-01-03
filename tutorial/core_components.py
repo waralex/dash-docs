@@ -467,5 +467,38 @@ confirm = dcc.ConfirmDialogProvider(
 
     html.Br(),
 
+    dcc.Markdown('***'),
+
+    html.A(
+        className="image-link",
+        href="http://dash-daq.netlify.com/#Gauge",
+        children=html.Img(
+            src="https://s3-us-west-1.amazonaws.com/plotly-tutorials/static/marketing/dash/guage.png",
+            alt="Dash DAQ Guage Component"
+        )
+    ),
+
+    html.A('More Guage Examples and Reference',
+             href='http://dash-daq.netlify.com/#Gauge'),
+
+    html.Br(),
+
+    dcc.Markdown('***'),
+    html.H3(dcc.Link('Logout Button',
+                     href='/dash-core-components/logout_button')),
+
+    dcc.Markdown(s('''
+    The logout button can be used to perform logout mechanism.
+    
+    It's a simple form with a submit button, when the button is clicked,
+    it will submit the form to the `logout_url` prop.
+    
+    Please note that no authentication is performed in Dash by default
+    and you have to implement the authentication yourself.
+    ''')),
+
+    dcc.Link('More Logout Button Examples and Reference',
+             href='/dash-core-components/logout_button'),
+
     html.Div(id='hidden', style={'display': 'none'})
 ])
