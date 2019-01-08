@@ -163,7 +163,7 @@ chapters = {
         'description': '(New! Released TBA) Dash Cytoscape is our new network ' \
                        'visualization component. It offers a declarative and ' \
                        'pythonic interface to create beautiful, customizable, ' \
-                       'interactive and reactive graphs'
+                       'interactive and reactive graphs.'
 
     },
 
@@ -625,7 +625,7 @@ chapters = {
         'content': tutorial.cytoscape.elements_chapter.layout,
         'name': 'Cytoscape Elements',
         'description': '''
-        An overview of elements declaration and manipulation. 
+        Overview of element declaration and manipulation. 
         '''
     },
 
@@ -634,7 +634,7 @@ chapters = {
         'content': tutorial.cytoscape.layout_chapter.layout,
         'name': 'Cytoscape Layouts',
         'description': '''
-        Description of built-in layouts, and how to modify its properties. 
+        Description of built-in layouts, and how to modify their properties. 
         '''
     },
 
@@ -643,7 +643,7 @@ chapters = {
         'content': tutorial.cytoscape.styling_chapter.layout,
         'name': 'Cytoscape Styling',
         'description': '''
-        Learn how to style elements with a CSS-like syntax
+        Methods to style elements with a CSS-like syntax.
         '''
     },
 
@@ -652,7 +652,7 @@ chapters = {
         'content': tutorial.cytoscape.callbacks_chapter.layout,
         'name': 'Cytoscape Callbacks',
         'description': '''
-        Learn how to combine Dash Callbacks to update your Cytoscape object
+        Methods to combine Dash Callbacks to update your Cytoscape object.
         '''
     },
 
@@ -662,7 +662,7 @@ chapters = {
         'name': 'Cytoscape events',
         'description': '''
         Overview of user-interaction events that trigger callbacks in Dash,
-        and how to use it to update itself
+        and how to use them to update the Cytoscape component.
         '''
     },
 
@@ -671,7 +671,7 @@ chapters = {
         'content': tutorial.cytoscape.applications_chapter.layout,
         'name': 'Cytoscape applications',
         'description': '''
-        Examples of applications in social network analysis and bioinformatics
+        Examples of applications in social network analysis and bioinformatics.
         '''
     },
 
@@ -680,7 +680,7 @@ chapters = {
         'content': tutorial.cytoscape.reference_chapter.layout,
         'name': 'Cytoscape Reference',
         'description': '''
-        A comprehensive list of all of the Cytoscape properties.
+        Comprehensive list of all of the Cytoscape properties.
         '''
     },
 
