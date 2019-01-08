@@ -562,7 +562,7 @@ daq.LEDDisplay(
 
 # Numeric Input
 NumericInput = html.Div(children=[
-    html.H1('LED display Examples and Reference'),
+    html.H1('Numeric Input Examples and Reference'),
     html.Hr(),
     html.H3('Default Numeric Input'),
     dcc.Markdown("An example of a default numeric input without \
@@ -625,7 +625,7 @@ daq.NumericInput(
 
 # Power Button
 PowerButton = html.Div(children=[
-    html.H1('LED display Examples and Reference'),
+    html.H1('Power Button Examples and Reference'),
     html.Hr(),
     html.H3('Default Power Button'),
     dcc.Markdown("An example of a default power button without \
@@ -961,8 +961,7 @@ daq.Tank(
 
     html.Hr(),
 
-    html.H3('Tank properties'),
-    
+    html.H3('Tank Properties'),
     generate_prop_table("Tank")
 ])
 
@@ -1036,7 +1035,7 @@ daq.Thermometer(
 
     html.Hr(),
 
-    html.H3('Thermometer properties'),    
+    html.H3('Thermometer Properties'),    
     generate_prop_table("Thermometer")
     
 ])
@@ -1088,6 +1087,8 @@ daq.ToggleSwitch(
 )''', customStyle=styles.code_container, language='python'),
     
     html.Hr(),
+
+    html.H3('Toggle Switch Properties'),
     generate_prop_table("ToggleSwitch")
     
 ])
@@ -1110,5 +1111,7 @@ DarkThemeProvider = html.Div(children=[
     ),
 
     html.Hr(),
+
+    html.H3('Dark Theme Provider Properties'), 
     generate_prop_table("DarkThemeProvider")
 ])
