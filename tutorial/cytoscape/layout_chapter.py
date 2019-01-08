@@ -71,12 +71,12 @@ layout = html.Div([
     - `breadthfirst`
     - `cose`
     
-    All those layouts (along with their options), are [described in the
+    All these layouts (along with their options), are [described in the
     documentation](http://js.cytoscape.org/#layouts).
     
-    If preset is given, the positions will be rendered based on the positions
+    If the value of `name` is set to `'preset'`, the positions will be rendered based on the positions
     specified in the elements. Otherwise, the positions will be computed by 
-    Cytoscape.js behind the scene, based on the given items of the layout
+    Cytoscape.js behind the scenes, based on the given layout
     dictionary. Let's start with an example of declaring a graph with a preset
     layout:
     ''')),
@@ -142,7 +142,7 @@ layout = html.Div([
     dcc.Markdown(dedent('''
     ## Display Methods
     
-    In most cases, the positions of the nodes will not be given. In those 
+    In most cases, the positions of the nodes will not be given. In these
     cases, one of the built-in methods can be used. Let's see what happens 
     when the value of `name` is set to `'circle'` or `'grid'`
     ''')),
@@ -176,7 +176,7 @@ layout = html.Div([
     For any given `name` item, a collection of keys are accepted by the layout 
     dictionary. For example, the `grid` layout will accept `row` and
     `cols`, the `circle` layout accepts `radius` and `startAngle`, and so 
-    forth. Here's is the grid layout with the same graph as above, but
+    forth. Here's the grid layout with the same graph as above, but
     with different layout options:
     ''')),
 
@@ -215,7 +215,7 @@ layout = html.Div([
     For the `breadthfirst` layout, a tree is created from the existing nodes
     by performing a breadth-first search of the graph. By default, the root(s)
     of the tree is inferred, but can also be specified as an option. Here is
-    how the graph would look like if we choose New York City as the root:
+    how the graph looks like if we choose New York City as the root:
     ''')),
 
     Display('''
@@ -250,7 +250,7 @@ layout = html.Div([
     > Notice here that we are not giving the ID of the nodes to the `roots`
     > key, but instead use a specific syntax to select the desired elements. 
     > This concept of selector will be further explored in part 3, and is 
-    > [extensively documented by Cytoscape.js](http://js.cytoscape.org/#selectors).
+    > [extensively documented in Cytoscape.js](http://js.cytoscape.org/#selectors).
     > We follow the same syntax as the Javascript library.
     
     ## Physics-based Layouts

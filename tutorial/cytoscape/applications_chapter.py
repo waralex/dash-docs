@@ -9,7 +9,7 @@ from textwrap import dedent
 import dash_table
 from .utils import section_title
 from tutorial import tools
-from tutorial import styles
+from tutorial import styles, tools
 
 
 # examples = {
