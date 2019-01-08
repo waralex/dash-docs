@@ -193,8 +193,8 @@ layout = html.Div([
     '''),
 
     dcc.Markdown(dedent('''
-    Similarly for the circle layout, we can force the nodes to start and end at
-    a certain angle in radians (import `math` for this example):
+    In the case of the circle layout, we can force the nodes to start and end 
+    at a certain angle in radians (import `math` for this example):
     ''')),
 
     Display('''
@@ -231,7 +231,7 @@ layout = html.Div([
     '''),
 
     dcc.Markdown(dedent('''
-    Here is what would happen if we choose Montreal and Vancouver instead:
+    Here is what would happen if we chose Montreal and Vancouver instead:
     ''')),
 
     Display('''
@@ -248,7 +248,7 @@ layout = html.Div([
 
     dcc.Markdown(dedent('''
     > Notice here that we are not giving the ID of the nodes to the `roots`
-    > key, but instead use a specific syntax to select the desired elements. 
+    > key, but instead using a specific syntax to select the desired elements. 
     > This concept of selector will be further explored in part 3, and is 
     > [extensively documented by Cytoscape.js](http://js.cytoscape.org/#selectors).
     > We follow the same syntax as the Javascript library.

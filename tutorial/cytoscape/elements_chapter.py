@@ -56,21 +56,21 @@ layout = html.Div([
     element belongs to (i.e., if it's a node or an edge), indicate what 
     position you want to give to your element (if it's a node), or what data 
     it contains. In fact, the `data` and `position` keys are themselves mapped 
-    to dictionaries, where each `item` specify an aspect of the `data` or 
-    `position`.
+    to dictionaries, where each item specify an aspect of the data or 
+    position.
     
     In the case of `data`, the typical keys fed to the dictionaries are:
     - `id`: The index of the element, useful when you want to reference it
     - `label`: The name associated with the element if you wish to display it 
     
-    If your element is an edge, the following items are required for your data
+    If your element is an edge, the following keys are required in your data
     dictionary:
     - `source`: The `id` of the source node, which is where the edge starts
     - `target`: The `id` of the target node, where the edge ends
     
-    The position dictionary takes as items the `x` and `y` position of the node. 
-    If you use any other layout than `preset`, or if the element is an edge, 
-    the position item will be ignored.
+    The `position` dictionary takes as items the `x` and `y` position of the 
+    node. If you use any other layout than `preset`, or if the element is an 
+    edge, the position item will be ignored.
     
     If we want a graph with two nodes, and an edge connecting those two nodes,
     we effectively need three of those element dictionaries, grouped as a list:
