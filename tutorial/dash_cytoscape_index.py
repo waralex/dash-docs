@@ -57,6 +57,33 @@ layout = html.Div([
     ]),
 
     Section('Dash Cytoscape User Guide', [
+        Chapter(
+            'Part 1. Elements',
+            '/cytoscape/elements',
+            '''
+            Elements declaration in Cytoscape are designed to be clear, simple,
+            and JSON-friendly. This chapter will get you started 
+            with examples for:
+            - Data and position dictionaries 
+            - Mutability properties
+            - Defining groups and classes
+            - Compound nodes
+            '''
+        ),
+
+        Chapter(
+            'Part 2. Layout',
+            '/cytoscape/layout',
+            '''
+            Make your graphs interpretable by using the built-in 
+            collection of easy-to-modify layouts. We show you how to:
+            - Display pre-determined and random layouts
+            - Represent your graph as a circle, a grid or a tree
+            - Finetune your representations by modifying the default options
+            - Use physics-based simulations to generate your layout 
+            '''
+        ),
+
     ]),
 
     Section('Roadmap, Sponsorships, and Contact', dcc.Markdown(dedent(
