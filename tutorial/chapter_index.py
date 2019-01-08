@@ -2,7 +2,9 @@ import tutorial
 from tutorial import auth
 from tutorial import core_component_examples as examples
 from tutorial import core_components
+from tutorial import cytoscape
 from tutorial import d3
+from tutorial import dash_cytoscape_index
 from tutorial import dash_deployment_server
 from tutorial import dash_deployment_server_examples as dds_examples
 from tutorial import dash_table_index
@@ -152,6 +154,17 @@ chapters = {
                        'supports rich styling, ' \
                        'conditional formatting, editing, sorting, filtering, ' \
                        'and more.'
+    },
+
+    'cytoscape': {
+        'url': '/cytoscape',
+        'content': dash_cytoscape_index.layout,
+        'name': 'Dash Cytoscape',
+        'description': '(New! Released TBA) Dash Cytoscape is our new network ' \
+                       'visualization component. It offers a declarative and ' \
+                       'pythonic interface to create beautiful, customizable, ' \
+                       'interactive and reactive graphs'
+
     },
 
     'plugins': {
@@ -604,6 +617,9 @@ chapters = {
     },
 
 ### End DataTable Docs
+
+### Start Cytoscape Docs
+### End Cytoscape Docs
 
     'search': {
         'url': '/search',
