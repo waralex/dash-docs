@@ -629,6 +629,15 @@ chapters = {
         '''
     },
 
+    'cytoscape-layout': {
+        'url': '/cytoscape/layout',
+        'content': tutorial.cytoscape.layout_chapter.layout,
+        'name': 'Cytoscape Layouts',
+        'description': '''
+        Description of built-in layouts, and how to modify its properties. 
+        '''
+    },
+
 ### End Cytoscape Docs
 
     'search': {
