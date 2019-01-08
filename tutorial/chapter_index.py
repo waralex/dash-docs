@@ -619,6 +619,16 @@ chapters = {
 ### End DataTable Docs
 
 ### Start Cytoscape Docs
+
+    'cytoscape-elements': {
+        'url': '/cytoscape/elements',
+        'content': tutorial.cytoscape.elements_chapter.layout,
+        'name': 'Cytoscape Elements',
+        'description': '''
+        An overview of elements declaration and manipulation. 
+        '''
+    },
+
 ### End Cytoscape Docs
 
     'search': {
