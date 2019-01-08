@@ -160,8 +160,8 @@ chapters = {
         'url': '/dash-daq',
         'content': daq.layout,
         'name': 'Dash DAQ Components',
-        'description': 'Beautifully styled, premium components for data \
-        acquisition user interfaces.'
+        'description': 'Beautifully styled technical components for \
+        data acquisition and engineering applications.'
     },
 
     

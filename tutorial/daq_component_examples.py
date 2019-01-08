@@ -181,7 +181,7 @@ Gauge = html.Div(children=[
 
     html.Hr(),
     html.H3('Minimum and Maximum'),
-    dcc.Markdown("Specifiy the minimum and maximum values of the gauge, using the `min` and `max` properties. If \
+    dcc.Markdown("Specify the minimum and maximum values of the gauge, using the `min` and `max` properties. If \
     the scale is logarithmic the minimum and maximum will represent an exponent."),
     ComponentBlock('''import dash_daq as daq
 

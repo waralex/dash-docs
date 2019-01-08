@@ -1,7 +1,7 @@
+from textwrap import dedent as s
 import dash_core_components as dcc
 import dash_html_components as html
 from tutorial import styles
-from textwrap import dedent as s
 from tutorial.utils.component_block import ComponentBlock
 from tutorial.tools import load_example
 
@@ -21,8 +21,8 @@ daq_library_heading =  dcc.Markdown('''
 
     The source is on GitHub at [plotly/dash-daq](https://github.com/plotly/dash-daq). 
 
-    These docs are using Dash version {}.
-    '''.replace('    ', '').format(dcc.__version__)
+    These docs are using version {}.
+    '''.replace('    ', '').format(daq.__version__)
 )
 
 dash_daq_components = {
