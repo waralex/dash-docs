@@ -150,7 +150,7 @@ layout = html.Div([
     dcc.Markdown(dedent('''
     > Note that those boolean properties can be overwritten by certain Cytoscape
     > parameters such as `autoungrabify` or `autounselectify`. Please refer to
-    > the reference for more information.
+    > [the reference](/cytoscape/reference) for more information.
     
     ## Classes
     
