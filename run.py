@@ -1,3 +1,5 @@
+from collections import OrderedDict
+
 import dash_html_components as html
 import dash_core_components as dcc
 import dash_table
@@ -30,6 +32,47 @@ chapters = {
 }
 
 chapters.update(chapter_index.chapters)
+
+sections_ordered = OrderedDict()
+sections_ordered['What\'s Dash?'] = [
+    'introduction',
+#    'gallery'
+]
+sections_ordered['Dash Tutorial'] = [
+    'installation',
+#    'getting-started',
+#    'getting-started-part-2',
+#    'state',
+#    'graphing',
+#    'shared-state',
+#    'faqs'
+]
+sections_ordered['Component Libraries'] = [
+    'dash-core-components',
+ #   'dash-html-components',
+ #   'datatable',
+ #   'dashdaq'
+]
+sections_ordered['Creating Your Own Components'] = [
+    'react-for-python-developers',
+ #   'plugins',
+ #   'd3-plugins'
+]
+sections_ordered['Beyond the Basics'] = [
+    'performance',
+ #   'live-updates',
+ #   'external',
+ #   'urls',
+ #   'devtools'
+]
+sections_ordered['Production'] = [
+    'auth',
+    'deployment'
+]
+sections_ordered['Getting Help'] = [
+    # TODO add in the dash community forum
+    'support'
+]
 
 header = html.Div(
     className='header',
@@ -86,8 +129,26 @@ def display_content(pathname):
         
     if pathname.split('/')[-1] == 'all':
         pdf_contents = []
-        for chapter in chapters.keys():
-            pdf_contents.append(chapters[chapter]['content'])
+        for section in sections_ordered.keys():
+            section_content = []
+            section_content.append(
+                html.H1(section, className='pdf-docs-section-name')
+            )
+            for chapter in sections_ordered[section]:
+                section_content.append(html.Div(
+                    chapters[chapter]['content'],
+                    className='pdf-docs-chapter',
+                    id=chapter
+                ))
+            pdf_contents.append(html.Div(
+                section_content,
+                className='pdf-docs-section',
+                id=section.replace(
+                        ' ', '-').replace(
+                            '\'', '').replace(
+                                '?', '').lower()
+            ))
+            
         return html.Div(pdf_contents, id='pdf-docs')
         
     matched = [c for c in chapters.keys()
