@@ -26,7 +26,7 @@ terminal_nodes = [
             'id': name,
             'label': name.capitalize(),
             'url': 'https://upload.wikimedia.org/wikipedia/commons/thumb/' +
-                   url + '/200px-' + url.split('/')[-1]
+                   url + '/150px-' + url.split('/')[-1]
         }
     }
     for name, url in [
