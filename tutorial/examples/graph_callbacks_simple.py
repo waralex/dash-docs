@@ -40,7 +40,10 @@ app.layout = html.Div([
                     'mode': 'markers',
                     'marker': {'size': 12}
                 }
-            ]
+            ],
+            'layout': {
+                'clickmode': 'event+select'
+            }
         }
     ),
 
@@ -69,6 +72,10 @@ app.layout = html.Div([
 
                 Choose the lasso or rectangle tool in the graph's menu
                 bar and then select points in the graph.
+
+                Note that if `layout.clickmode = 'event+select'`, selection data also 
+                accumulates (or un-accumulates) selected data if you hold down the shift
+                button while clicking.
             """)),
             html.Pre(id='selected-data', style=styles['pre']),
         ], className='three columns'),
