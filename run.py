@@ -83,6 +83,13 @@ def display_content(pathname):
         return ''
     if pathname.endswith('/') and pathname != '/':
         pathname = pathname[:len(pathname) - 1]
+        
+    if pathname.split('/')[-1] == 'all':
+        pdf_contents = []
+        for chapter in chapters.keys():
+            pdf_contents.append(chapters[chapter]['content'])
+        return html.Div(pdf_contents, id='pdf-docs')
+        
     matched = [c for c in chapters.keys()
                if chapters[c]['url'] == pathname]
 
