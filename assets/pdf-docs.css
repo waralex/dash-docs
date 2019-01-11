@@ -1,0 +1,37 @@
+@page {
+    margin: 2cm;
+}
+
+#pdf-docs {
+    font-family: sans-serif;
+    font-size: 12pt; 
+    width:8.5in; 
+}
+
+.pdf-docs-section-name {
+    font-family: sans-serif;
+    font-size: 64pt;
+    text-align: center;
+    margin: 0px; 
+    margin-top: 5in; 
+    page-break-after: always; 
+}
+.pdf-docs-chapter {
+    font-family: sans-serif !important;
+    page-break-after: always;
+}
+
+.pdf-docs-chapter h3 {
+    font-size: 16pt; 
+}
+.pdf-docs-chapter h2 {
+    font-size: 20pt;
+}
+.pdf-docs-chapter h1 {
+    font-size: 24pt; 
+}
+
+.pdf-docs-section {
+    page-break-after: always;
+}
+
