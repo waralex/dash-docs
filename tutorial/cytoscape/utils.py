@@ -13,7 +13,14 @@ def CreateDisplay(scope):
                 language='python',
                 customStyle={'marginBottom': 10, 'borderLeft': 'thin #C8D4E3 solid'}
             ),
-            eval(dedent(example_string), scope)
+            html.Div(
+                children=eval(dedent(example_string), scope),
+                style={
+                    'border': 'thin lightgrey solid',
+                    'margin-top': '-10px',
+                    'padding': '15px'
+                }
+            )
         ])
     return Display
 
