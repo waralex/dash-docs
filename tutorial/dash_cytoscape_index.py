@@ -57,13 +57,24 @@ layout = html.Div([
     ]),
 
     Section('Dash Cytoscape User Guide', [
+        dcc.Markdown(dedent('''
+        > Dash Cytoscape graphs are interactive! Scroll to zoom and drag on 
+        > the canvas to move the entire graph around. You can move nodes by
+        > *dragging* it, or by *clicking, releasing, and moving your mouse*
+        > to the desired location (and click again to release).
+        >
+        > This also work in mobile! Tap-and-hold on a node to move it, or on
+        > the canvas to move the entire graph. Pinch your fingers outwards to
+        > zoom in, or pinch them together to zoom out.
+        ''')),
+
         Chapter(
             'Part 1. Elements',
             '/cytoscape/elements',
             '''
             Elements declaration in Cytoscape are designed to be clear, simple,
-            and JSON-friendly. This chapter will get you started 
-            with examples for:
+            and JSON-friendly. This chapter will get you started with examples 
+            for:
             - Data and position dictionaries 
             - Mutability properties
             - Defining groups and classes
