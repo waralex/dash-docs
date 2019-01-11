@@ -47,7 +47,7 @@ Display = CreateDisplay({
 layout = html.Div([
 
     dcc.Markdown(dedent('''
-    # Elements
+    # Cytoscape Elements
     
     ## Element Declaration
     
@@ -99,7 +99,7 @@ layout = html.Div([
     of Cytoscape. The `id` parameter is needed for assigning callbacks,
     `style` lets you specify the CSS style of the component (similarly to core
     components), and layout tells you how to arrange your graph. It is 
-    described in depth in part 2, so all you need to know is that `'preset'`
+    described in depth in [part 2](/cytoscape/layout), so all you need to know is that `'preset'`
     will organize the nodes according to the positions you specified.
     
     The official Cytoscape.js documentation nicely outlines the [JSON format 
@@ -154,10 +154,10 @@ layout = html.Div([
     
     ## Classes
     
-    Sometimes, you want to give your elements a specific class in order to 
-    distinguish them from others. This is especially useful when you want to 
-    perform specific actions using a selector, such as changing the style
-    of an element based on its class. We modify the previous example by giving
+    Similarly to CSS classes, element classes are used to style groups of 
+    elements. This is especially useful when you want to perform specific 
+    actions using a selector, such as changing the style of an element based 
+    on its class. We modify the previous example by giving
     the elements a class or multiple classes (separated by a space), and 
     define a stylesheet that modifies the elements based on those classes. 
     ''')),
@@ -197,9 +197,9 @@ layout = html.Div([
     '''),
 
     dcc.Markdown(dedent('''
-    > The stylesheet parameter will be described in depth in part 3 of this 
-    > guide. We will show extensive examples of using selectors to style 
-    > groups, classes, and data values. Expand below if you still
+    > The stylesheet parameter will be described in depth in [part 3](/cytoscape/styling)
+    > of this guide. We will show extensive examples of using selectors to 
+    > style groups, classes, and data values. Expand below if you still
     > want to take a look at the stylesheet used previously.
     ''')),
 
@@ -254,6 +254,6 @@ layout = html.Div([
 
     html.Div(
         examples['compound.py'][1],
-        className='example-compound'
+        className='example-container'
     )
 ])

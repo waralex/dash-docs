@@ -18,7 +18,7 @@ from tutorial import tools, styles
 layout = html.Div([
 
     dcc.Markdown(dedent('''
-    # Applications
+    # Cytoscape Applications
 
     ''')),
 

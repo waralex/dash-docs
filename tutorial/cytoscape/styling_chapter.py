@@ -99,7 +99,7 @@ Display = CreateDisplay({
 layout = html.Div([
 
     dcc.Markdown(dedent('''
-    # Styling
+    # Cytoscape Styling
     
     ## The `stylesheet` parameter
     
@@ -113,15 +113,11 @@ layout = html.Div([
     could be the width, height, color of a node, the shape of the arrow on an
     edge, or many more.
     
-    Both the selector and the style dictionary are exhaustively documented in 
-    the Cytoscape.js docs. The selector is documented 
-    [here](http://js.cytoscape.org/#selectors). 
-    You can find all the possible keys for your style dictionary in the 
-    [*Style* section of the docs](http://js.cytoscape.org/#style/node-body), 
-    starting with the "Node Body" subsection. We will show examples that can
-    be easily modified for any type of design, and you can create your own
-    styles with the sandbox (open by running `usage-advanced.py`).
-    
+    Both [the selector string](http://js.cytoscape.org/#selectors) and 
+    [the style dictionary](http://js.cytoscape.org/#style/node-body) are 
+    exhaustively documented in the Cytoscape.js docs. We will show examples 
+    that can be easily modified for any type of design, and you can create 
+    your own styles with the sandbox (open by running `usage-advanced.py`).
     
     ## Basic selectors and styles
     
@@ -448,8 +444,8 @@ layout = html.Div([
     '''),
 
     dcc.Markdown(dedent('''
-    The complete list of matching operations for `data` dictionaries can be 
-    found [here](http://js.cytoscape.org/#selectors/data).
+    View the [complete list of matching operations](http://js.cytoscape.org/#selectors/data)
+     for data selectors.
     
     ## Styling edges
     
@@ -599,16 +595,14 @@ layout = html.Div([
     Notice here that we prepend a position indicator for the color and shape
     keys. In the previous example, all four possible positions are displayed.
     In fact, you can even the edges with multiple arrows, all with different
-    colors and shapes. You can find all the possible configurations for [edge
-    arrows here](http://js.cytoscape.org/#style/edge-arrow).
+    colors and shapes. View the [complete list of edge arrow configurations](http://js.cytoscape.org/#style/edge-arrow).
     
     
     ## Displaying Images
     
-    It is possible to display images inside nodes, as 
-    [documented in Cytoscape.js](http://js.cytoscape.org/#style/background-image).
-    We show below a complete example of display an interactive tree of animal
-    phylogeny using images from Wikimedia.
+    It is possible to [display images inside nodes](http://js.cytoscape.org/#style/background-image),
+    as documented in Cytoscape.js. We show below a complete example of display 
+    an interactive tree of animal phylogeny using images from Wikimedia.
     ''')),
 
     dcc.SyntaxHighlighter(
@@ -619,6 +613,6 @@ layout = html.Div([
 
     html.Div(
         examples['images.py'][1],
-        className='example-images'
+        className='example-container'
     )
 ])

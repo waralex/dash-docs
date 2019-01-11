@@ -18,7 +18,7 @@ from tutorial import tools, styles
 layout = html.Div([
 
     dcc.Markdown(dedent('''
-    # Events Callbacks for User Interactions
+    # Events Callbacks for User Interactions in Cytoscape
 
     ''')),
 

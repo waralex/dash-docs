@@ -64,7 +64,7 @@ Display = CreateDisplay({
 layout = html.Div([
 
     dcc.Markdown(dedent('''
-    # Dash Callbacks
+    # Dash Callbacks for Cytoscape
     
     One important concept introduced by Dash is that of callbacks, the Python
     equivalent of event handlers. Rather than modifying and updating the graph
@@ -192,7 +192,7 @@ layout = html.Div([
 
     html.Div(
         examples['update_layout.py'][1],
-        className='example-update-layout'
+        className='example-container'
     )
 
 ])

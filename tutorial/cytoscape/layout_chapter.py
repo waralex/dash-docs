@@ -54,9 +54,7 @@ Display = CreateDisplay({
 layout = html.Div([
 
     dcc.Markdown(dedent('''
-    # Layouts
-    
-    ## Layout Declaration
+    # Cytoscape Layouts
     
     The layout parameter of `dash_cytoscape.Cytoscape` takes as argument a
     dictionary specifying how the nodes should be positioned on the screen.
@@ -71,8 +69,10 @@ layout = html.Div([
     - `breadthfirst`
     - `cose`
     
-    All those layouts (along with their options), are [described in the
-    documentation](http://js.cytoscape.org/#layouts).
+    All those layouts (along with their options), are described in the 
+    [official Cytoscape documentation](http://js.cytoscape.org/#layouts). 
+    There, you can find the exact keys accepted by your dictionary, enabling
+    advanced fine-tuning (demonstrated below). 
     
     If preset is given, the positions will be rendered based on the positions
     specified in the elements. Otherwise, the positions will be computed by 
@@ -171,13 +171,15 @@ layout = html.Div([
 
     dcc.Markdown(dedent('''
     
-    ## Finetuning the Layouts
+    ## Fine-tuning the Layouts
     
     For any given `name` item, a collection of keys are accepted by the layout 
-    dictionary. For example, the `grid` layout will accept `row` and
-    `cols`, the `circle` layout accepts `radius` and `startAngle`, and so 
-    forth. Here's is the grid layout with the same graph as above, but
-    with different layout options:
+    dictionary. For example, the 
+    [`grid` layout](http://js.cytoscape.org/#layouts/grid) 
+    will accept `row` and `cols`, the 
+    [`circle` layout](http://js.cytoscape.org/#layouts/circle)  
+    accepts `radius` and `startAngle`, and so forth. Here's is the grid layout 
+    with the same graph as above, but with different layout options:
     ''')),
 
     Display('''
@@ -249,8 +251,8 @@ layout = html.Div([
     dcc.Markdown(dedent('''
     > Notice here that we are not giving the ID of the nodes to the `roots`
     > key, but instead using a specific syntax to select the desired elements. 
-    > This concept of selector will be further explored in part 3, and is 
-    > [extensively documented by Cytoscape.js](http://js.cytoscape.org/#selectors).
+    > This concept of [selector is extensively documented in Cytoscape.js](http://js.cytoscape.org/#selectors), 
+    > and will be further explored in [part 3](/cytoscape/styling).
     > We follow the same syntax as the Javascript library.
     
     ## Physics-based Layouts
