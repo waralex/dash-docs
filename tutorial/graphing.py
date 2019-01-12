@@ -113,9 +113,6 @@ layout = html.Div([
     ### Current Limitations
 
     There are a few limitations in graph interactions right now.
-    - Clicking points does not accumulate: you cannot accumulate the number
-      of points that you have clicked on, nor is there the concept of
-      "unselecting" a point. This issue is being worked on in [https://github.com/plotly/plotly.js/issues/1848](https://github.com/plotly/plotly.js/issues/1848).
     - It is not currently possible to customize the style of the hover
       interactions or the select box.
       This issue is being worked on in [https://github.com/plotly/plotly.js/issues/1847](https://github.com/plotly/plotly.js/issues/1847).

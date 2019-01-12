@@ -598,6 +598,15 @@ chapters = {
         '''
     },
 
+    'virtualization': {
+        'url': '/datatable/virtualization',
+        'content': tutorial.table.virtualization_chapter.layout,
+        'name': 'Virtualization',
+        'description': '''
+        Examples using DataTable virtualization.
+        '''
+    },
+
     'filtering': {
         'url': '/datatable/filtering',
         'content': tutorial.table.filtering_chapter.layout,
