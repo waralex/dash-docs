@@ -129,8 +129,14 @@ def display_content(pathname):
         
     if pathname.split('/')[-1] == 'all':
         pdf_contents = []
+        table_of_contents = []
         for section in sections_ordered.keys():
             section_content = []
+            section_toc = []
+            section_id = section.replace(
+                ' ', '-').replace(
+                    '\'', '').replace(
+                        '?', '').lower()
             section_content.append(
                 html.H1(section, className='pdf-docs-section-name')
             )
@@ -140,15 +146,30 @@ def display_content(pathname):
                     className='pdf-docs-chapter',
                     id=chapter
                 ))
+                section_toc.append(
+                    html.A(chapter,
+                           href='#{}'.format(chapter))
+                )
+            
             pdf_contents.append(html.Div(
                 section_content,
                 className='pdf-docs-section',
-                id=section.replace(
-                        ' ', '-').replace(
-                            '\'', '').replace(
-                                '?', '').lower()
+                id=section_id
             ))
-            
+            # add main section to table of contents
+            table_of_contents.append(
+                html.A(section,
+                       href='#{}'.format(section_id),
+                       className='toc-section-link')
+            )
+            # add all subsections
+            table_of_contents.append(
+                html.Div(section_toc,
+                         className='toc-chapter-links')
+            )
+
+        # insert table of contents
+        pdf_contents = table_of_contents + pdf_contents                            
         return html.Div(pdf_contents, id='pdf-docs')
         
     matched = [c for c in chapters.keys()
