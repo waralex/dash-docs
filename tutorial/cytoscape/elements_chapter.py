@@ -155,9 +155,7 @@ layout = html.Div([
     ## Classes
     
     Similarly to CSS classes, element classes are used to style groups of 
-    elements. This is especially useful when you want to perform specific 
-    actions using a selector, such as changing the style of an element based 
-    on its class. We modify the previous example by giving
+    elements using a selector. We modify the previous example by giving
     the elements a class or multiple classes (separated by a space), and 
     define a stylesheet that modifies the elements based on those classes. 
     ''')),
