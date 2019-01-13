@@ -130,6 +130,7 @@ def display_content(pathname):
     if pathname.split('/')[-1] == 'all':
         pdf_contents = []
         table_of_contents = []
+
         for section in sections_ordered.keys():
             section_content = []
             section_toc = []
@@ -169,8 +170,13 @@ def display_content(pathname):
             )
 
         # insert table of contents
-        pdf_contents = table_of_contents + pdf_contents                            
-        return html.Div(pdf_contents, id='pdf-docs')
+        return html.Div([
+            html.Div("Dash User Guide and Documentation",
+                     id='pdf-docs-title'),
+            html.Div([html.H1('Table of Contents')] + table_of_contents,
+                     id='pdf-docs-toc'),
+            html.Div(pdf_contents)
+        ], id='pdf-docs')
         
     matched = [c for c in chapters.keys()
                if chapters[c]['url'] == pathname]
