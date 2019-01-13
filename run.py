@@ -147,7 +147,7 @@ def display_content(pathname):
                     id=chapter
                 ))
                 section_toc.append(
-                    html.A(chapter,
+                    html.A(chapter.replace('-', ' ').title(),
                            href='#{}'.format(chapter))
                 )
             
