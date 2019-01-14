@@ -4,9 +4,13 @@
   }
   #pdf-docs, #pdf-docs * {
       visibility: visible;
+      -webkit-print-color-adjust: exact;
   }
   @page {
       margin: 1.25in; 
+  }
+  .example-container {
+      page-break-inside: avoid;
   }
 }
 
