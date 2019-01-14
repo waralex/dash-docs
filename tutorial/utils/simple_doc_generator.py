@@ -59,7 +59,14 @@ def generate_code_container(
         propString = propString[:-4] + '\n'
     else:
         propString = ''
-        
+
+    example_string = '''import {} as {}
+
+{}.{}({})'''.format(library_name.replace('-', '_'),
+                    library_short,
+                    library_short, 
+                    component_name,
+                    propString)
     return [
 
         html.Hr(),
@@ -72,15 +79,7 @@ def generate_code_container(
         dcc.Markdown(s(description)),
         
         ComponentBlock(
-            '''import {} as {}
-
-{}.{}({})'''.format(library_name.replace('-', '_'),
-                    library_short,
-                    library_short, 
-                    component_name,
-                    propString),
-            language='python',
-            customStyle=styles.code_container
+            example_string
         ),
 
         html.Br(), 
