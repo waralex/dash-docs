@@ -60,8 +60,10 @@ default_stylesheet = [
 
 
 app.layout = html.Div([
-    html.Button('Add Node', id='btn-add-node', n_clicks_timestamp='0'),
-    html.Button('Remove Node', id='btn-remove-node', n_clicks_timestamp='0'),
+    html.Div([
+        html.Button('Add Node', id='btn-add-node', n_clicks_timestamp='0'),
+        html.Button('Remove Node', id='btn-remove-node', n_clicks_timestamp='0')
+    ]),
 
     dash_cytoscape.Cytoscape(
         id='cytoscape',
