@@ -10,22 +10,20 @@ from tutorial import tools, styles
 
 
 examples = {
-    example: tools.load_example('tutorial/examples/cytoscape/{}'.format(example))
-    for example in ['update_layout.py', 'stylesheet_callbacks.py']
+    example: tools.load_example(
+        'tutorial/examples/cytoscape/{}'.format(example)
+    )
+    for example in [
+        'update_layout.py',
+        'stylesheet_callbacks.py',
+        'elements_callbacks.py'
+    ]
 }
-
-
-'''
-- Adding and removing elements
-- Modifying the layout and the stylesheet
-- Advanced usage of callbacks
-'''
-
 
 nodes = [
     {
         'data': {'id': short, 'label': label},
-        'position': {'x': 20*lat, 'y': -20*long}
+        'position': {'x': 20 * lat, 'y': -20 * long}
     }
     for short, label, long, lat in (
         ('la', 'Los Angeles', 34.03, -118.25),
@@ -59,7 +57,7 @@ default_stylesheet = [
     {
         'selector': 'node',
         'style': {
-            'background-color': 'BFD7B5',
+            'background-color': '#BFD7B5',
             'label': 'data(label)'
         }
     },
@@ -71,13 +69,14 @@ default_stylesheet = [
     }
 ]
 
-
 Display = CreateDisplay({
     'dash_cytoscape': dash_cytoscape,
     'elements': nodes + edges,
     'html': html,
     'dcc': dcc,
-    'default_stylesheet': default_stylesheet
+    'default_stylesheet': default_stylesheet,
+    'nodes': nodes,
+    'edges': edges
 })
 
 layout = html.Div([
@@ -344,6 +343,77 @@ layout = html.Div([
     of techniques for manipulating stylesheets in Dash Cytoscape.
     
     ## Adding and removing elements
+    
+    One useful aspect of callbacks is the ability to add and remove elements.
+    By using elements as a state of your callback, you can decide to manipulate
+    it in order to add elements whenever another Dash component is updated.
+    
+    Let's take as an example a simple app where you can add and remove nodes
+    by clicking two html buttons (with the same graph as above):
+    ''')),
+
+    Display('''
+    html.Button('Add Node', id='btn-add-node', n_clicks_timestamp='0'),
+    html.Button('Remove Node', id='btn-remove-node', n_clicks_timestamp='0')
+    '''),
+
+    dcc.Markdown(dedent('''
+    The following callback would be needed:
+    
+    ```python
+    @app.callback(Output('cytoscape', 'elements'),
+                  [Input('btn-add-node', 'n_clicks_timestamp'),
+                   Input('btn-remove-node', 'n_clicks_timestamp')],
+                  [State('cytoscape', 'elements')])
+    def update_elements(btn_add, btn_remove, elements):
+        if int(btn_add) > int(btn_remove):
+            next_node_idx = len(elements) - len(edges)
+    
+            if next_node_idx < len(nodes):
+                return edges + nodes[:next_node_idx+1]
+    
+        elif int(btn_remove) > int(btn_add):
+            if len(elements) > len(edges):
+                return elements[:-1]
+    
+        return elements
+    ```
+    
+    The first conditional `if int(btn_add) > int(btn_remove)` verifies whether
+    the add button was just clicked. If it wasn't, then the remove button is
+    verified with `elif int(btn_remove) > int(btn_add)`. If neither were clicked,
+    then we return the default `elements`.
+    
+    The statement `if next_node_idx < len(nodes)` verifies if we have reached
+    the maximum number of nodes. If not, then we proceed to add the next node.
+    Similarly for the *remove* case: `if len(elements) > len(edges)` only
+    removes nodes if there is any remaining (so we don't remove any edge). If
+    neither conditions are met, we simply return the current elements.
+    
+    Note that if this simple app is hosted (e.g. on DDS), this callback will 
+    behave correctly for all users, since the callback only depend on the current
+    *elements* of the user's graph (which is stored on the user side), which
+    we input as a `State` (which doesn't trigger a callback, but is observed when
+    the callback is triggered by an `Input`). This method is preferred over 
+    directly modifying the `elements` list stored on the server because it
+    restricts any data update to the user side.
+    
+    You can find the complete app below:
+    ''')),
+
+    dcc.SyntaxHighlighter(
+        examples['elements_callbacks.py'][0],
+        language='python',
+        customStyle=styles.code_container
+    ),
+
+    html.Div(
+        examples['elements_callbacks.py'][1],
+        className='example-container'
+    ),
+
+    dcc.Markdown(dedent('''
+    For further examples of elements manipulation, check out `usage-elements.py`.
     '''))
 
 ])
