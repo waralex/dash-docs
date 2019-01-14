@@ -9,8 +9,8 @@ app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 theme =  {
     'dark': True,
     'detail': '#007439',
-    'primary': '#00EA64', 
-    'secondary': '#6E6E6E'
+    'primary': '#00EA64',
+    'secondary': '#6E6E6E',
 }
 
 rootLayout = html.Div([
@@ -100,9 +100,30 @@ rootLayout = html.Div([
 
 app.layout = html.Div(id='dark-theme-container', children=[
     daq.ToggleSwitch(
-        id='toggleTheme',
+        id='toggle-theme',
         label=['Light', 'Dark'],
         value=True
+    ),
+    html.Br(),
+    html.Div(
+        id='theme-colors',
+        children=[
+            daq.ColorPicker(
+                id='primary-color',
+                label='Primary color',
+                value=dict(hex='#00EA64')
+            ),
+            daq.ColorPicker(
+                id='secondary-color',
+                label='Accent color',
+                value=dict(hex='#6E6E6E')
+            ),
+            daq.ColorPicker(
+                id='detail-color',
+                label='Detail color',
+                value=dict(hex='#007439')
+            )
+        ]
     ), 
     html.Div(id='dark-theme-components', children=[
         daq.DarkThemeProvider(theme=theme, children=rootLayout)
@@ -112,9 +133,13 @@ app.layout = html.Div(id='dark-theme-container', children=[
 
 @app.callback(
     dash.dependencies.Output('dark-theme-components', 'children'),
-    [dash.dependencies.Input('toggleTheme', 'value')]
+    [dash.dependencies.Input('toggle-theme', 'value'),
+     dash.dependencies.Input('primary-color', 'value'),
+     dash.dependencies.Input('secondary-color', 'value'),
+     dash.dependencies.Input('detail-color', 'value')]
 )
-def switch_to_dark(dark):
+def edit_theme(dark, p, s, d):
+    
     if(dark):
         theme.update(
             dark=True
@@ -123,13 +148,25 @@ def switch_to_dark(dark):
         theme.update(
             dark=False
         )
-        
+
+    if p is not None:
+        theme.update(
+            primary=p['hex']
+        )
+    if s is not None:
+        theme.update(
+            secondary=s['hex']
+        )
+    if d is not None:
+        theme.update(
+            detail=d['hex']
+        )
     return daq.DarkThemeProvider(theme=theme, children=rootLayout)
 
 
 @app.callback(
     dash.dependencies.Output('dark-theme-components', 'style'),
-    [dash.dependencies.Input('toggleTheme', 'value')],
+    [dash.dependencies.Input('toggle-theme', 'value')],
     state=[dash.dependencies.State('dark-theme-components', 'style')]
 )
 def switch_bg(dark, currentStyle):
