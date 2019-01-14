@@ -66,7 +66,7 @@ app.layout = html.Div([
     ]),
 
     dash_cytoscape.Cytoscape(
-        id='cytoscape',
+        id='cytoscape-elements',
         layout={'name': 'circle'},
         stylesheet=default_stylesheet,
         style={'width': '100%', 'height': '450px'},
@@ -75,10 +75,10 @@ app.layout = html.Div([
 ])
 
 
-@app.callback(Output('cytoscape', 'elements'),
+@app.callback(Output('cytoscape-elements', 'elements'),
               [Input('btn-add-node', 'n_clicks_timestamp'),
                Input('btn-remove-node', 'n_clicks_timestamp')],
-              [State('cytoscape', 'elements')])
+              [State('cytoscape-elements', 'elements')])
 def update_elements(btn_add, btn_remove, elements):
     # If the add button was clicked most recently
     if int(btn_add) > int(btn_remove):

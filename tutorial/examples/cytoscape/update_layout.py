@@ -54,7 +54,7 @@ app.layout = html.Div([
         ]
     ),
     dash_cytoscape.Cytoscape(
-        id='cytoscape',
+        id='cytoscape-layout',
         layout={'name': 'grid'},
         style={'width': '100%', 'height': '450px'},
         elements=elements
@@ -62,7 +62,7 @@ app.layout = html.Div([
 ])
 
 
-@app.callback(Output('cytoscape', 'layout'),
+@app.callback(Output('cytoscape-layout', 'layout'),
               [Input('dropdown', 'value')])
 def update_layout(layout):
     return {

@@ -73,7 +73,7 @@ app.layout = html.Div([
     ]),
 
     dash_cytoscape.Cytoscape(
-        id='cytoscape',
+        id='cytoscape-stylesheet',
         layout={'name': 'circle'},
         stylesheet=default_stylesheet,
         style={'width': '100%', 'height': '450px'},
@@ -82,7 +82,7 @@ app.layout = html.Div([
 ])
 
 
-@app.callback(Output('cytoscape', 'stylesheet'),
+@app.callback(Output('cytoscape-stylesheet', 'stylesheet'),
               [Input('input-line-color', 'value'),
                Input('input-bg-color', 'value')])
 def update_stylesheet(line_color, bg_color):
