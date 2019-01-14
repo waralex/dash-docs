@@ -53,9 +53,7 @@ dash_daq_components = {
         'description': '''A graduated bar component that displays a value within \
         some range as a percentage.''',
         'props': {
-            'min': 0,
-            'max': 100,
-            'value': 42
+            'value': 4
         }
     },
     'Indicator': {
@@ -124,7 +122,8 @@ dash_daq_components = {
             'min': 0,
             'max': 10,
             'value': 5
-        }
+        },
+        'style': {'margin-left': '10px'}
     },
     'Thermometer': {
         'description': '''A thermometer component that fills to \
@@ -134,7 +133,7 @@ dash_daq_components = {
             'max': 105,
             'value': 98.6
         }, 
-        'style': {'margin-bottom': '-5px'}
+        'style': {'margin-bottom': '15px'}
     },
     'ToggleSwitch': {
         'description': '''A switch component that toggles between \
