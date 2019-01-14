@@ -74,7 +74,8 @@ def generate_code_container(
         html.H3(dcc.Link(component_name,
                          href='/{}/{}'.format(
                              library_name,
-                             component_name.lower()))),
+                             component_name.lower())),
+                id=component_name.replace(' ', '-').lower()),
         
         dcc.Markdown(s(description)),
         
