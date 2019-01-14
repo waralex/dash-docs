@@ -101,7 +101,8 @@ rootLayout = html.Div([
 app.layout = html.Div(id='dark-theme-container', children=[
     daq.ToggleSwitch(
         id='toggleTheme',
-        label=['Light', 'Dark']
+        label=['Light', 'Dark'],
+        value=True
     ), 
     html.Div(id='dark-theme-components', children=[
         daq.DarkThemeProvider(theme=theme, children=rootLayout)
