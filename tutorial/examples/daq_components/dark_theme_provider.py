@@ -33,9 +33,7 @@ rootLayout = html.Div([
         className='dark-theme-control'
     ), html.Br(), 
     daq.GraduatedBar(
-        min=0,
-        max=100,
-        value=42,
+        value=4,
         color=theme['primary'],
         className='dark-theme-control'
     ), html.Br(), 
@@ -153,6 +151,10 @@ def edit_theme(dark, p, s, d):
         theme.update(
             primary=p['hex']
         )
+        for child in getattr(rootLayout, 'children'):
+            if hasattr(child, 'color'):
+                setattr(child, 'color', p['hex'])
+            
     if s is not None:
         theme.update(
             secondary=s['hex']
