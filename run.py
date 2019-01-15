@@ -36,34 +36,34 @@ chapters.update(chapter_index.chapters)
 sections_ordered = OrderedDict()
 sections_ordered['What\'s Dash?'] = [
     'introduction',
-#    'gallery'
+    'gallery'
 ]
 sections_ordered['Dash Tutorial'] = [
     'installation',
-#    'getting-started',
-#    'getting-started-part-2',
-#    'state',
-#    'graphing',
-#    'shared-state',
-#    'faqs'
+    'getting-started',
+    'getting-started-part-2',
+    'state',
+    'graphing',
+    'shared-state',
+    'faqs'
 ]
 sections_ordered['Component Libraries'] = [
     'dash-core-components',
- #   'dash-html-components',
- #   'datatable',
- #   'dashdaq'
+    'dash-html-components',
+    'datatable',
+    'dashdaq'
 ]
 sections_ordered['Creating Your Own Components'] = [
     'react-for-python-developers',
- #   'plugins',
- #   'd3-plugins'
+    'plugins',
+    'd3-plugins'
 ]
 sections_ordered['Beyond the Basics'] = [
     'performance',
- #   'live-updates',
- #   'external',
- #   'urls',
- #   'devtools'
+    'live-updates',
+    'external',
+    'urls',
+    'devtools'
 ]
 sections_ordered['Production'] = [
     'auth',
@@ -72,6 +72,38 @@ sections_ordered['Production'] = [
 sections_ordered['Getting Help'] = [
     # TODO add in the dash community forum
     'support'
+]
+sections_ordered['Component Examples'] = [
+    'dropdown-examples',
+    'slider-examples',
+    'range-slider-examples',
+    'checklist-examples',
+    'input-examples',
+    'radio-item-examples',
+    'button-examples',
+    'datepickersingle-examples',
+    'datepickerrange-examples',
+    'markdown-examples',
+    'link-examples',
+    'tabs-example',
+    'textarea-examples',
+    'upload-examples',
+    'booleanswitch-examples',
+    'colorpicker-examples',
+    'gauge-examples',
+    'graduatedbar-examples',
+    'indicator-examples',
+    'knob-examples',
+    'leddisplay-examples',
+    'numericinput-examples',
+    'powerbutton-examples',
+    'precisioninput-examples',
+    'stopbutton-examples',
+    'slider-examples',
+    'tank-examples',
+    'thermometer-examples',
+    'toggleswitch-examples',
+    'darkthemeprovider-examples'
 ]
 
 header = html.Div(
