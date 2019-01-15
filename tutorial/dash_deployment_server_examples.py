@@ -2515,7 +2515,29 @@ Troubleshooting = html.Div(children=[
         '''))
     ]),
 
-dcc.Markdown(s('''
+    html.Details([
+        html.Summary("Unable to select a buildpack"),
+
+        dcc.SyntaxHighlighter(s(
+            '''...
+            remote:            Adding BUILD_ENV to build environment...
+            remote:            Unable to select a buildpack'''),
+                              customStyle=styles.code_container, language='python'),
+        dcc.Markdown(s(
+            ''''
+            &nbsp;
+
+            This error might occur if you are trying to push from a branch
+            that is not your `master` branch. Get the name of your current
+            branch by running `git branch`. Then, to push from this branch
+            to the remote server, run `git push plotly your-branch-name:master`. 
+
+            &nbsp; 
+            '''
+        )),
+    ]),
+        
+    dcc.Markdown(s('''
     ***
 
     #### Problems Using a Celery Process?
