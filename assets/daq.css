@@ -18,3 +18,19 @@
     margin-left: auto;
     margin-right: auto;
 }
+
+#darktheme-daq-graduatedbar {
+    margin-left: calc(50% - 128px);
+}
+
+#darktheme-daq-indicator {
+    margin-left: calc(50% - 7.5px);
+}
+
+#darktheme-daq-slider {
+    margin-left: calc(50% - 132.5px); 
+}
+
+#darktheme-daq-tank {
+    margin-left: calc(50% - 56px);
+}
