@@ -59,7 +59,14 @@ def generate_code_container(
         propString = propString[:-4] + '\n'
     else:
         propString = ''
-        
+
+    example_string = '''import {} as {}
+
+{}.{}({})'''.format(library_name.replace('-', '_'),
+                    library_short,
+                    library_short, 
+                    component_name,
+                    propString)
     return [
 
         html.Hr(),
@@ -67,20 +74,13 @@ def generate_code_container(
         html.H3(dcc.Link(component_name,
                          href='/{}/{}'.format(
                              library_name,
-                             component_name.lower()))),
+                             component_name.lower())),
+                id=component_name.replace(' ', '-').lower()),
         
         dcc.Markdown(s(description)),
         
         ComponentBlock(
-            '''import {} as {}
-
-{}.{}({})'''.format(library_name.replace('-', '_'),
-                    library_short,
-                    library_short, 
-                    component_name,
-                    propString),
-            language='python',
-            customStyle=styles.code_container
+            example_string
         ),
 
         html.Br(), 

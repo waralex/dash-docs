@@ -34,7 +34,13 @@ def ComponentBlock(example_string, **kwargs):
             ) else ({
                 'overflow-x': 'initial',
                 'padding-bottom': '25px'
-            }) if 'Slider' in example_string else {})
+            }) if 'Slider' in example_string else ({
+                'float': 'center'
+            }) if 'ColorPicker' in example_string else ({
+                'padding-left': '30px'
+            }) if 'Tank' in example_string else ({
+                'height': '240px'
+            }) if 'Thermometer' in example_string else {})
         )
     ])
 
