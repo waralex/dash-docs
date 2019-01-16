@@ -30,7 +30,7 @@ dash_daq_components = {
         'description': '''A switch component that toggles between on \
         and off.''',
         'props': {
-          'on': True
+            'on': True
         }
     },
     'ColorPicker': {
@@ -38,7 +38,6 @@ dash_daq_components = {
         'props': {
             'label': '\"colorPicker\"'
         },
-        'style': {'float': 'center'}
     },
     'Gauge': {
         'description': '''A gauge component that points to some value between \
@@ -53,9 +52,7 @@ dash_daq_components = {
         'description': '''A graduated bar component that displays a value within \
         some range as a percentage.''',
         'props': {
-            'min': 0,
-            'max': 100,
-            'value': 42
+            'value': 4
         }
     },
     'Indicator': {
@@ -124,7 +121,7 @@ dash_daq_components = {
             'min': 0,
             'max': 10,
             'value': 5
-        }
+        },
     },
     'Thermometer': {
         'description': '''A thermometer component that fills to \
@@ -134,7 +131,6 @@ dash_daq_components = {
             'max': 105,
             'value': 98.6
         }, 
-        'style': {'margin-bottom': '-5px'}
     },
     'ToggleSwitch': {
         'description': '''A switch component that toggles between \
