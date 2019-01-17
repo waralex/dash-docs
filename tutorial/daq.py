@@ -20,6 +20,9 @@ daq_library_heading =  dcc.Markdown('''
     integrate data acquisition and controls into your Dash applications. 
 
     The source is on GitHub at [plotly/dash-daq](https://github.com/plotly/dash-daq). 
+    To install, simply run: 
+
+    `$ pip install dash-daq`
 
     These docs are using version {}.
     '''.replace('    ', '').format(daq.__version__)
