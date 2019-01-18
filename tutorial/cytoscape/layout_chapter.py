@@ -83,7 +83,7 @@ layout = html.Div([
 
     Display('''
     dash_cytoscape.Cytoscape(
-        id='cytoscape',
+        id='cytoscape-layout-1',
         elements=elements,
         style={'width': '100%', 'height': '350px'},
         layout={
@@ -149,7 +149,7 @@ layout = html.Div([
 
     Display('''
     dash_cytoscape.Cytoscape(
-        id='cytoscape',
+        id='cytoscape-layout-2',
         elements=elements,
         style={'width': '100%', 'height': '350px'},
         layout={
@@ -160,7 +160,7 @@ layout = html.Div([
 
     Display('''
     dash_cytoscape.Cytoscape(
-        id='cytoscape',
+        id='cytoscape-layout-3',
         elements=elements,
         style={'width': '100%', 'height': '350px'},
         layout={
@@ -184,7 +184,7 @@ layout = html.Div([
 
     Display('''
     dash_cytoscape.Cytoscape(
-        id='cytoscape',
+        id='cytoscape-layout-4',
         elements=elements,
         style={'width': '100%', 'height': '350px'},
         layout={
@@ -201,7 +201,7 @@ layout = html.Div([
 
     Display('''
     dash_cytoscape.Cytoscape(
-        id='cytoscape',
+        id='cytoscape-layout-5',
         elements=elements,
         style={'width': '100%', 'height': '350px'},
         layout={
@@ -222,7 +222,7 @@ layout = html.Div([
 
     Display('''
     dash_cytoscape.Cytoscape(
-        id='cytoscape',
+        id='cytoscape-layout-6',
         elements=elements,
         style={'width': '100%', 'height': '350px'},
         layout={
@@ -238,7 +238,7 @@ layout = html.Div([
 
     Display('''
     dash_cytoscape.Cytoscape(
-        id='cytoscape',
+        id='cytoscape-layout-7',
         elements=elements,
         style={'width': '100%', 'height': '350px'},
         layout={
@@ -265,7 +265,7 @@ layout = html.Div([
 
     Display('''
     dash_cytoscape.Cytoscape(
-        id='cytoscape',
+        id='cytoscape-layout-8',
         elements=elements,
         style={'width': '100%', 'height': '350px'},
         layout={

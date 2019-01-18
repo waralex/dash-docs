@@ -101,7 +101,7 @@ layout = html.Div([
 
     Display('''
     dash_cytoscape.Cytoscape(
-        id='cytoscape-events',
+        id='cytoscape-eventsx',
         layout={'name': 'preset'},
         elements=edges+nodes,
         stylesheet=default_stylesheet,

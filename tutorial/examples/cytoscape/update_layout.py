@@ -45,7 +45,7 @@ elements = nodes + edges
 
 app.layout = html.Div([
     dcc.Dropdown(
-        id='dropdown',
+        id='dropdown-update-layout',
         value='grid',
         clearable=False,
         options=[
@@ -54,7 +54,7 @@ app.layout = html.Div([
         ]
     ),
     dash_cytoscape.Cytoscape(
-        id='cytoscape-layout',
+        id='cytoscape-update-layout',
         layout={'name': 'grid'},
         style={'width': '100%', 'height': '450px'},
         elements=elements
@@ -62,8 +62,8 @@ app.layout = html.Div([
 ])
 
 
-@app.callback(Output('cytoscape-layout', 'layout'),
-              [Input('dropdown', 'value')])
+@app.callback(Output('cytoscape-update-layout', 'layout'),
+              [Input('dropdown-update-layout', 'value')])
 def update_layout(layout):
     return {
         'name': layout,

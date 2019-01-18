@@ -69,12 +69,11 @@ app.layout = html.Div([
         stylesheet=default_stylesheet,
         style={'width': '100%', 'height': '450px'}
     ),
-    html.Pre(id='tapNode-json', style=styles['pre']),
-    html.Pre(id='tapNodeData-json', style=styles['pre'])
+    html.Pre(id='cytoscape-tapNodeData-json', style=styles['pre'])
 ])
 
 
-@app.callback(Output('tapNodeData-json', 'children'),
+@app.callback(Output('cytoscape-tapNodeData-json', 'children'),
               [Input('cytoscape-event-callbacks', 'tapNodeData')])
 def display_tapNodeData(data):
     return json.dumps(data, indent=2)

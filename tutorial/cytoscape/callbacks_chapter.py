@@ -147,7 +147,7 @@ layout = html.Div([
 
     Display('''
     dash_cytoscape.Cytoscape(
-        id='cytoscape',
+        id='cytoscape-callbacks-1',
         elements=elements,
         style={'width': '100%', 'height': '400px'},
         layout={
@@ -165,7 +165,7 @@ layout = html.Div([
 
     Display('''
     dcc.Dropdown(
-        id='dropdown',
+        id='dropdown-callbacks-1',
         value='grid',
         clearable=False,
         options=[
@@ -180,8 +180,8 @@ layout = html.Div([
     a function as such:
     
     ```python
-    @app.callback(Output('cytoscape', 'layout'),
-                  [Input('dropdown', 'value')])
+    @app.callback(Output('cytoscape-callbacks-1', 'layout'),
+                  [Input('dropdown-callbacks-1', 'value')])
     def update_layout(layout):
         return {'name': layout}
     ``` 
@@ -190,8 +190,8 @@ layout = html.Div([
     Simply enable `animate`:
     
     ```python
-    @app.callback(Output('cytoscape', 'layout'),
-                  [Input('dropdown', 'value')])
+    @app.callback(Output('cytoscape-callbacks-1', 'layout'),
+                  [Input('dropdown-callbacks-1', 'value')])
     def update_layout(layout):
         return {
             'name': layout,
@@ -246,7 +246,7 @@ layout = html.Div([
 
     Display('''
     dash_cytoscape.Cytoscape(
-        id='cytoscape',
+        id='cytoscape-callbacks-2',
         elements=elements,
         stylesheet=default_stylesheet,
         style={'width': '100%', 'height': '400px'},
@@ -278,7 +278,7 @@ layout = html.Div([
     default stylesheet in order to change the default color:
     
     ```python
-    @app.callback(Output('cytoscape', 'stylesheet'),
+    @app.callback(Output('cytoscape-callbacks-2', 'stylesheet'),
               [Input('input-line-color', 'value'),
                Input('input-bg-color', 'value')])
     def update_stylesheet(line_color, bg_color):
@@ -354,8 +354,8 @@ layout = html.Div([
 
     Display('''
     html.Div([
-        html.Button('Add Node', id='btn-add-node', n_clicks_timestamp='0'),
-        html.Button('Remove Node', id='btn-remove-node', n_clicks_timestamp='0')
+        html.Button('Add Node', id='btn-add-node-example', n_clicks_timestamp='0'),
+        html.Button('Remove Node', id='btn-remove-node-example', n_clicks_timestamp='0')
     ])
     '''),
 
@@ -363,10 +363,10 @@ layout = html.Div([
     The following callback would be needed:
     
     ```python
-    @app.callback(Output('cytoscape', 'elements'),
-                  [Input('btn-add-node', 'n_clicks_timestamp'),
-                   Input('btn-remove-node', 'n_clicks_timestamp')],
-                  [State('cytoscape', 'elements')])
+    @app.callback(Output('cytoscape-callbacks-2', 'elements'),
+                  [Input('btn-add-node-example', 'n_clicks_timestamp'),
+                   Input('btn-remove-node-example', 'n_clicks_timestamp')],
+                  [State('cytoscape-callbacks-2', 'elements')])
     def update_elements(btn_add, btn_remove, elements):
         if int(btn_add) > int(btn_remove):
             next_node_idx = len(elements) - len(edges)

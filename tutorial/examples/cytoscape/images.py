@@ -84,7 +84,7 @@ stylesheet = [
 # Declare app layout
 app.layout = html.Div([
     dash_cytoscape.Cytoscape(
-        id='cytoscape',
+        id='cytoscape-images',
         layout={'name': 'breadthfirst', 'roots': ['animalia']},
         style={'width': '100%', 'height': '550px'},
         stylesheet=stylesheet,

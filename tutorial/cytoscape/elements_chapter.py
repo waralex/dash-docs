@@ -78,7 +78,7 @@ layout = html.Div([
 
     Display('''
     dash_cytoscape.Cytoscape(
-        id='cytoscape',
+        id='cytoscape-elements-basic',
         layout={'name': 'preset'},
         style={'width': '100%', 'height': '400px'},
         elements=[
@@ -115,7 +115,7 @@ layout = html.Div([
 
     Display('''
     dash_cytoscape.Cytoscape(
-        id='cytoscape',
+        id='cytoscape-elements-boolean',
         layout={'name': 'preset'},
         style={'width': '100%', 'height': '400px'},
         elements=[
@@ -162,7 +162,7 @@ layout = html.Div([
 
     Display('''
     dash_cytoscape.Cytoscape(
-        id='cytoscape',
+        id='cytoscape-elements-classes',
         layout={'name': 'preset'},
         style={'width': '100%', 'height': '400px'},
         stylesheet=my_stylesheet,

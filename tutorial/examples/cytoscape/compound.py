@@ -6,7 +6,7 @@ app = dash.Dash(__name__)
 
 app.layout = html.Div([
     dash_cytoscape.Cytoscape(
-        id='cytoscape',
+        id='cytoscape-compound',
         layout={'name': 'preset'},
         style={'width': '100%', 'height': '450px'},
         stylesheet=[
