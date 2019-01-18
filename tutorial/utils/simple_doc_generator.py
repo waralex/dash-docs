@@ -112,7 +112,8 @@ def generate_docs(
 
     layout_children = [library_heading]
 
-    for component in component_dict.keys():
+    # ensure alphabetical order
+    for component in list(component_dict.keys()).sort():
         layout_children += generate_code_container(
             component,
             library_name,
