@@ -14,7 +14,9 @@ examples = {
         'tutorial/examples/cytoscape/{}'.format(example)
     )
     for example in [
-        'event_callbacks.py'
+        'event_callbacks.py',
+        'event_callbacks_2.py',
+        'event_callbacks_3.py'
     ]
 }
 
@@ -80,7 +82,7 @@ Display = CreateDisplay({
 layout = html.Div([
 
     dcc.Markdown(dedent('''
-    # Events Callbacks for User Interactions in Cytoscape
+    # Cytoscape Event Callbacks
     
     In [part 4](/cytoscape/callbacks), we showed how to update Cytoscape with
     other components by assigning callbacks that output to `'elements',
@@ -101,7 +103,7 @@ layout = html.Div([
 
     Display('''
     cyto.Cytoscape(
-        id='cytoscape-eventsx',
+        id='cytoscape-events',
         layout={'name': 'preset'},
         elements=edges+nodes,
         stylesheet=default_stylesheet,
@@ -110,8 +112,8 @@ layout = html.Div([
     '''),
 
     dcc.Markdown(dedent('''
-    This time, we will use the `tapNode` and `tapNodeData` properties as input
-    to our callbacks, which will simply dump the the content into an HTML div: 
+    This time, we will use the `tapNodeData` properties as input
+    to our callbacks, which will simply dump the the content into an `html.Div`: 
     ''')),
 
     dcc.SyntaxHighlighter(
@@ -125,4 +127,109 @@ layout = html.Div([
         className='example-container'
     ),
 
+    dcc.Markdown(dedent('''
+    Notice that the `html.Div` is updated every time you click or tap a node,
+    and returns the data dictionary of the node. Alternatively, you can use
+    `tapNode` to obtain the entire element specification (given as a 
+    dictionary), rather than just its `data`.
+    
+    ## Click, tap and hover
+    
+    Let's now display the data generated whenever you click or hover over a node
+    or an edge. Simply replace the previous layout and callbacks by this:
+    ''')),
+
+    dcc.SyntaxHighlighter(
+        dedent('''
+        app.layout = html.Div([
+            cyto.Cytoscape(
+                id='cytoscape-event-callbacks',
+                layout={'name': 'preset'},
+                elements=edges+nodes,
+                stylesheet=default_stylesheet,
+                style={'width': '100%', 'height': '450px'}
+            ),
+            html.P(id='cytoscape-tapNodeData-output'),
+            html.P(id='cytoscape-tapEdgeData-output'),
+            html.P(id='cytoscape-mouseoverNodeData-output'),
+            html.P(id='cytoscape-mouseoverEdgeData-output')
+        ])
+        
+        
+        @app.callback(Output('cytoscape-tapNodeData-output', 'children'),
+                      [Input('cytoscape-event-callbacks', 'tapNodeData')])
+        def displayTapNodeData(data):
+            if data:
+                return "You recently clicked/tapped the city: " + data['label']
+        
+        
+        @app.callback(Output('cytoscape-tapEdgeData-output', 'children'),
+                      [Input('cytoscape-event-callbacks', 'tapEdgeData')])
+        def displayTapEdgeData(data):
+            if data:
+                return "You recently clicked/tapped the edge between " + data['source'].upper() + " and " + data['target'].upper()
+        
+        
+        @app.callback(Output('cytoscape-mouseoverNodeData-output', 'children'),
+                      [Input('cytoscape-event-callbacks', 'mouseoverNodeData')])
+        def displayTapNodeData(data):
+            if data:
+                return "You recently hovered over the city: " + data['label']
+        
+        
+        @app.callback(Output('cytoscape-mouseoverEdgeData-output', 'children'),
+                      [Input('cytoscape-event-callbacks', 'mouseoverEdgeData')])
+        def displayTapEdgeData(data):
+            if data:
+                return "You recently hovered over the edge between " + data['source'].upper() + " and " + data['target'].upper()
+        '''),
+        language='python',
+        customStyle=styles.code_container
+    ),
+
+    html.Div(
+        examples['event_callbacks_2.py'][1],
+        className='example-container'
+    ),
+
+    dcc.Markdown(dedent('''
+    
+    ## Selecting multiple elements
+    
+    Additionally, you can also display all the data currently selected, either
+    through a box selection (Shift+Click and drag) or by individually selecting
+    multiple elements while holding Shift:
+    ''')),
+
+    dcc.SyntaxHighlighter(
+        dedent('''
+        app.layout = html.Div([
+            cyto.Cytoscape(
+                id='cytoscape-event-callbacks',
+                layout={'name': 'preset'},
+                elements=edges+nodes,
+                stylesheet=default_stylesheet,
+                style={'width': '100%', 'height': '450px'}
+            ),
+            dcc.Markdown(id='cytoscape-selectedNodeData-markdown')
+        ])
+        
+        
+        @app.callback(Output('cytoscape-selectedNodeData-markdown', 'children'),
+                      [Input('cytoscape-event-callbacks', 'selectedNodeData')])
+        def displaySelectedNodeData(data_list):
+            if not data_list:
+                return
+        
+            cities_list = [data['label'] for data in data_list]
+            return "You selected the following cities:" + "\\n* ".join(cities_list)
+        '''),
+        language='python',
+        customStyle=styles.code_container
+    ),
+
+    html.Div(
+        examples['event_callbacks_3.py'][1],
+        className='example-container'
+    )
 ])

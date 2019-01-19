@@ -69,14 +69,18 @@ app.layout = html.Div([
         stylesheet=default_stylesheet,
         style={'width': '100%', 'height': '450px'}
     ),
-    html.Pre(id='cytoscape-tapNodeData-json', style=styles['pre'])
+    dcc.Markdown(id='cytoscape-selectedNodeData-markdown')
 ])
 
 
-@app.callback(Output('cytoscape-tapNodeData-json', 'children'),
-              [Input('cytoscape-event-callbacks', 'tapNodeData')])
-def displayTapNodeData(data):
-    return json.dumps(data, indent=2)
+@app.callback(Output('cytoscape-selectedNodeData-markdown', 'children'),
+              [Input('cytoscape-event-callbacks', 'selectedNodeData')])
+def displaySelectedNodeData(data_list):
+    if not data_list:
+        return
+
+    cities_list = [data['label'] for data in data_list]
+    return "You selected the following cities:" + "\n* ".join(cities_list)
 
 
 if __name__ == '__main__':

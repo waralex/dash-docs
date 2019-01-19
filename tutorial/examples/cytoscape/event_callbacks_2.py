@@ -69,14 +69,41 @@ app.layout = html.Div([
         stylesheet=default_stylesheet,
         style={'width': '100%', 'height': '450px'}
     ),
-    html.Pre(id='cytoscape-tapNodeData-json', style=styles['pre'])
+    html.P(id='cytoscape-tapNodeData-output'),
+    html.P(id='cytoscape-tapEdgeData-output'),
+    html.P(id='cytoscape-mouseoverNodeData-output'),
+    html.P(id='cytoscape-mouseoverEdgeData-output')
 ])
 
 
-@app.callback(Output('cytoscape-tapNodeData-json', 'children'),
+@app.callback(Output('cytoscape-tapNodeData-output', 'children'),
               [Input('cytoscape-event-callbacks', 'tapNodeData')])
 def displayTapNodeData(data):
-    return json.dumps(data, indent=2)
+    if data:
+        return "You recently clicked/tapped the city: " + data['label']
+
+
+@app.callback(Output('cytoscape-tapEdgeData-output', 'children'),
+              [Input('cytoscape-event-callbacks', 'tapEdgeData')])
+def displayTapEdgeData(data):
+    if data:
+        return "You recently clicked/tapped the edge between " + \
+               data['source'].upper() + " and " + data['target'].upper()
+
+
+@app.callback(Output('cytoscape-mouseoverNodeData-output', 'children'),
+              [Input('cytoscape-event-callbacks', 'mouseoverNodeData')])
+def displayTapNodeData(data):
+    if data:
+        return "You recently hovered over the city: " + data['label']
+
+
+@app.callback(Output('cytoscape-mouseoverEdgeData-output', 'children'),
+              [Input('cytoscape-event-callbacks', 'mouseoverEdgeData')])
+def displayTapEdgeData(data):
+    if data:
+        return "You recently hovered over the edge between " + \
+               data['source'].upper() + " and " + data['target'].upper()
 
 
 if __name__ == '__main__':
