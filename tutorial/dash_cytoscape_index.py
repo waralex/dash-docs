@@ -151,10 +151,10 @@ layout = html.Div([
 
 
         Chapter(
-            'Part 7. Object Reference',
+            'Part 7. Component Reference',
             '/cytoscape/reference',
             '''
-            You can find here all the properties of the `Cytoscape` object.
+            You can find here all the properties of the `Cytoscape` component.
             '''
         )
     ]),
