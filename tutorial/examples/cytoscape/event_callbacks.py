@@ -1,7 +1,7 @@
 import json
 
 import dash
-import dash_cytoscape
+import dash_cytoscape as cyto
 import dash_html_components as html
 import dash_core_components as dcc
 from dash.dependencies import Input, Output
@@ -62,7 +62,7 @@ default_stylesheet = [
 
 
 app.layout = html.Div([
-    dash_cytoscape.Cytoscape(
+    cyto.Cytoscape(
         id='cytoscape-event-callbacks',
         layout={'name': 'preset'},
         elements=edges+nodes,

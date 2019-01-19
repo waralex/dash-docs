@@ -1,6 +1,6 @@
 from textwrap import dedent
 
-import dash_cytoscape
+import dash_cytoscape as cyto
 import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output
@@ -70,7 +70,7 @@ default_stylesheet = [
 ]
 
 Display = CreateDisplay({
-    'dash_cytoscape': dash_cytoscape,
+    'cyto': cyto,
     'elements': nodes + edges,
     'html': html,
     'dcc': dcc,
@@ -146,7 +146,7 @@ layout = html.Div([
     ]),
 
     Display('''
-    dash_cytoscape.Cytoscape(
+    cyto.Cytoscape(
         id='cytoscape-callbacks-1',
         elements=elements,
         style={'width': '100%', 'height': '400px'},
@@ -245,7 +245,7 @@ layout = html.Div([
     ''')),
 
     Display('''
-    dash_cytoscape.Cytoscape(
+    cyto.Cytoscape(
         id='cytoscape-callbacks-2',
         elements=elements,
         stylesheet=default_stylesheet,

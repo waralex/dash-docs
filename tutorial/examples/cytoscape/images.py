@@ -2,7 +2,7 @@
 Phylogeny tree inspired from: http://www.bio.miami.edu/dana/106/106F06_10.html
 '''
 import dash
-import dash_cytoscape
+import dash_cytoscape as cyto
 import dash_html_components as html
 
 app = dash.Dash(__name__)
@@ -83,7 +83,7 @@ stylesheet = [
 
 # Declare app layout
 app.layout = html.Div([
-    dash_cytoscape.Cytoscape(
+    cyto.Cytoscape(
         id='cytoscape-images',
         layout={'name': 'breadthfirst', 'roots': ['animalia']},
         style={'width': '100%', 'height': '550px'},

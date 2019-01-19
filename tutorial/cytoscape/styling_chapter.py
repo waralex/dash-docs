@@ -1,6 +1,6 @@
 from textwrap import dedent
 
-import dash_cytoscape
+import dash_cytoscape as cyto
 import dash_core_components as dcc
 import dash_html_components as html
 
@@ -87,7 +87,7 @@ directed_elements = [{'data': {'id': id_}} for id_ in 'ABCD'] + directed_edges
 
 
 Display = CreateDisplay({
-    'dash_cytoscape': dash_cytoscape,
+    'cyto': cyto,
     'simple_elements': simple_elements,
     'weighted_elements': weighted_elements,
     'named_elements': named_elements,
@@ -157,7 +157,7 @@ layout = html.Div([
     ]),
 
     Display('''
-    dash_cytoscape.Cytoscape(
+    cyto.Cytoscape(
         id='cytoscape-styling-1',
         layout={'name': 'preset'},
         style={'width': '100%', 'height': '400px'},
@@ -251,7 +251,7 @@ layout = html.Div([
     ''')),
 
     Display('''
-    dash_cytoscape.Cytoscape(
+    cyto.Cytoscape(
         id='cytoscape-styling-2',
         layout={'name': 'circle'},
         style={'width': '100%', 'height': '400px'},
@@ -279,7 +279,7 @@ layout = html.Div([
     ''')),
 
     Display('''
-    dash_cytoscape.Cytoscape(
+    cyto.Cytoscape(
         id='cytoscape-styling-3',
         layout={'name': 'circle'},
         style={'width': '100%', 'height': '400px'},
@@ -333,7 +333,7 @@ layout = html.Div([
     ]),
 
     Display('''
-    dash_cytoscape.Cytoscape(
+    cyto.Cytoscape(
         id='cytoscape-styling-4',
         layout={'name': 'circle'},
         style={'width': '100%', 'height': '400px'},
@@ -362,7 +362,7 @@ layout = html.Div([
     ''')),
 
     Display('''
-    dash_cytoscape.Cytoscape(
+    cyto.Cytoscape(
         id='cytoscape-styling-5',
         layout={'name': 'circle'},
         style={'width': '100%', 'height': '400px'},
@@ -391,7 +391,7 @@ layout = html.Div([
     ''')),
 
     Display('''
-    dash_cytoscape.Cytoscape(
+    cyto.Cytoscape(
         id='cytoscape-styling-6',
         layout={'name': 'circle'},
         style={'width': '100%', 'height': '400px'},
@@ -420,7 +420,7 @@ layout = html.Div([
     ''')),
 
     Display('''
-    dash_cytoscape.Cytoscape(
+    cyto.Cytoscape(
         id='cytoscape-styling-7',
         layout={'name': 'circle'},
         style={'width': '100%', 'height': '400px'},
@@ -468,7 +468,7 @@ layout = html.Div([
     ]),
 
     Display('''
-    dash_cytoscape.Cytoscape(
+    cyto.Cytoscape(
         id='cytoscape-styling-8',
         layout={'name': 'circle'},
         style={'width': '100%', 'height': '400px'},
@@ -534,7 +534,7 @@ layout = html.Div([
     ]),
 
     Display('''
-    dash_cytoscape.Cytoscape(
+    cyto.Cytoscape(
         id='cytoscape-styling-9',
         layout={'name': 'circle'},
         style={'width': '100%', 'height': '400px'},

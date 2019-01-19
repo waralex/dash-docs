@@ -1,5 +1,5 @@
 import dash
-import dash_cytoscape
+import dash_cytoscape as cyto
 import dash_html_components as html
 import dash_core_components as dcc
 from pprint import pprint
@@ -65,7 +65,7 @@ app.layout = html.Div([
         html.Button('Remove Node', id='btn-remove-node', n_clicks_timestamp='0')
     ]),
 
-    dash_cytoscape.Cytoscape(
+    cyto.Cytoscape(
         id='cytoscape-elements-callbacks',
         layout={'name': 'circle'},
         stylesheet=default_stylesheet,

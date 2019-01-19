@@ -1,7 +1,7 @@
 import math
 from textwrap import dedent
 
-import dash_cytoscape
+import dash_cytoscape as cyto
 import dash_core_components as dcc
 import dash_html_components as html
 
@@ -45,7 +45,7 @@ elements = nodes + edges
 
 
 Display = CreateDisplay({
-    'dash_cytoscape': dash_cytoscape,
+    'cyto': cyto,
     'elements': elements,
     'math': math
 })
@@ -56,7 +56,7 @@ layout = html.Div([
     dcc.Markdown(dedent('''
     # Cytoscape Layouts
     
-    The layout parameter of `dash_cytoscape.Cytoscape` takes as argument a
+    The layout parameter of `cyto.Cytoscape` takes as argument a
     dictionary specifying how the nodes should be positioned on the screen.
     Every graph requires this dictionary with a value specified for the 
     `name` key. It represents a built-in display method, which is one of the 
@@ -82,7 +82,7 @@ layout = html.Div([
     ''')),
 
     Display('''
-    dash_cytoscape.Cytoscape(
+    cyto.Cytoscape(
         id='cytoscape-layout-1',
         elements=elements,
         style={'width': '100%', 'height': '350px'},
@@ -148,7 +148,7 @@ layout = html.Div([
     ''')),
 
     Display('''
-    dash_cytoscape.Cytoscape(
+    cyto.Cytoscape(
         id='cytoscape-layout-2',
         elements=elements,
         style={'width': '100%', 'height': '350px'},
@@ -159,7 +159,7 @@ layout = html.Div([
     '''),
 
     Display('''
-    dash_cytoscape.Cytoscape(
+    cyto.Cytoscape(
         id='cytoscape-layout-3',
         elements=elements,
         style={'width': '100%', 'height': '350px'},
@@ -183,7 +183,7 @@ layout = html.Div([
     ''')),
 
     Display('''
-    dash_cytoscape.Cytoscape(
+    cyto.Cytoscape(
         id='cytoscape-layout-4',
         elements=elements,
         style={'width': '100%', 'height': '350px'},
@@ -200,7 +200,7 @@ layout = html.Div([
     ''')),
 
     Display('''
-    dash_cytoscape.Cytoscape(
+    cyto.Cytoscape(
         id='cytoscape-layout-5',
         elements=elements,
         style={'width': '100%', 'height': '350px'},
@@ -221,7 +221,7 @@ layout = html.Div([
     ''')),
 
     Display('''
-    dash_cytoscape.Cytoscape(
+    cyto.Cytoscape(
         id='cytoscape-layout-6',
         elements=elements,
         style={'width': '100%', 'height': '350px'},
@@ -237,7 +237,7 @@ layout = html.Div([
     ''')),
 
     Display('''
-    dash_cytoscape.Cytoscape(
+    cyto.Cytoscape(
         id='cytoscape-layout-7',
         elements=elements,
         style={'width': '100%', 'height': '350px'},
@@ -264,7 +264,7 @@ layout = html.Div([
     ''')),
 
     Display('''
-    dash_cytoscape.Cytoscape(
+    cyto.Cytoscape(
         id='cytoscape-layout-8',
         elements=elements,
         style={'width': '100%', 'height': '350px'},

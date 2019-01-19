@@ -1,5 +1,5 @@
 import dash
-import dash_cytoscape
+import dash_cytoscape as cyto
 import dash_html_components as html
 import dash_core_components as dcc
 from dash.dependencies import Input, Output
@@ -72,7 +72,7 @@ app.layout = html.Div([
         ])
     ]),
 
-    dash_cytoscape.Cytoscape(
+    cyto.Cytoscape(
         id='cytoscape-stylesheet-callbacks',
         layout={'name': 'circle'},
         stylesheet=default_stylesheet,

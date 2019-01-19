@@ -1,7 +1,7 @@
 import re
 import dash_html_components as html
 import dash_core_components as dcc
-import dash_cytoscape
+import dash_cytoscape as cyto
 
 
 def component_doc(component):
@@ -25,5 +25,5 @@ def component_doc(component):
 
 
 layout = html.Div([
-    component_doc(dash_cytoscape.Cytoscape)
+    component_doc(cyto.Cytoscape)
 ])
