@@ -349,7 +349,7 @@ layout = html.Div([
         html.Summary('Expand to see how to construct the dictionaries'),
         PythonSnippet('''
         with open('demos/data/sample_network.txt', 'r') as f:
-            data = f.read().split('\n')
+            data = f.read().split('\\n')
         
         # We select the first 750 edges and associated nodes for an easier visualization
         edges = data[:750]
@@ -456,6 +456,11 @@ layout = html.Div([
             return elements
         ''')
     ]),
+
+    dcc.Markdown(dedent('''
+    To see more examples of events, check out `usage-events.py` and the
+    [Cytoscape references](/cytoscape/reference).
+    '''))
 
 ])
 
