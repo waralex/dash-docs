@@ -2,6 +2,7 @@ from textwrap import dedent
 
 import dash_core_components as dcc
 import dash_html_components as html
+from tutorial import styles
 
 
 
@@ -89,4 +90,11 @@ def html_table(
     return html.Table(
         [html.Thead(header), html.Tbody(rows)],
         style=merge(table_style, {"marginTop": "20px", "marginBottom": "20px"}),
+    )
+
+def PythonSnippet(code):
+    return dcc.SyntaxHighlighter(
+        dedent(code),
+        language='python',
+        customStyle=styles.code_container
     )
