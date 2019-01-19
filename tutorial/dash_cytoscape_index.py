@@ -124,7 +124,7 @@ layout = html.Div([
         ),
 
         Chapter(
-            'Part 5. Events Callbacks for User Interactions',
+            'Part 5. Event Callbacks for User Interactions',
             '/cytoscape/events',
             '''
             Dash Cytoscape fires callbacks whenever the user interact with the

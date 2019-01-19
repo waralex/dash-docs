@@ -178,14 +178,20 @@ layout = html.Div([
     dcc.Markdown(dedent('''
     The construction of the callback becomes extremely easy. We simply create
     a function as such:
-    
-    ```python
-    @app.callback(Output('cytoscape-callbacks-1', 'layout'),
-                  [Input('dropdown-callbacks-1', 'value')])
-    def update_layout(layout):
-        return {'name': layout}
-    ``` 
-    
+    ''')),
+
+    dcc.SyntaxHighlighter(
+        dedent('''
+        @app.callback(Output('cytoscape-callbacks-1', 'layout'),
+                      [Input('dropdown-callbacks-1', 'value')])
+        def update_layout(layout):
+            return {'name': layout}
+        '''),
+        language='python',
+        customStyle=styles.code_container
+    ),
+                 
+    dcc.Markdown(dedent('''
     In fact, it is even possible to animate the layouts after an update! 
     Simply enable `animate`:
     
