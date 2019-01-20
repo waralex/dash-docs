@@ -27,7 +27,7 @@ layout = html.Div([
     ),
 
     dcc.Markdown(dedent('''
-    > **New! Released on TBD**
+    > **New! Released on February 5th, 2019**
     >
     > Dash Cytoscape is a graph visualization component for creating easily
     > customizable, high-performance, interactive, and web-based networks. It

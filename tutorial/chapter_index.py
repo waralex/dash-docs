@@ -162,7 +162,7 @@ chapters = {
         'url': '/cytoscape',
         'content': dash_cytoscape_index.layout,
         'name': 'Dash Cytoscape',
-        'description': '(New! Released TBA) Dash Cytoscape is our new network ' \
+        'description': '(New! Released Feb 5, 2019) Dash Cytoscape is our new network ' \
                        'visualization component. It offers a declarative and ' \
                        'pythonic interface to create beautiful, customizable, ' \
                        'interactive and reactive graphs.'
