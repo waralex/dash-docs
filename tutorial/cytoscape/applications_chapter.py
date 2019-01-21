@@ -57,7 +57,7 @@ layout = html.Div([
     ''')),
 
     html.Details(open=False, children=[
-        html.Summary('`get_col_positions()` function definition'),
+        html.Summary('get_col_positions() function definition'),
         PythonSnippet('''
         def get_col_positions(tree, column_width=80):
             taxa = tree.get_terminals()
@@ -81,7 +81,7 @@ layout = html.Div([
     ]),
 
     html.Details(open=False, children=[
-        html.Summary('`get_row_positions()` function definition'),
+        html.Summary('get_row_positions() function definition'),
         PythonSnippet('''
         def get_row_positions(tree):
             taxa = tree.get_terminals()
@@ -100,7 +100,7 @@ layout = html.Div([
     ]),
 
     html.Details(open=False, children=[
-        html.Summary('`add_to_elements()` function definition'),
+        html.Summary('add_to_elements() function definition'),
         PythonSnippet('''
         def add_to_elements(clade, clade_id):
             children = clade.clades
@@ -261,7 +261,7 @@ layout = html.Div([
     app = dash.Dash(__name__)
     
     app.layout = html.Div([
-        dash_cytoscape.Cytoscape(
+        cyto.Cytoscape(
             id='cytoscape-usage-phylogeny',
             elements=elements,
             stylesheet=stylesheet,
