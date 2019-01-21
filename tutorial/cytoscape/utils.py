@@ -92,7 +92,11 @@ def html_table(
         style=merge(table_style, {"marginTop": "20px", "marginBottom": "20px"}),
     )
 
+
 def PythonSnippet(code):
+    if code and code[0] == '\n':
+        code = code[1:]
+
     return dcc.SyntaxHighlighter(
         dedent(code),
         language='python',
