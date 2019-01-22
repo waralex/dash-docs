@@ -6,6 +6,8 @@ from tutorial import d3
 from tutorial import dash_deployment_server
 from tutorial import dash_deployment_server_examples as dds_examples
 from tutorial import dash_table_index
+from tutorial import daq
+from tutorial import daq_component_examples as daq_examples
 from tutorial import deployment
 from tutorial import external_css_and_js
 from tutorial import gallery
@@ -154,6 +156,15 @@ chapters = {
                        'and more.'
     },
 
+    'dashdaq': {
+        'url': '/dash-daq',
+        'content': daq.layout,
+        'name': 'Dash DAQ Components',
+        'description': 'Beautifully styled technical components for \
+        data acquisition and engineering applications.'
+    },
+
+    
     'plugins': {
         'url': '/plugins',
         'content': plugins.layout,
@@ -361,14 +372,120 @@ chapters = {
         'name': 'Upload Component',
         'description': 'Upload examples, properties, and reference.'
     },
-    ### dash-daq ###
-    'dashdaq': {
-        'url': 'https://www.dashdaq.io/',
-        'content': introduction.layout,
-        'name':'Dash DAQ Components',
-        'description': '$840/developer/year. ' \
-                       'Beautifully styled, premium components for data acquisition user interfaces.'
+
+### Dash DAQ Components ###
+    'booleanswitch-examples': {
+        'url': '/dash-daq/booleanswitch',
+        'content': daq_examples.BooleanSwitch,
+        'name': 'Boolean Switch Component',
+        'description': 'Boolean switch examples, properties, and reference.'
     },
+
+    'colorpicker-examples': {
+        'url': '/dash-daq/colorpicker',
+        'content': daq_examples.ColorPicker,
+        'name': 'Color Picker Switch Component',
+        'description': 'Color picker examples, properties, and reference.'
+    },
+
+    'gauge-examples': {
+        'url': '/dash-daq/gauge',
+        'content': daq_examples.Gauge,
+        'name': 'Gauge Component',
+        'description': 'Gauge examples, properties, and reference.'
+    },
+
+    'graduatedbar-examples': {
+        'url': '/dash-daq/graduatedbar',
+        'content': daq_examples.GraduatedBar,
+        'name': 'Graduated bar Component',
+        'description': 'Graduated bar examples, properties, and reference.'
+    },
+
+    'indicator-examples': {
+        'url': '/dash-daq/indicator',
+        'content': daq_examples.Indicator,
+        'name': 'Indicator Component',
+        'description': 'Indicator examples, properties, and reference.'
+    },
+
+    'knob-examples': {
+        'url': '/dash-daq/knob',
+        'content': daq_examples.Knob,
+        'name': 'Knob Component',
+        'description': 'Knob examples, properties, and reference.'
+    },
+
+    'leddisplay-examples': {
+        'url': '/dash-daq/leddisplay',
+        'content': daq_examples.LEDDisplay,
+        'name': 'LED display Component',
+        'description': 'LED display examples, properties, and reference.'
+    },
+
+    'numericinput-examples': {
+        'url': '/dash-daq/numericinput',
+        'content': daq_examples.NumericInput,
+        'name': 'Numeric input Component',
+        'description': 'Numeric input examples, properties, and reference.'
+    },
+
+    'powerbutton-examples': {
+        'url': '/dash-daq/powerbutton',
+        'content': daq_examples.PowerButton,
+        'name': 'Power button Component',
+        'description': 'Power button examples, properties, and reference.'
+    },
+
+    'precisioninput-examples': {
+        'url': '/dash-daq/precisioninput',
+        'content': daq_examples.PrecisionInput,
+        'name': 'Precision input Component',
+        'description': 'Precision input examples, properties, and reference.'
+    },
+
+    'stopbutton-examples': {
+        'url': '/dash-daq/stopbutton',
+        'content': daq_examples.StopButton,
+        'name': 'Stop button Component',
+        'description': 'StopButton examples, properties, and reference.'
+    },
+
+    'slider-examples': {
+        'url': '/dash-daq/slider',
+        'content': daq_examples.Slider,
+        'name': 'Slider Component',
+        'description': 'Slider examples, properties, and reference.'
+    },
+
+    'tank-examples': {
+        'url': '/dash-daq/tank',
+        'content': daq_examples.Tank,
+        'name': 'Tank Component',
+        'description': 'Tank examples, properties, and reference.'
+    },
+
+    'thermometer-examples': {
+        'url': '/dash-daq/thermometer',
+        'content': daq_examples.Thermometer,
+        'name': 'Thermometer Component',
+        'description': 'Thermometer examples, properties, and reference.'
+    },
+
+    'toggleswitch-examples': {
+        'url': '/dash-daq/toggleswitch',
+        'content': daq_examples.ToggleSwitch,
+        'name': 'Toggle switch Component',
+        'description': 'Toggle switch examples, properties, and reference.'
+    },
+
+    'darkthemeprovider-examples': {
+        'url': '/dash-daq/darkthemeprovider',
+        'content': daq_examples.DarkThemeProvider,
+        'name': 'Dark theme provider Component',
+        'description': 'Dark theme provider examples, properties, and reference.'
+    },
+      
 ### End Components ###
 
 ### Start Dash Deployment Server ###

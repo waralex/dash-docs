@@ -408,7 +408,7 @@ layout = html.Div(className='gallery', children=[
     reusable.Row([
         AppSection(
             app_name='Wind Speed Measurement',
-            app_link='https://dash-live-wind-data.plot.ly',
+            app_link='https://dash-gallery.plotly.host/dash-wind-stream',
             code_link='https://github.com/plotly/dash-wind-streaming',
             img_src='assets/images/gallery/dash-wind-streaming.gif',
             description='''
@@ -487,8 +487,8 @@ layout = html.Div(className='gallery', children=[
         dcc.Markdown(dedent(
             """
             Dash DAQ is a Dash component library for building custom data
-            acquisition interfaces with Dash in Python. Dash DAQ is a commercially licensed
-            product. [Learn more about Dash DAQ](https://www.dashdaq.io/).
+            acquisition interfaces with Dash in Python.
+            [Learn more about Dash DAQ](https://www.dashdaq.io/).
             """
         ))
     ),

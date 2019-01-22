@@ -6,7 +6,9 @@ from tutorial import styles
 
 def ComponentBlock(example_string, **kwargs):
     scope = {}
-    converted_string = example_string.replace('dcc.', 'component = dcc.')
+    converted_string = example_string.replace(
+        'dcc.', 'component = dcc.').replace(
+            'daq.', 'component = daq.')
     try:
         exec(converted_string, scope)
     except Exception as e:
@@ -32,6 +34,13 @@ def ComponentBlock(example_string, **kwargs):
             ) else ({
                 'overflow-x': 'initial',
                 'padding-bottom': '25px'
-            }) if 'Slider' in example_string else {})
+            }) if 'Slider' in example_string else ({
+                'float': 'center'
+            }) if 'ColorPicker' in example_string else ({
+                'padding-left': '30px'
+            }) if 'Tank' in example_string else ({
+                'height': '240px'
+            }) if 'Thermometer' in example_string else {})
         )
     ])
+
