@@ -777,7 +777,7 @@ chapters = {
         'content': tutorial.cytoscape.callbacks_chapter.layout,
         'name': 'Cytoscape Callbacks',
         'description': '''
-        Methods to combine Dash Callbacks to update your Cytoscape object.
+        Methods to combine Dash callbacks to update your Cytoscape object.
         '''
     },
 

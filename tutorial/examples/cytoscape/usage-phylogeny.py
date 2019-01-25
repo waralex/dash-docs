@@ -1,13 +1,10 @@
 import math
-import os
-
-import dash_cytoscape
-import dash
-from dash.dependencies import Input, Output
-import dash_html_components as html
-import dash_core_components as dcc
 
 from Bio import Phylo
+import dash_cytoscape
+import dash
+import dash_html_components as html
+from dash.dependencies import Input, Output
 
 
 def generate_elements(tree, xlen=30, ylen=30, grabbable=False):
@@ -176,7 +173,7 @@ app.layout = html.Div([
 @app.callback(Output('cytoscape-usage-phylogeny', 'stylesheet'),
               [Input('cytoscape-usage-phylogeny', 'mouseoverEdgeData')])
 def color_children(edgeData):
-    if not edgeData:
+    if edgeData is None:
         return stylesheet
 
     if 's' in edgeData['source']:
