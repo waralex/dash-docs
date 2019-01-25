@@ -26,7 +26,7 @@ layout = html.Div([
     coloring and expansion of Cytoscape graphs. Additionally, there are many
     possible ways to integrate Cytoscape with a library such as biopython,
     enabling advanced usage in bioinformatics and computational biology. In this
-    chapter, we will show an example of automatically generating phylogeny tree
+    chapter, we will show an example of automatically generating a phylogenetic tree
     from biopython's `Phylo` object, and enable interactive features such
     as highlighting children clades.
     
@@ -37,8 +37,8 @@ layout = html.Div([
     The first step is to load the phylogeny tree. We will be using the 
     `apaf.xml` file retrieved from [PhyloXML](http://www.phyloxml.org/examples/apaf.xml).
     
-    To load the file, you simply need to run this (after you made sure that
-    biopython is correctly installed):
+    To load the file, run this (after you made sure that
+    biopython was correctly installed):
     
     ```python
     from Bio import Phylo
@@ -201,7 +201,7 @@ layout = html.Div([
     
     Since we are assigning a position to the nodes, we have to use the `preset`
     layout. Additionally, we need to add specific styles in order to make the
-    phylogeny trees to aesthetically match the traditional methods. We define:
+    phylogeny trees to match aesthetically the traditional methods. We define:
     ''')),
 
     PythonSnippet("""
@@ -247,7 +247,7 @@ layout = html.Div([
     
     At this point, we simply need to create the layout of the app, which will
     be a simple Cytoscape component. We will also add a callback that will 
-    color all the children of an edge red whenever we hover of that edge. This
+    color all the children of an edge red whenever we hover on that edge. This
     is accomplished by filtering the IDs, which are sequences of 
     *s*'s and *c*'s, which stand for *support* and *children*, intersected
     by the number 0 or 1, since there are two subclades per clade.
