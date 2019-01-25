@@ -11,15 +11,15 @@ from tutorial.utils.simple_doc_generator import generate_docs
 
 
 daq_library_heading =  dcc.Markdown('''
-    # Dash DAQ 
+    # Dash DAQ
 
-    Dash is a web application framework that provides pure Python abstraction 
+    Dash is a web application framework that provides pure Python abstraction
     around HTML, CSS, and JavaScript.
 
-    Dash DAQ comprises a robust set of controls that make it simpler to 
-    integrate data acquisition and controls into your Dash applications. 
+    Dash DAQ comprises a robust set of controls that make it simpler to
+    integrate data acquisition and controls into your Dash applications.
 
-    The source is on GitHub at [plotly/dash-daq](https://github.com/plotly/dash-daq). 
+    The source is on GitHub at [plotly/dash-daq](https://github.com/plotly/dash-daq).
 
     These docs are using version {}.
     '''.replace('    ', '').format(daq.__version__)
@@ -30,7 +30,7 @@ dash_daq_components = {
         'description': '''A switch component that toggles between on \
         and off.''',
         'props': {
-          'on': True
+            'on': True
         }
     },
     'ColorPicker': {
@@ -38,7 +38,6 @@ dash_daq_components = {
         'props': {
             'label': '\"colorPicker\"'
         },
-        'style': {'float': 'center'}
     },
     'Gauge': {
         'description': '''A gauge component that points to some value between \
@@ -53,13 +52,11 @@ dash_daq_components = {
         'description': '''A graduated bar component that displays a value within \
         some range as a percentage.''',
         'props': {
-            'min': 0,
-            'max': 100,
-            'value': 42
+            'value': 4
         }
     },
     'Indicator': {
-        'description': '''A boolean indicator LED.''', 
+        'description': '''A boolean indicator LED.''',
         'props': {
             'value': True,
             'color': '\"#00cc96\"'
@@ -124,7 +121,7 @@ dash_daq_components = {
             'min': 0,
             'max': 10,
             'value': 5
-        }
+        },
     },
     'Thermometer': {
         'description': '''A thermometer component that fills to \
@@ -133,8 +130,7 @@ dash_daq_components = {
             'min': 95,
             'max': 105,
             'value': 98.6
-        }, 
-        'style': {'margin-bottom': '-5px'}
+        },
     },
     'ToggleSwitch': {
         'description': '''A switch component that toggles between \
@@ -165,16 +161,15 @@ layout_children += [
         tree to make all components match the dark theme. '''
     )),
 
-    
+
     dcc.SyntaxHighlighter(dtp[0],
                           language='python',
                           customStyle=styles.code_container),
     html.Div(dtp[1]),
-    
+
     dcc.Link('More DarkThemeProvider Examples and Reference',
              href='dash-daq/darkthemeprovider'),
-]  
+]
 
 
-layout = html.Div(id='gallery', children=layout_children)
-    
+layout = html.Div(className="gallery", children=layout_children)

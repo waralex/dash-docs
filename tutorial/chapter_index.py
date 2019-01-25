@@ -177,6 +177,7 @@ chapters = {
         data acquisition and engineering applications.'
     },
 
+
     'plugins': {
         'url': '/plugins',
         'content': plugins.layout,
@@ -463,7 +464,7 @@ chapters = {
         'description': 'StopButton examples, properties, and reference.'
     },
 
-    'slider-examples': {
+    'daq-slider-examples': {
         'url': '/dash-daq/slider',
         'content': daq_examples.Slider,
         'name': 'Slider Component',
@@ -497,7 +498,7 @@ chapters = {
         'name': 'Dark theme provider Component',
         'description': 'Dark theme provider examples, properties, and reference.'
     },
-      
+
 ### End Components ###
 
 ### Start Dash Deployment Server ###
