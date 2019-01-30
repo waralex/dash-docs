@@ -1076,7 +1076,7 @@ LocalDir = html.Div(children=[
     ''')),
 
     dcc.SyntaxHighlighter(s("""import os
-    file_pathname = os.path.join('data', 'some-file.csv')"""),
+    file_pathname = os.path.abspath(os.path.join('data', 'some-file.csv'))"""),
     customStyle=styles.code_container,
     language='python'
     ),
@@ -1094,10 +1094,10 @@ LocalDir = html.Div(children=[
     dcc.SyntaxHighlighter(
 """if 'DASH_APP' in os.environ:
     # this is a deployed app
-    filepath = os.path.join('data', 'my-dataset.csv')
+    filepath = os.path.abspath(os.path.join('data', 'some-file.csv'))
 else:
     # local file path
-    filepath = os.path.join('Users', 'chris', 'data', 'my-dataset.csv')""",
+    filepath = os.path.abspath(os.path.join('Users', 'chris', 'data', 'my-dataset.csv'))""",
     customStyle=styles.code_container,
     language='python'
     ),
