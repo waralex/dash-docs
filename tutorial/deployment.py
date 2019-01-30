@@ -12,7 +12,7 @@ set of IP addresses.
 Dash uses Flask under the hood. This makes deployment easy: you can deploy
 a Dash app just like you would deploy a Flask app.
 Almost every cloud server provider has a guide for deploying
-Flask apps. For more, see the official [Flask Guide to Deployment](http://flask.pocoo.org/docs/0.12/deploying/)
+Flask apps. For more, see the official [Flask Guide to Deployment](http://flask.pocoo.org/docs/1.0/deploying/)
 or view the tutorial on deploying to Heroku below.
 
 ### Dash Deployment Server
@@ -53,7 +53,7 @@ app = dash.Dash(__name__, server=server)
 
           dcc.Markdown('''
 By exposing this `server` variable, you can deploy Dash apps like you would
-any Flask app. For more, see the official [Flask Guide to Deployment](http://flask.pocoo.org/docs/0.12/deploying/).
+any Flask app. For more, see the official [Flask Guide to Deployment](http://flask.pocoo.org/docs/1.0/deploying/).
 Note that
 
 > While lightweight and easy to use, *Flask's built-in server is not suitable
