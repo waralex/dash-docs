@@ -8,6 +8,12 @@
     }
   },
   "formation": {
+    "web": { 
+          "quantity": 1
+      },
+    "worker": { 
+        "quantity": 2
+    }
   },
   "addons": [
 
