@@ -11,7 +11,7 @@
     "web": { 
           "quantity": 1
       },
-    "worker": { 
+    "workers": { 
         "quantity": 2
     }
   },
