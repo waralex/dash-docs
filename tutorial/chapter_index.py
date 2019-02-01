@@ -792,12 +792,12 @@ chapters = {
         '''
     },
 
-    'cytoscape-applications': {
-        'url': '/cytoscape/applications',
+    'cytoscape-biopython': {
+        'url': '/cytoscape/biopython',
         'content': tutorial.cytoscape.applications_chapter.layout,
-        'name': 'Cytoscape applications',
+        'name': 'Cytoscape with Biopython',
         'description': '''
-        Examples of applications in social network analysis and bioinformatics.
+        Examples of applications in bioinformatics using Biopython.
         '''
     },
 

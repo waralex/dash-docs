@@ -92,7 +92,7 @@ layout = html.Div([
     `tapNode`, which returns a complete description of the node object when 
     the user clicks or taps on a node, `mouseoverEdgeData`, which returns only 
     the data dictionary of the edge that was most recently hovered by the user.
-    The complete list can be found in the [Cytoscape Reference](/cytoscape/reference).
+    The complete list can be found in the [Dash Cytoscape Reference](/cytoscape/reference).
     
     ## Simple callback construction
     
@@ -111,7 +111,7 @@ layout = html.Div([
 
     dcc.Markdown(dedent('''
     This time, we will use the `tapNodeData` properties as input
-    to our callbacks, which will simply dump the the content into an `html.Div`: 
+    to our callbacks, which will simply dump the content into an `html.Pre`: 
     ''')),
 
     dcc.SyntaxHighlighter(
@@ -235,13 +235,16 @@ layout = html.Div([
     ## Advanced usage of callbacks
     
     Those event callbacks enable more advanced interactions between components.
-    In fact, you can even use them to update other `Cytoscape` arguments. For
-    example, `usage-stylesheet.py` is able
-    to change the color of the node you click to purple, the targeted nodes
-    to red, and the incoming nodes to blue; all of this is done using a single
-    callback function, which takes as input the `tapNode` prop of the 
-    `Cytoscape` component and some additional dropdowns, and outputs to the
-    `stylesheet` prop.
+    In fact, you can even use them to update other `Cytoscape` arguments. The 
+    [`usage-stylesheet.py`](https://github.com/plotly/dash-cytoscape/blob/master/usage-stylesheet.py) 
+    example (hosted on the `dash-cytoscape` Github repo) lets you click to change the 
+    color of a node to purple, its targeted 
+    nodes to red, and its incoming nodes to blue. All of this is done using a 
+    single callback function, which takes as input the `tapNode` prop of the 
+    `Cytoscape` component along with a few dropdowns, and outputs to the
+    `stylesheet` prop. You can try out this 
+    [interactive stylesheet demo](https://dash-gallery.plotly.host/cytoscape-stylesheet)
+    hosted on the [Dash Deployment Servers](https://plot.ly/products/dash/).
     ''')),
 
     html.Details(open=False, children=[
@@ -330,17 +333,20 @@ layout = html.Div([
     ]),
 
     dcc.Markdown(dedent('''
-    Additionally, `usage-elements.py` lets you progressively expand your graph
+    Additionally, [`usage-elements.py`](https://github.com/plotly/dash-cytoscape/blob/master/usage-elements.py) 
+    lets you progressively expand your graph
     by using `tapNodeData` as the input and `elements` as the output.
     
-    The app initially pre-loads the entire dataset, but only loads the graph with a 
-    single node. It then constructs four dictionaries that maps every single node ID
-    to its following nodes, following edges, followers nodes, followers edges.
+    The app initially pre-loads the entire dataset, but only loads the graph 
+    with a single node. It then constructs four dictionaries that maps every 
+    single node ID to its following nodes, following edges, followers nodes, 
+    followers edges.
     
     Then, it lets you expand the incoming or the outgoing 
     neighbors by clicking the node you want to expand. This
     is done through a callback that retrieves the followers (outgoing) or following
     (incoming) from the dictionaries, and add the to the `elements`.
+    [Click here for the online demo](https://dash-gallery.plotly.host/cytoscape-elements).
     ''')),
 
 
@@ -457,8 +463,9 @@ layout = html.Div([
     ]),
 
     dcc.Markdown(dedent('''
-    To see more examples of events, check out `usage-events.py` and the
-    [Cytoscape references](/cytoscape/reference).
+    To see more examples of events, check out the [event callbacks demo](https://dash-gallery.plotly.host/cytoscape-events) 
+    (the source file is available as [`usage-events.py`](https://github.com/plotly/dash-cytoscape/blob/master/usage-events.py) on the project repo) 
+    and the [Cytoscape references](/cytoscape/reference).
     '''))
 
 ])

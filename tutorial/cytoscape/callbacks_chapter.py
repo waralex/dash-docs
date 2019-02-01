@@ -4,7 +4,7 @@ import dash_cytoscape as cyto
 import dash_core_components as dcc
 import dash_html_components as html
 
-from .utils import CreateDisplay
+from .utils import CreateDisplay, PythonSnippet
 from tutorial import tools, styles
 
 
@@ -83,16 +83,11 @@ layout = html.Div([
     dcc.Markdown(dedent('''
     # Dash Callbacks for Cytoscape
     
-    One important concept introduced by Dash is that of callbacks, the Python
-    equivalent of event handlers. Rather than modifying and updating the graph
-    by using `cy.on(...)` or other event handler, we use callbacks that takes
-    as input the ID of a component (button, dropdown, text field, etc.) and
-    output the result of our callback function to the property of the 
-    Cytoscape component (i.e., modifies the argument of one of `Cytoscape`'s
-    parameters). We assume you have already gone through the 
-    [introductory tutorial on callbacks](/getting-started-part-2), or that
-    you are familiar with them; this chapter will go over Dash callbacks 
-    specific to Dash Cytoscape.
+    [Dash callbacks](/getting-started-part-2) allow you to update your 
+    Cytoscape graph via other components like dropdowns, buttons, and sliders.
+    If you have used Cytoscape.js before, you have probably used event handlers
+    to interactively update your graph; with Dash Cytoscape, we will instead
+    use callbacks.
     
     ## Changing Layouts
     
@@ -179,22 +174,20 @@ layout = html.Div([
     a function as such:
     ''')),
 
-    dcc.SyntaxHighlighter(
-        dedent('''
-        @app.callback(Output('cytoscape-callbacks-1', 'layout'),
-                      [Input('dropdown-callbacks-1', 'value')])
+    PythonSnippet('''
+    @app.callback(Output('cytoscape-callbacks-1', 'layout'),
+                  [Input('dropdown-callbacks-1', 'value')])
         def update_layout(layout):
             return {'name': layout}
-        '''),
-        language='python',
-        customStyle=styles.code_container
-    ),
-                 
+    '''),
+
     dcc.Markdown(dedent('''
     In fact, it is even possible to animate the layouts after an update! 
     Simply enable `animate`:
     
-    ```python
+    ''')),
+
+    PythonSnippet('''
     @app.callback(Output('cytoscape-callbacks-1', 'layout'),
                   [Input('dropdown-callbacks-1', 'value')])
     def update_layout(layout):
@@ -202,8 +195,9 @@ layout = html.Div([
             'name': layout,
             'animate': True
         }
-    ```
-    
+    '''),
+
+    dcc.Markdown(dedent('''
     Piecing everything together, we get:
     ''')),
 
@@ -226,7 +220,9 @@ layout = html.Div([
     a default stylesheet, and append new styles to that stylesheet every time
     a designated callback is fired. Let's take the following stylesheet:
     
-    ```python
+    ''')),
+
+    PythonSnippet('''
     default_stylesheet = [
         {
             'selector': 'node',
@@ -242,7 +238,9 @@ layout = html.Div([
             }
         }
     ]
-    ```
+    '''),
+
+    dcc.Markdown(dedent('''
     
     This is generally declared at the beginning of your script, before layout
     declaration (therefore it is shared accross sessions). The city graph will 
@@ -282,7 +280,9 @@ layout = html.Div([
     All we need now is to assign a callback that will add new styles to the 
     default stylesheet in order to change the default color:
     
-    ```python
+    ''')),
+
+    PythonSnippet('''
     @app.callback(Output('cytoscape-callbacks-2', 'stylesheet'),
               [Input('input-line-color', 'value'),
                Input('input-bg-color', 'value')])
@@ -309,7 +309,9 @@ layout = html.Div([
         ]
     
         return default_stylesheet + new_styles
-    ```
+    '''),
+
+    dcc.Markdown(dedent('''
     
     Notice that we are setting the line and background color to an empty
     string when they are set to `None`; this is to avoid feeding `None`
@@ -344,8 +346,9 @@ layout = html.Div([
     across all user sessions).
     
     If you want to find more examples of styling using callbacks,
-    check out `usage-stylesheet.py`, which presents a comprehensive overview
-    of techniques for manipulating stylesheets in Dash Cytoscape.
+    check out the [`usage-stylesheet.py`](https://github.com/plotly/dash-cytoscape/blob/master/usage-stylesheet.py), 
+    example in the `dash-cytoscape` Github project. It presents a comprehensive 
+    overview of techniques for manipulating stylesheets in Dash Cytoscape.
     
     ## Adding and removing elements
     
@@ -367,7 +370,9 @@ layout = html.Div([
     dcc.Markdown(dedent('''
     The following callback would be needed:
     
-    ```python
+    ''')),
+
+    PythonSnippet('''
     @app.callback(Output('cytoscape-callbacks-2', 'elements'),
                   [Input('btn-add-node-example', 'n_clicks_timestamp'),
                    Input('btn-remove-node-example', 'n_clicks_timestamp')],
@@ -384,7 +389,9 @@ layout = html.Div([
                 return elements[:-1]
     
         return elements
-    ```
+    '''),
+
+    dcc.Markdown(dedent('''
     
     The first conditional `if int(btn_add) > int(btn_remove)` verifies whether
     the add button was just clicked. If it wasn't, then the remove button is
@@ -397,13 +404,11 @@ layout = html.Div([
     removes nodes if there is any remaining (so we don't remove any edge). If
     neither conditions are met, we simply return the current elements.
     
-    Note that if this simple app is hosted (e.g. on DDS), this callback will 
-    behave correctly for all users, since the callback only depend on the current
-    *elements* of the user's graph (which is stored on the user side), which
-    we input as a `State` (which doesn't trigger a callback, but is observed when
-    the callback is triggered by an `Input`). This method is preferred over 
-    directly modifying the `elements` list stored on the server because it
-    restricts any data update to the user side.
+    It`s important to *mutate* the `elements` object by passing it into the 
+    callbacks as `State` (which is what we are doing here) rather than making 
+    it a `global` variable. In general, `global` variables should be avoided 
+    as they won't work when multiple users are viewing the app or when the app 
+    is deployed with multiple gunicorn workers.
     
     You can find the complete app below:
     ''')),
@@ -417,10 +422,5 @@ layout = html.Div([
     html.Div(
         examples['elements_callbacks.py'][1],
         className='example-container'
-    ),
-
-    dcc.Markdown(dedent('''
-    For further examples of elements manipulation, check out `usage-elements.py`.
-    '''))
-
+    )
 ])

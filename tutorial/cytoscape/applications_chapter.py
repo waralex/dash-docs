@@ -19,18 +19,13 @@ examples = {
 layout = html.Div([
 
     dcc.Markdown(dedent('''
-    # Cytoscape Applications
+    # Cytoscape with Biopython
     
-    It is possible to use Cytoscape in many different applications. As shown
-    in the previous sections, we can analyze social networks through interactive
-    coloring and expansion of Cytoscape graphs. Additionally, there are many
-    possible ways to integrate Cytoscape with a library such as biopython,
-    enabling advanced usage in bioinformatics and computational biology. In this
-    chapter, we will show an example of automatically generating a phylogenetic tree
+    In this chapter, we will show an example of automatically generating a 
+    phylogenetic tree
     from biopython's `Phylo` object, and enable interactive features such
-    as highlighting children clades.
-    
-    You can find the result in `demos/usage-phylogeny.py`.
+    as highlighting children clades. The source code is available as [`usage-phylogeny.py`](https://github.com/plotly/dash-cytoscape/blob/master/demos/usage-phylogeny.py),
+    and you can find an [online demo here](https://dash-gallery.plotly.host/cytoscape-phylogeny).
     
     ## Parsing the Phylo object
     
@@ -40,10 +35,14 @@ layout = html.Div([
     To load the file, run this (after you made sure that
     biopython was correctly installed):
     
-    ```python
+    ''')),
+
+    PythonSnippet('''
     from Bio import Phylo
     tree = Phylo.read('data/apaf.xml', 'phyloxml')
-    ```
+    '''),
+
+    dcc.Markdown(dedent('''
     
     Then, we need to use a function to parse the data. We will construct a 
     function `generate_elements(...)`, which will first generate the column

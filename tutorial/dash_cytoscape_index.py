@@ -60,7 +60,7 @@ layout = html.Div([
         dcc.Markdown(dedent('''
         > Dash Cytoscape graphs are interactive! Scroll to zoom and drag on 
         > the canvas to move the entire graph around. You can move nodes by
-        > *dragging* it, or by *clicking, releasing, and moving your mouse*
+        > *dragging* it, or by *clicking, holding, and moving your mouse*
         > to the desired location (and click again to release).
         >
         > This also work in mobile! Tap-and-hold on a node to move it, or on
@@ -72,8 +72,8 @@ layout = html.Div([
             'Part 1. Elements',
             '/cytoscape/elements',
             '''
-            Elements declaration in Cytoscape are designed to be clear, simple,
-            and JSON-friendly. This chapter will get you started with examples 
+            Elements in Cytoscape are designed to be clear, simple and 
+            declarative. This chapter will get you started with examples 
             for:
             - Data and position dictionaries 
             - Mutability properties
@@ -139,13 +139,12 @@ layout = html.Div([
         ),
 
         Chapter(
-            'Part 6. Applications',
-            '/cytoscape/applications',
+            'Part 6. Cytoscape with Biopython',
+            '/cytoscape/biopython',
             '''
-            We show how Dash Cytoscape can be applied for fields as diverse as
-            bioinformatics and social networks analysis. Examples include:
-            - Displaying Phylogeny Data with Biopython
-            - Interactive exploration of large social networks
+            We show how Dash Cytoscape can be applied can be applied in
+            bioinformatics and computational biology. We will go through the
+            process of building a phylogeny tree using the Biopython library.\
             '''
         ),
 
@@ -161,14 +160,14 @@ layout = html.Div([
 
     Section('Roadmap, Sponsorships, and Contact', dcc.Markdown(dedent(
         '''
-        Immediately, we're working on stability, virtualization, and
-        a first-class data type system.
-        Check out [our roadmap project board](https://github.com/orgs/plotly/projects/12)
-        to see what's coming next.
+        In the near future, we would like to support integration with 
+        biopython and networkX, expand object-oriented declarations, and offer more 
+        support for layout options. Check out our [open issues](https://github.com/plotly/dash-cytoscape/issues) 
+        for more details.
     
-        Many thanks to all of our customers who have sponsored the
-        development of this table. Interested in steering the roadmap?
-        [Get in touch](https://plot.ly/products/consulting-and-oem/)
+        The development for this component was sponsored by one of our 
+        commercial partners. Interested in steering the roadmap? 
+        [Get in touch](https://plot.ly/products/consulting-and-oem/).
         '''
     )))
 ])

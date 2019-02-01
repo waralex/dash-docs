@@ -117,7 +117,8 @@ layout = html.Div([
     [the style dictionary](http://js.cytoscape.org/#style/node-body) are 
     exhaustively documented in the Cytoscape.js docs. We will show examples 
     that can be easily modified for any type of design, and you can create 
-    your own styles with the sandbox (open by running `usage-advanced.py`).
+    your own styles with the [online style editor](https://dash-gallery.plotly.host/cytoscape-advanced) 
+    (which you can use locally by running [`usage-advanced.py`](https://github.com/plotly/dash-cytoscape/blob/master/usage-advanced.py).
     
     ## Basic selectors and styles
     
