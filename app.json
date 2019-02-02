@@ -9,11 +9,8 @@
   },
   "formation": {
     "web": { 
-          "quantity": 1
-      },
-    "workers": { 
-        "quantity": 2
-    }
+          "quantity": 2
+      }
   },
   "addons": [
 
