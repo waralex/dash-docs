@@ -53,6 +53,7 @@ layout = html.Div([
         return 'Hello Flask app'
 
     app = dash.Dash(
+        __name__,
         server=server,
         requests_pathname_prefix='/dash/',
         routes_pathname_prefix='/dash/',
@@ -62,6 +63,11 @@ layout = html.Div([
 
     if __name__ == '__main__':
         app.run_server(debug=True)
+    """)),
+    dcc.Markdown(dedent("""\
+    Note that it is important to set the `name` parameter of the Dash instance
+    to the value `__name__`, so that Dash can correctly detect the location of
+    any static assets inside an `assets` directory for this Dash app.
     """)),
     html.Hr(),
     dcc.Markdown(dedent("""\
@@ -90,6 +96,7 @@ layout = html.Div([
     from server import server
 
     app = dash.Dash(
+        __name__,
         server=server,
         requests_pathname_prefix='/app1/',
         routes_pathname_prefix='/app1/',
@@ -106,6 +113,7 @@ layout = html.Div([
     from server import server
 
     app = dash.Dash(
+        __name__,
         server=server,
         requests_pathname_prefix='/app2/',
         routes_pathname_prefix='/app2/',
@@ -130,7 +138,7 @@ layout = html.Div([
     Since there are multiple Dash instances, we can't launch our app with
     `run_server`, so instead we use the `run` method of the Flask server,
     first calling `enable_dev_tools` for each Dash instance, as this is
-    ordinarily called by `run_server`.
+    ordinarily called by Dash's `run_server`.
 
     If you want to run this app using a WSGI server (while also having the
     ability to use dev tools such as hot-reloading), then the following
@@ -188,7 +196,11 @@ layout = html.Div([
     import dash
     import dash_html_components as html
     
-    app = dash.Dash(requests_pathname_prefix='/app1/')
+    app = dash.Dash(
+        __name__,
+        requests_pathname_prefix='/app1/'
+    )
+
     app.layout = html.Div("Dash app 1")
     """)),
     html.Hr(),
@@ -197,7 +209,11 @@ layout = html.Div([
     import dash
     import dash_html_components as html
     
-    app = dash.Dash(requests_pathname_prefix='/app2/')
+    app = dash.Dash(
+        __name__,
+        requests_pathname_prefix='/app2/'
+    )
+
     app.layout = html.Div("Dash app 2")
     """)),
     html.Hr(),
