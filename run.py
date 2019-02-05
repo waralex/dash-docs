@@ -236,6 +236,23 @@ def display_content(pathname):
                 ),
                 html.Div(id='wait-for-page-{}'.format(pathname)),
             ])
+
+        elif 'cytoscape/' in pathname:
+            content = html.Div([
+                html.Div(chapters[matched[0]]['content']),
+                html.Hr(),
+                dcc.Link(
+                    'Back to Cytoscape Documentation',
+                    href='/cytoscape'
+                ),
+                html.Br(),
+                dcc.Link(
+                    'Back to Dash Documentation',
+                    href='/'
+                ),
+                html.Div(id='wait-for-page-{}'.format(pathname)),
+            ])
+
         else:
             content = html.Div([
                 html.Div(chapters[matched[0]]['content']),
