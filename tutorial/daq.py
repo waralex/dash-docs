@@ -25,10 +25,10 @@ daq_library_heading =  dcc.Markdown('''
     '''.replace('    ', '').format(daq.__version__)
 )
 
-daq_install_instructions = dcc.SyntaxHighlighter('''>>> import dash_core_components as dcc
-    >>> print(dcc.__version__)
-    {}'''.replace('    ', '').format(dcc.__version__),
-    customStyle=styles.code_container),
+daq_install_instructions = dcc.SyntaxHighlighter('''>>> import dash_daq as daq
+    >>> print(daq.__version__)
+    {}'''.replace('    ', '').format(daq.__version__),
+    customStyle=styles.code_container)
 
 
 dash_daq_components = {
@@ -152,7 +152,7 @@ layout_children = generate_docs(
     dash_daq_components
 )
 
-layout_children.insert(0, daq_install_instructions)
+layout_children.insert(1, daq_install_instructions)
 
 dtp = load_example(
     'tutorial/examples/daq_components/darkthemeprovider_daq.py'
