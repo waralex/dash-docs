@@ -59,8 +59,8 @@ class IntegrationTests(unittest.TestCase):
         def run():
             # Use CDN so that we don't have to reconfigure percy to find the
             # component assets
-            app.css.config.serve_locally = False
-            app.scripts.config.serve_locally = False
+            app.css.config.serve_locally = True
+            app.scripts.config.serve_locally = True
             app.server.logger.disabled = True
             app.run_server(
                 port=8050,
