@@ -137,8 +137,7 @@ layout = html.Div([
     or an edge. Simply replace the previous layout and callbacks by this:
     ''')),
 
-    dcc.SyntaxHighlighter(
-        dedent('''
+    PythonSnippet('''
         app.layout = html.Div([
             cyto.Cytoscape(
                 id='cytoscape-event-callbacks',
@@ -180,10 +179,7 @@ layout = html.Div([
         def displayTapEdgeData(data):
             if data:
                 return "You recently hovered over the edge between " + data['source'].upper() + " and " + data['target'].upper()
-        '''),
-        language='python',
-        customStyle=styles.code_container
-    ),
+    '''),
 
     html.Div(
         examples['event_callbacks_2.py'][1],
@@ -199,8 +195,7 @@ layout = html.Div([
     multiple elements while holding Shift:
     ''')),
 
-    dcc.SyntaxHighlighter(
-        dedent('''
+    PythonSnippet('''
         app.layout = html.Div([
             cyto.Cytoscape(
                 id='cytoscape-event-callbacks',
@@ -221,10 +216,7 @@ layout = html.Div([
         
             cities_list = [data['label'] for data in data_list]
             return "You selected the following cities:" + "\\n* ".join(cities_list)
-        '''),
-        language='python',
-        customStyle=styles.code_container
-    ),
+    '''),
 
     html.Div(
         examples['event_callbacks_3.py'][1],
