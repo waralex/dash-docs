@@ -406,5 +406,137 @@ def display_page(pathname):
 
 if __name__ == '__main__':
     app.run_server(debug=True)
-''', language='python', customStyle=styles.code_container)
+''', language='python', customStyle=styles.code_container),
+          dcc.Markdown('''
+
+***
+
+Alternatively, you may prefer a flat project layout with callbacks and layouts
+separated into different files:
+
+```
+- app.py
+- index.py
+- callbacks.py
+- layouts.py
+```
+
+***
+
+`app.py`
+'''),
+          dcc.SyntaxHighlighter('''\
+import dash
+
+external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
+
+app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
+server = app.server
+app.config.suppress_callback_exceptions = True
+''', language='python', customStyle=styles.code_container),
+
+          dcc.Markdown('''
+***
+
+`callbacks.py`
+'''),
+          dcc.SyntaxHighlighter('''\
+from dash.dependencies import Input, Output
+
+from app import app
+
+@app.callback(
+    Output('app-1-display-value', 'children'),
+    [Input('app-1-dropdown', 'value')])
+def display_value(value):
+    return 'You have selected "{}"'.format(value)
+
+@app.callback(
+    Output('app-2-display-value', 'children'),
+    [Input('app-2-dropdown', 'value')])
+def display_value(value):
+    return 'You have selected "{}"'.format(value)
+''', language='python', customStyle=styles.code_container),
+
+          dcc.Markdown('''
+***
+
+`layouts.py`
+'''),
+          dcc.SyntaxHighlighter('''\
+import dash_core_components as dcc
+import dash_html_components as html
+
+layout1 = html.Div([
+    html.H3('App 1'),
+    dcc.Dropdown(
+        id='app-1-dropdown',
+        options=[
+            {'label': 'App 1 - {}'.format(i), 'value': i} for i in [
+                'NYC', 'MTL', 'LA'
+            ]
+        ]
+    ),
+    html.Div(id='app-1-display-value'),
+    dcc.Link('Go to App 2', href='/apps/app2')
+])
+
+layout2 = html.Div([
+    html.H3('App 2'),
+    dcc.Dropdown(
+        id='app-2-dropdown',
+        options=[
+            {'label': 'App 2 - {}'.format(i), 'value': i} for i in [
+                'NYC', 'MTL', 'LA'
+            ]
+        ]
+    ),
+    html.Div(id='app-2-display-value'),
+    dcc.Link('Go to App 1', href='/apps/app1')
+])
+''', language='python', customStyle=styles.code_container),
+
+                    dcc.Markdown('''
+***
+
+`index.py`
+'''),
+          dcc.SyntaxHighlighter('''\
+import dash_core_components as dcc
+import dash_html_components as html
+from dash.dependencies import Input, Output
+
+from app import app
+from layouts import layout1, layout2
+
+app.layout = html.Div([
+    dcc.Location(id='url', refresh=False),
+    html.Div(id='page-content')
+])
+
+@app.callback(Output('page-content', 'children'),
+              [Input('url', 'pathname')])
+def display_page(pathname):
+    if pathname == '/apps/app1':
+         return layout1
+    elif pathname == '/apps/app2':
+         return layout2
+    else:
+        return '404'
+
+if __name__ == '__main__':
+    app.run_server(debug=True)
+''', language='python', customStyle=styles.code_container),
+          
+          dcc.Markdown('''
+***
+
+It is worth noting that in both of these project structures, the Dash instance
+is defined in a separate `app.py`, while the entry point for running the app is
+`index.py`. This separation is required to avoid circular imports: the files
+containing the callback definitions require access to the Dash `app` instance
+however if this were imported from `index.py`, the initial loading of `index.py`
+would ultimately require itself to be already imported, which cannot be
+satisfied.
+'''),
 ]
