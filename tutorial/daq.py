@@ -25,6 +25,12 @@ daq_library_heading =  dcc.Markdown('''
     '''.replace('    ', '').format(daq.__version__)
 )
 
+daq_install_instructions = dcc.SyntaxHighlighter('''>>> import dash_daq as daq
+    >>> print(daq.__version__)
+    {}'''.replace('    ', '').format(daq.__version__),
+    customStyle=styles.code_container)
+
+
 dash_daq_components = {
     'BooleanSwitch': {
         'description': '''A switch component that toggles between on \
@@ -145,6 +151,8 @@ layout_children = generate_docs(
     daq_library_heading,
     dash_daq_components
 )
+
+layout_children.insert(1, daq_install_instructions)
 
 dtp = load_example(
     'tutorial/examples/daq_components/darkthemeprovider_daq.py'

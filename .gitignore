@@ -1,4 +1,5 @@
 build/
+cache-directory/
 dist/
 lib/
 lib/bundle.js*
