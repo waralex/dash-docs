@@ -542,7 +542,7 @@ chapters = {
         'url': '/dash-deployment-server/app-authentication',
         'content': dds_examples.Authentication,
         'name': 'Dash App Authentication',
-        'description': 'Adding Authentication to your Dash App'
+        'description': 'Using Authentication Data in your Dash App'
     },
 
     'app-privacy': {

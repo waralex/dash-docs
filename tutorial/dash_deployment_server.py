@@ -57,8 +57,7 @@ layout = html.Div(className='toc', children=[
                 "In this section, you'll learn more about deploying with SSH."),
         reusable_components.Chapter('Dash App Authentication',
                 '/dash-deployment-server/app-authentication',
-                'Using `dash-auth` package to provide login through '
-                'Plotly Enterprise.'),
+                'Using `dash-enterprise-auth` to manage user authentication data.'),
         reusable_components.Chapter('Dash App Privacy',
                 '/dash-deployment-server/privacy',
                 'Learn about Dash App privacy and how to manage collaborators.'),
