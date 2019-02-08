@@ -1,0 +1,52 @@
+import dash_bio
+import re
+import dash_html_components as html
+import dash
+
+members = dir(dash_bio)
+
+# get the names of all components
+all_components = [member for member in members if re.search(r'^[A-Z][a-zA-Z]+$', member) is not None]
+react_components = [c.__name__ for c in dash_bio._components]
+python_components = [c for c in all_components if c not in react_components]
+
+# the react component docstrings are formatted in a specific way
+d = dash_bio.Circos.__doc__
+props = d.split('-')
+
+tableRows = []
+
+for item in props[1:]:
+    desc_sections = item.split('\n\n')
+    partone = desc_sections[0]
+
+    r = re.match(
+        r'\s*([a-zA-Z]+)\s*\(([a-zA-Z]+);\s*([a-z]+)\):\s*(.+)',
+        partone.replace('\n', ' ')
+    )
+    if r is None:
+        continue
+
+    (prop_name, prop_type, prop_optional, prop_desc) = r.groups()
+
+    if len(desc_sections) > 1:
+        prop_desc += ' '
+        prop_desc += desc_sections[1]
+        print(prop_desc)
+
+    tableRows.append(
+        html.Tr([html.Th(prop_name),
+                 html.Th(prop_type),
+                 html.Th('Yes' if prop_optional == 'optional' else 'No'),
+                 html.Th(prop_desc,)])
+    )
+
+table = html.Table(tableRows)
+
+app = dash.Dash()
+
+app.layout = html.Div(table)
+
+if __name__ == '__main__':
+    app.run_server(debug=True)
+
