@@ -1596,69 +1596,18 @@ AppPrivacy = html.Div(children=[
     rc.Blockquote(),
 
     dcc.Markdown(s('''
-    `dash-auth` gives you the ability to select one of three privacy 
-    modes for your Dash App via PlotlyOAuth. `Public`, `Private`, and `Secret` modes are
-    explained below, followed by a section outlining how to manage users that
-    can view your app.
-    
-    For more details/examples on `dash-auth` see [Authentication](/authentication).
+    &nbsp;
 
-    ***
-    
-    ## Privacy Modes
-    
-    #### No Authentication
-    
-    Dash Apps that don't initialize PlotlyOAuth will be viewable by everyone with access
-    to your Dash Server. If you are using the [Dash On Premise Sample App](https://github.com/plotly/dash-on-premise-sample-app),
-    this is achieved when `REQUIRE_LOGIN = True` and `privacy = 'public'` in your
-    `config.py` file (which is the default configuration).
-    
-    #### Public
-    
-    An app using `dash-auth` with PlotlyOAuth set to `public` will require a login from
-    a valid Plotly Enterprise user to view the app but every user will have access.
-    
-    > *If you are using the [Dash On Premise Sample App](https://github.com/plotly/dash-on-premise-sample-app)
-    as a template for your app, you will need to set `REQUIRE_LOGIN = True` in your `config.py` file
-    to initialize PlotlyOAuth when privacy is set to `public`.*
-    
-    #### Private
-    
-    If PlotlyOAuth is set to `private`, only the user that created the app and Plotly Enterprise
-    users specifically added by them will be able to view the app. See "Managing Collaborators"
-    below for information about how to give another user view access to your app.
-    
-    #### Secret
+    You can restrict who is able to view your app from your its
+    management page on the Dash Deployment Server. Find a list
+    of links to these pages for your apps at `https://<your-dash-deployment-server>.com/Manager/apps`.
 
-    Privacy set to `secret` is equivalent to `private` above but it can
-    be bypassed with a link containing a `share_key` parameter. This
-    link can be found in the `https://<your-plotly-enterprise-server>.com/organize/home`
-    page.
-    
-    Once the app is visited using a `share_key` link, an auth cookie 
-    is generated and saved to the browser which will permit access
-    to the app until it's expiry even if the `share_key` is omitted.
-    
-    ***
-    
-    ## Managing Collaborators
-    
-    This can be done either from the UI at `https://<your-plotly-enterprise-server>.com/organize/home`
-    or using the API. Both methods are demonstrated below.
-    
-    #### Managing Collaborators from the UI
-    
-    Go to `https://<your-plotly-enterprise-server>.com/organize/home` and find your
-    app from your list of files. Then click on the share button and add
-    viewers that you want to give access to your app using the "viewers"
-    tab of the pop-up modal.
-    
+    &nbsp;
     ''')),
 
     html.Img(
-        alt='Share App Button in the Organize Screen',
-        src='/assets/images/dds/share-app-organize.png',
+        alt='DDS Apps List',
+        src='/assets/images/dds/manager-apps-list.png',
         style={
             'width': '100%', 'border': 'thin lightgrey solid',
             'border-radius': '4px'
@@ -1666,30 +1615,25 @@ AppPrivacy = html.Div(children=[
     ),
 
     dcc.Markdown(s('''
+    &nbsp;
 
-    > **Note that you can get the secret link from the "Link & Privacy" tab
-    of the above modal but setting the privacy of your app must be done in `config.py`
-    or when `dash-auth` is initialized in your app.**
-    
-    #### Managing Collaborators using the API
-    
-    App permissions can also be managed using the api endpoint 
-    `https://<your-plotly-enterprise-server>/v2/files/<fid>/collaborators` where `<fid>` is `username:id`
-    of your app. This endpoint supports a few types of requests: `GET` (list collaborators), `POST` (add new collaborators)
-    and `DELETE` (removes collaborators). For more information see `https://<your-plotly-enterprise-server>/v2/files#collaborators`
-    
-    You can find the info to form your app's `fid` at `https://<your-plotly-enterprise-server>.com/organize/home`:
+    From the settings tab of your app's management page, scroll down
+    to *App Privacy* to change the privacy settings of your app. If you choose
+    the *Restricted* setting, an input will appear where you need to
+    add a list of usernames of users that you would like to be able to view
+    the app. Additionally, if LDAP is enabled, you can also add entire LDAP groups.
 
+    &nbsp;
     ''')),
 
     html.Img(
-        alt='Dash App fid',
-        src='/assets/images/dds/dash-app-fid.png',
+        alt='Dash App Privacy Settings',
+        src='/assets/images/dds/app-settings-privacy.png',
         style={
             'width': '100%', 'border': 'thin lightgrey solid',
             'border-radius': '4px'
         }
-    ),
+    )
 ])
 
 
