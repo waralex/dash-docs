@@ -110,16 +110,16 @@ def default_example(component_name, example_code, styles):
         )
     ]
 
+
 if __name__ == '__main__':
-    import dash_bio
     
     app = dash.Dash()
 
-    components = component_names(dash_bio)
+    components = component_names('dash_bio')
     app.layout = html.Div(
-        [generate_prop_table(component, 'react', 'dash_bio') 
+        [generate_prop_table(component, components, 'dash_bio') 
          for component in components['react']] +
-        [generate_prop_table(component, 'python', 'dash_bio')
+        [generate_prop_table(component, components, 'dash_bio')
          for component in components['python']]
     )
     app.run_server(debug=True)

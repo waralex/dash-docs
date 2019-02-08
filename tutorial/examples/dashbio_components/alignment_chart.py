@@ -1,0 +1,33 @@
+import dash
+import dash_bio as dashbio
+import dash_html_components as html
+
+import urllib.request
+
+external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
+
+app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
+
+data = urllib.request.urlopen("https://raw.githubusercontent.com/plotly/dash-bio/master/tests/dashbio_demos/sample_data/alignment_viewer_p53.fasta").read().decode('utf-8')
+
+app.layout = html.Div([
+    dashbio.AlignmentChart(
+        id='my-alignment-viewer',
+        data=data
+    ),
+    html.Div(id='alignment-viewer-output')
+])
+
+
+@app.callback(
+    dash.dependencies.Output('alignment-viewer-output', 'children'),
+    [dash.dependencies.Input('my-alignment-viewer', 'eventDatum')]
+)
+def update_output(value):
+    if value is None:
+        return 'No data.'
+    return str(value)
+
+
+if __name__ == '__main__':
+    app.run_server(debug=True)

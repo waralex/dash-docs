@@ -7,7 +7,7 @@ from tutorial.tools import load_example
 
 import dash_bio
 
-from tutorial.utils.simple_doc_generator import generate_docs
+from tutorial.utils.dashbio_doc_generator import generate_docs
 
 dashbio_library_heading = dcc.Markdown('''
     # Dash Bio 
@@ -26,17 +26,27 @@ dashbio_library_heading = dcc.Markdown('''
 )
 
 dashbio_install_instructions = dcc.SyntaxHighlighter('''>>> import dash_bio
-    >>> print(dash_bio.__version)
+    >>> print(dash_bio.__version__)
     {}'''.replace('    ', '').format(dash_bio.__version__),
     customStyle=styles.code_container)
 
 
 dashbio_components = {
+
+    'AlignmentChart': {
+        'description': '''An alignment chart.''',
+        'datafile': {
+            'name': 'alignment_viewer_p53.fasta',
+            'parameter': 'data'
+        }
+    },
+    
     'SequenceViewer': {
         'description': '''A sequence viewer.''',
         'props': {
-            'sequence': '\"GATTACA\"'
-        }
+            'sequence': '\"MALWMRLLPLLALLALWGPDPAAAFVN\
+QHLCGSHLVEALYLVCGERGFFYTPKTRREAEDLQVGQVELGGGPGAGSLQPLALEGSLQKRGIVEQCCTSICSLYQLENYCN\"'
+        }        
     }
 }
 

@@ -516,6 +516,13 @@ chapters = {
         'name': 'Sequence Viewer Component',
         'description': 'Sequence viewer examples, properties, and reference.'
     },
+
+    'alignmentchart-examples': {
+        'url': '/dash-bio/alignmentchart',
+        'content': dashbio_examples.AlignmentChart,
+        'name': 'Alignment Chart Component', 
+        'description': 'Alignment Chart examples, properties, and reference.'
+    }, 
     
 ### End Components ###
 
