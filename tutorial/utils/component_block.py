@@ -8,7 +8,8 @@ def ComponentBlock(example_string, **kwargs):
     scope = {}
     converted_string = example_string.replace(
         'dcc.', 'component = dcc.').replace(
-            'daq.', 'component = daq.')
+            'daq.', 'component = daq.').replace(
+                'dashbio.', 'component = dashbio.')
     try:
         exec(converted_string, scope)
     except Exception as e:

@@ -10,6 +10,8 @@ from tutorial import dash_deployment_server_examples as dds_examples
 from tutorial import dash_table_index
 from tutorial import daq
 from tutorial import daq_component_examples as daq_examples
+from tutorial import dashbio
+from tutorial import dashbio_component_examples as dashbio_examples
 from tutorial import deployment
 from tutorial import external_css_and_js
 from tutorial import gallery
@@ -177,7 +179,14 @@ chapters = {
         data acquisition and engineering applications.'
     },
 
-
+    'dashbio': {
+        'url': '/dash-bio',
+        'content': dashbio.layout,
+        'name': 'Dash Bio Components',
+        'description': 'Components that make it easier to visualize \
+        bioinformatics data.'
+    },
+    
     'plugins': {
         'url': '/plugins',
         'content': plugins.layout,
@@ -499,6 +508,15 @@ chapters = {
         'description': 'Dark theme provider examples, properties, and reference.'
     },
 
+    # Dash Bio examples
+    
+    'sequenceviewer-examples': {
+        'url': '/dash-bio/sequenceviewer',
+        'content': dashbio_examples.SequenceViewer,
+        'name': 'Sequence Viewer Component',
+        'description': 'Sequence viewer examples, properties, and reference.'
+    },
+    
 ### End Components ###
 
 ### Start Dash Deployment Server ###

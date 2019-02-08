@@ -72,6 +72,9 @@ layout = html.Div(className='toc', children=[
         Chapter(chapters['cytoscape']['name'],
                 chapters['cytoscape']['url'],
                 chapters['cytoscape']['description']),
+        Chapter(chapters['dashbio']['name'],
+                chapters['dashbio']['url'],
+                chapters['dashbio']['description'])
     ]),
 
     Section('Creating Your Own Components', [
