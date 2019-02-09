@@ -386,7 +386,7 @@ from dash.dependencies import Input, Output
 
 from app import app
 from apps import app1, app2
-import callbacks
+
 
 app.layout = html.Div([
     dcc.Location(id='url', refresh=False),
