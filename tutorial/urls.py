@@ -386,7 +386,7 @@ from dash.dependencies import Input, Output
 
 from app import app
 from apps import app1, app2
-
+import callbacks
 
 app.layout = html.Div([
     dcc.Location(id='url', refresh=False),
@@ -433,8 +433,6 @@ external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 server = app.server
 app.config.suppress_callback_exceptions = True
-
-import callbacks
 ''', language='python', customStyle=styles.code_container),
 
           dcc.Markdown('''
@@ -510,6 +508,7 @@ from dash.dependencies import Input, Output
 
 from app import app
 from layouts import layout1, layout2
+import callbacks
 
 app.layout = html.Div([
     dcc.Location(id='url', refresh=False),
