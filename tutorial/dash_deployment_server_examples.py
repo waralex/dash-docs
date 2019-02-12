@@ -2208,8 +2208,7 @@ def snapshot_page(n_clicks, url, wait_selector):
         'https://{}/Manager/api/generate_report'.format(
             os.environ.get('DASH_DOMAIN_BASE', 'your-dash-domain-base')
         ),
-        json=payload,
-        verify=False
+        json=payload
     )
     if res.status_code == 200:
         return html.A(
