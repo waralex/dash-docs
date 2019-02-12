@@ -650,6 +650,13 @@ chapters = {
         'description': 'A reference for git commands and how they are used '
         'with Dash Deployment Server.'
     },
+
+    'dds-portal': {
+        'url': '/dash-deployment-server/portal',
+        'content': dds_examples.Portal,
+        'name': 'Dash App Portal',
+        'description': 'Learn about the Dash App Portal '
+    },
 ### End Dash Deployment Server ###
 
 ### Start DataTable Docs
