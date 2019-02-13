@@ -4,6 +4,7 @@ import dash_renderer
 import dash_core_components as dcc
 import dash_html_components as html
 import dash_table
+import dash_daq
 
 import plotly
 from textwrap import dedent as s
@@ -24,11 +25,13 @@ layout = html.Div([
         pip install dash-html-components=={}  # HTML components
         pip install dash-core-components=={}  # Supercharged components
         pip install dash-table=={}  # Interactive DataTable component (new!)
+        pip install dash-daq=={}  # DAQ components (newly open-sourced!)
     '''.replace('    ', '').format(
         dash.__version__,
         html.__version__,
         dcc.__version__,
-        dash_table.__version__
+        dash_table.__version__,
+        dash_daq.__version__
     ), customStyle=styles.code_container),
 
     html.Div([
