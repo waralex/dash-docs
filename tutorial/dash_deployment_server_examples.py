@@ -2575,6 +2575,99 @@ Troubleshooting = html.Div(children=[
 ])
 
 
+# # # # # #
+# Portal
+# # # # # # #
+Portal = html.Div(children=[
+    html.H1('Dash App Portal'),
+
+    rc.Blockquote(),
+
+    dcc.Markdown(s('''    
+    Located at `https://your-dash-deployment-server/Portal`,
+    the Dash App Portal is the front page for your Dash Deployment Server.
+    It allows multiple users to prominently display their selected apps in
+    one central location.
+    
+    The portal and apps have a default style which can
+    be customized.
+
+    &nbsp;
+    ''')),
+
+    html.Img(
+        alt='Default Dash App Portal',
+        src='/assets/images/dds/default-portal.png',
+        style={
+            'width': '100%', 'border': 'thin lightgrey solid',
+            'border-radius': '4px'
+        }
+    ),
+
+    dcc.Markdown(s('''    
+    
+    ### Dash Apps on the Portal
+    
+    In order for your app to appear on the Dash App Portal, you need
+    enable the *Show in Portal* Toggle in your app's settings from
+    within the DDS app manager and then edit your app's metadata to
+    make it easier to find/customize its appearance.
+
+    &nbsp;
+    
+    ''')),
+
+    html.Img(
+        alt='Dash App Portal Settings',
+        src='/assets/images/dds/manager-app-settings-portal.png',
+        style={
+            'width': '100%', 'border': 'thin lightgrey solid',
+            'border-radius': '4px'
+        }
+    ),
+
+    dcc.Markdown(s('''
+    &nbsp;
+    
+    ### Customize the Portal
+    
+    From the DDS app Manager, access the *Portal* tab
+    to see its settings (or go to `/Manager/settings/portal/general`).
+    
+    &nbsp;
+    ''')),
+
+    html.Img(
+        alt='Customized Portal',
+        src='/assets/images/dds/manager-settings-portal.png',
+        style={
+            'width': '100%', 'border': 'thin lightgrey solid',
+            'border-radius': '4px'
+        }
+    ),
+
+    dcc.Markdown(s('''
+    &nbsp;
+    
+    Here, you can decide who can view the portal and customize
+    its appearance.
+    
+    &nbsp;
+    ''')),
+
+    html.Img(
+        alt='Customized Portal',
+        src='/assets/images/dds/custom-portal.png',
+        style={
+            'width': '100%', 'border': 'thin lightgrey solid',
+            'border-radius': '4px'
+        }
+    ),
+
+
+])
+
+
 # # # # # # #
 # Analytics
 # # # # # # #
