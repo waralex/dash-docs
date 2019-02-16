@@ -9,7 +9,7 @@ from tutorial import styles
 
 def Syntax(content):
     return dcc.SyntaxHighlighter(
-        content,
+        content.strip(),
         language="python",
         customStyle=styles.code_container
     )
@@ -18,7 +18,7 @@ def Syntax(content):
 layout = html.Div([
     dcc.Markdown(dedent(
     """
-    # Embedding Dash within existing web applications
+    # Integrating Dash with Existing Web Apps
 
     This section describes three different approaches to embedding a Dash app
     within an existing web application.
@@ -30,18 +30,20 @@ layout = html.Div([
     towards the address of an already running Dash instance. This allows you to
     place your Dash app in a specific location within an existing web page, with
     your desired dimensions:""")),
-    Syntax(dedent("""\
-    <iframe src="http://localhost:8050" width=700 height=600>
-    """)),
-    dcc.Markdown(dedent("""
+    Syntax('<iframe src="http://localhost:8050" width=700 height=600>'),
+    dcc.Markdown(dedent(
+    """
     ## Embedding a Dash app within an Existing Flask App 
     
     As discussed in the [Deployment Chapter](/deployment), Dash uses the Flask
     web framework under the hood. It is possible to take advantage of this and
     embed a Dash app at a specific route of an existing Flask app. In the
     following example, a Dash app is mounted at the `/dash` route (eg
-    `http://localhost:8050/dash`) of a Flask app:""")),
-    Syntax(dedent("""\
+    `http://localhost:8050/dash`) of a Flask app:
+    """
+    )),
+    Syntax(dedent(
+    """
     import flask
     import dash
     import dash_html_components as html
@@ -62,14 +64,18 @@ layout = html.Div([
 
     if __name__ == '__main__':
         app.run_server(debug=True)
-    """)),
-    dcc.Markdown(dedent("""\
+    """
+    )),
+    dcc.Markdown(dedent(
+    """
     Note that it is important to set the `name` parameter of the Dash instance
     to the value `__name__`, so that Dash can correctly detect the location of
     any static assets inside an `assets` directory for this Dash app.
-    """)),
+    """
+    )),
     html.Hr(),
-    dcc.Markdown(dedent("""\
+    dcc.Markdown(dedent(
+    """
     ## Combining One or More Dash Apps with Existing WSGI Apps
 
     This approach uses Werkzeug's
@@ -83,9 +89,11 @@ layout = html.Div([
     existing app being combined with two Dash apps is a Flask app, however this
     approach enables the combination of [any WSGI
     app](https://wsgi.readthedocs.io/en/latest/frameworks.html) with multiple
-    Dash apps (or any other WSGI apps for that matter).""")),
+    Dash apps (or any other WSGI apps for that matter)."""
+    )),
     dcc.Markdown("`flask_app.py`"),
-    Syntax(dedent("""\
+    Syntax(dedent(
+    """
     from flask import Flask
 
     flask_app = Flask(__name__)
@@ -93,10 +101,12 @@ layout = html.Div([
     @flask_app.route('/')
     def index():
         return 'Hello Flask app'
-    """)),
+    """
+    )),
     html.Hr(),
     dcc.Markdown("`app1.py`"),
-    Syntax(dedent("""\
+    Syntax(dedent(
+    """
     import dash
     import dash_html_components as html
     
@@ -106,10 +116,12 @@ layout = html.Div([
     )
 
     app.layout = html.Div("Dash app 1")
-    """)),
+    """
+    )),
     html.Hr(),
     dcc.Markdown("`app2.py`"),
-    Syntax(dedent("""\
+    Syntax(dedent(
+    """
     import dash
     import dash_html_components as html
     
@@ -119,10 +131,12 @@ layout = html.Div([
     )
 
     app.layout = html.Div("Dash app 2")
-    """)),
+    """
+    )),
     html.Hr(),
     dcc.Markdown("`wsgi.py`"),
-    Syntax(dedent("""\
+    Syntax(dedent(
+    """
     from werkzeug.wsgi import DispatcherMiddleware
 
     from app1 import app as app1
@@ -135,9 +149,10 @@ layout = html.Div([
         '/app1': app1.server,
         '/app2': app2.server,    
     })
-    """)),
-    dcc.Markdown(dedent("""\
-
+    """
+    )),
+    dcc.Markdown(dedent(
+    """
     In this example, the Flask app has been mounted at `/` and the two Dash apps
     have been mounted at `/app1` and `/app2`. In this approach, we do not pass
     in a Flask server to the Dash apps, but let them create their own, which the
@@ -165,8 +180,11 @@ layout = html.Div([
     Alternatively, you can use the Werkzeug development server (which is not
     suitable for production) to run the app:
 
-    `run.py`""")),
-    Syntax(dedent("""\
+    `run.py`
+    """
+    )),
+    Syntax(dedent(
+    """
     from werkzeug.wsgi import DispatcherMiddleware
     from werkzeug.serving import run_simple
 
@@ -183,8 +201,10 @@ layout = html.Div([
 
     if __name__ == '__main__':
         run_simple('localhost', 8050, application)
-    """)),
-    dcc.Markdown(dedent("""\
+    """
+    )),
+    dcc.Markdown(dedent(
+    """
     You would run the above with:
 
     ```
@@ -194,5 +214,6 @@ layout = html.Div([
     > **Note:** debug mode should not be enabled in production. When deploying
     > the above examples to production, you should set `debug=False` and not use
     > the `--reload` flag for Gunicorn.
-    """)),
+    """
+    )),
     ])
