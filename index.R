@@ -8,6 +8,8 @@ chapters.getting_started <- new.env()
 source('dashr/chapters/getting-started/index.R', local=chapters.getting_started)
 chapters.callbacks <- new.env()
 source('dashr/chapters/callbacks/index.R', local=chapters.callbacks)
+chapters.state <- new.env()
+source('dashr/chapters/state/index.R', local=chapters.state)
 
 
 # Temporary workaround until `assets/` are loaded
@@ -63,6 +65,8 @@ app$callback(output=list(id='chapter', property='children'),
     return(chapters.getting_started$layout)
   } else if (pathname == "/getting-started-part-2") {
     return(chapters.callbacks$layout)
+  } else if (pathname == "/state") {
+    return(chapters.state$layout)
   } else {
     return(htmlDiv(list(
       htmlH1('DashR User Guide'),
@@ -79,6 +83,11 @@ app$callback(output=list(id='chapter', property='children'),
       coreLink(
         'Part 3. Basic Callbacks',
         href='/getting-started-part-2'
+      ),
+      htmlBr(),
+      coreLink(
+        'Part 4. State',
+        href='/state'
       )
     )))
   }
