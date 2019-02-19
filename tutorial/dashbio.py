@@ -47,7 +47,25 @@ dashbio_components = {
             'sequence': '\"MALWMRLLPLLALLALWGPDPAAAFVN\
 QHLCGSHLVEALYLVCGERGFFYTPKTRREAEDLQVGQVELGGGPGAGSLQPLALEGSLQKRGIVEQCCTSICSLYQLENYCN\"'
         }        
-    }
+    },
+
+    'Clustergram': {
+        'description': '''A heatmap with dendrograms to display clustering of 
+        data such as gene expression data.''',
+        'default_id': False,
+        'library_imports': [
+            ['pandas', 'pd'],
+            ['dash_core_components', 'dcc']
+        ],
+        'props': {
+            'data': 'data.values'
+        },
+        'component_wrap': 'dcc.Graph(figure=_[0])',
+        'setup_code': '''
+data = pd.read_csv('https://raw.githubusercontent.com/plotly/dash-bio/master/tests/dashbio_demos/sample_data/clustergram_iris.tsv',
+        sep='\t', skiprows=4)
+data = data[['Petal length(cm)','Petal width(cm)']]'''
+    },
 }
 
 

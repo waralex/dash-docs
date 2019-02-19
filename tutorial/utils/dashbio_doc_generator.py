@@ -12,25 +12,36 @@ def generate_code_container(
         component_name,
         library_name, library_short,
         component_dict,
-        default_id=True,
         description=''        
 ):
+    # initialize and set all parts of code 
 
     props = None
     style = None
     datafile = None
-        
+    default_id = True
+    library_imports = []
+    setup_code = ''
+    component_wrap = None
+
     if 'props' in component_dict.keys(): 
         props = component_dict['props']
     if 'style' in component_dict.keys():
         style = component_dict['style']
     if 'datafile' in component_dict.keys():
         datafile = component_dict['datafile']
+    if 'default_id' in component_dict.keys():
+        default_id = component_dict['default_id']
+    if 'library_imports' in component_dict.keys():
+        library_imports = component_dict['library_imports']
+    if 'setup_code' in component_dict.keys():
+        setup_code = component_dict['setup_code']
+    if 'component_wrap' in component_dict.keys():
+        component_wrap = component_dict['component_wrap']
 
-    data_location = "https://raw.githubusercontent.com/plotly/dash-bio/master/tests/dashbio_demos/sample_data/"
-
+    # parameters for initial declaration of component
     propString = '\n  '
-    if(default_id):
+    if default_id is True:
         propString += 'id=\'my-{}-{}\', '.format(
             library_short,
             component_name.lower())
@@ -39,6 +50,7 @@ def generate_code_container(
         for key in props.keys():
             propString += '{}={}, '.format(key, props[key])
 
+    # style options 
     if style is not None:
         styleString = 'style={\n  '
         for key in style.keys():
@@ -50,11 +62,35 @@ def generate_code_container(
         styleString += '\n  }, '
         propString += styleString
 
+    # loading data if necessary
     if datafile is not None:
+
+        # import urllib
+        library_imports.append(
+            ['urllib.request', 'urlreq']
+        )
+
+        # add location of data
+        data_location = '''https://raw.githubusercontent.com/plotly/\
+dash-bio/master/tests/dashbio_demos/sample_data/'''
+        setup_code += '''
+data = urlreq.urlopen(\"{}{}\").read().decode(\"utf-8\")
+'''.format(data_location, datafile['name'])
+        
+        # declare data in component initialization
         propString += '{}=data, '.format(
             datafile['parameter']
         )
-        
+
+    # add imports
+    imports_string = ''
+    for library in library_imports:
+        imports_string += 'import {} as {}\n'.format(
+            library[0],
+            library[1]
+        )
+
+    # format prop string 
     propString = propString.replace(', ', ',\n  ')
     
     if(len(propString) > 4): 
@@ -62,20 +98,28 @@ def generate_code_container(
     else:
         propString = ''
 
-    dataString = '''import urllib.request
-
-data = urllib.request.urlopen(\"{}{}\").read().decode(\"utf-8\")
-
-'''.format(data_location, datafile['name']) if datafile is not None else ''
-    
+    # format component string
+    component_string = '{}.{}({})'.format(
+        library_short,
+        component_name,
+        propString
+    )
+    if component_wrap is not None:
+        
+        component_string = component_wrap.replace(
+            '_', component_string)
+        
     example_string = '''import {} as {}
 {}
-{}.{}({})'''.format(library_name.replace('-', '_'),
-                    library_short,
-                    dataString,
-                    library_short, 
-                    component_name,
-                    propString)
+{}
+
+component = {}'''.format(library_name.replace('-', '_'),
+             library_short,
+             imports_string,
+             setup_code,
+             component_string)
+
+    print(example_string)
     
     return [
 
