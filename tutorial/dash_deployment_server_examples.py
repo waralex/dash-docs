@@ -1092,7 +1092,7 @@ LocalDir = html.Div(children=[
     ''')),
 
     dcc.SyntaxHighlighter(
-"""if 'DASH_APP' in os.environ:
+"""if 'DASH_APP_NAME' in os.environ:
     # this is a deployed app
     filepath = os.path.join(os.sep, 'data', 'my-dataset.csv')
 else:
