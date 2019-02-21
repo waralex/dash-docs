@@ -26,10 +26,10 @@ layout = html.Div([
     ## Using an `<iframe>`
 
     The simplest approach to embedding Dash in an existing web application is to
-    an include an `<iframe>` element in your HTML whose `src` attribute points
-    towards the address of an already running Dash instance. This allows you to
-    place your Dash app in a specific location within an existing web page with
-    your desired dimensions:""")),
+    include an `<iframe>` element in your HTML whose `src` attribute points
+    towards the address of a deployed Dash app. This allows you to place your
+    Dash app in a specific location within an existing web page with your
+    desired dimensions:""")),
     Syntax('<iframe src="http://localhost:8050" width=700 height=600>'),
     dcc.Markdown(dedent(
     """
