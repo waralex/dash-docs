@@ -5,7 +5,8 @@ utils <- new.env()
 source('dashr/utils.R', local=utils)
 
 examples <- list(
-  hello.world=utils$LoadExampleCode('dashR/chapters/getting-started/examples/hello-world.R')
+  hello.world=utils$LoadExampleCode('dashR/chapters/getting-started/examples/hello-world.R'),
+  hello.dash2=utils$LoadExampleCode('dashR/chapters/getting-started/examples/hello-dash-components.R')
 )
 
 layout <- htmlDiv(list(
@@ -30,5 +31,24 @@ dropdowns, sliders, and more.
 ## Hello World
   "),
   examples$hello.world$source_code,
-  examples$hello.world$layout
+
+  coreMarkdown("
+    Run the app with
+
+   ```
+   $ Rscript index.R
+   Fire started at 127.0.0.1:8080
+   start: 127.0.0.1:8080
+   ```
+  "),
+
+  coreMarkdown("
+    and visit [http://127.0.0.1:8080](http://127.0.0.1:8080)
+    in your web browser. You should see an app that looks like this.
+  "),
+
+  examples$hello.world$layout,
+
+  examples$hello.dash2$source_code,
+  examples$hello.dash2$layout
 ))

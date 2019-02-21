@@ -76,7 +76,7 @@ app$callback(output=list(id='chapter', property='children'),
       ),
       htmlBr(),
       coreLink(
-        'Part 2. Getting Started',
+        'Part 2. The Dash Layout',
         href='/getting-started'
       ),
       htmlBr(),
@@ -86,7 +86,7 @@ app$callback(output=list(id='chapter', property='children'),
       ),
       htmlBr(),
       coreLink(
-        'Part 4. State',
+        'Part 4. Callbacks With State',
         href='/state'
       )
     )))
