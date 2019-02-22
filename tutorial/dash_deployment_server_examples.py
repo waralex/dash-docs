@@ -1420,9 +1420,9 @@ Authentication = html.Div(children=[
 
     dcc.Markdown(s('''
     DDS will automatically implement user authentication if your 
-    [Dash app's privacy](/dash-deployment-server/privacy) is set to *Restricted*
-    or *Authorized*. You can access the authentication data within your app
-    using the `dash-enterprise-auth` package.
+    [Dash app's privacy](/dash-deployment-server/privacy) is set to *Restricted* (the default setting)
+    or *Authorized* but not if is set to *Unauthorized*. You can access the authentication data within your app
+    using the [`dash-enterprise-auth`](https://github.com/plotly/dash-enterprise-auth/) package.
 
     ***
 
@@ -1539,9 +1539,10 @@ AppPrivacy = html.Div(children=[
     dcc.Markdown(s('''
     &nbsp;
 
-    You can restrict who is able to view your app from your its
-    management page on the Dash Deployment Server. Find a list
-    of links to these pages for your apps at `https://<your-dash-deployment-server>.com/Manager/apps`.
+    Starting in Version 3.0.0 of Dash Deployment Server, you can restrict who is able to view your app
+    from the app's management page. Find a list of links to these pages for your apps at 
+    `https://<your-dash-deployment-server>.com/Manager/apps`. [Contact support](mailto:onpremise.support@plot.ly)
+    if you have any questions about privacy in previous versions of Dash Deployment Server.
 
     &nbsp;
     ''')),
