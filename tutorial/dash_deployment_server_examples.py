@@ -1092,7 +1092,7 @@ LocalDir = html.Div(children=[
     ''')),
 
     dcc.SyntaxHighlighter(
-"""if 'DASH_APP' in os.environ:
+"""if 'DASH_APP_NAME' in os.environ:
     # this is a deployed app
     filepath = os.path.join(os.sep, 'data', 'my-dataset.csv')
 else:
@@ -1969,13 +1969,15 @@ pdfService = html.Div(children=[
 
         ''')),
 
-        dcc.SyntaxHighlighter('''POST https://<your-plotly-enterprise-server>/api/dash-apps/image
+        dcc.SyntaxHighlighter('''POST https://<your-dash-deployment-server>/Manager/api/generate_report
 content-type: application/json
 plotly-client-platform: dash
 Authorization: Basic ...
 
 {
     "url": "...",
+    "appname": os.environ.get('DASH_APP_NAME'),
+    "secret_key": os.environ.get('DASH_SECRET_KEY'),
     "pdf_options": {
         "pageSize": "Letter",
         "marginsType": 1
@@ -1988,6 +1990,8 @@ Authorization: Basic ...
         '''
 
         - `url` - The URL to download
+        - `appname` - Your app's name.
+        - `secret_key` - Your app's secret key. This is needed for authorizing the pdf generation.
         - `wait_selector` - A string that specifies a
         [CSS selector](https://developer.mozilla.org/en-US/docs/Learn/CSS/Introduction_to_CSS/Simple_selectors).
         The API will wait until an element that matches this CSS selector
@@ -2025,9 +2029,10 @@ Authorization: Basic ...
         example locally or you can deploy this example to Dash
         Deployment Server. A few things to note:
 
-        - Find your API key by visiting https://<your-plotly-server>/settings/api
-        - The username and API key are read from environment variables.
-        [Learn how to set environment variables on Dash Deployment Server](https://dash.plot.ly/dash-deployment-server/environment-variables).
+         - If you're testing locally, you will have to specify default values for your
+        DASH_DOMAIN_BASE, DASH_APP_NAME and DASH_SECRET_KEY. You can find them in the list of your app's
+        environment variables. See [our doc on environment variables](/dash-deployment-server/environment-variables)
+        for more details.
         ''')),
 
         dcc.SyntaxHighlighter('''import dash
@@ -2036,15 +2041,11 @@ import dash_core_components as dcc
 import dash_html_components as html
 
 import base64
-import json
 import os
 import requests
 
 app = dash.Dash(__name__)
 server = app.server
-
-with open('snapshot.pdf', 'rb') as f:
-    pdf = f.read()
 
 
 app.layout = html.Div([
@@ -2080,6 +2081,8 @@ def snapshot_page(n_clicks, url, wait_selector):
         return ''
     payload = {
         'url': url,
+        "appname": os.environ.get('DASH_APP_NAME', 'your-dash-app-name'),
+        "secret_key": os.environ.get('DASH_SECRET_KEY', 'your-dash-app-secret-key'),
         'pdf_options': {
             'pageSize': 'Letter',
             'marginsType': 1
@@ -2088,18 +2091,10 @@ def snapshot_page(n_clicks, url, wait_selector):
     }
 
     res = requests.post(
-        '{}/v2/dash-apps/image'.format(
-            os.environ.get('PLOTLY_BASE_URL', '')
+        'https://{}/Manager/api/generate_report'.format(
+            os.environ.get('DASH_DOMAIN_BASE', 'your-dash-domain-base')
         ),
-        headers={
-            'plotly-client-platform': 'dash',
-            'content-type': 'application/json',
-        },
-        auth=(
-            os.environ.get('PLOTLY_USERNAME', ''),
-            os.environ.get('PLOTLY_API_KEY', ''),
-        ),
-        data=json.dumps(payload)
+        json=payload
     )
     if res.status_code == 200:
         return html.A(
@@ -2462,6 +2457,99 @@ Troubleshooting = html.Div(children=[
             [Authenticating to Dash Deployment Server with SSH](/dash-deployment-server/ssh).
              ''')),
     ]),
+
+])
+
+
+# # # # # #
+# Portal
+# # # # # # #
+Portal = html.Div(children=[
+    html.H1('Dash App Portal'),
+
+    rc.Blockquote(),
+
+    dcc.Markdown(s('''    
+    Located at `https://your-dash-deployment-server/Portal`,
+    the Dash App Portal is the front page for your Dash Deployment Server.
+    It allows multiple users to prominently display their selected apps in
+    one central location.
+    
+    The portal and apps have a default style which can
+    be customized.
+
+    &nbsp;
+    ''')),
+
+    html.Img(
+        alt='Default Dash App Portal',
+        src='/assets/images/dds/default-portal.png',
+        style={
+            'width': '100%', 'border': 'thin lightgrey solid',
+            'border-radius': '4px'
+        }
+    ),
+
+    dcc.Markdown(s('''    
+    
+    ### Dash Apps on the Portal
+    
+    In order for your app to appear on the Dash App Portal, you need
+    enable the *Show in Portal* Toggle in your app's settings from
+    within the DDS app manager and then edit your app's metadata to
+    make it easier to find/customize its appearance.
+
+    &nbsp;
+    
+    ''')),
+
+    html.Img(
+        alt='Dash App Portal Settings',
+        src='/assets/images/dds/manager-app-settings-portal.png',
+        style={
+            'width': '100%', 'border': 'thin lightgrey solid',
+            'border-radius': '4px'
+        }
+    ),
+
+    dcc.Markdown(s('''
+    &nbsp;
+    
+    ### Customize the Portal
+    
+    From the DDS app Manager, access the *Portal* tab
+    to see its settings (or go to `/Manager/settings/portal/general`).
+    
+    &nbsp;
+    ''')),
+
+    html.Img(
+        alt='Customized Portal',
+        src='/assets/images/dds/manager-settings-portal.png',
+        style={
+            'width': '100%', 'border': 'thin lightgrey solid',
+            'border-radius': '4px'
+        }
+    ),
+
+    dcc.Markdown(s('''
+    &nbsp;
+    
+    Here, you can decide who can view the portal and customize
+    its appearance.
+    
+    &nbsp;
+    ''')),
+
+    html.Img(
+        alt='Customized Portal',
+        src='/assets/images/dds/custom-portal.png',
+        style={
+            'width': '100%', 'border': 'thin lightgrey solid',
+            'border-radius': '4px'
+        }
+    ),
+
 
 ])
 
