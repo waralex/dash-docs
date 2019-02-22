@@ -4,6 +4,7 @@ library(dashHtmlComponents)
 utils <- new.env()
 source('dashr/utils.R', local=utils)
 
+print("index")
 examples <- list(
   simple.callbacks=utils$LoadExampleCode('dashR/chapters/callbacks/examples/simple-callback.R')
 )
@@ -11,7 +12,7 @@ examples <- list(
 layout <- htmlDiv(list(
   coreMarkdown("
 # Basic Dash Callbacks
-In the previous chapter on the [app.layout](127.0.0.1:8080/getting-started) we learned that the
+In the previous chapter on the [app.layout](/getting-started) we learned that the
 app$layout describes what the app looks like and is a
 hierarchical tree of components.
 The dash_html_components library provides classes for
@@ -28,3 +29,5 @@ Let's get started with a simple example.
   examples$simple.callbacks$source_code,
   examples$simple.callbacks$layout
 ))
+
+print(examples$simple.callbacks)

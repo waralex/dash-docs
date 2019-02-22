@@ -9,9 +9,16 @@ examples <- list(
   hello.dash2=utils$LoadExampleCode('dashR/chapters/getting-started/examples/hello-dash-components.R')
 )
 
+#link <- coreLocation(pathname='/getting-started')
+
 layout <- htmlDiv(list(
   coreMarkdown("
-# Getting Started
+# Dash Layout
+> This is the 2nd chapter of the
+> [Dash Tutorial](/).
+> The [previous chapter](/installation)
+> covered installation
+> and the next chapter covers Dash callbacks.
 
 DashR is an R interface for Plotly's Dash.
 
