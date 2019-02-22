@@ -1,9 +1,6 @@
-from textwrap import dedent as s
 import dash_core_components as dcc
 import dash_html_components as html
 from tutorial import styles
-from tutorial.utils.component_block import ComponentBlock
-from tutorial.tools import load_example
 
 import dash_bio
 
@@ -45,7 +42,8 @@ dashbio_components = {
         'description': '''A sequence viewer.''',
         'props': {
             'sequence': '\"MALWMRLLPLLALLALWGPDPAAAFVN\
-QHLCGSHLVEALYLVCGERGFFYTPKTRREAEDLQVGQVELGGGPGAGSLQPLALEGSLQKRGIVEQCCTSICSLYQLENYCN\"'
+QHLCGSHLVEALYLVCGERGFFYTPKTRREAEDLQVGQVELGGGPGAGSLQPLA\
+LEGSLQKRGIVEQCCTSICSLYQLENYCN\"'
         }        
     },
 
@@ -58,14 +56,36 @@ QHLCGSHLVEALYLVCGERGFFYTPKTRREAEDLQVGQVELGGGPGAGSLQPLALEGSLQKRGIVEQCCTSICSLYQLEN
             ['dash_core_components', 'dcc']
         ],
         'props': {
-            'data': 'data.values'
+            'data': 'data',
+            'columnLabels': 'list(df.columns.values)',
+            'rowLabels': 'list(df.index)',
+            'hideLabels': '[\'row\']',
+            'height': '800',
+            'width': '600'
         },
         'component_wrap': 'dcc.Graph(figure=_[0])',
-        'setup_code': '''
-data = pd.read_csv('https://raw.githubusercontent.com/plotly/dash-bio/master/tests/dashbio_demos/sample_data/clustergram_iris.tsv',
-        sep='\t', skiprows=4)
-data = data[['Petal length(cm)','Petal width(cm)']]'''
+        'setup_code': '''df = pd.read_csv('https://raw.githubusercontent.com/plotly/dash-bio/master/tests/dashbio_demos/sample_data/clustergram_mtcars.tsv',
+        sep='\t', skiprows=4).set_index('model')
+data = df.values'''
     },
+
+    'Speck': {
+        'description': '''A 3D WebGL molecule viewer.''',
+        'props': {
+            'view': '{\'resolution\': 600}'
+        },
+        'datafile': {
+            'name': 'speck_methane.xyz',
+            'parameter': 'data'
+        },
+        'library_imports': [
+            ['dash_bio.utils.xyz_reader', 'xyz_reader']
+        ],
+        'setup_code': '''data = xyz_reader.read_xyz(data_string=data)''',
+        'iframe_location': 'https://dash-playground.plotly.host/dash-speck-demo/'
+    },
+
+    
 }
 
 

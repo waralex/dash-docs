@@ -1,11 +1,32 @@
 import dash_core_components as dcc
 import dash_html_components as html
-import urllib
 
 from tutorial import styles
 from textwrap import dedent as s
 
 from tutorial.utils.component_block import ComponentBlock
+
+
+def IframeComponentBlock(
+        example_string,
+        iframe_location
+):
+    return html.Div([
+        dcc.SyntaxHighlighter(
+            example_string,
+            language='python',
+            customStyle=styles.code_container
+        ),
+        html.Div(
+            className='example-container',
+            children=html.Iframe(
+                width='600px',
+                height='600px',
+                style={'border': 'none'},
+                src=iframe_location
+            )
+        )
+    ])
 
 
 def generate_code_container(
@@ -23,6 +44,7 @@ def generate_code_container(
     library_imports = []
     setup_code = ''
     component_wrap = None
+    iframe_location = None
 
     if 'props' in component_dict.keys(): 
         props = component_dict['props']
@@ -38,7 +60,9 @@ def generate_code_container(
         setup_code = component_dict['setup_code']
     if 'component_wrap' in component_dict.keys():
         component_wrap = component_dict['component_wrap']
-
+    if 'iframe_location' in component_dict.keys():
+        iframe_location = component_dict['iframe_location']
+        
     # parameters for initial declaration of component
     propString = '\n  '
     if default_id is True:
@@ -73,9 +97,9 @@ def generate_code_container(
         # add location of data
         data_location = '''https://raw.githubusercontent.com/plotly/\
 dash-bio/master/tests/dashbio_demos/sample_data/'''
-        setup_code += '''
+        setup_code = '''
 data = urlreq.urlopen(\"{}{}\").read().decode(\"utf-8\")
-'''.format(data_location, datafile['name'])
+'''.format(data_location, datafile['name']) + setup_code
         
         # declare data in component initialization
         propString += '{}=data, '.format(
@@ -108,19 +132,31 @@ data = urlreq.urlopen(\"{}{}\").read().decode(\"utf-8\")
         
         component_string = component_wrap.replace(
             '_', component_string)
-        
+
+    print(component_string)
+    
     example_string = '''import {} as {}
 {}
 {}
 
-component = {}'''.format(library_name.replace('-', '_'),
-             library_short,
-             imports_string,
-             setup_code,
-             component_string)
+component = {}
+'''.format(library_name.replace('-', '_'),
+           library_short,
+           imports_string,
+           setup_code,
+           component_string)
 
-    print(example_string)
-    
+        
+    # load the iframe if that is where the app is
+    component_demo = ComponentBlock(
+        example_string
+    )
+    if iframe_location is not None:
+        component_demo = IframeComponentBlock(
+            example_string,
+            iframe_location
+        )
+        
     return [
 
         html.Hr(),
@@ -133,9 +169,7 @@ component = {}'''.format(library_name.replace('-', '_'),
         
         dcc.Markdown(s(description)),
         
-        ComponentBlock(
-            example_string
-        ),
+        component_demo,
 
         html.Br(), 
         
