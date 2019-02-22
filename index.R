@@ -2,13 +2,13 @@ library(dashCoreComponents)
 library(dashHtmlComponents)
 source('app.R')
 
-chapters.installation <- new.env()
+chapters.installation <- new.env(app=app)
 source('dashr/chapters/installation/index.R', local=chapters.installation)
-chapters.getting_started <- new.env()
+chapters.getting_started <- new.env(app=app)
 source('dashr/chapters/getting-started/index.R', local=chapters.getting_started)
-chapters.callbacks <- new.env()
+chapters.callbacks <- new.env(app=app)
 source('dashr/chapters/callbacks/index.R', local=chapters.callbacks)
-chapters.state <- new.env()
+chapters.state <- new.env(app=app)
 source('dashr/chapters/state/index.R', local=chapters.state)
 
 

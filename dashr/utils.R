@@ -1,7 +1,6 @@
 library(dashCoreComponents)
-source('app.R')
 
-LoadExampleCode <- function(filename) {
+LoadExampleCode <- function(filename, app) {
   # Take a self-contained DashR example filename,
   # eval it, and return that example's `layout`
   # and the source code.

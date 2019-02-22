@@ -5,8 +5,8 @@ utils <- new.env()
 source('dashr/utils.R', local=utils)
 
 examples <- list(
-  hello.world=utils$LoadExampleCode('dashR/chapters/getting-started/examples/hello-world.R'),
-  hello.dash2=utils$LoadExampleCode('dashR/chapters/getting-started/examples/hello-dash-components.R')
+  hello.world=utils$LoadExampleCode('dashR/chapters/getting-started/examples/hello-world.R', app=app),
+  hello.dash2=utils$LoadExampleCode('dashR/chapters/getting-started/examples/hello-dash-components.R', app=app)
 )
 
 #link <- coreLocation(pathname='/getting-started')
