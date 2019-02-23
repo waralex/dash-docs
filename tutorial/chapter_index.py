@@ -33,6 +33,7 @@ from tutorial import urls
 from tutorial import react_for_python_developers
 from tutorial import table
 from tutorial import devtools
+from tutorial import integrating_dash
 
 
 ## The chapters dict is used to generate the dash-docs search index
@@ -261,6 +262,14 @@ chapters = {
         'name': 'Deployment',
         'description': 'To share a Dash app, you need to "deploy" your Dash ' \
                        'app to a server'
+    },
+
+    'integrating-dash': {
+        'url': '/integrating-dash',
+        'content': integrating_dash.layout,
+        'name': 'Integrating Dash with Existing Web Apps',
+        'description': 'Strategies for integrating Dash apps with existing web ' \
+                       'apps.'
     },
 
     # 'deployment-onpremise': {
@@ -674,6 +683,13 @@ chapters = {
         'name': 'Advanced Git',
         'description': 'A reference for git commands and how they are used '
         'with Dash Deployment Server.'
+    },
+
+    'dds-portal': {
+        'url': '/dash-deployment-server/portal',
+        'content': dds_examples.Portal,
+        'name': 'Dash App Portal',
+        'description': 'Learn about the Dash App Portal '
     },
 ### End Dash Deployment Server ###
 

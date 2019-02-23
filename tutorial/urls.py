@@ -508,6 +508,7 @@ from dash.dependencies import Input, Output
 
 from app import app
 from layouts import layout1, layout2
+import callbacks
 
 app.layout = html.Div([
     dcc.Location(id='url', refresh=False),
