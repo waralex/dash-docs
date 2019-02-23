@@ -9,13 +9,10 @@ app$layout_set(htmlDiv(list(
   htmlDiv(id='my-id-div')
 )))
 
-
-print("nadia")
 app$callback(
   output=list(id='my-id-div', property='children'),
   params=list(input(id='my-id-input', property='value')),
   function(input_value) {
-    print("nadia callbacks")
     sprintf("You've entered \"%s\"", input_value)
   })
 

@@ -59,8 +59,6 @@ app$layout_set(
 app$callback(output=list(id='chapter', property='children'),
              params=list(input('url', 'pathname')),
              function(pathname) {
-  #pathname <- chapters.getting_started$link$props$pathname
-               print(pathname)
   if (pathname == "/installation") {
     return(chapters.installation$layout)
   } else if (pathname == "/getting-started") {

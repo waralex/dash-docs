@@ -4,7 +4,6 @@ library(dashHtmlComponents)
 utils <- new.env()
 source('dashr/utils.R', local=utils)
 
-print("index")
 examples <- list(
   simple.callbacks=utils$LoadExampleCode('dashR/chapters/callbacks/examples/simple-callback.R')
 )
@@ -29,5 +28,3 @@ Let's get started with a simple example.
   examples$simple.callbacks$source_code,
   examples$simple.callbacks$layout
 ))
-
-print(examples$simple.callbacks)
