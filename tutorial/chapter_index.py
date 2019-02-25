@@ -540,6 +540,13 @@ chapters = {
         'description': 'Clustergram examples, properties, and reference.'
     },
 
+    'speck-examples': {
+        'url': '/dash-bio/speck',
+        'content': dashbio_examples.Speck,
+        'name': 'Speck Component',
+        'description': 'Speck examples, properties, and reference.'
+    },
+
 ### End Components ###
 
 ### Start Dash Deployment Server ###

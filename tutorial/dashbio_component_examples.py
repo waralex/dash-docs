@@ -21,6 +21,8 @@ examples = {
         'tutorial/examples/dashbio_components/sequence_viewer.py'),
     'clustergram': tools.load_example(
         'tutorial/examples/dashbio_components/clustergram.py'),
+    'speck': tools.load_example(
+        'tutorial/examples/dashbio_components/speck.py'),
 }
 
 
@@ -61,5 +63,6 @@ Clustergram = create_doc_page('clustergram')
 SequenceViewer = create_doc_page('sequence-viewer')
 
 # Speck
+Speck = create_doc_page('speck')
 
 # VolcanoPlot
