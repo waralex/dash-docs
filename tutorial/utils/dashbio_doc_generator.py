@@ -1,6 +1,6 @@
 import dash_core_components as dcc
 import dash_html_components as html
-
+import sys
 from tutorial import styles
 from textwrap import dedent as s
 
@@ -91,15 +91,22 @@ def generate_code_container(
 
         # import urllib
         library_imports.append(
-            ['urllib2', 'urlreq']
+            ['urllib.request', 'urlreq']
+            if sys.version_info >= (3, 0)
+            else ['urllib2', 'urlreq']
         )
+
+        # only decode for python 3
+        decode_string = ''
+        if sys.version_info >= (3, 0):
+            decode_string = '.decode(\"utf-8\")'
 
         # add location of data
         data_location = '''https://raw.githubusercontent.com/plotly/\
 dash-bio/master/tests/dashbio_demos/sample_data/'''
         setup_code = '''
-data = urlreq.urlopen(\"{}{}\").read()
-'''.format(data_location, datafile['name']) + setup_code
+data = urlreq.urlopen(\"{}{}\").read(){}
+'''.format(data_location, datafile['name'], decode_string) + setup_code
 
         # declare data in component initialization
         propString += '{}=data, '.format(
