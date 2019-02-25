@@ -35,18 +35,10 @@ dashbio_components = {
         'datafile': {
             'name': 'alignment_viewer_p53.fasta',
             'parameter': 'data'
-        }
+        },
+        'iframe_location': 'https://dash-playground.plotly.host/dash-alignment-chart-demo/'
     },
     
-    'SequenceViewer': {
-        'description': '''A sequence viewer.''',
-        'props': {
-            'sequence': '\"MALWMRLLPLLALLALWGPDPAAAFVN\
-QHLCGSHLVEALYLVCGERGFFYTPKTRREAEDLQVGQVELGGGPGAGSLQPLA\
-LEGSLQKRGIVEQCCTSICSLYQLENYCN\"'
-        }        
-    },
-
     'Clustergram': {
         'description': '''A heatmap with dendrograms to display clustering of 
         data such as gene expression data.''',
@@ -66,7 +58,17 @@ LEGSLQKRGIVEQCCTSICSLYQLENYCN\"'
         'component_wrap': 'dcc.Graph(figure=_[0])',
         'setup_code': '''df = pd.read_csv('https://raw.githubusercontent.com/plotly/dash-bio/master/tests/dashbio_demos/sample_data/clustergram_mtcars.tsv',
         sep='\t', skiprows=4).set_index('model')
-data = df.values'''
+data = df.values''',
+        'iframe_location': 'https://dash-playground.plotly.host/dash-clustergram-demo/'
+    },
+
+    'SequenceViewer': {
+        'description': '''A sequence viewer.''',
+        'props': {
+            'sequence': '\"MALWMRLLPLLALLALWGPDPAAAFVN\
+QHLCGSHLVEALYLVCGERGFFYTPKTRREAEDLQVGQVELGGGPGAGSLQPLA\
+LEGSLQKRGIVEQCCTSICSLYQLENYCN\"'
+        }
     },
 
     'Speck': {
@@ -83,11 +85,9 @@ data = df.values'''
         ],
         'setup_code': '''data = xyz_reader.read_xyz(data_string=data)''',
         'iframe_location': 'https://dash-playground.plotly.host/dash-speck-demo/'
-    },
-
+    }
     
 }
-
 
 layout_children = generate_docs(
     'dash-bio',
