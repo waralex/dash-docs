@@ -33,9 +33,9 @@ def generate_code_container(
         component_name,
         library_name, library_short,
         component_dict,
-        description=''        
+        description=''
 ):
-    # initialize and set all parts of code 
+    # initialize and set all parts of code
 
     props = None
     style = None
@@ -46,7 +46,7 @@ def generate_code_container(
     component_wrap = None
     iframe_location = None
 
-    if 'props' in component_dict.keys(): 
+    if 'props' in component_dict.keys():
         props = component_dict['props']
     if 'style' in component_dict.keys():
         style = component_dict['style']
@@ -62,7 +62,7 @@ def generate_code_container(
         component_wrap = component_dict['component_wrap']
     if 'iframe_location' in component_dict.keys():
         iframe_location = component_dict['iframe_location']
-        
+
     # parameters for initial declaration of component
     propString = '\n  '
     if default_id is True:
@@ -74,7 +74,7 @@ def generate_code_container(
         for key in props.keys():
             propString += '{}={}, '.format(key, props[key])
 
-    # style options 
+    # style options
     if style is not None:
         styleString = 'style={\n  '
         for key in style.keys():
@@ -100,7 +100,7 @@ dash-bio/master/tests/dashbio_demos/sample_data/'''
         setup_code = '''
 data = urlreq.urlopen(\"{}{}\").read().decode(\"utf-8\")
 '''.format(data_location, datafile['name']) + setup_code
-        
+
         # declare data in component initialization
         propString += '{}=data, '.format(
             datafile['parameter']
@@ -114,10 +114,10 @@ data = urlreq.urlopen(\"{}{}\").read().decode(\"utf-8\")
             library[1]
         )
 
-    # format prop string 
+    # format prop string
     propString = propString.replace(', ', ',\n  ')
-    
-    if(len(propString) > 4): 
+
+    if(len(propString) > 4):
         propString = propString[:-4] + '\n'
     else:
         propString = ''
@@ -129,12 +129,10 @@ data = urlreq.urlopen(\"{}{}\").read().decode(\"utf-8\")
         propString
     )
     if component_wrap is not None:
-        
+
         component_string = component_wrap.replace(
             '_', component_string)
 
-    print(component_string)
-    
     example_string = '''import {} as {}
 {}
 {}
@@ -146,7 +144,7 @@ component = {}
            setup_code,
            component_string)
 
-        
+
     # load the iframe if that is where the app is
     component_demo = ComponentBlock(
         example_string
@@ -156,7 +154,7 @@ component = {}
             example_string,
             iframe_location
         )
-        
+
     return [
 
         html.Hr(),
@@ -166,13 +164,13 @@ component = {}
                              library_name,
                              component_name.lower())),
                 id=component_name.replace(' ', '-').lower()),
-        
+
         dcc.Markdown(s(description)),
-        
+
         component_demo,
 
-        html.Br(), 
-        
+        html.Br(),
+
         dcc.Link('More {} Examples and Reference'.format(component_name),
                  href='/{}/{}'.format(
                      library_name,
@@ -188,7 +186,10 @@ def generate_docs(
 ):
     layout_children = [library_heading]
 
-    for component in component_dict.keys():
+    sorted_keys = list(component_dict.keys())
+    sorted_keys.sort()
+
+    for component in sorted_keys:
         layout_children += generate_code_container(
             component,
             library_name,
