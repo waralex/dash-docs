@@ -91,14 +91,14 @@ def generate_code_container(
 
         # import urllib
         library_imports.append(
-            ['urllib.request', 'urlreq']
+            ['urllib2', 'urlreq']
         )
 
         # add location of data
         data_location = '''https://raw.githubusercontent.com/plotly/\
 dash-bio/master/tests/dashbio_demos/sample_data/'''
         setup_code = '''
-data = urlreq.urlopen(\"{}{}\").read().decode(\"utf-8\")
+data = urlreq.urlopen(\"{}{}\").read()
 '''.format(data_location, datafile['name']) + setup_code
 
         # declare data in component initialization

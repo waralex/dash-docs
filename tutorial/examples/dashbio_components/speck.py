@@ -3,14 +3,14 @@ import dash_bio as dashbio
 import dash_html_components as html
 import dash_core_components as dcc
 
-import urllib.request as urlreq
+import urllib as urlreq
 import dash_bio.utils.xyz_reader as xyz_reader
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
-data = urlreq.urlopen("https://raw.githubusercontent.com/plotly/dash-bio/master/tests/dashbio_demos/sample_data/speck_methane.xyz").read().decode("utf-8")
+data = urlreq.urlopen("https://raw.githubusercontent.com/plotly/dash-bio/master/tests/dashbio_demos/sample_data/speck_methane.xyz").read()
 data = xyz_reader.read_xyz(data_string=data)
 
 app.layout = html.Div([

@@ -2,13 +2,13 @@ import dash
 import dash_bio as dashbio
 import dash_html_components as html
 
-import urllib.request
+import urllib2
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
-data = urllib.request.urlopen("https://raw.githubusercontent.com/plotly/dash-bio/master/tests/dashbio_demos/sample_data/alignment_viewer_p53.fasta").read().decode('utf-8')
+data = urllib2.urlopen("https://raw.githubusercontent.com/plotly/dash-bio/master/tests/dashbio_demos/sample_data/alignment_viewer_p53.fasta").read().decode('utf-8')
 
 app.layout = html.Div([
     dashbio.AlignmentChart(
