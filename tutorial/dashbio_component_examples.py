@@ -18,22 +18,34 @@ examples = {
     'alignment-chart': tools.load_example(
         'tutorial/examples/dashbio_components/alignment_chart.py'),
     'sequence-viewer': tools.load_example(
-        'tutorial/examples/dashbio_components/sequence_viewer.py')
+        'tutorial/examples/dashbio_components/sequence_viewer.py'),
+    'clustergram': tools.load_example(
+        'tutorial/examples/dashbio_components/clustergram.py'),
 }
 
-# AlignmentChart/AlignmentViewer
-AlignmentChart = html.Div(
-    children=
-    default_example('alignment-chart',
-                    examples['alignment-chart'],
-                    styles=styles) +
-    [generate_prop_table('AlignmentChart', component_names, 'dash_bio')]
-)
 
+def create_doc_page(component_name):
+    return html.Div(
+        children=
+        [html.H1('{} Examples and Reference'.format(
+            component_name.replace('-', ' ').title().replace(' ', '')))] +
+        default_example(component_name,
+                        examples[component_name],
+                        styles=styles) +
+        [generate_prop_table(
+            component_name.replace('-', ' ').title().replace(' ', ''),
+            component_names,
+            'dash_bio')]
+    )
+
+
+# AlignmentChart/AlignmentViewer
+AlignmentChart = create_doc_page('alignment-chart')
 
 # Circos
 
 # Clustergram
+Clustergram = create_doc_page('clustergram')
 
 # Ideogram
 
@@ -46,16 +58,8 @@ AlignmentChart = html.Div(
 # OncoPrint
 
 # SequenceViewer
-SequenceViewer = html.Div(
-    children=
-    default_example('sequence-viewer',
-                    examples['sequence-viewer'],
-                    styles=styles) +
-    [generate_prop_table('SequenceViewer', component_names, 'dash_bio')]
-)
+SequenceViewer = create_doc_page('sequence-viewer')
 
 # Speck
 
 # VolcanoPlot
-
-

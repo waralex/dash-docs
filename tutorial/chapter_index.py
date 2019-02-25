@@ -187,7 +187,7 @@ chapters = {
         'description': 'Components that make it easier to visualize \
         bioinformatics data.'
     },
-    
+
     'plugins': {
         'url': '/plugins',
         'content': plugins.layout,
@@ -518,7 +518,7 @@ chapters = {
     },
 
     # Dash Bio examples
-    
+
     'sequenceviewer-examples': {
         'url': '/dash-bio/sequenceviewer',
         'content': dashbio_examples.SequenceViewer,
@@ -529,10 +529,17 @@ chapters = {
     'alignmentchart-examples': {
         'url': '/dash-bio/alignmentchart',
         'content': dashbio_examples.AlignmentChart,
-        'name': 'Alignment Chart Component', 
+        'name': 'Alignment Chart Component',
         'description': 'Alignment Chart examples, properties, and reference.'
-    }, 
-    
+    },
+
+    'clustergram-examples': {
+        'url': '/dash-bio/clustergram',
+        'content': dashbio_examples.Clustergram,
+        'name': 'Clustergram Component',
+        'description': 'Clustergram examples, properties, and reference.'
+    },
+
 ### End Components ###
 
 ### Start Dash Deployment Server ###
@@ -792,7 +799,7 @@ chapters = {
         'content': tutorial.cytoscape.elements_chapter.layout,
         'name': 'Cytoscape Elements',
         'description': '''
-        Overview of element declaration and manipulation. 
+        Overview of element declaration and manipulation.
         '''
     },
 
@@ -801,7 +808,7 @@ chapters = {
         'content': tutorial.cytoscape.layout_chapter.layout,
         'name': 'Cytoscape Layouts',
         'description': '''
-        Description of built-in layouts, and how to modify their properties. 
+        Description of built-in layouts, and how to modify their properties.
         '''
     },
 
