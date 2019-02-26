@@ -22,10 +22,9 @@ def display(btn1, btn2, btn3):
     ctx = dash.callback_context
 
     if not ctx.triggered:
-        msg = 'None of the buttons have been clicked yet'
+        button_id = 'No clicks yet'
     else:
-        button_num = ctx.triggered[0]['prop_id'].split('.')[0].split('-')[1]
-        msg = 'Button {} was most recently clicked'.format(button_num)
+        button_id = ctx.triggered[0]['prop_id'].split('.')[0]
 
     ctx_msg = json.dumps({
         'states': ctx.states,
@@ -34,10 +33,16 @@ def display(btn1, btn2, btn3):
     }, indent=2)
 
     return html.Div([
-        html.Div('btn1: {}'.format(btn1)),
-        html.Div('btn2: {}'.format(btn2)),
-        html.Div('btn3: {}'.format(btn3)),
-        html.Div(msg),
+        html.Table([
+            html.Tr([html.Th('Button 1'),
+                     html.Th('Button 2'),
+                     html.Th('Button 3'),
+                     html.Th('Most Recent Click')]),
+            html.Tr([html.Td(btn1 or 0),
+                     html.Td(btn2 or 0),
+                     html.Td(btn3 or 0),
+                     html.Td(button_id)])
+        ]),
         html.Pre(ctx_msg)
     ])
 
