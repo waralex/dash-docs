@@ -4,7 +4,7 @@ from tutorial import styles
 
 import dash_bio
 
-from tutorial.utils.dashbio_doc_generator import generate_docs
+from tutorial.utils.dashbio_docs import generate_docs
 
 dashbio_library_heading = dcc.Markdown('''
     # Dash Bio 
@@ -14,7 +14,7 @@ dashbio_library_heading = dcc.Markdown('''
 
     Dash Bio is a suite of bioinformatics components that make it simpler to
     analyze and visualize bioinformatics data and interact with it in a Dash
-    application. 
+    application.
 
     The source is on GitHub at [plotly/dash-bio](https://github.com/plotly/dash-bio). 
 
@@ -47,7 +47,7 @@ dashbio_components = {
             ['pandas', 'pd'],
             ['dash_core_components', 'dcc']
         ],
-        'props': {
+        'params': {
             'data': 'data',
             'columnLabels': 'list(df.columns.values)',
             'rowLabels': 'list(df.index)',
@@ -64,7 +64,7 @@ data = df.values''',
 
     'SequenceViewer': {
         'description': '''A sequence viewer.''',
-        'props': {
+        'params': {
             'sequence': '\"MALWMRLLPLLALLALWGPDPAAAFVN\
 QHLCGSHLVEALYLVCGERGFFYTPKTRREAEDLQVGQVELGGGPGAGSLQPLA\
 LEGSLQKRGIVEQCCTSICSLYQLENYCN\"'
@@ -73,7 +73,7 @@ LEGSLQKRGIVEQCCTSICSLYQLENYCN\"'
 
     'Speck': {
         'description': '''A 3D WebGL molecule viewer.''',
-        'props': {
+        'params': {
             'view': '{\'resolution\': 600}'
         },
         'datafile': {
@@ -90,12 +90,11 @@ LEGSLQKRGIVEQCCTSICSLYQLENYCN\"'
 }
 
 layout_children = generate_docs(
-    'dash-bio',
+    'dash_bio',
     'dashbio',
     dashbio_library_heading,
+    dashbio_install_instructions,
     dashbio_components
 )
-
-layout_children.insert(1, dashbio_install_instructions)
 
 layout = html.Div(className="gallery", children=layout_children)
