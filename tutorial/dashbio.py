@@ -7,18 +7,18 @@ import dash_bio
 from tutorial.utils.dashbio_docs import generate_docs
 
 dashbio_library_heading = dcc.Markdown('''
-    # Dash Bio 
-    
+    # Dash Bio
+
     Dash is a web application framework that provides pure Python abstraction
-    around HTML, CSS, and JavaScript. 
+    around HTML, CSS, and JavaScript.
 
     Dash Bio is a suite of bioinformatics components that make it simpler to
     analyze and visualize bioinformatics data and interact with it in a Dash
     application.
 
-    The source is on GitHub at [plotly/dash-bio](https://github.com/plotly/dash-bio). 
+    The source is on GitHub at [plotly/dash-bio](https://github.com/plotly/dash-bio).
 
-    These docs are using version {}. 
+    These docs are using version {}.
     '''.replace('    ', '').format(dash_bio.__version__)
 )
 
@@ -38,9 +38,9 @@ dashbio_components = {
         },
         'iframe_location': 'https://dash-playground.plotly.host/dash-alignment-chart-demo/'
     },
-    
+
     'Clustergram': {
-        'description': '''A heatmap with dendrograms to display clustering of 
+        'description': '''A heatmap with dendrograms to display clustering of
         data such as gene expression data.''',
         'default_id': False,
         'library_imports': [
@@ -66,8 +66,8 @@ data = df.values''',
         'description': '''A sequence viewer.''',
         'params': {
             'sequence': '\"MALWMRLLPLLALLALWGPDPAAAFVN\
-QHLCGSHLVEALYLVCGERGFFYTPKTRREAEDLQVGQVELGGGPGAGSLQPLA\
-LEGSLQKRGIVEQCCTSICSLYQLENYCN\"'
+            QHLCGSHLVEALYLVCGERGFFYTPKTRREAEDLQVGQVELGGGPGAGSLQPLA\
+            LEGSLQKRGIVEQCCTSICSLYQLENYCN\"'
         }
     },
 
@@ -86,7 +86,6 @@ LEGSLQKRGIVEQCCTSICSLYQLENYCN\"'
         'setup_code': '''data = xyz_reader.read_xyz(data_string=data)''',
         'iframe_location': 'https://dash-playground.plotly.host/dash-speck-demo/'
     }
-    
 }
 
 layout_children = generate_docs(
