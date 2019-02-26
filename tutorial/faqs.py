@@ -83,12 +83,14 @@ layout = html.Div([
     that change whenever an event happens (in this case a click), there is a
     global variable `dash.callback_context`, available only inside a callback.
     It has properties:
-    - `triggered`: list of changed properties. Usually this will be empty on
-      initial load, and a length-1 list later. With more complex callback
-      chains it's possible that multiple intermediate properties change and
-      trigger a callback.
+    - `triggered`: list of changed properties. This will be empty on initial
+      load, unless an `Input` prop got its value from another initial callback.
+      After a user action it is a length-1 list, unless two properties of a
+      single component update simultaneously, such as a value and a timestamp
+      or event counter.
     - `inputs` and `states`: allow you to access the callback params
-      by id and prop instead of through the function args.
+      by id and prop instead of through the function args. These have the form
+      of dictionaries `{ 'component_id.prop_name': value }`
 
     Here's an example of how this can be done:''')),
     Syntax(examples['last_clicked_button'][0]),
@@ -98,7 +100,9 @@ layout = html.Div([
     Prior to v0.38.0, you needed to compare timestamp properties like
     `n_clicks_timestamp` to find the most recent click. While existing uses of
     `*_timestamp` continue to work for now, this approach is deprecated, and
-    may be removed in a future update.
+    may be removed in a future update. The one exception is
+    `modified_timestamp` from `dcc.Store`, which is safe to use, it is NOT
+    deprecated.
 
     ------------------------
 
