@@ -39,6 +39,35 @@ dashbio_components = {
         'iframe_location': 'https://dash-playground.plotly.host/dash-alignment-chart-demo/'
     },
 
+    'Circos': {
+        'description': '''A circular ideogram with arcs representing links between genes.''',
+        'library_imports': [
+            ['json', 'json'],
+        ],
+        'datafile': {
+            'name': 'circos_graph_data.json'
+        },
+        'params': {
+            'layout': 'circos_graph_data[\'GRCh37\']',
+            'tracks': '''[{
+  'type': 'CHORDS',
+  'data': circos_graph_data['chords'],
+  'opacity': 0.7,
+  'color': {'name': 'color'},
+  'config': {
+    'tooltipContent': {
+      'source': 'source',
+      'sourceID': 'id',
+      'target': 'target',
+      'targetID': 'id',
+      'targetEnd': 'end'
+    }
+  }
+}]'''
+        },
+        'setup_code': '''circos_graph_data = json.loads(data)'''
+    },
+
     'Clustergram': {
         'description': '''A heatmap with dendrograms to display clustering of
         data such as gene expression data.''',
