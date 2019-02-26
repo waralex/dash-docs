@@ -180,10 +180,11 @@ dash-bio/master/tests/dashbio_demos/sample_data/'''
             decode_string
         ) + setup_code
 
-        # declare data in component initialization
-        paramstring += '{}=data, '.format(
-            datafile['parameter']
-        )
+        # declare data in component initialization if necessary
+        if 'parameter' in datafile.keys():
+            paramstring += '{}=data, '.format(
+                datafile['parameter']
+            )
 
     # pretty-print param string (spaces for indentation)
     paramstring = paramstring.replace(', ', ',\n  ')
