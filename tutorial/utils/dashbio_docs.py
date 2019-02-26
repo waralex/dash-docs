@@ -210,10 +210,15 @@ dash-bio/master/tests/dashbio_demos/sample_data/'''
     # add imports
     imports_string = ''
     for library in library_imports:
-        imports_string += 'import {} as {}\n'.format(
-            library[0],
-            library[1]
-        )
+        if library[0] != library[1]:
+            imports_string += 'import {} as {}\n'.format(
+                library[0],
+                library[1]
+            )
+        else:
+            imports_string += 'import {}\n'.format(
+                library[0]
+            )
 
     # full code
     example_string = '''import {} as {}
