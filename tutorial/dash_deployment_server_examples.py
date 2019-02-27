@@ -1541,7 +1541,7 @@ AppPrivacy = html.Div(children=[
 
     Starting in Version 3.0.0 of Dash Deployment Server, you can restrict who is able to view your app
     from the app's management page. Find a list of links to these pages for your apps at 
-    `https://<your-dash-deployment-server>.com/Manager/apps`. [Contact support](mailto:onpremise.support@plot.ly)
+    `https://<your-dash-deployment-server>.com/Manager/apps`. Contact support
     if you have any questions about privacy in previous versions of Dash Deployment Server.
 
     &nbsp;
