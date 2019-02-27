@@ -69,6 +69,9 @@ layout = html.Div(className='toc', children=[
         Chapter(chapters['dashdaq']['name'],
                 chapters['dashdaq']['url'],
                 chapters['dashdaq']['description']),
+        Chapter(chapters['cytoscape']['name'],
+                chapters['cytoscape']['url'],
+                chapters['cytoscape']['description']),
     ]),
 
     Section('Creating Your Own Components', [
@@ -107,6 +110,8 @@ layout = html.Div(className='toc', children=[
                 chapters['auth']['url']),
         Chapter(chapters['deployment']['name'],
                 chapters['deployment']['url']),
+        Chapter(chapters['integrating-dash']['name'],
+                chapters['integrating-dash']['url']),
     ]),
 
     Section('Getting Help', [

@@ -2,7 +2,9 @@ import tutorial
 from tutorial import auth
 from tutorial import core_component_examples as examples
 from tutorial import core_components
+from tutorial import cytoscape
 from tutorial import d3
+from tutorial import dash_cytoscape_index
 from tutorial import dash_deployment_server
 from tutorial import dash_deployment_server_examples as dds_examples
 from tutorial import dash_table_index
@@ -29,6 +31,7 @@ from tutorial import urls
 from tutorial import react_for_python_developers
 from tutorial import table
 from tutorial import devtools
+from tutorial import integrating_dash
 
 
 ## The chapters dict is used to generate the dash-docs search index
@@ -156,6 +159,17 @@ chapters = {
                        'and more.'
     },
 
+    'cytoscape': {
+        'url': '/cytoscape',
+        'content': dash_cytoscape_index.layout,
+        'name': 'Dash Cytoscape',
+        'description': '(New! Released Feb 5, 2019) Dash Cytoscape is our new network ' \
+                       'visualization component. It offers a declarative and ' \
+                       'pythonic interface to create beautiful, customizable, ' \
+                       'interactive and reactive graphs.'
+
+    },
+
     'dashdaq': {
         'url': '/dash-daq',
         'content': daq.layout,
@@ -239,6 +253,14 @@ chapters = {
         'name': 'Deployment',
         'description': 'To share a Dash app, you need to "deploy" your Dash ' \
                        'app to a server'
+    },
+
+    'integrating-dash': {
+        'url': '/integrating-dash',
+        'content': integrating_dash.layout,
+        'name': 'Integrating Dash with Existing Web Apps',
+        'description': 'Strategies for integrating Dash apps with existing web ' \
+                       'apps.'
     },
 
     # 'deployment-onpremise': {
@@ -637,6 +659,13 @@ chapters = {
         'description': 'A reference for git commands and how they are used '
         'with Dash Deployment Server.'
     },
+
+    'dds-portal': {
+        'url': '/dash-deployment-server/portal',
+        'content': dds_examples.Portal,
+        'name': 'Dash App Portal',
+        'description': 'Learn about the Dash App Portal '
+    },
 ### End Dash Deployment Server ###
 
 ### Start DataTable Docs
@@ -730,6 +759,74 @@ chapters = {
     },
 
 ### End DataTable Docs
+
+### Start Cytoscape Docs
+
+    'cytoscape-elements': {
+        'url': '/cytoscape/elements',
+        'content': tutorial.cytoscape.elements_chapter.layout,
+        'name': 'Cytoscape Elements',
+        'description': '''
+        Overview of element declaration and manipulation. 
+        '''
+    },
+
+    'cytoscape-layout': {
+        'url': '/cytoscape/layout',
+        'content': tutorial.cytoscape.layout_chapter.layout,
+        'name': 'Cytoscape Layouts',
+        'description': '''
+        Description of built-in layouts, and how to modify their properties. 
+        '''
+    },
+
+    'cytoscape-styling': {
+        'url': '/cytoscape/styling',
+        'content': tutorial.cytoscape.styling_chapter.layout,
+        'name': 'Cytoscape Styling',
+        'description': '''
+        Methods to style elements with a CSS-like syntax.
+        '''
+    },
+
+    'cytoscape-callbacks': {
+        'url': '/cytoscape/callbacks',
+        'content': tutorial.cytoscape.callbacks_chapter.layout,
+        'name': 'Cytoscape Callbacks',
+        'description': '''
+        Methods to combine Dash callbacks to update your Cytoscape object.
+        '''
+    },
+
+    'cytoscape-events': {
+        'url': '/cytoscape/events',
+        'content': tutorial.cytoscape.events_chapter.layout,
+        'name': 'Cytoscape events',
+        'description': '''
+        Overview of user-interaction events that trigger callbacks in Dash,
+        and how to use them to update the Cytoscape component.
+        '''
+    },
+
+    'cytoscape-biopython': {
+        'url': '/cytoscape/biopython',
+        'content': tutorial.cytoscape.applications_chapter.layout,
+        'name': 'Cytoscape with Biopython',
+        'description': '''
+        Examples of applications in bioinformatics using Biopython.
+        '''
+    },
+
+    'cytoscape-reference': {
+        'url': '/cytoscape/reference',
+        'content': tutorial.cytoscape.reference_chapter.layout,
+        'name': 'Cytoscape Reference',
+        'description': '''
+        Comprehensive list of all of the Cytoscape properties.
+        '''
+    },
+
+### End Cytoscape Docs
 
     'search': {
         'url': '/search',
