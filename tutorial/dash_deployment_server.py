@@ -67,7 +67,7 @@ reusable_components.Section("User Interface", [
                 "There are two methods to deploy Dash Apps: HTTPS and SSH. "
                 "We recommend getting started with the HTTPS method. "
                 "In this section, you'll learn more about deploying with SSH."),
-        reusable_components.Chapter('Dash App Authentication',
+        reusable_components.Chapter('Dash Enterprise Auth Features',
                 '/dash-deployment-server/app-authentication',
                 'Using `dash-enterprise-auth` to manage user authentication data.'),
         reusable_components.Chapter('Dash App Privacy',
