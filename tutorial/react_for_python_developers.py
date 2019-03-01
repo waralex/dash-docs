@@ -426,7 +426,7 @@ layout = html.Div([dcc.Markdown('''
   Other methods provided by React are mostly related to component state management. Lifecycle hooks like `shouldComponentUpdate` and `componentDidMount` allow you to better specify when and how a
   component should update.
 
-  For these methods, please refer to the [React documentation](https://reactjs.org/docs/state-and-lifecycle.html).
+  For these methods, please refer to the [React/State and lifecycle](https://reactjs.org/docs/state-and-lifecycle.html).
 
   ## Our very own React component
   ##### Creating a boilerplate component
@@ -588,9 +588,9 @@ layout = html.Div([dcc.Markdown('''
   }
   ```
 
-  Props always flow down, but you can set a method as a prop too, so that a child can call a method of a parent. For more information, please refer to the [React docs](https://reactjs.org/docs/components-and-props.html).
+  Props always flow down, but you can set a method as a prop too, so that a child can call a method of a parent. For more information, please refer to the [React/Components and props](https://reactjs.org/docs/components-and-props.html).
 
-  These are just the basics of React, if you want to know more, the [React docs](https://reactjs.org/docs) are a great place to start!
+  These are just the basics of React, if you want to know more, the [official documentation site](https://reactjs.org/docs) are a great place to start!
 
   ## Using your React components in Dash
 
