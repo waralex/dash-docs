@@ -7,7 +7,6 @@ coverage/
 dash_core_components/metadata.json
 dash_core_components/bundle.js*
 node_modules/
-cache-directory/
 .npm
 vv/
 venv/
