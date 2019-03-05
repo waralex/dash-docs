@@ -36,7 +36,10 @@ dashbio_components = {
             'name': 'alignment_viewer_p53.fasta',
             'parameter': 'data'
         },
-        'iframe_location': 'https://dash-playground.plotly.host/dash-alignment-chart-demo/'
+        'iframe_info': {
+            'location': 'https://dash-playground.plotly.host/dash-alignment-chart-demo/',
+            'height': 900
+        }
     },
 
     'Circos': {
@@ -65,7 +68,11 @@ dashbio_components = {
   }
 }]'''
         },
-        'setup_code': '''circos_graph_data = json.loads(data)'''
+        'setup_code': '''circos_graph_data = json.loads(data)''',
+        'iframe_info': {
+            'location': 'https://dash-playground.plotly.host/dash-circos-demo/',
+            'height': 700
+        }
     },
 
     'Clustergram': {
@@ -88,7 +95,10 @@ dashbio_components = {
         'setup_code': '''df = pd.read_csv('https://raw.githubusercontent.com/plotly/dash-bio/master/tests/dashbio_demos/sample_data/clustergram_mtcars.tsv',
         sep='\t', skiprows=4).set_index('model')
 data = df.values''',
-        'iframe_location': 'https://dash-playground.plotly.host/dash-clustergram-demo/'
+        'iframe_info': {
+            'location': 'https://dash-playground.plotly.host/dash-clustergram-demo/',
+            'height': 825
+        }
     },
 
     'SequenceViewer': {
@@ -113,7 +123,10 @@ data = df.values''',
             ['dash_bio.utils.xyz_reader', 'xyz_reader']
         ],
         'setup_code': '''data = xyz_reader.read_xyz(data_string=data)''',
-        'iframe_location': 'https://dash-playground.plotly.host/dash-speck-demo/'
+        'iframe_info': {
+            'location': 'https://dash-playground.plotly.host/dash-speck-demo/',
+            'height': 350
+        }
     }
 }
 
