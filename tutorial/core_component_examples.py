@@ -793,14 +793,12 @@ DatePickerSingle = html.Div(children=[
     html.Hr(),
     html.H3("Simple DatePickerSingle Example"),
     dcc.Markdown("This is a simple example of a `DatePickerSingle` \
-                component tied to a callback. The 'date` property is recommended \
-                to use python `datetime.date` or `datetime.datetime` objects.\
-                The `min_date_allowed` and \
-                `max_date_allowed` properties define the minimum and \
-                maximum selectable \
-                dates on the calendar while `initial_visible_month` defines \
-                the calendar month that is first displayed when the \
-                `DatePickerSingle` component is opened."),
+                component tied to a callback. The `date` property is recommended \
+                to use python `datetime.date` or `datetime.datetime` objects. \
+                The `min_date_allowed` and `max_date_allowed` properties \
+                define the minimum and maximum selectable dates on the calendar \
+                while `initial_visible_month` defines the calendar month that is first \
+                displayed when the `DatePickerSingle` component is opened."),
     dcc.SyntaxHighlighter(
         examples['date_picker_single'][0],
         language='python',
