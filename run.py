@@ -149,6 +149,7 @@ app.index_string = '''
         <footer>
             {%config%}
             {%scripts%}
+            {%renderer%}
         </footer>
     </body>
 </html>
