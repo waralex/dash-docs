@@ -20,7 +20,6 @@ app.index_string = '''
         <footer>
             {%config%}
             {%scripts%}
-            {%renderer%}
         </footer>
         <div>My Custom footer</div>
     </body>
