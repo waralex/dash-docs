@@ -41,14 +41,18 @@ def get_component_names(library_name):
 
 def IframeComponentBlock(
         example_string,
-        iframe_location
+        location,
+        height=600,
+        width=600
 ):
     '''Generates a container that is visually similar to the
     ComponentBlock for components that require an externally hosted app.
 
     :param (str) example_string: String containing the code that is
     used in the application from the iframe.
-    :param (str) iframe_location: The URL of the app.
+    :param (str) location: The URL of the app.
+    :param (int) height: The height of the iframe.
+    :param (int) width: The width of the iframe.
 
     :rtype (dict): A dash_html_components div containing the code
     container and the iframe.
@@ -64,10 +68,10 @@ def IframeComponentBlock(
         html.Div(
             className='example-container',
             children=html.Iframe(
-                width='600px',
-                height='600px',
+                width='{}px'.format(width),
+                height='{}px'.format(height),
                 style={'border': 'none'},
-                src=iframe_location
+                src=location
             )
         )
     ])
@@ -84,7 +88,7 @@ def generate_component_example(
         library_imports=[],
         setup_code='',
         component_wrap=None,
-        iframe_location=None
+        iframe_info=None
 ):
     '''Generates an example for a component, with hyperlinks to the
     appropriate component-specific pages.
@@ -117,9 +121,8 @@ def generate_component_example(
     (e.g., if the component needs to be an argument for a dcc.Graph).
     The location of the component code is represented by an
     underscore (_).
-    :param (str) iframe_location: The URL of the app to be rendered in
-    an iframe, if applicable.
-
+    :param (dict) iframe_info: The URL and, if applicable, the height
+    and width of the iframe containing the example.
     :rtype (list[obj]): A list containing the entire section for the
     component in question, including the code block, component demo,
     description, and hyperlinks to the component-specific page.
@@ -239,10 +242,10 @@ component = {}
         example_string
     )
     # load the iframe if that is where the app is
-    if iframe_location is not None:
+    if iframe_info is not None:
         component_demo = IframeComponentBlock(
             example_string,
-            iframe_location
+            **iframe_info
         )
 
     # full component section
@@ -333,7 +336,7 @@ def create_default_example(
     :rtype (list[object]): The children of the layout for the default
     example.
     '''
-    
+
     return [
         html.Hr(),
 
@@ -373,7 +376,7 @@ def generate_prop_table(
     :rtype (object): An html.Table containing data on the props of the component.
 
     '''
-    
+
     regex = {
         'react': r'\s*([a-zA-Z]+)\s*\(([a-z\s|]*;*\s*[a-z]*)\):*[\.\s]*(.*)',
         'python': r'\s*\(([a-zA-Z]+)\)\s*([a-zA-Z_]+)\s*:\s*(.*)'
