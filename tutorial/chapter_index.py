@@ -589,8 +589,8 @@ chapters = {
     'app-auth-examples': {
         'url': '/dash-deployment-server/app-authentication',
         'content': dds_examples.Authentication,
-        'name': 'Dash App Authentication',
-        'description': 'Adding Authentication to your Dash App'
+        'name': 'Dash Enterprise Auth Features',
+        'description': 'Accessing User Authentication Data in your Dash App'
     },
 
     'app-privacy': {
@@ -758,6 +758,15 @@ chapters = {
         'name': 'Python-Driven Filtering, Paging, Sorting - DataTable',
         'description': '''
         Examples on filtering, sorting, and paging data with Python.
+        '''
+    },
+
+    'typing': {
+        'url': '/datatable/typing',
+        'content': tutorial.table.table_typing_chapter.layout,
+        'name': 'Typing and User Input Processing',
+        'description': '''
+        Column typing and user input validation, coercing, defaulting.
         '''
     },
 
