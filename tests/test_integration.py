@@ -120,7 +120,7 @@ class Tests(IntegrationTests):
             else:
                 self.driver.get('http://localhost:8050{}'.format(href))
                 self.wait_for_element_by_id('wait-for-page-{}'.format(href))
-                time.sleep(5)
+                # time.sleep(5)
                 self.snapshot(href)
                 self.driver.back()
 
@@ -135,5 +135,5 @@ class Tests(IntegrationTests):
         search_element = self.driver.find_element_by_id('search-input')
         search_element.clear()
         search_element.send_keys('dropdown')
-        time.sleep(5)
+        # time.sleep(5)
         self.snapshot('search-dropdown')
