@@ -650,7 +650,7 @@ DatePickerRange = html.Div(children=[
 from datetime import datetime as dt
 
 dcc.DatePickerRange(
-    end_date=dt(2017,6,21),
+    end_date=dt(2017,6,21,23,59,59,999999),
     display_format='MMM Do, YY',
     start_date_placeholder_text='MMM Do, YY'
 )'''),
@@ -658,7 +658,7 @@ dcc.DatePickerRange(
     ComponentBlock('''import dash_core_components as dcc
 from datetime import datetime as dt
 dcc.DatePickerRange(
-    end_date=dt.now(),
+    end_date=dt(2017,6,21),
     display_format='M-D-Y-Q',
     start_date_placeholder_text='M-D-Y-Q'
 )'''),
@@ -667,7 +667,7 @@ dcc.DatePickerRange(
 from datetime import datetime as dt
 
 dcc.DatePickerRange(
-    end_date=dt.now(),
+    end_date=dt(2017,6,21),
     display_format='MMMM Y, DD',
     start_date_placeholder_text='MMMM Y, DD'
 )'''),
@@ -676,7 +676,7 @@ dcc.DatePickerRange(
 from datetime import datetime as dt
 
 dcc.DatePickerRange(
-    end_date=dt.now(),
+    end_date=dt(2017,6,21),
     display_format='X',
     start_date_placeholder_text='X'
 )''', language='python', customStyle=styles.code_container),
@@ -694,7 +694,7 @@ from datetime import datetime as dt
 dcc.DatePickerRange(
     month_format='MMM Do, YY',
     end_date_placeholder_text='MMM Do, YY',
-    start_date=dt.now()
+    start_date=dt(2017,6,21)
 )'''),
     ComponentBlock('''import dash_core_components as dcc
 from datetime import datetime as dt
@@ -702,7 +702,7 @@ from datetime import datetime as dt
 dcc.DatePickerRange(
     month_format='M-D-Y-Q',
     end_date_placeholder_text='M-D-Y-Q',
-    start_date=dt.now()
+    start_date=dt(2017,6,21)
 )'''),
     ComponentBlock('''import dash_core_components as dcc
 from datetime import datetime as dt
@@ -710,7 +710,7 @@ from datetime import datetime as dt
 dcc.DatePickerRange(
     month_format='MMMM Y',
     end_date_placeholder_text='MMMM Y',
-    start_date=dt.now()
+    start_date=dt(2017,6,21)
 )'''),
     ComponentBlock('''import dash_core_components as dcc
 from datetime import datetime as dt
@@ -718,7 +718,7 @@ from datetime import datetime as dt
 dcc.DatePickerRange(
     month_format='X',
     end_date_placeholder_text='X',
-    start_date=dt.now()
+    start_date=dt(2017,6,21)
 )'''),
 
     html.Hr(),
@@ -793,12 +793,14 @@ DatePickerSingle = html.Div(children=[
     html.Hr(),
     html.H3("Simple DatePickerSingle Example"),
     dcc.Markdown("This is a simple example of a `DatePickerSingle` \
-                 component tied to a callback. The `min_date_allowed` and \
-                 `max_date_allowed` properties define the minimum and \
-                 maximum selectable \
-                 dates on the calendar while `initial_visible_month` defines \
-                 the calendar month that is first displayed when the \
-                 `DatePickerSingle` component is opened."),
+                component tied to a callback. The 'date` property is recommended \
+                to use python `datetime.date` or `datetime.datetime` objects.\
+                The `min_date_allowed` and \
+                `max_date_allowed` properties define the minimum and \
+                maximum selectable \
+                dates on the calendar while `initial_visible_month` defines \
+                the calendar month that is first displayed when the \
+                `DatePickerSingle` component is opened."),
     dcc.SyntaxHighlighter(
         examples['date_picker_single'][0],
         language='python',
@@ -894,7 +896,7 @@ DatePickerSingle = html.Div(children=[
 from datetime import datetime as dt
 
 dcc.DatePickerSingle(
-    date=dt(2017,6,21),
+    date='2017-06-21',
     display_format='MMM Do, YY'
 )'''),
 
@@ -945,12 +947,12 @@ dcc.DatePickerSingle(
 )'''),
 
     ComponentBlock('''import dash_core_components as dcc
-from datetime import datetime as dt
+import datetime
 
 dcc.DatePickerSingle(
     month_format='MMMM Y',
     placeholder='MMMM Y',
-    date=dt(2017,6,21)
+    date=datetime.date(2020,2,29)
 )'''),
 
     ComponentBlock('''import dash_core_components as dcc
@@ -959,7 +961,7 @@ from datetime import datetime as dt
 dcc.DatePickerSingle(
     month_format='X',
     placeholder='X',
-    date=dt(2017,6,21)
+    date=dt(2017,6,21,0,0,0,0)
 )''', language='python', customStyle=styles.code_container),
     html.Hr(),
     html.H3("Vertical Calendar and Placeholder Text"),
