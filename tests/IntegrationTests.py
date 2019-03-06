@@ -1,4 +1,4 @@
-from __future__ import absolute_import, print_function
+from __future__ import absolute_import
 import multiprocessing
 import time
 import unittest
@@ -71,8 +71,7 @@ class IntegrationTests(unittest.TestCase):
         # Run on a separate process so that it doesn't block
         self.server_process = multiprocessing.Process(target=run)
         self.server_process.start()
-        print("starting the sever in a separate process ... ")
-        time.sleep(5)
+        time.sleep(2)
 
         # Visit the dash page
         self.driver.get('http://localhost:8050{}'.format(path))
