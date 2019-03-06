@@ -75,7 +75,7 @@ class IntegrationTests(unittest.TestCase):
 
         # Visit the dash page
         self.driver.get('http://localhost:8050{}'.format(path))
-        # time.sleep(0.5)
+
 
         # Inject an error and warning logger
         logger = '''
