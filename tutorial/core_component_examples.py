@@ -793,12 +793,13 @@ DatePickerSingle = html.Div(children=[
     html.Hr(),
     html.H3("Simple DatePickerSingle Example"),
     dcc.Markdown("This is a simple example of a `DatePickerSingle` \
-                component tied to a callback. The `date` property is recommended \
-                to use python `datetime.date` or `datetime.datetime` objects. \
-                The `min_date_allowed` and `max_date_allowed` properties \
-                define the minimum and maximum selectable dates on the calendar \
-                while `initial_visible_month` defines the calendar month that is first \
-                displayed when the `DatePickerSingle` component is opened."),
+        component tied to a callback. It is safe to use the string \
+        format of `datetime.date` or `datetime.datetime` objects for the \
+        `date` property, be aware of the extra time in `datetime` object will \
+        be ignored. The `min_date_allowed` and `max_date_allowed` properties \
+        define the minimum and maximum selectable dates on the calendar \
+        while `initial_visible_month` defines the calendar month that is \
+        first displayed when the `DatePickerSingle` component is opened."),
     dcc.SyntaxHighlighter(
         examples['date_picker_single'][0],
         language='python',
@@ -1443,18 +1444,18 @@ LogoutButton = html.Div([
     dcc.Markdown(s('''
     Please note that no authentication is performed in Dash by default
     and you have to implement the authentication yourself.
-    
+
     ## List of packages that provide authentication methods:
-    
+
     - [flask-login](https://flask-login.readthedocs.io/en/latest/)
     - [dash-auth](https://github.com/plotly/dash-auth)
-    
+
     You can also use these packages for custom authentication:
-    
+
     ### Password hashes:
     - [bcrypt](https://github.com/pyca/bcrypt/)
     - [passlib](https://passlib.readthedocs.io/en/stable/)
-    
+
     ### Session/cookies
     - [flask-session](https://pythonhosted.org/Flask-Session/)
     - [itsdangerous](https://pythonhosted.org/itsdangerous/)
