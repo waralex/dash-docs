@@ -793,11 +793,13 @@ DatePickerSingle = html.Div(children=[
     html.Hr(),
     html.H3("Simple DatePickerSingle Example"),
     dcc.Markdown("This is a simple example of a `DatePickerSingle` \
-        component tied to a callback. It is safe to use the string \
-        format of `datetime.date` or `datetime.datetime` objects for the \
-        `date` property, be aware of the extra time in `datetime` object will \
-        be ignored. The `min_date_allowed` and `max_date_allowed` properties \
-        define the minimum and maximum selectable dates on the calendar \
+        component tied to a callback. You can use either date objects \
+        (`datetime.date` or `datetime.datetime`) or strings in the form \
+        `YYYY-MM-DD` to provide dates to Dash components. Strings are \
+        preferred because that's the form dates take as callback arguments. \
+        Be aware that any time information included in a datetime object \
+        or string will be ignored. The `min_date_allowed` and `max_date_allowed` \
+        properties define the minimum and maximum selectable dates on the calendar \
         while `initial_visible_month` defines the calendar month that is \
         first displayed when the `DatePickerSingle` component is opened."),
     dcc.SyntaxHighlighter(
