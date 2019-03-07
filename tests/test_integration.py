@@ -135,5 +135,5 @@ class Tests(IntegrationTests):
         search_element.clear()
         search_element.send_keys('dropdown')
         self.wait_for_element_by_id('hits')
-        time.sleep(1)
+        time.sleep(2)
         self.snapshot('search-dropdown')
