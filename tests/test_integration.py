@@ -10,6 +10,7 @@ from selenium.webdriver.common.keys import Keys
 import base64
 import importlib
 import io
+import time
 import multiprocessing
 import os
 import pandas as pd
@@ -134,4 +135,5 @@ class Tests(IntegrationTests):
         search_element.clear()
         search_element.send_keys('dropdown')
         self.wait_for_element_by_id('hits')
+        time.sleep(1)
         self.snapshot('search-dropdown')
