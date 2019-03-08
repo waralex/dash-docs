@@ -31,7 +31,7 @@ on Windows systems `waitress` can be a replacement for `gunicorn`
 
 3. `pip install waitress`
 4. `waitress-serve --listen=*:8000 run:server`
-5. open http://127.0.0.1:8000 in your browser
+5. open http://127.0.0.1:8000 in your favoriate browser
 
 
 ### Contributing
