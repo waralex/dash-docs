@@ -115,7 +115,7 @@ class Tests(IntegrationTests):
 
         def visit_and_snapshot(href):
             self.driver.get('http://localhost:8050{}'.format(href))
-            # stub elem at the bottom of page
+            # stub elem at the bottom of browser
             self.wait_for_element_by_id('wait-for-page-{}'.format(href))
             if href == '/external-resources':
                 self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
