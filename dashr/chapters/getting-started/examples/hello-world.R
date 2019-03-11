@@ -12,13 +12,13 @@ app$layout_set(
       data=list(
         list(
           x=list(1, 2, 3),
-          y=list(3, 1, 5),
+          y=list(4, 1, 2),
           type='bar',
           name='SF'
         ),
         list(
           x=list(1, 2, 3),
-          y=list(3, 9, 3),
+          y=list(2, 4, 5),
           type='bar',
           name='Montréal'
         )
@@ -28,4 +28,5 @@ app$layout_set(
   ))
 )
 
-app$run_server()
+
+#app$run_heroku()

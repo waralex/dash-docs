@@ -1,11 +1,16 @@
 library(dashCoreComponents)
 library(dashHtmlComponents)
+library(dashR)
 
 utils <- new.env()
 source('dashr/utils.R', local=utils)
 
 examples <- list(
-  simple.callbacks=utils$LoadExampleCode('dashR/chapters/callbacks/examples/simple-callback.R')
+  simple.callbacks=utils$LoadExampleCode('dashr/chapters/callbacks/examples/simple-callback.R'),
+  simple.slider=utils$LoadExampleCode('dashr/chapters/callbacks/examples/hello-slider.R'),
+  multi.inputs=utils$LoadExampleCode('dashr/chapters/callbacks/examples/multi-inputs.R'),
+  multi.output=utils$LoadExampleCode('dashr/chapters/callbacks/examples/multi-output.R'),
+  multi.output2=utils$LoadExampleCode('dashr/chapters/callbacks/examples/multi-output-v2.R')
 )
 
 layout <- htmlDiv(list(
@@ -25,6 +30,24 @@ interactive.
 
 Let's get started with a simple example.
   "),
+  # Example of basic callbacks
   examples$simple.callbacks$source_code,
-  examples$simple.callbacks$layout
+  examples$simple.callbacks$layout,
+  
+  # Example of slicer
+  examples$simple.slider$source_code,
+  examples$simple.slider$layout,
+  
+  # Example of mutli-inputs
+  examples$multi.inputs$source_code,
+  examples$multi.inputs$layout,
+  
+  # Example of mutli-output
+  examples$multi.output$source_code,
+  examples$multi.output$layout,
+  
+  # Example of mutli-output
+  examples$multi.output2$source_code,
+  examples$multi.output2$layout
 ))
+

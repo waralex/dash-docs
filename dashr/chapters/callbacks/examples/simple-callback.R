@@ -16,5 +16,5 @@ app$callback(
     sprintf("You've entered \"%s\"", input_value)
   })
 
-app$run_server()
+#app$run_heroku()
 

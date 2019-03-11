@@ -2,15 +2,7 @@ library(dashR)
 library(dashCoreComponents)
 library(dashHtmlComponents)
 
-dash_css <- htmltools::htmlDependency(
-  name = "dash-css",
-  version = "1.0.0",
-  src = c(href = "https://codepen.io/chriddyp/pen"),
-  stylesheet = "bWLwgP.css"
-)
-
 app <- Dash$new()
-app$dependencies_set(dash_css())
 
 colors <- list(
   background = '#111111',
@@ -68,4 +60,4 @@ app$layout_set(
   )
 )
 
-app$run_server()
+#app$run_heroku()
