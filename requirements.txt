@@ -5,7 +5,7 @@ chardet==3.0.4
 click==6.7
 configparser==3.5.0
 dash==0.39.0
---force-reinstall git+git://github.com/plotly/dash-core-components@bump-rc-slider#egg=dash_core_components
+git+git://github.com/plotly/dash-core-components@bump-rc-slider#egg=dash_core_components
 dash-auth==1.2.0
 dash-cytoscape==0.0.4
 dash-dangerously-set-inner-html==0.0.1
