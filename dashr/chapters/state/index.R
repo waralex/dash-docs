@@ -15,15 +15,15 @@ layout <- htmlDiv(list(
 # Dash State
 > This is the 4th chapter of the
 > Dash Tutorial.
-> The [previous chapter](/callbacks) covered Dash
-> Callbacks and the [next chapter](/interactive-graphing)
+> The [previous chapter](/getting-started-part-2) covered Dash
+> Callbacks and the [next chapter](/state)
 > covers interactive graphing and
 > crossfiltering.
 > Just getting started?
 > Make sure to
 > [install the necessary dependencies](/installation).
 
-In the previous chapter on [basic Dash callbacks](/callbacks),
+In the previous chapter on [basic Dash callbacks](/getting-started),
 our callbacks looked something like:
 "),
   examples$two_inputs$source,

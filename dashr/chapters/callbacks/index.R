@@ -11,7 +11,7 @@ examples <- list(
 layout <- htmlDiv(list(
   coreMarkdown("
 # Basic Dash Callbacks
-In the previous chapter on the [app.layout](127.0.0.1:8080/getting-started) we learned that the
+In the previous chapter on the [app.layout](/getting-started) we learned that the
 app$layout describes what the app looks like and is a
 hierarchical tree of components.
 The dash_html_components library provides classes for
