@@ -15,7 +15,7 @@ if this is your first introduction to Markdown!
 "
 
 app$layout_set(htmlDiv(list(
-  coreMarkdown(children=markdown_text)
+  dccMarkdown(children=markdown_text)
   )))
 
 #app$run_heroku()

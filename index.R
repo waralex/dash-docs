@@ -29,12 +29,12 @@ app$layout_set(
   htmlDiv(list(
 
     htmlDiv(css.links),
-    coreLocation(id='url'),
-    
+    dccLocation(id='url'),
+
 
     # Temporary workaround until https://github.com/plotly/dashR/commit/7663d584926ca0cb49797f7c122da9a30af5910b
     # is merged
-    coreGraph(
+    dccGraph(
       id='hidden',
       figure=list(data=list()),
       style=list(display='none')
@@ -71,22 +71,22 @@ app$callback(output=list(id='chapter', property='children'),
   } else {
     return(htmlDiv(list(
       htmlH1('DashR User Guide'),
-        coreLink(
+        dccLink(
           'Part 1. Installation',
           href='/installation'
         ),
         htmlBr(),
-        coreLink(
+        dccLink(
           'Part 2. The Dash Layout',
           href='/getting-started'
         ),
         htmlBr(),
-        coreLink(
+        dccLink(
           'Part 3. Basic Callbacks',
           href='/getting-started-part-2'
         ),
         htmlBr(),
-        coreLink(
+        dccLink(
           'Part 4. Callbacks With State',
           href='/state'
         )

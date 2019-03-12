@@ -5,7 +5,7 @@ library(dashHtmlComponents)
 app <- Dash$new()
 
 app$layout_set(htmlDiv(list(
-  coreInput(id='my-id-input', value='initial value', type='text'),
+  dccInput(id='my-id-input', value='initial value', type='text'),
   htmlDiv(id='my-id-div')
 )))
 
@@ -17,4 +17,3 @@ app$callback(
   })
 
 #app$run_heroku()
-

@@ -12,7 +12,7 @@ examples <- list(
 
 
 layout <- htmlDiv(list(
-  coreMarkdown("
+  dccMarkdown("
 # Dash State
 > This is the 4th chapter of the
 > Dash Tutorial.
@@ -30,7 +30,7 @@ our callbacks looked something like:
   #example of two inputs
   examples$two_inputs$source,
   examples$two_inputs$layout,
-  
+
   #example of one input and two states
   examples$one_input_two_states$source,
   examples$one_input_two_states$layout

@@ -21,7 +21,7 @@ for (i in 1:length(continents)){
   )}
 
 app$layout_set(htmlDiv(list(
-  coreGraph(
+  dccGraph(
     id = 'life-exp-vs-gdp',
     figure = list(
       data =  data_gdp_life_exp_2007,

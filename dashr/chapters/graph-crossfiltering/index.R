@@ -13,19 +13,19 @@ examples <- list(
 
 
 layout <- htmlDiv(list(
-  coreMarkdown("
+  dccMarkdown("
 # Interactive Visualizations
-> This is the 5th chapter of the [Dash Tutorial](/). 
-> The [previous chapter](/state) covered callbacks with `State` and 
-> the [next chapter](/data-callbacks) describes how to share data between callbacks. 
-> Just getting started? 
+> This is the 5th chapter of the [Dash Tutorial](/).
+> The [previous chapter](/state) covered callbacks with `State` and
+> the [next chapter](/data-callbacks) describes how to share data between callbacks.
+> Just getting started?
 > Make sure to [install the necessary dependencies](/getting-started).
 
 "),
   # Example of interactive visualizations 1
   examples$interactive_graph_1$source,
   examples$interactive_graph_1$layout
-  
+
   # Example of interactive visualizations 2
   #examples$interactive_graph_2$source,
   #examples$interactive_graph_2$layout

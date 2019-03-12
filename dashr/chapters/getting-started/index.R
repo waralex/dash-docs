@@ -16,7 +16,7 @@ examples <- list(
 )
 
 layout <- htmlDiv(list(
-  coreMarkdown("
+  dccMarkdown("
 # Dash Layout
 > This is the 2nd chapter of the
 > [Dash Tutorial](/).
@@ -43,7 +43,7 @@ dropdowns, sliders, and more.
   "),
   examples$hello.world$source_code,
 
-  coreMarkdown("
+  dccMarkdown("
     Run the app with
 
    ```
@@ -52,47 +52,47 @@ dropdowns, sliders, and more.
    start: 127.0.0.1:8080
    ```
   "),
-  # hello markdown example 
-  coreMarkdown("
+  # hello markdown example
+  dccMarkdown("
     and visit [https://dashr-docs.herokuapp.com/](https://dashr-docs.herokuapp.com/)
     in your web browser. You should see an app that looks like this.
   "),
   examples$hello.world$layout,
 
-  # hello layout example 
+  # hello layout example
   examples$hello.dash2$source_code,
   examples$hello.dash2$layout,
-  
-  # hello table example 
+
+  # hello table example
   examples$hello.table$source_code,
   examples$hello.table$layout,
-  
-  # hello scater example 
+
+  # hello scater example
   examples$hello.bubble$source_code,
   examples$hello.bubble$layout,
-  
+
   # hello dmarkdown example
   examples$hello.markdown$source_code,
   examples$hello.markdown$layout,
-  
-  # hello dcc example 
+
+  # hello dcc example
   examples$hello.dcc$source_code,
   examples$hello.dcc$layout,
-  
+
   # dropdown help with example
   # examples$dropdown.doc$source_code,
   examples$dropdown.doc$layout,
-  
-  coreMarkdown("
+
+  dccMarkdown("
   #Summary
-  The layout of a Dash app describes what the app looks like. The layout is a hierarchical tree of components. The dash_html_components library provides classes for all of the HTML tags and the keyword arguments describe the HTML attributes like style, className, and id. The dash_core_components library generates higher-level components like controls and graphs.
+  The layout of a Dash app describes what the app looks like. The layout is a hierarchical tree of components. The dash_html_components library provides classes for all of the HTML tags and the keyword arguments describe the HTML attributes like style, className, and id. The dash_dcc_components library generates higher-level components like controls and graphs.
   For reference, see:
   - [dash_core_components gallery](https://dash.plot.ly/dash-core-components)
   - [dash_html_components gallery](https://dash.plot.ly/dash-html-components)
 
 
   The next part of the Dash tutorial covers how to make these apps interactive.
-  
+
   Dash Tutorial Part 3: Basic Callbacks
   [Back to the Table of Contents](/getting-started-part-2)
   ")

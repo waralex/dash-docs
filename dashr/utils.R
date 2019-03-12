@@ -36,7 +36,7 @@ LoadExampleCode <- function(filename) {
   return(list(
     layout=htmlDiv(className='example-container', children=layout),
     source_code=htmlDiv(
-      children=coreSyntaxHighlighter(example.file.as.string),
+      children=dccSyntaxHighlighter(example.file.as.string),
       className='code-container'
     )
   ))

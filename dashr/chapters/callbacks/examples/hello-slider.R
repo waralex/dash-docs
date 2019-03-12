@@ -8,8 +8,8 @@ df <- read.csv('dashr/chapters/callbacks/examples/gapminderDataFiveYear.csv', he
 continents <- unique(df$continent)
 
 app$layout_set(htmlDiv(list(
-  coreGraph(id = 'graph-with-slider'),
-  coreSlider(
+  dccGraph(id = 'graph-with-slider'),
+  dccSlider(
     id = 'year-slider',
     min = 1,
     max = length(unique(df$year))-1,
@@ -41,7 +41,7 @@ app$callback(
           ),
           name = continents[i]
         )}
-      
+
       return (list(
         'data' = traces,
         'layout'= list(

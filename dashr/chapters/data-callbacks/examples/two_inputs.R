@@ -5,8 +5,8 @@
 app <- Dash$new()
 
 app$layout_set(htmlDiv(list(
-    coreInput(id='input-1', type='text', value='Montréal'),
-    coreInput(id='input-2', type='text', value='Canada'),
+    dccInput(id='input-1', type='text', value='Montréal'),
+    dccInput(id='input-2', type='text', value='Canada'),
     htmlDiv(id='output')
 )))
 

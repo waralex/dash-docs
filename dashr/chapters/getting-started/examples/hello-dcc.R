@@ -8,16 +8,16 @@ myList = list()
 
 app$layout_set(htmlDiv(list(
   htmlLabel('Dropdown'),
-  coreDropdown(
+  dccDropdown(
     options = list(list(label = "New York City", value = "NYC"),
                    list(label = "Montréal", value = "MTL"),
                    list(label = "San Francisco", value = "SF")),
     value = 'MTL'
   ),
   htmlBr(),
-  
+
   htmlLabel('Multi-Select Dropdown'),
-  coreDropdown(
+  dccDropdown(
     options = list(list(label = "New York City", value = "NYC"),
                    list(label = "Montréal", value = "MTL"),
                    list(label = "San Francisco", value = "SF")),
@@ -28,35 +28,35 @@ app$layout_set(htmlDiv(list(
   htmlBr(),
   htmlBr(),
   htmlLabel('Radio Items'),
-  coreRadioItems(
+  dccRadioItems(
     options = list(list(label = "New York City", value = "NYC"),
                    list(label = "Montréal", value = "MTL"),
                    list(label = "San Francisco", value = "SF")),
     value = 'MTL'
   ),
   htmlBr(),
-  
+
   htmlLabel('Checkboxes'),
-  coreChecklist(
+  dccChecklist(
     options = list(list(label = "New York City", value = "NYC"),
                    list(label = "Montréal", value = "MTL"),
                    list(label = "San Francisco", value = "SF")),
     value = list('MTL', 'SF')
   ),
   htmlBr(),
-  
+
   htmlLabel('Text Input'),
-  coreInput(value='MTL', type='text'),
+  dccInput(value='MTL', type='text'),
   htmlBr(),
-  
+
   htmlLabel('Slider'),
-  coreSlider(
+  dccSlider(
     min = 0,
     max = 9,
     marks = c("", "Label 1", 2:5),
     value = 5
   )
-  
+
   ), style = list('columnCount' = 2)))
 
 

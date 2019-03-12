@@ -8,7 +8,7 @@ app$layout_set(
   htmlDiv(list(
     htmlH1('Hello Dash'),
     htmlDiv(children="Dash: A web application framework for R."),
-    coreGraph(figure=list(
+    dccGraph(figure=list(
       data=list(
         list(
           x=list(1, 2, 3),

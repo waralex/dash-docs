@@ -10,18 +10,18 @@ all_options = list(
 )
 # [{'label': k, 'value': k} for k in all_options.keys()],
 app$layout_set(htmlDiv(list(
-      coreRadioItems(
+      dccRadioItems(
         id = 'countries-dropdown',
         options = list(list(label = 'America', value = 'America'),
                        list(label = 'Canada', value = 'Canada')),
         value = 'America'
       ),
       htmlHr(),
-      
-      coreRadioItems(id='cities-dropdown'),
-      
+
+      dccRadioItems(id='cities-dropdown'),
+
       htmlHr(),
-      
+
       htmlDiv(id='display-selected-values')
     )
   )

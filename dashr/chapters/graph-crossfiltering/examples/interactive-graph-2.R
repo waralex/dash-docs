@@ -16,12 +16,12 @@ app$layout_set(
   htmlDiv(list(
     htmlDiv(list(
       htmlDiv(list(
-        coreDropdown(
+        dccDropdown(
           id = 'crossfilter-xaxis-column',
           options = option_indicator,
           value = 'Fertility rate, total (births per woman)'
         ),
-        coreRadioItems(
+        dccRadioItems(
           id = 'crossfilter-xaxis-type',
           options = list(list(label = 'Linear', value = 'linear'),
                          list(label = 'Log', value = 'log')),
@@ -29,14 +29,14 @@ app$layout_set(
           labelStyle = list(display = 'inline-block')
         )
       ), style = list(width = '49%', display = 'inline-block')),
-      
+
       htmlDiv(list(
-        coreDropdown(
+        dccDropdown(
           id = 'crossfilter-yaxis-column',
           options = option_indicator,
           value = 'Life expectancy at birth, total (years)'
         ),
-        coreRadioItems(
+        dccRadioItems(
           id = 'crossfilter-yaxis-type',
           options = list(list(label = 'Linear', value = 'linear'),
                          list(label = 'Log', value = 'log')),
@@ -49,26 +49,26 @@ app$layout_set(
       backgroundColor = 'rgb(250, 250, 250)',
       padding = '10px 5px')
     ),
-    
+
     htmlDiv(list(
-      coreGraph(
+      dccGraph(
         id = 'crossfilter-indicator-scatter',
         hoverData = list(points = list(list('customdata' = 'Japan')))
       )), style = list(
-        width ='49%', 
-        display = 'inline-block', 
+        width ='49%',
+        display = 'inline-block',
         padding = '0 20')
     ),
-    
-    
+
+
     htmlDiv(list(
-      coreGraph(id='x-time-series'),
-      coreGraph(id='y-time-series')
+      dccGraph(id='x-time-series'),
+      dccGraph(id='y-time-series')
     ), style=list(display = 'inline-block', width = '49%')),
-    
-    #coreGraph(id = 'indicator-graphic'),
+
+    #dccGraph(id = 'indicator-graphic'),
     htmlDiv(list(
-      coreSlider(
+      dccSlider(
         id = 'crossfilter-year--slider',
         min = 1,
         max = length(unique(df$Year)),
@@ -127,7 +127,7 @@ app$callback(
           'line' = list('width' = 0.5, 'color' = 'white')
         )
       )
-      
+
       return (list(
         'data' = traces,
         'layout'= list(

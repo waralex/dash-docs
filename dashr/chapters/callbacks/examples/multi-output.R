@@ -5,7 +5,7 @@ library(dashHtmlComponents)
 app <- Dash$new()
 
 app$layout_set(htmlDiv(list(
-      coreRadioItems(
+      dccRadioItems(
         id = 'dropdown-a',
         options = list(list(label = 'Canada', value = 'Canada'),
                        list(label = 'USA', value = 'USA'),
@@ -13,8 +13,8 @@ app$layout_set(htmlDiv(list(
         value = 'Canada'
       ),
       htmlDiv(id='output-a'),
-      
-      coreRadioItems(
+
+      dccRadioItems(
         id = 'dropdown-b',
         options = list(list(label = 'MTL', value = 'MTL'),
                        list(label = 'NYC', value = 'NYC'),
@@ -33,7 +33,7 @@ app$callback(
   function(dropdown_value) {
     sprintf("You've entered \"%s\"", dropdown_value)
 })
-  
+
 app$callback(
   output=list(id='output-b', property='children'),
   params=list(input(id='dropdown-b', property='value')),

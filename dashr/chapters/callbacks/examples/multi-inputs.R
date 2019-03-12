@@ -11,17 +11,17 @@ for (i in 1:length(available_indicators)){
   option_indicator[[i]] <- list(label = available_indicators[i], value = available_indicators[i])
 }
 
-  
+
 app$layout_set(
   htmlDiv(list(
     htmlDiv(list(
       htmlDiv(list(
-        coreDropdown(
+        dccDropdown(
           id = 'xaxis-column',
           options = option_indicator,
           value = 'Fertility rate, total (births per woman)'
         ),
-        coreRadioItems(
+        dccRadioItems(
           id = 'xaxis-type',
           options = list(list(label = 'Linear', value = 'linear'),
                          list(label = 'Log', value = 'log')),
@@ -29,14 +29,14 @@ app$layout_set(
           labelStyle = list(display = 'inline-block')
         )
       ), style = list(width = '48%', display = 'inline-block')),
-      
+
       htmlDiv(list(
-        coreDropdown(
+        dccDropdown(
           id = 'yaxis-column',
           options = option_indicator,
           value = 'Life expectancy at birth, total (years)'
         ),
-        coreRadioItems(
+        dccRadioItems(
           id = 'yaxis-type',
           options = list(list(label = 'Linear', value = 'linear'),
                          list(label = 'Log', value = 'log')),
@@ -45,8 +45,8 @@ app$layout_set(
         )
       ), style = list(width = '48%', flaot = 'display', display = 'inline-block'))
     )),
-    coreGraph(id = 'indicator-graphic'),
-    coreSlider(
+    dccGraph(id = 'indicator-graphic'),
+    dccSlider(
       id = 'year--slider',
       min = 1,
       max = length(unique(df$Year)),
@@ -96,4 +96,3 @@ app$callback(
 )
 
 #app$run_heroku()
-

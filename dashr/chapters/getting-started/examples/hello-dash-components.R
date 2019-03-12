@@ -25,7 +25,7 @@ pageSubTitle <- htmlDiv(
   )
 )
 
-graph <- coreGraph(
+graph <- dccGraph(
   id = 'example-graph-2',
   figure = list(
     data=list(

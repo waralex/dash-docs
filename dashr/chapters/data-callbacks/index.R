@@ -11,7 +11,7 @@ examples <- list(
 
 
 layout <- htmlDiv(list(
-  coreMarkdown("
+  dccMarkdown("
 # Dash State
 > This is the 4th chapter of the
 > Dash Tutorial.
