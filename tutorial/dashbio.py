@@ -107,7 +107,19 @@ data = df.values''',
             'chrHeight': '250'
         }
     },
-
+    'ManhattanPlot': {
+        'description': '''Display genomic studies results sorted out by chromosome. Perfect for Genome Wide Association Studies (GWAS).''',
+        'default_id': False,
+        'component_wrap': 'dcc.Graph(figure=_)',
+        'params': {
+            'dataframe': 'df'
+        },
+        'library_imports': [
+            ['pandas', 'pd'],
+            ['dash_core_components', 'dcc']
+        ],
+        'setup_code': '''df = pd.read_csv("https://raw.githubusercontent.com/plotly/dash-bio/master/tests/dashbio_demos/sample_data/manhattan_data.csv")'''
+    },
     'Molecule3dViewer': {
         'description': '''A 3D visualization of biomolecular structures.''',
         'params': {
