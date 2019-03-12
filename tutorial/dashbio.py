@@ -133,7 +133,7 @@ model_data = json.loads(parser.create_data(fname))
 styles_data = json.loads(sparser.create_style(fname, 'cartoon', 'chain'))
 ''',
         'iframe_info': {
-            'location': 'https://dash-playground.plotly.host/dash-clustergram-demo/'
+            'location': 'https://dash-playground.plotly.host/dash-mol3d-demo/'
         }
     },
     
