@@ -31,7 +31,6 @@ app$layout_set(
     htmlDiv(css.links),
     dccLocation(id='url'),
 
-
     # Temporary workaround until https://github.com/plotly/dashR/commit/7663d584926ca0cb49797f7c122da9a30af5910b
     # is merged
     dccGraph(
