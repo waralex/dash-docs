@@ -135,7 +135,6 @@ app$callback(
           yaxis = list('title' = yaxis_column_name, 'type' = yaxis_type),
           margin = list('l' = 40, 'b' = 30, 't' = 10, 'r' = 0),
           height = 450,
-          #legend = list('x' = 0, 'y' = 1),
           hovermode = 'closest'
         )
       ))
