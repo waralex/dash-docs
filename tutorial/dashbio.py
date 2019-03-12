@@ -38,7 +38,7 @@ dashbio_components = {
         },
         'iframe_info': {
             'location': 'https://dash-playground.plotly.host/dash-alignment-chart-demo/',
-            'height': 900
+            'height': 950
         }
     },
 
@@ -101,12 +101,48 @@ data = df.values''',
         }
     },
 
+    'Ideogram': {
+        'description': '''A visual representation and analysis tool for chromosome bands.''',
+        'params': {
+            'chrHeight': '250'
+        }
+    },
+
+    'Molecule3dViewer': {
+        'description': '''A 3D visualization of biomolecular structures.''',
+        'params': {
+            'modelData': 'model_data',
+            'styles': 'styles_data',
+            'backgroundOpacity': '\'0\''
+        },
+        'library_imports': [
+            ['json', 'json'],
+            ['tempfile', 'tf'],
+            ['dash_bio.utils.pdb_parser', 'parser'],
+            ['dash_bio.utils.styles_parser', 'sparser']
+        ],
+        'datafile': {
+            'name': 'molecule3d_2mru.pdb'
+        },
+        'setup_code': '''tmp = tf.NamedTemporaryFile(suffix='.pdb', delete=False, mode='w+')
+tmp.write(data)
+fname = tmp.name
+tmp.close()
+
+model_data = json.loads(parser.create_data(fname))
+styles_data = json.loads(sparser.create_style(fname, 'cartoon', 'chain'))
+''',
+        'iframe_info': {
+            'location': 'https://dash-playground.plotly.host/dash-clustergram-demo/'
+        }
+    },
+    
     'SequenceViewer': {
         'description': '''A sequence viewer.''',
         'params': {
             'sequence': '\"MALWMRLLPLLALLALWGPDPAAAFVN\
-            QHLCGSHLVEALYLVCGERGFFYTPKTRREAEDLQVGQVELGGGPGAGSLQPLA\
-            LEGSLQKRGIVEQCCTSICSLYQLENYCN\"'
+QHLCGSHLVEALYLVCGERGFFYTPKTRREAEDLQVGQVELGGGPGAGSLQPLA\
+LEGSLQKRGIVEQCCTSICSLYQLENYCN\"'
         }
     },
 
