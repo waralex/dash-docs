@@ -162,6 +162,20 @@ styles_data = json.loads(sparser.create_style(fname, 'cartoon', 'chain'))
         },
         'setup_code': '''mdata = json.loads(data)'''
     },
+
+    'OncoPrint': {
+        'description': '''View multiple genomic alternations with an interactive heatmap.''',
+        'library_imports': [
+            ['json', 'json']
+        ],
+        'datafile': {
+            'name': 'oncoprint_dataset3.json',
+            'parameter': 'data'
+        },
+        'setup_code': '''data = json.loads(data)
+'''
+    },
+
     'SequenceViewer': {
         'description': '''A sequence viewer.''',
         'params': {
