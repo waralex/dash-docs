@@ -11,7 +11,6 @@ for (i in 1:length(available_indicators)){
   option_indicator[[i]] <- list(label = available_indicators[i], value = available_indicators[i])
 }
 
-
 app$layout_set(
   htmlDiv(list(
     htmlDiv(list(
@@ -59,7 +58,6 @@ app$layout_set(
         display = 'inline-block',
         padding = '0 20')
     ),
-
 
     htmlDiv(list(
       dccGraph(id='x-time-series'),
@@ -141,7 +139,6 @@ app$callback(
     }
   }
 )
-
 
 app$callback(
   output = list(id='x-time-series', property='figure'),

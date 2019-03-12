@@ -68,8 +68,6 @@ app$callback(output=list(id='chapter', property='children'),
     return(chapters.graph_crossfiltering$layout)
   } else if (pathname == "/data-callbacks") {
     return(chapters.data_callbacks$layout)
-  } else if (pathname == "/faqs-gotchas") {
-    return(chapters.faqs_gotchas$layout)
   } else {
     return(htmlDiv(list(
       htmlH1('DashR User Guide'),
@@ -101,11 +99,6 @@ app$callback(output=list(id='chapter', property='children'),
       dccLink(
         'Part 6. Sharing Data Between Callbacks',
         href='/data-callbacks'
-      ),
-      htmlBr(),
-      dccLink(
-        'Part 7. FAQs and Gotchas',
-        href='/faqs-gotchas'
       )
     )))
   }
