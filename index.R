@@ -11,7 +11,6 @@ source('dashr/chapters/callbacks/index.R', local=chapters.callbacks)
 chapters.state <- new.env()
 source('dashr/chapters/state/index.R', local=chapters.state)
 
-
 # Temporary workaround until `assets/` are loaded
 # This will serve the CSS files in `assets` from a separate
 # webserver.
