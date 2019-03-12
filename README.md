@@ -23,6 +23,14 @@ heroku login
 
 If you know your way around git, you can follow these instructions for [deploying to Heroku via git](https://devcenter.heroku.com/articles/git), which the `dashR::heroku_app_deploy()` function attempts to automate for you:
 
+dashR::heroku_app_deploy("my-test-app")
+
+On Windows systems `waitress` can be a replacement for `gunicorn`
+
+`pip install waitress`
+`waitress-serve --listen=*:8000 run:server`
+open http://127.0.0.1:8000 in your browser
+
 ```r
 dashR::heroku_app_deploy("my-test-app")
 ```

@@ -34,7 +34,8 @@ examples = {
     'upload-image':  tools.load_example('tutorial/examples/core_components/upload-image.py'),
     'button_basic': tools.load_example('tutorial/examples/core_components/button_basic.py'),
     'button_n_clicks_timestamp': tools.load_example('tutorial/examples/core_components/button_n_clicks_timestamp.py'),
-    'logout_button': tools.load_example('tutorial/examples/core_components/logout_button.py')
+    'logout_button': tools.load_example('tutorial/examples/core_components/logout_button.py'),
+    'loading_component': tools.load_example('tutorial/examples/core_components/loading_component.py')
 }
 
 
@@ -650,7 +651,7 @@ DatePickerRange = html.Div(children=[
 from datetime import datetime as dt
 
 dcc.DatePickerRange(
-    end_date=dt.now(),
+    end_date=dt(2017,6,21,23,59,59,999999),
     display_format='MMM Do, YY',
     start_date_placeholder_text='MMM Do, YY'
 )'''),
@@ -658,7 +659,7 @@ dcc.DatePickerRange(
     ComponentBlock('''import dash_core_components as dcc
 from datetime import datetime as dt
 dcc.DatePickerRange(
-    end_date=dt.now(),
+    end_date=dt(2017,6,21),
     display_format='M-D-Y-Q',
     start_date_placeholder_text='M-D-Y-Q'
 )'''),
@@ -667,7 +668,7 @@ dcc.DatePickerRange(
 from datetime import datetime as dt
 
 dcc.DatePickerRange(
-    end_date=dt.now(),
+    end_date=dt(2017,6,21),
     display_format='MMMM Y, DD',
     start_date_placeholder_text='MMMM Y, DD'
 )'''),
@@ -676,7 +677,7 @@ dcc.DatePickerRange(
 from datetime import datetime as dt
 
 dcc.DatePickerRange(
-    end_date=dt.now(),
+    end_date=dt(2017,6,21),
     display_format='X',
     start_date_placeholder_text='X'
 )''', language='python', customStyle=styles.code_container),
@@ -694,7 +695,7 @@ from datetime import datetime as dt
 dcc.DatePickerRange(
     month_format='MMM Do, YY',
     end_date_placeholder_text='MMM Do, YY',
-    start_date=dt.now()
+    start_date=dt(2017,6,21)
 )'''),
     ComponentBlock('''import dash_core_components as dcc
 from datetime import datetime as dt
@@ -702,7 +703,7 @@ from datetime import datetime as dt
 dcc.DatePickerRange(
     month_format='M-D-Y-Q',
     end_date_placeholder_text='M-D-Y-Q',
-    start_date=dt.now()
+    start_date=dt(2017,6,21)
 )'''),
     ComponentBlock('''import dash_core_components as dcc
 from datetime import datetime as dt
@@ -710,7 +711,7 @@ from datetime import datetime as dt
 dcc.DatePickerRange(
     month_format='MMMM Y',
     end_date_placeholder_text='MMMM Y',
-    start_date=dt.now()
+    start_date=dt(2017,6,21)
 )'''),
     ComponentBlock('''import dash_core_components as dcc
 from datetime import datetime as dt
@@ -718,7 +719,7 @@ from datetime import datetime as dt
 dcc.DatePickerRange(
     month_format='X',
     end_date_placeholder_text='X',
-    start_date=dt.now()
+    start_date=dt(2017,6,21)
 )'''),
 
     html.Hr(),
@@ -762,7 +763,7 @@ dcc.DatePickerRange(
     minimum_nights=5,
     clearable=True,
     with_portal=True,
-    start_date=dt.now()
+    start_date=dt(2017,6,21)
 )'''),
 
     html.Hr(),
@@ -780,7 +781,7 @@ from datetime import datetime as dt
 dcc.DatePickerRange(
     is_RTL=True,
     first_day_of_week=3,
-    start_date=dt.now()
+    start_date=dt(2017,6,21)
 )''', language='python', customStyle=styles.code_container),
     html.Hr(),
     html.H3('DatePickerRange Properties'),
@@ -793,12 +794,15 @@ DatePickerSingle = html.Div(children=[
     html.Hr(),
     html.H3("Simple DatePickerSingle Example"),
     dcc.Markdown("This is a simple example of a `DatePickerSingle` \
-                 component tied to a callback. The `min_date_allowed` and \
-                 `max_date_allowed` properties define the minimum and \
-                 maximum selectable \
-                 dates on the calendar while `initial_visible_month` defines \
-                 the calendar month that is first displayed when the \
-                 `DatePickerSingle` component is opened."),
+        component tied to a callback. You can use either date objects \
+        (`datetime.date` or `datetime.datetime`) or strings in the form \
+        `YYYY-MM-DD` to provide dates to Dash components. Strings are \
+        preferred because that's the form dates take as callback arguments. \
+        Be aware that any time information included in a datetime object \
+        or string will be ignored. The `min_date_allowed` and `max_date_allowed` \
+        properties define the minimum and maximum selectable dates on the calendar \
+        while `initial_visible_month` defines the calendar month that is \
+        first displayed when the `DatePickerSingle` component is opened."),
     dcc.SyntaxHighlighter(
         examples['date_picker_single'][0],
         language='python',
@@ -894,7 +898,7 @@ DatePickerSingle = html.Div(children=[
 from datetime import datetime as dt
 
 dcc.DatePickerSingle(
-    date=dt.now(),
+    date='2017-06-21',
     display_format='MMM Do, YY'
 )'''),
 
@@ -902,7 +906,7 @@ dcc.DatePickerSingle(
 from datetime import datetime as dt
 
 dcc.DatePickerSingle(
-    date=dt.now(),
+    date=dt(2017,6,21),
     display_format='M-D-Y-Q',
 )'''),
 
@@ -910,7 +914,7 @@ dcc.DatePickerSingle(
 from datetime import datetime as dt
 
 dcc.DatePickerSingle(
-    date=dt.now(),
+    date=dt(2017,6,21),
     display_format='MMMM Y, DD'
 )'''),
 
@@ -918,7 +922,7 @@ dcc.DatePickerSingle(
 from datetime import datetime as dt
 
 dcc.DatePickerSingle(
-    date=dt.now(),
+    date=dt(2017,6,21),
     display_format='X',
 )''', language='python', customStyle=styles.code_container),
     html.Br(),
@@ -933,7 +937,7 @@ from datetime import datetime as dt
 dcc.DatePickerSingle(
     month_format='MMM Do, YY',
     placeholder='MMM Do, YY',
-    date=dt.now()
+    date=dt(2017,6,21)
 )'''),
     ComponentBlock('''import dash_core_components as dcc
 from datetime import datetime as dt
@@ -941,16 +945,16 @@ from datetime import datetime as dt
 dcc.DatePickerSingle(
     month_format='M-D-Y-Q',
     placeholder='M-D-Y-Q',
-    date=dt.now()
+    date=dt(2017,6,21)
 )'''),
 
     ComponentBlock('''import dash_core_components as dcc
-from datetime import datetime as dt
+import datetime
 
 dcc.DatePickerSingle(
     month_format='MMMM Y',
     placeholder='MMMM Y',
-    date=dt.now()
+    date=datetime.date(2020,2,29)
 )'''),
 
     ComponentBlock('''import dash_core_components as dcc
@@ -959,7 +963,7 @@ from datetime import datetime as dt
 dcc.DatePickerSingle(
     month_format='X',
     placeholder='X',
-    date=dt.now()
+    date=dt(2017,6,21,0,0,0,0)
 )''', language='python', customStyle=styles.code_container),
     html.Hr(),
     html.H3("Vertical Calendar and Placeholder Text"),
@@ -977,7 +981,7 @@ from datetime import datetime as dt
 dcc.DatePickerSingle(
     calendar_orientation='vertical',
     placeholder='Select a date',
-    date=dt.now()
+    date=dt(2017,6,21)
 )'''),
 
     html.Hr(),
@@ -996,7 +1000,7 @@ from datetime import datetime as dt
 dcc.DatePickerSingle(
     clearable=True,
     with_portal=True,
-    date=dt.now()
+    date=dt(2017,6,21)
 )'''),
 
     html.Hr(),
@@ -1014,7 +1018,7 @@ from datetime import datetime as dt
 dcc.DatePickerSingle(
     is_RTL=True,
     first_day_of_week=3,
-    date=dt.now()
+    date=dt(2017,6,21)
 )'''),
 
     html.Hr(),
@@ -1443,18 +1447,18 @@ LogoutButton = html.Div([
     dcc.Markdown(s('''
     Please note that no authentication is performed in Dash by default
     and you have to implement the authentication yourself.
-    
+
     ## List of packages that provide authentication methods:
-    
+
     - [flask-login](https://flask-login.readthedocs.io/en/latest/)
     - [dash-auth](https://github.com/plotly/dash-auth)
-    
+
     You can also use these packages for custom authentication:
-    
+
     ### Password hashes:
     - [bcrypt](https://github.com/pyca/bcrypt/)
     - [passlib](https://passlib.readthedocs.io/en/stable/)
-    
+
     ### Session/cookies
     - [flask-session](https://pythonhosted.org/Flask-Session/)
     - [itsdangerous](https://pythonhosted.org/itsdangerous/)
@@ -1467,4 +1471,22 @@ LogoutButton = html.Div([
     Example(examples['logout_button'][1]),
 
     generate_prop_table('LogoutButton')
+])
+
+# Loading component
+LoadingComponent = html.Div([
+    html.H1('Loading Component'),
+
+    dcc.Markdown(s('''
+    Here’s a simple example that wraps the outputs for a couple of `Input` components in the `Loading` component. As you can see, you can define the type of spinner you would like to show (refer to the reference table below for all possible types of spinners).
+    You can modify other attributes as well, such as `fullscreen=True` if you would like the spinner to be displayed fullscreen. Notice that, the Loading component traverses all
+    of it's children to find a loading state, as demonstrated in the second callback, so that even nested children will get picked up.
+    ''')),
+
+    Syntax(examples['loading_component'][0]),
+    Example(examples['loading_component'][1]),
+    dcc.Markdown(s('''
+    Please also check out [this section on loading states](/loading-states) if you want a more customizable experience.
+    ''')),
+    generate_prop_table('Loading')
 ])

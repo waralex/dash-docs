@@ -31,6 +31,8 @@ from tutorial import urls
 from tutorial import react_for_python_developers
 from tutorial import table
 from tutorial import devtools
+from tutorial import loading_states
+from tutorial import integrating_dash
 
 
 ## The chapters dict is used to generate the dash-docs search index
@@ -254,6 +256,14 @@ chapters = {
                        'app to a server'
     },
 
+    'integrating-dash': {
+        'url': '/integrating-dash',
+        'content': integrating_dash.layout,
+        'name': 'Integrating Dash with Existing Web Apps',
+        'description': 'Strategies for integrating Dash apps with existing web ' \
+                       'apps.'
+    },
+
     # 'deployment-onpremise': {
     #     'url': '/deployment/on-premise',
     #     'content': on_premise_deployment.layout,
@@ -284,6 +294,12 @@ chapters = {
         'content': react_for_python_developers.layout,
         'name': 'React for Python Developers',
         'description': 'A tutorial on how to program in React and JavaScript for Python developers.'
+    },
+    'loading-states': {
+        'url': '/loading-states',
+        'content': loading_states.layout,
+        'name': 'Loading States',
+        'description': 'Getting the loading state of a component and adding a loading component'
     },
 ### End of home.py ###
 
@@ -541,8 +557,8 @@ chapters = {
     'app-auth-examples': {
         'url': '/dash-deployment-server/app-authentication',
         'content': dds_examples.Authentication,
-        'name': 'Dash App Authentication',
-        'description': 'Adding Authentication to your Dash App'
+        'name': 'Dash Enterprise Auth Features',
+        'description': 'Accessing User Authentication Data in your Dash App'
     },
 
     'app-privacy': {
@@ -713,6 +729,15 @@ chapters = {
         '''
     },
 
+    'typing': {
+        'url': '/datatable/typing',
+        'content': tutorial.table.table_typing_chapter.layout,
+        'name': 'Typing and User Input Processing',
+        'description': '''
+        Column typing and user input validation, coercing, defaulting.
+        '''
+    },
+
     'dropdowns': {
         'url': '/datatable/dropdowns',
         'content': tutorial.table.dropdowns_chapter.layout,
@@ -758,7 +783,7 @@ chapters = {
         'content': tutorial.cytoscape.elements_chapter.layout,
         'name': 'Cytoscape Elements',
         'description': '''
-        Overview of element declaration and manipulation. 
+        Overview of element declaration and manipulation.
         '''
     },
 
@@ -767,7 +792,7 @@ chapters = {
         'content': tutorial.cytoscape.layout_chapter.layout,
         'name': 'Cytoscape Layouts',
         'description': '''
-        Description of built-in layouts, and how to modify their properties. 
+        Description of built-in layouts, and how to modify their properties.
         '''
     },
 
@@ -859,6 +884,13 @@ chapters = {
         'content': examples.LogoutButton,
         'name': 'Logout button',
         'description': 'LogoutButton examples, properties and reference'
+    },
+
+    'loading-component': {
+        'url': '/dash-core-components/loading_component',
+        'content': examples.LoadingComponent,
+        'name': 'Loading component',
+        'description': 'Loading component examples, properties and reference'
     }
 
 }
