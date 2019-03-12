@@ -31,7 +31,6 @@ source('dashr/chapters/data-callbacks/index.R', local=chapters.data_callbacks)
 
 
 app$layout_set(
-  hdhdhd
   htmlDiv(list(
 
     dccLocation(id='url'),

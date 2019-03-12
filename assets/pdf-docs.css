@@ -1,3 +1,5 @@
+external_stylesheets
+
 @media print {
   body * {
       visibility: hidden;
