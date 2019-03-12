@@ -202,6 +202,22 @@ LEGSLQKRGIVEQCCTSICSLYQLENYCN\"'
             'location': 'https://dash-playground.plotly.host/dash-speck-demo/',
             'height': 350
         }
+    },
+
+    'VolcanoPlot': {
+        'description': '''Interactively identify clinically meaningful markers in
+        genomic experiments with this volcano plot.''',
+        'default_id': False,
+        'library_imports': [
+            ['pandas', 'pd'],
+            ['dash_core_components', 'dcc']
+        ],
+        'setup_code': '''df = pd.read_csv("https://raw.githubusercontent.com/plotly/dash-bio/master/tests/dashbio_demos/sample_data/volcano_data1.csv")''',
+        'params': {
+            'dataframe': 'df'
+        },
+        'component_wrap': 'dcc.Graph(figure=_)'
+
     }
 }
 
