@@ -56,7 +56,6 @@ app$layout_set(
   ))
 )
 
-
 app$callback(output=list(id='chapter', property='children'),
              params=list(input('url', 'pathname')),
              function(pathname) {
