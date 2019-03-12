@@ -15,8 +15,6 @@ chapters.graph_crossfiltering <- new.env()
 source('dashr/chapters/graph-crossfiltering/index.R', local=chapters.graph_crossfiltering)
 chapters.data_callbacks <- new.env()
 source('dashr/chapters/data-callbacks/index.R', local=chapters.data_callbacks)
-chapters.faqs_gotchas <- new.env()
-source('dashr/chapters/faqs-gotchas/index.R', local=chapters.faqs_gotchas)
 
 # Temporary workaround until `assets/` are loaded
 # This will serve the CSS files in `assets` from a separate
@@ -51,7 +49,6 @@ app$layout_set(
     )
   ))
 )
-
 
 app$callback(output=list(id='chapter', property='children'),
              params=list(input('url', 'pathname')),
