@@ -136,7 +136,20 @@ styles_data = json.loads(sparser.create_style(fname, 'cartoon', 'chain'))
             'location': 'https://dash-playground.plotly.host/dash-mol3d-demo/'
         }
     },
-    
+    'NeedlePlot': {
+        'description': '''A combination of a bar chart and a scatter plot, for data that are
+        both categorical and continuous.''',
+        'library_imports': [
+            ['json', 'json']
+        ],
+        'params': {
+            'mutationData': 'mdata'
+        },
+        'datafile': {
+            'name': 'needle_PIK3CA.json'
+        },
+        'setup_code': '''mdata = json.loads(data)'''
+    },
     'SequenceViewer': {
         'description': '''A sequence viewer.''',
         'params': {
