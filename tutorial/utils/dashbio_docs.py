@@ -85,7 +85,7 @@ def generate_component_example(
         style=None,
         default_id=True,
         datafile=None,
-        library_imports=[],
+        library_imports=None,
         setup_code='',
         component_wrap=None,
         iframe_info=None
@@ -132,6 +132,8 @@ def generate_component_example(
     DATA_LOCATION_PREFIX = '''https://raw.githubusercontent.com/plotly/\
 dash-bio/master/tests/dashbio_demos/sample_data/'''
 
+    if library_imports is None:
+        library_imports = []
 
     # parameters for initial declaration of component
     paramstring = '\n  '
@@ -228,7 +230,6 @@ dash-bio/master/tests/dashbio_demos/sample_data/'''
     example_string = '''import {} as {}
 {}
 {}
-
 component = {}
 '''.format(library_name,
            library_short,
@@ -237,15 +238,15 @@ component = {}
            component_string)
 
 
-    # live demo contents
-    component_demo = ComponentBlock(
-        example_string
-    )
     # load the iframe if that is where the app is
     if iframe_info is not None:
         component_demo = IframeComponentBlock(
             example_string,
             **iframe_info
+        )
+    else:
+        component_demo = ComponentBlock(
+            example_string
         )
 
     # full component section
