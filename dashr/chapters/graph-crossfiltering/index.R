@@ -27,6 +27,6 @@ layout <- htmlDiv(list(
   examples$interactive_graph_1$layout
 
   # Example of interactive visualizations 2
-  #examples$interactive_graph_2$source,
-  #examples$interactive_graph_2$layout
+  examples$interactive_graph_2$source,
+  examples$interactive_graph_2$layout
 ))
