@@ -99,7 +99,7 @@ app$callback(output=list(id='chapter', property='children'),
       htmlBr(),
       dccLink(
         'Part 6. Sharing Data Between Callbacks',
-        href='/faq-gotchas'
+        href='/data-callbacks'
       )
       ,
       htmlBr(),

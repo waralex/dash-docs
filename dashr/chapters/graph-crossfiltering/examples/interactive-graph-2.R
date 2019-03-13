@@ -93,7 +93,7 @@ create_time_series <- function(dff, axis_type, title){
         x = 0, 'y' = 0.85, xanchor = 'left', yanchor = 'bottom',
         xref = 'paper', yref = 'paper', showarrow = FALSE,
         align = 'left', bgcolor = 'rgba(255, 255, 255, 0.5)',
-        text = title
+        text = 'linear'
       )),
       yaxis = list(type = axis_type),
       xaxis = list(showgrid = FALSE)
@@ -163,4 +163,4 @@ app$callback(
 )
 
 
-#app$run_heroku()
+app$run_heroku()
