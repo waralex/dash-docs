@@ -1,5 +1,8 @@
+library(dashR)
 library(dashCoreComponents)
 library(dashHtmlComponents)
+getwd()
+dir()
 source('app.R')
 
 chapters.installation <- new.env()
