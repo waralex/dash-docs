@@ -34,7 +34,6 @@ source('dashr/chapters/faq-gotchas/index.R', local=chapters.faq_gotchas)
 
 app$layout_set(
   htmlDiv(list(
-
     dccLocation(id='url'),
     htmlDiv(
       className='background',
@@ -100,8 +99,7 @@ app$callback(output=list(id='chapter', property='children'),
       dccLink(
         'Part 6. Sharing Data Between Callbacks',
         href='/data-callbacks'
-      )
-      ,
+      )      ,
       htmlBr(),
       dccLink(
         'Part 7. FAQs and Gotchas',

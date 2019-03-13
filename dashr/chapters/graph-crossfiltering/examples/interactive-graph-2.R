@@ -71,8 +71,8 @@ app$layout_set(
 
     htmlDiv(list(
       dccGraph(
-        id = 'crossfilter-indicator-scatter'
-        #hoverData = list(points = list(list(customdata = 'Japan')))
+        id = 'crossfilter-indicator-scatter',
+        hoverData = list(points = list(list(customdata = 'Japan')))
       )), style = list(
         width ='49%',
         display = 'inline-block',
@@ -152,7 +152,7 @@ create_time_series <- function(dff, axis_type, title){
         x = 0, 'y' = 0.85, xanchor = 'left', yanchor = 'bottom',
         xref = 'paper', yref = 'paper', showarrow = FALSE,
         align = 'left', bgcolor = 'rgba(255, 255, 255, 0.5)',
-        text = axis_type
+        text = title
       )),
       yaxis = list(type = axis_type),
       xaxis = list(showgrid = FALSE)
@@ -166,7 +166,7 @@ app$callback(
                 input(id='crossfilter-xaxis-column', property='value'),
                 input(id='crossfilter-xaxis-type', property='value')),
   function(hoverData, xaxis_column_name, axis_type) {
-    hoverData <- list(points = list(list(curveNumber = 0, 
+    hoverData <- list(points = list(list(curveNumber = 0,
                             text = 'Kenya',
                             pointNumber = 147,
                             customdata = 'Kenya',
@@ -176,7 +176,7 @@ app$callback(
     country_name = hoverData$points[[1]]$customdata
     dff <- split(df, as.factor(df$Country_Name==country_name))$`TRUE`
     dff <- split(dff, as.factor(df$Indicator_Name==xaxis_column_name))$`TRUE`
-    title = paste(c(country_name, xaxis_column_name), sep = '<b>')
+    title = paste(c(country_name, xaxis_column_name), sep = '  ')
     return(create_time_series(dff, axis_type, title))
   }
 )
@@ -187,7 +187,7 @@ app$callback(
   params = list(input(id='crossfilter-indicator-scatter', property='value'),
                 input(id='crossfilter-yaxis-column', property='value'),
                 input(id='crossfilter-yaxis-type', property='value')),
-  function(hoverData, xaxis_column_name, axis_type) {
+  function(hoverData, yaxis_column_name, axis_type) {
     hoverData <- list(points = list(list(curveNumber = 0, 
                                          text = 'Kenya',
                                          pointNumber = 147,
@@ -197,9 +197,9 @@ app$callback(
     )
     country_name = hoverData$points[[1]]$customdata
     dff <- split(df, as.factor(df$Country_Name==country_name))$`TRUE`
-    dff <- split(dff, as.factor(df$Indicator_Name==xaxis_column_name))$`TRUE`
-    title = paste(c(country_name, xaxis_column_name), sep = '<b>')
-    return(create_time_series(dff, axis_type, title))
+    dff <- split(dff, as.factor(df$Indicator_Name==yaxis_column_name))$`TRUE`
+    title = paste(c(country_name, yaxis_column_name), sep = '<b>')
+    return(create_time_series(dff, axis_type, yaxis_column_name))
   }
 )
 
