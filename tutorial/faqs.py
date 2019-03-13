@@ -6,7 +6,6 @@ import dash_core_components as dcc
 import dash_html_components as html
 
 from tutorial.components import Example, Syntax
-from tutorial import styles
 from tutorial import tools
 
 

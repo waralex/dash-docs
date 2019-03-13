@@ -1,6 +1,7 @@
 import dash
 import dash_core_components as dcc
 import dash_html_components as html
+from dash.dependencies import Input, Output
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
@@ -10,7 +11,7 @@ app.layout = html.Div([
     dcc.Input(
         id='num',
         type='number',
-        value=3
+        value=5
     ),
     html.Table([
         html.Tr([html.Td(['x', html.Sup(2)]), html.Td(id='square')]),
@@ -23,12 +24,12 @@ app.layout = html.Div([
 
 
 @app.callback(
-    [dash.dependencies.Output('square', 'children'),
-     dash.dependencies.Output('cube', 'children'),
-     dash.dependencies.Output('twos', 'children'),
-     dash.dependencies.Output('threes', 'children'),
-     dash.dependencies.Output('x^x', 'children')],
-    [dash.dependencies.Input('num', 'value')])
+    [Output('square', 'children'),
+     Output('cube', 'children'),
+     Output('twos', 'children'),
+     Output('threes', 'children'),
+     Output('x^x', 'children')],
+    [Input('num', 'value')])
 def callback_a(x):
     return x**2, x**3, 2**x, 3**x, x**x
 
