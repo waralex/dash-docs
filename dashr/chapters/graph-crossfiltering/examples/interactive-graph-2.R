@@ -147,20 +147,20 @@ app$callback(
                 input(id='crossfilter-xaxis-column', property='value'),
                 input(id='crossfilter-xaxis-type', property='value')),
   function(hoverData, xaxis_column_name, axis_type) {
-    #print(hoverData)
-    #print("Nadia")
+    print(hoverData)
+    print("Nadia")
     country_name = hoverData$points[[1]]$customdata
-    #print(country_name)
-    #print("Nadia")
+    print(country_name)
+    print("Nadia")
     dff <- splitdf[df$Country_Name %in% country_name]
-    #print(df)
-    #print("Nadia")
+    print(df)
+    print("Nadia")
     dff <- df[df$Indicator_Name %in% xaxis_column_name]
     title = paste(c(country_name, xaxis_column_name), sep = '<b>')
-    #browser()
+    browser()
     return(create_time_series(dff, axis_type, title))
   }
 )
 
 
-app$run_heroku()
+#app$run_heroku()
