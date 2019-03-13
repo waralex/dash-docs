@@ -1,14 +1,20 @@
 import re
+import os
 
 import dash
 import dash_core_components as dcc
 import dash_html_components as html
 
 import sys
-from tutorial import styles
+if __name__ != '__main__':
+    from tutorial import styles
+    from tutorial.utils.component_block import ComponentBlock
+    from tutorial.utils.convert_props_to_table import js_to_py_type
+
 from textwrap import dedent as s
 
-from tutorial.utils.component_block import ComponentBlock
+import json
+
 
 
 # all component names
@@ -378,24 +384,13 @@ def generate_prop_table(
 
     '''
 
+
     regex = {
-        'react': r'\s*([a-zA-Z]+)\s*\(([a-z\s|]*;*\s*[a-z]*)\):*[\.\s]*(.*)',
-        'python': r'^\s*([a-zA-Z_]*)\s*\(([a-zA-Z\/]*);\s*([a-z]*)\):\s*(.*?)\s*(\(Default:\s*([^\s]*)\)|)\s*$'
+         'python': r'^\s*([a-zA-Z_]*)\s*\(([a-zA-Z\/]*);\s*([a-z]*)\):\s*(.*?)\s*(\(Default:\s*([^\s]*)\)|)\s*$'
     }
 
     component_type = 'react' \
         if component_name in component_names['react'] else 'python'
-
-    sep = '-'
-
-    exec("import {}".format(library_name))
-
-    doc = eval("{}.{}".format(library_name, component_name)).__doc__
-
-    if component_type == 'react':
-        doc = doc.replace("  -", "...")
-
-    props = doc.split(sep)
 
     tableRows = [html.Tr([
         html.Th('Attribute'),
@@ -404,28 +399,62 @@ def generate_prop_table(
         html.Th('Default value')
     ])]
 
-    for item in props:
-        desc_sections = item.split('\n\n')
+    exec("import {}".format(library_name))
 
-        partone = desc_sections[0].replace('    ', ' ')
+    if component_type == 'python':
+        sep = '-'
+        doc = eval("{}.{}".format(library_name, component_name)).__doc__
 
-        r = re.match(
-            re.compile(regex['python']),
-            partone.replace('\n', ' ')
-        )
+        props = doc.split(sep)
+    elif component_type == 'react':
 
-        if r is None:
-            continue
+        path = os.path.join(os.path.dirname(os.path.abspath(eval(library_name).__file__)),
+                            'metadata.json')
+        with open(path, 'r') as f:
+            metadata = json.load(f)
 
-        (prop_name, prop_type, prop_optional, prop_desc, _, prop_default) = r.groups()
-        if prop_default is None:
-            prop_default = ''
-        if 'optional' in prop_optional:
-            prop_optional = ''
+        # Mol3d for some reason is a plain JS file, not a react file
+        cname = '{}.react.js'.format(component_name)
+        if component_name == 'Molecule3dViewer':
+            cname = 'Molecule3dViewer.js'
+        docs = metadata['src/lib/components/{}'.format(cname)]
 
-        if len(desc_sections) > 1:
-            prop_desc += ' '
-            prop_desc += desc_sections[1]
+        props = docs['props']
+
+    for prop in props:
+        if component_type == 'python':
+            desc_sections = prop.split('\n\n')
+
+            partone = desc_sections[0].replace('    ', ' ')
+
+            r = re.match(
+                re.compile(regex[component_type]),
+                partone.replace('\n', ' ')
+            )
+
+            if r is None:
+                continue
+
+            (prop_name, prop_type, prop_optional, prop_desc, _, prop_default) = r.groups()
+            if prop_default is None:
+                prop_default = ''
+            if 'optional' in prop_optional:
+                prop_optional = ''
+
+            if len(desc_sections) > 1:
+                prop_desc += ' '
+                prop_desc += desc_sections[1]
+
+        elif component_type == 'react':
+            prop_name = prop
+            prop_desc = props[prop]['description']
+            prop_type = js_to_py_type(props[prop]['type'])
+
+            if 'defaultValue' in props[prop].keys():
+                prop_default = props[prop]['defaultValue']['value']
+            else:
+                prop_default = ''
+
 
         tableRows.append(
             html.Tr([html.Td(dcc.Markdown(prop_name)),
