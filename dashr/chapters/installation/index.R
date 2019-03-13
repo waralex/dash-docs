@@ -20,6 +20,7 @@ install_github('plotly/dash-html-components') # HTML components
 install_github('plotly/dash-dcc-components') # Supercharged components
 ```
 
+
 Ready? Now, let's [make your first Dash app](/getting-started).
 "),
 
@@ -51,6 +52,7 @@ dccMarkdown("
 > 
 > - [dash-renderer changelog](https://github.com/plotly/dash-renderer/blob/master/CHANGELOG.md)
 > - [plotly changelog](https://github.com/plotly/plotly.py/blob/master/CHANGELOG.md)
+>
 > All of these packages adhere to [semver](https://semver.org/).
 "),
 htmlHr(),
