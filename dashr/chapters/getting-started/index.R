@@ -84,16 +84,16 @@ dropdowns, sliders, and more.
   examples$dropdown.doc$layout,
 
   dccMarkdown("
-  #Summary
-  The layout of a Dash app describes what the app looks like. The layout is a hierarchical tree of components. The dash_html_components library provides classes for all of the HTML tags and the keyword arguments describe the HTML attributes like style, className, and id. The dash_dcc_components library generates higher-level components like controls and graphs.
-  For reference, see:
-  - [dash_core_components gallery](https://dash.plot.ly/dash-core-components)
-  - [dash_html_components gallery](https://dash.plot.ly/dash-html-components)
+#Summary
+The layout of a Dash app describes what the app looks like. The layout is a hierarchical tree of components. The dash_html_components library provides classes for all of the HTML tags and the keyword arguments describe the HTML attributes like style, className, and id. The dash_dcc_components library generates higher-level components like controls and graphs.
+For reference, see:
+- [dash_core_components gallery](https://dash.plot.ly/dash-core-components)
+- [dash_html_components gallery](https://dash.plot.ly/dash-html-components)
 
 
-  The next part of the Dash tutorial covers how to make these apps interactive.
+The next part of the Dash tutorial covers how to make these apps interactive.
 
-  Dash Tutorial Part 3: Basic Callbacks
-  [Back to the Table of Contents](/getting-started-part-2)
+Dash Tutorial Part 3: Basic Callbacks
+[Back to the Table of Contents](/getting-started-part-2)
   ")
 ))
