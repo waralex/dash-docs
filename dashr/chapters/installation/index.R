@@ -23,6 +23,22 @@ install_github('plotly/dash-dcc-components') # Supercharged components
 Ready? Now, let's [make your first Dash app](/getting-started).
 "),
 
-htmlHr()
+htmlHr(),
+
+dccMarkdown("
+> A quick note on checking your versions and on upgrading. 
+> These docs are run using the versions listed above and 
+> these versions should be the latest versions available. 
+> To check which version that you have installed, you can run e.g.
+
+> ```{r}
+> library(dashCoreComponents) 
+> packageVersion('dashCoreComponents')
+> ```
+> 
+> To see the latest changes of any package, check the GitHub repo's CHANGELOG.md file:
+> - [dash changelog](https://github.com/plotly/dash/blob/master/CHANGELOG.md)
+
+")
   
 ))
