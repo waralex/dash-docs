@@ -1,1 +1,1 @@
-web: R -f run.R
+web: R -f /app/run.R
