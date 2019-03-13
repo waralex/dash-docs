@@ -13,6 +13,8 @@ examples = {
         'tutorial/examples/dashbio_components/clustergram.py'),
     'speck': tools.load_example(
         'tutorial/examples/dashbio_components/speck.py'),
+    'circos': tools.load_example(
+        'tutorial/examples/dashbio_components/circos.py')
 }
 
 
@@ -22,6 +24,7 @@ examples = {
 AlignmentChart = create_doc_page(examples, component_names, 'alignment-chart')
 
 # Circos
+Circos = create_doc_page(examples, component_names, 'circos')
 
 # Clustergram
 Clustergram = create_doc_page(examples, component_names, 'clustergram')

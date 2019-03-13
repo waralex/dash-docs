@@ -547,6 +547,13 @@ chapters = {
         'description': 'Speck examples, properties, and reference.'
     },
 
+    'circos-examples': {
+        'url': '/dash-bio/circos',
+        'content': dashbio_examples.Circos,
+        'name': 'Circos Component',
+        'description': 'Circos examples, properties, and reference.'
+    },
+
 ### End Components ###
 
 ### Start Dash Deployment Server ###
