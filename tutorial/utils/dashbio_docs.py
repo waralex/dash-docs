@@ -380,13 +380,13 @@ def generate_prop_table(
 
     regex = {
         'react': r'\s*([a-zA-Z]+)\s*\(([a-z\s|]*;*\s*[a-z]*)\):*[\.\s]*(.*)',
-        'python': r'\s*\(([a-zA-Z]+)\)\s*([a-zA-Z_]+)\s*:\s*(.*)'
+        'python': r'^\s*([a-zA-Z_]*)\s*\(([a-zA-Z\/]*);\s*([a-z]*)\):\s*(.*?)\s*(\(Default:\s*([^\s]*)\)|)\s*$'
     }
 
     component_type = 'react' \
         if component_name in component_names['react'] else 'python'
 
-    sep = '-' if component_type == 'react' else ':param'
+    sep = '-'
 
     exec("import {}".format(library_name))
 
@@ -397,29 +397,31 @@ def generate_prop_table(
 
     props = doc.split(sep)
 
-    tableRows = []
+    tableRows = [html.Tr([
+        html.Th('Attribute'),
+        html.Th('Description'),
+        html.Th('Type'),
+        html.Th('Default value')
+    ])]
 
     for item in props:
         desc_sections = item.split('\n\n')
 
-        partone = desc_sections[0]
+        partone = desc_sections[0].replace('    ', ' ')
 
         r = re.match(
-            regex[component_type],
+            re.compile(regex['python']),
             partone.replace('\n', ' ')
         )
+
         if r is None:
             continue
 
-        prop_optional = 'Yes'
-
-        if component_type == 'python':
-            (prop_type, prop_name, prop_desc) = r.groups()
-        elif component_type == 'react':
-            (prop_name, prop_type, prop_desc) = r.groups()
-            if 'optional' not in prop_type:
-                prop_optional = 'No'
-            prop_type = prop_type.split(';')[0]
+        (prop_name, prop_type, prop_optional, prop_desc, _, prop_default) = r.groups()
+        if prop_default is None:
+            prop_default = ''
+        if 'optional' in prop_optional:
+            prop_optional = ''
 
         if len(desc_sections) > 1:
             prop_desc += ' '
@@ -429,7 +431,7 @@ def generate_prop_table(
             html.Tr([html.Td(dcc.Markdown(prop_name)),
                      html.Td(dcc.Markdown(prop_desc)),
                      html.Td(dcc.Markdown(prop_type)),
-                     html.Td(dcc.Markdown(prop_optional))])
+                     html.Td(dcc.SyntaxHighlighter(prop_default))])
         )
 
     return html.Div([
