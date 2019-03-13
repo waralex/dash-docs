@@ -11,6 +11,25 @@ for (i in 1:length(available_indicators)){
   option_indicator[[i]] <- list(label = available_indicators[i], value = available_indicators[i])
 }
 
+#  hoverData output example in Python 
+#        {u'points': 
+#             [{u'curveNumber': 0, 
+#               u'text': u'Kenya', 
+#               u'pointNumber': 147, 
+#               u'customdata': u'Kenya', 
+#               u'pointIndex': 147, 
+#               u'y': 55.6992926829, 
+#               u'x': 4.825}]
+#         }
+
+# R version
+# list(points = list(list(curveNumber = 0, 
+#                         text = 'Kenya', 
+#                         pointNumber = 147,
+#                         customdata = 'Kenya', 
+#                         y = 55.6992926829, 
+#                         x = 4.825))
+# )
 
 app$layout_set(
   htmlDiv(list(
@@ -52,8 +71,8 @@ app$layout_set(
 
     htmlDiv(list(
       dccGraph(
-        id = 'crossfilter-indicator-scatter',
-        hoverData = list(points = list(list('customdata' = 'Japan')))
+        id = 'crossfilter-indicator-scatter'
+        #hoverData = list(points = list(list(customdata = 'Japan')))
       )), style = list(
         width ='49%',
         display = 'inline-block',
@@ -65,7 +84,6 @@ app$layout_set(
       dccGraph(id='y-time-series')
     ), style=list(display = 'inline-block', width = '49%')),
 
-    #dccGraph(id = 'indicator-graphic'),
     htmlDiv(list(
       dccSlider(
         id = 'crossfilter-year--slider',
@@ -77,29 +95,6 @@ app$layout_set(
     ), style = list(width = '49%', padding = '0px 20px 20px 20px'))
   ))
 )
-
-create_time_series <- function(dff, axis_type, title){
-  print(dff)
-  return(list(
-    'data' = list(list(
-      x = dff[['Year']],
-      y = dff[['Value']],
-      mode = 'lines+markers'
-    )),
-    'layout' = list(
-      height = 225,
-      margin = list('l' = 20, 'b' = 30, 'r' = 10, 't' = 10),
-      'annotations' = list(list(
-        x = 0, 'y' = 0.85, xanchor = 'left', yanchor = 'bottom',
-        xref = 'paper', yref = 'paper', showarrow = FALSE,
-        align = 'left', bgcolor = 'rgba(255, 255, 255, 0.5)',
-        text = 'linear'
-      )),
-      yaxis = list(type = axis_type),
-      xaxis = list(showgrid = FALSE)
-    )
-  ))
-}
 
 app$callback(
   output = list(id='crossfilter-indicator-scatter', property='figure'),
@@ -119,6 +114,7 @@ app$callback(
         y = filtered_df[filtered_df$Indicator_Name %in% yaxis_column_name, "Value", drop = TRUE],
         opacity=0.7,
         text = filtered_df[filtered_df$Indicator_Name %in% yaxis_column_name, "Country_Name", drop = TRUE],
+        #customdata = filtered_df[filtered_df$Indicator_Name %in% yaxis_column_name, "Country_Name", drop = TRUE],
         mode = 'markers',
         marker = list(
           'size'= 15,
@@ -126,7 +122,7 @@ app$callback(
           'line' = list('width' = 0.5, 'color' = 'white')
         )
       )
-
+      #browser()
       return (list(
         'data' = traces,
         'layout'= list(
@@ -141,26 +137,89 @@ app$callback(
   }
 )
 
+create_time_series <- function(dff, axis_type, title){
+  print(dff)
+  return(list(
+    'data' = list(list(
+      x = dff[['Year']],
+      y = dff[['Value']],
+      mode = 'lines+markers'
+    )),
+    'layout' = list(
+      height = 225,
+      margin = list('l' = 20, 'b' = 30, 'r' = 10, 't' = 10),
+      'annotations' = list(list(
+        x = 0, 'y' = 0.85, xanchor = 'left', yanchor = 'bottom',
+        xref = 'paper', yref = 'paper', showarrow = FALSE,
+        align = 'left', bgcolor = 'rgba(255, 255, 255, 0.5)',
+        text = axis_type
+      )),
+      yaxis = list(type = axis_type),
+      xaxis = list(showgrid = FALSE)
+    )
+  ))
+}
+
 app$callback(
   output = list(id='x-time-series', property='figure'),
-  params = list(input(id='crossfilter-indicator-scatter', property='hoverData'),
+  params = list(input(id='crossfilter-indicator-scatter', property='value'),
                 input(id='crossfilter-xaxis-column', property='value'),
                 input(id='crossfilter-xaxis-type', property='value')),
   function(hoverData, xaxis_column_name, axis_type) {
-    print(hoverData)
-    print("Nadia")
+    hoverData <- list(points = list(list(curveNumber = 0, 
+                            text = 'Kenya',
+                            pointNumber = 147,
+                            customdata = 'Kenya',
+                            y = 55.6992926829,
+                            x = 4.825))
+                      )
     country_name = hoverData$points[[1]]$customdata
-    print(country_name)
-    print("Nadia")
-    dff <- splitdf[df$Country_Name %in% country_name]
-    print(df)
-    print("Nadia")
-    dff <- df[df$Indicator_Name %in% xaxis_column_name]
+    dff <- split(df, as.factor(df$Country_Name==country_name))$`TRUE`
+    dff <- split(dff, as.factor(df$Indicator_Name==xaxis_column_name))$`TRUE`
     title = paste(c(country_name, xaxis_column_name), sep = '<b>')
-    browser()
     return(create_time_series(dff, axis_type, title))
   }
 )
 
+
+app$callback(
+  output = list(id='y-time-series', property='figure'),
+  params = list(input(id='crossfilter-indicator-scatter', property='value'),
+                input(id='crossfilter-yaxis-column', property='value'),
+                input(id='crossfilter-yaxis-type', property='value')),
+  function(hoverData, xaxis_column_name, axis_type) {
+    hoverData <- list(points = list(list(curveNumber = 0, 
+                                         text = 'Kenya',
+                                         pointNumber = 147,
+                                         customdata = 'Kenya',
+                                         y = 55.6992926829,
+                                         x = 4.825))
+    )
+    country_name = hoverData$points[[1]]$customdata
+    dff <- split(df, as.factor(df$Country_Name==country_name))$`TRUE`
+    dff <- split(dff, as.factor(df$Indicator_Name==xaxis_column_name))$`TRUE`
+    title = paste(c(country_name, xaxis_column_name), sep = '<b>')
+    return(create_time_series(dff, axis_type, title))
+  }
+)
+
+# app$callback(
+#   output = list(id='y-time-series', property='figure'),
+#   params = list(input(id='crossfilter-indicator-scatter', property='value'),
+#                 input(id='crossfilter-yaxis-column', property='value'),
+#                 input(id='ccrossfilter-yaxis-type', property='value')),
+#   function(hoverData, yaxis_column_name, axis_type) {
+#     hoverData <- list(points = list(list(curveNumber = 0, 
+#                                          text = 'Kenya',
+#                                          pointNumber = 147,
+#                                          customdata = 'Kenya',
+#                                          y = 55.6992926829,
+#                                          x = 4.825))
+#     )
+#     dff <- split(df, as.factor(df$Country_Name==hoverData$points[[1]]$customdata))$`TRUE`
+#     dff <- split(dff, as.factor(df$Indicator_Name==yaxis_column_name))$`TRUE`
+#     return(create_time_series(dff, axis_type, yaxis_column_name))
+#   }
+# )
 
 #app$run_heroku()
