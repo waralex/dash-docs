@@ -98,6 +98,12 @@ app$callback(output=list(id='chapter', property='children'),
       ),
       htmlBr(),
       dccLink(
+        'Part 6. Sharing Data Between Callbacks',
+        href='/faq-gotchas'
+      )
+      ,
+      htmlBr(),
+      dccLink(
         'Part 7. FAQs and Gotchas',
         href='/faq-gotchas'
       )
