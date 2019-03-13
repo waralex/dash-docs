@@ -193,9 +193,14 @@ layout = html.Div([
 
     #### Multiple Outputs
 
-    Each Dash callback function can only update a single Output property.
-    To update multiple Outputs, just write multiple functions.
+    *New in dash 0.39.0*
 
+    So far all the callbacks we've written only update a
+    single `Output` property. We can also update several at once: put all the
+    properties you want to update as a list in the decorator, and return that
+    many items from the callback. This is particularly nice if two outputs
+    depend on the same computationally intense intermediate result, such as a
+    slow database query.
     '''.replace('    ', '')),
 
     dcc.SyntaxHighlighter(
@@ -207,6 +212,15 @@ layout = html.Div([
     html.Div(examples[3][1], className="example-container"),
 
     dcc.Markdown('''
+    A word of caution: it's not always a good idea to combine Outputs, even if
+    you can:
+    - If the Outputs depend on some but not all of the same Inputs, keeping
+      them separate can avoid unnecessary updates.
+    - If they have the same Inputs but do independent computations with these
+      inputs, keeping the callbacks separate can allow them to run in parallel.
+
+    #### Chained Callbacks
+
     You can also chain outputs and inputs together: the output of one callback
     function could be the input of another callback function.
 
