@@ -554,6 +554,12 @@ chapters = {
         'description': 'Circos examples, properties, and reference.'
     },
 
+    'ideogram-exmaples': {
+        'url': '/dash-bio/ideogram',
+        'content': dashbio_examples.Ideogram,
+        'name': 'Ideogram Component',
+        'description': 'Ideogram examples, properties, and reference.'
+    },
 ### End Components ###
 
 ### Start Dash Deployment Server ###

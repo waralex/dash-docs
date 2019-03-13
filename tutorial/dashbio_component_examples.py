@@ -14,7 +14,9 @@ examples = {
     'speck': tools.load_example(
         'tutorial/examples/dashbio_components/speck.py'),
     'circos': tools.load_example(
-        'tutorial/examples/dashbio_components/circos.py')
+        'tutorial/examples/dashbio_components/circos.py'),
+    'ideogram': tools.load_example(
+        'tutorial/examples/dashbio_components/ideogram.py')
 }
 
 
@@ -30,6 +32,7 @@ Circos = create_doc_page(examples, component_names, 'circos')
 Clustergram = create_doc_page(examples, component_names, 'clustergram')
 
 # Ideogram
+Ideogram = create_doc_page(examples, component_names, 'ideogram')
 
 # ManhattanPlot
 
