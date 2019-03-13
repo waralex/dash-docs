@@ -560,6 +560,13 @@ chapters = {
         'name': 'Ideogram Component',
         'description': 'Ideogram examples, properties, and reference.'
     },
+
+    'molecule-3d-examples': {
+        'url': '/dash-bio/molecule3dviewer',
+        'content': dashbio_examples.Molecule3dViewer,
+        'name': 'Molecule 3D Component',
+        'description': 'Molecule3D examples, properties, and reference.'
+    },
 ### End Components ###
 
 ### Start Dash Deployment Server ###

@@ -16,7 +16,10 @@ examples = {
     'circos': tools.load_example(
         'tutorial/examples/dashbio_components/circos.py'),
     'ideogram': tools.load_example(
-        'tutorial/examples/dashbio_components/ideogram.py')
+        'tutorial/examples/dashbio_components/ideogram.py'),
+    'molecule-3d-viewer': tools.load_example(
+        'tutorial/examples/dashbio_components/molecule_3d_viewer.py'
+    )
 }
 
 
@@ -37,6 +40,7 @@ Ideogram = create_doc_page(examples, component_names, 'ideogram')
 # ManhattanPlot
 
 # Molecule3dViewer
+Molecule3dViewer = create_doc_page(examples, component_names, 'molecule-3d-viewer')
 
 # NeedlePlot
 

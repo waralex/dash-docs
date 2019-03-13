@@ -485,16 +485,20 @@ def create_doc_page(examples, component_names, component_name):
     :rtype (object): A div containing the contents of the component's
     documentation page.
     '''
+    c_name = component_name.replace('-', ' ').title().replace(' ', '')
+
+    if c_name == 'Molecule3DViewer':
+        c_name = 'Molecule3dViewer'
 
     return html.Div(
         children=[
             html.H1('{} Examples and Reference'.format(
-                component_name.replace('-', ' ').title().replace(' ', '')))] +
+                c_name))] +
         create_default_example(component_name,
                                examples[component_name],
                                styles=styles) +
         [generate_prop_table(
-            component_name.replace('-', ' ').title().replace(' ', ''),
+            c_name,
             component_names,
             'dash_bio')]
     )
