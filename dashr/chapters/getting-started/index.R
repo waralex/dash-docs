@@ -96,7 +96,6 @@ src = c(href = \"https://codepen.io/chriddyp/pen\"),
 stylesheet = \"bWLwgP.css\"
 )
 
-
 app$dependencies_set(dash_css())
 ```
 to get the same look and feel of these examples.
@@ -113,16 +112,56 @@ Give it a try: change the title \"Hello Dash\" in your application or change the
 #### More about HTML
 The `dash_html_components` library contains a component class for every
 HTML tag as well as keyword arguments for all of the HTML arguments.
+
+Let's customize the text in our app by modifying the inline styles of the components:
   "),
 
   # hello layout example
   examples$hello.dash2$source_code,
   examples$hello.dash2$layout,
 
+  dccMarkdown("
+In this example, we modified the inline styles of the `htmlDiv`
+and `htmlH1` components with the `style` property.
+`htmlH1('Hello Dash', style={'textAlign': 'center', 'color': '#7FDBFF'})`
+is rendered in the Dash application as
+`<h1 style=\"text-align: center; color: #7FDBFF\">Hello Dash</h1>`.
+There are a few important differences between the `dash_html_components`
+and the HTML attributes:
+1. The `style` property in HTML is a semicolon-separated string. In Dash,
+you can just supply a dictionary.
+2. The keys in the `style` dictionary are [camelCased](https://en.wikipedia.org/wiki/Camel_case).
+So, instead of `text-align`, it's `textAlign`.
+3. The HTML `class` attribute is `className` in Dash.
+4. The children of the HTML tag is specified through the `children` keyword
+argument. By convention, this is always the _first_ argument and
+so it is often omitted.
+Besides that, all of the available HTML attributes and tags are available
+to you within your Python context.
+***
+#### Reusable Components
+By writing our markup in Python, we can create complex reusable
+components like tables without switching contexts or languages.
+
+Here's a quick example that generates a `Table` from a Pandas dataframe.
+  "),
   # hello table example
   examples$hello.table$source_code,
   examples$hello.table$layout,
 
+  dccMarkdown("
+#### More about Visualization
+The `dash_core_components` library includes a component called `Graph`.
+`Graph` renders interactive data visualizations using the open source
+[plotly.js](https://github.com/plotly/plotly.js) JavaScript graphing
+library. Plotly.js supports over 35 chart types and renders charts in
+both vector-quality SVG and high-performance WebGL.
+The `figure` argument in the `dash_core_components.Graph` component is
+the same `figure` argument that is used by `plotly.py`, Plotly's
+open source Python graphing library.
+Check out the [plotly.py documentation and gallery](https://plot.ly/python)
+to learn more.
+  "),
   # hello scater example
   examples$hello.bubble$source_code,
   examples$hello.bubble$layout,
