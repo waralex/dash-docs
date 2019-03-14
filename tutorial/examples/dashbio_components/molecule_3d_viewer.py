@@ -1,10 +1,7 @@
 import dash
 import dash_bio as dashbio
 import dash_html_components as html
-import tempfile as tf
 import json
-import dash_bio.utils.pdb_parser as parser
-import dash_bio.utils.styles_parser as sparser
 
 try:
     import urllib.request as urlreq
@@ -15,20 +12,10 @@ external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
-data = urlreq.urlopen('https://raw.githubusercontent.com/plotly/dash-bio/master/tests/dashbio_demos/sample_data/molecule3d_2mru.pdb').read()
-
-tmp = tf.NamedTemporaryFile(suffix='.pdb', delete=False, mode='w+')
-
-try:
-    tmp.write(data)
-except TypeError:
-    tmp.write(data.decode())
-
-fname = tmp.name
-tmp.close()
-
-model_data = json.loads(parser.create_data(fname))
-styles_data = json.loads(sparser.create_style(fname, 'cartoon', 'residue'))
+model_data = urlreq.urlopen('https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/mol3d/model_data.js').read()
+styles_data = urlreq.urlopen('https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/mol3d/styles_data.js').read()
+model_data = json.loads(model_data)
+styles_data = json.loads(styles_data)
 
 app.layout = html.Div([
     dashbio.Molecule3dViewer(
