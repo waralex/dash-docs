@@ -183,6 +183,17 @@ For writing blocks of text, you can use the `Markdown` component in the
   examples$hello.markdown$source_code,
   examples$hello.markdown$layout,
 
+  dccMarkdown("
+#### Core Components
+The `dash_core_components` includes a set of higher-level components like
+dropdowns, graphs, markdown blocks, and more.
+Like all Dash components, they are described entirely declaratively.
+Every option that is configurable is available as a keyword argument
+of the component.
+
+Here are a few of the available components:
+  "),
+
   # hello dcc example
   examples$hello.dcc$source_code,
   examples$hello.dcc$layout,

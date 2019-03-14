@@ -14,7 +14,6 @@ app$layout_set(htmlDiv(list(
                    list(label = "San Francisco", value = "SF")),
     value = 'MTL'
   ),
-  htmlBr(),
 
   htmlLabel('Multi-Select Dropdown'),
   dccDropdown(
@@ -24,9 +23,6 @@ app$layout_set(htmlDiv(list(
     value = list('MTL', 'SF'),
     multi=TRUE
   ),
-  htmlBr(),
-  htmlBr(),
-  htmlBr(),
   htmlLabel('Radio Items'),
   dccRadioItems(
     options = list(list(label = "New York City", value = "NYC"),
@@ -34,7 +30,6 @@ app$layout_set(htmlDiv(list(
                    list(label = "San Francisco", value = "SF")),
     value = 'MTL'
   ),
-  htmlBr(),
 
   htmlLabel('Checkboxes'),
   dccChecklist(
@@ -43,11 +38,9 @@ app$layout_set(htmlDiv(list(
                    list(label = "San Francisco", value = "SF")),
     value = list('MTL', 'SF')
   ),
-  htmlBr(),
 
   htmlLabel('Text Input'),
   dccInput(value='MTL', type='text'),
-  htmlBr(),
 
   htmlLabel('Slider'),
   dccSlider(
