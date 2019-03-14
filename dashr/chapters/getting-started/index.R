@@ -166,6 +166,19 @@ to learn more.
   examples$hello.bubble$source_code,
   examples$hello.bubble$layout,
 
+  dccMarkdown("
+*These graphs are interactive and responsive.
+**Hover** over points to see their values,
+**click** on legend items to toggle traces,
+**click and drag** to zoom,
+**hold down shift, and click and drag** to pan.*
+#### Markdown
+While Dash exposes HTML through the `dash_html_components` library,
+it can be tedious to write your copy in HTML.
+For writing blocks of text, you can use the `Markdown` component in the
+`dash_core_components` library.
+  "),
+
   # hello dmarkdown example
   examples$hello.markdown$source_code,
   examples$hello.markdown$layout,
