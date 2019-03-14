@@ -46,10 +46,6 @@ but you can also [build your own](https://github.com/plotly/dash-components-arch
 
 ## Hello World
   "),
-  Syntax(examples$hello.world$source_code, 
-    summary="
-        To get started, create a file named `app.py` with the following code:
-      "),
   
   dccMarkdown("
     Run the app with
