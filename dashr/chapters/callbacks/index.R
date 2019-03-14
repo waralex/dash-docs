@@ -43,15 +43,19 @@ Let's get started with a simple example.
   #   ", id='dash-app-layout'),
   # 
   # Example of basic callbacks
-  dccSyntaxHighlighter(
-    examples$simple.callbacks$source_code,
-    language='r',
-    customStyle=styles.code_container
-  ),
+  # dccSyntaxHighlighter(
+  #   examples$simple.callbacks$source_code,
+  #   language='r',
+  #   customStyle=styles.code_container
+  # ),
   
   # html.Div(examples$simple.callbacks$layout,
   #          className="example-container"),
   # 
+  
+  examples$simple.callbacks$source_code,
+  examples$simple.callbacks$layout,
+  
   dccMarkdown("
 Try typing in the text box. The children of the output component updates
 right away. Let's break down what's happening here:
@@ -99,9 +103,12 @@ even the available `options` of a `dccDropdown` component!
 Let's take a look at another example where a `dccSlider` updates a
 `dccGraph`.
   "),
-  examples$simple.callbacks$source_code,
-  examples$simple.callbacks$layout,
+ 
 
+  # Example of slicer
+  examples$simple.slider$source_code,
+  examples$simple.slider$layout,
+  
   dccMarkdown("
 Try typing in the text box. The children of the output component updates
 right away. Let's break down what's happening here:
@@ -150,18 +157,78 @@ Let's take a look at another example where a `dccSlider` updates a
 `dccGraph`.
 "),
   
-  # Example of slicer
-  examples$simple.slider$source_code,
-  examples$simple.slider$layout,
-
   # Example of mutli-inputs
   examples$multi.inputs$source_code,
   examples$multi.inputs$layout,
 
+  dccMarkdown("
+In this example, the `\"value\"` property of the `Slider` is the input of the app
+and the output of the app is the `\"figure\"` property of the `Graph`.
+Whenever the `value` of the `Slider` changes, Dash calls the callback
+function `update_figure` with the new value. The function filters the
+dataframe with this new value, constructs a `figure` object,
+and returns it to the Dash application.
+
+There are a few nice patterns in this example:
+1. We're using the [Pandas](http://pandas.pydata.org/) library for importing
+and filtering datasets in memory.
+2. We load our dataframe at the start of the app: `df = pd.read_csv('...')`.
+This dataframe `df` is in the global state of the app and can be
+read inside the callback functions.
+3. Loading data into memory can be expensive. By loading querying data at
+the start of the app instead of inside the callback functions, we ensure
+that this operation is only done when the app server starts. When a user
+visits the app or interacts with the app, that data (the `df`)
+is already in memory.
+If possible, expensive initialization (like downloading or querying data)
+should be done in the global scope of the app instead of within the
+callback functions.
+4. The callback does not modify the original data, it just creates copies
+of the dataframe by filtered through pandas filters.
+This is important: *your callbacks should never mutate variables
+outside of their scope*. If your callbacks modify global state, then one
+user's session might affect the next user's session and when the app is
+deployed on multiple processes or threads, those modifications will not
+be shared across sessions.
+
+#### Multiple inputs
+
+In Dash, any \"`Output`\" can have multiple \"`Input`\" components.
+Here's a simple example that binds five Inputs
+(the `value` property of 2 `Dropdown` components, 2 `RadioItems` components,
+and 1 `Slider` component) to 1 Output component
+(the `figure` property of the `Graph` component).
+Notice how the `app.callback` lists all five `dash.dependencies.Input` inside
+a list in the second argument.
+  "),
+  
   # Example of mutli-output
   examples$multi.output$source_code,
   examples$multi.output$layout,
 
+  dccMarkdown("
+In this example, the `update_graph` function gets called whenever the
+`value` property of the `Dropdown`, `Slider`, or `RadioItems` components
+change.
+
+The input arguments of the `update_graph` function are the new or current
+value of each of the `Input` properties, in the order that they were
+specified.
+
+Even though only a single `Input` changes at a time (a user can only change
+the value of a single Dropdown in a given moment), Dash collects the current
+state of all of the specified `Input` properties and passes them into your
+function for you. Your callback functions are always guaranteed to be passed
+the representative state of the app.
+
+Let's extend our example to include multiple outputs.
+
+#### Multiple Outputs
+
+Each Dash callback function can only update a single Output property.
+To update multiple Outputs, just write multiple functions.
+  "),
+  
   # Example of mutli-output
   examples$multi.output2$source_code,
   examples$multi.output2$layout
