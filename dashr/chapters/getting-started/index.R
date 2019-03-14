@@ -22,27 +22,35 @@ layout <- htmlDiv(list(
 > [Dash Tutorial](/).
 > The [previous chapter](/installation)
 > covered installation
-> and the next chapter covers Dash callbacks.
+> and the [next chapter](/getting-started-part-2) covers Dash callbacks.
 
-DashR is an R interface for Plotly's Dash.
 
-It has feature parity with Dash for Python and its
-interface is designed to feel similar across the
-two languages. Dash for Python and DashR share
-the same front-end code, meaning that the same
-component libraries are available in both communities.
+This tutorial will walk you through a fundamental aspect of Dash apps, 
+the app `layout_set`, through 6 self-contained apps.
+"),
+  
+htmlBr(),
 
-DashR is a package for creating analytic, data intensive
-web applications - no javascript required.
+dccMarkdown("
+Dash apps are composed of two parts.
+The first part is the \"`layout_set`\" of the app and 
+it describes what the application looks like. 
+The second part describes the interactivity of the application 
+and will be covered in the [next chapter](/getting-started-part-2).
 
-Built on top of React.js, DashR is packaged with a set of
-interactive web based components like graphs, data tables,
-dropdowns, sliders, and more.
+
+Dash provides R classes for all of the visual components of the application. 
+We maintain a set of components in the `dash_core_components` 
+and the `dash_html_components` library 
+but you can also [build your own](https://github.com/plotly/dash-components-archetype) with JavaScript and React.js.
 
 ## Hello World
   "),
-  examples$hello.world$source_code,
-
+  Syntax(examples$hello.world$source_code, 
+    summary="
+        To get started, create a file named `app.py` with the following code:
+      "),
+  
   dccMarkdown("
     Run the app with
 
