@@ -38,19 +38,19 @@ Dash apps interactive.
 Let's get started with a simple example.
   "),
   
-  # htmlH4("
-  #   Dash App Layout
-  #   ", id='dash-app-layout'),
+  htmlH4("
+    Dash App Layout
+    ", id='dash-app-layout'),
   
   # Example of basic callbacks
   dccSyntaxHighlighter(
     examples$simple.callbacks$source_code,
-    language='r',
-    ustomStyle=styles.code_container
+    language='R',
+    customStyle=styles.code_container
   ),
   
-  # html.Div(examples$simple.callbacks$layout,
-  #          className="example-container"),
+  html.Div(examples$simple.callbacks$layout,
+           className="example-container"),
   dccMarkdown("
 Try typing in the text box. The children of the output component updates
 right away. Let's break down what's happening here:
