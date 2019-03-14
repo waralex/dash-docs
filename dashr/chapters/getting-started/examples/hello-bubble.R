@@ -17,7 +17,9 @@ for (i in 1:length(continents)){
     opacity=0.7,
     text = continents[i],
     mode = 'markers',
-    name = continents[i]
+    name = continents[i],
+    marker = list(size = 15,
+                  line = list(width = 0.5, color = 'white'))
   )}
 
 app$layout_set(htmlDiv(list(
