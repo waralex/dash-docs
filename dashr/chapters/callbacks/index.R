@@ -89,14 +89,14 @@ Remember how every component was described entirely through its set of
 keyword arguments? Those properties are important now.
 With Dash interactivity, we can dynamically update any of those properties
 through a callback function. Frequently we'll update the `children` of a
-component to display new text or the `figure` of a `dcc.Graph` component
+component to display new text or the `figure` of a `dccGraph` component
 to display new data, but we could also update the `style` of a component or
-even the available `options` of a `dcc.Dropdown` component!
+even the available `options` of a `dccDropdown` component!
 
 ***
 
-Let's take a look at another example where a `dcc.Slider` updates a
-`dcc.Graph`.
+Let's take a look at another example where a `dccSlider` updates a
+`dccGraph`.
   "),
   examples$simple.callbacks$source_code,
   examples$simple.callbacks$layout,
