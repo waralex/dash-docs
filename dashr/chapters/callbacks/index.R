@@ -45,7 +45,7 @@ Let's get started with a simple example.
   # Example of basic callbacks
   dccSyntaxHighlighter(
     examples$simple.callbacks$source_code,
-    language='R',
+    language='r',
     customStyle=styles.code_container
   ),
   
@@ -101,6 +101,54 @@ Let's take a look at another example where a `dccSlider` updates a
   examples$simple.callbacks$source_code,
   examples$simple.callbacks$layout,
 
+  dccMarkdown("
+Try typing in the text box. The children of the output component updates
+right away. Let's break down what's happening here:
+1. The \"inputs\" and \"outputs\" of our application interface are described
+declaratively through the `app.callback` decorator.
+2. In Dash, the inputs and outputs of our application are simply the
+properties of a particular component. In this example,
+our input is the \"`value`\" property of the component that has the ID
+\"`my-id`\". Our output is the \"`children`\" property of the
+component with the ID \"`my-div`\".
+3. Whenever an input property changes, the function that the
+callback decorator wraps will get called automatically.
+Dash provides the function with the new value of the input property as
+an input argument and Dash updates the property of the output component
+with whatever was returned by the function.
+4. The `component_id` and `component_property` keywords are optional
+(there are only two arguments for each of those objects).
+I have included them here for clarity but I will omit them from here on
+out for brevity and readability.
+5. Don't confuse the `dash.dependencies.Input` object from the
+`dash_core_components.Input` object. The former is just used in these
+callbacks and the latter is an actual component.
+6. Notice how we don't set a value for the `children` property of the
+`my-div` component in the `layout`. When the Dash app starts, it
+automatically calls all of the callbacks with the initial values of the
+input components in order to populate the initial state of the output
+components. In this example, if you specified something like
+`html.Div(id='my-div', children='Hello world')`, it would get overwritten
+when the app starts.
+
+It's sort of like programming with Microsoft Excel:
+whenever an input cell changes, all of the cells that depend on that cell
+will get updated automatically. This is called \"Reactive Programming\".
+
+Remember how every component was described entirely through its set of
+keyword arguments? Those properties are important now.
+With Dash interactivity, we can dynamically update any of those properties
+through a callback function. Frequently we'll update the `children` of a
+component to display new text or the `figure` of a `dccGraph` component
+to display new data, but we could also update the `style` of a component or
+even the available `options` of a `dccDropdown` component!
+
+***
+
+Let's take a look at another example where a `dccSlider` updates a
+`dccGraph`.
+"),
+  
   # Example of slicer
   examples$simple.slider$source_code,
   examples$simple.slider$layout,
