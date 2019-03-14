@@ -198,13 +198,23 @@ Here are a few of the available components:
   examples$hello.dcc$source_code,
   examples$hello.dcc$layout,
 
+  dccMarkdown("
+#### Core Components
+Dash components are declarative: every configurable aspect of these components 
+is set during instantiation as a keyword argument. Call help in your R console 
+on any of the components to learn more about a component and its available arguments.
+  "),
   # dropdown help with example
   # examples$dropdown.doc$source_code,
   examples$dropdown.doc$layout,
 
   dccMarkdown("
-#Summary
-The layout of a Dash app describes what the app looks like. The layout is a hierarchical tree of components. The dash_html_components library provides classes for all of the HTML tags and the keyword arguments describe the HTML attributes like style, className, and id. The dash_dcc_components library generates higher-level components like controls and graphs.
+# Summary
+The layout of a Dash app describes what the app looks like. 
+The layout is a hierarchical tree of components. The dash_html_components library provides 
+classes for all of the HTML tags and the keyword arguments describe the HTML 
+attributes like style, className, and id. The dash_dcc_components library generates 
+higher-level components like controls and graphs.
 For reference, see:
 - [dash_core_components gallery](https://dash.plot.ly/dash-core-components)
 - [dash_html_components gallery](https://dash.plot.ly/dash-html-components)
@@ -213,6 +223,11 @@ For reference, see:
 The next part of the Dash tutorial covers how to make these apps interactive.
 
 Dash Tutorial Part 3: Basic Callbacks
+[Back to the Table of Contents](/getting-started-part-2)
+  "),
+  
+  htmlHr(),
+  dccMarkdown("
 [Back to the Table of Contents](/getting-started-part-2)
   ")
 ))
