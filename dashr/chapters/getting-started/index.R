@@ -44,23 +44,26 @@ We maintain a set of components in the `dash_core_components`
 and the `dash_html_components` library 
 but you can also [build your own](https://github.com/plotly/dash-components-archetype) with JavaScript and React.js.
 
-## Hello World
-  "),
-  
-  dccMarkdown("
-    Run the app with
 
-   ```
+To get started, create a file named `app.py` with the following code:
+"),
+examples$hello.world$source_code,
+  
+dccMarkdown("
+Run the app with
+
+```
    $ Rscript index.R
    Fire started at 127.0.0.1:8080
    start: 127.0.0.1:8080
-   ```
+```
+
   "),
   # hello markdown example
-  dccMarkdown("
-    and visit [https://dashr-docs.herokuapp.com/](https://dashr-docs.herokuapp.com/)
-    in your web browser. You should see an app that looks like this.
-  "),
+dccMarkdown("
+  and visit [http:127.0.0.1:8050/](http:127.0.0.1:8050/)
+  in your web browser. You should see an app that looks like this.
+"),
   examples$hello.world$layout,
 
   # hello layout example
