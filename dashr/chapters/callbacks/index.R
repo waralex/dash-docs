@@ -45,7 +45,7 @@ Let's get started with a simple example.
   # Example of basic callbacks
   dccSyntaxHighlighter(
     examples$simple.callbacks$source_code,
-    language='R',
+    language='r',
     ustomStyle=styles.code_container
   ),
   
