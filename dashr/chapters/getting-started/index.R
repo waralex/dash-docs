@@ -57,19 +57,13 @@ Run the app with
    Fire started at 127.0.0.1:8080
    start: 127.0.0.1:8080
 ```
-
   "),
   # hello markdown example
-dccMarkdown("
-  and visit [http:127.0.0.1:8050/](http:127.0.0.1:8050/)
-  in your web browser. You should see an app that looks like this.
-"),
+  dccMarkdown("
+    and visit [http:127.0.0.1:8050/](http:127.0.0.1:8050/)
+    in your web browser. You should see an app that looks like this.
+  "),
   examples$hello.world$layout,
-
-dcc.Markdown("
-
-"),
-
 
   # hello layout example
   examples$hello.dash2$source_code,
