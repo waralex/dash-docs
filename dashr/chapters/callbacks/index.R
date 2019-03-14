@@ -110,58 +110,6 @@ Let's take a look at another example where a `dccSlider` updates a
   examples$simple.slider$layout,
   
   dccMarkdown("
-Try typing in the text box. The children of the output component updates
-right away. Let's break down what's happening here:
-1. The \"inputs\" and \"outputs\" of our application interface are described
-declaratively through the `app.callback` decorator.
-2. In Dash, the inputs and outputs of our application are simply the
-properties of a particular component. In this example,
-our input is the \"`value`\" property of the component that has the ID
-\"`my-id`\". Our output is the \"`children`\" property of the
-component with the ID \"`my-div`\".
-3. Whenever an input property changes, the function that the
-callback decorator wraps will get called automatically.
-Dash provides the function with the new value of the input property as
-an input argument and Dash updates the property of the output component
-with whatever was returned by the function.
-4. The `component_id` and `component_property` keywords are optional
-(there are only two arguments for each of those objects).
-I have included them here for clarity but I will omit them from here on
-out for brevity and readability.
-5. Don't confuse the `dash.dependencies.Input` object from the
-`dash_core_components.Input` object. The former is just used in these
-callbacks and the latter is an actual component.
-6. Notice how we don't set a value for the `children` property of the
-`my-div` component in the `layout`. When the Dash app starts, it
-automatically calls all of the callbacks with the initial values of the
-input components in order to populate the initial state of the output
-components. In this example, if you specified something like
-`html.Div(id='my-div', children='Hello world')`, it would get overwritten
-when the app starts.
-
-It's sort of like programming with Microsoft Excel:
-whenever an input cell changes, all of the cells that depend on that cell
-will get updated automatically. This is called \"Reactive Programming\".
-
-Remember how every component was described entirely through its set of
-keyword arguments? Those properties are important now.
-With Dash interactivity, we can dynamically update any of those properties
-through a callback function. Frequently we'll update the `children` of a
-component to display new text or the `figure` of a `dccGraph` component
-to display new data, but we could also update the `style` of a component or
-even the available `options` of a `dccDropdown` component!
-
-***
-
-Let's take a look at another example where a `dccSlider` updates a
-`dccGraph`.
-"),
-  
-  # Example of mutli-inputs
-  examples$multi.inputs$source_code,
-  examples$multi.inputs$layout,
-
-  dccMarkdown("
 In this example, the `\"value\"` property of the `Slider` is the input of the app
 and the output of the app is the `\"figure\"` property of the `Graph`.
 Whenever the `value` of the `Slider` changes, Dash calls the callback
@@ -200,11 +148,11 @@ and 1 `Slider` component) to 1 Output component
 (the `figure` property of the `Graph` component).
 Notice how the `app.callback` lists all five `dash.dependencies.Input` inside
 a list in the second argument.
-  "),
+"),
   
-  # Example of mutli-output
-  examples$multi.output$source_code,
-  examples$multi.output$layout,
+  # Example of mutli-inputs
+  examples$multi.inputs$source_code,
+  examples$multi.inputs$layout,
 
   dccMarkdown("
 In this example, the `update_graph` function gets called whenever the
@@ -230,6 +178,57 @@ To update multiple Outputs, just write multiple functions.
   "),
   
   # Example of mutli-output
+  examples$multi.output$source_code,
+  examples$multi.output$layout,
+
+  dccMarkdown("
+You can also chain outputs and inputs together: the output of one callback
+function could be the input of another callback function.
+
+This pattern can be used to create dynamic UIs where one input component
+updates the available options of the next input component.
+Here's a simple example.
+  "),
+  
+  # Example of mutli-output
   examples$multi.output2$source_code,
-  examples$multi.output2$layout
+  examples$multi.output2$layout,
+  
+  dccMarkdown("
+The first callback updates the available options in the second `RadioItems`
+component based off of the selected value in the first `RadioItems` component.
+
+The second callback sets an initial value when the `options` property changes:
+it sets it to the first value in that `options` array.
+
+The final callback displays the selected `value` of each component.
+If you change the `value` of the countries `RadioItems` component, Dash
+will wait until the `value` of the cities component is updated
+before calling the final callback. This prevents your callbacks from being
+called with inconsistent state like with `\"USA\"` and `\"Montréal\"`.
+  "),
+  
+  dccMarkdown("
+### Summary
+
+We've covered the fundamentals of callbacks in Dash.
+Dash apps are built off of a set
+of simple but powerful principles: declarative UIs that are customizable
+through reactive and functional Python callbacks.
+Every element attribute of the declarative components can be updated through
+a callback and a subset of the attributes, like the `value` properties of
+the `dcc.Dropdown`, are editable by the user in the interface.
+
+***
+  "),
+  
+  dccMarkdown("
+The next part of the Dash tutorial covers an additional concept of
+Dash callbacks: `State`
+  "),
+  
+  dccLink(
+    'Dash Tutorial Part 4: State',
+    href="/state"
+  )
 ))

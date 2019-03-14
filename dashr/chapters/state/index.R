@@ -31,6 +31,10 @@ our callbacks looked something like:
   examples$two_inputs$source,
   examples$two_inputs$layout,
 
+  dccMarkdown("
+    
+  "),
+  
   #example of one input and two states
   examples$one_input_two_states$source,
   examples$one_input_two_states$layout
