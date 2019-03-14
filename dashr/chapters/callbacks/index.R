@@ -43,11 +43,11 @@ Let's get started with a simple example.
   #   ", id='dash-app-layout'),
   
   # Example of basic callbacks
-  # dccSyntaxHighlighter(
-  #   examples$simple.callbacks$source_code,
-  #   language='R',
-  #   ustomStyle=styles.code_container
-  # ),
+  dccSyntaxHighlighter(
+    examples$simple.callbacks$source_code,
+    language='R',
+    ustomStyle=styles.code_container
+  ),
   
   # html.Div(examples$simple.callbacks$layout,
   #          className="example-container"),
