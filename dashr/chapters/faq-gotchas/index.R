@@ -1,5 +1,6 @@
-# library(dashCoreComponents)
-# library(dashHtmlComponents)
+library(dashCoreComponents)
+library(dashHtmlComponents)
+library(dashR)
 
 utils <- new.env()
 source('dashr/utils.R', local=utils)
@@ -85,7 +86,7 @@ and URL Support](/urls) section in the Dash User Guide.
 times a component has been clicked), all `dash-html-components` have an
 `n_clicks_timestamp` property, which records the time that the component was
 last clicked. This provides a convenient way for detecting which
-`html.Button` was clicked in order to trigger the current callback. Here's
+`htmlButton` was clicked in order to trigger the current callback. Here's
 an example of how this can be done:
   "),
 
@@ -183,7 +184,7 @@ Currently, for a given callback, it can only have a single `Output`, which
 targets one component/property pair eg `'my-graph'`, `'figure'`. If you
 wanted, say, four `Graph` components to be updated based on a particular
 user input, you either need to create four separate callbacks which each
-target an individual `Graph`, or have the callback return a `html.Div`
+target an individual `Graph`, or have the callback return a `htmlDiv`
 container that holds the updated four Graphs.
 
 There are plans to remove this limitation. You can track the status of this
@@ -197,7 +198,7 @@ only be registered as the `Output` of one callback. If you want to associate
 two logically separate sets of `Inputs` with the one output
 component/property pair, you’ll have to bundle them up into a larger
 callback and detect which of the relevant `Inputs` triggered the callback
-inside the function. For `html.Button` elements, detecting which one
+inside the function. For `htmlButton` elements, detecting which one
 triggered the callback ca be done using the `n_clicks_timestamp`
 property. For an example of this, see the question in the FAQ, *How do I
 determine which `Input` has changed?*.
@@ -206,7 +207,7 @@ determine which `Input` has changed?*.
 ### All callbacks must be defined before the server starts
 
 All your callbacks must be defined before your Dash app's server starts
-running, which is to say, before you call `app.run_server(debug=True)`. This means
+running, which is to say, before you call `app$run_server(debug=True)`. This means
 that while you can assemble changed layout fragments dynamically during the
 handling of a callback, you can't define dynamic callbacks in response to
 user input during the handling of a callback. If you have a dynamic
