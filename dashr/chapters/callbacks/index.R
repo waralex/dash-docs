@@ -48,7 +48,7 @@ Let's get started with a simple example.
   #   language='r',
   #   customStyle=styles.code_container
   # ),
-  
+
   # html.Div(examples$simple.callbacks$layout,
   #          className="example-container"),
   # 
@@ -217,7 +217,7 @@ of simple but powerful principles: declarative UIs that are customizable
 through reactive and functional Python callbacks.
 Every element attribute of the declarative components can be updated through
 a callback and a subset of the attributes, like the `value` properties of
-the `dcc.Dropdown`, are editable by the user in the interface.
+the `dccDropdown`, are editable by the user in the interface.
 
 ***
   "),
