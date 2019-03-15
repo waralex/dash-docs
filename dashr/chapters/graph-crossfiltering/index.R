@@ -38,10 +38,10 @@ to learn more.
 Dash components are described declaratively by a set of attributes.
 All of these attributes can be updated by callback functions, but only
 a subset of these attributes are updated through user interaction, such as  
-when you click on an option in a `dcc.Dropdown` component and the
+when you click on an option in a `dccDropdown` component and the
 `value` property of that component changes.
 
-The `dcc.Graph` component has four attributes that can change
+The `dccGraph` component has four attributes that can change
 through user-interaction: `hoverData`, `clickData`, `selectedData`,
 `relayoutData`.
 These properties update when you hover over points, click on points, or

@@ -15,7 +15,7 @@ layout <- htmlDiv(list(
   dccMarkdown("
 # Sharing State Between Callbacks
 > This is the 6th chapter of the essential [Dash Tutorial](/). The [previous chapter](/graph-crossfiltering) 
-> covered how to use callbacks with the `dash_core_components.Graph` component. 
+> covered how to use callbacks with the `dashCoreComponents.Graph` component. 
 > The [rest of the Dash documentation](/) covers other topics like multi-page apps and component libraries. 
 > Just getting started? Make sure to [install the necessary dependencies](/installation). 
 > The [next and final chapter](/faq-gotchas) covers frequently asked questions and gotchas.

@@ -40,8 +40,8 @@ and will be covered in the [next chapter](/getting-started-part-2).
 
 
 Dash provides R classes for all of the visual components of the application. 
-We maintain a set of components in the `dash_core_components` 
-and the `dash_html_components` library 
+We maintain a set of components in the `dashCoreComponents` 
+and the `dashHtmlComponents` library 
 but you can also [build your own](https://github.com/plotly/dash-components-archetype) with JavaScript and React.js.
 
 
@@ -69,10 +69,10 @@ in your web browser. You should see an app that looks like this.
 Note:
 1. The `layout_set` is composed of a tree of \"components\" like `htmlDiv`
 and `dccGraph`.
-2. The `dash_html_components` library has a component for every HTML
+2. The `dashHtmlComponents` library has a component for every HTML
 tag. The `htmlH1(children='Hello Dash')` component generates
 a `<h1>Hello Dash</h1>` HTML element in your application.
-3. Not all components are pure HTML. The `dash_core_components` describe
+3. Not all components are pure HTML. The `dashCoreComponents` describe
 higher-level components that are interactive and are generated with
 JavaScript, HTML, and CSS through the React.js library.
 4. Each component is described entirely through keyword attributes.
@@ -110,7 +110,7 @@ Give it a try: change the title \"Hello Dash\" in your application or change the
 > Don't like hot-reloading? You can turn this off with `app.run_server(dev_tools_hot_reload=False)`. 
 > Learn more in [Dash Dev Tools documentation](/devtools) Questions? See the [community forum hot reloading discussion](https://community.plot.ly/t/announcing-hot-reload/14177).
 #### More about HTML
-The `dash_html_components` library contains a component class for every
+The `dashHtmlComponents` library contains a component class for every
 HTML tag as well as keyword arguments for all of the HTML arguments.
 
 Let's customize the text in our app by modifying the inline styles of the components:
@@ -126,7 +126,7 @@ and `htmlH1` components with the `style` property.
 `htmlH1('Hello Dash', style={'textAlign': 'center', 'color': '#7FDBFF'})`
 is rendered in the Dash application as
 `<h1 style=\"text-align: center; color: #7FDBFF\">Hello Dash</h1>`.
-There are a few important differences between the `dash_html_components`
+There are a few important differences between the `dashHtmlComponents`
 and the HTML attributes:
 1. The `style` property in HTML is a semicolon-separated string. In Dash,
 you can just supply a dictionary.
@@ -151,12 +151,12 @@ Here's a quick example that generates a `Table` from a Pandas dataframe.
 
   dccMarkdown("
 #### More about Visualization
-The `dash_core_components` library includes a component called `Graph`.
+The `dashCoreComponents` library includes a component called `Graph`.
 `Graph` renders interactive data visualizations using the open source
 [plotly.js](https://github.com/plotly/plotly.js) JavaScript graphing
 library. Plotly.js supports over 35 chart types and renders charts in
 both vector-quality SVG and high-performance WebGL.
-The `figure` argument in the `dash_core_components.Graph` component is
+The `figure` argument in the `dashCoreComponents.Graph` component is
 the same `figure` argument that is used by `plotly.py`, Plotly's
 open source Python graphing library.
 Check out the [plotly.py documentation and gallery](https://plot.ly/python)
@@ -173,10 +173,10 @@ to learn more.
 **click and drag** to zoom,
 **hold down shift, and click and drag** to pan.*
 #### Markdown
-While Dash exposes HTML through the `dash_html_components` library,
+While Dash exposes HTML through the `dashHtmlComponents` library,
 it can be tedious to write your copy in HTML.
 For writing blocks of text, you can use the `Markdown` component in the
-`dash_core_components` library.
+`dashCoreComponents` library.
   "),
 
   # hello dmarkdown example
@@ -185,7 +185,7 @@ For writing blocks of text, you can use the `Markdown` component in the
 
   dccMarkdown("
 #### Core Components
-The `dash_core_components` includes a set of higher-level components like
+The `dashCoreComponents` includes a set of higher-level components like
 dropdowns, graphs, markdown blocks, and more.
 Like all Dash components, they are described entirely declaratively.
 Every option that is configurable is available as a keyword argument
@@ -211,13 +211,13 @@ on any of the components to learn more about a component and its available argum
   dccMarkdown("
 # Summary
 The layout of a Dash app describes what the app looks like. 
-The layout is a hierarchical tree of components. The dash_html_components library provides 
+The layout is a hierarchical tree of components. The dashHtmlComponents library provides 
 classes for all of the HTML tags and the keyword arguments describe the HTML 
-attributes like style, className, and id. The dash_dcc_components library generates 
+attributes like style, className, and id. The dashDccComponents library generates 
 higher-level components like controls and graphs.
 For reference, see:
-- [dash_core_components gallery](https://dash.plot.ly/dash-core-components)
-- [dash_html_components gallery](https://dash.plot.ly/dash-html-components)
+- [dashCoreComponents gallery](https://dash.plot.ly/dash-core-components)
+- [dashHtmlComponents gallery](https://dash.plot.ly/dash-html-components)
 
 
 The next part of the Dash tutorial covers how to make these apps interactive.

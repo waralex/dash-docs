@@ -27,9 +27,9 @@ layout <- htmlDiv(list(
 In the [previous chapter on the `app.layout`](/getting-started) we learned
 that the `app$layout_set()` describes what the app looks like and is
 a hierarchical tree of components.
-The `dash_html_components` library provides classes for all of the HTML
+The `dashHtmlComponents` library provides classes for all of the HTML
 tags, and the keyword arguments describe the HTML attributes like `style`,
-`className`, and `id`. The `dash_core_components` library
+`className`, and `id`. The `dashCoreComponents` library
 generates higher-level components like controls and graphs.
 
 This chapter describes how to make your
@@ -49,7 +49,7 @@ Let's get started with a simple example.
   #   customStyle=styles.code_container
   # ),
 
-  # html.Div(examples$simple.callbacks$layout,
+  # htmlDiv(examples$simple.callbacks$layout,
   #          className="example-container"),
   # 
   
@@ -76,14 +76,14 @@ with whatever was returned by the function.
 I have included them here for clarity but I will omit them from here on
 out for brevity and readability.
 5. Don't confuse the `dash.dependencies.Input` object from the
-`dash_core_components.Input` object. The former is just used in these
+`dashCoreComponents.Input` object. The former is just used in these
 callbacks and the latter is an actual component.
 6. Notice how we don't set a value for the `children` property of the
 `my-div` component in the `layout`. When the Dash app starts, it
 automatically calls all of the callbacks with the initial values of the
 input components in order to populate the initial state of the output
 components. In this example, if you specified something like
-`html.Div(id='my-div', children='Hello world')`, it would get overwritten
+`htmlDiv(id='my-div', children='Hello world')`, it would get overwritten
 when the app starts.
 
 It's sort of like programming with Microsoft Excel:

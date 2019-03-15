@@ -37,7 +37,7 @@ layout <- htmlDiv(list(
 web apps. This means that you can use CSS to style your Dash app as you
 would standard HTML.
 
-All `dash-html-components` support inline CSS styling through a `style`
+All `dashHtmlComponents` support inline CSS styling through a `style`
 attribute. An external CSS stylesheet can also be used to style
 `dash-html-components` and `dash-core-components` by targeting the ID or
 class names of your components. Both `dash-html-components` and
