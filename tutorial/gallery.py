@@ -7,7 +7,7 @@ import reusable_components as reusable
 
 
 def SectionTitle(title):
-    return dcc.Markdown(dedent('''
+    return html.Div(id=title, children=dcc.Markdown(...))
     ***
 
     ## {}
