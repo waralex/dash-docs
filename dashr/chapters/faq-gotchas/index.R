@@ -6,8 +6,7 @@ utils <- new.env()
 source('dashr/utils.R', local=utils)
 
 examples <- list(
-  #two_inputs=utils$LoadExampleCode('dashr/chapters/state/examples/two_inputs.R'),
-  #one_input_two_states=utils$LoadExampleCode('dashr/chapters/state/examples/one_input_two_states.R')
+  last_clicked_button=utils$LoadExampleCode('dashr/chapters/faq-gotchas/examples/last_clicked_button.R')
 )
 
 
@@ -19,9 +18,6 @@ layout <- htmlDiv(list(
 > The [previous chapter](/faq-gotchas) described how to share data between callbacks.
 > The [rest of the Dash documentation](/) covers other topics like multi-page apps and component libraries.
 "),
-  #example of two inputs
-  #examples$two_inputs$source,
-  #examples$two_inputs$layout,
   
   
   dccMarkdown("
@@ -90,9 +86,9 @@ last clicked. This provides a convenient way for detecting which
 an example of how this can be done:
   "),
 
-  #example of one input and two states
-  #examples$one_input_two_states$source,
-  #examples$one_input_two_states$layout
+  #example of last_clicked_button
+  examples$last_clicked_button$source,
+  examples$last_clicked_button$layout,
   
   dccMarkdown("
 Note that `n_clicks` is the only property that has this timestamp

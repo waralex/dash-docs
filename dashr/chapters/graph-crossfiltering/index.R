@@ -32,7 +32,7 @@ both vector-quality SVG and high-performance WebGL.
 The `figure` argument in the `dashCoreComponents.Graph` component is
 the same `figure` argument that is used by `plotly.py`, Plotly's
 open source Python graphing library.
-Check out the [plotly.py documentation and gallery](https://plot.ly/python)
+Check out the [plotly.py documentation and gallery](https://plot.ly/r/)
 to learn more.
 
 Dash components are described declaratively by a set of attributes.

@@ -72,7 +72,7 @@ app$layout_set(
     htmlDiv(list(
       dccGraph(
         id = 'crossfilter-indicator-scatter',
-        hoverData = list(points = list(list(customdata = 'Japan')))
+        hoverData = list(points = list(list('customdata' = 'Japan')))
       )), style = list(
         width ='49%',
         display = 'inline-block',
@@ -122,7 +122,6 @@ app$callback(
           'line' = list('width' = 0.5, 'color' = 'white')
         )
       )
-      #browser()
       return (list(
         'data' = traces,
         'layout'= list(
@@ -138,7 +137,6 @@ app$callback(
 )
 
 create_time_series <- function(dff, axis_type, title){
-  print(dff)
   return(list(
     'data' = list(list(
       x = dff[['Year']],
@@ -188,7 +186,7 @@ app$callback(
                 input(id='crossfilter-yaxis-column', property='value'),
                 input(id='crossfilter-yaxis-type', property='value')),
   function(hoverData, yaxis_column_name, axis_type) {
-    hoverData <- list(points = list(list(curveNumber = 0, 
+    hoverData <- list(points = list(list(curveNumber = 0,
                                          text = 'Kenya',
                                          pointNumber = 147,
                                          customdata = 'Kenya',
@@ -202,24 +200,5 @@ app$callback(
     return(create_time_series(dff, axis_type, yaxis_column_name))
   }
 )
-
-# app$callback(
-#   output = list(id='y-time-series', property='figure'),
-#   params = list(input(id='crossfilter-indicator-scatter', property='value'),
-#                 input(id='crossfilter-yaxis-column', property='value'),
-#                 input(id='ccrossfilter-yaxis-type', property='value')),
-#   function(hoverData, yaxis_column_name, axis_type) {
-#     hoverData <- list(points = list(list(curveNumber = 0, 
-#                                          text = 'Kenya',
-#                                          pointNumber = 147,
-#                                          customdata = 'Kenya',
-#                                          y = 55.6992926829,
-#                                          x = 4.825))
-#     )
-#     dff <- split(df, as.factor(df$Country_Name==hoverData$points[[1]]$customdata))$`TRUE`
-#     dff <- split(dff, as.factor(df$Indicator_Name==yaxis_column_name))$`TRUE`
-#     return(create_time_series(dff, axis_type, yaxis_column_name))
-#   }
-# )
 
 #app$run_heroku()

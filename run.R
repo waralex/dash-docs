@@ -71,6 +71,8 @@ app$callback(output=list(id='chapter', property='children'),
   } else {
     return(htmlDiv(list(
       htmlH1('DashR User Guide'),
+      htmlH2("Dash Tutorial"),
+      htmlBr(),
       dccLink(
         'Part 1. Installation',
         href='/installation'
@@ -80,31 +82,60 @@ app$callback(output=list(id='chapter', property='children'),
         'Part 2. The Dash Layout',
         href='/getting-started'
       ),
+      dccMarkdown("
+The Dash `layout` describes what your app will look like 
+and is composed of a set of declarative Dash components.
+      "),
       htmlBr(),
       dccLink(
         'Part 3. Basic Callbacks',
         href='/getting-started-part-2'
       ),
+      dccMarkdown("
+Dash apps are made interactive through Dash Callbacks: 
+R functions that are automatically called whenever 
+an input component's property changes. Callbacks can be chained, 
+allowing one update in the UI to trigger several updates across the app.
+    "),
       htmlBr(),
       dccLink(
         'Part 4. Callbacks With State',
         href='/state'
       ),
+      dccMarkdown("
+Basic callbacks are fired whenever the values change. 
+Use Dash `State` with Dash `Inputs` to pass in extra values whenever the `Inputs` change. 
+`State` is useful for UIs that contain forms or buttons.
+    "),
       htmlBr(),
       dccLink(
         'Part 5. Interactive Graphing and Crossfiltering',
         href='/graph-crossfiltering'
       ),
+      dccMarkdown("
+Bind interactivity to the Dash `Graph` component whenever you hover, click, 
+or select points on your chart.
+      "),      
       htmlBr(),
       dccLink(
         'Part 6. Sharing Data Between Callbacks',
         href='/data-callbacks'
-      )      ,
+      ),
+      dccMarkdown("
+`global` variables will break your Dash apps. 
+However, there are other ways to share data between callbacks. 
+This chapter is useful for callbacks that run expensive data processing tasks or process large data.
+      "),   
       htmlBr(),
       dccLink(
         'Part 7. FAQs and Gotchas',
         href='/faq-gotchas'
-      )
+      ),
+      dccMarkdown("
+If you have read through the rest of the tutorial and still have questions 
+or are encountering unexpected behaviour, 
+this chapter may be useful. 
+      ")
     )))
   }
 })
