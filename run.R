@@ -71,7 +71,48 @@ app$callback(output=list(id='chapter', property='children'),
   } else {
     return(htmlDiv(list(
       htmlH1('DashR User Guide'),
+      htmlH1('What\'s Dash?'),
+      htmlHr(),
+      dccLink(
+        'Introduction',
+        href='https://dash.plot.ly/introduction'
+      ),
+      htmlBr(),
+      dccMarkdown("
+A quick paragraph about Dash and a link to the talk at Plotcon that started it all.
+      "),
+      htmlBr(),
+      dccLink(
+        'Announcement Essay',
+        href='https://medium.com/@plotlygraphs/introducing-dash-5ecf7191b503'
+      ),
+      htmlBr(),
+      dccMarkdown("
+Our extended essay on Dash. 
+An extended discussion of Dash's architecture and our motivation behind the project.
+      "),
+      htmlBr(),
+      dccLink(
+        'Dash App Gallery',
+        href='https://dashr-docs.herokuapp.com'
+      ),
+      htmlBr(),
+      dccMarkdown("
+A glimpse into what's possible with Dash.
+      "),
+      htmlBr(),
+      htmlBr(),
+      dccLink(
+        'Dash Club',
+        href='https://plot.us12.list-manage.com/subscribe?u=28d7f8f0685d044fb51f0d4ee&id=0c1cb734d7'
+      ),
+      htmlBr(),
+      dccMarkdown("
+A fortnightly email newsletter by chriddyp, the creator of Dash.
+      "),
+      htmlBr(),      
       htmlH2("Dash Tutorial"),
+      htmlHr(),
       htmlBr(),
       dccLink(
         'Part 1. Installation',
