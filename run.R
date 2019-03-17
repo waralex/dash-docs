@@ -1,7 +1,7 @@
+source('app.R')
 library(dashCoreComponents)
 library(dashHtmlComponents)
 library(dashR)
-source('app.R')
 
 chapters.installation <- new.env()
 source('dashr/chapters/installation/index.R', local=chapters.installation)
@@ -32,7 +32,29 @@ source('dashr/chapters/faq-gotchas/index.R', local=chapters.faq_gotchas)
 # })
 
 
+header <- htmlDiv(
+  className = 'header',
+  list(
+    htmlDiv(
+      style = list(height = '100%'),
+      className = 'container-width',
+      children = list(
+        htmlA(htmlImg(
+          style = list(height = '100%'),
+          src = 'https://cdn.rawgit.com/plotly/dash-docs/b1178b4e/images/dash-logo-stripe.svg'
+        ), href = 'https://plot.ly/products/dash', className='logo-link'),
+        
+        htmlDiv(className='links', children = list(
+          htmlA('pricing', className='link', href = 'https://plot.ly/dash/pricing'),
+          htmlA('user guide', className='link', href = '/'),
+          htmlA('plotly', className='link', href = 'https://plot.ly/'),
+          htmlA(children=list(htmlI(className="fa fa-search")), className='link', href='https://dash.plot.ly/search')
+        ))
+      ))
+))
+
 app$layout_set(
+  header,
   htmlDiv(list(
     dccLocation(id='url'),
     htmlDiv(
@@ -71,17 +93,17 @@ app$callback(output=list(id='chapter', property='children'),
   } else {
     return(htmlDiv(list(
       htmlH1('DashR User Guide'),
-      htmlH1('What\'s Dash?'),
+      htmlH2('What\'s Dash?'),
       htmlHr(),
       dccLink(
-        'Introduction',
+        htmlA('Introduction'),
         href='https://dash.plot.ly/introduction'
       ),
       htmlBr(),
       dccMarkdown("
 A quick paragraph about Dash and a link to the talk at Plotcon that started it all.
       "),
-      htmlBr(),
+      
       dccLink(
         'Announcement Essay',
         href='https://medium.com/@plotlygraphs/introducing-dash-5ecf7191b503'
@@ -91,7 +113,7 @@ A quick paragraph about Dash and a link to the talk at Plotcon that started it a
 Our extended essay on Dash. 
 An extended discussion of Dash's architecture and our motivation behind the project.
       "),
-      htmlBr(),
+      
       dccLink(
         'Dash App Gallery',
         href='https://dashr-docs.herokuapp.com'
@@ -100,8 +122,6 @@ An extended discussion of Dash's architecture and our motivation behind the proj
       dccMarkdown("
 A glimpse into what's possible with Dash.
       "),
-      htmlBr(),
-      htmlBr(),
       dccLink(
         'Dash Club',
         href='https://plot.us12.list-manage.com/subscribe?u=28d7f8f0685d044fb51f0d4ee&id=0c1cb734d7'
@@ -110,10 +130,9 @@ A glimpse into what's possible with Dash.
       dccMarkdown("
 A fortnightly email newsletter by chriddyp, the creator of Dash.
       "),
-      htmlBr(),      
+  
       htmlH2("Dash Tutorial"),
       htmlHr(),
-      htmlBr(),
       dccLink(
         'Part 1. Installation',
         href='/installation'

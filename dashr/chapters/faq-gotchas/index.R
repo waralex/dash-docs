@@ -5,9 +5,9 @@ library(dashR)
 utils <- new.env()
 source('dashr/utils.R', local=utils)
 
-examples <- list(
-  last_clicked_button=utils$LoadExampleCode('dashr/chapters/faq-gotchas/examples/last_clicked_button.R')
-)
+#examples <- list(
+#  last_clicked_button=utils$LoadExampleCode('dashr/chapters/faq-gotchas/examples/last_clicked_button.R')
+#)
 
 
 
@@ -87,8 +87,8 @@ an example of how this can be done:
   "),
 
   #example of last_clicked_button
-  examples$last_clicked_button$source,
-  examples$last_clicked_button$layout,
+  #examples$last_clicked_button$source,
+  #examples$last_clicked_button$layout,
   
   dccMarkdown("
 Note that `n_clicks` is the only property that has this timestamp
