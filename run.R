@@ -36,12 +36,12 @@ header <- htmlDiv(
   className = 'header',
   list(
     htmlDiv(
-      style = list(height = '100%'),
+      style = list(height = '95%'),
       className = 'container-width',
       children = list(
         htmlA(htmlImg(
           style = list(height = '100%'),
-          src = 'https://cdn.rawgit.com/plotly/dash-docs/b1178b4e/images/dash-logo-stripe.svg'
+          src = 'https://user-images.githubusercontent.com/1865834/50180824-abcc5f80-02d8-11e9-8319-8842909c3f8e.png'
         ), href = 'https://plot.ly/products/dash', className='logo-link'),
         
         htmlDiv(className='links', children = list(
