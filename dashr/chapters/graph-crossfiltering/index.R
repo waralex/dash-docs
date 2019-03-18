@@ -48,8 +48,8 @@ These properties update when you hover over points, click on points, or
 select regions of points in a graph.
 "),
   # Example of interactive visualizations 1
-  #examples$interactive_graph_1$source,
-  #examples$interactive_graph_1$layout
+  examples$interactive_graph_1$source,
+  examples$interactive_graph_1$layout,
 
   # Example of interactive visualizations 2
   examples$interactive_graph_2$source,
