@@ -144,30 +144,28 @@ create_time_series <- function(dff, axis_type, title){
 
 app$callback(
   output = list(id='x-time-series', property='figure'),
-  params = list(input(id='crossfilter-indicator-scatter', property='value'),
+  params = list(input(id='crossfilter-indicator-scatter', property='hoverData'),
                 input(id='crossfilter-xaxis-column', property='value'),
                 input(id='crossfilter-xaxis-type', property='value')),
   function(hoverData, xaxis_column_name, axis_type) {
-    # country_name = hoverData$points[[1]]$customdata
-    dff <- split(df, as.factor(df$Country_Name==country_name))$`TRUE`
-    dff <- split(dff, as.factor(dff$Indicator_Name==xaxis_column_name))$`TRUE`
+    country_name = hoverData$points[[1]]$customdata
+    dff <- df[df[["Country_Name"]] %in% country_name, ]
+    dff <- dff[dff[["Indicator_Name"]] %in% xaxis_column_name, ]
     title = paste(c(country_name, xaxis_column_name), sep = '  ')
     return(create_time_series(dff, axis_type, title))
   }
 )
 
-
 app$callback(
   output = list(id='y-time-series', property='figure'),
-  params = list(input(id='crossfilter-indicator-scatter', property='value'),
+  params = list(input(id='crossfilter-indicator-scatter', property='hoverData'),
                 input(id='crossfilter-yaxis-column', property='value'),
                 input(id='crossfilter-yaxis-type', property='value')),
   function(hoverData, yaxis_column_name, axis_type) {
-    dff <- split(df, as.factor(df$Country_Name==country_name))$`TRUE`
-    dff <- split(dff, as.factor(dff$Indicator_Name==yaxis_column_name))$`TRUE`
-    title = paste(c(country_name, yaxis_column_name), sep = '<b>')
+    dff <- df[df[["Country_Name"]] %in% hoverData$points[[1]]$customdata, ]
+    dff <- dff[dff[["Indicator_Name"]] %in% yaxis_column_name, ]
     return(create_time_series(dff, axis_type, yaxis_column_name))
   }
 )
 
-#app$run_heroku()
+# app$run_heroku()

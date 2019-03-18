@@ -193,4 +193,4 @@ function(relayoutData) {
 #' def display_selected_data(relayoutData):
 #'   return json.dumps(relayoutData, indent=2)
 
-app$run_heroku()
+#app$run_heroku()
