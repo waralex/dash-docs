@@ -122,7 +122,7 @@ header = html.Div(
                 html.A('user guide', className='link active', href='/'),
                 html.A('plotly', className='link', href='https://plot.ly/'),
                 html.A(children=[html.I(className="fa fa-search")], className='link', href='/search')
-                                                  ])#
+            ])#
         ]
     )
 )
