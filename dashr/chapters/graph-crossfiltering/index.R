@@ -86,6 +86,12 @@ the selected region drawn as a dashed rectangle.
 
 > As an aside, if you find yourself filtering and visualizing highly-dimensional datasets, 
 > you should consider checking out the [parallel coordinates](https://plot.ly/python/parallel-coordinates-plot/?_ga=2.140046067.192781799.1553018107-1965683241.1552615001) chart type.
+  
+# Current Limitations
+There are a few limitations in graph interactions right now.
+- It is not currently possible to customize the style of the hover interactions or the select box. 
+This issue is being worked on in 
+[Customized Click, Hover, and Selection Styles or Traces #1847](https://github.com/plotly/plotly.js/issues/1847).
   "),
   htmlHr(),
   dccMarkdown("
