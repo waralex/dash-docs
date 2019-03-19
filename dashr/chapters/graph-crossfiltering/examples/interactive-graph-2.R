@@ -11,8 +11,6 @@ for (i in 1:length(available_indicators)){
   option_indicator[[i]] <- list(label = available_indicators[i], value = available_indicators[i])
 }
 
-country_name <- "Japan"
-
 app$layout_set(
   htmlDiv(list(
     htmlDiv(list(
@@ -54,7 +52,7 @@ app$layout_set(
     htmlDiv(list(
       dccGraph(
         id = 'crossfilter-indicator-scatter',
-        hoverData = list(points = list(list(customdata = 'Japan')))
+        hoverData = "Japan"
       )), style = list(
         width ='49%',
         display = 'inline-block',
@@ -64,7 +62,7 @@ app$layout_set(
     htmlDiv(list(
       dccGraph(id='x-time-series'),
       dccGraph(id='y-time-series')
-    ), style=list(display = 'inline-block', width = '49%')),
+    ), style = list(display = 'inline-block', width = '49%')),
 
     htmlDiv(list(
       dccSlider(
@@ -92,11 +90,11 @@ app$callback(
     if (selected_year %in% unique(df$Year)){
       filtered_df <- df[df[["Year"]] %in% selected_year, ]
       traces[[1]] <- list(
-        x = filtered_df[filtered_df$Indicator_Name %in% xaxis_column_name, "Value", drop = TRUE],
-        y = filtered_df[filtered_df$Indicator_Name %in% yaxis_column_name, "Value", drop = TRUE],
+        x = filtered_df[filtered_df$Indicator_Name %in% xaxis_column_name, "Value"],
+        y = filtered_df[filtered_df$Indicator_Name %in% yaxis_column_name, "Value"],
         opacity=0.7,
-        text = filtered_df[filtered_df$Indicator_Name %in% yaxis_column_name, "Country_Name", drop = TRUE],
-        customdata = filtered_df[filtered_df$Indicator_Name %in% yaxis_column_name, "Country_Name", drop = TRUE],
+        text = filtered_df[filtered_df$Indicator_Name %in% yaxis_column_name, "Country_Name"],
+        customdata = filtered_df[filtered_df$Indicator_Name %in% yaxis_column_name, "Country_Name"],
         mode = 'markers',
         marker = list(
           'size'= 15,
@@ -106,6 +104,7 @@ app$callback(
       )
       
       country_name <<- traces[[1]]$customdata[1]
+      
       return (list(
         'data' = traces,
         'layout'= list(
@@ -148,7 +147,9 @@ app$callback(
                 input(id='crossfilter-xaxis-column', property='value'),
                 input(id='crossfilter-xaxis-type', property='value')),
   function(hoverData, xaxis_column_name, axis_type) {
-    country_name = hoverData$points[[1]]$customdata
+    country_name <- hoverData
+    #country_name = hoverData$points[[1]]$customdata
+    # dff <- df[df[["Country_Name"]] %in% country_name, ]
     dff <- df[df[["Country_Name"]] %in% country_name, ]
     dff <- dff[dff[["Indicator_Name"]] %in% xaxis_column_name, ]
     title = paste(c(country_name, xaxis_column_name), sep = '  ')
@@ -162,7 +163,7 @@ app$callback(
                 input(id='crossfilter-yaxis-column', property='value'),
                 input(id='crossfilter-yaxis-type', property='value')),
   function(hoverData, yaxis_column_name, axis_type) {
-    dff <- df[df[["Country_Name"]] %in% hoverData$points[[1]]$customdata, ]
+    dff <- df[df[["Country_Name"]] %in% hoverData, ]
     dff <- dff[dff[["Indicator_Name"]] %in% yaxis_column_name, ]
     return(create_time_series(dff, axis_type, yaxis_column_name))
   }
