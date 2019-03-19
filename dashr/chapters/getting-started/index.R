@@ -228,6 +228,6 @@ Dash Tutorial Part 3: Basic Callbacks
   
   htmlHr(),
   dccMarkdown("
-[Back to the Table of Contents](/getting-started-part-2)
+[Back to the Table of Contents](/)
   ")
 ))

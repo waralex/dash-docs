@@ -87,9 +87,21 @@ the selected region drawn as a dashed rectangle.
 > As an aside, if you find yourself filtering and visualizing highly-dimensional datasets, 
 > you should consider checking out the [parallel coordinates](https://plot.ly/python/parallel-coordinates-plot/?_ga=2.140046067.192781799.1553018107-1965683241.1552615001) chart type.
   "),
-  
+  htmlHr(),
+  dccMarkdown("
+There's a lot that you can do with these interactive plotting features. 
+If you need help exploring your use case, open up a thread in the [Dash Community Forum](https://community.plot.ly/c/dash?_ga=2.198896623.192781799.1553018107-1965683241.1552615001).
+  "),
+  htmlHr(),
+  dccMarkdown("
+The next chapter of the Dash User Guide explains how to share data between callbacks.
+  "),
   dccLink(
     'Dash Tutorial Part 6. Sharing Data Between Callbacks',
     href='/data-callbacks'
-  )
+  ),
+  htmlHr(),
+  dccMarkdown("
+[Back to the Table of Contents](/)
+  ")
 ))
