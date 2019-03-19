@@ -75,6 +75,18 @@ Notice how the line graphs on the right update based off of the point that you a
 Here's a slightly more generic example for crossfiltering across a six-column data set. 
 Each scatter plot's selection filters the underlying dataset.
 "),
+  # Example of interactive visualizations 3
+  
+  dccMarkdown("
+Try clicking and dragging in any of the plots to filter different regions. 
+On every selection, the three graph callbacks are fired with the latest selected regions of each plot. 
+A pandas dataframe is filtered based off of the selected points and 
+the graphs are replotted with the selected points highlighted and 
+the selected region drawn as a dashed rectangle.
+
+> As an aside, if you find yourself filtering and visualizing highly-dimensional datasets, 
+> you should consider checking out the [parallel coordinates](https://plot.ly/python/parallel-coordinates-plot/?_ga=2.140046067.192781799.1553018107-1965683241.1552615001) chart type.
+  "),
   
   dccLink(
     'Dash Tutorial Part 6. Sharing Data Between Callbacks',
