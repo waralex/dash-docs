@@ -1,3 +1,5 @@
+import sys
+
 import dash_core_components as dcc
 import dash_html_components as html
 from tutorial import styles
@@ -37,7 +39,7 @@ dashbio_components = {
             'parameter': 'data'
         },
         'iframe_info': {
-            'location': 'https://dash-playground.plotly.host/dash-alignment-chart-demo/',
+            'location': 'https://dash-bio.plotly.host/docs-demos-dashbio/alignment_chart',
             'height': 950
         }
     },
@@ -70,7 +72,7 @@ dashbio_components = {
         },
         'setup_code': '''circos_graph_data = json.loads(data)''',
         'iframe_info': {
-            'location': 'https://dash-playground.plotly.host/dash-circos-demo/',
+            'location': 'https://dash-bio.plotly.host/docs-demos-dashbio/circos',
             'height': 700
         }
     },
@@ -96,8 +98,8 @@ dashbio_components = {
         sep='\t', skiprows=4).set_index('model')
 data = df.values''',
         'iframe_info': {
-            'location': 'https://dash-playground.plotly.host/dash-clustergram-demo/',
-            'height': 825
+            'location': 'https://dash-bio.plotly.host/docs-demos-dashbio/clustergram',
+            'height': 850
         }
     },
 
@@ -105,6 +107,9 @@ data = df.values''',
         'description': '''A visual representation and analysis tool for chromosome bands.''',
         'params': {
             'chrHeight': '250'
+        },
+        'iframe_info': {
+            'location': 'https://dash-bio.plotly.host/docs-demos-dashbio/ideogram'
         }
     },
     'ManhattanPlot': {
@@ -118,7 +123,10 @@ data = df.values''',
             ['pandas', 'pd'],
             ['dash_core_components', 'dcc']
         ],
-        'setup_code': '''df = pd.read_csv("https://raw.githubusercontent.com/plotly/dash-bio/master/tests/dashbio_demos/sample_data/manhattan_data.csv")'''
+        'setup_code': '''df = pd.read_csv("https://raw.githubusercontent.com/plotly/dash-bio/master/tests/dashbio_demos/sample_data/manhattan_data.csv")''',
+        'iframe_info': {
+            'location': 'https://dash-bio.plotly.host/docs-demos-dashbio/manhattan'
+        }
     },
     'Molecule3dViewer': {
         'description': '''A 3D visualization of biomolecular structures.''',
@@ -129,23 +137,15 @@ data = df.values''',
         },
         'library_imports': [
             ['json', 'json'],
-            ['tempfile', 'tf'],
-            ['dash_bio.utils.pdb_parser', 'parser'],
-            ['dash_bio.utils.styles_parser', 'sparser']
+            ['urllib.request', 'urlreq']
         ],
-        'datafile': {
-            'name': 'molecule3d_2mru.pdb'
-        },
-        'setup_code': '''tmp = tf.NamedTemporaryFile(suffix='.pdb', delete=False, mode='w+')
-tmp.write(data)
-fname = tmp.name
-tmp.close()
-
-model_data = json.loads(parser.create_data(fname))
-styles_data = json.loads(sparser.create_style(fname, 'cartoon', 'chain'))
+        'setup_code': '''model_data = urlreq.urlopen('https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/mol3d/model_data.js').read()
+styles_data = urlreq.urlopen('https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/mol3d/styles_data.js').read()
+model_data = json.loads(model_data)
+styles_data = json.loads(styles_data)
 ''',
         'iframe_info': {
-            'location': 'https://dash-playground.plotly.host/dash-mol3d-demo/'
+            'location': 'https://dash-bio.plotly.host/docs-demos-dashbio/mol3d'
         }
     },
     'NeedlePlot': {
@@ -199,8 +199,8 @@ LEGSLQKRGIVEQCCTSICSLYQLENYCN\"'
         ],
         'setup_code': '''data = xyz_reader.read_xyz(data_string=data)''',
         'iframe_info': {
-            'location': 'https://dash-playground.plotly.host/dash-speck-demo/',
-            'height': 350
+            'location': 'https://dash-bio.plotly.host/docs-demos-dashbio/speck',
+            'height': 500
         }
     },
 
