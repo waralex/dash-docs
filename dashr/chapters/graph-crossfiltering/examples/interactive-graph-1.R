@@ -97,48 +97,6 @@ this event.
         )
       )
     )
-    # html.Div(className='row', 
-    #   html.Div(list(
-    #     dcc.Markdown("
-    #                    **Hover Data**
-    #                    Mouse over values in the graph.
-    #                    "),
-    #     html.Pre(id='hover-data', style=styles$pre)
-    #     ), className='three columns')
-      
-      # html.Div(list(
-      #   dcc.Markdown(d("
-      #                  **Click Data**
-      #                  Click on points in the graph.
-      #                  ")),
-      #   html.Pre(id='click-data', style=styles$pre)
-      #   ), className='three columns'),
-      
-      # html.Div(list(
-      #   dcc.Markdown(d("
-      #                  **Selection Data**
-      #                  Choose the lasso or rectangle tool in the graph's menu
-      #                  bar and then select points in the graph.
-      #                  Note that if `layout.clickmode = 'event+select'`, selection data also 
-      #                  accumulates (or un-accumulates) selected data if you hold down the shift
-      #                  button while clicking.
-      #                  ")),
-      #   html.Pre(id='selected-data', style=styles$pre)
-      #   ), className='three columns'),
-      
-      # html.Div(list(
-      #   dcc.Markdown(d("
-      #                  **Zoom and Relayout Data**
-      #                  Click and drag on the graph to zoom or click on the zoom
-      #                  buttons in the graph's menu bar.
-      #                  Clicking on legend items will also fire
-      #                  this event.
-      #                  ")),
-      #   html.Pre(id='relayout-data', style=styles$pre)
-      #   ), className='three columns')
-      # )
-     
-    
   ))
 )
 
@@ -146,15 +104,7 @@ app$callback(output('hover-data', 'children'),
              list(input('basic-interactions', 'hoverData')),
 function(hoverData) {
   toJSON(hoverData)
-  # sprintf("heheh %s", hoverData)
 })
-
-#' @app.callback(
-#'   Output('hover-data', 'children'),
-#'   [Input('basic-interactions', 'hoverData')])
-#' def display_hover_data(hoverData):
-#'   return json.dumps(hoverData, indent=2)
-
 
 app$callback(output('click-data', 'children'),
              list(input('basic-interactions', 'clickData')),
@@ -162,36 +112,18 @@ function(clickData) {
   toJSON(clickData)
 })
 
-#' @app.callback(
-#'   Output('click-data', 'children'),
-#'   [Input('basic-interactions', 'clickData')])
-#' def display_click_data(clickData):
-#'   return json.dumps(clickData, indent=2)
-
-
 app$callback(output('selected-data', 'children'),
              list(input('basic-interactions', 'selectedData')),
 function(selectedData) {
   toJSON(selectedData)
 })
 
-#' @app.callback(
-#'   Output('selected-data', 'children'),
-#'   [Input('basic-interactions', 'selectedData')])
-#' def display_selected_data(selectedData):
-#'   return json.dumps(selectedData, indent=2)
-
-
 app$callback(output('relayout-data', 'children'),
              list(input('basic-interactions', 'relayoutData')),
 function(relayoutData) {
-  toJSON(relayoutData)
+  # toJSON(relayoutData)
+  #return json.dumps(relayoutData, indent=2)
+  toJSON("{\n \"autozize\": true}")
 })
-
-#' @app.callback(
-#'   Output('relayout-data', 'children'),
-#'   [Input('basic-interactions', 'relayoutData')])
-#' def display_selected_data(relayoutData):
-#'   return json.dumps(relayoutData, indent=2)
 
 # app$run_heroku()
