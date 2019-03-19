@@ -22,7 +22,7 @@ app$layout_set(
             x = c(1, 2, 3, 4),
             y = c(4, 1, 3, 5),
             text = c('a', 'b', 'c', 'd'),
-            #customdata = c('c.a', 'c.b', 'c.c', 'c.d'),
+            customdata = c('c.a', 'c.b', 'c.c', 'c.d'),
             name = 'Trace 1',
             mode = 'markers',
             marker = list(size = 12)
@@ -31,7 +31,7 @@ app$layout_set(
             x = c(1, 2, 3, 4),
             y = c(9, 4, 1, 4),
             text = c('w', 'x', 'y', 'z'),
-            #customdata = c('c.w', 'c.x', 'c.y', 'c.z'),
+            customdata = c('c.w', 'c.x', 'c.y', 'c.z'),
             name = 'Trace 2',
             mode = 'markers',
             marker = list(size = 12)
@@ -142,11 +142,12 @@ this event.
   ))
 )
 
-# app$callback(output('hover-data', 'children'),
-#              list(input('basic-interactions', 'hoverData')),
-# function(hoverData) {
-#   sprintf("heheh %s", hoverData)
-# })
+app$callback(output('hover-data', 'children'),
+             list(input('basic-interactions', 'hoverData')),
+function(hoverData) {
+  toJSON(hoverData)
+  # sprintf("heheh %s", hoverData)
+})
 
 #' @app.callback(
 #'   Output('hover-data', 'children'),
@@ -158,7 +159,7 @@ this event.
 app$callback(output('click-data', 'children'),
              list(input('basic-interactions', 'clickData')),
 function(clickData) {
-  sprintf("heheh %s", clickData)
+  toJSON(clickData)
 })
 
 #' @app.callback(
@@ -171,7 +172,7 @@ function(clickData) {
 app$callback(output('selected-data', 'children'),
              list(input('basic-interactions', 'selectedData')),
 function(selectedData) {
-  sprintf("heheh %s", selectedData)
+  toJSON(selectedData)
 })
 
 #' @app.callback(
@@ -184,7 +185,7 @@ function(selectedData) {
 app$callback(output('relayout-data', 'children'),
              list(input('basic-interactions', 'relayoutData')),
 function(relayoutData) {
-  sprintf("heheh %s", relayoutData)
+  toJSON(relayoutData)
 })
 
 #' @app.callback(
@@ -193,4 +194,4 @@ function(relayoutData) {
 #' def display_selected_data(relayoutData):
 #'   return json.dumps(relayoutData, indent=2)
 
-#app$run_heroku()
+app$run_heroku()
