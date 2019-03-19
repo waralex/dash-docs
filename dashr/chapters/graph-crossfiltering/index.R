@@ -46,14 +46,35 @@ through user-interaction: `hoverData`, `clickData`, `selectedData`,
 `relayoutData`.
 These properties update when you hover over points, click on points, or
 select regions of points in a graph.
+
+
+Here's an simple example that prints these attributes in the screen.
 "),
   # Example of interactive visualizations 1
   examples$interactive_graph_1$source,
   examples$interactive_graph_1$layout,
 
+  dccMarkdown("
+# Update Graphs on Hover
+
+Let's update our world indicators example from the previous chapter 
+by updating time series when we hover over points in our scatter plot.
+  "),
   # Example of interactive visualizations 2
   examples$interactive_graph_2$source,
   examples$interactive_graph_2$layout,
+  
+  dccMarkdown("
+Try mousing over the points in the scatter plot on the left. 
+Notice how the line graphs on the right update based off of the point that you are hovering over.
+"),
+  htmlHr(),
+  dccMarkdown("
+# Generic Crossfilter Recipe
+              
+Here's a slightly more generic example for crossfiltering across a six-column data set. 
+Each scatter plot's selection filters the underlying dataset.
+"),
   
   dccLink(
     'Dash Tutorial Part 6. Sharing Data Between Callbacks',
