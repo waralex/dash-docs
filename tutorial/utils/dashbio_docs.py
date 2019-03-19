@@ -170,12 +170,8 @@ dash-bio/master/tests/dashbio_demos/sample_data/'''
 
     # loading data if necessary
     if datafile is not None:
-
-        # import urllib or urllib2, depending on Python version
         library_imports.append(
             ['urllib.request', 'urlreq']
-            if sys.version_info >= (3, 0)
-            else ['urllib2', 'urlreq']
         )
 
         # only decode for python 3
@@ -231,6 +227,10 @@ dash-bio/master/tests/dashbio_demos/sample_data/'''
             imports_string += 'import {}\n'.format(
                 library[0]
             )
+
+    # change urllib package if necessary (due to Python version)
+    if sys.version_info < (3, 0):
+        imports_string = imports_string.replace('urllib.request', 'urllib2')
 
     # full code
     example_string = '''import {} as {}
