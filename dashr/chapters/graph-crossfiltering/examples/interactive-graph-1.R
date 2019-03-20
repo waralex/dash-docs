@@ -36,6 +36,9 @@ app$layout_set(
             mode = 'markers',
             marker = list(size = 12)
           )
+        ),
+        layout = list(
+            clickmode = 'event+select'
         )
       )
     ),
