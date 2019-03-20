@@ -588,6 +588,13 @@ chapters = {
         'name': 'Manhattan Plot Component',
         'description': 'ManhattanPlot examples, properties, and reference.'
     },
+
+    'volcano-plot-examples': {
+        'url': '/dash-bio/volcanoplot',
+        'content': dashbio_examples.VolcanoPlot,
+        'name': 'Volcano Plot Component',
+        'description': 'VolcanoPlot examples, properties, and reference.'
+    },
 ### End Components ###
 
 ### Start Dash Deployment Server ###

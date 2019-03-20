@@ -22,7 +22,9 @@ examples = {
     'needle-plot': tools.load_example(
         'tutorial/examples/dashbio_components/needle_plot.py'),
     'manhattan-plot': tools.load_example(
-        'tutorial/examples/dashbio_components/manhattan_plot.py')
+        'tutorial/examples/dashbio_components/manhattan_plot.py'),
+    'volcano-plot': tools.load_example(
+        'tutorial/examples/dashbio_components/volcano_plot.py')
 }
 
 
@@ -58,3 +60,4 @@ SequenceViewer = create_doc_page(examples, component_names, 'sequence-viewer')
 Speck = create_doc_page(examples, component_names, 'speck')
 
 # VolcanoPlot
+VolcanoPlot = create_doc_page(examples, component_names, 'volcano-plot')
