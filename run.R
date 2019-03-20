@@ -95,10 +95,9 @@ app$callback(output=list(id='chapter', property='children'),
       htmlH1('DashR User Guide'),
       htmlH2('What\'s Dash?', className='pdf-docs-section-name'),
       htmlHr(),
-      dccLink(
-        htmlA('Introduction'),
-        href='https://dash.plot.ly/introduction'
-      ),
+      htmlA('Introduction',
+            href='https://dash.plot.ly/introduction',
+            className='toc-section-link'),
       htmlBr(),
       dccMarkdown("
 A quick paragraph about Dash and a link to the talk at Plotcon that started it all.
