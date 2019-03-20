@@ -195,7 +195,40 @@ This chapter is useful for callbacks that run expensive data processing tasks or
 If you have read through the rest of the tutorial and still have questions 
 or are encountering unexpected behaviour, 
 this chapter may be useful. 
+      "),
+      
+      htmlH2('Component Libraries'),
+      htmlHr(),
+      dccMarkdown("
+IN PROGRESS...
+      "),
+      
+      htmlH2('Creating Your Own Components'),
+      htmlHr(),
+      dccMarkdown("
+IN PROGRESS...
+      "),
+      
+      htmlH2('Beyond the Basics'),
+      htmlHr(),
+      dccMarkdown("
+IN PROGRESS...
+      "),
+      
+      htmlH2('Getting Help'),
+      htmlHr(),
+      dccMarkdown("
+IN PROGRESS...
+      "),
+      
+      
+      htmlH2('Dash Deployment Server'),
+      htmlHr(),
+      dccMarkdown("
+Dash Deployment Server is Plotly's commercial offering for hosting and sharing 
+Dash apps on-premises or in the cloud.
       ")
+      
     )))
   }
 })
