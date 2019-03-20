@@ -581,6 +581,13 @@ chapters = {
         'name': 'Needle Plot Component',
         'description': 'NeedlePlot examples, properties, and reference.'
     },
+
+    'manhattan-plot-examples': {
+        'url': '/dash-bio/manhattanplot',
+        'content': dashbio_examples.ManhattanPlot,
+        'name': 'Manhattan Plot Component',
+        'description': 'ManhattanPlot examples, properties, and reference.'
+    },
 ### End Components ###
 
 ### Start Dash Deployment Server ###

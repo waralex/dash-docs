@@ -20,7 +20,9 @@ examples = {
     'molecule-3d-viewer': tools.load_example(
         'tutorial/examples/dashbio_components/molecule_3d_viewer.py'),
     'needle-plot': tools.load_example(
-        'tutorial/examples/dashbio_components/needle_plot.py')
+        'tutorial/examples/dashbio_components/needle_plot.py'),
+    'manhattan-plot': tools.load_example(
+        'tutorial/examples/dashbio_components/manhattan_plot.py')
 }
 
 
@@ -39,6 +41,7 @@ Clustergram = create_doc_page(examples, component_names, 'clustergram')
 Ideogram = create_doc_page(examples, component_names, 'ideogram')
 
 # ManhattanPlot
+ManhattanPlot = create_doc_page(examples, component_names, 'manhattan-plot')
 
 # Molecule3dViewer
 Molecule3dViewer = create_doc_page(examples, component_names, 'molecule-3d-viewer')
