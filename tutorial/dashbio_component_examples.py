@@ -18,8 +18,9 @@ examples = {
     'ideogram': tools.load_example(
         'tutorial/examples/dashbio_components/ideogram.py'),
     'molecule-3d-viewer': tools.load_example(
-        'tutorial/examples/dashbio_components/molecule_3d_viewer.py'
-    )
+        'tutorial/examples/dashbio_components/molecule_3d_viewer.py'),
+    'needle-plot': tools.load_example(
+        'tutorial/examples/dashbio_components/needle_plot.py')
 }
 
 
@@ -43,6 +44,7 @@ Ideogram = create_doc_page(examples, component_names, 'ideogram')
 Molecule3dViewer = create_doc_page(examples, component_names, 'molecule-3d-viewer')
 
 # NeedlePlot
+NeedlePlot = create_doc_page(examples, component_names, 'needle-plot')
 
 # OncoPrint
 

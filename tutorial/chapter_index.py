@@ -574,6 +574,13 @@ chapters = {
         'name': 'Molecule 3D Component',
         'description': 'Molecule3D examples, properties, and reference.'
     },
+
+    'needle-plot-examples': {
+        'url': '/dash-bio/needleplot',
+        'content': dashbio_examples.NeedlePlot,
+        'name': 'Needle Plot Component',
+        'description': 'NeedlePlot examples, properties, and reference.'
+    },
 ### End Components ###
 
 ### Start Dash Deployment Server ###
