@@ -121,9 +121,9 @@ function(selectedData) {
 app$callback(output('relayout-data', 'children'),
              list(input('basic-interactions', 'relayoutData')),
 function(relayoutData) {
-  # toJSON(relayoutData)
-  #return json.dumps(relayoutData, indent=2)
-  toJSON("{\n \"autozize\": true}")
+  toJSON(relayoutData)
+  # return json.dumps(relayoutData, indent=2)
+  # toJSON("{\n \"autozize\": true}")
 })
 
 # app$run_heroku()

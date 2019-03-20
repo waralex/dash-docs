@@ -231,6 +231,7 @@ Dash apps on-premises or in the cloud.
         'About Dash Deployment Server',
         href='/faq-gotchas'
       ),
+      htmlBr(),
       dccLink(
         'Dash Deployment Server Documentation',
         href='/faq-gotchas'
