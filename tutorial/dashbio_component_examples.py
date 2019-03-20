@@ -24,7 +24,9 @@ examples = {
     'manhattan-plot': tools.load_example(
         'tutorial/examples/dashbio_components/manhattan_plot.py'),
     'volcano-plot': tools.load_example(
-        'tutorial/examples/dashbio_components/volcano_plot.py')
+        'tutorial/examples/dashbio_components/volcano_plot.py'),
+    'onco-print': tools.load_example(
+        'tutorial/examples/dashbio_components/oncoprint.py')
 }
 
 
@@ -51,7 +53,8 @@ Molecule3dViewer = create_doc_page(examples, component_names, 'molecule-3d-viewe
 # NeedlePlot
 NeedlePlot = create_doc_page(examples, component_names, 'needle-plot')
 
-# OncoPrint
+# Oncoprint
+Oncoprint = create_doc_page(examples, component_names, 'onco-print')
 
 # SequenceViewer
 SequenceViewer = create_doc_page(examples, component_names, 'sequence-viewer')
