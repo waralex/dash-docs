@@ -7,7 +7,8 @@ source('dashr/utils.R', local=utils)
 
 examples <- list(
   interactive_graph_1 = utils$LoadExampleCode('dashr/chapters/graph-crossfiltering/examples/interactive-graph-1.R'),
-  interactive_graph_2 = utils$LoadExampleCode('dashr/chapters/graph-crossfiltering/examples/interactive-graph-2.R')
+  interactive_graph_2 = utils$LoadExampleCode('dashr/chapters/graph-crossfiltering/examples/interactive-graph-2.R'),
+  crossfilter_recipe = utils$LoadExampleCode('dashr/chapters/graph-crossfiltering/examples/crossfilter_recipe.R')
 )
 
 
@@ -76,6 +77,18 @@ Here's a slightly more generic example for crossfiltering across a six-column da
 Each scatter plot's selection filters the underlying dataset.
 "),
   # Example of interactive visualizations 3
+  examples$crossfilter_recipe$source,
+  #examples$crossfilter_recipe$layout,
+  
+  htmlImg(
+    src='https://github.com/plotly/dash-docs/raw/master/images/select.gif',
+    alt='Dash Data Selection Example',
+    style=list(
+      width = '100%', border = 'thin lightgrey solid'
+    )),
+#   dccMarkdown("
+# ![ ](https://raw.githubusercontent.com/plotly/dash-docs/master/images/select.gif)
+#   "),
   
   dccMarkdown("
 Try clicking and dragging in any of the plots to filter different regions. 
