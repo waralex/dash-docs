@@ -93,7 +93,7 @@ app$callback(output=list(id='chapter', property='children'),
   } else {
     return(htmlDiv(list(
       htmlH1('DashR User Guide'),
-      htmlH2('What\'s Dash?'),
+      htmlH2('What\'s Dash?', className='pdf-docs-section-name'),
       htmlHr(),
       dccLink(
         htmlA('Introduction'),
@@ -228,7 +228,15 @@ IN PROGRESS...
       dccMarkdown("
 Dash Deployment Server is Plotly's commercial offering for hosting and sharing 
 Dash apps on-premises or in the cloud.
-      ")
+      "),
+      dccLink(
+        'About Dash Deployment Server',
+        href='/faq-gotchas'
+      ),
+      dccLink(
+        'Dash Deployment Server Documentation',
+        href='/faq-gotchas'
+      )
       
     )))
   }
