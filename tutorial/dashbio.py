@@ -160,7 +160,10 @@ styles_data = json.loads(styles_data)
         'datafile': {
             'name': 'needle_PIK3CA.json'
         },
-        'setup_code': '''mdata = json.loads(data)'''
+        'setup_code': '''mdata = json.loads(data)''',
+        'iframe_info': {
+            'location': 'https://dash-bio.plotly.host/docs-demos-dashbio/needle_plot'
+        }
     },
 
     'OncoPrint': {
@@ -173,7 +176,10 @@ styles_data = json.loads(styles_data)
             'parameter': 'data'
         },
         'setup_code': '''data = json.loads(data)
-'''
+''',
+        'iframe_info': {
+            'location': 'https://dash-bio.plotly.host/docs-demos-dashbio/oncoprint'
+        }
     },
 
     'SequenceViewer': {
@@ -216,8 +222,10 @@ LEGSLQKRGIVEQCCTSICSLYQLENYCN\"'
         'params': {
             'dataframe': 'df'
         },
-        'component_wrap': 'dcc.Graph(figure=_)'
-
+        'component_wrap': 'dcc.Graph(figure=_)',
+        'iframe_info': {
+            'location': 'https://dash-bio.plotly.host/docs-demos-dashbio/volcano'
+        }
     }
 }
 
