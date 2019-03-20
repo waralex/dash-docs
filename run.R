@@ -222,7 +222,8 @@ IN PROGRESS...
       "),
       
       
-      htmlH2('Dash Deployment Server'),
+      htmlH2('Dash Deployment Server',
+             style = list(color = "rgb(13, 118, 191)")),
       htmlHr(),
       dccMarkdown("
 Dash Deployment Server is Plotly's commercial offering for hosting and sharing 
