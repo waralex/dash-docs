@@ -87,6 +87,7 @@ dashbio_components = {
         ],
         'params': {
             'data': 'data',
+            'color_threshold': '{\'row\': 150, \'col\': 700}',
             'columnLabels': 'list(df.columns.values)',
             'rowLabels': 'list(df.index)',
             'hideLabels': '[\'row\']',
