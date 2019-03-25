@@ -48,7 +48,7 @@ highlight <- function(x, y){
     for(selected_data in enumerate(selectedDatas)){
       if (!is.null(selected_data)){
         for (p in selected_data$points){
-          selected_index = list(p['customdata'])
+          selected_index = list(p$customdata)
         }
         if (length(selected_index) > 0){
           selectedpoints = np.intersect1d(
@@ -56,18 +56,7 @@ highlight <- function(x, y){
         }
       }
     }
-    # selectedpoints = colnames(df)
-    # for (i, selected_data in enumerate(selectedDatas)){
-    #   if (selected_data is not None){
-    #     selected_index = [
-    #       p['customdata'] for p in selected_data['points']
-    #     ]
-    #     if (len(selected_index) > 0){
-    #       selectedpoints = np.intersect1d(selectedpoints, selected_index)
-    #     }
-    #   }
-    # }
-    
+
     # set which points are selected with the `selectedpoints` property
     # and style those points with the `selected` and `unselected`
     # attribute. see
@@ -172,4 +161,4 @@ app$callback(
 )(highlight('Column 4', 'Column 5'))
 
 
-app$run_heroku()
+# app$run_heroku()
