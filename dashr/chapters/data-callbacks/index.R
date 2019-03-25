@@ -9,8 +9,6 @@ examples <- list(
   #one_input_two_states=utils$LoadExampleCode('dashr/chapters/state/examples/one_input_two_states.R')
 )
 
-
-
 layout <- htmlDiv(list(
   dccMarkdown("
 # Sharing State Between Callbacks
