@@ -41,3 +41,16 @@ LoadExampleCode <- function(filename) {
     )
   ))
 }
+
+LoadAndDisplayComponent <- function(example_string) {
+  return(htmlDiv(list(
+    htmlDiv(
+      children=dccSyntaxHighlighter(example_string),
+      className='code-container'
+    ),
+    htmlDiv(
+      className='example-container',
+      children=eval(parse(text=example_string))
+    )
+  )))
+}

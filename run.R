@@ -30,6 +30,8 @@ source('dashr/chapters/faq-gotchas/index.R', local=chapters.faq_gotchas)
 #     rel="stylesheet"
 #   )
 # })
+chapters.dashCoreComponents <- new.env()
+source('dashr/chapters/dash-core-components/index.R', local=chapters.dashCoreComponents)
 
 
 header <- htmlDiv(
@@ -90,6 +92,10 @@ app$callback(output=list(id='chapter', property='children'),
     return(chapters.data_callbacks$layout)
   } else if (pathname == "/faq-gotchas") {
     return(chapters.faq_gotchas$layout)
+  } else if (pathname == '/dashCoreComponents') {
+    return(chapters.dashCoreComponents$layout)
+  } else if (startsWith(pathname, '/dashCoreComponents/')) {
+    return(chapters.dashCoreComponents$route(pathname))
   } else {
     return(htmlDiv(list(
       htmlH1('DashR User Guide'),
