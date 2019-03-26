@@ -17,19 +17,6 @@ chapters.data_callbacks <- new.env()
 source('dashr/chapters/data-callbacks/index.R', local=chapters.data_callbacks)
 chapters.faq_gotchas <- new.env()
 source('dashr/chapters/faq-gotchas/index.R', local=chapters.faq_gotchas)
-
-# Temporary workaround until `assets/` are loaded
-# This will serve the CSS files in `assets` from a separate
-# webserver.
-# In a separate terminal, run
-# python2 -m SimpleHTTPServer 8000
-# css.files = list.files('assets')
-# css.links = lapply(css.files, function(filename) {
-#   htmlLink(
-#     href=sprintf('http://localhost:8000/assets/%s', filename),
-#     rel="stylesheet"
-#   )
-# })
 chapters.dashCoreComponents <- new.env()
 source('dashr/chapters/dash-core-components/index.R', local=chapters.dashCoreComponents)
 
