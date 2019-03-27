@@ -6,7 +6,7 @@ utils <- new.env()
 source('dashr/utils.R', local=utils)
 
 examples <- list(
-  local_css=utils$LoadExampleCode('dashr/chapters/external-resources/examples/local-css.R')
+  local_css=readLines('dashr/chapters/external-resources/examples/local-css.R')
   # custom_index_string=utils$LoadExampleCode('dashr/chapters/external-resources/examples/custom-index-string.R'),
   # custom_interpolate_string=utils$LoadExampleCode('dashr/chapters/external-resources/examples/custom-interpolate-string.R'),
   # dash_meta_tags=utils$LoadExampleCode('dashr/chapters/external-resources/examples/dash-meta-tags.R'),
@@ -68,5 +68,47 @@ three files in that folder:
 `app.py`
   "),
 
-  examples$local_css$source_code
+  dccSyntaxHighlighter(
+    examples$local_css,
+    language='r'
+  ),
+  htmlDiv(
+    dccMarkdown('`typography.css`'),
+    style=list('paddingTop' = 20)
+  ),
+
+  dccSyntaxHighlighter(
+"body {
+    font-family: sans-serif;
+}
+h1, h2, h3, h4, h5, h6 {
+    color: hotpink
+}
+",
+    language='css'
+  ),
+htmlHr(),
+
+htmlDiv(
+  dccMarkdown('`header.css`'),
+  style=list('paddingTop' = 20)
+),
+
+dccSyntaxHighlighter(
+  "app-header {
+    height: 60px;
+    line-height: 60px;
+    border-bottom: thin lightgrey solid;
+}
+
+.app-header .app-header--title {
+    font-size: 22px;
+    padding-left: 5px;
+}
+",
+language='css'
+),
+
+htmlHr()
+
 ))
