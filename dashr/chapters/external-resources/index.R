@@ -109,6 +109,22 @@ dccSyntaxHighlighter(
 language='css'
 ),
 
-htmlHr()
+htmlHr(),
+htmlDiv(
+  dccMarkdown('`custom-script.js`'),
+  style=list('paddingTop' = 20)
+),
+dccSyntaxHighlighter("
+alert('If you see this alert, then your custom JavaScript script has run!')
+",
+  language='javascript'
+),
+htmlHr(),
 
+dccMarkdown("
+When you run `app.py`, your app should look something like this:
+(Note that there may be some slight differences in appearance as
+the CSS from this Dash User Guide is applied to all of these embedded
+examples.)
+    ")
 ))
