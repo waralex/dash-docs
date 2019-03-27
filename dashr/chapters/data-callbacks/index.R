@@ -1,5 +1,6 @@
-# library(dashCoreComponents)
-# library(dashHtmlComponents)
+library(dashCoreComponents)
+library(dashHtmlComponents)
+library(dashR)
 
 utils <- new.env()
 source('dashr/utils.R', local=utils)
@@ -8,8 +9,6 @@ examples <- list(
   #two_inputs=utils$LoadExampleCode('dashr/chapters/state/examples/two_inputs.R'),
   #one_input_two_states=utils$LoadExampleCode('dashr/chapters/state/examples/one_input_two_states.R')
 )
-
-
 
 layout <- htmlDiv(list(
   dccMarkdown("

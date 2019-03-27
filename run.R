@@ -21,6 +21,9 @@ chapters.dashCoreComponents <- new.env()
 source('dashr/chapters/dash-core-components/index.R', local=chapters.dashCoreComponents)
 chapters.dccDropdown <- new.env()
 source('dashr/chapters/dash-core-components/dropdown/index.R', local=chapters.dccDropdown)
+chapters.dashHtmlComponents <- new.env()
+source('dashr/chapters/dash-html-components/index.R', local=chapters.dashHtmlComponents)
+
 
 header <- htmlDiv(
   className = 'header',
@@ -84,6 +87,8 @@ app$callback(output=list(id='chapter', property='children'),
     return(chapters.dashCoreComponents$layout)
   } else if (pathname == '/dash-core-components/dropdown') {
     return(chapters.dccDropdown$layout)
+  } else if (pathname == '/dash-html-components') {
+    return(chapters.dashHtmlComponents$layout)
   # } else if (startsWith(pathname, '/dashCoreComponents/')) {
   #   return(chapters.dashCoreComponents$route(pathname))
   } else {
@@ -200,6 +205,15 @@ this chapter may be useful.
       htmlBr(),
       dccMarkdown("
 The Dash Core Component library contains a set of higher-level components like sliders, graphs, dropdowns, tables, and more.
+      "),
+      dccLink(
+        'Dash HTML Components',
+        href='/dash-html-components'
+      ),
+      htmlBr(),
+      dccMarkdown("
+Dash provides all of the available HTML tags as user-friendly Python classes.
+This chapter explains how this works and the few important key differences between Dash HTML components and standard html.
       "),
 
       htmlH2('Creating Your Own Components'),
