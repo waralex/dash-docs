@@ -23,6 +23,8 @@ chapters.dccDropdown <- new.env()
 source('dashr/chapters/dash-core-components/dropdown/index.R', local=chapters.dccDropdown)
 chapters.dashHtmlComponents <- new.env()
 source('dashr/chapters/dash-html-components/index.R', local=chapters.dashHtmlComponents)
+chapters.external_resources <- new.env()
+source('dashr/chapters/external-resources/index.R', local=chapters.external_resources)
 
 
 header <- htmlDiv(
@@ -89,6 +91,8 @@ app$callback(output=list(id='chapter', property='children'),
     return(chapters.dccDropdown$layout)
   } else if (pathname == '/dash-html-components') {
     return(chapters.dashHtmlComponents$layout)
+  } else if (pathname == '/external-resources') {
+    return(chapters.external_resources$layout)
   # } else if (startsWith(pathname, '/dashCoreComponents/')) {
   #   return(chapters.dashCoreComponents$route(pathname))
   } else {
