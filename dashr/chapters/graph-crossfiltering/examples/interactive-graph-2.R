@@ -52,7 +52,7 @@ app$layout_set(
     htmlDiv(list(
       dccGraph(
         id = 'crossfilter-indicator-scatter',
-        hoverData = "Japan"
+        hoverData = list(points = list(list(customdata = 'Japan')))
       )), style = list(
         width ='49%',
         display = 'inline-block',
@@ -102,9 +102,7 @@ app$callback(
           'line' = list('width' = 0.5, 'color' = 'white')
         )
       )
-      
-      country_name <<- traces[[1]]$customdata[1]
-      
+
       return (list(
         'data' = traces,
         'layout'= list(
@@ -133,7 +131,7 @@ create_time_series <- function(dff, axis_type, title){
         x = 0, 'y' = 0.85, xanchor = 'left', yanchor = 'bottom',
         xref = 'paper', yref = 'paper', showarrow = FALSE,
         align = 'left', bgcolor = 'rgba(255, 255, 255, 0.5)',
-        text = title
+        text = title[1]
       )),
       yaxis = list(type = axis_type),
       xaxis = list(showgrid = FALSE)
@@ -147,12 +145,10 @@ app$callback(
                 input(id='crossfilter-xaxis-column', property='value'),
                 input(id='crossfilter-xaxis-type', property='value')),
   function(hoverData, xaxis_column_name, axis_type) {
-    country_name <- hoverData
-    #country_name = hoverData$points[[1]]$customdata
-    # dff <- df[df[["Country_Name"]] %in% country_name, ]
+    country_name = hoverData$points[[1]]$customdata
     dff <- df[df[["Country_Name"]] %in% country_name, ]
     dff <- dff[dff[["Indicator_Name"]] %in% xaxis_column_name, ]
-    title = paste(c(country_name, xaxis_column_name), sep = '  ')
+    title = paste(c(country_name, xaxis_column_name), sep = '<br>')
     return(create_time_series(dff, axis_type, title))
   }
 )
@@ -163,7 +159,7 @@ app$callback(
                 input(id='crossfilter-yaxis-column', property='value'),
                 input(id='crossfilter-yaxis-type', property='value')),
   function(hoverData, yaxis_column_name, axis_type) {
-    dff <- df[df[["Country_Name"]] %in% hoverData, ]
+    dff <- df[df[["Country_Name"]] %in% hoverData$points[[1]]$customdata, ]
     dff <- dff[dff[["Indicator_Name"]] %in% yaxis_column_name, ]
     return(create_time_series(dff, axis_type, yaxis_column_name))
   }

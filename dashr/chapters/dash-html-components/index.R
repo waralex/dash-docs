@@ -14,15 +14,16 @@ The source for this library is on GitHub: [plotly/dash-html-components](https://
 Here is an example of a simple HTML structure:
   "),
   utils$LoadAndDisplayComponent(
-    'library(dashHtmlComponents)
+'
+library(dashHtmlComponents)
 
-    htmlDiv(list(
-    htmlH1(\'Hello Dash\'),
-    htmlDiv(list(
-        htmlP(\'Dash converts R classes into HTML\'),
-        htmlP(\'This conversion happens behind the scenes by Dash s JavaScript front-end\')
-    ))
-  ))'
+htmlDiv(list(
+htmlH1(\'Hello Dash\'),
+htmlDiv(list(
+  htmlP(\'Dash converts R classes into HTML\'),
+  htmlP(\'This conversion happens behind the scenes by Dash s JavaScript front-end\')
+  ))
+))'
   ),
 
   htmlHr(),
