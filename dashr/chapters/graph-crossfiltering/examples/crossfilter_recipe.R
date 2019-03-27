@@ -18,9 +18,7 @@ for (i in 1:6){
     df[[i]] <- rnorm(1,val,0.1)
   }
 }
-# pd.DataFrame({
-# 'Column {}'.format(i): np.random.rand(30) + i*10
-# for i in range(6)})df
+
 
 app$layout_set(htmlDiv(list(
   htmlDiv(

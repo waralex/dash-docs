@@ -24,3 +24,5 @@ app$callback(output('output-container', 'children'),
             function(dropdown_value) {
   sprintf("You have selected \"%s\"", dropdown_value)
 })
+
+# app$run_server()

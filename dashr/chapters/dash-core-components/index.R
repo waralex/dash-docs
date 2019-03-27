@@ -9,7 +9,7 @@ titleLink <- function(componentName) {
   return(htmlH2(
     dccLink(
       componentName,
-      href=paste('/dashCoreComponents/', componentName, sep='')
+      href=paste('/dash-core-components/', componentName, sep='')
     )
   ))
 }
@@ -17,7 +17,7 @@ titleLink <- function(componentName) {
 referenceLink <- function(componentName) {
   return(dccLink(
     'More examples & reference',
-    href=paste('/dashCoreComponents/', componentName, sep='')
+    href=paste('/dash-core-components/', componentName, sep='')
   ))
 }
 
@@ -39,12 +39,12 @@ dccDropdown(
 )
 '
 ),
-htmlDiv(referenceLink('dccDropdown'))
+htmlDiv(referenceLink('dropdown'))
 
 ))
 
 route <- function(pathname) {
-  componentName = gsub('/dashCoreComponents/dcc', '', pathname)
+  componentName = gsub('dropdown', '', pathname)
   component_chapter_index = file.path(
     'dashr',
     'chapters',
