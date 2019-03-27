@@ -46,7 +46,7 @@ shouldn't need to repeat a large database query just to change the results
 from Fahrenheit to Celsius!
     "),
 
-    dcc.Markdown("
+    dccMarkdown("
 ## Why `global` variables will break your app
 
 Dash is designed to work in multi-user environments
