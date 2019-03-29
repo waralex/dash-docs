@@ -113,22 +113,22 @@ highlight <- function(x, y){
     )
 
 
-    if (selectedDatas[[0]] && selectedDatas[[0]]$range){
-      figure$layout$shapes = list(list(list(
-        'x0' = selectedDatas[[0]]$range$x[[0]],
-        'x1' = selectedDatas[[0]]$range$x[[1]],
-        'y0' = selectedDatas[[0]]$range$y[[0]],
-        'y1' = selectedDatas[[0]]$range$y[[1]]
-      ), shape))
-    }else{
-      figure$layout$shapes = list(list(list(
-        'type' = 'rect',
-        'x0' = min(df$x),
-        'x1' = max(df$x),
-        'y0' = min(df$y),
-        'y1' = max(df$y)
-      ), shape))
-    }
+    # if (selectedDatas[[0]] && selectedDatas[[0]]$range){
+    #   figure$layout$shapes = list(list(list(
+    #     'x0' = selectedDatas[[0]]$range$x[[0]],
+    #     'x1' = selectedDatas[[0]]$range$x[[1]],
+    #     'y0' = selectedDatas[[0]]$range$y[[0]],
+    #     'y1' = selectedDatas[[0]]$range$y[[1]]
+    #   ), shape))
+    # }else{
+    #   figure$layout$shapes = list(list(list(
+    #     'type' = 'rect',
+    #     'x0' = min(df$x),
+    #     'x1' = max(df$x),
+    #     'y0' = min(df$y),
+    #     'y1' = max(df$y)
+    #   ), shape))
+    # }
     return(figure)
   }
   return(callback)
