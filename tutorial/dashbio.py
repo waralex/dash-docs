@@ -126,7 +126,8 @@ data = df.values''',
         ],
         'setup_code': '''df = pd.read_csv("https://raw.githubusercontent.com/plotly/dash-bio/master/tests/dashbio_demos/sample_data/manhattan_data.csv")''',
         'iframe_info': {
-            'location': 'https://dash-bio.plotly.host/docs-demos-dashbio/manhattan'
+            'location': 'https://dash-bio.plotly.host/docs-demos-dashbio/manhattan',
+            'width': 800
         }
     },
     'Molecule3dViewer': {
@@ -163,7 +164,8 @@ styles_data = json.loads(styles_data)
         },
         'setup_code': '''mdata = json.loads(data)''',
         'iframe_info': {
-            'location': 'https://dash-bio.plotly.host/docs-demos-dashbio/needle_plot'
+            'location': 'https://dash-bio.plotly.host/docs-demos-dashbio/needle_plot',
+            'width': 850
         }
     },
 
@@ -179,7 +181,8 @@ styles_data = json.loads(styles_data)
         'setup_code': '''data = json.loads(data)
 ''',
         'iframe_info': {
-            'location': 'https://dash-bio.plotly.host/docs-demos-dashbio/oncoprint'
+            'location': 'https://dash-bio.plotly.host/docs-demos-dashbio/oncoprint',
+            'width': 900
         }
     },
 
@@ -225,7 +228,8 @@ LEGSLQKRGIVEQCCTSICSLYQLENYCN\"'
         },
         'component_wrap': 'dcc.Graph(figure=_)',
         'iframe_info': {
-            'location': 'https://dash-bio.plotly.host/docs-demos-dashbio/volcano'
+            'location': 'https://dash-bio.plotly.host/docs-demos-dashbio/volcano',
+            'width': 800
         }
     }
 }
