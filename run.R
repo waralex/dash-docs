@@ -260,4 +260,4 @@ Dash apps on-premises or in the cloud.
   }
 })
 
-app$run_heroku()
+app$run_server()
