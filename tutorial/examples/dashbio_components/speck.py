@@ -50,17 +50,5 @@ def update_preset_view(preset_name):
     return preset_name
 
 
-@app.callback(
-    dash.dependencies.Output('speck-output', 'children'),
-    [dash.dependencies.Input('my-speck', 'view')]
-)
-def update_output(view):
-
-    if view is None:
-        return ''
-
-    return 'Current atom scale: {}'.format(str(view['atomScale']))
-
-
 if __name__ == '__main__':
     app.run_server(debug=True)
