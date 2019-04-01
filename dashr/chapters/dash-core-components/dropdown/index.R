@@ -6,7 +6,8 @@ utils <- new.env()
 source('dashr/utils.R', local=utils)
 
 examples <- list(
-  simple_example=utils$LoadExampleCode('dashr/chapters/dash-core-components/dropdown/examples/simple-example.R')
+  simple_example=utils$LoadExampleCode('dashr/chapters/dash-core-components/dropdown/examples/simple-example.R'),
+  simple_example_multi=utils$LoadExampleCode('dashr/chapters/dash-core-components/dropdown/examples/simple-example-multi.R')
 )
 
 
