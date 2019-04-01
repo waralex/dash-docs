@@ -197,7 +197,7 @@ h1, h2, h3, h4, h5, h6 {
     in the assets folder are loaded, eg: `app = dash.Dash(__name__, meta_tags=[...])`.
     When you run your application through some other command line (like the
     flask command or gunicorn/waitress), the `__main__` module wil no
-    longer located where `app.py` is. By explicitly setting `__name__`,
+    longer be located where `app.py` is. By explicitly setting `__name__`,
     Dash will be able to locate the relative `assets` folder correctly.
 
     ### Hot Reloading
