@@ -4,9 +4,8 @@ from dash.dependencies import Input, Output, State
 import dash_html_components as html
 import dash_canvas
 from dash_canvas import DashCanvas
-from dash_canvas.utils.io_utils import array_to_data_url
-from dash_canvas.utils.parse_json import parse_jsonstring
-from dash_canvas.utils.image_processing_utils import watershed_segmentation
+from dash_canvas.utils import (array_to_data_url, parse_jsonstring,
+                              watershed_segmentation)
 from skimage import io, color, img_as_ubyte
 import numpy as np
 
@@ -19,7 +18,7 @@ img = io.imread(filename, as_gray=True)
 app.layout = html.Div([
     html.H6('Annotate the two objects and the background'),
     html.Div([
-    DashCanvas(id='canvas',
+    DashCanvas(id='segmentation-canvas',
                lineWidth=5,
                filename=filename,
                width=canvas_width,
@@ -32,7 +31,7 @@ app.layout = html.Div([
 
 
 @app.callback(Output('segmentation-img', 'src'),
-              [Input('canvas', 'json_data')])
+              [Input('segmentation-canvas', 'json_data')])
 def segmentation(string):
     if string:
         mask = parse_jsonstring(string, img.shape)

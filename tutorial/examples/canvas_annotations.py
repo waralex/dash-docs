@@ -2,7 +2,6 @@ import dash
 from dash.exceptions import PreventUpdate
 from dash.dependencies import Input, Output, State
 import dash_html_components as html
-import dash_canvas
 from dash_canvas import DashCanvas
 import json
 from dash_table import DataTable
@@ -16,7 +15,7 @@ columns = ['type', 'width', 'height', 'scaleX', 'strokeWidth', 'path']
 
 app.layout = html.Div([
     html.H6('Draw on image and press Save to show annotations geometry'),
-    DashCanvas(id='canvas',
+    DashCanvas(id='annot-canvas',
                lineWidth=5,
                filename=filename,
                width=canvas_width,
@@ -28,7 +27,7 @@ app.layout = html.Div([
 
 
 @app.callback(Output('table', 'data'),
-              [Input('canvas', 'json_data')])
+              [Input('annot-canvas', 'json_data')])
 def update_data(string):
     if string:
         data = json.loads(string)

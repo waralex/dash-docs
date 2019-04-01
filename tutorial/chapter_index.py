@@ -1,5 +1,6 @@
 import tutorial
 from tutorial import auth
+from tutorial import canvas
 from tutorial import core_component_examples as examples
 from tutorial import core_components
 from tutorial import cytoscape
@@ -177,6 +178,13 @@ chapters = {
         'name': 'Dash DAQ Components',
         'description': 'Beautifully styled technical components for \
         data acquisition and engineering applications.'
+    },
+
+    'canvas': {
+        'url': '/canvas',
+        'content': canvas.layout,
+        'name': 'Dash Canvas',
+        'description': 'Drawing and annotations for image processing.'
     },
 
 

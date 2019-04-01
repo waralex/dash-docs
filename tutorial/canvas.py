@@ -50,7 +50,9 @@ layout = html.Div([
 
     ``DashCanvas`` comes with a set of properties which can be adjusted to
     control the geometry of the canvas, the default tool and its properties.
-    You can pass a background image either as a filename or as a data string.
+    You can pass a background image either as a filename (``filename``
+    property) or as a data string (``image_content`` property, more examples
+    below).
     '''.replace('  ', '')),
 
     dcc.SyntaxHighlighter(
@@ -67,7 +69,7 @@ layout = html.Div([
     ### Basic callbacks to modify DashCanvas properties
 
     Like any Dash component, the properties of a ``DashCanvas`` can be
-    modified from other components, via callbacks. Please be sure to have
+    modified by other components, via callbacks. Please be sure to have
     read first through the [Dash tutorial](https://dash.plot.ly/) to
     know how to write callbacks.
 
@@ -135,7 +137,22 @@ layout = html.Div([
     html.Div(examples[5][1], className='example-container'),
 
     dcc.Markdown('''
+    These functions rely on [scikit-image](http://scikit-image.org) to
+    process arrays as images. Here we used the [watershed algorithm](http://scikit-image.org/docs/stable/auto_examples/segmentation/plot_watershed.html)
+    from scikit-image.
+
     ### Updating the background image
+
+    The background image can be updated thanks to the ``image_content``
+    property (a ``str``), for example using the ``contents`` property of
+    ``dcc.Upload`` (an "open file" dialog). Updating ``image_content``
+    triggers the update of the ``json_data`` property containing the
+    annotations.
+
+    ### More examples
+
+    A gallery of examples using ``DashCanvas`` is available on
+    https://github.com/plotly/canvas-gallery.
     '''.replace('  ', '')),
 
 ])

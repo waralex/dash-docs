@@ -1,21 +1,17 @@
+import numpy as np
+from skimage import io
 import dash
 from dash.exceptions import PreventUpdate
 from dash.dependencies import Input, Output, State
 import dash_html_components as html
-import dash_canvas
 from dash_canvas import DashCanvas
-from dash_canvas.utils.io_utils import array_to_data_url
-from dash_canvas.utils.parse_json import parse_jsonstring
-from skimage import io
-import numpy as np
+from dash_canvas.utils import array_to_data_url, parse_jsonstring
 
 app = dash.Dash(__name__)
 
 filename = 'https://upload.wikimedia.org/wikipedia/commons/e/e4/Mitochondria%2C_mammalian_lung_-_TEM_%282%29.jpg'
 canvas_width = 300 
 shape = io.imread(filename, as_gray=True).shape
-
-columns = ['type', 'width', 'height', 'scaleX', 'strokeWidth', 'path']
 
 app.layout = html.Div([
     html.H6('Draw on image and press Save to show annotations geometry'),

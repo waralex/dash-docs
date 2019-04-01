@@ -6,7 +6,7 @@ app = dash.Dash(__name__)
 app.config.suppress_callback_exceptions = True
 
 app.layout = html.Div([
-    html.H5('Please draw inside the canvas'),
+    html.H5('Press down the left mouse button and draw inside the canvas'),
     DashCanvas(id='canvas_101')
     ])
 
