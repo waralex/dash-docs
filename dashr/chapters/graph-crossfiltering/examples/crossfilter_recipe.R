@@ -1,6 +1,9 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> parent of b59d07d... :construction_worker: example 3 chapt.5
 =======
 >>>>>>> parent of b59d07d... :construction_worker: example 3 chapt.5
 =======
@@ -14,7 +17,10 @@ app <- Dash$new()
 set.seed(0)
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 # df <- data.frame(replicate(1,sample(0:6,30,rep=TRUE))) 
+=======
+>>>>>>> parent of b59d07d... :construction_worker: example 3 chapt.5
 =======
 >>>>>>> parent of b59d07d... :construction_worker: example 3 chapt.5
 =======
@@ -33,9 +39,13 @@ for (i in 1:6){
 }
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   # pd.DataFrame({
   # 'Column {}'.format(i): np.random.rand(30) + i*10
   # for i in range(6)})df
+=======
+
+>>>>>>> parent of b59d07d... :construction_worker: example 3 chapt.5
 =======
 
 >>>>>>> parent of b59d07d... :construction_worker: example 3 chapt.5
@@ -63,6 +73,7 @@ app$layout_set(htmlDiv(list(
   ), className='row')
 )
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 highlight <- function(x, y){
@@ -231,6 +242,8 @@ app$callback(
 >>>>>>> parent of b59d07d... :construction_worker: example 3 chapt.5
 =======
 >>>>>>> parent of b59d07d... :construction_worker: example 3 chapt.5
+=======
+>>>>>>> parent of b59d07d... :construction_worker: example 3 chapt.5
 # highlight <- function(x, y){
 #  callback <- function(selectedDatas){
 #     selectedpoints = colnames(df)
@@ -327,6 +340,7 @@ app$callback(
 # }
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 #
 #
 # # app.callback is a decorator which means that it takes a function
@@ -359,6 +373,8 @@ app$callback(
 =======
 =======
 >>>>>>> parent of b59d07d... :construction_worker: example 3 chapt.5
+=======
+>>>>>>> parent of b59d07d... :construction_worker: example 3 chapt.5
 
 
 # app.callback is a decorator which means that it takes a function
@@ -388,6 +404,9 @@ app$callback(
 
 # app$run_heroku()
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of b59d07d... :construction_worker: example 3 chapt.5
+=======
 >>>>>>> parent of b59d07d... :construction_worker: example 3 chapt.5
 =======
 >>>>>>> parent of b59d07d... :construction_worker: example 3 chapt.5
