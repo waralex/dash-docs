@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> parent of b59d07d... :construction_worker: example 3 chapt.5
 library(dashR)
 library(dashCoreComponents)
 library(dashHtmlComponents)
@@ -6,7 +9,10 @@ library(dashHtmlComponents)
 app <- Dash$new()
 
 set.seed(0)
+<<<<<<< HEAD
 # df <- data.frame(replicate(1,sample(0:6,30,rep=TRUE))) 
+=======
+>>>>>>> parent of b59d07d... :construction_worker: example 3 chapt.5
 df <- data.frame(matrix(ncol = 6, nrow = 30))
 x <- c(1:6)
 x <- paste("Column ", x)
@@ -19,9 +25,13 @@ for (i in 1:6){
     df[[i]] <- rnorm(1,val,0.1)
   }
 }
+<<<<<<< HEAD
   # pd.DataFrame({
   # 'Column {}'.format(i): np.random.rand(30) + i*10
   # for i in range(6)})df
+=======
+
+>>>>>>> parent of b59d07d... :construction_worker: example 3 chapt.5
 
 app$layout_set(htmlDiv(list(
   htmlDiv(
@@ -43,6 +53,7 @@ app$layout_set(htmlDiv(list(
   ), className='row')
 )
 
+<<<<<<< HEAD
 highlight <- function(x, y){
   callback <- function(selectedDatas){
     selectedpoints = colnames(df)
@@ -205,6 +216,8 @@ app$callback(
 #   ), className='row')
 # )
 #
+=======
+>>>>>>> parent of b59d07d... :construction_worker: example 3 chapt.5
 # highlight <- function(x, y){
 #  callback <- function(selectedDatas){
 #     selectedpoints = colnames(df)
@@ -279,26 +292,27 @@ app$callback(
 #     )
 #
 #
-#     if (selectedDatas[[0]] && selectedDatas[[0]]$range){
-#       figure$layout$shapes = list(list(list(
-#         'x0' = selectedDatas[[0]]$range$x[[0]],
-#         'x1' = selectedDatas[[0]]$range$x[[1]],
-#         'y0' = selectedDatas[[0]]$range$y[[0]],
-#         'y1' = selectedDatas[[0]]$range$y[[1]]
-#       ), shape))
-#     }else{
-#       figure$layout$shapes = list(list(list(
-#         'type' = 'rect',
-#         'x0' = min(df$x),
-#         'x1' = max(df$x),
-#         'y0' = min(df$y),
-#         'y1' = max(df$y)
-#       ), shape))
-#     }
+#     # if (selectedDatas[[0]] && selectedDatas[[0]]$range){
+#     #   figure$layout$shapes = list(list(list(
+#     #     'x0' = selectedDatas[[0]]$range$x[[0]],
+#     #     'x1' = selectedDatas[[0]]$range$x[[1]],
+#     #     'y0' = selectedDatas[[0]]$range$y[[0]],
+#     #     'y1' = selectedDatas[[0]]$range$y[[1]]
+#     #   ), shape))
+#     # }else{
+#     #   figure$layout$shapes = list(list(list(
+#     #     'type' = 'rect',
+#     #     'x0' = min(df$x),
+#     #     'x1' = max(df$x),
+#     #     'y0' = min(df$y),
+#     #     'y1' = max(df$y)
+#     #   ), shape))
+#     # }
 #     return(figure)
 #   }
 #   return(callback)
 # }
+<<<<<<< HEAD
 #
 #
 # # app.callback is a decorator which means that it takes a function
@@ -328,3 +342,33 @@ app$callback(
 #
 # # app$run_heroku()
 >>>>>>> c3a3a477c201204fde289f3750a5e10dbc317464
+=======
+
+
+# app.callback is a decorator which means that it takes a function
+# as its argument.
+# highlight is a function "generator": it's a function that returns function
+app$callback(
+  output = list(id='g1', property='figure'),
+  params = list(input(id='g1', property='selectedData'),
+                input(id='g2', property='selectedData'),
+                input(id='g3', property='selectedData'))
+)(highlight('Column 0', 'Column 1'))
+
+app$callback(
+  output = list(id='g2', property='figure'),
+  params = list(input(id='g2', property='selectedData'),
+                input(id='g1', property='selectedData'),
+                input(id='g3', property='selectedData'))
+)(highlight('Column 2', 'Column 3'))
+
+app$callback(
+  output = list(id='g3', property='figure'),
+  params = list(input(id='g3', property='selectedData'),
+                input(id='g1', property='selectedData'),
+                input(id='g2', property='selectedData'))
+)(highlight('Column 4', 'Column 5'))
+
+
+# app$run_heroku()
+>>>>>>> parent of b59d07d... :construction_worker: example 3 chapt.5
