@@ -102,7 +102,7 @@ app$callback(
           'line' = list('width' = 0.5, 'color' = 'white')
         )
       )
-      
+
       return (list(
         'data' = traces,
         'layout'= list(
@@ -118,7 +118,6 @@ app$callback(
 )
 
 create_time_series <- function(dff, axis_type, title){
-  print(title)
   return(list(
     'data' = list(list(
       x = dff[['Year']],
@@ -166,4 +165,4 @@ app$callback(
   }
 )
 
-# app$run_heroku()
+#app$run_heroku()
