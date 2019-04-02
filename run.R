@@ -48,7 +48,7 @@ header <- htmlDiv(
       ))
 ))
 
-app$layout_set(
+app$layout(
   header,
   htmlDiv(list(
     dccLocation(id='url'),
