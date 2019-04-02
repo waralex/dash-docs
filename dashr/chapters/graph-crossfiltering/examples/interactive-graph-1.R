@@ -12,7 +12,7 @@ styles = list(
   )
 )
 
-app$layout_set(
+app$layout(
   htmlDiv(list(
     dccGraph(
       id = 'basic-interactions',

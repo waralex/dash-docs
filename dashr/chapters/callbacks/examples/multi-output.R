@@ -4,7 +4,7 @@ library(dashHtmlComponents)
 
 app <- Dash$new()
 
-app$layout_set(htmlDiv(list(
+app$layout(htmlDiv(list(
       dccRadioItems(
         id = 'dropdown-a',
         options = list(list(label = 'Canada', value = 'Canada'),

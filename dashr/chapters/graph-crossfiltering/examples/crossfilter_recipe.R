@@ -19,7 +19,7 @@
 # }
 #
 #
-# app$layout_set(htmlDiv(list(
+# app$layout(htmlDiv(list(
 #   htmlDiv(
 #     dccGraph(
 #       id='g1',

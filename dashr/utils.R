@@ -14,7 +14,7 @@ LoadExampleCode <- function(filename) {
   replacements = list(
     # set the layout to a variable so that we can access it
     # and return it
-    list('app\\$layout_set\\(', 'layout <- htmlDiv\\('),
+    list('app\\$layout\\(', 'layout <- htmlDiv\\('),
 
     # Since app is in the namespace from the `app.R` import,
     # it will implicity be picked up by the

@@ -6,7 +6,7 @@ app <- Dash$new(
   external_stylesheets=list('https://codepen.io/chriddyp/pen/bWLwgP.css')
 )
 
-app$layout_set(htmlDiv(list(
+app$layout(htmlDiv(list(
   dccDropdown(
     options=list(
       list(label="New York City", value="NYC"),

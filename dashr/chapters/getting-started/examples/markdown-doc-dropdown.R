@@ -61,7 +61,7 @@ dccDropdown(id=NULL,
 ```
 "
 
-app$layout_set(htmlDiv(list(
+app$layout(htmlDiv(list(
   dccMarkdown(children=markdown_text)
 )))
 
