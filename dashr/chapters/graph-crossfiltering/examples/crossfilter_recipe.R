@@ -1,5 +1,8 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> parent of b59d07d... :construction_worker: example 3 chapt.5
 =======
 >>>>>>> parent of b59d07d... :construction_worker: example 3 chapt.5
 library(dashR)
@@ -10,7 +13,10 @@ app <- Dash$new()
 
 set.seed(0)
 <<<<<<< HEAD
+<<<<<<< HEAD
 # df <- data.frame(replicate(1,sample(0:6,30,rep=TRUE))) 
+=======
+>>>>>>> parent of b59d07d... :construction_worker: example 3 chapt.5
 =======
 >>>>>>> parent of b59d07d... :construction_worker: example 3 chapt.5
 df <- data.frame(matrix(ncol = 6, nrow = 30))
@@ -26,9 +32,13 @@ for (i in 1:6){
   }
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
   # pd.DataFrame({
   # 'Column {}'.format(i): np.random.rand(30) + i*10
   # for i in range(6)})df
+=======
+
+>>>>>>> parent of b59d07d... :construction_worker: example 3 chapt.5
 =======
 
 >>>>>>> parent of b59d07d... :construction_worker: example 3 chapt.5
@@ -53,6 +63,7 @@ app$layout_set(htmlDiv(list(
   ), className='row')
 )
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 highlight <- function(x, y){
   callback <- function(selectedDatas){
@@ -218,6 +229,8 @@ app$callback(
 #
 =======
 >>>>>>> parent of b59d07d... :construction_worker: example 3 chapt.5
+=======
+>>>>>>> parent of b59d07d... :construction_worker: example 3 chapt.5
 # highlight <- function(x, y){
 #  callback <- function(selectedDatas){
 #     selectedpoints = colnames(df)
@@ -313,6 +326,7 @@ app$callback(
 #   return(callback)
 # }
 <<<<<<< HEAD
+<<<<<<< HEAD
 #
 #
 # # app.callback is a decorator which means that it takes a function
@@ -343,6 +357,8 @@ app$callback(
 # # app$run_heroku()
 >>>>>>> c3a3a477c201204fde289f3750a5e10dbc317464
 =======
+=======
+>>>>>>> parent of b59d07d... :construction_worker: example 3 chapt.5
 
 
 # app.callback is a decorator which means that it takes a function
@@ -371,4 +387,7 @@ app$callback(
 
 
 # app$run_heroku()
+<<<<<<< HEAD
+>>>>>>> parent of b59d07d... :construction_worker: example 3 chapt.5
+=======
 >>>>>>> parent of b59d07d... :construction_worker: example 3 chapt.5
