@@ -21,7 +21,7 @@ generate_table <- function(df, nrows=10)
 
 app <- Dash$new()
 
-app$layout_set(htmlDiv(list(
+app$layout(htmlDiv(list(
   htmlH4(children='US Agriculture Exports (2011)'),
   generate_table(df)
 )))

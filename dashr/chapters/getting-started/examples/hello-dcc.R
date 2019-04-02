@@ -6,7 +6,7 @@ app <- Dash$new()
 
 myList = list()
 
-app$layout_set(htmlDiv(list(
+app$layout(htmlDiv(list(
   htmlLabel('Dropdown'),
   dccDropdown(
     options = list(list(label = "New York City", value = "NYC"),

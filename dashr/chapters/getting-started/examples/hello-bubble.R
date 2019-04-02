@@ -22,7 +22,7 @@ for (i in 1:length(continents)){
                   line = list(width = 0.5, color = 'white'))
   )}
 
-app$layout_set(htmlDiv(list(
+app$layout(htmlDiv(list(
   dccGraph(
     id = 'life-exp-vs-gdp',
     figure = list(
