@@ -88,7 +88,7 @@ layout = html.Div([
     of code! Also note that the set of available buttons has been restricted
     through the ``hide_buttons`` properties, in order to keep the app design
     simple. You can learn more about available components in the
-    [Component libraries](https://dash.plot.ly/) section of the Dash
+    [component libraries](https://dash.plot.ly/) section of the Dash
     documentation.
 
     ### Retrieving the geometry of annotations and using utility functions
