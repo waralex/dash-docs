@@ -1,6 +1,5 @@
 import tutorial
 from tutorial import auth
-from tutorial import canvas
 from tutorial import core_component_examples as examples
 from tutorial import core_components
 from tutorial import cytoscape
@@ -14,6 +13,7 @@ from tutorial import daq_component_examples as daq_examples
 from tutorial import deployment
 from tutorial import external_css_and_js
 from tutorial import gallery
+from tutorial import canvas
 from tutorial import getting_started_part_1
 from tutorial import getting_started_part_2
 from tutorial import faqs
