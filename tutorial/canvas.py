@@ -16,24 +16,22 @@ examples = [
 
 layout = html.Div([
     dcc.Markdown(s('''
-        ## Introduction to dash-canvas
+    ## Introduction to dash-canvas
 
-        ``dash-canvas`` is a module for image annotation and image processing
-        using Dash. It provides both the ``DashCanvas`` object for drawing
-        and annotations on images, and a set of utility functions to process
-        images using the annotations.
+    ``dash-canvas`` is a module for image annotation and image processing
+    using Dash. It provides both the ``DashCanvas`` object for drawing
+    and annotations on images, and a set of utility functions to process
+    images using the annotations.
 
-        ``dash-canvas`` can be used in various fields in which user
-        interaction with images is required, such as quality control in
-        industry, identification and segmentation of cells or organs in life
-        and medical sciences, quantification of phases in materials and
-        geosciences, construction of training sets for machine learning, etc.
+    ``dash-canvas`` can be used in various fields in which user
+    interaction with images is required, such as quality control in
+    industry, identification and segmentation of cells or organs in life
+    and medical sciences, quantification of phases in materials and
+    geosciences, construction of training sets for machine learning, etc.
 
-        ### DashCanvas: a canvas object for annotations
+    ### DashCanvas: a canvas object for annotations
 
-        Let's get started with a simple canvas object.
-        ***
-
+    Let's get started with a simple canvas object.
     ''')),
 
     dcc.SyntaxHighlighter(
