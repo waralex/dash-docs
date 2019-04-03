@@ -51,7 +51,8 @@ layout = html.Div([
     ``DashCanvas`` comes with a set of properties which can be adjusted to
     control the geometry of the canvas, the default tool and its properties.
     You can pass a background image either as a filename (``filename``
-    property) or as a data string (``image_content`` property, more examples
+    property) or as a data string (``image_content`` property); more examples
+    
     below).
     '''.replace('  ', '')),
 
