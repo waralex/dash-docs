@@ -110,7 +110,7 @@ layout = html.Div([
 
     dcc.Markdown('''
     You can either write custom functions to parse the JSON string, or
-    use utility functions of DashCanvas. In particular, `
+    use the utility functions included in the `dash_canvas` package. In particular, `
     `dash_canvas.utils.parse_json_string`` returns a binary mask with
     non-zero pixels displaying the annotations:
     '''.replace('  ', '')),
