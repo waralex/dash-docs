@@ -15,7 +15,7 @@ examples = [
     ]]
 
 layout = html.Div([
-    dcc.Markdown('''
+    dcc.Markdown(s('''
     ## Introduction to dash-canvas
 
     ``dash-canvas`` is a module for image annotation and image processing
@@ -32,7 +32,7 @@ layout = html.Div([
     ### DashCanvas: a canvas object for annotations
 
     Let's get started with a simple canvas object.
-    '''),
+    ''')),
 
     dcc.SyntaxHighlighter(
           examples[0][0],
