@@ -2,6 +2,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> parent of b59d07d... :construction_worker: example 3 chapt.5
 =======
@@ -197,6 +198,8 @@ app$callback(
 
 # app$run_heroku()
 =======
+=======
+>>>>>>> b59d07d... :construction_worker: example 3 chapt.5
 # library(dashR)
 # library(dashCoreComponents)
 # library(dashHtmlComponents)
@@ -218,7 +221,11 @@ app$callback(
 # }
 #
 #
+<<<<<<< HEAD
 # app$layout(htmlDiv(list(
+=======
+# app$layout_set(htmlDiv(list(
+>>>>>>> b59d07d... :construction_worker: example 3 chapt.5
 #   htmlDiv(
 #     dccGraph(
 #       id='g1',
@@ -238,12 +245,15 @@ app$callback(
 #   ), className='row')
 # )
 #
+<<<<<<< HEAD
 =======
 >>>>>>> parent of b59d07d... :construction_worker: example 3 chapt.5
 =======
 >>>>>>> parent of b59d07d... :construction_worker: example 3 chapt.5
 =======
 >>>>>>> parent of b59d07d... :construction_worker: example 3 chapt.5
+=======
+>>>>>>> b59d07d... :construction_worker: example 3 chapt.5
 # highlight <- function(x, y){
 #  callback <- function(selectedDatas){
 #     selectedpoints = colnames(df)
@@ -318,22 +328,22 @@ app$callback(
 #     )
 #
 #
-#     # if (selectedDatas[[0]] && selectedDatas[[0]]$range){
-#     #   figure$layout$shapes = list(list(list(
-#     #     'x0' = selectedDatas[[0]]$range$x[[0]],
-#     #     'x1' = selectedDatas[[0]]$range$x[[1]],
-#     #     'y0' = selectedDatas[[0]]$range$y[[0]],
-#     #     'y1' = selectedDatas[[0]]$range$y[[1]]
-#     #   ), shape))
-#     # }else{
-#     #   figure$layout$shapes = list(list(list(
-#     #     'type' = 'rect',
-#     #     'x0' = min(df$x),
-#     #     'x1' = max(df$x),
-#     #     'y0' = min(df$y),
-#     #     'y1' = max(df$y)
-#     #   ), shape))
-#     # }
+#     if (selectedDatas[[0]] && selectedDatas[[0]]$range){
+#       figure$layout$shapes = list(list(list(
+#         'x0' = selectedDatas[[0]]$range$x[[0]],
+#         'x1' = selectedDatas[[0]]$range$x[[1]],
+#         'y0' = selectedDatas[[0]]$range$y[[0]],
+#         'y1' = selectedDatas[[0]]$range$y[[1]]
+#       ), shape))
+#     }else{
+#       figure$layout$shapes = list(list(list(
+#         'type' = 'rect',
+#         'x0' = min(df$x),
+#         'x1' = max(df$x),
+#         'y0' = min(df$y),
+#         'y1' = max(df$y)
+#       ), shape))
+#     }
 #     return(figure)
 #   }
 #   return(callback)
@@ -341,6 +351,9 @@ app$callback(
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> b59d07d... :construction_worker: example 3 chapt.5
 #
 #
 # # app.callback is a decorator which means that it takes a function
@@ -369,6 +382,7 @@ app$callback(
 #
 #
 # # app$run_heroku()
+<<<<<<< HEAD
 >>>>>>> c3a3a477c201204fde289f3750a5e10dbc317464
 =======
 =======
@@ -410,3 +424,5 @@ app$callback(
 >>>>>>> parent of b59d07d... :construction_worker: example 3 chapt.5
 =======
 >>>>>>> parent of b59d07d... :construction_worker: example 3 chapt.5
+=======
+>>>>>>> b59d07d... :construction_worker: example 3 chapt.5
