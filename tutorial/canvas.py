@@ -2,7 +2,7 @@ import dash_html_components as html
 import dash_core_components as dcc
 from tutorial import styles
 from tutorial import tools
-
+from textwrap import dedent as s
 
 examples = [
     tools.load_example(s) for s in [
@@ -15,7 +15,7 @@ examples = [
     ]]
 
 layout = html.Div([
-    dcc.Markdown('''
+    dcc.Markdown(s('''
         ## Introduction to dash-canvas
 
         ``dash-canvas`` is a module for image annotation and image processing
@@ -34,7 +34,7 @@ layout = html.Div([
         Let's get started with a simple canvas object.
         ***
 
-    '''.replace('  ', '')),
+    ''')),
 
     dcc.SyntaxHighlighter(
           examples[0][0],
@@ -43,7 +43,7 @@ layout = html.Div([
     ),
     html.Div(examples[0][1], className='example-container'),
 
-    dcc.Markdown('''
+    dcc.Markdown(s('''
     You can draw inside the object with the freehand tool, and use the tool
     buttons to draw lines, zoom in and out, pan, select objects and move them
     inside the canvas.
@@ -51,10 +51,9 @@ layout = html.Div([
     ``DashCanvas`` comes with a set of properties which can be adjusted to
     control the geometry of the canvas, the default tool and its properties.
     You can pass a background image either as a filename (``filename``
-    property) or as a data string (``image_content`` property); more examples
-    
+    property) or as a data string (``image_content`` property); more examples 
     below).
-    '''.replace('  ', '')),
+    ''')),
 
     dcc.SyntaxHighlighter(
           examples[1][0],
@@ -63,7 +62,7 @@ layout = html.Div([
     ),
     html.Div(examples[1][1], className='example-container'),
 
-    dcc.Markdown('''
+    dcc.Markdown(s('''
     The height of the canvas is adjusted automatically by keeping the aspect
     ratio of the background image.
 
@@ -74,22 +73,21 @@ layout = html.Div([
     read first through the [Dash tutorial](https://dash.plot.ly/) to
     know how to write callbacks.
 
-    '''.replace('  ', '')),
+    ''')),
     dcc.SyntaxHighlighter(
           examples[2][0],
           language='python',
           customStyle=styles.code_container
     ),
     html.Div(examples[2][1], className='example-container'),
-    dcc.Markdown('''
+    dcc.Markdown(s('''
     In the example above, a slider ``dcc.Slider`` and a color picker
-    ``daq.ColorPicker`` are used to adjust the width and color of the
-    drawing brush. We just created an image coloring tool in a few lines
-    of code! Also note that the set of available buttons has been restricted
-    through the ``hide_buttons`` properties, in order to keep the app design
-    simple. You can learn more about available components in the
-    [component libraries](https://dash.plot.ly/) section of the Dash
-    documentation.
+    ``daq.ColorPicker`` are used to adjust the width and color of the drawing
+    brush. We just created an image coloring tool in a few lines of code! You
+    can learn more about available components in the [component
+    libraries](https://dash.plot.ly/) section of the Dash documentation. Also
+    note that the set of available buttons has been restricted through the
+    ``hide_buttons`` properties, in order to keep the app design simple.
 
     ### Retrieving the geometry of annotations and using utility functions
 
@@ -99,7 +97,7 @@ layout = html.Div([
     This button updates the ``json_data`` property of ``DashCanvas``, which
     is a JSON string with information about the background image and the
     geometry of annotations.
-    '''.replace('  ', '')),
+    ''')),
 
     dcc.SyntaxHighlighter(
           examples[3][0],
@@ -108,12 +106,12 @@ layout = html.Div([
     ),
     html.Div(examples[3][1], className='example-container'),
 
-    dcc.Markdown('''
+    dcc.Markdown(s('''
     You can either write custom functions to parse the JSON string, or
-    use the utility functions included in the `dash_canvas` package. In particular, `
-    `dash_canvas.utils.parse_json_string`` returns a binary mask with
-    non-zero pixels displaying the annotations:
-    '''.replace('  ', '')),
+    use the utility functions included in the `dash_canvas` package. In
+    particular, ``dash_canvas.utils.parse_json_string`` returns a binary
+    mask with non-zero pixels displaying the annotations:
+    ''')),
 
     dcc.SyntaxHighlighter(
           examples[4][0],
@@ -122,13 +120,13 @@ layout = html.Div([
     ),
     html.Div(examples[4][1], className='example-container'),
 
-    dcc.Markdown('''
+    dcc.Markdown(s('''
     The above example uses the ``array_to_data_url`` utility function to
     transform a ``NumPy`` array into an image data string.
 
     Finally, ``dash-canvas`` provides utility functions to process images
     given the binary mask derived from annotations:
-    '''.replace('  ', '')),
+    ''')),
 
     dcc.SyntaxHighlighter(
           examples[5][0],
@@ -137,7 +135,7 @@ layout = html.Div([
     ),
     html.Div(examples[5][1], className='example-container'),
 
-    dcc.Markdown('''
+    dcc.Markdown(s('''
     These functions rely on [scikit-image](http://scikit-image.org) to
     process arrays as images. Here we used the [watershed algorithm](http://scikit-image.org/docs/stable/auto_examples/segmentation/plot_watershed.html)
     from scikit-image.
@@ -154,6 +152,6 @@ layout = html.Div([
 
     A gallery of examples using ``DashCanvas`` is available on
     https://github.com/plotly/canvas-gallery.
-    '''.replace('  ', '')),
+    ''')),
 
 ])
