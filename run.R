@@ -48,7 +48,7 @@ header <- htmlDiv(
       ))
 ))
 
-app$layout_set(
+app$layout(
   header,
   htmlDiv(list(
     dccLocation(id='url'),
@@ -260,4 +260,4 @@ Dash apps on-premises or in the cloud.
   }
 })
 
-app$run_heroku()
+app$run_server()
