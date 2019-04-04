@@ -39,9 +39,29 @@ dccDropdown(
 )
 '
 ),
+
+
+utils$LoadAndDisplayComponent(
+  '
+library(dashCoreComponents)
+
+  dccDropdown(
+    options=list(
+      list(label="New York City", value="NYC"),
+      list(label="Montréal", value="MTL"),
+      list(label="San Francisco", value="SF")
+    ),
+    value="MTL",
+    multi=TRUE
+  )
+  '
+),
 htmlDiv(referenceLink('dropdown'))
 
-))
+
+)
+
+)
 
 route <- function(pathname) {
   componentName = gsub('dropdown', '', pathname)

@@ -26,6 +26,6 @@ app$index_string = "
 </html>
 "
 
-app$layout_set(htmlDiv('Simple Dash App'))
+app$layout(htmlDiv('Simple Dash App'))
 
 # app$run_heroku()

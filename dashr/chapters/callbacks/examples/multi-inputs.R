@@ -12,7 +12,7 @@ for (i in 1:length(available_indicators)){
 }
 
 
-app$layout_set(
+app$layout(
   htmlDiv(list(
     htmlDiv(list(
       htmlDiv(list(

@@ -14,7 +14,7 @@ Check out their [60 Second Markdown Tutorial](http://commonmark.org/help/)
 if this is your first introduction to Markdown!
 "
 
-app$layout_set(htmlDiv(list(
+app$layout(htmlDiv(list(
   dccMarkdown(children=markdown_text)
   )))
 

@@ -12,7 +12,7 @@ styles = list(
   )
 )
 
-app$layout_set(
+app$layout(
   htmlDiv(list(
     dccGraph(
       id = 'basic-interactions',
@@ -36,6 +36,9 @@ app$layout_set(
             mode = 'markers',
             marker = list(size = 12)
           )
+        ),
+        layout = list(
+            clickmode = 'event+select'
         )
       )
     ),
@@ -109,7 +112,8 @@ function(hoverData) {
 app$callback(output('click-data', 'children'),
              list(input('basic-interactions', 'clickData')),
 function(clickData) {
-  toJSON(clickData)
+  print(toJSON(clickData))
+  print(clickData)
 })
 
 app$callback(output('selected-data', 'children'),
@@ -126,4 +130,4 @@ function(relayoutData) {
   # toJSON("{\n \"autozize\": true}")
 })
 
-# app$run_heroku()
+app$run_heroku()

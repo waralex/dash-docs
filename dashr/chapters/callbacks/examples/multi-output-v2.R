@@ -9,7 +9,7 @@ all_options = list(
   'Canada' = list('Montréal', 'Toronto', 'Ottawa')
 )
 # [{'label': k, 'value': k} for k in all_options.keys()],
-app$layout_set(htmlDiv(list(
+app$layout(htmlDiv(list(
       dccRadioItems(
         id = 'countries-dropdown',
         options = list(list(label = 'America', value = 'America'),

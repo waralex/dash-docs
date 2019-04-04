@@ -17,7 +17,7 @@ layout <- htmlDiv(list(
   dccMarkdown("
 # Basic Dash Callbacks
 > This is the *3rd* chapter of the [Dash Tutorial](/).
-> The [previous chapter](/getting-started) covered the Dash app `layout_set`
+> The [previous chapter](/getting-started) covered the Dash app `layout`
 > and the [next chapter](/state) covers an additional concept of callbacks
 > known as `state`.
 > Just getting started? Make sure to [install the necessary dependencies](/installation).
@@ -25,7 +25,7 @@ layout <- htmlDiv(list(
   
   dccMarkdown("
 In the [previous chapter on the `app.layout`](/getting-started) we learned
-that the `app$layout_set()` describes what the app looks like and is
+that the `app$layout()` describes what the app looks like and is
 a hierarchical tree of components.
 The `dashHtmlComponents` library provides classes for all of the HTML
 tags, and the keyword arguments describe the HTML attributes like `style`,

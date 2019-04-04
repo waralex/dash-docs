@@ -11,7 +11,7 @@ for (i in 1:length(available_indicators)){
   option_indicator[[i]] <- list(label = available_indicators[i], value = available_indicators[i])
 }
 
-app$layout_set(
+app$layout(
   htmlDiv(list(
     htmlDiv(list(
       htmlDiv(list(
@@ -165,4 +165,4 @@ app$callback(
   }
 )
 
-# app$run_heroku()
+#app$run_heroku()

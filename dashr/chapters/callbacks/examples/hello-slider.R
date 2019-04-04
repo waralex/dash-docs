@@ -7,7 +7,7 @@ app <- Dash$new()
 df <- read.csv('dashr/chapters/callbacks/examples/gapminderDataFiveYear.csv', header = TRUE, sep = ",")
 continents <- unique(df$continent)
 
-app$layout_set(htmlDiv(list(
+app$layout(htmlDiv(list(
   dccGraph(id = 'graph-with-slider'),
   dccSlider(
     id = 'year-slider',

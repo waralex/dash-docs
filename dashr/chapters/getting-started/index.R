@@ -26,14 +26,14 @@ layout <- htmlDiv(list(
 
 
 This tutorial will walk you through a fundamental aspect of Dash apps, 
-the app `layout_set`, through 6 self-contained apps.
+the app `layout`, through 6 self-contained apps.
 "),
   
 htmlBr(),
 
 dccMarkdown("
 Dash apps are composed of two parts.
-The first part is the \"`layout_set`\" of the app and 
+The first part is the \"`layout`\" of the app and 
 it describes what the application looks like. 
 The second part describes the interactivity of the application 
 and will be covered in the [next chapter](/getting-started-part-2).
@@ -67,7 +67,7 @@ in your web browser. You should see an app that looks like this.
 
   dccMarkdown("
 Note:
-1. The `layout_set` is composed of a tree of \"components\" like `htmlDiv`
+1. The `layout` is composed of a tree of \"components\" like `htmlDiv`
 and `dccGraph`.
 2. The `dashHtmlComponents` library has a component for every HTML
 tag. The `htmlH1(children='Hello Dash')` component generates

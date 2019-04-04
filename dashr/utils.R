@@ -14,7 +14,7 @@ LoadExampleCode <- function(filename) {
   replacements = list(
     # set the layout to a variable so that we can access it
     # and return it
-    list('app\\$layout_set\\(', 'layout <- htmlDiv\\('),
+    list('app\\$layout\\(', 'layout <- htmlDiv\\('),
 
     # Since app is in the namespace from the `app.R` import,
     # it will implicity be picked up by the
@@ -54,3 +54,18 @@ LoadAndDisplayComponent <- function(example_string) {
     )
   )))
 }
+
+
+# ComponentBlock <- function(example_string){
+#   return(htmlDiv(list(
+#     dccSyntaxHighlighter(
+#       example_string,
+#       language='r',
+#       customStyle=styles.code_container
+#     ),
+#     htmlDiv(
+#       children=eval(parse(text=example_string)),
+#       className='example-container',
+#       style=list('overflow-x' = 'initial')
+#     ))))
+# }

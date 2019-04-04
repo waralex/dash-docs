@@ -78,7 +78,7 @@ applied to the rest of the workers.
   # syntax("df <- data.frame(matrix(c(1,2,3,4,1,4,\"x\",\"y\",\"z\"), ncol = 3, nrow = 3))
   #         colnames(df) <- c(\"a\", \"b\", \"c\")
   #
-  #        app$layout = htmlDiv(list(
+  #        app$layout(htmlDiv(list(
   #         dccDropdown(
   #           id = 'dropdown',
   #           options = [{'label': i, 'value': i} for i in df['c'].unique()],
@@ -95,14 +95,14 @@ applied to the rest of the workers.
   #              # \"outside the scope of this function\".
   #              # *It is not safe to modify or reassign this variable
   #              #  inside this callback.*
-  #              global df = df[df['c'] == value]  # do not do this, this is not safe!
+  #              gdf <<- df[df['c'] == value]  # do not do this, this is not safe!
   #              return len(df)
   #        })
   #
   #        ''', summary='''
   #        Here is a sketch of an app with a callback that modifies data
   #        out of it's scope. This type of pattern *will not work reliably*
-  #        for the reasons outlined above.")
+  #        for the reasons outlined above."))
 
   #example of two inputs
   #examples$two_inputs$source,

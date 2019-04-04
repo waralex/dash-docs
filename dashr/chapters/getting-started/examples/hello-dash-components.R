@@ -50,7 +50,7 @@ graph <- dccGraph(
   )
 )
 
-app$layout_set(
+app$layout(
   htmlDiv(list(
     pageTitle,
     pageSubTitle,

@@ -4,7 +4,7 @@ library(dashHtmlComponents)
 
 app <- Dash$new()
 
-app$layout_set(
+app$layout(
   htmlDiv(list(
     htmlH1('Hello Dash'),
     htmlDiv(children="Dash: A web application framework for R."),

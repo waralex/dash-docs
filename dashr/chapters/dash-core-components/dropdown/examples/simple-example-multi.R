@@ -14,15 +14,10 @@ app$layout(htmlDiv(list(
       list(label="San Francisco", value="SF")
     ),
     value="MTL",
+    multi = TRUE,
     id="my-dropdown"
   ),
   htmlDiv(id="output-container")
 )))
-
-app$callback(output('output-container', 'children'),
-            list(input('my-dropdown', 'value')),
-            function(dropdown_value) {
-  sprintf("You have selected \"%s\"", dropdown_value)
-})
 
 # app$run_server()

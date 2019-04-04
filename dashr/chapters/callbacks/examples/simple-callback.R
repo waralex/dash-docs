@@ -4,7 +4,7 @@ library(dashHtmlComponents)
 
 app <- Dash$new()
 
-app$layout_set(htmlDiv(list(
+app$layout(htmlDiv(list(
   dccInput(id='my-id-input', value='initial value', type='text'),
   htmlDiv(id='my-id-div')
 )))
