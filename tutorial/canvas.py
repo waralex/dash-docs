@@ -2,7 +2,7 @@ import dash_html_components as html
 import dash_core_components as dcc
 from tutorial import styles
 from tutorial import tools
-from textwrap import dedent as s
+from textwrap import dedent
 
 examples = [
     tools.load_example(s) for s in [
@@ -15,7 +15,7 @@ examples = [
     ]]
 
 layout = html.Div([
-    dcc.Markdown(s('''
+    dcc.Markdown(dedent('''\
     ## Introduction to dash-canvas
 
     ``dash-canvas`` is a module for image annotation and image processing
@@ -41,7 +41,7 @@ layout = html.Div([
     ),
     html.Div(examples[0][1], className='example-container'),
 
-    dcc.Markdown(s('''
+    dcc.Markdown(dedent('''
     You can draw inside the object with the freehand tool, and use the tool
     buttons to draw lines, zoom in and out, pan, select objects and move them
     inside the canvas.
@@ -60,7 +60,7 @@ layout = html.Div([
     ),
     html.Div(examples[1][1], className='example-container'),
 
-    dcc.Markdown(s('''
+    dcc.Markdown(dedent('''
     The height of the canvas is adjusted automatically by keeping the aspect
     ratio of the background image.
 
@@ -78,7 +78,7 @@ layout = html.Div([
           customStyle=styles.code_container
     ),
     html.Div(examples[2][1], className='example-container'),
-    dcc.Markdown(s('''
+    dcc.Markdown(dedent('''
     In the example above, a slider ``dcc.Slider`` and a color picker
     ``daq.ColorPicker`` are used to adjust the width and color of the drawing
     brush. We just created an image coloring tool in a few lines of code! You
@@ -104,7 +104,7 @@ layout = html.Div([
     ),
     html.Div(examples[3][1], className='example-container'),
 
-    dcc.Markdown(s('''
+    dcc.Markdown(dedent('''
     You can either write custom functions to parse the JSON string, or
     use the utility functions included in the `dash_canvas` package. In
     particular, ``dash_canvas.utils.parse_json_string`` returns a binary
@@ -118,7 +118,7 @@ layout = html.Div([
     ),
     html.Div(examples[4][1], className='example-container'),
 
-    dcc.Markdown(s('''
+    dcc.Markdown(dedent('''
     The above example uses the ``array_to_data_url`` utility function to
     transform a ``NumPy`` array into an image data string.
 
@@ -133,7 +133,7 @@ layout = html.Div([
     ),
     html.Div(examples[5][1], className='example-container'),
 
-    dcc.Markdown(s('''
+    dcc.Markdown(dedent('''
     These functions rely on [scikit-image](http://scikit-image.org) to
     process arrays as images. Here we used the [watershed algorithm](http://scikit-image.org/docs/stable/auto_examples/segmentation/plot_watershed.html)
     from scikit-image.
