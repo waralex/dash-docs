@@ -5,7 +5,7 @@ import dash_cytoscape as cyto
 import dash_core_components as dcc
 import dash_html_components as html
 
-from .utils import CreateDisplay
+from .utils import CreateDisplay, PythonSnippet
 
 
 nodes = [
@@ -47,7 +47,8 @@ elements = nodes + edges
 Display = CreateDisplay({
     'cyto': cyto,
     'elements': elements,
-    'math': math
+    'math': math,
+    'nodes': nodes
 })
 
 
@@ -265,12 +266,57 @@ layout = html.Div([
 
     Display('''
     cyto.Cytoscape(
-        id='cytoscape-layout-8',
+        id='cytoscape-layout-9',
         elements=elements,
         style={'width': '100%', 'height': '350px'},
         layout={
             'name': 'cose'
         }
     )
+    '''),
+
+    dcc.Markdown(dedent('''
+    ## Loading External Layout
+    
+    > External layouts are now available! Update your `dash-cytoscape` to 
+    > [version 0.1.1](https://github.com/plotly/dash-cytoscape/pull/50) or later.
+    
+    The following external layouts are distributed with the official `dash-cytoscape` library:
+        * [cose-bilkent](https://github.com/cytoscape/cytoscape.js-cose-bilkent)
+        * [cola](https://github.com/cytoscape/cytoscape.js-cola)
+        * [euler](https://github.com/cytoscape/cytoscape.js-dagre)
+        * [spread](https://github.com/cytoscape/cytoscape.js-spread)
+        * [dagre](https://github.com/cytoscape/cytoscape.js-dagre)
+        * [klay](https://github.com/cytoscape/cytoscape.js-klay)
+    
+    In order to use them, you will need to use the `load_extra_layouts()` function from 
+    `dash_cytoscape`:
+    ''')),
+
+    PythonSnippet('''
+    import dash
+    from dash.dependencies import Input, Output, State
+    import dash_core_components as dcc
+    import dash_html_components as html
+    
+    import dash_cytoscape as cyto
+    
+    # Load extra layouts
+    cyto.load_extra_layouts()
+    
+    app = dash.Dash(__name__)
+    server = app.server
+    '''),
+
+    dcc.Markdown('''
+    We also provided a 
+    [demo app directly derived from `usage-elements`](https://github.com/plotly/dash-cytoscape/blob/master/demos/usage-elements-extra.py),
+    but with the option to use the external layouts.
+    
+    > Make sure to only use external layouts when it is necessary. The distribution package takes 
+    > almost 3x more space than the regular bundle, which means that it will take more time to
+    > load your apps, especially on slower networks. 
+    > [This image](https://github.com/plotly/dash-cytoscape/blob/master/demos/images/fast3g-cytoscape.PNG)
+    > shows how long it would take to load the dev package on a slower network.    
     ''')
 ])
