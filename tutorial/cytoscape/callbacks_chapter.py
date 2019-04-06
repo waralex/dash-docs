@@ -213,6 +213,11 @@ layout = html.Div([
     ),
 
     dcc.Markdown(dedent('''
+    > Notice we did not include an animation for `preset`. As discussed in the layout chapter, you 
+    > will need to specify the position of the nodes inside the `layout` dictionary. Check out
+    > [this example](https://github.com/plotly/dash-cytoscape/blob/master/demos/usage-preset-animation.py)
+    > for more details. 
+    
     ## Interactively update styles
     
     Updating the stylesheet using Dash components is similar to updating
