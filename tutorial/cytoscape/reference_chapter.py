@@ -1,4 +1,5 @@
 import re
+from textwrap import dedent
 
 import dash_html_components as html
 import dash_core_components as dcc
@@ -16,15 +17,32 @@ def component_doc(component):
         )
     )
 
-    return html.Div([
-        html.H1('Cytoscape Reference'),
-        html.H3('Keyword Arguments'),
-        html.Div(className='cytoscape-reference', children=[
-            dcc.Markdown(trimmed_docs)
-        ])
+    return html.Div(className='cytoscape-reference', children=[
+        dcc.Markdown(trimmed_docs)
     ])
 
 
 layout = html.Div([
-    component_doc(cyto.Cytoscape)
+    html.H1('Cytoscape Reference'),
+    html.H2('Cytoscape'),
+    html.H3('Properties'),
+    component_doc(cyto.Cytoscape),
+    html.H3('Default Values'),
+    dcc.Markdown(dedent('''
+    * *style*: {'width': '600px', 'height': '600px'}
+    * *layout*: {'name': 'grid'}
+    * *pan*: {'x': 0, 'y': 0}
+    * *zoom*: 1
+    * *panningEnabled*: True
+    * *userPanningEnabled*: True
+    * *minZoom*: 1e-50
+    * *maxZoom*: 1e50
+    * *zoomingEnabled*: True
+    * *userZoomingEnabled*: True
+    * *boxSelectionEnabled*: False
+    * *autoungrabify*: False
+    * *autolock*: False
+    * *autounselectify*: False
+    * *autoRefreshLayout*: True
+    ''')),
 ])
