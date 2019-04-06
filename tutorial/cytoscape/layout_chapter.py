@@ -256,6 +256,29 @@ layout = html.Div([
     > and will be further explored in [part 3](/cytoscape/styling).
     > We follow the same syntax as the Javascript library.
     
+    For preset layouts, you can also specify the positions for which you would like to render each
+    of your nodes:
+    ''')),
+
+    Display('''
+    cyto.Cytoscape(
+        id='cytoscape-layout-8',
+        elements=elements,
+        style={'width': '100%', 'height': '350px'},
+        layout={
+            'name': 'preset',
+            'positions': {
+                node['data']['id']: node['position']
+                for node in nodes
+            }
+        }
+    )
+    '''),
+
+    dcc.Markdown(dedent('''
+    > In the callbacks chapter, you will learn how to interactively update your layout; in order 
+    > to use `preset`you will need to specify the position of each node.  
+    
     ## Physics-based Layouts
     
     Additionally, the `cose` layout can be used to position the nodes using
