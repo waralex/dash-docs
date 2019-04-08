@@ -100,7 +100,32 @@ dashbio.AlignmentChart(
 
 
 # Circos
-Circos = create_doc_page(examples, component_names, 'circos')
+Circos = create_doc_page(
+    examples, component_names, 'circos', component_examples=[
+        {
+            'param_name': 'Inner and Outer Radii',
+            'description': 'Change the inner and outer radii of your Circos graph.',
+            'code': '''import json
+from six.moves.urllib import request as urlreq
+import dash_bio as dashbio
+
+data = urlreq.urlopen('https://raw.githubusercontent.com/plotly/dash-bio/master/tests/dashbio_demos/sample_data/circos_graph_data.json').read()
+circos_graph_data = json.loads(data)
+
+dashbio.Circos(
+    layout=circos_graph_data['GRCh37'],
+    tracks=[{
+        'type': 'CHORDS',
+        'data': circos_graph_data['chords']
+    }],
+    config={
+        'innerRadius': 40,
+        'outerRadius': 200
+    }
+)'''
+        },
+    ]
+)
 
 # Clustergram
 Clustergram = create_doc_page(examples, component_names, 'clustergram')
