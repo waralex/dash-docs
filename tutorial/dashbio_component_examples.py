@@ -460,7 +460,58 @@ dashbio.Molecule3dViewer(
 )
 
 # NeedlePlot
-NeedlePlot = create_doc_page(examples, component_names, 'needle-plot')
+NeedlePlot = create_doc_page(
+    examples, component_names, 'needle-plot', component_examples=[
+
+        {
+            'param_name': 'Needle style',
+            'description': 'Change the appearance of the needles.',
+            'code': '''import json
+import six.moves.urllib.request as urlreq
+
+import dash_bio as dashbio
+
+
+data = urlreq.urlopen("https://raw.githubusercontent.com/plotly/dash-bio/master/tests/dashbio_demos/sample_data/needle_PIK3CA.json").read().decode("utf-8")
+
+mdata = json.loads(data)
+
+dashbio.NeedlePlot(
+    mutationData=mdata,
+    needleStyle={
+        'stemColor': '#FF8888',
+        'stemThickness': 2,
+        'stemConstHeight': True,
+        'headSize': 10,
+        'headColor': ['#FFDD00', '#000000']
+    }
+)'''
+        },
+
+        {
+            'param_name': 'Domain style',
+            'description': 'Change the appearance of the domains.',
+            'code': '''import json
+import six.moves.urllib.request as urlreq
+
+import dash_bio as dashbio
+
+
+data = urlreq.urlopen("https://raw.githubusercontent.com/plotly/dash-bio/master/tests/dashbio_demos/sample_data/needle_PIK3CA.json").read().decode("utf-8")
+
+mdata = json.loads(data)
+
+dashbio.NeedlePlot(
+    mutationData=mdata,
+    domainStyle={
+        'displayMinorDomains': True,
+        'domainColor': ['#FFDD00', '#00FFDD', '#0F0F0F', '#D3D3D3']
+    }
+)'''
+        }
+
+    ]
+)
 
 # Oncoprint
 Oncoprint = create_doc_page(examples, component_names, 'onco-print')
