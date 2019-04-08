@@ -411,7 +411,53 @@ dcc.Graph(figure=manhattanplot)'''
 )
 
 # Molecule3dViewer
-Molecule3dViewer = create_doc_page(examples, component_names, 'molecule-3d-viewer')
+Molecule3dViewer = create_doc_page(
+    examples, component_names, 'molecule-3d-viewer', component_examples=[
+
+        {
+            'param_name': 'Selection type',
+            'description': 'Choose what gets highlighted with the same color upon selection.',
+            'code': '''import json
+import six.moves.urllib.request as urlreq
+
+import dash_bio as dashbio
+
+model_data = urlreq.urlopen('https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/mol3d/model_data.js').read()
+styles_data = urlreq.urlopen('https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/mol3d/styles_data.js').read()
+model_data = json.loads(model_data)
+styles_data = json.loads(styles_data)
+
+dashbio.Molecule3dViewer(
+    styles=styles_data,
+    modelData=model_data,
+    selectionType='Chain'
+)'''
+        },
+
+        {
+            'param_name': 'Background color/opacity',
+            'description': 'Change the background color and opacity of the canvas on which \
+            Mol3D is rendered.',
+            'code': '''import json
+import six.moves.urllib.request as urlreq
+
+import dash_bio as dashbio
+
+model_data = urlreq.urlopen('https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/mol3d/model_data.js').read()
+styles_data = urlreq.urlopen('https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/mol3d/styles_data.js').read()
+model_data = json.loads(model_data)
+styles_data = json.loads(styles_data)
+
+dashbio.Molecule3dViewer(
+    styles=styles_data,
+    modelData=model_data,
+    backgroundColor='#FF0000',
+    backgroundOpacity=0.2
+)'''
+        }
+
+    ]
+)
 
 # NeedlePlot
 NeedlePlot = create_doc_page(examples, component_names, 'needle-plot')
