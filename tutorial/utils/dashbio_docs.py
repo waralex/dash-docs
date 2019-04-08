@@ -370,7 +370,7 @@ def create_examples(
     examples = []
     for example in examples_data:
         examples += [
-            html.H3(example['param_name']),
+            html.H3(example['param_name'].title()),
             dcc.Markdown(example['description']),
             ComponentBlock(example['code']),
             html.Hr()
