@@ -128,7 +128,182 @@ dashbio.Circos(
 )
 
 # Clustergram
-Clustergram = create_doc_page(examples, component_names, 'clustergram')
+Clustergram = create_doc_page(
+    examples, component_names, 'clustergram', component_examples=[
+        {
+            'param_name': 'Heatmap color scale',
+            'description': 'Change the color scale by specifying values and colors.',
+            'code': '''import pandas as pd
+
+import dash_core_components as dcc
+import dash_bio as dashbio
+
+
+df = pd.read_csv('https://raw.githubusercontent.com/plotly/dash-bio/master/tests/dashbio_demos/sample_data/clustergram_mtcars.tsv',
+                 sep='	', skiprows=4).set_index('model')
+
+columns = list(df.columns.values)
+rows = list(df.index)
+
+clustergram = dashbio.Clustergram(
+    data=df.loc[rows].values,
+    row_labels=rows,
+    column_labels=columns,
+    color_threshold={
+        'row': 250,
+        'col': 700
+    },
+    height=800,
+    width=700,
+    color_map= [
+        [0.0, '#880088'],
+        [0.25, '#FFF0FF'],
+        [0.5, '#FFFFFF'],
+        [0.75, '#000FFF'],
+        [1.0, '#0000FF']
+    ]
+)
+
+dcc.Graph(figure=clustergram)'''
+        },
+
+        {
+            'param_name': 'Dendrogram Cluster Colors/Line Widths',
+            'description': 'Change the colors of the dendrogram traces that \
+            are used to represent clusters, and configure their line widths.',
+            'code': '''import pandas as pd
+
+import dash_core_components as dcc
+import dash_bio as dashbio
+
+
+df = pd.read_csv('https://raw.githubusercontent.com/plotly/dash-bio/master/tests/dashbio_demos/sample_data/clustergram_mtcars.tsv',
+                 sep='	', skiprows=4).set_index('model')
+
+columns = list(df.columns.values)
+rows = list(df.index)
+
+clustergram = dashbio.Clustergram(
+    data=df.loc[rows].values,
+    row_labels=rows,
+    column_labels=columns,
+    color_threshold={
+        'row': 250,
+        'col': 700
+    },
+    height=800,
+    width=700,
+    color_list={
+        'row': ['#AA8822', '#AA0055', '#00AA00'],
+        'col': ['#00AADD', '#FF0F0F'],
+        'bg': '#004444'
+    },
+    line_width=2
+)
+
+dcc.Graph(figure=clustergram)'''
+        },
+
+        {
+            'param_name': 'Relative Dendrogram Size',
+            'description': 'Change the relative width and height of, respectively, the row and column \
+            dendrograms compared to the width and height of the heatmap.',
+            'code': '''import pandas as pd
+
+import dash_core_components as dcc
+import dash_bio as dashbio
+
+
+df = pd.read_csv('https://raw.githubusercontent.com/plotly/dash-bio/master/tests/dashbio_demos/sample_data/clustergram_mtcars.tsv',
+                 sep='	', skiprows=4).set_index('model')
+
+columns = list(df.columns.values)
+rows = list(df.index)
+
+clustergram = dashbio.Clustergram(
+    data=df.loc[rows].values,
+    row_labels=rows,
+    column_labels=columns,
+    color_threshold={
+        'row': 250,
+        'col': 700
+    },
+    height=800,
+    width=700,
+    display_ratio=[0.5, 0.7]
+)
+
+dcc.Graph(figure=clustergram)'''
+        },
+        {
+            'param_name': 'Hidden Labels',
+            'description': 'Hide the labels along one or both dimensions.',
+            'code': '''import pandas as pd
+
+import dash_core_components as dcc
+import dash_bio as dashbio
+
+
+df = pd.read_csv('https://raw.githubusercontent.com/plotly/dash-bio/master/tests/dashbio_demos/sample_data/clustergram_mtcars.tsv',
+                 sep='	', skiprows=4).set_index('model')
+
+columns = list(df.columns.values)
+rows = list(df.index)
+
+clustergram = dashbio.Clustergram(
+    data=df.loc[rows].values,
+    row_labels=rows,
+    column_labels=columns,
+    color_threshold={
+        'row': 250,
+        'col': 700
+    },
+    height=800,
+    width=700,
+    hide_labels='row'
+)
+
+dcc.Graph(figure=clustergram)'''
+        },
+        {
+            'param_name': 'Annotations',
+            'description': 'Annotate the clustergram by highlighting specific clusters.',
+            'code': '''import pandas as pd
+
+import dash_core_components as dcc
+import dash_bio as dashbio
+
+
+df = pd.read_csv('https://raw.githubusercontent.com/plotly/dash-bio/master/tests/dashbio_demos/sample_data/clustergram_mtcars.tsv',
+                 sep='	', skiprows=4).set_index('model')
+
+columns = list(df.columns.values)
+rows = list(df.index)
+
+clustergram = dashbio.Clustergram(
+    data=df.loc[rows].values,
+    row_labels=rows,
+    column_labels=columns,
+    color_threshold={
+        'row': 250,
+        'col': 700
+    },
+    height=800,
+    width=700,
+    hide_labels='row',
+    col_group_marker=[
+        {'group': 1, 'annotation': 'largest column cluster', 'color': 'orange'}
+    ],
+    row_group_marker=[
+        {'group': 2, 'annotation': 'smallest', 'color': 'purple'},
+        {'group': 1, 'annotation': 'largest', 'color': 'yellow'}
+    ]
+)
+
+dcc.Graph(figure=clustergram)'''
+        }
+    ]
+)
 
 # Ideogram
 Ideogram = create_doc_page(examples, component_names, 'ideogram')
