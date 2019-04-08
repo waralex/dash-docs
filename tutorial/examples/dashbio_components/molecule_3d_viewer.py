@@ -19,8 +19,7 @@ app.layout = html.Div([
     dashbio.Molecule3dViewer(
         id='my-dashbio-molecule3d',
         styles=styles_data,
-        modelData=model_data,
-        backgroundOpacity='0'
+        modelData=model_data
     ),
     "Selection data",
     html.Hr(),
