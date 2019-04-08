@@ -360,7 +360,8 @@ def create_default_example(
         html.Div(
             example_code[1],
             className='example-container'
-        )
+        ),
+        html.Hr()
     ]
 
 
