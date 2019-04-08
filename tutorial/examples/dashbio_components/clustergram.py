@@ -43,16 +43,16 @@ def update_clustergram(rows):
 
     return dcc.Graph(figure=dashbio.Clustergram(
         data=df.loc[rows].values,
-        column_labels=list(df.columns.values),
+        column_labels=columns,
         row_labels=rows,
         color_threshold={
-            'row': 100,
-            'col': 350
+            'row': 250,
+            'col': 700
         },
         hide_labels='row',
         height=800,
         width=700
-    )[0])
+    ))
 
 
 if __name__ == '__main__':
