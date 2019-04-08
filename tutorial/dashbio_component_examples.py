@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from tutorial import tools
-from tutorial.utils.dashbio_docs import create_doc_page, get_component_names
+from tutorial.utils.dashbio_docs import create_doc_page, get_component_names, create_examples
 
 component_names = get_component_names('dash_bio')
 
@@ -30,10 +30,74 @@ examples = {
 }
 
 
-
-
 # AlignmentChart/AlignmentViewer
-AlignmentChart = create_doc_page(examples, component_names, 'alignment-chart')
+AlignmentChart = create_doc_page(
+    examples, component_names, 'alignment-chart', component_examples=[
+
+        {
+            'param_name': 'Color Scales',
+            'description': 'Change the colors used for the heatmap.',
+            'code': '''from six.moves.urllib import request as urlreq
+import dash_bio as dashbio
+
+
+data = urlreq.urlopen("https://raw.githubusercontent.com/plotly/dash-bio/master/tests/dashbio_demos/sample_data/alignment_viewer_p53.fasta").read().decode('utf-8')
+
+dashbio.AlignmentChart(
+    data=data,
+    colorscale='hydro',
+    conservationcolorscale='blackbody'
+)
+
+'''
+        },
+        {
+            'param_name': 'Show/hide Barplots',
+            'description': 'Enable or disable the secondary bar plots for gaps and conservation.',
+            'code': '''from six.moves.urllib import request as urlreq
+import dash_bio as dashbio
+
+
+data = urlreq.urlopen("https://raw.githubusercontent.com/plotly/dash-bio/master/tests/dashbio_demos/sample_data/alignment_viewer_p53.fasta").read().decode('utf-8')
+
+dashbio.AlignmentChart(
+    data=data,
+    showconservation=False,
+    showgap=False
+)'''
+        },
+
+        {
+            'param_name': 'Tile Size',
+            'description': 'Change the height and/or width of the tiles.',
+            'code': '''from six.moves.urllib import request as urlreq
+import dash_bio as dashbio
+
+
+data = urlreq.urlopen("https://raw.githubusercontent.com/plotly/dash-bio/master/tests/dashbio_demos/sample_data/alignment_viewer_p53.fasta").read().decode('utf-8')
+
+dashbio.AlignmentChart(
+    data=data,
+    tilewidth=50
+)'''
+        },
+        {
+            'param_name': 'Consensus Sequence',
+            'description': 'Toggle the display of the consensus sequence at the bottom of the heatmap.',
+            'code': '''from six.moves.urllib import request as urlreq
+import dash_bio as dashbio
+
+
+data = urlreq.urlopen("https://raw.githubusercontent.com/plotly/dash-bio/master/tests/dashbio_demos/sample_data/alignment_viewer_p53.fasta").read().decode('utf-8')
+
+dashbio.AlignmentChart(
+    data=data,
+    showconsensus=False
+)'''
+        }
+    ]
+)
+
 
 # Circos
 Circos = create_doc_page(examples, component_names, 'circos')
