@@ -306,7 +306,68 @@ dcc.Graph(figure=clustergram)'''
 )
 
 # Ideogram
-Ideogram = create_doc_page(examples, component_names, 'ideogram')
+Ideogram = create_doc_page(
+    examples, component_names, 'ideogram', component_examples=[
+        {
+            'param_name': 'Height/width',
+            'description': 'Change the size of the chromosomes in your ideogram.',
+            'code': '''import dash_bio as dashbio
+
+dashbio.Ideogram(
+    id='ideogram-size',
+    chrHeight=800,
+    chrWidth=100
+)'''
+        },
+
+        {
+            'param_name': 'Annotations',
+            'description': 'Display annotations that are loaded from a JSON file.',
+            'code': '''import dash_bio as dashbio
+
+dashbio.Ideogram(
+    id='ideogram-annotations',
+    chromosomes=['X', 'Y'],
+    annotationsPath='https://eweitz.github.io/ideogram/data/annotations/SRR562646.json'
+)'''
+        },
+
+        {
+            'param_name': 'Rotatability',
+            'description': 'Disable rotation of the chromosome upon clicking on it.',
+            'code': '''import dash_bio as dashbio
+
+dashbio.Ideogram(
+    id='ideogram-rotate',
+    rotatable=False
+)'''
+        },
+
+        {
+            'param_name': 'Orientation',
+            'description': 'Display chromosomes horizontally or vertically.',
+            'code': '''import dash_bio as dashbio
+
+dashbio.Ideogram(
+    id='ideogram-orientation',
+    orientation='horizontal'
+)'''
+        },
+
+        {
+            'param_name': 'Brush',
+            'description': 'Highlight a region of the chromosome by adding a brush.',
+            'code': '''import dash_bio as dashbio
+
+dashbio.Ideogram(
+    id='ideogram-brush',
+    chromosomes=['X'],
+    orientation='horizontal',
+    brush='chrX:1-10000000'
+)'''
+        }
+    ]
+)
 
 # ManhattanPlot
 ManhattanPlot = create_doc_page(examples, component_names, 'manhattan-plot')
