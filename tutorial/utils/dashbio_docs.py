@@ -325,7 +325,7 @@ def generate_docs(
     return layout_children
 
 
-# individual component pages
+# individual componaent pages
 
 def create_default_example(
         component_name,
@@ -364,6 +364,20 @@ def create_default_example(
     ]
 
 
+def create_examples(
+        examples_data
+):
+    examples = []
+    for example in examples_data:
+        examples += [
+            html.H3(example['param_name']),
+            dcc.Markdown(example['description']),
+            ComponentBlock(example['code']),
+            html.Hr()
+        ]
+    return examples
+
+
 def generate_prop_table(
         component_name,
         component_names,
@@ -383,7 +397,6 @@ def generate_prop_table(
     :rtype (object): An html.Table containing data on the props of the component.
 
     '''
-
 
     regex = {
          'python': r'^\s*([a-zA-Z_]*)\s*\(([a-zA-Z\/]*);\s*([a-z]*)\):\s*(.*?)\s*(\(Default:\s*([^\s]*)\)|)\s*$'
@@ -455,7 +468,6 @@ def generate_prop_table(
             else:
                 prop_default = ''
 
-
         tableRows.append(
             html.Tr([html.Td(dcc.Markdown(prop_name)),
                      html.Td(dcc.Markdown(prop_desc)),
@@ -469,7 +481,7 @@ def generate_prop_table(
     ])
 
 
-def create_doc_page(examples, component_names, component_name):
+def create_doc_page(examples, component_names, component_name, component_examples=None):
     '''Generates a documentation page for a component.
 
     :param (dict[object]) examples: A dictionary that contains the
@@ -487,6 +499,10 @@ def create_doc_page(examples, component_names, component_name):
     '''
     c_name = component_name.replace('-', ' ').title().replace(' ', '')
 
+    if component_examples is None:
+        component_examples = []
+    component_examples = create_examples(component_examples)
+
     if c_name == 'Molecule3DViewer':
         c_name = 'Molecule3dViewer'
 
@@ -497,6 +513,7 @@ def create_doc_page(examples, component_names, component_name):
         create_default_example(component_name,
                                examples[component_name],
                                styles=styles) +
+        component_examples +
         [generate_prop_table(
             c_name,
             component_names,
