@@ -1,4 +1,4 @@
-import six.moves.urllib.requests as urlreq
+import six.moves.urllib.request as urlreq
 
 import dash
 import dash_bio as dashbio
