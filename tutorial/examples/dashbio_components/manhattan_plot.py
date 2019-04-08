@@ -1,9 +1,10 @@
+import pandas as pd
+
 import dash
 import dash_bio as dashbio
 import dash_html_components as html
 import dash_core_components as dcc
 
-import pandas as pd
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 

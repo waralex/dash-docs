@@ -1,15 +1,10 @@
+import sys
+import six.moves.urllib.requests as urlreq
+
 import dash
 import dash_bio as dashbio
 import dash_html_components as html
 import dash_core_components as dcc
-
-import sys
-
-try:
-    import urllib.request as urlreq
-except ImportError:
-    import urllib2 as urlreq
-
 import dash_bio.utils.xyz_reader as xyz_reader
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
