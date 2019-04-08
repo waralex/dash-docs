@@ -8,8 +8,13 @@ def ComponentBlock(example_string, **kwargs):
     scope = {}
     converted_string = example_string.replace(
         'dcc.', 'component = dcc.').replace(
-            'daq.', 'component = daq.').replace(
+            'daq.', 'component = daq.')
+
+    for wrapped_component in ['Clustergram']:
+        if wrapped_component not in converted_string:
+            converted_string = converted_string.replace(
                 'dashbio.', 'component = dashbio.')
+    
     try:
         exec(converted_string, scope)
     except Exception as e:
