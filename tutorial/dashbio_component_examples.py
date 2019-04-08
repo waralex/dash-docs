@@ -370,7 +370,45 @@ dashbio.Ideogram(
 )
 
 # ManhattanPlot
-ManhattanPlot = create_doc_page(examples, component_names, 'manhattan-plot')
+ManhattanPlot = create_doc_page(
+    examples, component_names, 'manhattan-plot', component_examples=[
+        {
+            'param_name': 'Line colors',
+            'description': 'Change the colors of the suggestive line and the genome-wide line.',
+            'code': '''import pandas as pd
+import dash_core_components as dcc
+import dash_bio as dashbio
+
+df = pd.read_csv("https://raw.githubusercontent.com/plotly/dash-bio/master/tests/dashbio_demos/sample_data/manhattan_data.csv")
+
+manhattanplot = dashbio.ManhattanPlot(
+    dataframe=df,
+    suggestiveline_color='#AA00AA',
+    genomewideline_color='#AA5500'
+)
+
+dcc.Graph(figure=manhattanplot)'''
+        },
+
+        {
+            'param_name': 'Highlighted points color',
+            'description': 'Change the color of the points that are considered significant.',
+            'code': '''import pandas as pd
+import dash_core_components as dcc
+import dash_bio as dashbio
+
+df = pd.read_csv("https://raw.githubusercontent.com/plotly/dash-bio/master/tests/dashbio_demos/sample_data/manhattan_data.csv")
+
+manhattanplot = dashbio.ManhattanPlot(
+    dataframe=df,
+    highlight_color='#00FFAA'
+)
+
+dcc.Graph(figure=manhattanplot)'''
+        }
+
+    ]
+)
 
 # Molecule3dViewer
 Molecule3dViewer = create_doc_page(examples, component_names, 'molecule-3d-viewer')
