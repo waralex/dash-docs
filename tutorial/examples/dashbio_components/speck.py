@@ -1,22 +1,19 @@
-import sys
 import six.moves.urllib.request as urlreq
+from six import u
 
 import dash
 import dash_bio as dashbio
 import dash_html_components as html
 import dash_core_components as dcc
-import dash_bio.utils.xyz_reader as xyz_reader
+from dash_bio.utils import xyz_reader
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
-data = urlreq.urlopen("https://raw.githubusercontent.com/plotly/dash-bio/master/tests/dashbio_demos/sample_data/speck_caffeine.xyz").read()
+data = urlreq.urlopen("https://raw.githubusercontent.com/plotly/dash-bio/master/tests/dashbio_demos/sample_data/speck_methane.xyz").read()
 
-if sys.version_info >= (3, 0):
-    data = data.decode("utf-8")
-
-data = xyz_reader.read_xyz(data_string=data)
+data = xyz_reader.read_xyz(data_string=u(data).decode())
 
 app.layout = html.Div([
     dcc.Dropdown(
@@ -29,8 +26,6 @@ app.layout = html.Div([
     ),
     dashbio.Speck(
         id='my-speck',
-        scrollZoom=True,
-        view={'resolution': 400},
         data=data
     ),
     html.Div(id='speck-output')
