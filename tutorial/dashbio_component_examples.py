@@ -590,14 +590,18 @@ Speck = create_doc_page(
             'param_name': 'Molecule rendering styles',
             'description': 'Change the level of atom outlines, ambient occlusion, and more with the "view" parameter.',
             'code': '''import six.moves.urllib.request as urlreq
-from six import u
+from six import PY3
 
 import dash_bio as dashbio
 from dash_bio.utils import xyz_reader
 
 
 data = urlreq.urlopen("https://raw.githubusercontent.com/plotly/dash-bio/master/tests/dashbio_demos/sample_data/speck_methane.xyz").read()
-data = xyz_reader.read_xyz(data_string=u(data).decode())
+
+if PY3:
+    data = data.decode('utf-8')
+
+data = xyz_reader.read_xyz(data_string=data)
 
 dashbio.Speck(
     data=data,
@@ -616,14 +620,18 @@ dashbio.Speck(
             'param_name': 'Scroll to zoom',
             'description': 'Allow for the scroll wheel to control zoom for the molecule.',
             'code': '''import six.moves.urllib.request as urlreq
-from six import u
+from six import PY3
 
 import dash_bio as dashbio
 from dash_bio.utils import xyz_reader
 
 
 data = urlreq.urlopen("https://raw.githubusercontent.com/plotly/dash-bio/master/tests/dashbio_demos/sample_data/speck_methane.xyz").read()
-data = xyz_reader.read_xyz(data_string=u(data).decode())
+
+if PY3:
+    data = data.decode('utf-8')
+
+data = xyz_reader.read_xyz(data_string=data)
 
 dashbio.Speck(
     data=data,

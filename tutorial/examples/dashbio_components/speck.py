@@ -1,5 +1,5 @@
 import six.moves.urllib.request as urlreq
-from six import u
+from six import PY3
 
 import dash
 import dash_bio as dashbio
@@ -13,7 +13,10 @@ app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
 data = urlreq.urlopen("https://raw.githubusercontent.com/plotly/dash-bio/master/tests/dashbio_demos/sample_data/speck_methane.xyz").read()
 
-data = xyz_reader.read_xyz(data_string=u(data).decode())
+if PY3:
+    data = data.decode('utf-8')
+
+data = xyz_reader.read_xyz(data_string=data)
 
 app.layout = html.Div([
     dcc.Dropdown(
@@ -28,7 +31,6 @@ app.layout = html.Div([
         id='my-speck',
         data=data
     ),
-    html.Div(id='speck-output')
 ])
 
 
