@@ -350,7 +350,7 @@ def create_default_example(
         html.H3("Default {}".format(
             component_name.replace('-', ' ').title()
         )),
-        html.P("An example of a default {} without \
+        html.P("An example of a default {} component without \
         any extra properties.".format(
             component_name.replace('-', ' ')
         )),
