@@ -70,7 +70,7 @@ layout = html.Div([
     - `breadthfirst`
     - `cose`
 
-    All those layouts (along with their options), are described in the
+    All those layouts, along with their options, are described in the
     [official Cytoscape documentation](http://js.cytoscape.org/#layouts).
     There, you can find the exact keys accepted by your dictionary, enabling
     advanced fine-tuning (demonstrated below).
@@ -143,7 +143,7 @@ layout = html.Div([
     dcc.Markdown(dedent('''
     ## Display Methods
 
-    In most cases, the positions of the nodes will not be given. In those
+    In most cases, the position of the nodes will not be given. In these
     cases, one of the built-in methods can be used. Let's see what happens
     when the value of `name` is set to `'circle'` or `'grid'`
     ''')),
@@ -179,7 +179,7 @@ layout = html.Div([
     [`grid` layout](http://js.cytoscape.org/#layouts/grid)
     will accept `row` and `cols`, the
     [`circle` layout](http://js.cytoscape.org/#layouts/circle) accepts `radius`
-    and `startAngle`, and so forth. Here's is the grid layout
+    and `startAngle`, and so forth. Here is the grid layout
     with the same graph as above, but with different layout options:
     ''')),
 
