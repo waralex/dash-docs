@@ -514,7 +514,70 @@ dashbio.NeedlePlot(
 )
 
 # Oncoprint
-Oncoprint = create_doc_page(examples, component_names, 'onco-print')
+Oncoprint = create_doc_page(
+    examples, component_names, 'onco-print', component_examples=[
+        {
+            'param_name': 'Colors',
+            'description': 'Change the color of specific mutations, as well as the background color.',
+            'code': '''import json
+import six.moves.urllib.request as urlreq
+
+import dash_bio as dashbio
+
+
+data = urlreq.urlopen("https://raw.githubusercontent.com/plotly/dash-bio/master/tests/dashbio_demos/sample_data/oncoprint_dataset3.json").read()
+data = json.loads(data)
+
+dashbio.OncoPrint(
+    data=data,
+    colorscale={
+        'MISSENSE': '#e763fa',
+        'INFRAME': '#E763FA'
+    },
+    backgroundcolor='#F3F6FA'
+)'''
+        },
+
+        {
+            'param_name': 'Size and spacing',
+            'description': 'Change the height and width of the component, and adjust the spacing between adjacent tracks.',
+            'code': '''import json
+import six.moves.urllib.request as urlreq
+
+import dash_bio as dashbio
+
+
+data = urlreq.urlopen("https://raw.githubusercontent.com/plotly/dash-bio/master/tests/dashbio_demos/sample_data/oncoprint_dataset3.json").read()
+data = json.loads(data)
+
+dashbio.OncoPrint(
+    data=data,
+    height=800,
+    width=500,
+    padding=0.25
+)'''
+        },
+
+        {
+            'param_name': 'Legend and overview',
+            'description': 'Show or hide the legend and/or overview heatmap.',
+            'code': '''import json
+import six.moves.urllib.request as urlreq
+
+import dash_bio as dashbio
+
+
+data = urlreq.urlopen("https://raw.githubusercontent.com/plotly/dash-bio/master/tests/dashbio_demos/sample_data/oncoprint_dataset3.json").read()
+data = json.loads(data)
+
+dashbio.OncoPrint(
+    data=data,
+    showlegend=False,
+    showoverview=False
+)'''
+        }
+    ]
+)
 
 # SequenceViewer
 SequenceViewer = create_doc_page(examples, component_names, 'sequence-viewer')
