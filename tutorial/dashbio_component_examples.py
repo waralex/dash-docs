@@ -583,7 +583,56 @@ dashbio.OncoPrint(
 SequenceViewer = create_doc_page(examples, component_names, 'sequence-viewer')
 
 # Speck
-Speck = create_doc_page(examples, component_names, 'speck')
+Speck = create_doc_page(
+    examples, component_names, 'speck', component_examples=[
+
+        {
+            'param_name': 'Molecule rendering styles',
+            'description': 'Change the level of atom outlines, ambient occlusion, and more with the "view" parameter.',
+            'code': '''import six.moves.urllib.request as urlreq
+from six import u
+
+import dash_bio as dashbio
+from dash_bio.utils import xyz_reader
+
+
+data = urlreq.urlopen("https://raw.githubusercontent.com/plotly/dash-bio/master/tests/dashbio_demos/sample_data/speck_methane.xyz").read()
+data = xyz_reader.read_xyz(data_string=u(data).decode())
+
+dashbio.Speck(
+    data=data,
+    view={
+        'resolution': 400,
+        'ao': 0.1,
+        'outline': 1,
+        'atomScale': 0.25,
+        'relativeAtomScale': 0.33,
+        'bonds': True
+    }
+)'''
+        },
+
+        {
+            'param_name': 'Scroll to zoom',
+            'description': 'Allow for the scroll wheel to control zoom for the molecule.',
+            'code': '''import six.moves.urllib.request as urlreq
+from six import u
+
+import dash_bio as dashbio
+from dash_bio.utils import xyz_reader
+
+
+data = urlreq.urlopen("https://raw.githubusercontent.com/plotly/dash-bio/master/tests/dashbio_demos/sample_data/speck_methane.xyz").read()
+data = xyz_reader.read_xyz(data_string=u(data).decode())
+
+dashbio.Speck(
+    data=data,
+    scrollZoom=True
+)'''
+        }
+
+    ]
+)
 
 # VolcanoPlot
 VolcanoPlot = create_doc_page(examples, component_names, 'volcano-plot')
