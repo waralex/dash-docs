@@ -345,6 +345,11 @@ def create_default_example(
     '''
 
     return [
+        dcc.Markdown('See {} in action [here](http://dash-bio.plotly.host/dash-{}).'.format(
+            component_name.replace('-', ' ').title(),
+            component_name
+        )),
+
         html.Hr(),
 
         html.H3("Default {}".format(
