@@ -156,11 +156,11 @@ clustergram = dashbio.Clustergram(
     height=800,
     width=700,
     color_map= [
-        [0.0, '#880088'],
-        [0.25, '#FFF0FF'],
+        [0.0, '#636EFA'],
+        [0.25, '#AB63FA'],
         [0.5, '#FFFFFF'],
-        [0.75, '#000FFF'],
-        [1.0, '#0000FF']
+        [0.75, '#E763FA'],
+        [1.0, '#EF553B']
     ]
 )
 
@@ -194,9 +194,9 @@ clustergram = dashbio.Clustergram(
     height=800,
     width=700,
     color_list={
-        'row': ['#AA8822', '#AA0055', '#00AA00'],
-        'col': ['#00AADD', '#FF0F0F'],
-        'bg': '#004444'
+        'row': ['#636EFA', '#00CC96', '#19D3F3'],
+        'col': ['#AB63FA', '#EF553B'],
+        'bg': '#506784'
     },
     line_width=2
 )
@@ -230,7 +230,7 @@ clustergram = dashbio.Clustergram(
     },
     height=800,
     width=700,
-    display_ratio=[0.5, 0.7]
+    display_ratio=[0.1, 0.7]
 )
 
 dcc.Graph(figure=clustergram)'''
@@ -292,11 +292,11 @@ clustergram = dashbio.Clustergram(
     width=700,
     hide_labels='row',
     col_group_marker=[
-        {'group': 1, 'annotation': 'largest column cluster', 'color': 'orange'}
+        {'group': 1, 'annotation': 'largest column cluster', 'color': '#EF553B'}
     ],
     row_group_marker=[
-        {'group': 2, 'annotation': 'smallest', 'color': 'purple'},
-        {'group': 1, 'annotation': 'largest', 'color': 'yellow'}
+        {'group': 2, 'annotation': 'cluster 2', 'color': '#AB63FA'},
+        {'group': 1, 'annotation': '', 'color': '#19D3F3'}
     ]
 )
 
