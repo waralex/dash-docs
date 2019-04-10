@@ -10,7 +10,7 @@ def ComponentBlock(example_string, **kwargs):
         'dcc.', 'component = dcc.').replace(
             'daq.', 'component = daq.')
 
-    for wrapped_component in ['Clustergram', 'ManhattanPlot']:
+    for wrapped_component in ['Clustergram', 'ManhattanPlot', 'VolcanoPlot']:
         if wrapped_component not in converted_string:
             converted_string = converted_string.replace(
                 'dashbio.', 'component = dashbio.')
