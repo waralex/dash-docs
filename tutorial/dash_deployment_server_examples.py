@@ -1537,6 +1537,421 @@ def display_instructions(platform):
         ''')
     ]
 
+# # # # # # #
+# Managing Dash Apps from the Command Line
+# # # # # # #
+Cli = html.Div(children=[
+    html.H1('Managing Dash Apps from the Command Line '),
+
+    rc.Blockquote(),
+
+    dcc.Markdown('''
+    After setting up SSH authentication (see our [ssh doc](/dash-deployment-server/ssh)), you will
+    be able to use the commands below to help manage your apps from the command line.
+    
+    All commands are performed using `ssh dokku@your-dash-deployment-server -p PORT command flags appname` where
+    `PORT` is the ssh port for DDS (usually 3022). DDS will compare the private key supplied to the ssh command
+    and the public key uploaded to DDS in order to authenticate the user initiating the request.
+    
+    > Note that using the same public key for multiple users on DDS isn't supported and will likely prevent it
+    > from authenticating to the correct user.
+
+    ***
+
+    '''),
+
+    dcc.Markdown('''
+
+    ### List of exposed DDS commands:
+
+
+    #### App-related Commands:
+    
+    > These commands can only be run the app-owner.'''),
+
+    html.Details([
+        html.Summary('Lock app'),
+        dcc.Markdown('''
+        &nbsp;
+    
+        If you wish to disable deploying for a period of time, this can be
+        done via deploy locks. Normally, deploy locks exist only for the duration
+        of a deploy to prevent deploys from colliding, but a deploy lock can
+        be created at any time by running the apps:lock command. 
+    
+        **Example:**
+    
+        
+        `ssh dokku@your-dash-deployment-server -p PORT apps:lock my-dash-app`
+        
+        
+        &nbsp;
+        ''')]),
+
+    html.Details([
+        html.Summary('Unlock app'),
+        dcc.Markdown('''
+        &nbsp;
+        
+        In some cases, it may be necessary to remove an existing deploy lock.
+        This can be performed via the apps:unlock command.
+        
+        > **Warning**: Removing the deploy lock will not stop in progress deploys.
+        At this time, in-progress deploys will need to be manually terminated by
+        someone with server access.
+    
+        **Example:**
+        `ssh dokku@your-dash-deployment-server -p PORT apps:unlock my-dash-app`
+        
+        &nbsp;
+        # ''')]),
+
+    html.Details([
+        html.Summary('Get app logs'),
+        dcc.Markdown('''
+        &nbsp;
+        
+        You can get logs of an app using the logs command:
+    
+        **Example:**
+        `ssh dokku@your-dash-deployment-server -p PORT logs my-dash-app`
+    
+        `logs` also support following flags:
+    
+        ```
+        -n, --num NUM          # the number of lines to display
+        -p, --ps PS            # only display logs from the given process
+        -t, --tail             # continually stream logs
+        -q, --quiet            # display raw logs without colors, time and names
+        ```
+        
+        You can use these flags as follows:
+        
+        `ssh dokku@your-dash-deployment-server -p PORT logs my-dash-app -t -p web`
+        
+        &nbsp;
+        ''')]),
+
+    html.Details([
+        html.Summary('Get logs from failed deploy'),
+        dcc.Markdown('''
+        &nbsp;
+        
+        In some cases, it may be useful to retrieve the logs from a previously failed deploy.
+        You can retrieve these logs with the logs:failed command.
+    
+        **Example:**
+
+        `ssh dokku@your-dash-deployment-server -p PORT logs:failed my-dash-app`
+        
+        &nbsp;
+        ''')]),
+
+    html.Details([
+        html.Summary("Rebuild an app's environment"),
+        dcc.Markdown('''
+        &nbsp;
+        
+        You can trigger an application to rebuild its environment using `ps:rebuild`.
+    
+        **Example:**
+
+        `ssh dokku@your-dash-deployment-server -p PORT ps:rebuild my-dash-app`
+        
+        &nbsp;
+        ''')]),
+
+    html.Details([
+        html.Summary("Get a report of your app's status"),
+        dcc.Markdown('''
+        &nbsp;
+        
+        This command displays a process report for one or more apps.
+    
+        **Example:**
+
+        `ssh dokku@your-dash-deployment-server -p PORT ps:report my-dash-app`
+        
+        You can also retrieve a specific piece of service info via flags:
+        ```
+        --processes         # Display only the number of running processes
+        --deployed          # Display only the deploy status i.e. true or false
+        --running           # Display the running status i.e. true or false
+        --restore           # Display the running status i.e. true or false
+        --restart-policy    # Display the restart policy for the app
+        ```
+        
+        `ssh dokku@your-dash-deployment-server -p PORT ps:report my-dash-app --processes`
+        
+        &nbsp;
+        ''')]),
+
+    html.Details([
+        html.Summary("Restart an app"),
+        dcc.Markdown('''
+            &nbsp;
+            
+            Applications can be restarted, which is functionally identical to releasing and deploying an application.
+        
+            **Example:**
+            
+            `ssh dokku@your-dash-deployment-server -p PORT ps:restart my-dash-app`
+            
+            &nbsp;
+            ''')
+    ]),
+
+    html.Details([
+        html.Summary("Stop an app"),
+        dcc.Markdown('''
+            &nbsp;
+            
+            Deployed applications can be stopped using the ps:stop command.
+            This turns off all running containers for an application, and will result in a 502 Bad Gateway response.
+
+            **Example:**
+
+            `ssh dokku@your-dash-deployment-server -p PORT ps:stop my-dash-app`
+            
+            &nbsp;
+        ''')
+    ]),
+
+    html.Details([
+        html.Summary("Start an app"),
+        dcc.Markdown('''
+            &nbsp;
+            
+            All stopped containers can be started using the ps:start command.
+
+            **Example:**
+
+            `ssh dokku@your-dash-deployment-server -p PORT ps:start my-dash-app`
+            
+            &nbsp;
+        ''')
+    ]),
+
+    html.Details([
+        html.Summary("Scale app processes"),
+        dcc.Markdown('''
+        &nbsp;
+        
+        DDS can also manage scaling applications (increase the number of containers for processes defined
+        in the Procfile) via the `ps:scale` command. DDS only scales the web process by default so if you
+        define others you will need to scale them. 
+
+        **Example:**
+
+        `ssh dokku@your-dash-deployment-server -p PORT ps:scale my-dash-app web=1`
+        
+        This command can be used to scale multiple process types at the same time.
+
+        `ssh dokku@your-dash-deployment-server -p PORT ps:scale my-dash-app web=1 worker=1`
+        
+        The ps:scale command with no process type argument will output
+        the current scaling settings for an application:
+        
+        ```
+        ssh dokku@your-dash-deployment-server -p PORT ps:scale my-dash-app
+        -----> Scaling for my-dash-app
+        -----> proctype           qty
+        -----> --------           ---
+        -----> web                1
+        -----> worker             1
+        ```
+        
+        &nbsp;
+    ''')
+    ]),
+
+    html.Details([
+        html.Summary("List persistent storage directories"),
+        dcc.Markdown('''
+            &nbsp;
+            
+            List bind mounts for an app's container(s) (host:container).
+            See our doc on [mapping local directories](/dash-deployment-server/map-local-directories) for more info on
+            how to set these up.
+
+            **Example:**
+            `ssh dokku@your-dash-deployment-server -p PORT storage:list my-dash-app`
+            
+            &nbsp;
+        ''')
+    ]),
+
+    dcc.Markdown('''
+
+    #### Service-related Commands:
+
+    > These commands can only be run the service-owner.'''),
+
+    html.Details([
+        html.Summary("Export the contents of a Redis database"),
+        dcc.Markdown('''
+            &nbsp;
+
+            Export a dump of the Redis service database. By default, datastore output is exported to stdout:
+
+            **Example:**
+
+            `ssh dokku@your-dash-deployment-server -p PORT redis:export redis-db`
+            
+            You can redirect this output to a file:
+
+           `ssh dokku@your-dash-deployment-server -p PORT redis:export redis-db > db.dump`
+
+        ''')
+    ]),
+
+    html.Details([
+        html.Summary("Upload an existing redis dump to Redis database"),
+        dcc.Markdown('''
+            &nbsp;
+
+            Import a datastore dump:
+
+            **Example:**
+
+            `ssh dokku@your-dash-deployment-server -p PORT redis:import redis-db < db.dump`
+            
+            &nbsp;
+        ''')
+    ]),
+
+    html.Details([
+        html.Summary("Get connection info for a Redis service"),
+        dcc.Markdown('''
+            &nbsp;
+
+            Print the connection information. Get connection information as follows:
+
+            **Example:**
+
+            `ssh dokku@your-dash-deployment-server -p PORT redis:info redis-db`
+            
+            You can also retrieve a specific piece of service info via flags:
+            
+            ```
+            ssh dokku@your-dash-deployment-server -p PORT redis:info redis-db --config-dir
+            ssh dokku@your-dash-deployment-server -p PORT redis:info redis-db --data-dir
+            ssh dokku@your-dash-deployment-server -p PORT redis:info redis-db --dsn
+            ssh dokku@your-dash-deployment-server -p PORT redis:info redis-db --exposed-ports
+            ssh dokku@your-dash-deployment-server -p PORT redis:info redis-db --id
+            ssh dokku@your-dash-deployment-server -p PORT redis:info redis-db --internal-ip
+            ssh dokku@your-dash-deployment-server -p PORT redis:info redis-db --links
+            ssh dokku@your-dash-deployment-server -p PORT redis:info redis-db --service-root
+            ssh dokku@your-dash-deployment-server -p PORT redis:info redis-db --status
+            ssh dokku@your-dash-deployment-server -p PORT redis:info redis-db --version
+            ```
+            
+            &nbsp;
+        ''')
+    ]),
+
+    html.Details([
+        html.Summary("Get Redis logs"),
+        dcc.Markdown('''
+            &nbsp;
+
+            Print the most recent log(s) for this service.
+
+            **Example:**
+
+            `ssh dokku@your-dash-deployment-server -p PORT redis:logs redis-db`
+            
+            By default, logs will not be tailed, but you can do this with the --tail flag:
+
+            `ssh dokku@your-dash-deployment-server -p PORT redis:logs redis-db --tail`
+            
+            &nbsp;
+        ''')
+    ]),
+
+    html.Details([
+        html.Summary("Restart a Redis service"),
+        dcc.Markdown('''
+        &nbsp;
+
+        Restart the service:
+
+        **Example:**
+
+        `ssh dokku@your-dash-deployment-server -p PORT redis:restart redis-db`
+        
+        &nbsp;
+    ''')
+    ]),
+
+    html.Details([
+        html.Summary("Stop a Redis service"),
+        dcc.Markdown('''
+        &nbsp;
+
+        Stop the service:
+
+        **Example:**
+
+        `ssh dokku@your-dash-deployment-server -p PORT redis:stop redis-db`
+        
+        &nbsp;
+    ''')
+    ]),
+
+    html.Details([
+        html.Summary("Start a stopped Redis service"),
+        dcc.Markdown('''
+        &nbsp;
+
+        Start the service:
+
+        **Example:**
+
+        `ssh dokku@your-dash-deployment-server -p PORT redis:start redis-db`
+        
+        &nbsp;
+    ''')
+    ]),
+
+    dcc.Markdown('''
+
+    #### Service Linking Commands:
+
+    > These commands can only be run by the user which owns both the service as well as the application.
+    '''),
+
+    html.Details([
+        html.Summary("Link Redis to an app"),
+        dcc.Markdown('''
+        &nbsp;
+
+        Link the Redis service to the app. This will also restart your app:
+
+        **Example:**
+
+        `ssh dokku@your-dash-deployment-server -p PORT redis:link redis-db my-dash-app`
+        
+        &nbsp;
+    ''')
+    ]),
+
+    html.Details([
+        html.Summary("Unlink Redis from an app"),
+        dcc.Markdown('''
+        &nbsp;
+
+        Unlink the Redis service from the app. This will also restart your app and unset related environment variables:
+
+        **Example:**
+
+        `ssh dokku@your-dash-deployment-server -p PORT redis:unlink redis-db my-dash-app`
+        
+        &nbsp;
+    ''')
+    ])
+    
+    ])
 
 # # # # # # #
 # Dash App Authentication

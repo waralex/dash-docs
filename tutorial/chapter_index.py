@@ -651,6 +651,14 @@ chapters = {
         "and we recommend getting started with the HTTPS method."
     },
 
+    'dds-cli-examples': {
+        'url': '/dash-deployment-server/cli',
+        'content': dds_examples.Cli,
+        'name': 'Managing Dash Apps via the Command Line',
+        'description': "A list of commands to manage Dash apps available  "
+        "to app owners from the command line via ssh."
+    },
+
     'initialize-examples': {
         'url': '/dash-deployment-server/initialize',
         'content': dds_examples.Initialize,
