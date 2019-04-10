@@ -10,6 +10,8 @@ if __name__ != '__main__':
     from tutorial import styles
     from tutorial.utils.component_block import ComponentBlock
     from tutorial.utils.convert_props_to_table import js_to_py_type
+else:
+    from convert_props_to_table import js_to_py_type
 
 from textwrap import dedent as s
 
@@ -405,7 +407,7 @@ def generate_prop_table(
     '''
 
     regex = {
-         'python': r'^\s*([a-zA-Z_]*)\s*\(([a-zA-Z\/]*);\s*([a-z]*)\):\s*(.*?)\s*(\(Default:\s*([^\s]*)\)|)\s*$'
+         'python': r'^\s*([a-zA-Z_]*)\s*\(([a-zA-Z\/]*);\s*([a-z]*)\):\s*(.*?)\s*(\(Default:\s*(.*)\)|)\s*$'
     }
 
     component_type = 'react' \
@@ -421,10 +423,11 @@ def generate_prop_table(
     exec("import {}".format(library_name))
 
     if component_type == 'python':
-        sep = '-'
+        sep = '\n-'
         doc = eval("{}.{}".format(library_name, component_name)).__doc__
 
         props = doc.split(sep)
+
     elif component_type == 'react':
 
         path = os.path.join(os.path.dirname(os.path.abspath(eval(library_name).__file__)),
