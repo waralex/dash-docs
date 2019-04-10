@@ -604,10 +604,10 @@ chapters = {
         'description': 'VolcanoPlot examples, properties, and reference.'
     },
 
-    'oncoprint-examples': {
+    'onco-print-examples': {
         'url': '/dash-bio/oncoprint',
-        'content': dashbio_examples.Oncoprint,
-        'name': 'Oncoprint Component',
+        'content': dashbio_examples.OncoPrint,
+        'name': 'OncoPrint Component',
         'description': 'Oncoprint examples, properties, and reference.'
     },
 ### End Components ###

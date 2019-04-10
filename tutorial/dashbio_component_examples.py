@@ -26,7 +26,7 @@ examples = {
     'volcano-plot': tools.load_example(
         'tutorial/examples/dashbio_components/volcano_plot.py'),
     'onco-print': tools.load_example(
-        'tutorial/examples/dashbio_components/oncoprint.py')
+        'tutorial/examples/dashbio_components/onco_print.py')
 }
 
 
@@ -513,8 +513,8 @@ dashbio.NeedlePlot(
     ]
 )
 
-# Oncoprint
-Oncoprint = create_doc_page(
+# OncoPrint
+OncoPrint = create_doc_page(
     examples, component_names, 'onco-print', component_examples=[
         {
             'param_name': 'Colors',
