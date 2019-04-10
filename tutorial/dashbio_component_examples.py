@@ -643,4 +643,50 @@ dashbio.Speck(
 )
 
 # VolcanoPlot
-VolcanoPlot = create_doc_page(examples, component_names, 'volcano-plot')
+VolcanoPlot = create_doc_page(
+    examples, component_names, 'volcano-plot', component_examples=[
+        {
+            'param_name': 'Colors',
+            'description': 'Choose the colors of the scatter plot points, the highlighted points, \
+            the genome-wide line, and the effect size lines.',
+            'code': '''import pandas as pd
+
+import dash_core_components as dcc
+import dash_bio as dashbio
+
+
+df = pd.read_csv("https://raw.githubusercontent.com/plotly/dash-bio/master/tests/dashbio_demos/sample_data/volcano_data1.csv")
+
+volcanoplot = dashbio.VolcanoPlot(
+        dataframe=df,
+        effect_size_line_color='#AB63FA',
+        genomewideline_color='#EF553B',
+        highlight_color='#119DFF',
+        col='#2A3F5F'
+)
+
+dcc.Graph(figure=volcanoplot)'''
+        },
+        {
+            'param_name': 'Point sizes and line widths',
+            'description': 'Change the sizeo f the points on the scatter plot, and the widths of the effect \
+            lines and the genome-wide line.',
+            'code': '''import pandas as pd
+
+import dash_core_components as dcc
+import dash_bio as dashbio
+
+
+df = pd.read_csv("https://raw.githubusercontent.com/plotly/dash-bio/master/tests/dashbio_demos/sample_data/volcano_data1.csv")
+
+volcanoplot = dashbio.VolcanoPlot(
+        dataframe=df,
+        point_size=10,
+        effect_size_line_width=4,
+        genomewideline_width=2
+)
+
+dcc.Graph(figure=volcanoplot)'''
+        }
+    ]
+)
