@@ -60,7 +60,7 @@ layout = html.Div([
     
     #### Tree.is_leaf()
     
-    **return:** If the Tree is a leaf or not
+    **return:** If the Tree is a leaf or not.
     
     #### Tree.add_child(child)
     
@@ -78,19 +78,19 @@ layout = html.Div([
     
     Get all the edges of the tree in Cytoscape JSON format.
     
-    **return:** List of dictionaries, each specifying an edge
+    **return:** List of dictionaries, each specifying an edge.
     
     #### Tree.get_nodes()
     
     Get all the nodes of the tree in Cytoscape JSON format.
     
-    **return:** List of dictionaries, each specifying a node
+    **return:** List of dictionaries, each specifying a node.
     
     #### Tree.get_elements()
     
     Get all the elements of the tree in Cytoscape JSON format.
     
-    **return:** List of dictionaries, each specifying an element
+    **return:** List of dictionaries, each specifying an element.
     
     #### Tree.find_by_id(search_id, method='bfs')
     
@@ -98,9 +98,9 @@ layout = html.Div([
     
     **param** search_id: the queried ID
     
-    **param** method: Which traversal method to use. Either "bfs" or "dfs"
+    **param** method: Which traversal method to use. Either "bfs" or "dfs".
     
-    **return:** Tree object if found, None otherwise
+    **return:** Tree object if found, None otherwise.
     
     #### Tree.create_index()
     
@@ -109,7 +109,7 @@ layout = html.Div([
     the index is not regenerated. Furthermore, an index assigned to a parent cannot be
     accessed by its children, and vice-versa.
     
-    **return:** Dictionary mapping node_id to Tree object
+    **return:** Dictionary mapping node_id to Tree object.
     
     '''))
 
