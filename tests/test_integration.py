@@ -123,7 +123,7 @@ class Tests(IntegrationTests):
             self.driver.back()
 
         for link in links:
-            if link.startswith('/') and link != '/dash-daq':
+            if link.startswith('/') and link != '/dash-daq' and link != '/dash-bio':
                 visit_and_snapshot(link)
 
         # test search page
