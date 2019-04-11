@@ -548,7 +548,7 @@ layout = html.Div(className='gallery', children=[
             app_link='https://www.dashdaq.io/build-an-i-v-curve-tracer-with-a-keithley-2400-sourcemeter-in-python',
             code_name_display_text='Try the app',
             code_link='https://dash-gallery.plotly.host/dash-daq-iv-tracer',
-            img_src='assets/images/gallery/Dash-DAQ-IV-Curve-Tracer.jpg',
+            img_src='assets/images/gallery/Dash-DAQ-IV-Curve-Tracer.png',
             description='''
             With this Dash DAQ application written in Python, you can create
             UI components to interface with a Keithley 2400 SourceMeter.
