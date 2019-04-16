@@ -42,12 +42,12 @@ layout = html.Div([
     To better understand the interaction of callbacks, we visualize the callback function definitions into
     a DAG (Directed Acyclic Graph). A **Callback Graph** icon is available after clicking the debug icon at the bottom-right corner.
 
-    As upgraded to React 16 in dash-renderer *0.22.0*, we also leverage the new
+    As upgrading to React 16 since dash-renderer *0.22.0*, we also leverage the new
     [Error Handling](https://reactjs.org/blog/2017/07/26/error-handling-in-react-16.html) feature so that all
-    React Components get free automatic [Component Props check](https://reactjs.org/docs/typechecking-with-proptypes.html)
+    Dash React Components get free [Component Props check](https://reactjs.org/docs/typechecking-with-proptypes.html)
     from *dash-renderer*.
 
-    Note: You can disable the check by setting `dev_tools_props_check=False`. But we strongly recommended to fix the props errors,
+    Note: You can disable the check by setting `dev_tools_props_check=False`. But we strongly recommended to fix the props errors:
 
         As of React 16, errors that were not caught by any error boundary will result in
         unmounting of the whole React component tree.
