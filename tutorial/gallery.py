@@ -613,7 +613,7 @@ layout = html.Div(className='gallery', children=[
             app_name='Control an LED Strip',
             app_link='https://www.dashdaq.io/control-an-led-strip-in-python',
             code_name_display_text='Try the app',
-            code_link='https://dash-gallery.plotly.host/dash-daq-led',
+            code_link='https://dash-gallery.plotly.host/dash-daq-led-control',
             img_src='assets/images/gallery/Dash-DAQ-Blank-Stick.jpg',
             description='''
             Team Plotly is getting colorful with Dash DAQ! This application
