@@ -452,7 +452,7 @@ layout = html.Div(className='gallery', children=[
             app_name='Dash DataTable',
             app_link='/datatable',
             code_link='https://github.com/plotly/dash-table',
-            img_src='assets/images/gallery/DataTable.gif',
+            img_src='assets/images/gallery/dash-datatable.gif',
             description='''
         Dash provides an interactive `DataTable` as part of the `data-table`
         project. This table includes built-in filtering, row-selection,
