@@ -410,6 +410,13 @@ chapters = {
         'description': 'Upload examples, properties, and reference.'
     },
 
+    'location-examples': {
+        'url': '/dash-core-components/location',
+        'content': examples.Location,
+        'name': 'Location Component',
+        'description': 'Location examples, properties, and reference.'
+    },
+
 ### Dash DAQ Components ###
     'booleanswitch-examples': {
         'url': '/dash-daq/booleanswitch',

@@ -1490,3 +1490,22 @@ LoadingComponent = html.Div([
     ''')),
     generate_prop_table('Loading')
 ])
+
+# Location
+Location = html.Div([
+    html.H1('Location Component'),
+
+    dcc.Markdown(s('''
+    The location component represents the location bar in your web browser. Through its `href`, `pathname`,
+    `search` and `hash` properties you can access different portions of your app's url.
+    
+    For example, given the url `http://127.0.0.1:8050/page-2?a=test#quiz`:
+
+    - `href` = `"http://127.0.0.1:8050/page-2?a=test#quiz"`
+    - `pathname` = `"/page-2"`
+    - `search` = `"?a=test"`
+    - `hash` = `"#quiz"`
+    ''')),
+
+    generate_prop_table('Location')
+])
