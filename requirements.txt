@@ -8,7 +8,7 @@ click==6.7
 configparser==3.5.0
 dash==0.40.0
 dash-auth==1.2.0
-dash-bio==0.0.9rc4
+dash-bio==0.0.9rc12
 dash-core-components==0.44.0
 dash-cytoscape==0.0.5
 dash-dangerously-set-inner-html==0.0.1

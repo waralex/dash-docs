@@ -580,7 +580,59 @@ dashbio.OncoPrint(
 )
 
 # SequenceViewer
-SequenceViewer = create_doc_page(examples, component_names, 'sequence-viewer')
+SequenceViewer = create_doc_page(
+    examples, component_names, 'sequence-viewer', component_examples=[
+        {
+            'param_name': 'Line length and line numbers',
+            'description': 'Change the characters per line, and toggle the display of line numbers.',
+            'code': '''import dash_bio as dashbio
+
+dashbio.SequenceViewer(
+    id='sequence-viewer-lines',
+    sequence='MALWMRLLPLLALLALWGPDPAAAFVNQHLCGSHLVEALYLVCGERGFFYTPKTRREAEDLQVGQVELGGGPGAGSLQPLALEGSLQKRGIVEQCCTSICSLYQLENYCN',
+    showLineNumbers=False,
+    charsPerLine=20
+)'''
+        },
+
+        {
+            'param_name': 'Subsequence selection',
+            'description': 'Highlight a part of the sequence with a defined color.',
+            'code': '''import dash_bio as dashbio
+
+dashbio.SequenceViewer(
+    id='sequence-viewer-selection',
+    sequence='MALWMRLLPLLALLALWGPDPAAAFVNQHLCGSHLVEALYLVCGERGFFYTPKTRREAEDLQVGQVELGGGPGAGSLQPLALEGSLQKRGIVEQCCTSICSLYQLENYCN',
+    selection=[10, 20, 'green']
+)'''
+        },
+
+        {
+            'param_name': 'Toolbar',
+            'description': 'Display a toolbar to change the line length from the component itself.',
+            'code': '''import dash_bio as dashbio
+
+dashbio.SequenceViewer(
+    id='sequence-viewer-toolbar',
+    sequence='MALWMRLLPLLALLALWGPDPAAAFVNQHLCGSHLVEALYLVCGERGFFYTPKTRREAEDLQVGQVELGGGPGAGSLQPLALEGSLQKRGIVEQCCTSICSLYQLENYCN',
+    toolbar=True
+)'''
+        },
+
+        {
+            'param_name': 'Title and badge',
+            'description': 'Show a title or a badge with the nucleotide or amino acid count of the protein.',
+            'code': '''import dash_bio as dashbio
+
+dashbio.SequenceViewer(
+    id='sequence-viewer-titlebadge',
+    sequence='MALWMRLLPLLALLALWGPDPAAAFVNQHLCGSHLVEALYLVCGERGFFYTPKTRREAEDLQVGQVELGGGPGAGSLQPLALEGSLQKRGIVEQCCTSICSLYQLENYCN',
+    title='Insulin',
+    badge=False
+)'''
+        }
+    ]
+)
 
 # Speck
 Speck = create_doc_page(
