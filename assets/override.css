@@ -86,6 +86,10 @@ h1, h2, h3, h4, h5, h6 {
   color: #2A3F5F;
 }
 
+h2, h3, h4, h5, h6 {
+  margin-top: 3rem;
+}
+
 .example-container h1,
 .example-container h2,
 .example-container h3,
@@ -110,28 +114,32 @@ h1, h2, h3, h4, h5, h6 {
   display: block;
 }
 
-.toc ul li a {
-  background-color: white;
-  color: #506784;
-  font-family: Dosis, 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  text-decoration: none;
+.toc--chapter {
+  list-style: none;
 }
 
-.toc ul li {
-  font-size: 26px;
-  color: #506784;
+.toc--chapter .toc--chapter-link {
+    background-color: white;
+    font-family: Dosis, 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    text-decoration: underline;
+    padding-left: 0px;
+    list-style: none;
+    font-size: 26px;
+    color: #506784;
+    line-height: 1;
 }
 
-.toc ul ul li {
-  font-size: 18px;
+.toc--chapter-content {
   color: #506784;
-  display: none;
+  font-size: 1.5rem;
 }
 
-.toc ul ul ul li {
-  font-size: 14px;
-  color: #506784;
-  font-weight: 200;
+.toc--chapter-content ul {
+    font-size: 100%;
+}
+
+.toc--chapter-content ul li {
+    margin-bottom: 0.5rem;
 }
 
 /* Links
@@ -154,19 +162,14 @@ h1, h2, h3, h4, h5, h6 {
   cursor: pointer;
 }
 
-
 .content p > code,
 .content li > code{
     background-color: rgb(243, 246, 251);
     border: 0.5px rgb(224, 232, 242) solid;
     border-radius: 4px;
-    font-size: 1.8rem;
+    font-size: 95%;
     padding-left: 3px;
     padding-right: 3px;
-}
-
-.toc li {
-  list-style: none;
 }
 
 .content-container {
@@ -176,6 +179,28 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: rgb(240, 240, 240) 5px 5px 5px 0px;
   border: thin solid rgb(240, 240, 240);
   margin-bottom: 100px;
+}
+
+.cytoscape-reference p {
+    display: inline;
+    font-size: 100%;
+}
+
+.cytoscape-reference ol, ul {
+    margin: 1rem 0 1rem 2rem;
+    list-style-position: outside;
+}
+
+.cytoscape-reference ol > li > ul, ul > li > ul {
+    list-style-type: disc;
+}
+
+.cytoscape-reference ol > li > ul > li > ul {
+    list-style-type: circle;
+}
+
+table {
+    font-size: 1.4rem;
 }
 
 @media (min-width: 0px) {
@@ -223,10 +248,6 @@ h1, h2, h3, h4, h5, h6 {
     width: 90%;
     margin-left: auto;
     margin-right: auto;
-  }
-
-  .toc-chapters {
-    column-count: 2;
   }
 }
 

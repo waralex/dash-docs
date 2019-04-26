@@ -6,7 +6,9 @@ import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output
 
-app = dash.Dash(__name__)
+external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
+
+app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
 styles = {
     'pre': {
@@ -38,7 +40,10 @@ app.layout = html.Div([
                     'mode': 'markers',
                     'marker': {'size': 12}
                 }
-            ]
+            ],
+            'layout': {
+                'clickmode': 'event+select'
+            }
         }
     ),
 
@@ -67,6 +72,10 @@ app.layout = html.Div([
 
                 Choose the lasso or rectangle tool in the graph's menu
                 bar and then select points in the graph.
+
+                Note that if `layout.clickmode = 'event+select'`, selection data also 
+                accumulates (or un-accumulates) selected data if you hold down the shift
+                button while clicking.
             """)),
             html.Pre(id='selected-data', style=styles['pre']),
         ], className='three columns'),

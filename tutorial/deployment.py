@@ -12,18 +12,18 @@ set of IP addresses.
 Dash uses Flask under the hood. This makes deployment easy: you can deploy
 a Dash app just like you would deploy a Flask app.
 Almost every cloud server provider has a guide for deploying
-Flask apps. For more, see the official [Flask Guide to Deployment](http://flask.pocoo.org/docs/0.12/deploying/)
+Flask apps. For more, see the official [Flask Guide to Deployment](http://flask.pocoo.org/docs/latest/deploying/)
 or view the tutorial on deploying to Heroku below.
 
 ### Dash Deployment Server
 
-[Dash Deployment Server](https://plot.ly/products/pricing)
-is Plotly's commercial product for deploying 
+[Dash Deployment Server](https://plot.ly/dash/pricing/)
+is Plotly's commercial product for deploying
 Dash Apps on your company's servers or on AWS, Google Cloud, or Azure.
 It offers an enterprise-wide Dash App Portal,
 easy git-based deployment, automatic URL namespacing,
 built-in SSL support, LDAP authentication, and more.
-[Learn more about Dash Deployment Server](https://plot.ly/dash/pricing) or 
+[Learn more about Dash Deployment Server](https://plot.ly/dash/pricing) or
 [get in touch to start a trial](https://plotly.typeform.com/to/rkO85m).
 
 For existing customers, see the [Dash Deployment Server Documentation](/dash-deployment-server).
@@ -53,7 +53,7 @@ app = dash.Dash(__name__, server=server)
 
           dcc.Markdown('''
 By exposing this `server` variable, you can deploy Dash apps like you would
-any Flask app. For more, see the official [Flask Guide to Deployment](http://flask.pocoo.org/docs/0.12/deploying/).
+any Flask app. For more, see the official [Flask Guide to Deployment](http://flask.pocoo.org/docs/latest/deploying/).
 Note that
 
 > While lightweight and easy to use, *Flask's built-in server is not suitable
@@ -98,9 +98,6 @@ app's dependencies with this virtualenv:
 '''),
 
           dcc.SyntaxHighlighter('''$ pip install dash
-$ pip install dash-renderer
-$ pip install dash-core-components
-$ pip install dash-html-components
 $ pip install plotly
 ''', customStyle=styles.code_container),
 
@@ -124,11 +121,11 @@ import dash
 import dash_core_components as dcc
 import dash_html_components as html
 
+external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
-app = dash.Dash(__name__)
+app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
+
 server = app.server
-
-app.css.append_css({"external_url": "https://codepen.io/chriddyp/pen/bWLwgP.css"})
 
 app.layout = html.Div([
     html.H2('Hello World'),

@@ -1,11 +1,10 @@
 # -*- coding: utf-8 -*-
 import dash_core_components as dcc
 import dash_html_components as html
-import dash_table_experiments as dt
 import dash
 from dash.dependencies import Input, Output
 
-from datetime import datetime
+
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import base64
@@ -16,7 +15,6 @@ import os
 import pandas as pd
 import percy
 import sys
-import time
 import unittest
 
 from .IntegrationTests import IntegrationTests
@@ -89,35 +87,43 @@ class Tests(IntegrationTests):
             '/dash-core-components/datepickerrange',
             '/dash-core-components/markdown',
             '/dash-core-components/upload',
-            '/dash-core-components/tabs'
+            '/dash-core-components/tabs',
+            '/dash-core-components/button'
 
         ] + [
             '/dash-deployment-server/ssh',
             '/dash-deployment-server/initialize',
             '/dash-deployment-server/application-structure',
+            '/dash-deployment-server/static-assets',
             '/dash-deployment-server/deployment',
             '/dash-deployment-server/app-authentication',
+            '/dash-deployment-server/privacy',
+            '/dash-deployment-server/private-packages',
             '/dash-deployment-server/configure-system-dependencies',
             '/dash-deployment-server/redis-database',
             '/dash-deployment-server/celery-process',
             '/dash-deployment-server/environment-variables',
             '/dash-deployment-server/map-local-directories',
             '/dash-deployment-server/staging-app',
+            '/dash-deployment-server/pdf-service',
             '/dash-deployment-server/troubleshooting',
             '/dash-deployment-server/analytics',
             '/dash-deployment-server/logs',
-            '/dash-deployment-server/support'
+            '/dash-deployment-server/support',
+            '/dash-deployment-server/git'
         ]
 
         def visit_and_snapshot(href):
             self.driver.get('http://localhost:8050{}'.format(href))
+            # stub elem at the bottom of browser
             self.wait_for_element_by_id('wait-for-page-{}'.format(href))
-            time.sleep(5)
+            if href == '/external-resources':
+                self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
             self.snapshot(href)
             self.driver.back()
 
         for link in links:
-            if link.startswith('/'):
+            if link.startswith('/') and link != '/dash-daq':
                 visit_and_snapshot(link)
 
         # test search page
@@ -127,5 +133,5 @@ class Tests(IntegrationTests):
         search_element = self.driver.find_element_by_id('search-input')
         search_element.clear()
         search_element.send_keys('dropdown')
-        time.sleep(5)
+        self.wait_for_element_by_css_selector('#hits .ais-hits--item')
         self.snapshot('search-dropdown')

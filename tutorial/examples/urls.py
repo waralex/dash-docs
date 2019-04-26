@@ -4,7 +4,9 @@ import dash_html_components as html
 
 print(dcc.__version__) # 0.6.0 or above is required
 
-app = dash.Dash()
+external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
+
+app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
 app.layout = html.Div([
     # represents the URL bar, doesn't render anything
@@ -26,10 +28,6 @@ def display_page(pathname):
         html.H3('You are on page {}'.format(pathname))
     ])
 
-
-app.css.append_css({
-    'external_url': 'https://codepen.io/chriddyp/pen/bWLwgP.css'
-})
 
 
 if __name__ == '__main__':

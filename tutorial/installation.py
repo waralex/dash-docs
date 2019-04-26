@@ -3,6 +3,8 @@ import dash
 import dash_renderer
 import dash_core_components as dcc
 import dash_html_components as html
+import dash_table
+import dash_daq
 
 import plotly
 from textwrap import dedent as s
@@ -20,13 +22,17 @@ layout = html.Div([
     Python 2 and 3 are supported.'''.replace('    ', '')),
 
     dcc.SyntaxHighlighter('''pip install dash=={}  # The core dash backend
-        pip install dash-html-components=={}  # HTML components
-        pip install dash-core-components=={}  # Supercharged components
+        pip install dash-daq=={}  # DAQ components (newly open-sourced!)
     '''.replace('    ', '').format(
         dash.__version__,
-        html.__version__,
-        dcc.__version__,
+        dash_daq.__version__
     ), customStyle=styles.code_container),
+
+    dcc.Markdown(s('''
+    > **Note**: starting with dash 0.37.0, dash automatically installs dash-renderer, dash-core-components,
+    > dash-html-components, and dash-table, using known-compatible versions of each. You need not and
+    > should not install these separately any longer, only dash itself.
+    ''')),
 
     html.Div([
         'Ready? Now, let\'s ',
@@ -49,6 +55,7 @@ layout = html.Div([
     > - [dash changelog](https://github.com/plotly/dash/blob/master/CHANGELOG.md)
     > - [dash-core-components changelog](https://github.com/plotly/dash-core-components/blob/master/CHANGELOG.md)
     > - [dash-html-components changelog](https://github.com/plotly/dash-html-components/blob/master/CHANGELOG.md)
+    > - [dash-table changelog](https://github.com/plotly/dash-table/blob/master/CHANGELOG.md)
     >
     > Finally, note that the plotly package and the dash-renderer package are
     > important package dependencies that are installed automatically

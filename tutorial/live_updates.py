@@ -1,9 +1,5 @@
 import dash_core_components as dcc
 
-# examples = [load_example(s) for s in [
-#     'tutorial/examples/live_updates.py'
-# ]]
-
 
 layout = [dcc.Markdown('''
 # Live Updating Components
@@ -32,12 +28,14 @@ import dash_core_components as dcc
 import dash_html_components as html
 import plotly
 from dash.dependencies import Input, Output
-    
+
 # pip install pyorbital
 from pyorbital.orbital import Orbital
 satellite = Orbital('TERRA')
 
-app = dash.Dash(__name__)
+external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
+
+app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 app.layout = html.Div(
     html.Div([
         html.H4('TERRA Satellite Live Feed'),
@@ -144,7 +142,7 @@ import dash_html_components as html
 app.layout = html.H1('The time is: ' + str(datetime.datetime.now()))
 
 if __name__ == '__main__':
-    app.run_server()
+    app.run_server(debug=True)
 ```
 
 then your app would display the time when the app was started.
@@ -164,8 +162,10 @@ def serve_layout():
 app.layout = serve_layout
 
 if __name__ == '__main__':
-    app.run_server()
+    app.run_server(debug=True)
 ```
+> **Heads up! You need to write** `app.layout = serve_layout` **_not_** `app.layout = serve_layout()`.
+> **That is, define** `app.layout` **to the actual function instance.**
 
 You can combine this with [time-expiring caching](/performance) and serve
 a unique `layout` every hour or every day and serve the computed `layout`

@@ -42,6 +42,13 @@ layout = html.Div([
     you can have one callback run the task and then share the
     results to the rest of the callbacks.
 
+    This need has been somewhat ameliorated now that you can have
+    [multiple outputs](/getting-started-part-2) for one callback. This way,
+    that expensive task can be done once and immediately used in all the
+    outputs. But in some cases this still isn't ideal, for example if there are
+    simple follow-on tasks that modify the results, like unit conversions. We
+    shouldn't need to repeat a large database query just to change the results
+    from Fahrenheit to Celsius!
     ''')),
 
     dcc.Markdown(s('''
@@ -302,7 +309,7 @@ def update_output_1(value):
           computing the expensive computation in parallel,
           locking four processes instead of one.
 
-        This approach is also advantageous in that future sessions can 
+        This approach is also advantageous in that future sessions can
         use the pre-computed value.
         This will work well for apps that have a small number of inputs.
 
@@ -350,7 +357,13 @@ def update_output_1(value):
         from flask_caching import Cache
 
 
-        app = dash.Dash(__name__)
+        external_stylesheets = [
+            # Dash CSS
+            'https://codepen.io/chriddyp/pen/bWLwgP.css',
+            # Loading screen CSS
+            'https://codepen.io/chriddyp/pen/brPBPO.css']
+
+        app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
         CACHE_CONFIG = {
             # try 'filesystem' if you don't want to setup redis
             'CACHE_TYPE': 'redis',
@@ -467,13 +480,6 @@ def update_output_1(value):
                 }]
             })
 
-
-        # Dash CSS
-        app.css.append_css({
-            "external_url": "https://codepen.io/chriddyp/pen/bWLwgP.css"})
-        # Loading screen CSS
-        app.css.append_css({
-            "external_url": "https://codepen.io/chriddyp/pen/brPBPO.css"})
 
         if __name__ == '__main__':
             app.run_server(debug=True, processes=6)

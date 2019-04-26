@@ -4,6 +4,7 @@ import dash_core_components as dcc
 import dash_html_components as html
 from tutorial.chapter_index import chapters
 
+from reusable_components import Section, Chapter
 from tutorial.tools import merge
 
 styles = {
@@ -12,35 +13,6 @@ styles = {
         'margin-top': '50px'
     }
 }
-
-def Chapter(name, href=None, caption=None):
-    linkComponent = html.A if href.startswith('http') else dcc.Link
-    return html.Div([
-        html.Li(
-            linkComponent(
-                name,
-                href=href,
-                style={'paddingLeft': 0},
-                id=href
-            )
-        ),
-        html.Small(dcc.Markdown(s(caption or '')), style={
-            'display': 'block',
-            'marginTop': '-10px' if caption else ''
-        }) if caption else None
-    ])
-
-
-def Section(title, links, description=None, headerStyle={}):
-    return html.Div([
-        html.H2(title, style=merge(styles['underline'], headerStyle)),
-        (
-            html.Div(description)
-            if description is not None else None
-        ),
-        html.Ul(links)
-    ])
-
 
 layout = html.Div(className='toc', children=[
     html.H1('Dash User Guide'),
@@ -81,7 +53,7 @@ layout = html.Div(className='toc', children=[
                 chapters['shared-state']['description']),
         Chapter(chapters['faqs']['name'],
                 chapters['faqs']['url'],
-                chapters['faqs']['description'])        
+                chapters['faqs']['description'])
     ]),
 
     Section('Component Libraries', [
@@ -91,9 +63,18 @@ layout = html.Div(className='toc', children=[
         Chapter(chapters['dash-html-components']['name'],
                 chapters['dash-html-components']['url'],
                 chapters['dash-html-components']['description']),
+        Chapter(chapters['datatable']['name'],
+                chapters['datatable']['url'],
+                chapters['datatable']['description']),
         Chapter(chapters['dashdaq']['name'],
                 chapters['dashdaq']['url'],
-                chapters['dashdaq']['description'])
+                chapters['dashdaq']['description']),
+        Chapter(chapters['canvas']['name'],
+                chapters['canvas']['url'],
+                chapters['canvas']['description']),
+        Chapter(chapters['cytoscape']['name'],
+                chapters['cytoscape']['url'],
+                chapters['cytoscape']['description']),
     ]),
 
     Section('Creating Your Own Components', [
@@ -103,6 +84,10 @@ layout = html.Div(className='toc', children=[
         Chapter(chapters['plugins']['name'],
                 chapters['plugins']['url'],
                 chapters['plugins']['description']),
+        Chapter(chapters['d3-plugins']['name'],
+                chapters['d3-plugins']['url'],
+                chapters['d3-plugins']['description']),
+
     ]),
 
     Section('Beyond the Basics', [
@@ -117,7 +102,13 @@ layout = html.Div(className='toc', children=[
                 chapters['external']['description']),
         Chapter(chapters['urls']['name'],
                 chapters['urls']['url'],
-                chapters['urls']['description'])
+                chapters['urls']['description']),
+        Chapter(chapters['devtools']['name'],
+                chapters['devtools']['url'],
+                chapters['devtools']['description']),
+        Chapter(chapters['loading-states']['name'],
+                chapters['loading-states']['url'],
+                chapters['loading-states']['description'])
     ]),
 
     Section('Production', [
@@ -125,6 +116,8 @@ layout = html.Div(className='toc', children=[
                 chapters['auth']['url']),
         Chapter(chapters['deployment']['name'],
                 chapters['deployment']['url']),
+        Chapter(chapters['integrating-dash']['name'],
+                chapters['integrating-dash']['url']),
     ]),
 
     Section('Getting Help', [

@@ -2,7 +2,9 @@ import dash
 import dash_html_components as html
 import dash_core_components as dcc
 
-app = dash.Dash()
+external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
+
+app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 app.layout = html.Div([
     html.Div(dcc.Input(id='input-box', type='text')),
     html.Button('Submit', id='button'),
