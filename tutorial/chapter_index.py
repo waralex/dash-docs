@@ -13,6 +13,7 @@ from tutorial import daq_component_examples as daq_examples
 from tutorial import deployment
 from tutorial import external_css_and_js
 from tutorial import gallery
+from tutorial import canvas
 from tutorial import getting_started_part_1
 from tutorial import getting_started_part_2
 from tutorial import faqs
@@ -177,6 +178,13 @@ chapters = {
         'name': 'Dash DAQ Components',
         'description': 'Beautifully styled technical components for \
         data acquisition and engineering applications.'
+    },
+
+    'canvas': {
+        'url': '/canvas',
+        'content': canvas.layout,
+        'name': 'Dash Canvas',
+        'description': 'Drawing and annotations for image processing.'
     },
 
 
@@ -400,6 +408,13 @@ chapters = {
         'content': examples.Upload,
         'name': 'Upload Component',
         'description': 'Upload examples, properties, and reference.'
+    },
+
+    'location-examples': {
+        'url': '/dash-core-components/location',
+        'content': examples.Location,
+        'name': 'Location Component',
+        'description': 'Location examples, properties, and reference.'
     },
 
 ### Dash DAQ Components ###

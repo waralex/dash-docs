@@ -41,7 +41,7 @@ def update_graph(filtering_settings):
             filter_value = float(filter.split(' < ')[1])
             dff = dff.loc[dff[col_name] < filter_value]
 
-    return dff.to_dict('rows')
+    return dff.to_dict('records')
 
 
 if __name__ == '__main__':
