@@ -1,14 +1,3 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> parent of b59d07d... :construction_worker: example 3 chapt.5
-=======
->>>>>>> parent of b59d07d... :construction_worker: example 3 chapt.5
-=======
->>>>>>> parent of b59d07d... :construction_worker: example 3 chapt.5
 library(dashR)
 library(dashCoreComponents)
 library(dashHtmlComponents)
@@ -16,16 +5,7 @@ library(dashHtmlComponents)
 app <- Dash$new()
 
 set.seed(0)
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 # df <- data.frame(replicate(1,sample(0:6,30,rep=TRUE))) 
-=======
->>>>>>> parent of b59d07d... :construction_worker: example 3 chapt.5
-=======
->>>>>>> parent of b59d07d... :construction_worker: example 3 chapt.5
-=======
->>>>>>> parent of b59d07d... :construction_worker: example 3 chapt.5
 df <- data.frame(matrix(ncol = 6, nrow = 30))
 x <- c(1:6)
 x <- paste("Column ", x)
@@ -38,23 +18,8 @@ for (i in 1:6){
     df[[i]] <- rnorm(1,val,0.1)
   }
 }
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-  # pd.DataFrame({
-  # 'Column {}'.format(i): np.random.rand(30) + i*10
-  # for i in range(6)})df
-=======
 
->>>>>>> parent of b59d07d... :construction_worker: example 3 chapt.5
-=======
-
->>>>>>> parent of b59d07d... :construction_worker: example 3 chapt.5
-=======
-
->>>>>>> parent of b59d07d... :construction_worker: example 3 chapt.5
-
-app$layout_set(htmlDiv(list(
+app$layout(htmlDiv(list(
   htmlDiv(
     dccGraph(
       id='g1',
@@ -74,9 +39,6 @@ app$layout_set(htmlDiv(list(
   ), className='row')
 )
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 highlight <- function(x, y){
   callback <- function(selectedDatas){
     selectedpoints = colnames(df)
@@ -178,15 +140,18 @@ app$callback(
   output = list(id='g1', property='figure'),
   params = list(input(id='g1', property='selectedData'),
                 input(id='g2', property='selectedData'),
-                input(id='g3', property='selectedData'))
-)(highlight('Column 0', 'Column 1'))
+                input(id='g3', property='selectedData')),
+  func = highlight('Column 0', 'Column 1')
+)
+(highlight('Column 0', 'Column 1'))
 
 app$callback(
   output = list(id='g2', property='figure'),
   params = list(input(id='g2', property='selectedData'),
                 input(id='g1', property='selectedData'),
-                input(id='g3', property='selectedData'))
-)(highlight('Column 2', 'Column 3'))
+                input(id='g3', property='selectedData')),
+  func = highlight('Column 2', 'Column 3')
+)
 
 app$callback(
   output = list(id='g3', property='figure'),
@@ -197,9 +162,6 @@ app$callback(
 
 
 # app$run_heroku()
-=======
-=======
->>>>>>> b59d07d... :construction_worker: example 3 chapt.5
 # library(dashR)
 # library(dashCoreComponents)
 # library(dashHtmlComponents)
@@ -221,11 +183,8 @@ app$callback(
 # }
 #
 #
-<<<<<<< HEAD
 # app$layout(htmlDiv(list(
-=======
 # app$layout_set(htmlDiv(list(
->>>>>>> b59d07d... :construction_worker: example 3 chapt.5
 #   htmlDiv(
 #     dccGraph(
 #       id='g1',
@@ -245,15 +204,6 @@ app$callback(
 #   ), className='row')
 # )
 #
-<<<<<<< HEAD
-=======
->>>>>>> parent of b59d07d... :construction_worker: example 3 chapt.5
-=======
->>>>>>> parent of b59d07d... :construction_worker: example 3 chapt.5
-=======
->>>>>>> parent of b59d07d... :construction_worker: example 3 chapt.5
-=======
->>>>>>> b59d07d... :construction_worker: example 3 chapt.5
 # highlight <- function(x, y){
 #  callback <- function(selectedDatas){
 #     selectedpoints = colnames(df)
@@ -348,12 +298,6 @@ app$callback(
 #   }
 #   return(callback)
 # }
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> b59d07d... :construction_worker: example 3 chapt.5
 #
 #
 # # app.callback is a decorator which means that it takes a function
@@ -382,13 +326,6 @@ app$callback(
 #
 #
 # # app$run_heroku()
-<<<<<<< HEAD
->>>>>>> c3a3a477c201204fde289f3750a5e10dbc317464
-=======
-=======
->>>>>>> parent of b59d07d... :construction_worker: example 3 chapt.5
-=======
->>>>>>> parent of b59d07d... :construction_worker: example 3 chapt.5
 
 
 # app.callback is a decorator which means that it takes a function
@@ -417,12 +354,3 @@ app$callback(
 
 
 # app$run_heroku()
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> parent of b59d07d... :construction_worker: example 3 chapt.5
-=======
->>>>>>> parent of b59d07d... :construction_worker: example 3 chapt.5
-=======
->>>>>>> parent of b59d07d... :construction_worker: example 3 chapt.5
-=======
->>>>>>> b59d07d... :construction_worker: example 3 chapt.5
