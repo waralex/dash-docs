@@ -2,7 +2,9 @@ import tutorial
 from tutorial import auth
 from tutorial import core_component_examples as examples
 from tutorial import core_components
+from tutorial import cytoscape
 from tutorial import d3
+from tutorial import dash_cytoscape_index
 from tutorial import dash_deployment_server
 from tutorial import dash_deployment_server_examples as dds_examples
 from tutorial import dash_table_index
@@ -11,6 +13,7 @@ from tutorial import daq_component_examples as daq_examples
 from tutorial import deployment
 from tutorial import external_css_and_js
 from tutorial import gallery
+from tutorial import canvas
 from tutorial import getting_started_part_1
 from tutorial import getting_started_part_2
 from tutorial import faqs
@@ -29,6 +32,8 @@ from tutorial import urls
 from tutorial import react_for_python_developers
 from tutorial import table
 from tutorial import devtools
+from tutorial import loading_states
+from tutorial import integrating_dash
 
 
 ## The chapters dict is used to generate the dash-docs search index
@@ -156,12 +161,30 @@ chapters = {
                        'and more.'
     },
 
+    'cytoscape': {
+        'url': '/cytoscape',
+        'content': dash_cytoscape_index.layout,
+        'name': 'Dash Cytoscape',
+        'description': '(New! Released Feb 5, 2019) Dash Cytoscape is our new network ' \
+                       'visualization component. It offers a declarative and ' \
+                       'pythonic interface to create beautiful, customizable, ' \
+                       'interactive and reactive graphs.'
+
+    },
+
     'dashdaq': {
         'url': '/dash-daq',
         'content': daq.layout,
         'name': 'Dash DAQ Components',
         'description': 'Beautifully styled technical components for \
         data acquisition and engineering applications.'
+    },
+
+    'canvas': {
+        'url': '/canvas',
+        'content': canvas.layout,
+        'name': 'Dash Canvas',
+        'description': 'Drawing and annotations for image processing.'
     },
 
 
@@ -241,6 +264,14 @@ chapters = {
                        'app to a server'
     },
 
+    'integrating-dash': {
+        'url': '/integrating-dash',
+        'content': integrating_dash.layout,
+        'name': 'Integrating Dash with Existing Web Apps',
+        'description': 'Strategies for integrating Dash apps with existing web ' \
+                       'apps.'
+    },
+
     # 'deployment-onpremise': {
     #     'url': '/deployment/on-premise',
     #     'content': on_premise_deployment.layout,
@@ -271,6 +302,12 @@ chapters = {
         'content': react_for_python_developers.layout,
         'name': 'React for Python Developers',
         'description': 'A tutorial on how to program in React and JavaScript for Python developers.'
+    },
+    'loading-states': {
+        'url': '/loading-states',
+        'content': loading_states.layout,
+        'name': 'Loading States',
+        'description': 'Getting the loading state of a component and adding a loading component'
     },
 ### End of home.py ###
 
@@ -371,6 +408,13 @@ chapters = {
         'content': examples.Upload,
         'name': 'Upload Component',
         'description': 'Upload examples, properties, and reference.'
+    },
+
+    'location-examples': {
+        'url': '/dash-core-components/location',
+        'content': examples.Location,
+        'name': 'Location Component',
+        'description': 'Location examples, properties, and reference.'
     },
 
 ### Dash DAQ Components ###
@@ -528,8 +572,8 @@ chapters = {
     'app-auth-examples': {
         'url': '/dash-deployment-server/app-authentication',
         'content': dds_examples.Authentication,
-        'name': 'Dash App Authentication',
-        'description': 'Adding Authentication to your Dash App'
+        'name': 'Dash Enterprise Auth Features',
+        'description': 'Accessing User Authentication Data in your Dash App'
     },
 
     'app-privacy': {
@@ -637,6 +681,13 @@ chapters = {
         'description': 'A reference for git commands and how they are used '
         'with Dash Deployment Server.'
     },
+
+    'dds-portal': {
+        'url': '/dash-deployment-server/portal',
+        'content': dds_examples.Portal,
+        'name': 'Dash App Portal',
+        'description': 'Learn about the Dash App Portal '
+    },
 ### End Dash Deployment Server ###
 
 ### Start DataTable Docs
@@ -693,6 +744,15 @@ chapters = {
         '''
     },
 
+    'typing': {
+        'url': '/datatable/typing',
+        'content': tutorial.table.table_typing_chapter.layout,
+        'name': 'Typing and User Input Processing',
+        'description': '''
+        Column typing and user input validation, coercing, defaulting.
+        '''
+    },
+
     'dropdowns': {
         'url': '/datatable/dropdowns',
         'content': tutorial.table.dropdowns_chapter.layout,
@@ -730,6 +790,74 @@ chapters = {
     },
 
 ### End DataTable Docs
+
+### Start Cytoscape Docs
+
+    'cytoscape-elements': {
+        'url': '/cytoscape/elements',
+        'content': tutorial.cytoscape.elements_chapter.layout,
+        'name': 'Cytoscape Elements',
+        'description': '''
+        Overview of element declaration and manipulation.
+        '''
+    },
+
+    'cytoscape-layout': {
+        'url': '/cytoscape/layout',
+        'content': tutorial.cytoscape.layout_chapter.layout,
+        'name': 'Cytoscape Layouts',
+        'description': '''
+        Description of built-in layouts, and how to modify their properties.
+        '''
+    },
+
+    'cytoscape-styling': {
+        'url': '/cytoscape/styling',
+        'content': tutorial.cytoscape.styling_chapter.layout,
+        'name': 'Cytoscape Styling',
+        'description': '''
+        Methods to style elements with a CSS-like syntax.
+        '''
+    },
+
+    'cytoscape-callbacks': {
+        'url': '/cytoscape/callbacks',
+        'content': tutorial.cytoscape.callbacks_chapter.layout,
+        'name': 'Cytoscape Callbacks',
+        'description': '''
+        Methods to combine Dash callbacks to update your Cytoscape object.
+        '''
+    },
+
+    'cytoscape-events': {
+        'url': '/cytoscape/events',
+        'content': tutorial.cytoscape.events_chapter.layout,
+        'name': 'Cytoscape events',
+        'description': '''
+        Overview of user-interaction events that trigger callbacks in Dash,
+        and how to use them to update the Cytoscape component.
+        '''
+    },
+
+    'cytoscape-biopython': {
+        'url': '/cytoscape/biopython',
+        'content': tutorial.cytoscape.applications_chapter.layout,
+        'name': 'Cytoscape with Biopython',
+        'description': '''
+        Examples of applications in bioinformatics using Biopython.
+        '''
+    },
+
+    'cytoscape-reference': {
+        'url': '/cytoscape/reference',
+        'content': tutorial.cytoscape.reference_chapter.layout,
+        'name': 'Cytoscape Reference',
+        'description': '''
+        Comprehensive list of all of the Cytoscape properties.
+        '''
+    },
+
+### End Cytoscape Docs
 
     'search': {
         'url': '/search',
@@ -771,6 +899,13 @@ chapters = {
         'content': examples.LogoutButton,
         'name': 'Logout button',
         'description': 'LogoutButton examples, properties and reference'
+    },
+
+    'loading-component': {
+        'url': '/dash-core-components/loading_component',
+        'content': examples.LoadingComponent,
+        'name': 'Loading component',
+        'description': 'Loading component examples, properties and reference'
     }
 
 }
