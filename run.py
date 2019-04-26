@@ -152,13 +152,13 @@ app.layout = html.Div(
 
 
 @app.callback(Output('chapter', 'children'),
-    [Input('location', 'pathname')])
+              [Input('location', 'pathname')])
 def display_content(pathname):
     if pathname is None:
         return ''
     if pathname.endswith('/') and pathname != '/':
         pathname = pathname[:len(pathname) - 1]
-        
+
     if pathname.split('/')[-1] == 'all':
         pdf_contents = []
         table_of_contents = []
@@ -183,7 +183,7 @@ def display_content(pathname):
                     html.A(chapter.replace('-', ' ').title(),
                            href='#{}'.format(chapter))
                 )
-            
+
             pdf_contents.append(html.Div(
                 section_content,
                 className='pdf-docs-section',
@@ -209,7 +209,7 @@ def display_content(pathname):
                      id='pdf-docs-toc'),
             html.Div(pdf_contents)
         ], id='pdf-docs')
-        
+
     matched = [c for c in chapters.keys()
                if chapters[c]['url'] == pathname]
 
@@ -266,8 +266,8 @@ def display_content(pathname):
 
     return content
 
-app.index_string = '''
-<!DOCTYPE html>
+
+app.index_string = '''<!DOCTYPE html>
 <html>
     <head>
         {%metas%}
@@ -294,10 +294,10 @@ app.index_string = '''
         <footer>
             {%config%}
             {%scripts%}
+            {%renderer%}
         </footer>
     </body>
-</html>
-'''
+</html>'''
 
 if __name__ == '__main__':
     app.run_server(debug=True, threaded=True, port=8060)

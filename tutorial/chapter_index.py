@@ -13,6 +13,7 @@ from tutorial import daq_component_examples as daq_examples
 from tutorial import deployment
 from tutorial import external_css_and_js
 from tutorial import gallery
+from tutorial import canvas
 from tutorial import getting_started_part_1
 from tutorial import getting_started_part_2
 from tutorial import faqs
@@ -31,6 +32,7 @@ from tutorial import urls
 from tutorial import react_for_python_developers
 from tutorial import table
 from tutorial import devtools
+from tutorial import loading_states
 from tutorial import integrating_dash
 
 
@@ -178,6 +180,13 @@ chapters = {
         data acquisition and engineering applications.'
     },
 
+    'canvas': {
+        'url': '/canvas',
+        'content': canvas.layout,
+        'name': 'Dash Canvas',
+        'description': '(New! Released March 2019) Drawing and annotations for image processing.'
+    },
+
 
     'plugins': {
         'url': '/plugins',
@@ -294,6 +303,12 @@ chapters = {
         'name': 'React for Python Developers',
         'description': 'A tutorial on how to program in React and JavaScript for Python developers.'
     },
+    'loading-states': {
+        'url': '/loading-states',
+        'content': loading_states.layout,
+        'name': 'Loading States',
+        'description': 'Getting the loading state of a component and adding a loading component'
+    },
 ### End of home.py ###
 
 ### Start Components ###
@@ -393,6 +408,13 @@ chapters = {
         'content': examples.Upload,
         'name': 'Upload Component',
         'description': 'Upload examples, properties, and reference.'
+    },
+
+    'location-examples': {
+        'url': '/dash-core-components/location',
+        'content': examples.Location,
+        'name': 'Location Component',
+        'description': 'Location examples, properties, and reference.'
     },
 
 ### Dash DAQ Components ###
@@ -722,6 +744,15 @@ chapters = {
         '''
     },
 
+    'typing': {
+        'url': '/datatable/typing',
+        'content': tutorial.table.table_typing_chapter.layout,
+        'name': 'Typing and User Input Processing',
+        'description': '''
+        Column typing and user input validation, coercing, defaulting.
+        '''
+    },
+
     'dropdowns': {
         'url': '/datatable/dropdowns',
         'content': tutorial.table.dropdowns_chapter.layout,
@@ -767,7 +798,7 @@ chapters = {
         'content': tutorial.cytoscape.elements_chapter.layout,
         'name': 'Cytoscape Elements',
         'description': '''
-        Overview of element declaration and manipulation. 
+        Overview of element declaration and manipulation.
         '''
     },
 
@@ -776,7 +807,7 @@ chapters = {
         'content': tutorial.cytoscape.layout_chapter.layout,
         'name': 'Cytoscape Layouts',
         'description': '''
-        Description of built-in layouts, and how to modify their properties. 
+        Description of built-in layouts, and how to modify their properties.
         '''
     },
 
@@ -868,6 +899,13 @@ chapters = {
         'content': examples.LogoutButton,
         'name': 'Logout button',
         'description': 'LogoutButton examples, properties and reference'
+    },
+
+    'loading-component': {
+        'url': '/dash-core-components/loading_component',
+        'content': examples.LoadingComponent,
+        'name': 'Loading component',
+        'description': 'Loading component examples, properties and reference'
     }
 
 }
