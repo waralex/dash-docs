@@ -184,7 +184,7 @@ chapters = {
         'url': '/canvas',
         'content': canvas.layout,
         'name': 'Dash Canvas',
-        'description': 'Drawing and annotations for image processing.'
+        'description': '(New! Released March 2019) Drawing and annotations for image processing.'
     },
 
 
