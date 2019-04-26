@@ -157,7 +157,7 @@ layout = html.Div(className='gallery', children=[
 
         AppSection(
             app_name='Recession in 255 Charts',
-            app_link='https://dash-recession-report.plot.ly',
+            app_link='https://dash-gallery.plotly.host/dash-recession-report',
             code_link='https://github.com/plotly/dash-recession-report-demo',
             img_src='assets/images/gallery/nytimes.png',
             description='''
@@ -232,13 +232,13 @@ layout = html.Div(className='gallery', children=[
             description='''
             This dash app takes a Log ASCII Standard (LAS) file, and generates a
             web report application, making it easy to share. The report can be printed.
-    
+
             [Copyright 2018 Nicolas Riesco](https://github.com/n-riesco/lastodash/blob/master/LICENSE)
             ''',
             width=12,
         )
     ]),
-        
+
     # LIFE SCIENCES SECTION
     SectionTitle('Life Sciences'),
 
@@ -290,11 +290,11 @@ layout = html.Div(className='gallery', children=[
             code_link='/cytoscape/biopython',
             img_src='assets/images/gallery/dash-cytoscape-phylogeny.gif',
             description='''
-            Automatically parse phylogeny trees stored in the PhyloXML format using Biopython's 
-            Phylo API, and display it using the 
-            [Dash Cytoscape](https://github.com/plotly/dash-cytoscape) 
-            network visualization library. You can zoom in, drag the tree, and hover over clades 
-            to highlight subclades. 
+            Automatically parse phylogeny trees stored in the PhyloXML format using Biopython's
+            Phylo API, and display it using the
+            [Dash Cytoscape](https://github.com/plotly/dash-cytoscape)
+            network visualization library. You can zoom in, drag the tree, and hover over clades
+            to highlight subclades.
             '''
         )
     ]),
@@ -452,7 +452,7 @@ layout = html.Div(className='gallery', children=[
             app_name='Dash DataTable',
             app_link='/datatable',
             code_link='https://github.com/plotly/dash-table',
-            img_src='assets/images/gallery/DataTable.gif',
+            img_src='assets/images/gallery/dash-datatable.gif',
             description='''
         Dash provides an interactive `DataTable` as part of the `data-table`
         project. This table includes built-in filtering, row-selection,
@@ -494,8 +494,8 @@ layout = html.Div(className='gallery', children=[
             code_link='https://github.com/plotly/dash-cytoscape',
             img_src='assets/images/gallery/dash-cytoscape.gif',
             description='''
-            Dash Cytoscape is a graph visualization component for creating easily customizable, 
-            high-performance, interactive, and web-based networks. It is built on top of 
+            Dash Cytoscape is a graph visualization component for creating easily customizable,
+            high-performance, interactive, and web-based networks. It is built on top of
             Cytoscape.js and can be easily integrated with other Dash components.
             '''
         )
@@ -613,7 +613,7 @@ layout = html.Div(className='gallery', children=[
             app_name='Control an LED Strip',
             app_link='https://www.dashdaq.io/control-an-led-strip-in-python',
             code_name_display_text='Try the app',
-            code_link='https://dash-gallery.plotly.host/dash-daq-led',
+            code_link='https://dash-gallery.plotly.host/dash-daq-led-control',
             img_src='assets/images/gallery/Dash-DAQ-Blank-Stick.jpg',
             description='''
             Team Plotly is getting colorful with Dash DAQ! This application

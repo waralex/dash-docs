@@ -11,7 +11,7 @@ df['Emission'] = df['Emission'].map(lambda x: '{0:.2f}'.format(x))
 
 app.layout = dash_table.DataTable(
         id='table-virtualiztion',
-        data=df.to_dict('rows'),
+        data=df.to_dict('records'),
         columns=[
             {'name': i, 'id': i} for i in df.columns
         ],
