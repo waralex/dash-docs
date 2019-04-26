@@ -21,6 +21,7 @@ class IntegrationTests(unittest.TestCase):
         super(IntegrationTests, cls).setUpClass()
 
         cls.driver = webdriver.Chrome()
+        cls.driver.implicitly_wait(2)
 
         python_version = sys.version.split(' ')[0]
         if '2.7' in python_version:
@@ -57,26 +58,28 @@ class IntegrationTests(unittest.TestCase):
 
     def startServer(self, app, path='/'):
         def run():
-            # Use CDN so that we don't have to reconfigure percy to find the
-            # component assets
-            app.css.config.serve_locally = False
-            app.scripts.config.serve_locally = False
+            app.css.config.serve_locally = True
+            app.scripts.config.serve_locally = True
             app.server.logger.disabled = True
             app.run_server(
                 port=8050,
-                debug=False,
                 processes=4,
-                threaded=False
+                threaded=False,
+                debug=True,
+                use_reloader=False,
+                use_debugger=True,
+                dev_tools_hot_reload=False,
+                dev_tools_ui=True
             )
 
         # Run on a separate process so that it doesn't block
         self.server_process = multiprocessing.Process(target=run)
         self.server_process.start()
-        time.sleep(5)
+        time.sleep(2)
 
         # Visit the dash page
         self.driver.get('http://localhost:8050{}'.format(path))
-        time.sleep(0.5)
+
 
         # Inject an error and warning logger
         logger = '''

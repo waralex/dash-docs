@@ -1,3 +1,5 @@
+from collections import OrderedDict
+
 import dash_html_components as html
 import dash_core_components as dcc
 import dash_table
@@ -30,6 +32,79 @@ chapters = {
 }
 
 chapters.update(chapter_index.chapters)
+
+sections_ordered = OrderedDict()
+sections_ordered['What\'s Dash?'] = [
+    'introduction',
+    'gallery'
+]
+sections_ordered['Dash Tutorial'] = [
+    'installation',
+    'getting-started',
+    'getting-started-part-2',
+    'state',
+    'graphing',
+    'shared-state',
+    'faqs'
+]
+sections_ordered['Component Libraries'] = [
+    'dash-core-components',
+    'dash-html-components',
+    'datatable',
+    'dashdaq'
+]
+sections_ordered['Creating Your Own Components'] = [
+    'react-for-python-developers',
+    'plugins',
+    'd3-plugins'
+]
+sections_ordered['Beyond the Basics'] = [
+    'performance',
+    'live-updates',
+    'external',
+    'urls',
+    'devtools'
+]
+sections_ordered['Production'] = [
+    'auth',
+    'deployment'
+]
+sections_ordered['Getting Help'] = [
+    # TODO add in the dash community forum
+    'support'
+]
+sections_ordered['Component Examples'] = [
+    'dropdown-examples',
+    'slider-examples',
+    'range-slider-examples',
+    'checklist-examples',
+    'input-examples',
+    'radio-item-examples',
+    'button-examples',
+    'datepickersingle-examples',
+    'datepickerrange-examples',
+    'markdown-examples',
+    'link-examples',
+    'tabs-example',
+    'textarea-examples',
+    'upload-examples',
+    'booleanswitch-examples',
+    'colorpicker-examples',
+    'gauge-examples',
+    'graduatedbar-examples',
+    'indicator-examples',
+    'knob-examples',
+    'leddisplay-examples',
+    'numericinput-examples',
+    'powerbutton-examples',
+    'precisioninput-examples',
+    'stopbutton-examples',
+    'slider-examples',
+    'tank-examples',
+    'thermometer-examples',
+    'toggleswitch-examples',
+    'darkthemeprovider-examples'
+]
 
 header = html.Div(
     className='header',
@@ -77,12 +152,64 @@ app.layout = html.Div(
 
 
 @app.callback(Output('chapter', 'children'),
-    [Input('location', 'pathname')])
+              [Input('location', 'pathname')])
 def display_content(pathname):
     if pathname is None:
         return ''
     if pathname.endswith('/') and pathname != '/':
         pathname = pathname[:len(pathname) - 1]
+
+    if pathname.split('/')[-1] == 'all':
+        pdf_contents = []
+        table_of_contents = []
+
+        for section in sections_ordered.keys():
+            section_content = []
+            section_toc = []
+            section_id = section.replace(
+                ' ', '-').replace(
+                    '\'', '').replace(
+                        '?', '').lower()
+            section_content.append(
+                html.H1(section, className='pdf-docs-section-name')
+            )
+            for chapter in sections_ordered[section]:
+                section_content.append(html.Div(
+                    chapters[chapter]['content'],
+                    className='pdf-docs-chapter',
+                    id=chapter
+                ))
+                section_toc.append(
+                    html.A(chapter.replace('-', ' ').title(),
+                           href='#{}'.format(chapter))
+                )
+
+            pdf_contents.append(html.Div(
+                section_content,
+                className='pdf-docs-section',
+                id=section_id
+            ))
+            # add main section to table of contents
+            table_of_contents.append(
+                html.A(section,
+                       href='#{}'.format(section_id),
+                       className='toc-section-link')
+            )
+            # add all subsections
+            table_of_contents.append(
+                html.Div(section_toc,
+                         className='toc-chapter-links')
+            )
+
+        # insert table of contents
+        return html.Div([
+            html.Div("Dash User Guide and Documentation",
+                     id='pdf-docs-title'),
+            html.Div([html.H1('Table of Contents')] + table_of_contents,
+                     id='pdf-docs-toc'),
+            html.Div(pdf_contents)
+        ], id='pdf-docs')
+
     matched = [c for c in chapters.keys()
                if chapters[c]['url'] == pathname]
 
@@ -109,6 +236,23 @@ def display_content(pathname):
                 ),
                 html.Div(id='wait-for-page-{}'.format(pathname)),
             ])
+
+        elif 'cytoscape/' in pathname:
+            content = html.Div([
+                html.Div(chapters[matched[0]]['content']),
+                html.Hr(),
+                dcc.Link(
+                    'Back to Cytoscape Documentation',
+                    href='/cytoscape'
+                ),
+                html.Br(),
+                dcc.Link(
+                    'Back to Dash Documentation',
+                    href='/'
+                ),
+                html.Div(id='wait-for-page-{}'.format(pathname)),
+            ])
+
         else:
             content = html.Div([
                 html.Div(chapters[matched[0]]['content']),
@@ -122,8 +266,8 @@ def display_content(pathname):
 
     return content
 
-app.index_string = '''
-<!DOCTYPE html>
+
+app.index_string = '''<!DOCTYPE html>
 <html>
     <head>
         {%metas%}
@@ -150,10 +294,10 @@ app.index_string = '''
         <footer>
             {%config%}
             {%scripts%}
+            {%renderer%}
         </footer>
     </body>
-</html>
-'''
+</html>'''
 
 if __name__ == '__main__':
     app.run_server(debug=True, threaded=True, port=8060)

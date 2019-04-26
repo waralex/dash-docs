@@ -162,7 +162,6 @@ h2, h3, h4, h5, h6 {
   cursor: pointer;
 }
 
-
 .content p > code,
 .content li > code{
     background-color: rgb(243, 246, 251);
@@ -180,6 +179,24 @@ h2, h3, h4, h5, h6 {
   box-shadow: rgb(240, 240, 240) 5px 5px 5px 0px;
   border: thin solid rgb(240, 240, 240);
   margin-bottom: 100px;
+}
+
+.cytoscape-reference p {
+    display: inline;
+    font-size: 100%;
+}
+
+.cytoscape-reference ol, ul {
+    margin: 1rem 0 1rem 2rem;
+    list-style-position: outside;
+}
+
+.cytoscape-reference ol > li > ul, ul > li > ul {
+    list-style-type: disc;
+}
+
+.cytoscape-reference ol > li > ul > li > ul {
+    list-style-type: circle;
 }
 
 table {
