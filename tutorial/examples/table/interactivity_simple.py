@@ -15,7 +15,7 @@ app.layout = dash_table.DataTable(
     columns=[
         {"name": i, "id": i, "deletable": True} for i in df.columns
     ],
-    data=df.to_dict("rows"),
+    data=df.to_dict('records'),
     editable=True,
     filtering=True,
     sorting=True,

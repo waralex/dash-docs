@@ -362,8 +362,8 @@ layout = html.Div([
 
     Display('''
     html.Div([
-        html.Button('Add Node', id='btn-add-node-example', n_clicks_timestamp='0'),
-        html.Button('Remove Node', id='btn-remove-node-example', n_clicks_timestamp='0')
+        html.Button('Add Node', id='btn-add-node-example', n_clicks_timestamp=0),
+        html.Button('Remove Node', id='btn-remove-node-example', n_clicks_timestamp=0)
     ])
     '''),
 

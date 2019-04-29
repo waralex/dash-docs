@@ -184,7 +184,7 @@ chapters = {
         'url': '/canvas',
         'content': canvas.layout,
         'name': 'Dash Canvas',
-        'description': 'Drawing and annotations for image processing.'
+        'description': '(New! Released March 2019) Drawing and annotations for image processing.'
     },
 
 
@@ -408,6 +408,13 @@ chapters = {
         'content': examples.Upload,
         'name': 'Upload Component',
         'description': 'Upload examples, properties, and reference.'
+    },
+
+    'location-examples': {
+        'url': '/dash-core-components/location',
+        'content': examples.Location,
+        'name': 'Location Component',
+        'description': 'Location examples, properties, and reference.'
     },
 
 ### Dash DAQ Components ###

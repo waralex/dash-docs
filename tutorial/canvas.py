@@ -3,6 +3,7 @@ import dash_core_components as dcc
 from tutorial import styles
 from tutorial import tools
 from textwrap import dedent
+import dash_canvas
 
 examples = [
     tools.load_example(s) for s in [
@@ -18,6 +19,14 @@ layout = html.Div([
     dcc.Markdown(dedent('''\
     ## Introduction to dash-canvas
 
+    ''')),
+
+    dcc.SyntaxHighlighter(
+        '''pip install dash-canvas=={}'''.format(dash_canvas.__version__),
+        customStyle=styles.code_container
+    ),
+
+    dcc.Markdown(dedent('''
     ``dash-canvas`` is a module for image annotation and image processing
     using Dash. It provides both the ``DashCanvas`` object for drawing
     and annotations on images, and a set of utility functions to process
@@ -28,6 +37,14 @@ layout = html.Div([
     industry, identification and segmentation of cells or organs in life
     and medical sciences, quantification of phases in materials and
     geosciences, construction of training sets for machine learning, etc.
+
+    Install dash-canvas with
+
+    ```pip install -U dash-canvas```
+
+    The source is on GitHub at [plotly/dash-canvas](https://github.com/plotly/dash-canvas).
+
+    A gallery of examples is hosted at https://dash-canvas.plotly.host/.
 
     ### DashCanvas: a canvas object for annotations
 
@@ -49,7 +66,7 @@ layout = html.Div([
     ``DashCanvas`` comes with a set of properties which can be adjusted to
     control the geometry of the canvas, the default tool and its properties.
     You can pass a background image either as a filename (``filename``
-    property) or as a data string (``image_content`` property); more examples 
+    property) or as a data string (``image_content`` property); more examples
     below).
     ''')),
 
@@ -148,8 +165,9 @@ layout = html.Div([
 
     ### More examples
 
-    A gallery of examples using ``DashCanvas`` is available on
-    https://github.com/plotly/canvas-gallery.
+    A gallery of examples using ``DashCanvas`` is deployed on
+    https://dash-canvas.plotly.host/, its source code is
+    [plotly/canvas-portal](https://github.com/plotly/canvas-portal).
     ''')),
 
 ])
