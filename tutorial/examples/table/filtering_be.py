@@ -16,29 +16,29 @@ app.layout = dash_table.DataTable(
     ],
 
     filtering='be',
-    filtering_settings=''
+    filter=''
 )
 
 
 @app.callback(
     Output('table-filtering-be', "data"),
-    [Input('table-filtering-be', "filtering_settings")])
-def update_graph(filtering_settings):
-    print(filtering_settings)
-    filtering_expressions = filtering_settings.split(' && ')
+    [Input('table-filtering-be', "filter")])
+def update_graph(filter):
+    print(filter)
+    filtering_expressions = filter.split(' && ')
     dff = df
-    for filter in filtering_expressions:
-        if ' eq ' in filter:
-            col_name = filter.split(' eq ')[0]
-            filter_value = filter.split(' eq ')[1]
+    for filter_part in filtering_expressions:
+        if ' eq ' in filter_part:
+            col_name = filter_part.split(' eq ')[0]
+            filter_value = filter_part.split(' eq ')[1]
             dff = dff.loc[dff[col_name] == filter_value]
-        if ' > ' in filter:
-            col_name = filter.split(' > ')[0]
-            filter_value = float(filter.split(' > ')[1])
+        if ' > ' in filter_part:
+            col_name = filter_part.split(' > ')[0]
+            filter_value = float(filter_part.split(' > ')[1])
             dff = dff.loc[dff[col_name] > filter_value]
-        if ' < ' in filter:
-            col_name = filter.split(' < ')[0]
-            filter_value = float(filter.split(' < ')[1])
+        if ' < ' in filter_part:
+            col_name = filter_part.split(' < ')[0]
+            filter_value = float(filter_part.split(' < ')[1])
             dff = dff.loc[dff[col_name] < filter_value]
 
     return dff.to_dict('records')
