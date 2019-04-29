@@ -1,11 +1,11 @@
 import re
 import os
+import sys
 
 import dash
 import dash_core_components as dcc
 import dash_html_components as html
 
-import sys
 if __name__ != '__main__':
     from tutorial import styles
     from tutorial.utils.component_block import ComponentBlock

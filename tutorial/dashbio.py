@@ -1,9 +1,9 @@
 import dash_core_components as dcc
 import dash_html_components as html
 from tutorial import styles
+from tutorial.utils.dashbio_docs import generate_docs
 
 import dash_bio
-from tutorial.utils.dashbio_docs import generate_docs
 
 dashbio_library_heading = dcc.Markdown('''
     # Dash Bio
@@ -111,7 +111,8 @@ data = df.values''',
         }
     },
     'ManhattanPlot': {
-        'description': '''Display genomic studies results sorted out by chromosome. Perfect for Genome Wide Association Studies (GWAS).''',
+        'description': '''A plot that can be used to display the results of genomic studies 
+        sorted out by chromosome. Perfect for Genome Wide Association Studies (GWAS).''',
         'default_id': False,
         'component_wrap': 'dcc.Graph(figure=_)',
         'params': {
@@ -167,7 +168,8 @@ styles_data = json.loads(styles_data)
     },
 
     'OncoPrint': {
-        'description': '''View multiple genomic alternations with an interactive heatmap.''',
+        'description': '''A chart that can be used to visualize multiple 
+        genomic alternations with an interactive heatmap.''',
         'library_imports': [
             ['json', 'json']
         ],
@@ -212,8 +214,8 @@ LEGSLQKRGIVEQCCTSICSLYQLENYCN\"'
     },
 
     'VolcanoPlot': {
-        'description': '''Interactively identify clinically meaningful markers in
-        genomic experiments with this volcano plot.''',
+        'description': '''A graph that can be used to identify clinically meaningful markers in
+        genomic experiments.''',
         'default_id': False,
         'library_imports': [
             ['pandas', 'pd'],
