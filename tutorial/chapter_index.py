@@ -186,7 +186,7 @@ chapters = {
         'url': '/dash-bio',
         'content': dashbio.layout,
         'name': 'Dash Bio Components',
-        'description': 'Components that make it easier to visualize \
+        'description': 'Components dedicated to visualizing \
         bioinformatics data.'
     },
 

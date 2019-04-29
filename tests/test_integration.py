@@ -123,7 +123,7 @@ class Tests(IntegrationTests):
                 self.snapshot(href)
                 self.driver.back()
             except Exception as e:
-                print(href)  # determine which page is messing up 
+                print(href)  # determine which page is having issues
                 raise e
         for link in links:
             if link.startswith('/') and link != '/dash-daq' and link != '/dash-bio':
