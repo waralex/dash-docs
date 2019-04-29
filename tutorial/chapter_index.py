@@ -186,7 +186,7 @@ chapters = {
         'url': '/dash-bio',
         'content': dashbio.layout,
         'name': 'Dash Bio Components',
-        'description': 'Components that make it easier to visualize \
+        'description': 'Components dedicated to visualizing \
         bioinformatics data.'
     },
 
@@ -417,6 +417,13 @@ chapters = {
         'content': examples.Upload,
         'name': 'Upload Component',
         'description': 'Upload examples, properties, and reference.'
+    },
+
+    'location-examples': {
+        'url': '/dash-core-components/location',
+        'content': examples.Location,
+        'name': 'Location Component',
+        'description': 'Location examples, properties, and reference.'
     },
 
 ### Dash DAQ Components ###

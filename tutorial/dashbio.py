@@ -12,12 +12,12 @@ dashbio_library_heading = dcc.Markdown('''
     around HTML, CSS, and JavaScript.
 
     Dash Bio is a suite of bioinformatics components that make it simpler to
-    analyze and visualize bioinformatics data and interact with it in a Dash
+    analyze and visualize bioinformatics data and interact with them in a Dash
     application.
 
-    The source is on GitHub at [plotly/dash-bio](https://github.com/plotly/dash-bio).
+    The source can be found on GitHub at [plotly/dash-bio](https://github.com/plotly/dash-bio).
 
-    These docs are using version {}.
+    These docs are using Dash Bio version {}.
     '''.replace('    ', '').format(dash_bio.__version__)
 )
 

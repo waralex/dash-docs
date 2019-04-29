@@ -53,7 +53,7 @@ def IframeComponentBlock(
         height=600,
         width=600
 ):
-    '''Generates a container that is visually similar to the
+    '''Generate a container that is visually similar to the
     ComponentBlock for components that require an externally hosted app.
 
     :param (str) example_string: String containing the code that is
@@ -98,7 +98,7 @@ def generate_component_example(
         component_wrap=None,
         iframe_info=None
 ):
-    '''Generates an example for a component, with hyperlinks to the
+    '''Generate an example for a component, with hyperlinks to the
     appropriate component-specific pages.
 
     :param (str) component_name: The name of the component as it is
@@ -290,7 +290,7 @@ def generate_docs(
         library_install_instructions,
         library_components
 ):
-    '''Generates full documentation for a library.
+    '''Generate full documentation for a library.
 
     :param (str) library_name: The full name of the library (e.g.,
     dash_bio).
@@ -334,7 +334,7 @@ def create_default_example(
         example_code,
         styles
 ):
-    '''Generates a default example for the component-specific page.
+    '''Generate a default example for the component-specific page.
 
     :param (str) component_name: The name of the component as it is
     defined within the package.
@@ -391,7 +391,7 @@ def generate_prop_table(
         component_names,
         library_name
 ):
-    '''Generates a prop table for each component (both React and Python).
+    '''Generate a prop table for each component (both React and Python).
 
     :param (str) component_name: The name of the component as it is
     defined within the package.
