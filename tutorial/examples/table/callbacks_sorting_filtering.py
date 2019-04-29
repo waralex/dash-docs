@@ -64,7 +64,7 @@ def update_graph(pagination_settings, sorting_settings, filtering_settings):
     return dff.iloc[
         pagination_settings['current_page']*pagination_settings['page_size']:
         (pagination_settings['current_page'] + 1)*pagination_settings['page_size']
-    ].to_dict('rows')
+    ].to_dict('records')
 
 
 if __name__ == '__main__':
