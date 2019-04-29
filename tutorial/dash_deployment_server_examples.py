@@ -1012,9 +1012,9 @@ LocalDir = html.Div(children=[
     networked file systems.
 
     Since this feature has security implications, only directories specified
-    in the Plotly-On-Premise configuration can be mapped to Dash Apps. 
+    in the Plotly-On-Premise Server Manager can be mapped to Dash Apps. 
     > Note that in Plotly Enterprise versions before 3.1.0 only users with admin privelges 
-    > could map local directories into their apps. Please contact support@plot.ly if
+    > could map local directories into their apps. Please contact `onpremise.support@plot.ly` if
     > you have any questions.
 
     ***
