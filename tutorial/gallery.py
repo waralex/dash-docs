@@ -245,7 +245,7 @@ layout = html.Div(className='gallery', children=[
     reusable.Row([
         AppSection(
             app_name='Drug Precursors',
-            app_link='https://dash-drug-explorer.plot.ly',
+            app_link='https://dash-gallery.plotly.host/dash-drug-discovery/',
             code_link='https://github.com/plotly/dash-drug-discovery-demo/',
             img_src='assets/images/gallery/drug-discovery-app.gif',
             description='''
@@ -276,7 +276,7 @@ layout = html.Div(className='gallery', children=[
     reusable.Row([
         AppSection(
             app_name='Phylogeny trees and global spread of six viruses',
-            app_link='https://dash-phylogeny.herokuapp.com/',
+            app_link='https://dash-gallery.plotly.host/dash-phylogeny/',
             code_link='https://github.com/plotly/dash-phylogeny',
             img_src='assets/images/gallery/dash-phylo-tree.gif',
             description='''
@@ -305,7 +305,7 @@ layout = html.Div(className='gallery', children=[
     reusable.Row([
         AppSection(
             app_name='US Opioid Epidemic',
-            app_link='https://opioid-epidemic.herokuapp.com/',
+            app_link='https://dash-gallery.plotly.host/dash-opioid-epidemic/',
             code_link='https://github.com/plotly/dash-opioid-epidemic-demo',
             img_src='assets/images/gallery/opioid-epidemic.png',
             description='''
@@ -655,7 +655,7 @@ layout = html.Div(className='gallery', children=[
             app_name='B&K Precision Power Supply',
             app_link='https://www.dashdaq.io/control-bk-precision-1785b-power-supply-in-python',
             code_name_display_text='Try the app',
-            code_link='http://dash-daq-bkprecision.herokuapp.com/',
+            code_link='https://dash-gallery.plotly.host/dash-bk-precision/',
             img_src='assets/images/gallery/Dash-DAQ-BKprecision.jpg',
             description='''
             This Dash DAQ app controls a B&K Precision power supply using a
