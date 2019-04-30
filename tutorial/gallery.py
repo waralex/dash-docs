@@ -116,7 +116,7 @@ layout = html.Div(className='gallery', children=[
         ),
         AppSection(
             app_name='3-D Yield Curve',
-            app_link='https://dash-yield-curve.plot.ly',
+            app_link='https://dash-gallery.plotly.host/dash-yield-curve/',
             code_link='https://github.com/plotly/dash-yield-curve',
             img_src='assets/images/gallery/dash-yield-curve-app.png',
             description='''
@@ -191,7 +191,7 @@ layout = html.Div(className='gallery', children=[
     reusable.Row([
         AppSection(
             app_name='Natural Gas Well Production',
-            app_link='https://dash-oil-and-gas.plot.ly',
+            app_link='https://dash-gallery.plotly.host/dash-oil-and-gas/',
             code_link='https://github.com/plotly/dash-oil-and-gas-demo',
             img_src='assets/images/gallery/oil-and-gas.gif',
             description='''
@@ -211,7 +211,7 @@ layout = html.Div(className='gallery', children=[
 
         AppSection(
             app_name='NYC Uber Rides',
-            app_link='https://dash-uber-rides.plot.ly',
+            app_link='https://dash-gallery.plotly.host/dash-uber-rides/',
             code_link='https://github.com/plotly/dash-uber-rides-demo',
             img_src='assets/images/gallery/uber-rides.gif',
             description='''
@@ -321,7 +321,7 @@ layout = html.Div(className='gallery', children=[
     reusable.Row([
         AppSection(
             app_name='Object Detection',
-            app_link='https://dash-object-detection.plot.ly/',
+            app_link='https://dash-gallery.plotly.host/dash-object-detection/',
             code_link='https://github.com/plotly/dash-object-detection',
             img_src='assets/images/gallery/dash-object-detection.gif',
             description='''
@@ -337,7 +337,7 @@ layout = html.Div(className='gallery', children=[
 
         AppSection(
             app_name='Visualize Model Training',
-            app_link='https://dash-live-model-training.plot.ly/',
+            app_link='https://dash-gallery.plotly.host/dash-live-model-training/',
             code_link='https://github.com/plotly/dash-live-model-training',
             img_src='assets/images/gallery/dash-live-model-training.gif',
             description='''
@@ -352,7 +352,7 @@ layout = html.Div(className='gallery', children=[
     reusable.Row([
         AppSection(
             app_name='Image Processing',
-            app_link='http://dash-image-processing.plot.ly/',
+            app_link='https://dash-gallery.plotly.host/dash-image-processing/',
             code_link='https://github.com/plotly/dash-image-processing',
             img_src='assets/images/gallery/dash-image-processing.gif',
             description='''
@@ -366,7 +366,7 @@ layout = html.Div(className='gallery', children=[
 
         AppSection(
             app_name='Interactive t-SNE',
-            app_link='https://dash-tsne.plot.ly/',
+            app_link='https://dash-gallery.plotly.host/dash-tsne/',
             code_link='https://github.com/plotly/dash-tsne',
             img_src='assets/images/gallery/dash-tsne.gif',
             description='''
@@ -385,7 +385,7 @@ layout = html.Div(className='gallery', children=[
     reusable.Row([
         AppSection(
             app_name='Explore SVMs',
-            app_link='https://dash-svm.plot.ly/',
+            app_link='https://dash-gallery.plotly.host/dash-svm/',
             code_link='https://github.com/plotly/dash-svm',
             img_src='assets/images/gallery/dash-svm.gif',
             description='''
