@@ -262,7 +262,7 @@ layout = html.Div(className='gallery', children=[
 
         AppSection(
             app_name='MRI Reconstruction',
-            app_link='http://brain-surface-viewer.herokuapp.com/',
+            app_link='https://dash-gallery.plotly.host/dash-brain-surface-viewer/',
             code_link='https://github.com/plotly/dash-brain-surface-viewer',
             img_src='assets/images/gallery/dash-brain-surface-viewer.png',
             description='''
