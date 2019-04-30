@@ -404,7 +404,7 @@ layout = html.Div(className='gallery', children=[
     reusable.Row([
         AppSection(
             app_name='Dash Datashader',
-            app_link='https://dash-datashader.herokuapp.com',
+            app_link='hhttps://dash-gallery.plotly.host/dash-datashader/',
             code_link='https://github.com/plotly/dash-datashader',
             img_src='assets/images/gallery/dash-datashader.png',
             description='''
