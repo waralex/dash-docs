@@ -227,7 +227,7 @@ layout = html.Div(className='gallery', children=[
         AppSection(
             app_name='LAStoDash',
             app_link='https://dash-gallery.plotly.host/dash-lastodash',
-            code_link='https://github.com/n-riesco/lastodash',
+            code_link='https://github.com/plotly/lastodash',
             img_src='assets/images/gallery/dash-lastodash.gif',
             description='''
             This dash app takes a Log ASCII Standard (LAS) file, and generates a
@@ -404,7 +404,7 @@ layout = html.Div(className='gallery', children=[
     reusable.Row([
         AppSection(
             app_name='Dash Datashader',
-            app_link='https://dash-datashader.herokuapp.com',
+            app_link='https://dash-gallery.plotly.host/dash-datashader/',
             code_link='https://github.com/plotly/dash-datashader',
             img_src='assets/images/gallery/dash-datashader.png',
             description='''
@@ -699,21 +699,6 @@ layout = html.Div(className='gallery', children=[
             In just over 300 lines of code, this app helps you control
             and read a Pfeiffer vacuum gauge controller.
             '''
-        )
-    ]),
-
-    reusable.Row([
-        AppSection(
-            app_name='Analyze Frequency Responses using a Tektronix Function Generator and Oscilloscope',
-            app_link='https://www.dashdaq.io/analyze-frequency-responses-in-python-using-a-tektronix-function-generator-and-oscilloscope',
-            code_name_display_text='Try the app',
-            code_link='https://freq-response-plotter.herokuapp.com/',
-            img_src='assets/images/gallery/Dash-DAQ-Frequency-Response.jpg',
-            description='''
-            With this Dash DAQ app, you can create a user-friendly GUI for
-            analyzing the frequency responses of circuits.
-            ''',
-            width=12
         )
     ]),
 
