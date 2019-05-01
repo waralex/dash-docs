@@ -227,7 +227,7 @@ layout = html.Div(className='gallery', children=[
         AppSection(
             app_name='LAStoDash',
             app_link='https://dash-gallery.plotly.host/dash-lastodash',
-            code_link='https://github.com/n-riesco/lastodash',
+            code_link='https://github.com/plotly/lastodash',
             img_src='assets/images/gallery/dash-lastodash.gif',
             description='''
             This dash app takes a Log ASCII Standard (LAS) file, and generates a
