@@ -1,10 +1,7 @@
-import dash_html_components as html
-
-from dash.dependencies import Input, Output
-import dash_core_components as dcc
-import dash_html_components as html
-import pandas as pd
 from textwrap import dedent
+
+import dash_html_components as html
+import dash_core_components as dcc
 
 from tutorial import tools
 from tutorial import styles
@@ -17,44 +14,77 @@ examples = {
 
 layout = html.Div(
     [
-        dcc.Markdown(dedent(
-        """
+        dcc.Markdown(dedent("""
         # DataTable Filtering Syntax
 
         As discussed in the [interactivity chapter](), `DataTable` includes
         filtering capabilities. Users can turn on filtering options by defining
         the `filtering` attribute. `filtering=True` will initiate clientside
-        (frontend) filtering. Alternatively you can specify `filtering='fe'`.
+        (front-end) filtering. Alternatively you can specify `filtering='fe'`.
         If the DataTable is quite large, clientside filtering will likely
-        become slow. Using the backend filtering option: `filtering='be'`
-        will allow serverside filtering. At this time, the filter syntax for
-        frontend and backend filtering differs slightly.
-
-        > Note that we plan on improving
-        > the simplicity and consistency of
-        > this syntax in the near future.
-        > Follow [dash-table#169](https://github.com/plotly/dash-table/issues/169)
-        > for updates.
+        become slow. Using the back-end filtering option: `filtering='be'`
+        will allow serverside filtering.
 
         ## Frontend Filtering
 
-        Filtering supports equals: `eq`, greater than: `>`, and less than: `<`
-        operations.
-        - Strings must be wrapped in double quotes: `eq "Asia"`
-        - Numerical values must be wrapped in num(): `> num(500)`
+        To filter on a column you can enter either an operator and a value
+        (for example `> 5000`) or just a value (`5000`) to use the default
+        operator for that column's data type. `string` and `any` (no type
+        specified) columns default to the `contains` operator. `number` columns
+        default to `=`, and `date` columns default to `datestartswith`.
+        Many operators have two forms: a symbol (`=`) and a word (`eq`).
 
-        > Note that at this time, frontend filtering must be connected to a
-        > callback in order to work. See [dash-table#202](https://github.com/plotly/dash-table/issues/202)
-        > for progress on this issue.
+        -----------------------------------------------------------------------
+        | Operator  | Description                                             |
+        -----------------------------------------------------------------------
+        | `=`, `eq` | Are the two numbers equal? Regardless of type, will     |
+        |           | first try to convert both sides to numbers and compare  |
+        |           | the numbers. If either cannot be converted to a number, |
+        |           | looks for an exact match.                               |
+        |           | **Default operator for number columns.**                |
+        -----------------------------------------------------------------------
+        | `contains`| Does the text value contain exactly the requested       |
+        |           | substring?                                              |
+        |           | **Default operator for `text` and `any` columns.**      |
+        -----------------------------------------------------------------------
+        |`datestartswith`| Does the datetime start with the given parts?      |
+        |           | Enter a partial datetime, this will match any date that |
+        |           | has at least as much precision and starts with the same |
+        |           | pieces. For example, `datestartswith '2018-03-01'` will |
+        |           | match `'2018-03-01 12:59'` but not `'2018-03'` even     |
+        |           | though we interpret `'2018-03-01'` and `'2018-03'` both |
+        |           | to mean the first instant of March, 2018.               |
+        |           | **Default operator for `datetime` columns.**            |
+        -----------------------------------------------------------------------
+        | `>`, `gt` | Comparison: greater than, less than, greater or equal,  |
+        | `<`, `lt` | less or equal, and not equal. Two strings compare by    |
+        | `>=`, `ge`| their dictionary order, with numbers and most symbols   |
+        | `<=`, `le`| coming before letters, and uppercase coming before      |
+        | `!=`, `ne`| lowercase.                                              |
+        -----------------------------------------------------------------------
 
-        In the example below:
-        - Enter `eq "Asia"` in the "continent" column
-        - Enter `> num(5000)` in the "gdpPercap" column
-        - Enter `< num(80)` in the `lifeExp` column
+        Simple strings can be entered plain:
+        - `= Asia` in the "continent" column
+        - `B` in the "country" column matches all countries that contain a
+          capital B
 
-        """
-            )
-        ),
+        But if you have spaces or special characters (including `-`,
+        particularly in dates)  you need to wrap them in quotes.
+        Single quotes `'`, double quotes `"`, or backticks `\\`` all work.
+        - `= "Bosnia and Herzegovina"`
+        - `>='2008-12-01'`
+
+        If you have quotes in the string, you can use a different enclosing
+        quote, or you can escape the quote character. These two are the same:
+        - `eq 'Say "Yes!"'`
+        - `="Say \"Yes!\""`
+
+        Numbers can be entered plain (previously they needed to be wrapped in
+        `num()`):
+        - `> 5000` in the "gdpPercap" column
+        - `< 80` in the `lifeExp` column
+
+        """)),
 
         dcc.SyntaxHighlighter(
             examples['filtering_fe.py'][0],
@@ -67,28 +97,28 @@ layout = html.Div(
             className='example-container'
         ),
 
-        dcc.Markdown(dedent(
-        """
-        ## Backend Filtering
+        dcc.Markdown(dedent("""
+        ## Back-end Filtering
 
         For large dataframes, you can perform the filtering in Python instead
         of the default clientside filtering. You can find more information on
-        performing operations in python in the [Python Callbacks chapter](/datatable/callbacks).
+        performing operations in python in the
+        [Python Callbacks chapter](/datatable/callbacks).
 
-        As mentioned above, the backend filtering syntax currently differs
-        slightly from the frontend syntax.
+        The syntax is (now) the same as front-end filtering.
+        In the future we may accept any filter strings, to allow you to
+        write your own expression query language.
+        Either way it's up to the developer to implement the logic to apply
+        these filters on the Python side.
 
-        BAckend filtering supports equals: `eq`, greater than: `>`, and less
-        than: `<` operations.
-        - No quotes necessary for text: `eq Asia`
-        - Numerical values accepted: `> 500`
+        > Note: we're planning on adding a structured query object
+        > to make it easier and more robust to manage back-end filter logic.
+        > Follow
+        > [dash-table#169](https://github.com/plotly/dash-table/issues/169)
+        > for updates.
 
-        In the example below:
-        - Enter `eq Asia` in the "continent" column
-        - Enter `> 5000` in the "gdpPercap" column
-        - Enter `< 80` in the `lifeExp` column
-        """
-        )),
+        Back-end filtering
+        """)),
 
         dcc.SyntaxHighlighter(
             examples['filtering_be.py'][0],

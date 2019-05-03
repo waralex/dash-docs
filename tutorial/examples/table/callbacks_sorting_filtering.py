@@ -29,6 +29,7 @@ app.layout = dash_table.DataTable(
     sort_by=[]
 )
 
+
 @app.callback(
     Output('table-sorting-filtering', 'data'),
     [Input('table-sorting-filtering', 'pagination_settings'),
