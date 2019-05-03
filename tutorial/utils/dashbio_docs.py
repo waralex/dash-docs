@@ -311,7 +311,9 @@ def generate_docs(
 
     '''
 
-    layout_children = [library_heading]
+    layout_children = library_heading
+
+    layout_children.append(library_install_instructions)
 
     sorted_keys = list(library_components.keys())
     sorted_keys.sort()

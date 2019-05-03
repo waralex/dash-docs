@@ -5,9 +5,13 @@ from tutorial.utils.dashbio_docs import generate_docs
 
 import dash_bio
 
-dashbio_library_heading = dcc.Markdown('''
-    # Dash Bio
+dashbio_library_heading = [
+    dcc.Markdown('''# Dash Bio'''),
 
+    dcc.SyntaxHighlighter('''pip install dash-bio=={}'''.format(dash_bio.__version__),
+                          customStyle=styles.code_container),
+
+    dcc.Markdown('''
     Dash is a web application framework that provides pure Python abstraction
     around HTML, CSS, and JavaScript.
 
@@ -18,8 +22,9 @@ dashbio_library_heading = dcc.Markdown('''
     The source can be found on GitHub at [plotly/dash-bio](https://github.com/plotly/dash-bio).
 
     These docs are using Dash Bio version {}.
-    '''.replace('    ', '').format(dash_bio.__version__)
-)
+    '''.replace('    ', '').format(dash_bio.__version__, dash_bio.__version__)
+    )
+]
 
 dashbio_install_instructions = dcc.SyntaxHighlighter('''>>> import dash_bio
     >>> print(dash_bio.__version__)
@@ -111,7 +116,7 @@ data = df.values''',
         }
     },
     'ManhattanPlot': {
-        'description': '''A plot that can be used to display the results of genomic studies 
+        'description': '''A plot that can be used to display the results of genomic studies
         sorted out by chromosome. Perfect for Genome Wide Association Studies (GWAS).''',
         'default_id': False,
         'component_wrap': 'dcc.Graph(figure=_)',
@@ -168,7 +173,7 @@ styles_data = json.loads(styles_data)
     },
 
     'OncoPrint': {
-        'description': '''A chart that can be used to visualize multiple 
+        'description': '''A chart that can be used to visualize multiple
         genomic alternations with an interactive heatmap.''',
         'library_imports': [
             ['json', 'json']
