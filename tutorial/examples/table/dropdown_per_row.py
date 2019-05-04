@@ -32,7 +32,7 @@ app.layout = html.Div([
                 'dropdowns': [
                     {
                         # these are filter strings
-                        'condition': 'City eq "NYC"',
+                        'condition': '{City} eq "NYC"',
                         'dropdown': [
                             {'label': i, 'value': i}
                             for i in [
@@ -44,7 +44,7 @@ app.layout = html.Div([
                     },
 
                     {
-                        'condition': 'City eq "Montreal"',
+                        'condition': '{City} eq "Montreal"',
                         'dropdown': [
                             {'label': i, 'value': i}
                             for i in [
@@ -56,7 +56,7 @@ app.layout = html.Div([
                     },
 
                     {
-                        'condition': 'City eq "Los Angeles"',
+                        'condition': '{City} eq "Los Angeles"',
                         'dropdown': [
                             {'label': i, 'value': i}
                             for i in [
