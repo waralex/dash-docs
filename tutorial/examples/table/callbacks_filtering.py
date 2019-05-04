@@ -65,7 +65,7 @@ def split_filter_part(filter_part):
     Output('table-filtering', "data"),
     [Input('table-filtering', "pagination_settings"),
      Input('table-filtering', "filter")])
-def update_graph(pagination_settings, filter):
+def update_table(pagination_settings, filter):
     print(filter)
     filtering_expressions = filter.split(' && ')
     dff = df

@@ -35,7 +35,7 @@ app.layout = dash_table.DataTable(
     [Input('table-sorting-filtering', 'pagination_settings'),
      Input('table-sorting-filtering', 'sort_by'),
      Input('table-sorting-filtering', 'filter')])
-def update_graph(pagination_settings, sort_by, filter):
+def update_table(pagination_settings, sort_by, filter):
     filtering_expressions = filter.split(' && ')
     dff = df
     for filter in filtering_expressions:

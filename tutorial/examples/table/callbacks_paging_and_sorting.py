@@ -33,7 +33,7 @@ app.layout = dash_table.DataTable(
     Output('table-paging-and-sorting', 'data'),
     [Input('table-paging-and-sorting', 'pagination_settings'),
      Input('table-paging-and-sorting', 'sort_by')])
-def update_graph(pagination_settings, sort_by):
+def update_table(pagination_settings, sort_by):
     if len(sort_by):
         dff = df.sort_values(
             sort_by[0]['column_id'],
