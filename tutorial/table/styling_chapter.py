@@ -88,7 +88,7 @@ layout = html.Div(
         Display(
         '''
         dash_table.DataTable(
-            data=df.to_dict('rows'),
+            data=df.to_dict('records'),
             columns=[{'id': c, 'name': c} for c in df.columns],
         )
         '''
@@ -116,7 +116,7 @@ layout = html.Div(
         Display(
         '''
         dash_table.DataTable(
-            data=df.to_dict('rows'),
+            data=df.to_dict('records'),
             columns=[{'id': c, 'name': c} for c in df.columns],
             style_cell={'textAlign': 'left'},
             style_cell_conditional=[
@@ -138,7 +138,7 @@ layout = html.Div(
         Display(
         '''
         dash_table.DataTable(
-            data=df.to_dict('rows'),
+            data=df.to_dict('records'),
             columns=[{'id': c, 'name': c} for c in df.columns],
             style_cell_conditional=[
                 {
@@ -162,7 +162,7 @@ layout = html.Div(
         Display(
         '''
         dash_table.DataTable(
-            data=df.to_dict('rows'),
+            data=df.to_dict('records'),
             columns=[{'id': c, 'name': c} for c in df.columns],
             style_as_list_view=True,
             style_cell={'padding': '5px'},
@@ -192,7 +192,7 @@ layout = html.Div(
         Display(
         '''
         dash_table.DataTable(
-            data=df.to_dict('rows'),
+            data=df.to_dict('records'),
             columns=[{'id': c, 'name': c} for c in df.columns],
 
             style_cell_conditional=[
@@ -216,7 +216,7 @@ layout = html.Div(
         Display(
         '''
         dash_table.DataTable(
-            data=df.to_dict('rows'),
+            data=df.to_dict('records'),
             columns=[{'id': c, 'name': c} for c in df.columns],
 
             style_cell_conditional=[{
@@ -277,7 +277,7 @@ layout = html.Div(
         Display(
         '''
         dash_table.DataTable(
-            data=df.to_dict('rows'),
+            data=df.to_dict('records'),
             columns=[{'id': c, 'name': c} for c in df.columns],
 
             style_header={'backgroundColor': 'rgb(30, 30, 30)'},
@@ -291,7 +291,7 @@ layout = html.Div(
         Display(
         '''
         dash_table.DataTable(
-            data=df.to_dict('rows'),
+            data=df.to_dict('records'),
             columns=[{'id': c, 'name': c} for c in df.columns],
 
             style_as_list_view=True,
@@ -312,7 +312,7 @@ layout = html.Div(
         Display(
         '''
         dash_table.DataTable(
-            data=df.to_dict("rows"),
+            data=df.to_dict('records'),
             columns=[
                 {"name": i, "id": i} for i in df.columns
             ],
@@ -327,7 +327,7 @@ layout = html.Div(
         Display(
         '''
         dash_table.DataTable(
-            data=df.to_dict("rows"),
+            data=df.to_dict('records'),
             columns=[
                 {"name": i, "id": i} for i in df.columns
             ],
@@ -348,7 +348,7 @@ layout = html.Div(
         Display(
         '''
         dash_table.DataTable(
-            data=df.to_dict('rows'),
+            data=df.to_dict('records'),
             columns=[
                 {'name': i, 'id': i} for i in df.columns
             ],
@@ -381,7 +381,7 @@ layout = html.Div(
         Display(
         '''
         dash_table.DataTable(
-            data=df.to_dict('rows'),
+            data=df.to_dict('records'),
             columns=[
                 {'name': i, 'id': i} for i in df.columns
             ],

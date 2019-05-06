@@ -42,11 +42,11 @@ app.layout = html.Div([
 def filter_countries(countries_selected):
     if not countries_selected:
         # Return all the rows on initial load/no country selected.
-        return df.to_dict('rows')
+        return df.to_dict('records')
 
     filtered = df.query('country in @countries_selected')
 
-    return filtered.to_dict('rows')
+    return filtered.to_dict('records')
 
 
 @app.callback(Output('memory-table', 'data'),
