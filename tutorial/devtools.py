@@ -34,7 +34,7 @@ layout = html.Div([
 
     ## Dev Tools UI
 
-    **New in dash TBD and dash-rendere TBD**
+    **New in dash 0.42.0 and dash-renderer 0.23.0**
 
     The new Dev Tools UI provides a simple interface, which consolidates both frontend and backend errors into an "error popup" at the top-right corner.
     This could reduce your context switch among *terminal*, *code editor*, *browser* and *browser debug console* while developping a dash app.
@@ -57,8 +57,8 @@ layout = html.Div([
     The full set of dev tools parameters are included in `app.run_server` or `app.enable_dev_tools`:
 
     - `debug`, bool, activate all the dev tools.
-    - `dev_tools_ui`, bool, set to `False` to explicitly disable dev tools UI in debugger mode (defualt=debug)
-    - `dev_tools_props_check`, bool, set to `False` to explicitly disable component props validation (default=debug)
+    - `dev_tools_ui`, bool, set to `False` to explicitly disable dev tools UI in debugger mode (defualt=True)
+    - `dev_tools_props_check`, bool, set to `False` to explicitly disable component props validation (default=True)
     - `dev_tools_hot_reload`, bool, set to `True` to enable hot reload (default=False).
     - `dev_tools_hot_reload_interval`, int, interval in millisecond at which the renderer will request the reload hash (default=3000).
     - `dev_tools_hot_reload_watch_interval`, float, delay in seconds between each walk of the assets folder to detect file changes. (default=0.5 seconds)
