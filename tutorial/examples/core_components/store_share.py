@@ -80,7 +80,7 @@ def on_data_set_graph(data, field):
         a['y'].append(row['year'])
 
     return {
-        'data': aggregation.values()
+        'data': [x for x in aggregation.values()]
     }
 
 
