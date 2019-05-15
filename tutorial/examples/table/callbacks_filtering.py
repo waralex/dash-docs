@@ -24,17 +24,17 @@ app.layout = dash_table.DataTable(
     pagination_mode='be',
 
     filtering='be',
-    filtering_settings=''
+    filter=''
 )
 
 
 @app.callback(
     Output('table-filtering', "data"),
     [Input('table-filtering', "pagination_settings"),
-     Input('table-filtering', "filtering_settings")])
-def update_graph(pagination_settings, filtering_settings):
-    print(filtering_settings)
-    filtering_expressions = filtering_settings.split(' && ')
+     Input('table-filtering', "filter")])
+def update_graph(pagination_settings, filter):
+    print(filter)
+    filtering_expressions = filter.split(' && ')
     dff = df
     for filter in filtering_expressions:
         if ' eq ' in filter:

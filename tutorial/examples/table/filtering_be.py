@@ -16,16 +16,16 @@ app.layout = dash_table.DataTable(
     ],
 
     filtering='be',
-    filtering_settings=''
+    filter=''
 )
 
 
 @app.callback(
     Output('table-filtering-be', "data"),
-    [Input('table-filtering-be', "filtering_settings")])
-def update_graph(filtering_settings):
-    print(filtering_settings)
-    filtering_expressions = filtering_settings.split(' && ')
+    [Input('table-filtering-be', "filter")])
+def update_graph(filter):
+    print(filter)
+    filtering_expressions = filter.split(' && ')
     dff = df
     for filter in filtering_expressions:
         if ' eq ' in filter:
