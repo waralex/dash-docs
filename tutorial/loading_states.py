@@ -27,8 +27,6 @@ from dash.dependencies import Input, Output, State
 
 app = dash.Dash(__name__)
 
-app.scripts.config.serve_locally = True
-
 app.layout = html.Div(
     children=[
         html.H3("Edit text input to see loading state"),
@@ -82,8 +80,6 @@ import time
 from dash.dependencies import Input, Output, State
 
 app = dash.Dash(__name__)
-
-app.scripts.config.serve_locally = True
 
 app.layout = html.Div(
     children=[

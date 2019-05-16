@@ -42,7 +42,7 @@ layout = html.Div([
     list of files at [https://plot.ly/organize](https://plot.ly/organize)
     and you can manage the permissions of the apps there. Viewers create and
     manage their own accounts.
-    
+
     '''.replace('    ', '')),
 
     dcc.Markdown('''
@@ -119,8 +119,6 @@ def update_graph(dropdown_value):
         },
         'data': [{'x': [1, 2, 3], 'y': [4, 1, 2]}]
     }
-
-app.scripts.config.serve_locally = True
 
 
 if __name__ == '__main__':
@@ -204,7 +202,6 @@ def update_graph(dropdown_value):
         'data': [{'x': [1, 2, 3], 'y': [4, 1, 2]}]
     }
 
-app.scripts.config.serve_locally = True
 
 if __name__ == '__main__':
     app.run_server(debug=True)
@@ -213,18 +210,18 @@ if __name__ == '__main__':
 
     dcc.Markdown('''
     ## Methods on PlotlyAuth Objects
-    
-        
+
+
     With Plotly OAuth, it is possible to create create cookies that store information
     related to a user. In the example below we use the `@auth.is_authorized_hook` and
     `auth.set_user_data` to create a cookie containing an object associated with
     their account and then we determine whether they can view the graph by checking their
     permissions in that cookie using `auth.get_user_data`.
-    
-    Finally, we can logout the user by clearing the cookies. To do so, you can create a 
+
+    Finally, we can logout the user by clearing the cookies. To do so, you can create a
     logout button and insert it in the layout or use `auth.logout()` in a callback.
-    
-    Plotly Auth uses the environment variables `PLOTLY_USERNAME` and `PLOTLY_API_KEY`. 
+
+    Plotly Auth uses the environment variables `PLOTLY_USERNAME` and `PLOTLY_API_KEY`.
     You can find your username and API key at [https://plot.ly/settings/api](https://plot.ly/settings/api) or,
     if you are using [Dash Deployment Server](https://plotly/dash/pricing), at https://your-plotly-server.com/settings/api.
 
@@ -233,14 +230,14 @@ if __name__ == '__main__':
 
     dcc.SyntaxHighlighter(
         '''import os
-        
+
         os.environ['PLOTLY_USERNAME'] = 'your-username'
         os.environ['PLOTLY_API_KEY'] = 'your-api-key' '''.replace('   ', ''),
         language='python', customStyle=styles.code_container),
 
     dcc.Markdown('''
     or, if you are using [Dash Deployment Server, you can keep your environment variables secret (view the docs)](https://dash.plot.ly/dash-deployment-server/environment-variables).
-        
+
     '''.replace('   ', '')),
 
     html.Img(
