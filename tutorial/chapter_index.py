@@ -405,6 +405,13 @@ chapters = {
         'description': 'Tabs examples, properties, and reference.'
     },
 
+    'graphs-example': {
+        'url': '/dash-core-components/graph',
+        'content': examples.Graphs,
+        'name': 'Graphs',
+        'description': 'Graph examples, properties, and reference.'
+    },
+
     'textarea-examples': {
         'url': '/dash-core-components/textarea',
         'content': examples.Textarea,

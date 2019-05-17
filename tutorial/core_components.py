@@ -338,7 +338,7 @@ dcc.DatePickerRange(
 
     html.Hr(),
 
-    html.H3('Graphs'),
+    html.H3(dcc.Link('Graphs', href='/dash-core-components/graph')),
     dcc.Markdown('''
     The `Graph` component shares the same syntax as the open-source
     `plotly.py` library. View the [plotly.py docs](https://plot.ly/python)
