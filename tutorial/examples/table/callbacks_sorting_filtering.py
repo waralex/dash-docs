@@ -22,41 +22,41 @@ app.layout = dash_table.DataTable(
     pagination_mode='be',
 
     filtering='be',
-    filtering_settings='',
+    filter='',
 
     sorting='be',
     sorting_type='multi',
-    sorting_settings=[]
+    sort_by=[]
 )
 
 @app.callback(
     Output('table-sorting-filtering', 'data'),
     [Input('table-sorting-filtering', 'pagination_settings'),
-     Input('table-sorting-filtering', 'sorting_settings'),
-     Input('table-sorting-filtering', 'filtering_settings')])
-def update_graph(pagination_settings, sorting_settings, filtering_settings):
-    filtering_expressions = filtering_settings.split(' && ')
+     Input('table-sorting-filtering', 'sort_by'),
+     Input('table-sorting-filtering', 'filter')])
+def update_graph(pagination_settings, sort_by, filters):
+    filtering_expressions = filters.split(' && ')
     dff = df
     for filter in filtering_expressions:
         if ' eq ' in filter:
-            col_name = filter.split(' eq ')[0]
+            col_name = filter.split(' eq ')[0].replace("{","").replace("}","")
             filter_value = filter.split(' eq ')[1]
             dff = dff.loc[dff[col_name] == filter_value]
         if ' > ' in filter:
-            col_name = filter.split(' > ')[0]
+            col_name = filter.split(' > ')[0].replace("{","").replace("}","")
             filter_value = float(filter.split(' > ')[1])
             dff = dff.loc[dff[col_name] > filter_value]
         if ' < ' in filter:
-            col_name = filter.split(' < ')[0]
+            col_name = filter.split(' < ')[0].replace("{","").replace("}","")
             filter_value = float(filter.split(' < ')[1])
             dff = dff.loc[dff[col_name] < filter_value]
 
-    if len(sorting_settings):
+    if len(sort_by):
         dff = dff.sort_values(
-            [col['column_id'] for col in sorting_settings],
+            [col['column_id'] for col in sort_by],
             ascending=[
                 col['direction'] == 'asc'
-                for col in sorting_settings
+                for col in sort_by
             ],
             inplace=False
         )

@@ -27,11 +27,11 @@ app.layout = html.Div(
                 pagination_mode='be',
 
                 filtering='be',
-                filtering_settings='',
+                filter='',
 
                 sorting='be',
                 sorting_type='multi',
-                sorting_settings=[]
+                sort_by=[]
             ),
             style={'height': 750, 'overflowY': 'scroll'},
             className='six columns'
@@ -46,31 +46,31 @@ app.layout = html.Div(
 @app.callback(
     Output('table-paging-with-graph', "data"),
     [Input('table-paging-with-graph', "pagination_settings"),
-     Input('table-paging-with-graph', "sorting_settings"),
-     Input('table-paging-with-graph', "filtering_settings")])
-def update_table(pagination_settings, sorting_settings, filtering_settings):
-    filtering_expressions = filtering_settings.split(' && ')
+     Input('table-paging-with-graph', "sort_by"),
+     Input('table-paging-with-graph', "filter")])
+def update_table(pagination_settings, sort_by, filters):
+    filtering_expressions = filters.split(' && ')
     dff = df
     for filter in filtering_expressions:
         if ' eq ' in filter:
-            col_name = filter.split(' eq ')[0]
+            col_name = filter.split(' eq ')[0].replace("{","").replace("}","")
             filter_value = filter.split(' eq ')[1]
             dff = dff.loc[dff[col_name] == filter_value]
         if ' > ' in filter:
-            col_name = filter.split(' > ')[0]
+            col_name = filter.split(' > ')[0].replace("{","").replace("}","")
             filter_value = float(filter.split(' > ')[1])
             dff = dff.loc[dff[col_name] > filter_value]
         if ' < ' in filter:
-            col_name = filter.split(' < ')[0]
+            col_name = filter.split(' < ')[0].replace("{","").replace("}","")
             filter_value = float(filter.split(' < ')[1])
             dff = dff.loc[dff[col_name] < filter_value]
 
-    if len(sorting_settings):
+    if len(sort_by):
         dff = dff.sort_values(
-            [col['column_id'] for col in sorting_settings],
+            [col['column_id'] for col in sort_by],
             ascending=[
                 col['direction'] == 'asc'
-                for col in sorting_settings
+                for col in sort_by
             ],
             inplace=False
         )

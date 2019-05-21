@@ -27,19 +27,19 @@ app.layout = dash_table.DataTable(
 
     sorting='be',
     sorting_type='single',
-    sorting_settings=[]
+    sort_by=[]
 )
 
 
 @app.callback(
     Output('table-paging-and-sorting', 'data'),
     [Input('table-paging-and-sorting', 'pagination_settings'),
-     Input('table-paging-and-sorting', 'sorting_settings')])
-def update_graph(pagination_settings, sorting_settings):
-    if len(sorting_settings):
+     Input('table-paging-and-sorting', 'sort_by')])
+def update_graph(pagination_settings, sort_by):
+    if len(sort_by):
         dff = df.sort_values(
-            sorting_settings[0]['column_id'],
-            ascending=sorting_settings[0]['direction'] == 'asc',
+            sort_by[0]['column_id'],
+            ascending=sort_by[0]['direction'] == 'asc',
             inplace=False
         )
     else:
