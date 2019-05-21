@@ -45,7 +45,7 @@ and the `dashHtmlComponents` library
 but you can also [build your own](https://github.com/plotly/dash-components-archetype) with JavaScript and React.js.
 
 
-To get started, create a file named `app.py` with the following code:
+To get started, create a file named `app.R` with the following code:
 "),
 examples$hello.world$source_code,
   
