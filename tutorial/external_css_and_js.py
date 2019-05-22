@@ -224,7 +224,7 @@ and then request the resources from there.
 
 **NOTE:** In Dash 0.43.0 and before, `app.scripts.config.serve_locally = False`
 was the default, except when dev bundles are served (such as during debugging).
-Starting with Dash 0.44.0, `serve_locally` defaults to `True`.
+Starting with Dash 1.0.0, `serve_locally` defaults to `True`.
 
 **Example:**
 ''')),
@@ -490,7 +490,7 @@ if __name__ == '__main__':
 
     ## Serving Dash's Component Libraries Locally or from a CDN
 
-    **Changed in Dash 0.44.0 - now `serve_locally` defaults to `True`,
+    **Changed in Dash 1.0.0 - now `serve_locally` defaults to `True`,
     previously it defaulted to `False`**
 
     Dash's component libraries, like `dash_core_components` and `dash_html_components`,
