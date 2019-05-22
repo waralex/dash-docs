@@ -15,7 +15,7 @@ examples = {
 layout = html.Div(
     [
         dcc.Markdown(dedent("""
-        # DataTable Filtering Syntax
+        # DataTable Filtering
 
         As discussed in the [interactivity chapter](), `DataTable` includes
         filtering capabilities. Users can turn on filtering options by defining
@@ -25,43 +25,11 @@ layout = html.Div(
         become slow. Using the back-end filtering option: `filtering='be'`
         will allow serverside filtering.
 
-        ## Frontend Filtering
+        ## Filtering Syntax
 
         To filter on a column you can enter either an operator and a value
         (for example `> 5000`) or just a value (`5000`) to use the default
-        operator for that column's data type. `string` and `any` (no type
-        specified) columns default to the `contains` operator. `number` columns
-        default to `=`, and `date` columns default to `datestartswith`.
-        Many operators have two forms: a symbol (`=`) and a word (`eq`).
-
-        -----------------------------------------------------------------------
-        | Operator  | Description                                             |
-        -----------------------------------------------------------------------
-        | `=`, `eq` | Are the two numbers equal? Regardless of type, will     |
-        |           | first try to convert both sides to numbers and compare  |
-        |           | the numbers. If either cannot be converted to a number, |
-        |           | looks for an exact match.                               |
-        |           | **Default operator for number columns.**                |
-        -----------------------------------------------------------------------
-        | `contains`| Does the text value contain exactly the requested       |
-        |           | substring?                                              |
-        |           | **Default operator for `text` and `any` columns.**      |
-        -----------------------------------------------------------------------
-        |`datestartswith`| Does the datetime start with the given parts?      |
-        |           | Enter a partial datetime, this will match any date that |
-        |           | has at least as much precision and starts with the same |
-        |           | pieces. For example, `datestartswith '2018-03-01'` will |
-        |           | match `'2018-03-01 12:59'` but not `'2018-03'` even     |
-        |           | though we interpret `'2018-03-01'` and `'2018-03'` both |
-        |           | to mean the first instant of March, 2018.               |
-        |           | **Default operator for `datetime` columns.**            |
-        -----------------------------------------------------------------------
-        | `>`, `gt` | Comparison: greater than, less than, greater or equal,  |
-        | `<`, `lt` | less or equal, and not equal. Two strings compare by    |
-        | `>=`, `ge`| their dictionary order, with numbers and most symbols   |
-        | `<=`, `le`| coming before letters, and uppercase coming before      |
-        | `!=`, `ne`| lowercase.                                              |
-        -----------------------------------------------------------------------
+        operator for that column's data type.
 
         Simple strings can be entered plain:
         - `= Asia` in the "continent" column
@@ -70,22 +38,82 @@ layout = html.Div(
 
         But if you have spaces or special characters (including `-`,
         particularly in dates)  you need to wrap them in quotes.
-        Single quotes `'`, double quotes `"`, or backticks `\\`` all work.
+        Single quotes `'`, double quotes `"`, or backticks `` ` `` all work.
         - `= "Bosnia and Herzegovina"`
         - `>='2008-12-01'`
 
-        If you have quotes in the string, you can use a different enclosing
-        quote, or you can escape the quote character. These two are the same:
-        - `eq 'Say "Yes!"'`
-        - `="Say \"Yes!\""`
+        If you have quotes in the string, you can use a different quote, or
+        escape the quote character. So `eq 'Say "Yes!"'` and
+        `="Say \\"Yes!\\""` are the same.
 
         Numbers can be entered plain (previously they needed to be wrapped in
         `num()`):
         - `> 5000` in the "gdpPercap" column
         - `< 80` in the `lifeExp` column
 
-        """)),
+        ## Operators
 
+        Many operators have two forms: a symbol (`=`) and a word (`eq`) that
+        can be used interchangeably.
+
+        """)),
+        html.Table([html.Tr([
+            html.Td([
+                html.H4(
+                    html.P([html.Code('='), ' ', html.Code('eq')]),
+                    style={'margin': '0'}),
+                dcc.Markdown('Default operator for `number` columns')]),
+            html.Td(dcc.Markdown(dedent("""
+            Are the two numbers equal? Regardless of type, will first try to
+            convert both sides to numbers and compare the numbers. If either
+            cannot be converted to a number, looks for an exact match.
+            """)))
+        ]), html.Tr([
+            html.Td([
+                html.H4(html.P(html.Code('contains')), style={'margin': '0'}),
+                dcc.Markdown('Default operator for `text` and `any` columns')
+            ]),
+            html.Td(dcc.Markdown(dedent("""
+            Does the text value contain the requested substring?
+            May match the beginning, end, or anywhere in the middle. The match
+            is case-sensitive and exact.
+            """)))
+        ]), html.Tr([
+            html.Td([
+                html.H4(
+                    html.P(html.Code('datestartswith')),
+                    style={'margin': '0'}),
+                dcc.Markdown('Default operator for `datetime` columns')]),
+            html.Td(dcc.Markdown(dedent("""
+            Does the datetime start with the given parts? Enter a partial
+            datetime, this will match any date that has at least as much
+            precision and starts with the same pieces. For example,
+            `datestartswith '2018-03-01'` will match `'2018-03-01 12:59'` but
+            not `'2018-03'` even though we interpret `'2018-03-01'` and
+            `'2018-03'` both to mean the first instant of March, 2018.
+            """)))
+        ]), html.Tr([
+            html.Td(html.H4(html.P([
+                html.Code('>'), ' ', html.Code('gt'), u' \u00a0 ',
+                html.Code('<'), ' ', html.Code('lt'), html.Br(),
+                html.Code('>='), ' ', html.Code('ge'), u' \u00a0 ',
+                html.Code('<='), ' ', html.Code('le'), html.Br(),
+                html.Code('!='), ' ', html.Code('ne')
+            ]), style={'margin': '0'})),
+            html.Td(dcc.Markdown(dedent("""
+            Comparison: greater than, less than, greater or equal, less or
+            equal, and not equal. Two strings compare by their dictionary
+            order, with numbers and most symbols coming before letters, and
+            uppercase coming before lowercase.
+            """)))
+        ])]),
+        html.Br(),
+
+        dcc.Markdown(dedent("""
+
+        ## Frontend Filtering Example:
+
+        """)),
         dcc.SyntaxHighlighter(
             examples['filtering_fe.py'][0],
             language='python',
@@ -105,11 +133,11 @@ layout = html.Div(
         performing operations in python in the
         [Python Callbacks chapter](/datatable/callbacks).
 
-        The syntax is (now) the same as front-end filtering.
+        The syntax is (now) the same as front-end filtering, but it's up to the
+        developer to implement the logic to apply these filters on the Python
+        side.
         In the future we may accept any filter strings, to allow you to
         write your own expression query language.
-        Either way it's up to the developer to implement the logic to apply
-        these filters on the Python side.
 
         > Note: we're planning on adding a structured query object
         > to make it easier and more robust to manage back-end filter logic.
@@ -117,7 +145,7 @@ layout = html.Div(
         > [dash-table#169](https://github.com/plotly/dash-table/issues/169)
         > for updates.
 
-        Back-end filtering
+        Example:
         """)),
 
         dcc.SyntaxHighlighter(
