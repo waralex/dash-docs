@@ -25,7 +25,8 @@ chapters.dashHtmlComponents <- new.env()
 source('dashr/chapters/dash-html-components/index.R', local=chapters.dashHtmlComponents)
 chapters.external_resources <- new.env()
 source('dashr/chapters/external-resources/index.R', local=chapters.external_resources)
-
+chapters.Whats_dash <- new.env()
+source('dashr/chapters/Whats_dash/introduction.R', local=chapters.Whats_dash)
 
 header <- htmlDiv(
   className = 'header',
@@ -89,6 +90,8 @@ app$callback(output=list(id='chapter', property='children'),
     return(chapters.dashCoreComponents$layout)
   } else if (pathname == '/dash-core-components/dropdown') {
     return(chapters.dccDropdown$layout)
+  } else if(pathname == '/Whats_dash'){
+    return(chapters.Whats_dash$layout)
   } else if (pathname == '/dash-html-components') {
     return(chapters.dashHtmlComponents$layout)
   } else if (pathname == '/external-resources') {
@@ -100,14 +103,14 @@ app$callback(output=list(id='chapter', property='children'),
       htmlH1('DashR User Guide'),
       htmlH2('What\'s Dash?'),
       htmlHr(),
-      htmlA('Introduction',
-            href='https://dash.plot.ly/introduction'),
+      dccLink('Introduction',
+            href='/Whats_dash'),
       htmlBr(),
       dccMarkdown("
 A quick paragraph about Dash and a link to the talk at Plotcon that started it all.
       "),
 
-      dccLink(
+      htmlA(
         'Announcement Essay',
         href='https://medium.com/@plotlygraphs/introducing-dash-5ecf7191b503'
       ),
@@ -125,7 +128,7 @@ An extended discussion of Dash's architecture and our motivation behind the proj
       dccMarkdown("
 A glimpse into what's possible with Dash.
       "),
-      dccLink(
+      htmlA(
         'Dash Club',
         href='https://plot.us12.list-manage.com/subscribe?u=28d7f8f0685d044fb51f0d4ee&id=0c1cb734d7'
       ),
