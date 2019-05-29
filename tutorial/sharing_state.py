@@ -9,6 +9,12 @@ from tutorial import tools
 examples = {
     'filesystem-session-cache': tools.load_example(
         'tutorial/examples/sharing_state_filesystem_sessions.py'
+    ),
+    'sharing-controls-pages': tools.load_example(
+        'tutorial/examples/sharing_controls_state_multi_page.py'
+    ),
+    'sharing-controls-tabs': tools.load_example(
+        'tutorial/examples/sharing_controls_state_tabs.py'
     )
 }
 
@@ -551,5 +557,28 @@ def update_output_1(value):
 
         Questions? Discuss these examples on the
         [Dash Community Forum](https://community.plot.ly/c/dash).
-    '''))
+    ''')),
+
+dcc.Markdown(s('''
+        ***
+
+        ## Example 5 - Persisting User's Component State Between Pages
+        
+        For multi-page and multi-tab apps, it is often desirable to share certain controls from one page
+        layout to the next. By default, Dash will initiate controls to their default value when a new page is
+        rendered but saving the current user's state between pages is possible using Flask Caching. To do this,
+        we explicitly cache the state of components using the [`Cache.get`](https://flask-caching.readthedocs.io/en/latest/#explicitly-caching-data)
+        method. Controls are cached using a unique session ID (like the one used in example 4 above) to ensure
+        that each user will only save the state of their current browser session.
+
+        ''')),
+
+    Syntax(
+        examples['sharing-controls-pages'][0],
+        summary="Here's an example which persists user's component state between pages:"
+    ),
+    Syntax(
+        examples['sharing-controls-tabs'][0],
+        summary="Here's an example which persists user's component state between tabs:"
+    )
 ])
