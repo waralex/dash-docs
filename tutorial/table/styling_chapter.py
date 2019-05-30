@@ -389,7 +389,7 @@ layout = html.Div(
                 {
                     'if': {
                         'column_id': 'Region',
-                        'filter': 'Region eq "Montreal"'
+                        'filter': '{Region} eq "Montreal"'
                     },
                     'backgroundColor': '#3D9970',
                     'color': 'white',
@@ -397,7 +397,7 @@ layout = html.Div(
                 {
                     'if': {
                         'column_id': 'Humidity',
-                        'filter': 'Humidity eq num(20)'
+                        'filter': '{Humidity} eq 20'
                     },
                     'backgroundColor': '#3D9970',
                     'color': 'white',
@@ -405,7 +405,7 @@ layout = html.Div(
                 {
                     'if': {
                         'column_id': 'Temperature',
-                        'filter': 'Temperature > num(3.9)'
+                        'filter': '{Temperature} > 3.9'
                     },
                     'backgroundColor': '#3D9970',
                     'color': 'white',
