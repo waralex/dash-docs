@@ -5,9 +5,9 @@ library(dashR)
 utils <- new.env()
 source('dashr/utils.R', local=utils)
 
-#examples <- list(
-#  last_clicked_button=utils$LoadExampleCode('dashr/chapters/faq-gotchas/examples/last_clicked_button.R')
-#)
+examples <- list(
+ last_clicked_button=utils$LoadExampleCode('dashr/chapters/faq-gotchas/examples/last_clicked_button.R')
+)
 
 
 
@@ -70,36 +70,45 @@ and URL Support](/urls) section in the Dash User Guide.
 
 **Q:** *How do I determine which `Input` has changed?*
 
-**A:** In addition to the `n_clicks` property (which tracks the number of
-times a component has been clicked), all `dash-html-components` have an
-`n_clicks_timestamp` property, which records the time that the component was
-last clicked. This provides a convenient way for detecting which
-`htmlButton` was clicked in order to trigger the current callback. Here's
-an example of how this can be done:
-  "),
+**A:** New in [0.0.7-debug](https://github.com/plotly/dashR/tree/0.0.7-debug). 
+In addition to event properties like `n_clicks` that change whenever 
+an event happens (in this case a click), there is a global variable 
+`app$callback_context()`, available only inside a callback. It has properties:
 
-  #example of last_clicked_button
-  #examples$last_clicked_button$source,
-  #examples$last_clicked_button$layout,
+  - `triggered`:  list of changed properties. 
+This will be empty on initial load, unless an `Input` prop got its value from 
+another initial callback. 
+After a user action it is a length-1 list, 
+unless two properties of a single component update simultaneously, 
+such as a value and a timestamp or event counter.
+
+   - `inputs` and `states`: allow you to access the callback params by id and prop instead of through the function args. 
+These have the form of dictionarie `app$callback_context()$triggered$value`
+
+Here's an example of how this can be done:
+  "),
+  examples$last_clicked_button$source,
+  examples$last_clicked_button$layout,
+ 
+  # ------------------------
+  # 
+  # **Q:** *Can I use Jinja2 templates with Dash?*
+  # 
+  # **A:** Jinja2 templates are rendered on the server (often in a Flask app)
+  # before being sent to the client as HTML pages. Dash apps, on the other
+  # hand, are rendered on the client using React. This makes these
+  # fundamentally different approaches to displaying HTML in a browser, which
+  # means the two approaches can't be combined directly. You can however
+  # integrate a Dash app with an existing Flask app such that the Flask app
+  # handles some URL endpoints, while your Dash app lives at a specific
+  # URL endpoint.
   
   dccMarkdown("
-Note that `n_clicks` is the only property that has this timestamp
-property. We will add general support for \"determining which input changed\"
-in the future, you can track our progress in this [GitHub
-Issue](https://github.com/plotly/dash/issues/291).
-
-------------------------
-
-**Q:** *Can I use Jinja2 templates with Dash?*
-
-**A:** Jinja2 templates are rendered on the server (often in a Flask app)
-before being sent to the client as HTML pages. Dash apps, on the other
-hand, are rendered on the client using React. This makes these
-fundamentally different approaches to displaying HTML in a browser, which
-means the two approaches can't be combined directly. You can however
-integrate a Dash app with an existing Flask app such that the Flask app
-handles some URL endpoints, while your Dash app lives at a specific
-URL endpoint.
+you needed to compare timestamp properties 
+like `n_clicks_timestamp` to find the most recent click. 
+While existing uses of `*_timestamp` continue to work for now, this approach is deprecated, 
+and may be removed in a future update. The one exception is `modified_timestamp` from `dccStore`, 
+which is safe to use, it is NOT deprecated.
 
 ------------------------
 
@@ -184,10 +193,10 @@ in this [GitHub Issue](https://github.com/plotly/dash/issues/149).
 For a given component/property pair (eg `'my-graph'`, `'figure'`), it can
 only be registered as the `Output` of one callback. If you want to associate
 two logically separate sets of `Inputs` with the one output
-component/property pair, you’ll have to bundle them up into a larger
+component/property pair, you'll have to bundle them up into a larger
 callback and detect which of the relevant `Inputs` triggered the callback
 inside the function. For `htmlButton` elements, detecting which one
-triggered the callback ca be done using the `n_clicks_timestamp`
+triggered the callback can be done using the `n_clicks_timestamp`
 property. For an example of this, see the question in the FAQ, *How do I
 determine which `Input` has changed?*.
 
