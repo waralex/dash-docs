@@ -138,7 +138,6 @@ layout = html.Div(className='gallery', children=[
             img_src='assets/images/gallery/dash-financial-report.gif',
             description='''
             This app recreates the look and feel of a financial report.
-
             The charts in the report on the web version are interactive.
             You can hover over points to see their values and zoom into
             regions. Since this report was built on top of Dash, you could
