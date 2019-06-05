@@ -34,26 +34,30 @@ LoadExampleCode <- function(filename) {
   # run the example and implicitly assign the `layout` variable
   eval(parse(text=example.ready.for.eval))
 
-  return(list(
+  list(
     layout=htmlDiv(className='example-container', children=layout),
     source_code=htmlDiv(
       children=dccSyntaxHighlighter(example.file.as.string),
       className='code-container'
     )
-  ))
+  )
 }
 
 LoadAndDisplayComponent <- function(example_string) {
-  return(htmlDiv(list(
+  return(
     htmlDiv(
-      children=dccSyntaxHighlighter(example_string),
-      className='code-container'
-    ),
-    htmlDiv(
-      className='example-container',
-      children=eval(parse(text=example_string))
+      list(
+        htmlDiv(
+          children=dccSyntaxHighlighter(example_string),
+          className='code-container'
+        ),
+        htmlDiv(
+          className='example-container',
+          children=eval(parse(text=example_string))
+        )
+      )
     )
-  )))
+  )
 }
 
 
