@@ -25,7 +25,7 @@ layout <- htmlDiv(list(
 > Make sure to
 > [install the necessary dependencies](/installation).
 
-In the previous chapter on [basic Dash callbacks](/getting-started),
+In the previous chapter on [basic Dash callbacks](/getting-started-part-2),
 our callbacks looked something like:
 "),
 
@@ -35,13 +35,13 @@ our callbacks looked something like:
 
   dccMarkdown("
 In this example, the callback function is fired whenever any of the
-attributes described by the `dash.dependencies.Input` change.
+attributes described by the `Input` change.
 Try it for yourself by entering data in the inputs above.
 
-`dash.dependencies.State` allows you to pass along extra values without
+`State` allows you to pass along extra values without
 firing the callbacks. Here's the same example as above but with the
-`dccInput` as `dash.dependencies.State` and a button as
-`dash.dependencies.Input`.    
+`dccInput` as `State` and a button as
+`Input`.    
   "),
   
   #example of one input and two states
@@ -73,5 +73,10 @@ respond to interactions with graphs on the page.
   dccLink(
     'Dash Tutorial Part 5. Interactive Graphing',
     href='/graph-crossfiltering'
-  )
+  ),
+  
+  htmlHr(),
+  dccMarkdown("
+[Back to the Table of Contents](/)
+              ")
 ))
