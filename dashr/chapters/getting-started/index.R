@@ -234,7 +234,7 @@ For reference, see:
 The next part of the Dash tutorial covers how to make these apps interactive.
 
 Dash Tutorial Part 3: Basic Callbacks
-[Back to the Table of Contents](/getting-started-part-2)
+[Dash Tutorial Part 3: Basic Callbacks](/getting-started-part-2)
   "),
   
   htmlHr(),
