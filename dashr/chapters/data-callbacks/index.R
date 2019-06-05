@@ -20,7 +20,7 @@ layout <- htmlDiv(
 # Sharing State Between Callbacks
 > This is the 6th chapter of the essential [Dash Tutorial](https://dashr-docs.herokuapp.com/). The [previous chapter](https://dashr-docs.herokuapp.com/graph-crossfiltering)
 > covered how to use callbacks with the `dashCoreComponents.Graph` component.
-> The [rest of the Dash documentation](https://dashr-docs.herokuapp.com/) covers other topics like multi-page apps and component libraries.
+> The rest of the Dash documentation covers other topics like multi-page apps and component libraries.
 > Just getting started? Make sure to [install the necessary dependencies](https://dashr-docs.herokuapp.com/installation).
 > The [next and final chapter](https://dashr-docs.herokuapp.com/faq-gotchas) covers frequently asked questions and gotchas.
 
@@ -61,7 +61,7 @@ If your app uses modified `global` variables,
 then one user's session could set the variable to one value
 which would affect the next user's session.
 
-Dash is also designed to be able to run with **multiple python
+Dash is also designed to be able to run with **multiple R
 workers** so that callbacks can be executed in parallel.
 This is commonly done with `gunicorn` using syntax like
 ```
@@ -81,7 +81,7 @@ applied to the rest of the workers.
     "),
     dccMarkdown("
 Here is a sketch of an app with a callback that modifies data out of it's scope. 
-This type of pattern **will not work reliably** for the reasons outlined above.
+This type of pattern *will not work reliably* for the reasons outlined above.
 
 ```
 library(dashR)
@@ -345,96 +345,99 @@ app$callback(
                 
     "),
     dccMarkdown("
-## Example 3 - Computing Aggregations Upfront
-
-This example:
-
-- Uses Redis via Flask-Cache for storing 'global variables'. 
-This data is accessed through a function, the output of which is cached and keyed by 
-its input arguments.
-
-- Uses the hidden div solution to send a signal to the other callbacks when the expensive 
-computation is complete.
-
-- Note that instead of Redis, you could also save this to the file system. 
-See https://flask-caching.readthedocs.io/en/latest/ for more details.
-
-- This 'signaling' is cool because it allows the expensive computation to only take up one process.
-Without this type of signaling, each callback could end up computing the expensive 
-computation in parallel, locking four processes instead of one.  
-
-This approach is also advantageous in that future sessions can use the pre-computed value. 
-This will work well for apps that have a small number of inputs.
-
-Here's what this example looks like. Some things to note:
-
-- I've simulated an expensive process by using a time.sleep(5).
-
-- When the app loads, it takes five seconds to render all four graphs.
-
-- The initial computation only blocks one process.
-
-- Once the computation is complete, the signal is sent and four callbacks are executed in parallel to render the graphs. Each of these callbacks retrieves the data from the 'global store': the Redis or filesystem cache.
-
-- I've set processes=6 in app.run_server so that multiple callbacks can be executed in parallel. In production, this is done with something like $ gunicorn --workers 6 --threads 2 app:server
-
-- Selecting a value in the dropdown will take less than five seconds if it has already been selected in the past. This is because the value is being pulled from the cache.
-
-- Similarly, reloading the page or opening the app in a new window is also fast because the initial state and the initial expensive computation has already been computed.
-  
-Here's what this example looks like in code:
-
-
-            "),
-    examples$ex3$source,
-    # examples$ex3$layout,
-    dccMarkdown("
-## Example 4 - User-Based Session Data on the Server
-
-The previous example cached computations on the filesystem and those computations were accessible for all users.
-
-In some cases, you want to keep the data isolated to user sessions: 
-one user's derived data shouldn't update the next user's derived data. 
-One way to do this is to save the data in a hidden Div, as demonstrated in the first example.
-
-Another way to do this is to save the data on the filesystem cache with a session ID and 
-then reference the data using that session ID. Because data is saved on the server instead of 
-transported over the network, this method is generally faster than the 'hidden div' method.
-
-This example was originally discussed in a [Dash Community Forum thread](https://community.plot.ly/t/capture-window-tab-closing-event/7375/2?u=chriddyp&_ga=2.196163180.1151030971.1558964279-1541667138.1549398001).
-
-This example:
-
-- Caches data using the flask_caching filesystem cache. 
-You can also save to an in-memory database like Redis.
-
-- Serializes the data as JSON. If you are using Pandas, consider serializing with Apache Arrow. [Community thread](https://community.plot.ly/t/fast-way-to-share-data-between-callbacks/8024/2?_ga=2.196163180.1151030971.1558964279-1541667138.1549398001)
-
-- Saves session data up to the number of expected concurrent users. This prevents the cache from being overfilled with data.
-
-- Creates unique session IDs by embedding a hidden random string into the app's layout and serving a unique layout on every page load.
-
-> Note: As with all examples that send data to the client, be aware that these 
-> sessions aren't necessarily secure or encrypted. These session IDs may be 
-> vulnerable to [Session Fixation](https://en.wikipedia.org/wiki/Session_fixation) style attacks.
-
-Here's what this example looks like in code:
-      "),
-    examples$ex4$source,
-    # examples$ex4$layout,
-    dccMarkdown("
-There are three things to notice in this example:
-
-- The timestamps of the dataframe don't update when we retrieve the data. This data is cached as part of the user's session.
-
-- Retrieving the data initially takes five seconds but successive queries are instant, as the data has been cached.
-
-- The second session displays different data than the first session: the data that is shared between callbacks is isolated to individual user sessions.
-
-Questions? Discuss these examples on the [Dash Community Forum](https://community.plot.ly/c/dash?_ga=2.220271960.1151030971.1558964279-1541667138.1549398001).
-"),
-    dccMarkdown("
 [Back to the Table of Contents](https://dashr-docs.herokuapp.com/)
             ")
   )
 )
+
+
+# ,
+# dccMarkdown("
+#             ## Example 3 - Computing Aggregations Upfront
+#             
+#             This example:
+#             
+#             - Uses Redis via Flask-Cache for storing 'global variables'. 
+#             This data is accessed through a function, the output of which is cached and keyed by 
+#             its input arguments.
+#             
+#             - Uses the hidden div solution to send a signal to the other callbacks when the expensive 
+#             computation is complete.
+#             
+#             - Note that instead of Redis, you could also save this to the file system. 
+#             See https://flask-caching.readthedocs.io/en/latest/ for more details.
+#             
+#             - This 'signaling' is cool because it allows the expensive computation to only take up one process.
+#             Without this type of signaling, each callback could end up computing the expensive 
+#             computation in parallel, locking four processes instead of one.  
+#             
+#             This approach is also advantageous in that future sessions can use the pre-computed value. 
+#             This will work well for apps that have a small number of inputs.
+#             
+#             Here's what this example looks like. Some things to note:
+#             
+#             - I've simulated an expensive process by using a time.sleep(5).
+#             
+#             - When the app loads, it takes five seconds to render all four graphs.
+#             
+#             - The initial computation only blocks one process.
+#             
+#             - Once the computation is complete, the signal is sent and four callbacks are executed in parallel to render the graphs. Each of these callbacks retrieves the data from the 'global store': the Redis or filesystem cache.
+#             
+#             - I've set processes=6 in app.run_server so that multiple callbacks can be executed in parallel. In production, this is done with something like $ gunicorn --workers 6 --threads 2 app:server
+#             
+#             - Selecting a value in the dropdown will take less than five seconds if it has already been selected in the past. This is because the value is being pulled from the cache.
+#             
+#             - Similarly, reloading the page or opening the app in a new window is also fast because the initial state and the initial expensive computation has already been computed.
+#             
+#             Here's what this example looks like in code:
+#             
+#             
+#             "),
+# examples$ex3$source,
+# # examples$ex3$layout,
+# dccMarkdown("
+#             ## Example 4 - User-Based Session Data on the Server
+#             
+#             The previous example cached computations on the filesystem and those computations were accessible for all users.
+#             
+#             In some cases, you want to keep the data isolated to user sessions: 
+#             one user's derived data shouldn't update the next user's derived data. 
+#             One way to do this is to save the data in a hidden Div, as demonstrated in the first example.
+#             
+#             Another way to do this is to save the data on the filesystem cache with a session ID and 
+#             then reference the data using that session ID. Because data is saved on the server instead of 
+#             transported over the network, this method is generally faster than the 'hidden div' method.
+#             
+#             This example was originally discussed in a [Dash Community Forum thread](https://community.plot.ly/t/capture-window-tab-closing-event/7375/2?u=chriddyp&_ga=2.196163180.1151030971.1558964279-1541667138.1549398001).
+#             
+#             This example:
+#             
+#             - Caches data using the flask_caching filesystem cache. 
+#             You can also save to an in-memory database like Redis.
+#             
+#             - Serializes the data as JSON. If you are using Pandas, consider serializing with Apache Arrow. [Community thread](https://community.plot.ly/t/fast-way-to-share-data-between-callbacks/8024/2?_ga=2.196163180.1151030971.1558964279-1541667138.1549398001)
+#             
+#             - Saves session data up to the number of expected concurrent users. This prevents the cache from being overfilled with data.
+#             
+#             - Creates unique session IDs by embedding a hidden random string into the app's layout and serving a unique layout on every page load.
+#             
+#             > Note: As with all examples that send data to the client, be aware that these 
+#             > sessions aren't necessarily secure or encrypted. These session IDs may be 
+#             > vulnerable to [Session Fixation](https://en.wikipedia.org/wiki/Session_fixation) style attacks.
+#             
+#             Here's what this example looks like in code:
+#             "),
+# examples$ex4$source,
+# # examples$ex4$layout,
+# dccMarkdown("
+#             There are three things to notice in this example:
+#             
+#             - The timestamps of the dataframe don't update when we retrieve the data. This data is cached as part of the user's session.
+#             
+#             - Retrieving the data initially takes five seconds but successive queries are instant, as the data has been cached.
+#             
+#             - The second session displays different data than the first session: the data that is shared between callbacks is isolated to individual user sessions.
+#             
+#             Questions? Discuss these examples on the [Dash Community Forum](https://community.plot.ly/c/dash?_ga=2.220271960.1151030971.1558964279-1541667138.1549398001).
+#             ")
