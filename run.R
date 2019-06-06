@@ -1,7 +1,10 @@
+setwd('/Users/kevinphan/desktop/dashdocs/dash-docs')
+
 source('app.R')
 library(dashR)
 library(dashCoreComponents)
 library(dashHtmlComponents)
+library(jsonlite)
 
 chapters.installation <- new.env()
 source('dashr/chapters/installation/index.R', local=chapters.installation)
@@ -11,8 +14,8 @@ chapters.callbacks <- new.env()
 source('dashr/chapters/callbacks/index.R', local=chapters.callbacks)
 chapters.state <- new.env()
 source('dashr/chapters/state/index.R', local=chapters.state)
-#chapters.graph_crossfiltering <- new.env()
-#source('dashr/chapters/graph-crossfiltering/index.R', local=chapters.graph_crossfiltering)
+chapters.graph_crossfiltering <- new.env()
+source('dashr/chapters/graph-crossfiltering/index.R', local=chapters.graph_crossfiltering)
 chapters.data_callbacks <- new.env()
 source('dashr/chapters/data-callbacks/index.R', local=chapters.data_callbacks)
 chapters.faq_gotchas <- new.env()
@@ -25,7 +28,8 @@ chapters.dashHtmlComponents <- new.env()
 source('dashr/chapters/dash-html-components/index.R', local=chapters.dashHtmlComponents)
 chapters.external_resources <- new.env()
 source('dashr/chapters/external-resources/index.R', local=chapters.external_resources)
-
+chapters.Whats_dash <- new.env()
+source('dashr/chapters/Whats_dash/introduction.R', local=chapters.Whats_dash)
 
 header <- htmlDiv(
   className = 'header',
@@ -89,6 +93,8 @@ app$callback(output=list(id='chapter', property='children'),
     return(chapters.dashCoreComponents$layout)
   } else if (pathname == '/dash-core-components/dropdown') {
     return(chapters.dccDropdown$layout)
+  } else if(pathname == '/Whats_dash'){
+    return(chapters.Whats_dash$layout)
   } else if (pathname == '/dash-html-components') {
     return(chapters.dashHtmlComponents$layout)
   } else if (pathname == '/external-resources') {
@@ -100,14 +106,14 @@ app$callback(output=list(id='chapter', property='children'),
       htmlH1('DashR User Guide'),
       htmlH2('What\'s Dash?'),
       htmlHr(),
-      htmlA('Introduction',
-            href='https://dash.plot.ly/introduction'),
+      dccLink('Introduction',
+            href='/Whats_dash'),
       htmlBr(),
       dccMarkdown("
 A quick paragraph about Dash and a link to the talk at Plotcon that started it all.
       "),
 
-      dccLink(
+      htmlA(
         'Announcement Essay',
         href='https://medium.com/@plotlygraphs/introducing-dash-5ecf7191b503'
       ),
@@ -125,7 +131,7 @@ An extended discussion of Dash's architecture and our motivation behind the proj
       dccMarkdown("
 A glimpse into what's possible with Dash.
       "),
-      dccLink(
+      htmlA(
         'Dash Club',
         href='https://plot.us12.list-manage.com/subscribe?u=28d7f8f0685d044fb51f0d4ee&id=0c1cb734d7'
       ),
@@ -170,15 +176,15 @@ Basic callbacks are fired whenever the values change.
 Use Dash `State` with Dash `Inputs` to pass in extra values whenever the `Inputs` change.
 `State` is useful for UIs that contain forms or buttons.
     "),
-      #htmlBr(),
-      #dccLink(
-      #  'Part 5. Interactive Graphing and Crossfiltering',
-      #  href='/graph-crossfiltering'
-      #),
-      #dccMarkdown("
-#Bind interactivity to the Dash `Graph` component whenever you hover, click,
-#or select points on your chart.
-      #"),
+      htmlBr(),
+      dccLink(
+        'Part 5. Interactive Graphing and Crossfiltering',
+        href='/graph-crossfiltering'
+      ),
+      dccMarkdown("
+Bind interactivity to the Dash `Graph` component whenever you hover, click,
+or select points on your chart.
+      "),
       htmlBr(),
       dccLink(
         'Part 6. Sharing Data Between Callbacks',
