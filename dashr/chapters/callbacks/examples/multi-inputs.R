@@ -5,7 +5,10 @@ library(dplyr)
 
 app <- Dash$new()
 
-df <- read.csv('https://gist.githubusercontent.com/chriddyp/cb5392c35661370d95f300086accea51/raw/8e0768211f6b747c0db42a9ce9a0937dafcbd8b2/indicators.csv')
+df <- read.csv(
+  file = 'https://gist.githubusercontent.com/chriddyp/cb5392c35661370d95f300086accea51/raw/8e0768211f6b747c0db42a9ce9a0937dafcbd8b2/indicators.csv',
+  stringsAsFactor=FALSE
+)
 
 available_indicators <- unique(df$Indicator.Name)
 years <- unique(df$Year)
@@ -77,9 +80,9 @@ app$callback(
                     Indicator.Name %in% c(xaxis_column_name, 
                                           yaxis_column_name))  %>% 
       droplevels() %>% 
-      split(., .$Indicator.Name) -> splited_data
+      split(., .$Indicator.Name) -> data_by_indicator
     
-    merge(splited_data[[1]], splited_data[[2]], by = "Country.Name") %>%
+    merge(data_by_indicator[[1]], data_by_indicator[[2]], by = "Country.Name") %>%
       dplyr::transmute(x = Value.x, y = Value.y, text = Country.Name) %>%
       na.omit() %>%
       as.list() -> filtered_df

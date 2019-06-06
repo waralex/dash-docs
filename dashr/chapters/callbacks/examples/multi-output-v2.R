@@ -6,7 +6,7 @@ app <- Dash$new()
 
 all_options = list(
   'America' = list('New York City', 'San Francisco', 'Cincinnati'),
-  'Canada' = list('Montreal', 'Toronto', 'Ottawa')
+  'Canada' = list('Montr\U{00E9}al', 'Toronto', 'Ottawa')
 )
 
 app$layout(

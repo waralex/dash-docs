@@ -4,7 +4,11 @@ library(dashHtmlComponents)
 
 app <- Dash$new()
 
-df <- read.csv(url("https://raw.githubusercontent.com/plotly/datasets/master/gapminderDataFiveYear.csv"))
+df <- read.csv(
+  file = "https://raw.githubusercontent.com/plotly/datasets/master/gapminderDataFiveYear.csv",
+  stringsAsFactor=FALSE,
+  check.names=FALSE
+)
 
 continents <- unique(df$continent)
 years <- unique(df$year)
@@ -25,15 +29,13 @@ app$layout(
   )
 )
 
-
-
 app$callback(
   output = list(id='graph-with-slider', property='figure'),
   params = list(input(id='year-slider', property='value')),
   
-  function(indice_selected_year) {
+  function(selected_year_index) {
     
-    which_year_is_selected <- which(df$year == years[indice_selected_year + 1])
+    which_year_is_selected <- which(df$year == years[selected_year_index + 1])
     
     traces <- lapply(continents,
                      function(cont) {

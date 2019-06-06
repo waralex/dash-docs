@@ -28,7 +28,6 @@ app$layout(
   )
 )
 
-
 app$callback(
   output=list(id='output-a', property='children'),
   params=list(input(id='dropdown-a', property='value')),

@@ -1,6 +1,6 @@
+library(dashR)
 library(dashCoreComponents)
 library(dashHtmlComponents)
-library(dashR)
 
 utils <- new.env()
 source('dashr/utils.R', local=utils)
@@ -28,9 +28,9 @@ layout <- htmlDiv(
 In the [previous chapter on the app `layout`](/getting-started) we learned
 that the `app$layout()` describes what the app looks like and is
 a hierarchical tree of components.
-The `dashHtmlComponents` library provides classes for all of the HTML
+The `dashHtmlComponents` package provides classes for all of the HTML
 tags, and the keyword arguments describe the HTML attributes like `style`,
-`className`, and `id`. The `dashCoreComponents` library
+`className`, and `id`. The `dashCoreComponents` package
 generates higher-level components like controls and graphs.
 
 This chapter describes how to make your
@@ -58,11 +58,11 @@ Let's get started with a simple example.
     examples$simple.callbacks$layout,
     
     dccMarkdown("
-Try typing in the text box. The children of the output component updates
+Try typing in the text box. The children property of the output component updates
 right away. Let's break down what's happening here:
 
 1.The \"inputs\" and \"outputs\" of our application interface are described
-declaratively through the `app$callback` decorator.
+declaratively through the `app$callback` handler.
 
 2.In Dash, the inputs and outputs of our application are simply the
 properties of a particular component. In this example,
@@ -71,7 +71,7 @@ our input is the \"`value`\" property of the component that has the ID
 component with the ID \"`my-div`\".
 
 3.Whenever an input property changes, the function that the
-callback decorator wraps will get called automatically.
+callback handler wraps will get called automatically.
 Dash provides the function with the new value of the input property as
 an input argument and Dash updates the property of the output component
 with whatever was returned by the function.
@@ -81,8 +81,8 @@ with whatever was returned by the function.
 I have included them here for clarity but I will omit them from here on
 out for brevity and readability.
 
-5.Don't confuse the `dashR::Input` object from the
-`dashCoreComponents` `Input` object. The former is just used in these
+5.Don't confuse the `dashR::input` object from the
+`dashCoreComponents::dccInput` object. The former is just used in these
 callbacks and the latter is an actual component.
 
 6.Notice how we don't set a value for the `children` property of the
@@ -117,23 +117,23 @@ Let's take a look at another example where a `dccSlider` updates a
     examples$simple.slider$layout,
     
     dccMarkdown("
-In this example, the `value` property of the `Slider` is the input of the app
-and the output of the app is the `figure` property of the `Graph`.
-Whenever the `value` of the `Slider` changes, Dash calls the callback
+In this example, the `value` property of the `dccSlider` is the input of the app
+and the output of the app is the `figure` property of the `dccGraph`.
+Whenever the `value` of the `dccSlider` changes, Dash calls the callback
 function `update_figure` with the new value. The function filters the
 dataframe with this new value, constructs a `figure` object,
 and returns it to the Dash application.
 
 There are a few nice patterns in this example:
 
-1.We load our dataframe at the start of the app: `df = read.csv('...')`.
+1.We load our dataframe at the start of the app: `df <- read.csv('...')`.
 This dataframe `df` is in the global state of the app and can be
 read inside the callback functions.
 
-2.Loading data into memory can be expensive. By loading querying data at
+2.Load data into memory can be expensive. By loading querying data at
 the start of the app instead of inside the callback functions, we ensure
 that this operation is only done when the app server starts. When a user
-visits the app or interacts with the app, that data (the `df`)
+visits the app or interacts with the app, that data (`df`)
 is already in memory.
 If possible, expensive initialization (like downloading or querying data)
 should be done in the global scope of the app instead of within the
@@ -144,17 +144,17 @@ of the dataframe.
 This is important: *your callbacks should never mutate variables
 outside of their scope*. If your callbacks modify global state, then one
 user's session might affect the next user's session and when the app is
-deployed on multiple processes or threads, those modifications will not
+deployed on multiple processes or threads, those modifications will *not*
 be shared across sessions.
 
 #### Multiple inputs
 
-In Dash, any `Output` can have multiple `Input` components.
+In Dash, any `output` can have multiple `input` components.
 Here's a simple example that binds five Inputs
-(the `value` property of two `Dropdown` components, two `RadioItems` components,
-and one `Slider` component) to one Output component
-(the `figure` property of the `Graph` component).
-Notice how the `app$callback` lists all five `Input` inside
+(the `value` property of two `dccDropdown` components, two `dccRadioItems` components,
+and one `dccSlider` component) to one output component
+(the `figure` property of the `dccGraph` component).
+Notice how the `app$callback` lists all five `input` inside
 a list in the second argument.
 "),
     
@@ -164,15 +164,15 @@ a list in the second argument.
     
     dccMarkdown("
 In this example, the `callback` function is activated whenever the
-`value` property of the `Dropdown`, `Slider`, or `RadioItems` components
+`value` property of the `dccDropdown`, `dccSlider`, or `dccRadioItems` components
 change.
 
-The input arguments are the new or current value of each of the `Input` properties, in the order that they were
+The input arguments are the new or current value of each of the `input` properties, in the order that they were
 specified.
 
-Even though only a single `Input` changes at a time (a user can only change
+Even though only a single `input` changes at a time (a user can only change
 the value of a single Dropdown in a given moment), Dash collects the current
-state of all of the specified `Input` properties and passes them into your
+state of all of the specified `input` properties and passes them into your
 function for you. Your callback functions are always guaranteed to be passed
 the representative state of the app.
 
@@ -180,7 +180,7 @@ Let's extend our example to include multiple outputs.
 
 #### Multiple Outputs
 
-Each Dash callback function can only update a single Output property.
+Each Dash callback function can only update a single output property.
 To update multiple Outputs, just write multiple functions.
   "),
     
@@ -202,17 +202,17 @@ Here's a simple example.
     examples$multi.output2$layout,
     
     dccMarkdown("
-The first callback updates the available options in the second `RadioItems`
-component based off of the selected value in the first `RadioItems` component.
+The first callback updates the available options in the second `dccRadioItems`
+component based off of the selected value in the first `dccRadioItems` component.
 
 The second callback sets an initial value when the `options` property changes:
 it sets it to the first value in that `options` array.
 
 The final callback displays the selected `value` of each component.
-If you change the `value` of the countries `RadioItems` component, Dash
+If you change the `value` of the countries `dccRadioItems` component, Dash
 will wait until the `value` of the cities component is updated
 before calling the final callback. This prevents your callbacks from being
-called with inconsistent state like with `\"USA\"` and `\"Montreal\"`.
+called with inconsistent state like with `\"USA\"` and `\"Montr\U{00E9}al\"`.
   "),
     
     dccMarkdown("
@@ -231,7 +231,7 @@ the `dccDropdown`, are editable by the user in the interface.
     
     dccMarkdown("
 The next part of the Dash tutorial covers an additional concept of
-Dash callbacks: `State`
+Dash callbacks: `state`
   "),
     
     dccLink(
@@ -241,7 +241,7 @@ Dash callbacks: `State`
     
     htmlHr(),
     dccMarkdown("
-                [Back to the Table of Contents](/)
+[Back to the Table of Contents](/)
                 ")
   )
 )
