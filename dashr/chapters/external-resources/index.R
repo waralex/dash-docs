@@ -126,5 +126,11 @@ When you run `app.py`, your app should look something like this:
 (Note that there may be some slight differences in appearance as
 the CSS from this Dash User Guide is applied to all of these embedded
 examples.)
-    ")
+    "),
+
+htmlHr(),
+dccMarkdown("
+[Back to the Table of Contents](/)
+              ")
+
 ))
