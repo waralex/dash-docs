@@ -61,15 +61,8 @@ If your app uses modified `global` variables,
 then one user's session could set the variable to one value
 which would affect the next user's session.
 
-Dash is also designed to be able to run with **multiple R
+Dash is also designed to be able to run with **multiple
 workers** so that callbacks can be executed in parallel.
-This is commonly done with `gunicorn` using syntax like
-```
-$ gunicorn --workers 4 app:server
-```
-
-(`app` refers to a file named `app.py` and `server` refers to a variable
-in that file named `server`: `server = app.server`).
 
 When Dash apps run across multiple workers, their memory
 _is not shared_. This means that if you modify a global
@@ -82,113 +75,29 @@ applied to the rest of the workers.
     dccMarkdown("
 Here is a sketch of an app with a callback that modifies data out of it's scope. 
 This type of pattern *will not work reliably* for the reasons outlined above.
-
-```
-library(dashR)
-library(dashCoreComponents)
-library(dashHtmlComponents)
-
-app <- Dash$new()
-
-df <- data.frame(
-  a = c(1,2,3),
-  b = c(4,1,4),
-  c = c('x', 'y', 'z'),
-  stringsAsFactors=FALSE
-)
-
-app$layout(
-  htmlDiv(
-    list(
-      dccDropdown(
-        id = 'dropdown',
-        options = list(
-          list(label = 'x', value = 'x'),
-          list(label = 'y', value = 'y'),
-          list(label = 'z', value = 'z')
-        ),
-        value = 'x'
-      ),
-      htmlDiv(id='output')
-    )
-  )
-)
-
-
-app$callback(output('output', 'children'),
-             list(input('dropdown', 'value')),
-             function(val) {
-               # Here, `df` is an example of a variable that is
-               # 'outside the scope of this function'.
-               # *It is not safe to modify or reassign this variable
-               #  inside this callback.*
-               df <<- lapply(df, `[[`, which(df$c == val)) # do not do this, this is not safe!
-               sprintf(paste(c('the output is', unlist(df))))
-             })
-
-app$run_server()
-```
               "),
+    
+    examples$scopping_wrong$source_code,
+    
     dccMarkdown("
 To fix this example, simply re-assign the filter to a new variable inside the callback, 
 or follow one of the strategies outlined in the next part of this guide.
-
-```
-library(dashR)
-library(dashCoreComponents)
-library(dashHtmlComponents)
-
-app <- Dash$new()
-
-df <- data.frame(
-  a = c(1,2,3),
-  b = c(4,1,4),
-  c = c('x', 'y', 'z'),
-  stringsAsFactors=FALSE
-)
-
-app$layout(
-  htmlDiv(
-    list(
-      dccDropdown(
-        id = 'dropdown',
-        options = list(
-          list(label = 'x', value = 'x'),
-          list(label = 'y', value = 'y'),
-          list(label = 'z', value = 'z')
-        ),
-        value = 'x'
-      ),
-      htmlDiv(id='output')
-    )
-  )
-)
-
-
-app$callback(output('output', 'children'),
-             list(input('dropdown', 'value')),
-             function(val) {
-               filtered_df <- lapply(df, `[[`, which(df$c == val))
-               sprintf(paste(c('the output is', unlist(filtered_df))))
-             })
-
-app$run_server()
-```
               "),
+    
+    examples$scopping$source_code,
+    
     dccMarkdown("
 ## Sharing Data Between Callbacks
 
-In order to share data safely across multiple python processes, we need to store the data somewhere that is accessible to each of the processes.
+In order to share data safely across multiple R processes, we need to store the data somewhere that is accessible to each of the processes.
 
-There are three main places to store this data:
+There are two main places to store this data:
 
 1 - In the user's browser session
 
 2 - On the disk (e.g. on a file or on a new database)
 
-3 - In a shared memory space like with Redis
-
-The following three examples illustrate these approaches.
+The following examples illustrate these approaches.
 
 ## Example 1 - Storing Data in the Browser with a Hidden Div
 
@@ -344,9 +253,11 @@ app$callback(
 ```
                 
     "),
-    dccMarkdown("
-[Back to the Table of Contents](https://dashr-docs.herokuapp.com/)
-            ")
+
+htmlHr(),
+dccMarkdown("
+[Back to the Table of Contents](/)
+              ")
   )
 )
 

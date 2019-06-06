@@ -38,7 +38,12 @@ app$layout(
     list(
       dccDropdown(
         id = 'dropdown',
-        options = lapply(unique(df$category), function(cate) list(label = cate, value = cate)),
+        options = list(
+          list(label = "apples", value = "apples"),
+          list(label = "oranges", value = "oranges"),
+          list(label = "figs", value = "figs"),
+          list(label = "pineapples", value = "pineapples")
+        ),
         value = 'apples'
       ),
       htmlDiv(
@@ -69,7 +74,6 @@ global_store <- function(value) {
 }
 
 generate_figure <- function(value, figure) {
-  # TODO: fig = copy.deepcopy(figure)
   fig <- figure
   filtered_dataframe <- global_store(value)
   fig$data[[1]]$x <- filtered_dataframe$x
