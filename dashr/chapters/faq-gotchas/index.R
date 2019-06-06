@@ -1,6 +1,6 @@
+library(dashR)
 library(dashCoreComponents)
 library(dashHtmlComponents)
-library(dashR)
 
 utils <- new.env()
 source('dashr/utils.R', local=utils)
@@ -31,13 +31,13 @@ would standard HTML.
 
 All `dashHtmlComponents` support inline CSS styling through a `style`
 attribute. An external CSS stylesheet can also be used to style
-`dash-html-components` and `dash-core-components` by targeting the ID or
-class names of your components. Both `dash-html-components` and
-`dash-core-components` accept the attribute `className`, which corresponds
+`dashHtmlComponents` and `dashCoreComponents` by targeting the ID or
+class names of your components. Both `dashHtmlComponents` and
+`dashCoreComponents` accept the attribute `className`, which corresponds
 to the HTML element attribute `class`.
 
-The [Dash HTML Components](/dash-html-components) section in the Dash User
-Guide explains how to supply `dash-html-components` with both inline
+The [Dash HTML Components](/dashHtmlComponents) section in the Dash User
+Guide explains how to supply `dashHtmlComponents` with both inline
 styles and CSS class names that you can target with CSS style sheets. The
 [Adding CSS & JS and Overriding the Page-Load
 Template](/external-resources) section in the Dash Guide explains how you
@@ -68,7 +68,7 @@ and URL Support](/urls) section in the Dash User Guide.
 
 ------------------------
 
-**Q:** *How do I determine which `Input` has changed?*
+**Q:** *How do I determine which `input` has changed?*
 
 **A:** New in [0.0.7-debug](https://github.com/plotly/dashR/tree/0.0.7-debug). 
 In addition to event properties like `n_clicks` that change whenever 
@@ -76,7 +76,7 @@ an event happens (in this case a click), there is a global variable
 `app$callback_context()`, available only inside a callback. It has properties:
 
   - `triggered`:  list of changed properties. 
-This will be empty on initial load, unless an `Input` prop got its value from 
+This will be empty on initial load, unless an `input` prop got its value from 
 another initial callback. 
 After a user action it is a length-1 list, 
 unless two properties of a single component update simultaneously, 
@@ -147,11 +147,11 @@ good section to read through. If you still have residual questions, the
 [Dash Community forums](https://community.plot.ly/c/dash) is a great place
 to ask them.
 
-### Callbacks require their `Inputs`, `States`, and `Output` to be present in the layout
+### Callbacks require their `inputs`, `states`, and `output` to be present in the layout
 
 By default, Dash applies validation to your callbacks, which performs checks
 such as validating the types of callback arguments and checking to see
-whether the specified `Input` and `Output` components actually have the
+whether the specified `input` and `output` components actually have the
 specified properties. For full validation, all components within your
 callback must therefore appear in the initial layout of your app, and you
 will see an error if they do not.
@@ -161,23 +161,23 @@ modification of the layout (such as multi-page apps), not every component
 appearing in your callbacks will be included in the initial layout. You can
 remove this restriction by disabling callback validation like this:
 
-app.config.supress_callback_exceptions = True
+`Dash$new(suppress_callback_exceptions = TRUE)`
 
 
-### Callbacks require *all* `Inputs`, `States`, and `Output` to be rendered on the page
+### Callbacks require *all* `inputs`, `states`, and `output` to be rendered on the page
 
 If you have disabled callback validation in order to support dynamic
 layouts, then you won't be automatically alerted to the situation where a
 component within a callback is not found within a layout. In this situation,
 where a component registered with a callback is missing from the layout, the
 callback will fail to fire. For example, if you define a callback with only
-a subset of the specified `Inputs` present in the current page layout, the
+a subset of the specified `inputs` present in the current page layout, the
 callback will simply not fire at all.
 
 
-### Callbacks can only target a single `Output` component/property pair
+### Callbacks can only target a single `output` component/property pair
 
-Currently, for a given callback, it can only have a single `Output`, which
+Currently, for a given callback, it can only have a single `output`, which
 targets one component/property pair eg `'my-graph'`, `'figure'`. If you
 wanted, say, four `Graph` components to be updated based on a particular
 user input, you either need to create four separate callbacks which each
@@ -188,23 +188,23 @@ There are plans to remove this limitation. You can track the status of this
 in this [GitHub Issue](https://github.com/plotly/dash/issues/149).
 
 
-### A component/property pair can only be the `Output` of one callback
+### A component/property pair can only be the `output` of one callback
 
 For a given component/property pair (eg `'my-graph'`, `'figure'`), it can
-only be registered as the `Output` of one callback. If you want to associate
-two logically separate sets of `Inputs` with the one output
+only be registered as the `output` of one callback. If you want to associate
+two logically separate sets of `inputs` with the one output
 component/property pair, you'll have to bundle them up into a larger
-callback and detect which of the relevant `Inputs` triggered the callback
+callback and detect which of the relevant `inputs` triggered the callback
 inside the function. For `htmlButton` elements, detecting which one
 triggered the callback can be done using the `n_clicks_timestamp`
 property. For an example of this, see the question in the FAQ, *How do I
-determine which `Input` has changed?*.
+determine which `input` has changed?*.
 
 
 ### All callbacks must be defined before the server starts
 
 All your callbacks must be defined before your Dash app's server starts
-running, which is to say, before you call `app$run_server(debug=True)`. This means
+running, which is to say, before you call `app$run_server(debug=TRUE)`. This means
 that while you can assemble changed layout fragments dynamically during the
 handling of a callback, you can't define dynamic callbacks in response to
 user input during the handling of a callback. If you have a dynamic
@@ -221,21 +221,15 @@ these dashboards to have separate callbacks. In this scenario, each of these
 callbacks much then be defined before the app starts running.
 
 Generally speaking, if a feature of your Dash app is that the number of
-`Inputs` or `States` is determined by a user's input, then you must
+`inputs` or `states` is determined by a user's input, then you must
 pre-define up front every permutation of callback that a user can
 potentially trigger. For an example of how this can be done programmatically
-using the `callback` decorator, see this [Dash Community forum
+using the `callback` handler, see this [Dash Community forum
 post](https://community.plot.ly/t/callback-for-dynamically-created-graph/5511).
 
-
-### All Dash Core Components in a layout should be registered with a callback.
-
-If a Dash Core Component is present in the layout but not registered with a
-callback (either as an `Input`, `State`, or `Output`) then any changes to its
-value by the user will be reset to the original value when any callback
-updates the page.
-
-This is a known issue and you can track its status in this [GitHub
-Issue](https://github.com/plotly/dash-renderer/issues/40). 
-  ")
+  "),
+  htmlHr(),
+  dccMarkdown("
+[Back to the Table of Contents](/)
+              ")
 ))

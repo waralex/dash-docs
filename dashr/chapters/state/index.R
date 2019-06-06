@@ -1,6 +1,6 @@
+library(dashR)
 library(dashCoreComponents)
 library(dashHtmlComponents)
-library(dashR)
 
 utils <- new.env()
 source('dashr/utils.R', local=utils)
@@ -35,13 +35,13 @@ our callbacks looked something like:
 
   dccMarkdown("
 In this example, the callback function is fired whenever any of the
-attributes described by the `Input` change.
+attributes described by the `input` change.
 Try it for yourself by entering data in the inputs above.
 
-`State` allows you to pass along extra values without
+`state` allows you to pass along extra values without
 firing the callbacks. Here's the same example as above but with the
-`dccInput` as `State` and a button as
-`Input`.    
+`dccInput` as `state` and a button as
+`input`.    
   "),
   
   #example of one input and two states
@@ -58,14 +58,14 @@ Note that we're triggering the callback by listening to the
 `n_clicks` property of the `htmlButton` component. `n_clicks` is a
 property that gets incremented every time the component has been
 clicked on. It is available in every component in the
-`dashHtmlComponents` library.  
+`dashHtmlComponents` package.  
   "),
   
   dccMarkdown("
 ***
 
 The next chapter of the user guide explains how to use callback
-principles with the `dashCoreComponents.Graph` component
+principles with the `dccGraph` component
 to make applications that
 respond to interactions with graphs on the page.
   "),

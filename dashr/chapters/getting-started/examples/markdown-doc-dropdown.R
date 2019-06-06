@@ -12,7 +12,7 @@ Dash components are declarative: every configurable aspect of these components i
 
 ```
 > help('dccDropdown')
-dccDropdown {dashdccComponents}	R Documentation
+dccDropdown {dashCoreComponents}	R Documentation
 ```
 
 # Dropdown component
@@ -54,7 +54,7 @@ dccDropdown(id=NULL,
 | clearable         | Whether or not the dropdown is 'clearable', that is,
 |                   | whether or not a small 'x' appears on the right of the dropdown that removes the selected value.
 | disabled          | If true, the option is disabled
-| multi             | f true, the user can select multiple values
+| multi             | If true, the user can select multiple values
 | placeholder       | The grey, default text shown when no option is selected
 | searchable        | Whether to enable the searching feature or not
 | style             |

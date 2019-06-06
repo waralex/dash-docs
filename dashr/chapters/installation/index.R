@@ -1,6 +1,6 @@
+library(dashR)
 library(dashCoreComponents)
 library(dashHtmlComponents)
-library(dashR)
 
 layout <- htmlDiv(list(
 htmlH1('Dash Installation'),

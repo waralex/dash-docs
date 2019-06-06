@@ -4,8 +4,14 @@ library(dashHtmlComponents)
 
 app <- Dash$new()
 
-df <- read.csv(url("https://raw.githubusercontent.com/plotly/datasets/master/gapminderDataFiveYear.csv"))
+df <- read.csv(
+  file = "https://raw.githubusercontent.com/plotly/datasets/master/gapminderDataFiveYear.csv",
+  stringsAsFactor=FALSE,
+  check.names=FALSE
+)
+
 continents <- unique(df$continent)
+
 data_gdp_life_exp_2007 <- with(df,
   lapply(continents,
          function(cont) {
@@ -13,7 +19,7 @@ data_gdp_life_exp_2007 <- with(df,
              x = gdpPercap[continent == cont],
              y = lifeExp[continent == cont],
              opacity=0.7,
-             text = cont,
+             text = country[continent == cont],
              mode = 'markers',
              name = cont,
              marker = list(size = 15,
