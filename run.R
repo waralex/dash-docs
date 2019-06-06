@@ -103,20 +103,20 @@ app$callback(output=list(id='chapter', property='children'),
                        htmlBr(),
                        dccMarkdown("A quick paragraph about Dash and a link to the talk at Plotcon that started it all."),
                        
-                       dccLink(
+                       htmlA(
                          'Announcement Essay',
                          href='https://medium.com/@plotlygraphs/introducing-dash-5ecf7191b503'
                        ),
                        htmlBr(),
                        dccMarkdown("Our extended essay on Dash. An extended discussion of Dash's architecture and our motivation behind the project."),
                        
-                       dccLink(
+                       htmlA(
                          'Dash App Gallery',
-                         href='https://dashr-docs.herokuapp.com'
+                         href='https://dash.plot.ly/gallery'
                        ),
                        htmlBr(),
                        dccMarkdown("A glimpse into what's possible with Dash."),
-                       dccLink(
+                       htmlA(
                          'Dash Club',
                          href='https://plot.us12.list-manage.com/subscribe?u=28d7f8f0685d044fb51f0d4ee&id=0c1cb734d7'
                        ),
@@ -149,8 +149,8 @@ allowing one update in the UI to trigger several updates across the app."),
                          href='/state'
                        ),
                        dccMarkdown("Basic callbacks are fired whenever the values change.
-Use Dash `State` with Dash `Inputs` to pass in extra values whenever the `Inputs` change.
-`State` is useful for UIs that contain forms or buttons."),
+Use Dash `state` with Dash `inputs` to pass in extra values whenever the `inputs` change.
+`state` is useful for UIs that contain forms or buttons."),
                        #htmlBr(),
                        #dccLink(
                        #  'Part 5. Interactive Graphing and Crossfiltering',
