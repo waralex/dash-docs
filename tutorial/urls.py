@@ -11,7 +11,7 @@ the application does not completely reload when the user navigates the
 application, making browsing very fast.
 
 There are two new components that aid page navigation:
-[`dash_core_components.Location`](/dash-core-components/location) and `dash_core_components.Link`.
+`dash_core_components.Location` and `dash_core_components.Link`.
 
 `dash_core_components.Location` represents the location bar in your web browser
 through the `pathname` property. Here's a simple example:
@@ -398,9 +398,9 @@ app.layout = html.Div([
               [Input('url', 'pathname')])
 def display_page(pathname):
     if pathname == '/apps/app1':
-        return app1.layout
+         return app1.layout
     elif pathname == '/apps/app2':
-        return app2.layout
+         return app2.layout
     else:
         return '404'
 

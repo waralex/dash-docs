@@ -416,7 +416,7 @@ def generate_instructions(chapter, platform):
 
             To see this example code in action
             [check out our ODBC example](https://github.com/plotly/dash-on-premise-sample-app/pull/3#issue-144272510)
-             On-Premises application.
+             On-Premise application.
             '''))
         ]
 

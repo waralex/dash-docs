@@ -27,11 +27,11 @@ app.layout = html.Div(
                 pagination_mode='be',
 
                 filtering='be',
-                filter='',
+                filtering_settings='',
 
                 sorting='be',
                 sorting_type='multi',
-                sort_by=[]
+                sorting_settings=[]
             ),
             style={'height': 750, 'overflowY': 'scroll'},
             className='six columns'
@@ -43,67 +43,34 @@ app.layout = html.Div(
     ]
 )
 
-operators = [['ge ', '>='],
-             ['le ', '<='],
-             ['lt ', '<'],
-             ['gt ', '>'],
-             ['ne ', '!='],
-             ['eq ', '='],
-             ['contains '],
-             ['datestartswith ']]
-
-
-def split_filter_part(filter_part):
-    for operator_type in operators:
-        for operator in operator_type:
-            if operator in filter_part:
-                name_part, value_part = filter_part.split(operator, 1)
-                name = name_part[name_part.find('{') + 1: name_part.rfind('}')]
-
-                value_part = value_part.strip()
-                v0 = value_part[0]
-                if (v0 == value_part[-1] and v0 in ("'", '"', '`')):
-                    value = value_part[1: -1].replace('\\' + v0, v0)
-                else:
-                    try:
-                        value = float(value_part)
-                    except ValueError:
-                        value = value_part
-
-                # word operators need spaces after them in the filter string,
-                # but we don't want these later
-                return name, operator_type[0].strip(), value
-
-    return [None] * 3
-
-
 @app.callback(
     Output('table-paging-with-graph', "data"),
     [Input('table-paging-with-graph', "pagination_settings"),
-     Input('table-paging-with-graph', "sort_by"),
-     Input('table-paging-with-graph', "filter")])
-def update_table(pagination_settings, sort_by, filter):
-    filtering_expressions = filter.split(' && ')
+     Input('table-paging-with-graph', "sorting_settings"),
+     Input('table-paging-with-graph', "filtering_settings")])
+def update_table(pagination_settings, sorting_settings, filtering_settings):
+    filtering_expressions = filtering_settings.split(' && ')
     dff = df
-    for filter_part in filtering_expressions:
-        col_name, operator, filter_value = split_filter_part(filter_part)
+    for filter in filtering_expressions:
+        if ' eq ' in filter:
+            col_name = filter.split(' eq ')[0]
+            filter_value = filter.split(' eq ')[1]
+            dff = dff.loc[dff[col_name] == filter_value]
+        if ' > ' in filter:
+            col_name = filter.split(' > ')[0]
+            filter_value = float(filter.split(' > ')[1])
+            dff = dff.loc[dff[col_name] > filter_value]
+        if ' < ' in filter:
+            col_name = filter.split(' < ')[0]
+            filter_value = float(filter.split(' < ')[1])
+            dff = dff.loc[dff[col_name] < filter_value]
 
-        if operator in ('eq', 'ne', 'lt', 'le', 'gt', 'ge'):
-            # these operators match pandas series operator method names
-            dff = dff.loc[getattr(dff[col_name], operator)(filter_value)]
-        elif operator == 'contains':
-            dff = dff.loc[dff[col_name].str.contains(filter_value)]
-        elif operator == 'datestartswith':
-            # this is a simplification of the front-end filtering logic,
-            # only works with complete fields in standard format
-            dff = dff.loc[dff[col_name].str.startswith(filter_value)]
-
-    if len(sort_by):
+    if len(sorting_settings):
         dff = dff.sort_values(
-            [col['column_id'] for col in sort_by],
+            [col['column_id'] for col in sorting_settings],
             ascending=[
                 col['direction'] == 'asc'
-                for col in sort_by
+                for col in sorting_settings
             ],
             inplace=False
         )
@@ -111,7 +78,7 @@ def update_table(pagination_settings, sort_by, filter):
     return dff.iloc[
         pagination_settings['current_page']*pagination_settings['page_size']:
         (pagination_settings['current_page'] + 1)*pagination_settings['page_size']
-    ].to_dict('records')
+    ].to_dict('rows')
 
 
 @app.callback(

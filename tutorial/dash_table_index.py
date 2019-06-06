@@ -1,8 +1,9 @@
-import dash
 import dash_core_components as dcc
 import dash_html_components as html
+import dash_table
 import pandas as pd
 from textwrap import dedent
+import dash_table
 
 from reusable_components import Section, Chapter
 from tutorial import styles
@@ -70,7 +71,7 @@ layout = html.Div([
 
     Section('Quickstart', [
         dcc.SyntaxHighlighter(
-            '''pip install dash=={}'''.format(dash.__version__),
+            '''pip install dash-table=={}'''.format(dash_table.__version__),
             customStyle=styles.code_container
         ),
 
