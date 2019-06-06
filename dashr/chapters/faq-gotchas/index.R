@@ -5,9 +5,9 @@ library(dashR)
 utils <- new.env()
 source('dashr/utils.R', local=utils)
 
-examples <- list(
-  last_clicked_button=utils$LoadExampleCode('dashr/chapters/faq-gotchas/examples/last_clicked_button.R')
-)
+#examples <- list(
+#  last_clicked_button=utils$LoadExampleCode('dashr/chapters/faq-gotchas/examples/last_clicked_button.R')
+#)
 
 
 
@@ -73,22 +73,33 @@ and URL Support](/urls) section in the Dash User Guide.
 **A:** In addition to the `n_clicks` property (which tracks the number of
 times a component has been clicked), all `dash-html-components` have an
 `n_clicks_timestamp` property, which records the time that the component was
-last clicked. 
-
-This provides a convenient way for detecting which
+last clicked. This provides a convenient way for detecting which
 `htmlButton` was clicked in order to trigger the current callback. Here's
 an example of how this can be done:
   "),
 
   #example of last_clicked_button
-  examples$last_clicked_button$source,
-  examples$last_clicked_button$layout,
+  #examples$last_clicked_button$source,
+  #examples$last_clicked_button$layout,
   
   dccMarkdown("
 Note that `n_clicks` is the only property that has this timestamp
 property. We will add general support for \"determining which input changed\"
 in the future, you can track our progress in this [GitHub
 Issue](https://github.com/plotly/dash/issues/291).
+
+------------------------
+
+**Q:** *Can I use Jinja2 templates with Dash?*
+
+**A:** Jinja2 templates are rendered on the server (often in a Flask app)
+before being sent to the client as HTML pages. Dash apps, on the other
+hand, are rendered on the client using React. This makes these
+fundamentally different approaches to displaying HTML in a browser, which
+means the two approaches can't be combined directly. You can however
+integrate a Dash app with an existing Flask app such that the Flask app
+handles some URL endpoints, while your Dash app lives at a specific
+URL endpoint.
 
 ------------------------
 
@@ -135,6 +146,13 @@ whether the specified `Input` and `Output` components actually have the
 specified properties. For full validation, all components within your
 callback must therefore appear in the initial layout of your app, and you
 will see an error if they do not.
+
+However, in the case of more complex Dash apps that involve dynamic
+modification of the layout (such as multi-page apps), not every component
+appearing in your callbacks will be included in the initial layout. You can
+remove this restriction by disabling callback validation like this:
+
+app.config.supress_callback_exceptions = True
 
 
 ### Callbacks require *all* `Inputs`, `States`, and `Output` to be rendered on the page

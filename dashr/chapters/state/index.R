@@ -24,6 +24,9 @@ layout <- htmlDiv(list(
 > Just getting started?
 > Make sure to
 > [install the necessary dependencies](/installation).
+
+In the previous chapter on [basic Dash callbacks](/getting-started),
+our callbacks looked something like:
 "),
   
   dccMarkdown("

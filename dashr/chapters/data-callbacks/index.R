@@ -4,8 +4,6 @@ library(dashR)
 
 utils <- new.env()
 source('dashr/utils.R', local=utils)
-source('dashr/styles.R')
-source('dashr/components.R')
 
 examples <- list(
   #two_inputs=utils$LoadExampleCode('dashr/chapters/state/examples/two_inputs.R'),
@@ -58,14 +56,14 @@ If your app uses modified `global` variables,
 then one user's session could set the variable to one value
 which would affect the next user's session.
 
-Dash is also designed to be able to run with **multiple R
+Dash is also designed to be able to run with **multiple python
 workers** so that callbacks can be executed in parallel.
 This is commonly done with `gunicorn` using syntax like
 ```
 $ gunicorn --workers 4 app:server
 ```
 
-(`app` refers to a file named `app.R` and `server` refers to a variable
+(`app` refers to a file named `app.py` and `server` refers to a variable
 in that file named `server`: `server = app.server`).
 
 When Dash apps run across multiple workers, their memory

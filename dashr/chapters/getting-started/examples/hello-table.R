@@ -6,7 +6,7 @@ df <- read.csv('dashr/chapters/getting-started/examples/usa-agricultural-exports
 
 generate_table <- function(df, nrows=10)
 {
-  n <- pmin(nrows, nrow(df))
+  n <- min(nrows, nrow(df))
   rows <- lapply(seq(1, n), function(i) {
     htmlTr(children = lapply(as.character(df[i,]), htmlTd))
   })
@@ -26,4 +26,4 @@ app$layout(htmlDiv(list(
   generate_table(df)
 )))
 
-app$run_server()
+#app$run_heroku()
