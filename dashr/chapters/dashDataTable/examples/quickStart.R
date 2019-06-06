@@ -1,7 +1,11 @@
 library(dashR)
 library(dashTable)
 
-df <- read.csv("https://raw.githubusercontent.com/plotly/datasets/master/solar.csv")
+df <- read.csv(
+  file = "https://raw.githubusercontent.com/plotly/datasets/master/solar.csv",
+  stringsAsFactors = FALSE,
+  check.names = FALSE
+)
 
 app <- Dash$new()
 
@@ -15,7 +19,7 @@ app$layout(
                          name = colName
                        )
                      }),
-    data = dashTable::df_to_list(df)
+    data = df_to_list(df)
   )
 )
 
