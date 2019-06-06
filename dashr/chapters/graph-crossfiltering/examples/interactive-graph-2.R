@@ -67,10 +67,10 @@ app$layout(
     htmlDiv(list(
       dccSlider(
         id = 'crossfilter-year--slider',
-        min = 1,
-        max = length(unique(df$Year)),
+        min = 0,
+        max = length(unique(df$Year))-1,
         marks = unique(df$Year),
-        value = length(unique(df$Year))
+        value = length(unique(df$Year))-1 
       )
     ), style = list(width = '49%', padding = '0px 20px 20px 20px'))
   ))
@@ -165,4 +165,4 @@ app$callback(
   }
 )
 
-#app$run_heroku()
+app$run_server()

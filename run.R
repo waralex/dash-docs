@@ -1,7 +1,10 @@
+setwd('/Users/kevinphan/desktop/dashdocs/dash-docs')
+
 source('app.R')
 library(dashR)
 library(dashCoreComponents)
 library(dashHtmlComponents)
+library(jsonlite)
 
 chapters.installation <- new.env()
 source('dashr/chapters/installation/index.R', local=chapters.installation)
@@ -11,8 +14,8 @@ chapters.callbacks <- new.env()
 source('dashr/chapters/callbacks/index.R', local=chapters.callbacks)
 chapters.state <- new.env()
 source('dashr/chapters/state/index.R', local=chapters.state)
-#chapters.graph_crossfiltering <- new.env()
-#source('dashr/chapters/graph-crossfiltering/index.R', local=chapters.graph_crossfiltering)
+chapters.graph_crossfiltering <- new.env()
+source('dashr/chapters/graph-crossfiltering/index.R', local=chapters.graph_crossfiltering)
 chapters.data_callbacks <- new.env()
 source('dashr/chapters/data-callbacks/index.R', local=chapters.data_callbacks)
 chapters.faq_gotchas <- new.env()
@@ -173,15 +176,15 @@ Basic callbacks are fired whenever the values change.
 Use Dash `State` with Dash `Inputs` to pass in extra values whenever the `Inputs` change.
 `State` is useful for UIs that contain forms or buttons.
     "),
-      #htmlBr(),
-      #dccLink(
-      #  'Part 5. Interactive Graphing and Crossfiltering',
-      #  href='/graph-crossfiltering'
-      #),
-      #dccMarkdown("
-#Bind interactivity to the Dash `Graph` component whenever you hover, click,
-#or select points on your chart.
-      #"),
+      htmlBr(),
+      dccLink(
+        'Part 5. Interactive Graphing and Crossfiltering',
+        href='/graph-crossfiltering'
+      ),
+      dccMarkdown("
+Bind interactivity to the Dash `Graph` component whenever you hover, click,
+or select points on your chart.
+      "),
       htmlBr(),
       dccLink(
         'Part 6. Sharing Data Between Callbacks',

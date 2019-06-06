@@ -1,22 +1,18 @@
 source('dashr/styles.R')
 
-Syntax = function(children, language='python', style=styles.code_container, summary=''){
-  if (isTRUE(summary)){
+Syntax = function(children, language='R', style=styles$code_container, summary=''){
+  if (!(summary == '')){
   return(htmlDetails(list(
     htmlSummary(summary),
-    dccSyntaxHighlighter(
-      children,
-      language=language,
-      customStyle=style
+    htmlDiv(children)
     )
-  ), 
+  , 
     open=TRUE))}
-  
 else{
   return(dccSyntaxHighlighter(
     children,
-    language=language,
-    customStyle=style
+    'language'=language,
+    'customStyle'=style
   ))
 }}
 

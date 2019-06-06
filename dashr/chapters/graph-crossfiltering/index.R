@@ -4,6 +4,8 @@ library(dashHtmlComponents)
 
 utils <- new.env()
 source('dashr/utils.R', local=utils)
+source('dashr/styles.R')
+source('dashr/components.R')
 
 examples <- list(
   interactive_graph_1 = utils$LoadExampleCode('dashr/chapters/graph-crossfiltering/examples/interactive-graph-1.R'),
@@ -31,9 +33,9 @@ library. Plotly.js supports over 35 chart types and renders charts in
 both vector-quality SVG and high-performance WebGL.
 
 The `figure` argument in the `dashCoreComponents.Graph` component is
-the same `figure` argument that is used by `plotly.py`, Plotly's
-open source Python graphing library.
-Check out the [plotly.py documentation and gallery](https://plot.ly/r/)
+the same `figure` argument that is used by `plotly.R`, Plotly's
+open source R graphing library.
+Check out the [plotly.R documentation and gallery](https://plot.ly/r/)
 to learn more.
 
 Dash components are described declaratively by a set of attributes.
@@ -48,22 +50,22 @@ through user-interaction: `hoverData`, `clickData`, `selectedData`,
 These properties update when you hover over points, click on points, or
 select regions of points in a graph.
 
-
-Here's an simple example that prints these attributes in the screen.
 "),
   # Example of interactive visualizations 1
-  examples$interactive_graph_1$source,
-  examples$interactive_graph_1$layout,
+  Syntax(
+    children = examples$interactive_graph_1$source,
+    summary="Here's an simple example that prints these attributes in the screen."
+    ),
+Example(examples$interactive_graph_1$layout),
 
   dccMarkdown("
 # Update Graphs on Hover
-
-Let's update our world indicators example from the previous chapter
-by updating time series when we hover over points in our scatter plot.
-  "),
+"),
   # Example of interactive visualizations 2
-  examples$interactive_graph_2$source,
-  examples$interactive_graph_2$layout,
+  Syntax(examples$interactive_graph_2$source,
+         summary = "Let's update our world indicators example from the previous
+         chapter by updating time series when we hover over points in our scatter plot."),
+  Example(examples$interactive_graph_2$layout),
 
   dccMarkdown("
 Try mousing over the points in the scatter plot on the left.
@@ -72,13 +74,12 @@ Notice how the line graphs on the right update based off of the point that you a
   htmlHr(),
   dccMarkdown("
 # Generic Crossfilter Recipe
-
-Here's a slightly more generic example for crossfiltering across a six-column data set.
-Each scatter plot's selection filters the underlying dataset.
 "),
+Syntax(examples$crossfilter_recipe$source,
+       summary = "Here's a slightly more generic example for crossfiltering across a six-column data set.
+Each scatter plot's selection filters the underlying dataset."),
   # Example of interactive visualizations 3
-  examples$crossfilter_recipe$source,
-  #examples$crossfilter_recipe$layout,
+#examples$crossfilter_recipe$layout,
 
   htmlImg(
     src='https://github.com/plotly/dash-docs/raw/master/images/select.gif',
@@ -93,7 +94,7 @@ Each scatter plot's selection filters the underlying dataset.
   dccMarkdown("
 Try clicking and dragging in any of the plots to filter different regions.
 On every selection, the three graph callbacks are fired with the latest selected regions of each plot.
-A pandas dataframe is filtered based off of the selected points and
+The dataframe is filtered based off of the selected points and
 the graphs are replotted with the selected points highlighted and
 the selected region drawn as a dashed rectangle.
 
@@ -124,3 +125,4 @@ The next chapter of the Dash User Guide explains how to share data between callb
 [Back to the Table of Contents](/)
   ")
 ))
+
