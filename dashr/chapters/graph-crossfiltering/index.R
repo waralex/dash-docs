@@ -20,14 +20,14 @@ layout <- htmlDiv(list(
 # Interactive Visualizations
 
 > This is the *5th* chapter of the [Dash Tutorial](/).
-> The [previous chapter](/state) covered callbacks with `State`
+> The [previous chapter](/state) covered callbacks with `state`
 > and the [next chapter](/sharing-data-between-callbacks) describes how to
 > share data between callbacks.
 > Just getting started? Make sure to [install the necessary dependencies](/installation).
 
-The `dashCoreComponents` library includes a component called `Graph`.
+The `dashCoreComponents` library includes a component called `dccGraph`.
 
-`Graph` renders interactive data visualizations using the open source
+`dccGraph` renders interactive data visualizations using the open source
 [plotly.js](https://github.com/plotly/plotly.js) JavaScript graphing
 library. Plotly.js supports over 35 chart types and renders charts in
 both vector-quality SVG and high-performance WebGL.

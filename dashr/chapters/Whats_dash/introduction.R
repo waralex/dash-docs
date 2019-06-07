@@ -18,7 +18,7 @@ Through a couple of simple patterns, Dash abstracts away all of the
 technologies and protocols that are required to build an
 interactive web-based application.
 Dash is simple enough that you can bind a user interface
-around your R/Python code in an afternoon.
+around your R or Python code in an afternoon.
 
 Dash apps are rendered in the web browser. You can deploy your apps
 to servers and then share them through URLs.

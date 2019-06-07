@@ -1,7 +1,6 @@
 library(dashR)
 library(dashCoreComponents)
 library(dashHtmlComponents)
-#library(jsonlite)
 library(rjson)
 
 app <- Dash$new()

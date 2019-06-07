@@ -7,9 +7,7 @@ app <- Dash$new()
 df <- read.csv('dashr/chapters/callbacks/examples/indicators.csv', header = TRUE, sep = ",")
 available_indicators <- unique(df$Indicator_Name)
 option_indicator <- list()
-for (i in 1:length(available_indicators)){
-  option_indicator[[i]] <- list(label = available_indicators[i], value = available_indicators[i])
-}
+option_indicator <- lapply(available_indicators, function(x) list(label = x, value = x))
 
 app$layout(
   htmlDiv(list(
