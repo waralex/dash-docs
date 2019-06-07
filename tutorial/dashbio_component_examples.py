@@ -17,6 +17,8 @@ examples = {
         'tutorial/examples/dashbio_components/circos.py'),
     'ideogram': tools.load_example(
         'tutorial/examples/dashbio_components/ideogram.py'),
+    'molecule-2d-viewer': tools.load_example(
+        'tutorial/examples/dashbio_components/molecule_2d_viewer.py'),
     'molecule-3d-viewer': tools.load_example(
         'tutorial/examples/dashbio_components/molecule_3d_viewer.py'),
     'needle-plot': tools.load_example(
@@ -410,6 +412,51 @@ dcc.Graph(figure=manhattanplot)'''
     ]
 )
 
+# Molecule2dViewer
+Molecule2dViewer = create_doc_page(
+    examples, component_names, 'molecule-2d-viewer', component_examples=[
+
+        {
+            'param_name': 'Selected atom IDs',
+            'description': 'Highlight specific atoms in the molecule.',
+            'code': '''import json
+import six.moves.urllib.request as urlreq
+
+import dash_bio as dashbio
+
+model_data = urlreq.urlopen('https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/mol2d_buckminsterfullerene.json').read()
+
+dashbio.Molecule2dViewer(
+    id='molecule2d-selectedatomids',
+    modelData=json.loads(model_data),
+    selectedAtomIds=[i for i in range(10)]
+)'''
+        },
+
+        {
+            'param_name': 'Model data',
+            'description': 'Change the bonds and atoms in the molecule.',
+            'code': '''import json
+import six.moves.urllib.request as urlreq
+
+import dash_bio as dashbio
+
+model_data = urlreq.urlopen('https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/mol2d_buckminsterfullerene.json').read()
+
+model_data = json.loads(model_data)
+for atom in model_data['nodes']:
+    atom.update(atom='N')
+for bond in model_data['links']:
+    bond.update(distance=50.0, strength=0.5)
+
+dashbio.Molecule2dViewer(
+    id='molecule2d-modeldata',
+    modelData=model_data
+)'''
+        }
+    ]
+)
+
 # Molecule3dViewer
 Molecule3dViewer = create_doc_page(
     examples, component_names, 'molecule-3d-viewer', component_examples=[
@@ -645,7 +692,7 @@ Speck = create_doc_page(
 from six import PY3
 
 import dash_bio as dashbio
-from dash_bio.utils import xyz_reader
+from dash_bio_utils import xyz_reader
 
 
 data = urlreq.urlopen("https://raw.githubusercontent.com/plotly/dash-bio/master/tests/dashbio_demos/sample_data/speck_methane.xyz").read()
@@ -675,7 +722,7 @@ dashbio.Speck(
 from six import PY3
 
 import dash_bio as dashbio
-from dash_bio.utils import xyz_reader
+from dash_bio_utils import xyz_reader
 
 
 data = urlreq.urlopen("https://raw.githubusercontent.com/plotly/dash-bio/master/tests/dashbio_demos/sample_data/speck_methane.xyz").read()

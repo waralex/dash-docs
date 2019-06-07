@@ -97,9 +97,14 @@ dashbio_components = {
             'width': '600'
         },
         'component_wrap': 'dcc.Graph(figure=_[0])',
-        'setup_code': '''df = pd.read_csv('https://raw.githubusercontent.com/plotly/dash-bio/master/tests/dashbio_demos/sample_data/clustergram_mtcars.tsv',
-        sep='\t', skiprows=4).set_index('model')
-data = df.values''',
+        'setup_code': '''df = pd.read_csv(
+    'https://raw.githubusercontent.com/plotly/dash-bio-docs-files' +
+    '/master/clustergram_mtcars.tsv',
+    sep='\t', skiprows=4
+).set_index('model')
+
+data = df.values
+''',
         'iframe_info': {
             'location': 'https://dash-bio.plotly.host/docs-demos-dashbio/clustergram',
             'height': 850
@@ -115,6 +120,7 @@ data = df.values''',
             'location': 'https://dash-bio.plotly.host/docs-demos-dashbio/ideogram'
         }
     },
+
     'ManhattanPlot': {
         'description': '''A plot that can be used to display the results of genomic studies
         sorted out by chromosome. Perfect for Genome Wide Association Studies (GWAS).''',
@@ -127,12 +133,30 @@ data = df.values''',
             ['pandas', 'pd'],
             ['dash_core_components', 'dcc']
         ],
-        'setup_code': '''df = pd.read_csv("https://raw.githubusercontent.com/plotly/dash-bio/master/tests/dashbio_demos/sample_data/manhattan_data.csv")''',
+        'setup_code': '''df = pd.read_csv(
+    'https://raw.githubusercontent.com/plotly/dash-bio-docs-files/' +
+    'master/manhattan_data.csv'
+)''',
         'iframe_info': {
             'location': 'https://dash-bio.plotly.host/docs-demos-dashbio/manhattan',
             'width': 800
         }
     },
+
+    'Molecule2dViewer': {
+        'description': '''A 2D rendering of molecular structures.''',
+        'params': {
+            'modelData': 'model_data'
+        },
+        'library_imports': [
+            ['json', 'json']
+        ],
+        'setup_code': '''model_data = json.loads(data)''',
+        'datafile': {
+            'name': 'mol2d_buckminsterfullerene.json'
+        }
+    },
+
     'Molecule3dViewer': {
         'description': '''A 3D visualization of biomolecular structures.''',
         'params': {
@@ -144,8 +168,16 @@ data = df.values''',
             ['json', 'json'],
             ['urllib.request', 'urlreq']
         ],
-        'setup_code': '''model_data = urlreq.urlopen('https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/mol3d/model_data.js').read()
-styles_data = urlreq.urlopen('https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/mol3d/styles_data.js').read()
+        'setup_code': '''
+model_data = urlreq.urlopen(
+    'https://raw.githubusercontent.com/plotly/dash-bio-docs-files/' +
+    'master/mol3d/model_data.js'
+).read()
+styles_data = urlreq.urlopen(
+    'https://raw.githubusercontent.com/plotly/dash-bio-docs-files/' +
+    'master/mol3d/styles_data.js'
+).read()
+
 model_data = json.loads(model_data)
 styles_data = json.loads(styles_data)
 ''',
@@ -192,11 +224,16 @@ styles_data = json.loads(styles_data)
 
     'SequenceViewer': {
         'description': '''A sequence viewer.''',
+        'library_imports': [
+            ['dash_bio_utils.protein_reader', 'protein_reader']
+        ],
+        'datafile': {
+            'name': 'sequence_viewer_P01308.fasta'
+        },
+        'setup_code': '''seq = protein_reader.read_fasta(data_string=data)[0]['sequence']''',
         'params': {
-            'sequence': '\"MALWMRLLPLLALLALWGPDPAAAFVN\
-QHLCGSHLVEALYLVCGERGFFYTPKTRREAEDLQVGQVELGGGPGAGSLQPLA\
-LEGSLQKRGIVEQCCTSICSLYQLENYCN\"'
-        }
+            'sequence': 'seq'
+        },
     },
 
     'Speck': {
@@ -209,7 +246,7 @@ LEGSLQKRGIVEQCCTSICSLYQLENYCN\"'
             'parameter': 'data'
         },
         'library_imports': [
-            ['dash_bio.utils.xyz_reader', 'xyz_reader']
+            ['dash_bio_utils.xyz_reader', 'xyz_reader']
         ],
         'setup_code': '''data = xyz_reader.read_xyz(data_string=data)''',
         'iframe_info': {
@@ -226,7 +263,10 @@ LEGSLQKRGIVEQCCTSICSLYQLENYCN\"'
             ['pandas', 'pd'],
             ['dash_core_components', 'dcc']
         ],
-        'setup_code': '''df = pd.read_csv("https://raw.githubusercontent.com/plotly/dash-bio/master/tests/dashbio_demos/sample_data/volcano_data1.csv")''',
+        'setup_code': '''df = pd.read_csv(
+    'https://raw.githubusercontent.com/plotly/dash-bio-docs-files/' +
+    'master/tests/dashbio_demos/sample_data/volcano_data1.csv'
+)''',
         'params': {
             'dataframe': 'df'
         },
