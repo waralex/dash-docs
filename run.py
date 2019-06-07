@@ -63,7 +63,8 @@ sections_ordered['Beyond the Basics'] = [
     'live-updates',
     'external',
     'urls',
-    'devtools'
+    'devtools',
+    'testing'
 ]
 sections_ordered['Production'] = [
     'auth',
