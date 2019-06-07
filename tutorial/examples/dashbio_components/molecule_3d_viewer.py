@@ -45,7 +45,8 @@ app.layout = html.Div([
 )
 def show_selected_atoms(atom_ids):
     if atom_ids is None or len(atom_ids) == 0:
-        return 'No atoms have been selected. Click somewhere on the molecular structure to select an atom.'
+        return 'No atoms have been selected. Click somewhere on the molecular \
+        structure to select an atom.'
     return [html.Div([
         html.Div('Element: {}'.format(model_data['atoms'][atm]['element'])),
         html.Div('Chain: {}'.format(model_data['atoms'][atm]['chain'])),

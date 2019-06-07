@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from tutorial import tools
-from tutorial.utils.dashbio_docs import create_doc_page, get_component_names, create_examples
+from tutorial.utils.dashbio_docs import create_doc_page, get_component_names
 
 component_names = get_component_names('dash_bio')
 
@@ -94,7 +94,8 @@ dashbio.AlignmentChart(
         },
         {
             'param_name': 'Consensus Sequence',
-            'description': 'Toggle the display of the consensus sequence at the bottom of the heatmap.',
+            'description': 'Toggle the display of the consensus sequence at the bottom of the \
+            heatmap.',
             'code': '''from six.moves.urllib import request as urlreq
 import dash_bio as dashbio
 
@@ -229,8 +230,8 @@ dcc.Graph(figure=clustergram)'''
 
         {
             'param_name': 'Relative Dendrogram Size',
-            'description': 'Change the relative width and height of, respectively, the row and column \
-            dendrograms compared to the width and height of the heatmap.',
+            'description': 'Change the relative width and height of, respectively, the row \
+            and column dendrograms compared to the width and height of the heatmap.',
             'code': '''import pandas as pd
 
 import dash_core_components as dcc
@@ -627,7 +628,8 @@ OncoPrint = create_doc_page(
     examples, component_names, 'onco-print', component_examples=[
         {
             'param_name': 'Colors',
-            'description': 'Change the color of specific mutations, as well as the background color.',
+            'description': 'Change the color of specific mutations, as well as \
+            the background color.',
             'code': '''import json
 import six.moves.urllib.request as urlreq
 
@@ -652,7 +654,8 @@ dashbio.OncoPrint(
 
         {
             'param_name': 'Size and spacing',
-            'description': 'Change the height and width of the component, and adjust the spacing between adjacent tracks.',
+            'description': 'Change the height and width of the component, and \
+            adjust the spacing between adjacent tracks.',
             'code': '''import json
 import six.moves.urllib.request as urlreq
 
@@ -702,7 +705,8 @@ SequenceViewer = create_doc_page(
     examples, component_names, 'sequence-viewer', component_examples=[
         {
             'param_name': 'Line length and line numbers',
-            'description': 'Change the characters per line, and toggle the display of line numbers.',
+            'description': 'Change the characters per line, and toggle the display \
+            of line numbers.',
             'code': '''import six.moves.urllib.request as urlreq
 from six import PY3
 import dash_bio as dashbio
@@ -778,7 +782,8 @@ dashbio.SequenceViewer(
 
         {
             'param_name': 'Title and badge',
-            'description': 'Show a title or a badge with the nucleotide or amino acid count of the protein.',
+            'description': 'Show a title or a badge with the nucleotide or amino acid \
+            count of the protein.',
             'code': '''import six.moves.urllib.request as urlreq
 from six import PY3
 import dash_bio as dashbio
@@ -810,7 +815,8 @@ Speck = create_doc_page(
 
         {
             'param_name': 'Molecule rendering styles',
-            'description': 'Change the level of atom outlines, ambient occlusion, and more with the "view" parameter.',
+            'description': 'Change the level of atom outlines, ambient occlusion, \
+            and more with the "view" parameter.',
             'code': '''import six.moves.urllib.request as urlreq
 from six import PY3
 
@@ -900,8 +906,8 @@ dcc.Graph(figure=volcanoplot)'''
         },
         {
             'param_name': 'Point sizes and line widths',
-            'description': 'Change the sizeo f the points on the scatter plot, and the widths of the effect \
-            lines and the genome-wide line.',
+            'description': 'Change the sizeo f the points on the scatter plot, \
+            and the widths of the effect lines and the genome-wide line.',
             'code': '''import pandas as pd
 
 import dash_core_components as dcc

@@ -1,11 +1,11 @@
 import dash_core_components as dcc
 import dash_html_components as html
+import dash_bio
+
 from tutorial import styles
 from tutorial.utils.dashbio_docs import generate_docs
 
-import dash_bio
-
-dashbio_library_heading = [
+DASHBIO_LIBRARY_HEADING = [
     dcc.Markdown('''# Dash Bio'''),
 
     dcc.SyntaxHighlighter('''pip install dash-bio=={}'''.format(dash_bio.__version__),
@@ -22,17 +22,18 @@ dashbio_library_heading = [
     The source can be found on GitHub at [plotly/dash-bio](https://github.com/plotly/dash-bio).
 
     These docs are using Dash Bio version {}.
-    '''.replace('    ', '').format(dash_bio.__version__, dash_bio.__version__)
-    )
+    '''.replace('    ', '').format(dash_bio.__version__, dash_bio.__version__))
 ]
 
-dashbio_install_instructions = dcc.SyntaxHighlighter('''>>> import dash_bio
+DASHBIO_INSTALL_INSTRUCTIONS = dcc.SyntaxHighlighter(
+    '''>>> import dash_bio
     >>> print(dash_bio.__version__)
     {}'''.replace('    ', '').format(dash_bio.__version__),
-    customStyle=styles.code_container)
+    customStyle=styles.code_container
+)
 
 
-dashbio_components = {
+DASHBIO_COMPONENTS = {
 
     'AlignmentChart': {
         'description': '''An alignment chart.''',
@@ -265,7 +266,7 @@ styles_data = json.loads(styles_data)
         ],
         'setup_code': '''df = pd.read_csv(
     'https://raw.githubusercontent.com/plotly/dash-bio-docs-files/' +
-    'master/tests/dashbio_demos/sample_data/volcano_data1.csv'
+    'volcano_data1.csv'
 )''',
         'params': {
             'dataframe': 'df'
@@ -281,9 +282,9 @@ styles_data = json.loads(styles_data)
 layout_children = generate_docs(
     'dash_bio',
     'dashbio',
-    dashbio_library_heading,
-    dashbio_install_instructions,
-    dashbio_components
+    DASHBIO_LIBRARY_HEADING,
+    DASHBIO_INSTALL_INSTRUCTIONS,
+    DASHBIO_COMPONENTS
 )
 
 layout = html.Div(className="gallery", children=layout_children)

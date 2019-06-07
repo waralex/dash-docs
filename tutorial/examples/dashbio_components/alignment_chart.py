@@ -11,8 +11,8 @@ external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
 data = urlreq.urlopen(
-    "https://raw.githubusercontent.com/plotly/dash-bio/master/" +
-    "tests/dashbio_demos/sample_data/alignment_viewer_p53.fasta"
+    'https://raw.githubusercontent.com/plotly/dash-bio/master/' +
+    'alignment_viewer_p53.fasta'
 ).read()
 
 if PY3:
