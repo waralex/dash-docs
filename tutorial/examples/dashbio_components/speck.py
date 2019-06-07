@@ -5,7 +5,7 @@ import dash
 import dash_bio as dashbio
 import dash_html_components as html
 import dash_core_components as dcc
-from dash_bio.utils import xyz_reader
+from dash_bio_utils import xyz_reader
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 

@@ -1,5 +1,6 @@
 import json
 import six.moves.urllib.request as urlreq
+from six import PY3
 
 import dash
 import dash_bio as dashbio
@@ -10,8 +11,19 @@ external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
-model_data = urlreq.urlopen('https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/mol3d/model_data.js').read()
-styles_data = urlreq.urlopen('https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/mol3d/styles_data.js').read()
+model_data = urlreq.urlopen(
+    'https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/' +
+    'mol3d/model_data.js'
+).read()
+styles_data = urlreq.urlopen(
+    'https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/' +
+    'mol3d/styles_data.js'
+).read()
+
+if PY3:
+    model_data = model_data.decode('utf-8')
+    styles_data = styles_data.decode('utf-8')
+
 model_data = json.loads(model_data)
 styles_data = json.loads(styles_data)
 
