@@ -40,13 +40,17 @@ AlignmentChart = create_doc_page(
             'param_name': 'Color Scales',
             'description': 'Change the colors used for the heatmap.',
             'code': '''from six.moves.urllib import request as urlreq
+from six import PY3
 import dash_bio as dashbio
 
 
 data = urlreq.urlopen(
     "https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/" +
     "alignment_viewer_p53.fasta"
-).read().decode('utf-8')
+).read()
+
+if PY3:
+    data = data.decode('utf-8')
 
 dashbio.AlignmentChart(
     data=data,
@@ -60,13 +64,17 @@ dashbio.AlignmentChart(
             'param_name': 'Show/hide Barplots',
             'description': 'Enable or disable the secondary bar plots for gaps and conservation.',
             'code': '''from six.moves.urllib import request as urlreq
+from six import PY3
 import dash_bio as dashbio
 
 
 data = urlreq.urlopen(
     "https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/" +
     "alignment_viewer_p53.fasta"
-).read().decode('utf-8')
+).read()
+
+if PY3:
+    data = data.decode('utf-8')
 
 dashbio.AlignmentChart(
     data=data,
@@ -79,13 +87,17 @@ dashbio.AlignmentChart(
             'param_name': 'Tile Size',
             'description': 'Change the height and/or width of the tiles.',
             'code': '''from six.moves.urllib import request as urlreq
+from six import PY3
 import dash_bio as dashbio
 
 
 data = urlreq.urlopen(
     "https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/" +
     "alignment_viewer_p53.fasta"
-).read().decode('utf-8')
+).read()
+
+if PY3:
+    data = data.decode('utf-8')
 
 dashbio.AlignmentChart(
     data=data,
@@ -97,13 +109,17 @@ dashbio.AlignmentChart(
             'description': 'Toggle the display of the consensus sequence at the bottom of the \
             heatmap.',
             'code': '''from six.moves.urllib import request as urlreq
+from six import PY3
 import dash_bio as dashbio
 
 
 data = urlreq.urlopen(
     'https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/' +
     'alignment_viewer_p53.fasta'
-).read().decode('utf-8')
+).read()
+
+if PY3:
+    data = data.decode('utf-8')
 
 dashbio.AlignmentChart(
     data=data,
@@ -572,6 +588,7 @@ NeedlePlot = create_doc_page(
             'description': 'Change the appearance of the needles.',
             'code': '''import json
 import six.moves.urllib.request as urlreq
+from six import PY3
 
 import dash_bio as dashbio
 
@@ -579,7 +596,10 @@ import dash_bio as dashbio
 data = urlreq.urlopen(
     'https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/' +
     'needle_PIK3CA.json'
-).read().decode("utf-8")
+).read()
+
+if PY3:
+    data = data.decode("utf-8")
 
 mdata = json.loads(data)
 
@@ -600,6 +620,7 @@ dashbio.NeedlePlot(
             'description': 'Change the appearance of the domains.',
             'code': '''import json
 import six.moves.urllib.request as urlreq
+from six import PY3
 
 import dash_bio as dashbio
 
@@ -607,7 +628,10 @@ import dash_bio as dashbio
 data = urlreq.urlopen(
     'https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/' +
     'needle_PIK3CA.json'
-).read().decode("utf-8")
+).read()
+
+if PY3:
+    data = data.decode("utf-8")
 
 mdata = json.loads(data)
 
