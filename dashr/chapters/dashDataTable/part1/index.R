@@ -1,12 +1,10 @@
+library(dashR)
 library(dashCoreComponents)
 library(dashHtmlComponents)
-library(dashR)
 library(dashTable)
 
 utils <- new.env()
 source('dashr/utils.R', local=utils)
-
-df <- read.csv("https://raw.githubusercontent.com/plotly/datasets/master/solar.csv")
 
 examples <- list(
   example1 = utils$LoadExampleCode('dashr/chapters/dashDataTable/part1/examples/example1.R')
