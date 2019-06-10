@@ -30,4 +30,4 @@ app$callback(output('container', 'children'),
         ))
       )))
     })
-#app$run_heroku()
+#app$run_server()

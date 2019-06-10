@@ -79,9 +79,8 @@ Click on points in the graph.
 
 Choose the lasso or rectangle tool in the graph's menu
 bar and then select points in the graph.
-Selection data also
-accumulates (or un-accumulates) selected data if you hold down the shift
-button while clicking.
+Selection data also accumulates (or un-accumulates) selected
+data if you hold down the shift button while clicking.
            "), htmlPre(id='selected-data', style=styles$pre)
         ), className='three columns'
         ),

@@ -156,6 +156,7 @@ Here's a simple example that binds five Inputs
 (the `value` property of 2 `Dropdown` components, 2 `RadioItems` components,
 and 1 `Slider` component) to 1 Output component
 (the `figure` property of the `Graph` component).
+
 Notice how the `app$callback` lists all five `dash dependencies Input` inside
 a list in the second argument.
 "),

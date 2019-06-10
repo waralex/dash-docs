@@ -50,16 +50,14 @@ To get started, create a file named `app.R` containing the following code:
 examples$hello.world$source_code,
   
 dccMarkdown("
-
 Run the app with
 
    ```
    $ Rscript index.R 
    OR
    app$run_server # Within RStudio IDE
-   Fire started at 127.0.0.1:8080
-   start: 127.0.0.1:8080
-  
+   Fire started at 127.0.0.1:8050
+   start: 127.0.0.1:8050
    ```
   "),
   # hello markdown example
@@ -71,7 +69,6 @@ in your web browser. You should see an app that looks like this.
 
   dccMarkdown("
 Note:
-
 **1.** The `layout` is composed of a tree of \"components\" like `htmlDiv`
         and `dccGraph`.
 
@@ -112,15 +109,6 @@ app = Dash$new(assets_url_path = `path to your assets folder`)
 
 to get the same look and feel of these examples.
 
-### Making your first change
-
-**New in dash 0.30.0 and dash-renderer 0.15.0**
-Dash includes \"hot-reloading\", this features is activated by default when
-you run your app with `app$run_server(debug=True)`. This means that DashR
-will automatically refresh your browser when you make a change in your code.
-Give it a try: change the title \"Hello Dash\" in your application or change the `x` or the `y` data. Your app should auto-refresh with your change.
-> Don't like hot-reloading? You can turn this off with `app.run_server(dev_tools_hot_reload=False)`. 
-> Learn more in [Dash Dev Tools documentation](/devtools) Questions? See the [community forum hot reloading discussion](https://community.plot.ly/t/announcing-hot-reload/14177).
 #### More about HTML
 The `dashHtmlComponents` library contains a component class for every
 HTML tag as well as keyword arguments for all of the HTML arguments.
@@ -135,7 +123,6 @@ Let's customize the text in our app by modifying the inline styles of the compon
   dccMarkdown("
 In this example, we modified the inline styles of the `htmlDiv`
 and `htmlH1` components with the `style` property.
-
 `htmlH1('Hello Dash', style={'textAlign': 'center', 'color': '#7FDBFF'})`
 is rendered in the Dash application as
 `<h1 style=\"text-align: center; color: #7FDBFF\">Hello Dash</h1>`.
@@ -151,7 +138,6 @@ So, instead of `text-align`, it's `textAlign`.
 4. The children of the HTML tag is specified through the `children` keyword
 argument. By convention, this is always the _first_ argument and
 so it is often omitted.
-
 Besides that, all of the available HTML attributes and tags are available
 to you within your R context.
 
@@ -169,9 +155,8 @@ Here's a quick example that generates a `Table` from a dataframe.
 
   dccMarkdown("
 #### More about Visualization
-The `dashCoreComponents` library includes a component called `Graph`.
-
-`Graph` renders interactive data visualizations using the open source
+The `dashCoreComponents` library includes a component called `dccGraph`.
+`dccGraph` renders interactive data visualizations using the open source
 [plotly.js](https://github.com/plotly/plotly.js) JavaScript graphing
 library. Plotly.js supports over 35 chart types and renders charts in
 both vector-quality SVG and high-performance WebGL.
@@ -181,9 +166,8 @@ the same `figure` argument that is used by `plotly.R`, Plotly's
 open source R graphing library.
 Check out the [plotly.py documentation and gallery](https://plot.ly/r/)
 to learn more.
-
   "),
-  # hello scater example
+  # hello scatter example
   examples$hello.bubble$source_code,
   examples$hello.bubble$layout,
 

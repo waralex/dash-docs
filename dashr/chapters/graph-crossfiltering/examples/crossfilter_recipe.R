@@ -89,9 +89,7 @@ callback = function(g1,g2,g3,x,y){
         data = list(data
         ),
         layout = layout
-      )
-      
-    
+      )    
     shape = list(
       type = 'rect',
       line = list(
@@ -100,7 +98,6 @@ callback = function(g1,g2,g3,x,y){
         color = 'darkgrey'
       )
     )
-    
     if(is.null(selectedDatas[['range']]) == FALSE){
       figure[['layout']]['shapes'] = list(list(list(
         'x0' = unlist(selectedDatas[['range']][['x']][1]),

@@ -54,7 +54,7 @@ select regions of points in a graph.
   # Example of interactive visualizations 1
   Syntax(
     children = examples$interactive_graph_1$source,
-    summary="Here's an simple example that prints these attributes in the screen."
+    summary="Here's an simple example that prints these attributes to the screen."
     ),
 Example(examples$interactive_graph_1$layout),
 
@@ -125,4 +125,3 @@ The next chapter of the Dash User Guide explains how to share data between callb
 [Back to the Table of Contents](/)
   ")
 ))
-
