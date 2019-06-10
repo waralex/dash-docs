@@ -229,8 +229,8 @@ dash-bio-docs-files/master/'''
             )
 
     # change urllib package if necessary (due to Python version)
-    if sys.version_info < (3, 0):
-        imports_string = imports_string.replace('urllib.request', 'urllib2')
+    imports_string = imports_string.replace('urllib.request',
+                                            'six.moves.urllib.request')
 
     # full code
     example_string = '''import {} as {}
@@ -518,7 +518,7 @@ def create_doc_page(examples, component_names, component_name, component_example
         c_name = 'Molecule3dViewer'
     elif c_name == 'Molecule2DViewer':
         c_name = 'Molecule2dViewer'
-        
+
     return html.Div(
         children=[
             html.H1('{} Examples and Reference'.format(
