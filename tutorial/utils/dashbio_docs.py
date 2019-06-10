@@ -173,7 +173,7 @@ dash-bio-docs-files/master/'''
     # loading data if necessary
     if datafile is not None:
         library_imports.append(
-            ['six.moves.urllib2.request', 'urlreq']
+            ['six.moves.urllib.request', 'urlreq']
         )
         # only decode for python 3
         decode_string = ''
