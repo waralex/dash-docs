@@ -32,7 +32,7 @@ The `dashCoreComponents` library includes a component called `dccGraph`.
 library. Plotly.js supports over 35 chart types and renders charts in
 both vector-quality SVG and high-performance WebGL.
 
-The `figure` argument in the `dashCoreComponents.Graph` component is
+The `figure` argument in the `dccGraph` component is
 the same `figure` argument that is used by `plotly.R`, Plotly's
 open source R graphing library.
 Check out the [plotly.R documentation and gallery](https://plot.ly/r/)
