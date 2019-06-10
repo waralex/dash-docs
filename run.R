@@ -213,7 +213,7 @@ It is an interactive table that supports rich styling, conditional formatting, e
                        ),
                        htmlBr(),
                        dccMarkdown("
-New in dash v0.22.0! Learn how to add custom CSS and JS to your application with the `assets` directory. 
+Learn how to add custom CSS and JS to your application with the `assets` directory. 
 Also, learn how to customize the HTML template that Dash serves on page load in order to add custom meta tags, customize the page's title, and more.
                                    "),
                        htmlH2('Creating Your Own Components'),
