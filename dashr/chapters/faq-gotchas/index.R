@@ -5,10 +5,9 @@ library(dashR)
 utils <- new.env()
 source('dashr/utils.R', local=utils)
 
-#examples <- list(
-#  last_clicked_button=utils$LoadExampleCode('dashr/chapters/faq-gotchas/examples/last_clicked_button.R')
-#)
-
+examples <- list(
+  last_clicked_button=utils$LoadExampleCode('dashr/chapters/faq-gotchas/examples/last_clicked_button.R')
+)
 
 
 layout <- htmlDiv(list(
@@ -73,33 +72,21 @@ and URL Support](/urls) section in the Dash User Guide.
 **A:** In addition to the `n_clicks` property (which tracks the number of
 times a component has been clicked), all `dash-html-components` have an
 `n_clicks_timestamp` property, which records the time that the component was
-last clicked. This provides a convenient way for detecting which
+last clicked. 
+
+This provides a convenient way for detecting which
 `htmlButton` was clicked in order to trigger the current callback. Here's
 an example of how this can be done:
   "),
 
   #example of last_clicked_button
-  #examples$last_clicked_button$source,
-  #examples$last_clicked_button$layout,
-  
+  examples$last_clicked_button$source,
+  examples$last_clicked_button$layout,  
   dccMarkdown("
 Note that `n_clicks` is the only property that has this timestamp
 property. We will add general support for \"determining which input changed\"
 in the future, you can track our progress in this [GitHub
 Issue](https://github.com/plotly/dash/issues/291).
-
-------------------------
-
-**Q:** *Can I use Jinja2 templates with Dash?*
-
-**A:** Jinja2 templates are rendered on the server (often in a Flask app)
-before being sent to the client as HTML pages. Dash apps, on the other
-hand, are rendered on the client using React. This makes these
-fundamentally different approaches to displaying HTML in a browser, which
-means the two approaches can't be combined directly. You can however
-integrate a Dash app with an existing Flask app such that the Flask app
-handles some URL endpoints, while your Dash app lives at a specific
-URL endpoint.
 
 ------------------------
 
@@ -147,13 +134,6 @@ specified properties. For full validation, all components within your
 callback must therefore appear in the initial layout of your app, and you
 will see an error if they do not.
 
-However, in the case of more complex Dash apps that involve dynamic
-modification of the layout (such as multi-page apps), not every component
-appearing in your callbacks will be included in the initial layout. You can
-remove this restriction by disabling callback validation like this:
-
-app.config.supress_callback_exceptions = True
-
 
 ### Callbacks require *all* `Inputs`, `States`, and `Output` to be rendered on the page
 
@@ -182,20 +162,20 @@ in this [GitHub Issue](https://github.com/plotly/dash/issues/149).
 ### A component/property pair can only be the `Output` of one callback
 
 For a given component/property pair (eg `'my-graph'`, `'figure'`), it can
-only be registered as the `Output` of one callback. If you want to associate
-two logically separate sets of `Inputs` with the one output
+only be registered as the `output` of one callback. If you want to associate
+two logically separate sets of `inputs` with the one output
 component/property pair, you’ll have to bundle them up into a larger
-callback and detect which of the relevant `Inputs` triggered the callback
+callback and detect which of the relevant `inputs` triggered the callback
 inside the function. For `htmlButton` elements, detecting which one
-triggered the callback ca be done using the `n_clicks_timestamp`
+triggered the callback can be done using the `n_clicks_timestamp`
 property. For an example of this, see the question in the FAQ, *How do I
-determine which `Input` has changed?*.
+determine which `input` has changed?*.
 
 
 ### All callbacks must be defined before the server starts
 
 All your callbacks must be defined before your Dash app's server starts
-running, which is to say, before you call `app$run_server(debug=True)`. This means
+running, which is to say, before you call `app$run_server(debug=TRUE)`. This means
 that while you can assemble changed layout fragments dynamically during the
 handling of a callback, you can't define dynamic callbacks in response to
 user input during the handling of a callback. If you have a dynamic
@@ -203,7 +183,7 @@ interface, where a callback changes the layout to include a different set of
 input controls, then you must have already defined the callbacks required to
 service these new controls in advance.
 
-For example, a common scenario is a `Dropdown` component that updates the
+For example, a common scenario is a `dccDropdown` component that updates the
 current layout to replace a dashboard with another logically distinct
 dashboard that has a different set of controls (the number and type of which
 might which might depend on other user input) and different logic for
@@ -212,21 +192,18 @@ these dashboards to have separate callbacks. In this scenario, each of these
 callbacks much then be defined before the app starts running.
 
 Generally speaking, if a feature of your Dash app is that the number of
-`Inputs` or `States` is determined by a user's input, then you must
+`inputs` or `states` is determined by a user's input, then you must
 pre-define up front every permutation of callback that a user can
 potentially trigger. For an example of how this can be done programmatically
-using the `callback` decorator, see this [Dash Community forum
+using the `callback` handler, see this [Dash Community forum
 post](https://community.plot.ly/t/callback-for-dynamically-created-graph/5511).
 
 
 ### All Dash Core Components in a layout should be registered with a callback.
 
 If a Dash Core Component is present in the layout but not registered with a
-callback (either as an `Input`, `State`, or `Output`) then any changes to its
+callback (either as an `input`, `state`, or `output`) then any changes to its
 value by the user will be reset to the original value when any callback
 updates the page.
-
-This is a known issue and you can track its status in this [GitHub
-Issue](https://github.com/plotly/dash-renderer/issues/40). 
   ")
 ))

@@ -4,7 +4,7 @@ library(dashHtmlComponents)
 
 app <- Dash$new()
 
-app$layout(html.Div(list(
+app$layout(htmlDiv(list(
   htmlButton('Button 1', id='btn-1', n_clicks=0, children='Submit'),
   htmlButton('Button 2', id='btn-2', n_clicks=0, children='Submit'),
   htmlButton('Button 3', id='btn-3', n_clicks=0, children='Submit'),
@@ -30,4 +30,4 @@ app$callback(output('container', 'children'),
         ))
       )))
     })
-#app$run_heroku()
+#app$run_server()

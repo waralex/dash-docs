@@ -59,40 +59,46 @@ Let's get started with a simple example.
   dccMarkdown("
 Try typing in the text box. The children of the output component updates
 right away. Let's break down what's happening here:
-1. The \"inputs\" and \"outputs\" of our application interface are described
-declaratively through the `app.callback` decorator.
-2. In Dash, the inputs and outputs of our application are simply the
+
+**1.** The \"inputs\" and \"outputs\" of our application interface are described
+declaratively through the `app$callback` decorator.
+
+**2.** In Dash, the inputs and outputs of our application are simply the
 properties of a particular component. In this example,
 our input is the \"`value`\" property of the component that has the ID
-\"`my-id`\". Our output is the \"`children`\" property of the
-component with the ID \"`my-div`\".
-3. Whenever an input property changes, the function that the
+\"`my-id-input`\". Our output is the \"`children`\" property of the
+component with the ID \"`my-id-div`\".
+
+**3.** Whenever an input property changes, the function that the
 callback decorator wraps will get called automatically.
 Dash provides the function with the new value of the input property as
 an input argument and Dash updates the property of the output component
 with whatever was returned by the function.
-4. The `component_id` and `component_property` keywords are optional
+
+**4.** The `component_id` and `component_property` keywords are optional
 (there are only two arguments for each of those objects).
 I have included them here for clarity but I will omit them from here on
 out for brevity and readability.
-5. Don't confuse the `dash.dependencies.Input` object from the
-`dashCoreComponents.Input` object. The former is just used in these
+
+**5.** Don't confuse the `dash dependencies Input` object from the
+`dashCoreComponents Input` object. The former is just used in these
 callbacks and the latter is an actual component.
-6. Notice how we don't set a value for the `children` property of the
-`my-div` component in the `layout`. When the Dash app starts, it
+
+**6.** Notice how we don't set a value for the `children` property of the
+`my-id-div` component in the `app$layout()`. When the Dash app starts, it
 automatically calls all of the callbacks with the initial values of the
 input components in order to populate the initial state of the output
 components. In this example, if you specified something like
-`htmlDiv(id='my-div', children='Hello world')`, it would get overwritten
+`htmlDiv(id='my-id-div', children='Hello world')`, it would get overwritten
 when the app starts.
 
 It's sort of like programming with Microsoft Excel:
 whenever an input cell changes, all of the cells that depend on that cell
 will get updated automatically. This is called \"Reactive Programming\".
 
-Remember how every component was described entirely through its set of
+Remember how every component was described entirely through it's set of
 keyword arguments? Those properties are important now.
-With Dash interactivity, we can dynamically update any of those properties
+With Dash's interactivity, we can dynamically update any of those properties
 through a callback function. Frequently we'll update the `children` of a
 component to display new text or the `figure` of a `dccGraph` component
 to display new data, but we could also update the `style` of a component or
@@ -113,17 +119,20 @@ Let's take a look at another example where a `dccSlider` updates a
 In this example, the `\"value\"` property of the `Slider` is the input of the app
 and the output of the app is the `\"figure\"` property of the `Graph`.
 Whenever the `value` of the `Slider` changes, Dash calls the callback
-function `update_figure` with the new value. The function filters the
+function which updates the `indice_selected_year` arguement with the new value. The function filters the
 dataframe with this new value, constructs a `figure` object,
 and returns it to the Dash application.
 
 There are a few nice patterns in this example:
-1. We're using the [Pandas](http://pandas.pydata.org/) library for importing
+
+**1.** We're using Base R's [Data Import](https://stat.ethz.ch/R-manual/R-devel/library/utils/html/read.table.html) library for importing
 and filtering datasets in memory.
-2. We load our dataframe at the start of the app: `df = pd.read_csv('...')`.
+
+**2.** We load our dataframe at the start of the app: `df = read_csv('...')`.
 This dataframe `df` is in the global state of the app and can be
 read inside the callback functions.
-3. Loading data into memory can be expensive. By loading querying data at
+
+**3.** Loading data into memory can be expensive. By loading querying data at
 the start of the app instead of inside the callback functions, we ensure
 that this operation is only done when the app server starts. When a user
 visits the app or interacts with the app, that data (the `df`)
@@ -131,10 +140,11 @@ is already in memory.
 If possible, expensive initialization (like downloading or querying data)
 should be done in the global scope of the app instead of within the
 callback functions.
-4. The callback does not modify the original data, it just creates copies
-of the dataframe by filtered through pandas filters.
+
+**4.** The callback does not modify the original data, it just creates copies
+of the dataframe.
 This is important: *your callbacks should never mutate variables
-outside of their scope*. If your callbacks modify global state, then one
+outside of their scope*. If your callbacks modify global states, then one
 user's session might affect the next user's session and when the app is
 deployed on multiple processes or threads, those modifications will not
 be shared across sessions.
@@ -146,7 +156,8 @@ Here's a simple example that binds five Inputs
 (the `value` property of 2 `Dropdown` components, 2 `RadioItems` components,
 and 1 `Slider` component) to 1 Output component
 (the `figure` property of the `Graph` component).
-Notice how the `app.callback` lists all five `dash.dependencies.Input` inside
+
+Notice how the `app$callback` lists all five `dash dependencies Input` inside
 a list in the second argument.
 "),
   
@@ -155,11 +166,11 @@ a list in the second argument.
   examples$multi.inputs$layout,
 
   dccMarkdown("
-In this example, the `update_graph` function gets called whenever the
+In this example, the callback function gets called whenever the
 `value` property of the `Dropdown`, `Slider`, or `RadioItems` components
 change.
 
-The input arguments of the `update_graph` function are the new or current
+The input arguments of our callback function are the new or current
 value of each of the `Input` properties, in the order that they were
 specified.
 
@@ -182,6 +193,8 @@ To update multiple Outputs, just write multiple functions.
   examples$multi.output$layout,
 
   dccMarkdown("
+#### Chained Callbacks
+
 You can also chain outputs and inputs together: the output of one callback
 function could be the input of another callback function.
 
@@ -199,7 +212,7 @@ The first callback updates the available options in the second `RadioItems`
 component based off of the selected value in the first `RadioItems` component.
 
 The second callback sets an initial value when the `options` property changes:
-it sets it to the first value in that `options` array.
+it sets it to the first value in that `options` list.
 
 The final callback displays the selected `value` of each component.
 If you change the `value` of the countries `RadioItems` component, Dash
@@ -214,7 +227,7 @@ called with inconsistent state like with `\"USA\"` and `\"Montréal\"`.
 We've covered the fundamentals of callbacks in Dash.
 Dash apps are built off of a set
 of simple but powerful principles: declarative UIs that are customizable
-through reactive and functional Python callbacks.
+through reactive and functional R callbacks.
 Every element attribute of the declarative components can be updated through
 a callback and a subset of the attributes, like the `value` properties of
 the `dccDropdown`, are editable by the user in the interface.
