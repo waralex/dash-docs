@@ -30,6 +30,7 @@ source('dashr/chapters/dashDataTable/index.R', local=chapters.dashDataTable)
 chapters.dashDataTablePart1 <- new.env()
 source('dashr/chapters/dashDataTable/part1/index.R', local=chapters.dashDataTablePart1)
 
+
 header <- htmlDiv(
   className = 'header',
   list(
@@ -206,7 +207,17 @@ It is an interactive table that supports rich styling, conditional formatting, e
                        
                        htmlH2('Beyond the Basics'),
                        htmlHr(),
-                       dccMarkdown("IN PROGRESS..."),
+                       dccLink(
+                         'Adding CSS & JS and Overriding the Page-Load Template',
+                         href='/external-resources'
+                       ),
+                       htmlBr(),
+                       dccMarkdown("
+New in dash v0.22.0! Learn how to add custom CSS and JS to your application with the `assets` directory. 
+Also, learn how to customize the HTML template that Dash serves on page load in order to add custom meta tags, customize the page's title, and more.
+                                   "),
+                       htmlH2('Creating Your Own Components'),
+                       htmlHr(),
                        
                        htmlH2('Getting Help'),
                        htmlHr(),
