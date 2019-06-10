@@ -2,7 +2,7 @@ library(dashR)
 library(dashCoreComponents)
 library(dashHtmlComponents)
 
-LoadExampleCode <- function(filename) {
+LoadExampleCode <- function(filename, wd = NULL) {
   # Take a self-contained DashR example filename,
   # eval it, and return that example's `layout`
   # and the source code.
@@ -29,8 +29,20 @@ LoadExampleCode <- function(filename) {
       example.ready.for.eval
     )
   }
-  
+
   example.ready.for.eval <- paste(unlist(strsplit(example.ready.for.eval, "\r")), collapse = " ")
+  
+  if(!is.null(wd)) {
+
+    currentWd <- getwd()
+    newWd <- paste(c(currentWd, wd),collapse =  "/")
+    
+    example.ready.for.eval <- paste(c("setwd(newWd)", 
+                                      example.ready.for.eval, 
+                                      "setwd(currentWd)"), 
+                                    collapse = "\n")
+  }
+
   # run the example and implicitly assign the `layout` variable
   eval(parse(text=example.ready.for.eval))
 
