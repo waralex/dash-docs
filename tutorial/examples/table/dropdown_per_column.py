@@ -25,7 +25,7 @@ app.layout = html.Div([
         ],
 
         editable=True,
-        column_static_dropdown=[
+        dropdown=[
             {
                 'id': 'climate',
                 'dropdown': [

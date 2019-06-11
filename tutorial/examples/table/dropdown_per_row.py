@@ -25,7 +25,7 @@ app.layout = html.Div([
         ],
 
         editable=True,
-        column_conditional_dropdowns=[
+        dropdown_conditional=[
             {
                 # column id
                 'id': 'Neighborhood',
