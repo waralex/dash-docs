@@ -1,15 +1,14 @@
+import re
+
 from server import app
+
 
 def exception_handler(func):
     def wrapper(path):
         try:
             return func(path)
         except Exception as e:
-            print('\nError running {}\n{}'.format(
-                path,
-                ('======================================' +
-                 '======================================')
-            ))
+            print('\nError running {}\n{}'.format(path, '=' * 76))
             raise e
     return wrapper
 
@@ -51,12 +50,26 @@ def load_example(path):
             'print("Running")\n    # app.run_server'
         )
 
+        # if there are lines that should be included in the syntax but
+        # not executed, simply put this comment at the end of the line.
+        no_run = '# no-run'
+        if no_run in _example:
+            _example = '\n'.join(
+                line for line in _example.splitlines() if no_run not in line
+            )
+
+            find_no_run = re.compile(r'\s+' + no_run + '.*')
+            _source = '\n'.join(
+                find_no_run.sub('', line) if no_run in line else line
+                for line in _source.splitlines()
+            )
+
         scope = {'app': app}
         exec(_example, scope)
 
     return (
-        _source,
-        scope['layout']      # layout is a global created from the app
+        _source.replace(no_run, ''),
+        scope['layout']  # layout is a global created from the app
     )
 
 
