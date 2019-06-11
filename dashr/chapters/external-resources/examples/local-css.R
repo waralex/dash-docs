@@ -1,6 +1,7 @@
 library(dashR)
 library(dashCoreComponents)
 library(dashHtmlComponents)
+
 app <- Dash$new()
 
 app$layout(
@@ -25,4 +26,4 @@ app$layout(
   )
 )
 
-app$run_server()
+#app$run_server()

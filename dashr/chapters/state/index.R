@@ -28,7 +28,6 @@ layout <- htmlDiv(list(
 In the previous chapter on [basic Dash callbacks](/getting-started-part-2),
 our callbacks looked something like:
 "),
-
   #example of two inputs
   examples$two_inputs$source,
   examples$two_inputs$layout,
@@ -79,4 +78,5 @@ respond to interactions with graphs on the page.
   dccMarkdown("
 [Back to the Table of Contents](/)
               ")
-))
+  )
+)

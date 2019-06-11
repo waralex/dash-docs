@@ -39,9 +39,15 @@ The second part describes the interactivity of the application
 and will be covered in the [next chapter](/getting-started-part-2).
 
 
+<<<<<<< HEAD
 Dash provides R functions for all of the visual components of the application. 
 We maintain a set of components in the `dashCoreComponents` 
 and `dashHtmlComponents` package 
+=======
+Dash provides R classes for all of the visual components of the application. 
+We maintain a set of components in the `dashCoreComponents` 
+and the `dashHtmlComponents` library 
+>>>>>>> dashr-squashed
 but you can also [build your own](https://github.com/plotly/dash-components-archetype) with JavaScript and React.js.
 
 

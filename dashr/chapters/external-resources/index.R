@@ -58,8 +58,7 @@ three files in that folder:
 `app.r`
   "),
   examples$local_css$source_code,
-  
-  htmlDiv(
+    htmlDiv(
     dccMarkdown('`typography.css`'),
     style=list('paddingTop' = 20)
   ),
@@ -327,5 +326,4 @@ examples$addingExternalCSS$source_code,
 dccMarkdown("
 [Back to the Table of Contents](/)
               ")
-
 ))

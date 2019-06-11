@@ -18,6 +18,5 @@ cache
 bundle.js
 .idea
 .env
-.mypy_cache/
 
 ignore/indicators.csv

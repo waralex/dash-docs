@@ -74,9 +74,12 @@ body {
 /* Example Container */
 
 .example-container {
-  border: thin lightgrey solid;
+  border: thin #C8D4E3 solid;
   padding: 15px;
   overflow-x: scroll;
+}
+.code-container {
+  border-left: thin #C8D4E3 solid;
 }
 
 /* Fonts */

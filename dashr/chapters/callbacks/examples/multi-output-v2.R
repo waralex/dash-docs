@@ -35,7 +35,6 @@ app$callback(
 
     lapply(data_selected, 
            function(dat) {
-             
              list('label' = dat, 
                   'value' = dat)
            })
@@ -55,4 +54,4 @@ app$callback(
     sprintf("\"%s\ is a city in \"%s\"", selected_city, selected_country)
 })
 
-app$run_server()
+#app$run_server()

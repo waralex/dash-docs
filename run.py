@@ -122,7 +122,7 @@ header = html.Div(
                 html.A('user guide', className='link active', href='/'),
                 html.A('plotly', className='link', href='https://plot.ly/'),
                 html.A(children=[html.I(className="fa fa-search")], className='link', href='/search')
-            ])
+            ])#
         ]
     )
 )
@@ -152,7 +152,7 @@ app.layout = html.Div(
 
 
 @app.callback(Output('chapter', 'children'),
-              [Input('location', 'pathname')])
+    [Input('location', 'pathname')])
 def display_content(pathname):
     if pathname is None:
         return ''
@@ -266,8 +266,8 @@ def display_content(pathname):
 
     return content
 
-
-app.index_string = '''<!DOCTYPE html>
+app.index_string = '''
+<!DOCTYPE html>
 <html>
     <head>
         {%metas%}
@@ -297,7 +297,8 @@ app.index_string = '''<!DOCTYPE html>
             {%renderer%}
         </footer>
     </body>
-</html>'''
+</html>
+'''
 
 if __name__ == '__main__':
     app.run_server(debug=True, threaded=True, port=8060)

@@ -17,7 +17,7 @@ app.layout = html.Div([
         columns=[
             {"name": i, "id": i, "deletable": True} for i in df.columns
         ],
-        data=df.to_dict('records'),
+        data=df.to_dict("rows"),
         filtering=True,
     ),
     html.Div(id='datatable-filter-container')

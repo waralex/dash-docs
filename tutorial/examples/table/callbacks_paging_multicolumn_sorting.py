@@ -23,22 +23,22 @@ app.layout = dash_table.DataTable(
 
     sorting='be',
     sorting_type='multi',
-    sort_by=[]
+    sorting_settings=[]
 )
 
 
 @app.callback(
     Output('table-multicol-sorting', "data"),
     [Input('table-multicol-sorting', "pagination_settings"),
-     Input('table-multicol-sorting', "sort_by")])
-def update_table(pagination_settings, sort_by):
-    print(sort_by)
-    if len(sort_by):
+     Input('table-multicol-sorting', "sorting_settings")])
+def update_graph(pagination_settings, sorting_settings):
+    print(sorting_settings)
+    if len(sorting_settings):
         dff = df.sort_values(
-            [col['column_id'] for col in sort_by],
+            [col['column_id'] for col in sorting_settings],
             ascending=[
                 col['direction'] == 'asc'
-                for col in sort_by
+                for col in sorting_settings
             ],
             inplace=False
         )
@@ -49,7 +49,7 @@ def update_table(pagination_settings, sort_by):
     return dff.iloc[
         pagination_settings['current_page']*pagination_settings['page_size']:
         (pagination_settings['current_page'] + 1)*pagination_settings['page_size']
-    ].to_dict('records')
+    ].to_dict('rows')
 
 
 if __name__ == '__main__':

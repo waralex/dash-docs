@@ -71,18 +71,3 @@ LoadAndDisplayComponent <- function(example_string) {
     )
   )
 }
-
-
-# ComponentBlock <- function(example_string){
-#   return(htmlDiv(list(
-#     dccSyntaxHighlighter(
-#       example_string,
-#       language='r',
-#       customStyle=styles.code_container
-#     ),
-#     htmlDiv(
-#       children=eval(parse(text=example_string)),
-#       className='example-container',
-#       style=list('overflow-x' = 'initial')
-#     ))))
-# }
