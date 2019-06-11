@@ -22,4 +22,4 @@ app$callback(output(id = 'output', property = 'children'),
                sprintf("Input 1 is \"%s\" and Input 2 is \"%s\"", input1, input2)
              })
 
-app$run_server()
+#app$run_server()
