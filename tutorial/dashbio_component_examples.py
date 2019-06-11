@@ -485,7 +485,7 @@ model_data = urlreq.urlopen(
 dashbio.Molecule2dViewer(
     id='molecule2d-selectedatomids',
     modelData=json.loads(model_data),
-    selectedAtomIds=[i for i in range(10)]
+    selectedAtomIds=list(range(10))
 )'''
         },
 
