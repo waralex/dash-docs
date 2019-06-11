@@ -1,8 +1,8 @@
+library(dashR)
 library(dashCoreComponents)
 library(dashHtmlComponents)
-library(dashR)
 
-LoadExampleCode <- function(filename) {
+LoadExampleCode <- function(filename, wd = NULL) {
   # Take a self-contained DashR example filename,
   # eval it, and return that example's `layout`
   # and the source code.
@@ -30,42 +30,44 @@ LoadExampleCode <- function(filename) {
     )
   }
 
+  example.ready.for.eval <- paste(unlist(strsplit(example.ready.for.eval, "\r")), collapse = " ")
+  
+  if(!is.null(wd)) {
+
+    currentWd <- getwd()
+    newWd <- paste(c(currentWd, wd),collapse =  "/")
+    
+    example.ready.for.eval <- paste(c("setwd(newWd)", 
+                                      example.ready.for.eval, 
+                                      "setwd(currentWd)"), 
+                                    collapse = "\n")
+  }
+
   # run the example and implicitly assign the `layout` variable
   eval(parse(text=example.ready.for.eval))
 
-  return(list(
+  list(
     layout=htmlDiv(className='example-container', children=layout),
     source_code=htmlDiv(
       children=dccSyntaxHighlighter(example.file.as.string),
       className='code-container'
     )
-  ))
+  )
 }
 
 LoadAndDisplayComponent <- function(example_string) {
-  return(htmlDiv(list(
+  return(
     htmlDiv(
-      children=dccSyntaxHighlighter(example_string),
-      className='code-container'
-    ),
-    htmlDiv(
-      className='example-container',
-      children=eval(parse(text=example_string))
+      list(
+        htmlDiv(
+          children=dccSyntaxHighlighter(example_string),
+          className='code-container'
+        ),
+        htmlDiv(
+          className='example-container',
+          children=eval(parse(text=example_string))
+        )
+      )
     )
-  )))
+  )
 }
-
-
-# ComponentBlock <- function(example_string){
-#   return(htmlDiv(list(
-#     dccSyntaxHighlighter(
-#       example_string,
-#       language='r',
-#       customStyle=styles.code_container
-#     ),
-#     htmlDiv(
-#       children=eval(parse(text=example_string)),
-#       className='example-container',
-#       style=list('overflow-x' = 'initial')
-#     ))))
-# }

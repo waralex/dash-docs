@@ -6,10 +6,12 @@ app <- Dash$new()
 
 all_options = list(
   'America' = list('New York City', 'San Francisco', 'Cincinnati'),
-  'Canada' = list('Montréal', 'Toronto', 'Ottawa')
+  'Canada' = list('Montr\U{00E9}al', 'Toronto', 'Ottawa')
 )
-# [{'label': k, 'value': k} for k in all_options.keys()],
-app$layout(htmlDiv(list(
+
+app$layout(
+  htmlDiv(
+    list(
       dccRadioItems(
         id = 'countries-dropdown',
         options = list(list(label = 'America', value = 'America'),
@@ -17,11 +19,8 @@ app$layout(htmlDiv(list(
         value = 'America'
       ),
       htmlHr(),
-
       dccRadioItems(id='cities-dropdown'),
-
       htmlHr(),
-
       htmlDiv(id='display-selected-values')
     )
   )
@@ -31,21 +30,21 @@ app$callback(
   output=list(id='cities-dropdown', property='options'),
   params=list(input(id='countries-dropdown', property='value')),
   function(selected_country){
-    data_selected <- all_options[selected_country]
-    list_options <- list()
-    for (i in 1:length(data_selected[[1]])){
-      print(data_selected[[1]][i])
-      list_options[[i]] <- list('label' = data_selected[[1]][i], 'value' = data_selected[[1]][i])
-    }
-    return(list_options)
+    
+    data_selected <- all_options[[selected_country]]
+
+    lapply(data_selected, 
+           function(dat) {
+             list('label' = dat, 
+                  'value' = dat)
+           })
 })
 
 app$callback(
   output=list(id='cities-dropdown', property='value'),
   params=list(input(id='cities-dropdown', property='options')),
-  function(available_options) {
-  return(available_options[1]['value'])
-})
+  function(option) NULL
+)
 
 app$callback(
   output=list(id='display-selected-values', property='children'),
@@ -55,4 +54,4 @@ app$callback(
     sprintf("\"%s\ is a city in \"%s\"", selected_city, selected_country)
 })
 
-#app$run_heroku()
+#app$run_server()

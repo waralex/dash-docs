@@ -39,7 +39,7 @@ graph <- dccGraph(
         x=list(1, 2, 3),
         y=list(2, 4, 5),
         type='bar',
-        name='Montréal'
+        name='Montr\U{00E9}al'
       )
     ),
     layout = list(
@@ -51,13 +51,14 @@ graph <- dccGraph(
 )
 
 app$layout(
-  htmlDiv(list(
-    pageTitle,
-    pageSubTitle,
-    graph
-  ),
+  htmlDiv(
+    list(
+      pageTitle,
+      pageSubTitle,
+      graph
+    ),
     style = list(backgroundColor = colors$background)
   )
 )
 
-#app$run_heroku()
+#app$run_server()

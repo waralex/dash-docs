@@ -4,7 +4,9 @@ library(dashHtmlComponents)
 
 app <- Dash$new()
 
-app$layout(htmlDiv(list(
+app$layout(
+  htmlDiv(
+    list(
       dccRadioItems(
         id = 'dropdown-a',
         options = list(list(label = 'Canada', value = 'Canada'),
@@ -13,7 +15,6 @@ app$layout(htmlDiv(list(
         value = 'Canada'
       ),
       htmlDiv(id='output-a'),
-
       dccRadioItems(
         id = 'dropdown-b',
         options = list(list(label = 'MTL', value = 'MTL'),
@@ -25,7 +26,6 @@ app$layout(htmlDiv(list(
     )
   )
 )
-
 
 app$callback(
   output=list(id='output-a', property='children'),
@@ -41,4 +41,4 @@ app$callback(
     sprintf("You've entered \"%s\"", dropdown_value)
 })
 
-#app$run_heroku()
+#app$run_server()
