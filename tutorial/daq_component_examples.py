@@ -442,6 +442,28 @@ Joystick = html.Div(children=[
     ),
 
     html.Hr(),
+    html.H3('Label'),
+    dcc.Markdown(
+        "Change the label and label orientation with `label` and `labelPosition`."),
+    ComponentBlock('''import dash_daq as daq
+
+daq.Joystick(
+  label="Label",
+  labelPosition="bottom"
+)''', customStyle=styles.code_container, language='python'),
+
+    html.Hr(),
+    html.H3('Size'),
+    dcc.Markdown(
+        "Change the size of the joystick with `size`."),
+    ComponentBlock('''import dash_daq as daq
+
+daq.Joystick(
+  size=250
+)''', customStyle=styles.code_container, language='python'),
+
+    html.Hr(),
+
     html.H3('Joystick Properties'),
     generate_prop_table('Joystick')
 ])
@@ -866,7 +888,7 @@ daq.Slider(
     ComponentBlock('''import dash_daq as daq
 
 daq.Slider(
-    id='my-daq-slider', 
+    id='my-daq-slider',
     value=17,
     handleLabel='Handle'
 )''', customStyle=styles.code_container, language='python'),

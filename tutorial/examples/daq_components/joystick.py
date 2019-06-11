@@ -18,9 +18,12 @@ app.layout = html.Div([
 
 @app.callback(
     dash.dependencies.Output('joystick-output', 'children'),
-    [dash.dependencies.Input('my-joystick', 'angle')])
-def update_output(angle):
-    return 'Angle is {}'.format(angle)
+    [dash.dependencies.Input('my-joystick', 'angle'),
+     dash.dependencies.Input('my-joystick', 'force')])
+def update_output(angle, force):
+    return ['Angle is {}'.format(angle),
+            html.Br(),
+            'Force is {}'.format(force)]
 
 
 if __name__ == '__main__':
