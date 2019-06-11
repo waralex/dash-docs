@@ -135,7 +135,7 @@ html.H3('Disabled'),
     ComponentBlock('''import dash_daq as daq
 
 daq.ColorPicker(
-  label='Color Picker',  
+  label='Color Picker',
   disabled=True,
 )''', customStyle=styles.code_container, language='python'),
     html.Hr(),
@@ -144,7 +144,7 @@ html.H3('Hex Colors'),
     ComponentBlock('''import dash_daq as daq
 
 daq.ColorPicker(
-  label='Color Picker',  
+  label='Color Picker',
   value=dict(hex="#0000FF"),
 )''', customStyle=styles.code_container, language='python'),
     html.Hr(),
@@ -154,7 +154,7 @@ html.H3('RGB Colors'),
     ComponentBlock('''import dash_daq as daq
 
 daq.ColorPicker(
-label='Color Picker',  
+label='Color Picker',
 value=dict(rgb=dict(r=255, g=0, b=0, a=0))
 )''', customStyle=styles.code_container, language='python'),
     html.Hr(),
@@ -841,7 +841,7 @@ Slider = html.Div(children=[
     ),
 
     html.Hr(),
-    
+
     html.H3('Marks'),
     dcc.Markdown("Set custom marks on the slider using with `marks`."),
     ComponentBlock('''import dash_daq as daq
@@ -866,7 +866,7 @@ daq.Slider(
     ComponentBlock('''import dash_daq as daq
 
 daq.Slider(
-    id='my-slider', 
+    id='my-daq-slider', 
     value=17,
     handleLabel='Handle'
 )''', customStyle=styles.code_container, language='python'),
@@ -877,27 +877,27 @@ daq.Slider(
     dcc.Markdown("Change the value of increments or decrements using `step`."),
     ComponentBlock('''import dash_daq as daq
 daq.Slider(
-    min=0, 
+    min=0,
     max=100,
     value=50,
-    handleLabel={"showCurrentValue": True,"label": "VALUE"}, 
+    handleLabel={"showCurrentValue": True,"label": "VALUE"},
     step=10
 )''', customStyle=styles.code_container, language='python'),
 
-    html.Hr(), 
+    html.Hr(),
 
     html.H3('Vertical orientation'),
     dcc.Markdown("Make the slider display vertically by setting `vertical=True`."),
-    ComponentBlock('''import dash_daq as daq 
+    ComponentBlock('''import dash_daq as daq
 daq.Slider(
     vertical=True
 )''', customStyle=styles.code_container, language='python'),
 
     html.Hr(),
-    
+
     html.H3("Slider Properties"),
     generate_prop_table("Slider")
-    
+
 ])
 
 # Tank
@@ -922,14 +922,14 @@ Tank = html.Div(children=[
     html.H3('Current value with units'),
     dcc.Markdown("Display the current value, along with optional \
     units with the `units` and `showCurrentValue` properties."),
-    ComponentBlock('''import dash_daq as daq 
+    ComponentBlock('''import dash_daq as daq
 daq.Tank(
     value=6,
     showCurrentValue=True,
     units='gallons',
     style={'margin-left': '50px'}
 )''', customStyle=styles.code_container, language='python'),
-    
+
     html.Hr(),
 
     html.H3('Size') ,
@@ -942,15 +942,15 @@ daq.Tank(
 )
 ''', customStyle=styles.code_container, language='python'),
 
-    html.Hr(), 
-    
+    html.Hr(),
+
     html.H3('Label'),
     dcc.Markdown("Display a label alongside your tank in the \
     specified position with `label` and `labelPosition`."),
     ComponentBlock('''import dash_daq as daq
 daq.Tank(
     value=3,
-    label='Tank label', 
+    label='Tank label',
     labelPosition='bottom'
 )''', customStyle=styles.code_container, language='python'),
 
@@ -961,21 +961,21 @@ daq.Tank(
     as well as the labels themselves with the `scale` property."),
     ComponentBlock('''import dash_daq as daq
 daq.Tank(
-    value=3, 
-    scale={'interval': 2, 'labelInterval': 2, 
+    value=3,
+    scale={'interval': 2, 'labelInterval': 2,
            'custom': {'5': 'Set point'}},
     style={'margin-left': '50px'}
 )''', customStyle=styles.code_container, language='python'),
 
-    html.Hr(), 
-    
+    html.Hr(),
+
     html.H3('Logarithmic'),
     dcc.Markdown("Use a logarithmic scale for the tank with the specified \
     base by setting `logarithmic=True`."),
     ComponentBlock('''import dash_daq as daq
 daq.Tank(
-    min=0, 
-    max=10, 
+    min=0,
+    max=10,
     value=300,
     logarithmic=True,
     base=3,
@@ -1012,20 +1012,20 @@ Thermometer = html.Div(children=[
     optional units with ` showCurrentValue` and `units`."),
     ComponentBlock('''import dash_daq as daq
 daq.Thermometer(
-    min=95, 
+    min=95,
     max=105,
     value=100,
     showCurrentValue=True,
     units="C"
 )''', customStyle=styles.code_container, language='python'),
-    
+
     html.Hr(),
 
     html.H3('Size'),
     dcc.Markdown("Control the size of the thermometer using `size`."),
-    ComponentBlock('''import dash_daq as daq 
+    ComponentBlock('''import dash_daq as daq
 daq.Thermometer(
-    value=5, 
+    value=5,
     size=100
 )''', customStyle=styles.code_container, language='python'),
 
@@ -1034,19 +1034,19 @@ daq.Thermometer(
     html.H3('Label'),
     dcc.Markdown("Display a label alongside the thermometer in \
     the specified positon by setting `label` and `labelPosition`."),
-    ComponentBlock('''import dash_daq as daq 
+    ComponentBlock('''import dash_daq as daq
 daq.Thermometer(
     value=5,
-    label='Current temperature', 
+    label='Current temperature',
     labelPosition='top'
 )''', customStyle=styles.code_container, language='python'),
 
-    html.Hr(), 
+    html.Hr(),
 
     html.H3('Custom scales'),
     dcc.Markdown("Control the intervals at which labels are displayed, \
     as well as the labels themselves with the `scale` property."),
-    ComponentBlock('''import dash_daq as daq 
+    ComponentBlock('''import dash_daq as daq
 daq.Thermometer(
     value=5,
     scale={'start': 2, 'interval': 3,
@@ -1058,9 +1058,9 @@ daq.Thermometer(
 
     html.Hr(),
 
-    html.H3('Thermometer Properties'),    
+    html.H3('Thermometer Properties'),
     generate_prop_table("Thermometer")
-    
+
 ])
 
 # Toggle Switch
@@ -1093,7 +1093,7 @@ daq.ToggleSwitch(
 
     html.H3('Size'),
     dcc.Markdown("Adjust the size of the toggle switch with `size`."),
-    ComponentBlock('''import dash_daq as daq 
+    ComponentBlock('''import dash_daq as daq
 daq.ToggleSwitch(
     size=100
 )''', customStyle=styles.code_container, language='python'),
@@ -1103,17 +1103,17 @@ daq.ToggleSwitch(
     html.H3('Label'),
     dcc.Markdown("Add a label to the toggle switch and specify \
     its position using `label` and `labelPosition`."),
-    ComponentBlock('''import dash_daq as daq 
+    ComponentBlock('''import dash_daq as daq
 daq.ToggleSwitch(
-    label='My toggle switch', 
+    label='My toggle switch',
     labelPosition='bottom'
 )''', customStyle=styles.code_container, language='python'),
-    
+
     html.Hr(),
 
     html.H3('Toggle Switch Properties'),
     generate_prop_table("ToggleSwitch")
-    
+
 ])
 
 # Dark Theme Provider
@@ -1135,6 +1135,6 @@ DarkThemeProvider = html.Div(children=[
 
     html.Hr(),
 
-    html.H3('Dark Theme Provider Properties'), 
+    html.H3('Dark Theme Provider Properties'),
     generate_prop_table("DarkThemeProvider")
 ])

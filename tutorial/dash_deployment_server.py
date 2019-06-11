@@ -39,6 +39,18 @@ layout = html.Div(className='toc', children=[
         reusable_components.Chapter('Configuring System Dependencies',
                 '/dash-deployment-server/configure-system-dependencies',
                 'Install and configure system dependencies such as database drivers or the Java JRE environment.'),
+    ]),
+
+reusable_components.Section("User Interface", [
+        reusable_components.Chapter('Dash App Portal',
+                '/dash-deployment-server/portal',
+                'Learn about the Dash App Portal.'),
+        reusable_components.Chapter('Dash App Privacy',
+                '/dash-deployment-server/privacy',
+                'Learn about Dash App privacy and how to manage collaborators.'),
+        reusable_components.Chapter('Linking a Redis Database',
+                '/dash-deployment-server/redis-database',
+                'Create and link an in-memory database to your Dash Apps.'),
         reusable_components.Chapter('Setting Environment Variables',
                 '/dash-deployment-server/environment-variables',
                 'Environment variables are commonly used to store secret '
@@ -55,19 +67,15 @@ layout = html.Div(className='toc', children=[
                 "There are two methods to deploy Dash Apps: HTTPS and SSH. "
                 "We recommend getting started with the HTTPS method. "
                 "In this section, you'll learn more about deploying with SSH."),
-        reusable_components.Chapter('Dash App Authentication',
+        reusable_components.Chapter('Dash Enterprise Auth Features',
                 '/dash-deployment-server/app-authentication',
-                'Using `dash-auth` package to provide login through '
-                'Plotly Enterprise.'),
+                'Using `dash-enterprise-auth` to manage user authentication data.'),
         reusable_components.Chapter('Dash App Privacy',
                 '/dash-deployment-server/privacy',
                 'Learn about Dash App privacy and how to manage collaborators.'),
         reusable_components.Chapter('Adding Private Python Packages',
                 '/dash-deployment-server/private-packages',
-                'Intsall private python packages in your Dash Apps.'),
-        reusable_components.Chapter('Linking a Redis Database',
-                '/dash-deployment-server/redis-database',
-                'Create and link an in-memory database to your Dash Apps.'),
+                'Install private python packages in your Dash Apps.'),
         reusable_components.Chapter('Linking a Celery Process',
                 '/dash-deployment-server/celery-process',
                 'Add a task queue to your Dash Apps.'),
