@@ -37,7 +37,7 @@ app.layout = html.Div([
 )
 def update_selected_atoms(ids):
     if ids is None or len(ids) == 0:
-        return "No atoms have been selected. Select an atom by clicking on it."
+        return "No atom has been selected. Select atoms by clicking on them."
     return "Selected atom IDs: {}.".format(', '.join([str(i) for i in ids]))
 
 
