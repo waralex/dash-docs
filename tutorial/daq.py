@@ -11,19 +11,25 @@ from tutorial.utils.simple_doc_generator import generate_docs
 
 
 daq_library_heading =  dcc.Markdown('''
-    # Dash DAQ 
+    # Dash DAQ
 
-    Dash is a web application framework that provides pure Python abstraction 
+    Dash is a web application framework that provides pure Python abstraction
     around HTML, CSS, and JavaScript.
 
-    Dash DAQ comprises a robust set of controls that make it simpler to 
-    integrate data acquisition and controls into your Dash applications. 
+    Dash DAQ comprises a robust set of controls that make it simpler to
+    integrate data acquisition and controls into your Dash applications.
 
-    The source is on GitHub at [plotly/dash-daq](https://github.com/plotly/dash-daq). 
+    The source is on GitHub at [plotly/dash-daq](https://github.com/plotly/dash-daq).
 
     These docs are using version {}.
     '''.replace('    ', '').format(daq.__version__)
 )
+
+daq_install_instructions = dcc.SyntaxHighlighter('''>>> import dash_daq as daq
+    >>> print(daq.__version__)
+    {}'''.replace('    ', '').format(daq.__version__),
+    customStyle=styles.code_container)
+
 
 dash_daq_components = {
     'BooleanSwitch': {
@@ -56,7 +62,7 @@ dash_daq_components = {
         }
     },
     'Indicator': {
-        'description': '''A boolean indicator LED.''', 
+        'description': '''A boolean indicator LED.''',
         'props': {
             'value': True,
             'color': '\"#00cc96\"'
@@ -134,7 +140,7 @@ dash_daq_components = {
             'min': 95,
             'max': 105,
             'value': 98.6
-        }, 
+        },
     },
     'ToggleSwitch': {
         'description': '''A switch component that toggles between \
@@ -149,6 +155,8 @@ layout_children = generate_docs(
     daq_library_heading,
     dash_daq_components
 )
+
+layout_children.insert(1, daq_install_instructions)
 
 dtp = load_example(
     'tutorial/examples/daq_components/darkthemeprovider_daq.py'
@@ -165,16 +173,15 @@ layout_children += [
         tree to make all components match the dark theme. '''
     )),
 
-    
+
     dcc.SyntaxHighlighter(dtp[0],
                           language='python',
                           customStyle=styles.code_container),
     html.Div(dtp[1]),
-    
+
     dcc.Link('More DarkThemeProvider Examples and Reference',
              href='dash-daq/darkthemeprovider'),
-]  
+]
 
 
-layout = html.Div(id='gallery', children=layout_children)
-    
+layout = html.Div(className="gallery", children=layout_children)

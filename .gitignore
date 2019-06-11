@@ -1,4 +1,5 @@
 build/
+cache-directory/
 dist/
 lib/
 lib/bundle.js*
@@ -17,5 +18,6 @@ cache
 bundle.js
 .idea
 .env
+.mypy_cache/
 
 ignore/indicators.csv

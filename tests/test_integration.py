@@ -4,7 +4,7 @@ import dash_html_components as html
 import dash
 from dash.dependencies import Input, Output
 
-from datetime import datetime
+
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import base64
@@ -15,7 +15,6 @@ import os
 import pandas as pd
 import percy
 import sys
-import time
 import unittest
 
 from .IntegrationTests import IntegrationTests
@@ -116,13 +115,18 @@ class Tests(IntegrationTests):
 
         def visit_and_snapshot(href):
             self.driver.get('http://localhost:8050{}'.format(href))
-            self.wait_for_element_by_id('wait-for-page-{}'.format(href))
-            time.sleep(5)
-            self.snapshot(href)
-            self.driver.back()
-
+            # stub elem at the bottom of browser
+            try:
+                self.wait_for_element_by_id('wait-for-page-{}'.format(href))
+                if href == '/external-resources':
+                    self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+                self.snapshot(href)
+                self.driver.back()
+            except Exception as e:
+                print(href)  # determine which page is having issues
+                raise e
         for link in links:
-            if link.startswith('/'):
+            if link.startswith('/') and link != '/dash-daq' and link != '/dash-bio':
                 visit_and_snapshot(link)
 
         # test search page
@@ -132,5 +136,5 @@ class Tests(IntegrationTests):
         search_element = self.driver.find_element_by_id('search-input')
         search_element.clear()
         search_element.send_keys('dropdown')
-        time.sleep(5)
+        self.wait_for_element_by_css_selector('#hits .ais-hits--item')
         self.snapshot('search-dropdown')

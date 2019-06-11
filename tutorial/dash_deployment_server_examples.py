@@ -299,9 +299,6 @@ $ source venv/Scripts/activate # uses the virtualenv'''), customStyle=styles.cod
 
                     dcc.SyntaxHighlighter(
                     '''$ pip install dash
-$ pip install dash-renderer
-$ pip install dash-core-components
-$ pip install dash-html-components
 $ pip install plotly''', customStyle=styles.code_container),
 
                     dcc.Markdown(s(
@@ -397,16 +394,16 @@ if __name__ == '__main__':
 
                     dcc.Markdown(s(
                     '''
-                    For some applications, you may require using the `worker` 
-                    process. For example, the [Dash Redis Demo](https://github.com/plotly/dash-redis-demo) 
-                    includes Celery - an asynchronous task queue/job queue. 
-                    When using a `worker` process in your `Procfile`, 
-                    you will have to explicitly start it after deploying. To 
-                    scale a `worker` process: 
+                    For some applications, you may require using the `worker`
+                    process. For example, the [Dash Redis Demo](https://github.com/plotly/dash-redis-demo)
+                    includes Celery - an asynchronous task queue/job queue.
+                    When using a `worker` process in your `Procfile`,
+                    you will have to explicitly start it after deploying. To
+                    scale a `worker` process:
 
-                    `ssh dokku@dash-server ps:scale APP-NAME worker=1`. 
-                    
-                    Note that this requires 
+                    `ssh dokku@dash-server ps:scale APP-NAME worker=1`.
+
+                    Note that this requires
                     [Authenticating to Dash Deployment Server with SSH](/dash-deployment-server/ssh).
 
                     ''')),
@@ -859,7 +856,7 @@ ConfigSys = html.Div(children=[
 
     To see this example code in action
     [check out our ODBC example](https://github.com/plotly/dash-on-premise-sample-app/pull/3#issue-144272510)
-     On-Premise application.
+     On-Premises application.
     '''))
 ])
 
@@ -1076,7 +1073,7 @@ LocalDir = html.Div(children=[
     ''')),
 
     dcc.SyntaxHighlighter(s("""import os
-    file_pathname = os.path.join('data', 'some-file.csv')"""),
+    file_pathname = os.path.join(os.sep, 'data', 'my-dataset.csv')"""),
     customStyle=styles.code_container,
     language='python'
     ),
@@ -1092,12 +1089,12 @@ LocalDir = html.Div(children=[
     ''')),
 
     dcc.SyntaxHighlighter(
-"""if 'DASH_APP' in os.environ:
+"""if 'DASH_APP_NAME' in os.environ:
     # this is a deployed app
-    filepath = os.path.join('data', 'my-dataset.csv')
+    filepath = os.path.join(os.sep, 'data', 'my-dataset.csv')
 else:
     # local file path
-    filepath = os.path.join('Users', 'chris', 'data', 'my-dataset.csv')""",
+    filepath = os.path.join(os.sep, 'Users', 'chris', 'data', 'my-dataset.csv')""",
     customStyle=styles.code_container,
     language='python'
     ),
@@ -1419,19 +1416,10 @@ Authentication = html.Div(children=[
     rc.Blockquote(),
 
     dcc.Markdown(s('''
-    The `dash-auth` package provides login through your Plotly Enterprise 
-    accounts. As such, this includes sharing apps through the integrated 
-    LDAP system. Apps that you have saved will appear in your list of 
-    files at `https://<your-plotly-server>.com/organize/home`
-    and you can manage the permissions of the apps there. Viewers create and 
-    manage their own accounts. 
-    
-    In the first section we will discuss how to add `dash-auth` to your 
-    existing Dash apps. In the second, we will illustrate how `dash-auth` works 
-    for the 
-    [On-Premise Sample App](https://github.com/plotly/dash-on-premise-sample-app/). 
-    For more discussion and examples about authentication and available 
-    methods, see [authentication](/authentication). 
+    DDS will automatically implement user authentication if your
+    [Dash app's privacy](/dash-deployment-server/privacy) is set to *Restricted* (the default setting)
+    or *Authorized* but not if is set to *Unauthorized*. You can access the authentication data within your app
+    using the [`dash-enterprise-auth`](https://github.com/plotly/dash-enterprise-auth/) package.
 
     ***
 
@@ -1439,152 +1427,102 @@ Authentication = html.Div(children=[
 
     dcc.Markdown(s('''
 
-    ## Adding `dash-auth` to an Existing Dash App
+    ## Using `dash-enterprise-auth` in an Existing Dash App
 
-    If you have previously deployed your Dash app to your Dash Deployment 
-    Server, then you can follow the instructions below to add Plotly OAuth to 
-    your Dash app. If you have an existing Dash app on your local machine that 
-    you haven't deployed yet, then you first need to 
-    [initialize](/dash-deployment-server/initialize) a Dash app on your Dash 
-    Deployment Server.
+    If you have previously deployed your Dash app to your Dash Deployment
+    Server, simply add `dash-enterprise-auth` to your `requirements.txt` file.
 
+    `dash-enterprise-auth` includes the method `create_logout_button` which allows you to
+    add a logout button to your app's layout and it also includes three other methods,
+    `get_username`, `get_user_data` and `get_kerberos_ticket_cache` (only applicable for
+    certain server configurations), which provide information about the app's viewer and so
+    must be called from within callbacks.
 
-    #### Adding Environment Variables
-
-    Plotly Auth uses the environment variables `PLOTLY_USERNAME` and 
-    `PLOTLY_API_KEY`. You can find your username and API key at 
-    `https://<your-plotly-server>.com/settings/api`.
-    You can either set these 
-    variables directly in your code or by using the Dash Deployment Server.
-
-    &nbsp;
-
-    To set these variables directly in your code:
+    The example below demonstrates how to use these callbacks. Note that in order to use
+    `create_logout_button` locally you will have to set an environment variable called
+    `DASH_LOGOUT_URL`. You can do this by running your code with `DASH_LOGOUT_URL=plot.ly python app.py`.
 
     ''')),
 
-    dcc.SyntaxHighlighter(s("""import os
 
-os.environ['PLOTLY_USERNAME'] = 'your-username'
-os.environ['PLOTLY_API_KEY'] = 'your-api-key'
-    """),
-    customStyle=styles.code_container,
-    language='python'
-    ),
+    dcc.SyntaxHighlighter("""
+import dash
+from dash.dependencies import Input, Output
+import dash_core_components as dcc
+import dash_html_components as html
+import dash_enterprise_auth as auth
 
-    dcc.Markdown(s('''
 
-    &nbsp;
+external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
-    However, if you prefer not to expose these variables in your code, then you 
-    can add them via the Dash Deployment Server. In the Environment Variables 
-    section of your Dash app's settings 
-    (`https://<your-dash-domain>.com/MANAGER/apps/<your-dash-app>/settings`), 
-    use the text input boxes to set the variables and their values.
+app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
-    ''')),
+server = app.server  # Expose the server variable for deployments
 
-    html.Img(
-        alt='Enable Redis Databases',
-        src='/assets/images/dds/auth-variables.PNG',
-        style={
-            'width': '100%', 'border': 'thin lightgrey solid',
-            'border-radius': '4px'
+
+# Standard Dash app code below
+app.layout = html.Div(className='container', children=[
+
+    html.Div([
+        html.H2('Sample App', id='header-title', className='ten columns'),
+        html.Div(auth.create_logout_button(), className='two columns', style={'marginTop': 30})
+    ]),
+    html.Div(id='dummy-input', style={'display': 'none'}),
+
+    html.Div([
+        html.Div(
+            className='four columns',
+            children=[
+                dcc.Dropdown(
+                    id='dropdown',
+                    options=[{'label': i, 'value': i} for i in ['LA', 'NYC', 'MTL']],
+                    value='LA'
+                )
+        ]),
+        html.Div(
+            className='eight columns',
+            children=[
+                dcc.Graph(id='graph')
+            ])
+    ])
+])
+
+
+@app.callback(Output('header-title','children'),
+              [Input('dummy-input', 'children')])
+def update_title(_):
+
+    # print user data to the logs
+    print(auth.get_user_data())
+
+    # update header with username
+    return 'Hello {}'.format(auth.get_username())
+
+
+@app.callback(Output('graph', 'figure'),
+              [Input('dropdown', 'value')])
+def update_graph(value):
+    return {
+        'data': [{
+            'x': [1, 2, 3, 4, 5, 6],
+            'y': [3, 1, 2, 3, 5, 6]
+        }],
+        'layout': {
+            'title': value,
+            'margin': {
+                'l': 60,
+                'r': 10,
+                't': 40,
+                'b': 60
+            }
         }
-    ),
+    }
 
-    dcc.Markdown(s('''
-
-    #### Adding PlotlyAuth to Your `app.py`
-
-    Once you've added the environment variables `PLOTLY_USERNAME` and 
-    `PLOTLY_API_KEY`, you can add the below code to your `app.py` file.
-
-    ''')),
-
-    dcc.SyntaxHighlighter(s(
-        """import dash_auth
-        
-        auth = dash_auth.PlotlyAuth(
-               app,
-               'add your Dash app name',
-               'private',
-               'https://<your-dash-domain>.com/MANAGER/apps/<your-dash-app>'
-        )"""),
+if __name__ == '__main__':
+    app.run_server(debug=True)""",
     customStyle=styles.code_container,
     language='python'
-    ),
-
-    dcc.Markdown(s('''
-
-    &nbsp;
-
-    #### Adding PlotlyAuth Logout
-
-    Optionally, you may want to add a logout button to your Dash app. This 
-    can be achieved by inlcuding the following in the `app.layout`:
-
-    ''')),
-
-    dcc.SyntaxHighlighter(s(
-        """auth.create_logout_button(
-               label='Sign out',
-               redirect_to='https://<your-plotly-server>.com'
-        )"""),
-    customStyle=styles.code_container,
-    language='python'
-    ),
-
-    dcc.Markdown(s('''
-
-    &nbsp;
-
-    For more information about Plotly OAuth methods, see 
-    [authentication](/authentication). 
-
-    #### Deploy Your App
-
-    After adding PlotlyAuth to your `app.py` file, you can commit your changes 
-    and deploy your Dash app. For more information about how to deploy your 
-    Dash app, see 
-    [Part 2. Deploy Dash Apps on Dash Deployment Server](/dash-deployment-server/deployment).
-
-    #### Manage Permissions
-
-    Your app should now have a Dash Deployment Server login screen. If your app privacy
-    was set to `private` or `secret` in your config.py file, manage the permissions of 
-    the app in your list of files at `https://<your-plotly-domain>/organize/home`. See
-    [Dash App Privacy](/dash-deployment-server/privacy) for more information.
-
-    ''')),
-
-    dcc.Markdown(s('''
-    ***
-
-    ## Using `dash-auth` in the On-Premise Sample App
-
-    This section is relevant for those that have 
-    [cloned and deployed](/deployment) the 
-    [On-Premise Sample App](https://github.com/plotly/dash-on-premise-sample-app/).
-
-    #### Modify the `config.py` File
-
-    This file contains several settings that are used in your app.
-    It's kept in a separate file so that it's easy for you to
-    transfer from app to app.
-    *Read through this file and modify the variables as appropriate.*
-
-    ''')),
-
-    dcc.Markdown(s('''
-    
-
-    #### Redeploy Your App
-
-    Your app should now have a Dash Deployment Server login screen.
-    You can manage the permissions of the app in your list of files
-    at `https://<your-plotly-domain>/organize`.
-    '''))
+    )
 ])
 
 # # # # # # #
@@ -1596,69 +1534,19 @@ AppPrivacy = html.Div(children=[
     rc.Blockquote(),
 
     dcc.Markdown(s('''
-    `dash-auth` gives you the ability to select one of three privacy 
-    modes for your Dash App via PlotlyOAuth. `Public`, `Private`, and `Secret` modes are
-    explained below, followed by a section outlining how to manage users that
-    can view your app.
-    
-    For more details/examples on `dash-auth` see [Authentication](/authentication).
+    &nbsp;
 
-    ***
-    
-    ## Privacy Modes
-    
-    #### No Authentication
-    
-    Dash Apps that don't initialize PlotlyOAuth will be viewable by everyone with access
-    to your Dash Server. If you are using the [Dash On Premise Sample App](https://github.com/plotly/dash-on-premise-sample-app),
-    this is achieved when `REQUIRE_LOGIN = True` and `privacy = 'public'` in your
-    `config.py` file (which is the default configuration).
-    
-    #### Public
-    
-    An app using `dash-auth` with PlotlyOAuth set to `public` will require a login from
-    a valid Plotly Enterprise user to view the app but every user will have access.
-    
-    > *If you are using the [Dash On Premise Sample App](https://github.com/plotly/dash-on-premise-sample-app)
-    as a template for your app, you will need to set `REQUIRE_LOGIN = True` in your `config.py` file
-    to initialize PlotlyOAuth when privacy is set to `public`.*
-    
-    #### Private
-    
-    If PlotlyOAuth is set to `private`, only the user that created the app and Plotly Enterprise
-    users specifically added by them will be able to view the app. See "Managing Collaborators"
-    below for information about how to give another user view access to your app.
-    
-    #### Secret
+    Starting in Version 3.0.0 of Dash Deployment Server, you can restrict who is able to view your app
+    from the app's management page. Find a list of links to these pages for your apps at
+    `https://<your-dash-deployment-server>.com/Manager/apps`. Contact support
+    if you have any questions about privacy in previous versions of Dash Deployment Server.
 
-    Privacy set to `secret` is equivalent to `private` above but it can
-    be bypassed with a link containing a `share_key` parameter. This
-    link can be found in the `https://<your-plotly-enterprise-server>.com/organize/home`
-    page.
-    
-    Once the app is visited using a `share_key` link, an auth cookie 
-    is generated and saved to the browser which will permit access
-    to the app until it's expiry even if the `share_key` is omitted.
-    
-    ***
-    
-    ## Managing Collaborators
-    
-    This can be done either from the UI at `https://<your-plotly-enterprise-server>.com/organize/home`
-    or using the API. Both methods are demonstrated below.
-    
-    #### Managing Collaborators from the UI
-    
-    Go to `https://<your-plotly-enterprise-server>.com/organize/home` and find your
-    app from your list of files. Then click on the share button and add
-    viewers that you want to give access to your app using the "viewers"
-    tab of the pop-up modal.
-    
+    &nbsp;
     ''')),
 
     html.Img(
-        alt='Share App Button in the Organize Screen',
-        src='/assets/images/dds/share-app-organize.png',
+        alt='DDS Apps List',
+        src='/assets/images/dds/manager-apps-list.png',
         style={
             'width': '100%', 'border': 'thin lightgrey solid',
             'border-radius': '4px'
@@ -1666,30 +1554,25 @@ AppPrivacy = html.Div(children=[
     ),
 
     dcc.Markdown(s('''
+    &nbsp;
 
-    > **Note that you can get the secret link from the "Link & Privacy" tab
-    of the above modal but setting the privacy of your app must be done in `config.py`
-    or when `dash-auth` is initialized in your app.**
-    
-    #### Managing Collaborators using the API
-    
-    App permissions can also be managed using the api endpoint 
-    `https://<your-plotly-enterprise-server>/v2/files/<fid>/collaborators` where `<fid>` is `username:id`
-    of your app. This endpoint supports a few types of requests: `GET` (list collaborators), `POST` (add new collaborators)
-    and `DELETE` (removes collaborators). For more information see `https://<your-plotly-enterprise-server>/v2/files#collaborators`
-    
-    You can find the info to form your app's `fid` at `https://<your-plotly-enterprise-server>.com/organize/home`:
+    From the settings tab of your app's management page, scroll down
+    to *App Privacy* to change the privacy settings of your app. If you choose
+    the *Restricted* setting, an input will appear where you need to
+    add a list of usernames of users that you would like to be able to view
+    the app. Additionally, if LDAP is enabled, you can also add entire LDAP groups.
 
+    &nbsp;
     ''')),
 
     html.Img(
-        alt='Dash App fid',
-        src='/assets/images/dds/dash-app-fid.png',
+        alt='Dash App Privacy Settings',
+        src='/assets/images/dds/app-settings-privacy.png',
         style={
             'width': '100%', 'border': 'thin lightgrey solid',
             'border-radius': '4px'
         }
-    ),
+    )
 ])
 
 
@@ -1794,7 +1677,7 @@ Redis = html.Div(children=[
 
     In Plotly Enterprise 2.5.0, Redis Databases are always enabled.
 
-    For previous versions, navigate to Plotly On-Premise Server Settings
+    For previous versions, navigate to Plotly On-Premises Server Settings
     (`https://<your.plotly.domain>:8800/settings`), then under **Special Options
     & Customizations** select **Enable Dash Customizations** and **Enable Redis
     Databases** for Dash Apps.
@@ -2083,13 +1966,15 @@ pdfService = html.Div(children=[
 
         ''')),
 
-        dcc.SyntaxHighlighter('''POST https://<your-plotly-enterprise-server>/api/dash-apps/image
+        dcc.SyntaxHighlighter('''POST https://<your-dash-deployment-server>/Manager/api/generate_report
 content-type: application/json
 plotly-client-platform: dash
 Authorization: Basic ...
 
 {
     "url": "...",
+    "appname": os.environ.get('DASH_APP_NAME'),
+    "secret_key": os.environ.get('DASH_SECRET_KEY'),
     "pdf_options": {
         "pageSize": "Letter",
         "marginsType": 1
@@ -2102,6 +1987,8 @@ Authorization: Basic ...
         '''
 
         - `url` - The URL to download
+        - `appname` - Your app's name.
+        - `secret_key` - Your app's secret key. This is needed for authorizing the pdf generation.
         - `wait_selector` - A string that specifies a
         [CSS selector](https://developer.mozilla.org/en-US/docs/Learn/CSS/Introduction_to_CSS/Simple_selectors).
         The API will wait until an element that matches this CSS selector
@@ -2139,9 +2026,10 @@ Authorization: Basic ...
         example locally or you can deploy this example to Dash
         Deployment Server. A few things to note:
 
-        - Find your API key by visiting https://<your-plotly-server>/settings/api
-        - The username and API key are read from environment variables.
-        [Learn how to set environment variables on Dash Deployment Server](https://dash.plot.ly/dash-deployment-server/environment-variables).
+         - If you're testing locally, you will have to specify default values for your
+        DASH_DOMAIN_BASE, DASH_APP_NAME and DASH_SECRET_KEY. You can find them in the list of your app's
+        environment variables. See [our doc on environment variables](/dash-deployment-server/environment-variables)
+        for more details.
         ''')),
 
         dcc.SyntaxHighlighter('''import dash
@@ -2150,15 +2038,11 @@ import dash_core_components as dcc
 import dash_html_components as html
 
 import base64
-import json
 import os
 import requests
 
 app = dash.Dash(__name__)
 server = app.server
-
-with open('snapshot.pdf', 'rb') as f:
-    pdf = f.read()
 
 
 app.layout = html.Div([
@@ -2194,6 +2078,8 @@ def snapshot_page(n_clicks, url, wait_selector):
         return ''
     payload = {
         'url': url,
+        "appname": os.environ.get('DASH_APP_NAME', 'your-dash-app-name'),
+        "secret_key": os.environ.get('DASH_SECRET_KEY', 'your-dash-app-secret-key'),
         'pdf_options': {
             'pageSize': 'Letter',
             'marginsType': 1
@@ -2202,18 +2088,10 @@ def snapshot_page(n_clicks, url, wait_selector):
     }
 
     res = requests.post(
-        '{}/v2/dash-apps/image'.format(
-            os.environ.get('PLOTLY_BASE_URL', '')
+        'https://{}/Manager/api/generate_report'.format(
+            os.environ.get('DASH_DOMAIN_BASE', 'your-dash-domain-base')
         ),
-        headers={
-            'plotly-client-platform': 'dash',
-            'content-type': 'application/json',
-        },
-        auth=(
-            os.environ.get('PLOTLY_USERNAME', ''),
-            os.environ.get('PLOTLY_API_KEY', ''),
-        ),
-        data=json.dumps(payload)
+        json=payload
     )
     if res.status_code == 200:
         return html.A(
@@ -2440,17 +2318,17 @@ Troubleshooting = html.Div(children=[
         dcc.SyntaxHighlighter(
             '''
             $ git push multipage master
-            dokku@dash.local's password: 
+            dokku@dash.local's password:
             ''',
             customStyle=styles.code_container, language='python'),
 
         dcc.Markdown(s(
             '''
             &nbsp;
-    
+
             If you're seeing a request for a password for dokku@your-dash-server, that
-            means that the ssh authentication has failed. This can be for a variety of 
-            reasons so it is useful to run git push again with ssh debugging enabled by 
+            means that the ssh authentication has failed. This can be for a variety of
+            reasons so it is useful to run git push again with ssh debugging enabled by
             adding `GIT_SSH_COMMAND='ssh -v'` before your `git push` command.
             ''')),
 
@@ -2477,24 +2355,24 @@ Troubleshooting = html.Div(children=[
         # debug1: Trying private key: /home/michael/.ssh/id_ecdsa
         # debug1: Trying private key: /home/michael/.ssh/id_ed25519
         # debug1: Next authentication method: password
-        dokku@dash.local's password:  
+        dokku@dash.local's password:
         ''', customStyle=styles.code_container, language='python'),
 
         dcc.Markdown(s(
             '''
             &nbsp;
-    
-            Above, you can see the output of the debugging logs where unimportant lines 
-            have been commented out or omitted. Check the first uncommented out line in the sample 
-            output above to ensure that the domain is your Dash server's domain and that port is 3022. 
+
+            Above, you can see the output of the debugging logs where unimportant lines
+            have been commented out or omitted. Check the first uncommented out line in the sample
+            output above to ensure that the domain is your Dash server's domain and that port is 3022.
             If it isn't, you will need to update your `~/.ssh/config` file to set the
             correct port. You can see how to do that in our [ssh chapter](/dash-deployment-server/ssh)
             under the "Modify SSH Config" heading.
-    
+
             The next two emphasized lines show the public keys that were offered (and
             in this case rejected) by the server. If the RSA key that you added to Dash Deployment
             Server is not among those offered you will need to add it to your `ssh-agent`
-            with `ssh-add ~/path/to/your/key`. More details on `ssh-agent` are included in the 
+            with `ssh-add ~/path/to/your/key`. More details on `ssh-agent` are included in the
             [ssh chapter](/dash-deployment-server/ssh).
             '''))
     ]),
@@ -2530,13 +2408,13 @@ Troubleshooting = html.Div(children=[
             This error might occur if you are trying to push from a branch
             that is not your `master` branch. Get the name of your current
             branch by running `git branch`. Then, to push from this branch
-            to the remote server, run `git push plotly your-branch-name:master`. 
+            to the remote server, run `git push plotly your-branch-name:master`.
 
-            &nbsp; 
+            &nbsp;
             '''
         )),
     ]),
-        
+
     dcc.Markdown(s('''
     ***
 
@@ -2551,17 +2429,17 @@ Troubleshooting = html.Div(children=[
 
         dcc.Markdown(s(
             '''
-            These applications require using a `worker` 
-            process. When using a `worker` process in your `Procfile`, 
-            you will have to explicitly start it after deploying. To 
-            scale a `worker` process: 
+            These applications require using a `worker`
+            process. When using a `worker` process in your `Procfile`,
+            you will have to explicitly start it after deploying. To
+            scale a `worker` process:
             ''')),
 
         dcc.SyntaxHighlighter('$ ssh dokku@dash-server ps:scale APP-NAME worker=1',
                               customStyle=styles.code_container, language='python'),
         dcc.Markdown(s(
             '''
-            
+
             If you have multiple `worker` processes in your `Procfile`
             (e.g `worker-default` *and* `worker-beat`) you can scale them
             up simultaneously with:
@@ -2572,10 +2450,103 @@ Troubleshooting = html.Div(children=[
 
         dcc.Markdown(s(
             '''
-            Note that this requires 
+            Note that this requires
             [Authenticating to Dash Deployment Server with SSH](/dash-deployment-server/ssh).
              ''')),
     ]),
+
+])
+
+
+# # # # # #
+# Portal
+# # # # # # #
+Portal = html.Div(children=[
+    html.H1('Dash App Portal'),
+
+    rc.Blockquote(),
+
+    dcc.Markdown(s('''
+    Located at `https://your-dash-deployment-server/Portal`,
+    the Dash App Portal is the front page for your Dash Deployment Server.
+    It allows multiple users to prominently display their selected apps in
+    one central location.
+
+    The portal and apps have a default style which can
+    be customized.
+
+    &nbsp;
+    ''')),
+
+    html.Img(
+        alt='Default Dash App Portal',
+        src='/assets/images/dds/default-portal.png',
+        style={
+            'width': '100%', 'border': 'thin lightgrey solid',
+            'border-radius': '4px'
+        }
+    ),
+
+    dcc.Markdown(s('''
+
+    ### Dash Apps on the Portal
+
+    In order for your app to appear on the Dash App Portal, you need
+    enable the *Show in Portal* Toggle in your app's settings from
+    within the DDS app manager and then edit your app's metadata to
+    make it easier to find/customize its appearance.
+
+    &nbsp;
+
+    ''')),
+
+    html.Img(
+        alt='Dash App Portal Settings',
+        src='/assets/images/dds/manager-app-settings-portal.png',
+        style={
+            'width': '100%', 'border': 'thin lightgrey solid',
+            'border-radius': '4px'
+        }
+    ),
+
+    dcc.Markdown(s('''
+    &nbsp;
+
+    ### Customize the Portal
+
+    From the DDS app Manager, access the *Portal* tab
+    to see its settings (or go to `/Manager/settings/portal/general`).
+
+    &nbsp;
+    ''')),
+
+    html.Img(
+        alt='Customized Portal',
+        src='/assets/images/dds/manager-settings-portal.png',
+        style={
+            'width': '100%', 'border': 'thin lightgrey solid',
+            'border-radius': '4px'
+        }
+    ),
+
+    dcc.Markdown(s('''
+    &nbsp;
+
+    Here, you can decide who can view the portal and customize
+    its appearance.
+
+    &nbsp;
+    ''')),
+
+    html.Img(
+        alt='Customized Portal',
+        src='/assets/images/dds/custom-portal.png',
+        style={
+            'width': '100%', 'border': 'thin lightgrey solid',
+            'border-radius': '4px'
+        }
+    ),
+
 
 ])
 
@@ -2832,7 +2803,7 @@ Git = html.Div(children=[
     dcc.SyntaxHighlighter(s(
     '''$ git remote rename <existing-name> <new-name> '''),
     customStyle=styles.code_container, language='python'),
-    
+
     dcc.Markdown(s('''
 
     &nbsp;
@@ -2868,14 +2839,14 @@ Git = html.Div(children=[
     ''')),
 
     rc.Notebox(s('''
-    `git status` and `git diff` are optional and are only required if you 
+    `git status` and `git diff` are optional and are only required if you
     wish to inspect before adding changes.
     ''')),
 
     dcc.Markdown(s('''
 
-    &nbsp; 
-    
+    &nbsp;
+
     The demonstration below is a common way to deploy your changes:
 
     ''')),

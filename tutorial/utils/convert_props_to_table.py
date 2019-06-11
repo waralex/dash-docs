@@ -3,6 +3,7 @@ import json
 import os
 import dash_html_components as html
 import dash_core_components as dcc
+import dash_cytoscape
 import dash_table
 import pandas as pd
 
@@ -141,7 +142,11 @@ def get_dataframe(component_name, lib=dcc):
         suffix = '.react.js'
         fullString = prefix+component_name+suffix
     elif lib == dash_table:
-        fullString = 'src/dash-table/{}.js'.format(component_name)
+        fullString = 'src/dash-table/dash/{}.js'.format(component_name)
+    elif lib == dash_cytoscape:
+        prefix = 'src/lib/components/'
+        suffix = '.react.js'
+        fullString = prefix+component_name+suffix
 
     df = pd.DataFrame(metadata[fullString]
                       ['props']).transpose()
