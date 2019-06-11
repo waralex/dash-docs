@@ -930,8 +930,8 @@ dcc.Graph(figure=volcanoplot)'''
         },
         {
             'param_name': 'Point sizes and line widths',
-            'description': 'Change the sizeo f the points on the scatter plot, \
-            and the widths of the effect lines and the genome-wide line.',
+            'description': 'Change the size of the points on the scatter plot, \
+            and the widths of the effect lines and genome-wide line.',
             'code': '''import pandas as pd
 
 import dash_core_components as dcc
