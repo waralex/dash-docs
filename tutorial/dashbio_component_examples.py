@@ -599,7 +599,7 @@ data = urlreq.urlopen(
 ).read()
 
 if PY3:
-    data = data.decode("utf-8")
+    data = data.decode('utf-8')
 
 mdata = json.loads(data)
 
@@ -631,7 +631,7 @@ data = urlreq.urlopen(
 ).read()
 
 if PY3:
-    data = data.decode("utf-8")
+    data = data.decode('utf-8')
 
 mdata = json.loads(data)
 
