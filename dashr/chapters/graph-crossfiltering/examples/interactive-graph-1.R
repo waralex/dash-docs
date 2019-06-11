@@ -1,7 +1,7 @@
 library(dashR)
 library(dashCoreComponents)
 library(dashHtmlComponents)
-library(jsonlite)
+library(rjson)
 
 app <- Dash$new()
 
@@ -79,9 +79,8 @@ Click on points in the graph.
 
 Choose the lasso or rectangle tool in the graph's menu
 bar and then select points in the graph.
-Note that if `layout.clickmode = 'event+select'`, selection data also
-accumulates (or un-accumulates) selected data if you hold down the shift
-button while clicking.
+Selection data also accumulates (or un-accumulates) selected
+data if you hold down the shift button while clicking.
            "), htmlPre(id='selected-data', style=styles$pre)
         ), className='three columns'
         ),
@@ -103,31 +102,29 @@ this event.
   ))
 )
 
-app$callback(output('hover-data', 'children'),
-             list(input('basic-interactions', 'hoverData')),
-function(hoverData) {
-  toJSON(hoverData)
-})
+app$callback(output = list(id = 'hover-data', property = 'children'),
+             params = list(input(id = 'basic-interactions', property = 'hoverData')),
+             function(hoverData) {
+               return(toJSON(hoverData, indent = 2))
+             })
 
-app$callback(output('click-data', 'children'),
-             list(input('basic-interactions', 'clickData')),
-function(clickData) {
-  print(toJSON(clickData))
-  print(clickData)
-})
 
-app$callback(output('selected-data', 'children'),
-             list(input('basic-interactions', 'selectedData')),
-function(selectedData) {
-  toJSON(selectedData)
-})
+app$callback(output = list(id = 'click-data', property = 'children'),
+             params = list(input(id = 'basic-interactions', property = 'clickData')),
+             function(clickData) {
+               return(toJSON(clickData, indent = 2))
+             })
 
-app$callback(output('relayout-data', 'children'),
-             list(input('basic-interactions', 'relayoutData')),
-function(relayoutData) {
-  toJSON(relayoutData)
-  # return json.dumps(relayoutData, indent=2)
-  # toJSON("{\n \"autozize\": true}")
-})
+app$callback(output = list(id = 'selected-data', property = 'children'),
+             params = list(input(id = 'basic-interactions', property = 'selectedData')),
+             function(selectedData) {
+               return(toJSON(selectedData, indent = 2))
+             })
 
-app$run_heroku()
+app$callback(output = list(id = 'relayout-data', property = 'children'),
+             params = list(input(id = 'basic-interactions', property = 'relayoutData')),
+             function(relayoutData) {
+               return(toJSON(relayoutData, indent = 2))
+             })
+
+app$run_server()
