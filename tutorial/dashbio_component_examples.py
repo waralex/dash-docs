@@ -45,8 +45,8 @@ import dash_bio as dashbio
 
 
 data = urlreq.urlopen(
-    "https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/" +
-    "alignment_viewer_p53.fasta"
+    'https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/' +
+    'alignment_viewer_p53.fasta'
 ).read()
 
 if PY3:
@@ -69,8 +69,8 @@ import dash_bio as dashbio
 
 
 data = urlreq.urlopen(
-    "https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/" +
-    "alignment_viewer_p53.fasta"
+    'https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/' +
+    'alignment_viewer_p53.fasta'
 ).read()
 
 if PY3:
@@ -92,8 +92,8 @@ import dash_bio as dashbio
 
 
 data = urlreq.urlopen(
-    "https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/" +
-    "alignment_viewer_p53.fasta"
+    'https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/' +
+    'alignment_viewer_p53.fasta'
 ).read()
 
 if PY3:
