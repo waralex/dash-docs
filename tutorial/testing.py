@@ -52,7 +52,7 @@ layout = html.Div([
 
     **Notes**:
 
-    * The *Gecko(Marionnette)* driver from Mozilla is not fully compatible with
+    * The *Gecko(Marionette)* driver from Mozilla is not fully compatible with
     selenium specifications. Some features may not work as expected.
 
     * We only include *Chrome* and *Firefox* in the supported list for now,
