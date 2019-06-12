@@ -462,6 +462,13 @@ chapters = {
         'description': 'Indicator examples, properties, and reference.'
     },
 
+    'joystick-examples': {
+        'url': '/dash-daq/joystick',
+        'content': daq_examples.Joystick,
+        'name': 'Joystick Component',
+        'description': 'Joystick examples, properties, and reference.'
+    },
+    
     'knob-examples': {
         'url': '/dash-daq/knob',
         'content': daq_examples.Knob,

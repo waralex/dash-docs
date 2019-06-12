@@ -80,9 +80,9 @@ import dash_html_components as html
 import plotly
 
 # Keep this out of source code repository - save in a file or a database
-VALID_USERNAME_PASSWORD_PAIRS = [
-    ['hello', 'world']
-]
+VALID_USERNAME_PASSWORD_PAIRS = {
+    'hello': 'world'
+}
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
