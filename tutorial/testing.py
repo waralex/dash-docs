@@ -113,7 +113,7 @@ layout = html.Div([
     * #8 We use [Percy](https://percy.io/) as our *Visual Regression Testing*
     tool, it's a good alternative besides assertions when your check point is
     about a graph diagram and/or an app layout. We integrate the percy service
-    with a `PERCY_TOKEN` varaible,  so the regression result is only
+    with a `PERCY_TOKEN` variable,  so the regression result is only
     available in our circleci setup.
 
     ## Fixtures
