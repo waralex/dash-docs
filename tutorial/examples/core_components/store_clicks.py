@@ -20,27 +20,25 @@ app.layout = html.Div([
     # Same as the local store but will lose the data
     # when the browser/tab closes.
     dcc.Store(id='session', storage_type='session'),  # no-exec
-    html.Div([
-        html.Button('Click to store in memory', id='memory-button'),
-        html.Button('Click to store in localStorage', id='local-button'),
-        html.Button('Click to store in sessionStorage', id='session-button')
-    ]),
-
-    html.Div([
-        html.Table([
-            html.Thead([
-                html.Tr([
-                    html.Th('Memory clicks'),
-                    html.Th('Local clicks'),
-                    html.Th('Session clicks')
-                ])
+    html.Table([
+        html.Thead([
+            html.Tr(html.Th('Click to store in:', colSpan="3")),
+            html.Tr([
+                html.Th(html.Button('memory', id='memory-button')),
+                html.Th(html.Button('localStorage', id='local-button')),
+                html.Th(html.Button('sessionStorage', id='session-button'))
             ]),
-            html.Tbody([
-                html.Tr([
-                    html.Td(0, id='memory-clicks'),
-                    html.Td(0, id='local-clicks'),
-                    html.Td(0, id='session-clicks')
-                ])
+            html.Tr([
+                html.Th('Memory clicks'),
+                html.Th('Local clicks'),
+                html.Th('Session clicks')
+            ])
+        ]),
+        html.Tbody([
+            html.Tr([
+                html.Td(0, id='memory-clicks'),
+                html.Td(0, id='local-clicks'),
+                html.Td(0, id='session-clicks')
             ])
         ])
     ])
