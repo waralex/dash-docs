@@ -18,7 +18,7 @@ logs = '''
 '''
 
 layout = html.Div([
-    dcc.Markdown(dedent("""
+    dcc.Markdown(dedent(u"""
     # Dash Testing
 
     *New in Dash v1.0*
