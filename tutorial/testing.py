@@ -52,7 +52,7 @@ layout = html.Div([
 
     **Notes**:
 
-    * The *Gecko(Marionnette)* driver from Mozilla is not fully compatible with
+    * The *Gecko(Marionette)* driver from Mozilla is not fully compatible with
     selenium specifications. Some features may not work as expected.
 
     * We only include *Chrome* and *Firefox* in the supported list for now,
@@ -69,7 +69,7 @@ layout = html.Div([
     the test, just import what you need for the dash app itself.
 
     * #2 A test case is a regular python function, the function name follows
-    this pattern `test_{tcid}_{test tile}`. The `tcid` (test case ID) is
+    this pattern `test_{tcid}_{test title}`. The `tcid` (test case ID) is
     an abbreviation that follows `mmffddd => module + file + three digits`.
     The `tcid` facilitates the test selection by just running
     `pytest -k {tcid}`. Its naming convention also helps code navigation with
@@ -113,7 +113,7 @@ layout = html.Div([
     * #8 We use [Percy](https://percy.io/) as our *Visual Regression Testing*
     tool, it's a good alternative besides assertions when your check point is
     about a graph diagram and/or an app layout. We integrate the percy service
-    with a `PERCY_TOKEN` varaible,  so the regression result is only
+    with a `PERCY_TOKEN` variable,  so the regression result is only
     available in our circleci setup.
 
     ## Fixtures

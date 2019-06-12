@@ -15,7 +15,7 @@ def test_bsly001_falsy_child(dash_duo):
     dash_duo.start_server(app)
 
     # 5. use wait_for_* if your target element is the result of a callback,
-    # keep in mind even the initial rendering is an return value of a callback
+    # keep in mind even the initial rendering can trigger callbacks
     dash_duo.wait_for_text_to_equal("#nully-wrapper", "0", timeout=4)
 
     # 6. use this form if its present is expected at the action point
