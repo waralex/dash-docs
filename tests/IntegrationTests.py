@@ -63,9 +63,13 @@ class IntegrationTests(unittest.TestCase):
             app.server.logger.disabled = True
             app.run_server(
                 port=8050,
-                debug=False,
                 processes=4,
-                threaded=False
+                threaded=False,
+                debug=True,
+                use_reloader=False,
+                use_debugger=True,
+                dev_tools_hot_reload=False,
+                dev_tools_ui=True
             )
 
         # Run on a separate process so that it doesn't block
