@@ -15,6 +15,7 @@ examples = {
     'date_picker_single': tools.load_example('tutorial/examples/core_components/date_picker_single.py'),
     'date_picker_range': tools.load_example('tutorial/examples/core_components/date_picker_range.py'),
     'dropdown': tools.load_example('tutorial/examples/core_components/dropdown.py'),
+    'graph-config': tools.load_example('tutorial/examples/core_components/export_graph_to_chart_studio.py'),
     'input-basic': tools.load_example('tutorial/examples/core_components/input-basic.py'),
     'input-n_submit': tools.load_example('tutorial/examples/core_components/input-n_submit.py'),
     'rangeslider': tools.load_example('tutorial/examples/core_components/rangeslider.py'),
@@ -1144,6 +1145,21 @@ Tabs = html.Div(children=[
     generate_prop_table('Tabs'),
     html.H3('Tab properties'),
     generate_prop_table('Tab')
+])
+
+# Graphs
+Graphs = html.Div([
+    html.H1('Graph Reference'),
+    dcc.Markdown(s('''
+    Custimize the [Plotly.js config options](https://plot.ly/javascript/configuration-options/) of your graph using
+    the `config` property. The example below uses the `showSendToCloud` and `plotlyServerURL` options include a
+    save button in the modebar of the graph which exports the figure to URL specified by `plotlyServerURL`.
+    
+    ''')),
+    Syntax(examples['graph-config'][0]),
+    Example(examples['graph-config'][1]),
+    html.H3('Graph Properties'),
+    generate_prop_table('Graph')
 ])
 
 # Upload
