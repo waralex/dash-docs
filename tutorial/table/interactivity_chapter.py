@@ -22,7 +22,7 @@ layout = html.Div(
         `DataTable` includes several features for modifying and transforming
         the view of the data. These include:
 
-        - Sorting by column (`sort_action=True`)
+        - Sorting by column (`sort_action='native'`)
         - Filtering by column (`filter_action='native'`)
         - Editing the cells (`editable=True`)
         - Deleting rows (`row_deletable=True`)
