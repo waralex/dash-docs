@@ -62,12 +62,6 @@ layout = html.Div([
     
     **return:** If the Tree is a leaf or not.
     
-    #### Tree.add_child(child)
-    
-    Add a single child to the children of a Tree.
-    
-    **param** child: Tree object
-    
     #### Tree.add_children(children)
     
     Add a list of children to the current children of a Tree.
