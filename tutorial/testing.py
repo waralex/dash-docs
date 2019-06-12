@@ -245,7 +245,7 @@ layout = html.Div([
     The [CircleCI Local Cli](https://circleci.com/docs/2.0/local-cli/) is a
     handy tool to run all the jobs locally. It gives you an earlier warning
     before even pushing your commits to remote,  which leaves no chance of
-    making an embarrasing public exposé. The environment is identical to the
+    making an embarrasing public exposure. The environment is identical to the
     remote one except the percy snapshot and test reports are not functional
     locally.
 
