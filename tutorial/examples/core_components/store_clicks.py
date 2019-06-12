@@ -1,7 +1,7 @@
 import dash
 
 import dash_html_components as html
-import dash_core_components as dcc  # no-run
+import dash_core_components as dcc  # no-exec
 from dash.dependencies import Output, Input, State
 from dash.exceptions import PreventUpdate
 
@@ -11,15 +11,15 @@ external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
 app.layout = html.Div([
-    # The memory store will always get the default on page refreshes
-    dcc.Store(id='memory'),  # no-run - stores are loaded from the beginning
+    # The memory store reverts to the default on every page refresh
+    dcc.Store(id='memory'),  # no-exec - stores are loaded from the beginning
     # The local store will take the initial data
     # only the first time the page is loaded
     # and keep it until it is cleared.
-    dcc.Store(id='local', storage_type='local'),  # no-run
+    dcc.Store(id='local', storage_type='local'),  # no-exec
     # Same as the local store but will lose the data
     # when the browser/tab closes.
-    dcc.Store(id='session', storage_type='session'),  # no-run
+    dcc.Store(id='session', storage_type='session'),  # no-exec
     html.Div([
         html.Button('Click to store in memory', id='memory-button'),
         html.Button('Click to store in localStorage', id='local-button'),

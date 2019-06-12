@@ -51,16 +51,16 @@ def load_example(path):
         )
 
         # if there are lines that should be included in the syntax but
-        # not executed, simply put this comment at the end of the line.
-        no_run = '# no-run'
-        if no_run in _example:
+        # not executed, simply put a comment on that line starting "# no-exec"
+        no_exec = '# no-exec'
+        if no_exec in _example:
             _example = '\n'.join(
-                line for line in _example.splitlines() if no_run not in line
+                line for line in _example.splitlines() if no_exec not in line
             )
 
-            find_no_run = re.compile(r'\s+' + no_run + '.*')
+            find_no_exec = re.compile(r'\s+' + no_exec + '.*')
             _source = '\n'.join(
-                find_no_run.sub('', line) if no_run in line else line
+                find_no_exec.sub('', line) if no_exec in line else line
                 for line in _source.splitlines()
             )
 
