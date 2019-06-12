@@ -23,6 +23,8 @@ layout = html.Div([
 
     *New in Dash v1.0*
 
+    ![demo](https://user-images.githubusercontent.com/1394467/59371892-33d57400-8d14-11e9-8d8b-6ffc023746e9.gif)
+
     `dash.testing` 🧪 provides some off-the-rack [pytest fixtures](https://docs.pytest.org/en/latest/fixture.html)
     and a minimal set of testing **APIs** with our internal crafted best practices at the integration level.
 
