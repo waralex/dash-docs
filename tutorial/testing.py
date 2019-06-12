@@ -35,7 +35,7 @@ layout = html.Div([
     the app server locally and using a selenium webdriver to simulate
     the interaction inside a web browser.
 
-    ![demo](https://user-images.githubusercontent.com/1394467/59371892-33d57400-8d14-11e9-8d8b-6ffc023746e9.gif)
+    ![demo](https://user-images.githubusercontent.com/1394467/59383731-83c13480-8d2e-11e9-8866-4ffdcd3b1b45.gif)
 
     ## Install
 
