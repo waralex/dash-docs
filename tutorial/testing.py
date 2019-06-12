@@ -107,7 +107,7 @@ layout = html.Div([
 
     If you are new at using CSS Selector, these [Saucelab tips](https://saucelabs.com/resources/articles/selenium-tips-css-selectors) is a great start, and remember that [Chrome Dev Tools Console](https://developers.google.com/web/tools/chrome-devtools/console/utilities) is always your good friend and playground.
 
-    ![dev tools](https://user-images.githubusercontent.com/1394467/59370661-02a77480-8d11-11e9-89cd-582c5a820575.png)
+    ![dev tools](https://user-images.githubusercontent.com/1394467/59371148-3505a180-8d12-11e9-9ad6-7dce223b6019.png)
 
     #### Waits
 
@@ -189,6 +189,6 @@ layout = html.Div([
 
 
     *Note: you can also check the snapshot directly in circleci web page under `Artifacts` Tab*
-    ![circleci](https://user-images.githubusercontent.com/1394467/59214939-14a8dc00-8b86-11e9-912e-dbd413582f44.png)
+    ![circleci](https://user-images.githubusercontent.com/1394467/59371162-3f27a000-8d12-11e9-9060-7d8a8522c2c6.png)
     """)),
 ])
