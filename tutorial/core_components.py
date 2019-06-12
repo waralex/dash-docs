@@ -208,7 +208,9 @@ dcc.RadioItems(
     dcc.Link(html.A('More Button Examples and Reference'),
              href="/dash-core-components/button"),
     html.P([
-        '''For more on `dash.dependencies.State`, see the tutorial on ''',
+        'For more on ',
+        html.Code('dash.dependencies.State'),
+        ', see the tutorial on ',
         dcc.Link('Dash State', href='/state'),
         '.'
     ]),
@@ -508,4 +510,33 @@ confirm = dcc.ConfirmDialogProvider(
 
     dcc.Link('More Loading Component Examples and Reference',
              href='/dash-core-components/loading_component'),
+
+    dcc.Markdown('***'),
+
+    html.H3(dcc.Link('Location', href='/dash-core-components/location')),
+
+    dcc.Markdown(s('''
+    The location component represents the location bar in your web browser. Through its `href`, `pathname`,
+    `search` and `hash` properties you can access different portions of your app's url.
+    
+    For example, given the url `http://127.0.0.1:8050/page-2?a=test#quiz`:
+
+    - `href` = `"http://127.0.0.1:8050/page-2?a=test#quiz"`
+    - `pathname` = `"/page-2"`
+    - `search` = `"?a=test"`
+    - `hash` = `"#quiz"`
+    ''')),
+
+    dcc.SyntaxHighlighter(s('''
+    import dash_core_components as dcc
+
+    location = dcc.Location(id='url', refresh=False)
+    '''), language='python', customStyle=styles.code_container),
+
+    html.Br(),
+
+    dcc.Link('More Location Examples and Reference',
+             href='/dash-core-components/location'),
+
+    html.Br(),
 ])
