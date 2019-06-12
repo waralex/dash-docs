@@ -369,7 +369,7 @@ layout = html.Div(
         dash_table.DataTable(
             data=df_election.to_dict('records'),
             columns=[{'id': c, 'name': c} for c in df_election.columns],
-            fixed_columns=1,
+            fixed_columns={ 'headers': True, 'data': 1 },
         )
         '''),
 
@@ -378,7 +378,7 @@ layout = html.Div(
         dash_table.DataTable(
             data=df_election.to_dict('records'),
             columns=[{'id': c, 'name': c} for c in df_election.columns],
-            fixed_columns=1,
+            fixed_columns={ 'headers': True, 'data': 1 },
             style_cell={
                 # all three widths are needed
                 'minWidth': '180px', 'width': '180px', 'maxWidth': '180px',
@@ -543,8 +543,8 @@ layout = html.Div(
 
         In the example above, the headers become hidden when you scroll down.
 
-        You can keep these headers visible by supplying `fixed_rows=1`.
-
+        You can keep these headers visible by supplying `fixed_rows={ 'headers': True, 'data': 0 }`.
+    
         > Note that fixing rows introduces some changes to the underlying
         > markup of the table and may impact the way that your
         > columns are rendered or sized.
@@ -557,7 +557,7 @@ layout = html.Div(
         dash_table.DataTable(
             data=df_long.to_dict('records'),
             columns=[{'id': c, 'name': c} for c in df_long.columns],
-            fixed_rows=1,
+            fixed_rows={ 'headers': True, 'data': 0 },
             style_cell={'width': '150px'}
         )
         '''),
