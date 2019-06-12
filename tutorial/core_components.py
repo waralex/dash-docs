@@ -385,6 +385,8 @@ dcc.Graph(
     id='my-graph'
 )''', language='python', customStyle=styles.code_container),
 
+    dcc.Link('More Graphs Examples and Reference',
+             href="/dash-core-components/graph"),
     html.Br(),
     dcc.Markdown('View the [plotly.py docs](https://plot.ly/python).'),
 
