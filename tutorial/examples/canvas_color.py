@@ -29,7 +29,7 @@ app.layout = html.Div([
                 min=2,
                 max=40,
                 step=1,
-                value=[5]
+                value=5
             ),
             daq.ColorPicker(
                 id='color-picker',
@@ -56,5 +56,3 @@ def update_canvas_linewidth(value):
 
 if __name__ == '__main__':
     app.run_server(debug=True)
-
-
