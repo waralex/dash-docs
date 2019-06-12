@@ -465,5 +465,33 @@ layout = html.Div(
         '''
         ),
 
+        dcc.Markdown("## Styling editable "),
+
+        dcc.Markdown(dedent(
+        """
+        Editable column can be styled using  `column_editable` in 
+        style_header_conditional, style_filter_conditional, style_data_conditional props.
+        """
+        )),
+
+        Display(
+        '''
+        dash_table.DataTable(
+            data=df.to_dict('records'),
+            columns=[{'id': c, 'name': c, 'editable': (c == 'Humidity') } for c in df.columns],
+            style_data_conditional=[{ 
+                'if': {'column_editable': False}, 
+                'backgroundColor': 'rgb(30, 30, 30)',
+                'color': 'white'
+            }], 
+            style_header_conditional=[{ 
+                'if': {'column_editable': False}, 
+                'backgroundColor': 'rgb(30, 30, 30)',
+                'color': 'white'
+            }], 
+        )
+        '''
+        )
+
     ]
 )
