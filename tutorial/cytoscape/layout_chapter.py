@@ -178,7 +178,7 @@ layout = html.Div([
     dictionary. For example, the
     [`grid` layout](http://js.cytoscape.org/#layouts/grid)
     will accept `row` and `cols`, the
-    [`circle` layout](http://js.cytoscape.org/#layouts/circle) accepts `radius`
+    [`circle` layout](http://js.cytoscape.org/#layouts/circle) `radius`
     and `startAngle`, and so forth. Here is the grid layout
     with the same graph as above, but with different layout options:
     ''')),
@@ -277,7 +277,7 @@ layout = html.Div([
 
     dcc.Markdown(dedent('''
     > In the callbacks chapter, you will learn how to interactively update your layout; in order
-    > to use `preset`you will need to specify the position of each node.
+    > to use `preset`, you will need to specify the position of each node.
 
     ## Physics-based Layouts
 
@@ -336,7 +336,7 @@ layout = html.Div([
     [demo app directly derived from `usage-elements`](https://github.com/plotly/dash-cytoscape/blob/master/demos/usage-elements-extra.py),
     but with the option to use the external layouts.
 
-    > Make sure to only use external layouts when it is necessary. The distribution package takes
+    > Make sure you use external layouts only when necessary. The distribution package takes
     > almost 3x more space than the regular bundle, which means that it will take more time to
     > load your apps, especially on slower networks.
     > [This image](https://github.com/plotly/dash-cytoscape/blob/master/demos/images/fast3g-cytoscape.PNG)
