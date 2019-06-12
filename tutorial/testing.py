@@ -25,7 +25,7 @@ layout = html.Div([
 
     ![demo](https://user-images.githubusercontent.com/1394467/59371892-33d57400-8d14-11e9-8d8b-6ffc023746e9.gif)
 
-    `dash.testing` 🧪 provides some off-the-rack [pytest fixtures](https://docs.pytest.org/en/latest/fixture.html)
+    `dash.testing` \U0001f9ea provides some off-the-rack [pytest fixtures](https://docs.pytest.org/en/latest/fixture.html)
     and a minimal set of testing **APIs** with our internal crafted best practices at the integration level.
 
     This tutorial does not intend to cover the usage of [pytest](https://docs.pytest.org/en/latest/) and [selenium webdriver](https://www.seleniumhq.org/projects/webdriver/), but focuses on how to do a simple integration test with dash by hosting the app server locally and using a selenium webdriver to simulate the interaction inside a web browser.
