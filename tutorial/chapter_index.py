@@ -405,6 +405,13 @@ chapters = {
         'description': 'Tabs examples, properties, and reference.'
     },
 
+    'graphs-example': {
+        'url': '/dash-core-components/graph',
+        'content': examples.Graphs,
+        'name': 'Graphs',
+        'description': 'Graph examples, properties, and reference.'
+    },
+
     'textarea-examples': {
         'url': '/dash-core-components/textarea',
         'content': examples.Textarea,
@@ -462,6 +469,13 @@ chapters = {
         'description': 'Indicator examples, properties, and reference.'
     },
 
+    'joystick-examples': {
+        'url': '/dash-daq/joystick',
+        'content': daq_examples.Joystick,
+        'name': 'Joystick Component',
+        'description': 'Joystick examples, properties, and reference.'
+    },
+    
     'knob-examples': {
         'url': '/dash-daq/knob',
         'content': daq_examples.Knob,
