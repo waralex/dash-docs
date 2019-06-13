@@ -1011,27 +1011,26 @@ LocalDir = html.Div(children=[
     persistently as well as read files from the underlying server, including
     networked file systems.
 
-    Since this feature has security implications, only users with
-    admin/superuser privileges are allowed to map directories onto apps.
-    Before you get started, ask your current administrator to grant you
-    admin/superuser privileges as shown below.
+    Since this feature has security implications, only directories specified
+    in the Plotly-On-Premise Server Manager can be mapped to Dash Apps. 
+    > Note that in Plotly Enterprise versions before 3.1.0 only users with admin privelges 
+    > could map local directories into their apps. Please contact `onpremise.support@plot.ly` if
+    > you have any questions.
 
     ***
 
-    #### Add Admin/Superuser Privileges
+    #### Approve Directories for Mapping
 
-    As administrator, navigate to the admin panel
-    `https://<your.plotly.domain>/admin/` and select **Users**. From the list
-    of users, select the user you wish to edit. Next, check both the
-    **Staff status** and **Superuser status** box to give the user
-    admin/superuser privileges, which will allow the user to map
-    directories onto apps.
+    A server administrator with access to `https://<your.plotly.domain>:8800/settings`
+    can allow certain directories on the host server to be mapped to dash apps. Go to
+    the *Allowed Directories for Mapping* section of the settings page and add the path(s)
+    of approved directories.
 
     ''')),
 
     html.Img(
         alt='Add Admin/Superuser Status',
-        src='/assets/images/dds/add-superuser.PNG',
+        src='/assets/images/dds/specify-directories-for-mapping.png',
         style={
             'width': '100%', 'border': 'thin lightgrey solid',
             'border-radius': '4px'
@@ -1055,6 +1054,26 @@ LocalDir = html.Div(children=[
     html.Img(
         alt='Add Directory Mapping',
         src='/assets/images/dds/add-dir-map.PNG',
+        style={
+            'width': '100%', 'border': 'thin lightgrey solid',
+            'border-radius': '4px'
+        }
+    ),
+
+dcc.Markdown(s('''
+
+    &nbsp;
+
+    If the directory you're trying to map from isn't admin-approved, you will see an error
+    message.
+
+    &nbsp;
+    
+    ''')),
+
+    html.Img(
+        alt='Add Directory Mapping',
+        src='/assets/images/dds/map-directory-not-approved.png',
         style={
             'width': '100%', 'border': 'thin lightgrey solid',
             'border-radius': '4px'
