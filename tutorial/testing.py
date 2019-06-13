@@ -167,11 +167,11 @@ layout = html.Div([
     There are several strategies to
     [locate elements](https://selenium-python.readthedocs.io/locating-elements.html#locating-elements);
     CSS selector and XPATH are the two most versatile ways. We recommend using
-    **CSS Selector** in most cases due to its
+    the **CSS Selector** in most cases due to its
     [performance and robustness](http://elementalselenium.com/tips/34-xpath-vs-css-revisited-2) across browsers.
 
-    If you are new at using CSS Selector, these
-    [Saucelab tips](https://saucelabs.com/resources/articles/selenium-tips-css-selectors)
+    If you are new at using CSS Selectors, these
+    [SauceLab tips](https://saucelabs.com/resources/articles/selenium-tips-css-selectors)
     are a great start. Also, remember that
     [Chrome Dev Tools Console](https://developers.google.com/web/tools/chrome-devtools/console/utilities)
     is always your good friend and playground.
