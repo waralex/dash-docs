@@ -235,7 +235,7 @@ layout = html.Div([
     ### Verify your test environment
 
     If you run the integration in a virtual environment, make sure you are
-    getting the latest commit in **master** branch from each component, and
+    getting the latest commit in the **master** branch from each component, and
     that the installed `pip` versions are correct.
 
     note: We have some enhancement initiatives tracking in this [issue](https://github.com/plotly/dash/issues/759)
