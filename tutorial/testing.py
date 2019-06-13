@@ -84,11 +84,11 @@ layout = html.Div([
         1. The defined app is hosted inside a light python `threading.Thread`.
         2. A selenium webdriver is initialized and navigates to the
         local server URL using `server_url`.
-        3. We first wait until the flask server is responsive to a HTTP
-        request, and then make sure the Dash app is full renderered inside
+        3. We first wait until the flask server is responsive to an HTTP
+        request, and then make sure the Dash app is full rendered inside
         the browser.
 
-    * #5 A test case is composed of preparation, actions and check points.
+    * #5 A test case is composed of preparation, actions and checkpoints.
     Both #5 and #6 are doing the same check in this example; we are expecting
     that the defined `Div` component's text is identical to `children`. #5 will
     wait for the expected state to be reached within a 4 seconds timeout. It's
@@ -105,18 +105,18 @@ layout = html.Div([
 
     * #7 Unlike `unittest`, `pytest` uses the native python
     [`assert`](https://docs.python.org/3/reference/simple_stmts.html#the-assert-statement)
-    statement to do assertions. It's good practice to expose your
-    acceptance criteria directly in the test case rather than wrapping the
-    assert inside another helper API. By looking at the test case, reviewers
-    and maintainers should be able easily figure out the purpose of the test by
-    the test title, the app definition, the actions and the check points.
+    statement to do assertions. It's good practice to expose your acceptance
+    criteria directly in the test case rather than wrapping the assert inside
+    another helper API. By looking at the test case, reviewers and maintainers
+    should be able to easily figure out the purpose of the test by
+    the test title, the app definition, the actions, and the checkpoints.
 
     * #8 We use [Percy](https://percy.io/) as our *Visual Regression Testing*
-    tool. It's a good alternative to assertions when your check point is
-    about the graphical aspects of an Dash app, such as the whole layout or a
-    `dcc.Graph` component. We integrate the percy service
+    tool. It's a good alternative to assertions when your checkpoint is
+    about the graphical aspects of a Dash app, such as the whole layout or a
+    `dcc.Graph` component. We integrate the Percy service
     with a `PERCY_TOKEN` variable,  so the regression result is only
-    available in plotly CircleCI setup.
+    available in Plotly CircleCI setup.
 
     ## Fixtures
 
@@ -203,28 +203,28 @@ layout = html.Div([
 
     ### Browser APIs
 
-    This section lists a miminal set of Dash testing helper APIs.
+    This section lists a minimal set of Dash testing helper APIs.
     They are convenient shortcuts to selenium APIs and have been approved in
     our daily integration tests.
 
     The following table might grow as we start migrating more legacy tests in
     the near future. But we have no intention to build a comprehensive list,
-    the goal is to make writing Dash tests concise and error free.
+    the goal is to make writing Dash tests concise and error-free.
     Please feel free to submit a community PR to add any missing ingredient,
     we would be happy to accept that if it's adequate for Dash testing.
 
     | API | Description |
     | --- | ----------- |
-    | `find_element(selector)` | return the first found element by the css `selector`, shortcut to `driver.find_element_by_css_selector`. Note that this API will raise exceptions if not found, the `find_elements` api returns an empty list instead |
-    | `find_elements(selector)` | return a list of all elements matching by the css `selector`, shortcut to `driver.find_elements_by_css_selector`|
-    | `multiple_click(selector, clicks)`| find the element with css `selector` and clicks it with number of `clicks` |
+    | `find_element(selector)` | return the first found element by the CSS `selector`, shortcut to `driver.find_element_by_css_selector`. Note that this API will raise exceptions if not found, the `find_elements` API returns an empty list instead |
+    | `find_elements(selector)` | return a list of all elements matching by the CSS `selector`, shortcut to `driver.find_elements_by_css_selector`|
+    | `multiple_click(selector, clicks)`| find the element with the CSS `selector` and clicks it with number of `clicks` |
     | `wait_for_element(selector, timeout=None)` | shortcut to `wait_for_element_by_css_selector` the long version kept for back compatibility. timeout if not set, equals to the fixture's `wait_timeout`|
     | `wait_for_element_by_css_selector(selector, timeout=None)` | explicit wait until the element to present, shortcut to `WebDriverWait` with `EC.presence_of_element_located` |
     | `wait_for_style_to_equal(selector, style, value, timeout=None)` | explicit wait until the element's style has expected `value`. shortcut to `WebDriverWait` with custom wait condition `style_to_equal`. timeout if not set, equals to the fixture's `wait_timeout`  |
     | `wait_for_text_to_equal(selector, text, timeout=None)` | explicit wait until the element's text equals the expected `text`. shortcut to `WebDriverWait` with custom wait condition `text_to_equal`. timeout if not set, equals to the fixture's `wait_timeout` |
     | `wait_for_page(url=None, timeout=10)` | navigate to the `url` in webdriver and wait until the dash renderer is loaded in browser. use `server_url` if `url` is None |
-    | `percy_snapshot(name)` | visaul test api shortcut to `percy_runner.snapshot` it also combines the snapshot `name` with python versions |
-    | `take_snapshot(name)` | hook method to take snapshot while selenium test fails. the snapshot is placed under `/tmp/dash_artifacts` in linux or `%TEMP` in windows with a filename combining test case `name` and the running selenium session id |
+    | `percy_snapshot(name)` | visual test API shortcut to `percy_runner.snapshot` it also combines the snapshot `name` with python versions |
+    | `take_snapshot(name)` | hook method to take a snapshot while selenium test fails. the snapshot is placed under `/tmp/dash_artifacts` in Linux or `%TEMP` in windows with a filename combining test case `name` and the running selenium session id |
     | `get_logs()` | return a list of `SEVERE` level logs after last reset time stamps (default to 0, resettable by `reset_log_timestamp`. **Chrome only** |
     | `clear_input()` | simulate key press to clear the input |
     | `driver` | expose the selenium webdriver as fixture property |
@@ -248,7 +248,7 @@ layout = html.Div([
     handy tool to run all the jobs locally. It gives you an earlier warning
     before even pushing your commits to remote,  which leaves no chance of
     making an embarrassing public mistake. The environment is identical to the
-    remote one, except the percy snapshot and test reports are not functional
+    remote one, except the Percy snapshot and test reports are not functional
     locally.
 
     ```
@@ -286,8 +286,8 @@ layout = html.Div([
 
     We implemented an automatic hook at the test report stage, it checks if a
     test case failed with a selenium test fixture. Before tearing down every
-    instance, it will take a snapshot at moment where your assertion is False
-    or having a runtime error. refer to [Browser APIs](#browser-apis)
+    instance, it will take a snapshot at the moment where your assertion is
+    `False` or having a runtime error. refer to [Browser APIs](#browser-apis)
 
     *Note: you can also check the snapshot directly in CircleCI web page
     under `Artifacts` Tab*
