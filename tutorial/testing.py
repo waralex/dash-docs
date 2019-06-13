@@ -63,7 +63,7 @@ layout = html.Div([
     Syntax(code),
     dcc.Markdown(dedent("""
 
-    **Notes**:
+    ### Notes
 
     * #1 For most test scenarios, you don't need to import any modules for
     the test; just import what you need for the Dash app itself.
