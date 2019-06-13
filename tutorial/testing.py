@@ -68,7 +68,7 @@ layout = html.Div([
     * #1 For most test scenarios, you don't need to import any modules for
     the test; just import what you need for the dash app itself.
 
-    * #2 A test case is a regular python function, the function name follows
+    * #2 A test case is a regular python function. The function name follows
     this pattern: `test_{tcid}_{test title}`. The `tcid` (test case ID) is
     an abbreviation that follows `mmffddd => module + file + three digits`.
     The `tcid` facilitates the test selection by just running
