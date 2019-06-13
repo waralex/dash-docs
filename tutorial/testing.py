@@ -69,7 +69,7 @@ layout = html.Div([
     the test; just import what you need for the dash app itself.
 
     * #2 A test case is a regular python function, the function name follows
-    this pattern `test_{tcid}_{test title}`. The `tcid` (test case ID) is
+    this pattern: `test_{tcid}_{test title}`. The `tcid` (test case ID) is
     an abbreviation that follows `mmffddd => module + file + three digits`.
     The `tcid` facilitates the test selection by just running
     `pytest -k {tcid}`. Its naming convention also helps code navigation with
