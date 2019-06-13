@@ -39,7 +39,7 @@ layout = html.Div([
 
     ## Install
 
-    The dash testing is now part of the main dash package.  After
+    The Dash testing is now part of the main dash package.  After
     `pip install dash`, the *dash pytest* fixtures are available, you just
     need to install the webdrivers and you are ready to test.
 
