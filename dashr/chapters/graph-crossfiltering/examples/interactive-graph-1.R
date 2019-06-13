@@ -1,7 +1,7 @@
 library(dashR)
 library(dashCoreComponents)
 library(dashHtmlComponents)
-library(rjson)
+
 
 app <- Dash$new()
 
@@ -105,26 +105,26 @@ this event.
 app$callback(output = list(id = 'hover-data', property = 'children'),
              params = list(input(id = 'basic-interactions', property = 'hoverData')),
              function(hoverData) {
-               return(toJSON(hoverData, indent = 2))
+               return(prettify(toJSON(hoverData),indent = 2))
              })
 
 
 app$callback(output = list(id = 'click-data', property = 'children'),
              params = list(input(id = 'basic-interactions', property = 'clickData')),
              function(clickData) {
-               return(toJSON(clickData, indent = 2))
+               return(prettify(toJSON(clickData),indent = 2))
              })
 
 app$callback(output = list(id = 'selected-data', property = 'children'),
              params = list(input(id = 'basic-interactions', property = 'selectedData')),
              function(selectedData) {
-               return(toJSON(selectedData, indent = 2))
+               return(prettify(toJSON(selectedData),indent = 2))
              })
 
 app$callback(output = list(id = 'relayout-data', property = 'children'),
              params = list(input(id = 'basic-interactions', property = 'relayoutData')),
              function(relayoutData) {
-               return(toJSON(relayoutData, indent = 2))
+               return(prettify(toJSON(relayoutData),indent = 2))
              })
 
 app$run_server()

@@ -1,4 +1,4 @@
-setwd('/Users/kevinphan/desktop/dashdocs/dash-docs')
+setwd('/Users/kevinphan/Desktop/dash-docs')
 
 source('app.R')
 library(dashR)
@@ -16,23 +16,31 @@ chapters.state <- new.env()
 source('dashr/chapters/state/index.R', local=chapters.state)
 chapters.graph_crossfiltering <- new.env()
 source('dashr/chapters/graph-crossfiltering/index.R', local=chapters.graph_crossfiltering)
-chapters.data_callbacks <- new.env()
-source('dashr/chapters/data-callbacks/index.R', local=chapters.data_callbacks)
+#chapters.data_callbacks <- new.env()
+#source('dashr/chapters/data-callbacks/index.R', local=chapters.data_callbacks)
 chapters.faq_gotchas <- new.env()
 source('dashr/chapters/faq-gotchas/index.R', local=chapters.faq_gotchas)
 chapters.dashCoreComponents <- new.env()
 source('dashr/chapters/dash-core-components/index.R', local=chapters.dashCoreComponents)
 chapters.dccDropdown <- new.env()
 source('dashr/chapters/dash-core-components/dropdown/index.R', local=chapters.dccDropdown)
+chapters.dccSlider <- new.env()
+source('dashr/chapters/dash-core-components/slider/index.R', local=chapters.dccSlider)
+chapters.RangeSlider <- new.env()
+source('dashr/chapters/dash-core-components/RangeSlider/index.R', local=chapters.RangeSlider)
+chapters.Input <- new.env()
+source('dashr/chapters/dash-core-components/Input/index.R', local=chapters.Input)
+chapters.TextArea <- new.env()
+source('dashr/chapters/dash-core-components/Textarea/index.R', local=chapters.TextArea)
 chapters.dashHtmlComponents <- new.env()
 source('dashr/chapters/dash-html-components/index.R', local=chapters.dashHtmlComponents)
 chapters.external_resources <- new.env()
 source('dashr/chapters/external-resources/index.R', local=chapters.external_resources)
-chapters.dashDataTable <- new.env()
-source('dashr/chapters/dashDataTable/index.R', local=chapters.dashDataTable)
+#chapters.dashDataTable <- new.env()
+#source('dashr/chapters/dashDataTable/index.R', local=chapters.dashDataTable)
 chapters.dashDataTablePart1 <- new.env()
-source('dashr/chapters/dashDataTable/part1/index.R', local=chapters.dashDataTablePart1)
-chapters.Whats_dash <- new.env()
+#source('dashr/chapters/dashDataTable/part1/index.R', local=chapters.dashDataTablePart1)
+#chapters.Whats_dash <- new.env()
 source('dashr/chapters/Whats_dash/introduction.R', local=chapters.Whats_dash)
 
 header <- htmlDiv(
@@ -88,10 +96,14 @@ app$callback(output=list(id='chapter', property='children'),
                  "/getting-started-part-2" = return(chapters.callbacks$layout),
                  "/state" = return(chapters.state$layout),
                  "/graph-crossfiltering" = return(chapters.graph_crossfiltering$layout),
-                 "/data-callbacks" = return(chapters.data_callbacks$layout),
+                 #"/data-callbacks" = return(chapters.data_callbacks$layout),
                  "/faq-gotchas" = return(chapters.faq_gotchas$layout),
                  '/dash-core-components' = return(chapters.dashCoreComponents$layout),
-                 '/dash-core-components/dropdown' = return(chapters.dccDropdown$layout),
+                 '/dash-core-components/Dropdown' = return(chapters.dccDropdown$layout),
+                 '/dash-core-components/Slider' = return(chapters.dccSlider$layout),
+                 '/dash-core-components/RangeSlider' = return(chapters.RangeSlider$layout),
+                 '/dash-core-components/Input' = return(chapters.Input$layout),
+                 '/dash-core-components/Textarea' = return(chapters.TextArea$layout),
                  '/dash-html-components' = return(chapters.dashHtmlComponents$layout),
                  '/dashDataTable' = return(chapters.dashDataTable$layout),
                  '/dashDataTable/Part1' = return(chapters.dashDataTablePart1$layout),
@@ -160,10 +172,8 @@ Use Dash `state` with Dash `inputs` to pass in extra values whenever the `inputs
                         'Part 5. Interactive Graphing and Crossfiltering',
                         href='/graph-crossfiltering'
                        ),
-                       dccMarkdown("
-                       Bind interactivity to the Dash `Graph` component whenever you hover, click,
-                       or select points on your chart.
-                       "),
+                       dccMarkdown("Bind interactivity to the Dash `Graph` component whenever you hover, click, or
+                       select points on your chart."),
                        htmlBr(),
                        dccLink(
                          'Part 6. Sharing Data Between Callbacks',

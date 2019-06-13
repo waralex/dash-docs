@@ -71,3 +71,56 @@ LoadAndDisplayComponent <- function(example_string) {
     )
   )
 }
+
+props_to_list <- function(componentName) {
+  Rd <- utils:::.getHelpFile(do.call(`?`, 
+                                     list(componentName)))
+  
+  containsArgs <- vapply(Rd, function(x) {
+    attr(x, "Rd_tag")=="\\arguments"
+  }, 
+  logical(1))
+  
+  # Subset the help data to function arguments only
+  args  <- Rd[containsArgs]
+  
+  # Assemble a list of function arguments, stripping linefeeds  
+  list_of_args <- lapply(unlist(args, 
+                                recursive=FALSE), 
+                         function(x) x[x != "\n"])
+  
+  # Extract the prop metadata for tabulation  
+  props_as_list <- invisible(sapply(list_of_args, function(x) {
+    if (any(sapply(x, is.list))) {
+      all_types <- paste("List of numerics",
+                         "Numeric",
+                         "Character",
+                         "Logical",
+                         "Named list",
+                         "Unnamed list",
+                         "List of named lists",
+                         "List of unnamed lists",
+                         "List of character \\| numerics",
+                         "Logical \\| numeric \\| character \\| named list \\| unnamed list",
+                         "List",
+                         sep="|")
+      
+      attribute <- x[[1]]
+      
+      descstring <- paste(gsub("\n", "", x[[2]]), collapse=" ")
+      
+      description <- gsub("Logical\\. |Numeric\\. |Named list\\. |Unnamed list\\. | Character\\.", 
+                          "", 
+                          descstring)
+      type <- regmatches(descstring, regexpr(all_types, descstring))
+      default <- NULL
+      return(c(attribute=attribute, 
+               description=description, 
+               type=type,
+               default=default))
+    }
+  }))
+  
+  # strip NULL values
+  props_as_list[lengths(props_as_list) != 0]
+}
