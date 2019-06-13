@@ -32,6 +32,12 @@ chapters.Input <- new.env()
 source('dashr/chapters/dash-core-components/Input/index.R', local=chapters.Input)
 chapters.TextArea <- new.env()
 source('dashr/chapters/dash-core-components/Textarea/index.R', local=chapters.TextArea)
+chapters.Checklist <- new.env()
+source('dashr/chapters/dash-core-components/Checklist/index.R', local=chapters.Checklist)
+chapters.RadioItems  <- new.env()
+source('dashr/chapters/dash-core-components/Radioitems/index.R', local=chapters.RadioItems)
+chapters.Button  <- new.env()
+source('dashr/chapters/dash-core-components/Button/index.R', local=chapters.Button)
 chapters.dashHtmlComponents <- new.env()
 source('dashr/chapters/dash-html-components/index.R', local=chapters.dashHtmlComponents)
 chapters.external_resources <- new.env()
@@ -104,6 +110,9 @@ app$callback(output=list(id='chapter', property='children'),
                  '/dash-core-components/RangeSlider' = return(chapters.RangeSlider$layout),
                  '/dash-core-components/Input' = return(chapters.Input$layout),
                  '/dash-core-components/Textarea' = return(chapters.TextArea$layout),
+                 '/dash-core-components/Checklist' = return(chapters.Checklist$layout),
+                 '/dash-core-components/Radioitems' = return(chapters.RadioItems$layout),
+                 '/dash-core-components/Button' = return(chapters.Button$layout),
                  '/dash-html-components' = return(chapters.dashHtmlComponents$layout),
                  '/dashDataTable' = return(chapters.dashDataTable$layout),
                  '/dashDataTable/Part1' = return(chapters.dashDataTablePart1$layout),

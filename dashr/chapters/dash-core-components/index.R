@@ -172,7 +172,7 @@ htmlDiv(list(utils$LoadAndDisplayComponent(
   '
 ))),
 htmlBr(),
-htmlDiv(referenceLink('textarea', 'Textarea Reference')),
+htmlDiv(referenceLink('Textarea', 'Textarea Reference')),
 htmlHr(),
 
 #--------------------------------
@@ -207,11 +207,11 @@ dccChecklist(
 )
 )),
 htmlBr(),
-htmlDiv(referenceLink('rangeslider', 'Checklist Properties')),
+htmlDiv(referenceLink('Checklist', 'Checklist Properties')),
 htmlHr(),
 
 #--------------------------------
-htmlDiv(titleLink('Radio Items')),
+htmlDiv(titleLink('Radioitems')),
 htmlDiv(list(utils$LoadAndDisplayComponent(
   '
   library(dashCoreComponents)
@@ -242,7 +242,7 @@ utils$LoadAndDisplayComponent(
 )
 )),
 htmlBr(),
-htmlDiv(referenceLink('radioitems', 'RadioItems Reference')),
+htmlDiv(referenceLink('Radioitems', 'RadioItems Reference')),
 htmlHr(),
 
 #--------------------------------
@@ -250,6 +250,9 @@ htmlHr(),
 htmlDiv(titleLink('Button')),
 examples$button$source,
 examples$button$layout,
+
+htmlBr(),
+htmlDiv(referenceLink('Button', 'More Button Examples and Reference')),
 
 #--------------------------------
 

@@ -20,7 +20,7 @@ app$layout(htmlDiv(list(
 )))
 
 app$callback(output('output-container', 'children'),
-            list(input('my-dropdown', 'value')),
+            params = list(input('my-dropdown', 'value')),
             function(dropdown_value) {
   sprintf("You have selected \"%s\"", dropdown_value)
 })
