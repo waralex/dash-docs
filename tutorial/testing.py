@@ -31,7 +31,7 @@ layout = html.Div([
     This tutorial does not intend to cover the usage of
     [pytest](https://docs.pytest.org/en/latest/) and
     [selenium webdriver](https://www.seleniumhq.org/projects/webdriver/),
-    but focuses on how to do a simple integration test with dash by hosting
+    but focuses on how to do a simple integration test with Dash by hosting
     the app server locally and using a selenium webdriver to simulate
     the interaction inside a web browser.
 
@@ -39,14 +39,14 @@ layout = html.Div([
 
     ## Install
 
-    The Dash testing is now part of the main dash package.  After
-    `pip install dash`, the *dash pytest* fixtures are available, you just
+    The Dash testing is now part of the main Dash package. After
+    `pip install dash`, the Dash *pytest fixtures* are available, you just
     need to install the webdrivers and you are ready to test.
 
     - [Chrome Driver](http://chromedriver.chromium.org/getting-started)
     - [Firefox Gecko Driver](https://github.com/mozilla/geckodriver/releases)
 
-    FYI, We run dash integration tests with `Chrome` webdriver.
+    FYI, We run Dash integration tests with `Chrome` webdriver.
     But the fixture allows you to choose another browser from the command line,
     e.g. `pytest --webdriver Firefox -k bsly001`.
 
@@ -66,11 +66,11 @@ layout = html.Div([
     **Notes**:
 
     * #1 For most test scenarios, you don't need to import any modules for
-    the test; just import what you need for the dash app itself.
+    the test; just import what you need for the Dash app itself.
 
     * #2 A test case is a regular python function. The function name follows
     this pattern: `test_{tcid}_{test title}`. The `tcid` (test case ID) is
-    an abbreviation that follows `mmffddd => module + file + three digits`.
+    an abbreviation pattern of `mmffddd => module + file + three digits`.
     The `tcid` facilitates the test selection by just running
     `pytest -k {tcid}`. Its naming convention also helps code navigation with
     modern editors.
@@ -92,7 +92,7 @@ layout = html.Div([
     that the defined `Div` component's text is identical to the `children`'s
     content. #5 will wait the expected state to reach within an explicitly 4
     seconds timeout. It's a safer way to use when you are doing an element
-    check related to callbacks, as it happens at lot under dash context,
+    check related to callbacks, as it happens at lot under Dash context,
     the element is already present in the DOM, but not necessarily the props.
 
     * #6 The `find_element` API call has an implicitly global timeout set at
@@ -112,44 +112,45 @@ layout = html.Div([
 
     * #8 We use [Percy](https://percy.io/) as our *Visual Regression Testing*
     tool, it's a good alternative besides assertions when your check point is
-    about a graph diagram and/or an app layout. We integrate the percy service
+    about the graphical aspects of an Dash app, such as the whole layout or a
+    `dcc.Graph` component. We integrate the percy service
     with a `PERCY_TOKEN` variable,  so the regression result is only
-    available in our circleci setup.
+    available in plotly CircleCI setup.
 
     ## Fixtures
 
     To avoid accidental name collision with other pytest plugins,
-    all dash test fixtures start with the prefix `dash_`
+    all Dash test fixtures start with the prefix `dash_`.
 
     - dash_duo
 
-    The default fixture for dash integration tests, it contains a
-    thread_server and a webdriver wrapped with high level dash testing APIs
+    The default fixture for Dash integration tests, it contains a
+    `thread_server` and a webdriver wrapped with high-level Dash testing APIs.
 
     - dash_br
 
-    A standalone webdriver wrapped with high-level dash testing APIs. This is
-    suitable for testing a dash app in a deployed environment, i.e. your dash
-    app is accessible from a URL
+    A standalone webdriver wrapped with high-level Dash testing APIs. This is
+    suitable for testing a Dash app in a deployed environment, i.e. one in
+    which your Dash app is accessible from a URL.
 
     - dash_thread_server
 
-    Start your dash app locally in a python `threading.Thread`, lighter and
-    faster than a process
+    Start your Dash app locally in a python `threading.Thread`, which is
+    lighter and faster than a process.
 
     - dash_process_server
 
-    Start your dash app with `waitress` in a python `subprocess`. This is
+    Start your Dash app with `waitress` in a python `subprocess`. This is
     close to your production/deployed environment.  **Note:**  *you need to
     configure your `PYTHONPATH` so that your Dash app source file is
-    directly importable*
+    directly importable*.
 
     ## APIs
 
     ### Selenium Overview
 
     Both `dash_duo` and `dash_br` expose the  selenium webdriver via the
-    property `driver`, e.g. dash_duo.driver, which you have the full access to
+    property `driver`, e.g. dash_duo.driver, which gives you full access to
     the [Python Selenium API](https://selenium-python.readthedocs.io/api.html).
     (*Note that this is not the official selenium documentation site, but has
     somehow become the defacto python community reference*)
@@ -201,15 +202,15 @@ layout = html.Div([
 
     ### Browser APIs
 
-    This section lists a miminal set of dash testing helper APIs.
+    This section lists a miminal set of Dash testing helper APIs.
     They are convenient shortcuts to selenium APIs and have been approved in
     our daily integration tests.
 
     The following table might grow as we start migrating more legacy tests in
     the near future. But we have no intention to build a comprehensive list,
-    the goal is to make writing dash tests concise and error free.
+    the goal is to make writing Dash tests concise and error free.
     Please feel free to submit a community PR to add any missing ingredient,
-    we would be happy to accept that if it's adequate for dash testing.
+    we would be happy to accept that if it's adequate for Dash testing.
 
     | API | Description |
     | --- | ----------- |
@@ -271,8 +272,8 @@ layout = html.Div([
     dcc.Markdown(dedent("""
     ### Selenium Snapshots
 
-    If you run your tests with circleci dockers (locally with `circleci cli`
-    and/or remotely with `circleci`).
+    If you run your tests with CircleCI dockers (locally with `CircleCI CLI`
+    and/or remotely with `CircleCI`).
 
     There is a known limitation that you cannot see anything from the selenium
     browser on your screen. Inside a docker session where there is no direct
@@ -287,9 +288,9 @@ layout = html.Div([
     instance, it will take a snapshot at moment where your assertion is False
     or having a runtime error. refer to [Browser APIs](#browser-apis)
 
-    *Note: you can also check the snapshot directly in circleci web page
+    *Note: you can also check the snapshot directly in CircleCI web page
     under `Artifacts` Tab*
 
-    ![circleci](https://user-images.githubusercontent.com/1394467/59371162-3f27a000-8d12-11e9-9060-7d8a8522c2c6.png)
+    ![CircleCI](https://user-images.githubusercontent.com/1394467/59371162-3f27a000-8d12-11e9-9060-7d8a8522c2c6.png)
     """)),
 ])
