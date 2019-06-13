@@ -88,7 +88,7 @@ layout = html.Div([
         request, and then make sure the Dash app is full rendered inside
         the browser.
 
-    * #5 A test case is composed of preparation, actions and checkpoints.
+    * #5 A test case is composed of preparation, actions, and checkpoints.
     Both #5 and #6 are doing the same check in this example; we are expecting
     that the defined `Div` component's text is identical to `children`. #5 will
     wait for the expected state to be reached within a 4 seconds timeout. It's
@@ -97,8 +97,8 @@ layout = html.Div([
     the element is already present in the DOM, but not necessarily the props.
 
     * #6 The `find_element` API call has an implicitly global timeout of two
-    seconds set at driver level, i.e. the driver waits at most two seconds to
-    find the element by the locator, **HOWEVER** it will compare the text
+    seconds set at the driver level, i.e. the driver waits at most two seconds
+    to find the element by the locator, **HOWEVER** it will compare the text
     as soon as the driver returns an element. Also note that the API
     `find_element('#nully-wrapper')` is just a shortcut to a more tedious
     version `driver.find_element_by_css_selector('#nully-wrapper')`.
@@ -265,7 +265,7 @@ layout = html.Div([
 
     `pytest --log-cli-level DEBUG -k bsly001`
 
-    you can get more information from selenium webdriver, flask server
+    you can get more information from selenium webdriver, flask server,
     and our test APIs
 
     """)),
