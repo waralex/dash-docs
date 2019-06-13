@@ -139,7 +139,7 @@ layout = html.Div([
 
     - dash_process_server
 
-    Start your dash app with `waitress` in a python `subprocess`, this is
+    Start your dash app with `waitress` in a python `subprocess`. This is
     close to your production/deployed environment.  **Note:**  *you need to
     configure your `PYTHONPATH` so that your Dash app source file is
     directly importable*
