@@ -56,7 +56,7 @@ layout = html.Div([
     selenium specifications. Some features may not work as expected.
 
     * We only include *Chrome* and *Firefox* in the supported list for now,
-    but other popular webdrivers can be included if there are popular demands.
+    but other popular webdrivers may be included based on popular demand.
 
     ## Example
     """)),
