@@ -246,7 +246,7 @@ layout = html.Div([
     handy tool to run all the jobs locally. It gives you an earlier warning
     before even pushing your commits to remote,  which leaves no chance of
     making an embarrasing public exposure. The environment is identical to the
-    remote one except the percy snapshot and test reports are not functional
+    remote one, except the percy snapshot and test reports are not functional
     locally.
 
     ```
