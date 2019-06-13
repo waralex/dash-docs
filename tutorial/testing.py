@@ -81,26 +81,27 @@ layout = html.Div([
     * #4 We normally start the test by calling the `start_server` API
     from dash_duo. Several actions implicitly happen under the hood:
 
-        1. It hosts the defined app with Flask in a light python
-        `threading.Thread`
-        2. A selenium webdriver is initialized and it navigates to the
-        local server with the `server_url`
-        3. It waits until the page has loaded in the browser
+        1. The defined app is hosted inside a light python `threading.Thread`.
+        2. A selenium webdriver is initialized and navigates to the
+        local server URL using `server_url`.
+        3. We first wait until the flask server is responsive to a HTTP
+        request, and then make sure the Dash app is full renderered inside
+        the browser.
 
     * #5 A test case is composed of preparation, actions and check points.
-    Both #5 and #6 are doing the same check in this example, we are expecting
-    that the defined `Div` component's text is identical to the `children`'s
-    content. #5 will wait the expected state to reach within an explicitly 4
-    seconds timeout. It's a safer way to use when you are doing an element
-    check related to callbacks, as it happens at lot under Dash context,
+    Both #5 and #6 are doing the same check in this example; we are expecting
+    that the defined `Div` component's text is identical to `children`. #5 will
+    wait for the expected state to be reached within a 4 seconds timeout. It's
+    a safer way to write the action steps when you are doing an element check
+    related to callbacks, as it normally happens under Dash context:
     the element is already present in the DOM, but not necessarily the props.
 
-    * #6 The `find_element` API call has an implicitly global timeout set at
-    driver level, i.e. the driver waits at most 2 seconds to find the element
-    by the locator, **BUT** it will compare the texts as soon as the driver
-    returns an element.  Also note that the `find_element('#nully-wrapper')`
-    is just a shortcut to a more tedious version
-    `driver.find_element_by_css_selector('#nully-wrapper')`.
+    * #6 The `find_element` API call has an implicitly global timeout of two
+    seconds set at driver level, i.e. the driver waits at most two seconds to
+    find the element by the locator, **HOWEVER** it will compare the text
+    as soon as the driver returns an element. Also note that the API
+    `find_element('#nully-wrapper')` is just a shortcut to a more tedious
+    version `driver.find_element_by_css_selector('#nully-wrapper')`.
 
     * #7 Unlike `unittest`, `pytest` uses the native python
     [`assert`](https://docs.python.org/3/reference/simple_stmts.html#the-assert-statement)
@@ -111,7 +112,7 @@ layout = html.Div([
     the test title, the app definition, the actions and the check points.
 
     * #8 We use [Percy](https://percy.io/) as our *Visual Regression Testing*
-    tool, it's a good alternative besides assertions when your check point is
+    tool. It's a good alternative to assertions when your check point is
     about the graphical aspects of an Dash app, such as the whole layout or a
     `dcc.Graph` component. We integrate the percy service
     with a `PERCY_TOKEN` variable,  so the regression result is only
@@ -155,23 +156,23 @@ layout = html.Div([
     (*Note that this is not the official selenium documentation site, but has
     somehow become the defacto python community reference*)
 
-    One of the core routine in selenium testing is to find the **web element**
-    with a `locator`, and perform some actions like `click`, `send_keys` on it,
-    wait and verify if the expected state is met after actions, the check is
-    considered as an acceptance criteria, which you can write in built-in
-    python `assert` statement.
+    One of the core components of selenium testing is finding the
+    **web element** with a `locator`, and performing some actions like `click`
+    or `send_keys` on it, and waiting to verify if the expected state is met
+    after those actions. The check is considered as an acceptance criterion,
+    for which you can write in a built-in python `assert` statement.
 
     #### Element Locators
 
     There are several strategies to
-    [locate elements](https://selenium-python.readthedocs.io/locating-elements.html#locating-elements),
-    css selector and xpath are two versatile ways. We recommend to use
-    **CSS Selector** in most of the case due to its
+    [locate elements](https://selenium-python.readthedocs.io/locating-elements.html#locating-elements);
+    CSS selector and XPATH are the two most versatile ways. We recommend using
+    **CSS Selector** in most cases due to its
     [performance and robustness](http://elementalselenium.com/tips/34-xpath-vs-css-revisited-2) across browsers.
 
     If you are new at using CSS Selector, these
     [Saucelab tips](https://saucelabs.com/resources/articles/selenium-tips-css-selectors)
-    is a great start, and remember that
+    are a great start. Also, remember that
     [Chrome Dev Tools Console](https://developers.google.com/web/tools/chrome-devtools/console/utilities)
     is always your good friend and playground.
 
@@ -179,11 +180,11 @@ layout = html.Div([
 
     #### Waits
 
-    [This link](https://selenium-python.readthedocs.io/waits.html) has a
-    nice coverage on this topic. For impatient readers, a quick take away is
-    quoted as follow:
+    [This link](https://selenium-python.readthedocs.io/waits.html) covers
+    this topic nicely. For impatient readers, a quick take away is
+    quoted as follows:
 
-    Selenium Webdriver provides two types of waits
+    The selenium webdriver provides two types of waits:
 
     - **explicit wait**
         Makes webdriver wait for a certain condition to occur before
@@ -191,7 +192,7 @@ layout = html.Div([
         falls into this category.
     - **implicit wait**
         Makes webdriver poll the DOM for a certain amount of time when trying
-        to locate an element. We set a global 2 seconds timeout at
+        to locate an element. We set a global two-second timeout at the
         `driver` level.
 
     **Note** *all custom wait conditions are defined in `dash.testing.wait`
