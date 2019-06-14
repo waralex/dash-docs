@@ -644,7 +644,7 @@ Requirements = html.Div(children=[
     ***
     `CHECKS`
 
-    This optional file allows you to define custom checks to be performed on your app upon deployment.
+    As of DDS version 3.2.0, this optional file allows you to define custom checks to be performed on your app upon deployment.
      [Learn more about the CHECKS file](/dash-deployment-server/checks).
 
     ***
