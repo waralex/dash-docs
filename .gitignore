@@ -19,5 +19,6 @@ bundle.js
 .idea
 .env
 .mypy_cache/
-
 ignore/indicators.csv
+.Rproj.user
+dash-docs.Rproj
