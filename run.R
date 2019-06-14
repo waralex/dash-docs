@@ -29,6 +29,12 @@ chapters.dashDataTable <- new.env()
 source('dashr/chapters/dashDataTable/index.R', local=chapters.dashDataTable)
 chapters.dashDataTablePart1 <- new.env()
 source('dashr/chapters/dashDataTable/part1/index.R', local=chapters.dashDataTablePart1)
+chapters.dashDataTablePart2 <- new.env()
+source('dashr/chapters/dashDataTable/part2/index.R', local=chapters.dashDataTablePart2)
+chapters.dashDataTablePart3 <- new.env()
+source('dashr/chapters/dashDataTable/part3/index.R', local=chapters.dashDataTablePart3)
+chapters.dashDataTablePart4 <- new.env()
+source('dashr/chapters/dashDataTable/part4/index.R', local=chapters.dashDataTablePart4)
 
 
 header <- htmlDiv(
@@ -92,6 +98,9 @@ app$callback(output=list(id='chapter', property='children'),
                  '/dash-html-components' = return(chapters.dashHtmlComponents$layout),
                  '/dashDataTable' = return(chapters.dashDataTable$layout),
                  '/dashDataTable/Part1' = return(chapters.dashDataTablePart1$layout),
+                 '/dashDataTable/Part2' = return(chapters.dashDataTablePart2$layout),
+                 '/dashDataTable/Part3' = return(chapters.dashDataTablePart3$layout),
+                 '/dashDataTable/Part4' = return(chapters.dashDataTablePart4$layout),
                  '/external-resources' = return(chapters.external_resources$layout),
                  {
                    

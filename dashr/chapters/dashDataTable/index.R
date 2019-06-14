@@ -74,6 +74,48 @@ layout <- htmlDiv(
 - Fixing rows and columns
                     ")
       )
-    )
+    ),
+    
+    htmlDiv(
+      list(
+        subTitleLink("Part 2", "Styling"),
+        dccMarkdown("The style of the DataTable is highly customizable. This chapter includes examples for:
+
+- Conditional formatting
+
+- Displaying multiple rows of headers
+
+- Highlighting rows, columns, and cells
+
+- Styling the table as a list view
+
+- Changing the colors (including a dark theme!)
+
+The sizing API for the table has been particularly tricky for us to nail down, so be sure to read this chapter to understand the nuances, 
+limitations, and the APIs that we're exploring.
+                    ")
+      )
+    ),
+    
+    htmlDiv(
+      list(
+        subTitleLink("Part 3", "Sorting, Filtering, Selecting, and Paging"),
+        dccMarkdown("The DataTable is interactive. This chapter demonstrates the interactive features of the table and how to wire up these interations to Python callbacks. 
+These actions include:
+                    
+- Paging
+                    
+- Selecting Rows
+                    
+- Sorting Columns
+                    
+- Filtering Data
+                    ")
+        )
+        ),
+    htmlHr(),
+    dccMarkdown("
+[Back to the Table of Contents](/)
+                ")
   )
 )
