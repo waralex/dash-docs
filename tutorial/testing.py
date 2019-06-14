@@ -115,7 +115,7 @@ layout = html.Div([
     tool. It's a good alternative to assertions when your checkpoint is
     about the graphical aspects of a Dash app, such as the whole layout or a
     `dcc.Graph` component. We integrate the Percy service
-    with a `PERCY_TOKEN` variable,  so the regression result is only
+    with a `PERCY_TOKEN` variable, so the regression result is only
     available in Plotly CircleCI setup.
 
     ## Fixtures
