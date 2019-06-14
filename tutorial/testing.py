@@ -131,7 +131,7 @@ layout = html.Div([
     - dash_br
 
     A standalone webdriver wrapped with high-level Dash testing APIs. This is
-    suitable for testing a Dash app in a deployed environment, i.e. one in
+    suitable for testing a Dash app in a deployed environment, i.e., when
     which your Dash app is accessible from a URL.
 
     - dash_thread_server
