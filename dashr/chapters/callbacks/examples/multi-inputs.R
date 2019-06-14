@@ -39,7 +39,6 @@ app$layout(
           labelStyle = list(display = 'inline-block')
         )
       ), style = list(width = '48%', display = 'inline-block')),
-      
       htmlDiv(list(
         dccDropdown(
           id = 'yaxis-column',
@@ -114,4 +113,4 @@ app$callback(
   }
 )
 
-app$run_server()
+#app$run_server()

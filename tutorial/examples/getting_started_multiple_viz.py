@@ -1,8 +1,6 @@
 import dash
 import dash_core_components as dcc
 import dash_html_components as html
-from dash.dependencies import Input, Output
-
 import pandas as pd
 import plotly.graph_objs as go
 
@@ -58,18 +56,17 @@ app.layout = html.Div([
         min=df['Year'].min(),
         max=df['Year'].max(),
         value=df['Year'].max(),
-        marks={str(year): str(year) for year in df['Year'].unique()},
-        step=None
+        marks={str(year): str(year) for year in df['Year'].unique()}
     )
 ])
 
 @app.callback(
-    Output('indicator-graphic', 'figure'),
-    [Input('xaxis-column', 'value'),
-     Input('yaxis-column', 'value'),
-     Input('xaxis-type', 'value'),
-     Input('yaxis-type', 'value'),
-     Input('year--slider', 'value')])
+    dash.dependencies.Output('indicator-graphic', 'figure'),
+    [dash.dependencies.Input('xaxis-column', 'value'),
+     dash.dependencies.Input('yaxis-column', 'value'),
+     dash.dependencies.Input('xaxis-type', 'value'),
+     dash.dependencies.Input('yaxis-type', 'value'),
+     dash.dependencies.Input('year--slider', 'value')])
 def update_graph(xaxis_column_name, yaxis_column_name,
                  xaxis_type, yaxis_type,
                  year_value):

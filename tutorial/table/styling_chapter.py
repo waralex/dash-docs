@@ -1,11 +1,12 @@
 from collections import OrderedDict
+from dash.dependencies import Input, Output
 import dash_core_components as dcc
 import dash_html_components as html
 import pandas as pd
 from textwrap import dedent
 
 import dash_table
-from .utils import CreateDisplay
+from .utils import html_table, CreateDisplay
 
 data = OrderedDict(
     [
@@ -87,7 +88,7 @@ layout = html.Div(
         Display(
         '''
         dash_table.DataTable(
-            data=df.to_dict('records'),
+            data=df.to_dict('rows'),
             columns=[{'id': c, 'name': c} for c in df.columns],
         )
         '''
@@ -115,7 +116,7 @@ layout = html.Div(
         Display(
         '''
         dash_table.DataTable(
-            data=df.to_dict('records'),
+            data=df.to_dict('rows'),
             columns=[{'id': c, 'name': c} for c in df.columns],
             style_cell={'textAlign': 'left'},
             style_cell_conditional=[
@@ -137,7 +138,7 @@ layout = html.Div(
         Display(
         '''
         dash_table.DataTable(
-            data=df.to_dict('records'),
+            data=df.to_dict('rows'),
             columns=[{'id': c, 'name': c} for c in df.columns],
             style_cell_conditional=[
                 {
@@ -161,7 +162,7 @@ layout = html.Div(
         Display(
         '''
         dash_table.DataTable(
-            data=df.to_dict('records'),
+            data=df.to_dict('rows'),
             columns=[{'id': c, 'name': c} for c in df.columns],
             style_as_list_view=True,
             style_cell={'padding': '5px'},
@@ -191,7 +192,7 @@ layout = html.Div(
         Display(
         '''
         dash_table.DataTable(
-            data=df.to_dict('records'),
+            data=df.to_dict('rows'),
             columns=[{'id': c, 'name': c} for c in df.columns],
 
             style_cell_conditional=[
@@ -215,7 +216,7 @@ layout = html.Div(
         Display(
         '''
         dash_table.DataTable(
-            data=df.to_dict('records'),
+            data=df.to_dict('rows'),
             columns=[{'id': c, 'name': c} for c in df.columns],
 
             style_cell_conditional=[{
@@ -276,7 +277,7 @@ layout = html.Div(
         Display(
         '''
         dash_table.DataTable(
-            data=df.to_dict('records'),
+            data=df.to_dict('rows'),
             columns=[{'id': c, 'name': c} for c in df.columns],
 
             style_header={'backgroundColor': 'rgb(30, 30, 30)'},
@@ -290,7 +291,7 @@ layout = html.Div(
         Display(
         '''
         dash_table.DataTable(
-            data=df.to_dict('records'),
+            data=df.to_dict('rows'),
             columns=[{'id': c, 'name': c} for c in df.columns],
 
             style_as_list_view=True,
@@ -311,7 +312,7 @@ layout = html.Div(
         Display(
         '''
         dash_table.DataTable(
-            data=df.to_dict('records'),
+            data=df.to_dict("rows"),
             columns=[
                 {"name": i, "id": i} for i in df.columns
             ],
@@ -326,7 +327,7 @@ layout = html.Div(
         Display(
         '''
         dash_table.DataTable(
-            data=df.to_dict('records'),
+            data=df.to_dict("rows"),
             columns=[
                 {"name": i, "id": i} for i in df.columns
             ],
@@ -347,7 +348,7 @@ layout = html.Div(
         Display(
         '''
         dash_table.DataTable(
-            data=df.to_dict('records'),
+            data=df.to_dict('rows'),
             columns=[
                 {'name': i, 'id': i} for i in df.columns
             ],
@@ -380,7 +381,7 @@ layout = html.Div(
         Display(
         '''
         dash_table.DataTable(
-            data=df.to_dict('records'),
+            data=df.to_dict('rows'),
             columns=[
                 {'name': i, 'id': i} for i in df.columns
             ],
@@ -388,7 +389,7 @@ layout = html.Div(
                 {
                     'if': {
                         'column_id': 'Region',
-                        'filter': '{Region} eq "Montreal"'
+                        'filter': 'Region eq "Montreal"'
                     },
                     'backgroundColor': '#3D9970',
                     'color': 'white',
@@ -396,7 +397,7 @@ layout = html.Div(
                 {
                     'if': {
                         'column_id': 'Humidity',
-                        'filter': '{Humidity} eq 20'
+                        'filter': 'Humidity eq num(20)'
                     },
                     'backgroundColor': '#3D9970',
                     'color': 'white',
@@ -404,7 +405,7 @@ layout = html.Div(
                 {
                     'if': {
                         'column_id': 'Temperature',
-                        'filter': '{Temperature} > 3.9'
+                        'filter': 'Temperature > num(3.9)'
                     },
                     'backgroundColor': '#3D9970',
                     'color': 'white',

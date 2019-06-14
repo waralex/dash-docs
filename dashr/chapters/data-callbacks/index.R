@@ -6,8 +6,8 @@ utils <- new.env()
 source('dashr/utils.R', local=utils)
 
 examples <- list(
-  scopping_wrong = utils$LoadExampleCode('dashr/chapters/data-callbacks/examples/scopping_wrong.R'),
-  scopping = utils$LoadExampleCode('dashr/chapters/data-callbacks/examples/scopping.R'),
+  scoping_wrong = utils$LoadExampleCode('dashr/chapters/data-callbacks/examples/scoping_wrong.R'),
+  scoping = utils$LoadExampleCode('dashr/chapters/data-callbacks/examples/scoping.R'),
   ex1 = utils$LoadExampleCode('dashr/chapters/data-callbacks/examples/Example1.R'),
   ex2 = utils$LoadExampleCode('dashr/chapters/data-callbacks/examples/Example2.R'),
   ex3 = utils$LoadExampleCode('dashr/chapters/data-callbacks/examples/Example3.R'),
@@ -49,7 +49,6 @@ simple follow-on tasks that modify the results, like unit conversions. We
 shouldn't need to repeat a large database query just to change the results
 from Fahrenheit to Celsius!
     "),
-    
     dccMarkdown("
 ## Why `global` variables will break your app
 
@@ -77,14 +76,14 @@ Here is a sketch of an app with a callback that modifies data out of it's scope.
 This type of pattern *will not work reliably* for the reasons outlined above.
               "),
     
-    examples$scopping_wrong$source_code,
+    examples$scoping_wrong$source_code,
     
     dccMarkdown("
 To fix this example, simply re-assign the filter to a new variable inside the callback, 
 or follow one of the strategies outlined in the next part of this guide.
               "),
     
-    examples$scopping$source_code,
+    examples$scoping$source_code,
     
     dccMarkdown("
 ## Sharing Data Between Callbacks

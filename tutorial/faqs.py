@@ -6,6 +6,7 @@ import dash_core_components as dcc
 import dash_html_components as html
 
 from tutorial.components import Example, Syntax
+from tutorial import styles
 from tutorial import tools
 
 
@@ -181,6 +182,19 @@ layout = html.Div([
     callback will simply not fire at all.
 
 
+    ### Callbacks can only target a single `Output` component/property pair
+
+    Currently, for a given callback, it can only have a single `Output`, which
+    targets one component/property pair eg `'my-graph'`, `'figure'`. If you
+    wanted, say, four `Graph` components to be updated based on a particular
+    user input, you either need to create four separate callbacks which each
+    target an individual `Graph`, or have the callback return a `html.Div`
+    container that holds the updated four Graphs.
+
+    There are plans to remove this limitation. You can track the status of this
+    in this [GitHub Issue](https://github.com/plotly/dash/issues/149).
+
+
     ### A component/property pair can only be the `Output` of one callback
 
     For a given component/property pair (eg `'my-graph'`, `'figure'`), it can
@@ -217,15 +231,11 @@ layout = html.Div([
     `Inputs` or `States` is determined by a user's input, then you must
     pre-define up front every permutation of callback that a user can
     potentially trigger. For an example of how this can be done programmatically
-  using the `callback` decorator, see this [Dash Community forum
+    using the `callback` decorator, see this [Dash Community forum
     post](https://community.plot.ly/t/callback-for-dynamically-created-graph/5511).
 
-    ### All Dash Core Components in a layout should be registered with a callback.
 
-    Note: This section is present for legacy purposes. Prior to v0.40.0, setProps was only defined if the component was connected to a
-    callback. This required complex state management within the component like [this](https://github.com/plotly/dash-core-components/blob/63be1c258c15b419a82fb66366e1a31e66fbfaef/src/components/Input.react.js#L51-L59).
-    Now, setProps is always defined which should simplify your component's state
-    management. Learn more in this [community forum topic](TBD).
+    ### All Dash Core Components in a layout should be registered with a callback.
 
     If a Dash Core Component is present in the layout but not registered with a
     callback (either as an `Input`, `State`, or `Output`) then any changes to its

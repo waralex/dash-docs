@@ -11,8 +11,8 @@ chapters.callbacks <- new.env()
 source('dashr/chapters/callbacks/index.R', local=chapters.callbacks)
 chapters.state <- new.env()
 source('dashr/chapters/state/index.R', local=chapters.state)
-#chapters.graph_crossfiltering <- new.env()
-#source('dashr/chapters/graph-crossfiltering/index.R', local=chapters.graph_crossfiltering)
+chapters.graph_crossfiltering <- new.env()
+source('dashr/chapters/graph-crossfiltering/index.R', local=chapters.graph_crossfiltering)
 chapters.data_callbacks <- new.env()
 source('dashr/chapters/data-callbacks/index.R', local=chapters.data_callbacks)
 chapters.faq_gotchas <- new.env()
@@ -48,7 +48,6 @@ header <- htmlDiv(
           style = list(height = '100%'),
           src = 'https://user-images.githubusercontent.com/1865834/50180824-abcc5f80-02d8-11e9-8319-8842909c3f8e.png'
         ), href = 'https://plot.ly/products/dash', className='logo-link'),
-        
         htmlDiv(className='links', children = list(
           htmlA('pricing', className='link', href = 'https://plot.ly/dash/pricing'),
           htmlA('user guide', className='link', href = '/'),
@@ -83,7 +82,6 @@ app$layout(
 app$callback(output=list(id='chapter', property='children'),
              params=list(input('url', 'pathname')),
              function(pathname) {
-
                switch(
                  pathname,
                  "/installation" = return(chapters.installation$layout),
@@ -161,15 +159,15 @@ allowing one update in the UI to trigger several updates across the app."),
                        dccMarkdown("Basic callbacks are fired whenever the values change.
 Use Dash `state` with Dash `inputs` to pass in extra values whenever the `inputs` change.
 `state` is useful for UIs that contain forms or buttons."),
-                       #htmlBr(),
-                       #dccLink(
-                       #  'Part 5. Interactive Graphing and Crossfiltering',
-                       #  href='/graph-crossfiltering'
-                       #),
-                       #dccMarkdown("
-                       #Bind interactivity to the Dash `Graph` component whenever you hover, click,
-                       #or select points on your chart.
-                       #"),
+                       htmlBr(),
+                       dccLink(
+                        'Part 5. Interactive Graphing and Crossfiltering',
+                        href='/graph-crossfiltering'
+                       ),
+                       dccMarkdown("
+                       Bind interactivity to the Dash `Graph` component whenever you hover, click,
+                       or select points on your chart.
+                       "),
                        htmlBr(),
                        dccLink(
                          'Part 6. Sharing Data Between Callbacks',
@@ -253,4 +251,4 @@ Dash apps on-premises or in the cloud."),
                )
              })
 
-app$run_server(host = "0.0.0.0", port = Sys.getenv('PORT', 8080))
+app$run_server(host = "0.0.0.0", port = Sys.getenv('PORT', 8050))

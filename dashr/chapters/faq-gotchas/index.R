@@ -10,7 +10,6 @@ examples <- list(
 )
 
 
-
 layout <- htmlDiv(list(
   dccMarkdown("
 # FAQs and Gotchas
@@ -90,19 +89,6 @@ Here's an example of how this can be done:
   examples$last_clicked_button$source,
   examples$last_clicked_button$layout,
  
-  # ------------------------
-  # 
-  # **Q:** *Can I use Jinja2 templates with Dash?*
-  # 
-  # **A:** Jinja2 templates are rendered on the server (often in a Flask app)
-  # before being sent to the client as HTML pages. Dash apps, on the other
-  # hand, are rendered on the client using React. This makes these
-  # fundamentally different approaches to displaying HTML in a browser, which
-  # means the two approaches can't be combined directly. You can however
-  # integrate a Dash app with an existing Flask app such that the Flask app
-  # handles some URL endpoints, while your Dash app lives at a specific
-  # URL endpoint.
-  
   dccMarkdown("
 you needed to compare timestamp properties 
 like `n_clicks_timestamp` to find the most recent click. 

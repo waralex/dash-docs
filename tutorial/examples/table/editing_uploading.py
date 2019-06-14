@@ -1,4 +1,5 @@
 import base64
+import datetime
 import io
 import dash
 from dash.dependencies import Input, Output, State
@@ -48,7 +49,7 @@ def update_output(contents, filename):
     if contents is None:
         return [{}]
     df = parse_contents(contents, filename)
-    return df.to_dict('records')
+    return df.to_dict('rows')
 
 
 @app.callback(Output('datatable-upload-graph', 'figure'),

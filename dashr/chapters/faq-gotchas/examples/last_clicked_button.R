@@ -62,4 +62,4 @@ app$callback(output('container', 'children'),
       )
     })
 
-app$run_server()
+#app$run_server()

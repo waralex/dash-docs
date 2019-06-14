@@ -39,6 +39,7 @@ The second part describes the interactivity of the application
 and will be covered in the [next chapter](/getting-started-part-2).
 
 
+
 Dash provides R functions for all of the visual components of the application. 
 We maintain a set of components in the `dashCoreComponents` 
 and `dashHtmlComponents` package 
