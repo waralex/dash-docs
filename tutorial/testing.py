@@ -24,15 +24,15 @@ layout = html.Div([
     *New in Dash v1.0*
 
     `dash.testing` \U0001f9ea provides some off-the-rack
-    [pytest fixtures](https://docs.pytest.org/en/latest/fixture.html)
+    [`pytest` fixtures](https://docs.pytest.org/en/latest/fixture.html)
     and a minimal set of testing **APIs** with our internal crafted
     best practices at the integration level.
 
     This tutorial does not intend to cover the usage of
-    [pytest](https://docs.pytest.org/en/latest/) and
-    [selenium webdriver](https://www.seleniumhq.org/projects/webdriver/),
+    [`pytest`](https://docs.pytest.org/en/latest/) and
+    [Selenium WebDriver](https://www.seleniumhq.org/projects/webdriver/),
     but focuses on how to do a simple integration test with Dash by hosting
-    the app server locally and using a selenium webdriver to simulate
+    the App server locally and using a Selenium WebDriver to simulate
     the interaction inside a web browser.
 
     ![demo](https://user-images.githubusercontent.com/1394467/59383731-83c13480-8d2e-11e9-8866-4ffdcd3b1b45.gif)
@@ -40,20 +40,20 @@ layout = html.Div([
     ## Install
 
     The Dash testing is now part of the main Dash package. After
-    `pip install dash`, the Dash *pytest fixtures* are available, you just
-    need to install the webdrivers and you are ready to test.
+    `pip install dash`, the Dash `pytest` fixtures are available, you just
+    need to install the WebDrivers and you are ready to test.
 
     - [Chrome Driver](http://chromedriver.chromium.org/getting-started)
     - [Firefox Gecko Driver](https://github.com/mozilla/geckodriver/releases)
 
-    FYI, We run Dash integration tests with `Chrome` webdriver.
+    FYI, We run Dash integration tests with Chrome WebDriver.
     But the fixture allows you to choose another browser from the command line,
     e.g. `pytest --webdriver Firefox -k bsly001`.
 
     **Notes**:
 
     * The *Gecko(Marionette)* driver from Mozilla is not fully compatible with
-    selenium specifications. Some features may not work as expected.
+    Selenium specifications. Some features may not work as expected.
 
     * We only include *Chrome* and *Firefox* in the supported list for now,
     but other popular webdrivers may be included based on popular demand.
@@ -68,24 +68,24 @@ layout = html.Div([
     * #1 For most test scenarios, you don't need to import any modules for
     the test; just import what you need for the Dash app itself.
 
-    * #2 A test case is a regular python function. The function name follows
+    * #2 A test case is a regular Python function. The function name follows
     this pattern: `test_{tcid}_{test title}`. The `tcid` (test case ID) is
     an abbreviation pattern of `mmffddd => module + file + three digits`.
     The `tcid` facilitates the test selection by just running
     `pytest -k {tcid}`. Its naming convention also helps code navigation with
     modern editors.
 
-    * #3 Here we just define our app inside a test function.
-    All the rules apply as in your app file.
+    * #3 Here we just define our app inside a test function. All the rules
+    still apply as in your app file.
 
     * #4 We normally start the test by calling the `start_server` API
     from dash_duo. Several actions implicitly happen under the hood:
 
-        1. The defined app is hosted inside a light python `threading.Thread`.
-        2. A selenium webdriver is initialized and navigates to the
+        1. The defined app is hosted inside a light Python `threading.Thread`.
+        2. A Selenium WebDriver is initialized and navigates to the
         local server URL using `server_url`.
-        3. We first wait until the flask server is responsive to an HTTP
-        request, and then make sure the Dash app is full rendered inside
+        3. We first wait until the Flask server is responsive to an HTTP
+        request; and then make sure the Dash app is full rendered inside
         the browser.
 
     * #5 A test case is composed of preparation, actions, and checkpoints.
@@ -103,22 +103,22 @@ layout = html.Div([
     `find_element('#nully-wrapper')` is just a shortcut to a more tedious
     version `driver.find_element_by_css_selector('#nully-wrapper')`.
 
-    * #7 Unlike `unittest`, `pytest` allows using the standard python
+    * #7 Unlike `unittest`, `pytest` allows using the standard Python
     [`assert`](https://docs.pytest.org/en/latest/assert.html) for verifying
     expectations and values. It also puts more introspection information into
     the assertion failure message by overriding the `assert` behavior.
-    It's good practice to expose your acceptance criteria directly in the
-    test case rather than wrapping the assert inside another helper API, also
-    to write these message with **should/should not** to avoid confusion.
+    It's good practice to expose your *acceptance criteria* directly in the
+    test case rather than wrapping the `assert` inside another helper API, also
+    to write these messages with **should/should not** to avoid confusion.
     By looking at the test name, the app definition, the acitons, and the
     checkpoints, reviewers/maintainers should figure out easily the purpose
     of the test.
 
     * #8 We use [Percy](https://percy.io/) as our *Visual Regression Testing*
     tool. It's a good alternative to assertions when your checkpoint is
-    about the graphical aspects of a Dash app, such as the whole layout or a
+    about the graphical aspects of a Dash App, such as the whole layout or a
     `dcc.Graph` component. We integrate the Percy service with a `PERCY_TOKEN`
-    variable,  so the regression result is only available in Plotly's CircleCI
+    variable, so the regression result is only available in Plotly's CircleCI
     setup.
 
     ## Fixtures
@@ -129,41 +129,41 @@ layout = html.Div([
     - dash_duo
 
     The default fixture for Dash integration tests, it contains a
-    `thread_server` and a webdriver wrapped with high-level Dash testing APIs.
+    `thread_server` and a WebDriver wrapped with high-level Dash testing APIs.
 
     - dash_br
 
-    A standalone webdriver wrapped with high-level Dash testing APIs. This is
-    suitable for testing a Dash app in a deployed environment, i.e., when
-    which your Dash app is accessible from a URL.
+    A standalone WebDriver wrapped with high-level Dash testing APIs. This is
+    suitable for testing a Dash App in a deployed environment, i.e. when
+    your Dash App is accessible from a URL.
 
     - dash_thread_server
 
-    Start your Dash app locally in a python `threading.Thread`, which is
+    Start your Dash App locally in a Python `threading.Thread`, which is
     lighter and faster than a process.
 
     - dash_process_server
 
-    Start your Dash app with `waitress` in a python `subprocess`. This is
-    close to your production/deployed environment.  **Note:**  *you need to
-    configure your `PYTHONPATH` so that your Dash app source file is
+    Start your Dash App with `waitress` in a Python `subprocess`. This is
+    close to your production/deployed environment.  **Note:**  *You need to
+    configure your `PYTHONPATH` so that the Dash app source file is
     directly importable*.
 
     ## APIs
 
     ### Selenium Overview
 
-    Both `dash_duo` and `dash_br` expose the  selenium webdriver via the
-    property `driver`, e.g. dash_duo.driver, which gives you full access to
+    Both `dash_duo` and `dash_br` expose the Selenium WebDriver via the
+    property `driver`, e.g. `dash_duo.driver`, which gives you full access to
     the [Python Selenium API](https://selenium-python.readthedocs.io/api.html).
-    (*Note that this is not the official selenium documentation site, but has
-    somehow become the defacto python community reference*)
+    (*Note that this is not the official Selenium documentation site, but has
+    somehow become the defacto Python community reference*)
 
     One of the core components of selenium testing is finding the
     **web element** with a `locator`, and performing some actions like `click`
     or `send_keys` on it, and waiting to verify if the expected state is met
     after those actions. The check is considered as an acceptance criterion,
-    for which you can write in a built-in python `assert` statement.
+    for which you can write in a standard Python `assert` statement.
 
     #### Element Locators
 
@@ -171,7 +171,7 @@ layout = html.Div([
     [locate elements](https://selenium-python.readthedocs.io/locating-elements.html#locating-elements);
     CSS selector and XPATH are the two most versatile ways. We recommend using
     the **CSS Selector** in most cases due to its
-    [performance and robustness](http://elementalselenium.com/tips/34-xpath-vs-css-revisited-2) across browsers.
+    [better performance and robustness](http://elementalselenium.com/tips/34-xpath-vs-css-revisited-2) across browsers.
 
     If you are new at using CSS Selectors, these
     [SauceLab tips](https://saucelabs.com/resources/articles/selenium-tips-css-selectors)
@@ -187,27 +187,27 @@ layout = html.Div([
     this topic nicely. For impatient readers, a quick take away is
     quoted as follows:
 
-    The selenium webdriver provides two types of waits:
+    The Selenium WebDriver provides two types of waits:
 
     - **explicit wait**
-        Makes webdriver wait for a certain condition to occur before
+        Makes WebDriver wait for a certain condition to occur before
         proceeding further with execution. All our APIs with `wait_for_*`
         falls into this category.
     - **implicit wait**
-        Makes webdriver poll the DOM for a certain amount of time when trying
+        Makes WebDriver poll the DOM for a certain amount of time when trying
         to locate an element. We set a global two-second timeout at the
         `driver` level.
 
     **Note** *all custom wait conditions are defined in `dash.testing.wait`
     and there are two extra APIs `until` and `until_not` which are similar to
-    the explicit wait with webdriver, but they are not binding to
-    webdriver context, i.e. they abstract a more generic mechanism to
+    the explicit wait with WebDriver, but they are not binding to
+    WebDriver context, i.e. they abstract a more generic mechanism to
     poll and wait for certain condition to happen*
 
     ### Browser APIs
 
     This section lists a minimal set of Dash testing helper APIs.
-    They are convenient shortcuts to selenium APIs and have been approved in
+    They are convenient shortcuts to Selenium APIs and have been approved in
     our daily integration tests.
 
     The following table might grow as we start migrating more legacy tests in
@@ -230,7 +230,7 @@ layout = html.Div([
     | `take_snapshot(name)` | hook method to take a snapshot while selenium test fails. the snapshot is placed under `/tmp/dash_artifacts` in Linux or `%TEMP` in windows with a filename combining test case `name` and the running selenium session id |
     | `get_logs()` | return a list of `SEVERE` level logs after last reset time stamps (default to 0, resettable by `reset_log_timestamp`. **Chrome only** |
     | `clear_input()` | simulate key press to clear the input |
-    | `driver` | expose the selenium webdriver as fixture property |
+    | `driver` | expose the Selenium WebDriver as fixture property |
     | `session_id` | shortcut to `driver.session_id` |
     | `server_url` | set the server_url as setter so the selenium is aware of the local server port, it also implicitly calls `wait_for_page`. return the server_url as property |
 
@@ -243,13 +243,13 @@ layout = html.Div([
     getting the latest commit in the **master** branch from each component, and
     that the installed `pip` versions are correct.
 
-    note: We have some enhancement initiatives tracking in this [issue](https://github.com/plotly/dash/issues/759)
+    Note: *We have some enhancement initiatives tracking in this [issue](https://github.com/plotly/dash/issues/759)*
 
     ### Run the CI job locally
 
     The [CircleCI Local CLI](https://circleci.com/docs/2.0/local-cli/) is a
     handy tool to run all the jobs locally. It gives you an earlier warning
-    before even pushing your commits to remote,  which leaves no chance of
+    before even pushing your commits to remote, which leaves no chance of
     making an embarrassing public mistake. The environment is identical to the
     remote one, except the Percy snapshot and test reports are not functional
     locally.
@@ -268,8 +268,8 @@ layout = html.Div([
 
     `pytest --log-cli-level DEBUG -k bsly001`
 
-    you can get more information from selenium webdriver, flask server,
-    and our test APIs
+    You can get more logging information from Selenium WebDriver, Flask server,
+    and our test APIs.
 
     """)),
     Syntax(logs),
@@ -279,16 +279,16 @@ layout = html.Div([
     If you run your tests with CircleCI dockers (locally with `CircleCI CLI`
     and/or remotely with `CircleCI`).
 
-    There is a known limitation that you cannot see anything from the selenium
-    browser on your screen. Inside a docker session where there is no direct
-    access to the video card, automation developers use
+    Inside a docker run or VM instance where there is no direct access to the
+    video card, there is a known limitation that you cannot see anything from
+    the Selenium browser on your screen. Automation developers use
     [Xvfb](https://www.x.org/releases/X11R7.6/doc/man/man1/Xvfb.1.xhtml) as
-    a workaround to solve this limitation. It enables you to run graphical
+    a workaround to solve this issue. It enables you to run graphical
     applications without a display (e.g., browser tests on a CI server) while
     also having the ability to take screenshots.
 
     We implemented an automatic hook at the test report stage, it checks if a
-    test case failed with a selenium test fixture. Before tearing down every
+    test case failed with a Selenium test fixture. Before tearing down every
     instance, it will take a snapshot at the moment where your assertion is
     `False` or having a runtime error. refer to [Browser APIs](#browser-apis)
 
