@@ -1000,7 +1000,7 @@ chapters = {
         'url': '/testing',
         'content': testing.layout,
         'name': 'Dash Testing',
-        'description': '(New in Dash 1.0!) An introduction on testing your dash app with selenium'
+        'description': '(New in Dash 1.0!) An introduction to testing your dash app with selenium'
     },
 
     'logout-button': {

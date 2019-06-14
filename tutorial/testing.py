@@ -56,7 +56,7 @@ layout = html.Div([
     selenium specifications. Some features may not work as expected.
 
     * We only include *Chrome* and *Firefox* in the supported list for now,
-    but other popular webdrivers can be included if there are popular demands.
+    but other popular webdrivers may be included based on popular demand.
 
     ## Example
     """)),
@@ -134,7 +134,7 @@ layout = html.Div([
     - dash_br
 
     A standalone webdriver wrapped with high-level Dash testing APIs. This is
-    suitable for testing a Dash app in a deployed environment, i.e. one in
+    suitable for testing a Dash app in a deployed environment, i.e., when
     which your Dash app is accessible from a URL.
 
     - dash_thread_server
