@@ -172,7 +172,7 @@ layout = html.Div([
     the **CSS Selector** in most cases due to its
     [better performance and robustness](http://elementalselenium.com/tips/34-xpath-vs-css-revisited-2) across browsers.
 
-    If you are new at using CSS Selectors, these
+    If you are new to using CSS Selectors, these
     [SauceLab tips](https://saucelabs.com/resources/articles/selenium-tips-css-selectors)
     are a great start. Also, remember that
     [Chrome Dev Tools Console](https://developers.google.com/web/tools/chrome-devtools/console/utilities)
