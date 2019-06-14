@@ -24,12 +24,12 @@ layout = html.Div([
     *New in Dash v1.0*
 
     `dash.testing` \U0001f9ea provides some off-the-rack
-    [`pytest` fixtures](https://docs.pytest.org/en/latest/fixture.html)
+    `pytest` [fixtures](https://docs.pytest.org/en/latest/fixture.html)
     and a minimal set of testing **APIs** with our internal crafted
     best practices at the integration level.
 
     This tutorial does not intend to cover the usage of
-    [`pytest`](https://docs.pytest.org/en/latest/) and
+    [pytest](https://docs.pytest.org/en/latest/) and
     [Selenium WebDriver](https://www.seleniumhq.org/projects/webdriver/),
     but focuses on how to do a simple integration test with Dash by hosting
     the App server locally and using a Selenium WebDriver to simulate
@@ -109,10 +109,9 @@ layout = html.Div([
     the assertion failure message by overriding the `assert` behavior.
     It's good practice to expose your *acceptance criteria* directly in the
     test case rather than wrapping the `assert` inside another helper API, also
-    to write these messages with **should/should not** to avoid confusion.
+    to write these messages with **should**/**should not** to avoid confusion.
     By looking at the test name, the app definition, the acitons, and the
-    checkpoints, reviewers/maintainers should figure out easily the purpose
-    of the test.
+    checkpoints, reviewers should figure out easily the purpose of the test.
 
     * #8 We use [Percy](https://percy.io/) as our *Visual Regression Testing*
     tool. It's a good alternative to assertions when your checkpoint is
@@ -218,9 +217,9 @@ layout = html.Div([
 
     | API | Description |
     | --- | ----------- |
-    | `find_element(selector)` | return the first found element by the CSS `selector`, shortcut to `driver.find_element_by_css_selector`. Note that this API will raise exceptions if not found, the `find_elements` API returns an empty list instead |
-    | `find_elements(selector)` | return a list of all elements matching by the CSS `selector`, shortcut to `driver.find_elements_by_css_selector`|
-    | `multiple_click(selector, clicks)`| find the element with the CSS `selector` and clicks it with number of `clicks` |
+    | `find_element(selector)` | return the first found element by the `CSS selector`, shortcut to `driver.find_element_by_css_selector`. *note that this API will raise exceptions if not found, the `find_elements` API returns an empty list instead* |
+    | `find_elements(selector)` | return a list of all elements matching by the `CSS selector`, shortcut to `driver.find_elements_by_css_selector`|
+    | `multiple_click(selector, clicks)`| find the element with the `CSS selector` and clicks it with number of `clicks` |
     | `wait_for_element(selector, timeout=None)` | shortcut to `wait_for_element_by_css_selector` the long version kept for back compatibility. timeout if not set, equals to the fixture's `wait_timeout`|
     | `wait_for_element_by_css_selector(selector, timeout=None)` | explicit wait until the element to present, shortcut to `WebDriverWait` with `EC.presence_of_element_located` |
     | `wait_for_style_to_equal(selector, style, value, timeout=None)` | explicit wait until the element's style has expected `value`. shortcut to `WebDriverWait` with custom wait condition `style_to_equal`. timeout if not set, equals to the fixture's `wait_timeout`  |
