@@ -23,7 +23,7 @@ def test_bsly001_falsy_child(dash_duo):
     assert dash_duo.find_element("#nully-wrapper").text == "0"
 
     # 7. to make the checkpoint more readable, you can describe the
-    # acceptance criteria as an assert message after the comma.
+    # acceptance criterion as an assert message after the comma.
     assert dash_duo.get_logs() == [], "browser console should contain no error"
 
     # 8. visual testing with percy snapshot
