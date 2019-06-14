@@ -1,6 +1,6 @@
 # 1. imports of your dash app
-import dash_html_components as html
 import dash
+import dash_html_components as html
 
 
 # 2. give each testcase a tcid, and pass the fixture
@@ -11,7 +11,8 @@ def test_bsly001_falsy_child(dash_duo):
     app = dash.Dash(__name__)
     app.layout = html.Div(id="nully-wrapper", children=0)
 
-    # 4. host the app locally in a thread
+    # 4. host the app locally in a thread, all dash server configs could be
+    # passed after the first app argument
     dash_duo.start_server(app)
 
     # 5. use wait_for_* if your target element is the result of a callback,
@@ -21,9 +22,9 @@ def test_bsly001_falsy_child(dash_duo):
     # 6. use this form if its present is expected at the action point
     assert dash_duo.find_element("#nully-wrapper").text == "0"
 
-    # 7. use python builtin assert statement, and describe your
-    # criteria as an assertion message after the comma.
-    assert dash_duo.get_logs() == [], "browser console contain no error"
+    # 7. to make the checkpoint more readable, you can describe the
+    # acceptance criteria as an assert message after the comma.
+    assert dash_duo.get_logs() == [], "browser console should contain no error"
 
     # 8. visual testing with percy snapshot
     dash_duo.percy_snapshot("bsly001-layout")

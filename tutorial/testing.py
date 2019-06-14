@@ -103,20 +103,23 @@ layout = html.Div([
     `find_element('#nully-wrapper')` is just a shortcut to a more tedious
     version `driver.find_element_by_css_selector('#nully-wrapper')`.
 
-    * #7 Unlike `unittest`, `pytest` uses the native python
-    [`assert`](https://docs.python.org/3/reference/simple_stmts.html#the-assert-statement)
-    statement to do assertions. It's good practice to expose your acceptance
-    criteria directly in the test case rather than wrapping the assert inside
-    another helper API. By looking at the test case, reviewers and maintainers
-    should be able to easily figure out the purpose of the test by
-    the test title, the app definition, the actions, and the checkpoints.
+    * #7 Unlike `unittest`, `pytest` allows using the standard python
+    [`assert`](https://docs.pytest.org/en/latest/assert.html) for verifying
+    expectations and values. It also puts more introspection information into
+    the assertion failure message by overriding the `assert` behavior.
+    It's good practice to expose your acceptance criteria directly in the
+    test case rather than wrapping the assert inside another helper API, also
+    to write these message with **should/should not** to avoid confusion.
+    By looking at the test name, the app definition, the acitons, and the
+    checkpoints, reviewers/maintainers should figure out easily the purpose
+    of the test.
 
     * #8 We use [Percy](https://percy.io/) as our *Visual Regression Testing*
     tool. It's a good alternative to assertions when your checkpoint is
     about the graphical aspects of a Dash app, such as the whole layout or a
-    `dcc.Graph` component. We integrate the Percy service
-    with a `PERCY_TOKEN` variable,  so the regression result is only
-    available in Plotly CircleCI setup.
+    `dcc.Graph` component. We integrate the Percy service with a `PERCY_TOKEN`
+    variable,  so the regression result is only available in Plotly's CircleCI
+    setup.
 
     ## Fixtures
 
