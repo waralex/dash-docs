@@ -625,6 +625,7 @@ Requirements = html.Div(children=[
        |-- app.css
     |-- app.py
     |-- .gitignore
+    |-- CHECKS
     |-- Procfile
     |-- requirements.txt
     |-- runtime.txt
@@ -641,7 +642,13 @@ Requirements = html.Div(children=[
     ```server = app.server```
 
     ***
+    `CHECKS`
 
+    This optional file allows you to define custom checks to be performed on your upon deployment.
+     [Learn more about the CHECKS file](/dash-deployment-server/checks).
+
+    ***
+    
     `.gitignore`
 
     Determines which files and folders are ignored in git, and therefore
@@ -1592,6 +1599,73 @@ AppPrivacy = html.Div(children=[
             'border-radius': '4px'
         }
     )
+])
+
+
+# # # # # # #
+# Dash Deployment Health Checks
+# # # # # # #
+Checks = html.Div(children=[
+    html.H1('Dash Deployment Health Checks'),
+
+    rc.Blockquote(),
+
+    dcc.Markdown(s('''
+    &nbsp;
+
+    Before an app is deployed to Dash Deployment Server, a check is performed to make sure that
+    the app is functional. The default check will test to see if the app has encountered a fatal error
+    in the first 10 seconds of running.
+    
+    It is possible to customize the health checks performed on your app by adding a file named `CHECKS` to
+    the root directory of your app. In this file you can specify **Checks Settings** to instruct DDS when
+    and how to perform the checks. You can also configure **Checks Instructions** to tell DDS what endpoints to
+    test and what content it should find there.
+
+    &nbsp;
+    ''')),
+
+    html.H3('Checks Settings'),
+
+    dcc.Markdown(s('''
+
+    You can specify values for `WAIT`, `TIMEOUT`, and `ATTEMPTS` to set the period of time
+    that DDS waits before performing the check, the amount of time before it times out, and the number of times
+    it will run them before determining that the deployment failed.
+    
+    In the example `CHECKS` file below, DDS will wait 15 seconds before performing the check, allow up to 10 seconds
+    for a response from the app and perform the check 3 times before marking it as a failure. 
+
+    ''')),
+
+    dcc.SyntaxHighlighter(s(
+        '''WAIT=15
+        TIMEOUT=10
+        ATTEMPTS=3
+        
+        /app-name/_dash_layout sample text which is inside the layout'''), customStyle=styles.code_container
+    ),
+
+    html.H3('Checks Instructions'),
+
+    dcc.Markdown(s('''
+
+   The instructions are specified in the format of a relative link followed by content that DDS
+   should find in the response. The expected content can be omitted if text content doesn't make sense (e.g if
+   you want to check whether an image can be served). The example below checks the layout for the text `Sample App`,
+   that `_dash-undo-redo` is included in the dash.css file and that dash-logo.png is being served by the app.
+
+   ''')),
+
+    dcc.SyntaxHighlighter(s(
+        '''WAIT=5
+        TIMEOUT=10
+        ATTEMPTS=3
+        
+        /app-name/_dash-layout Sample App
+        /app-name/assets/dash.css _dash-undo-redo
+        /app-name/assets/images/dash-logo.png '''), customStyle=styles.code_container
+    ),
 ])
 
 
