@@ -412,7 +412,7 @@ layout = html.Div(className='gallery', children=[
     reusable.Row([
         AppSection(
             app_name='Wind Speed Measurement',
-            app_link='https://dash-gallery.plotly.host/dash-wind-stream',
+            app_link='https://dash-gallery.plotly.host/dash-wind-streaming',
             code_link='https://github.com/plotly/dash-wind-streaming',
             img_src='assets/images/gallery/dash-wind-streaming.gif',
             description='''
