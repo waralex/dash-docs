@@ -413,7 +413,7 @@ layout = html.Div(className='gallery', children=[
         AppSection(
             app_name='Wind Speed Measurement',
             app_link='https://dash-gallery.plotly.host/dash-wind-streaming',
-            code_link='https://github.com/plotly/dash-wind-streaming',
+            code_link='https://github.com/plotly/dash-sample-apps/tree/master/apps/dash-wind-streaming',
             img_src='assets/images/gallery/dash-wind-streaming.gif',
             description='''
             This app continually queries a SQL database and displays live charts of
