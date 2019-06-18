@@ -99,8 +99,8 @@ DASHBIO_COMPONENTS = {
         },
         'component_wrap': 'dcc.Graph(figure=_[0])',
         'setup_code': '''df = pd.read_csv(
-    'https://raw.githubusercontent.com/plotly/dash-bio-docs-files' +
-    '/master/clustergram_mtcars.tsv',
+    'https://raw.githubusercontent.com/plotly/dash-bio' +
+    '/master/tests/dashbio_demos/sample_data/clustergram_mtcars.tsv',
     sep='\t', skiprows=4
 ).set_index('model')
 
@@ -135,8 +135,8 @@ data = df.values
             ['dash_core_components', 'dcc']
         ],
         'setup_code': '''df = pd.read_csv(
-    'https://raw.githubusercontent.com/plotly/dash-bio-docs-files/' +
-    'master/manhattan_data.csv'
+    'https://raw.githubusercontent.com/plotly/dash-bio' +
+    '/tests/dashbio_demos/sample_data/manhattan_data.csv'
 )''',
         'iframe_info': {
             'location': 'https://dash-bio.plotly.host/docs-demos-dashbio/manhattan',
@@ -265,8 +265,8 @@ styles_data = json.loads(styles_data)
             ['dash_core_components', 'dcc']
         ],
         'setup_code': '''df = pd.read_csv(
-    'https://raw.githubusercontent.com/plotly/dash-bio-docs-files/' +
-    'volcano_data1.csv'
+    'https://raw.githubusercontent.com/plotly/dash-bio' +
+    '/master/tests/dashbio_demos/sample_data/volcano_data1.csv'
 )''',
         'params': {
             'dataframe': 'df'
