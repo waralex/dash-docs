@@ -684,6 +684,13 @@ chapters = {
         'description': 'Dash App Privacy and Managing Collaborators'
     },
 
+    'deployment-checks': {
+        'url': '/dash-deployment-server/checks',
+        'content': dds_examples.Checks,
+        'name': 'Dash Deployment Health Checks',
+        'description': 'Create custom checks to ensure that a newly deployed app can serve traffic.'
+    },
+
     'private-packages-examples': {
         'url': '/dash-deployment-server/private-packages',
         'content': dds_examples.PrivatePackages,
