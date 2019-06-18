@@ -44,10 +44,7 @@ from six import PY3
 import dash_bio as dashbio
 
 
-data = urlreq.urlopen(
-    'https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/' +
-    'alignment_viewer_p53.fasta'
-).read()
+data = urlreq.urlopen("https://raw.githubusercontent.com/plotly/dash-bio/master/tests/dashbio_demos/sample_data/alignment_viewer_p53.fasta").read()
 
 if PY3:
     data = data.decode('utf-8')
@@ -67,11 +64,7 @@ dashbio.AlignmentChart(
 from six import PY3
 import dash_bio as dashbio
 
-
-data = urlreq.urlopen(
-    'https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/' +
-    'alignment_viewer_p53.fasta'
-).read()
+data = urlreq.urlopen("https://raw.githubusercontent.com/plotly/dash-bio/master/tests/dashbio_demos/sample_data/alignment_viewer_p53.fasta").read()
 
 if PY3:
     data = data.decode('utf-8')
@@ -91,10 +84,7 @@ from six import PY3
 import dash_bio as dashbio
 
 
-data = urlreq.urlopen(
-    'https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/' +
-    'alignment_viewer_p53.fasta'
-).read()
+data = urlreq.urlopen("https://raw.githubusercontent.com/plotly/dash-bio/master/tests/dashbio_demos/sample_data/alignment_viewer_p53.fasta").read()
 
 if PY3:
     data = data.decode('utf-8')
@@ -113,10 +103,7 @@ from six import PY3
 import dash_bio as dashbio
 
 
-data = urlreq.urlopen(
-    'https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/' +
-    'alignment_viewer_p53.fasta'
-).read()
+data = urlreq.urlopen("https://raw.githubusercontent.com/plotly/dash-bio/master/tests/dashbio_demos/sample_data/alignment_viewer_p53.fasta").read()
 
 if PY3:
     data = data.decode('utf-8')
@@ -140,10 +127,7 @@ Circos = create_doc_page(
 from six.moves.urllib import request as urlreq
 import dash_bio as dashbio
 
-data = urlreq.urlopen(
-    'https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/' +
-    'circos_graph_data.json'
-).read()
+data = urlreq.urlopen('https://raw.githubusercontent.com/plotly/dash-bio/master/tests/dashbio_demos/sample_data/circos_graph_data.json').read()
 circos_graph_data = json.loads(data)
 
 dashbio.Circos(
@@ -173,11 +157,8 @@ import dash_core_components as dcc
 import dash_bio as dashbio
 
 
-df = pd.read_csv(
-    'https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/' +
-    'clustergram_mtcars.tsv',
-     sep='	', skiprows=4
-).set_index('model')
+df = pd.read_csv('https://raw.githubusercontent.com/plotly/dash-bio/master/tests/dashbio_demos/sample_data/clustergram_mtcars.tsv',
+                 sep='	', skiprows=4).set_index('model')
 
 columns = list(df.columns.values)
 rows = list(df.index)
@@ -214,11 +195,8 @@ import dash_core_components as dcc
 import dash_bio as dashbio
 
 
-df = pd.read_csv(
-    'https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/' +
-    'clustergram_mtcars.tsv',
-     sep='	', skiprows=4
-).set_index('model')
+df = pd.read_csv('https://raw.githubusercontent.com/plotly/dash-bio/master/tests/dashbio_demos/sample_data/clustergram_mtcars.tsv',
+                 sep='	', skiprows=4).set_index('model')
 
 columns = list(df.columns.values)
 rows = list(df.index)
@@ -254,11 +232,8 @@ import dash_core_components as dcc
 import dash_bio as dashbio
 
 
-df = pd.read_csv(
-    'https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/' +
-    'clustergram_mtcars.tsv',
-     sep='	', skiprows=4
-).set_index('model')
+df = pd.read_csv('https://raw.githubusercontent.com/plotly/dash-bio/master/tests/dashbio_demos/sample_data/clustergram_mtcars.tsv',
+                 sep='	', skiprows=4).set_index('model')
 
 columns = list(df.columns.values)
 rows = list(df.index)
@@ -287,11 +262,8 @@ import dash_core_components as dcc
 import dash_bio as dashbio
 
 
-df = pd.read_csv(
-    'https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/' +
-    'clustergram_mtcars.tsv',
-     sep='	', skiprows=4
-).set_index('model')
+df = pd.read_csv('https://raw.githubusercontent.com/plotly/dash-bio/master/tests/dashbio_demos/sample_data/clustergram_mtcars.tsv',
+                 sep='	', skiprows=4).set_index('model')
 
 columns = list(df.columns.values)
 rows = list(df.index)
@@ -320,11 +292,8 @@ import dash_core_components as dcc
 import dash_bio as dashbio
 
 
-df = pd.read_csv(
-    'https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/' +
-    'clustergram_mtcars.tsv',
-     sep='	', skiprows=4
-).set_index('model')
+df = pd.read_csv('https://raw.githubusercontent.com/plotly/dash-bio/master/tests/dashbio_demos/sample_data/clustergram_mtcars.tsv',
+                 sep='	', skiprows=4).set_index('model')
 
 columns = list(df.columns.values)
 rows = list(df.index)
@@ -428,10 +397,7 @@ ManhattanPlot = create_doc_page(
 import dash_core_components as dcc
 import dash_bio as dashbio
 
-df = pd.read_csv(
-    'https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/' +
-    'manhattan_data.csv'
-)
+df = pd.read_csv("https://raw.githubusercontent.com/plotly/dash-bio/master/tests/dashbio_demos/sample_data/manhattan_data.csv")
 
 manhattanplot = dashbio.ManhattanPlot(
     dataframe=df,
@@ -449,10 +415,7 @@ dcc.Graph(figure=manhattanplot)'''
 import dash_core_components as dcc
 import dash_bio as dashbio
 
-df = pd.read_csv(
-    'https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/' +
-    'manhattan_data.csv'
-)
+df = pd.read_csv("https://raw.githubusercontent.com/plotly/dash-bio/master/tests/dashbio_demos/sample_data/manhattan_data.csv")
 
 manhattanplot = dashbio.ManhattanPlot(
     dataframe=df,
@@ -477,10 +440,7 @@ import six.moves.urllib.request as urlreq
 
 import dash_bio as dashbio
 
-model_data = urlreq.urlopen(
-    'https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/' +
-    'mol2d_buckminsterfullerene.json'
-).read()
+model_data = urlreq.urlopen('https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/mol2d_buckminsterfullerene.json').read()
 
 dashbio.Molecule2dViewer(
     id='molecule2d-selectedatomids',
@@ -497,10 +457,7 @@ import six.moves.urllib.request as urlreq
 
 import dash_bio as dashbio
 
-model_data = urlreq.urlopen(
-    'https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/' +
-    'mol2d_buckminsterfullerene.json'
-).read()
+model_data = urlreq.urlopen('https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/mol2d_buckminsterfullerene.json').read()
 
 model_data = json.loads(model_data)
 for atom in model_data['nodes']:
@@ -528,15 +485,8 @@ import six.moves.urllib.request as urlreq
 
 import dash_bio as dashbio
 
-model_data = urlreq.urlopen(
-    'https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/' +
-    'mol3d/model_data.js'
-).read()
-styles_data = urlreq.urlopen(
-    'https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/' +
-    'mol3d/styles_data.js'
-).read()
-
+model_data = urlreq.urlopen('https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/mol3d/model_data.js').read()
+styles_data = urlreq.urlopen('https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/mol3d/styles_data.js').read()
 model_data = json.loads(model_data)
 styles_data = json.loads(styles_data)
 
@@ -556,15 +506,8 @@ import six.moves.urllib.request as urlreq
 
 import dash_bio as dashbio
 
-model_data = urlreq.urlopen(
-    'https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/' +
-    'mol3d/model_data.js'
-).read()
-styles_data = urlreq.urlopen(
-    'https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/' +
-    'mol3d/styles_data.js'
-).read()
-
+model_data = urlreq.urlopen('https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/mol3d/model_data.js').read()
+styles_data = urlreq.urlopen('https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/mol3d/styles_data.js').read()
 model_data = json.loads(model_data)
 styles_data = json.loads(styles_data)
 
@@ -593,10 +536,7 @@ from six import PY3
 import dash_bio as dashbio
 
 
-data = urlreq.urlopen(
-    'https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/' +
-    'needle_PIK3CA.json'
-).read()
+data = urlreq.urlopen("https://raw.githubusercontent.com/plotly/dash-bio/master/tests/dashbio_demos/sample_data/needle_PIK3CA.json").read()
 
 if PY3:
     data = data.decode('utf-8')
@@ -625,13 +565,10 @@ from six import PY3
 import dash_bio as dashbio
 
 
-data = urlreq.urlopen(
-    'https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/' +
-    'needle_PIK3CA.json'
-).read()
+data = urlreq.urlopen("https://raw.githubusercontent.com/plotly/dash-bio/master/tests/dashbio_demos/sample_data/needle_PIK3CA.json").read()
 
 if PY3:
-    data = data.decode('utf-8')
+    data = data.decode("utf-8")
 
 mdata = json.loads(data)
 
@@ -660,10 +597,7 @@ import six.moves.urllib.request as urlreq
 import dash_bio as dashbio
 
 
-data = urlreq.urlopen(
-    'https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/' +
-    'oncoprint_dataset3.json'
-).read()
+data = urlreq.urlopen("https://raw.githubusercontent.com/plotly/dash-bio/master/tests/dashbio_demos/sample_data/oncoprint_dataset3.json").read()
 data = json.loads(data)
 
 dashbio.OncoPrint(
@@ -686,10 +620,7 @@ import six.moves.urllib.request as urlreq
 import dash_bio as dashbio
 
 
-data = urlreq.urlopen(
-    'https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/' +
-    'oncoprint_dataset3.json'
-).read()
+data = urlreq.urlopen("https://raw.githubusercontent.com/plotly/dash-bio/master/tests/dashbio_demos/sample_data/oncoprint_dataset3.json").read()
 data = json.loads(data)
 
 dashbio.OncoPrint(
@@ -709,10 +640,7 @@ import six.moves.urllib.request as urlreq
 import dash_bio as dashbio
 
 
-data = urlreq.urlopen(
-    'https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/' +
-    'oncoprint_dataset3.json'
-).read()
+data = urlreq.urlopen("https://raw.githubusercontent.com/plotly/dash-bio/master/tests/dashbio_demos/sample_data/oncoprint_dataset3.json").read()
 data = json.loads(data)
 
 dashbio.OncoPrint(
@@ -848,10 +776,7 @@ import dash_bio as dashbio
 from dash_bio_utils import xyz_reader
 
 
-data = urlreq.urlopen(
-    'https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/' +
-    'speck_methane.xyz'
-).read()
+data = urlreq.urlopen("https://raw.githubusercontent.com/plotly/dash-bio/master/tests/dashbio_demos/sample_data/speck_methane.xyz").read()
 
 if PY3:
     data = data.decode('utf-8')
@@ -881,10 +806,7 @@ import dash_bio as dashbio
 from dash_bio_utils import xyz_reader
 
 
-data = urlreq.urlopen(
-    'https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/' +
-    'speck_methane.xyz'
-).read()
+data = urlreq.urlopen("https://raw.githubusercontent.com/plotly/dash-bio/master/tests/dashbio_demos/sample_data/speck_methane.xyz").read()
 
 if PY3:
     data = data.decode('utf-8')
@@ -913,10 +835,7 @@ import dash_core_components as dcc
 import dash_bio as dashbio
 
 
-df = pd.read_csv(
-    'https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/' +
-    'volcano_data1.csv'
-)
+df = pd.read_csv("https://raw.githubusercontent.com/plotly/dash-bio/master/tests/dashbio_demos/sample_data/volcano_data1.csv")
 
 volcanoplot = dashbio.VolcanoPlot(
         dataframe=df,
@@ -938,10 +857,7 @@ import dash_core_components as dcc
 import dash_bio as dashbio
 
 
-df = pd.read_csv(
-    'https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/' +
-    'volcano_data1.csv'
-)
+df = pd.read_csv("https://raw.githubusercontent.com/plotly/dash-bio/master/tests/dashbio_demos/sample_data/volcano_data1.csv")
 
 volcanoplot = dashbio.VolcanoPlot(
         dataframe=df,
