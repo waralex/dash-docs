@@ -24,6 +24,7 @@ from tutorial import html_components
 from tutorial import installation
 from tutorial import introduction
 from tutorial import live_updates
+from tutorial import migration
 from tutorial import performance
 from tutorial import plugins
 from tutorial import search
@@ -60,6 +61,13 @@ chapters = {
         'description': 'Examples of Dash apps including ' \
                        'drill down, stock tickers, streaming, ' \
                        'and PDF generation.'
+    },
+
+    'dash-1-0-migration': {
+        'url': '/dash-1-0-migration',
+        'content': migration.layout,
+        'name': 'Dash v1.0 Migration',
+        'description': 'How to upgrade from Dash v0.x to v1.0.'
     },
 
     'installation': {
@@ -475,7 +483,7 @@ chapters = {
         'name': 'Joystick Component',
         'description': 'Joystick examples, properties, and reference.'
     },
-    
+
     'knob-examples': {
         'url': '/dash-daq/knob',
         'content': daq_examples.Knob,
