@@ -203,9 +203,9 @@ layout = html.Div(className='gallery', children=[
 
         AppSection(
             app_name='NYC Uber Rides',
-            app_link='https://dash-gallery.plotly.host/dash-uber-rides/',
-            code_link='https://github.com/plotly/dash-uber-rides-demo',
-            img_src='assets/images/gallery/uber-rides.gif',
+            app_link='https://dash-gallery.plotly.host/dash-uber-rides-demo/',
+            code_link='https://github.com/plotly/dash-sample-apps/tree/master/apps/dash-uber-rides-demo',
+            img_src='assets/images/gallery/dash-uber-rides-demo.png',
             description='''
             This app displays all of the Uber rides in New York City in 2014.
             The original datafile is almost 500MB large and all of the filtering is
