@@ -203,8 +203,8 @@ layout = html.Div(className='gallery', children=[
 
         AppSection(
             app_name='NYC Uber Rides',
-            app_link='https://dash-gallery.plotly.host/dash-uber-rides/',
-            code_link='https://github.com/plotly/dash-uber-rides-demo',
+            app_link='https://dash-gallery.plotly.host/dash-uber-rides-demo/',
+            code_link='https://github.com/plotly/dash-sample-apps/tree/master/apps/dash-uber-rides-demo',
             img_src='assets/images/gallery/uber-rides.gif',
             description='''
             This app displays all of the Uber rides in New York City in 2014.
