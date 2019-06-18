@@ -10,8 +10,11 @@ external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
-df = pd.read_csv('https://raw.githubusercontent.com/plotly/dash-bio/master/tests/dashbio_demos/sample_data/clustergram_mtcars.tsv',
-                 sep='	', skiprows=4).set_index('model')
+df = pd.read_csv(
+    'https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/' +
+    'clustergram_mtcars.tsv',
+    sep='	', skiprows=4
+).set_index('model')
 
 columns = list(df.columns.values)
 rows = list(df.index)

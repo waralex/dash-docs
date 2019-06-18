@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from tutorial import tools
-from tutorial.utils.dashbio_docs import create_doc_page, get_component_names, create_examples
+from tutorial.utils.dashbio_docs import create_doc_page, get_component_names
 
 component_names = get_component_names('dash_bio')
 
@@ -17,6 +17,8 @@ examples = {
         'tutorial/examples/dashbio_components/circos.py'),
     'ideogram': tools.load_example(
         'tutorial/examples/dashbio_components/ideogram.py'),
+    'molecule-2d-viewer': tools.load_example(
+        'tutorial/examples/dashbio_components/molecule_2d_viewer.py'),
     'molecule-3d-viewer': tools.load_example(
         'tutorial/examples/dashbio_components/molecule_3d_viewer.py'),
     'needle-plot': tools.load_example(
@@ -38,10 +40,14 @@ AlignmentChart = create_doc_page(
             'param_name': 'Color Scales',
             'description': 'Change the colors used for the heatmap.',
             'code': '''from six.moves.urllib import request as urlreq
+from six import PY3
 import dash_bio as dashbio
 
 
-data = urlreq.urlopen("https://raw.githubusercontent.com/plotly/dash-bio/master/tests/dashbio_demos/sample_data/alignment_viewer_p53.fasta").read().decode('utf-8')
+data = urlreq.urlopen("https://raw.githubusercontent.com/plotly/dash-bio/master/tests/dashbio_demos/sample_data/alignment_viewer_p53.fasta").read()
+
+if PY3:
+    data = data.decode('utf-8')
 
 dashbio.AlignmentChart(
     data=data,
@@ -55,10 +61,13 @@ dashbio.AlignmentChart(
             'param_name': 'Show/hide Barplots',
             'description': 'Enable or disable the secondary bar plots for gaps and conservation.',
             'code': '''from six.moves.urllib import request as urlreq
+from six import PY3
 import dash_bio as dashbio
 
+data = urlreq.urlopen("https://raw.githubusercontent.com/plotly/dash-bio/master/tests/dashbio_demos/sample_data/alignment_viewer_p53.fasta").read()
 
-data = urlreq.urlopen("https://raw.githubusercontent.com/plotly/dash-bio/master/tests/dashbio_demos/sample_data/alignment_viewer_p53.fasta").read().decode('utf-8')
+if PY3:
+    data = data.decode('utf-8')
 
 dashbio.AlignmentChart(
     data=data,
@@ -71,10 +80,14 @@ dashbio.AlignmentChart(
             'param_name': 'Tile Size',
             'description': 'Change the height and/or width of the tiles.',
             'code': '''from six.moves.urllib import request as urlreq
+from six import PY3
 import dash_bio as dashbio
 
 
-data = urlreq.urlopen("https://raw.githubusercontent.com/plotly/dash-bio/master/tests/dashbio_demos/sample_data/alignment_viewer_p53.fasta").read().decode('utf-8')
+data = urlreq.urlopen("https://raw.githubusercontent.com/plotly/dash-bio/master/tests/dashbio_demos/sample_data/alignment_viewer_p53.fasta").read()
+
+if PY3:
+    data = data.decode('utf-8')
 
 dashbio.AlignmentChart(
     data=data,
@@ -83,12 +96,17 @@ dashbio.AlignmentChart(
         },
         {
             'param_name': 'Consensus Sequence',
-            'description': 'Toggle the display of the consensus sequence at the bottom of the heatmap.',
+            'description': 'Toggle the display of the consensus sequence at the bottom of the \
+            heatmap.',
             'code': '''from six.moves.urllib import request as urlreq
+from six import PY3
 import dash_bio as dashbio
 
 
-data = urlreq.urlopen("https://raw.githubusercontent.com/plotly/dash-bio/master/tests/dashbio_demos/sample_data/alignment_viewer_p53.fasta").read().decode('utf-8')
+data = urlreq.urlopen("https://raw.githubusercontent.com/plotly/dash-bio/master/tests/dashbio_demos/sample_data/alignment_viewer_p53.fasta").read()
+
+if PY3:
+    data = data.decode('utf-8')
 
 dashbio.AlignmentChart(
     data=data,
@@ -206,8 +224,8 @@ dcc.Graph(figure=clustergram)'''
 
         {
             'param_name': 'Relative Dendrogram Size',
-            'description': 'Change the relative width and height of, respectively, the row and column \
-            dendrograms compared to the width and height of the heatmap.',
+            'description': 'Change the relative width and height of, respectively, the row \
+            and column dendrograms compared to the width and height of the heatmap.',
             'code': '''import pandas as pd
 
 import dash_core_components as dcc
@@ -410,6 +428,51 @@ dcc.Graph(figure=manhattanplot)'''
     ]
 )
 
+# Molecule2dViewer
+Molecule2dViewer = create_doc_page(
+    examples, component_names, 'molecule-2d-viewer', component_examples=[
+
+        {
+            'param_name': 'Selected atom IDs',
+            'description': 'Highlight specific atoms in the molecule.',
+            'code': '''import json
+import six.moves.urllib.request as urlreq
+
+import dash_bio as dashbio
+
+model_data = urlreq.urlopen('https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/mol2d_buckminsterfullerene.json').read()
+
+dashbio.Molecule2dViewer(
+    id='molecule2d-selectedatomids',
+    modelData=json.loads(model_data),
+    selectedAtomIds=list(range(10))
+)'''
+        },
+
+        {
+            'param_name': 'Model data',
+            'description': 'Change the bonds and atoms in the molecule.',
+            'code': '''import json
+import six.moves.urllib.request as urlreq
+
+import dash_bio as dashbio
+
+model_data = urlreq.urlopen('https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/mol2d_buckminsterfullerene.json').read()
+
+model_data = json.loads(model_data)
+for atom in model_data['nodes']:
+    atom.update(atom='N')
+for bond in model_data['links']:
+    bond.update(distance=50.0, strength=0.5)
+
+dashbio.Molecule2dViewer(
+    id='molecule2d-modeldata',
+    modelData=model_data
+)'''
+        }
+    ]
+)
+
 # Molecule3dViewer
 Molecule3dViewer = create_doc_page(
     examples, component_names, 'molecule-3d-viewer', component_examples=[
@@ -468,11 +531,15 @@ NeedlePlot = create_doc_page(
             'description': 'Change the appearance of the needles.',
             'code': '''import json
 import six.moves.urllib.request as urlreq
+from six import PY3
 
 import dash_bio as dashbio
 
 
-data = urlreq.urlopen("https://raw.githubusercontent.com/plotly/dash-bio/master/tests/dashbio_demos/sample_data/needle_PIK3CA.json").read().decode("utf-8")
+data = urlreq.urlopen("https://raw.githubusercontent.com/plotly/dash-bio/master/tests/dashbio_demos/sample_data/needle_PIK3CA.json").read()
+
+if PY3:
+    data = data.decode('utf-8')
 
 mdata = json.loads(data)
 
@@ -493,11 +560,15 @@ dashbio.NeedlePlot(
             'description': 'Change the appearance of the domains.',
             'code': '''import json
 import six.moves.urllib.request as urlreq
+from six import PY3
 
 import dash_bio as dashbio
 
 
-data = urlreq.urlopen("https://raw.githubusercontent.com/plotly/dash-bio/master/tests/dashbio_demos/sample_data/needle_PIK3CA.json").read().decode("utf-8")
+data = urlreq.urlopen("https://raw.githubusercontent.com/plotly/dash-bio/master/tests/dashbio_demos/sample_data/needle_PIK3CA.json").read()
+
+if PY3:
+    data = data.decode("utf-8")
 
 mdata = json.loads(data)
 
@@ -518,7 +589,8 @@ OncoPrint = create_doc_page(
     examples, component_names, 'onco-print', component_examples=[
         {
             'param_name': 'Colors',
-            'description': 'Change the color of specific mutations, as well as the background color.',
+            'description': 'Change the color of specific mutations, as well as \
+            the background color.',
             'code': '''import json
 import six.moves.urllib.request as urlreq
 
@@ -540,7 +612,8 @@ dashbio.OncoPrint(
 
         {
             'param_name': 'Size and spacing',
-            'description': 'Change the height and width of the component, and adjust the spacing between adjacent tracks.',
+            'description': 'Change the height and width of the component, and \
+            adjust the spacing between adjacent tracks.',
             'code': '''import json
 import six.moves.urllib.request as urlreq
 
@@ -584,12 +657,26 @@ SequenceViewer = create_doc_page(
     examples, component_names, 'sequence-viewer', component_examples=[
         {
             'param_name': 'Line length and line numbers',
-            'description': 'Change the characters per line, and toggle the display of line numbers.',
-            'code': '''import dash_bio as dashbio
+            'description': 'Change the characters per line, and toggle the display \
+            of line numbers.',
+            'code': '''import six.moves.urllib.request as urlreq
+from six import PY3
+import dash_bio as dashbio
+from dash_bio_utils import protein_reader
+
+fasta_str = urlreq.urlopen(
+    'https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/' +
+    'sequence_viewer_P01308.fasta'
+).read()
+
+if PY3:
+    fasta_str = fasta_str.decode('utf-8')
+
+seq = protein_reader.read_fasta(data_string=fasta_str)[0]['sequence']
 
 dashbio.SequenceViewer(
     id='sequence-viewer-lines',
-    sequence='MALWMRLLPLLALLALWGPDPAAAFVNQHLCGSHLVEALYLVCGERGFFYTPKTRREAEDLQVGQVELGGGPGAGSLQPLALEGSLQKRGIVEQCCTSICSLYQLENYCN',
+    sequence=seq,
     showLineNumbers=False,
     charsPerLine=20
 )'''
@@ -598,11 +685,24 @@ dashbio.SequenceViewer(
         {
             'param_name': 'Subsequence selection',
             'description': 'Highlight a part of the sequence with a defined color.',
-            'code': '''import dash_bio as dashbio
+            'code': '''import six.moves.urllib.request as urlreq
+from six import PY3
+import dash_bio as dashbio
+from dash_bio_utils import protein_reader
+
+fasta_str = urlreq.urlopen(
+    'https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/' +
+    'sequence_viewer_P01308.fasta'
+).read()
+
+if PY3:
+    fasta_str = fasta_str.decode('utf-8')
+
+seq = protein_reader.read_fasta(data_string=fasta_str)[0]['sequence']
 
 dashbio.SequenceViewer(
     id='sequence-viewer-selection',
-    sequence='MALWMRLLPLLALLALWGPDPAAAFVNQHLCGSHLVEALYLVCGERGFFYTPKTRREAEDLQVGQVELGGGPGAGSLQPLALEGSLQKRGIVEQCCTSICSLYQLENYCN',
+    sequence=seq,
     selection=[10, 20, 'green']
 )'''
         },
@@ -610,23 +710,50 @@ dashbio.SequenceViewer(
         {
             'param_name': 'Toolbar',
             'description': 'Display a toolbar to change the line length from the component itself.',
-            'code': '''import dash_bio as dashbio
+            'code': '''import six.moves.urllib.request as urlreq
+from six import PY3
+import dash_bio as dashbio
+from dash_bio_utils import protein_reader
+
+fasta_str = urlreq.urlopen(
+    'https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/' +
+    'sequence_viewer_P01308.fasta'
+).read()
+
+if PY3:
+    fasta_str = fasta_str.decode('utf-8')
+
+seq = protein_reader.read_fasta(data_string=fasta_str)[0]['sequence']
 
 dashbio.SequenceViewer(
     id='sequence-viewer-toolbar',
-    sequence='MALWMRLLPLLALLALWGPDPAAAFVNQHLCGSHLVEALYLVCGERGFFYTPKTRREAEDLQVGQVELGGGPGAGSLQPLALEGSLQKRGIVEQCCTSICSLYQLENYCN',
+    sequence=seq,
     toolbar=True
 )'''
         },
 
         {
             'param_name': 'Title and badge',
-            'description': 'Show a title or a badge with the nucleotide or amino acid count of the protein.',
-            'code': '''import dash_bio as dashbio
+            'description': 'Show a title or a badge with the nucleotide or amino acid \
+            count of the protein.',
+            'code': '''import six.moves.urllib.request as urlreq
+from six import PY3
+import dash_bio as dashbio
+from dash_bio_utils import protein_reader
+
+fasta_str = urlreq.urlopen(
+    'https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/' +
+    'sequence_viewer_P01308.fasta'
+).read()
+
+if PY3:
+    fasta_str = fasta_str.decode('utf-8')
+
+seq = protein_reader.read_fasta(data_string=fasta_str)[0]['sequence']
 
 dashbio.SequenceViewer(
     id='sequence-viewer-titlebadge',
-    sequence='MALWMRLLPLLALLALWGPDPAAAFVNQHLCGSHLVEALYLVCGERGFFYTPKTRREAEDLQVGQVELGGGPGAGSLQPLALEGSLQKRGIVEQCCTSICSLYQLENYCN',
+    sequence=seq,
     title='Insulin',
     badge=False
 )'''
@@ -640,12 +767,13 @@ Speck = create_doc_page(
 
         {
             'param_name': 'Molecule rendering styles',
-            'description': 'Change the level of atom outlines, ambient occlusion, and more with the "view" parameter.',
+            'description': 'Change the level of atom outlines, ambient occlusion, \
+            and more with the "view" parameter.',
             'code': '''import six.moves.urllib.request as urlreq
 from six import PY3
 
 import dash_bio as dashbio
-from dash_bio.utils import xyz_reader
+from dash_bio_utils import xyz_reader
 
 
 data = urlreq.urlopen("https://raw.githubusercontent.com/plotly/dash-bio/master/tests/dashbio_demos/sample_data/speck_methane.xyz").read()
@@ -675,7 +803,7 @@ dashbio.Speck(
 from six import PY3
 
 import dash_bio as dashbio
-from dash_bio.utils import xyz_reader
+from dash_bio_utils import xyz_reader
 
 
 data = urlreq.urlopen("https://raw.githubusercontent.com/plotly/dash-bio/master/tests/dashbio_demos/sample_data/speck_methane.xyz").read()
@@ -721,8 +849,8 @@ dcc.Graph(figure=volcanoplot)'''
         },
         {
             'param_name': 'Point sizes and line widths',
-            'description': 'Change the sizeo f the points on the scatter plot, and the widths of the effect \
-            lines and the genome-wide line.',
+            'description': 'Change the size of the points on the scatter plot, \
+            and the widths of the effect lines and genome-wide line.',
             'code': '''import pandas as pd
 
 import dash_core_components as dcc

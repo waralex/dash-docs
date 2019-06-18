@@ -1,5 +1,6 @@
 import json
 import six.moves.urllib.request as urlreq
+from six import PY3
 
 import dash
 import dash_bio as dashbio
@@ -10,7 +11,14 @@ external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
-data = urlreq.urlopen("https://raw.githubusercontent.com/plotly/dash-bio/master/tests/dashbio_demos/sample_data/oncoprint_dataset3.json").read()
+data = urlreq.urlopen(
+    'https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/' +
+    'oncoprint_dataset3.json'
+).read()
+
+if PY3:
+    data = data.decode('utf-8')
+
 data = json.loads(data)
 
 app.layout = html.Div([

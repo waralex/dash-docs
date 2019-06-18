@@ -1,4 +1,5 @@
 import six.moves.urllib.request as urlreq
+from six import PY3
 
 import dash
 import dash_bio as dashbio
@@ -9,7 +10,13 @@ external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
-data = urlreq.urlopen("https://raw.githubusercontent.com/plotly/dash-bio/master/tests/dashbio_demos/sample_data/alignment_viewer_p53.fasta").read().decode('utf-8')
+data = urlreq.urlopen(
+    'https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/' +
+    'alignment_viewer_p53.fasta'
+).read()
+
+if PY3:
+    data = data.decode('utf-8')
 
 app.layout = html.Div([
     dashbio.AlignmentChart(

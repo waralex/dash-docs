@@ -597,6 +597,13 @@ chapters = {
         'description': 'Ideogram examples, properties, and reference.'
     },
 
+    'molecule-2d-examples': {
+        'url': '/dash-bio/molecule2dviewer',
+        'content': dashbio_examples.Molecule2dViewer,
+        'name': 'Molecule 2D Component',
+        'description': 'Molecule2D examples, properties, and reference.'
+    },
+
     'molecule-3d-examples': {
         'url': '/dash-bio/molecule3dviewer',
         'content': dashbio_examples.Molecule3dViewer,

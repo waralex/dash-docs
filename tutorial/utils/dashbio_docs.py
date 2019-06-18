@@ -138,7 +138,7 @@ def generate_component_example(
 
     # location of all sample data
     DATA_LOCATION_PREFIX = '''https://raw.githubusercontent.com/plotly/\
-dash-bio/master/tests/dashbio_demos/sample_data/'''
+dash-bio-docs-files/master/'''
 
     if library_imports is None:
         library_imports = []
@@ -175,15 +175,13 @@ dash-bio/master/tests/dashbio_demos/sample_data/'''
         library_imports.append(
             ['urllib.request', 'urlreq']
         )
-
         # only decode for python 3
         decode_string = ''
         if sys.version_info >= (3, 0):
             decode_string = '.decode(\"utf-8\")'
 
         # add data location
-        setup_code = '''\ndata = urlreq.urlopen(\"{}{}\").read(){}
-'''.format(
+        setup_code = '''\ndata = urlreq.urlopen(\n \"{}\" + \n \"{}\"\n).read(){}\n\n'''.format(
             DATA_LOCATION_PREFIX,
             datafile['name'],
             decode_string
@@ -231,8 +229,8 @@ dash-bio/master/tests/dashbio_demos/sample_data/'''
             )
 
     # change urllib package if necessary (due to Python version)
-    if sys.version_info < (3, 0):
-        imports_string = imports_string.replace('urllib.request', 'urllib2')
+    imports_string = imports_string.replace('urllib.request',
+                                            'six.moves.urllib.request')
 
     # full code
     example_string = '''import {} as {}
@@ -441,6 +439,8 @@ def generate_prop_table(
         cname = '{}.react.js'.format(component_name)
         if component_name == 'Molecule3dViewer':
             cname = 'Molecule3dViewer.js'
+        elif component_name == 'Molecule2dViewer':
+            cname = 'Molecule2dViewer.react.js'
         docs = metadata['src/lib/components/{}'.format(cname)]
 
         props = docs['props']
@@ -516,6 +516,8 @@ def create_doc_page(examples, component_names, component_name, component_example
 
     if c_name == 'Molecule3DViewer':
         c_name = 'Molecule3dViewer'
+    elif c_name == 'Molecule2DViewer':
+        c_name = 'Molecule2dViewer'
 
     return html.Div(
         children=[
