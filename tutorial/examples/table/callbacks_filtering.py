@@ -61,8 +61,8 @@ def split_filter_part(filter_part):
 
 @app.callback(
     Output('table-filtering', "data"),
-    [Input('table-paging-with-graph', "page_current"),
-     Input('table-paging-with-graph', "page_size"),
+    [Input('table-filtering', "page_current"),
+     Input('table-filtering', "page_size"),
      Input('table-filtering', "filter_query")])
 def update_table(page_current,page_size, filter):
     print(filter)

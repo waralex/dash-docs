@@ -27,8 +27,8 @@ app.layout = dash_table.DataTable(
 
 @app.callback(
     Output('table-multicol-sorting', "data"),
-    [Input('table-paging-with-graph', "page_current"),
-     Input('table-paging-with-graph', "page_size"),
+    [Input('table-multicol-sorting', "page_current"),
+     Input('table-multicol-sorting', "page_size"),
      Input('table-multicol-sorting', "sort_by")])
 def update_table(page_current, page_size, sort_by):
     print(sort_by)
