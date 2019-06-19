@@ -11,13 +11,13 @@ def Syntax(children,
         return html.Details([
             html.Summary(summary),
             dcc.Markdown(
-                children,
+                '``` python  \n' + children + '  \n ```',
                 style=style
             )
         ], open=True)
     else:
         return dcc.Markdown(
-            children,
+            '``` python  \n' + children + '  \n ```',
             style=style
         )
 

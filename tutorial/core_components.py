@@ -27,9 +27,13 @@ layout = html.Div(className="gallery", children=[
         These docs are using version {}.
     '''.replace('    ', '').format(dcc.__version__)),
 
-    dcc.Markdown('''>>> import dash_core_components as dcc
+    dcc.Markdown('''
+    ```
+    >>> import dash_core_components as dcc
     >>> print(dcc.__version__)
-    {}'''.replace('    ', '').format(dcc.__version__),
+    {}
+    ```
+    '''.replace('    ', '').format(dcc.__version__),
     style=styles.code_container),
 
     html.Hr(),
@@ -69,7 +73,7 @@ dcc.Slider(
     min=-5,
     max=10,
     step=0.5,
-    value=-3,
+    value=-3
 )''', style=styles.code_container),
 
     ComponentBlock('''import dash_core_components as dcc
@@ -530,9 +534,11 @@ confirm = dcc.ConfirmDialogProvider(
     ''')),
 
     dcc.Markdown(s('''
+    ```python
     import dash_core_components as dcc
 
     location = dcc.Location(id='url', refresh=False)
+    ```
     '''), style=styles.code_container),
 
     html.Br(),
