@@ -27,7 +27,7 @@ def ComponentBlock(example_string, **kwargs):
         raise e
     return html.Div([
         dcc.Markdown(
-            example_string,
+            '``` python ' + example_string + '  \n```',
             style=styles.code_container
         ),
         html.Div(
