@@ -29,10 +29,9 @@ layout = html.Div([
     ''')),
 
     section_title('DataTable with Per-Column Dropdowns'),
-    dcc.SyntaxHighlighter(
+    dcc.Markdown(
         examples['dropdown_per_column.py'][0],
-        language='python',
-        customStyle=styles.code_container
+        style=styles.code_container
     ),
     html.Div(
         examples['dropdown_per_column.py'][1],
@@ -40,10 +39,9 @@ layout = html.Div([
     ),
 
     section_title('DataTable with Per-Row Dropdowns'),
-    dcc.SyntaxHighlighter(
+    dcc.Markdown(
         examples['dropdown_per_row.py'][0],
-        language='python',
-        customStyle=styles.code_container
+        style=styles.code_container
     ),
     html.Div(
         examples['dropdown_per_row.py'][1],

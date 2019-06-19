@@ -18,7 +18,7 @@ through the `pathname` property. Here's a simple example:
 
 '''),
 
-          dcc.SyntaxHighlighter('''import dash
+          dcc.Markdown('''import dash
 import dash_core_components as dcc
 import dash_html_components as html
 
@@ -51,7 +51,7 @@ def display_page(pathname):
 
 if __name__ == '__main__':
     app.run_server(debug=True)
-''', language='python', customStyle=styles.code_container),
+''', style=styles.code_container),
 
           dcc.Markdown('''
 In this example, the callback `display_page` receives the current pathname
@@ -73,7 +73,7 @@ doesn't refresh the page even though it updates the URL!
 You can modify the example above to display different pages depending on the URL:
 '''),
 
-          dcc.SyntaxHighlighter('''import dash
+          dcc.Markdown('''import dash
 import dash_core_components as dcc
 import dash_html_components as html
 
@@ -158,7 +158,7 @@ def display_page(pathname):
 
 if __name__ == '__main__':
     app.run_server(debug=True)
-''', language='python', customStyle=styles.code_container),
+''', style=styles.code_container),
 
           dcc.Markdown('''![Dash app with multiple pages](https://raw.githubusercontent.com/plotly/dash-docs/master/images/url-support-pages.gif)
 
@@ -175,7 +175,7 @@ ignore the exception by setting `app.config.suppress_callback_exceptions = True`
 It is also possible to do this without suppressing callback exceptions. See the example
 below for details.
 - You can modify this example to import the different page's `layout`s in different files.
-- This Dash Userguide that you're looking at is itself a multi-page Dash app, using 
+- This Dash Userguide that you're looking at is itself a multi-page Dash app, using
 these same principles.
 '''),
 
@@ -185,22 +185,22 @@ these same principles.
 
 ## Dynamically Create a Layout for Multi-Page App Validation
 
-Dash applies validation to your callbacks, which performs checks such as 
-validating the types of callback arguments and checking to see whether the 
-specified Input and Output components actually have the specified properties. 
+Dash applies validation to your callbacks, which performs checks such as
+validating the types of callback arguments and checking to see whether the
+specified Input and Output components actually have the specified properties.
 
-For full validation, all components within your callback must therefore appear 
+For full validation, all components within your callback must therefore appear
 in the initial layout of your app, and you will see an error if they do not.
-However, in the case of more complex Dash apps that involve dynamic modification 
-of the layout (such as multi-page apps), not every component appearing in your 
+However, in the case of more complex Dash apps that involve dynamic modification
+of the layout (such as multi-page apps), not every component appearing in your
 callbacks will be included in the initial layout.
 
-Since this validation is done before flask has any request context, you can create 
+Since this validation is done before flask has any request context, you can create
 a layout function that checks `flask.has_request_context()` and returns a complete
 layout to the validator if there is no request context and returns the incomplete
 index layout otherwise.
 '''),
-    dcc.SyntaxHighlighter(
+    dcc.Markdown(
         '''
 import dash
 import dash_core_components as dcc
@@ -210,7 +210,7 @@ from dash.dependencies import Input, Output, State
 import flask
 
 app = dash.Dash(
-    __name__, 
+    __name__,
     external_stylesheets=['https://codepen.io/chriddyp/pen/bWLwgP.css']
 )
 
@@ -299,10 +299,9 @@ def display_value(value):
 
 if __name__ == '__main__':
     app.run_server(debug=True)
-    
+
         ''',
-        language='python',
-        customStyle={'borderLeft': 'thin solid lightgrey'}
+        style={'borderLeft': 'thin solid lightgrey'}
     ),
 
           dcc.Markdown('''***
@@ -328,14 +327,14 @@ File structure:
 `app.py`
 '''),
 
-          dcc.SyntaxHighlighter('''import dash
+          dcc.Markdown('''import dash
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 server = app.server
 app.config.suppress_callback_exceptions = True
-''', language='python', customStyle=styles.code_container),
+''', style=styles.code_container),
 
           dcc.Markdown('''
 ***
@@ -343,7 +342,7 @@ app.config.suppress_callback_exceptions = True
 `apps/app1.py`
 '''),
 
-          dcc.SyntaxHighlighter('''import dash_core_components as dcc
+          dcc.Markdown('''import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output
 
@@ -369,7 +368,7 @@ layout = html.Div([
     [Input('app-1-dropdown', 'value')])
 def display_value(value):
     return 'You have selected "{}"'.format(value)
-''', language='python', customStyle=styles.code_container),
+''', style=styles.code_container),
 
           dcc.Markdown('''
 And similarly for other apps
@@ -380,7 +379,7 @@ And similarly for other apps
 `index.py` loads different apps on different urls like this:
 '''),
 
-          dcc.SyntaxHighlighter('''import dash_core_components as dcc
+          dcc.Markdown('''import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output
 
@@ -406,7 +405,7 @@ def display_page(pathname):
 
 if __name__ == '__main__':
     app.run_server(debug=True)
-''', language='python', customStyle=styles.code_container),
+''', style=styles.code_container),
           dcc.Markdown('''
 
 ***
@@ -425,7 +424,7 @@ separated into different files:
 
 `app.py`
 '''),
-          dcc.SyntaxHighlighter('''\
+          dcc.Markdown('''\
 import dash
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
@@ -433,14 +432,14 @@ external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 server = app.server
 app.config.suppress_callback_exceptions = True
-''', language='python', customStyle=styles.code_container),
+''', style=styles.code_container),
 
           dcc.Markdown('''
 ***
 
 `callbacks.py`
 '''),
-          dcc.SyntaxHighlighter('''\
+          dcc.Markdown('''\
 from dash.dependencies import Input, Output
 
 from app import app
@@ -456,14 +455,14 @@ def display_value(value):
     [Input('app-2-dropdown', 'value')])
 def display_value(value):
     return 'You have selected "{}"'.format(value)
-''', language='python', customStyle=styles.code_container),
+''', style=styles.code_container),
 
           dcc.Markdown('''
 ***
 
 `layouts.py`
 '''),
-          dcc.SyntaxHighlighter('''\
+          dcc.Markdown('''\
 import dash_core_components as dcc
 import dash_html_components as html
 
@@ -494,14 +493,14 @@ layout2 = html.Div([
     html.Div(id='app-2-display-value'),
     dcc.Link('Go to App 1', href='/apps/app1')
 ])
-''', language='python', customStyle=styles.code_container),
+''', style=styles.code_container),
 
                     dcc.Markdown('''
 ***
 
 `index.py`
 '''),
-          dcc.SyntaxHighlighter('''\
+          dcc.Markdown('''\
 import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output
@@ -527,8 +526,8 @@ def display_page(pathname):
 
 if __name__ == '__main__':
     app.run_server(debug=True)
-''', language='python', customStyle=styles.code_container),
-          
+''', style=styles.code_container),
+
           dcc.Markdown('''
 ***
 

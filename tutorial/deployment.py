@@ -34,22 +34,22 @@ Dash apps are web applications. Dash uses Flask as the web framework.
 The underlying Flask app is available at `app.server`, that is:
 '''),
 
-          dcc.SyntaxHighlighter('''import dash
+          dcc.Markdown('''import dash
 
 app = dash.Dash(__name__)
 
 server = app.server # the Flask app
-''', language='python', customStyle=styles.code_container),
+''', style=styles.code_container),
 
           dcc.Markdown('''
 You can also pass your own flask app instance into Dash:
 '''),
 
-          dcc.SyntaxHighlighter('''import flask
+          dcc.Markdown('''import flask
 
 server = flask.Flask(__name__)
 app = dash.Dash(__name__, server=server)
-''', language='python', customStyle=styles.code_container),
+''', style=styles.code_container),
 
           dcc.Markdown('''
 By exposing this `server` variable, you can deploy Dash apps like you would
@@ -75,9 +75,9 @@ Here is a simple example. This example requires a Heroku account,
 **Step 1. Create a new folder for your project:**
 '''),
 
-          dcc.SyntaxHighlighter('''$ mkdir dash_app_example
+          dcc.Markdown('''$ mkdir dash_app_example
 $ cd dash_app_example
-''', customStyle=styles.code_container),
+''', style=styles.code_container),
 
           dcc.Markdown('''
 
@@ -87,25 +87,25 @@ $ cd dash_app_example
 
 '''),
 
-          dcc.SyntaxHighlighter('''$ git init        # initializes an empty git repo
+          dcc.Markdown('''$ git init        # initializes an empty git repo
 $ virtualenv venv # creates a virtualenv called "venv"
 $ source venv/bin/activate # uses the virtualenv
-''', customStyle=styles.code_container),
+''', style=styles.code_container),
 
           dcc.Markdown('''
 `virtualenv` creates a fresh Python instance. You will need to reinstall your
 app's dependencies with this virtualenv:
 '''),
 
-          dcc.SyntaxHighlighter('''$ pip install dash
+          dcc.Markdown('''$ pip install dash
 $ pip install plotly
-''', customStyle=styles.code_container),
+''', style=styles.code_container),
 
           dcc.Markdown('''
 You will also need a new dependency, `gunicorn`, for deploying the app:
 '''),
 
-          dcc.SyntaxHighlighter('''$ pip install gunicorn''', customStyle=styles.code_container),
+          dcc.Markdown('''$ pip install gunicorn''', style=styles.code_container),
 
           dcc.Markdown('''***
 **Step 3. Initialize the folder with a sample app (`app.py`), a `.gitignore` file, `requirements.txt`, and a `Procfile` for deployment**
@@ -115,7 +115,7 @@ Create the following files in your project folder:
 **`app.py`**
 '''),
 
-          dcc.SyntaxHighlighter('''import os
+          dcc.Markdown('''import os
 
 import dash
 import dash_core_components as dcc
@@ -144,7 +144,7 @@ def display_value(value):
 
 if __name__ == '__main__':
     app.run_server(debug=True)
-''', customStyle=styles.code_container, language='python'),
+''', style=styles.code_container),
 
           dcc.Markdown('''
 ***
@@ -152,11 +152,11 @@ if __name__ == '__main__':
 **`.gitignore`**
 '''),
 
-          dcc.SyntaxHighlighter('''venv
+          dcc.Markdown('''venv
 *.pyc
 .DS_Store
 .env
-''', customStyle=styles.code_container),
+''', style=styles.code_container),
 
           dcc.Markdown('''
 ***
@@ -165,8 +165,8 @@ if __name__ == '__main__':
 
 '''),
 
-          dcc.SyntaxHighlighter('''web: gunicorn app:server
-''', customStyle=styles.code_container),
+          dcc.Markdown('''web: gunicorn app:server
+''', style=styles.code_container),
 
           dcc.Markdown('''
 (Note that `app` refers to the filename `app.py`.
@@ -180,8 +180,8 @@ if __name__ == '__main__':
 You can fill this file in automatically with:
 '''),
 
-          dcc.SyntaxHighlighter('''$ pip freeze > requirements.txt
-''', customStyle=styles.code_container),
+          dcc.Markdown('''$ pip freeze > requirements.txt
+''', style=styles.code_container),
 
           dcc.Markdown('''
 ***
@@ -189,12 +189,12 @@ You can fill this file in automatically with:
 **4. Initialize Heroku, add files to Git, and deploy**
 '''),
 
-          dcc.SyntaxHighlighter('''$ heroku create my-dash-app # change my-dash-app to a unique name
+          dcc.Markdown('''$ heroku create my-dash-app # change my-dash-app to a unique name
 $ git add . # add all files to git
 $ git commit -m 'Initial app boilerplate'
 $ git push heroku master # deploy code to heroku
 $ heroku ps:scale web=1  # run the app with a 1 heroku "dyno"
-''', customStyle=styles.code_container, language='python'),
+''', style=styles.code_container),
 
           dcc.Markdown('''
 You should be able to view your app at `https://my-dash-app.herokuapp.com`
@@ -207,11 +207,11 @@ to git and push those changes to heroku.
 
 '''),
 
-          dcc.SyntaxHighlighter('''$ git status # view the changes
+          dcc.Markdown('''$ git status # view the changes
 $ git add .  # add all the changes
 $ git commit -m 'a description of the changes'
 $ git push heroku master
-''', customStyle=styles.code_container, language='python'),
+''', style=styles.code_container),
 
           dcc.Markdown('''
 

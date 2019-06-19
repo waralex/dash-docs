@@ -69,10 +69,9 @@ def generate_instructions(chapter, platform):
                 through a few instructions.
             ''')),
 
-            dcc.SyntaxHighlighter(
+            dcc.Markdown(
                 ('$ ssh-keygen -t rsa -b 4096 -C "your_email@example.com"'),
-                customStyle=styles.code_container,
-                language='python'
+                style=styles.code_container,
             ),
 
             dcc.Markdown(s('''
@@ -83,11 +82,10 @@ def generate_instructions(chapter, platform):
                 **1. Ensure the ssh-agent is running:**
             ''')),
 
-            dcc.SyntaxHighlighter(
+            dcc.Markdown(
                 ('$ eval $(ssh-agent -s)' if platform == 'Windows' else
                  '$ eval "$(ssh-agent -s)"'),
-                customStyle=styles.code_container,
-                language='python'
+                style=styles.code_container,
             ),
 
             dcc.Markdown(s('''
@@ -97,11 +95,10 @@ def generate_instructions(chapter, platform):
                 created above if it is different.
             ''')),
 
-            dcc.SyntaxHighlighter(
+            dcc.Markdown(
                 ('$ ssh-add ~/.ssh/id_rsa' if platform == 'Windows' else
                  '$ ssh-add -k ~/.ssh/id_rsa'),
-                customStyle=styles.code_container,
-                language='python'
+                style=styles.code_container,
             ),
 
             dcc.Markdown(s('''
@@ -118,12 +115,11 @@ def generate_instructions(chapter, platform):
 
             ''')),
 
-            dcc.SyntaxHighlighter(
+            dcc.Markdown(
                 ('$ clip < ~/.ssh/id_rsa.pub' if platform == 'Windows' else
                  '$ pbcopy < ~/.ssh/id_rsa.pub' if platform == 'Mac' else
                  '$ sudo apt-get install xclip\n$ xclip -sel clip < ~/.ssh/id_rsa.pub'),
-                customStyle=styles.code_container,
-                language='python'
+                style=styles.code_container,
             ),
 
             dcc.Markdown(s('''
@@ -175,8 +171,8 @@ def generate_instructions(chapter, platform):
                 your Dash Deployment Server (without `http://` or `https://`).
             ''')),
 
-            dcc.SyntaxHighlighter('''Host your-dash-app-manager
-    Port 3022''', customStyle=styles.code_container),
+            dcc.Markdown('''Host your-dash-app-manager
+    Port 3022''', style=styles.code_container),
 
             (dcc.Markdown('''If you're having trouble opening this file, you can run `$ open ~/.ssh/config`
             which will open the file using your default editor. If the file doesn't exist,
@@ -238,10 +234,10 @@ def generate_instructions(chapter, platform):
 
             ('In Git Bash, run: ' if platform == 'Windows' else ''),
 
-            dcc.SyntaxHighlighter(s('''
+            dcc.Markdown(s('''
                 $ git clone https://github.com/plotly/dash-on-premise-sample-app.git
                 '''),
-                customStyle=styles.code_container
+                style=styles.code_container
             ),
 
             dcc.Markdown(s('''
@@ -254,10 +250,9 @@ def generate_instructions(chapter, platform):
                 Plotly Enterprise.
             ''')),
 
-            dcc.SyntaxHighlighter(s('''$ cd dash-on-premise-sample-app
+            dcc.Markdown(s('''$ cd dash-on-premise-sample-app
                 $ git remote add plotly dokku@your-dash-app-manager:your-dash-app-name'''),
-                customStyle=styles.code_container,
-                language='python'
+                style=styles.code_container,
             ),
 
             dcc.Markdown(s('''
@@ -290,12 +285,12 @@ def generate_instructions(chapter, platform):
                 Files are transferred to the server using `git`:
             ''')),
 
-            dcc.SyntaxHighlighter(s('''$ git status # view the changed files
+            dcc.Markdown(s('''$ git status # view the changed files
                 $ git diff # view the actual changed lines of code
                 $ git add .  # add all the changes
                 $ git commit -m 'a description of the changes'
                 $ git push plotly master
-                '''), customStyle=styles.code_container, language='python'),
+                '''), style=styles.code_container),
 
             dcc.Markdown(s('''
                 This commands will push the code in this folder to the
@@ -358,9 +353,9 @@ def generate_instructions(chapter, platform):
 
             ''')),
 
-            dcc.SyntaxHighlighter(s('''unixodbc
+            dcc.Markdown(s('''unixodbc
             unixodbc-dev
-            '''), customStyle=styles.code_container, language="text"),
+            '''), style=styles.code_container),
 
             dcc.Markdown(s('''
 
@@ -383,9 +378,9 @@ def generate_instructions(chapter, platform):
 
             ''')),
 
-            dcc.SyntaxHighlighter(s('''cp /app/odbc.ini /etc/odbc.ini
+            dcc.Markdown(s('''cp /app/odbc.ini /etc/odbc.ini
             cp /app/odbcinst.ini /etc/odbcinst.ini
-            '''), customStyle=styles.code_container, language="text"),
+            '''), style=styles.code_container),
 
             dcc.Markdown(s('''
 
@@ -397,14 +392,14 @@ def generate_instructions(chapter, platform):
 
             ''')),
 
-            dcc.SyntaxHighlighter(s('''{
+            dcc.Markdown(s('''{
             \t"scripts": {
             \t\t"dokku": {
             \t\t\t"predeploy": "/app/setup_pyodbc"
             \t\t}
             \t}
             }
-            '''), customStyle=styles.code_container, language='json'),
+            '''), style=styles.code_container),
 
             dcc.Markdown(s('''
             ***

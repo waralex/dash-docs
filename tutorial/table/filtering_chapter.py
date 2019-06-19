@@ -114,10 +114,9 @@ layout = html.Div(
         ## Frontend Filtering Example:
 
         """)),
-        dcc.SyntaxHighlighter(
+        dcc.Markdown(
             examples['filtering_fe.py'][0],
-            language='python',
-            customStyle=styles.code_container
+            style=styles.code_container
         ),
 
         html.Div(
@@ -148,10 +147,9 @@ layout = html.Div(
         Example:
         """)),
 
-        dcc.SyntaxHighlighter(
+        dcc.Markdown(
             examples['filtering_be.py'][0],
-            language='python',
-            customStyle=styles.code_container
+            style=styles.code_container
         ),
 
         html.Div(

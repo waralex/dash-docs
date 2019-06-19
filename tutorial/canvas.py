@@ -21,9 +21,9 @@ layout = html.Div([
 
     ''')),
 
-    dcc.SyntaxHighlighter(
+    dcc.Markdown(
         '''pip install dash-canvas=={}'''.format(dash_canvas.__version__),
-        customStyle=styles.code_container
+        style=styles.code_container
     ),
 
     dcc.Markdown(dedent('''
@@ -51,10 +51,9 @@ layout = html.Div([
     Let's get started with a simple canvas object.
     ''')),
 
-    dcc.SyntaxHighlighter(
+    dcc.Markdown(
           examples[0][0],
-          language='python',
-          customStyle=styles.code_container
+          style=styles.code_container
     ),
     html.Div(examples[0][1], className='example-container'),
 
@@ -70,10 +69,9 @@ layout = html.Div([
     below).
     ''')),
 
-    dcc.SyntaxHighlighter(
+    dcc.Markdown(
           examples[1][0],
-          language='python',
-          customStyle=styles.code_container
+          style=styles.code_container
     ),
     html.Div(examples[1][1], className='example-container'),
 
@@ -89,10 +87,9 @@ layout = html.Div([
     know how to write callbacks.
 
     ''')),
-    dcc.SyntaxHighlighter(
+    dcc.Markdown(
           examples[2][0],
-          language='python',
-          customStyle=styles.code_container
+          style=styles.code_container
     ),
     html.Div(examples[2][1], className='example-container'),
     dcc.Markdown(dedent('''
@@ -114,10 +111,9 @@ layout = html.Div([
     geometry of annotations.
     ''')),
 
-    dcc.SyntaxHighlighter(
+    dcc.Markdown(
           examples[3][0],
-          language='python',
-          customStyle=styles.code_container
+          style=styles.code_container
     ),
     html.Div(examples[3][1], className='example-container'),
 
@@ -128,10 +124,9 @@ layout = html.Div([
     mask with non-zero pixels displaying the annotations:
     ''')),
 
-    dcc.SyntaxHighlighter(
+    dcc.Markdown(
           examples[4][0],
-          language='python',
-          customStyle=styles.code_container
+          style=styles.code_container
     ),
     html.Div(examples[4][1], className='example-container'),
 
@@ -143,10 +138,9 @@ layout = html.Div([
     given the binary mask derived from annotations:
     ''')),
 
-    dcc.SyntaxHighlighter(
+    dcc.Markdown(
           examples[5][0],
-          language='python',
-          customStyle=styles.code_container
+          style=styles.code_container
     ),
     html.Div(examples[5][1], className='example-container'),
 

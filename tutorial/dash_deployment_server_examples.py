@@ -209,9 +209,9 @@ def display_instructions2(platform):
                     ''')) if platform == 'Windows' else
                     ''),
 
-                    dcc.SyntaxHighlighter(s(
+                    dcc.Markdown(s(
                     '''$ git clone https://github.com/plotly/dash-on-premise-sample-app.git'''),
-                    customStyle=styles.code_container),
+                    style=styles.code_container),
 
                     dcc.Markdown(s(
                     '''
@@ -268,9 +268,9 @@ def display_instructions2(platform):
                     #### Create a New Folder
                     ''')),
 
-                    dcc.SyntaxHighlighter(
+                    dcc.Markdown(
                     '''$ mkdir dash_app_example
-$ cd dash_app_example''', customStyle=styles.code_container),
+$ cd dash_app_example''', style=styles.code_container),
 
                     dcc.Markdown(s(
                     '''
@@ -281,13 +281,13 @@ $ cd dash_app_example''', customStyle=styles.code_container),
 
                     ''')),
 
-                    dcc.SyntaxHighlighter(
+                    dcc.Markdown(
                     ('''$ git init # initializes an empty git repo
 $ virtualenv venv # creates a virtualenv called "venv"
 $ source venv/bin/activate # uses the virtualenv''') if platform != 'Windows' else (
                     '''$ git init # initializes an empty git repo
 $ virtualenv venv # creates a virtualenv called "venv"
-$ source venv/Scripts/activate # uses the virtualenv'''), customStyle=styles.code_container),
+$ source venv/Scripts/activate # uses the virtualenv'''), style=styles.code_container),
 
                     dcc.Markdown(s(
                     '''
@@ -297,9 +297,9 @@ $ source venv/Scripts/activate # uses the virtualenv'''), customStyle=styles.cod
                     to reinstall your app's dependencies with this virtualenv:
                     ''')),
 
-                    dcc.SyntaxHighlighter(
+                    dcc.Markdown(
                     '''$ pip install dash
-$ pip install plotly''', customStyle=styles.code_container),
+$ pip install plotly''', style=styles.code_container),
 
                     dcc.Markdown(s(
                     '''
@@ -309,8 +309,8 @@ $ pip install plotly''', customStyle=styles.code_container),
                     deploying the app:
                     ''')),
 
-                    dcc.SyntaxHighlighter(
-                    '''$ pip install gunicorn''', customStyle=styles.code_container),
+                    dcc.Markdown(
+                    '''$ pip install gunicorn''', style=styles.code_container),
 
                     dcc.Markdown(s(
                     '''
@@ -326,7 +326,7 @@ $ pip install plotly''', customStyle=styles.code_container),
                     line that defines the server variable: `server = app.server`
                     ''')),
 
-                    dcc.SyntaxHighlighter(
+                    dcc.Markdown(
                     '''import os
 
 import dash
@@ -356,7 +356,7 @@ def display_value(value):
 
 if __name__ == '__main__':
   app.run_server(debug=True)''',
-                    customStyle=styles.code_container, language='python'),
+                    style=styles.code_container),
 
                     dcc.Markdown(s('''
                     ***
@@ -368,11 +368,11 @@ if __name__ == '__main__':
                     to the server) when you deploy your application.
                     ''')),
 
-                    dcc.SyntaxHighlighter(
+                    dcc.Markdown(
                     '''venv
 *.pyc
 .DS_Store
-.env''', customStyle=styles.code_container),
+.env''', style=styles.code_container),
 
                     dcc.Markdown(s(
                     '''
@@ -389,8 +389,8 @@ if __name__ == '__main__':
 
                     ''')),
 
-                    dcc.SyntaxHighlighter(
-                    '''web: gunicorn app:server --workers 4''', customStyle=styles.code_container),
+                    dcc.Markdown(
+                    '''web: gunicorn app:server --workers 4''', style=styles.code_container),
 
                     dcc.Markdown(s(
                     '''
@@ -418,8 +418,8 @@ if __name__ == '__main__':
                     You can fill this file in automatically with:
                     ''')),
 
-                    dcc.SyntaxHighlighter(
-                    '''$ pip freeze > requirements.txt''', customStyle=styles.code_container),
+                    dcc.Markdown(
+                    '''$ pip freeze > requirements.txt''', style=styles.code_container),
 
                     dcc.Markdown(s(
                     '''
@@ -476,9 +476,9 @@ if __name__ == '__main__':
 
                     ''')),
 
-                    dcc.SyntaxHighlighter(
+                    dcc.Markdown(
                     '''$ cd <your-folder-name>
-$ git init # initializes an empty git repo''', customStyle=styles.code_container),
+$ git init # initializes an empty git repo''', style=styles.code_container),
 
                     dcc.Markdown(s(
                     '''
@@ -518,11 +518,10 @@ def display_instructions_deploy(method):
 
         ''')),
 
-        dcc.SyntaxHighlighter(s(
+        dcc.Markdown(s(
         '''$ git remote add plotly dokku@your-dash-deployment-server:your-dash-app-name''' if method == 'SSH' else
         '''$ git remote add plotly https://your-dash-deployment-server/GIT/your-dash-app-name'''),
-        customStyle=styles.code_container,
-        language='python'
+        style=styles.code_container,
         ),
 
         dcc.Markdown(s(
@@ -560,12 +559,12 @@ def display_instructions_deploy(method):
         Files are transferred to the server using `git`:
         ''')),
 
-        dcc.SyntaxHighlighter(s(
+        dcc.Markdown(s(
         '''$ git status # view the changed files
 $ git diff # view the actual changed lines of code
 $ git add .  # add all the changes
 $ git commit -m 'a description of the changes'
-$ git push plotly master'''), customStyle=styles.code_container, language='python'),
+$ git push plotly master'''), style=styles.code_container),
 
         dcc.Markdown(s(
         '''
@@ -648,7 +647,7 @@ Requirements = html.Div(children=[
      [Learn more about the CHECKS file](/dash-deployment-server/checks).
 
     ***
-    
+
     `.gitignore`
 
     Determines which files and folders are ignored in git, and therefore
@@ -754,9 +753,9 @@ staticAssets = html.Div(children=[
 
     ''')),
 
-    dcc.SyntaxHighlighter(s('''
+    dcc.Markdown(s('''
     html.Img(src=app.get_asset_url('my-image.png'))
-    '''), customStyle=styles.code_container, language="python")
+    '''), style=styles.code_container)
 ])
 
 # # # # # # #
@@ -799,9 +798,9 @@ ConfigSys = html.Div(children=[
 
     ''')),
 
-    dcc.SyntaxHighlighter(s('''unixodbc
+    dcc.Markdown(s('''unixodbc
     unixodbc-dev
-    '''), customStyle=styles.code_container, language="text"),
+    '''), style=styles.code_container),
 
     dcc.Markdown(s('''
 
@@ -829,9 +828,9 @@ ConfigSys = html.Div(children=[
 
     ''')),
 
-    dcc.SyntaxHighlighter(s('''cp /app/odbc.ini /etc/odbc.ini
+    dcc.Markdown(s('''cp /app/odbc.ini /etc/odbc.ini
     cp /app/odbcinst.ini /etc/odbcinst.ini
-    '''), customStyle=styles.code_container, language="text"),
+    '''), style=styles.code_container),
 
     dcc.Markdown(s('''
     &nbsp;
@@ -844,14 +843,14 @@ ConfigSys = html.Div(children=[
 
     ''')),
 
-    dcc.SyntaxHighlighter(s('''{
+    dcc.Markdown(s('''{
     \t"scripts": {
     \t\t"dokku": {
     \t\t\t"predeploy": "/app/setup_pyodbc"
     \t\t}
     \t}
     }
-    '''), customStyle=styles.code_container, language='json'),
+    '''), style=styles.code_container),
 
     dcc.Markdown(s('''
     ***
@@ -918,10 +917,9 @@ EnvVars = html.Div(children=[
 
     ''')),
 
-    dcc.SyntaxHighlighter(s(
+    dcc.Markdown(s(
     """database_password = os.environ['DATABASE_PASSWORD']"""),
-    customStyle=styles.code_container,
-    language='python'
+    style=styles.code_container,
     ),
 
     dcc.Markdown(s('''
@@ -932,10 +930,9 @@ EnvVars = html.Div(children=[
 
     ''')),
 
-    dcc.SyntaxHighlighter(s(
+    dcc.Markdown(s(
     """database_password = os.environ.get('DATABASE_PASSWORD', 'my-default-database-password')"""),
-    customStyle=styles.code_container,
-    language='python'
+    style=styles.code_container,
     ),
 
 
@@ -959,11 +956,10 @@ EnvVars = html.Div(children=[
     Alternatively, you can define them for your session by "exporting" them:
     ''')),
 
-    dcc.SyntaxHighlighter(s("""$ export DATABASE_USER=chris
+    dcc.Markdown(s("""$ export DATABASE_USER=chris
     $ export DATABASE_PASSWORD=my-password
     $ python app.py"""),
-    customStyle=styles.code_container,
-    language='python'
+    style=styles.code_container,
     ),
 
 
@@ -1019,8 +1015,8 @@ LocalDir = html.Div(children=[
     networked file systems.
 
     Since this feature has security implications, only directories specified
-    in the Plotly-On-Premise Server Manager can be mapped to Dash Apps. 
-    > Note that in Plotly Enterprise versions before 3.1.0 only users with admin privelges 
+    in the Plotly-On-Premise Server Manager can be mapped to Dash Apps.
+    > Note that in Plotly Enterprise versions before 3.1.0 only users with admin privelges
     > could map local directories into their apps. Please contact `onpremise.support@plot.ly` if
     > you have any questions.
 
@@ -1075,7 +1071,7 @@ dcc.Markdown(s('''
     message.
 
     &nbsp;
-    
+
     ''')),
 
     html.Img(
@@ -1098,10 +1094,9 @@ dcc.Markdown(s('''
 
     ''')),
 
-    dcc.SyntaxHighlighter(s("""import os
+    dcc.Markdown(s("""import os
     file_pathname = os.path.join(os.sep, 'data', 'my-dataset.csv')"""),
-    customStyle=styles.code_container,
-    language='python'
+    style=styles.code_container,
     ),
 
     dcc.Markdown(s('''
@@ -1114,15 +1109,14 @@ dcc.Markdown(s('''
 
     ''')),
 
-    dcc.SyntaxHighlighter(
+    dcc.Markdown(
 """if 'DASH_APP_NAME' in os.environ:
     # this is a deployed app
     filepath = os.path.join(os.sep, 'data', 'my-dataset.csv')
 else:
     # local file path
     filepath = os.path.join(os.sep, 'Users', 'chris', 'data', 'my-dataset.csv')""",
-    customStyle=styles.code_container,
-    language='python'
+    style=styles.code_container,
     ),
 
     dcc.Markdown(s('''
@@ -1275,10 +1269,9 @@ def display_instructions(platform):
         through a few instructions.
         ''')),
 
-        dcc.SyntaxHighlighter(
+        dcc.Markdown(
             ('$ ssh-keygen -t rsa -b 4096 -C "your_email@example.com"'),
-            customStyle=styles.code_container,
-            language='python'
+            style=styles.code_container,
         ),
 
         dcc.Markdown(s('''
@@ -1289,11 +1282,10 @@ def display_instructions(platform):
         **1. Ensure the ssh-agent is running:**
         ''')),
 
-        dcc.SyntaxHighlighter(
+        dcc.Markdown(
             ('$ eval $(ssh-agent -s)' if platform == 'Windows' else
              '$ eval "$(ssh-agent -s)"'),
-            customStyle=styles.code_container,
-            language='python'
+            style=styles.code_container,
         ),
 
         dcc.Markdown(s('''
@@ -1305,11 +1297,10 @@ def display_instructions(platform):
         created above if it is different.
         ''')),
 
-        dcc.SyntaxHighlighter(
+        dcc.Markdown(
             ('$ ssh-add ~/.ssh/id_rsa' if platform == 'Windows' else
              '$ ssh-add -k ~/.ssh/id_rsa'),
-            customStyle=styles.code_container,
-            language='python'
+            style=styles.code_container,
         ),
 
         dcc.Markdown(s('''
@@ -1324,12 +1315,11 @@ def display_instructions(platform):
 
         ''')),
 
-        dcc.SyntaxHighlighter(
+        dcc.Markdown(
             ('$ clip < ~/.ssh/id_rsa.pub' if platform == 'Windows' else
              '$ pbcopy < ~/.ssh/id_rsa.pub' if platform == 'Mac' else
              '$ sudo apt-get install xclip\n$ xclip -sel clip < ~/.ssh/id_rsa.pub'),
-            customStyle=styles.code_container,
-            language='python'
+            style=styles.code_container,
         ),
 
         dcc.Markdown(s('''
@@ -1405,8 +1395,8 @@ def display_instructions(platform):
         your Dash Deployment Server (without `http://` or `https://`).
         ''')),
 
-        dcc.SyntaxHighlighter('''Host your-dash-deployment-server
-        Port 3022''', customStyle=styles.code_container),
+        dcc.Markdown('''Host your-dash-deployment-server
+        Port 3022''', style=styles.code_container),
 
         (dcc.Markdown(s('''
         If you're having trouble opening this file, you can run
@@ -1471,7 +1461,7 @@ Authentication = html.Div(children=[
     ''')),
 
 
-    dcc.SyntaxHighlighter("""
+    dcc.Markdown("""
 import dash
 from dash.dependencies import Input, Output
 import dash_core_components as dcc
@@ -1546,8 +1536,7 @@ def update_graph(value):
 
 if __name__ == '__main__':
     app.run_server(debug=True)""",
-    customStyle=styles.code_container,
-    language='python'
+    style=styles.code_container,
     )
 ])
 
@@ -1616,7 +1605,7 @@ Checks = html.Div(children=[
     Before an app is deployed to Dash Deployment Server, a check is performed to make sure that
     the app is functional. The default check will test to see if the app has encountered a fatal error
     in the first 10 seconds of running.
-    
+
     It is possible to customize the health checks performed on your app by adding a file named `CHECKS` to
     the root directory of your app. In this file you can specify **Checks Settings** to instruct DDS when
     and how to perform the checks. You can also configure **Checks Instructions** to tell DDS what endpoints to
@@ -1632,18 +1621,18 @@ Checks = html.Div(children=[
     You can specify values for `WAIT`, `TIMEOUT`, and `ATTEMPTS` to set the period of time
     that DDS waits before performing the check, the amount of time before it times out, and the number of times
     it will run them before determining that the deployment failed.
-    
+
     In the example `CHECKS` file below, DDS will wait 15 seconds before performing the check, allow up to 10 seconds
-    for a response from the app and perform the check 3 times before marking it as a failure. 
+    for a response from the app and perform the check 3 times before marking it as a failure.
 
     ''')),
 
-    dcc.SyntaxHighlighter(s(
+    dcc.Markdown(s(
         '''WAIT=15
         TIMEOUT=10
         ATTEMPTS=3
-        
-        /app-name/_dash_layout sample text which is inside the layout'''), customStyle=styles.code_container
+
+        /app-name/_dash_layout sample text which is inside the layout'''), style=styles.code_container
     ),
 
     html.H3('Checks Instructions'),
@@ -1657,14 +1646,14 @@ Checks = html.Div(children=[
 
    ''')),
 
-    dcc.SyntaxHighlighter(s(
+    dcc.Markdown(s(
         '''WAIT=5
         TIMEOUT=10
         ATTEMPTS=3
-        
+
         /app-name/_dash-layout Sample App
         /app-name/assets/dash.css _dash-undo-redo
-        /app-name/assets/images/dash-logo.png '''), customStyle=styles.code_container
+        /app-name/assets/images/dash-logo.png '''), style=styles.code_container
     ),
 ])
 
@@ -1719,10 +1708,9 @@ PrivatePackages = html.Div(children=[
 
     ''')),
 
-    dcc.SyntaxHighlighter(s(
+    dcc.Markdown(s(
     """git+http://${AUTH_USER}:${AUTH_PASSWORD}@git.example.com/MyProject#egg=MyProject"""),
-    customStyle=styles.code_container,
-    language='python'
+    style=styles.code_container,
     ),
 
     dcc.Markdown(s('''
@@ -1881,11 +1869,10 @@ Redis = html.Div(children=[
 
     ''')),
 
-    dcc.SyntaxHighlighter(s(
+    dcc.Markdown(s(
     """$ ssh dokku@YOUR_DASH_SERVER redis:create SERVICE-NAME
     $ ssh dokku@YOUR_DASH_SERVER redis:link SERVICE-NAME APP-NAME"""),
-    customStyle=styles.code_container,
-    language='python'
+    style=styles.code_container,
     ),
 
     dcc.Markdown(s('''
@@ -1910,10 +1897,9 @@ Redis = html.Div(children=[
 
     ''')),
 
-    dcc.SyntaxHighlighter(s(
+    dcc.Markdown(s(
     """redis_instance = redis.StrictRedis.from_url(os.environ["REDIS_URL"])"""),
-    customStyle=styles.code_container,
-    language='python'
+    style=styles.code_container,
     ),
 
     dcc.Markdown(s('''
@@ -1931,9 +1917,9 @@ Redis = html.Div(children=[
     variable on-the-fly when you run `python app.py`.
     ''')),
 
-    dcc.SyntaxHighlighter(s("$ REDIS_URL=redis://<your-redis-instance-ip>:6379 python app.py"),
-    customStyle=styles.code_container,
-    language='python'),
+    dcc.Markdown(s("$ REDIS_URL=redis://<your-redis-instance-ip>:6379 python app.py"),
+    style=styles.code_container,
+    ),
 
     dcc.Markdown(s('''
     &nbsp;
@@ -2013,9 +1999,9 @@ StagingApp = html.Div(children=[
 
     ''')),
 
-    dcc.SyntaxHighlighter(s(
+    dcc.Markdown(s(
     '''$ git add remote stage https://your-dash-deployment-server/GIT/your-dash-app-name-stage'''),
-    customStyle=styles.code_container, language='python'),
+    style=styles.code_container),
 
     dcc.Markdown(s(
     '''
@@ -2029,9 +2015,9 @@ StagingApp = html.Div(children=[
 
     ''')),
 
-    dcc.SyntaxHighlighter(s(
+    dcc.Markdown(s(
     '''$ git push stage master'''),
-    customStyle=styles.code_container, language='python'),
+    style=styles.code_container),
 
 ])
 
@@ -2059,7 +2045,7 @@ pdfService = html.Div(children=[
 
         ''')),
 
-        dcc.SyntaxHighlighter('''POST https://<your-dash-deployment-server>/Manager/api/generate_report
+        dcc.Markdown('''POST https://<your-dash-deployment-server>/Manager/api/generate_report
 content-type: application/json
 plotly-client-platform: dash
 Authorization: Basic ...
@@ -2074,7 +2060,7 @@ Authorization: Basic ...
     },
     "wait_selector": "body"
 }''',
-        customStyle=styles.code_container, language='python'),
+        style=styles.code_container),
 
         dcc.Markdown(s(
         '''
@@ -2125,7 +2111,7 @@ Authorization: Basic ...
         for more details.
         ''')),
 
-        dcc.SyntaxHighlighter('''import dash
+        dcc.Markdown('''import dash
 from dash.dependencies import Input, Output, State
 import dash_core_components as dcc
 import dash_html_components as html
@@ -2203,7 +2189,7 @@ def snapshot_page(n_clicks, url, wait_selector):
 
 if __name__ == '__main__':
     app.run_server(debug=True)''',
-        customStyle=styles.code_container, language='python'),
+        style=styles.code_container),
 
         dcc.Markdown(s('''
 
@@ -2249,14 +2235,14 @@ Troubleshooting = html.Div(children=[
     html.Details([
         html.Summary("Are using the latest versions?"),
 
-        dcc.SyntaxHighlighter('''dash=={}
+        dcc.Markdown('''dash=={}
             dash-html-components=={}
             dash-core-components=={}
         '''.replace('    ', '').format(
             dash.__version__,
             html.__version__,
             dcc.__version__,
-        ), customStyle=styles.code_container),
+        ), style=styles.code_container),
 
         dcc.Markdown(s('''
         > A quick note on checking your versions and on upgrading.
@@ -2295,9 +2281,9 @@ Troubleshooting = html.Div(children=[
     html.Details([
         html.Summary("SSL certificate problem: self signed certificate"),
 
-        dcc.SyntaxHighlighter(s(
+        dcc.Markdown(s(
         '''fatal: unable to access 'https://<your-dash-deployment-server>/GIT/your-dash-app-name/': SSL certificate problem: self signed certificate'''),
-        customStyle=styles.code_container, language='python'),
+        style=styles.code_container),
 
         dcc.Markdown(s(
         '''
@@ -2322,7 +2308,7 @@ Troubleshooting = html.Div(children=[
     html.Details([
         html.Summary("Could not find a version that satisfies the requirement"),
 
-        dcc.SyntaxHighlighter(
+        dcc.Markdown(
         '''...
     remote: -----> Cleaning up...
     remote: -----> Building my-dash-app from herokuish...
@@ -2338,7 +2324,7 @@ Troubleshooting = html.Div(children=[
     remote:        Collecting dash==0.29.1 (from -r /tmp/build/requirements.txt (line 1))
     remote:        Could not find a version that satisfies the requirement dash==0.29.1 (from -r /tmp/build/requirements.txt (line 1)) (from versions: 0.17.4, 0.17.5, 0.17.7, 0.17.8rc1, 0.17.8rc2, 0.17.8rc3, 0.18.0, 0.18.1, 0.18.2, 0.18.3rc1, 0.18.3, 0.19.0, 0.20.0, 0.21.0, 0.21.1, 0.22.0rc1, 0.22.0rc2, 0.22.0, 0.23.1, 0.24.0, 0.24.1rc1, 0.24.1, 0.24.2, 0.25.0)
     remote:        No matching distribution found for dash==0.29.1 (from -r /tmp/build/requirements.txt (line 1))''',
-        customStyle=styles.code_container, language='python'),
+        style=styles.code_container),
 
         dcc.Markdown(s(
         '''
@@ -2351,7 +2337,7 @@ Troubleshooting = html.Div(children=[
         you can check your versioning with the command:
         ''')),
 
-        dcc.SyntaxHighlighter('$ pip list', customStyle=styles.code_container, language='python'),
+        dcc.Markdown('$ pip list', style=styles.code_container),
 
         dcc.Markdown(s(
         '''
@@ -2360,7 +2346,7 @@ Troubleshooting = html.Div(children=[
         if it is differs from your `requirements.txt`, you can update it with the command:
         ''')),
 
-        dcc.SyntaxHighlighter('$ pip freeze > requirements.txt', customStyle=styles.code_container, language='python'),
+        dcc.Markdown('$ pip freeze > requirements.txt', style=styles.code_container),
 
         dcc.Markdown(s(
         '''
@@ -2375,7 +2361,7 @@ Troubleshooting = html.Div(children=[
     html.Details([
         html.Summary("Failed to find application object 'server' in 'app"),
 
-        dcc.SyntaxHighlighter(
+        dcc.Markdown(
         '''...
     remote:        Failed to find application object 'server' in 'app'
     remote:        [2018-08-16 16:00:49 +0000] [181] [INFO] Worker exiting (pid: 181)
@@ -2386,7 +2372,7 @@ Troubleshooting = html.Div(children=[
     remote:        [2018-08-16 16:00:51 +0000] [12] [INFO] Using worker: sync
     remote:        [2018-08-16 16:00:51 +0000] [179] [INFO] Booting worker with pid: 179
     remote:        [2018-08-16 16:00:51 +0000] [180] [INFO] Booting worker with pid: 180''',
-        customStyle=styles.code_container, language='python'),
+        style=styles.code_container),
 
         dcc.Markdown(s(
         '''
@@ -2408,12 +2394,12 @@ Troubleshooting = html.Div(children=[
     html.Details([
         html.Summary("SSH deploy: git push is asking for password."),
 
-        dcc.SyntaxHighlighter(
+        dcc.Markdown(
             '''
             $ git push multipage master
             dokku@dash.local's password:
             ''',
-            customStyle=styles.code_container, language='python'),
+            style=styles.code_container),
 
         dcc.Markdown(s(
             '''
@@ -2425,7 +2411,7 @@ Troubleshooting = html.Div(children=[
             adding `GIT_SSH_COMMAND='ssh -v'` before your `git push` command.
             ''')),
 
-        dcc.SyntaxHighlighter('''
+        dcc.Markdown('''
         $ GIT_SSH_COMMAND='ssh -v' git push plotly master
 
         # OpenSSH_7.6p1 Ubuntu-4ubuntu0.1, OpenSSL 1.0.2n  7 Dec 2017
@@ -2449,7 +2435,7 @@ Troubleshooting = html.Div(children=[
         # debug1: Trying private key: /home/michael/.ssh/id_ed25519
         # debug1: Next authentication method: password
         dokku@dash.local's password:
-        ''', customStyle=styles.code_container, language='python'),
+        ''', style=styles.code_container),
 
         dcc.Markdown(s(
             '''
@@ -2473,9 +2459,9 @@ Troubleshooting = html.Div(children=[
     html.Details([
         html.Summary("Got permission denied while trying to connect to the Docker daemon socket"),
 
-        dcc.SyntaxHighlighter(s(
+        dcc.Markdown(s(
         '''$ Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get http://%2Fvar%2Frun%2Fdocker.sock/v1.38/containers/json?all=1&filters=%7B%22label%22%3A%7B%22dokku%22%3Atrue%7D%2C%22status%22%3A%7B%22exited%22%3Atrue%7D%7D: dial unix /var/run/docker.sock: connect: permission denied'''),
-        customStyle=styles.code_container, language='python'),
+        style=styles.code_container),
 
         dcc.Markdown(s(
         '''
@@ -2489,11 +2475,11 @@ Troubleshooting = html.Div(children=[
     html.Details([
         html.Summary("Unable to select a buildpack"),
 
-        dcc.SyntaxHighlighter(s(
+        dcc.Markdown(s(
             '''...
             remote:            Adding BUILD_ENV to build environment...
             remote:            Unable to select a buildpack'''),
-                              customStyle=styles.code_container, language='python'),
+                              style=styles.code_container),
         dcc.Markdown(s(
             ''''
             &nbsp;
@@ -2528,8 +2514,8 @@ Troubleshooting = html.Div(children=[
             scale a `worker` process:
             ''')),
 
-        dcc.SyntaxHighlighter('$ ssh dokku@dash-server ps:scale APP-NAME worker=1',
-                              customStyle=styles.code_container, language='python'),
+        dcc.Markdown('$ ssh dokku@dash-server ps:scale APP-NAME worker=1',
+                              style=styles.code_container),
         dcc.Markdown(s(
             '''
 
@@ -2538,8 +2524,8 @@ Troubleshooting = html.Div(children=[
             up simultaneously with:
             ''')),
 
-        dcc.SyntaxHighlighter('$ ssh dokku@YOUR_DASH_SERVER ps:scale APP-NAME worker-default=1 worker-beat=1',
-                              customStyle=styles.code_container, language='python'),
+        dcc.Markdown('$ ssh dokku@YOUR_DASH_SERVER ps:scale APP-NAME worker-default=1 worker-beat=1',
+                              style=styles.code_container),
 
         dcc.Markdown(s(
             '''
@@ -2719,9 +2705,9 @@ Logs = html.Div(children=[
 
     ''')),
 
-    dcc.SyntaxHighlighter(s(
+    dcc.Markdown(s(
     '''$ ssh dokku@<your-dash-domain> logs <your-app-name> --num -1'''),
-    customStyle=styles.code_container, language='python'),
+    style=styles.code_container),
 
     dcc.Markdown(s('''
 
@@ -2818,11 +2804,11 @@ Git = html.Div(children=[
 
     ''')),
 
-    dcc.SyntaxHighlighter(s(
+    dcc.Markdown(s(
     '''$ cd myDashApp
     $ git init
     Initialized empty Git repository in .git/'''),
-    customStyle=styles.code_container, language='python'),
+    style=styles.code_container),
 
     dcc.Markdown(s('''
     ***
@@ -2836,9 +2822,9 @@ Git = html.Div(children=[
 
     ''')),
 
-    dcc.SyntaxHighlighter(s(
+    dcc.Markdown(s(
     '''$ git clone <respository-name>'''),
-    customStyle=styles.code_container, language='python'),
+    style=styles.code_container),
 
     dcc.Markdown(s('''&nbsp;''')),
 
@@ -2869,9 +2855,9 @@ Git = html.Div(children=[
 
     ''')),
 
-    dcc.SyntaxHighlighter(s(
+    dcc.Markdown(s(
     '''$ git remote add <remote-name> <remote-URL>'''),
-    customStyle=styles.code_container, language='python'),
+    style=styles.code_container),
 
     dcc.Markdown(s('''
 
@@ -2881,9 +2867,9 @@ Git = html.Div(children=[
 
     ''')),
 
-    dcc.SyntaxHighlighter(s(
+    dcc.Markdown(s(
     '''$ git remote -v '''),
-    customStyle=styles.code_container, language='python'),
+    style=styles.code_container),
 
     dcc.Markdown(s('''
 
@@ -2893,9 +2879,9 @@ Git = html.Div(children=[
 
     ''')),
 
-    dcc.SyntaxHighlighter(s(
+    dcc.Markdown(s(
     '''$ git remote rename <existing-name> <new-name> '''),
-    customStyle=styles.code_container, language='python'),
+    style=styles.code_container),
 
     dcc.Markdown(s('''
 
@@ -2905,9 +2891,9 @@ Git = html.Div(children=[
 
     ''')),
 
-    dcc.SyntaxHighlighter(s(
+    dcc.Markdown(s(
     '''$ git remote rm <remote-name> '''),
-    customStyle=styles.code_container, language='python'),
+    style=styles.code_container),
 
     dcc.Markdown(s('''
 
@@ -2944,11 +2930,11 @@ Git = html.Div(children=[
 
     ''')),
 
-    dcc.SyntaxHighlighter(s(
+    dcc.Markdown(s(
     '''$ git add .
     $ git commit -m "a description of the changes"
     $ git push <respository-name> master'''),
-    customStyle=styles.code_container, language='python'),
+    style=styles.code_container),
 
     dcc.Markdown(s('''
 
@@ -2966,9 +2952,9 @@ Git = html.Div(children=[
 
     ''')),
 
-    dcc.SyntaxHighlighter(s(
+    dcc.Markdown(s(
     '''$ git branch'''),
-    customStyle=styles.code_container, language='python'),
+    style=styles.code_container),
 
     dcc.Markdown(s('''
 
@@ -2978,9 +2964,9 @@ Git = html.Div(children=[
 
     ''')),
 
-    dcc.SyntaxHighlighter(s(
+    dcc.Markdown(s(
     '''$ git branch <branchname> '''),
-    customStyle=styles.code_container, language='python'),
+    style=styles.code_container),
 
     dcc.Markdown(s('''
 
@@ -2991,9 +2977,9 @@ Git = html.Div(children=[
 
     ''')),
 
-    dcc.SyntaxHighlighter(s(
+    dcc.Markdown(s(
     '''$ git checkout <branchname>'''),
-    customStyle=styles.code_container, language='python'),
+    style=styles.code_container),
 
     dcc.Markdown(s('''
 
@@ -3006,11 +2992,11 @@ Git = html.Div(children=[
 
     ''')),
 
-    dcc.SyntaxHighlighter(s(
+    dcc.Markdown(s(
     '''$ git add .
     $ git commit -m "a description of changes"
     $ git push <remote-name> <branchname>:master'''),
-    customStyle=styles.code_container, language='python'),
+    style=styles.code_container),
 
     dcc.Markdown(s('''
 
@@ -3020,9 +3006,9 @@ Git = html.Div(children=[
 
     ''')),
 
-    dcc.SyntaxHighlighter(s(
+    dcc.Markdown(s(
     '''$ git branch -m <existing-name> <new-name> '''),
-    customStyle=styles.code_container, language='python'),
+    style=styles.code_container),
 
 
     dcc.Markdown(s('''
@@ -3033,9 +3019,9 @@ Git = html.Div(children=[
 
     ''')),
 
-    dcc.SyntaxHighlighter(s(
+    dcc.Markdown(s(
     '''$ git branch -D <branch-name> '''),
-    customStyle=styles.code_container, language='python'),
+    style=styles.code_container),
 
     dcc.Markdown(s('''&nbsp;''')),
 

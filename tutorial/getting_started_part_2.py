@@ -52,10 +52,9 @@ layout = html.Div([
     Dash App Layout
     ''', id='dash-app-layout'),
 
-    dcc.SyntaxHighlighter(
+    dcc.Markdown(
         examples[0][0],
-        language='python',
-        customStyle=styles.code_container
+        style=styles.code_container
     ),
 
     html.Div(examples[0][1], className="example-container"),
@@ -109,10 +108,9 @@ layout = html.Div([
     `dcc.Graph`.
     ''')),
 
-    dcc.SyntaxHighlighter(
+    dcc.Markdown(
         examples[1][0],
-        language='python',
-        customStyle=styles.code_container
+        style=styles.code_container
     ),
 
     html.Div(examples[1][1], className="example-container", style={
@@ -165,10 +163,9 @@ layout = html.Div([
 
     ''')),
 
-    dcc.SyntaxHighlighter(
+    dcc.Markdown(
         examples[2][0],
-        language='python',
-        customStyle=styles.code_container
+        style=styles.code_container
     ),
 
     html.Div(examples[2][1], className="example-container", style={
@@ -206,10 +203,9 @@ layout = html.Div([
     slow database query.
     ''')),
 
-    dcc.SyntaxHighlighter(
+    dcc.Markdown(
         examples[3][0],
-        language='python',
-        customStyle=styles.code_container
+        style=styles.code_container
     ),
 
     html.Div(examples[3][1], className="example-container"),
@@ -217,7 +213,7 @@ layout = html.Div([
     dcc.Markdown(s('''
     A word of caution: it's not always a good idea to combine Outputs, even if
     you can:
-	
+
     - If the Outputs depend on some but not all of the same Inputs, keeping
       them separate can avoid unnecessary updates.
     - If they have the same Inputs but do independent computations with these
@@ -233,10 +229,9 @@ layout = html.Div([
     Here's a simple example.
     ''')),
 
-    dcc.SyntaxHighlighter(
+    dcc.Markdown(
         examples[4][0],
-        language='python',
-        customStyle=styles.code_container
+        style=styles.code_container
     ),
 
     html.Div(examples[4][1], className="example-container"),

@@ -87,10 +87,9 @@ layout = html.Div([
 
     ''')),
 
-    dcc.SyntaxHighlighter(
+    dcc.Markdown(
         examples['local-css'][0],
-        language='python',
-        customStyle=styles.code_container
+        style=styles.code_container
     ),
 
     html.Hr(),
@@ -100,7 +99,7 @@ layout = html.Div([
         style={'paddingTop': 20}
     ),
 
-    dcc.SyntaxHighlighter(
+    dcc.Markdown(
         s('''body {
     font-family: sans-serif;
 }
@@ -108,8 +107,7 @@ h1, h2, h3, h4, h5, h6 {
     color: hotpink
 }
         '''),
-        language='css',
-        customStyle=styles.code_container
+        style=styles.code_container
     ),
 
     html.Hr(),
@@ -119,7 +117,7 @@ h1, h2, h3, h4, h5, h6 {
         style={'paddingTop': 20}
     ),
 
-    dcc.SyntaxHighlighter(
+    dcc.Markdown(
         s('''.app-header {
     height: 60px;
     line-height: 60px;
@@ -131,8 +129,7 @@ h1, h2, h3, h4, h5, h6 {
     padding-left: 5px;
 }
         '''),
-        language='css',
-        customStyle=styles.code_container
+        style=styles.code_container
     ),
 
     html.Hr(),
@@ -142,12 +139,11 @@ h1, h2, h3, h4, h5, h6 {
         style={'paddingTop': 20}
     ),
 
-    dcc.SyntaxHighlighter(
+    dcc.Markdown(
         s('''
         alert('If you see this alert, then your custom JavaScript script has run!')
         '''),
-        language='javascript',
-        customStyle=styles.code_container
+        style=styles.code_container
     ),
 
     html.Hr(),
@@ -226,7 +222,7 @@ and then request the resources from there.
 **Example:**
 ''')),
 
-    dcc.SyntaxHighlighter(
+    dcc.Markdown(
         """import dash
 import dash_html_components as html
 
@@ -237,8 +233,7 @@ app = dash.Dash(
 app.scripts.config.serve_locally = False
 
 """,
-        language='python',
-        customStyle=styles.code_container
+        style=styles.code_container
     ),
 
 
@@ -261,7 +256,7 @@ app.scripts.config.serve_locally = False
     In your `app.py` file you can use the relative path to that image:
     ''')),
 
-    dcc.SyntaxHighlighter(
+    dcc.Markdown(
         """import dash
 import dash_html_components as html
 
@@ -273,8 +268,7 @@ app.layout = html.Div([
 
 if __name__ == '__main__':
     app.run_server(debug=True)""",
-        language='python',
-        customStyle=styles.code_container
+        style=styles.code_container
     ),
 
     dcc.Markdown(s('''
@@ -283,7 +277,7 @@ if __name__ == '__main__':
     ## Changing the Favicon
 
     It is possible to override the default favicon by adding
-    a file named `favicon.ico` to your `/assets` folder. Changes to 
+    a file named `favicon.ico` to your `/assets` folder. Changes to
     this file will implement cache-busting automatically.
 
     ```
@@ -311,10 +305,9 @@ if __name__ == '__main__':
     **Example:**
     ''')),
 
-    dcc.SyntaxHighlighter(
+    dcc.Markdown(
         examples['external-resources-init'],
-        language='python',
-        customStyle=styles.code_container
+        style=styles.code_container
     ),
 
     dcc.Markdown(s('''
@@ -351,10 +344,9 @@ if __name__ == '__main__':
 
     ''')),
 
-    dcc.SyntaxHighlighter(
+    dcc.Markdown(
         examples['custom-index-string'],
-        language='python',
-        customStyle=styles.code_container
+        style=styles.code_container
     ),
 
     dcc.Markdown(s('''
@@ -407,10 +399,9 @@ if __name__ == '__main__':
     method.
     ''')),
 
-    dcc.SyntaxHighlighter(
+    dcc.Markdown(
         examples['custom-interpolate-string'],
-        language='python',
-        customStyle=styles.code_container
+        style=styles.code_container
     ),
 
     dcc.Markdown(s('''
@@ -453,10 +444,9 @@ if __name__ == '__main__':
 
     ''')),
 
-    dcc.SyntaxHighlighter(
+    dcc.Markdown(
         examples['custom-dash-renderer'],
-        language='python',
-        customStyle=styles.code_container
+        style=styles.code_container
     ),
 
     dcc.Markdown(s('''
@@ -466,10 +456,9 @@ if __name__ == '__main__':
 
     ''')),
 
-    dcc.SyntaxHighlighter(
+    dcc.Markdown(
         examples['custom-dash-renderer-hooks'],
-        language='python',
-        customStyle=styles.code_container
+        style=styles.code_container
     ),
 
     dcc.Markdown(s('''
@@ -490,10 +479,9 @@ if __name__ == '__main__':
     you can specify meta tags directly in the Dash constructor:
     ''')),
 
-    dcc.SyntaxHighlighter(
+    dcc.Markdown(
         examples['dash-meta-tags'],
-        language='python',
-        customStyle=styles.code_container
+        style=styles.code_container
     ),
 
     dcc.Markdown(s('''
@@ -523,14 +511,13 @@ if __name__ == '__main__':
 
     ''')),
 
-    dcc.SyntaxHighlighter('''from dash import Dash
+    dcc.Markdown('''from dash import Dash
 
 app = Dash()
 
 app.css.config.serve_locally = True
 app.scripts.config.serve_locally = True''',
-        language='python',
-        customStyle={'borderLeft': 'thin lightgrey solid'}
+        style={'borderLeft': 'thin lightgrey solid'}
     ),
 
     dcc.Markdown(s('''

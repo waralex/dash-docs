@@ -104,7 +104,7 @@ layout = html.Div(
 
         html.Details(open=False, children=[
             html.Summary('View the Datasets'),
-            dcc.SyntaxHighlighter(dedent(
+            dcc.Markdown(dedent(
             '''
             data = OrderedDict(
                 [

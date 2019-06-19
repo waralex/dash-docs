@@ -47,9 +47,9 @@ Dropdown = html.Div(children=[
     html.H3('Default Dropdown'),
     html.P("An example of a default dropdown without \
             any extra properties."),
-    dcc.SyntaxHighlighter(
+    dcc.Markdown(
         examples['dropdown'][0],
-        customStyle=styles.code_container
+        style=styles.code_container
     ),
     html.Div(
         examples['dropdown'][1],
@@ -72,7 +72,7 @@ dcc.Dropdown(
     ],
     value=['MTL', 'NYC'],
     multi=True
-)''', customStyle=styles.code_container, language='python'),
+)''', style=styles.code_container),
     html.Hr(),
 
     html.H3('Disable Search'),
@@ -90,7 +90,7 @@ dcc.Dropdown(
         {'label': 'San Francisco', 'value': 'SF'}
     ],
     searchable=False
-)''', customStyle=styles.code_container, language='python'),
+)''', style=styles.code_container),
     html.Hr(),
 
     html.H3('Dropdown Clear'),
@@ -107,7 +107,7 @@ dcc.Dropdown(
     ],
     value='MTL',
     clearable=False
-)''', customStyle=styles.code_container, language='python'),
+)''', style=styles.code_container),
 
     html.Hr(),
     html.H3('Placeholder Text'),
@@ -122,7 +122,7 @@ dcc.Dropdown(
         {'label': 'San Francisco', 'value': 'SF'}
     ],
     placeholder="Select a city",
-)''', customStyle=styles.code_container, language='python'),
+)''', style=styles.code_container),
 
     html.Hr(),
     html.H3('Disable Dropdown'),
@@ -136,7 +136,7 @@ dcc.Dropdown(
         {'label': 'San Francisco', 'value': 'SF'}
     ],
     disabled=True
-)''', customStyle=styles.code_container, language='python'),
+)''', style=styles.code_container),
 
     html.Hr(),
     html.H3('Disable Options'),
@@ -150,7 +150,7 @@ dcc.Dropdown(
         {'label': 'Montreal', 'value': 'MTL'},
         {'label': 'San Francisco', 'value': 'SF', 'disabled': True}
     ],
-)''', customStyle=styles.code_container, language='python'),
+)''', style=styles.code_container),
 
     html.Hr(),
     html.H3("Dropdown Properties"),
@@ -163,10 +163,9 @@ Slider = html.Div(children=[
     html.Hr(),
     html.H3('Simple Slider Example'),
     html.P("An example of a basic slider tied to a callback."),
-    dcc.SyntaxHighlighter(
+    dcc.Markdown(
         examples['slider'][0],
-        customStyle=styles.code_container,
-        language='python'
+        style=styles.code_container,
     ),
 
     html.Div(examples['slider'][1], className='example-container'),
@@ -190,7 +189,7 @@ dcc.Slider(
         10: '10 °F'
     },
     value=5
-)''', customStyle=styles.code_container, language='python'),
+)''', style=styles.code_container),
     html.Hr(),
 
     html.H3('Included and Styling Marks'),
@@ -239,10 +238,9 @@ dcc.Slider(
                  which means a callback is triggered everytime the handle \
                  is moved. The default setting is `mouseup` which triggers \
                  the callback when you release your mouse from the slider."),
-    dcc.SyntaxHighlighter(
+    dcc.Markdown(
         examples['slider-updatemode'][0],
-        customStyle=styles.code_container,
-        language='python'
+        style=styles.code_container,
     ),
     html.Div(
         examples['slider-updatemode'][1],
@@ -260,10 +258,9 @@ RangeSlider = html.Div(children=[
     html.Hr(),
     html.H3('Simple RangeSlider Example'),
     html.P("An example of a basic RangeSlider tied to a callback."),
-    dcc.SyntaxHighlighter(
+    dcc.Markdown(
         examples['rangeslider'][0],
-        customStyle=styles.code_container,
-        language='python'
+        style=styles.code_container,
     ),
 
     html.Div(
@@ -289,7 +286,7 @@ dcc.RangeSlider(
         10: '10 °F'
     },
     value=[3, 7.65]
-)''', customStyle=styles.code_container, language='python'),
+)''', style=styles.code_container),
     html.Hr(),
 
     html.H3('Included and Styling Marks'),
@@ -325,7 +322,7 @@ dcc.RangeSlider(
         100: {'label': '100°C', 'style': {'color': '#f50'}}
     },
     included=False
-)''', customStyle=styles.code_container, language='python'),
+)''', style=styles.code_container),
     html.Hr(),
 
     html.H3('Multiple Handles'),
@@ -338,7 +335,7 @@ dcc.RangeSlider(
     max=30,
     value=[1, 3, 4, 5, 12, 17]
 )
-    ''', customStyle=styles.code_container, language='python'),
+    ''', style=styles.code_container),
     html.Hr(),
     html.H3('Pushable Handles'),
     dcc.Markdown("The `pushable` property is either a `boolean` or a numerical value. \
@@ -351,7 +348,7 @@ dcc.RangeSlider(
     value=[8, 10, 15, 17, 20],
     pushable=2
 )
-    ''', customStyle=styles.code_container, language='python'),
+    ''', style=styles.code_container),
     html.Hr(),
 
     html.H3('Crossing Handles'),
@@ -365,7 +362,7 @@ dcc.RangeSlider(
     value=[10, 15],
     allowCross=False
 )
-    ''', customStyle=styles.code_container, language='python'),
+    ''', style=styles.code_container),
     html.Hr(),
 
     html.H3('Non-Linear Slider and Updatemode'),
@@ -378,10 +375,9 @@ dcc.RangeSlider(
                  is moved. \
                  Contrast the callback output with the first example on this \
                  page to see the difference."),
-    dcc.SyntaxHighlighter(
+    dcc.Markdown(
         examples['rangeslider-nonlinear'][0],
-        customStyle=styles.code_container,
-        language='python'
+        style=styles.code_container,
     ),
     html.Div(examples['rangeslider-nonlinear'][1],
              className='example-container',
@@ -553,10 +549,9 @@ DatePickerRange = html.Div(children=[
                  dates on the calendar while `initial_visible_month` defines \
                  the calendar month that is first displayed when the \
                  `DatePickerRange` component is opened."),
-    dcc.SyntaxHighlighter(
+    dcc.Markdown(
         examples['date_picker_range'][0],
-        language='python',
-        customStyle=styles.code_container
+        style=styles.code_container
     ),
     html.Div(
         examples['date_picker_range'][1],
@@ -673,7 +668,7 @@ dcc.DatePickerRange(
     end_date=dt(2017,6,21),
     display_format='X',
     start_date_placeholder_text='X'
-)''', language='python', customStyle=styles.code_container),
+)''', style=styles.code_container),
 
     html.Br(),
 
@@ -775,7 +770,7 @@ dcc.DatePickerRange(
     is_RTL=True,
     first_day_of_week=3,
     start_date=dt(2017,6,21)
-)''', language='python', customStyle=styles.code_container),
+)''', style=styles.code_container),
     html.Hr(),
     html.H3('DatePickerRange Properties'),
     generate_prop_table('DatePickerRange')
@@ -796,10 +791,9 @@ DatePickerSingle = html.Div(children=[
         properties define the minimum and maximum selectable dates on the calendar \
         while `initial_visible_month` defines the calendar month that is \
         first displayed when the `DatePickerSingle` component is opened."),
-    dcc.SyntaxHighlighter(
+    dcc.Markdown(
         examples['date_picker_single'][0],
-        language='python',
-        customStyle=styles.code_container
+        style=styles.code_container
     ),
     html.Div(
         examples['date_picker_single'][1],
@@ -917,7 +911,7 @@ from datetime import datetime as dt
 dcc.DatePickerSingle(
     date=dt(2017,6,21),
     display_format='X',
-)''', language='python', customStyle=styles.code_container),
+)''', style=styles.code_container),
     html.Br(),
     html.H3("Month Format Examples"),
     dcc.Markdown("Similar to the `display_format`, you can set `month_format` \
@@ -957,7 +951,7 @@ dcc.DatePickerSingle(
     month_format='X',
     placeholder='X',
     date=dt(2017,6,21,0,0,0,0)
-)''', language='python', customStyle=styles.code_container),
+)''', style=styles.code_container),
     html.Hr(),
     html.H3("Vertical Calendar and Placeholder Text"),
     dcc.Markdown("The `DatePickerSingle` component can be rendered in two \
@@ -1056,9 +1050,9 @@ Tabs = html.Div(children=[
     Attach a callback to the Tabs `value` prop and update a container's `children`
     property in your callback.
     ''')),
-    dcc.SyntaxHighlighter(
+    dcc.Markdown(
         examples['tabs_callback'][0],
-        customStyle=styles.code_container
+        style=styles.code_container
     ),
     html.Div(examples['tabs_callback'][1], className='example-container'),
     dcc.Markdown(s('''
@@ -1073,9 +1067,9 @@ Tabs = html.Div(children=[
     directly as the `children` property in the `Tab` component:
     ''')),
 
-    dcc.SyntaxHighlighter(
+    dcc.Markdown(
         examples['tabs_simple'][0],
-        customStyle=styles.code_container
+        style=styles.code_container
     ),
     html.Div(examples['tabs_simple'][1], className='example-container'),
     dcc.Markdown(s('''
@@ -1091,9 +1085,9 @@ Tabs = html.Div(children=[
     Styling the Tabs (and Tab) component can either be done using CSS classes by providing your own to the `className` property:
     ''')),
 
-    dcc.SyntaxHighlighter(
+    dcc.Markdown(
         examples['tabs_styled_with_classes'][0],
-        customStyle=styles.code_container
+        style=styles.code_container
     ),
     html.Div(examples['tabs_styled_with_classes'][1], className='example-container'),
 
@@ -1106,10 +1100,9 @@ Tabs = html.Div(children=[
     The corresponding CSS file (`assets/tabs.css`) looks like this. Save the file in an `assets` folder (it can be named anything you want). Dash will automatically include this CSS when the app is loaded. [Learn more about including CSS in your app here.](/external-resources)
     ''')),
 
-    dcc.SyntaxHighlighter(
+    dcc.Markdown(
         examples['tabs_styled_with_classes_css'],
-        language='css',
-        customStyle=styles.code_container
+        style=styles.code_container
     ),
 
 
@@ -1120,9 +1113,9 @@ Tabs = html.Div(children=[
     An alternative to providing CSS classes is to provide style dictionaries directly:
     ''')),
 
-    dcc.SyntaxHighlighter(
+    dcc.Markdown(
         examples['tabs_styled_with_inline'][0],
-        customStyle=styles.code_container
+        style=styles.code_container
     ),
     html.Div(examples['tabs_styled_with_inline'][1], className='example-container'),
 
@@ -1133,9 +1126,9 @@ Tabs = html.Div(children=[
     all, if you're using them!
     ''')),
 
-    dcc.SyntaxHighlighter(
+    dcc.Markdown(
         examples['tabs_styled_with_props'][0],
-        customStyle=styles.code_container
+        style=styles.code_container
     ),
     html.Div(examples['tabs_styled_with_props'][1], className='example-container'),
 
@@ -1154,7 +1147,7 @@ Graphs = html.Div([
     Custimize the [Plotly.js config options](https://plot.ly/javascript/configuration-options/) of your graph using
     the `config` property. The example below uses the `showSendToCloud` and `plotlyServerURL` options include a
     save button in the modebar of the graph which exports the figure to URL specified by `plotlyServerURL`.
-    
+
     ''')),
     Syntax(examples['graph-config'][0]),
     Example(examples['graph-config'][1]),

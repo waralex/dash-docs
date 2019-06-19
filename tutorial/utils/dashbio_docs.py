@@ -68,10 +68,9 @@ def IframeComponentBlock(
     '''
 
     return html.Div([
-        dcc.SyntaxHighlighter(
+        dcc.Markdown(
             example_string,
-            language='python',
-            customStyle=styles.code_container
+            style=styles.code_container
         ),
         html.Div(
             className='example-container',
@@ -361,7 +360,7 @@ def create_default_example(
         any extra properties.".format(
             component_name.replace('-', ' ')
         )),
-        dcc.SyntaxHighlighter(
+        dcc.Markdown(
             example_code[0],
         ),
         html.Div(
@@ -483,7 +482,7 @@ def generate_prop_table(
             html.Tr([html.Td(dcc.Markdown(prop_name)),
                      html.Td(dcc.Markdown(prop_desc)),
                      html.Td(dcc.Markdown(prop_type)),
-                     html.Td(dcc.SyntaxHighlighter(prop_default))])
+                     html.Td(dcc.Markdown(prop_default))])
         )
 
     return html.Div([

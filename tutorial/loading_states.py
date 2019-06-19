@@ -16,7 +16,7 @@ property that is loading (i.e. "layout"). Component authors can use this prop to
 Dash uses this prop in the `Loading` component to display spinners if a component is loading. This means you can use the `Loading` component
 to wrap other components that you want to display a loading spinner for. Here's an example of what that looks like:
 '''),
-dcc.SyntaxHighlighter('''
+dcc.Markdown('''
 # -*- coding: utf-8 -*-
 import dash
 import dash_html_components as html
@@ -72,7 +72,7 @@ Aside from using the [`Loading`](/dash-core-components/loading_component) compon
 you can target those components yourself with CSS, and create your own custom spinner
 for them. Here's an example of what that could look like:
     '''),
-    dcc.SyntaxHighlighter('''
+    dcc.Markdown('''
 # -*- coding: utf-8 -*-
 import dash
 import dash_html_components as html
@@ -115,7 +115,7 @@ if __name__ == "__main__":
     app.run_server(debug=False)
     '''),
     html.P("You could target all components in the layout above that are loading using the following CSS:"),
-    dcc.SyntaxHighlighter('''
+    dcc.Markdown('''
 *[data-dash-is-loading="true"]{
     visibility: hidden;
 }
@@ -125,5 +125,5 @@ if __name__ == "__main__":
     color: magenta;
     visibility: visible;
 }
-    ''', language='css')
+    ''')
 ])

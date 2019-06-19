@@ -21,7 +21,7 @@ the callback on a predefined interval.
 This example pulls data from live satellite feeds and updates the graph
 and the text every second.
 '''),
-    dcc.SyntaxHighlighter('''import datetime
+    dcc.Markdown('''import datetime
 
 import dash
 import dash_core_components as dcc
@@ -115,8 +115,7 @@ if __name__ == '__main__':
     app.run_server(debug=True)
 
 ''',
-        language='python',
-        customStyle={'borderLeft': 'thin solid lightgrey'}
+        style={'borderLeft': 'thin solid lightgrey'}
     ),
 
 dcc.Markdown('''

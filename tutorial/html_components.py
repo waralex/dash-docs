@@ -20,7 +20,7 @@ layout = html.Div(children=[
     Here is an example of a simple HTML structure:
     '''.replace('    ', '')),
 
-    dcc.SyntaxHighlighter('''import dash_html_components as html
+    dcc.Markdown('''import dash_html_components as html
 
 html.Div([
     html.H1('Hello Dash'),
@@ -28,18 +28,18 @@ html.Div([
         html.P('Dash converts Python classes into HTML'),
         html.P('This conversion happens behind the scenes by Dash\'s JavaScript front-end')
     ])
-])''', language='python', customStyle={'borderLeft': 'thin solid lightgrey'}),
+])''', style={'borderLeft': 'thin solid lightgrey'}),
     html.Div(
         'which gets converted (behind the scenes) into the '
         'following HTML in your web-app:'
     ),
-    dcc.SyntaxHighlighter('''<div>
+    dcc.Markdown('''<div>
     <h1>Hello Dash</h1>
     <div>
         <p>Dash converts Python classes into HTML</p>
         <p>This conversion happens behind the scenes by Dash's JavaScript front-end</p>
     </div>
-</div>''', language='python', customStyle={'borderLeft': 'thin solid lightgrey'}),
+</div>''', style={'borderLeft': 'thin solid lightgrey'}),
     dcc.Markdown('''
         If you're not comfortable with HTML, don't worry!
         You can get 95% of the way there with just a few elements
@@ -48,7 +48,7 @@ html.Div([
         [Markdown](http://commonmark.org/help).
     '''.replace('  ', '')),
 
-    dcc.SyntaxHighlighter('''import dash_core_components as dcc
+    dcc.Markdown('''import dash_core_components as dcc
 
     dcc.Markdown(\'\'\'
     #### Dash and Markdown
@@ -61,8 +61,7 @@ html.Div([
     quotes, and more.
     \'\'\')
     '''.replace('  ', ''),
-                          customStyle=styles.code_container,
-                          language='python'
+                          style=styles.code_container,
     ),
 
     dcc.Markdown('''
@@ -73,8 +72,7 @@ html.Div([
     Markdown is a simple way to write and format text.
     It includes a syntax for things like **bold text** and *italics*,
     [links](http://commonmark.org/help), inline `code` snippets, lists,
-    quotes, and more.'''.replace('  ', ''),
-                 containerProps={'className': 'example-container'}),
+    quotes, and more.'''.replace('  ', '')),
 
     dcc.Markdown('''
         If you're using HTML components, then you also have access to
@@ -91,17 +89,17 @@ html.Div([
         Let's take a look at an example.
     '''.replace('    ', '')),
 
-    dcc.SyntaxHighlighter('''import dash_html_components as html
+    dcc.Markdown('''import dash_html_components as html
 
 html.Div([
     html.Div('Example Div', style={'color': 'blue', 'fontSize': 14}),
     html.P('Example P', className='my-class', id='my-p-element')
 ], style={'marginBottom': 50, 'marginTop': 25})
-''', language='python', customStyle=styles.code_container),
+''', style=styles.code_container),
 
     html.Div('That dash code will render this HTML markup:'),
 
-    dcc.SyntaxHighlighter('''
+    dcc.Markdown('''
 <div style="margin-bottom: 50px; margin-top: 25px;">
 
     <div style="color: blue; font-size: 14px">
@@ -113,5 +111,5 @@ html.Div([
     </p>
 
 </div>
-''', language='html', customStyle=styles.code_container)
+''', style=styles.code_container)
 ])

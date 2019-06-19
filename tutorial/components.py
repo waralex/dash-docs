@@ -5,23 +5,20 @@ from tutorial import styles
 
 
 def Syntax(children,
-           language='python',
            style=styles.code_container,
            summary=''):
     if summary:
         return html.Details([
             html.Summary(summary),
-            dcc.SyntaxHighlighter(
+            dcc.Markdown(
                 children,
-                language=language,
-                customStyle=style
+                style=style
             )
         ], open=True)
     else:
-        return dcc.SyntaxHighlighter(
+        return dcc.Markdown(
             children,
-            language=language,
-            customStyle=style
+            style=style
         )
 
 

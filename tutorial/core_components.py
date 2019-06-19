@@ -27,10 +27,10 @@ layout = html.Div(className="gallery", children=[
         These docs are using version {}.
     '''.replace('    ', '').format(dcc.__version__)),
 
-    dcc.SyntaxHighlighter('''>>> import dash_core_components as dcc
+    dcc.Markdown('''>>> import dash_core_components as dcc
     >>> print(dcc.__version__)
     {}'''.replace('    ', '').format(dcc.__version__),
-    customStyle=styles.code_container),
+    style=styles.code_container),
 
     html.Hr(),
     html.H3(dcc.Link('Dropdown', href='/dash-core-components/dropdown')),
@@ -43,7 +43,7 @@ dcc.Dropdown(
         {'label': 'San Francisco', 'value': 'SF'}
     ],
     value='MTL'
-)''', language='python', customStyle=styles.code_container),
+)''', style=styles.code_container),
 
     ComponentBlock('''import dash_core_components as dcc
 
@@ -55,7 +55,7 @@ dcc.Dropdown(
     ],
     multi=True,
     value="MTL"
-)''', language='python', customStyle=styles.code_container),
+)''', style=styles.code_container),
     html.Br(),
     dcc.Link(html.A('More Dropdown Examples and Reference'),
              href="/dash-core-components/dropdown"),
@@ -70,7 +70,7 @@ dcc.Slider(
     max=10,
     step=0.5,
     value=-3,
-)''', language='python', customStyle=styles.code_container),
+)''', style=styles.code_container),
 
     ComponentBlock('''import dash_core_components as dcc
 
@@ -79,7 +79,7 @@ dcc.Slider(
     max=9,
     marks={i: 'Label {}'.format(i) for i in range(10)},
     value=5,
-)''', language='python', customStyle=styles.code_container),
+)''', style=styles.code_container),
     html.Br(),
     dcc.Link(html.A('More Slider Examples and Reference'),
              href="/dash-core-components/slider"),
@@ -95,7 +95,7 @@ dcc.RangeSlider(
     max=10,
     step=0.5,
     value=[-3, 7]
-)''', language='python', customStyle=styles.code_container),
+)''', style=styles.code_container),
 
     ComponentBlock('''import dash_core_components as dcc
 
@@ -104,7 +104,7 @@ dcc.RangeSlider(
     min=-5,
     max=6,
     value=[-3, 4]
-)''', language='python', customStyle=styles.code_container),
+)''', style=styles.code_container),
     html.Br(),
     dcc.Link(html.A('More RangeSlider Examples and Reference'),
              href="/dash-core-components/rangeslider"),
@@ -118,7 +118,7 @@ dcc.Input(
     placeholder='Enter a value...',
     type='text',
     value=''
-)''', language='python', customStyle=styles.code_container),
+)''', style=styles.code_container),
     html.Br(),
     dcc.Link(html.A('More Input Examples and Reference'),
              href="/dash-core-components/input"),
@@ -132,7 +132,7 @@ dcc.Textarea(
     placeholder='Enter a value...',
     value='This is a TextArea component',
     style={'width': '100%'}
-)''', language='python', customStyle=styles.code_container),
+)''', style=styles.code_container),
 
     html.Br(),
     html.Br(),
@@ -150,8 +150,8 @@ dcc.Checklist(
         {'label': 'Montréal', 'value': 'MTL'},
         {'label': 'San Francisco', 'value': 'SF'}
     ],
-    values=['MTL', 'SF']
-)''', language='python', customStyle=styles.code_container),
+    value=['MTL', 'SF']
+)''', style=styles.code_container),
 
     ComponentBlock('''import dash_core_components as dcc
 
@@ -161,9 +161,9 @@ dcc.Checklist(
         {'label': 'Montréal', 'value': 'MTL'},
         {'label': 'San Francisco', 'value': 'SF'}
     ],
-    values=['MTL', 'SF'],
+    value=['MTL', 'SF'],
     labelStyle={'display': 'inline-block'}
-)''', language='python', customStyle=styles.code_container),
+)''', style=styles.code_container),
 
     html.Br(),
     dcc.Link(html.A('Checklist Properties'),
@@ -179,7 +179,7 @@ dcc.RadioItems(
         {'label': 'San Francisco', 'value': 'SF'}
     ],
     value='MTL'
-)''', language='python', customStyle=styles.code_container),
+)''', style=styles.code_container),
 
     ComponentBlock('''import dash_core_components as dcc
 
@@ -191,7 +191,7 @@ dcc.RadioItems(
     ],
     value='MTL',
     labelStyle={'display': 'inline-block'}
-)''', language='python', customStyle=styles.code_container),
+)''', style=styles.code_container),
     html.Br(),
     dcc.Link(html.A('RadioItems Reference'),
              href="/dash-core-components/radioitems"),
@@ -199,9 +199,9 @@ dcc.RadioItems(
     html.Hr(),
 
     html.H3(dcc.Link('Button', href='/dash-core-components/button')),
-    dcc.SyntaxHighlighter(
+    dcc.Markdown(
         examples['button'][0],
-        customStyle=styles.code_container, language='python'
+        style=styles.code_container
     ),
     html.Div(examples['button'][1], className='example-container'),
     html.Br(),
@@ -225,7 +225,7 @@ dcc.DatePickerSingle(
     id='date-picker-single',
     date=dt(1997, 5, 10)
 )
-''', language='python', customStyle=styles.code_container),
+''', style=styles.code_container),
     dcc.Link(html.A('More DatePickerSingle Examples and Reference'),
              href="/dash-core-components/datepickersingle"),
     html.Hr(),
@@ -239,7 +239,7 @@ dcc.DatePickerRange(
     start_date=dt(1997, 5, 3),
     end_date_placeholder_text='Select a date!'
 )
-''', language='python', customStyle=styles.code_container),
+''', style=styles.code_container),
     html.Br(),
     dcc.Link(html.A('More DatePickerRange Examples and Reference'),
              href="/dash-core-components/datepickerrange"),
@@ -260,8 +260,7 @@ dcc.DatePickerRange(
     quotes, and more.
     \'\'\')
     '''.replace('  ', ''),
-                   customStyle=styles.code_container,
-                   language='python'
+                   style=styles.code_container,
     ),
 
     html.Br(),
@@ -328,9 +327,9 @@ dcc.DatePickerRange(
     The Tabs and Tab components can be used to create tabbed sections in your app.
     ''')),
 
-    dcc.SyntaxHighlighter(
+    dcc.Markdown(
         examples['tabs'][0],
-        customStyle=styles.code_container, language='python'
+        style=styles.code_container
     ),
 
     html.Div(examples['tabs'][1], className='example-container'),
@@ -385,7 +384,7 @@ dcc.Graph(
     ),
     style={'height': 300},
     id='my-graph'
-)''', language='python', customStyle=styles.code_container),
+)''', style=styles.code_container),
 
     html.Br(),
     dcc.Link('More Graphs Examples and Reference',
@@ -521,7 +520,7 @@ confirm = dcc.ConfirmDialogProvider(
     dcc.Markdown(s('''
     The location component represents the location bar in your web browser. Through its `href`, `pathname`,
     `search` and `hash` properties you can access different portions of your app's url.
-    
+
     For example, given the url `http://127.0.0.1:8050/page-2?a=test#quiz`:
 
     - `href` = `"http://127.0.0.1:8050/page-2?a=test#quiz"`
@@ -530,11 +529,11 @@ confirm = dcc.ConfirmDialogProvider(
     - `hash` = `"#quiz"`
     ''')),
 
-    dcc.SyntaxHighlighter(s('''
+    dcc.Markdown(s('''
     import dash_core_components as dcc
 
     location = dcc.Location(id='url', refresh=False)
-    '''), language='python', customStyle=styles.code_container),
+    '''), style=styles.code_container),
 
     html.Br(),
 
