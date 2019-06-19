@@ -69,7 +69,7 @@ def IframeComponentBlock(
 
     return html.Div([
         dcc.Markdown(
-            example_string,
+            '```python  \n' + example_string + '  \n```',
             style=styles.code_container
         ),
         html.Div(
@@ -361,7 +361,7 @@ def create_default_example(
             component_name.replace('-', ' ')
         )),
         dcc.Markdown(
-            example_code[0],
+            '```python  \n' + example_code[0] + '  \n```',
         ),
         html.Div(
             example_code[1],
@@ -378,7 +378,7 @@ def create_examples(
     for example in examples_data:
         examples += [
             html.H3(example['param_name'].title()),
-            dcc.Markdown(example['description']),
+            dcc.Markdown('```python  \n' + example['description'] + '  \n```'),
             ComponentBlock(example['code']),
             html.Hr()
         ]
