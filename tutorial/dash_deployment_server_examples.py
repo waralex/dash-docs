@@ -210,7 +210,11 @@ def display_instructions2(platform):
                     ''),
 
                     dcc.Markdown(s(
-                    '''$ git clone https://github.com/plotly/dash-on-premise-sample-app.git'''),
+                    '''
+                    ```shell
+                    $ git clone https://github.com/plotly/dash-on-premise-sample-app.git
+                    ```
+                    '''),
                     style=styles.code_container),
 
                     dcc.Markdown(s(
@@ -269,8 +273,12 @@ def display_instructions2(platform):
                     ''')),
 
                     dcc.Markdown(
-                    '''$ mkdir dash_app_example
-$ cd dash_app_example''', style=styles.code_container),
+                    '''
+                    ```shell
+                    $ mkdir dash_app_example
+                    $ cd dash_app_example
+                    ```
+                    ''', style=styles.code_container),
 
                     dcc.Markdown(s(
                     '''
@@ -282,12 +290,20 @@ $ cd dash_app_example''', style=styles.code_container),
                     ''')),
 
                     dcc.Markdown(
-                    ('''$ git init # initializes an empty git repo
-$ virtualenv venv # creates a virtualenv called "venv"
-$ source venv/bin/activate # uses the virtualenv''') if platform != 'Windows' else (
-                    '''$ git init # initializes an empty git repo
-$ virtualenv venv # creates a virtualenv called "venv"
-$ source venv/Scripts/activate # uses the virtualenv'''), style=styles.code_container),
+                    ('''
+                    ```shell
+                    $ git init # initializes an empty git repo
+                    $ virtualenv venv # creates a virtualenv called "venv"
+                    $ source venv/bin/activate # uses the virtualenv
+                    ```
+                    ''') if platform != 'Windows' else (
+                    '''
+                    ```shell
+                    $ git init # initializes an empty git repo
+                    $ virtualenv venv # creates a virtualenv called "venv"
+                    $ source venv/Scripts/activate # uses the virtualenv
+                    ```
+                    '''), style=styles.code_container),
 
                     dcc.Markdown(s(
                     '''
@@ -298,8 +314,12 @@ $ source venv/Scripts/activate # uses the virtualenv'''), style=styles.code_cont
                     ''')),
 
                     dcc.Markdown(
-                    '''$ pip install dash
-$ pip install plotly''', style=styles.code_container),
+                    '''
+                    ```shell
+                    $ pip install dash
+                    $ pip install plotly
+                    ```
+                    ''', style=styles.code_container),
 
                     dcc.Markdown(s(
                     '''
@@ -310,7 +330,11 @@ $ pip install plotly''', style=styles.code_container),
                     ''')),
 
                     dcc.Markdown(
-                    '''$ pip install gunicorn''', style=styles.code_container),
+                    '''
+                    ```shell
+                    $ pip install gunicorn
+                    ```
+                    ''', style=styles.code_container),
 
                     dcc.Markdown(s(
                     '''
@@ -327,35 +351,39 @@ $ pip install plotly''', style=styles.code_container),
                     ''')),
 
                     dcc.Markdown(
-                    '''import os
+                    '''
+                    ```python
+                    import os
 
-import dash
-import dash_core_components as dcc
-import dash_html_components as html
-from dash.dependencies import Input, Output
+                    import dash
+                    import dash_core_components as dcc
+                    import dash_html_components as html
+                    from dash.dependencies import Input, Output
 
-app = dash.Dash(__name__, external_stylesheets=['https://codepen.io/chriddyp/pen/bWLwgP.css'])
-server = app.server
+                    app = dash.Dash(__name__, external_stylesheets=['https://codepen.io/chriddyp/pen/bWLwgP.css'])
+                    server = app.server
 
-app.css.append_css({"external_url": "https://codepen.io/chriddyp/pen/bWLwgP.css"})
+                    app.css.append_css({"external_url": "https://codepen.io/chriddyp/pen/bWLwgP.css"})
 
-app.layout = html.Div([
-  html.H2('Hello World'),
-  dcc.Dropdown(
-      id='dropdown',
-      options=[{'label': i, 'value': i} for i in ['LA', 'NYC', 'MTL']],
-      value='LA'
-  ),
-  html.Div(id='display-value')
-])
+                    app.layout = html.Div([
+                      html.H2('Hello World'),
+                      dcc.Dropdown(
+                          id='dropdown',
+                          options=[{'label': i, 'value': i} for i in ['LA', 'NYC', 'MTL']],
+                          value='LA'
+                      ),
+                      html.Div(id='display-value')
+                    ])
 
-@app.callback(Output('display-value', 'children'),
-            [Input('dropdown', 'value')])
-def display_value(value):
-  return 'You have selected "{}"'.format(value)
+                    @app.callback(Output('display-value', 'children'),
+                                [Input('dropdown', 'value')])
+                    def display_value(value):
+                      return 'You have selected "{}"'.format(value)
 
-if __name__ == '__main__':
-  app.run_server(debug=True)''',
+                    if __name__ == '__main__':
+                      app.run_server(debug=True)
+                    ```
+                    ''',
                     style=styles.code_container),
 
                     dcc.Markdown(s('''
@@ -369,10 +397,14 @@ if __name__ == '__main__':
                     ''')),
 
                     dcc.Markdown(
-                    '''venv
-*.pyc
-.DS_Store
-.env''', style=styles.code_container),
+                    '''
+                    ```shell
+                    venv
+                    *.pyc
+                    .DS_Store
+                    .env
+                    ```
+                    ''', style=styles.code_container),
 
                     dcc.Markdown(s(
                     '''
@@ -390,7 +422,11 @@ if __name__ == '__main__':
                     ''')),
 
                     dcc.Markdown(
-                    '''web: gunicorn app:server --workers 4''', style=styles.code_container),
+                    '''
+                    ```shell
+                    web: gunicorn app:server --workers 4
+                    ```
+                    ''', style=styles.code_container),
 
                     dcc.Markdown(s(
                     '''
@@ -419,7 +455,11 @@ if __name__ == '__main__':
                     ''')),
 
                     dcc.Markdown(
-                    '''$ pip freeze > requirements.txt''', style=styles.code_container),
+                    '''
+                    ```shell
+                    $ pip freeze > requirements.txt
+                    ```
+                    ''', style=styles.code_container),
 
                     dcc.Markdown(s(
                     '''
@@ -477,8 +517,12 @@ if __name__ == '__main__':
                     ''')),
 
                     dcc.Markdown(
-                    '''$ cd <your-folder-name>
-$ git init # initializes an empty git repo''', style=styles.code_container),
+                    '''
+                    ```shell
+                    $ cd <your-folder-name>
+                    $ git init # initializes an empty git repo
+                    ```
+                    ''', style=styles.code_container),
 
                     dcc.Markdown(s(
                     '''
@@ -519,8 +563,15 @@ def display_instructions_deploy(method):
         ''')),
 
         dcc.Markdown(s(
-        '''$ git remote add plotly dokku@your-dash-deployment-server:your-dash-app-name''' if method == 'SSH' else
-        '''$ git remote add plotly https://your-dash-deployment-server/GIT/your-dash-app-name'''),
+        '''
+        ```shell
+        $ git remote add plotly dokku@your-dash-deployment-server:your-dash-app-name
+        ```
+        ''' if method == 'SSH' else
+        '''
+        ```shell
+        $ git remote add plotly https://your-dash-deployment-server/GIT/your-dash-app-name
+        ```'''),
         style=styles.code_container,
         ),
 
@@ -560,11 +611,15 @@ def display_instructions_deploy(method):
         ''')),
 
         dcc.Markdown(s(
-        '''$ git status # view the changed files
-$ git diff # view the actual changed lines of code
-$ git add .  # add all the changes
-$ git commit -m 'a description of the changes'
-$ git push plotly master'''), style=styles.code_container),
+        '''
+        ```shell
+        $ git status # view the changed files
+        $ git diff # view the actual changed lines of code
+        $ git add .  # add all the changes
+        $ git commit -m 'a description of the changes'
+        $ git push plotly master
+        ```
+        '''), style=styles.code_container),
 
         dcc.Markdown(s(
         '''
@@ -741,7 +796,7 @@ staticAssets = html.Div(children=[
     below folder structure:
 
 
-    ```
+    ```shell
     -- app.py
     -- assets/
        |-- my-image.png
@@ -754,7 +809,9 @@ staticAssets = html.Div(children=[
     ''')),
 
     dcc.Markdown(s('''
+    ```python
     html.Img(src=app.get_asset_url('my-image.png'))
+    ```
     '''), style=styles.code_container)
 ])
 
@@ -828,8 +885,11 @@ ConfigSys = html.Div(children=[
 
     ''')),
 
-    dcc.Markdown(s('''cp /app/odbc.ini /etc/odbc.ini
+    dcc.Markdown(s('''
+    ```shell
+    cp /app/odbc.ini /etc/odbc.ini
     cp /app/odbcinst.ini /etc/odbcinst.ini
+    ```
     '''), style=styles.code_container),
 
     dcc.Markdown(s('''
@@ -843,13 +903,16 @@ ConfigSys = html.Div(children=[
 
     ''')),
 
-    dcc.Markdown(s('''{
+    dcc.Markdown(s('''
+    ```shell
+    {
     \t"scripts": {
     \t\t"dokku": {
     \t\t\t"predeploy": "/app/setup_pyodbc"
     \t\t}
     \t}
     }
+    ```
     '''), style=styles.code_container),
 
     dcc.Markdown(s('''
@@ -918,7 +981,11 @@ EnvVars = html.Div(children=[
     ''')),
 
     dcc.Markdown(s(
-    """database_password = os.environ['DATABASE_PASSWORD']"""),
+    '''
+    ```python
+    database_password = os.environ['DATABASE_PASSWORD']
+    ```
+    '''),
     style=styles.code_container,
     ),
 
@@ -931,7 +998,11 @@ EnvVars = html.Div(children=[
     ''')),
 
     dcc.Markdown(s(
-    """database_password = os.environ.get('DATABASE_PASSWORD', 'my-default-database-password')"""),
+    '''
+    ```
+    database_password = os.environ.get('DATABASE_PASSWORD', 'my-default-database-password')
+    ```
+    '''),
     style=styles.code_container,
     ),
 
@@ -956,9 +1027,14 @@ EnvVars = html.Div(children=[
     Alternatively, you can define them for your session by "exporting" them:
     ''')),
 
-    dcc.Markdown(s("""$ export DATABASE_USER=chris
+    dcc.Markdown(s(
+    '''
+    ```shell
+    $ export DATABASE_USER=chris
     $ export DATABASE_PASSWORD=my-password
-    $ python app.py"""),
+    $ python app.py
+    ```
+    '''),
     style=styles.code_container,
     ),
 
@@ -1094,8 +1170,12 @@ dcc.Markdown(s('''
 
     ''')),
 
-    dcc.Markdown(s("""import os
-    file_pathname = os.path.join(os.sep, 'data', 'my-dataset.csv')"""),
+    dcc.Markdown(s('''
+    ```python
+    import os
+    file_pathname = os.path.join(os.sep, 'data', 'my-dataset.csv')
+    ```
+    '''),
     style=styles.code_container,
     ),
 
@@ -1110,12 +1190,16 @@ dcc.Markdown(s('''
     ''')),
 
     dcc.Markdown(
-"""if 'DASH_APP_NAME' in os.environ:
-    # this is a deployed app
-    filepath = os.path.join(os.sep, 'data', 'my-dataset.csv')
-else:
-    # local file path
-    filepath = os.path.join(os.sep, 'Users', 'chris', 'data', 'my-dataset.csv')""",
+    '''
+    ```python
+    if 'DASH_APP_NAME' in os.environ:
+        # this is a deployed app
+        filepath = os.path.join(os.sep, 'data', 'my-dataset.csv')
+    else:
+        # local file path
+        filepath = os.path.join(os.sep, 'Users', 'chris', 'data', 'my-dataset.csv')
+    ```
+    ''',
     style=styles.code_container,
     ),
 
@@ -1270,8 +1354,12 @@ def display_instructions(platform):
         ''')),
 
         dcc.Markdown(
-            ('$ ssh-keygen -t rsa -b 4096 -C "your_email@example.com"'),
-            style=styles.code_container,
+        '''
+        ```
+        $ ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+        ```
+        ''',
+        style=styles.code_container,
         ),
 
         dcc.Markdown(s('''
@@ -1283,8 +1371,17 @@ def display_instructions(platform):
         ''')),
 
         dcc.Markdown(
-            ('$ eval $(ssh-agent -s)' if platform == 'Windows' else
-             '$ eval "$(ssh-agent -s)"'),
+            (
+            '''
+            ```shell
+            $ eval $(ssh-agent -s)
+            ```
+            ''' if platform == 'Windows' else
+            '''
+            ```
+            $ eval "$(ssh-agent -s)"
+            ```
+            '''),
             style=styles.code_container,
         ),
 
@@ -1298,8 +1395,17 @@ def display_instructions(platform):
         ''')),
 
         dcc.Markdown(
-            ('$ ssh-add ~/.ssh/id_rsa' if platform == 'Windows' else
-             '$ ssh-add -k ~/.ssh/id_rsa'),
+            (
+            '''
+            ```shell
+            $ ssh-add ~/.ssh/id_rsa
+            ```
+            ''' if platform == 'Windows' else
+            '''
+            ```
+            $ ssh-add -k ~/.ssh/id_rsa
+            ```
+            '''),
             style=styles.code_container,
         ),
 
@@ -1316,9 +1422,24 @@ def display_instructions(platform):
         ''')),
 
         dcc.Markdown(
-            ('$ clip < ~/.ssh/id_rsa.pub' if platform == 'Windows' else
-             '$ pbcopy < ~/.ssh/id_rsa.pub' if platform == 'Mac' else
-             '$ sudo apt-get install xclip\n$ xclip -sel clip < ~/.ssh/id_rsa.pub'),
+            (
+            '''
+            ```shell
+            $ clip < ~/.ssh/id_rsa.pub
+            ```
+            '''
+            if platform == 'Windows' else
+            '''
+            ```shell
+            $ pbcopy < ~/.ssh/id_rsa.pub
+            ```
+            '''
+            if platform == 'Mac' else
+            '''
+            ```shell
+            $ sudo apt-get install xclip\n$ xclip -sel clip < ~/.ssh/id_rsa.pub
+            ```
+            '''),
             style=styles.code_container,
         ),
 
@@ -1461,81 +1582,84 @@ Authentication = html.Div(children=[
     ''')),
 
 
-    dcc.Markdown("""
-import dash
-from dash.dependencies import Input, Output
-import dash_core_components as dcc
-import dash_html_components as html
-import dash_enterprise_auth as auth
+    dcc.Markdown('''
+    ```python
+    import dash
+    from dash.dependencies import Input, Output
+    import dash_core_components as dcc
+    import dash_html_components as html
+    import dash_enterprise_auth as auth
 
 
-external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
+    external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
-app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
+    app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
-server = app.server  # Expose the server variable for deployments
+    server = app.server  # Expose the server variable for deployments
 
 
-# Standard Dash app code below
-app.layout = html.Div(className='container', children=[
+    # Standard Dash app code below
+    app.layout = html.Div(className='container', children=[
 
-    html.Div([
-        html.H2('Sample App', id='header-title', className='ten columns'),
-        html.Div(auth.create_logout_button(), className='two columns', style={'marginTop': 30})
-    ]),
-    html.Div(id='dummy-input', style={'display': 'none'}),
-
-    html.Div([
-        html.Div(
-            className='four columns',
-            children=[
-                dcc.Dropdown(
-                    id='dropdown',
-                    options=[{'label': i, 'value': i} for i in ['LA', 'NYC', 'MTL']],
-                    value='LA'
-                )
+        html.Div([
+            html.H2('Sample App', id='header-title', className='ten columns'),
+            html.Div(auth.create_logout_button(), className='two columns', style={'marginTop': 30})
         ]),
-        html.Div(
-            className='eight columns',
-            children=[
-                dcc.Graph(id='graph')
-            ])
+        html.Div(id='dummy-input', style={'display': 'none'}),
+
+        html.Div([
+            html.Div(
+                className='four columns',
+                children=[
+                    dcc.Dropdown(
+                        id='dropdown',
+                        options=[{'label': i, 'value': i} for i in ['LA', 'NYC', 'MTL']],
+                        value='LA'
+                    )
+            ]),
+            html.Div(
+                className='eight columns',
+                children=[
+                    dcc.Graph(id='graph')
+                ])
+        ])
     ])
-])
 
 
-@app.callback(Output('header-title','children'),
-              [Input('dummy-input', 'children')])
-def update_title(_):
+    @app.callback(Output('header-title','children'),
+                  [Input('dummy-input', 'children')])
+    def update_title(_):
 
-    # print user data to the logs
-    print(auth.get_user_data())
+        # print user data to the logs
+        print(auth.get_user_data())
 
-    # update header with username
-    return 'Hello {}'.format(auth.get_username())
+        # update header with username
+        return 'Hello {}'.format(auth.get_username())
 
 
-@app.callback(Output('graph', 'figure'),
-              [Input('dropdown', 'value')])
-def update_graph(value):
-    return {
-        'data': [{
-            'x': [1, 2, 3, 4, 5, 6],
-            'y': [3, 1, 2, 3, 5, 6]
-        }],
-        'layout': {
-            'title': value,
-            'margin': {
-                'l': 60,
-                'r': 10,
-                't': 40,
-                'b': 60
+    @app.callback(Output('graph', 'figure'),
+                  [Input('dropdown', 'value')])
+    def update_graph(value):
+        return {
+            'data': [{
+                'x': [1, 2, 3, 4, 5, 6],
+                'y': [3, 1, 2, 3, 5, 6]
+            }],
+            'layout': {
+                'title': value,
+                'margin': {
+                    'l': 60,
+                    'r': 10,
+                    't': 40,
+                    'b': 60
+                }
             }
         }
-    }
 
-if __name__ == '__main__':
-    app.run_server(debug=True)""",
+    if __name__ == '__main__':
+        app.run_server(debug=True)
+    ```
+    ''',
     style=styles.code_container,
     )
 ])
@@ -1628,11 +1752,15 @@ Checks = html.Div(children=[
     ''')),
 
     dcc.Markdown(s(
-        '''WAIT=15
+        '''
+        ```shell
+        WAIT=15
         TIMEOUT=10
         ATTEMPTS=3
 
-        /app-name/_dash_layout sample text which is inside the layout'''), style=styles.code_container
+        /app-name/_dash_layout sample text which is inside the layout
+        ```
+        '''), style=styles.code_container
     ),
 
     html.H3('Checks Instructions'),
@@ -1647,13 +1775,17 @@ Checks = html.Div(children=[
    ''')),
 
     dcc.Markdown(s(
-        '''WAIT=5
+        '''
+        ```
+        WAIT=5
         TIMEOUT=10
         ATTEMPTS=3
 
         /app-name/_dash-layout Sample App
         /app-name/assets/dash.css _dash-undo-redo
-        /app-name/assets/images/dash-logo.png '''), style=styles.code_container
+        /app-name/assets/images/dash-logo.png
+        ```
+        '''), style=styles.code_container
     ),
 ])
 
@@ -1681,7 +1813,7 @@ PrivatePackages = html.Div(children=[
     To add private python packages to a Dash App using tarballs, you need to
     include the `tar.gz` file in your App's root folder. For example,
 
-    ```
+    ```python
     -- .gitignore
     -- app.py
     -- Procfile
@@ -1693,7 +1825,7 @@ PrivatePackages = html.Div(children=[
 
     Then in the `requirements.txt` include:
 
-    ```
+    ```shell
     myPackage.tar.gz
     ```
 
@@ -1709,7 +1841,11 @@ PrivatePackages = html.Div(children=[
     ''')),
 
     dcc.Markdown(s(
-    """git+http://${AUTH_USER}:${AUTH_PASSWORD}@git.example.com/MyProject#egg=MyProject"""),
+    '''
+    ```shell
+    git+http://${AUTH_USER}:${AUTH_PASSWORD}@git.example.com/MyProject#egg=MyProject
+    ```
+    '''),
     style=styles.code_container,
     ),
 
@@ -1870,8 +2006,12 @@ Redis = html.Div(children=[
     ''')),
 
     dcc.Markdown(s(
-    """$ ssh dokku@YOUR_DASH_SERVER redis:create SERVICE-NAME
-    $ ssh dokku@YOUR_DASH_SERVER redis:link SERVICE-NAME APP-NAME"""),
+    '''
+    ```shell
+    $ ssh dokku@YOUR_DASH_SERVER redis:create SERVICE-NAME
+    $ ssh dokku@YOUR_DASH_SERVER redis:link SERVICE-NAME APP-NAME
+    ```
+    '''),
     style=styles.code_container,
     ),
 
@@ -1898,7 +2038,11 @@ Redis = html.Div(children=[
     ''')),
 
     dcc.Markdown(s(
-    """redis_instance = redis.StrictRedis.from_url(os.environ["REDIS_URL"])"""),
+    '''
+    ```shell
+    redis_instance = redis.StrictRedis.from_url(os.environ["REDIS_URL"])
+    ```
+    '''),
     style=styles.code_container,
     ),
 
@@ -1917,7 +2061,12 @@ Redis = html.Div(children=[
     variable on-the-fly when you run `python app.py`.
     ''')),
 
-    dcc.Markdown(s("$ REDIS_URL=redis://<your-redis-instance-ip>:6379 python app.py"),
+    dcc.Markdown(s(
+    '''
+    ```shell
+    $ REDIS_URL=redis://<your-redis-instance-ip>:6379 python app.py
+    ```
+    '''),
     style=styles.code_container,
     ),
 
@@ -2000,7 +2149,11 @@ StagingApp = html.Div(children=[
     ''')),
 
     dcc.Markdown(s(
-    '''$ git add remote stage https://your-dash-deployment-server/GIT/your-dash-app-name-stage'''),
+    '''
+    ```shell
+    $ git add remote stage https://your-dash-deployment-server/GIT/your-dash-app-name-stage
+    ```
+    '''),
     style=styles.code_container),
 
     dcc.Markdown(s(
@@ -2016,7 +2169,10 @@ StagingApp = html.Div(children=[
     ''')),
 
     dcc.Markdown(s(
-    '''$ git push stage master'''),
+    '''
+    ```shell
+    $ git push stage master
+    ```'''),
     style=styles.code_container),
 
 ])
@@ -2045,21 +2201,25 @@ pdfService = html.Div(children=[
 
         ''')),
 
-        dcc.Markdown('''POST https://<your-dash-deployment-server>/Manager/api/generate_report
-content-type: application/json
-plotly-client-platform: dash
-Authorization: Basic ...
+        dcc.Markdown('''
+        ```bash
+        POST https://<your-dash-deployment-server>/Manager/api/generate_report
+        content-type: application/json
+        plotly-client-platform: dash
+        Authorization: Basic ...
 
-{
-    "url": "...",
-    "appname": os.environ.get('DASH_APP_NAME'),
-    "secret_key": os.environ.get('DASH_SECRET_KEY'),
-    "pdf_options": {
-        "pageSize": "Letter",
-        "marginsType": 1
-    },
-    "wait_selector": "body"
-}''',
+        {
+            "url": "...",
+            "appname": os.environ.get('DASH_APP_NAME'),
+            "secret_key": os.environ.get('DASH_SECRET_KEY'),
+            "pdf_options": {
+                "pageSize": "Letter",
+                "marginsType": 1
+            },
+            "wait_selector": "body"
+        }
+        ```
+        ''',
         style=styles.code_container),
 
         dcc.Markdown(s(
@@ -2111,84 +2271,90 @@ Authorization: Basic ...
         for more details.
         ''')),
 
-        dcc.Markdown('''import dash
-from dash.dependencies import Input, Output, State
-import dash_core_components as dcc
-import dash_html_components as html
+        dcc.Markdown(
+        '''
+        ```python
 
-import base64
-import os
-import requests
+        import dash
+        from dash.dependencies import Input, Output, State
+        import dash_core_components as dcc
+        import dash_html_components as html
 
-app = dash.Dash(__name__)
-server = app.server
+        import base64
+        import os
+        import requests
 
-
-app.layout = html.Div([
-    html.Label('Website URL'),
-    dcc.Input(
-        id='website',
-        value='https://dash.plot.ly'
-    ),
-
-    html.Div(html.B('CSS Selector')),
-    html.Div(
-        'Wait until an element targeted by this selector appears '
-        'before taking a snapshot. These are standard CSS query selectors'.
-    ),
-    dcc.Input(
-        id='wait_selector',
-        value='#wait-for-layout'
-    ),
-
-    html.Button(id='run', children='Snapshot', n_clicks=0),
-
-    html.Div(id='output'),
-
-])
+        app = dash.Dash(__name__)
+        server = app.server
 
 
-@app.callback(Output('output', 'children'),
-              [Input('run', 'n_clicks')],
-              [State('website', 'value'),
-               State('wait_selector', 'value')])
-def snapshot_page(n_clicks, url, wait_selector):
-    if n_clicks == 0:
-        return ''
-    payload = {
-        'url': url,
-        "appname": os.environ.get('DASH_APP_NAME', 'your-dash-app-name'),
-        "secret_key": os.environ.get('DASH_SECRET_KEY', 'your-dash-app-secret-key'),
-        'pdf_options': {
-            'pageSize': 'Letter',
-            'marginsType': 1
-        },
-        'wait_selector': wait_selector
-    }
-
-    res = requests.post(
-        'https://{}/Manager/api/generate_report'.format(
-            os.environ.get('DASH_DOMAIN_BASE', 'your-dash-domain-base')
-        ),
-        json=payload
-    )
-    if res.status_code == 200:
-        return html.A(
-            'Download',
-            href='data:application/pdf;base64,{}'.format(
-                base64.b64encode(res.content).decode('utf-8')
+        app.layout = html.Div([
+            html.Label('Website URL'),
+            dcc.Input(
+                id='website',
+                value='https://dash.plot.ly'
             ),
-            download='dash.pdf',
-            target='_blank'
-        )
 
-    return html.Pre('Status: {}\nResponse: {}'.format(
-        res.status_code, res.content
-    ))
+            html.Div(html.B('CSS Selector')),
+            html.Div(
+                'Wait until an element targeted by this selector appears '
+                'before taking a snapshot. These are standard CSS query selectors'.
+            ),
+            dcc.Input(
+                id='wait_selector',
+                value='#wait-for-layout'
+            ),
+
+            html.Button(id='run', children='Snapshot', n_clicks=0),
+
+            html.Div(id='output'),
+
+        ])
 
 
-if __name__ == '__main__':
-    app.run_server(debug=True)''',
+        @app.callback(Output('output', 'children'),
+                      [Input('run', 'n_clicks')],
+                      [State('website', 'value'),
+                       State('wait_selector', 'value')])
+        def snapshot_page(n_clicks, url, wait_selector):
+            if n_clicks == 0:
+                return ''
+            payload = {
+                'url': url,
+                "appname": os.environ.get('DASH_APP_NAME', 'your-dash-app-name'),
+                "secret_key": os.environ.get('DASH_SECRET_KEY', 'your-dash-app-secret-key'),
+                'pdf_options': {
+                    'pageSize': 'Letter',
+                    'marginsType': 1
+                },
+                'wait_selector': wait_selector
+            }
+
+            res = requests.post(
+                'https://{}/Manager/api/generate_report'.format(
+                    os.environ.get('DASH_DOMAIN_BASE', 'your-dash-domain-base')
+                ),
+                json=payload
+            )
+            if res.status_code == 200:
+                return html.A(
+                    'Download',
+                    href='data:application/pdf;base64,{}'.format(
+                        base64.b64encode(res.content).decode('utf-8')
+                    ),
+                    download='dash.pdf',
+                    target='_blank'
+                )
+
+            return html.Pre('Status: {}, Response: {}'.format(
+                res.status_code, res.content
+            ))
+
+
+        if __name__ == '__main__':
+            app.run_server(debug=True)
+        ```
+        ''',
         style=styles.code_container),
 
         dcc.Markdown(s('''
@@ -2235,9 +2401,12 @@ Troubleshooting = html.Div(children=[
     html.Details([
         html.Summary("Are using the latest versions?"),
 
-        dcc.Markdown('''dash=={}
-            dash-html-components=={}
-            dash-core-components=={}
+        dcc.Markdown('''
+        ```shell
+        dash=={}
+        dash-html-components=={}
+        dash-core-components=={}
+        ```
         '''.replace('    ', '').format(
             dash.__version__,
             html.__version__,
@@ -2282,7 +2451,11 @@ Troubleshooting = html.Div(children=[
         html.Summary("SSL certificate problem: self signed certificate"),
 
         dcc.Markdown(s(
-        '''fatal: unable to access 'https://<your-dash-deployment-server>/GIT/your-dash-app-name/': SSL certificate problem: self signed certificate'''),
+        '''
+        ```shell
+        fatal: unable to access 'https://<your-dash-deployment-server>/GIT/your-dash-app-name/': SSL certificate problem: self signed certificate
+        ```
+        '''),
         style=styles.code_container),
 
         dcc.Markdown(s(
@@ -2396,8 +2569,10 @@ Troubleshooting = html.Div(children=[
 
         dcc.Markdown(
             '''
+            ```shell
             $ git push multipage master
             dokku@dash.local's password:
+            ```
             ''',
             style=styles.code_container),
 
@@ -2706,7 +2881,11 @@ Logs = html.Div(children=[
     ''')),
 
     dcc.Markdown(s(
-    '''$ ssh dokku@<your-dash-domain> logs <your-app-name> --num -1'''),
+    '''
+    ```shell
+    $ ssh dokku@<your-dash-domain> logs <your-app-name> --num -1
+    ```
+    '''),
     style=styles.code_container),
 
     dcc.Markdown(s('''
@@ -2805,9 +2984,13 @@ Git = html.Div(children=[
     ''')),
 
     dcc.Markdown(s(
-    '''$ cd myDashApp
+    '''
+    ```shell
+    $ cd myDashApp
     $ git init
-    Initialized empty Git repository in .git/'''),
+    Initialized empty Git repository in .git/
+    ```
+    '''),
     style=styles.code_container),
 
     dcc.Markdown(s('''
@@ -2823,7 +3006,11 @@ Git = html.Div(children=[
     ''')),
 
     dcc.Markdown(s(
-    '''$ git clone <respository-name>'''),
+    '''
+    ```shell
+    $ git clone <respository-name>
+    ```
+    '''),
     style=styles.code_container),
 
     dcc.Markdown(s('''&nbsp;''')),
@@ -2856,7 +3043,11 @@ Git = html.Div(children=[
     ''')),
 
     dcc.Markdown(s(
-    '''$ git remote add <remote-name> <remote-URL>'''),
+    '''
+    ```shell
+    $ git remote add <remote-name> <remote-URL>
+    ```
+    '''),
     style=styles.code_container),
 
     dcc.Markdown(s('''
@@ -2868,7 +3059,11 @@ Git = html.Div(children=[
     ''')),
 
     dcc.Markdown(s(
-    '''$ git remote -v '''),
+    '''
+    ```shell
+    $ git remote -v
+    ```
+    '''),
     style=styles.code_container),
 
     dcc.Markdown(s('''
@@ -2880,7 +3075,11 @@ Git = html.Div(children=[
     ''')),
 
     dcc.Markdown(s(
-    '''$ git remote rename <existing-name> <new-name> '''),
+    '''
+    ```shell
+    $ git remote rename <existing-name> <new-name>
+    ```
+    '''),
     style=styles.code_container),
 
     dcc.Markdown(s('''
@@ -2892,7 +3091,11 @@ Git = html.Div(children=[
     ''')),
 
     dcc.Markdown(s(
-    '''$ git remote rm <remote-name> '''),
+    '''
+    ```shell
+    $ git remote rm <remote-name>
+    ```
+    '''),
     style=styles.code_container),
 
     dcc.Markdown(s('''
@@ -2931,9 +3134,13 @@ Git = html.Div(children=[
     ''')),
 
     dcc.Markdown(s(
-    '''$ git add .
+    '''
+    ```shell
+    $ git add .
     $ git commit -m "a description of the changes"
-    $ git push <respository-name> master'''),
+    $ git push <respository-name> master
+    ```
+    '''),
     style=styles.code_container),
 
     dcc.Markdown(s('''
@@ -2953,7 +3160,11 @@ Git = html.Div(children=[
     ''')),
 
     dcc.Markdown(s(
-    '''$ git branch'''),
+    '''
+    ```shell
+    $ git branch
+    ```
+    '''),
     style=styles.code_container),
 
     dcc.Markdown(s('''
@@ -2965,7 +3176,11 @@ Git = html.Div(children=[
     ''')),
 
     dcc.Markdown(s(
-    '''$ git branch <branchname> '''),
+    '''
+    ```shell
+    $ git branch <branchname>
+    ```
+    '''),
     style=styles.code_container),
 
     dcc.Markdown(s('''
@@ -2978,7 +3193,11 @@ Git = html.Div(children=[
     ''')),
 
     dcc.Markdown(s(
-    '''$ git checkout <branchname>'''),
+    '''
+    ```
+    $ git checkout <branchname>
+    ```
+    '''),
     style=styles.code_container),
 
     dcc.Markdown(s('''
@@ -2993,9 +3212,12 @@ Git = html.Div(children=[
     ''')),
 
     dcc.Markdown(s(
-    '''$ git add .
+    '''
+    ```shell
+    $ git add .
     $ git commit -m "a description of changes"
-    $ git push <remote-name> <branchname>:master'''),
+    $ git push <remote-name> <branchname>:master
+    '''),
     style=styles.code_container),
 
     dcc.Markdown(s('''
@@ -3007,7 +3229,11 @@ Git = html.Div(children=[
     ''')),
 
     dcc.Markdown(s(
-    '''$ git branch -m <existing-name> <new-name> '''),
+    '''
+    ```shell
+    $ git branch -m <existing-name> <new-name>
+    ```
+    '''),
     style=styles.code_container),
 
 
@@ -3020,7 +3246,11 @@ Git = html.Div(children=[
     ''')),
 
     dcc.Markdown(s(
-    '''$ git branch -D <branch-name> '''),
+    '''
+    ```shell
+    $ git branch -D <branch-name>
+    ```
+    '''),
     style=styles.code_container),
 
     dcc.Markdown(s('''&nbsp;''')),
