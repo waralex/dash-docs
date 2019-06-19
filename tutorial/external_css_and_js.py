@@ -223,6 +223,10 @@ assets folder to find all of your assets, map their relative path onto `assets_e
 and then request the resources from there.
 `app.scripts.config.serve_locally = False` must also be set in order for this to work.
 
+**NOTE:** In Dash 0.43.0 and before, `app.scripts.config.serve_locally = False`
+was the default, except when dev bundles are served (such as during debugging).
+Starting with Dash 1.0.0, `serve_locally` defaults to `True`.
+
 **Example:**
 ''')),
 
@@ -505,21 +509,30 @@ if __name__ == '__main__':
 
     ## Serving Dash's Component Libraries Locally or from a CDN
 
+    **Changed in Dash 1.0.0 - now `serve_locally` defaults to `True`,
+    previously it defaulted to `False`**
+
     Dash's component libraries, like `dash_core_components` and `dash_html_components`,
     are bundled with JavaScript and CSS files. Dash automatically checks with
     component libraries are being used in your application and will automatically
     serve these files in order to render the application.
 
     By default, dash serves the JavaScript and CSS resources from the
-    online CDNs. This is usually much faster than loading the resources
-    from the file system.
+    local files on the server where Dash is running. This is the more flexible
+    and robust option: in some cases, such as firewalled or airgapped
+    environments, it is the only option. It also avoids some hard-to-debug
+    problems like packages that have not been published to NPM or CDN downtime,
+    and the unlikely but possible scenario of the CDN being hacked. And of
+    course, component developers will want the local version while changing the
+    code, so when dev bundles are requested (such as with `debug=True`) we
+    always serve locally.
 
-    However, if you are working in an offline or firewalled environment or
-    if the CDN is unavailable, then your dash app itself can serve these
-    files. These files are stored as part of the component's site-packages
-    folder.
+    However, for performance-critical apps served beyond an intranet, online
+    CDNs can often deliver these files much faster than loading the resources
+    from the file system, and will reduce the load on the Dash server.
 
-    Here's how to enable this option:
+    Here's how to enable CDN serving. `app.scripts` is the most important one,
+    that controls the JavaScript files, but `app.css` can sometimes help too:
 
     ''')),
 
@@ -527,8 +540,8 @@ if __name__ == '__main__':
 
 app = Dash()
 
-app.css.config.serve_locally = True
-app.scripts.config.serve_locally = True''',
+app.scripts.config.serve_locally = False
+app.css.config.serve_locally = False''',
         language='python',
         customStyle={'borderLeft': 'thin lightgrey solid'}
     ),
