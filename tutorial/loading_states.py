@@ -17,6 +17,7 @@ Dash uses this prop in the `Loading` component to display spinners if a componen
 to wrap other components that you want to display a loading spinner for. Here's an example of what that looks like:
 '''),
 dcc.Markdown('''
+```python
 # -*- coding: utf-8 -*-
 import dash
 import dash_html_components as html
@@ -71,59 +72,62 @@ Aside from using the [`Loading`](/dash-core-components/loading_component) compon
 `data-dash-is-loading` attribute set on that component's HTML output. This means that
 you can target those components yourself with CSS, and create your own custom spinner
 for them. Here's an example of what that could look like:
+```
     '''),
     dcc.Markdown('''
-# -*- coding: utf-8 -*-
-import dash
-import dash_html_components as html
-import dash_core_components as dcc
-import time
+    ```python
+    # -*- coding: utf-8 -*-
+    import dash
+    import dash_html_components as html
+    import dash_core_components as dcc
+    import time
 
-from dash.dependencies import Input, Output, State
+    from dash.dependencies import Input, Output, State
 
-app = dash.Dash(__name__)
+    app = dash.Dash(__name__)
 
-app.scripts.config.serve_locally = True
+    app.scripts.config.serve_locally = True
 
-app.layout = html.Div(
-    children=[
-        html.Div(id="output-1"),
-        dcc.Input(id="input-1", value="Input triggers local spinner"),
-        html.Div(
-            [
-                html.Div(id="output-2"),
-                dcc.Input(id="input-2", value="Input triggers nested spinner"),
-            ]
-        ),
-    ]
-)
-
-
-@app.callback(Output("output-1", "children"), [Input("input-1", "value")])
-def input_triggers_spinner(value):
-    time.sleep(1)
-    return value
+    app.layout = html.Div(
+        children=[
+            html.Div(id="output-1"),
+            dcc.Input(id="input-1", value="Input triggers local spinner"),
+            html.Div(
+                [
+                    html.Div(id="output-2"),
+                    dcc.Input(id="input-2", value="Input triggers nested spinner"),
+                ]
+            ),
+        ]
+    )
 
 
-@app.callback(Output("output-2", "children"), [Input("input-2", "value")])
-def input_triggers_nested(value):
-    time.sleep(1)
-    return value
+    @app.callback(Output("output-1", "children"), [Input("input-1", "value")])
+    def input_triggers_spinner(value):
+        time.sleep(1)
+        return value
 
 
-if __name__ == "__main__":
-    app.run_server(debug=False)
-    '''),
-    html.P("You could target all components in the layout above that are loading using the following CSS:"),
-    dcc.Markdown('''
-*[data-dash-is-loading="true"]{
-    visibility: hidden;
-}
-*[data-dash-is-loading="true"]::before{
-    content: "Loading...";
-    display: inline-block;
-    color: magenta;
-    visibility: visible;
-}
+    @app.callback(Output("output-2", "children"), [Input("input-2", "value")])
+    def input_triggers_nested(value):
+        time.sleep(1)
+        return value
+
+
+    if __name__ == "__main__":
+        app.run_server(debug=False)
+        '''),
+        html.P("You could target all components in the layout above that are loading using the following CSS:"),
+        dcc.Markdown('''
+    *[data-dash-is-loading="true"]{
+        visibility: hidden;
+    }
+    *[data-dash-is-loading="true"]::before{
+        content: "Loading...";
+        display: inline-block;
+        color: magenta;
+        visibility: visible;
+    }
+    ```
     ''')
 ])

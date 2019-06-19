@@ -9,7 +9,7 @@ from tutorial import styles
 
 def Syntax(content):
     return dcc.Markdown(
-        content.strip(),
+        '```python  \n' + content.strip() + '  \n```',
         style=styles.code_container
     )
 
@@ -29,7 +29,12 @@ layout = html.Div([
     towards the address of a deployed Dash app. This allows you to place your
     Dash app in a specific location within an existing web page with your
     desired dimensions:""")),
-    Syntax('<iframe src="http://localhost:8050" width=700 height=600>'),
+    dcc.Markdown(
+    '''
+    ```html
+    <iframe src="http://localhost:8050" width=700 height=600>
+    ```
+    '''),
     dcc.Markdown(dedent(
     """
     ## Embedding a Dash app within an Existing Flask App
@@ -43,7 +48,7 @@ layout = html.Div([
     """
     )),
     Syntax(dedent(
-    """
+    '''
     import flask
     import dash
     import dash_html_components as html
@@ -64,7 +69,7 @@ layout = html.Div([
 
     if __name__ == '__main__':
         app.run_server(debug=True)
-    """
+    '''
     )),
     dcc.Markdown(dedent(
     """

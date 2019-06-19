@@ -74,7 +74,7 @@ layout = html.Div([
 
     We'll create several files: `app.py`, a folder named `assets`, and
     three files in that folder:
-    ```
+    ```bash
     - app.py
     - assets/
         |-- typography.css
@@ -100,12 +100,15 @@ layout = html.Div([
     ),
 
     dcc.Markdown(
-        s('''body {
-    font-family: sans-serif;
-}
-h1, h2, h3, h4, h5, h6 {
-    color: hotpink
-}
+        s('''
+        ```css
+        body {
+            font-family: sans-serif;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            color: hotpink
+        }
+        ```
         '''),
         style=styles.code_container
     ),
@@ -118,16 +121,19 @@ h1, h2, h3, h4, h5, h6 {
     ),
 
     dcc.Markdown(
-        s('''.app-header {
-    height: 60px;
-    line-height: 60px;
-    border-bottom: thin lightgrey solid;
-}
+        s('''
+        ```css
+        .app-header {
+            height: 60px;
+            line-height: 60px;
+            border-bottom: thin lightgrey solid;
+        }
 
-.app-header .app-header--title {
-    font-size: 22px;
-    padding-left: 5px;
-}
+        .app-header .app-header--title {
+            font-size: 22px;
+            padding-left: 5px;
+        }
+        ```
         '''),
         style=styles.code_container
     ),
@@ -141,7 +147,9 @@ h1, h2, h3, h4, h5, h6 {
 
     dcc.Markdown(
         s('''
+        ```js
         alert('If you see this alert, then your custom JavaScript script has run!')
+        ```
         '''),
         style=styles.code_container
     ),
@@ -257,17 +265,21 @@ app.scripts.config.serve_locally = False
     ''')),
 
     dcc.Markdown(
-        """import dash
-import dash_html_components as html
+    '''
+    ```
+    import dash
+    import dash_html_components as html
 
-app = dash.Dash(__name__)
+    app = dash.Dash(__name__)
 
-app.layout = html.Div([
-    html.Img(src='/assets/image.png')
-])
+    app.layout = html.Div([
+        html.Img(src='/assets/image.png')
+    ])
 
-if __name__ == '__main__':
-    app.run_server(debug=True)""",
+    if __name__ == '__main__':
+        app.run_server(debug=True)
+    ```
+    ''',
         style=styles.code_container
     ),
 
@@ -306,7 +318,7 @@ if __name__ == '__main__':
     ''')),
 
     dcc.Markdown(
-        examples['external-resources-init'],
+        '```python  \n' + examples['external-resources-init'] + '  \n```',
         style=styles.code_container
     ),
 
@@ -345,7 +357,7 @@ if __name__ == '__main__':
     ''')),
 
     dcc.Markdown(
-        examples['custom-index-string'],
+        '```python  \n' + examples['custom-index-string'] + '  \n```',
         style=styles.code_container
     ),
 
@@ -400,7 +412,7 @@ if __name__ == '__main__':
     ''')),
 
     dcc.Markdown(
-        examples['custom-interpolate-string'],
+        '```python  \n' + examples['custom-interpolate-string'] + '  \n```',
         style=styles.code_container
     ),
 
@@ -445,7 +457,7 @@ if __name__ == '__main__':
     ''')),
 
     dcc.Markdown(
-        examples['custom-dash-renderer'],
+        '```python  \n' + examples['custom-dash-renderer'] + '  \n```',
         style=styles.code_container
     ),
 
@@ -457,7 +469,7 @@ if __name__ == '__main__':
     ''')),
 
     dcc.Markdown(
-        examples['custom-dash-renderer-hooks'],
+        '```python  \n' + examples['custom-dash-renderer-hooks'] + '  \n```',
         style=styles.code_container
     ),
 
@@ -480,7 +492,7 @@ if __name__ == '__main__':
     ''')),
 
     dcc.Markdown(
-        examples['dash-meta-tags'],
+        '```python  \n' + examples['dash-meta-tags'] + '  \n```',
         style=styles.code_container
     ),
 
