@@ -42,7 +42,11 @@ layout = html.Div([
 
     Section('Quickstart', [
         dcc.Markdown(
-            '''pip install dash-cytoscape=={}'''.format(dash_cytoscape.__version__),
+            '''
+            ```
+            pip install dash-cytoscape=={}
+            ```
+            '''.format(dash_cytoscape.__version__),
             style=styles.code_container
         ),
 

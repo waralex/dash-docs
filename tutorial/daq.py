@@ -25,9 +25,13 @@ daq_library_heading =  dcc.Markdown('''
     '''.replace('    ', '').format(daq.__version__)
 )
 
-daq_install_instructions = dcc.Markdown('''>>> import dash_daq as daq
+daq_install_instructions = dcc.Markdown('''
+    ```
+    >>> import dash_daq as daq
     >>> print(daq.__version__)
-    {}'''.replace('    ', '').format(daq.__version__),
+    {}
+    ```
+    '''.replace('    ', '').format(daq.__version__),
     style=styles.code_container)
 
 

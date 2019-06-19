@@ -70,7 +70,11 @@ layout = html.Div([
 
     Section('Quickstart', [
         dcc.Markdown(
-            '''pip install dash=={}'''.format(dash.__version__),
+            '''
+            ```
+            pip install dash=={}
+            ```
+            '''.format(dash.__version__),
             style=styles.code_container
         ),
 

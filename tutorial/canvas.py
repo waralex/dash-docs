@@ -22,7 +22,11 @@ layout = html.Div([
     ''')),
 
     dcc.Markdown(
-        '''pip install dash-canvas=={}'''.format(dash_canvas.__version__),
+        '''
+        ```
+        pip install dash-canvas=={}
+        ```
+        '''.format(dash_canvas.__version__),
         style=styles.code_container
     ),
 

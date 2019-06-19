@@ -26,9 +26,13 @@ DASHBIO_LIBRARY_HEADING = [
 ]
 
 DASHBIO_INSTALL_INSTRUCTIONS = dcc.Markdown(
-    '''>>> import dash_bio
+    '''
+    ```
+    >>> import dash_bio
     >>> print(dash_bio.__version__)
-    {}'''.replace('    ', '').format(dash_bio.__version__),
+    {}
+    ```
+    '''.replace('    ', '').format(dash_bio.__version__),
     style=styles.code_container
 )
 
