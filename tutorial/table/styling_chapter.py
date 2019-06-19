@@ -243,7 +243,7 @@ layout = html.Div(
                 {"name": ["", "Year"], "id": "year"},
                 {"name": ["City", "Montreal"], "id": "montreal"},
                 {"name": ["City", "Toronto"], "id": "toronto"},
-                {"name": ["City", "Ottawa"], "id": "ottawa", "hidden": True},
+                {"name": ["City", "Ottawa"], "id": "ottawa"},
                 {"name": ["City", "Vancouver"], "id": "vancouver"},
                 {"name": ["Climate", "Temperature"], "id": "temp"},
                 {"name": ["Climate", "Humidity"], "id": "humidity"},
@@ -388,7 +388,7 @@ layout = html.Div(
                 {
                     'if': {
                         'column_id': 'Region',
-                        'filter': '{Region} eq "Montreal"'
+                        'filter_query': '{Region} eq "Montreal"'
                     },
                     'backgroundColor': '#3D9970',
                     'color': 'white',
@@ -396,7 +396,7 @@ layout = html.Div(
                 {
                     'if': {
                         'column_id': 'Humidity',
-                        'filter': '{Humidity} eq 20'
+                        'filter_query': '{Humidity} eq 20'
                     },
                     'backgroundColor': '#3D9970',
                     'color': 'white',
@@ -404,7 +404,7 @@ layout = html.Div(
                 {
                     'if': {
                         'column_id': 'Temperature',
-                        'filter': '{Temperature} > 3.9'
+                        'filter_query': '{Temperature} > 3.9'
                     },
                     'backgroundColor': '#3D9970',
                     'color': 'white',
@@ -413,6 +413,85 @@ layout = html.Div(
         )
         '''
         ),
+        dcc.Markdown("## Styles Priority"),
+
+        dcc.Markdown(dedent(
+        """
+        There are a specific order of priority for the style\_\* properties. If there
+        are multiple style_* props, the one with higher priority will take precedence. Within each 
+        props, rules for higher index will be priorized over lower index rules.  Previously 
+        applied styles of equal priority will win over later ones (applied top to bottom, left to right)
+
+        These are the prorioty of style_* props in decreasing orders:
+
+            1. style_data_conditional
+            2. style_data
+            3. style_filter_conditional
+            4. style_filter
+            5. style_header_conditional
+            6. style_header
+            7. style_cell_conditional
+            8. style_cell
+        """
+        )),
+
+        Display(
+        '''
+        dash_table.DataTable(
+            data=df.to_dict('records'),
+            columns=[{'id': c, 'name': c} for c in df.columns],
+            style_header={ 'border': '1px solid black' },
+            style_cell={ 'border': '1px solid grey' },
+        )
+        '''
+        ),
+
+        dcc.Markdown("## Adding Borders"),
+
+        dcc.Markdown(dedent(
+        """
+        You can customize the table borders by adding `border` to style_* props.  
+        """
+        )),
+
+        Display(
+        '''
+        dash_table.DataTable(
+            data=df.to_dict('records'),
+            columns=[{'id': c, 'name': c} for c in df.columns],
+            style_data={ 'border': '1px solid blue' },
+            style_header={ 'border': '1px solid pink' },
+        )
+        '''
+        ),
+
+        dcc.Markdown("## Styling editable "),
+
+        dcc.Markdown(dedent(
+        """
+        Editable column can be styled using  `column_editable` in 
+        style_header_conditional, style_filter_conditional, style_data_conditional props.
+        """
+        )),
+
+        Display(
+        '''
+        dash_table.DataTable(
+            data=df.to_dict('records'),
+            columns=[{'id': c, 'name': c, 'editable': (c == 'Humidity') } for c in df.columns],
+            style_data_conditional=[{ 
+                'if': {'column_editable': False}, 
+                'backgroundColor': 'rgb(30, 30, 30)',
+                'color': 'white'
+            }], 
+            style_header_conditional=[{ 
+                'if': {'column_editable': False}, 
+                'backgroundColor': 'rgb(30, 30, 30)',
+                'color': 'white'
+            }], 
+        )
+        '''
+        )
 
     ]
 )

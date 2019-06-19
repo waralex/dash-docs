@@ -25,15 +25,12 @@ app.layout = html.Div([
         ],
 
         editable=True,
-        column_conditional_dropdowns=[
-            {
-                # column id
-                'id': 'Neighborhood',
-                'dropdowns': [
-                    {
-                        # these are filter strings
-                        'condition': '{City} eq "NYC"',
-                        'dropdown': [
+        dropdown_conditional=[{
+            'if': {
+                'column_id': 'Neighborhood',
+                'filter_query': '{City} eq "NYC"'
+            },
+            'options': [
                             {'label': i, 'value': i}
                             for i in [
                                 'Brooklyn',
@@ -41,35 +38,34 @@ app.layout = html.Div([
                                 'Staten Island'
                             ]
                         ]
-                    },
-
-                    {
-                        'condition': '{City} eq "Montreal"',
-                        'dropdown': [
+        }, {
+            'if': {
+                'column_id': 'Neighborhood',
+                'filter_query': '{City} eq "Montreal"'
+            },
+            'options': [
                             {'label': i, 'value': i}
                             for i in [
                                 'Mile End',
                                 'Plateau',
                                 'Hochelaga'
                             ]
-                        ]
-                    },
-
-                    {
-                        'condition': '{City} eq "Los Angeles"',
-                        'dropdown': [
+                        ] 
+        },
+        {
+            'if': {
+                'column_id': 'Neighborhood',
+                'filter_query': '{City} eq "Los Angeles"'
+            },
+            'options': [
                             {'label': i, 'value': i}
                             for i in [
                                 'Venice',
                                 'Hollywood',
                                 'Los Feliz'
                             ]
-                        ]
-                    }
-
-                ]
-            }
-        ]
+                        ] 
+        }]
     ),
     html.Div(id='dropdown_per_row_container')
 ])
@@ -77,3 +73,4 @@ app.layout = html.Div([
 
 if __name__ == '__main__':
     app.run_server(debug=True)
+

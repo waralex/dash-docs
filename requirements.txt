@@ -53,3 +53,4 @@ traitlets==4.3.2
 urllib3==1.22
 Werkzeug==0.14.1
 wrapt==1.10.11
+dash_table-3.7.0.tar.gz

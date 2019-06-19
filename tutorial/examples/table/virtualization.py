@@ -14,7 +14,7 @@ app.layout = dash_table.DataTable(
         columns=[
             {'name': i, 'id': i} for i in df.columns
         ],
-        n_fixed_rows=1,
+        fixed_rows={ 'headers': True, 'data': 0 },
         style_cell={
             'whiteSpace': 'normal'
         },
@@ -31,7 +31,7 @@ app.layout = dash_table.DataTable(
              'width': '75px'},
         ],
         virtualization=True,
-        pagination_mode=False
+        page_action='none'
 )
 
 
