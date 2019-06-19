@@ -35,6 +35,7 @@ from tutorial import react_for_python_developers
 from tutorial import table
 from tutorial import devtools
 from tutorial import loading_states
+from tutorial import testing
 from tutorial import integrating_dash
 
 
@@ -1007,6 +1008,13 @@ chapters = {
         'content': devtools.layout,
         'name': 'Dev tools',
         'description': 'Dash dev tools reference'
+    },
+
+    'testing': {
+        'url': '/testing',
+        'content': testing.layout,
+        'name': 'Dash Testing',
+        'description': '(New in Dash 1.0!) An introduction to testing your dash app with selenium'
     },
 
     'logout-button': {
