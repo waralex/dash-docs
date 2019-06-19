@@ -28,8 +28,6 @@ from dash.dependencies import Input, Output, State
 
 app = dash.Dash(__name__)
 
-app.scripts.config.serve_locally = True
-
 app.layout = html.Div(
     children=[
         html.H3("Edit text input to see loading state"),
@@ -72,7 +70,6 @@ Aside from using the [`Loading`](/dash-core-components/loading_component) compon
 `data-dash-is-loading` attribute set on that component's HTML output. This means that
 you can target those components yourself with CSS, and create your own custom spinner
 for them. Here's an example of what that could look like:
-```
     '''),
     dcc.Markdown('''
     ```python

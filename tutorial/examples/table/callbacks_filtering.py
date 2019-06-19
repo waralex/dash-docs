@@ -17,14 +17,12 @@ app.layout = dash_table.DataTable(
     columns=[
         {"name": i, "id": i} for i in sorted(df.columns)
     ],
-    pagination_settings={
-        'current_page': 0,
-        'page_size': PAGE_SIZE
-    },
-    pagination_mode='be',
+    page_current=0,
+    page_size=PAGE_SIZE,
+    page_action='custom',
 
-    filtering='be',
-    filter=''
+    filter_action='custom',
+    filter_query=''
 )
 
 operators = [['ge ', '>='],
@@ -63,9 +61,10 @@ def split_filter_part(filter_part):
 
 @app.callback(
     Output('table-filtering', "data"),
-    [Input('table-filtering', "pagination_settings"),
-     Input('table-filtering', "filter")])
-def update_table(pagination_settings, filter):
+    [Input('table-filtering', "page_current"),
+     Input('table-filtering', "page_size"),
+     Input('table-filtering', "filter_query")])
+def update_table(page_current,page_size, filter):
     print(filter)
     filtering_expressions = filter.split(' && ')
     dff = df
@@ -83,8 +82,7 @@ def update_table(pagination_settings, filter):
             dff = dff.loc[dff[col_name].str.startswith(filter_value)]
 
     return dff.iloc[
-        pagination_settings['current_page']*pagination_settings['page_size']:
-        (pagination_settings['current_page'] + 1)*pagination_settings['page_size']
+        page_current*page_size:(page_current+ 1)*page_size
     ].to_dict('records')
 
 

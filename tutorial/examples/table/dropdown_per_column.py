@@ -25,22 +25,20 @@ app.layout = html.Div([
         ],
 
         editable=True,
-        column_static_dropdown=[
-            {
-                'id': 'climate',
-                'dropdown': [
+        dropdown={
+            'climate': {
+                'options': [
                     {'label': i, 'value': i}
                     for i in df['climate'].unique()
                 ]
             },
-            {
-                'id': 'city',
-                'dropdown': [
+            'city': {
+                 'options': [
                     {'label': i, 'value': i}
                     for i in df['city'].unique()
                 ]
-            },
-        ]
+            }
+        }
     ),
     html.Div(id='table-dropdown-container')
 ])

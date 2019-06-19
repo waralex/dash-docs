@@ -20,17 +20,15 @@ app.layout = html.Div(
                 columns=[
                     {"name": i, "id": i} for i in sorted(df.columns)
                 ],
-                pagination_settings={
-                    'current_page': 0,
-                    'page_size': 20
-                },
-                pagination_mode='be',
+                page_current=0,
+                page_size=20,
+                page_action='custom',
 
-                filtering='be',
-                filter='',
+                filter_action='custom',
+                filter_query='',
 
-                sorting='be',
-                sorting_type='multi',
+                sort_action='custom',
+                sort_mode='multi',
                 sort_by=[]
             ),
             style={'height': 750, 'overflowY': 'scroll'},
@@ -79,10 +77,11 @@ def split_filter_part(filter_part):
 
 @app.callback(
     Output('table-paging-with-graph', "data"),
-    [Input('table-paging-with-graph', "pagination_settings"),
+    [Input('table-paging-with-graph', "page_current"),
+     Input('table-paging-with-graph', "page_size"),
      Input('table-paging-with-graph', "sort_by"),
-     Input('table-paging-with-graph', "filter")])
-def update_table(pagination_settings, sort_by, filter):
+     Input('table-paging-with-graph', "filter_query")])
+def update_table(page_current, page_size, sort_by, filter):
     filtering_expressions = filter.split(' && ')
     dff = df
     for filter_part in filtering_expressions:
@@ -108,9 +107,8 @@ def update_table(pagination_settings, sort_by, filter):
             inplace=False
         )
 
-    return dff.iloc[
-        pagination_settings['current_page']*pagination_settings['page_size']:
-        (pagination_settings['current_page'] + 1)*pagination_settings['page_size']
+    return dff.iloc[ 
+        page_current*page_size: (page_current + 1)*page_size
     ].to_dict('records')
 
 

@@ -22,13 +22,13 @@ layout = html.Div(
         `DataTable` includes several features for modifying and transforming
         the view of the data. These include:
 
-        - Sorting by column (`sorting=True`)
-        - Filtering by column (`filtering=True`)
+        - Sorting by column (`sort_action='native'`)
+        - Filtering by column (`filter_action='native'`)
         - Editing the cells (`editable=True`)
         - Deleting rows (`row_deletable=True`)
         - Deleting columns (`columns[i].deletable=True`)
         - Selecting rows (`row_selectable='single' | 'multi'`)
-        - Paging front-end (`pagination_mode='fe'`)
+        - Paging front-end (`page_action='native'`)
 
         A quick note on filtering. We have defined our own
         syntax for performing filtering operations. Here are some
