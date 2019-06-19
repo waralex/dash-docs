@@ -132,7 +132,7 @@ layout = html.Div([
     |------------------|---------------------|-------|
     |`column.clearable`|`dropdown*.clearable`|`clearable` is a property of dropdowns, not really of columns. So it has moved into `dropdown`, `dropdown_conditional`, and `dropdown_data`.|
     |`column.deletable`|                     |For multi-line headers, accepts an array of booleans rather than a number. For example, if there are multiple headers and you want the second header row to be deletable, this would be `[False, True]`.|
-    |`column.hidden`   |**REMOVED**          |Will be added back later in a different form. The main use case for this was covered by row IDs anyway.|
+    |`column.hidden`   |**REMOVED**          |Will be added back later in a different form. Follow [dash-table#314](https://github.com/plotly/dash-table/issues/314) for updates.|
     |`column.id`       |                     |Accepts strings only; numbers can be cast to string.|
     |`column.options`  |`dropdown`           |Similar to `clearable`, `options` is a dropdown property, not a column property.|
     |`column.editable_name`|`column.renamable`|Similar to `deletable`, for multi-line headers, accepts an array of booleans rather than a number.|
