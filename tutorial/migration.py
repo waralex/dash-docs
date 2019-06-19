@@ -32,7 +32,7 @@ layout = html.Div([
     `dash_table`.
 
     Here are the changes Dash developers need to know about to transition apps
-    from v0.43 (the last release in the v0.x series) to v1.0.
+    from v0.44 (the last release in the v0.x series) to v1.0.
 
     ---
 
@@ -128,7 +128,7 @@ layout = html.Div([
     Lots of properties are renamed and/or restructured for better
     self-consistency and extensibility.
 
-    | Old Prop         | NewProp             | Notes |
+    | Old Prop         | New Prop            | Notes |
     |------------------|---------------------|-------|
     |`column.clearable`|`dropdown*.clearable`|`clearable` is a property of dropdowns, not really of columns. So it has moved into `dropdown`, `dropdown_conditional`, and `dropdown_data`.|
     |`column.deletable`|                     |For multi-line headers, accepts an array of booleans rather than a number. For example, if there are multiple headers and you want the second header row to be deletable, this would be `[False, True]`.|
