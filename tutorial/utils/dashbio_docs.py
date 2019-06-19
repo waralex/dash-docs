@@ -482,7 +482,7 @@ def generate_prop_table(
             html.Tr([html.Td(dcc.Markdown(prop_name)),
                      html.Td(dcc.Markdown(prop_desc)),
                      html.Td(dcc.Markdown(prop_type)),
-                     html.Td(dcc.Markdown(prop_default))])
+                     html.Td(dcc.Markdown('```python \n' + prop_default + '\n```'))])
         )
 
     return html.Div([
