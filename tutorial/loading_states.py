@@ -83,8 +83,6 @@ for them. Here's an example of what that could look like:
 
     app = dash.Dash(__name__)
 
-    app.scripts.config.serve_locally = True
-
     app.layout = html.Div(
         children=[
             html.Div(id="output-1"),

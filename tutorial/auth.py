@@ -126,9 +126,6 @@ layout = html.Div([
             'data': [{'x': [1, 2, 3], 'y': [4, 1, 2]}]
         }
 
-    app.scripts.config.serve_locally = True
-
-
     if __name__ == '__main__':
         app.run_server(debug=True)
     ```
@@ -216,8 +213,6 @@ layout = html.Div([
             },
             'data': [{'x': [1, 2, 3], 'y': [4, 1, 2]}]
         }
-
-    app.scripts.config.serve_locally = True
 
     if __name__ == '__main__':
         app.run_server(debug=True)
