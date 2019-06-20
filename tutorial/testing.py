@@ -282,7 +282,7 @@ layout = html.Div([
     remote one, except the Percy snapshot and test reports are not functional
     locally.
 
-    ```
+    ```shell
     # install the cli (first time only)
     $ curl -fLSs https://circle.ci/cli | bash && circleci version
 
