@@ -855,9 +855,12 @@ ConfigSys = html.Div(children=[
 
     ''')),
 
-    dcc.Markdown(s('''unixodbc
+    dcc.Markdown('''
+    ```shell
+    unixodbc
     unixodbc-dev
-    '''), style=styles.code_container),
+    ```
+    ''', style=styles.code_container),
 
     dcc.Markdown(s('''
 
@@ -903,17 +906,17 @@ ConfigSys = html.Div(children=[
 
     ''')),
 
-    dcc.Markdown(s('''
-    ```shell
+    dcc.Markdown('''
+    ```json
     {
-    \t"scripts": {
-    \t\t"dokku": {
-    \t\t\t"predeploy": "/app/setup_pyodbc"
-    \t\t}
-    \t}
+        "scripts": {
+            "dokku": {
+                "predeploy": "/app/setup_pyodbc"
+            }
+        }
     }
     ```
-    '''), style=styles.code_container),
+    ''', style=styles.code_container),
 
     dcc.Markdown(s('''
     ***

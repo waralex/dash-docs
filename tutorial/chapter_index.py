@@ -290,14 +290,6 @@ chapters = {
                        'apps.'
     },
 
-    # 'deployment-onpremise': {
-    #     'url': '/deployment/on-premise',
-    #     'content': on_premise_deployment.layout,
-    #     'name': 'Deploying Dash Apps on Plotly Enterprise',
-    #     'description': "Plotly Enterprise is Plotly's commercial " \
-    #                    "offering for hosting and sharing Dash apps."
-    # },
-
     'dash-deployment-server': {
         'url': '/dash-deployment-server',
         'content': dash_deployment_server.layout,
