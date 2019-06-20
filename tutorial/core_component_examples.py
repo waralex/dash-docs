@@ -1258,8 +1258,13 @@ Store = html.Div([
     - `modified_timestamp` is read only.
 
     ### local/session specifics
+
     - The store will not work properly if it's not included in the initial layout.
-    - The total data of all stores should not exceed 10MB.
+    - The maximum browser [storage space](https://arty.name/localstorage.html) is determined by the following factors:
+        - your own hard drive size
+        - mobile or laptop
+        - the browser, under which a sophiticated algorithm is implmented within *Quota Management*
+
 
     ### Retrieving the initial store data
 
