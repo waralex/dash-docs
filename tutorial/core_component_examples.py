@@ -1260,11 +1260,13 @@ Store = html.Div([
     ### local/session specifics
 
     - The store will not work properly if it's not included in the initial layout.
-    - The maximum browser [storage space](https://arty.name/localstorage.html) is determined by the following factors:
+    - The maximum browser [storage space](https://demo.agektmr.com/storage/) is determined by the following factors:
         - your own hard drive size
         - mobile or laptop
         - the browser, under which a sophiticated algorithm is implmented within *Quota Management*
+        - storage encoding where UTF-16 can end up saving only half of the size of UTF-8
 
+      It's generally safe to store up to 2MB in most environments, and 5~10MB in most desktop-only applications.
 
     ### Retrieving the initial store data
 
