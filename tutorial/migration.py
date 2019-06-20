@@ -32,7 +32,7 @@ layout = html.Div([
     `dash_table`.
 
     Here are the changes Dash developers need to know about to transition apps
-    from v0.44 (the last release in the v0.x series) to v1.0.
+    from v0.43 (the last release in the v0.x series) to v1.0.
 
     ---
 
