@@ -17,23 +17,22 @@ app.layout = dash_table.DataTable(
     columns=[
         {'name': i, 'id': i, 'deletable': True} for i in sorted(df.columns)
     ],
-    pagination_settings={
-        'current_page': 0,
-        'page_size': PAGE_SIZE
-    },
-    pagination_mode='be',
+    page_current=0,
+    page_size=PAGE_SIZE,
+    page_action='custom',
 
-    sorting='be',
-    sorting_type='single',
+    sort_action='custom',
+    sort_mode='single',
     sort_by=[]
 )
 
 
 @app.callback(
     Output('table-paging-and-sorting', 'data'),
-    [Input('table-paging-and-sorting', 'pagination_settings'),
+    [Input('table-paging-and-sorting', "page_current"),
+     Input('table-paging-and-sorting', "page_size"),
      Input('table-paging-and-sorting', 'sort_by')])
-def update_table(pagination_settings, sort_by):
+def update_table(page_current, page_size, sort_by):
     if len(sort_by):
         dff = df.sort_values(
             sort_by[0]['column_id'],
@@ -45,8 +44,7 @@ def update_table(pagination_settings, sort_by):
         dff = df
 
     return dff.iloc[
-        pagination_settings['current_page']*pagination_settings['page_size']:
-        (pagination_settings['current_page'] + 1)*pagination_settings['page_size']
+        page_current*page_size:(page_current+ 1)*page_size
     ].to_dict('records')
 
 

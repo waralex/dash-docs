@@ -69,15 +69,18 @@ layout = html.Div([
     ''')),
 
     Section('Quickstart', [
-        dcc.SyntaxHighlighter(
-            '''pip install dash=={}'''.format(dash.__version__),
-            customStyle=styles.code_container
+        dcc.Markdown(
+            '''
+            ```
+            pip install dash=={}
+            ```
+            '''.format(dash.__version__),
+            style=styles.code_container
         ),
 
-        dcc.SyntaxHighlighter(
+        dcc.Markdown(
             examples['simple.py'][0],
-            language='python',
-            customStyle=styles.code_container
+            style=styles.code_container
         ),
 
         html.Div(examples['simple.py'][1], className='example-container'),

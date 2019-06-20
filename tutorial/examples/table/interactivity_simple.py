@@ -15,13 +15,13 @@ app.layout = dash_table.DataTable(
     ],
     data=df.to_dict('records'),
     editable=True,
-    filtering=True,
-    sorting=True,
-    sorting_type="multi",
+    filter_action="native",
+    sort_action="native",
+    sort_mode="multi",
     row_selectable="multi",
     row_deletable=True,
     selected_rows=[],
-    n_fixed_rows=2,
+    fixed_rows={ 'headers': True, 'data': 0 },
 )
 
 

@@ -116,7 +116,7 @@ This allows users to create a project with custom values formatted for the proje
 
 ### Project structure
 
-```
+```shell
 - project_shortname           # Root of the project
   - project_shortname         # The python package, output folder for the bundles/classes.
   - src                       # The javascript source directory for the components.
@@ -184,7 +184,7 @@ There are a few key differences between JSX tags and HTML tags:
 - The `class` keyword is renamed `className` (similarly as in Dash)
 - In HTML, we write inline styles with strings like `<h1 style="color: hotpink; font-size: 12px">Hello Dash</h1>`. In JSX (as in Dash), we use objects with camelCased properties: `<h1 style={{"color": "hotpink", "fontSize": "12px"}}>Hello Dash<h1>`
 - In JSX, we can embed variables in our markup. To embed a variable in the markup, wrap the variable in `{}`. For example:
-```
+```js
 render() {
     var myText = 'Hello Dash!';
     return (
@@ -347,7 +347,7 @@ console.log(add(4, 6)); // 10
 > Heads up! Classes, among other features, are new language features in JavaScript. Technically, they're part of a new version of JavaScript called ES6. When we build our JavaScript code, a tool called Babel will convert these new language features into simpler JavaScript that older browsers like IE11 can understand.
 
 JavaScript classes are very similar to Python classes. For example, this Python class:
-```
+```js
 class MyComponent(Component):
     def __init__(self, a):
         self.a = a;
@@ -358,7 +358,7 @@ class MyComponent(Component):
 ```
 
 would be written in JavaScript as:
-```
+```js
 class MyComponent extends Component {
   init() {
       super();
@@ -435,7 +435,7 @@ For these methods, please refer to the [React/State and lifecycle](https://react
 Now, let's create our very own component. Create a file named `TextInput.react.js` inside the `src/lib/components/` folder.
 In `TextInput.react.js` write:
 
-```
+```js
 import React, { Component } from 'react';
 
 class TextInput extends Component {
@@ -449,7 +449,7 @@ we use the `constructor()` syntax.
 In the constructor, we call the `super()` method on our component's props (more on props later), and set some `state`.
 It will look like this:
 
-```
+```js
 import React, { Component } from 'react';
 
 class TextInput extends Component {
@@ -478,7 +478,7 @@ Likewise, you can return a React element (specified using JSX) and React will re
 
 We'll also go ahead and `export` our component as the `default`. This means whenever we're trying to `import` something from this file, and we don't specify a name, we'll get the `default` export.
 
-```
+```js
 import React, { Component } from 'react';
 
 class TextInput extends Component {

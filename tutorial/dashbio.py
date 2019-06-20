@@ -8,8 +8,8 @@ from tutorial.utils.dashbio_docs import generate_docs
 DASHBIO_LIBRARY_HEADING = [
     dcc.Markdown('''# Dash Bio'''),
 
-    dcc.SyntaxHighlighter('''pip install dash-bio=={}'''.format(dash_bio.__version__),
-                          customStyle=styles.code_container),
+    dcc.Markdown('''pip install dash-bio=={}'''.format(dash_bio.__version__),
+                          style=styles.code_container),
 
     dcc.Markdown('''
     Dash is a web application framework that provides pure Python abstraction
@@ -25,11 +25,15 @@ DASHBIO_LIBRARY_HEADING = [
     '''.replace('    ', '').format(dash_bio.__version__, dash_bio.__version__))
 ]
 
-DASHBIO_INSTALL_INSTRUCTIONS = dcc.SyntaxHighlighter(
-    '''>>> import dash_bio
+DASHBIO_INSTALL_INSTRUCTIONS = dcc.Markdown(
+    '''
+    ```
+    >>> import dash_bio
     >>> print(dash_bio.__version__)
-    {}'''.replace('    ', '').format(dash_bio.__version__),
-    customStyle=styles.code_container
+    {}
+    ```
+    '''.replace('    ', '').format(dash_bio.__version__),
+    style=styles.code_container
 )
 
 

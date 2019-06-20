@@ -49,8 +49,8 @@ layout = html.Div([
 
     Note: You can disable the check by setting `dev_tools_props_check=False`. But we strongly recommended to fix the props errors:
 
-        As of React 16, errors that were not caught by any error boundary will result in
-        unmounting of the whole React component tree.
+    > As of React 16, errors that were not caught by any error boundary will result in
+    > unmounting of the whole React component tree.
 
     ## Reference
 

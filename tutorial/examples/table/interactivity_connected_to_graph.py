@@ -17,17 +17,15 @@ app.layout = html.Div([
         ],
         data=df.to_dict('records'),
         editable=True,
-        filtering=True,
-        sorting=True,
-        sorting_type="multi",
+        filter_action="native",
+        sort_action="native",
+        sort_mode="multi",
         row_selectable="multi",
         row_deletable=True,
         selected_rows=[],
-        pagination_mode="fe",
-        pagination_settings={
-            "current_page": 0,
-            "page_size": 10,
-        },
+        page_action="native",
+        page_current= 0,
+        page_size= 10,
     ),
     html.Div(id='datatable-interactivity-container')
 ])

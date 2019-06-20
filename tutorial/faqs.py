@@ -129,9 +129,22 @@ layout = html.Div([
       parts of jQuery's functionality that do not touch the DOM, such as
       registering event listeners to cause a page redirect on a keystroke.
 
-      In general, if you are looking to add custom clientside behavior in your
-      application, we recommend encapsulating that behavior in a [custom Dash
-      component](https://dash.plot.ly/plugins).
+    In general, if you are looking to add custom clientside behavior in your
+    application, we recommend encapsulating that behavior in a
+    [custom Dash component](https://dash.plot.ly/plugins).
+
+    ------------------------
+
+    **Q:** *Where did those cool undo and redo buttons go?*
+
+    **A:** OK, mostly we got the opposite question:
+    [How do I get rid of the undo/redo buttons](https://community.plot.ly/t/is-it-possible-to-hide-the-floating-toolbar/4911/10).
+    While this feature is neat from a technical standpoint most people don't
+    find it valuable in practice. As of Dash 1.0 the buttons are removed by
+    default, no hacky CSS tricks needed. If you want them back, use
+    `show_undo_redo`:
+
+    `app = Dash(show_undo_redo=True)`
 
     ------------------------
 

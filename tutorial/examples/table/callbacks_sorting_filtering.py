@@ -15,17 +15,15 @@ app.layout = dash_table.DataTable(
     columns=[
         {'name': i, 'id': i, 'deletable': True} for i in sorted(df.columns)
     ],
-    pagination_settings={
-        'current_page': 0,
-        'page_size': PAGE_SIZE
-    },
-    pagination_mode='be',
+    page_current= 0,
+    page_size= PAGE_SIZE,
+    page_action='custom',
 
-    filtering='be',
-    filter='',
+    filter_action='custom',
+    filter_query='',
 
-    sorting='be',
-    sorting_type='multi',
+    sort_action='custom',
+    sort_mode='multi',
     sort_by=[]
 )
 
@@ -66,10 +64,11 @@ def split_filter_part(filter_part):
 
 @app.callback(
     Output('table-sorting-filtering', 'data'),
-    [Input('table-sorting-filtering', 'pagination_settings'),
+    [Input('table-sorting-filtering', "page_current"),
+     Input('table-sorting-filtering', "page_size"),
      Input('table-sorting-filtering', 'sort_by'),
-     Input('table-sorting-filtering', 'filter')])
-def update_table(pagination_settings, sort_by, filter):
+     Input('table-sorting-filtering', 'filter_query')])
+def update_table(page_current, page_size, sort_by, filter):
     filtering_expressions = filter.split(' && ')
     dff = df
     for filter_part in filtering_expressions:
@@ -95,8 +94,8 @@ def update_table(pagination_settings, sort_by, filter):
             inplace=False
         )
 
-    page = pagination_settings['current_page']
-    size = pagination_settings['page_size']
+    page = page_current
+    size = page_size
     return dff.iloc[page * size: (page + 1) * size].to_dict('records')
 
 

@@ -24,6 +24,7 @@ from tutorial import html_components
 from tutorial import installation
 from tutorial import introduction
 from tutorial import live_updates
+from tutorial import migration
 from tutorial import performance
 from tutorial import plugins
 from tutorial import search
@@ -35,6 +36,7 @@ from tutorial import react_for_python_developers
 from tutorial import table
 from tutorial import devtools
 from tutorial import loading_states
+from tutorial import testing
 from tutorial import integrating_dash
 
 
@@ -60,6 +62,13 @@ chapters = {
         'description': 'Examples of Dash apps including ' \
                        'drill down, stock tickers, streaming, ' \
                        'and PDF generation.'
+    },
+
+    'dash-1-0-migration': {
+        'url': '/dash-1-0-migration',
+        'content': migration.layout,
+        'name': 'Dash v1.0 Migration',
+        'description': 'How to upgrade from Dash v0.x to v1.0.'
     },
 
     'installation': {
@@ -281,14 +290,6 @@ chapters = {
                        'apps.'
     },
 
-    # 'deployment-onpremise': {
-    #     'url': '/deployment/on-premise',
-    #     'content': on_premise_deployment.layout,
-    #     'name': 'Deploying Dash Apps on Plotly Enterprise',
-    #     'description': "Plotly Enterprise is Plotly's commercial " \
-    #                    "offering for hosting and sharing Dash apps."
-    # },
-
     'dash-deployment-server': {
         'url': '/dash-deployment-server',
         'content': dash_deployment_server.layout,
@@ -475,7 +476,7 @@ chapters = {
         'name': 'Joystick Component',
         'description': 'Joystick examples, properties, and reference.'
     },
-    
+
     'knob-examples': {
         'url': '/dash-daq/knob',
         'content': daq_examples.Knob,
@@ -1007,6 +1008,13 @@ chapters = {
         'content': devtools.layout,
         'name': 'Dev tools',
         'description': 'Dash dev tools reference'
+    },
+
+    'testing': {
+        'url': '/testing',
+        'content': testing.layout,
+        'name': 'Dash Testing',
+        'description': '(New in Dash 1.0!) An introduction to testing your dash app with selenium'
     },
 
     'logout-button': {

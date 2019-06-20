@@ -102,7 +102,7 @@ layout = html.Div([
 
     html.Details(open=False, children=[
         html.Summary('View Elements Declaration'),
-        dcc.SyntaxHighlighter(dedent('''
+        dcc.Markdown(dedent('''
         nodes = [
             {
                 'data': {'id': short, 'label': label},

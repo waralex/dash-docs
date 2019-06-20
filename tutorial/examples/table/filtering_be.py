@@ -14,8 +14,8 @@ app.layout = dash_table.DataTable(
         {"name": i, "id": i} for i in sorted(df.columns)
     ],
 
-    filtering='be',
-    filter=''
+    filter_action='custom',
+    filter_query=''
 )
 
 operators = [['ge ', '>='],
@@ -54,7 +54,7 @@ def split_filter_part(filter_part):
 
 @app.callback(
     Output('table-filtering-be', "data"),
-    [Input('table-filtering-be', "filter")])
+    [Input('table-filtering-be', "filter_query")])
 def update_table(filter):
     filtering_expressions = filter.split(' && ')
     dff = df
