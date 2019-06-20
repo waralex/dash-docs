@@ -1118,7 +1118,7 @@ Tabs = html.Div(children=[
     ''')),
 
     dcc.Markdown(
-        examples['tabs_styled_with_classes_css'],
+        '```css\n' + examples['tabs_styled_with_classes_css'] + '\n```',
         style=styles.code_container
     ),
 
