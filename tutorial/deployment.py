@@ -120,7 +120,11 @@ app's dependencies with this virtualenv:
 You will also need a new dependency, `gunicorn`, for deploying the app:
 '''),
 
-          dcc.Markdown('''```shell $ pip install gunicorn```''', style=styles.code_container),
+          dcc.Markdown('''
+          ```shell
+          $ pip install gunicorn
+          ```
+          ''', style=styles.code_container),
 
           dcc.Markdown('''***
 **Step 3. Initialize the folder with a sample app (`app.py`), a `.gitignore` file, `requirements.txt`, and a `Procfile` for deployment**

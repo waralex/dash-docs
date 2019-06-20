@@ -514,23 +514,40 @@ dcc.Markdown('''
     html.Hr(),
     html.H3("Inline Code"),
     html.P("Any block of text surrounded by ` ` will rendered as inline-code. "),
+    # Don't use ComponentBlock for markdown block quotes... too complicated to
+    # get all the nested quotes right!
+    dcc.Markdown("""
+    ````py
+    import dash_core_components as dcc
 
-    ComponentBlock("""import dash_core_components as dcc
+    dcc.Markdown('''
 
-dcc.Markdown('''
+    Inline code snippet: `True`
 
-Inline code snippet: `True`
+    Block code snippet:
+    ```py
+    import dash
 
-Block code snippet:
-```
-import dash
+    external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
-external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
+    app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
+    ```
+    ''')
+    ````
+    """),
+    html.Div(dcc.Markdown('''
 
-app = dash.Dash(__name__, external_stylesheets=external_stylesheets)```
-''')
+    Inline code snippet: `True`
 
-"""),
+    Block code snippet:
+    ```py
+    import dash
+
+    external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
+
+    app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
+    ```
+    '''), className='example-container'),
 
     html.Hr(),
     html.H3('Markdown Properties'),
