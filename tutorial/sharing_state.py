@@ -66,7 +66,7 @@ layout = html.Div([
     Dash is also designed to be able to run with **multiple python
     workers** so that callbacks can be executed in parallel.
     This is commonly done with `gunicorn` using syntax like
-    ```
+    ```shell
     $ gunicorn --workers 4 app:server
     ```
 
@@ -528,7 +528,8 @@ def update_output_1(value):
         ''')),
 
     Syntax(
-        examples['filesystem-session-cache'][0],
+        # with Syntax + load_example we are wrapping twice, hence replace()
+        examples['filesystem-session-cache'][0].replace('```python ', ''),
         summary="Here's what this example looks like in code:"
     ),
 

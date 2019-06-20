@@ -63,67 +63,73 @@ layout = html.Div([
     Installation:
     '''.replace('    ', '')),
 
-    dcc.SyntaxHighlighter('''pip install dash=={}
-        pip install dash-auth=={}'''.replace('    ', '').format(
+    dcc.Markdown('''
+    ```shell
+    pip install dash=={}
+    pip install dash-auth=={}
+    ```
+    '''.replace('    ', '').format(
         dash.__version__,
         dash_auth.__version__
-    ), customStyle=styles.code_container),
+    ), style=styles.code_container),
 
     dcc.Markdown('''
     Example Code:
     '''.replace('    ', '')),
 
-    dcc.SyntaxHighlighter('''import dash
-import dash_auth
-import dash_core_components as dcc
-import dash_html_components as html
-import plotly
+    dcc.Markdown('''
+    ```python
+    import dash
+    import dash_auth
+    import dash_core_components as dcc
+    import dash_html_components as html
+    import plotly
 
-# Keep this out of source code repository - save in a file or a database
-VALID_USERNAME_PASSWORD_PAIRS = {
-    'hello': 'world'
-}
-
-external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
-
-app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
-auth = dash_auth.BasicAuth(
-    app,
-    VALID_USERNAME_PASSWORD_PAIRS
-)
-
-app.layout = html.Div([
-    html.H1('Welcome to the app'),
-    html.H3('You are successfully authorized'),
-    dcc.Dropdown(
-        id='dropdown',
-        options=[{'label': i, 'value': i} for i in ['A', 'B']],
-        value='A'
-    ),
-    dcc.Graph(id='graph')
-], className='container')
-
-@app.callback(
-    dash.dependencies.Output('graph', 'figure'),
-    [dash.dependencies.Input('dropdown', 'value')])
-def update_graph(dropdown_value):
-    return {
-        'layout': {
-            'title': 'Graph of {}'.format(dropdown_value),
-            'margin': {
-                'l': 20,
-                'b': 20,
-                'r': 10,
-                't': 60
-            }
-        },
-        'data': [{'x': [1, 2, 3], 'y': [4, 1, 2]}]
+    # Keep this out of source code repository - save in a file or a database
+    VALID_USERNAME_PASSWORD_PAIRS = {
+        'hello': 'world'
     }
 
+    external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
-if __name__ == '__main__':
-    app.run_server(debug=True)
-    ''', language='python', customStyle=styles.code_container),
+    app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
+    auth = dash_auth.BasicAuth(
+        app,
+        VALID_USERNAME_PASSWORD_PAIRS
+    )
+
+    app.layout = html.Div([
+        html.H1('Welcome to the app'),
+        html.H3('You are successfully authorized'),
+        dcc.Dropdown(
+            id='dropdown',
+            options=[{'label': i, 'value': i} for i in ['A', 'B']],
+            value='A'
+        ),
+        dcc.Graph(id='graph')
+    ], className='container')
+
+    @app.callback(
+        dash.dependencies.Output('graph', 'figure'),
+        [dash.dependencies.Input('dropdown', 'value')])
+    def update_graph(dropdown_value):
+        return {
+            'layout': {
+                'title': 'Graph of {}'.format(dropdown_value),
+                'margin': {
+                    'l': 20,
+                    'b': 20,
+                    'r': 10,
+                    't': 60
+                }
+            },
+            'data': [{'x': [1, 2, 3], 'y': [4, 1, 2]}]
+        }
+
+    if __name__ == '__main__':
+        app.run_server(debug=True)
+    ```
+    ''', style=styles.code_container),
 
     dcc.Markdown('''
     ## Plotly OAuth Example
@@ -143,70 +149,75 @@ if __name__ == '__main__':
     Installation:
     '''.replace('    ', '')),
 
-    dcc.SyntaxHighlighter('''pip install dash=={}
-        pip install dash-auth=={}'''.replace('    ', '').format(
+    dcc.Markdown('''
+    ```shell
+        pip install dash=={}
+        pip install dash-auth=={}
+    ```
+    '''.replace('    ', '').format(
         dash.__version__,
         dash_auth.__version__
-    ), customStyle=styles.code_container),
+    ), style=styles.code_container),
 
     dcc.Markdown('''
     Example Code:
     '''.replace('    ', '')),
 
-    dcc.SyntaxHighlighter('''import dash
-import dash_auth
-import dash_core_components as dcc
-import dash_html_components as html
-import plotly
+    dcc.Markdown('''
+    ```python
+    import dash
+    import dash_auth
+    import dash_core_components as dcc
+    import dash_html_components as html
+    import plotly
 
 
-# Modify these variables with your own info
-APP_NAME = 'Dash Authentication Sample App'
-APP_URL = 'https://my-dash-app.herokuapps.com'
+    # Modify these variables with your own info
+    APP_NAME = 'Dash Authentication Sample App'
+    APP_URL = 'https://my-dash-app.herokuapps.com'
 
-external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
+    external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
-app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
-auth = dash_auth.PlotlyAuth(
-    app,
-    APP_NAME,
-    'private',
-    APP_URL
-)
+    app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
+    auth = dash_auth.PlotlyAuth(
+        app,
+        APP_NAME,
+        'private',
+        APP_URL
+    )
 
-app.layout = html.Div([
-    html.H1('Welcome to the app'),
-    html.H3('You are successfully authorized'),
-    dcc.Dropdown(
-        id='dropdown',
-        options=[{'label': i, 'value': i} for i in ['A', 'B']],
-        value='A'
-    ),
-    dcc.Graph(id='graph')
-], className='container')
+    app.layout = html.Div([
+        html.H1('Welcome to the app'),
+        html.H3('You are successfully authorized'),
+        dcc.Dropdown(
+            id='dropdown',
+            options=[{'label': i, 'value': i} for i in ['A', 'B']],
+            value='A'
+        ),
+        dcc.Graph(id='graph')
+    ], className='container')
 
-@app.callback(
-    dash.dependencies.Output('graph', 'figure'),
-    [dash.dependencies.Input('dropdown', 'value')])
-def update_graph(dropdown_value):
-    return {
-        'layout': {
-            'title': 'Graph of {}'.format(dropdown_value),
-            'margin': {
-                'l': 20,
-                'b': 20,
-                'r': 10,
-                't': 60
-            }
-        },
-        'data': [{'x': [1, 2, 3], 'y': [4, 1, 2]}]
-    }
+    @app.callback(
+        dash.dependencies.Output('graph', 'figure'),
+        [dash.dependencies.Input('dropdown', 'value')])
+    def update_graph(dropdown_value):
+        return {
+            'layout': {
+                'title': 'Graph of {}'.format(dropdown_value),
+                'margin': {
+                    'l': 20,
+                    'b': 20,
+                    'r': 10,
+                    't': 60
+                }
+            },
+            'data': [{'x': [1, 2, 3], 'y': [4, 1, 2]}]
+        }
 
-
-if __name__ == '__main__':
-    app.run_server(debug=True)
-
-    ''', language='python', customStyle=styles.code_container),
+    if __name__ == '__main__':
+        app.run_server(debug=True)
+    ```
+    ''', style=styles.code_container),
 
     dcc.Markdown('''
     ## Methods on PlotlyAuth Objects
@@ -228,12 +239,16 @@ if __name__ == '__main__':
     You can set these variables directly in your code with:
     '''.replace('   ', '')),
 
-    dcc.SyntaxHighlighter(
-        '''import os
+    dcc.Markdown(
+        '''
+        ```python
+        import os
 
         os.environ['PLOTLY_USERNAME'] = 'your-username'
-        os.environ['PLOTLY_API_KEY'] = 'your-api-key' '''.replace('   ', ''),
-        language='python', customStyle=styles.code_container),
+        os.environ['PLOTLY_API_KEY'] = 'your-api-key'
+        ```
+        '''.replace('   ', ''),
+        style=styles.code_container),
 
     dcc.Markdown('''
     or, if you are using [Dash Deployment Server, you can keep your environment variables secret (view the docs)](https://dash.plot.ly/dash-deployment-server/environment-variables).
@@ -252,100 +267,105 @@ if __name__ == '__main__':
     Installation:
     '''.replace('    ', '')),
 
-    dcc.SyntaxHighlighter('''pip install dash=={}  # The core dash backend
+    dcc.Markdown('''
+    ```shell
+        pip install dash=={}  # The core dash backend
         pip install dash-auth=={}  # Dash Auth components
+    ```
     '''.replace('    ', '').format(
         dash.__version__,
         dash_auth.__version__,
-    ), customStyle=styles.code_container),
+    ), style=styles.code_container),
 
     dcc.Markdown('''
     Example Code:
     '''.replace('    ', '')),
 
-    dcc.SyntaxHighlighter('''import dash
-import dash_auth
-import dash_core_components as dcc
-import dash_html_components as html
-from dash.dependencies import Output, Input
+    dcc.Markdown('''
+    ```
+    import dash
+    import dash_auth
+    import dash_core_components as dcc
+    import dash_html_components as html
+    from dash.dependencies import Output, Input
 
-import os
-# Modify these variables with your own info
-APP_NAME = 'Dash Authentication Sample App'
-APP_URL = 'http://127.0.0.1:8050/'
-
-
-external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
-
-app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
-auth = dash_auth.PlotlyAuth(
-    app,
-    APP_NAME,
-    'public',
-    APP_URL
-)
-
-app.layout = html.Div([
-    html.H1('Welcome to the app', id='title'),
-    html.Div(id='authorized'),
-    html.Button('View Graph', id='btn'),
-    dcc.Graph(id='graph', figure={
-        'layout': {
-            'title': 'Private Graph',
-            'margin': {
-                'l': 20,
-                'b': 20,
-                'r': 10,
-                't': 60
-            }
-        },
-        'data': [{'x': [1, 2, 3], 'y': [4, 1, 2]}]
-    }, style={'display': 'none'}),
-    auth.create_logout_button(
-        label='Sign out',
-        redirect_to='https://plot.ly')],
-     className='container')
+    import os
+    # Modify these variables with your own info
+    APP_NAME = 'Dash Authentication Sample App'
+    APP_URL = 'http://127.0.0.1:8050/'
 
 
-@app.callback(Output('title', 'children'), [Input('title', 'id')])
-def give_name(title):
-    username = auth.get_username()
-    return 'Welcome to the app, {}'.format(username)
+    external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
+
+    app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
+    auth = dash_auth.PlotlyAuth(
+        app,
+        APP_NAME,
+        'public',
+        APP_URL
+    )
+
+    app.layout = html.Div([
+        html.H1('Welcome to the app', id='title'),
+        html.Div(id='authorized'),
+        html.Button('View Graph', id='btn'),
+        dcc.Graph(id='graph', figure={
+            'layout': {
+                'title': 'Private Graph',
+                'margin': {
+                    'l': 20,
+                    'b': 20,
+                    'r': 10,
+                    't': 60
+                }
+            },
+            'data': [{'x': [1, 2, 3], 'y': [4, 1, 2]}]
+        }, style={'display': 'none'}),
+        auth.create_logout_button(
+            label='Sign out',
+            redirect_to='https://plot.ly')],
+         className='container')
 
 
-@auth.is_authorized_hook
-def is_authorized(data):
-    active = data.get('is_active')
-    if active:
-        auth.set_user_data({'graph_1': True})
-    return active
-
-@app.callback(Output('authorized', 'children'), [Input('btn', 'n_clicks')])
-def check_perms(n_clicks):
-    if n_clicks:
-        perms = auth.get_user_data()
-        perm_view_graph = perms.get('graph_1')
-        if not perm_view_graph:
-            return 'You are not authorized to view this content'
-        else:
-            return 'You are authorized!'
+    @app.callback(Output('title', 'children'), [Input('title', 'id')])
+    def give_name(title):
+        username = auth.get_username()
+        return 'Welcome to the app, {}'.format(username)
 
 
-@app.callback(Output('graph', 'style'), [Input('btn', 'n_clicks')])
-def check_perms_graph_update(n_clicks):
-    if n_clicks:
-        perms = auth.get_user_data()
-        perm_view_graph = perms.get('graph_1')
-        if perm_view_graph:
-            return {}
+    @auth.is_authorized_hook
+    def is_authorized(data):
+        active = data.get('is_active')
+        if active:
+            auth.set_user_data({'graph_1': True})
+        return active
+
+    @app.callback(Output('authorized', 'children'), [Input('btn', 'n_clicks')])
+    def check_perms(n_clicks):
+        if n_clicks:
+            perms = auth.get_user_data()
+            perm_view_graph = perms.get('graph_1')
+            if not perm_view_graph:
+                return 'You are not authorized to view this content'
+            else:
+                return 'You are authorized!'
+
+
+    @app.callback(Output('graph', 'style'), [Input('btn', 'n_clicks')])
+    def check_perms_graph_update(n_clicks):
+        if n_clicks:
+            perms = auth.get_user_data()
+            perm_view_graph = perms.get('graph_1')
+            if perm_view_graph:
+                return {}
+            else:
+                return {'display': 'none'}
         else:
             return {'display': 'none'}
-    else:
-        return {'display': 'none'}
 
 
-if __name__ == '__main__':
-    app.run_server(debug=True)
-
-    ''', language='python', customStyle=styles.code_container)
+    if __name__ == '__main__':
+        app.run_server(debug=True)
+    ```
+    ''', style=styles.code_container)
 ])

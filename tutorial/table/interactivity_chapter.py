@@ -56,10 +56,9 @@ layout = html.Div(
         [sorting or filtering in Python instead](/datatable/callbacks).
         """)),
 
-        dcc.SyntaxHighlighter(
+        dcc.Markdown(
             examples['interactivity_connected_to_graph.py'][0],
-            language='python',
-            customStyle=styles.code_container
+            style=styles.code_container
         ),
 
         html.Div(
@@ -130,10 +129,9 @@ layout = html.Div(
         sorting and filtering.
         """)),
 
-        dcc.SyntaxHighlighter(
+        dcc.Markdown(
             examples['interactivity_row_ids.py'][0],
-            language='python',
-            customStyle=styles.code_container
+            style=styles.code_container
         ),
 
         html.Div(

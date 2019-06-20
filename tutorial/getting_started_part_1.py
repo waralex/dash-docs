@@ -255,7 +255,7 @@ HTML tag as well as keyword arguments for all of the HTML arguments.
     '''.replace('    ', '')),
 
     html.Div(
-        dcc.Markdown('''```
+        dcc.Markdown('''```shell
 >>> help(dcc.Dropdown)
 class Dropdown(dash.development.base_component.Component)
 |  A Dropdown component.

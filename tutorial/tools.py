@@ -68,7 +68,7 @@ def load_example(path):
         exec(_example, scope)
 
     return (
-        _source,
+        '```python \n' + _source + '```',
         scope['layout']  # layout is a global created from the app
     )
 

@@ -1,12 +1,5 @@
-from textwrap import dedent
-
 import dash_html_components as html
 import dash_core_components as dcc
-
-from tutorial.components import Syntax
-
-with open('tutorial/dash_test_sample.py') as fp:
-    code = fp.read()
 
 logs = '''
 14:05:41 | DEBUG | selenium.webdriver.remote.remote_connection:388 | DELETE http://127.0.0.1:53672/session/87b6f1ed3710173eff8037447e2b8f56 {"sessionId": "87b6f1ed3710173eff8037447e2b8f56"}
@@ -18,7 +11,7 @@ logs = '''
 '''
 
 layout = html.Div([
-    dcc.Markdown(dedent("""
+    dcc.Markdown(u"""
     # Dash Testing
 
     *New in Dash v1.0*
@@ -59,11 +52,41 @@ layout = html.Div([
     but other popular webdrivers may be included based on popular demand.
 
     ## Example
-    """)),
-    Syntax(code),
-    dcc.Markdown(dedent("""
 
-    ### Notes
+    ```python
+    # 1. imports of your dash app
+    import dash
+    import dash_html_components as html
+
+
+    # 2. give each testcase a tcid, and pass the fixture
+    # as a function argument, less boilerplate
+    def test_bsly001_falsy_child(dash_duo):
+
+        # 3. define your app inside the test function
+        app = dash.Dash(__name__)
+        app.layout = html.Div(id="nully-wrapper", children=0)
+
+        # 4. host the app locally in a thread, all dash server configs could be
+        # passed after the first app argument
+        dash_duo.start_server(app)
+
+        # 5. use wait_for_* if your target element is the result of a callback,
+        # keep in mind even the initial rendering can trigger callbacks
+        dash_duo.wait_for_text_to_equal("#nully-wrapper", "0", timeout=4)
+
+        # 6. use this form if its present is expected at the action point
+        assert dash_duo.find_element("#nully-wrapper").text == "0"
+
+        # 7. to make the checkpoint more readable, you can describe the
+        # acceptance criterion as an assert message after the comma.
+        assert dash_duo.get_logs() == [], "browser console should contain no error"
+
+        # 8. visual testing with percy snapshot
+        dash_duo.percy_snapshot("bsly001-layout")
+    ```
+
+    Notes
 
     * #1 For most test scenarios, you don't need to import any modules for
     the test; just import what you need for the Dash app itself.
@@ -79,7 +102,9 @@ layout = html.Div([
     still apply as in your app file.
 
     * #4 We normally start the test by calling the `start_server` API
-    from dash_duo. Several actions implicitly happen under the hood:
+    from `dash_duo` (you can use `dash_br` for an hosted Dash App, and
+    write `dash_br.server_url = "Hosted URL"` to start). Several actions
+    implicitly happen under the hood:
 
         1. The defined app is hosted inside a light Python `threading.Thread`.
         2. A Selenium WebDriver is initialized and navigates to the
@@ -106,14 +131,14 @@ layout = html.Div([
     * #7 Unlike `unittest`, `pytest` allows using the standard Python
     [`assert`](https://docs.pytest.org/en/latest/assert.html) for verifying
     expectations and values. It also puts more introspection information into
-    the assertion failure message by overriding the `assert` behavior.
-    It's good practice to expose your *acceptance criteria* directly in the
-    test case rather than wrapping the `assert` inside another helper API, also
-    to write these messages with **should**/**should not** to avoid confusion.
+    the assertion failure message by overriding the `assert` behavior. It's
+    good practice to expose your *acceptance criteria* directly in the test
+    case rather than wrapping the `assert` inside another helper API, also to
+    write these messages with SHOULD/SHOULD NOT without failure confusion.
     By looking at the test name, the app definition, the acitons, and the
     checkpoints, reviewers should figure out easily the purpose of the test.
 
-    * #8 We use [Percy](https://percy.io/) as our *Visual Regression Testing*
+    * #8 We use [Percy](https://percy.io/) as our Visual Regression Testing
     tool. It's a good alternative to assertions when your checkpoint is
     about the graphical aspects of a Dash App, such as the whole layout or a
     `dcc.Graph` component. We integrate the Percy service with a `PERCY_TOKEN`
@@ -220,11 +245,15 @@ layout = html.Div([
     | `find_element(selector)` | return the first found element by the `CSS selector`, shortcut to `driver.find_element_by_css_selector`. *note that this API will raise exceptions if not found, the `find_elements` API returns an empty list instead* |
     | `find_elements(selector)` | return a list of all elements matching by the `CSS selector`, shortcut to `driver.find_elements_by_css_selector`|
     | `multiple_click(selector, clicks)`| find the element with the `CSS selector` and clicks it with number of `clicks` |
-    | `wait_for_element(selector, timeout=None)` | shortcut to `wait_for_element_by_css_selector` the long version kept for back compatibility. timeout if not set, equals to the fixture's `wait_timeout`|
+    | `wait_for_element(selector, timeout=None)` | shortcut to `wait_for_element_by_css_selector` the long version is kept for back compatibility. `timeout` if not set, equals to the fixture's `wait_timeout`|
     | `wait_for_element_by_css_selector(selector, timeout=None)` | explicit wait until the element to present, shortcut to `WebDriverWait` with `EC.presence_of_element_located` |
-    | `wait_for_style_to_equal(selector, style, value, timeout=None)` | explicit wait until the element's style has expected `value`. shortcut to `WebDriverWait` with custom wait condition `style_to_equal`. timeout if not set, equals to the fixture's `wait_timeout`  |
-    | `wait_for_text_to_equal(selector, text, timeout=None)` | explicit wait until the element's text equals the expected `text`. shortcut to `WebDriverWait` with custom wait condition `text_to_equal`. timeout if not set, equals to the fixture's `wait_timeout` |
+    | `wait_for_style_to_equal(selector, style, value, timeout=None)` | explicit wait until the element's style has expected `value`. shortcut to `WebDriverWait` with custom wait condition `style_to_equal`. `timeout` if not set, equals to the fixture's `wait_timeout`  |
+    | `wait_for_text_to_equal(selector, text, timeout=None)` | explicit wait until the element's text equals the expected `text`. shortcut to `WebDriverWait` with custom wait condition `text_to_equal`. `timeout` if not set, equals to the fixture's `wait_timeout` |
+    | `wait_for_contains_text(selector, text, timeout=None)` | explicit wait until the element's text contains the expected `text`. shortcut to `WebDriverWait` with custom wait condition `contains_text` condition. `timeout` if not set, equals to the fixture's `wait_timeout` |
     | `wait_for_page(url=None, timeout=10)` | navigate to the `url` in webdriver and wait until the dash renderer is loaded in browser. use `server_url` if `url` is None |
+    | `toggle_window()` | switch between the current working window and the newly opened one. |
+    | `switch_window(idx)` | switch to window by window index. shortcut to `driver.switch_to.window`. raise `BrowserError` if no second window present in browser |
+    | `open_new_tab(url=None)` | open a new tab in browser with window name `new window`. `url` if not set, equals to `server_url` |
     | `percy_snapshot(name)` | visual test API shortcut to `percy_runner.snapshot` it also combines the snapshot `name` with python versions |
     | `take_snapshot(name)` | hook method to take a snapshot while selenium test fails. the snapshot is placed under `/tmp/dash_artifacts` in Linux or `%TEMP` in windows with a filename combining test case `name` and the running selenium session id |
     | `get_logs()` | return a list of `SEVERE` level logs after last reset time stamps (default to 0, resettable by `reset_log_timestamp`. **Chrome only** |
@@ -270,9 +299,15 @@ layout = html.Div([
     You can get more logging information from Selenium WebDriver, Flask server,
     and our test APIs.
 
-    """)),
-    Syntax(logs),
-    dcc.Markdown(dedent("""
+    ```bash
+    14:05:41 | DEBUG | selenium.webdriver.remote.remote_connection:388 | DELETE http://127.0.0.1:53672/session/87b6f1ed3710173eff8037447e2b8f56 {"sessionId": "87b6f1ed3710173eff8037447e2b8f56"}
+    14:05:41 | DEBUG | urllib3.connectionpool:393 | http://127.0.0.1:53672 "DELETE /session/87b6f1ed3710173eff8037447e2b8f56 HTTP/1.1" 200 72
+    14:05:41 | DEBUG | selenium.webdriver.remote.remote_connection:440 | Finished Request
+    14:05:41 | INFO | dash.testing.application_runners:80 | killing the app runner
+    14:05:41 | DEBUG | urllib3.connectionpool:205 | Starting new HTTP connection (1): localhost:8050
+    14:05:41 | DEBUG | urllib3.connectionpool:393 | http://localhost:8050 "GET /_stop-3ef0e64e8688436caced44e9f39d4263 HTTP/1.1" 200 29
+    ```
+
     ### Selenium Snapshots
 
     If you run your tests with CircleCI dockers (locally with `CircleCI CLI`
@@ -295,5 +330,5 @@ layout = html.Div([
     under `Artifacts` Tab*
 
     ![CircleCI](https://user-images.githubusercontent.com/1394467/59371162-3f27a000-8d12-11e9-9060-7d8a8522c2c6.png)
-    """)),
+    """),
 ])

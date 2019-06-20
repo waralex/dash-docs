@@ -14,7 +14,7 @@ def ComponentBlock(example_string, **kwargs):
         if wrapped_component not in converted_string:
             converted_string = converted_string.replace(
                 'dashbio.', 'component = dashbio.')
-    
+
     try:
         exec(converted_string, scope)
     except Exception as e:
@@ -26,10 +26,9 @@ def ComponentBlock(example_string, **kwargs):
 
         raise e
     return html.Div([
-        dcc.SyntaxHighlighter(
-            example_string,
-            language='python',
-            customStyle=styles.code_container
+        dcc.Markdown(
+            '``` python \n' + example_string + '  \n```',
+            style=styles.code_container
         ),
         html.Div(
             scope['component'],
