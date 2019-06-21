@@ -55,7 +55,7 @@ layout = html.Div([
     > >>> print(dash_core_components.__version__)
     > ```
     > To see the latest changes of any package, check the GitHub repo's CHANGELOG.md file:
-    > - [dash changelog](https://github.com/plotly/dash/blob/master/CHANGELOG.md)
+    > - [dash changelog](https://github.com/plotly/dash/blob/master/dash/CHANGELOG.md)
     > - [dash-core-components changelog](https://github.com/plotly/dash-core-components/blob/master/CHANGELOG.md)
     > - [dash-html-components changelog](https://github.com/plotly/dash-html-components/blob/master/CHANGELOG.md)
     > - [dash-table changelog](https://github.com/plotly/dash-table/blob/master/CHANGELOG.md)
@@ -65,7 +65,7 @@ layout = html.Div([
     > with dash-core-components and dash respectively.
     > These docs are using dash-renderer=={} and plotly=={}
     > and their changelogs are located here:
-    > - [dash-renderer changelog](https://github.com/plotly/dash-renderer/blob/master/CHANGELOG.md)
+    > - [dash-renderer changelog](https://github.com/plotly/dash/blob/master/dash-renderer/CHANGELOG.md)
     > - [plotly changelog](https://github.com/plotly/plotly.py/blob/master/CHANGELOG.md)
     >
     > All of these packages adhere to [semver](https://semver.org/).
