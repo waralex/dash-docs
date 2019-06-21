@@ -121,6 +121,21 @@ layout = html.Div([
     ### Renamed `Checklist.values` prop to `value`
     To match all the other input components.
 
+    ### Removed `version.py`
+    The simple way to get version info has always been `dcc.__version__`.
+    Previously there was a `dash_core_components.version` module you could
+    look in as well, but that has been removed.
+
+    ---
+
+    ## `dash_html_components`
+
+    ### Removed `version.py`
+    Same as in `dash_core_components`.
+    The simple way to get version info has always been `html.__version__`.
+    Previously there was a `dash_html_components.version` module you could
+    look in as well, but that has been removed.
+
     ---
 
     ## `dash_table`
