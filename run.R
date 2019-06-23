@@ -2,6 +2,7 @@ source('app.R')
 library(dashR)
 library(dashCoreComponents)
 library(dashHtmlComponents)
+library(jsonlite)
 
 chapters.installation <- new.env()
 source('dashr/chapters/installation/index.R', local=chapters.installation)
@@ -35,6 +36,8 @@ chapters.dashDataTablePart3 <- new.env()
 source('dashr/chapters/dashDataTable/part3/index.R', local=chapters.dashDataTablePart3)
 chapters.dashDataTablePart4 <- new.env()
 source('dashr/chapters/dashDataTable/part4/index.R', local=chapters.dashDataTablePart4)
+chapters.Whats_dash <- new.env()
+source('dashr/chapters/Whats_dash/introduction.R', local=chapters.Whats_dash)
 
 
 header <- htmlDiv(
@@ -84,6 +87,7 @@ app$callback(output=list(id='chapter', property='children'),
              function(pathname) {
                switch(
                  pathname,
+                 "/Whats_dash" = return(chapters.Whats_dash$layout),
                  "/installation" = return(chapters.installation$layout),
                  "/getting-started" = return(chapters.getting_started$layout),
                  "/getting-started-part-2" = return(chapters.callbacks$layout),

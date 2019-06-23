@@ -90,16 +90,16 @@ callbacks and the latter is an actual component.
 automatically calls all of the callbacks with the initial values of the
 input components in order to populate the initial state of the output
 components. In this example, if you specified something like
-`htmlDiv(id='my-div', children='Hello world')`, it would get overwritten
+`htmlDiv(id='my-id-div', children='Hello world')`, it would get overwritten
 when the app starts.
 
 It's sort of like programming with Microsoft Excel:
 whenever an input cell changes, all of the cells that depend on that cell
 will get updated automatically. This is called \"Reactive Programming\".
 
-Remember how every component was described entirely through its set of
+Remember how every component was described entirely through it's set of
 keyword arguments? Those properties are important now.
-With Dash interactivity, we can dynamically update any of those properties
+With Dash's interactivity, we can dynamically update any of those properties
 through a callback function. Frequently we'll update the `children` of a
 component to display new text or the `figure` of a `dccGraph` component
 to display new data, but we could also update the `style` of a component or
@@ -142,7 +142,7 @@ callback functions.
 3.The callback does not modify the original data, it just creates copies
 of the dataframe.
 This is important: *your callbacks should never mutate variables
-outside of their scope*. If your callbacks modify global state, then one
+outside of their scope*. If your callbacks modify global states, then one
 user's session might affect the next user's session and when the app is
 deployed on multiple processes or threads, those modifications will *not*
 be shared across sessions.
@@ -206,7 +206,7 @@ The first callback updates the available options in the second `dccRadioItems`
 component based off of the selected value in the first `dccRadioItems` component.
 
 The second callback sets an initial value when the `options` property changes:
-it sets it to the first value in that `options` array.
+it sets it to the first value in that `options` list.
 
 The final callback displays the selected `value` of each component.
 If you change the `value` of the countries `dccRadioItems` component, Dash

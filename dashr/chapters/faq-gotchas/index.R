@@ -198,7 +198,7 @@ interface, where a callback changes the layout to include a different set of
 input controls, then you must have already defined the callbacks required to
 service these new controls in advance.
 
-For example, a common scenario is a `Dropdown` component that updates the
+For example, a common scenario is a `dccDropdown` component that updates the
 current layout to replace a dashboard with another logically distinct
 dashboard that has a different set of controls (the number and type of which
 might which might depend on other user input) and different logic for

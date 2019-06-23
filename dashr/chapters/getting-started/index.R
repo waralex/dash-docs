@@ -39,14 +39,13 @@ The second part describes the interactivity of the application
 and will be covered in the [next chapter](/getting-started-part-2).
 
 
-
 Dash provides R functions for all of the visual components of the application. 
 We maintain a set of components in the `dashCoreComponents` 
 and `dashHtmlComponents` package 
 but you can also [build your own](https://github.com/plotly/dash-components-archetype) with JavaScript and React.js.
 
 
-To get started, create a file named `app.R` with the following code:
+To get started, create a file named `app.R` containing the following code:
 "),
 examples$hello.world$source_code,
   
@@ -98,7 +97,6 @@ but for now you can initialize your app with
 ```
 app <- Dash$new(external_stylesheets = \"https://codepen.io/chriddyp/pen/bWLwgP.css\")
 ```
-to get the same look and feel of these examples.
 
 #### More about HTML
 The `dashHtmlComponents` package contains a component class for every
@@ -117,6 +115,7 @@ and `htmlH1` components with the `style` property.
 `htmlH1('Hello Dash', style=list(textAlign = 'center', color = '#7FDBFF')`
 is rendered in the Dash application as
 `<h1 style=\"text-align: center; color: #7FDBFF\">Hello Dash</h1>`.
+
 There are a few important differences between the `dashHtmlComponents`
 and the HTML attributes:
 
@@ -156,7 +155,7 @@ open source R graphing package.
 Check out the [plotly.r documentation and gallery](https://plot.ly/r)
 to learn more.
   "),
-  # hello scater example
+  # hello scatter example
   examples$hello.bubble$source_code,
   examples$hello.bubble$layout,
 
@@ -166,6 +165,7 @@ to learn more.
 **click** on legend items to toggle traces,
 **click and drag** to zoom,
 **hold down shift, and click and drag** to pan.*
+
 #### Markdown
 While Dash exposes HTML through the `dashHtmlComponents` package,
 it can be tedious to write your copy in HTML.
