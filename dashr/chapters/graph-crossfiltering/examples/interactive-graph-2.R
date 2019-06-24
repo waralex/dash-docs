@@ -1,4 +1,4 @@
-library(dashR)
+library(dash)
 library(dashCoreComponents)
 library(dashHtmlComponents)
 
@@ -165,4 +165,4 @@ app$callback(
   }
 )
 
-#app$run_heroku()
+app$run_server()

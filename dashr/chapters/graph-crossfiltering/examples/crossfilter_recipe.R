@@ -1,4 +1,4 @@
-library(dashR)
+library(dash)
 library(dashCoreComponents)
 library(dashHtmlComponents)
 
@@ -141,7 +141,7 @@ app$callback(
   params = list(input(id='g1', property='selectedData'),
                 input(id='g2', property='selectedData'),
                 input(id='g3', property='selectedData')),
-  func = highlight('Column 0', 'Column 1')
+  function = highlight('Column 0', 'Column 1')
 )
 (highlight('Column 0', 'Column 1'))
 
@@ -162,7 +162,7 @@ app$callback(
 
 
 # app$run_heroku()
-# library(dashR)
+# library(dash)
 # library(dashCoreComponents)
 # library(dashHtmlComponents)
 #
@@ -353,4 +353,4 @@ app$callback(
 )(highlight('Column 4', 'Column 5'))
 
 
-# app$run_heroku()
+app$run_server()

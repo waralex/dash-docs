@@ -1,4 +1,4 @@
-library(dashR)
+library(dash)
 library(dashCoreComponents)
 library(dashHtmlComponents)
 library(jsonlite)
@@ -130,4 +130,4 @@ function(relayoutData) {
   # toJSON("{\n \"autozize\": true}")
 })
 
-app$run_heroku()
+app$run_server()
