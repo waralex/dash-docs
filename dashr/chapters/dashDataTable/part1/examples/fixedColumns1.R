@@ -1,4 +1,4 @@
-library(dashR)
+library(dash)
 library(dashTable)
 
 df_election <- data.frame(
@@ -18,7 +18,7 @@ app <- Dash$new()
 
 app$layout(
   dashDataTable(
-    n_fixed_columns = 1,
+    fixed_columns= list(headers = TRUE, data = 1),
     columns = lapply(colnames(df_election), 
                      function(colName){
                        list(

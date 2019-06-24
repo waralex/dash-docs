@@ -1,4 +1,4 @@
-library(dashR)
+library(dash)
 library(dashTable)
 
 df <- data.frame(
@@ -15,7 +15,7 @@ app <- Dash$new()
 
 app$layout(
   dashDataTable(
-    n_fixed_rows = 1,
+    fixed_rows= list(headers = TRUE, data = 0),
     style_cell = list(
       width = '150px'
     ),
