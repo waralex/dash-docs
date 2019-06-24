@@ -1,4 +1,4 @@
-library(dashR)
+library(dash)
 library(dashCoreComponents)
 library(dashHtmlComponents)
 
@@ -50,7 +50,7 @@ LoadExampleCode <- function(filename, wd = NULL) {
   list(
     layout = htmlDiv(className = 'example-container', children = layout),
     source_code=htmlDiv(
-      children=dccSyntaxHighlighter(example.file.as.string),
+      children=dccMarkdown(paste0("```\n", example.file.as.string, "\n```")),
       className = 'code-container'
     )
   )
@@ -61,7 +61,7 @@ LoadAndDisplayComponent <- function(example_string) {
     htmlDiv(
       list(
         htmlDiv(
-          children=dccSyntaxHighlighter(example_string),
+          children=dccMarkdown(example_string),
           className='code-container'
         ),
         htmlDiv(
