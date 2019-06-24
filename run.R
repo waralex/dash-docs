@@ -1,5 +1,4 @@
-source('app.R')
-library(dashR)
+library(dash)
 library(dashCoreComponents)
 library(dashHtmlComponents)
 
@@ -35,7 +34,16 @@ chapters.dashDataTablePart3 <- new.env()
 source('dashr/chapters/dashDataTable/part3/index.R', local=chapters.dashDataTablePart3)
 chapters.dashDataTablePart4 <- new.env()
 source('dashr/chapters/dashDataTable/part4/index.R', local=chapters.dashDataTablePart4)
-
+chapters.dashDataTablePart5 <- new.env()
+source('dashr/chapters/dashDataTable/part5/index.R', local=chapters.dashDataTablePart5)
+chapters.dashDataTablePart6 <- new.env()
+source('dashr/chapters/dashDataTable/part6/index.R', local=chapters.dashDataTablePart6)
+chapters.dashDataTablePart7 <- new.env()
+source('dashr/chapters/dashDataTable/part7/index.R', local=chapters.dashDataTablePart7)
+chapters.dashDataTablePart8 <- new.env()
+source('dashr/chapters/dashDataTable/part8/index.R', local=chapters.dashDataTablePart8)
+chapters.dashDataTablePart9 <- new.env()
+source('dashr/chapters/dashDataTable/part9/index.R', local=chapters.dashDataTablePart9)
 
 header <- htmlDiv(
   className = 'header',
@@ -61,6 +69,10 @@ app$layout(
   header,
   htmlDiv(
     list(
+      htmlDiv(
+        style = list(display = "none"),
+        children = list(dashDataTable())
+      ),
       dccLocation(id='url'),
       htmlDiv(
         className='background',
@@ -99,51 +111,62 @@ app$callback(output=list(id='chapter', property='children'),
                  '/dashDataTable/Part2' = return(chapters.dashDataTablePart2$layout),
                  '/dashDataTable/Part3' = return(chapters.dashDataTablePart3$layout),
                  '/dashDataTable/Part4' = return(chapters.dashDataTablePart4$layout),
+                 '/dashDataTable/Part5' = return(chapters.dashDataTablePart5$layout),
+                 '/dashDataTable/Part6' = return(chapters.dashDataTablePart6$layout),
+                 '/dashDataTable/Part7' = return(chapters.dashDataTablePart7$layout),
+                 '/dashDataTable/Part8' = return(chapters.dashDataTablePart8$layout),
+                 '/dashDataTable/Part9' = return(chapters.dashDataTablePart9$layout),
                  '/external-resources' = return(chapters.external_resources$layout),
                  {
                    
                    htmlDiv(
                      list(
                        htmlH1('DashR User Guide'),
-                       htmlH2('What\'s Dash?'),
-                       htmlHr(),
+                       htmlH2('What\'s Dash?',
+                              style = list(
+                                'border-bottom' = 'thin lightgrey solid',
+                                'margin-top' = '50px'
+                              )),
                        htmlA('Introduction', href='https://dash.plot.ly/introduction'),
-                       htmlBr(),
+                       
                        dccMarkdown("A quick paragraph about Dash and a link to the talk at Plotcon that started it all."),
                        
                        htmlA(
                          'Announcement Essay',
                          href='https://medium.com/@plotlygraphs/introducing-dash-5ecf7191b503'
                        ),
-                       htmlBr(),
+                       
                        dccMarkdown("Our extended essay on Dash. An extended discussion of Dash's architecture and our motivation behind the project."),
                        
                        htmlA(
                          'Dash App Gallery',
                          href='https://dash.plot.ly/gallery'
                        ),
-                       htmlBr(),
+                       
                        dccMarkdown("A glimpse into what's possible with Dash."),
                        htmlA(
                          'Dash Club',
                          href='https://plot.us12.list-manage.com/subscribe?u=28d7f8f0685d044fb51f0d4ee&id=0c1cb734d7'
                        ),
-                       htmlBr(),
+                       
                        dccMarkdown("A fortnightly email newsletter by chriddyp, the creator of Dash."),
                        
-                       htmlH2("Dash Tutorial"),
-                       htmlHr(),
+                       htmlH2("Dash Tutorial",
+                              style = list(
+                                'border-bottom' = 'thin lightgrey solid',
+                                'margin-top' = '50px'
+                              )),
                        dccLink(
                          'Part 1. Installation',
                          href='/installation'
                        ),
-                       htmlBr(),
+                       dccMarkdown(""),
                        dccLink(
                          'Part 2. The Dash Layout',
                          href='/getting-started'
                        ),
                        dccMarkdown("The Dash `layout` describes what your app will look like and is composed of a set of declarative Dash components."),
-                       htmlBr(),
+                       
                        dccLink(
                          'Part 3. Basic Callbacks',
                          href='/getting-started-part-2'
@@ -151,7 +174,7 @@ app$callback(output=list(id='chapter', property='children'),
                        dccMarkdown("Dash apps are made interactive through Dash Callbacks:
 R functions that are automatically called whenever an input component's property changes. Callbacks can be chained,
 allowing one update in the UI to trigger several updates across the app."),
-                       htmlBr(),
+                       
                        dccLink(
                          'Part 4. Callbacks With State',
                          href='/state'
@@ -159,16 +182,15 @@ allowing one update in the UI to trigger several updates across the app."),
                        dccMarkdown("Basic callbacks are fired whenever the values change.
 Use Dash `state` with Dash `inputs` to pass in extra values whenever the `inputs` change.
 `state` is useful for UIs that contain forms or buttons."),
-                       htmlBr(),
+                       
                        dccLink(
-                        'Part 5. Interactive Graphing and Crossfiltering',
-                        href='/graph-crossfiltering'
+                         'Part 5. Interactive Graphing and Crossfiltering',
+                         href='/graph-crossfiltering'
                        ),
                        dccMarkdown("
-                       Bind interactivity to the Dash `Graph` component whenever you hover, click,
-                       or select points on your chart.
+Bind interactivity to the Dash `Graph` component whenever you hover, click or select points on your chart.
                        "),
-                       htmlBr(),
+                       
                        dccLink(
                          'Part 6. Sharing Data Between Callbacks',
                          href='/data-callbacks'
@@ -177,7 +199,7 @@ Use Dash `state` with Dash `inputs` to pass in extra values whenever the `inputs
 However, there are other ways to share data between callbacks.
 This chapter is useful for callbacks that run expensive data processing tasks or process large data.
                                    "),
-                       htmlBr(),
+                       
                        dccLink(
                          'Part 7. FAQs and Gotchas',
                          href='/faq-gotchas'
@@ -185,19 +207,22 @@ This chapter is useful for callbacks that run expensive data processing tasks or
                        dccMarkdown("If you have read through the rest of the tutorial and still have questions 
 or are encountering unexpected behaviour,this chapter may be useful."),
                        
-                       htmlH2('Component Libraries'),
-                       htmlHr(),
+                       htmlH2('Component Libraries',
+                              style = list(
+                                'border-bottom' = 'thin lightgrey solid',
+                                'margin-top' = '50px'
+                              )),
                        dccLink(
                          'Dash Core Components',
                          href='/dash-core-components'
                        ),
-                       htmlBr(),
+                       
                        dccMarkdown("The Dash Core Component library contains a set of higher-level components like sliders, graphs, dropdowns, tables, and more."),
                        dccLink(
                          'Dash HTML Components',
                          href='/dash-html-components'
                        ),
-                       htmlBr(),
+                       
                        dccMarkdown("Dash provides all of the available HTML tags as user-friendly Python classes.
 This chapter explains how this works and the few important key differences between Dash HTML components and standard html.
                     "),
@@ -205,41 +230,51 @@ This chapter explains how this works and the few important key differences betwe
                          'Dash DataTable',
                          href='/dashDataTable'
                        ),
-                       htmlBr(),
-                       dccMarkdown("(New! Released Nov 2, 2018) The Dash DataTable is our latest and most advanced component. 
+                       
+                       dccMarkdown("The Dash DataTable is our latest and most advanced component. 
 It is an interactive table that supports rich styling, conditional formatting, editing, sorting, filtering, and more."),
-                       htmlH2('Creating Your Own Components'),
-                       htmlHr(),
+                       htmlH2('Creating Your Own Components',
+                              style = list(
+                                'border-bottom' = 'thin lightgrey solid',
+                                'margin-top' = '50px'
+                              )),
                        dccMarkdown("IN PROGRESS..."),
                        
-                       htmlH2('Beyond the Basics'),
-                       htmlHr(),
+                       htmlH2('Beyond the Basics',
+                              style = list(
+                                'border-bottom' = 'thin lightgrey solid',
+                                'margin-top' = '50px'
+                              )),
                        dccLink(
                          'Adding CSS & JS and Overriding the Page-Load Template',
                          href='/external-resources'
                        ),
-                       htmlBr(),
+                       
                        dccMarkdown("
 Learn how to add custom CSS and JS to your application with the `assets` directory. 
 Also, learn how to customize the HTML template that Dash serves on page load in order to add custom meta tags, customize the page's title, and more.
                                    "),
-                       htmlH2('Creating Your Own Components'),
-                       htmlHr(),
                        
-                       htmlH2('Getting Help'),
-                       htmlHr(),
+                       htmlH2('Getting Help',
+                              style = list(
+                                'border-bottom' = 'thin lightgrey solid',
+                                'margin-top' = '50px'
+                              )),
                        dccMarkdown("IN PROGRESS..."),
                        
                        htmlH2('Dash Deployment Server',
-                              style = list(color = "rgb(13, 118, 191)")),
-                       htmlHr(),
+                              style = list(
+                                color = "rgb(13, 118, 191)",
+                                'border-bottom' = 'thin lightgrey solid',
+                                'margin-top' = '50px'
+                              )),
                        dccMarkdown("Dash Deployment Server is Plotly's commercial offering for hosting and sharing 
 Dash apps on-premises or in the cloud."),
                        dccLink(
                          'About Dash Deployment Server',
                          href='/faq-gotchas'
                        ),
-                       htmlBr(),
+                       
                        dccLink(
                          'Dash Deployment Server Documentation',
                          href='/faq-gotchas'
