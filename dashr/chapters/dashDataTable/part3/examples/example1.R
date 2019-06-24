@@ -1,4 +1,4 @@
-library(dashR)
+library(dash)
 library(dashCoreComponents)
 library(dashHtmlComponents)
 library(dashTable)
@@ -11,7 +11,7 @@ df <- read.csv(
 app <- Dash$new()
 
 app$layout(
-  htmlDiv(
+    htmlDiv(
     list(
       dashDataTable(
         id = 'datatable-interactivity',
@@ -25,20 +25,18 @@ app$layout(
                          }),
         data = df_to_list(df),
         editable = TRUE,
-        filtering = TRUE,
-        sorting = TRUE,
-        sorting_type = "multi",
+        filter_action="native",
+        sort_action="native",
+        sort_mode = "multi",
         row_selectable = "multi",
         row_deletable = TRUE,
         selected_rows = character(0),
-        pagination_mode = "fe",
-        pagination_settings = list(
-          current_page = 0,
-          page_size = 10
-        )
+        page_action="native",
+        page_current= 0,
+        page_size= 10
       ),
       # define children: https://github.com/plotly/dash-core-components/issues/227
-      htmlDiv(children = list(dccGraph()), id = 'datatable_interactivity_container')
+      htmlDiv(id = 'datatable_interactivity_container')
     )
   )
 )

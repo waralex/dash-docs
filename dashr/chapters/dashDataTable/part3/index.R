@@ -1,4 +1,4 @@
-library(dashR)
+library(dash)
 library(dashCoreComponents)
 library(dashHtmlComponents)
 library(dashTable)
@@ -14,14 +14,14 @@ examples <- list(
 layout <- htmlDiv(
   list(
     dccMarkdown("
-# dashDataTable Interactivity
+# DataTable Interactivity
 
 `dashDataTable` includes several features for 
 modifying and transforming the view of the data. These include:
 
-- Sorting by column (`sorting=TRUE`)
+- Sorting by column (`sort_action='native'`)
 
-- Filtering by column (`filtering=TRUE`)
+- Filtering by column (`filter_action='native'`)
 
 - Editing the cells (`editable=TRUE`)
 
@@ -31,8 +31,8 @@ modifying and transforming the view of the data. These include:
 
 - Selecting rows (`row_selectable='single' | 'multi'`)
 
-- Paging front-end (`pagination_mode='fe'`
-)
+- Paging front-end (`page_action='native'`)
+
 A quick note on filtering. We have defined our own syntax for performing 
 filtering operations. Here are some examples for this particular dataset:
 
@@ -43,17 +43,16 @@ filtering operations. Here are some examples for this particular dataset:
 > Note: simple strings can be entered plain, 
 > but if you have spaces or special characters 
 > (including `-`, particularly in dates) you need to wrap them in quotes. 
-> Single quotes `'`, double quotes `\"`, 
-> or backticks \`\`\` all work. [Full filter syntax reference]
+> Single quotes `'`, double quotes `\"` both work. [Full filter syntax reference](/dashDataTable/Part9)
 
 By default, these transformations are done clientside. 
 Your Dash callbacks can respond to these modifications by listening 
-to the `data` property as an `Input`.
+to the `data` property as an `input`.
 
-Note that if `data` is an `Input` then the entire `data` 
+Note that if `data` is an `input` then the entire `data` 
 will be passed over the network: if your dataframe is large, 
 then this will become slow. For large dataframes, 
-you can perform the [sorting or filtering in R instead].
+you can perform the [sorting or filtering in R instead](/dashDataTable/Part4).
                 "),
   examples$example1$source_code,
   examples$example1$layout,
@@ -96,11 +95,11 @@ Along with the row and column indices,
 these include the row and column IDs of the cell:
 
 - `active_cell`: this is the data cell the user has put the cursor on, 
-by clicking and/or arrow keys. It's a dictionary with keys: - `row`: 
-the row index (integer) - may be affected by sorting, filtering, 
-or paging transformations. - `column`: the column index (integer) - `row_id`: 
-the `id` field of the row, which always stays with it during 
-transformations. - `column_id`: the `id` field of the column.
+by clicking and/or arrow keys. It's a dictionary with keys: 
+  + `row`:  the row index (integer) - may be affected by sorting, filtering, or paging transformations. 
+  + `column`: the column index (integer) 
+  + `row_id`: the `id` field of the row, which always stays with it during  transformations. 
+  +`column_id`: the `id` field of the column.
 
 - `start_cell`: if the user selects multiple cells, 
 by shift-click or shift-arrow-keys, this is where the selection was initiated. 

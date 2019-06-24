@@ -1,4 +1,4 @@
-library(dashR)
+library(dash)
 library(dashCoreComponents)
 library(dashHtmlComponents)
 library(dashTable)
@@ -40,7 +40,13 @@ examples <- list(
   multiHeaders = utils$LoadExampleCode('dashr/chapters/dashDataTable/part2/examples/multiHeaders.R'),
   multiHeadersPseudo = utils$LoadExampleCode('dashr/chapters/dashDataTable/part2/examples/multiHeadersPseudo.R'),
   stylingAsList = utils$LoadExampleCode('dashr/chapters/dashDataTable/part2/examples/stylingAsList.R'),
-  stylingAsListPseudo = utils$LoadExampleCode('dashr/chapters/dashDataTable/part2/examples/stylingAsListPseudo.R')
+  stylingAsListPseudo = utils$LoadExampleCode('dashr/chapters/dashDataTable/part2/examples/stylingAsListPseudo.R'),
+  stylesPriority = utils$LoadExampleCode('dashr/chapters/dashDataTable/part2/examples/stylesPriority.R'),
+  stylesPriorityPseudo = utils$LoadExampleCode('dashr/chapters/dashDataTable/part2/examples/stylesPriorityPseudo.R'),
+  addingBorders = utils$LoadExampleCode('dashr/chapters/dashDataTable/part2/examples/addingBorders.R'),
+  addingBordersPseudo = utils$LoadExampleCode('dashr/chapters/dashDataTable/part2/examples/addingBordersPseudo.R'),
+  stylingEditable = utils$LoadExampleCode('dashr/chapters/dashDataTable/part2/examples/stylingEditable.R'),
+  stylingEditablePseudo = utils$LoadExampleCode('dashr/chapters/dashDataTable/part2/examples/stylingEditablePseudo.R')
 )
 
 layout <- htmlDiv(
@@ -65,7 +71,7 @@ it's a good practice to use monospaced fonts,
 to right-align the data, and to provide the same number of decimals throughout the column.
 
 > Note that it's not possible to modify the number of decimal places in css. 
-> Package `dashDataTable` will provide formatting options in the future, 
+> Package `dashTable` will provide formatting options in the future, 
 > until then you'll have to modify your data before displaying it. 
 > Relevant issue: https://github.com/plotly/dash-table/issues/189
 
@@ -112,10 +118,10 @@ using colors that are faded so as to not attract too much attention to the strip
     dccMarkdown("
 ## Multi-Headers
 
-Multi-headers are natively supported in the `DataTable`. 
+Multi-headers are natively supported in the `dashDataTable`. 
 Just set `name` inside `columns` as a list of strings instead of a single string and 
 toggle `merge_duplicate_headers = TRUE`. 
-`DataTable` will check the neighbors of each header row and, 
+`dashDataTable` will check the neighbors of each header row and, 
 if they match, will merge them into a single cell automatically.                
                 "),
     
@@ -166,7 +172,7 @@ in the app.
 The `filter` keyword in 
 `style_data_conditional` uses the same filtering expression 
 language as the table's interactive filter UI. 
-See the [DataTable filtering chapter] for more info.
+See the [DataTable filtering chapter](/dashDataTable/Part9) for more info.
 
 > Note, the filtering expression language is subject to change. 
 > Please subscribe to [dash-table#169](https://github.com/plotly/dash-table/issues/169) for more info.
@@ -174,6 +180,52 @@ See the [DataTable filtering chapter] for more info.
     
     examples$highlightPseudo4$source_code,
     examples$highlight4$layout,
+    
+    dccMarkdown("
+## Styles Priority
+
+There are a specific order of priority for the style_* properties. 
+If there are multiple style_* props, 
+the one with higher priority will take precedence. Within each props, 
+rules for higher index will be priorized over lower index rules. 
+Previously applied styles of equal priority will win over later ones 
+(applied top to bottom, left to right)
+
+These are the prorioty of style_* props in decreasing orders:
+```
+1. style_data_conditional
+2. style_data
+3. style_filter_conditional
+4. style_filter
+5. style_header_conditional
+6. style_header
+7. style_cell_conditional
+8. style_cell
+```
+                "),
+    
+    examples$stylesPriorityPseudo$source_code,
+    examples$stylesPriority$layout,
+    
+    dccMarkdown("
+## Adding Borders
+
+You can customize the table borders by adding `border` to style_* props.
+                "),
+    
+    examples$addingBordersPseudo$source_code,
+    examples$addingBorders$layout,
+    
+    dccMarkdown("
+## Styling editable
+
+Editable column can be styled using `column_editable` in style_header_conditional, 
+style_filter_conditional, style_data_conditional props. 
+See the [Editable DataTable chapter](/dashDataTable/Part6) for more info.
+                "),
+    
+    examples$stylingEditablePseudo$source_code,
+    examples$stylingEditable$layout,
     
     htmlHr(),
     dccMarkdown("
