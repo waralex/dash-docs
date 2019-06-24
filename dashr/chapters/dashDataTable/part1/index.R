@@ -1,4 +1,4 @@
-library(dashR)
+library(dash)
 library(dashCoreComponents)
 library(dashHtmlComponents)
 library(dashTable)
@@ -88,7 +88,7 @@ The width of the columns is determined automatically in order to accommodate the
 > then open up the menu below to copy and paste the code behind these datasets.
                 "),
     
-    htmlBr(),
+    htmlHr(),
     
     dccMarkdown("
 The default styles work well for a small number of columns and short text.
@@ -101,6 +101,9 @@ then you'll need to employ one of the following \"overflow strategies\" to keep 
 > [plotly/dash-table#197](https://github.com/plotly/dash-table/issues/197) for more.
 
 View Datasets
+                "), 
+    
+    dccMarkdown("
 ```
 df_election <- data.frame(
   Date = c('July 12th, 2013 - July 25th, 2013',
@@ -117,6 +120,8 @@ df_election <- data.frame(
              'Southern Vermont')
 )
 ```
+              "),
+  dccMarkdown("
 ## Overflow Strategies - Multiple Lines
 
 If your cells contain contain text with spaces,
@@ -191,7 +196,7 @@ In this case, the column's width will be constant, even if its contents are shor
 ## Horizontal Scrolling via Fixed Columns
 
 You can also add a horizontal scrollbar to your table by
-fixing the leftmost columns with `n_fixed_columns`.
+fixing the leftmost columns with `fixed_columns`.
 
 > Note that fixing columns introduces some changes to the underlying markup of the table
 > and may impact the way that your columns are rendered or sized.
@@ -212,19 +217,21 @@ These widths can be specified as percentages or fixed pixels.
 You can supply the widths for all of the columns or just a few of them.
 
 View Datasets
+              "),
+  
+  dccMarkdown("
 ```
 df <- data.frame(
   Date = c('2015-01-01', '2015-10-24', '2016-05-10',
            '2017-01-10', '2018-05-10', '2018-08-15'),
-  Region = c('Montreal', 'Toronto', 'New York City',
-             'Miami', 'San Francisco', 'London'),
-  Temperature = c(1, -20, 3.512, 4, 10423, -441.2),
-  Humidity = seq(10, 60, by = 10),
-  pressure = c(2, 10924, 3912, -10, 3591.2, 15)
+           Region = c('Montreal', 'Toronto', 'New York City',
+                      'Miami', 'San Francisco', 'London'),
+                      Temperature = c(1, -20, 3.512, 4, 10423, -441.2),
+                      Humidity = seq(10, 60, by = 10),
+                      pressure = c(2, 10924, 3912, -10, 3591.2, 15)
 )
 ```
-
-  "),
+                       "),
 
 examples$individualColumnWidthsPseudo1$source_code,
 examples$individualColumnWidths1$layout,
@@ -239,10 +246,12 @@ By default, the table's height will expand in order to render all of the rows.
 
 You can constrain the height of the table
 by setting a `maxHeight` and adding a scrollbar with
-`overflowY: 'scroll'`. With `maxHeight`, the table's contents
+`overflowY = 'scroll'`. With `maxHeight`, the table's contents
 will only become scrollable if the contents are taller than that height.
 
-View Datasets
+View Datasets"),
+
+dccMarkdown("
 ```
 df_long <- df[rep(1:6, 10),]
 ```
@@ -256,7 +265,7 @@ dccMarkdown("
 
 In the example above, the headers become hidden when you scroll down.
 
-You can keep these headers visible by supplying `n_fixed_rows=1`.
+You can keep these headers visible by supplying `fixed_rows = list(headers = TRUE, data = 0)`.
 
 > Note that fixing rows introduces some changes to
 > the underlying markup of the table and may impact the way
@@ -275,8 +284,15 @@ With `max-height`, if the table's contents are shorter than the
 If you want a container with a constant height 
 no matter the contents, then use `height`.
 
-Here, we're setting max-height to 300, 
+Here, we're setting max-height to 300, or the height of the pink line. 
+Note how the table renders shorter than this line.
               "),
+
+htmlDiv(
+  style = list(width = 5, 
+               height = 300, 
+               backgroundColor = "hotpink")
+),
 
 examples$maxHeightPseudo$source_code,
 examples$maxHeight$layout,
