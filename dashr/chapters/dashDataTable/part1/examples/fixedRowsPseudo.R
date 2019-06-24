@@ -1,5 +1,5 @@
 dashDataTable(
-  n_fixed_rows = 1,
+  fixed_rows= list(headers = TRUE, data = 0),
   style_cell = list(
     width = '150px'
   ),
