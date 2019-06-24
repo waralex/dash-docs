@@ -5,6 +5,8 @@ library(dashHtmlComponents)
 
 utils <- new.env()
 source('dashr/utils.R', local=utils)
+source('dashr/styles.R')
+source('dashr/components.R')
 
 examples <- list(
    scoping_wrong = utils$LoadExampleCode('dashr/chapters/data-callbacks/examples/scoping_wrong.R'),

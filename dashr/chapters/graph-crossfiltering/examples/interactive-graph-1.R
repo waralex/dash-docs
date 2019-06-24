@@ -1,7 +1,7 @@
 library(dash)
 library(dashCoreComponents)
 library(dashHtmlComponents)
-library(jsonlite)
+library(rjson)
 
 app <- Dash$new()
 
@@ -38,7 +38,7 @@ app$layout(
           )
         ),
         layout = list(
-            clickmode = 'event+select'
+          clickmode = 'event+select'
         )
       )
     ),
@@ -51,10 +51,8 @@ app$layout(
           list(
             dccMarkdown(
               "
-**Hover Data**
-
-
-Mouse over values in the graph.
+              **Hover Data**
+              Mouse over values in the graph.
               "
             ), htmlPre(id='hover-data', style=styles$pre)
           ), className='three columns'
@@ -64,9 +62,8 @@ Mouse over values in the graph.
           list(
             dccMarkdown(
               "
- **Click Data**
-
-Click on points in the graph.
+              **Click Data**
+              Click on points in the graph.
               "
             ), htmlPre(id='click-data', style=styles$pre)
           ), className='three columns'
@@ -74,60 +71,53 @@ Click on points in the graph.
         
         htmlDiv(list(
           dccMarkdown("
-**Selection Data**
-
-
-Choose the lasso or rectangle tool in the graph's menu
-bar and then select points in the graph.
-Note that if `layout.clickmode = 'event+select'`, selection data also
-accumulates (or un-accumulates) selected data if you hold down the shift
-button while clicking.
-           "), htmlPre(id='selected-data', style=styles$pre)
+                      **Selection Data**
+                      Choose the lasso or rectangle tool in the graph's menu
+                      bar and then select points in the graph.
+                      Selection data also accumulates (or un-accumulates) selected
+                      data if you hold down the shift button while clicking.
+                      "), htmlPre(id='selected-data', style=styles$pre)
         ), className='three columns'
         ),
         
         htmlDiv(list(
           dccMarkdown("
-**Zoom and Relayout Data**
-
-
-Click and drag on the graph to zoom or click on the zoom
-buttons in the graph's menu bar.
-Clicking on legend items will also fire
-this event.
-           "), htmlPre(id='relayout-data', style=styles$pre)
-          ), className='three columns'
+                      **Zoom and Relayout Data**
+                      Click and drag on the graph to zoom or click on the zoom
+                      buttons in the graph's menu bar.
+                      Clicking on legend items will also fire
+                      this event.
+                      "), htmlPre(id='relayout-data', style=styles$pre)
+        ), className='three columns'
         )
       )
     )
   ))
 )
 
-app$callback(output('hover-data', 'children'),
-             list(input('basic-interactions', 'hoverData')),
-function(hoverData) {
-  toJSON(hoverData)
-})
+app$callback(output = list(id = 'hover-data', property = 'children'),
+             params = list(input(id = 'basic-interactions', property = 'hoverData')),
+             function(hoverData) {
+               return(toJSON(hoverData, indent = 2))
+             })
 
-app$callback(output('click-data', 'children'),
-             list(input('basic-interactions', 'clickData')),
-function(clickData) {
-  print(toJSON(clickData))
-  print(clickData)
-})
 
-app$callback(output('selected-data', 'children'),
-             list(input('basic-interactions', 'selectedData')),
-function(selectedData) {
-  toJSON(selectedData)
-})
+app$callback(output = list(id = 'click-data', property = 'children'),
+             params = list(input(id = 'basic-interactions', property = 'clickData')),
+             function(clickData) {
+               return(toJSON(clickData, indent = 2))
+             })
 
-app$callback(output('relayout-data', 'children'),
-             list(input('basic-interactions', 'relayoutData')),
-function(relayoutData) {
-  toJSON(relayoutData)
-  # return json.dumps(relayoutData, indent=2)
-  # toJSON("{\n \"autozize\": true}")
-})
+app$callback(output = list(id = 'selected-data', property = 'children'),
+             params = list(input(id = 'basic-interactions', property = 'selectedData')),
+             function(selectedData) {
+               return(toJSON(selectedData, indent = 2))
+             })
+
+app$callback(output = list(id = 'relayout-data', property = 'children'),
+             params = list(input(id = 'basic-interactions', property = 'relayoutData')),
+             function(relayoutData) {
+               return(toJSON(relayoutData, indent = 2))
+             })
 
 app$run_server()

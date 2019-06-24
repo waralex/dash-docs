@@ -6,10 +6,7 @@ app <- Dash$new()
 
 df <- read.csv('dashr/chapters/callbacks/examples/indicators.csv', header = TRUE, sep = ",")
 available_indicators <- unique(df$Indicator_Name)
-option_indicator <- list()
-for (i in 1:length(available_indicators)){
-  option_indicator[[i]] <- list(label = available_indicators[i], value = available_indicators[i])
-}
+option_indicator <- lapply(available_indicators, function(x) list(label = x, value = x))
 
 app$layout(
   htmlDiv(list(
@@ -28,7 +25,7 @@ app$layout(
           labelStyle = list(display = 'inline-block')
         )
       ), style = list(width = '49%', display = 'inline-block')),
-
+      
       htmlDiv(list(
         dccDropdown(
           id = 'crossfilter-yaxis-column',
@@ -48,7 +45,7 @@ app$layout(
       backgroundColor = 'rgb(250, 250, 250)',
       padding = '10px 5px')
     ),
-
+    
     htmlDiv(list(
       dccGraph(
         id = 'crossfilter-indicator-scatter',
@@ -58,19 +55,19 @@ app$layout(
         display = 'inline-block',
         padding = '0 20')
     ),
-
+    
     htmlDiv(list(
       dccGraph(id='x-time-series'),
       dccGraph(id='y-time-series')
     ), style = list(display = 'inline-block', width = '49%')),
-
+    
     htmlDiv(list(
       dccSlider(
         id = 'crossfilter-year--slider',
-        min = 1,
-        max = length(unique(df$Year)),
+        min = 0,
+        max = length(unique(df$Year))-1,
         marks = unique(df$Year),
-        value = length(unique(df$Year))
+        value = length(unique(df$Year))-1 
       )
     ), style = list(width = '49%', padding = '0px 20px 20px 20px'))
   ))
@@ -102,7 +99,7 @@ app$callback(
           'line' = list('width' = 0.5, 'color' = 'white')
         )
       )
-
+      
       return (list(
         'data' = traces,
         'layout'= list(

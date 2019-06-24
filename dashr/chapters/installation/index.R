@@ -19,9 +19,9 @@ install_github('plotly/dashR') # The core dash backend
 install_github('plotly/dash-html-components') # HTML components
 install_github('plotly/dash-core-components') # Supercharged components
 ```
-
-
-Ready? Now, let's [make your first Dash app](/getting-started).
+"),
+htmlBr(),
+dccMarkdown("Ready? Now, let's [make your first Dash app](/getting-started).
 "),
 
 htmlHr(),
