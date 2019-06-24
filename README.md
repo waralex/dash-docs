@@ -11,7 +11,7 @@ There are three critical files required to run any **dashR** app via the [Heroku
 We suggest that you start from our Heroku app template, which you can summon via the `heroku_app_template()` function. This copies the template to your current working directory:
 
 ```r
-library(dashR)
+library(dash)
 heroku_app_template()
 ```
 
