@@ -79,12 +79,12 @@ layout = html.Div(
         around each cell. It resembles a spreadsheet and the headers are
         clearly defined.
         """),
-        Display('''
+        Display("""
         dash_table.DataTable(
             data=df.to_dict('records'),
             columns=[{'id': c, 'name': c} for c in df.columns],
         )
-        '''),
+        """),
 
         dcc.Markdown("""
         ## Column Alignment
@@ -101,7 +101,7 @@ layout = html.Div(
         In both cases, the column headers should have the same alignment
         as the cell content.
         """),
-        Display('''
+        Display("""
         dash_table.DataTable(
             data=df.to_dict('records'),
             columns=[{'id': c, 'name': c} for c in df.columns],
@@ -113,17 +113,17 @@ layout = html.Div(
                 }
             ]
         )
-        '''),
+        """),
 
-        dcc.Markdown('''
+        dcc.Markdown("""
         ## Styling the Table as a List
 
         The gridded view is a good default view for an editable table as it
         looks and feels like a spreadsheet.
         If your table isn't editable, then in many cases it can look cleaner
         without the vertical grid lines.
-        '''),
-        Display('''
+        """),
+        Display("""
         dash_table.DataTable(
             data=df.to_dict('records'),
             columns=[{'id': c, 'name': c} for c in df.columns],
@@ -136,16 +136,16 @@ layout = html.Div(
 
             style_as_list_view=True,
         )
-        '''),
+        """),
 
-        dcc.Markdown('''
+        dcc.Markdown("""
         ## List Style with Minimal Headers
 
         In some contexts, the grey background can look a little heavy.
         You can lighten this up by giving it a white background and
         a bold text.
-        '''),
-        Display('''
+        """),
+        Display("""
         dash_table.DataTable(
             data=df.to_dict('records'),
             columns=[{'id': c, 'name': c} for c in df.columns],
@@ -162,9 +162,9 @@ layout = html.Div(
                 } for c in ['Date', 'Region']
             ],
         )
-        '''),
+        """),
 
-        dcc.Markdown('''
+        dcc.Markdown("""
         ## Striped Rows
 
         When you're viewing datasets where you need to compare values within
@@ -177,8 +177,8 @@ layout = html.Div(
         table, "header" is just the header rows, "data" is just the data rows.
         To use even/odd or other styling based on `row_index` you must use
         `style_data_conditional`.
-        '''),
-        Display('''
+        """),
+        Display("""
         dash_table.DataTable(
             data=df.to_dict('records'),
             columns=[{'id': c, 'name': c} for c in df.columns],
@@ -200,9 +200,9 @@ layout = html.Div(
                 'fontWeight': 'bold'
             }
         )
-        '''),
+        """),
 
-        dcc.Markdown('''
+        dcc.Markdown("""
         ## Multi-Headers
 
         Multi-headers are natively supported in the `DataTable`.
@@ -210,8 +210,8 @@ layout = html.Div(
         single string and toggle `merge_duplicate_headers=True`.
         `DataTable` will check the neighbors of each header row and, if they
         match, will merge them into a single cell automatically.
-        '''),
-        Display('''
+        """),
+        Display("""
         dash_table.DataTable(
             columns=[
                 {"name": ["", "Year"], "id": "year"},
@@ -236,7 +236,7 @@ layout = html.Div(
             ],
             merge_duplicate_headers=True,
         )
-        '''),
+        """),
 
         dcc.Markdown("""
         ## Dark Theme with Cells
@@ -245,7 +245,7 @@ layout = html.Div(
         If you are viewing your table in an app with a dark background,
         you can provide inverted background and font colors.
         """),
-        Display('''
+        Display("""
         dash_table.DataTable(
             data=df.to_dict('records'),
             columns=[{'id': c, 'name': c} for c in df.columns],
@@ -256,9 +256,9 @@ layout = html.Div(
                 'color': 'white'
             },
         )
-        '''),
+        """),
 
-        Display('''
+        Display("""
         dash_table.DataTable(
             data=df.to_dict('records'),
             columns=[{'id': c, 'name': c} for c in df.columns],
@@ -270,15 +270,15 @@ layout = html.Div(
                 'color': 'white'
             },
         )
-        '''),
+        """),
 
-        dcc.Markdown('''
+        dcc.Markdown("""
         ## Conditional Formatting - Highlighting Certain Rows
 
         You can draw attention to certain rows by providing a unique
         background color, bold text, or colored text.
-        '''),
-        Display('''
+        """),
+        Display("""
         dash_table.DataTable(
             data=df.to_dict('records'),
             columns=[
@@ -290,8 +290,8 @@ layout = html.Div(
                 'color': 'white'
             }]
         )
-        '''),
-        Display('''
+        """),
+        Display("""
         dash_table.DataTable(
             data=df.to_dict('records'),
             columns=[
@@ -303,14 +303,14 @@ layout = html.Div(
                 "fontWeight": "bold"
             }]
         )
-        '''),
+        """),
 
-        dcc.Markdown('''
+        dcc.Markdown("""
         ## Conditional Formatting - Highlighting Columns
 
         Similarly, certain columns can be highlighted.
-        '''),
-        Display('''
+        """),
+        Display("""
         dash_table.DataTable(
             data=df.to_dict('records'),
             columns=[
@@ -322,9 +322,9 @@ layout = html.Div(
                 'color': 'white',
             }]
         )
-        '''),
+        """),
 
-        dcc.Markdown('''
+        dcc.Markdown("""
         ## Conditional Formatting - Highlighting Cells
 
         You can also highlight certain cells. For example, you may want to
@@ -335,8 +335,8 @@ layout = html.Div(
         filtering expression language as the table's interactive filter UI.
         See the [DataTable filtering chapter](/datatable/filtering) for more
         info.
-        '''),
-        Display('''
+        """),
+        Display("""
         dash_table.DataTable(
             data=df.to_dict('records'),
             columns=[
@@ -369,7 +369,7 @@ layout = html.Div(
                 },
             ]
         )
-        '''),
+        """),
 
         dcc.Markdown("""
         ## Styles Priority
@@ -391,28 +391,28 @@ layout = html.Div(
             7. style_cell_conditional
             8. style_cell
         """),
-        Display('''
+        Display("""
         dash_table.DataTable(
             data=df.to_dict('records'),
             columns=[{'id': c, 'name': c} for c in df.columns],
             style_header={ 'border': '1px solid black' },
             style_cell={ 'border': '1px solid grey' },
         )
-        '''),
+        """),
 
         dcc.Markdown("""
         ## Adding Borders
 
         Customize the table borders by adding `border` to style_* props.
         """),
-        Display('''
+        Display("""
         dash_table.DataTable(
             data=df.to_dict('records'),
             columns=[{'id': c, 'name': c} for c in df.columns],
             style_data={ 'border': '1px solid blue' },
             style_header={ 'border': '1px solid pink' },
         )
-        '''),
+        """),
 
         dcc.Markdown("""
         ## Styling editable
@@ -421,7 +421,7 @@ layout = html.Div(
         style_header_conditional, style_filter_conditional,
         style_data_conditional props.
         """),
-        Display('''
+        Display("""
         dash_table.DataTable(
             data=df.to_dict('records'),
             columns=[
@@ -439,6 +439,6 @@ layout = html.Div(
                 'color': 'white'
             }],
         )
-        ''')
+        """)
     ]
 )
