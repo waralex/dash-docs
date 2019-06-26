@@ -236,10 +236,10 @@ layout = html.Div(className='gallery', children=[
 
     reusable.Row([
         AppSection(
-            app_name='Drug Precursors',
+            app_name='Drug Discovery',
             app_link='https://dash-gallery.plotly.host/dash-drug-discovery/',
-            code_link='https://github.com/plotly/dash-drug-discovery-demo/',
-            img_src='assets/images/gallery/drug-discovery-app.gif',
+            code_link='https://github.com/plotly/dash-sample-apps/tree/master/apps/dash-drug-discovery/',
+            img_src='assets/images/gallery/dash-drug-discovery.png',
             description='''
             This app displays a description of the drug as you hover over points in the
             graph.
@@ -411,7 +411,7 @@ layout = html.Div(className='gallery', children=[
 
     reusable.Row([
         AppSection(
-            app_name='Wind Speed Measurement',
+            app_name='Wind Streaming',
             app_link='https://dash-gallery.plotly.host/dash-wind-streaming',
             code_link='https://github.com/plotly/dash-sample-apps/tree/master/apps/dash-wind-streaming',
             img_src='assets/images/gallery/dash-wind-streaming.gif',
