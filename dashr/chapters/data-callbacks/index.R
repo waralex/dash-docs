@@ -121,7 +121,7 @@ serialize the output at JSON, and provide it as an input to the other callbacks.
 This example uses standard Dash callbacks and stores the JSON-ified data inside a hidden div in the app.
 
 ```
-library(dashR)
+library(dash)
 library(dashCoreComponents)
 library(dashHtmlComponents)
 

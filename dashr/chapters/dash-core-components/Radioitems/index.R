@@ -11,6 +11,7 @@ examples <- list(
 
 layout = htmlDiv(list(
   htmlH3('Radio Items Properties'),
+<<<<<<< HEAD
   examples$radioitemsproptable$layout,
   
   htmlHr(),
@@ -18,3 +19,7 @@ layout = htmlDiv(list(
               [Back to the Table of Contents](/)
               ")
 ))
+=======
+  examples$radioitemsproptable$layout
+))
+>>>>>>> b55713055cca0685792ba311911ec9a3d89482d8

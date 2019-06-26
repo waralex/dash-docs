@@ -227,7 +227,7 @@ examples$addingExternalCSS$source_code,
 # Add an `index_string` to modify the default HTML Index Template:
 # 
 # ```
-# library(dashR)
+# library(dash)
 # library(dashCoreComponents)
 # library(dashHtmlComponents)
 # 
@@ -305,7 +305,7 @@ examples$addingExternalCSS$source_code,
 # If your HTML content isn't static or if you would like to introspect or modify the templated variables, 
 # then you can override the Dash.interpolate_index method.   
 # ```
-# library(dashR)
+# library(dash)
 # library(dashHtmlComponents)
 # ... # build R6 class
 # ```
