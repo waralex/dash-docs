@@ -1,5 +1,3 @@
-
-
 app = Dash$new()
 
 df = read.csv('https://raw.githubusercontent.com/plotly/datasets/master/gapminderDataFiveYear.csv')
@@ -57,10 +55,9 @@ app$callback(
       return()
     }
     aggregation = list()
-    a = list()
     data <- split(data, f = data$country)
     for (row in 1:length(data)) {
-      a[[row]] <- list(
+      aggregation[[row]] <- list(
         x = unlist(data[[row]][[field]]),
         y = unlist(data[[row]]['year']),
         text = data[[row]]['country'],
@@ -70,7 +67,7 @@ app$callback(
     }
     
     return(list(
-      'data' = a))
+      'data' = aggregation))
   })
 
 app$run_server()
