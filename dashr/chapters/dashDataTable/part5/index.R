@@ -17,7 +17,7 @@ layout <- htmlDiv(
 # DataTable - Typing
 
 This section will provide an overview of the DataTable's 
-capabilities for typing, formatting, presentation and user input processing.
+capabilities for typing, formatting, presentation, and user input processing.
 
 ## Typing
 
@@ -93,7 +93,7 @@ sign behavior so that both the \"+\" and \"-\" sign are visible.
     examples$example1$layout,
     
     dccMarkdown("
-### DataTable with formatting
+### DataTable with Formatting
 
 This table contains columns with type `numeric` and `datetime`. 
 The \"max\" columns have the default behavior and will not allow for 

@@ -11,7 +11,8 @@ examples <- list(
   addRemoveRows = utils$LoadExampleCode('dashr/chapters/dashDataTable/part6/examples/addRemoveRows.R'),
   filteringOutEmptyCells = utils$LoadExampleCode('dashr/chapters/dashDataTable/part6/examples/filteringOutEmptyCells.R'),
   predefinedColumns = utils$LoadExampleCode('dashr/chapters/dashDataTable/part6/examples/predefinedColumns.R'),
-  updatingColumnsofSameTable = utils$LoadExampleCode('dashr/chapters/dashDataTable/part6/examples/updatingColumnsofSameTable.R')
+  updatingColumnsofSameTable = utils$LoadExampleCode('dashr/chapters/dashDataTable/part6/examples/updatingColumnsofSameTable.R'),
+  uploadData = utils$LoadExampleCode('dashr/chapters/dashDataTable/part6/examples/uploadData.R')
 )
 
 layout <- htmlDiv(
@@ -93,6 +94,9 @@ Try it out by [downloading this file](https://raw.githubusercontent.com/plotly/d
 and then uploading it.
                 "),
     
+    examples$uploadData$source_code,
+    examples$uploadData$layout,
+    
     dccMarkdown("
 ## Adding or removing columns
 
@@ -108,7 +112,8 @@ This is a simple example that plots the data in the spreadsheet as a heatmap. Tr
     dccMarkdown("
 ## Adding or removing rows
 
-Similarly as columns, the DataTable has a built-in UI for removing rows but not for adding rows. 
+Similarly as columns, the DataTable has a built-in UI for removing rows 
+(however, there is currently no corresponding UI for adding rows). 
 You can add rows to the table through an external button.
                 "),
     

@@ -98,7 +98,8 @@ layout <- htmlDiv(
     htmlDiv(
       list(
         subTitleLink("Part 2", "Styling"),
-        dccMarkdown("The style of the DataTable is highly customizable. This chapter includes examples for:
+        dccMarkdown("The style of the DataTable is highly customizable. 
+This chapter includes examples for:
 
 - Conditional formatting
 
@@ -110,7 +111,8 @@ layout <- htmlDiv(
 
 - Changing the colors (including a dark theme!)
 
-The sizing API for the table has been particularly tricky for us to nail down, so be sure to read this chapter to understand the nuances, 
+The sizing API for the table has been particularly tricky for us to 
+nail down, so be sure to read this chapter to understand the nuances, 
 limitations, and the APIs that we're exploring.
                     ")
       )
@@ -124,7 +126,7 @@ This chapter demonstrates the interactive features of the table and
 how to wire up these interations to R callbacks. 
 These actions include:
                     
-- Paging
+- Paginating
                     
 - Selecting Rows
                     
@@ -136,10 +138,11 @@ These actions include:
     
     htmlDiv(
       list(
-        subTitleLink("Part 4", "Sorting, Filtering, Selecting and Paging with R"),
+        subTitleLink("Part 4", "Sorting, Filtering, Selecting and Paginating with R"),
         dccMarkdown("
-In Part 3, the paging, sorting, and filtering was done entirely clientside (in the browser). 
-This means that you need to load all of the data into the table up-front. If your data is large, then this can be prohibitively slow.
+In this part of the documentation, the paginating, sorting, and filtering were done entirely clientside (in the browser). 
+This means that you need to load all of the data into the table up-front. If your data file is large, 
+then this can be prohibitively slow.
 
 In this chapter, you'll learn how to write your own filtering, sorting, and paging backends in R with Dash. 
 We'll do the data processing with `dplyr` but you could write your own routines with SQL or even generate the data on the fly!
@@ -194,9 +197,9 @@ This chapter includes recipes for:
       list(
         subTitleLink("Part 7", "Rendering Cells as Dropdowns"),
         dccMarkdown("
-Cells can be rendered as editable Dropdowns. 
-This is our first stake in bringing a full typing system to the table. 
-Rendering cells as dropdowns introduces some complexity in the markup and 
+Cells can be rendered as editable dropdowns. 
+This is our first step in bringing a full typing system to the table. 
+Rendering cells as dropdowns introduces some complexity in the markup,
 so there are a few limitations that you should be aware of.
                     ")
       )
@@ -244,7 +247,8 @@ to see what's coming next.
 
 Many thanks to all of our customers 
 who have sponsored the development of this table. 
-Interested in steering the roadmap? [Get in touch](https://plot.ly/products/consulting-and-oem/?_ga=2.243244741.679498514.1560782796-1541667138.1549398001)
+Interested in steering the roadmap? 
+[Get in touch](https://plot.ly/products/consulting-and-oem/?_ga=2.243244741.679498514.1560782796-1541667138.1549398001)
                 "),
     
     htmlHr(),

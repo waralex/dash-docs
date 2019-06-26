@@ -81,7 +81,7 @@ The width of the columns is determined automatically in order to accommodate the
     examples$example1$layout,
     
     dccMarkdown("
-> The set of examples on this page are rendered with a few different dataframes that have different sizes
+> The examples on this page are rendered with a few different dataframes that have different sizes
 > and shapes. In particular,
 > some of the dataframes have a large number of columns or have cells with long contents.
 > If you'd like to follow along on your own machine,
@@ -89,7 +89,6 @@ The width of the columns is determined automatically in order to accommodate the
                 "),
     
     htmlHr(),
-    
     dccMarkdown("
 The default styles work well for a small number of columns and short text.
 However, if you are rendering a large number of columns or cells with long contents,
@@ -140,8 +139,8 @@ Alternatively, you can keep the content on a single line but display a set of
 ellipses if the content is too long to fit into the cell.
 
 Here, `max-width` is set to 0.
-It could be any number, the only important thing is that it is supplied.
-The behaviour will be the same whether it is 0 or 50.
+It can take any numerical value; the only important thing is that it is supplied.
+The value that is supplied will not affect the rendering of the table.
 
 If you want to just hide the content instead of displaying ellipses,
 then set `textOverflow` to `'clip'` instead of `'ellipsis'`.
@@ -153,25 +152,25 @@ then set `textOverflow` to `'clip'` instead of `'ellipsis'`.
 ## Overflow Strategies - Horizontal Scroll
 
 Instead of trying to fit all of the content in the container,
-you could overflow the entire container into a scrollable container.
+you could change the container by making it scrollable.
                 "),
   
   examples$horizontalScrollPseudo1$source_code,
   examples$horizontalScroll1$layout,
   
   dccMarkdown("
-Note how we haven't explicitly set the width of the individual columns yet.
-The widths of the columns have been computed dynamically depending
-on the width of the table and the width of the cells contents.
+Note how we haven't explicitly set the widths of the individual columns yet.
+The widths of the columns have been computed dynamically; they depend
+on the width of the table and the width of the cells' contents.
 In the example above, by providing a scrollbar,
-we're effectively giving the table as much width as needs in order to
+we're effectively giving the table as much width as needs it in order to
 fit the entire width of the cell contents on a single line.
 
 We can combine some of these strategies by bounding the `maxWidth` of
 a column and overflowing into multiple lines (or ellipses)
 if the content exceeds that width while rendering the table
 within a scrollable horizontal container.
-If the column's contents don't exceed the `maxWidth`,
+If the contents of each cell within the column don't exceed the `maxWidth`,
 then the column will only take up the necessary amount of horizontal space.
               "),
   
@@ -220,7 +219,7 @@ View Datasets
               "),
   
   dccMarkdown("
-```
+```R
 df <- data.frame(
   Date = c('2015-01-01', '2015-10-24', '2016-05-10',
            '2017-01-10', '2018-05-10', '2018-08-15'),
@@ -280,11 +279,11 @@ examples$fixedRows$layout,
 dccMarkdown("
 ## Height vs Max Height
 With `max-height`, if the table's contents are shorter than the 
-`max-height`, then the container will be shorter. 
+`max-height`, then the container will have the height of the table (plus any padding or margins you may have added).
 If you want a container with a constant height 
 no matter the contents, then use `height`.
 
-Here, we're setting max-height to 300, or the height of the pink line. 
+Here, we're setting max-height to 300, which corresponds to the height of the pink line. 
 Note how the table renders shorter than this line.
               "),
 
@@ -298,8 +297,8 @@ examples$maxHeightPseudo$source_code,
 examples$maxHeight$layout,
 
 dccMarkdown("
-and here is `height` with the same content. Note how the table's
-container takes up all 300px.
+Here, we are using the `height` property with the same content. 
+Note how the table's container takes up all 300px.
             "),
 examples$heightPseudo$source_code,
 examples$height$layout,

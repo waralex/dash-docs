@@ -37,16 +37,16 @@ you can load your data from any R data source.
     htmlHr(),
     
     dccMarkdown("
-With backend paging, we can have front-end sorting and filtering 
+With backend paging, we can have front-end sorting and filtering, 
 but it will only filter and sort the data that exists on the page.
 
 This should be avoided. 
-Your users will expect that sorting and filtering is 
+Your users might expect that sorting and filtering is 
 happening on the entire dataset and, with large pages, 
 might not be aware that this is only occuring on the current page.
               
-Instead, we recommend implmenting sorting and filtering on the backend as well. 
-That is, on the entire underlying dataset.
+Instead, we recommend implementing sorting and filtering on the backend as well. 
+ie, on the entire dataset.
               
 **Note for returning users - changed property names:**
               
@@ -62,9 +62,9 @@ That is, on the entire underlying dataset.
     
     
     dccMarkdown("
-## Backend Paging with Multi Column Sorting
+## Backend Paging with Multi-Column Sorting
 
-Multi-column sort allows you to sort by multiple columns. 
+`dashDataTable` also supports sorting by multiple columns. 
 This is useful when you have categorical columns with repeated values and 
 you're interested in seeing the sorted values for each category.
 
@@ -96,7 +96,7 @@ It supports `eq`, `<`, and `>`. For example, try:
 - Enter `< 80` in the \"lifeExp\" column
 
 > Note that unlike the front-end filtering, 
-> our backend filtering expression language doesn't require or support `num()` or 
+> our back-end filtering expression language doesn't require or support `num()` or 
 > wrapping items in double quotes (\"). 
 > We will improve this syntax in the future, follow [dash-table#169](https://github.com/plotly/dash-table/issues/169) for more.
 

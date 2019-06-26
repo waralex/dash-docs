@@ -20,7 +20,6 @@ As discussed in the [interactivity chapter],
 `DataTable` includes filtering capabilities. 
 Users can turn on filtering options by defining the `filtering` attribute. 
 `filter_action = 'native'` will initiate clientside (front-end) filtering. 
-Alternatively you can specify `filter_action='native'`. 
 If the DataTable is quite large, clientside filtering will likely become slow. 
 Using the back-end filtering option: `filter_action='custom'` will allow serverside filtering.
 

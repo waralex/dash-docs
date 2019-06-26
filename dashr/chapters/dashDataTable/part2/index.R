@@ -67,12 +67,12 @@ It resembles a spreadsheet and the headers are clearly defined.
 ## Column Alignment
 
 When displaying numerical data, 
-it's a good practice to use monospaced fonts, 
+it's a good practice to use monospace fonts, 
 to right-align the data, and to provide the same number of decimals throughout the column.
 
-> Note that it's not possible to modify the number of decimal places in css. 
-> Package `dashTable` will provide formatting options in the future, 
-> until then you'll have to modify your data before displaying it. 
+> Note that it's not possible to modify the number of decimal places in CSS. 
+> The `dashTable` package will provide formatting options in the future; 
+> until then, you'll have to modify your data before displaying it. 
 > Relevant issue: https://github.com/plotly/dash-table/issues/189
 
 For textual data, left-aligning the text is usually easier to read.
@@ -84,9 +84,9 @@ In both cases, the column headers should have the same alignment as the cell con
     examples$columnAlignment$layout,
     
     dccMarkdown("
-## Styling the Table as a list
+## Styling the Table as a List
 
-The gridded view is a good default view for an editable table as it looks and feels like a spreadsheet. If your table isn't editable, 
+The gridded view is a good default view for an editable table, as it looks and feels like a spreadsheet. If your table isn't editable, 
 then in many cases it can look cleaner without the vertical grid lines.
                 "),
     
@@ -97,7 +97,7 @@ then in many cases it can look cleaner without the vertical grid lines.
 ## List Style with Minimal Headers
 
 In some contexts, the grey background can look a little heavy. 
-You can lighten this up by giving it a white background and a bold text.
+You can lighten this up by giving it a white background and bold text.
                 "),
     
     examples$minimalHeadersPseudo$source_code,
@@ -107,7 +107,7 @@ You can lighten this up by giving it a white background and a bold text.
 ## Striped Rows
 
 When you're viewing datasets where you need to compare values within individual rows, it can sometimes be helpful to give the rows alternating background colors. We recommend 
-using colors that are faded so as to not attract too much attention to the stripes.
+using colors that are faded, so as to not attract too much attention to the stripes.
                 "),
     
     examples$stripedRowsPseudo1$source_code,
@@ -143,7 +143,7 @@ you can provide inverted background and font colors.
     dccMarkdown("
 ## Conditional Formatting - Highlighting Certain Rows
 
-You can draw attention to certain rows by providing 
+You can draw attention to specific rows by providing 
 a unique background color, bold text, or colored text.
                 "),
     
@@ -155,7 +155,7 @@ a unique background color, bold text, or colored text.
     dccMarkdown("
 ## Conditional Formatting - Highlighting Certain Columns
                 
-Similarly, certain columns can be highlighted.
+Similarly, specific columns can be highlighted.
                 "),
     
     examples$highlightPseudo3$source_code,
@@ -164,7 +164,7 @@ Similarly, certain columns can be highlighted.
     dccMarkdown("
 ## Conditional Formatting - Highlighting Cells
                 
-You can also highlight certain cells. 
+You can also highlight specific cells. 
 For example, you may want to highlight certain cells 
 that exceed a threshold or that match a filter elsewhere 
 in the app.
@@ -174,8 +174,9 @@ The `filter` keyword in
 language as the table's interactive filter UI. 
 See the [DataTable filtering chapter](/dashDataTable/Part9) for more info.
 
-> Note, the filtering expression language is subject to change. 
-> Please subscribe to [dash-table#169](https://github.com/plotly/dash-table/issues/169) for more info.
+> Please note that, the filtering expression language is subject to change. 
+> Please subscribe to 
+[dash-table#169](https://github.com/plotly/dash-table/issues/169) to stay updated.
                 "),
     
     examples$highlightPseudo4$source_code,
