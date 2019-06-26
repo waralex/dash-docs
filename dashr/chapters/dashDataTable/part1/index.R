@@ -138,10 +138,6 @@ then you can overflow your content into multiple lines.
 Alternatively, you can keep the content on a single line but display a set of
 ellipses if the content is too long to fit into the cell.
 
-Here, `max-width` is set to 0.
-It can take any numerical value; the only important thing is that it is supplied.
-The value that is supplied will not affect the rendering of the table.
-
 If you want to just hide the content instead of displaying ellipses,
 then set `textOverflow` to `'clip'` instead of `'ellipsis'`.
                 "),
