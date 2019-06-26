@@ -174,7 +174,7 @@ layout = html.Div(
         not attract too much attention to the stripes.
 
         Notice the three different groups you can style: "cell" is the whole
-        table, "header" is just the header rows, "data" is just the data rows.
+        table, "header" is just the header rows, and "data" is just the data rows.
         To use even/odd or other styling based on `row_index` you must use
         `style_data_conditional`.
         """),
@@ -374,13 +374,13 @@ layout = html.Div(
         dcc.Markdown("""
         ## Styles Priority
 
-        There are a specific order of priority for the style\_\* properties.
+        There is a specific order of priority for the style\_\* properties.
         If there are multiple style_* props, the one with higher priority will
-        take precedence. Within each props, rules for higher index will be
-        prioritized over lower index rules. Previously applied styles of equal
+        take precedence. Within each prop, rules for higher indices will be
+        prioritized over those for lower indices. Previously applied styles of equal
         priority win over later ones (applied top to bottom, left to right).
 
-        These are the prorioty of style_* props in decreasing orders:
+        These are the priorities of style_* props, in decreasing order:
 
             1. style_data_conditional
             2. style_data
@@ -418,7 +418,7 @@ layout = html.Div(
         ## Styling editable
 
         Editable columns can be styled using  `column_editable` in
-        style_header_conditional, style_filter_conditional,
+        style_header_conditional, style_filter_conditional, and
         style_data_conditional props.
         """),
         Display("""
