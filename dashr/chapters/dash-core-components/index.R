@@ -1,6 +1,6 @@
 library(dashCoreComponents)
 library(dashHtmlComponents)
-library(dashR)
+library(dash)
 
 utils <- new.env()
 source('dashr/utils.R', local=utils)
@@ -318,7 +318,7 @@ htmlDiv(htmlH3('Interactive Tables')),
 #--------------------------------
 htmlDiv(titleLink('Upload Component')),
 utils$LoadAndDisplayComponent(
-  'library(dashR)
+  'library(dash)
   library(dashCoreComponents)
 dccMarkdown("
 The `dccUpload` component allows users to upload files into your app

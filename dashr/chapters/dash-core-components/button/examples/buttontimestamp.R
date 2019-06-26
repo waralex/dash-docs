@@ -1,5 +1,5 @@
 library(dashCoreComponents)
-library(dashR)
+library(dash)
 
 app <- Dash$new()
 
