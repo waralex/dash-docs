@@ -134,7 +134,7 @@ layout = html.Div(className='gallery', children=[
         AppSection(
             app_name='Financial Report',
             app_link='https://dash-gallery.plotly.host/dash-financial-report',
-            code_link='https://github.com/plotly/dash-financial-report',
+            code_link='https://github.com/plotly/dash-sample-apps/tree/master/apps/dash-financial-report',
             img_src='assets/images/gallery/dash-financial-report.gif',
             description='''
             This app recreates the look and feel of a financial report.
@@ -144,8 +144,7 @@ layout = html.Div(className='gallery', children=[
             adapt this report to include even more interactive elements, like
             a dropdown or a search box.
             '''
-        )
-        ,
+        ),
 
         AppSection(
             app_name='Recession in 255 Charts',
@@ -359,7 +358,7 @@ layout = html.Div(className='gallery', children=[
         AppSection(
             app_name='Interactive t-SNE',
             app_link='https://dash-gallery.plotly.host/dash-tsne/',
-            code_link='https://github.com/plotly/dash-tsne',
+            code_link='https://github.com/plotly/dash-sample-apps/tree/master/apps/dash-tsne',
             img_src='assets/images/gallery/dash-tsne.gif',
             description='''
             t-SNE is a visualization algorithm that projects your
