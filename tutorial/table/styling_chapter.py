@@ -187,6 +187,11 @@ layout = html.Div(
         alternating background colors.
         We recommend using colors that are faded so as to
         not attract too much attention to the stripes.
+
+        Notice the three different groups you can style: "cell" is the whole
+        table, "header" is just the header rows, "data" is just the data rows.
+        To use even/odd or other styling based on `row_index` you must use
+        `style_data_conditional`.
         ''')),
         Display(
         '''
@@ -196,32 +201,20 @@ layout = html.Div(
 
             style_cell_conditional=[
                 {
-                    'if': {'row_index': 'odd'},
-                    'backgroundColor': 'rgb(248, 248, 248)'
-                }
-            ] + [
-                {
                     'if': {'column_id': c},
                     'textAlign': 'left'
                 } for c in ['Date', 'Region']
             ],
+            style_data_conditional=[
+                {
+                    'if': {'row_index': 'odd'},
+                    'backgroundColor': 'rgb(248, 248, 248)'
+                }
+            ],
             style_header={
-                'backgroundColor': 'white',
+                'backgroundColor': 'rgb(230, 230, 230)',
                 'fontWeight': 'bold'
             }
-        )
-        '''),
-
-        Display(
-        '''
-        dash_table.DataTable(
-            data=df.to_dict('records'),
-            columns=[{'id': c, 'name': c} for c in df.columns],
-
-            style_cell_conditional=[{
-                'if': {'row_index': 'odd'},
-                'backgroundColor': 'rgb(248, 248, 248)'
-            }]
         )
         '''),
 
@@ -418,8 +411,8 @@ layout = html.Div(
         dcc.Markdown(dedent(
         """
         There are a specific order of priority for the style\_\* properties. If there
-        are multiple style_* props, the one with higher priority will take precedence. Within each 
-        props, rules for higher index will be priorized over lower index rules.  Previously 
+        are multiple style_* props, the one with higher priority will take precedence. Within each
+        props, rules for higher index will be priorized over lower index rules.  Previously
         applied styles of equal priority will win over later ones (applied top to bottom, left to right)
 
         These are the prorioty of style_* props in decreasing orders:
@@ -450,7 +443,7 @@ layout = html.Div(
 
         dcc.Markdown(dedent(
         """
-        You can customize the table borders by adding `border` to style_* props.  
+        You can customize the table borders by adding `border` to style_* props.
         """
         )),
 
@@ -469,7 +462,7 @@ layout = html.Div(
 
         dcc.Markdown(dedent(
         """
-        Editable column can be styled using  `column_editable` in 
+        Editable column can be styled using  `column_editable` in
         style_header_conditional, style_filter_conditional, style_data_conditional props.
         """
         )),
@@ -479,16 +472,16 @@ layout = html.Div(
         dash_table.DataTable(
             data=df.to_dict('records'),
             columns=[{'id': c, 'name': c, 'editable': (c == 'Humidity') } for c in df.columns],
-            style_data_conditional=[{ 
-                'if': {'column_editable': False}, 
+            style_data_conditional=[{
+                'if': {'column_editable': False},
                 'backgroundColor': 'rgb(30, 30, 30)',
                 'color': 'white'
-            }], 
-            style_header_conditional=[{ 
-                'if': {'column_editable': False}, 
+            }],
+            style_header_conditional=[{
+                'if': {'column_editable': False},
                 'backgroundColor': 'rgb(30, 30, 30)',
                 'color': 'white'
-            }], 
+            }],
         )
         '''
         )
