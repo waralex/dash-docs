@@ -22,7 +22,7 @@ app$layout(
       whiteSpace = 'no-wrap',
       overflow = 'hidden',
       textOverflow = 'ellipsis',
-      maxWidth = 0
+      maxWidth = 30
     ),
     css = list(
       list(
