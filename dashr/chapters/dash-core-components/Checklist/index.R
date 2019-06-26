@@ -1,6 +1,6 @@
 library(dashCoreComponents)
 library(dashHtmlComponents)
-library(dashR)
+library(dash)
 
 utils <- new.env()
 source('dashr/utils.R', local=utils)
@@ -11,5 +11,9 @@ examples <- list(
 
 layout = htmlDiv(list(
   htmlH3('Checklist Properties'),
-  examples$checklistproptable$layout
+  examples$checklistproptable$layout,
+  
+  dccMarkdown("
+[Back to the Table of Contents](/)
+              ")
 ))

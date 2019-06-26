@@ -1,4 +1,4 @@
-library(dashR)
+library(dash)
 library(dashCoreComponents)
 library(dashHtmlComponents)
 
@@ -49,7 +49,7 @@ LoadExampleCode <- function(filename, wd = NULL) {
   list(
     layout=htmlDiv(className='example-container', children=layout),
     source_code=htmlDiv(
-      children=dccSyntaxHighlighter(example.file.as.string),
+      children=dccMarkdown(sprintf("```r %s```", example.file.as.string)),
       className='code-container'
     )
   )
@@ -60,7 +60,7 @@ LoadAndDisplayComponent <- function(example_string) {
     htmlDiv(
       list(
         htmlDiv(
-          children=dccSyntaxHighlighter(example_string),
+          children=dccMarkdown(sprintf("```r %s```", example_string)),
           className='code-container'
         ),
         htmlDiv(
@@ -123,4 +123,20 @@ props_to_list <- function(componentName) {
   
   # strip NULL values
   props_as_list[lengths(props_as_list) != 0]
+}
+
+
+generate_table <- function(df, nrows=10)
+{
+  n <- min(nrows, nrow(df))
+  rows <- lapply(seq(1, n), function(i) {
+    htmlTr(children = lapply(as.character(df[i,]), htmlTd))
+  })
+  
+  header <- htmlTr(children = lapply(names(df), htmlTh))
+  
+  htmlTable(
+    children = c(list(header), rows)
+  )
+  
 }

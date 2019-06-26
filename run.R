@@ -1,7 +1,7 @@
 setwd('/Users/kevinphan/Desktop/dash-docs')
 
 source('app.R')
-library(dashR)
+library(dash)
 library(dashCoreComponents)
 library(dashHtmlComponents)
 library(jsonlite)
@@ -38,6 +38,30 @@ chapters.RadioItems  <- new.env()
 source('dashr/chapters/dash-core-components/Radioitems/index.R', local=chapters.RadioItems)
 chapters.Button  <- new.env()
 source('dashr/chapters/dash-core-components/Button/index.R', local=chapters.Button)
+chapters.DatePickerSingle  <- new.env()
+source('dashr/chapters/dash-core-components/Datepickersingle/index.R', local=chapters.DatePickerSingle)
+chapters.DatePickerRange  <- new.env()
+source('dashr/chapters/dash-core-components/DatePickerRange/index.R', local=chapters.DatePickerRange)
+chapters.Markdown  <- new.env()
+source('dashr/chapters/dash-core-components/Markdown/index.R', local=chapters.Markdown)
+chapters.UploadComponent  <- new.env()
+source('dashr/chapters/dash-core-components/UploadComponent/index.R', local=chapters.UploadComponent)
+chapters.ConfirmDialog  <- new.env()
+source('dashr/chapters/dash-core-components/ConfirmDialog/index.R', local=chapters.ConfirmDialog)
+chapters.ConfirmDialogProvider  <- new.env()
+source('dashr/chapters/dash-core-components/ConfirmDialogProvider/index.R', local=chapters.ConfirmDialogProvider)
+chapters.Store  <- new.env()
+source('dashr/chapters/dash-core-components/Store/index.R', local=chapters.Store)
+chapters.Location  <- new.env()
+source('dashr/chapters/dash-core-components/Location/index.R', local=chapters.Location)
+chapters.LoadingComponent  <- new.env()
+source('dashr/chapters/dash-core-components/LoadingComponent/index.R', local=chapters.LoadingComponent)
+chapters.Graph  <- new.env()
+source('dashr/chapters/dash-core-components/Graph/index.R', local=chapters.Graph)
+chapters.Tabs  <- new.env()
+source('dashr/chapters/dash-core-components/Tabs/index.R', local=chapters.Tabs)
+chapters.UploadComponent  <- new.env()
+source('dashr/chapters/dash-core-components/UploadComponent/index.R', local=chapters.UploadComponent )
 chapters.dashHtmlComponents <- new.env()
 source('dashr/chapters/dash-html-components/index.R', local=chapters.dashHtmlComponents)
 chapters.external_resources <- new.env()
@@ -46,7 +70,7 @@ source('dashr/chapters/external-resources/index.R', local=chapters.external_reso
 #source('dashr/chapters/dashDataTable/index.R', local=chapters.dashDataTable)
 chapters.dashDataTablePart1 <- new.env()
 #source('dashr/chapters/dashDataTable/part1/index.R', local=chapters.dashDataTablePart1)
-#chapters.Whats_dash <- new.env()
+chapters.Whats_dash <- new.env()
 source('dashr/chapters/Whats_dash/introduction.R', local=chapters.Whats_dash)
 
 header <- htmlDiv(
@@ -113,6 +137,18 @@ app$callback(output=list(id='chapter', property='children'),
                  '/dash-core-components/Checklist' = return(chapters.Checklist$layout),
                  '/dash-core-components/Radioitems' = return(chapters.RadioItems$layout),
                  '/dash-core-components/Button' = return(chapters.Button$layout),
+                 '/dash-core-components/DatePickerSingle' = return(chapters.DatePickerSingle$layout),
+                 '/dash-core-components/DatePickerRange' = return(chapters.DatePickerRange$layout),
+                 '/dash-core-components/Markdown' = return(chapters.Markdown$layout),
+                 '/dash-core-components/UploadComponent' = return(chapters.UploadComponent$layout),
+                 '/dash-core-components/ConfirmDialog' = return(chapters.ConfirmDialog$layout),
+                 '/dash-core-components/ConfirmDialogProvider' = return(chapters.ConfirmDialogProvider$layout),
+                 '/dash-core-components/Store' = return(chapters.Store$layout),
+                 '/dash-core-components/Location' = return(chapters.Location$layout),
+                 '/dash-core-components/LoadingComponent' = return(chapters.LoadingComponent$layout),
+                 '/dash-core-components/Graph' = return(chapters.Graph$layout),
+                 '/dash-core-components/Tabs' = return(chapters.Tabs$layout),
+                 '/dash-core-components/UploadComponent' = return(chapters.UploadComponent$layout),
                  '/dash-html-components' = return(chapters.dashHtmlComponents$layout),
                  '/dashDataTable' = return(chapters.dashDataTable$layout),
                  '/dashDataTable/Part1' = return(chapters.dashDataTablePart1$layout),

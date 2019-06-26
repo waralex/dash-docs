@@ -1,4 +1,4 @@
-library(dashR)
+library(dash)
 library(dashCoreComponents)
 library(dashHtmlComponents)
 
@@ -7,18 +7,25 @@ app <- Dash$new()
 app$layout(
   htmlDiv(
     list(
-        dccInput(id='input-1-keypress', type='text', value='Montréal'),
-        dccInput(id='input-2-keypress', type='text', value='Canada'),
-        htmlDiv(id='output-keypress')
+      dccRangeSlider(
+        id='non-linear-range-slider',
+        marks=unlist(lapply(list(1:4), function(x){10**x})),
+        max=3,
+        value=list(0.1, 2),
+        dots=FALSE,
+        step=0.01,
+        updatemode='drag'
+      ),
+      htmlDiv(id='output-container-range-slider-non-linear', style=list('margin-top' = 20))
   )
 ))
 
 app$callback(
-  output(id = 'output-keypress', property='children'),
-  params=list(input(id='input-1-keypress', property='value'),
-              input(id='input-2-keypress', property='value')),
-  function(input1, input2) {
-    sprintf('Input 1 is %s and input 2 is %s', input1,input2)
+  output(id = 'output-container-range-slider-non-linear', property='children'),
+  params=list(input(id='non-linear-range-slider', property='value')),
+  function(value) {
+    transformed_value = lapply(value, transform_value)
+    sprintf('Linear Value: %g, Log Value: [%0.2f, %0.2f]', value[2],transformed_value[1], transformed_value[2])
   })
 
 app$run_server()

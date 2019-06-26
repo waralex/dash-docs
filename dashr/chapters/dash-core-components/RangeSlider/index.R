@@ -1,6 +1,6 @@
 library(dashCoreComponents)
 library(dashHtmlComponents)
-library(dashR)
+library(dash)
 
 utils <- new.env()
 source('dashr/utils.R', local=utils)
@@ -155,7 +155,12 @@ dccRangeSlider(
   examples$rangeslidernonlinear$layout,
   
   htmlH3('RangeSlider Properties'),
-  examples$rangesliderproptable$layout
+  examples$rangesliderproptable$layout,
+  
+  htmlHr(),
+  dccMarkdown("
+[Back to the Table of Contents](/)
+              ")
   
   
   

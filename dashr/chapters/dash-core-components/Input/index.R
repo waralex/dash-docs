@@ -1,6 +1,6 @@
 library(dashCoreComponents)
 library(dashHtmlComponents)
-library(dashR)
+library(dash)
 
 utils <- new.env()
 source('dashr/utils.R', local=utils)
@@ -31,7 +31,12 @@ layout <- htmlDiv(list(
   examples$blur$layout,
   
   htmlH3('Input Properties'),
-  examples$inputproptable$layout
+  examples$inputproptable$layout,
+  
+  htmlHr(),
+  dccMarkdown("
+              [Back to the Table of Contents](/)
+              ")
 ))
 
   

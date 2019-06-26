@@ -1,6 +1,6 @@
 library(dashCoreComponents)
 library(dashHtmlComponents)
-library(dashR)
+library(dash)
 
 utils <- new.env()
 source('dashr/utils.R', local=utils)
@@ -11,5 +11,10 @@ examples <- list(
 
 layout = htmlDiv(list(
   htmlH3('Textarea Properties'),
-  examples$textarea$layout
+  examples$textarea$layout,
+  
+  htmlHr(),
+  dccMarkdown("
+[Back to the Table of Contents](/)
+              ")
 ))

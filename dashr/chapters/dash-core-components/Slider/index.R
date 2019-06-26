@@ -1,6 +1,6 @@
 library(dashCoreComponents)
 library(dashHtmlComponents)
-library(dashR)
+library(dash)
 
 utils <- new.env()
 source('dashr/utils.R', local=utils)
@@ -120,7 +120,12 @@ dccSlider(
   examples$nonlinearex$layout,
   
   htmlH3('Slider Properties'),
-  examples$proptable$layout
+  examples$proptable$layout,
+  
+  htmlHr(),
+  dccMarkdown("
+[Back to the Table of Contents](/)
+              ")
 ))
 
 

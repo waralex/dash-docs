@@ -1,6 +1,6 @@
 library(dashCoreComponents)
 library(dashHtmlComponents)
-library(dashR)
+library(dash)
 
 utils <- new.env()
 source('dashr/utils.R', local=utils)
@@ -176,17 +176,17 @@ htmlDiv(referenceLink('Textarea', 'Textarea Reference')),
 htmlHr(),
 
 #--------------------------------
-htmlDiv(titleLink('Checkboxes')),
+htmlDiv(titleLink('Checklist')),
 htmlDiv(list(utils$LoadAndDisplayComponent(
   '
-  library(dashCoreComponents)
+library(dashCoreComponents)
 dccChecklist(
   options=list(
   list("label" = "New York City", "value" = "NYC"),
   list("label" = "Montréal", "value" = "MTL"),
   list("label" = "San Francisco", "value" = "SF")
   ),
-  values=list("MTL", "SF")
+  value=list("MTL", "SF")
 )
   '
 ),
@@ -200,7 +200,7 @@ dccChecklist(
   list("label" = "Montréal", "value" = "MTL"),
   list("label" = "San Francisco", "value" = "SF")
   ),
-  values=list("MTL", "SF"),
+  value=list("MTL", "SF"),
   labelStyle = list("display" = "inline-block")
   )
   '
@@ -269,7 +269,7 @@ dccDatePickerSingle(
 ))),
 
 htmlBr(),
-htmlDiv(referenceLink('datepickersingle', 'More DatePickerSingle Examples and Reference')),
+htmlDiv(referenceLink('DatePickerSingle', 'More DatePickerSingle Examples and Reference')),
 htmlHr(),
 
 #--------------------------------
@@ -290,7 +290,7 @@ dccDatePickerRange(
 #--------------------------------
 
 htmlBr(),
-htmlDiv(referenceLink('datepickerrange', 'More DatePickerRange Examples and Reference')),
+htmlDiv(referenceLink('DatePickerRange', 'More DatePickerRange Examples and Reference')),
 htmlHr(),
 
 htmlDiv(titleLink('Markdown')),
@@ -308,17 +308,22 @@ quotes, and more.
   '
 ))),
 htmlBr(),
-htmlDiv(referenceLink('markdown', 'More Markdown Examples and Reference')),
+htmlDiv(referenceLink('Markdown', 'More Markdown Examples and Reference')),
 htmlHr(),
 
 #--------------------------------
 htmlDiv(htmlH3('Interactive Tables')),
 
 
+dccMarkdown(
+  " Coming soon
+  "
+),
+
 #--------------------------------
-htmlDiv(titleLink('Upload Component')),
+htmlDiv(titleLink('UploadComponent')),
 utils$LoadAndDisplayComponent(
-  'library(dashR)
+  'library(dash)
   library(dashCoreComponents)
 dccMarkdown("
 The `dccUpload` component allows users to upload files into your app
@@ -327,6 +332,9 @@ through drag-and-drop or the system\'s native file explorer.
 ")
 '),
 
+htmlBr(),
+htmlDiv(referenceLink('UploadComponent', 'More Markdown Examples and Reference')),
+htmlHr(),
 #--------------------------------
 
 htmlDiv(htmlH3('Tabs')),
@@ -334,11 +342,11 @@ examples$tabs$source,
 examples$tabs$layout,
 
 htmlBr(),
-htmlDiv(referenceLink('tabs', 'More Tabs Examples and Reference')),
+htmlDiv(referenceLink('Tabs', 'More Tabs Examples and Reference')),
 htmlHr(),
 
 #--------------------------------
-htmlDiv(titleLink('Graphs')),
+htmlDiv(titleLink('Graph')),
 htmlDiv(list(utils$LoadAndDisplayComponent(
   '
 library(dashCoreComponents)
@@ -373,7 +381,8 @@ year = c(1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003,
   '
   ))),
 htmlBr(),
-htmlDiv(referenceLink('graph', 'View the plotly.R docs')),
+htmlDiv(referenceLink('Graph', 'More Graph Examples and Reference')),
+dccMarkdown('View the [plotly.r docs](https://plot.ly/r).'),
 htmlHr(),
 
 #--------------------------------
@@ -416,12 +425,12 @@ htmlDiv(list(utils$LoadAndDisplayComponent(
 ))),
 
 htmlBr(),
-htmlDiv(referenceLink('confirmdialogprovider', 'More ConfirmDialogProvider Examples and Reference
+htmlDiv(referenceLink('ConfirmDialogProvider', 'More ConfirmDialogProvider Examples and Reference
 ')),
 htmlHr(),
 
 #--------------------------------
-htmlDiv(titleLink('ConfirmDialog')),
+htmlDiv(titleLink('Store')),
 dccMarkdown(
   " The store component can be used to keep data in the visitor's browser.
     The data is scoped to the user accessing the page.
@@ -440,24 +449,24 @@ htmlDiv(list(utils$LoadAndDisplayComponent(
   '
 ))),
 dccMarkdown('_The store must be used with callbacks_'),
-htmlDiv(referenceLink('store', 'More Store Examples and Reference')),
+htmlDiv(referenceLink('Store', 'More Store Examples and Reference')),
 
 #--------------------------------
 
-htmlDiv(titleLink('Logout Button')),
+#htmlDiv(titleLink('Logout Button')),
 
-dccMarkdown(
-  " The logout button can be used to perform logout mechanism.
-    It's a simple form with a submit button, when the button is clicked,
-    it will submit the form to the `logout_url` prop. Please note that no authentication is performed in Dash by default
-    and you have to implement the authentication yourself.
-  "
-),
-htmlBr(),
-htmlDiv(referenceLink('logout', 'More Logout Button Examples and Reference')),
-htmlHr(),
+#dccMarkdown(
+#  " The logout button can be used to perform logout mechanism.
+#    It's a simple form with a submit button, when the button is clicked,
+#    it will submit the form to the `logout_url` prop. Please note that no authentication is performed in Dash by default
+#    and you have to implement the authentication yourself.
+#  "
+#),
+#htmlBr(),
+#htmlDiv(referenceLink('logout', 'More Logout Button Examples and Reference')),
+#htmlHr(),
 #--------------------------------
-htmlDiv(titleLink('Loading component')),
+htmlDiv(titleLink('LoadingComponent')),
 
 dccMarkdown(
   " The Loading component can be used to wrap components that you want to display a spinner for, if they take too long to load.
@@ -476,7 +485,7 @@ loading = dccLoading(list(list(
   ))),
 
 htmlBr(),
-htmlDiv(referenceLink('loadingcomponenet', 'More Loading Component Examples and Reference')),
+htmlDiv(referenceLink('LoadingComponenet', 'More Loading Component Examples and Reference')),
 htmlHr(),
 
 #--------------------------------
@@ -503,7 +512,7 @@ htmlDiv(list(utils$LoadAndDisplayComponent(
 ))),
 
 htmlBr(),
-htmlDiv(referenceLink('location', 'More Location Examples and Reference')),
+htmlDiv(referenceLink('Location', 'More Location Examples and Reference')),
 htmlBr()
 
 )
@@ -513,7 +522,7 @@ htmlBr()
 route <- function(pathname) {
   componentName = gsub('dropdown', '', pathname)
   component_chapter_index = file.path(
-    'dashr',
+    'dash',
     'chapters',
     'dash-core-components',
     componentName,

@@ -1,4 +1,4 @@
-library(dashR)
+library(dash)
 library(dashCoreComponents)
 library(dashHtmlComponents)
 
@@ -16,7 +16,7 @@ app$layout(
 )
 
 app$callback(
-  output(id = "output-container-button", property = 'children'),
+  output = list(id = "output-container-button", property = 'children'),
   params=list(input(id = "button", property = "n_clicks"),
               input(id = "input-box", property = "value")),
   function(n_clicks, value) {
