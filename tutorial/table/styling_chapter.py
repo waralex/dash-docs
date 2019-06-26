@@ -93,11 +93,8 @@ layout = html.Div(
         monospaced fonts, to right-align the data, and to provide the same
         number of decimals throughout the column.
 
-        > Note that it's not possible to modify the number of decimal places
-        > in css. `dash-table` will provide formatting options in the future,
-        > until then you'll have to modify your data before displaying it.
-        > Relevant issue:
-        > [dash-table#189](https://github.com/plotly/dash-table/issues/189)
+        > To learn about formatting numbers and dates, see the
+        > [data types section](/datatable/typing)
 
         For textual data, left-aligning the text is usually easier to read.
 
@@ -338,11 +335,6 @@ layout = html.Div(
         filtering expression language as the table's interactive filter UI.
         See the [DataTable filtering chapter](/datatable/filtering) for more
         info.
-
-        > Note, the filtering expression language is subject to change.
-        > Please subscribe to
-        > [dash-table#169](https://github.com/plotly/dash-table/issues/169)
-        > for more info.
         '''),
         Display('''
         dash_table.DataTable(
