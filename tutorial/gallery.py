@@ -134,7 +134,7 @@ layout = html.Div(className='gallery', children=[
         AppSection(
             app_name='Financial Report',
             app_link='https://dash-gallery.plotly.host/dash-financial-report',
-            code_link='https://github.com/plotly/dash-financial-report',
+            code_link='https://github.com/plotly/dash-sample-apps/tree/master/apps/dash-financial-report',
             img_src='assets/images/gallery/dash-financial-report.gif',
             description='''
             This app recreates the look and feel of a financial report.
@@ -144,8 +144,7 @@ layout = html.Div(className='gallery', children=[
             adapt this report to include even more interactive elements, like
             a dropdown or a search box.
             '''
-        )
-        ,
+        ),
 
         AppSection(
             app_name='Recession in 255 Charts',
@@ -236,10 +235,10 @@ layout = html.Div(className='gallery', children=[
 
     reusable.Row([
         AppSection(
-            app_name='Drug Precursors',
+            app_name='Drug Discovery',
             app_link='https://dash-gallery.plotly.host/dash-drug-discovery/',
-            code_link='https://github.com/plotly/dash-drug-discovery-demo/',
-            img_src='assets/images/gallery/drug-discovery-app.gif',
+            code_link='https://github.com/plotly/dash-sample-apps/tree/master/apps/dash-drug-discovery/',
+            img_src='assets/images/gallery/dash-drug-discovery.png',
             description='''
             This app displays a description of the drug as you hover over points in the
             graph.
@@ -359,7 +358,7 @@ layout = html.Div(className='gallery', children=[
         AppSection(
             app_name='Interactive t-SNE',
             app_link='https://dash-gallery.plotly.host/dash-tsne/',
-            code_link='https://github.com/plotly/dash-tsne',
+            code_link='https://github.com/plotly/dash-sample-apps/tree/master/apps/dash-tsne',
             img_src='assets/images/gallery/dash-tsne.gif',
             description='''
             t-SNE is a visualization algorithm that projects your
@@ -411,7 +410,7 @@ layout = html.Div(className='gallery', children=[
 
     reusable.Row([
         AppSection(
-            app_name='Wind Speed Measurement',
+            app_name='Wind Streaming',
             app_link='https://dash-gallery.plotly.host/dash-wind-streaming',
             code_link='https://github.com/plotly/dash-sample-apps/tree/master/apps/dash-wind-streaming',
             img_src='assets/images/gallery/dash-wind-streaming.gif',
