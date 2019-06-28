@@ -183,7 +183,7 @@ layout = html.Div(className='gallery', children=[
         AppSection(
             app_name='Natural Gas Well Production',
             app_link='https://dash-gallery.plotly.host/dash-oil-and-gas/',
-            code_link='https://github.com/plotly/dash-oil-and-gas-demo',
+            code_link='https://github.com/plotly/dash-sample-apps/tree/master/apps/dash-oil-and-gas',
             img_src='assets/images/gallery/oil-and-gas.gif',
             description='''
             This Dash app displays well data from New York State. As you hover over
