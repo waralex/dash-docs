@@ -1,5 +1,5 @@
-test =utils$props_to_list('dccDatePickerSingle')
-x <- data.table::rbindlist(test, fill = TRUE)
+datesingleproptable =utils$props_to_list('dccDatePickerSingle')
+x <- data.table::rbindlist(datesingleproptable, fill = TRUE)
 
 app = Dash$new()
 

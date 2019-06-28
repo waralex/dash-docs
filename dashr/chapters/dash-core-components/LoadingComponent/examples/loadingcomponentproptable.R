@@ -1,5 +1,5 @@
-test =utils$props_to_list('dccLoading')
-x <- data.table::rbindlist(test, fill = TRUE)
+loadingproptable =utils$props_to_list('dccLoading')
+x <- data.table::rbindlist(loadingproptable, fill = TRUE)
 
 app = Dash$new()
 

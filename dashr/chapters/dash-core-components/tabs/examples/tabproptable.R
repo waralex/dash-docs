@@ -1,5 +1,5 @@
-test =utils$props_to_list('dccTab')
-x <- data.table::rbindlist(test, fill = TRUE)
+tabproptable =utils$props_to_list('dccTab')
+x <- data.table::rbindlist(tabproptable, fill = TRUE)
 
 app = Dash$new()
 

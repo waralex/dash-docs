@@ -1,5 +1,5 @@
-test =utils$props_to_list('dccChecklist')
-x <- data.table::rbindlist(test, fill = TRUE)
+Checklistable =utils$props_to_list('dccChecklist')
+x <- data.table::rbindlist(Checklistable, fill = TRUE)
 
 app = Dash$new()
 

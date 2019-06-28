@@ -1,5 +1,5 @@
-test =utils$props_to_list('dccConfirmDialogProvider')
-x <- data.table::rbindlist(test, fill = TRUE)
+providerproptable =utils$props_to_list('dccConfirmDialogProvider')
+x <- data.table::rbindlist(providerproptable, fill = TRUE)
 
 app = Dash$new()
 

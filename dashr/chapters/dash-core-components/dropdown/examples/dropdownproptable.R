@@ -1,5 +1,5 @@
-test =utils$props_to_list('dccDropdown')
-x <- data.table::rbindlist(test, fill = TRUE)
+dropdownproptable =utils$props_to_list('dccDropdown')
+x <- data.table::rbindlist(dropdownproptable, fill = TRUE)
 
 app = Dash$new()
 

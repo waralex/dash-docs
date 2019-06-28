@@ -4,6 +4,10 @@ library(dashHtmlComponents)
 
 app <- Dash$new()
 
+transform_value = function(value){
+  10 ** value
+}
+
 app$layout(
   htmlDiv(
     list(

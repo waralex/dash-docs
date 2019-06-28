@@ -26,7 +26,7 @@ layout = htmlDiv(list(
                  then the slider will only be able to select values that \
               have been predefined by the `marks`."),
   
-  htmlDiv(list(utils$LoadAndDisplayComponent(
+  utils$LoadAndDisplayComponent(
     '
 library(dashCoreComponents)
 dccRangeSlider(
@@ -42,7 +42,7 @@ dccRangeSlider(
       value=list(3, 7.65)
     )
    '
-  ))),
+  ),
   
   htmlHr(),
   htmlH3('Included and Styling Marks'),
@@ -62,7 +62,7 @@ dccRangeSlider(
     "0" = list("label" = "0 °C", "style" = list("color" = "#77b0b1")),
     "26" = list("label" = "26 °C"),
     "37" = list("label" = "37 °C"),
-    "100" = list("label" = "100 °C", "style" = list("color" = "#FF4500"))
+    "100" = list("label" = "100°C" , "style" = list("color" = "#FF4500"))
     )
     )
     
@@ -79,7 +79,7 @@ dccRangeSlider(
     "0" = list("label" = "0 °C", "style" = list("color" = "#77b0b1")),
     "26" = list("label" = "26 °C"),
     "37" = list("label" = "37 °C"),
-    "100" = list("label" = "100 °C", "style" = list("color" = "#FF4500"))
+    "100" = list("label" = "100°C" , "style" = list("color" = "#FF4500"))
     ),
 
     included=FALSE

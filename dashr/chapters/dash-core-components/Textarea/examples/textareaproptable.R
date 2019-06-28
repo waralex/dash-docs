@@ -1,5 +1,5 @@
-test =utils$props_to_list('dccTextarea')
-x <- data.table::rbindlist(test, fill = TRUE)
+textproptable =utils$props_to_list('dccTextarea')
+x <- data.table::rbindlist(textproptable, fill = TRUE)
 
 app = Dash$new()
 

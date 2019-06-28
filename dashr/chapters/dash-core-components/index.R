@@ -124,7 +124,7 @@ htmlDiv(list(utils$LoadAndDisplayComponent(
   '
 ),
 
-utils$LoadAndDisplayComponent(
+htmlDiv(list(utils$LoadAndDisplayComponent(
   '
   library(dashCoreComponents)
   dccRangeSlider(
@@ -134,7 +134,8 @@ utils$LoadAndDisplayComponent(
   value = list(-3,4)
   )
   '
-)
+)),
+style = list('overflow' = 'hidden'))
 )),
 htmlBr(),
 htmlDiv(referenceLink('RangeSlider', 'More RangeSlider Examples and Reference')),
@@ -315,22 +316,51 @@ htmlHr(),
 htmlDiv(htmlH3('Interactive Tables')),
 
 
-dccMarkdown(
-  " Coming soon
+htmlDiv(list(dccMarkdown("    
+The `dashHtmlComponents` library exposes all of the HTML tags.
+This includes the `Table`, `Tr`, and `Tbody` tags that can be used
+to create an HTML table. See
+[Create Your First Dash App, Part 1](/getting-started)
+for an example.
+Dash provides an interactive `DataTable` as part of the `data-table`
+project. This table includes built-in filtering, row-selection,
+editing, and sorting.
   "
 ),
+htmlHr(),
+
+htmlA(
+  className="image-link",
+  href="https://github.com/plotly/dash-table-experiments",
+  children=htmlImg(
+    src="assets/images/gallery/DataTable.gif",
+    alt="Example of a Dash Interactive Table"
+  ))),
+style = list('overflow' = 'hidden',
+             'align' = 'left')),
+
+dccMarkdown("
+    [View the docs](/datatable) or [View the source](https://github.com/plotly/dash-table)"),
+             
 
 #--------------------------------
 htmlDiv(titleLink('UploadComponent')),
-utils$LoadAndDisplayComponent(
-  'library(dash)
-  library(dashCoreComponents)
+
 dccMarkdown("
 The `dccUpload` component allows users to upload files into your app
-through drag-and-drop or the system\'s native file explorer.
-![Dash Upload Component](https://user-images.githubusercontent.com/1280389/30351245-6b93ee62-97e8-11e7-8e85-0411e9d6c98c.gif)
-")
-'),
+    through drag-and-drop or the systems native file explorer.
+"),
+htmlBr(),
+
+  htmlDiv(list(htmlA(
+    className="image-link",
+    href="https://github.com/plotly/dash-core-components/pull/73",
+    children=htmlImg(
+      src="https://user-images.githubusercontent.com/1280389/30351245-6b93ee62-97e8-11e7-8e85-0411e9d6c98c.gif",
+      alt="Dash Upload Component"
+    )
+  )), style = list('overflow' = 'hidden',
+                  'align' = 'left')),
 
 htmlBr(),
 htmlDiv(referenceLink('UploadComponent', 'More Markdown Examples and Reference')),
