@@ -1,4 +1,4 @@
-library(dashR)
+library(dash)
 library(dashCoreComponents)
 library(dashHtmlComponents)
 
@@ -47,9 +47,10 @@ LoadExampleCode <- function(filename, wd = NULL) {
   eval(parse(text=example.ready.for.eval))
 
   list(
-    layout=htmlDiv(className='example-container', children=layout),
+    layout=htmlDiv(className='example-container', children=layout,
+                   style=list('overflow-x' = 'initial')),
     source_code=htmlDiv(
-      children=dccSyntaxHighlighter(example.file.as.string),
+      children=dccMarkdown(sprintf("```r %s```", example.file.as.string)),
       className='code-container'
     )
   )
@@ -60,14 +61,84 @@ LoadAndDisplayComponent <- function(example_string) {
     htmlDiv(
       list(
         htmlDiv(
-          children=dccSyntaxHighlighter(example_string),
+          children=dccMarkdown(sprintf("```r %s```", example_string)),
           className='code-container'
         ),
         htmlDiv(
           className='example-container',
-          children=eval(parse(text=example_string))
+          children=eval(parse(text=example_string)),
+          style=list('overflow-x' = 'initial')
         )
       )
     )
   )
+}
+
+props_to_list <- function(componentName) {
+  Rd <- utils:::.getHelpFile(do.call(`?`, 
+                                     list(componentName)))
+  
+  containsArgs <- vapply(Rd, function(x) {
+    attr(x, "Rd_tag")=="\\arguments"
+  }, 
+  logical(1))
+  
+  # Subset the help data to function arguments only
+  args  <- Rd[containsArgs]
+  
+  # Assemble a list of function arguments, stripping linefeeds  
+  list_of_args <- lapply(unlist(args, 
+                                recursive=FALSE), 
+                         function(x) x[x != "\n"])
+  
+  # Extract the prop metadata for tabulation  
+  props_as_list <- invisible(sapply(list_of_args, function(x) {
+    if (any(sapply(x, is.list))) {
+      all_types <- paste("List of numerics",
+                         "Numeric",
+                         "Character",
+                         "Logical",
+                         "Named list",
+                         "Unnamed list",
+                         "List of named lists",
+                         "List of unnamed lists",
+                         "List of character \\| numerics",
+                         "Logical \\| numeric \\| character \\| named list \\| unnamed list",
+                         "List",
+                         sep="|")
+      
+      Argument <- x[[1]]
+      
+      descstring <- paste(gsub("\n", "", x[[2]]), collapse=" ")
+      
+      Description <- gsub("Logical\\. |Numeric\\. |Named list\\. |Unnamed list\\. | Character\\.", 
+                          "", 
+                          descstring)
+      Type <- regmatches(descstring, regexpr(all_types, descstring))
+      Default <- NULL
+      return(c(Argument=Argument, 
+               Description=Description, 
+               Type=Type,
+               Default=Default))
+    }
+  }))
+  
+  # strip NULL values
+  props_as_list[lengths(props_as_list) != 0]
+}
+
+
+generate_table <- function(df, nrows=10)
+{
+  n <- min(nrows, nrow(df))
+  rows <- lapply(seq(1, n), function(i) {
+    htmlTr(children = lapply(as.character(df[i,]), htmlTd))
+  })
+  
+  header <- htmlTr(children = lapply(names(df), htmlTh))
+  
+  htmlTable(
+    children = c(list(header), rows)
+  )
+  
 }

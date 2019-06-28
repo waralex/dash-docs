@@ -1,4 +1,4 @@
-library(dashR)
+library(dash)
 library(dashTable)
 
 df <- read.csv(
