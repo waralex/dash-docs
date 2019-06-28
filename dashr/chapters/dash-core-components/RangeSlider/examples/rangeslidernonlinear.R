@@ -2,6 +2,10 @@ library(dash)
 library(dashCoreComponents)
 library(dashHtmlComponents)
 
+transform_value = function(value){
+  return(10 ** value)
+}
+
 app <- Dash$new()
 
 transform_value = function(value){
