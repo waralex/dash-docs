@@ -15,5 +15,5 @@ layout = htmlDiv(list(
   
   dccMarkdown("
 [Back to the Table of Contents](/)
-              "),
+              ")
 ))
