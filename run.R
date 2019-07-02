@@ -120,188 +120,188 @@ app$callback(
   output=list(id='chapter', property='children'),
   params=list(input('url', 'pathname')),
   function(pathname) {
-   switch(
-     pathname,
-     "/Whats_dash" = return(chapters.Whats_dash$layout),
-     "/installation" = return(chapters.installation$layout),
-     "/getting-started" = return(chapters.getting_started$layout),
-     "/getting-started-part-2" = return(chapters.callbacks$layout),
-     "/state" = return(chapters.state$layout),
-     "/graph-crossfiltering" = return(chapters.graph_crossfiltering$layout),
-     #"/data-callbacks" = return(chapters.data_callbacks$layout),
-     "/faq-gotchas" = return(chapters.faq_gotchas$layout),
-     '/dash-core-components' = return(chapters.dashCoreComponents$layout),
-     '/dash-core-components/Dropdown' = return(chapters.dccDropdown$layout),
-     '/dash-core-components/Slider' = return(chapters.dccSlider$layout),
-     '/dash-core-components/RangeSlider' = return(chapters.RangeSlider$layout),
-     '/dash-core-components/Input' = return(chapters.Input$layout),
-     '/dash-core-components/Textarea' = return(chapters.TextArea$layout),
-     '/dash-core-components/Checklist' = return(chapters.Checklist$layout),
-     '/dash-core-components/Radioitems' = return(chapters.RadioItems$layout),
-     '/dash-core-components/Button' = return(chapters.Button$layout),
-     '/dash-core-components/DatePickerSingle' = return(chapters.DatePickerSingle$layout),
-     '/dash-core-components/DatePickerRange' = return(chapters.DatePickerRange$layout),
-     '/dash-core-components/Markdown' = return(chapters.Markdown$layout),
-     '/dash-core-components/UploadComponent' = return(chapters.UploadComponent$layout),
-     '/dash-core-components/ConfirmDialog' = return(chapters.ConfirmDialog$layout),
-     '/dash-core-components/ConfirmDialogProvider' = return(chapters.ConfirmDialogProvider$layout),
-     '/dash-core-components/Store' = return(chapters.Store$layout),
-     '/dash-core-components/Location' = return(chapters.Location$layout),
-     '/dash-core-components/LoadingComponent' = return(chapters.LoadingComponent$layout),
-     '/dash-core-components/Graph' = return(chapters.Graph$layout),
-     '/dash-core-components/Tabs' = return(chapters.Tabs$layout),
-     '/dash-core-components/UploadComponent' = return(chapters.UploadComponent$layout),
-     '/dash-html-components' = return(chapters.dashHtmlComponents$layout),
-     '/dashDataTable' = return(chapters.dashDataTable$layout),
-     '/dashDataTable/Part1' = return(chapters.dashDataTablePart1$layout),
-     '/external-resources' = return(chapters.external_resources$layout),
-     {
-       htmlDiv(
-         list(
-           htmlH1('DashR User Guide'),
+    switch(
+      pathname,
+      "/Whats_dash" = return(chapters.Whats_dash$layout),
+      "/installation" = return(chapters.installation$layout),
+      "/getting-started" = return(chapters.getting_started$layout),
+      "/getting-started-part-2" = return(chapters.callbacks$layout),
+      "/state" = return(chapters.state$layout),
+      "/graph-crossfiltering" = return(chapters.graph_crossfiltering$layout),
+      #"/data-callbacks" = return(chapters.data_callbacks$layout),
+      "/faq-gotchas" = return(chapters.faq_gotchas$layout),
+      '/dash-core-components' = return(chapters.dashCoreComponents$layout),
+      '/dash-core-components/Dropdown' = return(chapters.dccDropdown$layout),
+      '/dash-core-components/Slider' = return(chapters.dccSlider$layout),
+      '/dash-core-components/RangeSlider' = return(chapters.RangeSlider$layout),
+      '/dash-core-components/Input' = return(chapters.Input$layout),
+      '/dash-core-components/Textarea' = return(chapters.TextArea$layout),
+      '/dash-core-components/Checklist' = return(chapters.Checklist$layout),
+      '/dash-core-components/Radioitems' = return(chapters.RadioItems$layout),
+      '/dash-core-components/Button' = return(chapters.Button$layout),
+      '/dash-core-components/DatePickerSingle' = return(chapters.DatePickerSingle$layout),
+      '/dash-core-components/DatePickerRange' = return(chapters.DatePickerRange$layout),
+      '/dash-core-components/Markdown' = return(chapters.Markdown$layout),
+      '/dash-core-components/UploadComponent' = return(chapters.UploadComponent$layout),
+      '/dash-core-components/ConfirmDialog' = return(chapters.ConfirmDialog$layout),
+      '/dash-core-components/ConfirmDialogProvider' = return(chapters.ConfirmDialogProvider$layout),
+      '/dash-core-components/Store' = return(chapters.Store$layout),
+      '/dash-core-components/Location' = return(chapters.Location$layout),
+      '/dash-core-components/LoadingComponent' = return(chapters.LoadingComponent$layout),
+      '/dash-core-components/Graph' = return(chapters.Graph$layout),
+      '/dash-core-components/Tabs' = return(chapters.Tabs$layout),
+      '/dash-core-components/UploadComponent' = return(chapters.UploadComponent$layout),
+      '/dash-html-components' = return(chapters.dashHtmlComponents$layout),
+      '/dashDataTable' = return(chapters.dashDataTable$layout),
+      '/dashDataTable/Part1' = return(chapters.dashDataTablePart1$layout),
+      '/external-resources' = return(chapters.external_resources$layout),
+      {
+        htmlDiv(
+          list(
+            htmlH1('DashR User Guide'),
 
 
-           components$Header('What\'s Dash?'),
-           htmlA(
-             'Introduction',
-             href='https://dash.plot.ly/introduction'
-           ),
-           htmlBr(),
-           dccMarkdown("A quick paragraph about Dash and a link to the talk at Plotcon that started it all."),
-           htmlA(
-             'Announcement Essay',
-             href='https://medium.com/@plotlygraphs/introducing-dash-5ecf7191b503'
-           ),
-           htmlBr(),
-           dccMarkdown("Our extended essay on Dash. An extended discussion of Dash's architecture and our motivation behind the project."),
-           htmlA(
-             'Dash App Gallery',
-             href='https://dash.plot.ly/gallery'
-           ),
-           htmlBr(),
-           dccMarkdown("A glimpse into what's possible with Dash."),
-           htmlA(
-             'Dash Club',
-             href='https://plot.us12.list-manage.com/subscribe?u=28d7f8f0685d044fb51f0d4ee&id=0c1cb734d7'
-           ),
-           htmlBr(),
-           dccMarkdown("A fortnightly email newsletter by chriddyp, the creator of Dash."),
+            components$Header('What\'s Dash?'),
+            components$Chapter(
+              'Introduction',
+              href='https://dash.plot.ly/introduction',
+              caption="A quick paragraph about Dash and a link to the talk at Plotcon that started it all."
+            ),
+            components$Chapter(
+              'Announcement Essay',
+              href='https://medium.com/@plotlygraphs/introducing-dash-5ecf7191b503',
+              caption="Our extended essay on Dash. An extended discussion of Dash's architecture and our motivation behind the project."
+            ),
+            components$Chapter(
+              'Dash App Gallery',
+              href='https://dash.plot.ly/gallery',
+              caption="A glimpse into what's possible with Dash."
+            ),
+            components$Chapter(
+              'Dash Club',
+              href='https://plot.us12.list-manage.com/subscribe?u=28d7f8f0685d044fb51f0d4ee&id=0c1cb734d7',
+              caption="A fortnightly email newsletter by chriddyp, the creator of Dash."
+            ),
 
 
-           components$Header("Dash Tutorial"),
-           dccLink(
-             'Part 1. Installation',
-             href='/installation'
-           ),
-           htmlBr(),
-           dccLink(
-             'Part 2. The Dash Layout',
-             href='/getting-started'
-           ),
-           dccMarkdown("The Dash `layout` describes what your app will look like and is composed of a set of declarative Dash components."),
-           htmlBr(),
-           dccLink(
-             'Part 3. Basic Callbacks',
-             href='/getting-started-part-2'
-           ),
-           dccMarkdown("Dash apps are made interactive through Dash Callbacks:
-R functions that are automatically called whenever an input component's property changes. Callbacks can be chained,
-allowing one update in the UI to trigger several updates across the app."),
-           htmlBr(),
-           dccLink(
-             'Part 4. Callbacks With State',
-             href='/state'
-           ),
-           dccMarkdown("Basic callbacks are fired whenever the values change.
-Use Dash `state` with Dash `inputs` to pass in extra values whenever the `inputs` change.
-`state` is useful for UIs that contain forms or buttons."),
-           htmlBr(),
-           dccLink(
-            'Part 5. Interactive Graphing and Crossfiltering',
-            href='/graph-crossfiltering'
-           ),
-           dccMarkdown("Bind interactivity to the Dash `Graph` component whenever you hover, click, or
-           select points on your chart."),
-           htmlBr(),
-           dccLink(
-             'Part 6. Sharing Data Between Callbacks',
-             href='/data-callbacks'
-           ),
-           dccMarkdown("`global` variables will break your Dash apps.
-However, there are other ways to share data between callbacks.
-This chapter is useful for callbacks that run expensive data processing tasks or process large data."),
-           htmlBr(),
-           dccLink(
-             'Part 7. FAQs and Gotchas',
-             href='/faq-gotchas'
-           ),
-           dccMarkdown("If you have read through the rest of the tutorial and still have questions
-or are encountering unexpected behaviour,this chapter may be useful."),
+            components$Header("Dash Tutorial"),
+            components$Chapter(
+              'Part 1. Installation',
+              href='/installation'
+            ),
+            components$Chapter(
+              'Part 2. The Dash Layout',
+              href='/getting-started',
+              caption="The Dash `layout` describes what your app will look like and is composed of a set of declarative Dash components."
+            ),
+            components$Chapter(
+              'Part 3. Basic Callbacks',
+              href='/getting-started-part-2',
+              caption="Dash apps are made interactive through Dash Callbacks:
+              R functions that are automatically called whenever an input component's property changes. Callbacks can be chained,
+              allowing one update in the UI to trigger several updates across the app."
+            ),
+            components$Chapter(
+              'Part 4. Callbacks With State',
+              href='/state',
+              caption="Basic callbacks are fired whenever the values change.
+              Use Dash `state` with Dash `inputs` to pass in extra values whenever the `inputs` change.
+              `state` is useful for UIs that contain forms or buttons."
+            ),
+            components$Chapter(
+              'Part 5. Interactive Graphing and Crossfiltering',
+              href='/graph-crossfiltering',
+              caption="Bind interactivity to the Dash `Graph` component whenever you hover, click, or
+              select points on your chart."
+            ),
+            components$Chapter(
+              'Part 6. Sharing Data Between Callbacks',
+              href='/data-callbacks',
+              caption="`global` variables will break your Dash apps.
+              However, there are other ways to share data between callbacks.
+              This chapter is useful for callbacks that run expensive data processing tasks or process large data."
+            ),
+            components$Chapter(
+              'Part 7. FAQs and Gotchas',
+              href='/faq-gotchas',
+              caption="If you have read through the rest of the tutorial and still have questions
+              or are encountering unexpected behaviour,this chapter may be useful."
+            ),
 
 
-           components$Header('Component Libraries'),
-           dccLink(
-             'Dash Core Components',
-             href='/dash-core-components'
-           ),
-           htmlBr(),
-           dccMarkdown("The Dash Core Component library contains a set of higher-level components like sliders, graphs, dropdowns, tables, and more."),
-           dccLink(
-             'Dash HTML Components',
-             href='/dash-html-components'
-           ),
-           htmlBr(),
-           dccMarkdown("Dash provides all of the available HTML tags as user-friendly Python classes.
-This chapter explains how this works and the few important key differences between Dash HTML components and standard html.
-        "),
-           dccLink(
-             'Dash DataTable',
-             href='/dashDataTable'
-           ),
-           htmlBr(),
-           dccMarkdown("(New! Released Nov 2, 2018) The Dash DataTable is our latest and most advanced component.
-It is an interactive table that supports rich styling, conditional formatting, editing, sorting, filtering, and more."),
+            components$Header('Component Libraries'),
+            components$Chapter(
+              'Dash Core Components',
+              href='/dash-core-components',
+              caption="The Dash Core Component library contains a set of higher-level components like sliders, graphs, dropdowns, tables, and more."
+            ),
+            components$Chapter(
+              'Dash HTML Components',
+              href='/dash-html-components',
+              caption="Dash provides all of the available HTML tags as user-friendly Python classes.
+              This chapter explains how this works and the few important key differences between Dash HTML components and standard html."
+            ),
+            components$Chapter(
+              'Dash DataTable',
+              href='/dashDataTable',
+              caption="(New! Released Nov 2, 2018) The Dash DataTable is our latest and most advanced component.
+              It is an interactive table that supports rich styling, conditional formatting, editing, sorting, filtering, and more."
+            ),
 
 
-           components$Header('Creating Your Own Components'),
-           dccMarkdown("IN PROGRESS..."),
+            components$Header('Creating Your Own Components'),
+            dccMarkdown("IN PROGRESS..."),
+            components$Chapter(
+              '',
+              href='',
+              caption=
+            ),
 
 
-           components$Header('Beyond the Basics'),
-           dccLink(
-             'Adding CSS & JS and Overriding the Page-Load Template',
-             href='/external-resources'
-           ),
-           htmlBr(),
-           dccMarkdown("Learn how to add custom CSS and JS to your application with the `assets` directory.
-Also, learn how to customize the HTML template that Dash serves on page load in order to add custom meta tags, customize the page's title, and more."),
+            components$Header('Beyond the Basics'),
+            components$Chapter(
+              'Adding CSS & JS and Overriding the Page-Load Template',
+              href='/external-resources',
+              caption="Learn how to add custom CSS and JS to your application with the `assets` directory.
+              Also, learn how to customize the HTML template that Dash serves on page load in order to add custom meta tags, customize the page's title, and more."
+            ),
 
 
-           components$Header('Production'),
-           dccMarkdown("IN PROGRESS..."),
+            components$Header('Production'),
+            dccMarkdown("IN PROGRESS..."),
+            components$Chapter(
+              '',
+              href='',
+              caption=
+            ),
 
 
-           components$Header('Getting Help'),
-           dccMarkdown("IN PROGRESS..."),
+            components$Header('Getting Help'),
+            dccMarkdown("IN PROGRESS..."),
+            components$Chapter(
+              '',
+              href='',
+              caption=
+            ),
 
 
-           htmlH2('Dash Deployment Server',
-                  style = list(color = "rgb(13, 118, 191)")),
-           dccMarkdown("Dash Deployment Server is Plotly's commercial offering for hosting and sharing
-Dash apps on-premises or in the cloud."),
-           dccLink(
-             'About Dash Deployment Server',
-             href='/faq-gotchas'
-           ),
-           htmlBr(),
-           dccLink(
-             'Dash Deployment Server Documentation',
-             href='/faq-gotchas'
-           )
-         )
-       )
-     }
-   )
- })
+            htmlH2('Dash Deployment Server',
+            style = list(color = "rgb(13, 118, 191)")),
+            dccMarkdown("Dash Deployment Server is Plotly's commercial offering for hosting and sharing
+            Dash apps on-premises or in the cloud."),
+            components$Chapter(
+              'About Dash Deployment Server',
+              href='/faq-gotchas'
+            ),
+            components$Chapter(
+              'Dash Deployment Server Documentation',
+              href='/faq-gotchas'
+            )
+          )
+        )
+      }
+    )
+  }
+)
 
 app$run_server(host = "0.0.0.0", port = Sys.getenv('PORT', 8050))

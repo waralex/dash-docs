@@ -13,6 +13,30 @@ Header <- function(title) {
   )
 }
 
+Chapter <- function(name, href = NA, caption = NA) {
+  divTitle <- htmlLi(
+    dccLink(
+      name,
+      href = href,
+      id = href,
+      className = 'toc--chapter-link'
+    ),
+  )
+  divCaption <- htmlSmall(
+    className = 'toc--chapter-content',
+    children = dccMarkdown(caption),
+    style = list(
+      'display' = 'block',
+      'marginTop' = '-8px'
+    )
+  )
+  if (!is.na(caption)) {
+    return (htmlDiv(className = 'toc--chapter', children = list(divTitle, divCaption)))
+  } else {
+    return (htmlDiv(className = 'toc--chapter', children = list(divTitle)))
+  }
+}
+
 # Existing Components (may need to edit)
 
 Syntax <- function(children, language='R', style=styles$code_container, summary=''){
