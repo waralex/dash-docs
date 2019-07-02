@@ -94,43 +94,40 @@ header <- htmlDiv(
       ))
   ))
 
+header <- htmlDiv(
+  className = 'header',
+  list(
+    htmlDiv(
+      style = list(height = '95%'),
+      className = 'container-width',
+      children = list(
+        htmlA(htmlImg(
+          style = list(height = '100%'),
+          src = 'https://user-images.githubusercontent.com/1865834/50180824-abcc5f80-02d8-11e9-8319-8842909c3f8e.png'
+        ), href = 'https://plot.ly/products/dash', className='logo-link'),
+        htmlDiv(className='links', children = list(
+          htmlA('pricing', className='link', href = 'https://plot.ly/dash/pricing'),
+          htmlA('user guide', className='link', href = '/'),
+          htmlA('plotly', className='link', href = 'https://plot.ly/'),
+          htmlA('🔎', className='link', href='https://dash.plot.ly/search')
+        ))
+      ))
+  ))
+
 app$layout(
   header,
   htmlDiv(
     list(
       dccLocation(id='url'),
       htmlDiv(
-        style = list(height = '95%'),
-        className = 'container-width',
-        children = list(
-          htmlA(htmlImg(
-            style = list(height = '100%'),
-            src = 'https://user-images.githubusercontent.com/1865834/50180824-abcc5f80-02d8-11e9-8319-8842909c3f8e.png'
-          ), href = 'https://plot.ly/products/dash', className='logo-link'),
-          htmlDiv(className='links', children = list(
-            htmlA('pricing', className='link', href = 'https://plot.ly/dash/pricing'),
-            htmlA('user guide', className='link', href = '/'),
-            htmlA('plotly', className='link', href = 'https://plot.ly/'),
-            htmlA('🔎', className='link', href='https://dash.plot.ly/search')
-          ))
-        ))
-    ))
-  
-  app$layout(
-    header,
-    htmlDiv(
-      list(
-        dccLocation(id='url'),
-        htmlDiv(
-          className='background',
-          children=list(
-            htmlDiv(id='wait-for-layout'),
-            htmlDiv(
-              className='container-width',
-              children=htmlDiv(
-                htmlDiv(id='chapter', className='content'),
-                className='content-container'
-              )
+        className='background',
+        children=list(
+          htmlDiv(id='wait-for-layout'),
+          htmlDiv(
+            className='container-width',
+            children=htmlDiv(
+              htmlDiv(id='chapter', className='content'),
+              className='content-container'
             )
           )
         )
