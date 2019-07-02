@@ -1,4 +1,4 @@
-getwappName <- Sys.getenv("DASH_APP_NAME")
+appName <- Sys.getenv("DASH_APP_NAME")
 
 if (appName != ""){
   
@@ -16,9 +16,6 @@ if (appName != ""){
   
 }
 
-
-
-setwd("C:/Users/hamma/Documents/dashBioDocs/dashR/chapters/dashBio")
 
 #Source assets
 source("assets/utils.R")
@@ -58,6 +55,10 @@ chapters.molecule2dviewer <- new.env()
 source('molecule2dviewer/molecule2dviewer.R', local=chapters.molecule2dviewer)
 chapters.needleplot <- new.env()
 source('needleplot/needleplot.R', local=chapters.needleplot)
+chapters.oncoprint <- new.env()
+source('oncoprint/oncoprint.R', local=chapters.oncoprint)
+chapters.sequenceviewer <- new.env()
+source('sequenceviewer/sequenceviewer.R', local=chapters.sequenceviewer)
 
 header <- htmlDiv(list(
   htmlDiv(list(
@@ -115,6 +116,8 @@ app$callback(output=list(id='chapter', property='children'),
                  "/Molecule3dViewer" = return(chapters.molecule3dviewer$layout),
                  "/VolcanoPlot" = return(chapters.volcanoplot$layout),
                  "/NeedlePlot" = return(chapters.needleplot$layout),
+                 "/OncoPrint" = return(chapters.oncoprint$layout),
+                 "/SequenceViewer" = return(chapters.sequenceviewer$layout),
                  {mainLayout
                    }
                )
