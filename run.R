@@ -88,7 +88,7 @@ header <- htmlDiv(
           htmlA('pricing', className='link', href = 'https://plot.ly/dash/pricing'),
           htmlA('user guide', className='link', href = '/'),
           htmlA('plotly', className='link', href = 'https://plot.ly/'),
-          htmlA(children=list(htmlI(className="fa fa-search")), className='link', href='https://dash.plot.ly/search')
+          htmlA('🔎', className='link', href='https://dash.plot.ly/search')
         ))
       ))
   ))
