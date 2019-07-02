@@ -3,12 +3,15 @@ library(dashHtmlComponents)
 library(dash)
 
 utils <- new.env()
+print(dir())
+print(getwd())
+print("Test")
 source('dashr/utils.R', local=utils)
 
 examples <- list(
-  simple_example=utils$LoadExampleCode('dashr/chapters/dash-core-components/dropdown/examples/simple-example.R'),
-  simple_example_multi=utils$LoadExampleCode('dashr/chapters/dash-core-components/dropdown/examples/simple-example-multi.R'),
-  proptable = utils$LoadExampleCode('dashr/chapters/dash-core-components/dropdown/examples/dropdownproptable.R')
+  simple_example=utils$LoadExampleCode('dashr/chapters/dash-core-components/Dropdown/examples/simple-example.R'),
+  simple_example_multi=utils$LoadExampleCode('dashr/chapters/dash-core-components/Dropdown/examples/simple-example-multi.R'),
+  proptable = utils$LoadExampleCode('dashr/chapters/dash-core-components/Dropdown/examples/dropdownproptable.R')
 )
 
 
