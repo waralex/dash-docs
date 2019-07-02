@@ -8,9 +8,6 @@ library(readr)
 library(heatmaply)
 
 
-
-setwd("C:/Users/hamma/Documents/dashBioDocs/dashR/chapters/dashBio")
-
 utils <- new.env()
 source('assets/styles.R')
 source('assets/utils.R', local=utils)
