@@ -1,5 +1,5 @@
-test =utils$props_to_list('dccMarkdown')
-x <- data.table::rbindlist(test, fill = TRUE)
+markdownproptable =utils$props_to_list('dccMarkdown')
+x <- data.table::rbindlist(markdownproptable, fill = TRUE)
 
 app = Dash$new()
 

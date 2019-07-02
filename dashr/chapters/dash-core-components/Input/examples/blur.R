@@ -22,7 +22,7 @@ app$callback(
               state('input-1-submit', 'value'),
               state('input-2-submit', 'value')),
   function(ns1, nb1, ns2, nb2, input1, input2) {
-    sprintf('Input 1 is %s and input 2 is %s', input1,input2)
+    sprintf('Input 1 is %s and input 2 is %s', input1, input2)
   })
 
 app$run_server()

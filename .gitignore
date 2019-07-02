@@ -18,6 +18,7 @@ cache
 bundle.js
 .idea
 .env
+.mypy_cache/
 .Rhistory
 .RData
 

@@ -24,7 +24,7 @@ layout <- htmlDiv(list(
   
   dccMarkdown("
 `dccInput` has properties `n_submit`, which updates when the enter button is pressed, and `n_blur`
- ,which updates when the component loses focus (e.g tab is pressed or the user clicks away).
+ , which updates when the component loses focus (e.g. tab is pressed or the user clicks outside of the input field).
               "),
   
   examples$blur$source,

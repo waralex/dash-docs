@@ -46,7 +46,7 @@ parse_contents = function(contents, filename, date){
   return(htmlDiv(list(
     htmlH5(filename),
     htmlH6(anytime(date)),
-    dashDataTable(df_to_list('records'),columns = lapply(colname(df), function(x){list('name' = x, 'id' = x)})),
+    dashDataTable(df_to_list('records'),columns = lapply(colnames(df), function(x){list('name' = x, 'id' = x)})),
     htmlHr(),
     htmlDiv('Raw Content'),
     htmlPre(paste(substr(toJSON(contents), 1, 100), "..."), style=list(

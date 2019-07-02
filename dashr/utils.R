@@ -47,7 +47,8 @@ LoadExampleCode <- function(filename, wd = NULL) {
   eval(parse(text=example.ready.for.eval))
 
   list(
-    layout=htmlDiv(className='example-container', children=layout),
+    layout=htmlDiv(className='example-container', children=layout,
+                   style=list('overflow-x' = 'initial')),
     source_code=htmlDiv(
       children=dccMarkdown(sprintf("```r %s```", example.file.as.string)),
       className='code-container'
@@ -65,7 +66,8 @@ LoadAndDisplayComponent <- function(example_string) {
         ),
         htmlDiv(
           className='example-container',
-          children=eval(parse(text=example_string))
+          children=eval(parse(text=example_string)),
+          style=list('overflow-x' = 'initial')
         )
       )
     )
@@ -105,19 +107,19 @@ props_to_list <- function(componentName) {
                          "List",
                          sep="|")
       
-      attribute <- x[[1]]
+      Argument <- x[[1]]
       
       descstring <- paste(gsub("\n", "", x[[2]]), collapse=" ")
       
-      description <- gsub("Logical\\. |Numeric\\. |Named list\\. |Unnamed list\\. | Character\\.", 
+      Description <- gsub("Logical\\. |Numeric\\. |Named list\\. |Unnamed list\\. | Character\\.", 
                           "", 
                           descstring)
-      type <- regmatches(descstring, regexpr(all_types, descstring))
-      default <- NULL
-      return(c(attribute=attribute, 
-               description=description, 
-               type=type,
-               default=default))
+      Type <- regmatches(descstring, regexpr(all_types, descstring))
+      Default <- NULL
+      return(c(Argument=Argument, 
+               Description=Description, 
+               Type=Type,
+               Default=Default))
     }
   }))
   

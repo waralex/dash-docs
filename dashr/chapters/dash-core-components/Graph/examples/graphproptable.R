@@ -1,5 +1,5 @@
-test =utils$props_to_list('dccGraph')
-x <- data.table::rbindlist(test, fill = TRUE)
+graphproptable =utils$props_to_list('dccGraph')
+x <- data.table::rbindlist(graphproptable, fill = TRUE)
 
 app = Dash$new()
 

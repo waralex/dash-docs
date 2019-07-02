@@ -1,5 +1,5 @@
-test =utils$props_to_list('dccRadioItems')
-x <- data.table::rbindlist(test, fill = TRUE)
+radioproptable =utils$props_to_list('dccRadioItems')
+x <- data.table::rbindlist(radioproptable, fill = TRUE)
 
 app = Dash$new()
 

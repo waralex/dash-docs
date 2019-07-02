@@ -59,6 +59,7 @@ dccMarkdown("
 dccMarkdown("
 If you're using HTML components, then you also have access to
 properties like `style`, `class`, and `id`.
+
 All of these attributes are available in the R functions.
 The HTML elements and Dash classes are mostly the same but there are
 a few key differences:
@@ -92,7 +93,6 @@ dccMarkdown('
                 <p class="my-class", id="my-p-element">
                     Example P
                 </p>
-
              </div>
              ```
              '),

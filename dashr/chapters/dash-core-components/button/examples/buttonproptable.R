@@ -1,5 +1,5 @@
-test =utils$props_to_list('htmlButton')
-x <- data.table::rbindlist(test, fill = TRUE)
+buttonproptable =utils$props_to_list('htmlButton')
+x <- data.table::rbindlist(buttonproptable, fill = TRUE)
 
 app = Dash$new()
 

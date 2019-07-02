@@ -1,6 +1,6 @@
 source('dashr/utils.R', local=utils)
-test =utils$props_to_list('dccDatePickerRange')
-x <- data.table::rbindlist(test, fill = TRUE)
+datepickerproptable =utils$props_to_list('dccDatePickerRange')
+x <- data.table::rbindlist(datepickerproptable, fill = TRUE)
 
 app = Dash$new()
 

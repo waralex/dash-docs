@@ -1,5 +1,5 @@
-test =utils$props_to_list('dccLocation')
-x <- data.table::rbindlist(test, fill = TRUE)
+locationproptable =utils$props_to_list('dccLocation')
+x <- data.table::rbindlist(locationproptable, fill = TRUE)
 
 app = Dash$new()
 
