@@ -77,7 +77,7 @@ htmlHr(),
 #--------------------------------
 
 htmlDiv(titleLink('Slider')),
-htmlDiv(list(utils$LoadAndDisplayComponent(
+htmlDiv(list(utils$LoadAndDisplayComponent2(
   '
 library(dashCoreComponents)
 dccSlider(
@@ -89,7 +89,7 @@ dccSlider(
   '
 ),
 
-utils$LoadAndDisplayComponent(
+utils$LoadAndDisplayComponent2(
   '
 library(dashCoreComponents)
 dccSlider(
@@ -110,7 +110,7 @@ htmlHr(),
 #--------------------------------
 
 htmlDiv(titleLink('RangeSlider')),
-htmlDiv(list(utils$LoadAndDisplayComponent(
+htmlDiv(list(utils$LoadAndDisplayComponent2(
   '
   library(dashCoreComponents)
   dccRangeSlider(
@@ -123,7 +123,7 @@ htmlDiv(list(utils$LoadAndDisplayComponent(
   '
 ),
 
-htmlDiv(list(utils$LoadAndDisplayComponent(
+htmlDiv(list(utils$LoadAndDisplayComponent2(
   '
   library(dashCoreComponents)
   dccRangeSlider(

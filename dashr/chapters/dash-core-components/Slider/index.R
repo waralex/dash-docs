@@ -33,7 +33,7 @@ layout <- htmlDiv(list(
               where the keys represent the numerical values and the \
               values represent their labels."),
   
-  htmlDiv(list(utils$LoadAndDisplayComponent(
+  htmlDiv(list(utils$LoadAndDisplayComponent2(
     '
 library(dashCoreComponents)
 dccSlider(
@@ -60,7 +60,7 @@ dccSlider(
               discrete value set `included=FALSE`. To style `marks`, \
               include a style css attribute alongside the list value."),
   
-  htmlDiv(list(utils$LoadAndDisplayComponent(
+  htmlDiv(list(utils$LoadAndDisplayComponent2(
     '
 library(dashCoreComponents)
 dccSlider(
@@ -78,7 +78,7 @@ dccSlider(
   '
   ))),
   
-  htmlDiv(list(utils$LoadAndDisplayComponent(
+  htmlDiv(list(utils$LoadAndDisplayComponent2(
     '
     library(dashCoreComponents)
     dccSlider(
@@ -97,7 +97,7 @@ dccSlider(
     '
   ))),
   
-  htmlDiv(list(utils$LoadAndDisplayComponent(
+  htmlDiv(list(utils$LoadAndDisplayComponent2(
     '
     library(dashCoreComponents)
     dccSlider(
