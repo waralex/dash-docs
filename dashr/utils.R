@@ -74,6 +74,24 @@ LoadAndDisplayComponent <- function(example_string) {
   )
 }
 
+LoadAndDisplayComponent2 <- function(example_string) {
+  return(
+    htmlDiv(
+      list(
+        htmlDiv(
+          children=dccMarkdown(sprintf("```r %s```", example_string)),
+          className='code-container'
+        ),
+        htmlDiv(
+          className='example-container',
+          children=eval(parse(text=example_string)),
+          style=list('padding-bottom' = '30px')
+        )
+      )
+    )
+  )
+}
+
 props_to_list <- function(componentName) {
   Rd <- utils:::.getHelpFile(do.call(`?`, 
                                      list(componentName)))
