@@ -13,7 +13,7 @@ source('assets/utils.R', local=utils)
 examples <- list(
   default = utils$LoadExampleCode('molecule3dviewer/examples/default.R'),
   selectionType = utils$LoadExampleCode('molecule3dviewer/examples/selectionType.R'),
-  selectionTypePseudo = utils$LoadExampleCode('molecule3dviewer/examples/selectionTypePseudo.R'),
+  # selectionTypePseudo = utils$LoadExampleCode('molecule3dviewer/examples/selectionTypePseudo.R'),
   table = utils$LoadExampleCode('molecule3dviewer/examples/table.R')
 )
 

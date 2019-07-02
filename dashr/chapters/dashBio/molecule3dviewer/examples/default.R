@@ -15,7 +15,7 @@ app$layout(
   htmlDiv(
     list(
       dashbioMolecule3dViewer(
-        id = 'my-dashbio-molecule3d',
+        id = 'my-dashbio-molecule3d-default',
         styles = styles_data,
         modelData = model_data,
         selectionType = 'Chain',
@@ -29,7 +29,7 @@ app$layout(
 
 app$callback(
   output = list(id = 'molecule3d-output', property = 'children'),
-  params = list(input(id = 'my-dashbio-molecule3d', property = 'selectedAtomIds')),
+  params = list(input(id = 'my-dashbio-molecule3d-default', property = 'selectedAtomIds')),
   
   show_selected_atoms <- function(atom_ids) {
     if (is.null(atom_ids[[1]]) | length(atom_ids) < 1 ) {

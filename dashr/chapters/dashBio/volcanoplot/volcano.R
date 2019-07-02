@@ -14,9 +14,9 @@ source('assets/utils.R', local=utils)
 examples <- list(
   default = utils$LoadExampleCode('volcanoplot/examples/default.R'),
   colors = utils$LoadExampleCode('volcanoplot/examples/colors.R'),
-  colorsPseudo = utils$LoadExampleCode('volcanoplot/examples/colorsPseudo.R'),
+  # colorsPseudo = utils$LoadExampleCode('volcanoplot/examples/colorsPseudo.R'),
   pointSizesLineWidths = utils$LoadExampleCode('volcanoplot/examples/pointSizesLineWidths.R'),
-  pointSizesLineWidthsPseudo = utils$LoadExampleCode('volcanoplot/examples/pointSizesLineWidthsPseudo.R'),
+  # pointSizesLineWidthsPseudo = utils$LoadExampleCode('volcanoplot/examples/pointSizesLineWidthsPseudo.R'),
   table = utils$LoadExampleCode('volcanoplot/examples/table.R')
 )
 
@@ -84,4 +84,4 @@ and the widths of the effect lines and genome-wide line.
 # )))
 # 
 # 
-# app$run_server(showcase = TRUE)
+#  app$run_server(showcase = TRUE)
