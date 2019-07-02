@@ -6,9 +6,9 @@ Header <- function(title) {
   return (
     htmlDiv(
       htmlH2(
-        list(htmlDiv(title)),
+        title,
         style = list('borderBottom' = 'thin lightgrey solid', 'marginRight' = 20)
-      ),
+      )
     )
   )
 }
@@ -30,6 +30,12 @@ Chapter <- function(name, href = NA, caption = NA) {
       'marginTop' = '-8px'
     )
   )
+  # return (
+  #   htmlDiv(
+  #     className = 'toc--chapter',
+  #     children = ifelse(!is.na(caption), list(divTitle, divCaption), list(divTitle))
+  #   )
+  # )
   if (!is.na(caption)) {
     return (htmlDiv(className = 'toc--chapter', children = list(divTitle, divCaption)))
   } else {
@@ -43,9 +49,15 @@ Section <- function(title, links, description = NA, headerStyle = list()) {
     htmlDiv(
       className = 'toc--section',
       children = list(
-        htmlH2(title, style = c(list('borderBottom' = 'thin lightgrey solid', 'marginTop' = 50), headerStyle)),
+        htmlH2(
+          title,
+          style = c(list('borderBottom' = 'thin lightgrey solid', 'marginTop' = 50), headerStyle)
+        ),
         htmlDiv(description),
-        htmlUl(links, className = 'toc--chapters')
+        htmlUl(
+          links,
+          className = 'toc--chapters'
+        )
       )
     )
   )
@@ -53,21 +65,34 @@ Section <- function(title, links, description = NA, headerStyle = list()) {
 
 # Existing Components (may need to edit)
 
-Syntax <- function(children, language='R', style=styles$code_container, summary=''){
-  if (!(summary == '')){
-  return(htmlDetails(list(
-    htmlSummary(summary),
-    htmlDiv(children)
-    ),
-    open=TRUE))}
-else{
-  return(dccSyntaxHighlighter(
-    children,
-    'language'=language,
-    'customStyle'=style
-  ))
-}}
+Syntax <- function(children, language = 'R', style = styles$code_container, summary = ''){
+  if (!(summary == '')) {
+    return(
+      htmlDetails(
+        list(
+          htmlSummary(summary),
+          htmlDiv(children)
+        ),
+        open=TRUE
+      )
+    )
+  } else {
+    return(
+      dccSyntaxHighlighter(
+        children,
+        'language' = language,
+        'customStyle' = style
+      )
+    )
+  }
+}
 
 Example <- function(example){
-  return(htmlDiv(example, className='example-container'))}
+  return(
+    htmlDiv(
+      example,
+      className = 'example-container'
+    )
+  )
+}
 
