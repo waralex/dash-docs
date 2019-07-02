@@ -161,7 +161,7 @@ app$callback(
            htmlH1('DashR User Guide'),
 
 
-           htmlH2('What\'s Dash?'),
+           components$Header('What\'s Dash?'),
            htmlA(
              'Introduction',
              href='https://dash.plot.ly/introduction'
@@ -188,7 +188,7 @@ app$callback(
            dccMarkdown("A fortnightly email newsletter by chriddyp, the creator of Dash."),
 
 
-           htmlH2("Dash Tutorial"),
+           components$Header("Dash Tutorial"),
            dccLink(
              'Part 1. Installation',
              href='/installation'
@@ -239,7 +239,7 @@ This chapter is useful for callbacks that run expensive data processing tasks or
 or are encountering unexpected behaviour,this chapter may be useful."),
 
 
-           htmlH2('Component Libraries'),
+           components$Header('Component Libraries'),
            dccLink(
              'Dash Core Components',
              href='/dash-core-components'
@@ -263,11 +263,11 @@ This chapter explains how this works and the few important key differences betwe
 It is an interactive table that supports rich styling, conditional formatting, editing, sorting, filtering, and more."),
 
 
-           htmlH2('Creating Your Own Components'),
+           components$Header('Creating Your Own Components'),
            dccMarkdown("IN PROGRESS..."),
 
 
-           htmlH2('Beyond the Basics'),
+           components$Header('Beyond the Basics'),
            dccLink(
              'Adding CSS & JS and Overriding the Page-Load Template',
              href='/external-resources'
@@ -277,11 +277,11 @@ It is an interactive table that supports rich styling, conditional formatting, e
 Also, learn how to customize the HTML template that Dash serves on page load in order to add custom meta tags, customize the page's title, and more."),
 
 
-           htmlH2('Production'),
+           components$Header('Production'),
            dccMarkdown("IN PROGRESS..."),
 
 
-           htmlH2('Getting Help'),
+           components$Header('Getting Help'),
            dccMarkdown("IN PROGRESS..."),
 
 
