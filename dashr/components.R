@@ -37,6 +37,20 @@ Chapter <- function(name, href = NA, caption = NA) {
   }
 }
 
+Section <- function(title, links, description = NA, headerStyle = list()) {
+  #ifelse(is.na(description), )
+  return(
+    htmlDiv(
+      className = 'toc--section',
+      children = list(
+        htmlH2(title, style = c(list('borderBottom' = 'thin lightgrey solid', 'marginTop' = 50), headerStyle)),
+        htmlDiv(description),
+        htmlUl(links, className = 'toc--chapters')
+      )
+    )
+  )
+}
+
 # Existing Components (may need to edit)
 
 Syntax <- function(children, language='R', style=styles$code_container, summary=''){
