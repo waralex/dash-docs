@@ -36,7 +36,7 @@ source('dashr/chapters/dash-core-components/Textarea/index.R', local=chapters.Te
 chapters.Checklist <- new.env()
 source('dashr/chapters/dash-core-components/Checklist/index.R', local=chapters.Checklist)
 chapters.RadioItems <- new.env()
-source('dashr/chapters/dash-core-components/RadioItems/index.R', local=chapters.RadioItems)
+source('dashr/chapters/dash-core-components/RadioItems/index2.R', local=chapters.RadioItems)
 chapters.Button <- new.env()
 source('dashr/chapters/dash-core-components/Button/index.R', local=chapters.Button)
 chapters.DatePickerSingle  <- new.env()
