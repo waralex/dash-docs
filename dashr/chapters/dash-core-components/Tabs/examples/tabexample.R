@@ -6,8 +6,8 @@ utils <- new.env()
 source('dashr/utils.R', local=utils)
 
 examples <- list(
-  button = utils$LoadExampleCode('dashr/chapters/dash-core-components/button/examples/button.R'),
-  tabs = utils$LoadExampleCode('dashr/chapters/dash-core-components/tabs/examples/tabs.R')
+  button = utils$LoadExampleCode('dashr/chapters/dash-core-components/Button/examples/button.R'),
+  tabs = utils$LoadExampleCode('dashr/chapters/dash-core-components/Tabs/examples/tabs.R')
 )
 
 app = Dash$new()

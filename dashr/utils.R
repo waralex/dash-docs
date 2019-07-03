@@ -1,6 +1,6 @@
 library(dash)
-library(dashCoreComponents)
 library(dashHtmlComponents)
+library(dashCoreComponents)
 
 LoadExampleCode <- function(filename, wd = NULL) {
   # Take a self-contained DashR example filename,
