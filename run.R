@@ -183,7 +183,7 @@ app$callback(output=list(id='chapter', property='children'),
                    
                    htmlDiv(
                      list(
-                       htmlH1('DashR User Guide'),
+                       htmlH1('Dash for R User Guide'),
                        components$Section(
                          'What\'s Dash?',
                          list(
