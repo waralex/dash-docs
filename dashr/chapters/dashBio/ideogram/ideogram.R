@@ -181,7 +181,7 @@ layout <- htmlDiv(list(
   brushIdeogram,
   htmlHr(),
   ideogramPropsTable,
-  htmlA("Back to the Table of Contents", href = "/dash-bio/")
+  htmlA("Back to the Table of Contents", href = "/")
 ))
 
 

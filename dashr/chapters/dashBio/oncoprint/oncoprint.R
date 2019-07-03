@@ -130,7 +130,7 @@ layout <- htmlDiv(list(
   oncoLegend,
   htmlHr(),
   oncoPropsTable,
-  htmlA("Back to the Table of Contents", href = "/dash-bio/")
+  htmlA("Back to the Table of Contents", href = "/")
 ))
 
 # app$layout(htmlDiv(list(

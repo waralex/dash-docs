@@ -50,7 +50,7 @@ LoadExampleCode <- function(filename, wd = NULL) {
     layout=htmlDiv(className='example-container', children=layout),
     source_code=htmlDiv(
       children=dccMarkdown(sprintf("```r
-                                   %s
+%s
                                    ```",example.file.as.string)),
       className='code-container'
     )
@@ -144,29 +144,28 @@ generate_props_table <- function(df) {
       }),
       
       data = setNames(lapply(split(df, seq(nrow(df))), FUN = function (x) {as.list(x)}), NULL),
-      
+
       style_as_list_view = TRUE,
       
       style_data = list('whiteSpace' = 'normal'),
-      
+       
       style_cell = list(
         'whiteSpace'= 'no-wrap',
         'overflow'='inherit',
         'textOverflow'= 'inherit',
-        'textAlign' = 'center',
-        'maxWidth'= 0
+        'textAlign' = 'center'
       ),
-      
-      
-      style_cell_conditional = list(list(
-        "if" = list("column_id"="label"), "textAlign" = "left"),
-        list("if" = list("column_id"="value"), "textAlign" = "left"),
-        list("if" = list("row_index" ="even"), 'backgroundColor'='#FAFAFA'),
-        list("if" = list("row_index" ="odd"), 'backgroundColor'='#F0F0F0')
-      ),
-      
+
+
+       style_cell_conditional = list(list(
+         "if" = list("column_id"="label"), "textAlign" = "left"),
+         list("if" = list("column_id"="value"), "textAlign" = "left"),
+         list("if" = list("row_index" ="even"), 'backgroundColor'='#FAFAFA'),
+         list("if" = list("row_index" ="odd"), 'backgroundColor'='#F0F0F0')
+      )
+       ,
       style_header=(list('backgroundColor' = '#F0F0F0', "fontWeight"="bold"))
-      
+
       # 
       # css = list(list(
       #   "selector" = ".dash-cell div.dash-cell-value",

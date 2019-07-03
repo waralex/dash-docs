@@ -120,7 +120,7 @@ layout <- htmlDiv(list(
       defaultCircos,
       inner_outer_radii,
       circos_props_table,
-      htmlA("Back to the Table of Contents", href = "/dash-bio/")
+      htmlA("Back to the Table of Contents", href = "/")
 ))
 
 

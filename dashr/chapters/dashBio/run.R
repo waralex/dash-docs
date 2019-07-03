@@ -18,7 +18,6 @@ if (appName != ""){
 
 
 
-setwd("C:/Users/hamma/Documents/dashBioDocs/dashR/chapters/dashBio")
 
 #Source assets
 source("assets/utils.R")
@@ -126,6 +125,482 @@ app$callback(output=list(id='chapter', property='children'),
                )
              })
 
+
+
+app$callback(
+  output(id = 'alignment-container', property = 'children'),
+  params = list(
+    input(id = 'alignment-switch', property = 'value')
+  ),
+  
+  change_img <- function(value) {
+    if (value == TRUE) {
+      return(list(
+        utils$LoadAndDisplayComponent(
+          '
+library(dashBio)
+library(readr)
+
+data = read_file("assets/sample_data/alignment_viewer_p53.fasta")
+
+dashbioAlignmentChart(
+id = "my-dashbio-alignmentchart",
+data = data
+)
+    '
+        )
+      )
+      )
+    }
+    
+    
+    else if(value == FALSE) {
+      return(list(htmlImg(src = "assets/images/alignment.PNG", style = list("height" = "100%", "width" = "100%"))))
+    }
+    
+    
+  }
+)
+
+
+app$callback(
+  output(id = 'circos-container', property = 'children'),
+  params = list(
+    input(id = 'circos-switch', property = 'value')
+  ),
+  
+  change_img <- function(value) {
+    if (value == TRUE) {
+      return(list(
+        utils$LoadAndDisplayComponent(
+          '
+library(dashBio)
+library(readr)
+library(jsonlite)
+    
+data <- "assets/sample_data/circos_graph_data.json"
+
+circos_graph_data = read_json(data)
+     
+dashbioCircos(
+id = "my-dashbio-circos",
+layout = circos_graph_data[["GRCh37"]],
+tracks = list(list(
+  "type" = "CHORDS",
+  "data" = circos_graph_data[["chords"]],
+  "opacity" = 0.7,
+  "color" = list("name" = "color"),
+  "config" = list(
+      "tooltipContent" = list(
+        "source" = "source",
+        "sourceID" = "id",
+        "target" = "target",
+        "targetID" = "id",
+        "targetEnd" = "end"
+      )
+    )
+))
+
+)
+    '
+        )
+      )
+      )
+    }
+    
+    
+    else if(value == FALSE) {
+      return(list(htmlImg(src = "assets/images/circos.PNG", style = list("height" = "100%", "width" = "100%"))))
+    }
+    
+    
+  }
+)
+
+
+app$callback(
+  output(id = 'clustergram-container', property = 'children'),
+  params = list(
+    input(id = 'clustergram-switch', property = 'value')
+  ),
+  
+  change_img <- function(value) {
+    if (value == TRUE) {
+      return(list(
+        utils$LoadAndDisplayComponent(
+          '
+library(dashBio)
+library(dashCoreComponents)
+    
+df = read.table("assets/sample_data/clustergram_mtcars.tsv",
+                  skip = 4, sep ="\t",  row.names = 1, header = TRUE)
+                  
+
+dccGraph(figure = heatmaply(df, 
+        row_labels = list(row.names(data)),
+        hide_labels = list("row"),
+        column_labels = as.list(colnames(data)),
+        color_threshold = list(
+            "row" = 150,
+            "col" = 700
+          )
+       )
+    )
+    '
+        )
+      )
+      )
+    }
+    
+    
+    else if(value == FALSE) {
+      return(list(htmlImg(src = "assets/images/clustergram.PNG", style = list("height" = "100%", "width" = "100%"))))
+    }
+    
+    
+  }
+)
+
+
+app$callback(
+  output(id = 'ideogram-container', property = 'children'),
+  params = list(
+    input(id = 'ideogram-switch', property = 'value')
+  ),
+  
+  change_img <- function(value) {
+    if (value == TRUE) {
+      return(list(
+        utils$LoadAndDisplayComponent(
+          '
+library(dashBio)
+    
+dashbioIdeogram(
+id = "my-dashbio-ideogram",
+chrHeight = 300
+)
+    '
+        )
+      )
+      )
+    }
+    
+    
+    else if(value == FALSE) {
+      return(list(htmlImg(src = "assets/images/ideogram.PNG", style = list("height" = "100%", "width" = "100%"))))
+    }
+    
+    
+  }
+)
+
+app$callback(
+  output(id = 'manhattan-container', property = 'children'),
+  params = list(
+    input(id = 'manhattan-switch', property = 'value')
+  ),
+  
+  change_img <- function(value) {
+    if (value == TRUE) {
+      return(list(
+        utils$LoadAndDisplayComponent(
+          '
+library(dashBio)
+    
+
+data = read.table("assets/sample_data/manhattan_data.csv",
+                     header = TRUE, sep = ",")
+
+
+dccGraph(figure = dashbioManhattan(
+    dataframe=data
+))
+                     
+    '
+        )
+      )
+      )
+    }
+    
+    
+    else if(value == FALSE) {
+      return(list(htmlImg(src = "assets/images/manhattan.PNG", style = list("height" = "100%", "width" = "100%"))))
+    }
+    
+    
+  }
+)
+
+
+
+app$callback(
+  output(id = 'molecule2d-container', property = 'children'),
+  params = list(
+    input(id = 'molecule2d-switch', property = 'value')
+  ),
+  
+  change_img <- function(value) {
+    if (value == TRUE) {
+      return(list(
+        utils$LoadAndDisplayComponent(
+          '
+library(dashBio)
+library(jsonlite)
+
+     
+model_data = read_json("https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/mol2d_buckminsterfullerene.json")
+
+
+dashbioMolecule2dViewer(
+id = "my-dashbio-molecule2dviewer",
+modelData = model_data
+)
+    '
+        )
+      )
+      )
+    }
+    
+    
+    else if(value == FALSE) {
+      return(list(htmlImg(src = "assets/images/molecule2d.PNG", style = list("height" = "100%", "width" = "100%"))))
+    }
+    
+    
+  }
+)
+
+
+app$callback(
+  output(id = 'molecule3d-container', property = 'children'),
+  params = list(
+    input(id = 'molecule3d-switch', property = 'value')
+  ),
+  
+  change_img <- function(value) {
+    if (value == TRUE) {
+      return(list(
+        utils$LoadAndDisplayComponent(
+          '
+library(dashBio)
+library(jsonlite)
+
+model_data <- read_json("https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/mol3d/model_data.js")
+styles_data <- read_json("https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/mol3d/styles_data.js")
+
+dashbioMolecule3dViewer(
+    id = "my-dashbio-molecule3dviewer",
+    styles = styles_data,
+    modelData = model_data,
+    selectionType = "Chain"
+  )
+    '
+        )
+      )
+      )
+    }
+    
+    
+    else if(value == FALSE) {
+      return(list(htmlImg(src = "assets/images/molecule3d.PNG", style = list("height" = "100%", "width" = "100%"))))
+    }
+    
+    
+  }
+)
+
+
+
+app$callback(
+  output(id = 'needle-container', property = 'children'),
+  params = list(
+    input(id = 'needle-switch', property = 'value')
+  ),
+  
+  change_img <- function(value) {
+    if (value == TRUE) {
+      return(list(
+        utils$LoadAndDisplayComponent(
+          '
+library(dashBio)
+library(jsonlite)
+    
+mdata = read_json("assets/sample_data/needle_PIK3CA.json")
+
+dashbioNeedlePlot(
+id = "my-dashbio-needleplot",
+mutationData = mdata
+)
+    '
+        )
+      )
+      )
+    }
+    
+    
+    else if(value == FALSE) {
+      return(list(htmlImg(src = "assets/images/needle.PNG", style = list("height" = "100%", "width" = "100%"))))
+    }
+    
+    
+  }
+)
+
+app$callback(
+  output(id = 'oncoprint-container', property = 'children'),
+  params = list(
+    input(id = 'oncoprint-switch', property = 'value')
+  ),
+  
+  change_img <- function(value) {
+    if (value == TRUE) {
+      return(list(
+        utils$LoadAndDisplayComponent(
+          '
+library(dashBio)
+library(jsonlite)
+    
+data = read_json("assets/sample_data/oncoprint_dataset3.json")
+
+dashbioOncoPrint(
+id = "my-dashbio-oncoprint",
+data = data
+)
+    '
+        )
+      )
+      )
+    }
+    
+    
+    else if(value == FALSE) {
+      return(list(htmlImg(src = "assets/images/oncoprint.PNG", style = list("height" = "100%", "width" = "100%"))))
+    }
+    
+    
+  }
+)
+
+
+
+app$callback(
+  output(id = 'sequence-container', property = 'children'),
+  params = list(
+    input(id = 'sequence-switch', property = 'value')
+  ),
+  
+  change_img <- function(value) {
+    if (value == TRUE) {
+      return(list(
+        utils$LoadAndDisplayComponent(
+          '
+library(dashBio)
+    
+sequence ="MALWMRLLPLLALLALWGPDPAAAFVNQHLCGSHLVEALYLVCGERGFFY
+TPKTRREAEDLQVGQVELGGGPGAGSLQPLALEGSLQKRGIVEQCCTSICSLYQLENYCN"
+
+
+dashbioSequenceViewer(
+id = "my-dashbio-sequenceviewer",
+sequence = sequence
+)
+    '
+        )
+      )
+      )
+    }
+    
+    
+    else if(value == FALSE) {
+      return(list(htmlImg(src = "assets/images/sequence.PNG", style = list("height" = "100%", "width" = "100%"))))
+    }
+    
+    
+  }
+)
+
+
+
+
+app$callback(
+  output(id = 'speck-container', property = 'children'),
+  params = list(
+    input(id = 'speck-switch', property = 'value')
+  ),
+  
+  change_img <- function(value) {
+    if (value == TRUE) {
+      return(list(
+        utils$LoadAndDisplayComponent(
+          '
+library(dashBio)
+library(jsonlite)
+    
+data = read.table("assets/sample_data/speck_methane.xyz", skip = 2)
+
+
+dashbioSpeck(
+id = "my-dashbio-speck",
+view = list("resolution" = 600),
+data = data
+)
+    '
+        )
+      )
+      )
+    }
+    
+    
+    else if(value == FALSE) {
+      return(list(htmlImg(src = "assets/images/speck.PNG", style = list("height" = "100%", "width" = "100%"))))
+    }
+    
+    
+  }
+)
+
+
+app$callback(
+  output(id = 'volcano-container', property = 'children'),
+  params = list(
+    input(id = 'volcano-switch', property = 'value')
+  ),
+  
+  change_img <- function(value) {
+    if (value == TRUE) {
+      return(list(
+        utils$LoadAndDisplayComponent(
+          '
+library(dashBio)
+library(dashCoreComponents)
+    
+data = read.table("assets/sample_data/volcano_data1.csv",
+                     header = TRUE, sep = ",")
+
+
+dccGraph(figure = dashbioVolcano(
+    id = "my-dashbio-volcanoplot",
+    dataframe = data
+  )
+)
+    '
+        )
+      )
+      )
+    }
+    
+    
+    else if(value == FALSE) {
+      return(list(htmlImg(src = "assets/images/volcano.PNG", style = list("height" = "100%", "width" = "100%"))))
+    }
+    
+    
+  }
+)
+
+
+
+#Run App
 
 
 if (appName != "") {

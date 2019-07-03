@@ -270,7 +270,7 @@ layout <- htmlDiv(list(
       heatmapAnnotations,
       htmlHr(),
       heatmaply_props_table,
-      htmlA("Back to the Table of Contents", href = "/dash-bio/")
+      htmlA("Back to the Table of Contents", href = "/")
 ))
 
 

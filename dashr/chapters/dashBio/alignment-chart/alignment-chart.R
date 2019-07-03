@@ -125,7 +125,7 @@ layout <- htmlDiv(list(
       tileAlignment,
       consensusAlignment,
       alignmentPropsTable,
-      htmlA("Back to the Table of Contents", href = "/dash-bio/")
+      htmlA("Back to the Table of Contents", href = "/")
 ))
 
 

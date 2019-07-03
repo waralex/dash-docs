@@ -161,9 +161,11 @@ layout <- htmlDiv(list(
   titleandbadge,
   htmlHr(),
   sequencePropsTable,
-  htmlA("Back to the Table of Contents", href = "/dash-bio/")
+  htmlA("Back to the Table of Contents", href = "/")
 ))
 
+# app <- Dash$new()
+# 
 # app$layout(htmlDiv(list(
 #   layout
 # )))
