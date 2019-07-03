@@ -17,8 +17,8 @@ chapters.state <- new.env()
 source('dashr/chapters/state/index.R', local=chapters.state)
 chapters.graph_crossfiltering <- new.env()
 source('dashr/chapters/graph-crossfiltering/index.R', local=chapters.graph_crossfiltering)
-#chapters.data_callbacks <- new.env()
-#source('dashr/chapters/data-callbacks/index.R', local=chapters.data_callbacks)
+chapters.data_callbacks <- new.env()
+source('dashr/chapters/data-callbacks/index.R', local=chapters.data_callbacks)
 chapters.faq_gotchas <- new.env()
 source('dashr/chapters/faq-gotchas/index.R', local=chapters.faq_gotchas)
 chapters.dashCoreComponents <- new.env()
@@ -67,10 +67,26 @@ chapters.dashHtmlComponents <- new.env()
 source('dashr/chapters/dash-html-components/index.R', local=chapters.dashHtmlComponents)
 chapters.external_resources <- new.env()
 source('dashr/chapters/external-resources/index.R', local=chapters.external_resources)
-#chapters.dashDataTable <- new.env()
-#source('dashr/chapters/dashDataTable/index.R', local=chapters.dashDataTable)
+chapters.dashDataTable <- new.env()
+source('dashr/chapters/dashDataTable/index.R', local=chapters.dashDataTable)
 chapters.dashDataTablePart1 <- new.env()
-#source('dashr/chapters/dashDataTable/part1/index.R', local=chapters.dashDataTablePart1)
+source('dashr/chapters/dashDataTable/part1/index.R', local=chapters.dashDataTablePart1)
+chapters.dashDataTablePart2 <- new.env()
+source('dashr/chapters/dashDataTable/part2/index.R', local=chapters.dashDataTablePart2)
+chapters.dashDataTablePart3 <- new.env()
+source('dashr/chapters/dashDataTable/part3/index.R', local=chapters.dashDataTablePart3)
+chapters.dashDataTablePart4 <- new.env()
+source('dashr/chapters/dashDataTable/part4/index.R', local=chapters.dashDataTablePart4)
+chapters.dashDataTablePart5 <- new.env()
+source('dashr/chapters/dashDataTable/part5/index.R', local=chapters.dashDataTablePart5)
+chapters.dashDataTablePart6 <- new.env()
+source('dashr/chapters/dashDataTable/part6/index.R', local=chapters.dashDataTablePart6)
+chapters.dashDataTablePart7 <- new.env()
+source('dashr/chapters/dashDataTable/part7/index.R', local=chapters.dashDataTablePart7)
+chapters.dashDataTablePart8 <- new.env()
+source('dashr/chapters/dashDataTable/part8/index.R', local=chapters.dashDataTablePart8)
+chapters.dashDataTablePart9 <- new.env()
+source('dashr/chapters/dashDataTable/part9/index.R', local=chapters.dashDataTablePart9)
 chapters.Whats_dash <- new.env()
 source('dashr/chapters/Whats_dash/introduction.R', local=chapters.Whats_dash)
 
@@ -118,6 +134,10 @@ app$layout(
   header,
   htmlDiv(
     list(
+      htmlDiv(
+        style = list(display = "none"),
+        children = list(dashDataTable())
+      ),
       dccLocation(id='url'),
       htmlDiv(
         className='background',
@@ -148,7 +168,7 @@ app$callback(
       "/getting-started-part-2" = return(chapters.callbacks$layout),
       "/state" = return(chapters.state$layout),
       "/graph-crossfiltering" = return(chapters.graph_crossfiltering$layout),
-      #"/data-callbacks" = return(chapters.data_callbacks$layout),
+      "/data-callbacks" = return(chapters.data_callbacks$layout),
       "/faq-gotchas" = return(chapters.faq_gotchas$layout),
       '/dash-core-components' = return(chapters.dashCoreComponents$layout),
       '/dash-core-components/Dropdown' = return(chapters.dccDropdown$layout),
@@ -174,6 +194,14 @@ app$callback(
       '/dash-html-components' = return(chapters.dashHtmlComponents$layout),
       '/dashDataTable' = return(chapters.dashDataTable$layout),
       '/dashDataTable/Part1' = return(chapters.dashDataTablePart1$layout),
+      '/dashDataTable/Part2' = return(chapters.dashDataTablePart2$layout),
+      '/dashDataTable/Part3' = return(chapters.dashDataTablePart3$layout),
+      '/dashDataTable/Part4' = return(chapters.dashDataTablePart4$layout),
+      '/dashDataTable/Part5' = return(chapters.dashDataTablePart5$layout),
+      '/dashDataTable/Part6' = return(chapters.dashDataTablePart6$layout),
+      '/dashDataTable/Part7' = return(chapters.dashDataTablePart7$layout),
+      '/dashDataTable/Part8' = return(chapters.dashDataTablePart8$layout),
+      '/dashDataTable/Part9' = return(chapters.dashDataTablePart9$layout),
       '/external-resources' = return(chapters.external_resources$layout),
       {
         htmlDiv(

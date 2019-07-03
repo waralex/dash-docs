@@ -1,11 +1,12 @@
 library(dash)
-library(dashHtmlComponents)
 library(dashCoreComponents)
+library(dashHtmlComponents)
 
 LoadExampleCode <- function(filename, wd = NULL) {
   # Take a self-contained DashR example filename,
   # eval it, and return that example's `layout`
   # and the source code.
+
   example.file.as.string <- readChar(filename, file.info(filename)$size);
 
   # modify the example code so that it can run within
@@ -45,7 +46,7 @@ LoadExampleCode <- function(filename, wd = NULL) {
 
   # run the example and implicitly assign the `layout` variable
   eval(parse(text=example.ready.for.eval))
-
+  
   list(
     layout=htmlDiv(className='example-container', children=layout,
                    style=list('overflow-x' = 'initial')),
