@@ -83,7 +83,7 @@ header <- htmlDiv(
       children = list(
         htmlA(htmlImg(
           style = list(height = '100%'),
-          src = 'https://user-images.githubusercontent.com/1865834/50180824-abcc5f80-02d8-11e9-8319-8842909c3f8e.png'
+          src = '/assets/logo.png'
         ), href = 'https://plot.ly/products/dash', className='logo-link'),
         htmlDiv(className='links', children = list(
           htmlA('pricing', className='link', href = 'https://plot.ly/dash/pricing'),
@@ -103,7 +103,7 @@ header <- htmlDiv(
       children = list(
         htmlA(htmlImg(
           style = list(height = '100%'),
-          src = 'https://user-images.githubusercontent.com/1865834/50180824-abcc5f80-02d8-11e9-8319-8842909c3f8e.png'
+          src = '/assets/logo.png'
         ), href = 'https://plot.ly/products/dash', className='logo-link'),
         htmlDiv(className='links', children = list(
           htmlA('pricing', className='link', href = 'https://plot.ly/dash/pricing'),
