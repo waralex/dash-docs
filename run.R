@@ -90,6 +90,10 @@ source('dashr/chapters/dashDataTable/part9/index.R', local=chapters.dashDataTabl
 chapters.Whats_dash <- new.env()
 source('dashr/chapters/Whats_dash/introduction.R', local=chapters.Whats_dash)
 
+# dashr-canvas:dashCanvas
+chapters.dashCanvas <- new.env()
+source('dashr/chapters/dash-canvas/index.R', local=chapters.dashCanvas)
+
 header <- htmlDiv(
   className = 'header',
   list(
@@ -203,6 +207,8 @@ app$callback(
       '/dashDataTable/Part8' = return(chapters.dashDataTablePart8$layout),
       '/dashDataTable/Part9' = return(chapters.dashDataTablePart9$layout),
       '/external-resources' = return(chapters.external_resources$layout),
+      #dashr-canvas: dashCanvas
+      '/dash-canvas' =  return(chapters.dashCanvas$layout),
       {
         htmlDiv(
           list(
@@ -304,7 +310,13 @@ app$callback(
                   href='/dashDataTable',
                   caption="(New! Released Nov 2, 2018) The Dash DataTable is our latest and most advanced component.
                   It is an interactive table that supports rich styling, conditional formatting, editing, sorting, filtering, and more."
+                ),
+                components$Chapter(
+                  'Dash Canvas',
+                  href='/dash-canvas',
+                  caption='(New! Released March 2019) Drawing and annotations for image processing.'
                 )
+                
               )
             ),
 
