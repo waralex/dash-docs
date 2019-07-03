@@ -193,14 +193,13 @@ Here are a few of the available components:
   examples$hello.dcc$layout,
 
   dccMarkdown("
-#### Core Components
+#### Calling help
 Dash components are declarative: every configurable aspect of these components 
 is set during instantiation as a keyword argument. Call help in your R console 
 on any of the components to learn more about a component and its available arguments.
   "),
   # dropdown help with example
-  examples$dropdown.doc$source_code,
-  examples$dropdown.doc$layout,
+  examples$dropdown.doc$source,
 
   dccMarkdown("
 # Summary
