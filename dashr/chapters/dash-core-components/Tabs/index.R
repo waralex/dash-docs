@@ -7,7 +7,7 @@ source('dashr/utils.R', local=utils)
 
 examples <- list(
   tabexample = utils$LoadExampleCode('dashr/chapters/dash-core-components/Tabs/examples/tabexample.R'),
-  tabs = utils$LoadExampleCode('dashr/chapters/dash-core-components/tabs/examples/tabs.R'),
+  tabs = utils$LoadExampleCode('dashr/chapters/dash-core-components/Tabs/examples/tabs.R'),
   tabchildren = utils$LoadExampleCode('dashr/chapters/dash-core-components/Tabs/examples/tabchildren.R'),
   tabcss = utils$LoadExampleCode('dashr/chapters/dash-core-components/Tabs/examples/tabcss.R'),
   tabinline = utils$LoadExampleCode('dashr/chapters/dash-core-components/Tabs/examples/tabsinline.R'),
