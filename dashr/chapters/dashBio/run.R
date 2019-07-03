@@ -512,19 +512,9 @@ dashbioSpeck(
       )
       )
     }
-<<<<<<< HEAD
     else if(value == FALSE) {
       return(list(htmlImg(src = "assets/images/speck.PNG", style = list("height" = "100%", "width" = "100%"))))
     }
-=======
-  
-  
-  else if(value == FALSE) {
-    return(list(htmlImg(src = "assets/images/speck.PNG", style = list("height" = "100%", "width" = "100%"))))
-  }
-  
-  
->>>>>>> c0466b5df1f8d9f3f09b0199eecb58499952000a
   }
 )
 

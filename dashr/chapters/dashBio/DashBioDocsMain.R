@@ -2,6 +2,7 @@ library(dash)
 library(dashCoreComponents)
 library(dashHtmlComponents)
 library(dashBio)
+library(dashDaq)
 library(rjson)
 library(jsonlite)
 library(readr)
@@ -10,8 +11,8 @@ library(heatmaply)
 
 
 utils <- new.env()
-source('assets/styles.R')
-source('assets/utils.R', local=utils)
+source('styles.R')
+source('utils.R', local=utils)
 
 
 # Necessary Functions:
@@ -63,7 +64,7 @@ dashbio_intro <- htmlDiv(list(
   
   
   dccMarkdown('
-  Dash is a web application framework that provides pure Python abstraction
+  Dash is a web application framework that provides pure R and Python abstraction
   around HTML, CSS, and JavaScript.
   
   Dash Bio is a suite of bioinformatics components that make it simpler to

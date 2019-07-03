@@ -175,3 +175,4 @@ generate_props_table <- function(df) {
     )
   )
 }
+
