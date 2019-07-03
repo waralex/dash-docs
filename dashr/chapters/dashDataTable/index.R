@@ -1,6 +1,6 @@
+library(dash)
 library(dashCoreComponents)
 library(dashHtmlComponents)
-library(dash)
 library(dashTable)
 
 utils <- new.env()
@@ -22,8 +22,16 @@ subTitleLink <- function(folder, componentName) {
 layout <- htmlDiv(
   list(
     dccMarkdown("
-> *** New! Released on November 2, 2018 ***
->
+# Dash DataTable"),
+    
+    htmlIframe(
+      src = "https://ghbtns.com/github-btn.html?user=plotly&repo=dash-table&type=star&count=true&size=large",
+      width = "160px",
+      height = "30px",
+      style = list(border = 'none')
+    ),
+    
+    dccMarkdown("
 > *Dash DataTable is an interactive table component designed for viewing, 
 > editing, and exploring large datasets.*
 >
@@ -50,14 +58,25 @@ layout <- htmlDiv(
 > *So, check out DataTable and let us know what you think. Or even better, 
 > share your DataTable Dash apps on the 
 > [community forum](https://community.plot.ly/t/show-and-tell-community-thread/7554?_ga=2.70598800.1022559183.1559571095-1541667138.1549398001)!* 
-> -- chriddyp   
-
-# Quickstart
-                "),
+> 
+> -- chriddyp"),
+    
+    htmlH2("Quickstart", 
+           style = list(
+             'border-bottom' = 'thin lightgrey solid',
+             'margin-top' = '50px'
+           )
+    ),
     
     examples$quickStart$source,
     examples$quickStart$layout,
     
+    htmlH2("Dash DataTable User Guide", 
+       style = list(
+         'border-bottom' = 'thin lightgrey solid',
+         'margin-top' = '50px'
+       )
+    ),
     htmlDiv(
       list(
         subTitleLink("Part 1", "Sizing"),
@@ -74,6 +93,167 @@ layout <- htmlDiv(
 - Fixing rows and columns
                     ")
       )
-    )
+    ),
+    
+    htmlDiv(
+      list(
+        subTitleLink("Part 2", "Styling"),
+        dccMarkdown("The style of the DataTable is highly customizable. 
+This chapter includes examples for:
+
+- Conditional formatting
+
+- Displaying multiple rows of headers
+
+- Highlighting rows, columns, and cells
+
+- Styling the table as a list view
+
+- Changing the colors (including a dark theme!)
+
+The sizing API for the table has been particularly tricky for us to 
+nail down, so be sure to read this chapter to understand the nuances, 
+limitations, and the APIs that we're exploring.
+                    ")
+      )
+    ),
+    
+    htmlDiv(
+      list(
+        subTitleLink("Part 3", "Sorting, Filtering, Selecting and Paging"),
+        dccMarkdown("The DataTable is interactive. 
+This chapter demonstrates the interactive features of the table and 
+how to wire up these interations to R callbacks. 
+These actions include:
+                    
+- Paginating
+                    
+- Selecting Rows
+                    
+- Sorting Columns
+                    
+- Filtering Data")
+      )
+    ),
+    
+    htmlDiv(
+      list(
+        subTitleLink("Part 4", "Sorting, Filtering, Selecting and Paginating with R"),
+        dccMarkdown("
+In this part of the documentation, the paginating, sorting, and filtering were done entirely clientside (in the browser). 
+This means that you need to load all of the data into the table up-front. If your data file is large, 
+then this can be prohibitively slow.
+
+In this chapter, you'll learn how to write your own filtering, sorting, and paging backends in R with Dash. 
+We'll do the data processing with `dplyr` but you could write your own routines with SQL or even generate the data on the fly!
+                    ")
+      )
+    ),
+    
+    htmlDiv(
+      list(
+        subTitleLink("Part 5", "Typing"),
+        dccMarkdown("
+In this chapter, you'll learn how to configure the table to
+
+- assign the column type
+
+- change the data presentation
+
+- change the data formatting
+
+- validate or coerce user data input
+
+- apply default behavior for valid and invalid data
+                    ")
+      )
+    ),
+    
+    htmlDiv(
+      list(
+        subTitleLink("Part 6", "Editable Tables"),
+        dccMarkdown("
+The DataTable is editable. Like a spreadsheet, 
+it can be used as an input for controlling models with a variable number of inputs.
+
+This chapter includes recipes for:
+
+- Determining which cell has changed
+
+- Filtering out null values
+
+- Adding or removing columns
+
+- Adding or removing rows
+
+- Ensuring that a minimum set of rows are visible
+
+- Running computations on certain columns or cells
+                    ")
+      )
+    ),
+    
+    htmlDiv(
+      list(
+        subTitleLink("Part 7", "Rendering Cells as Dropdowns"),
+        dccMarkdown("
+Cells can be rendered as editable dropdowns. 
+This is our first step in bringing a full typing system to the table. 
+Rendering cells as dropdowns introduces some complexity in the markup,
+so there are a few limitations that you should be aware of.
+                    ")
+      )
+    ),
+    
+    htmlDiv(
+      list(
+        subTitleLink("Part 8", "Virtualization"),
+        dccMarkdown("
+Examples using DataTable virtualization.
+                    ")
+      )
+    ),
+    
+    htmlDiv(
+      list(
+        subTitleLink("Part 9", "Filtering Syntax"),
+        dccMarkdown("
+An explanation and examples of filtering syntax for both frontend and backend filtering in the DataTable.
+                    ")
+      )
+    ),
+    
+    htmlDiv(
+      list(
+        htmlU(htmlH4("Part 10.Table Reference")),
+        dccMarkdown("
+The full list of Table properties and their settings can be achieved by 
+`help('dashDataTable')` or https://dash.plot.ly/datatable/reference
+                    ")
+      )
+    ),
+    
+    htmlH2("Roadmap, Sponsorships, and Contact", 
+           style = list(
+             'border-bottom' = 'thin lightgrey solid',
+             'margin-top' = '50px'
+           )
+    ),
+    dccMarkdown("
+Immediately, we're working on stability, virtualization, 
+and a first-class data type system. 
+Check out [our roadmap project board](https://github.com/orgs/plotly/projects/12) 
+to see what's coming next.
+
+Many thanks to all of our customers 
+who have sponsored the development of this table. 
+Interested in steering the roadmap? 
+[Get in touch](https://plot.ly/products/consulting-and-oem/?_ga=2.243244741.679498514.1560782796-1541667138.1549398001)
+                "),
+    
+    htmlHr(),
+    dccMarkdown("
+[Back to the Table of Contents](/)
+                ")
   )
 )
