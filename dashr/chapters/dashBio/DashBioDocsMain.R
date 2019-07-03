@@ -8,6 +8,7 @@ library(readr)
 library(heatmaply)
 
 
+
 utils <- new.env()
 source('assets/styles.R')
 source('assets/utils.R', local=utils)
@@ -49,7 +50,7 @@ header <- htmlDiv(list(
         htmlA(className = 'link', children = 'user guide', href = "/"),
         htmlA(className = 'link', children = 'plotly', href = "https://plot.ly/"),
         htmlA(className = 'link', href="https://dash.plot.ly/search", children = 
-          htmlI(className = 'fa fa-search'))
+                htmlI(className = 'fa fa-search'))
         
       ))
     ))
@@ -59,7 +60,7 @@ header <- htmlDiv(list(
 
 dashbio_intro <- htmlDiv(list(
   dccMarkdown('# Dash Bio'),
-
+  
   
   dccMarkdown('
   Dash is a web application framework that provides pure Python abstraction

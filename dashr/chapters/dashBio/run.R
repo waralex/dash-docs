@@ -50,6 +50,8 @@ chapters.oncoprint <- new.env()
 source('oncoprint/oncoprint.R', local=chapters.oncoprint)
 chapters.sequenceviewer <- new.env()
 source('sequenceviewer/sequenceviewer.R', local=chapters.sequenceviewer)
+chapters.speck <- new.env()
+source("speck/speck.R", local=chapters.speck)
 
 header <- htmlDiv(list(
   htmlDiv(list(
@@ -107,8 +109,9 @@ app$callback(output=list(id='chapter', property='children'),
                  "/NeedlePlot" = return(chapters.needleplot$layout),
                  "/OncoPrint" = return(chapters.oncoprint$layout),
                  "/SequenceViewer" = return(chapters.sequenceviewer$layout),
+                 "/Speck" = return(chapters.speck$layout),
                  {mainLayout
-                   }
+                 }
                )
              })
 
@@ -468,23 +471,60 @@ app$callback(
         utils$LoadAndDisplayComponent(
           '
 library(dashBio)
-library(jsonlite)
+library(dash)
     
-data = read.table("assets/sample_data/speck_methane.xyz", skip = 2)
+importSpeck <- function(filepath,
+                        
+                        header = FALSE,
+                        
+                        skip = 2) {
+  
+  textdata <- read.table(
+    
+    text = paste0(
+      
+      readLines(filepath), collapse="\n"
+      
+    ),
+    
+    header = header,
+    
+    skip = skip,
+    
+    col.names = c("symbol", "x", "y", "z"),
+    
+    stringsAsFactors = FALSE)
+  
+  return(dashTable::df_to_list(textdata))
+  
+}
+
+
+data <- importSpeck("assets/sample_data/speck_methane.xyz")
 
 dashbioSpeck(
-id = "my-dashbio-speck",
-view = list("resolution" = 600),
-data = data
+  id = "my-speck",
+  view = list("resolution" = 600),
+  data = data
 )
     '
         )
       )
       )
     }
+<<<<<<< HEAD
     else if(value == FALSE) {
       return(list(htmlImg(src = "assets/images/speck.PNG", style = list("height" = "100%", "width" = "100%"))))
     }
+=======
+  
+  
+  else if(value == FALSE) {
+    return(list(htmlImg(src = "assets/images/speck.PNG", style = list("height" = "100%", "width" = "100%"))))
+  }
+  
+  
+>>>>>>> c0466b5df1f8d9f3f09b0199eecb58499952000a
   }
 )
 
