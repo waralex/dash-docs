@@ -1,4 +1,4 @@
-source('./styles.R')
+source('styles.R')
 
 # Added Reuseable Components
 

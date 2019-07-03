@@ -3,10 +3,7 @@ library(dashHtmlComponents)
 library(dash)
 
 utils <- new.env()
-print(dir())
-print(getwd())
-print("Test")
-source('dashr/utils.R', local=utils)
+source('./dashr/utils.R', local=utils)
 
 examples <- list(
   simple_example=utils$LoadExampleCode('dashr/chapters/dash-core-components/Dropdown/examples/simple-example.R'),

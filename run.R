@@ -4,10 +4,6 @@ library(dashCoreComponents)
 library(dashHtmlComponents)
 library(jsonlite)
 
-print(getwd())
-print(dir())
-print(dir("dashr/chapters/dash-core-components/Dropdown/"))
-
 components <- new.env()
 source('dashr/components.R', local=components)
 
