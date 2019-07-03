@@ -1,4 +1,4 @@
-source('styles.R')
+source('dashr/styles.R')
 
 # Added Reuseable Components
 
