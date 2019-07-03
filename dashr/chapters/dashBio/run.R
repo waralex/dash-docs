@@ -4,20 +4,12 @@ if (appName != ""){
   
   pathPrefix <- sprintf("/%s/", appName)
   
-  
-  
   Sys.setenv(DASH_ROUTES_PATHNAME_PREFIX = pathPrefix,
-             
              DASH_REQUESTS_PATHNAME_PREFIX = pathPrefix)
-  
-  
   
   setwd(sprintf("/app/apps/%s", appName))
   
 }
-
-
-
 
 #Source assets
 source("assets/utils.R")
@@ -35,9 +27,6 @@ library('heatmaply')
 library('data.table')
 library('jsonlite')
 library('rjson')
-
-
-
 
 chapters.alignment <- new.env()
 source('alignment-chart/alignment-chart.R', local=chapters.alignment)
@@ -80,7 +69,6 @@ header <- htmlDiv(list(
   ), className = 'container-width')
 ), className = "header")
 
-
 app$layout(
   header,
   htmlDiv(
@@ -103,7 +91,6 @@ app$layout(
   )
 )
 
-
 app$callback(output=list(id='chapter', property='children'),
              params=list(input('url', 'pathname')),
              function(pathname) {
@@ -124,8 +111,6 @@ app$callback(output=list(id='chapter', property='children'),
                    }
                )
              })
-
-
 
 app$callback(
   output(id = 'alignment-container', property = 'children'),
@@ -161,7 +146,6 @@ data = data
     
   }
 )
-
 
 app$callback(
   output(id = 'circos-container', property = 'children'),
@@ -217,7 +201,6 @@ tracks = list(list(
   }
 )
 
-
 app$callback(
   output(id = 'clustergram-container', property = 'children'),
   params = list(
@@ -235,7 +218,6 @@ library(dashCoreComponents)
 df = read.table("assets/sample_data/clustergram_mtcars.tsv",
                   skip = 4, sep ="\t",  row.names = 1, header = TRUE)
                   
-
 dccGraph(figure = heatmaply(df, 
         row_labels = list(row.names(data)),
         hide_labels = list("row"),
@@ -251,16 +233,11 @@ dccGraph(figure = heatmaply(df,
       )
       )
     }
-    
-    
     else if(value == FALSE) {
       return(list(htmlImg(src = "assets/images/clustergram.PNG", style = list("height" = "100%", "width" = "100%"))))
     }
-    
-    
   }
 )
-
 
 app$callback(
   output(id = 'ideogram-container', property = 'children'),
@@ -284,13 +261,9 @@ chrHeight = 300
       )
       )
     }
-    
-    
     else if(value == FALSE) {
       return(list(htmlImg(src = "assets/images/ideogram.PNG", style = list("height" = "100%", "width" = "100%"))))
     }
-    
-    
   }
 )
 
@@ -307,31 +280,22 @@ app$callback(
           '
 library(dashBio)
     
-
 data = read.table("assets/sample_data/manhattan_data.csv",
                      header = TRUE, sep = ",")
-
 
 dccGraph(figure = dashbioManhattan(
     dataframe=data
 ))
-                     
     '
         )
       )
       )
     }
-    
-    
     else if(value == FALSE) {
       return(list(htmlImg(src = "assets/images/manhattan.PNG", style = list("height" = "100%", "width" = "100%"))))
     }
-    
-    
   }
 )
-
-
 
 app$callback(
   output(id = 'molecule2d-container', property = 'children'),
@@ -347,9 +311,7 @@ app$callback(
 library(dashBio)
 library(jsonlite)
 
-     
 model_data = read_json("https://raw.githubusercontent.com/plotly/dash-bio-docs-files/master/mol2d_buckminsterfullerene.json")
-
 
 dashbioMolecule2dViewer(
 id = "my-dashbio-molecule2dviewer",
@@ -360,16 +322,11 @@ modelData = model_data
       )
       )
     }
-    
-    
     else if(value == FALSE) {
       return(list(htmlImg(src = "assets/images/molecule2d.PNG", style = list("height" = "100%", "width" = "100%"))))
     }
-    
-    
   }
 )
-
 
 app$callback(
   output(id = 'molecule3d-container', property = 'children'),
@@ -399,17 +356,11 @@ dashbioMolecule3dViewer(
       )
       )
     }
-    
-    
     else if(value == FALSE) {
       return(list(htmlImg(src = "assets/images/molecule3d.PNG", style = list("height" = "100%", "width" = "100%"))))
     }
-    
-    
   }
 )
-
-
 
 app$callback(
   output(id = 'needle-container', property = 'children'),
@@ -436,13 +387,9 @@ mutationData = mdata
       )
       )
     }
-    
-    
     else if(value == FALSE) {
       return(list(htmlImg(src = "assets/images/needle.PNG", style = list("height" = "100%", "width" = "100%"))))
     }
-    
-    
   }
 )
 
@@ -471,17 +418,11 @@ data = data
       )
       )
     }
-    
-    
     else if(value == FALSE) {
       return(list(htmlImg(src = "assets/images/oncoprint.PNG", style = list("height" = "100%", "width" = "100%"))))
     }
-    
-    
   }
 )
-
-
 
 app$callback(
   output(id = 'sequence-container', property = 'children'),
@@ -509,18 +450,11 @@ sequence = sequence
       )
       )
     }
-    
-    
     else if(value == FALSE) {
       return(list(htmlImg(src = "assets/images/sequence.PNG", style = list("height" = "100%", "width" = "100%"))))
     }
-    
-    
   }
 )
-
-
-
 
 app$callback(
   output(id = 'speck-container', property = 'children'),
@@ -538,7 +472,6 @@ library(jsonlite)
     
 data = read.table("assets/sample_data/speck_methane.xyz", skip = 2)
 
-
 dashbioSpeck(
 id = "my-dashbio-speck",
 view = list("resolution" = 600),
@@ -549,16 +482,11 @@ data = data
       )
       )
     }
-    
-    
     else if(value == FALSE) {
       return(list(htmlImg(src = "assets/images/speck.PNG", style = list("height" = "100%", "width" = "100%"))))
     }
-    
-    
   }
 )
-
 
 app$callback(
   output(id = 'volcano-container', property = 'children'),
@@ -577,7 +505,6 @@ library(dashCoreComponents)
 data = read.table("assets/sample_data/volcano_data1.csv",
                      header = TRUE, sep = ",")
 
-
 dccGraph(figure = dashbioVolcano(
     id = "my-dashbio-volcanoplot",
     dataframe = data
@@ -588,28 +515,17 @@ dccGraph(figure = dashbioVolcano(
       )
       )
     }
-    
-    
     else if(value == FALSE) {
       return(list(htmlImg(src = "assets/images/volcano.PNG", style = list("height" = "100%", "width" = "100%"))))
     }
-    
-    
   }
 )
 
-
-
 #Run App
 
-
 if (appName != "") {
-  
   app$run_server(host = "0.0.0.0", port = Sys.getenv('PORT', 8050))
-  
-} else {
-  
-  app$run_server()
-  
-}
 
+} else {
+  app$run_server()
+}
