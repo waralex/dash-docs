@@ -31,7 +31,7 @@ and what motivated Dash, watch our talk from
 or read our [announcement letter](https://medium.com/@plotlygraphs/introducing-dash-5ecf7191b503).
 
 Dash is an open source library, released under the permissive MIT license.
-[Plotly](https://plot.ly) develops DashR and offers a [platform for easily deploying DashR 
+[Plotly](https://plot.ly) develops Dash for R and offers a [platform for easily deploying DashR 
 apps in an enterprise environment](https://plot.ly/dash/pricing).
 If you're interested, [please get in touch](https://plotly.typeform.com/to/rkO85m).
 
