@@ -115,6 +115,7 @@ layout <- htmlDiv(list(
   htmlHr(),
   modelData,
   htmlHr(),
+  dccMarkdown('## Molecule2dViewer Properties'),
   molecule2dviewerPropsTable,
   htmlA("Back to the Table of Contents", href = "/")
 ))

@@ -129,6 +129,7 @@ layout <- htmlDiv(list(
   htmlHr(),
   oncoLegend,
   htmlHr(),
+  dccMarkdown('## OncoPrint Properties'),
   oncoPropsTable,
   htmlA("Back to the Table of Contents", href = "/")
 ))

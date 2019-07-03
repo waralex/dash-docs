@@ -269,6 +269,7 @@ layout <- htmlDiv(list(
       htmlHr(),
       heatmapAnnotations,
       htmlHr(),
+      dccMarkdown('## Clustergram Properties'),
       heatmaply_props_table,
       htmlA("Back to the Table of Contents", href = "/")
 ))

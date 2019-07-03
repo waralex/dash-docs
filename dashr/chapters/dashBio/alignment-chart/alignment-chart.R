@@ -124,6 +124,7 @@ layout <- htmlDiv(list(
       hideAlignment,
       tileAlignment,
       consensusAlignment,
+      dccMarkdown('## AlignmentChart Properties'),
       alignmentPropsTable,
       htmlA("Back to the Table of Contents", href = "/")
 ))

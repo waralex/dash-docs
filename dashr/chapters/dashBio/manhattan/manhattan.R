@@ -110,6 +110,7 @@ layout <- htmlDiv(list(
   htmlHr(),
   highlightedPoints,
   htmlHr(),
+  dccMarkdown('## ManhattanPlot Properties'),
   manhattanPropsTable,
   htmlA("Back to the Table of Contents", href = "/")
 ))

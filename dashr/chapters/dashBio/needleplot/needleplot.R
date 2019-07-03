@@ -111,6 +111,7 @@ layout <- htmlDiv(list(
   htmlHr(),
   domainStyle,
   htmlHr(),
+  dccMarkdown('## NeedlePlot Properties'),
   needlePropsTable,
   htmlA("Back to the Table of Contents", href = "/")
 ))

@@ -160,6 +160,7 @@ layout <- htmlDiv(list(
   htmlHr(),
   titleandbadge,
   htmlHr(),
+  dccMarkdown('## SequenceViewer Properties'),
   sequencePropsTable,
   htmlA("Back to the Table of Contents", href = "/")
 ))

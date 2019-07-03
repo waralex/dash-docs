@@ -180,6 +180,7 @@ layout <- htmlDiv(list(
   htmlHr(),
   brushIdeogram,
   htmlHr(),
+  dccMarkdown('## Ideogram Properties'),
   ideogramPropsTable,
   htmlA("Back to the Table of Contents", href = "/")
 ))

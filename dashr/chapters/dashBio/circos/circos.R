@@ -119,6 +119,7 @@ layout <- htmlDiv(list(
       htmlHr(),
       defaultCircos,
       inner_outer_radii,
+      dccMarkdown('## Circos Properties'),
       circos_props_table,
       htmlA("Back to the Table of Contents", href = "/")
 ))

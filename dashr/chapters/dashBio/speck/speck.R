@@ -110,6 +110,7 @@ layout <- htmlDiv(list(
   htmlHr(),
   scrollZoom,
   htmlHr(),
+  dccMarkdown('## Speck Properties'),
   speckPropsTable,
   htmlA("Back to the Table of Contents", href = "/")
 ))
