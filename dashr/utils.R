@@ -51,7 +51,7 @@ LoadExampleCode <- function(filename, wd = NULL) {
     layout=htmlDiv(className='example-container', children=layout,
                    style=list('overflow-x' = 'initial')),
     source_code=htmlDiv(
-      children=dccMarkdown(sprintf("```r %s```", example.file.as.string)),
+      children=dccMarkdown(sprintf("```r\n%s```", example.file.as.string)),
       className='code-container'
     )
   )
