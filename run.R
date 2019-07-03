@@ -157,7 +157,7 @@ app$callback(
       '/dash-core-components/Input' = return(chapters.Input$layout),
       '/dash-core-components/Textarea' = return(chapters.TextArea$layout),
       '/dash-core-components/Checklist' = return(chapters.Checklist$layout),
-      '/dash-core-components/Radioitems' = return(chapters.RadioItems$layout),
+      '/dash-core-components/RadioItems' = return(chapters.RadioItems$layout),
       '/dash-core-components/Button' = return(chapters.Button$layout),
       '/dash-core-components/DatePickerSingle' = return(chapters.DatePickerSingle$layout),
       '/dash-core-components/DatePickerRange' = return(chapters.DatePickerRange$layout),
