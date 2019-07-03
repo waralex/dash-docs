@@ -124,8 +124,7 @@ header <- htmlDiv(
         htmlDiv(className='links', children = list(
           htmlA('pricing', className='link', href = 'https://plot.ly/dash/pricing'),
           htmlA('user guide', className='link', href = '/'),
-          htmlA('plotly', className='link', href = 'https://plot.ly/'),
-          htmlA('🔎', className='link', href='https://dash.plot.ly/search')
+          htmlA('plotly', className='link', href = 'https://plot.ly/')
         ))
       ))
   ))
