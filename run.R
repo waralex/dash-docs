@@ -87,6 +87,8 @@ chapters.dashDataTablePart8 <- new.env()
 source('dashr/chapters/dashDataTable/part8/index.R', local=chapters.dashDataTablePart8)
 chapters.dashDataTablePart9 <- new.env()
 source('dashr/chapters/dashDataTable/part9/index.R', local=chapters.dashDataTablePart9)
+chapters.dashBio <- new.env()
+source('dashr/chapters/dash-bio/index.R', local=chapters.dashBio)
 chapters.Whats_dash <- new.env()
 source('dashr/chapters/Whats_dash/introduction.R', local=chapters.Whats_dash)
 
