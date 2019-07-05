@@ -89,6 +89,30 @@ chapters.dashDataTablePart9 <- new.env()
 source('dashr/chapters/dashDataTable/part9/index.R', local=chapters.dashDataTablePart9)
 chapters.dashBio <- new.env()
 source('dashr/chapters/dash-bio/index.R', local=chapters.dashBio)
+chapters.alignment <- new.env()
+source('dashr/chapters/dash-bio/alignment-chart/alignment-chart.R', local=chapters.alignment)
+chapters.circos <- new.env()
+source('dashr/chapters/dash-bio/circos/circos.R', local=chapters.circos)
+chapters.clustergram <- new.env()
+source('dashr/chapters/dash-bio/clustergram/clustergram.R', local=chapters.clustergram)
+chapters.ideogram <- new.env()
+source('dashr/chapters/dash-bio/ideogram/ideogram.R', local=chapters.ideogram)
+chapters.volcanoplot <- new.env()
+source('dashr/chapters/dash-bio/volcanoplot/volcano.R', local=chapters.volcanoplot)
+chapters.manhattan <- new.env()
+source('dashr/chapters/dash-bio/manhattan/manhattan.R', local = chapters.manhattan)
+chapters.molecule3dviewer <- new.env()
+source('dashr/chapters/dash-bio/molecule3dviewer/molecule3dviewer.R', local=chapters.molecule3dviewer)
+chapters.molecule2dviewer <- new.env()
+source('dashr/chapters/dash-bio/molecule2dviewer/molecule2dviewer.R', local=chapters.molecule2dviewer)
+chapters.needleplot <- new.env()
+source('dashr/chapters/dash-bio/needleplot/needleplot.R', local=chapters.needleplot)
+chapters.oncoprint <- new.env()
+source('dashr/chapters/dash-bio/oncoprint/oncoprint.R', local=chapters.oncoprint)
+chapters.sequenceviewer <- new.env()
+source('dashr/chapters/dash-bio/sequenceviewer/sequenceviewer.R', local=chapters.sequenceviewer)
+chapters.speck <- new.env()
+source("dashr/chapters/dash-bio/speck/speck.R", local=chapters.speck)
 chapters.Whats_dash <- new.env()
 source('dashr/chapters/Whats_dash/introduction.R', local=chapters.Whats_dash)
 
@@ -181,6 +205,19 @@ app$callback(output=list(id='chapter', property='children'),
                  '/dashDataTable/Part8' = return(chapters.dashDataTablePart8$layout),
                  '/dashDataTable/Part9' = return(chapters.dashDataTablePart9$layout),
                  '/external-resources' = return(chapters.external_resources$layout),
+                 "/dash-bio" = return(chapters.dashBio$layout),
+                 "/dash-bio/alignmentchart" = return(chapters.alignment$layout),
+                 "/dash-bio/circos" = return(chapters.circos$layout),
+                 "/dash-bio/clustergram" = return(chapters.clustergram$layout),
+                 "/dash-bio/ideogram" = return(chapters.ideogram$layout),
+                 "/dash-bio/manhattanplot" = return(chapters.manhattan$layout),
+                 "/dash-bio/molecule2dviewer" = return(chapters.molecule2dviewer$layout),
+                 "/dash-bio/molecule3dviewer" = return(chapters.molecule3dviewer$layout),
+                 "/dash-bio/volcanoplot" = return(chapters.volcanoplot$layout),
+                 "/dash-bio/needleplot" = return(chapters.needleplot$layout),
+                 "/dash-bio/oncoprint" = return(chapters.oncoprint$layout),
+                 "/dash-bio/sequenceviewer" = return(chapters.sequenceviewer$layout),
+                 "/dash-bio/speck" = return(chapters.speck$layout),
                  {
                    
                    htmlDiv(
@@ -281,6 +318,11 @@ app$callback(output=list(id='chapter', property='children'),
                              href='/dashDataTable',
                              caption="(New! Released Nov 2, 2018) The Dash DataTable is our latest and most advanced component.
                              It is an interactive table that supports rich styling, conditional formatting, editing, sorting, filtering, and more."
+                           ),
+                           components$Chapter(
+                             'Dash Bio Components',
+                             href='/dash-bio',
+                             caption="(New! Released April 2019) Components dedicated to visualizing bioinformatics data." 
                            )
                            )
                            ),
