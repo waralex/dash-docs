@@ -180,7 +180,7 @@ layout = html.Div([
     appearing in your callbacks will be included in the initial layout. You can
     remove this restriction by disabling callback validation like this:
 
-        app.config.supress_callback_exceptions = True
+        app.config.suppress_callback_exceptions = True
 
 
     ### Callbacks require *all* `Inputs`, `States`, and `Output` to be rendered on the page
