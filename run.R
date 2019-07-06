@@ -101,22 +101,22 @@ source('dashr/chapters/dash-datatable/part10/index.R', local=chapters.dashDataTa
 # chapters.dashCanvas <- new.env()
 # source('dashr/chapters/dash-canvas/index.R', local=chapters.dashCanvas)
 # Component Libraries (Dash Cytoscape)
-# chapters.dashCytoscape <- new.env()
-# source('dashr/chapters/dash-cytoscape/index.R', local=chapters.dashCytoscape)
-# chapters.dashCytoscape1 <- new.env()
-# source('dashr/chapters/dash-cytoscape/elements/index.R', local=chapters.dashCytoscape1)
-# chapters.dashCytoscape2 <- new.env()
-# source('dashr/chapters/dash-cytoscape/layout/index.R', local=chapters.dashCytoscape2)
-# chapters.dashCytoscape3 <- new.env()
-# source('dashr/chapters/dash-cytoscape/styling/index.R', local=chapters.dashCytoscape3)
-# chapters.dashCytoscape4 <- new.env()
-# source('dashr/chapters/dash-cytoscape/callbacks/index.R', local=chapters.dashCytoscape4)
-# chapters.dashCytoscape5 <- new.env()
-# source('dashr/chapters/dash-cytoscape/events/index.R', local=chapters.dashCytoscape5)
-# chapters.dashCytoscape6 <- new.env()
-# source('dashr/chapters/dash-cytoscape/phylogeny/index.R', local=chapters.dashCytoscape6)
-# chapters.dashCytoscape7 <- new.env()
-# source('dashr/chapters/dash-cytoscape/reference/index.R', local=chapters.dashCytoscape7)
+chapters.dashCytoscape <- new.env()
+source('dashr/chapters/dash-cytoscape/index.R', local=chapters.dashCytoscape)
+chapters.dashCytoscape1 <- new.env()
+source('dashr/chapters/dash-cytoscape/elements/index.R', local=chapters.dashCytoscape1)
+chapters.dashCytoscape2 <- new.env()
+source('dashr/chapters/dash-cytoscape/layout/index.R', local=chapters.dashCytoscape2)
+chapters.dashCytoscape3 <- new.env()
+source('dashr/chapters/dash-cytoscape/styling/index.R', local=chapters.dashCytoscape3)
+chapters.dashCytoscape4 <- new.env()
+source('dashr/chapters/dash-cytoscape/callbacks/index.R', local=chapters.dashCytoscape4)
+chapters.dashCytoscape5 <- new.env()
+source('dashr/chapters/dash-cytoscape/events/index.R', local=chapters.dashCytoscape5)
+chapters.dashCytoscape6 <- new.env()
+source('dashr/chapters/dash-cytoscape/phylogeny/index.R', local=chapters.dashCytoscape6)
+chapters.dashCytoscape7 <- new.env()
+source('dashr/chapters/dash-cytoscape/reference/index.R', local=chapters.dashCytoscape7)
 # Component Libraries (Dash Bio)
 chapters.dashBio <- new.env()
 source('dashr/chapters/dash-bio/index.R', local=chapters.dashBio)
@@ -254,14 +254,14 @@ app$callback(
       # Component Libraries (Dash Canvas)
       # '/canvas' = return(chapters.dashCanvas$layout),
       # Component Libraries (Dash Cytoscape)
-      # '/cytoscape' = return(chapters.dashCytoscape$layout),
-      # '/cytoscape/elements' = return(chapters.dashCytoscape1$layout),
-      # '/cytoscape/layout' = return(chapters.dashCytoscape2$layout),
-      # '/cytoscape/styling' = return(chapters.dashCytoscape3$layout),
-      # '/cytoscape/callbacks' = return(chapters.dashCytoscape4$layout),
-      # '/cytoscape/events' = return(chapters.dashCytoscape5$layout),
-      # '/cytoscape/phylogeny' = return(chapters.dashCytoscape6$layout),
-      # '/cytoscape/reference' = return(chapters.dashCytoscape7$layout),
+      '/cytoscape' = return(chapters.dashCytoscape$layout),
+      '/cytoscape/elements' = return(chapters.dashCytoscape1$layout),
+      '/cytoscape/layout' = return(chapters.dashCytoscape2$layout),
+      '/cytoscape/styling' = return(chapters.dashCytoscape3$layout),
+      '/cytoscape/callbacks' = return(chapters.dashCytoscape4$layout),
+      '/cytoscape/events' = return(chapters.dashCytoscape5$layout),
+      '/cytoscape/phylogeny' = return(chapters.dashCytoscape6$layout),
+      '/cytoscape/reference' = return(chapters.dashCytoscape7$layout),
       # Component Libraries (Dash Bio)
       "/dash-bio" = return(chapters.dashBio$layout),
       "/dash-bio/alignmentchart" = return(chapters.alignment$layout),
@@ -382,21 +382,21 @@ app$callback(
                 It is an interactive table that supports rich styling, conditional formatting, editing, sorting, filtering, and more."
                 ),
                 # components$Chapter(
-                #   'Dash DAQ Components',
-                #   href='/dash-daq',
-                #   caption="Beautifully styled technical components for data acquisition and engineering applications."
+                # 'Dash DAQ Components',
+                # href='/dash-daq',
+                # caption="Beautifully styled technical components for data acquisition and engineering applications."
                 # ),
                 # components$Chapter(
-                #   'Dash Canvas',
-                #   href='/canvas',
-                #   caption="(New! Released March 2019) Drawing and annotations for image processing."
+                # 'Dash Canvas',
+                # href='/canvas',
+                # caption="(New! Released March 2019) Drawing and annotations for image processing."
                 # ),
-                # components$Chapter(
-                #   'Dash Cytoscape',
-                #   href='/cytoscape',
-                #   caption="(New! Released Feb 5, 2019) Dash Cytoscape is our new network visualization component. It offers a declarative and
-                #   pythonic interface to create beautiful, customizable, interactive and reactive graphs."
-                # ),
+                components$Chapter(
+                'Dash Cytoscape',
+                href='/cytoscape',
+                caption="(New! Released Feb 5, 2019) Dash Cytoscape is our new network visualization component. It offers a declarative and
+                pythonic interface to create beautiful, customizable, interactive and reactive graphs."
+                ),
                 components$Chapter(
                 'Dash Bio Components',
                 href='/dash-bio',
