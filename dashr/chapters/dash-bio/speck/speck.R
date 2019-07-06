@@ -8,49 +8,29 @@ library(heatmaply)
 library(data.table)
 library(dashTable)
 
-
 utils <- new.env()
 source('dashr/styles.R')
 source('dashr/utils.R')
 source('dashr/utils.R', local=utils)
 
-importSpeck <- function(filepath,
-                        
-                        header = FALSE,
-                        
-                        skip = 2) {
-  
+importSpeck <- function(filepath, header = FALSE, skip = 2) {
   textdata <- read.table(
-    
     text = paste0(
-      
       readLines(filepath), collapse="\n"
-      
     ),
-    
     header = header,
-    
     skip = skip,
-    
     col.names = c("symbol", "x", "y", "z"),
-    
     stringsAsFactors = FALSE)
-  
   return(dashTable::df_to_list(textdata))
-  
 }
-
-
 
 examples <- list(
   defaultSpeck=utils$LoadExampleCode('dashr/chapters/dash-bio/speck/examples/defaultSpeck.R')
 )
 
-
 dashbio_intro <- htmlDiv(list(
   dccMarkdown('# Speck Examples and Reference'),
-  
-  
   dccMarkdown('
   See Speck in action [here](https://dash-bio.plotly.host/dash-speck/)
   ')
@@ -59,7 +39,6 @@ dashbio_intro <- htmlDiv(list(
 
 # Individual Components and Examples
 
-
 defaultSpeck <- htmlDiv(list(
   dccMarkdown('## Default Speck'),
   htmlP('An example of a default speck component without any extra properties.'),
@@ -67,7 +46,6 @@ defaultSpeck <- htmlDiv(list(
     examples$defaultSpeck$source_code,
     examples$defaultSpeck$layout))
 ))
-
 
 speckRender <- htmlDiv(list(
   dccMarkdown('## Molecule Rendering Styles'),
@@ -93,8 +71,6 @@ dashbioSpeck(
   )
 ))
 
-
-
 scrollZoom <- htmlDiv(list(
   dccMarkdown('## Scroll to Zoom'),
   htmlP('Allow for the scroll wheel to control zoom for the molecule.'),
@@ -112,33 +88,23 @@ dashbioSpeck(
   )
 ))
 
-
 speckProps <- props_to_list("dashbioSpeck")
-
 speckPropsDF <- rbindlist(speckProps, fill = TRUE)
-
-speckPropsTable <- generate_props_table(speckPropsDF)
-
-
+speckPropsTable <- generate_table(speckPropsDF)
 
 # Main docs layout
 
-layout <- htmlDiv(list(
-  
-  dashbio_intro,
-  htmlHr(),
-  defaultSpeck,
-  htmlHr(),
-  speckRender,
-  htmlHr(),
-  scrollZoom,
-  htmlHr(),
-  dccMarkdown('## Speck Properties'),
-  speckPropsTable,
-  htmlA("Back to the Table of Contents", href = "/dash-bio/")
-))
-# 
-# app$layout(htmlDiv(list(
-#   layout
-# )))
-# app$run_server(showcase = TRUE)
+layout <- htmlDiv(
+  list(
+    dashbio_intro,
+    defaultSpeck,
+    speckRender,
+    scrollZoom,
+    dccMarkdown('## Speck Properties'),
+    speckPropsTable,
+    htmlHr(),
+    dccMarkdown("[Back to Dash Bio Documentation](/dash-bio)"),
+    dccMarkdown("[Back to Dash Documentation](/)")
+  )
+)
+

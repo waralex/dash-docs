@@ -8,33 +8,24 @@ library(heatmaply)
 library(data.table)
 library(dashTable)
 
-
 utils <- new.env()
 source('dashr/styles.R')
 source('dashr/utils.R')
 source('dashr/utils.R', local=utils)
 
-
-# app <- Dash$new()
-
-
 examples <- list(
   defaultCircos=utils$LoadExampleCode('dashr/chapters/dash-bio/circos/examples/defaultCircos.R')
 )
 
-
 dashbio_intro <- htmlDiv(list(
   dccMarkdown('# Circos Examples and Reference'),
-  
-  
+
   dccMarkdown('
   See Circos in action [here](https://dash-bio.plotly.host/dash-circos/)
   ')
 ))
 
-
 # Individual Components and Examples
-
 
 defaultCircos <- htmlDiv(list(
   dccMarkdown('## Default Circos Chart'),
@@ -44,8 +35,6 @@ defaultCircos <- htmlDiv(list(
     examples$defaultCircos$layout))
 ))
 
-
-
 inner_outer_radii <- htmlDiv(list(
   dccMarkdown('## Inner and Outer Radii'),
   htmlP('Change the inner and outer radii of your Circos graph.'),
@@ -54,11 +43,11 @@ inner_outer_radii <- htmlDiv(list(
 library(dashBio)
 library(readr)
 library(jsonlite)
-    
+
 data <- "assets/sample_data/circos_graph_data.json"
 
 circos_graph_data = read_json(data)
-     
+
 dashbioCircos(
   id = "circos_radii_example",
   layout = circos_graph_data[["GRCh37"]],
@@ -77,30 +66,21 @@ dashbioCircos(
   )
 ))
 
-
-
 circos_props <- props_to_list("dashbioCircos")
-
 circosPropsDF <- rbindlist(circos_props, fill = TRUE)
-
-
-circos_props_table <- generate_props_table(circosPropsDF)
-
-
+circos_props_table <- generate_table(circosPropsDF)
 
 # Main docs layout
 
-layout <- htmlDiv(list(
-      dashbio_intro,
-      htmlHr(),
-      defaultCircos,
-      inner_outer_radii,
-      dccMarkdown('## Circos Properties'),
-      circos_props_table,
-      htmlA("Back to the Table of Contents", href = "/dash-bio/")
-))
-
-
-
-# app$run_server(showcase = TRUE)
-
+layout <- htmlDiv(
+  list(
+    dashbio_intro,
+    defaultCircos,
+    inner_outer_radii,
+    dccMarkdown('## Circos Properties'),
+    circos_props_table,
+    htmlHr(),
+    dccMarkdown("[Back to Dash Bio Documentation](/dash-bio)"),
+    dccMarkdown("[Back to Dash Documentation](/)")
+  )
+)

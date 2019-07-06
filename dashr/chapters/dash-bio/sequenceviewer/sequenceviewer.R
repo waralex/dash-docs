@@ -8,30 +8,23 @@ library(heatmaply)
 library(data.table)
 library(dashTable)
 
-
 utils <- new.env()
 source('dashr/styles.R')
 source('dashr/utils.R')
 source('dashr/utils.R', local=utils)
 
-
 examples <- list(
   defaultSequence=utils$LoadExampleCode('dashr/chapters/dash-bio/sequenceviewer/examples/defaultSequence.R')
 )
 
-
 dashbio_intro <- htmlDiv(list(
   dccMarkdown('# Sequence Viewer Examples and Reference'),
-  
-  
   dccMarkdown('
   See Sequence Viewer in action [here](https://dash-bio.plotly.host/dash-sequence-viewer/)
   ')
 ))
 
-
 # Individual Components and Examples
-
 
 defaultSequenceViewer <- htmlDiv(list(
   dccMarkdown('## Default Sequence Viewer'),
@@ -41,13 +34,12 @@ defaultSequenceViewer <- htmlDiv(list(
     examples$defaultSequence$layout))
 ))
 
-
 sequenceLine <- htmlDiv(list(
   dccMarkdown('## Line Length and Line Numbers'),
   htmlP('Change the characters per line, and toggle the display of line numbers.'),
   utils$LoadAndDisplayComponent(
     '
-    
+
 library(dashBio)
 
 fasta_str = "MALWMRLLPLLALLALWGPDPAAAFVNQHLCGSHLVEALYLVCGERGFFYTPKTRREAED
@@ -69,7 +61,7 @@ subsequence <- htmlDiv(list(
   htmlP('Highlight a part of the sequence with a defined color.'),
   utils$LoadAndDisplayComponent(
     '
-    
+
 library(dashBio)
 
 fasta_str = "MALWMRLLPLLALLALWGPDPAAAFVNQHLCGSHLVEALYLVCGERGFFYTPKTRREAED
@@ -85,14 +77,12 @@ dashbioSequenceViewer(
   )
 ))
 
-
-
 toolbar <- htmlDiv(list(
   dccMarkdown('## Toolbar'),
   htmlP('Display a toolbar to change the line length from the component itself.'),
   utils$LoadAndDisplayComponent(
     '
-    
+
 library(dashBio)
 
 fasta_str = "MALWMRLLPLLALLALWGPDPAAAFVNQHLCGSHLVEALYLVCGERGFFYTPKTRREAED
@@ -108,13 +98,12 @@ dashbioSequenceViewer(
   )
 ))
 
-
 titleandbadge <- htmlDiv(list(
   dccMarkdown('## Title and Badge'),
   htmlP('Show a title or a badge with the nucleotide or amino acid count of the protein.'),
   utils$LoadAndDisplayComponent(
     '
-    
+
 library(dashBio)
 
 fasta_str = "MALWMRLLPLLALLALWGPDPAAAFVNQHLCGSHLVEALYLVCGERGFFYTPKTRREAED
@@ -131,39 +120,23 @@ dashbioSequenceViewer(
   )
 ))
 
-
 sequenceProps <- props_to_list("dashbioSequenceViewer")
-
 sequencePropsDF <- rbindlist(sequenceProps, fill = TRUE)
-
-sequencePropsTable <- generate_props_table(sequencePropsDF)
-
-
+sequencePropsTable <- generate_table(sequencePropsDF)
 
 # Main docs layout
 
 layout <- htmlDiv(list(
-  
+
   dashbio_intro,
-  htmlHr(),
   defaultSequenceViewer,
-  htmlHr(),
   sequenceLine,
-  htmlHr(),
   subsequence,
-  htmlHr(),
   toolbar,
-  htmlHr(),
   titleandbadge,
-  htmlHr(),
   dccMarkdown('## SequenceViewer Properties'),
   sequencePropsTable,
-  htmlA("Back to the Table of Contents", href = "/dash-bio/")
+  htmlHr(),
+  dccMarkdown("[Back to Dash Bio Documentation](/dash-bio)"),
+  dccMarkdown("[Back to Dash Documentation](/)")
 ))
-
-# app <- Dash$new()
-# 
-# app$layout(htmlDiv(list(
-#   layout
-# )))
-# app$run_server(showcase = TRUE)
