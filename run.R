@@ -6,6 +6,7 @@ library(jsonlite)
 
 components <- new.env()
 source('dashr/components.R', local=components)
+source('allcallbacks.R')
 
 chapters.installation <- new.env()
 source('dashr/chapters/installation/index.R', local=chapters.installation)
@@ -115,7 +116,14 @@ chapters.speck <- new.env()
 source("dashr/chapters/dash-bio/speck/speck.R", local=chapters.speck)
 chapters.Whats_dash <- new.env()
 source('dashr/chapters/Whats_dash/introduction.R', local=chapters.Whats_dash)
-
+chapters.plugins <- new.env()
+source('dashr/chapters/plugins/index.R', local=chapters.plugins)
+chapters.d3 <- new.env()
+source('dashr/chapters/d3-react-components/index.R', local=chapters.d3)
+chapters.support <- new.env()
+source('dashr/chapters/support/index.R', local=chapters.support)
+chapters.search <- new.env()
+source('dashr/chapters/search/index.R', local=chapters.search)
 
 header <- htmlDiv(
   className = 'header',
@@ -132,7 +140,7 @@ header <- htmlDiv(
           htmlA('pricing', className='link', href = 'https://plot.ly/dash/pricing'),
           htmlA('user guide', className='link', href = '/'),
           htmlA('plotly', className='link', href = 'https://plot.ly/'),
-          htmlA('🔎', className='link', href='https://dash.plot.ly/search')
+          htmlA('\U{1F50E}', className='link', href='/search')
         ))
       ))
   ))
@@ -218,6 +226,11 @@ app$callback(output=list(id='chapter', property='children'),
                  "/dash-bio/oncoprint" = return(chapters.oncoprint$layout),
                  "/dash-bio/sequenceviewer" = return(chapters.sequenceviewer$layout),
                  "/dash-bio/speck" = return(chapters.speck$layout),
+                 '/external-resources' = return(chapters.external_resources$layout),
+                 '/plugins' = return(chapters.plugins$layout),
+                 '/d3-react-components' = return(chapters.d3$layout),
+                 '/support' = return(chapters.support$layout),
+                 '/search' = return(chapters.search$layout),        
                  {
                    
                    htmlDiv(
@@ -330,8 +343,22 @@ app$callback(output=list(id='chapter', property='children'),
                        
                        components$Section(
                          'Creating Your Own Components',
-                         list(),
-                         description="IN PROGRESS..."
+                         list(
+                           components$Chapter(
+                             'Build Your Own Components',
+                             href='/plugins',
+                             caption="Dash components are built with React.js. Dash provides 
+                             a React → Dash toolchain that generates a Dash-compatible interface to 
+                             these components in Python."
+                           ),
+                           components$Chapter(
+                             'Integrating D3.js into Dash Components',
+                             href='/d3-react-components',
+                             caption="Tutorials and resources on encapsulating D3.js graphs in Dash-friendly
+                             React components. Includes two sample components: a D3.js network graph and a D3.js 
+                             sunburst chart."
+                           )
+                         )
                        ),
                        
                        
@@ -350,28 +377,41 @@ app$callback(output=list(id='chapter', property='children'),
                        
                        components$Section(
                          'Production',
-                         list(),
-                         description="IN PROGRESS..."
+                         list(
+                           components$Chapter(
+                             'See Our Products Page',
+                             href='https://plot.ly/products/dash/'
+                           )
+                         )
                        ),
                        
                        
                        components$Section(
                          'Getting Help',
-                         list(),
-                         description="IN PROGRESS..."
-                       ),
+                           list(
+                           components$Chapter(
+                           'The Dash Community Forum',
+                             href='https://community.plot.ly/c/dash?_ga=2.35982368.1800098105.1562085881-85134653.1547603472'
+                           ),
+                           htmlBr(),
+                           components$Chapter(
+                           'Support and Contact',
+                           href='/support'
+                           )
+                         )
+                       ),                       
                        
-                       
+                   
                        components$Section(
                          'Dash Deployment Server',
                          list(
                            components$Chapter(
                              'About Dash Deployment Server',
-                             href='/faq-gotchas'
+                             href='https://plot.ly/dash/pricing/?_ga=2.210434837.1075922756.1562168385-916141078.1562168385'
                            ),
                            components$Chapter(
                              'Dash Deployment Server Documentation',
-                             href='/faq-gotchas'
+                             href='https://dash.plot.ly/dash-deployment-server'
                            )
                          ),
                          description="Dash Deployment Server is Plotly's commercial offering for hosting and sharing
@@ -383,5 +423,4 @@ app$callback(output=list(id='chapter', property='children'),
                  }
                        )
              })
-
 app$run_server(host = "0.0.0.0", port = Sys.getenv('PORT', 8050))
