@@ -15,6 +15,7 @@ install.packages("remotes")
 install.packages("later")
 
 install.packages("jsonlite")
+install.packages("rjson")
 install.packages("listenv")
 install.packages("anytime")
 install.packages("readr")
