@@ -147,8 +147,6 @@ source("dashr/chapters/dash-bio/speck/speck.R", local=chapters.speck)
 # Beyond the Basics
 chapters.external_resources <- new.env()
 source('dashr/chapters/external-resources/index.R', local=chapters.external_resources)
-chapters.Whats_dash <- new.env()
-source('dashr/chapters/Whats_dash/introduction.R', local=chapters.Whats_dash)
 chapters.plugins <- new.env()
 source('dashr/chapters/plugins/index.R', local=chapters.plugins)
 chapters.d3 <- new.env()
@@ -414,21 +412,21 @@ app$callback(
                 components$Chapter(
                 'Build Your Own Components',
                 href='/plugins',
-                caption="Dash components are built with React.js. Dash provides 
-                a React → Dash toolchain that generates a Dash-compatible interface to 
+                caption="Dash components are built with React.js. Dash provides
+                a React → Dash toolchain that generates a Dash-compatible interface to
                 these components in Python."
                 ),
                 components$Chapter(
                 'Integrating D3.js into Dash Components',
                 href='/d3-react-components',
                 caption="Tutorials and resources on encapsulating D3.js graphs in Dash-friendly
-                React components. Includes two sample components: a D3.js network graph and a D3.js 
+                React components. Includes two sample components: a D3.js network graph and a D3.js
                 sunburst chart."
                 )
               )
             ),
 
-        
+
             components$Section(
               'Beyond the Basics',
               list(
@@ -452,7 +450,7 @@ app$callback(
               )
             ),
 
-        
+
             components$Section(
             'Getting Help',
               list(
@@ -466,7 +464,7 @@ app$callback(
                 href='/support'
                 )
               )
-            ),                       
+            ),
 
             components$Section(
             'Dash Deployment Server',
