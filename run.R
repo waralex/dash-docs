@@ -280,6 +280,9 @@ app$callback(
       "/dash-bio/speck" = return(chapters.speck$layout),
       # Beyond the Basics
       '/external-resources' = return(chapters.external_resources$layout),
+      '/support' = return(chapters.support$layout),
+      '/plugins' = return(chapters.plugins$layout),
+      '/d3-react-components' = return(chapters.chapters.d3$layout),
       {
         htmlDiv(
           list(
