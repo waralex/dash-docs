@@ -6,7 +6,7 @@ utils <- new.env()
 source('dashr/utils.R', local=utils)
 
 layout = htmlDiv(list(dccMarkdown("
-# Encapuslating D3.js Charts as Python Dash Components
+# Encapuslating D3.js Charts as R Dash Components
 D3.js is a flexible library for rendering and animating SVG in the web
 browser. It's approach toward rendering content in the DOM is quite
 different than React.js, the user interface library that Dash components
