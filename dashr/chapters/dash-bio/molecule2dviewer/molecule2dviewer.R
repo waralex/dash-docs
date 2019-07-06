@@ -14,7 +14,7 @@ source('dashr/utils.R')
 source('dashr/utils.R', local=utils)
 
 examples <- list(
-  defaultMolecule2dViewer=utils$LoadExampleCode('dashr/chapters/dash-bio/molecule2dviewer/examples/defaultMolecule2dviewer.R')
+  defaultMolecule2dViewer=utils$LoadExampleCode('dashr/chapters/dash-bio/molecule2dviewer/examples/defaultMolecule2dViewer.R')
 )
 
 dashbio_intro <- htmlDiv(list(
