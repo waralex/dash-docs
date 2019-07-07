@@ -51,7 +51,7 @@ layout <- htmlDiv(list(#
                 Let's get started with a simple canvas object
                 "),
     examples$canvas_101$source_code,
-    examples$canvas_101$layout,
+    htmlDiv(examples$canvas_101$layout,className='example-container'),
     dccMarkdown("
                 You can draw inside the object with the freehand tool, and use the tool  
                 buttons to draw lines, zoom in and out, pan, select objects and move them  
@@ -63,7 +63,7 @@ layout <- htmlDiv(list(#
                 or as a data string (``image_content`` property); more examples below. 
                 "),
     examples$canvas_image$source_code,
-    examples$canvas_image$layout,
+    htmlDiv(examples$canvas_image$layout,className='example-container'),
     dccMarkdown("
                 The height of the canvas is adjusted automatically by keeping the aspect  
                 ratio of the background image.
@@ -77,7 +77,7 @@ layout <- htmlDiv(list(#
                 
                 "),
     examples$canvas_color$source_code,
-    examples$canvas_color$layout,
+    htmlDiv(examples$canvas_color$layout,className='example-container'),
     htmlBr(),
     htmlBr(),
     htmlBr(),
@@ -112,7 +112,7 @@ layout <- htmlDiv(list(#
     geometry of annotations.
     '),
     examples$canvas_annotations$source_code,
-    examples$canvas_annotations$layout,
+    htmlDiv(examples$canvas_annotations$layout, className='example-container'),
     dccMarkdown("
                  You can either write custom functions to parse the JSON string, or  
                  use the utility functions included in the `dash_canvas` package. In  
@@ -120,7 +120,8 @@ layout <- htmlDiv(list(#
                  pixels displaying the annotations:
                 "),
     examples$canvas_copy_annotations$source_code,
-    examples$canvas_copy_annotations$layout,
+    htmlBr(),
+    htmlDiv(examples$canvas_copy_annotations$layout, className='example-container'),
     htmlBr(),
     htmlBr(),
     htmlBr(),
@@ -140,14 +141,15 @@ layout <- htmlDiv(list(#
                 The above example used the ``array_to_data_url`` utility function to  
                 transform a 2D - ``matrix`` into an image data string.
                 
-                Finally, ``dash-canvas`` provides utility functions to process images  
-                given the binary mask derived from annotations:
+                
                 "),
-    dccMarkdown(""),
-    htmlDiv("", className='example-container'),
+    # dccMarkdown("Finally, ``dash-canvas`` provides utility functions to process images  
+    #             given the binary mask derived from annotations:"),
+    # htmlDiv("", className='example-container'),
+    # dccMarkdown('
+    #             These functions rely on [magick - an R wrapper for ``imagemagick``]() to  
+    #             process matrices as images. Here we used the [watershed algorithm] from ``magick``.'),
     dccMarkdown('
-                These functions rely on [magick - an R wrapper for ``imagemagick``]() to  
-                process matrices as images. Here we used the [watershed algorithm] from ``magick``.
                 
                 ### Updating the background image
                 

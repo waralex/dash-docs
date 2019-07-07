@@ -11,8 +11,6 @@ library(magick)
 library(glue)
 
 ############HELPER FUNCTIONS & SYNTACTIC SUGARS
-l. <- list
-
 bezier_curve <- cmpfun(pointsOnBezier)
 foreach <- cmpfun(foreach)
 
@@ -72,9 +70,9 @@ indices_of_path <- function(path, scale=1)
     t2 <- path[2:(l-1)]
     
     
-    points <- foreach(i=1:(l-2), .combine=rbind) %do% draw.bezier_curve(t1[[i]], t2[[i]], scale)
+    points <- foreach(i=1:(l-2), .combine=rbind) %do% draw.bezier_curve(t1[[i]], t2[[i]], 1)
     
-    return(points)
+    return(points*scale)
     
   } 
 }
@@ -118,9 +116,19 @@ parse_jsonstring <- function(data, shape=NULL, scale=1){
     
     
   }
+  
+  path_scale <- function(n){
+    if(types[n]=='path'){
+      return(scaleX[n])
+    } else{
+      return(NA)
+    }
+  }
+  
   if(s>1&&f){
+    path_scales <- na.omit(unlist(lapply(1:length(types), path_scale)))
     raw_path_lst <- data[['path']][-1]
-    m <- foreach(i=1:(length(raw_path_lst)), .combine = rbind) %do% indices_of_path(raw_path_lst[[i]])
+    m <- foreach(i=1:(length(raw_path_lst)), .combine = rbind) %do% indices_of_path(raw_path_lst[[i]], path_scales[i])
     n <- foreach(j=2:length(types), .combine=rbind) %do% flag(j)
     n = na.omit(n)
     M <- rbind(m, n)
@@ -143,8 +151,9 @@ parse_jsonstring <- function(data, shape=NULL, scale=1){
     }
   }
   else{ ## when the drawn annotation contains path only
+    path_scales <- na.omit(unlist(lapply(1:length(types), path_scale)))
     raw_path_lst <- data[['path']][-1]
-    m <- foreach(i=1:(length(raw_path_lst)), .combine = rbind) %do% indices_of_path(raw_path_lst[[i]])
+    m <- foreach(i=1:(length(raw_path_lst)), .combine = rbind) %do% indices_of_path(raw_path_lst[[i]], path_scales[i])
     for(k in 1:nrow(m)){
       rawIm[m[k,2], m[k,1]] = 1
     }
@@ -152,11 +161,16 @@ parse_jsonstring <- function(data, shape=NULL, scale=1){
   }
   
   
-  Im <- rawIm %>% as.raster %>% image_read %>% image_convolve(., kernel = "Disk", iterations = 5, scaling = NULL, bias = NULL)%>% image_write %>% base64_enc
-  
-  return(glue('data:image/png;base64, ', Im))
+  # Im <- 
+  # 
+  # 
+  return(rawIm)
 }
 
+matrix_to_data_url <- function(m, it=5){
+  Im <- m %>% as.raster %>% image_read %>% image_convolve(., kernel = "Disk", iterations = it, scaling = NULL, bias = NULL)%>% image_write %>% base64_enc
+  return(glue('data:image/png;base64, ', Im))
+}
 ##################
 
 filename = 'https://upload.wikimedia.org/wikipedia/commons/e/e4/Mitochondria%2C_mammalian_lung_-_TEM_%282%29.jpg'
@@ -167,17 +181,17 @@ shape <- c(info$width, info$height)
 
 app <- Dash$new()
 
-app$layout(htmlDiv(l.(
+app$layout(htmlDiv(list(
   
   htmlH6('Draw on image and press Save to show annotations geometry')
   ,
-  htmlDiv(l.(
+  htmlDiv(
     
     dashCanvas(id='canvas_copy_annot', lineWidth=5, filename=filename, width=canvas_width)
     
-  ), className='five columns')
+  , className='five columns')
   ,
-  htmlDiv(l.(
+  htmlDiv(list(
     
     htmlImg(id='my-image', width=300 )
     
@@ -187,16 +201,16 @@ app$layout(htmlDiv(l.(
 
 app$callback(
   
-  output=l.(id='my-image', property='src')
+  output=list(id='my-image', property='src')
   ,
-  params=l.(input(id='canvas_copy_annot', property='json_data'))
+  params=list(input(id='canvas_copy_annot', property='json_data'))
   ,
   function(json){
 
     if(is.null(json)||is.na(json)){return('nothing')} 
     else 
     {
-        return(parse_jsonstring( fromJSON(json)[['objects']]))
+        return(matrix_to_data_url(parse_jsonstring(fromJSON(json)[['objects']])) )
     }
   
     
