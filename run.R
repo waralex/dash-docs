@@ -448,6 +448,7 @@ app$callback(
                 href='/urls',
                 caption="Dash provides two components (`dccLink` and `dccLocation`) that allow you to easily make fast multipage apps using its own \"Single Page App (SPA)\" design pattern."
                 )
+              )
             ),
 
 
