@@ -2817,7 +2817,7 @@ AdminPanel = html.Div(children=[
     rc.Blockquote(),
 
     dcc.Markdown(s('''
-    The Admin panel allows users with Staff and Superuser Status to manage all users of the Dash Deployment Server.
+    The Admin panel allows Admin users, users with Staff and Superuser Status, to manage all users of the Dash Deployment Server.
     From here they can add, view, modify, and delete user accounts. The panel can be accessed from the navbar
     dropdown in the /Manager or /Portal pages as shown below.
 
