@@ -246,6 +246,7 @@ And similarly for other apps
 ---
 
 `index.R`
+
 `index.R` loads different apps on different urls like this:
 
 ```r
@@ -357,6 +358,8 @@ Alternatively, you may prefer a flat project layout with callbacks and layouts s
         )
     )
 ```
+
+---
 
 `index.R`
 
