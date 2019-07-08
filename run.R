@@ -155,6 +155,8 @@ chapters.support <- new.env()
 source('dashr/chapters/support/index.R', local=chapters.support)
 chapters.search <- new.env()
 source('dashr/chapters/search/index.R', local=chapters.search)
+chapters.deployment <- new.env()
+source('dashr/chapters/deployment/index.R', local=chapters.deployment)
 
 header <- htmlDiv(
   className = 'header',
@@ -276,6 +278,8 @@ app$callback(
       "/dash-bio/oncoprint" = return(chapters.oncoprint$layout),
       "/dash-bio/sequenceviewer" = return(chapters.sequenceviewer$layout),
       "/dash-bio/speck" = return(chapters.speck$layout),
+      # Production
+      "/deployment" = return(chapters.deployment$layout),
       # Beyond the Basics
       '/external-resources' = return(chapters.external_resources$layout),
       '/support' = return(chapters.support$layout),
@@ -446,6 +450,10 @@ app$callback(
                 components$Chapter(
                 'See Our Products Page',
                 href='https://plot.ly/products/dash/'
+                ),
+                components$Chapter(
+                  'Deployment',
+                  href='/deployment'
                 )
               )
             ),
