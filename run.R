@@ -157,6 +157,8 @@ chapters.search <- new.env()
 source('dashr/chapters/search/index.R', local=chapters.search)
 chapters.deployment <- new.env()
 source('dashr/chapters/deployment/index.R', local=chapters.deployment)
+chapters.urls <- new.env()
+source('dashr/chapters/urls/index.R', local=chapters.urls)
 
 header <- htmlDiv(
   className = 'header',
@@ -282,6 +284,7 @@ app$callback(
       "/deployment" = return(chapters.deployment$layout),
       # Beyond the Basics
       '/external-resources' = return(chapters.external_resources$layout),
+      '/urls' = return(chapters.urls$layout),
       '/support' = return(chapters.support$layout),
       '/plugins' = return(chapters.plugins$layout),
       '/d3-react-components' = return(chapters.d3$layout),
@@ -439,8 +442,12 @@ app$callback(
                 href='/external-resources',
                 caption="Learn how to add custom CSS and JS to your application with the `assets` directory.
                 Also, learn how to customize the HTML template that Dash serves on page load in order to add custom meta tags, customize the page's title, and more."
+                ),
+                components$Chapter(
+                'URL Routing & Multiple Apps',
+                href='/urls',
+                caption="Dash provides two components (`dccLink` and `dccLocation`) that allow you to easily make fast multipage apps using its own \"Single Page App (SPA)\" design pattern."
                 )
-              )
             ),
 
 
