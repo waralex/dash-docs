@@ -66,7 +66,7 @@ it updates the URL!
 ---
 "),
   htmlImg(
-           style = list(height = '100\%'),
+           style = list(height = '100%'),
            src = '/assets/images/url-support.gif'
   ),
 dccMarkdown("
@@ -172,7 +172,7 @@ depending on the URL:
 ```
 "),
   htmlImg(
-           style = list(height = '100\%'),
+           style = list(height = '100%'),
            src = '/assets/images/url-support-pages.gif'
   ),
 dccMarkdown("
@@ -210,6 +210,8 @@ File structure:
 |-- app1.R
 |-- app2.R
 ```
+
+---
 
 `app.R`
 
