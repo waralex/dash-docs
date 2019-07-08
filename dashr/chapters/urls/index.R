@@ -37,7 +37,7 @@ through the pathname property. Here's a simple example:
             )
         )
     )
-
+`
     app$callback(output=list(id='page-content', property='children'),
                  params=list(
               input(id='url', property='pathname')),
@@ -64,6 +64,12 @@ clicking on the `Link` doesn't refresh the page even though
 it updates the URL!
 
 ---
+"),
+  htmlImg(
+           style = list(height = '100\%'),
+           src = '/assets/images/url-support.gif'
+  ),
+dccMarkdown("
 
 You can modify the example above to display different pages
 depending on the URL:
@@ -164,7 +170,12 @@ depending on the URL:
 
     app$run_server(debug=TRUE)     
 ```
-
+"),
+  htmlImg(
+           style = list(height = '100\%'),
+           src = '/assets/images/url-support-pages.gif'
+  ),
+dccMarkdown("
 - In this example, we're displaying different layouts through
 the `display_page` function. A few notes: Each page can have
 interactive elements even though those elements may not be in 
