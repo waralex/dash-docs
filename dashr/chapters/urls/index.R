@@ -55,7 +55,7 @@ current `pathname` (the last part of the URL) of the page.
 The callback simply displays the pathname on page but it
 could use the `pathname` to display different content.
 
-The Link element updates the pathname of the browser
+The `dccLink` element updates the pathname of the browser
 _without refreshing the page_. If you used a `htmlA` element
 instead, the pathname would update but the page would refresh.
               
@@ -186,7 +186,7 @@ the callbacks with their initial values.
 in the app.layout, Dash will raise an exception to warn us that
 we might be doing something wrong. In this case, we're adding
 the elements through a callback, so we can ignore the exception 
-by setting app(suppress_callback_exceptions = TRUE). It 
+by setting `app$run_server(suppress_callback_exceptions = TRUE)`. It 
 is also possible to do this without suppressing callback exceptions. 
 See the example below for details. 
 - You can modify this example to import the different page's `layout`s
@@ -260,7 +260,7 @@ And similarly for other apps
 
 `index.R`
 
-`index.R` loads different apps on different urls like this:
+`index.R` loads different apps on different URLs like this:
 
 ```r
     library(dash)
@@ -366,7 +366,7 @@ Alternatively, you may prefer a flat project layout with callbacks and layouts s
               list(label = sprintf('App 2 - %s', x), value = x)
               })
               ),
-              htmlDiv(id='app-1-display-value'),
+              htmlDiv(id='app-2-display-value'),
               dccLink('Go to App 1', href='/apps/app1')
         )
     )
