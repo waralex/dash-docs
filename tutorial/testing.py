@@ -35,7 +35,7 @@ layout = html.Div([
     But the fixture allows you to choose another browser from the command line,
     e.g. `pytest --webdriver Firefox -k bsly001`.
 
-    The headless mode is added in Dash *1.0.1*, run `pytest --headless -k bsly001`
+    Headless mode is added in Dash *1.0.1*, run `pytest --headless -k bsly001`
     to start test in headless mode. First time heard about `headless mode`? You
     can check the details from both [Firefox](https://developer.mozilla.org/en-US/docs/Mozilla/Firefox/Headless_mode)
     and [Chrome](https://developers.google.com/web/updates/2017/04/headless-chrome).
