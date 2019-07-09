@@ -1,14 +1,6 @@
 import dash_html_components as html
 import dash_core_components as dcc
 
-logs = '''
-14:05:41 | DEBUG | selenium.webdriver.remote.remote_connection:388 | DELETE http://127.0.0.1:53672/session/87b6f1ed3710173eff8037447e2b8f56 {"sessionId": "87b6f1ed3710173eff8037447e2b8f56"}
-14:05:41 | DEBUG | urllib3.connectionpool:393 | http://127.0.0.1:53672 "DELETE /session/87b6f1ed3710173eff8037447e2b8f56 HTTP/1.1" 200 72
-14:05:41 | DEBUG | selenium.webdriver.remote.remote_connection:440 | Finished Request
-14:05:41 | INFO | dash.testing.application_runners:80 | killing the app runner
-14:05:41 | DEBUG | urllib3.connectionpool:205 | Starting new HTTP connection (1): localhost:8050
-14:05:41 | DEBUG | urllib3.connectionpool:393 | http://localhost:8050 "GET /_stop-3ef0e64e8688436caced44e9f39d4263 HTTP/1.1" 200 29
-'''
 
 layout = html.Div([
     dcc.Markdown(u"""
