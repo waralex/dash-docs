@@ -25,8 +25,8 @@ layout = html.Div([
     ## Install
 
     The Dash testing is now part of the main Dash package. After
-    `pip install dash`, the Dash `pytest` fixtures are available, you just
-    need to install the WebDrivers and you are ready to test.
+    `pip install dash[testing]`, the Dash `pytest` fixtures are available, you
+    just need to install the WebDrivers and you are ready to test.
 
     - [Chrome Driver](http://chromedriver.chromium.org/getting-started)
     - [Firefox Gecko Driver](https://github.com/mozilla/geckodriver/releases)
@@ -34,6 +34,11 @@ layout = html.Div([
     FYI, We run Dash integration tests with Chrome WebDriver.
     But the fixture allows you to choose another browser from the command line,
     e.g. `pytest --webdriver Firefox -k bsly001`.
+
+    The headless mode is added in Dash *1.0.1*, run `pytest --headless -k bsly001`
+    to start test in headless mode. First time heard about `headless mode`? You
+    can check the details from both [Firefox](https://developer.mozilla.org/en-US/docs/Mozilla/Firefox/Headless_mode)
+    and [Chrome](https://developers.google.com/web/updates/2017/04/headless-chrome).
 
     **Notes**:
 
