@@ -36,7 +36,8 @@ layout = html.Div([
     e.g. `pytest --webdriver Firefox -k bsly001`.
 
     Headless mode is added in Dash *1.0.1*, run `pytest --headless -k bsly001`
-    to start test in headless mode. First time heard about `headless mode`? You
+    to start test in headless mode. First time hearing about `headless mode`? The
+    main benefit for us is it's lighter and faster to run without a UI. You
     can check the details from both [Firefox](https://developer.mozilla.org/en-US/docs/Mozilla/Firefox/Headless_mode)
     and [Chrome](https://developers.google.com/web/updates/2017/04/headless-chrome).
 
