@@ -173,6 +173,6 @@ layout = html.Div([
     ### Additional notes
 
     `style_cell_conditional`: In prior versions `if.row_index` was evaluated for this prop but should not have been.
-    Starting with Dash 1.0, use `style_data_conditional` and `style_header_conditional` instead for `if.row_index` based styling.
+    Use `style_data_conditional` and `style_header_conditional` instead for `if.row_index` based styling.
     '''))
 ])
