@@ -95,8 +95,42 @@ source('dashr/chapters/dash-datatable/part9/index.R', local=chapters.dashDataTab
 chapters.dashDataTable10 <- new.env()
 source('dashr/chapters/dash-datatable/part10/index.R', local=chapters.dashDataTable10)
 # Component Libraries (Dash DAQ Components)
-# chapters.dashDaq <- new.env()
-# source('dashr/chapters/dash-daq/index.R', local=chapters.dashDaq)
+chapters.dashDaq <- new.env()
+source('dashr/chapters/dash-daq/index.R', local=chapters.dashDaq)
+chapters.booleanswitch <- new.env()
+source('dashr/chapters/dash-daq/boolean-switch/booleanswitch.R', local = chapters.booleanswitch)
+chapters.colorpicker <- new.env()
+source('dashr/chapters/dash-daq/color-picker/colorpicker.R', local = chapters.colorpicker)
+chapters.gauge <- new.env()
+source('dashr/chapters/dash-daq/gauge/gauge.R', local = chapters.gauge)
+chapters.graduatedbar <- new.env()
+source('dashr/chapters/dash-daq/graduated-bar/graduatedbar.R', local = chapters.graduatedbar)
+chapters.indicator <- new.env()
+source('dashr/chapters/dash-daq/indicator/indicator.R', local = chapters.indicator)
+chapters.joystick <- new.env()
+source('dashr/chapters/dash-daq/joystick/joystick.R', local = chapters.joystick)
+chapters.knob <- new.env()
+source('dashr/chapters/dash-daq/knob/knob.R', local = chapters.knob)
+chapters.leddisplay <- new.env()
+source('dashr/chapters/dash-daq/led-display/leddisplay.R', local = chapters.leddisplay)
+chapters.numericinput <- new.env()
+source('dashr/chapters/dash-daq/numeric-input/numericinput.R', local = chapters.numericinput)
+chapters.powerbutton <- new.env()
+source('dashr/chapters/dash-daq/power-button/powerbutton.R', local = chapters.powerbutton)
+chapters.precisioninput <- new.env()
+source('dashr/chapters/dash-daq/precision-input/precisioninput.R', local = chapters.precisioninput)
+chapters.slider <- new.env()
+source('dashr/chapters/dash-daq/slider/slider.R', local = chapters.slider)
+chapters.stopbutton <- new.env()
+source('dashr/chapters/dash-daq/stop-button/stopbutton.R', local = chapters.stopbutton)
+chapters.tank <- new.env()
+source('dashr/chapters/dash-daq/tank/tank.R', local = chapters.tank)
+chapters.thermometer <- new.env()
+source('dashr/chapters/dash-daq/thermometer/thermometer.R', local = chapters.thermometer)
+chapters.toggleswitch <- new.env()
+source('dashr/chapters/dash-daq/toggle-switch/toggleswitch.R', local = chapters.toggleswitch)
+chapters.darkthemeprovider <- new.env()
+source('dashr/chapters/dash-daq/dark-theme-provider/darkthemeprovider.R', local = chapters.darkthemeprovider)
 # Component Libraries (Dash Canvas)
 # chapters.dashCanvas <- new.env()
 # source('dashr/chapters/dash-canvas/index.R', local=chapters.dashCanvas)
@@ -169,7 +203,7 @@ header <- htmlDiv(
       children = list(
         htmlA(htmlImg(
           style = list(height = '100%'),
-          src = 'https://dash.plot.ly/assets/images/logo.png'
+          src = 'https://dash.plot.ly/assets/images/logo.png'          
         ), href = 'https://plot.ly/products/dash', className='logo-link'),
         htmlDiv(className='links', children = list(
           htmlA('pricing', className='link', href = 'https://plot.ly/dash/pricing'),
@@ -254,7 +288,24 @@ app$callback(
       '/datatable/filtering' = return(chapters.dashDataTable9$layout),
       '/datatable/reference' = return(chapters.dashDataTable10$layout),
       # Component Libraries (Dash DAQ Components)
-      # '/dash-daq' = return(chapters.dashDaq$layout),
+      '/dash-daq' = return(chapters.dashDaq$layout),
+      '/dash-daq/booleanswitch' = return(chapters.booleanswitch$layout),
+      '/dash-daq/colorpicker' = return(chapters.colorpicker$layout),
+      '/dash-daq/gauge' = return(chapters.gauge$layout),
+      '/dash-daq/graduatedbar' = return(chapters.graduatedbar$layout),
+      '/dash-daq/indicator' = return(chapters.indicator$layout),
+      '/dash-daq/joystick' = return(chapters.joystick$layout),
+      '/dash-daq/knob' = return(chapters.knob$layout),
+      '/dash-daq/leddisplay' = return(chapters.leddisplay$layout),
+      '/dash-daq/numericinput' = return(chapters.numericinput$layout),
+      '/dash-daq/powerbutton' = return(chapters.powerbutton$layout),
+      '/dash-daq/precisioninput' = return(chapters.precisioninput$layout),
+      '/dash-daq/slider' = return(chapters.slider$layout),
+      '/dash-daq/stopbutton' = return(chapters.stopbutton$layout),
+      '/dash-daq/tank' = return(chapters.tank$layout),
+      '/dash-daq/thermometer' = return(chapters.thermometer$layout),
+      '/dash-daq/toggleswitch' = return(chapters.toggleswitch$layout),
+      '/dash-daq/darkthemeprovider' = return(chapters.darkthemeprovider$layout),
       # Component Libraries (Dash Canvas)
       # '/canvas' = return(chapters.dashCanvas$layout),
       # Component Libraries (Dash Cytoscape)
@@ -389,11 +440,11 @@ app$callback(
                 caption="(New! Released Nov 2, 2018) The Dash DataTable is our latest and most advanced component.
                 It is an interactive table that supports rich styling, conditional formatting, editing, sorting, filtering, and more."
                 ),
-                # components$Chapter(
-                # 'Dash DAQ Components',
-                # href='/dash-daq',
-                # caption="Beautifully styled technical components for data acquisition and engineering applications."
-                # ),
+                components$Chapter(
+                'Dash DAQ Components',
+                href='/dash-daq',
+                caption="Beautifully styled technical components for data acquisition and engineering applications."
+                ),
                 # components$Chapter(
                 # 'Dash Canvas',
                 # href='/canvas',
@@ -475,6 +526,7 @@ app$callback(
                 'The Dash Community Forum',
                 href='https://community.plot.ly/c/dash?_ga=2.35982368.1800098105.1562085881-85134653.1547603472'
                 ),
+                htmlBr(),
                 components$Chapter(
                 'Support and Contact',
                 href='/support'
