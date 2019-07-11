@@ -86,9 +86,9 @@ knobGradient <-  htmlDiv(list(
   dccMarkdown(
     "Set up a color gradient with:
 
-color = list('gradient' =  TRUE,
+`color = list('gradient' =  TRUE,
 'ranges' = list('<color>' = list(<value>, <value>),
-'<color>' = list(<value>, <value>), '<color>' = list(<value>, <value>)))"
+'<color>' = list(<value>, <value>), '<color>' = list(<value>, <value>)))`."
   ),
   utils$LoadAndDisplayComponent(
     '
