@@ -349,7 +349,7 @@ daq.GraduatedBar(
     html.Hr(),
     html.H3('Color Gradient'),
     dcc.Markdown("Set a color gradient with: \
-    \n `color={'gradient':{'<color>':[<value>, <value>],'<color>':[<value>, <value>],'<color>':[<value>, <value>]}}`"),
+    \n `color={'gradient':True,'ranges':{'<color>':[<value>, <value>],'<color>':[<value>, <value>],'<color>':[<value>, <value>]}}`"),
     ComponentBlock('''import dash_daq as daq
 
 daq.GraduatedBar(
@@ -517,7 +517,7 @@ daq.Knob(
     html.Hr(),
     html.H3('Color Gradient'),
     dcc.Markdown("Set up a color gradient with: \
-    \n `color={'ranges':{'gradient': True,'ranges' <color>':[<value>,<value>],'<color>':[<value>,<value>], '<color>':[<value>,<value>]}}`."),
+    \n `color={'gradient':True,'ranges':{'<color>':[<value>,<value>],'<color>':[<value>,<value>], '<color>':[<value>,<value>]}}`."),
     ComponentBlock('''import dash_daq as daq
 
 daq.Knob(
@@ -532,7 +532,7 @@ daq.Knob(
     ComponentBlock('''import dash_daq as daq
 
 daq.Knob(
-  label="Gradient Ranges",
+  label="Scale",
   value=7,
   max=18,
   scale={'start':0, 'labelInterval': 3, 'interval': 3}
@@ -643,7 +643,7 @@ daq.NumericInput(
 )''', style=styles.code_container),
     html.Hr(),
     html.H3('Max and Min'),
-    dcc.Markdown("Set the minimum and maximum bounds with `min` and max`."),
+    dcc.Markdown("Set the minimum and maximum bounds with `min` and `max`."),
     ComponentBlock('''import dash_daq as daq
 
 daq.NumericInput(
