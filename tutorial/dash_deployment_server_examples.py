@@ -2373,7 +2373,7 @@ pdfService = html.Div(children=[
         - Creating high-quality, branded PDF templates
 
         Get in touch with your sales rep or
-        [reach out to us directly](https://plotly.typeform.com/to/rkO85m)
+        [reach out to us directly](https://go.plot.ly/dash-doc)
         to learn more.
 
         ''')),
