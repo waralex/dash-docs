@@ -781,7 +781,7 @@ data = urlreq.urlopen("https://raw.githubusercontent.com/plotly/dash-bio/master/
 if PY3:
     data = data.decode('utf-8')
 
-data = xyz_reader.read_xyz(data_string=data)
+data = xyz_reader.read_xyz(data, is_datafile=False)
 
 dashbio.Speck(
     data=data,
@@ -811,7 +811,7 @@ data = urlreq.urlopen("https://raw.githubusercontent.com/plotly/dash-bio/master/
 if PY3:
     data = data.decode('utf-8')
 
-data = xyz_reader.read_xyz(data_string=data)
+data = xyz_reader.read_xyz(data, is_datafile=False)
 
 dashbio.Speck(
     data=data,
