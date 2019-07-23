@@ -7,7 +7,7 @@ layout = html.Div([
     # Dash Testing
 
     *New in Dash v1.0*
-    *support DashR testing in v1.0.3*
+    *support Dash for R testing in v1.0.3*
 
     `dash.testing` \U0001f9ea provides some off-the-rack
     `pytest` [fixtures](https://docs.pytest.org/en/latest/fixture.html)
@@ -172,17 +172,17 @@ layout = html.Div([
     configure your `PYTHONPATH` so that the Dash app source file is
     directly importable*.
 
-    And `DashR` test fixtures have a prefix `dashr_`.
+    And `Dash for R` test fixtures have a prefix `dashr_`.
 
     - dashr_server
 
-    Start your DashR App with `Rscript` in a python `subprocess`. Note that
+    Start your Dash for R App with `Rscript` in a python `subprocess`. Note that
     unlike python server fixtures, the start server arguments can only be
-    configured inside the DashR App.
+    configured inside the Dash for R App.
 
     - dashr
 
-    The default fixture for DashR integration tests. As `dash_duo` in Python,
+    The default fixture for Dash for R integration tests. As `dash_duo` in Python,
     it contains a `dashr_server` and a selenium webdriver with the same Dash
     testing APIs.
 
@@ -276,14 +276,14 @@ layout = html.Div([
     | `session_id` | shortcut to `driver.session_id` |
     | `server_url` | set the server_url as setter so the selenium is aware of the local server port, it also implicitly calls `wait_for_page`. return the server_url as property |
 
-    ## DashR testing
+    ## Dash for R testing
 
-    We released [DashR](https://medium.com/@plotlygraphs/announcing-dash-for-r-82dce99bae13)
+    We released [Dash for R](https://medium.com/@plotlygraphs/announcing-dash-for-r-82dce99bae13)
     in July 2019. As a follow-up to this initiative, we extend `dash.testing`
-    so it can support integration with DashR Apps. The core change is
+    so it can support integration with Dash for R Apps. The core change is
     achieved in less than 50 lines of [python code](https://github.com/plotly/dash/blob/339141a1196c4a8af96fd7147b23e07c39866003/dash/testing/application_runners.py#L228-L277).
     With the new `dashr` fixture, we can have a harmonized test development
-    experience in DashR. Here is a simple example runnable with `pytest`, with
+    experience in Dash for R. Here is a simple example runnable with `pytest`, with
     a test target app written in R language.
 
     ```python
@@ -293,7 +293,7 @@ layout = html.Div([
     library(dashHtmlComponents)
     app <- Dash$new()
 
-    app$layout(htmlDiv(list(htmlDiv(id='container',children='Hello DashR testing'))))
+    app$layout(htmlDiv(list(htmlDiv(id='container',children='Hello Dash for R testing'))))
     app$run_server()
     '''
 
@@ -303,13 +303,13 @@ layout = html.Div([
     def test_rstr001_r_with_string(dashr):
         # the app is a raw string variable defining the Dash App in R
         dashr.start_server(app)
-        assert dashr.find_element("#container").text == "Hello DashR Testing"
+        assert dashr.find_element("#container").text == "Hello Dash for R Testing"
 
 
     def test_rstr002_r_with_file_path(dashr):
-        # alternatively, the app can be a filepath defining the DashR
+        # alternatively, the app can be a filepath defining the Dash for R
         dashr.start_server(app=".tests/assets/demo_hello.R")
-        assert dashr.find_element("#container").text == "Hello DashR Testing"
+        assert dashr.find_element("#container").text == "Hello Dash for R Testing"
     ```
 
     ## Debugging
