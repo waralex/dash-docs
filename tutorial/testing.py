@@ -7,6 +7,7 @@ layout = html.Div([
     # Dash Testing
 
     *New in Dash v1.0*
+
     *support DashR testing in v1.0.3*
 
     `dash.testing` \U0001f9ea provides some off-the-rack
