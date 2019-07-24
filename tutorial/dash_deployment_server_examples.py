@@ -2373,7 +2373,7 @@ pdfService = html.Div(children=[
         - Creating high-quality, branded PDF templates
 
         Get in touch with your sales rep or
-        [reach out to us directly](https://plotly.typeform.com/to/rkO85m)
+        [reach out to us directly](https://go.plot.ly/dash-doc)
         to learn more.
 
         ''')),
@@ -2803,6 +2803,84 @@ Portal = html.Div(children=[
             'border-radius': '4px'
         }
     ),
+
+
+])
+
+
+# # # # # #
+# Admin Panel
+# # # # # # #
+AdminPanel = html.Div(children=[
+    html.H1('Admin Panel'),
+
+    rc.Blockquote(),
+
+    dcc.Markdown(s('''
+    The Admin panel allows Admin users, users with Staff and Superuser Status, to manage all users of the Dash Deployment Server.
+    From here they can add, view, modify, and delete user accounts. The panel can be accessed from the navbar
+    dropdown in the /Manager or /Portal pages as shown below.
+
+    &nbsp;
+    ''')),
+
+    html.Img(
+        alt='DDS admin panel link',
+        src='/assets/images/dds/dash-deployment-server-admin-panel-link.png',
+        style={
+            'width': '100%', 'border': 'thin lightgrey solid',
+            'border-radius': '4px'
+        }
+    ),
+
+    dcc.Markdown(s('''
+    
+    Only Admin users have access to the admin panel and other users will
+    not be able to see the above link.
+
+    ### Users Section
+
+    The users section displays a summary of all the users which includes the number of Dash apps created.
+
+    &nbsp;
+
+    ''')),
+
+    html.Img(
+        alt='Users summary section',
+        src='/assets/images/dds/admin-users-screen-table.png',
+        style={
+            'width': '100%', 'border': 'thin lightgrey solid',
+            'border-radius': '4px'
+        }
+    ),
+
+    dcc.Markdown(s('''
+    &nbsp;
+
+    A specific user account can be accessed and modified by clicking on a username. This view
+    allows you modify the user's account (e.g. make them an admin, change the email associated
+    with the account) or delete it altogether.
+
+    &nbsp;
+    ''')),
+
+    html.Img(
+        alt='Modify user section',
+        src='/assets/images/dds/admin-change-user-section.png',
+        style={
+            'width': '100%', 'border': 'thin lightgrey solid',
+            'border-radius': '4px'
+        }
+    ),
+
+    dcc.Markdown(s('''
+    &nbsp;
+
+    For more information contact `onpremise.support@plot.ly`.
+
+    &nbsp;
+    '''))
 
 
 ])

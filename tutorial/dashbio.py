@@ -235,7 +235,7 @@ styles_data = json.loads(styles_data)
         'datafile': {
             'name': 'sequence_viewer_P01308.fasta'
         },
-        'setup_code': '''seq = protein_reader.read_fasta(data_string=data)[0]['sequence']''',
+        'setup_code': '''seq = protein_reader.read_fasta(data, is_datafile=False)[0]['sequence']''',
         'params': {
             'sequence': 'seq'
         },
