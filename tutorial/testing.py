@@ -326,20 +326,18 @@ layout = html.Div([
     ### Run the CI job locally
 
     The [CircleCI Local CLI](https://circleci.com/docs/2.0/local-cli/) is a
-    handy tool to run all the jobs locally. It gives you an earlier warning
-    before even pushing your commits to remote, which leaves no chance of
-    making an embarrassing public mistake. The environment is identical to the
-    remote one, except the Percy snapshot and test reports are not functional
-    locally.
+    handy tool to execute some jobs locally. It gives you an earlier warning
+    before even pushing your commits to remote. For example, it's always
+    recommended to pass lint and unit tests job first on your local machine. So
+    we can make sure there is no simple mistakes in the commit.
 
     ```shell
     # install the cli (first time only)
     $ curl -fLSs https://circle.ci/cli | bash && circleci version
 
-    # trigger a local circleci container session
-    # you should run at least one python version locally
+    # run at least the lint & unit test job on both python 2 and 3
     # note: the current config requires all tests pass on python 2.7, 3.6 and 3.7.
-    $ circleci local execute --job python-3.6
+    $ circleci local execute --job lint-unit-27 && $ circleci local execute --job lint-unit-37
     ```
 
     ### Increase the verbosity of pytest logging level
