@@ -278,7 +278,7 @@ clustergram = dashbio.Clustergram(
     },
     height=800,
     width=700,
-    hide_labels='row'
+    hidden_labels='row'
 )
 
 dcc.Graph(figure=clustergram)'''
@@ -308,7 +308,7 @@ clustergram = dashbio.Clustergram(
     },
     height=800,
     width=700,
-    hide_labels='row',
+    hidden_labels='row',
     col_group_marker=[
         {'group': 1, 'annotation': 'largest column cluster', 'color': '#EF553B'}
     ],
