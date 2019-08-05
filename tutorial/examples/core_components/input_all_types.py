@@ -5,7 +5,7 @@ from dash.dependencies import Input, Output
 
 app = dash.Dash(__name__)
 
-ALLOWING_TYPES = (
+ALLOWED_TYPES = (
     "text", "number", "password", "email", "search",
     "tel", "url", "range", "hidden",
 )
@@ -18,7 +18,7 @@ app.layout = html.Div(
             type=_,
             placeholder="input type {}".format(_),
         )
-        for _ in ALLOWING_TYPES
+        for _ in ALLOWED_TYPES
     ]
     + [html.Div(id="out-all-types")]
 )
@@ -26,7 +26,7 @@ app.layout = html.Div(
 
 @app.callback(
     Output("out-all-types", "children"),
-    [Input("input_{}".format(_), "value") for _ in ALLOWING_TYPES],
+    [Input("input_{}".format(_), "value") for _ in ALLOWED_TYPES],
 )
 def cb_render(*vals):
     return " | ".join((str(val) for val in vals if val))
