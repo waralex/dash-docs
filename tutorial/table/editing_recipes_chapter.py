@@ -1,6 +1,8 @@
 import dash_html_components as html
 import dash_core_components as dcc
+import dash_table
 from textwrap import dedent
+from .utils import CreateDisplay
 
 from tutorial import tools
 from tutorial import styles
@@ -18,6 +20,9 @@ examples = {
     ]
 }
 
+Display = CreateDisplay({
+    'dash_table': dash_table,
+})
 
 
 layout = html.Div([
@@ -38,6 +43,10 @@ layout = html.Div([
     - Determining which cell has changed
     - Adding or removing columns
     - Adding or removing rows
+    - Clearable, deletable, and renamable columns
+    - Hidden columns
+    - Export DataTable 
+    - Copy and paste data 
 
     ***
 
@@ -188,5 +197,142 @@ layout = html.Div([
         examples['editing_updating_self.py'][1],
         className='example-container'
     ),
+    
+    dcc.Markdown(dedent(
+    '''
+    ## Deletable, Clearable, Renameable, Hideable Columns
+
+    Columns in dash table can be deleted, cleared, and renamed. Icons represented those actions
+    can be hidden using table css selectors, 
+    ie: `{"selector": ".column-header--clear", "rule": 'display: "none"'}`
+
+    Clearing a column will clear its content (or multiple columns when headers are merged)
+    without deleting the column itself 
+    
+    Columns can only be hidden one by one. Making columns visible again is done 
+    through a toggle columns button
+
+    When the clear / delete/ hiding action is performed, the associated filters are also cleared. 
+    Furthermore, hiding or deleting can only be done if there are more than one column in the 
+    table. 
+
+    In this example, multiple column actions can be done to modify the data table. Since 
+    there are more than one row in the column header, you can choose where the action 
+    icons appear. There are multiple accepted values, as demonstrated below.
+    
+    For example, try: 
+    - Clear the first column 
+    - Delete the second column 
+    - Rename the third column 
+    - Hide the last column
+    '''
+    )),
+
+    Display(
+        '''
+        dash_table.DataTable(
+            columns=[
+                {"name": ["", "Year"], "id": "year", "clearable": "first" },
+                {"name": ["City", "Montreal"], "id": "montreal", "deletable": [False, True]},
+                {"name": ["City", "Toronto"], "id": "toronto", "renameable": True },
+                {"name": ["City", "Ottawa"], "id": "ottawa", "hideable": "last"},
+                {"name": ["City", "Vancouver"], "id": "vancouver", "clearable": True, "renameable": True, "hideable": True, "deletable": True },
+                {"name": ["Climate", "Temperature"], "id": "temp"},
+                {"name": ["Climate", "Humidity"], "id": "humidity"},
+            ],
+            data=[
+                {
+                    "year": i,
+                    "montreal": i * 10,
+                    "toronto": i * 100,
+                    "ottawa": i * -1,
+                    "vancouver": i * -10,
+                    "temp": i * -100,
+                    "humidity": i * 5,
+                }
+                for i in range(10)
+            ],
+        )
+        '''),
+    
+    dcc.Markdown(dedent(
+    '''
+    ## Export Data Table
+    Data Table can be export either as csv or xlsx file. You can customize table
+    headers in the export file. Headers can be column ids, names or how it is displayed
+    If your column headers are merged then the headers in the download file are merged, too.
+    
+    - Note that `display` mode is only supported for `export_format: xlsx` due to the fact that 
+    headers in csv files can not be merged. 
+    '''
+    )),
+
+    Display(
+        '''
+        dash_table.DataTable(
+            columns=[
+                {"name": ["", "Year"], "id": "year", "clearable": "first" },
+                {"name": ["City", "Montreal"], "id": "montreal", "deletable": [False, True]},
+                {"name": ["City", "Toronto"], "id": "toronto", "renameable": True },
+                {"name": ["City", "Ottawa"], "id": "ottawa", "hideable": "last"},
+                {"name": ["City", "Vancouver"], "id": "vancouver", "clearable": True, "renameable": True, "hideable": True, "deletable": True },
+                {"name": ["Climate", "Temperature"], "id": "temp"},
+                {"name": ["Climate", "Humidity"], "id": "humidity"},
+            ],
+            data=[
+                {
+                    "year": i,
+                    "montreal": i * 10,
+                    "toronto": i * 100,
+                    "ottawa": i * -1,
+                    "vancouver": i * -10,
+                    "temp": i * -100,
+                    "humidity": i * 5,
+                }
+                for i in range(10)
+            ],
+            export_format='xlsx',
+            export_headers='display',
+            merge_duplicate_headers=True
+        )
+        '''),
+
+    dcc.Markdown(dedent(
+    '''
+    ## Copy and paste data from and to table 
+    When copying data from the table to an external spreadsheet like Excel, Pages,.. or
+    between two tables in different tabs, you can choose to include column headers. 
+    However, headers are ignored when copying from two table in the same tab. 
+    '''
+    )),
+
+    Display(
+        '''
+        dash_table.DataTable(
+            columns=[
+                {"name": ["", "Year"], "id": "year", "clearable": "first" },
+                {"name": ["City", "Montreal"], "id": "montreal", "deletable": [False, True]},
+                {"name": ["City", "Toronto"], "id": "toronto", "renameable": True },
+                {"name": ["City", "Ottawa"], "id": "ottawa", "hideable": "last"},
+                {"name": ["City", "Vancouver"], "id": "vancouver", "clearable": True, "renameable": True, "hideable": True, "deletable": True },
+                {"name": ["Climate", "Temperature"], "id": "temp"},
+                {"name": ["Climate", "Humidity"], "id": "humidity"},
+            ],
+            data=[
+                {
+                    "year": i,
+                    "montreal": i * 10,
+                    "toronto": i * 100,
+                    "ottawa": i * -1,
+                    "vancouver": i * -10,
+                    "temp": i * -100,
+                    "humidity": i * 5,
+                }
+                for i in range(10)
+            ],
+            include_headers_on_copy_paste=True
+        )
+        '''),
+        
 
 ])
