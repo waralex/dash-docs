@@ -8,7 +8,7 @@ layout = html.Div([
 
     *New in Dash v1.0*
 
-    *support Dash for R testing in v1.0.3*
+    *support Dash for R testing in v1.1.0*
 
     `dash.testing` \U0001f9ea provides some off-the-rack
     `pytest` [fixtures](https://docs.pytest.org/en/latest/fixture.html)
