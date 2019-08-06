@@ -206,13 +206,21 @@ layout = html.Div([
 
     Columns in the table can be hidden, deleted, cleared, and renamed. Each of these actions
     are represented by a small icon in the column headers. If there is more than one header row,
-    you can choose where the icons appear.
+    you can choose where the icons appear. You can also hide these icons by using table css 
+    selector: `{"selector": ".column-header--clear", "rule": 'display: "none"'}`
 
     When the clear / delete/ hiding action is performed, the associated filters are also cleared. 
     Hiding or deleting can only be done if there are more than one column in the 
     table. 
 
-    In this example, we have included a variety of column actions. 
+    In this example, we have included a variety of column actions:
+    - Clearing columns: the content is cleared (or multiple columns when headers are merged)
+    without deleting the column itself.
+    - Hidding columns: the entire column is hidden from view and can be made visible again
+    through the toggle columns button.
+    - Deleting column: column is deleted from the table and can't be seen again unless the 
+    page is refreshed.
+    - Renaming column: the content of selected column headers is edited. 
     
     For example, try: 
     - Clear the first column 
