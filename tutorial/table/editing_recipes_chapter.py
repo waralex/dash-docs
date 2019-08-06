@@ -43,8 +43,7 @@ layout = html.Div([
     - Determining which cell has changed
     - Adding or removing columns
     - Adding or removing rows
-    - Clearable, deletable, and renamable columns
-    - Hidden columns
+    - Clearable, deletable, renamable, and hidden columns
     - Export DataTable 
 
     ***
@@ -206,7 +205,7 @@ layout = html.Div([
     ## Modify the data table content 
 
     Columns in the table can be hidden, deleted, cleared, and renamed. Each of these actions
-    are represented by a small icon in column headers. If there are more than one row in the column header, 
+    are represented by a small icon in the column headers. If there is more than one header row,
     you can choose where the icons appear.
 
     When the clear / delete/ hiding action is performed, the associated filters are also cleared. 
@@ -254,7 +253,7 @@ layout = html.Div([
     '''
     ## Export Data Table
     Data Table can be export either as csv or xlsx file. You can customize table
-    headers in the export file. Headers can be column ids, names or how it is displayed
+    headers in the export file. Headers can be column ids, names or how it is displayed.
     If your column headers are merged then the headers in the download file are merged, too.
     
     - Note that `display` mode is only supported for `export_format: xlsx` due to the fact that 
