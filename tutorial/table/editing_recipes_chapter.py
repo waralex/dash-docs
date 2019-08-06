@@ -205,15 +205,15 @@ layout = html.Div([
     '''
     ## Modify the data table content 
 
-    Columns in the table can be hidden, deleted, cleared, and renamed.
+    Columns in the table can be hidden, deleted, cleared, and renamed. Each of these actions
+    are represented by a small icon in column headers. If there are more than one row in the column header, 
+    you can choose where the icons appear.
 
     When the clear / delete/ hiding action is performed, the associated filters are also cleared. 
     Hiding or deleting can only be done if there are more than one column in the 
     table. 
 
-    In this example, there are different ways to modify the data table. Since 
-    there are more than one row in the column header, you can choose where the action 
-    icons appear.
+    In this example, we have included a variety of column actions. 
     
     For example, try: 
     - Clear the first column 
