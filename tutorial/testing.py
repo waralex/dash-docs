@@ -285,14 +285,14 @@ layout = html.Div([
     The new `dashr` fixture gives us a test development experience in
     Dash for R that's nearly identical to the `dash_duo` fixture in
     Dash for Python. In this context, a `dashr` fixture is an instance of
-    Python class which provides a reliable baseline to configure,
-    initialize and execute the app and test one or more of its features via
-    Selenium WebDriver. For more details, please visit
-    [pytest documentation](https://docs.pytest.org/en/latest/fixture.html).
+    Python class which provides a reliable baseline to execute the app and test
+    one or more of its features via Selenium WebDriver. For more details,
+    please visit [pytest documentation](https://docs.pytest.org/en/latest/fixture.html).
 
     Here is a simple example runnable with `pytest`. Your Dash App is written
     as a string inside the Python test code (the `app` argument can also be a
-    valid path to a `.R` file), and we can use the same set of API calls to
+    valid path to a `.R` file), the app is then executed by `Rscript` within
+    a Python `subprocess` and we can use the same set of API calls to
     test it exactly as we do Dash testing in Python Apps.
 
     ```python
