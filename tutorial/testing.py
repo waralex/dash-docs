@@ -173,20 +173,19 @@ layout = html.Div([
     configure your `PYTHONPATH` so that the Dash app source file is
     directly importable*.
 
-    And `Dash for R` test fixtures have a prefix `dashr_`.
+    And `Dash for R` test fixtures have a prefix `dashr`.
+
+    - dashr
+
+    The default fixture for Dash for R integration tests. As `dash_duo` in Python,
+    it contains a `dashr_server` and a Selenium WebDriver with the same Dash
+    testing APIs.
 
     - dashr_server
 
     Start your Dash for R App with `Rscript` in a python `subprocess`. Note that
     unlike python server fixtures, the start server arguments can only be
     configured inside the Dash for R App.
-
-    - dashr
-
-    The default fixture for Dash for R integration tests. As `dash_duo` in Python,
-    it contains a `dashr_server` and a selenium webdriver with the same Dash
-    testing APIs.
-
 
     ## APIs
 
@@ -281,13 +280,20 @@ layout = html.Div([
 
     We released [Dash for R](https://medium.com/@plotlygraphs/announcing-dash-for-r-82dce99bae13)
     in July 2019.  To facilitate testing it, we extended the *Python* package
-    `dash.testing` to support Dash for R Apps. The new `dashr` fixture gives
-    us a test development experience in Dash for R that's nearly identical to
-    the `dash_duo` fixture in Dash for Python. Here is a simple example
-    runnable with `pytest`. The R App is written as a string inside the Python
-    code (the `app` argument can also be a valid path to a `.R` file), and we
-    can use the same set of APIs calls to test it exactly as we do Dash testing
-    in Python Apps.
+    `dash.testing` to support Dash for R apps.
+
+    The new `dashr` fixture gives us a test development experience in
+    Dash for R that's nearly identical to the `dash_duo` fixture in
+    Dash for Python. In this context, a `dashr` fixture is an instance of
+    Python class which provides a reliable baseline to configure,
+    initialize and execute the app and test one or more of its features via
+    Selenium WebDriver. For more details, please visit
+    [pytest documentation](https://docs.pytest.org/en/latest/fixture.html).
+
+    Here is a simple example runnable with `pytest`. Your Dash App is written
+    as a string inside the Python test code (the `app` argument can also be a
+    valid path to a `.R` file), and we can use the same set of API calls to
+    test it exactly as we do Dash testing in Python Apps.
 
     ```python
 
