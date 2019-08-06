@@ -8,7 +8,7 @@ layout = html.Div([
 
     *New in Dash v1.0*
 
-    *support Dash for R testing in v1.1.0*
+    *support Dash for R testing added in v1.1.0*
 
     `dash.testing` \U0001f9ea provides some off-the-rack
     `pytest` [fixtures](https://docs.pytest.org/en/latest/fixture.html)
@@ -331,7 +331,7 @@ layout = html.Div([
     handy tool to execute some jobs locally. It gives you an earlier warning
     before even pushing your commits to remote. For example, it's always
     recommended to pass lint and unit tests job first on your local machine. So
-    we can make sure there is no simple mistakes in the commit.
+    we can make sure there are no simple mistakes in the commit.
 
     ```shell
     # install the cli (first time only)
