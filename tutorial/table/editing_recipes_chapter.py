@@ -46,7 +46,6 @@ layout = html.Div([
     - Clearable, deletable, and renamable columns
     - Hidden columns
     - Export DataTable 
-    - Copy and paste data 
 
     ***
 
@@ -64,6 +63,10 @@ layout = html.Div([
     rows. So, if your model has an arbitrary number of parameters
     (rows or columns), we recommend initializing your table with a
     large number of empty rows and columns.
+    - When copying data from the table to an external spreadsheet or
+    between two tables in different tabs, you can choose to include column headers 
+    by adding `include_headers_on_copy_paste=True`. However, headers are ignored 
+    when copying from two table in the same tab.
     ''')),
 
     dcc.Markdown(
@@ -200,25 +203,17 @@ layout = html.Div([
     
     dcc.Markdown(dedent(
     '''
-    ## Deletable, Clearable, Renameable, Hideable Columns
+    ## Modify the data table content 
 
-    Columns in dash table can be deleted, cleared, and renamed. Icons represented those actions
-    can be hidden using table css selectors, 
-    ie: `{"selector": ".column-header--clear", "rule": 'display: "none"'}`
-
-    Clearing a column will clear its content (or multiple columns when headers are merged)
-    without deleting the column itself 
-    
-    Columns can only be hidden one by one. Making columns visible again is done 
-    through a toggle columns button
+    Columns in the table can be hidden, deleted, cleared, and renamed.
 
     When the clear / delete/ hiding action is performed, the associated filters are also cleared. 
-    Furthermore, hiding or deleting can only be done if there are more than one column in the 
+    Hiding or deleting can only be done if there are more than one column in the 
     table. 
 
-    In this example, multiple column actions can be done to modify the data table. Since 
+    In this example, there are different ways to modify the data table. Since 
     there are more than one row in the column header, you can choose where the action 
-    icons appear. There are multiple accepted values, as demonstrated below.
+    icons appear.
     
     For example, try: 
     - Clear the first column 
@@ -271,11 +266,11 @@ layout = html.Div([
         '''
         dash_table.DataTable(
             columns=[
-                {"name": ["", "Year"], "id": "year", "clearable": "first" },
+                {"name": ["", "Year"], "id": "year" },
                 {"name": ["City", "Montreal"], "id": "montreal", "deletable": [False, True]},
                 {"name": ["City", "Toronto"], "id": "toronto", "renameable": True },
                 {"name": ["City", "Ottawa"], "id": "ottawa", "hideable": "last"},
-                {"name": ["City", "Vancouver"], "id": "vancouver", "clearable": True, "renameable": True, "hideable": True, "deletable": True },
+                {"name": ["City", "Vancouver"], "id": "vancouver"},
                 {"name": ["Climate", "Temperature"], "id": "temp"},
                 {"name": ["Climate", "Humidity"], "id": "humidity"},
             ],
@@ -296,43 +291,5 @@ layout = html.Div([
             merge_duplicate_headers=True
         )
         '''),
-
-    dcc.Markdown(dedent(
-    '''
-    ## Copy and paste data from and to table 
-    When copying data from the table to an external spreadsheet like Excel, Pages,.. or
-    between two tables in different tabs, you can choose to include column headers. 
-    However, headers are ignored when copying from two table in the same tab. 
-    '''
-    )),
-
-    Display(
-        '''
-        dash_table.DataTable(
-            columns=[
-                {"name": ["", "Year"], "id": "year", "clearable": "first" },
-                {"name": ["City", "Montreal"], "id": "montreal", "deletable": [False, True]},
-                {"name": ["City", "Toronto"], "id": "toronto", "renameable": True },
-                {"name": ["City", "Ottawa"], "id": "ottawa", "hideable": "last"},
-                {"name": ["City", "Vancouver"], "id": "vancouver", "clearable": True, "renameable": True, "hideable": True, "deletable": True },
-                {"name": ["Climate", "Temperature"], "id": "temp"},
-                {"name": ["Climate", "Humidity"], "id": "humidity"},
-            ],
-            data=[
-                {
-                    "year": i,
-                    "montreal": i * 10,
-                    "toronto": i * 100,
-                    "ottawa": i * -1,
-                    "vancouver": i * -10,
-                    "temp": i * -100,
-                    "humidity": i * 5,
-                }
-                for i in range(10)
-            ],
-            include_headers_on_copy_paste=True
-        )
-        '''),
-        
-
+     
 ])
