@@ -147,19 +147,19 @@ layout = html.Div([
 
     ## Fixtures
 
-    To avoid accidental name collision with other pytest plugins.
-    All Python Dash test fixtures start with the prefix `dash_`.
-
-    - dash_duo
-
-    The default fixture for Dash integration tests, it contains a
-    `thread_server` and a WebDriver wrapped with high-level Dash testing APIs.
+    To avoid accidental name collision with other pytest plugins, all Dash test
+    fixtures start with the prefix `dash` or `dashr`.
 
     - dash_br
 
     A standalone WebDriver wrapped with high-level Dash testing APIs. This is
-    suitable for testing a Dash App in a deployed environment, i.e. when
-    your Dash App is accessible from a URL.
+    suitable for testing a Dash App in a deployed environment (Dash for Python
+    or R), i.e. when your Dash App is accessible from a URL.
+
+    - dash_duo
+
+    The default fixture for Dash Python integration tests, it contains a
+    `thread_server` and a WebDriver wrapped with high-level Dash testing APIs.
 
     - dash_thread_server
 
