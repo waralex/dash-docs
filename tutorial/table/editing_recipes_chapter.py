@@ -213,20 +213,16 @@ layout = html.Div([
     Hiding or deleting can only be done if there are more than one column in the 
     table. 
 
-    In this example, we have included a variety of column actions:
-    - Clearing columns: the content is cleared (or multiple columns when headers are merged)
+    In this example, we have included a variety of column actions. Try: 
+
+    - Clear the first column: the content is cleared (or multiple columns when headers are merged)
     without deleting the column itself.
-    - Hidding columns: the entire column is hidden from view and can be made visible again
-    through the toggle columns button.
-    - Deleting column: column is deleted from the table and can't be seen again unless the 
+    - Delete the second column: column is deleted from the table and can't be seen again unless the 
     page is refreshed.
-    - Renaming column: the content of selected column headers is edited. 
+    - Rename the third column: the content of selected column headers is edited. 
+    - Hide the fourth column: the entire column is hidden from view and can be made visible again
+    through the toggle columns button.
     
-    For example, try: 
-    - Clear the first column 
-    - Delete the second column 
-    - Rename the third column 
-    - Hide the last column
     '''
     )),
 
