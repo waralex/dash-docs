@@ -280,12 +280,14 @@ layout = html.Div([
     ## Dash for R testing
 
     We released [Dash for R](https://medium.com/@plotlygraphs/announcing-dash-for-r-82dce99bae13)
-    in July 2019. As a follow-up to this initiative, we extend `dash.testing`
-    so it can support integration with Dash for R Apps. The core change is
-    achieved in less than 50 lines of [python code](https://github.com/plotly/dash/blob/339141a1196c4a8af96fd7147b23e07c39866003/dash/testing/application_runners.py#L228-L277).
-    With the new `dashr` fixture, we can have a harmonized test development
-    experience in Dash for R. Here is a simple example runnable with `pytest`, with
-    a test target app written in R language.
+    in July 2019.  To facilitate testing it, we extended the *Python* package
+    `dash.testing` to support Dash for R Apps. The new `dashr` fixture gives
+    us a test development experience in Dash for R that's nearly identical to
+    the `dash_duo` fixture in Dash for Python. Here is a simple example
+    runnable with `pytest`. The R App is written as a string inside the Python
+    code (the `app` argument can also be a valid path to a `.R` file), and we
+    can use the same set of APIs calls to test it exactly as we do Dash testing
+    in Python Apps.
 
     ```python
 
