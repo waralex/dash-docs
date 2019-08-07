@@ -181,6 +181,7 @@ Slider = html.Div(children=[
 dcc.Slider(
     min=0,
     max=10,
+    step=None,
     marks={
         0: '0 °F',
         3: '3 °F',
@@ -278,6 +279,7 @@ RangeSlider = html.Div(children=[
 dcc.RangeSlider(
     min=0,
     max=10,
+    step=None,
     marks={
         0: '0 °F',
         3: '3 °F',
