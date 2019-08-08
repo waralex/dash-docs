@@ -65,7 +65,7 @@ layout = html.Div([
     - When copying data from the table to an external spreadsheet or
     between two tables in different tabs, you can choose to include column headers 
     by adding `include_headers_on_copy_paste=True`. However, headers are ignored 
-    when copying from two table in the same tab.
+    when copying between two tables in the same tab.
     ''')),
 
     dcc.Markdown(
