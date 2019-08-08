@@ -467,9 +467,9 @@ def display_instructions2(platform):
 
                     **`runtime.txt`**
 
-                    `runtime.txt` This file specifies python runtime.
+                    `runtime.txt` This optional file specifies python runtime.
                     For example, its contents would be `python-2.7.15` or
-                    `python-3.6.6`
+                    `python-3.6.6`. If omitted, Python 3.6.7 will be installed.
                     ''')),
 
                     dcc.Markdown(s(
@@ -745,7 +745,7 @@ Requirements = html.Div(children=[
     `runtime.txt`
 
     This optional file specifies python runtime. For example, its contents would be
-    `python-2.7.15` or `python-3.6.6`.
+    `python-2.7.15` or `python-3.6.6`.  If omitted, Python 3.6.7 will be installed.
 
     ***
 
