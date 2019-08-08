@@ -43,7 +43,7 @@ layout = html.Div([
     - Determining which cell has changed
     - Adding or removing columns
     - Adding or removing rows
-    - Clearable, deletable, renamable, and hidden columns
+    - Clearable, deletable, renamable, and hideable columns
     - Export DataTable 
 
     ***
@@ -206,12 +206,12 @@ layout = html.Div([
 
     Columns in the table can be hidden, deleted, cleared, and renamed. Each of these actions
     are represented by a small icon in the column headers. If there is more than one header row,
-    you can choose where the icons appear. You can also hide these icons by using table css 
-    selector: `{"selector": ".column-header--clear", "rule": 'display: "none"'}`
+    you can choose where the icons appear. If you want to override these icons, you can do so 
+    by using table css selectors, as demonstrated by the example.
 
-    When the clear / delete/ hiding action is performed, the associated filters are also cleared. 
-    Hiding or deleting can only be done if there are more than one column in the 
-    table. 
+    When the clear or delete action is performed, the associated filters are also cleared. 
+    Hiding or deleting can only be done if there are more than one column left in the 
+    table after the action is performed. 
 
     In this example, we have included a variety of column actions. Try: 
 
@@ -250,15 +250,22 @@ layout = html.Div([
                 }
                 for i in range(10)
             ],
+            css=[
+                {"selector": ".column-header--delete svg", "rule": 'display: "none"'}, 
+                {"selector": ".column-header--delete::before", "rule": 'content: "X"'}
+            ]
         )
         '''),
     
     dcc.Markdown(dedent(
     '''
     ## Export Data Table
-    Data Table can be export either as csv or xlsx file. You can customize table
-    headers in the export file. Headers can be column ids, names or how it is displayed.
-    If your column headers are merged then the headers in the download file are merged, too.
+    The table data can be exported either as csv or xlsx file. You can customize table
+    headers in the export file. Headers can be column ids, names or as displayed.
+    The difference between `export_headers: name` and `export_headers: display` is that you have 
+    the option to download the table with merged headers if your table headers are merged. 
+    Finally, if an action was performed on columns (cleared, deleted,hidden, sorted, filtered), then 
+    the downloaded table will display the current view. 
     
     - Note that `display` mode is only supported for `export_format: xlsx` due to the fact that 
     headers in csv files can not be merged. 
