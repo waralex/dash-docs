@@ -744,7 +744,7 @@ Requirements = html.Div(children=[
 
     `runtime.txt`
 
-    This file specifies python runtime. For example, its contents would be
+    This optional file specifies python runtime. For example, its contents would be
     `python-2.7.15` or `python-3.6.6`.
 
     ***
