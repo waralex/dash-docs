@@ -21,8 +21,8 @@ layout = html.Div([
     # Interactive Visualizations
 
     > This is the *5th* chapter of the [Dash Tutorial](/).
-    > The [previous chapter](/state) covered callbacks with `State`
-    > and the [next chapter](/sharing-data-between-callbacks) describes how to
+    > The [previous chapter](/state) covered callbacks with `State` and Exception.
+    > The [next chapter](/sharing-data-between-callbacks) describes how to
     > share data between callbacks.
     > Just getting started? Make sure to [install the necessary dependencies](/installation).
 
