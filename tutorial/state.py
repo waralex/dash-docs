@@ -7,13 +7,15 @@ from tutorial import tools
 
 examples = {
     'basic-input': tools.load_example('tutorial/examples/basic-input.py'),
-    'basic-state': tools.load_example('tutorial/examples/basic-state.py')
+    'basic-state': tools.load_example('tutorial/examples/basic-state.py'),
+    'prevent-update': tools.load_example('tutorial/examples/prevent_update.py'),
 }
 
 layout = html.Div([
-    html.H1('Dash State'),
+    html.H1('Dash State and Exceptions'),
 
     dcc.Markdown(s('''
+        ## Dash State
         > This is the *4th* chapter of the [Dash Tutorial](/).
         > The [previous chapter](/getting-started-part-2) covered Dash Callbacks
         > and the [next chapter](/interactive-graphing) covers interactive 
@@ -57,14 +59,14 @@ layout = html.Div([
 
     ''')),
 
-    dcc.Markdown('''
-    ***
-
-    The next chapter of the user guide explains how to use callback
-    principles with the `dash_core_components.Graph` component
-    to make applications that
-    respond to interactions with graphs on the page.
-    '''.replace('    ', '')),
+    dcc.Markdown(s('''
+    ## Using exception in callback  
+    
+    In certain situations, you don't want to update the callback output. You can 
+    achieve this by raising `PreventUpdate` Exception in the callback function. 
+''')),
+    Syntax(examples['prevent-update'][0]),
+    Example(examples['prevent-update'][1]),
 
     dcc.Link(
         'Dash Tutorial Part 5. Interactive Graphing',
