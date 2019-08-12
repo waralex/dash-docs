@@ -271,12 +271,12 @@ layout = html.Div([
 
 
     dcc.Markdown(s('''
-        The next part of the Dash tutorial covers an additional concept of
-        Dash callbacks: `State`
+        The next part of the Dash tutorial covers additional concept of
+        Dash callbacks: `State` and Exception
     ''')),
 
     dcc.Link(
-        'Dash Tutorial Part 4: State',
+        'Dash Tutorial Part 4: More about callbacks',
         href="/state"
     )
 
