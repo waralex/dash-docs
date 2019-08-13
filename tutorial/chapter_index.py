@@ -107,7 +107,7 @@ chapters = {
                        'change. Use Dash `State` with Dash `Inputs` to ' \
                        'pass in extra values whenever the `Inputs` ' \
                        'change. `State` is useful for UIs that contain ' \
-                       'forms or buttons. Use `PreventUpdate` Exception ' \
+                       'forms or buttons. Use the `PreventUpdate` exception ' \
                        'to leave the callback output unchanged' \
     },
 
