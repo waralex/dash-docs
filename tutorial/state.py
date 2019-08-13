@@ -8,6 +8,7 @@ examples = {
     'basic-input': tools.load_example('tutorial/examples/basic-input.py'),
     'basic-state': tools.load_example('tutorial/examples/basic-state.py'),
     'prevent-update': tools.load_example('tutorial/examples/prevent_update.py'),
+    'prevent-update-button': tools.load_example('tutorial/examples/prevent_update_button.py'),
 }
 
 layout = html.Div([
@@ -60,7 +61,11 @@ layout = html.Div([
         
         In certain situations, you don't want to update the callback output. You can 
         achieve this by raising `PreventUpdate` Exception in the callback function. 
+    '''),
+    Syntax(examples['prevent-update-button'][0]),
+    Example(examples['prevent-update-button'][1]),
 
+    dcc.Markdown('''
         This example illustrates how you can show an error while keeping the previous
         input, using `dash.no_update` to update the output partially. 
     '''),
