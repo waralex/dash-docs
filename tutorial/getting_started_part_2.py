@@ -271,8 +271,8 @@ layout = html.Div([
 
 
     dcc.Markdown(s('''
-        The next part of the Dash tutorial covers additional concept of
-        Dash callbacks: `State` and Exception
+        The next part of the Dash tutorial covers additional concepts of
+        Dash callbacks: `State` and `PreventUpdate`
     ''')),
 
     dcc.Link(
