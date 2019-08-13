@@ -12,7 +12,7 @@ examples = {
 }
 
 layout = html.Div([
-    html.H1('Dash State and Exceptions'),
+    html.H1('Dash State and PreventUpdate'),
 
     dcc.Markdown(s('''
         ## Dash State
@@ -64,6 +64,9 @@ layout = html.Div([
     
     In certain situations, you don't want to update the callback output. You can 
     achieve this by raising `PreventUpdate` Exception in the callback function. 
+
+    This example illustrates how you can report an error while keeping the previous
+    input, using `dash.no_update` for partial update. 
 ''')),
     Syntax(examples['prevent-update'][0]),
     Example(examples['prevent-update'][1]),
