@@ -13,8 +13,6 @@ if __name__ != '__main__':
 else:
     from convert_props_to_table import js_to_py_type
 
-from textwrap import dedent as s
-
 import json
 
 
@@ -265,7 +263,7 @@ component = {}
                              component_name.lower())),
                 id=component_name.replace(' ', '-').lower()),
 
-        dcc.Markdown(s(description)),
+        dcc.Markdown(description),
 
         component_demo,
 
