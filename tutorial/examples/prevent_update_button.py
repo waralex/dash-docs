@@ -18,7 +18,7 @@ app.layout = html.Div([
     [Input(component_id='button', component_property='n_clicks')]
 )
 def update_output(n_clicks):
-    if n_clicks == None:
+    if n_clicks is None:
         raise PreventUpdate
     else: 
         return "Elephants are the only animal that can't jump"
