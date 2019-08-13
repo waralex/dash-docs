@@ -67,7 +67,7 @@ layout = html.Div([
 
     This example illustrates how you can report an error while keeping the previous
     input, using `dash.no_update` for partial update. 
-''')),
+    ''')),
     Syntax(examples['prevent-update'][0]),
     Example(examples['prevent-update'][1]),
 
