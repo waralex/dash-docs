@@ -173,9 +173,10 @@ Slider = html.Div(children=[
     html.H3('Marks and Steps'),
     dcc.Markdown("If slider `marks` are defined and `step` is set to `None` \
                  then the slider will only be able to select values that \
-                 have been predefined by the `marks`. `marks` is a `dict` \
-                 where the keys represent the numerical values and the \
-                 values represent their labels."),
+                 have been predefined by the `marks`. Note that the default \
+                 is `step=1`, so you must explicitly specify `None` to get \
+                 this behavior.`marks` is a `dict` where the keys represent \
+                 the numerical values and the values represent their labels."),
     ComponentBlock('''import dash_core_components as dcc
 
 dcc.Slider(
@@ -273,7 +274,9 @@ RangeSlider = html.Div(children=[
     html.H3('Marks and Steps'),
     dcc.Markdown("If slider `marks` are defined and `step` is set to `None` \
                  then the slider will only be able to select values that \
-                 have been predefined by the `marks`."),
+                 have been predefined by the `marks`. \
+                 Note that the default is `step=1`, so you must explicitly \
+                 specify `None` to get this behavior."),
     ComponentBlock('''import dash_core_components as dcc
 
 dcc.RangeSlider(
