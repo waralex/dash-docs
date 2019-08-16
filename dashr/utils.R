@@ -50,7 +50,7 @@ LoadExampleCode <- function(filename, wd = NULL) {
   list(
     layout=htmlDiv(
       className='example-container', children=layout,
-      style=list('margin-bottom' = '10px', 'overflow-x' = 'initial')
+      style=list('margin-bottom' = '10px')
     ),
     source_code=htmlDiv(
       children=dccMarkdown(sprintf("```r\n%s```", example.file.as.string)),

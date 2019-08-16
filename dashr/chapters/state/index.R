@@ -71,7 +71,7 @@ respond to interactions with graphs on the page.
   
   dccLink(
     'Dash Tutorial Part 5. Interactive Graphing',
-    href='/graph-crossfiltering'
+    href='/interactive-graphing'
   ),
   
   htmlHr(),
