@@ -1519,8 +1519,8 @@ def display_instructions(platform):
         your Dash Deployment Server (without `http://` or `https://`).
         ''')),
 
-        dcc.Markdown('''Host your-dash-deployment-server
-        Port 3022''', style=styles.code_container),
+        dcc.Markdown('''```Host your-dash-deployment-server
+        Port 3022```''', style=styles.code_container),
 
         (dcc.Markdown(s('''
         If you're having trouble opening this file, you can run
@@ -2485,7 +2485,8 @@ Troubleshooting = html.Div(children=[
         html.Summary("Could not find a version that satisfies the requirement"),
 
         dcc.Markdown(
-        '''...
+        '''```shell
+    ...
     remote: -----> Cleaning up...
     remote: -----> Building my-dash-app from herokuish...
     remote: -----> Injecting apt repositories and packages ...
@@ -2499,7 +2500,7 @@ Troubleshooting = html.Div(children=[
     remote: -----> Installing requirements with pip
     remote:        Collecting dash==0.29.1 (from -r /tmp/build/requirements.txt (line 1))
     remote:        Could not find a version that satisfies the requirement dash==0.29.1 (from -r /tmp/build/requirements.txt (line 1)) (from versions: 0.17.4, 0.17.5, 0.17.7, 0.17.8rc1, 0.17.8rc2, 0.17.8rc3, 0.18.0, 0.18.1, 0.18.2, 0.18.3rc1, 0.18.3, 0.19.0, 0.20.0, 0.21.0, 0.21.1, 0.22.0rc1, 0.22.0rc2, 0.22.0, 0.23.1, 0.24.0, 0.24.1rc1, 0.24.1, 0.24.2, 0.25.0)
-    remote:        No matching distribution found for dash==0.29.1 (from -r /tmp/build/requirements.txt (line 1))''',
+    remote:        No matching distribution found for dash==0.29.1 (from -r /tmp/build/requirements.txt (line 1))```''',
         style=styles.code_container),
 
         dcc.Markdown(s(
@@ -2513,7 +2514,7 @@ Troubleshooting = html.Div(children=[
         you can check your versioning with the command:
         ''')),
 
-        dcc.Markdown('$ pip list', style=styles.code_container),
+        dcc.Markdown('```$ pip list```', style=styles.code_container),
 
         dcc.Markdown(s(
         '''
@@ -2522,7 +2523,7 @@ Troubleshooting = html.Div(children=[
         if it is differs from your `requirements.txt`, you can update it with the command:
         ''')),
 
-        dcc.Markdown('$ pip freeze > requirements.txt', style=styles.code_container),
+        dcc.Markdown('```$ pip freeze > requirements.txt```', style=styles.code_container),
 
         dcc.Markdown(s(
         '''
@@ -2538,7 +2539,8 @@ Troubleshooting = html.Div(children=[
         html.Summary("Failed to find application object 'server' in 'app"),
 
         dcc.Markdown(
-        '''...
+        '''```shell
+    ...
     remote:        Failed to find application object 'server' in 'app'
     remote:        [2018-08-16 16:00:49 +0000] [181] [INFO] Worker exiting (pid: 181)
     remote:        [2018-08-16 16:00:49 +0000] [12] [INFO] Shutting down: Master
@@ -2547,7 +2549,7 @@ Troubleshooting = html.Div(children=[
     remote:        [2018-08-16 16:00:51 +0000] [12] [INFO] Listening at: http://0.0.0.0:5000 (12)
     remote:        [2018-08-16 16:00:51 +0000] [12] [INFO] Using worker: sync
     remote:        [2018-08-16 16:00:51 +0000] [179] [INFO] Booting worker with pid: 179
-    remote:        [2018-08-16 16:00:51 +0000] [180] [INFO] Booting worker with pid: 180''',
+    remote:        [2018-08-16 16:00:51 +0000] [180] [INFO] Booting worker with pid: 180```''',
         style=styles.code_container),
 
         dcc.Markdown(s(
@@ -2589,7 +2591,7 @@ Troubleshooting = html.Div(children=[
             adding `GIT_SSH_COMMAND='ssh -v'` before your `git push` command.
             ''')),
 
-        dcc.Markdown('''
+        dcc.Markdown('''```python
         $ GIT_SSH_COMMAND='ssh -v' git push plotly master
 
         # OpenSSH_7.6p1 Ubuntu-4ubuntu0.1, OpenSSL 1.0.2n  7 Dec 2017
@@ -2613,7 +2615,7 @@ Troubleshooting = html.Div(children=[
         # debug1: Trying private key: /home/michael/.ssh/id_ed25519
         # debug1: Next authentication method: password
         dokku@dash.local's password:
-        ''', style=styles.code_container),
+        ```''', style=styles.code_container),
 
         dcc.Markdown(s(
             '''
@@ -2638,7 +2640,7 @@ Troubleshooting = html.Div(children=[
         html.Summary("Got permission denied while trying to connect to the Docker daemon socket"),
 
         dcc.Markdown(s(
-        '''$ Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get http://%2Fvar%2Frun%2Fdocker.sock/v1.38/containers/json?all=1&filters=%7B%22label%22%3A%7B%22dokku%22%3Atrue%7D%2C%22status%22%3A%7B%22exited%22%3Atrue%7D%7D: dial unix /var/run/docker.sock: connect: permission denied'''),
+        '''```$ Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get http://%2Fvar%2Frun%2Fdocker.sock/v1.38/containers/json?all=1&filters=%7B%22label%22%3A%7B%22dokku%22%3Atrue%7D%2C%22status%22%3A%7B%22exited%22%3Atrue%7D%7D: dial unix /var/run/docker.sock: connect: permission denied```'''),
         style=styles.code_container),
 
         dcc.Markdown(s(
@@ -2654,9 +2656,9 @@ Troubleshooting = html.Div(children=[
         html.Summary("Unable to select a buildpack"),
 
         dcc.Markdown(s(
-            '''...
+            '''```...
             remote:            Adding BUILD_ENV to build environment...
-            remote:            Unable to select a buildpack'''),
+            remote:            Unable to select a buildpack```'''),
                               style=styles.code_container),
         dcc.Markdown(s(
             ''''
@@ -2692,7 +2694,7 @@ Troubleshooting = html.Div(children=[
             scale a `worker` process:
             ''')),
 
-        dcc.Markdown('$ ssh dokku@dash-server ps:scale APP-NAME worker=1',
+        dcc.Markdown('```$ ssh dokku@dash-server ps:scale APP-NAME worker=1```',
                               style=styles.code_container),
         dcc.Markdown(s(
             '''
@@ -2702,7 +2704,7 @@ Troubleshooting = html.Div(children=[
             up simultaneously with:
             ''')),
 
-        dcc.Markdown('$ ssh dokku@YOUR_DASH_SERVER ps:scale APP-NAME worker-default=1 worker-beat=1',
+        dcc.Markdown('```$ ssh dokku@YOUR_DASH_SERVER ps:scale APP-NAME worker-default=1 worker-beat=1```',
                               style=styles.code_container),
 
         dcc.Markdown(s(
