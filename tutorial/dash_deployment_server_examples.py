@@ -2230,7 +2230,7 @@ pdfService = html.Div(children=[
 
         dcc.Markdown(
         '''
-
+        
         - `url` - The URL to download
         - `appname` - Your app's name.
         - `secret_key` - Your app's secret key. This is needed for authorizing the pdf generation.
@@ -2240,16 +2240,16 @@ pdfService = html.Div(children=[
         appears on the screen before taking a screenshot. This ensures that
         the page has finished loading before taking a screenshot.
         In general, we recommend:
-            - If there are no graphs on the page, then embed an
-            `html.Div(id='waitfor')` in your `app.layout` or return it from
-            the callback that gets executed last. With the id `waitfor`, the
-            `wait_selector` would be `"#waitfor"`.
-            - If the page has `dcc.Graph` elements on it, then you'll want
-            to wait until these graphs have finished renderering. To do this,
-            set the `wait_selector` to be `#graph_id .svg-container` where
-            `"graph_id"` corresponds to the ID of the `dcc.Graph` component.
-            `.svg-container` refers to a CSS class of an element that plotly
-            inserts in the graph when it has finished rendering.
+          - If there are no graphs on the page, then embed an
+          `html.Div(id='waitfor')` in your `app.layout` or return it from
+          the callback that gets executed last. With the id `waitfor`, the
+          `wait_selector` would be `"#waitfor"`.
+          - If the page has `dcc.Graph` elements on it, then you'll want
+          to wait until these graphs have finished renderering. To do this,
+          set the `wait_selector` to be `#graph_id .svg-container` where
+          `"graph_id"` corresponds to the ID of the `dcc.Graph` component.
+          `.svg-container` refers to a CSS class of an element that plotly
+          inserts in the graph when it has finished rendering.
         - `pdf_options` - PDF sizing options. These options are similar to the
         options that you see when you print a web page using your web browser.
         They include:
@@ -2262,15 +2262,15 @@ pdfService = html.Div(children=[
             recommend using `1` and controlling the margins yourself through
             your app's CSS.
             - `landscape` (optional): `True` for landscape, `False` for portrait.
-
+        
         ***
-
+        
         #### Basic Example
-
+        
         This example provides a simple UI around the PDF API. You can run this
         example locally or you can deploy this example to Dash
         Deployment Server. A few things to note:
-
+        
          - If you're testing locally, you will have to specify default values for your
         DASH_DOMAIN_BASE, DASH_APP_NAME and DASH_SECRET_KEY. You can find them in the list of your app's
         environment variables. See [our doc on environment variables](/dash-deployment-server/environment-variables)
