@@ -2253,15 +2253,15 @@ pdfService = html.Div(children=[
         - `pdf_options` - PDF sizing options. These options are similar to the
         options that you see when you print a web page using your web browser.
         They include:
-            - `pageSize`: Page size of the generated PDF. Available options:
+          - `pageSize`: Page size of the generated PDF. Available options:
             `A3`, `A4`, `A5`, `Legal`, `Tabloid` or
             `{"width": ..., "height": ...}` where `width` and `height` are
             integers specified in microns.
-            - `marginsType`: Specifies the type of margins to use. `0` for
+          - `marginsType`: Specifies the type of margins to use. `0` for
             default margin, `1` for no margin, and `2` for minimum margin. We
             recommend using `1` and controlling the margins yourself through
             your app's CSS.
-            - `landscape` (optional): `True` for landscape, `False` for portrait.
+          - `landscape` (optional): `True` for landscape, `False` for portrait.
         
         ***
         
