@@ -28,7 +28,8 @@ layout = html.Div([
 
     The Dash testing is now part of the main Dash package. After
     `pip install dash[testing]`, the Dash `pytest` fixtures are available, you
-    just need to install the WebDrivers and you are ready to test.
+    just need to install the WebDrivers or use a remote Selenium-Grid and you
+    are ready to test.
 
     - [Chrome Driver](http://chromedriver.chromium.org/getting-started)
     - [Firefox Gecko Driver](https://github.com/mozilla/geckodriver/releases)
@@ -42,6 +43,39 @@ layout = html.Div([
     main benefit for us is it's lighter and faster to run without a UI. You
     can check the details from both [Firefox](https://developer.mozilla.org/en-US/docs/Mozilla/Firefox/Headless_mode)
     and [Chrome](https://developers.google.com/web/updates/2017/04/headless-chrome).
+
+    Remote WebDriver is added in Dash *1.3.0*. You may have two use cases:
+
+    1. Run `pytest --remote --log-cli-level DEBUG -k bsly001` to grab a Chrome
+    WebDriver from a local hosted grid at `http://localhost:4444/wd/hub`
+    2. Run `pytest --webdriver Firefox --log-cli-level DEBUG --remote-url https://grid_provioder_endpoints`
+    to connect with a remote grid in the cloud. Note that you don't need to use
+    `--remote` as soon as the `--remote-url` value is set and different than
+    the default one.
+
+    ### Caveats
+
+    It's important to note that we cannot fully test and guarantee that the
+    above cases will work with any given selenium grid you have. The limitation
+    might come from how the network is set up, the limitation of different
+    hosting OS and how the docker-compose was configured.
+
+    You might need to do some extra WebDriver Options Tuning to have the tests
+    running in a particular Selenium-Grid. And there is a back door open for
+    this purpose with `pytest_setup_options` hook defined in `plugin.py`. The
+    example below is to use the `headless` mode with Chrome WebDriver in
+    Windows, there is a [workaround](https://bugs.chromium.org/p/chromium/issues/detail?id=737678)
+    by adding `--disable-gpu` in the options.
+
+    ```Python
+    # add this in the conftest.py under tests folder
+    from selenium.webdriver.chrome.options import Options
+
+    def pytest_setup_options():
+        options = Options()
+        options.add_argument('--disable-gpu')
+        return options
+    ```
 
     **Notes**:
 
