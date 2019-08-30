@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 import dash_core_components as dcc
 import dash_html_components as html
-from tutorial import styles
-from tutorial import tools
+from dash_docs import styles
+from dash_docs import tools
 
 examples = [
     tools.load_example(s) for s in [

@@ -2,8 +2,8 @@ import dash_core_components as dcc
 import dash_html_components as html
 import dash_bio
 
-from tutorial import styles
-from tutorial.utils.dashbio_docs import generate_docs
+from dash_docs import styles
+from dash_docs.tutorial.utils.dashbio_docs import generate_docs
 
 DASHBIO_LIBRARY_HEADING = [
     dcc.Markdown('''# Dash Bio'''),

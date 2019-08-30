@@ -3,8 +3,8 @@ from textwrap import dedent
 import dash_html_components as html
 import dash_core_components as dcc
 
-from tutorial import tools
-from tutorial import styles
+from dash_docs import tools
+from dash_docs import styles
 
 
 examples = {

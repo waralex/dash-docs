@@ -1,15 +1,15 @@
 import dash_core_components as dcc
 
-from tutorial.components import Syntax
-from tutorial import tools
+from dash_docs.tutorial.components import Syntax
+from dash_docs import tools
 
 examples = {
     'memoization': tools.load_example(
         'tutorial/examples/performance_memoization.py'),
     'performance_flask_caching': tools.load_example(
         'tutorial/examples/performance_flask_caching.py'),
-    'performance_flask_caching_dataset': open(
-        'tutorial/examples/performance_flask_caching_dataset.py').read()
+    'performance_flask_caching_dataset': tools.read_file(
+        'tutorial/examples/performance_flask_caching_dataset.py')
 }
 
 layout = [

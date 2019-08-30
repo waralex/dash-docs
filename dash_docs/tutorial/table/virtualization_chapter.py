@@ -6,8 +6,8 @@ import dash_html_components as html
 import pandas as pd
 from textwrap import dedent
 
-from tutorial import tools
-from tutorial import styles
+from dash_docs import tools
+from dash_docs import styles
 
 
 examples = {

@@ -5,7 +5,7 @@ import pandas as pd
 from textwrap import dedent
 
 import dash_table
-from tutorial import styles, tools
+from dash_docs import styles, tools
 
 
 examples = {

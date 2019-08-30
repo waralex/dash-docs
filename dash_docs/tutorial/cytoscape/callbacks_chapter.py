@@ -3,7 +3,8 @@ import dash_core_components as dcc
 import dash_html_components as html
 
 from .utils import CreateDisplay
-from tutorial import tools, styles
+from dash_docs import tools
+from dash_docs import styles
 
 
 examples = {

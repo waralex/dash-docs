@@ -1,6 +1,6 @@
 import dash_html_components as html
 
-from tutorial.tools import merge
+from dash_docs.tools import merge
 
 styles = {
     'underline': {

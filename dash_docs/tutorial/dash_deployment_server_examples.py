@@ -5,10 +5,16 @@ import dash_renderer
 import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output
+import os
 import plotly
-from tutorial import styles
-import reusable_components as rc
-from server import app
+from dash_docs import styles
+from dash_docs import reusable_components as rc
+
+
+if os.environ.get('environment', '') == 'dash-docs':
+    from dash_docs.server import app
+else:
+    from server import app
 
 def s(string_block):
     return string_block.replace('    ', '')
@@ -2834,7 +2840,7 @@ AdminPanel = html.Div(children=[
     ),
 
     dcc.Markdown(s('''
-    
+
     Only Admin users have access to the admin panel and other users will
     not be able to see the above link.
 

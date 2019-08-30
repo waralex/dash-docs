@@ -1,6 +1,13 @@
+import os
 import re
 
-from server import app
+print('====== tools ======')
+
+if os.environ.get('environment', '') == 'dash-docs':
+    from .server import app
+else:
+    from server import app, foo
+    print(foo)
 
 
 def exception_handler(func):
@@ -15,7 +22,7 @@ def exception_handler(func):
 
 @exception_handler
 def load_example(path):
-    with open(path, 'r') as _f:
+    with open(os.path.join(os.path.dirname(os.path.realpath(__file__)), path), 'r') as _f:
         _source = _f.read()
         _example = _source
 
@@ -52,7 +59,10 @@ def load_example(path):
 
         # if there are lines that should be included in the syntax but
         # not executed, simply put a comment on that line starting "# no-exec"
+        # similarly, if there are lines that should be evalued but
+        # not executed, simply put a comment on that line starting "# no-display"
         no_exec = '# no-exec'
+        no_display = '# no-display'
         if no_exec in _example:
             _example = '\n'.join(
                 line for line in _example.splitlines() if no_exec not in line
@@ -63,6 +73,20 @@ def load_example(path):
                 find_no_exec.sub('', line) if no_exec in line else line
                 for line in _source.splitlines()
             )
+
+        if no_display in _example:
+            _source = '\n'.join(
+                line for line in _source.splitlines() if no_display not in line
+            )
+
+            find_no_display = re.compile(r'\s+' + no_display + '.*')
+            _example = '\n'.join(
+                find_no_display.sub('', line) if no_display in line else line
+                for line in _example.splitlines()
+            )
+
+        if '$tools' in _example:
+            _example = _example.replace('$tools', os.path.dirname(os.path.realpath(__file__)))
 
         scope = {'app': app}
         exec(_example, scope)
@@ -84,6 +108,6 @@ def merge(*dict_args):
     return result
 
 
-def read_file(fn):
-    with open(fn, 'r') as f:
+def read_file(path):
+    with open(os.path.join(os.path.dirname(os.path.realpath(__file__)), path), 'r') as f:
         return f.read()

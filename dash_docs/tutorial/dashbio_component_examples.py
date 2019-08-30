@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
-from tutorial import tools
-from tutorial.utils.dashbio_docs import create_doc_page, get_component_names
+from dash_docs import tools
+from dash_docs.tutorial.utils.dashbio_docs import create_doc_page, get_component_names
 
 component_names = get_component_names('dash_bio')
 

@@ -8,7 +8,7 @@ import dash_daq
 
 import plotly
 
-from tutorial import styles
+from dash_docs import styles
 
 layout = html.Div([
 

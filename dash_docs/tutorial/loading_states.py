@@ -2,8 +2,8 @@
 import dash_core_components as dcc
 import dash_html_components as html
 
-from tutorial import styles
-from tutorial.tools import load_example, read_file
+from dash_docs import styles
+from dash_docs.tools import load_example, read_file
 
 layout = html.Div([
     html.H1(["Loading States"]),

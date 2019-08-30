@@ -1,7 +1,7 @@
 import dash_core_components as dcc
 import dash_html_components as html
 
-from tutorial import styles
+from dash_docs import styles
 
 
 def ComponentBlock(example_string, **kwargs):
@@ -48,4 +48,3 @@ def ComponentBlock(example_string, **kwargs):
             }) if 'Thermometer' in example_string else {})
         )
     ])
-

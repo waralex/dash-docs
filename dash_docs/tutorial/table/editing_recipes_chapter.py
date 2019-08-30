@@ -4,8 +4,8 @@ import dash_table
 from textwrap import dedent
 from .utils import CreateDisplay
 
-from tutorial import tools
-from tutorial import styles
+from dash_docs import tools
+from dash_docs import styles
 
 
 examples = {

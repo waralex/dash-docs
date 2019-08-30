@@ -1,4 +1,5 @@
 import math
+import os
 
 from Bio import Phylo
 import dash_cytoscape
@@ -111,9 +112,10 @@ def generate_elements(tree, xlen=30, ylen=30, grabbable=False):
 
     return nodes, edges
 
-# path = os.path.abspath('data/apaf.xml')
+path = os.path.join('$tools', 'tutorial', 'examples', 'cytoscape', 'data', 'apaf.xml')  # no-display
+path = os.path.join('data', 'apaf.xml')  # no-exec
 # Define elements, stylesheet and layout
-tree = Phylo.read('tutorial/examples/cytoscape/data/apaf.xml', 'phyloxml')
+tree = Phylo.read(path, 'phyloxml')
 nodes, edges = generate_elements(tree)
 elements = nodes + edges
 

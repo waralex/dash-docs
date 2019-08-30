@@ -4,8 +4,8 @@ import dash_core_components as dcc
 import dash_html_components as html
 
 from .utils import section_title
-from tutorial import tools
-from tutorial import styles
+from dash_docs import tools
+from dash_docs import styles
 
 
 examples = {

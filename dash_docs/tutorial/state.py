@@ -1,8 +1,8 @@
 import dash_core_components as dcc
 import dash_html_components as html
 
-from tutorial.components import Example, Syntax
-from tutorial import tools
+from dash_docs.tutorial.components import Example, Syntax
+from dash_docs import tools
 
 examples = {
     'basic-input': tools.load_example('tutorial/examples/basic-input.py'),

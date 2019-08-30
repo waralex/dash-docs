@@ -1,12 +1,12 @@
 import dash_core_components as dcc
 import dash_html_components as html
-from tutorial import styles
-from tutorial.utils.component_block import ComponentBlock
-from tutorial.tools import load_example
+from dash_docs import styles
+from dash_docs.tutorial.utils.component_block import ComponentBlock
+from dash_docs.tools import load_example
 
 import dash_daq as daq
 
-from tutorial.utils.simple_doc_generator import generate_docs
+from dash_docs.tutorial.utils.simple_doc_generator import generate_docs
 
 
 daq_library_heading =  dcc.Markdown('''

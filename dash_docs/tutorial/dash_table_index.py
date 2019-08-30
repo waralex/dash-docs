@@ -4,9 +4,9 @@ import dash_html_components as html
 import pandas as pd
 from textwrap import dedent
 
-from reusable_components import Section, Chapter
-from tutorial import styles
-from tutorial import tools
+from dash_docs.reusable_components import Section, Chapter
+from dash_docs import styles
+from dash_docs import tools
 
 
 examples = {
@@ -15,7 +15,7 @@ examples = {
 }
 
 
-layout = html.Div([
+preamble = html.Div([
 
     dcc.Markdown(dedent('''
     # Dash DataTable
@@ -84,130 +84,5 @@ layout = html.Div([
 
     ]),
 
-    Section('Dash DataTable User Guide', [
-        Chapter('Part 1. Sizing',
-            '/datatable/sizing',
-            '''
-            All about sizing the DataTable. Examples include:
-            - Setting the width and the height of the table
-            - Responsive table design
-            - Setting the widths of individual columns
-            - Handling long text
-            - Fixing rows and columns
-
-            '''),
-
-        Chapter('Part 2. Styling',
-            '/datatable/style',
-            '''
-            The style of the DataTable is highly customizable. This chapter
-            includes examples for:
-            - Conditional formatting
-            - Displaying multiple rows of headers
-            - Highlighting rows, columns, and cells
-            - Styling the table as a list view
-            - Changing the colors (including a dark theme!)
-
-            The sizing API for the table has been particularly tricky for
-            us to nail down, so be sure to read this chapter to understand the nuances,
-            limitations, and the APIs that we're exploring.
-
-            '''),
-
-        Chapter('Part 3. Sorting, Filtering, Selecting, and Paging',
-            '/datatable/interactivity',
-            '''
-            The DataTable is interactive. This chapter demonstrates the
-            interactive features of the table and how to wire up these
-            interations to Python callbacks. These actions include:
-            - Paging
-            - Selecting Rows
-            - Sorting Columns
-            - Filtering Data
-            '''),
-
-        Chapter([html.Span('Part 4. Sorting, Filtering, and Paging '), html.I('with Python')],
-            '/datatable/callbacks',
-            '''
-            In Part 3, the paging, sorting, and filtering was done entirely
-            clientside (in the browser). This means that you need to
-            load all of the data into the table up-front. If your data is large,
-            then this can be prohibitively slow.
-
-            In this chapter, you'll learn how to write your own filtering,
-            sorting, and paging backends in Python with Dash.
-            We'll do the data processing with Pandas but you could write your
-            own routines with SQL or even generate the data on the fly!
-            '''),
-
-        Chapter([html.Span('Part 5. Typing ')],
-            '/datatable/typing',
-            '''
-            In this chapter, you'll learn how to configure the table to
-            - assign the column type
-            - change the data presentation
-            - change the data formatting
-            - validate or coerce user data input
-            - apply default behavior for valid and invalid data
-            '''),
-
-        Chapter('Part 6. Editable Tables',
-            '/datatable/editable',
-            '''
-            The DataTable is editable. Like a spreadsheet, it can be used
-            as an input for controlling models with a variable number
-            of inputs.
-
-            This chapter includes recipes for:
-
-            - Determining which cell has changed
-            - Filtering out null values
-            - Adding or removing columns
-            - Adding or removing rows
-            - Ensuring that a minimum set of rows are visible
-            - Running Python computations on certain columns or cells
-            '''),
-
-        Chapter('Part 7. Rendering Cells as Dropdowns',
-            '/datatable/dropdowns',
-            '''
-            Cells can be rendered as editable Dropdowns. This is our first
-            stake in bringing a full typing system to the table.
-            Rendering cells as dropdowns introduces some complexity in the
-            markup and so there are a few limitations that you should be aware
-            of.
-            '''),
-
-        Chapter('Part 8. Virtualization',
-            '/datatable/virtualization',
-            '''
-            Examples using DataTable virtualization.
-            '''),
-
-        Chapter('Part 9. Filtering Syntax',
-            '/datatable/filtering',
-            '''
-            An explanation and examples of filtering syntax for both frontend
-            and backend filtering in the DataTable.
-            '''),
-
-        Chapter('Part 10. Table Reference',
-            '/datatable/reference',
-            '''
-            The full list of Table properties and their settings.
-            ''')
-    ]),
-
-    Section('Roadmap, Sponsorships, and Contact', dcc.Markdown(dedent(
-    '''
-    Immediately, we're working on stability, virtualization, and
-    a first-class data type system.
-    Check out [our roadmap project board](https://github.com/orgs/plotly/projects/12)
-    to see what's coming next.
-
-    Many thanks to all of our customers who have sponsored the
-    development of this table. Interested in steering the roadmap?
-    [Get in touch](https://plot.ly/products/consulting-and-oem/)
-    '''
-    )))
+    Section('User Guide', []),
 ])

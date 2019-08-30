@@ -6,7 +6,7 @@ from textwrap import dedent
 
 import dash_table
 from .utils import section_title
-from tutorial import styles, tools
+from dash_docs import styles, tools
 
 
 examples = {

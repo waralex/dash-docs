@@ -2,11 +2,11 @@
 import dash_core_components as dcc
 import dash_html_components as html
 
-from tutorial import styles
-from tutorial import tools
-from tutorial.utils.convert_props_to_table import generate_prop_table
-from tutorial.utils.component_block import ComponentBlock
-from tutorial.components import Syntax, Example
+from dash_docs import styles
+from dash_docs import tools
+from dash_docs.tutorial.utils.convert_props_to_table import generate_prop_table
+from dash_docs.tutorial.utils.component_block import ComponentBlock
+from dash_docs.tutorial.components import Syntax, Example
 
 examples = {
     'confirm': tools.load_example('tutorial/examples/core_components/confirm.py'),

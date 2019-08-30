@@ -1,6 +1,6 @@
 import dash_html_components as html
 
-import reusable_components
+from dash_docs import reusable_components
 
 
 def s(string_block):
