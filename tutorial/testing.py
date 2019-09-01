@@ -44,7 +44,7 @@ layout = html.Div([
     can check the details from both [Firefox](https://developer.mozilla.org/en-US/docs/Mozilla/Firefox/Headless_mode)
     and [Chrome](https://developers.google.com/web/updates/2017/04/headless-chrome).
 
-    Remote WebDriver is added in Dash *1.3.0*. You may have two use cases:
+    Remote WebDriver support is added in Dash *1.3.0*. There are two ways to use it:
 
     1. Run `pytest --remote --log-cli-level DEBUG -k bsly001` to grab a Chrome
     WebDriver from a local hosted grid at `http://localhost:4444/wd/hub`
