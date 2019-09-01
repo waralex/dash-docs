@@ -58,7 +58,7 @@ layout = html.Div([
     It's important to note that we cannot fully test and guarantee that the
     above cases will work with any given selenium grid you have. The limitation
     might come from how the network is set up, the limitation of different
-    hosting OS and how the docker-compose was configured.
+    hosting OS or how docker-compose was configured.
 
     You might need to do some extra WebDriver Options Tuning to have the tests
     running in a particular Selenium-Grid. And there is a back door open for
