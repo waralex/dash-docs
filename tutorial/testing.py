@@ -44,7 +44,7 @@ layout = html.Div([
     can check the details from both [Firefox](https://developer.mozilla.org/en-US/docs/Mozilla/Firefox/Headless_mode)
     and [Chrome](https://developers.google.com/web/updates/2017/04/headless-chrome).
 
-    Remote WebDriver is added in Dash *1.3.0*. You may have two use cases:
+    Remote WebDriver support is added in Dash *1.3.0*. There are two ways to use it:
 
     1. Run `pytest --remote -k bsly001` to grab a Chrome WebDriver from a local
     hosted grid at `http://localhost:4444/wd/hub`
@@ -58,7 +58,7 @@ layout = html.Div([
     It's important to note that we cannot fully test and guarantee that the
     above cases will work with any given selenium grid you have. The limitation
     might come from how the network is set up, the limitation of different
-    hosting OS and how the docker-compose was configured.
+    hosting OS or how docker-compose was configured.
 
     You might need to do some auxiliary WebDriver Options tuning to run the
     tests in a particular Selenium-Grid. The first useful tip is to change the
