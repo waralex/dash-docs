@@ -46,12 +46,12 @@ layout = html.Div([
 
     Remote WebDriver is added in Dash *1.3.0*. You may have two use cases:
 
-    1. Run `pytest --remote --log-cli-level DEBUG -k bsly001` to grab a Chrome
-    WebDriver from a local hosted grid at `http://localhost:4444/wd/hub`
-    2. Run `pytest --webdriver Firefox --log-cli-level DEBUG --remote-url https://grid_provioder_endpoints`
-    to connect with a remote grid in the cloud. Note that you don't need to use
-    `--remote` as soon as the `--remote-url` value is set and different than
-    the default one.
+    1. Run `pytest --remote -k bsly001` to grab a Chrome WebDriver from a local
+    hosted grid at `http://localhost:4444/wd/hub`
+    2. Run `pytest --webdriver Firefox --remote-url https://grid_provioder_endpoints`
+    to connect with a remote grid in the cloud running Firefox (default Chrome).
+    Note that you don't need to use `--remote` as soon as the `--remote-url`
+    value is set and different than the default one.
 
     ### Caveats
 
@@ -60,10 +60,13 @@ layout = html.Div([
     might come from how the network is set up, the limitation of different
     hosting OS and how the docker-compose was configured.
 
-    You might need to do some extra WebDriver Options Tuning to have the tests
-    running in a particular Selenium-Grid. And there is a back door open for
-    this purpose with `pytest_setup_options` hook defined in `plugin.py`. The
-    example below is to use the `headless` mode with Chrome WebDriver in
+    You might need to do some auxiliary WebDriver Options tuning to run the
+    tests in a particular Selenium-Grid. The first useful tip is to change the
+    default logging level with `--log-cli-level DEBUG`. Secondly, there is a
+    back door for browser option customization by a `pytest_setup_options` hook
+    defined in `plugin.py`.
+
+    The example below is to use the `headless` mode with Chrome WebDriver in
     Windows, there is a [workaround](https://bugs.chromium.org/p/chromium/issues/detail?id=737678)
     by adding `--disable-gpu` in the options.
 
