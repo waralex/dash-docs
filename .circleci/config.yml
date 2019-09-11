@@ -34,7 +34,7 @@ jobs:
               . venv/bin/activate
               git clone --depth 1 https://github.com/plotly/dash.git dash-main
               cd dash-main && pip install -e .[testing] && cd ..
-              pytest tests/snapshots
+              pytest --nopercyfinalize tests/snapshots
 
   "python-3.6":
     <<: *test-template
