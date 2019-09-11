@@ -1,12 +1,13 @@
 import pytest
 from dash.testing.browser import Browser
 from dash.testing.application_runners import ProcessRunner
+from tutorial.chapter_index import chapters
 
 
 @pytest.fixture(scope="session")
 def doc_server():
     with ProcessRunner() as server:
-        server(raw_command="python run.py", start_timeout=180)
+        server(raw_command="python run.py", port=8060, start_timeout=60)
         yield server
 
 
@@ -28,5 +29,4 @@ def dash_doc(doc_server, request):
 
 @pytest.fixture(scope="session")
 def chapter_map():
-    from tutorial.chapter_index import chapters
-    yield [v['url'] for _, v in chapters.items()]
+    yield [v["url"] for _, v in chapters.items()]
