@@ -1,9 +1,16 @@
 version: 2
-
 jobs:
+  "percy-finalize":
+    docker:
+      - image: percyio/agent
+    steps:
+      - run: percy finalize --all
+
   "python-2.7": &test-template
     docker:
       - image: circleci/python:2.7-stretch-browsers
+        environment:
+          PERCY_PARALLEL_TOTAL: '-1'
 
     steps:
       - checkout
@@ -34,7 +41,7 @@ jobs:
               . venv/bin/activate
               git clone --depth 1 https://github.com/plotly/dash.git dash-main
               cd dash-main && pip install -e .[testing] && cd ..
-              pytest --nopercyfinalize tests/snapshots
+              pytest tests/snapshots
 
   "python-3.6":
     <<: *test-template
@@ -53,8 +60,15 @@ jobs:
 
 workflows:
   version: 2
-  build:
+  python2.7:
     jobs:
-      - "python-2.7"
-      - "python-3.6"
-      - "python-3.7"
+      - python-2.7
+      - percy-finalize:
+          requires:
+            - python-2.7
+  python3.6:
+    jobs:
+      - python-3.6
+  python3.7:
+    jobs:
+      - python-3.7
