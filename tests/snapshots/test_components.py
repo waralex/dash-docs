@@ -32,3 +32,11 @@ def test_snap500_cytoscape_resources(chapter_map, dash_doc):
         dash_doc.visit_and_snapshot(
             resource, hook_id="wait-for-page-{}".format(resource)
         )
+
+
+def test_snap600_daq_resources(chapter_map, dash_doc):
+    daqs = [_ for _ in chapter_map if _.startswith("/dash-daq/")]
+    for resource in daqs:
+        dash_doc.visit_and_snapshot(
+            resource, hook_id="wait-for-page-{}".format(resource)
+        )
