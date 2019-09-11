@@ -3,11 +3,10 @@ import re
 
 print('====== tools ======')
 
-if os.environ.get('environment', '') == 'dash-docs':
+if os.environ.get('DASH_APP_LOCATION', '') != 'ABSOLUTE':
     from .server import app
 else:
-    from server import app, foo
-    print(foo)
+    from server import app
 
 
 def exception_handler(func):

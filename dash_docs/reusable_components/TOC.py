@@ -22,9 +22,9 @@ def TOCChapters(chapters):
                     chapter['url'].rstrip('/'),
                     chapter.get('description', '')
                 ))
-        except:
-            print('Issue with this chapter: ')
-            # import pdb; pdb.set_trace()
+        except Exception as e:
+            print(e)
+
     return chapter_content
 
 

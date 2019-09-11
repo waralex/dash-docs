@@ -11,7 +11,7 @@ from dash_docs import styles
 from dash_docs import reusable_components as rc
 
 
-if os.environ.get('environment', '') == 'dash-docs':
+if os.environ.get('DASH_APP_LOCATION', '') != 'ABSOLUTE':
     from dash_docs.server import app
 else:
     from server import app
