@@ -22,9 +22,9 @@ layout = html.Div([
     dcc.Markdown('''
     # FAQs and Gotchas
 
-    > This is the *7th* and final chapter of the essential [Dash Tutorial](/).
-    > The [previous chapter](/sharing-data-between-callbacks) described how to
-    > share data between callbacks. The [rest of the Dash documentation](/)
+    > This is the *7th* and final chapter of the essential [Dash Tutorial](/Docs/).
+    > The [previous chapter](/Docs/sharing-data-between-callbacks) described how to
+    > share data between callbacks. The [rest of the Dash documentation](/Docs/)
     > covers other topics like multi-page apps and component libraries.
 
 
@@ -43,11 +43,11 @@ layout = html.Div([
       `dash-core-components` accept the attribute `className`, which corresponds
       to the HTML element attribute `class`.
 
-      The [Dash HTML Components](/dash-html-components) section in the Dash User
+      The [Dash HTML Components](/Docs/dash-html-components) section in the Dash User
       Guide explains how to supply `dash-html-components` with both inline
       styles and CSS class names that you can target with CSS style sheets. The
       [Adding CSS & JS and Overriding the Page-Load
-      Template](/external-resources) section in the Dash Guide explains how you
+      Template](/Docs/external-resources) section in the Dash Guide explains how you
       can link your own style sheets to Dash apps.
 
     ------------------------
@@ -56,7 +56,7 @@ layout = html.Div([
 
     **A:** You can add your own scripts to your Dash app, just like you would
       add a JavaScript file to an HTML document. See the [Adding CSS & JS and
-      Overriding the Page-Load Template](/external-resources) section in the
+      Overriding the Page-Load Template](/Docs/external-resources) section in the
       Dash Guide.
 
     ------------------------
@@ -64,14 +64,14 @@ layout = html.Div([
     **Q:** *Can I make a Dash app with multiple pages?*
 
     **A:** Yes! Dash has support for multi-page apps. See the [Multi-Page Apps
-      and URL Support](/urls) section in the Dash User Guide.
+      and URL Support](/Docs/urls) section in the Dash User Guide.
 
     ------------------------
 
     **Q:** *How I can I organise my Dash app into multiple files?*
 
     **A:** A strategy for doing this can be found in the [Multi-Page Apps
-      and URL Support](/urls) section in the Dash User Guide.
+      and URL Support](/Docs/urls) section in the Dash User Guide.
 
     ------------------------
 
@@ -160,7 +160,7 @@ layout = html.Div([
     can be especially true of how the callback system works. This section
     outlines some common Dash gotchas that you might encounter as you start
     building out more complex Dash apps. If you have read through the rest of
-    the [Dash Tutorial](/) and are encountering unexpected behaviour, this is a
+    the [Dash Tutorial](/Docs/) and are encountering unexpected behaviour, this is a
     good section to read through. If you still have residual questions, the
     [Dash Community forums](https://community.plot.ly/c/dash) is a great place
     to ask them.

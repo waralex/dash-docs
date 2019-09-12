@@ -98,7 +98,7 @@ layout = html.Div([
     of Cytoscape. The `id` parameter is needed for assigning callbacks,
     `style` lets you specify the CSS style of the component (similarly to core
     components), and layout tells you how to arrange your graph. It is
-    described in depth in [part 2](/cytoscape/layout), so all you need to know is that `'preset'`
+    described in depth in [part 2](/Docs/cytoscape/layout), so all you need to know is that `'preset'`
     will organize the nodes according to the positions you specified.
 
     The official Cytoscape.js documentation nicely outlines the [JSON format
@@ -149,7 +149,7 @@ layout = html.Div([
     dcc.Markdown('''
     > Note that those boolean properties can be overwritten by certain Cytoscape
     > parameters such as `autoungrabify` or `autounselectify`. Please refer to
-    > [the reference](/cytoscape/reference) for more information.
+    > [the reference](/Docs/cytoscape/reference) for more information.
 
     ## Classes
 
@@ -194,7 +194,7 @@ layout = html.Div([
     '''),
 
     dcc.Markdown('''
-    > The stylesheet parameter will be described in depth in [part 3](/cytoscape/styling)
+    > The stylesheet parameter will be described in depth in [part 3](/Docs/cytoscape/styling)
     > of this guide. We will show extensive examples of using selectors to
     > style groups, classes, and data values. Expand below if you still
     > want to take a look at the stylesheet used previously.

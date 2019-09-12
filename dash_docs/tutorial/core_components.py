@@ -278,7 +278,7 @@ dcc.DatePickerRange(
     The `dash_html_components` library exposes all of the HTML tags.
     This includes the `Table`, `Tr`, and `Tbody` tags that can be used
     to create an HTML table. See
-    [Create Your First Dash App, Part 1](/getting-started-part-1)
+    [Create Your First Dash App, Part 1](/Docs/getting-started-part-1)
     for an example.
 
     Dash provides an interactive `DataTable` as part of the `data-table`
@@ -298,7 +298,7 @@ dcc.DatePickerRange(
 
 
     dcc.Markdown('''
-    [View the docs](/datatable) or [View the source](https://github.com/plotly/dash-table)
+    [View the docs](/Docs/datatable) or [View the source](https://github.com/plotly/dash-table)
 
     ***
     '''.replace('    ', '')),

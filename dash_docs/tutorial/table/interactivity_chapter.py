@@ -43,7 +43,7 @@ layout = html.Div(
         > spaces or special characters (including `-`, particularly in dates)
         > you need to wrap them in quotes.
         > Single quotes `'`, double quotes `"`, or backticks `\\`` all work.
-        > [Full filter syntax reference](/datatable/filtering)
+        > [Full filter syntax reference](/Docs/datatable/filtering)
         """)),
 
         dcc.Markdown(dedent("""
@@ -54,7 +54,7 @@ layout = html.Div(
         Note that if `data` is an `Input` then the entire
         `data` will be passed over the network: if your dataframe is large,
         then this will become slow. For large dataframes, you can perform the
-        [sorting or filtering in Python instead](/datatable/callbacks).
+        [sorting or filtering in Python instead](/Docs/datatable/callbacks).
         """)),
 
         dcc.Markdown(

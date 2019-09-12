@@ -55,7 +55,7 @@ preamble = html.Div([
     > breaking changes any time soon, but if there are they will be
     > accompanied by a new major version of dash. If you've been using
     > DataTable with `dash v0.x` / `dash-table v3.x`, check out the
-    > [Dash 1.0 Migration Guide](/dash-1-0-migration) for the full list of
+    > [Dash 1.0 Migration Guide](/Docs/dash-1-0-migration) for the full list of
     > changes.
     >
     > Otherwise, check out DataTable in the docs below.

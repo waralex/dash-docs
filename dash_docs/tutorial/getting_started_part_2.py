@@ -21,17 +21,17 @@ layout = html.Div([
     dcc.Markdown('''
     # Basic Dash Callbacks
 
-    > This is the *3rd* chapter of the [Dash Tutorial](/).
-    > The [previous chapter](/getting-started) covered the Dash app `layout`
-    > and the [next chapter](/state) covers an additional concept of callbacks
+    > This is the *3rd* chapter of the [Dash Tutorial](/Docs/).
+    > The [previous chapter](/Docs/getting-started) covered the Dash app `layout`
+    > and the [next chapter](/Docs/state) covers an additional concept of callbacks
     > known as `state`. Just getting started? Make sure to
-    > [install the necessary dependencies](/installation).
+    > [install the necessary dependencies](/Docs/installation).
 
     '''),
 
     dcc.Markdown('''
 
-        In the [previous chapter on the `app.layout`](/getting-started) we
+        In the [previous chapter on the `app.layout`](/Docs/getting-started) we
         learned that the `app.layout` describes what the app looks like and is
         a hierarchical tree of components.
         The `dash_html_components` library provides classes for all of the HTML
