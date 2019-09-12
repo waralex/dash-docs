@@ -16,7 +16,8 @@ examples = {
         'editing_uploading.py',
         'editing_columns.py',
         'editing_rows_and_columns.py',
-        'editing_updating_self.py'
+        'editing_updating_self.py',
+        'editing_loading_state.py'
     ]
 }
 
@@ -76,6 +77,37 @@ layout = html.Div([
         examples['editing_simple.py'][1],
         className='example-container'
     ),
+
+    dcc.Markdown(dedent('''
+    ## Integration with Dash loading states
+
+    As of table version 4.3.0, Dash loading states also have some
+    control over whether the table is editable. If the `data` property
+    is loading (e.g., while retrieving data from a server), you will
+    be unable to edit the cells and the dropdowns. This avoids cases
+    in which the edited value (input from the user) conflicts with the
+    value that is returned by the server.
+
+    In the example below, you can use the dropdown to choose to load
+    either the `style_cell` property or the `data` property. When you
+    select the property, there will be a simulated delay (to mimic a
+    delay you might get when communicating with a server).
+
+    If you select `style_cell`, you'll be able to edit the cell as the
+    value is loading; if you select `data`, you won't. Try it out
+    yourself!
+
+    ''')),
+
+    dcc.Markdown(
+        examples['editing_loading_state.py'][0],
+        style=styles.code_container
+    ),
+    html.Div(
+        examples['editing_loading_state.py'][1],
+        className='example-container'
+    ),
+
 
     dcc.Markdown(dedent('''
     ## Filtering out Empty Cells
