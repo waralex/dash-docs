@@ -2,7 +2,6 @@ from .import tutorial
 
 import dash_html_components as html
 import dash_core_components as dcc
-import dash_bio
 import dash_table
 import dash_daq
 import dash_cytoscape
@@ -369,24 +368,25 @@ URLS = [
                 ]
             },
 
-            {
-                'name': 'Dash Bio',
-                'chapters': [
-                    {
-                        'url': '/dash-bio/',
-                        'name': 'Overview',
-                        'content': tutorial.dashbio.layout,
-                        'description': (
-                            'Components dedicated to visualizing bioinformatics data.'
-                        )
-                    }
-                ] + component_list(
-                    dash_bio,
-                    tutorial.dashbio_examples,
-                    'dash-bio',
-                    'dash_bio'
-                )
-            },
+            # {
+            #     'name': 'Dash Bio',
+            #     'chapters': [
+            #         {
+            #             'url': '/dash-bio/',
+            #             'name': 'Overview',
+            #             'content': tutorial.dashbio.layout,
+            #             'description': (
+            #                 'Components dedicated to visualizing bioinformatics data.'
+            #             )
+            #         }
+            #     ] +
+            #     # component_list(
+            #     #     dash_bio,
+            #     #     tutorial.dashbio_examples,
+            #     #     'dash-bio',
+            #     #     'dash_bio'
+            #     # )
+            # },
 
             {
                 'name': 'Dash DAQ',
