@@ -74,6 +74,6 @@ layout = html.Div([
 
     dcc.Link(
         'Dash Tutorial Part 5. Interactive Graphing',
-        href='/interactive-graphing'),
+        href='/Docs/interactive-graphing'),
 
 ])

@@ -258,7 +258,7 @@ component = {}
         html.Hr(),
 
         html.H3(dcc.Link(component_name,
-                         href='/{}/{}'.format(
+                         href='/Docs/{}/{}'.format(
                              library_name.replace('_', '-'),
                              component_name.lower())),
                 id=component_name.replace(' ', '-').lower()),
@@ -270,7 +270,7 @@ component = {}
         html.Br(),
 
         dcc.Link('More {} Examples and Reference'.format(component_name),
-                 href='/{}/{}'.format(
+                 href='/Docs/{}/{}'.format(
                      library_name.replace('_', '-'),
                      component_name.lower()))
     ]

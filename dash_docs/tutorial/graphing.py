@@ -130,7 +130,7 @@ layout = html.Div([
 
     dcc.Link(
         'Dash Tutorial Part 6. Sharing Data Between Callbacks',
-        href='/sharing-data-between-callbacks'
+        href='/Docs/sharing-data-between-callbacks'
     )
 
 ])

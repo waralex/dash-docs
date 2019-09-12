@@ -275,7 +275,7 @@ layout = html.Div([
 
     dcc.Link(
         'Dash Tutorial Part 4: More about callbacks',
-        href="/state"
+        href="/Docs/state"
     )
 
 

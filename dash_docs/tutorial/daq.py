@@ -169,7 +169,7 @@ layout_children += [
     html.Hr(),
 
     html.H3(dcc.Link('DarkThemeProvider',
-                     href='/dash-daq/darkthemeprovider')),
+                     href='/Docs/dash-daq/darkthemeprovider')),
 
     dcc.Markdown(
         '''A component placed at the root of the component \
