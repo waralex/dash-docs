@@ -232,9 +232,9 @@ layout = html.Div([
             columns=[
                 {"name": ["", "Year"], "id": "year", "clearable": "first" },
                 {"name": ["City", "Montreal"], "id": "montreal", "deletable": [False, True]},
-                {"name": ["City", "Toronto"], "id": "toronto", "renameable": True },
+                {"name": ["City", "Toronto"], "id": "toronto", "renamable": True },
                 {"name": ["City", "Ottawa"], "id": "ottawa", "hideable": "last"},
-                {"name": ["City", "Vancouver"], "id": "vancouver", "clearable": True, "renameable": True, "hideable": True, "deletable": True },
+                {"name": ["City", "Vancouver"], "id": "vancouver", "clearable": True, "renamable": True, "hideable": True, "deletable": True },
                 {"name": ["Climate", "Temperature"], "id": "temp"},
                 {"name": ["Climate", "Humidity"], "id": "humidity"},
             ],
@@ -278,7 +278,7 @@ layout = html.Div([
             columns=[
                 {"name": ["", "Year"], "id": "year" },
                 {"name": ["City", "Montreal"], "id": "montreal", "deletable": [False, True]},
-                {"name": ["City", "Toronto"], "id": "toronto", "renameable": True },
+                {"name": ["City", "Toronto"], "id": "toronto", "renamable": True },
                 {"name": ["City", "Ottawa"], "id": "ottawa", "hideable": "last"},
                 {"name": ["City", "Vancouver"], "id": "vancouver"},
                 {"name": ["Climate", "Temperature"], "id": "temp"},
