@@ -5,6 +5,7 @@ import dash_core_components as dcc
 import dash_table
 import dash_daq
 import dash_cytoscape
+import dash_bio
 
 from .reusable_components import TOC, TOCChapters
 
@@ -368,6 +369,25 @@ URLS = [
                 ]
             },
 
+            {
+                'name': 'Dash Bio',
+                'chapters': [
+                    {
+                        'url': '/dash-bio',
+                        'name': 'Overview',
+                        'description': (
+                            'Dash Bio is a component library '
+                            'dedicated to visualizing bioinformatics data.'
+                        ),
+                        'autogenerate_index': True,
+                    }
+                ] + component_list(
+                    dash_bio,
+                    None,
+                    'dash-bio',
+                    'dash_bio'
+                )
+            },
             # {
             #     'name': 'Dash Bio',
             #     'chapters': [
