@@ -6,9 +6,7 @@ from dash.dependencies import Input, Output
 import pandas as pd
 import plotly.graph_objs as go
 
-df = pd.read_csv(
-    'https://raw.githubusercontent.com/plotly/'
-    'datasets/master/gapminderDataFiveYear.csv')
+df = pd.read_csv('https://raw.githubusercontent.com/plotly/datasets/master/gapminderDataFiveYear.csv')
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 

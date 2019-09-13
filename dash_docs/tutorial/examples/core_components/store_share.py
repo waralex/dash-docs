@@ -11,9 +11,7 @@ import dash_table
 
 app = dash.Dash(__name__)
 
-df = pd.read_csv(
-    'https://raw.githubusercontent.com/'
-    'plotly/datasets/master/gapminderDataFiveYear.csv')
+df = pd.read_csv('https://raw.githubusercontent.com/plotly/datasets/master/gapminderDataFiveYear.csv')
 
 countries = set(df['country'])
 

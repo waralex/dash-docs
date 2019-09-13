@@ -87,8 +87,46 @@ def load_example(path):
         if '$tools' in _example:
             _example = _example.replace('$tools', os.path.dirname(os.path.realpath(__file__)))
 
+        # replace remote datasets with local ones
+        # so that the app can run in internet-less environments
+        find_and_replace = {
+            'https://raw.githubusercontent.com/plotly/datasets/master/gapminderDataFiveYear.csv':
+            'datasets/gapminderDataFiveYear.csv',
+
+            'https://raw.githubusercontent.com/plotly/datasets/master/gapminder2007.csv':
+            'datasets/gapminder2007.csv',
+
+            'https://raw.githubusercontent.com/plotly/datasets/master/solar.csv':
+            'datasets/solar.csv',
+
+            'https://raw.githubusercontent.com/plotly/datasets/master/Emissions%20Data.csv':
+            'datasets/Emissions%20Data.csv',
+
+            'https://raw.githubusercontent.com/plotly/datasets/master/1962_2006_walmart_store_openings.csv':
+            'datasets/1962_2006_walmart_store_openings.csv',
+
+            'https://upload.wikimedia.org/wikipedia/commons/e/e4/Mitochondria%2C_mammalian_lung_-_TEM_%282%29.jpg':
+            'datasets/mitochondria.jpg',
+
+            'https://gist.githubusercontent.com/chriddyp/cb5392c35661370d95f300086accea51/raw/8e0768211f6b747c0db42a9ce9a0937dafcbd8b2/indicators.csv':
+            'datasets/indicators.csv',
+
+            'https://gist.githubusercontent.com/chriddyp/c78bf172206ce24f77d6363a2d754b59/raw/c353e8ef842413cae56ae3920b8fd78468aa4cb2/usa-agricultural-exports-2011.csv':
+            'datasets/usa-agricultural-exports-2011.csv',
+
+            'https://gist.githubusercontent.com/chriddyp/5d1ea79569ed194d432e56108a04d188/raw/a9f9e8076b837d541398e999dcbac2b2826a81f8/gdp-life-exp-2007.csv':
+            'datasets/gdp-life-exp-2007.csv'
+        }
+        for key in find_and_replace:
+            if key in _example:
+                _example = _example.replace(key, find_and_replace[key])
+
         scope = {'app': app}
-        exec(_example, scope)
+        try:
+            exec(_example, scope)
+        except Exception as e:
+            print(_example)
+            raise e
 
     return (
         '```python \n' + _source + '```',
