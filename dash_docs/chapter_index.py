@@ -697,7 +697,7 @@ URLS = [
             },
             {
                 'name': 'Dash Enterprise Documentation',
-                'url': '/dash-deployment-server',
+                'url': '/dash-enterprise',
                 'content': tutorial.dash_deployment_server.layout,
             }
         ]

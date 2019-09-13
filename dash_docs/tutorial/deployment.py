@@ -26,7 +26,7 @@ built-in SSL support, LDAP authentication, and more.
 [Learn more about Dash Enterprise](https://plot.ly/dash/pricing) or
 [get in touch to start a trial](https://go.plot.ly/dash-doc).
 
-For existing customers, see the [Dash Enterprise Documentation](/Docs/dash-deployment-server).
+For existing customers, see the [Dash Enterprise Documentation](/Docs/dash-enterprise).
 
 ### Dash and Flask
 

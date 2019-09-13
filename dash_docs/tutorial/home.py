@@ -147,8 +147,8 @@ layout = TOC(URLS)
 #     Section('Dash Enterprise', [
 #         Chapter('About Dash Enterprise',
 #                 'https://plot.ly/dash/pricing/'),
-#         Chapter(chapters['dash-deployment-server']['name'],
-#                 chapters['dash-deployment-server']['url'])],
+#         Chapter(chapters['dash-enterprise']['name'],
+#                 chapters['dash-enterprise']['url'])],
 #         description="""Dash Enterprise is Plotly's commercial offering
 #                        for hosting and sharing Dash apps on-premises or in the
 #                        cloud.""",

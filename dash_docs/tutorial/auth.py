@@ -251,7 +251,7 @@ layout = html.Div([
         style=styles.code_container),
 
     dcc.Markdown('''
-    or, if you are using [Dash Enterprise, you can keep your environment variables secret (view the docs)](/Docs/dash-deployment-server/environment-variables).
+    or, if you are using [Dash Enterprise, you can keep your environment variables secret (view the docs)](/Docs/dash-enterprise/environment-variables).
 
     '''.replace('   ', '')),
 
