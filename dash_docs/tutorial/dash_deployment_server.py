@@ -8,15 +8,6 @@ def s(string_block):
 
 
 layout = html.Div(className='toc', children=[
-
-    reusable_components.Section("What's Dash Deployment Server?", [
-        reusable_components.Chapter('Learn More About Dash Deployment Server',
-                'https://plot.ly/dash/pricing/',
-                """Dash Deployment Server is Plotly's commercial offering
-                   for hosting and sharing Dash Apps on-premises or in the
-                   cloud. [Learn more](https://plot.ly/dash/pricing) or
-                   [request a trial](https://go.plot.ly/dash-doc).""")
-    ]),
     html.H1('Dash Enterprise Documentation'),
 
     reusable_components.Section("Deployment", [
