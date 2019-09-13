@@ -533,7 +533,7 @@ dcc.Markdown('''
     ComponentBlock("""import dash_core_components as dcc
 
 dcc.Markdown('''
-[Dash User Guide](https://dash.plot.ly/)
+[Dash User Guide](/Docs/)
 ''')"""),
     html.Hr(),
     html.H3("Inline Code"),

@@ -130,7 +130,7 @@ layout = html.Div([
 
     In general, if you are looking to add custom clientside behavior in your
     application, we recommend encapsulating that behavior in a
-    [custom Dash component](https://dash.plot.ly/plugins).
+    [custom Dash component](/Docs/plugins).
 
     ------------------------
 

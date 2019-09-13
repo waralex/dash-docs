@@ -111,7 +111,7 @@ layout = html.Div([
     dcc.Markdown(dedent('''
     ## Uploading Data
 
-    A nice recipe is to tie the [`dcc.Upload`](https://dash.plot.ly/dash-core-components/upload)
+    A nice recipe is to tie the [`dcc.Upload`](/Docs/dash-core-components/upload)
     with the Table component. After the user has uploaded the data, they
     could edit the contents or rename the rows.
 

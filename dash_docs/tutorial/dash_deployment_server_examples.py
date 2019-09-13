@@ -790,7 +790,7 @@ staticAssets = html.Div(children=[
 
     For more information about custom CSS, JavaScripts, HTML index template,
     meta tags, or serving Dash's component libaries locally, see
-    [Dash Docs](https://dash.plot.ly/external-resources).
+    [Dash Docs](/Docs/external-resources).
 
     ***
 
@@ -2201,7 +2201,7 @@ pdfService = html.Div(children=[
         of your Dash applications. The API is simple: pass in the URL of your
         Dash app and the sizing parameters and get back a PDF print out. You can
         automate PDF generation with
-        [Dash Enterprise's Celery task queues](https://dash.plot.ly/dash-deployment-server/celery-process)
+        [Dash Enterprise's Celery task queues](/Docs/dash-deployment-server/celery-process)
         or you can generate these PDFs on-the-fly.
 
         ***
