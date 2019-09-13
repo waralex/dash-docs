@@ -1,6 +1,6 @@
-# Dash Deployment Server Documentation
+# Dash Enterprise Documentation
 
-The Dash Deployment Server documentation `/dash-deployment-server/` consists of a series of chapters relevant to Plotly Enterprise + DDS users. If you wish to contribute to these documents, please follow the instruction below.
+The Dash Enterprise documentation `/dash-deployment-server/` consists of a series of chapters relevant to Plotly Enterprise + DDS users. If you wish to contribute to these documents, please follow the instruction below.
 
 ## Editing Existing Content
 
@@ -18,7 +18,7 @@ Files that need edited include:
 
 ### Add New Chapter
 
-In `tutorial/dash_deployment_server.py` add the new chapter to the Dash Deployment Server main page.
+In `tutorial/dash_deployment_server.py` add the new chapter to the Dash Enterprise main page.
 
 ```
 reusable_components.Chapter(title, URL, description)

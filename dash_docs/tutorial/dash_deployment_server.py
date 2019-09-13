@@ -8,7 +8,6 @@ def s(string_block):
 
 
 layout = html.Div(className='toc', children=[
-    html.H1('Dash Deployment Server Documentation'),
 
     reusable_components.Section("What's Dash Deployment Server?", [
         reusable_components.Chapter('Learn More About Dash Deployment Server',
@@ -18,14 +17,15 @@ layout = html.Div(className='toc', children=[
                    cloud. [Learn more](https://plot.ly/dash/pricing) or
                    [request a trial](https://go.plot.ly/dash-doc).""")
     ]),
+    html.H1('Dash Enterprise Documentation'),
 
     reusable_components.Section("Deployment", [
-        reusable_components.Chapter('Part 1. Initialize Dash Apps on Dash Deployment Server',
+        reusable_components.Chapter('Part 1. Initialize Dash Apps on Dash Enterprise',
                 '/dash-deployment-server/initialize',
-                'Initialize an app via Dash Deployment Server UI.'),
-        reusable_components.Chapter('Part 2. Deploy Dash Apps on Dash Deployment Server',
+                'Initialize an app via Dash Enterprise UI.'),
+        reusable_components.Chapter('Part 2. Deploy Dash Apps on Dash Enterprise',
                 '/dash-deployment-server/deployment',
-                'Deploy Dash Apps to the Dash Deployment Server using '
+                'Deploy Dash Apps to the Dash Enterprise using '
                 'HTTPS or SSH. Start with a sample app or deploy your existing app.')
     ]),
 
@@ -61,11 +61,11 @@ reusable_components.Section("User Interface", [
         reusable_components.Chapter('Mapping Local Directories',
                 '/dash-deployment-server/map-local-directories',
                 'Directory mappings allow you to make directories on the '
-                'Dash Deployment Server available to your app.')
+                'Dash Enterprise available to your app.')
     ]),
 
     reusable_components.Section("Advanced", [
-        reusable_components.Chapter('Authenticating to Dash Deployment Server with SSH',
+        reusable_components.Chapter('Authenticating to Dash Enterprise with SSH',
                 '/dash-deployment-server/ssh',
                 "There are two methods to deploy Dash Apps: HTTPS and SSH. "
                 "We recommend getting started with the HTTPS method. "
@@ -89,9 +89,9 @@ reusable_components.Section("User Interface", [
                 '/dash-deployment-server/staging-app',
                 'Use a staged Dash App to test changes before updating your '
                 'production Dash App.'),
-        reusable_components.Chapter('Dash Deployment Server PDF Service',
+        reusable_components.Chapter('Dash Enterprise PDF Service',
                 '/dash-deployment-server/pdf-service',
-                'Utilize the Dash Deployment Server API endpoint for creating '
+                'Utilize the Dash Enterprise API endpoint for creating '
                 'PDF exports of your Dash applications')
     ]),
 
@@ -101,7 +101,7 @@ reusable_components.Section("User Interface", [
                 """View app analytics such as last updated, CPU usage, Memory Usage, and more."""),
         reusable_components.Chapter('App Logs',
                 '/dash-deployment-server/logs',
-                """Check your Dash App's logs via the Dash Deployment Server
+                """Check your Dash App's logs via the Dash Enterprise
                 UI or via the command line."""),
         reusable_components.Chapter('Common Errors',
                 '/dash-deployment-server/troubleshooting',
@@ -115,8 +115,8 @@ reusable_components.Section("User Interface", [
         reusable_components.Chapter('Advanced Git',
                 '/dash-deployment-server/git',
                 'A reference for git commands and how they are used '
-                'with Dash Deployment Server.'),
-        reusable_components.Chapter('Dash Deployment Server API',
+                'with Dash Enterprise.'),
+        reusable_components.Chapter('Dash Enterprise API',
                 'https://github.com/plotly/dds-api-docs',
                 'Reference documentation for DDS\'s GraphQL API. '
                 'Use this to programmatically add collaborators, '

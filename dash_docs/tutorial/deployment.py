@@ -15,18 +15,18 @@ Almost every cloud server provider has a guide for deploying
 Flask apps. For more, see the official [Flask Guide to Deployment](http://flask.pocoo.org/docs/latest/deploying/)
 or view the tutorial on deploying to Heroku below.
 
-### Dash Deployment Server
+### Dash Enterprise
 
-[Dash Deployment Server](https://plot.ly/dash/pricing/)
+[Dash Enterprise](https://plot.ly/dash/pricing/)
 is Plotly's commercial product for deploying
 Dash Apps on your company's servers or on AWS, Google Cloud, or Azure.
 It offers an enterprise-wide Dash App Portal,
 easy git-based deployment, automatic URL namespacing,
 built-in SSL support, LDAP authentication, and more.
-[Learn more about Dash Deployment Server](https://plot.ly/dash/pricing) or
+[Learn more about Dash Enterprise](https://plot.ly/dash/pricing) or
 [get in touch to start a trial](https://go.plot.ly/dash-doc).
 
-For existing customers, see the [Dash Deployment Server Documentation](/Docs/dash-deployment-server).
+For existing customers, see the [Dash Enterprise Documentation](/Docs/dash-deployment-server).
 
 ### Dash and Flask
 
@@ -254,7 +254,7 @@ to git and push those changes to heroku.
 ***
 
 This workflow for deploying apps on heroku is very similar to how deployment
-works with the Plotly Enterprise's Dash Deployment Server.
+works with the Plotly Enterprise's Dash Enterprise.
 [Learn more](https://plot.ly/dash/pricing/) or [get in touch](https://go.plot.ly/dash-doc).
 ''')
 ]

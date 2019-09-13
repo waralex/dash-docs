@@ -23,28 +23,28 @@ def s(string_block):
 # Initialize
 # # # # # # #
 Initialize = html.Div(children=[
-    html.H1('Part 1. Initialize Dash Apps on Dash Deployment Server'),
+    html.H1('Part 1. Initialize Dash Apps on Dash Enterprise'),
 
     rc.Blockquote(),
 
     dcc.Markdown(s('''
-        > This is the *1st* deployment chapter of the [Dash Deployment Server Documentation](/Docs/dash-deployment-server).
-        > The [next chapter](/Docs/dash-deployment-server/deployment) covers deploying a Dash App on Dash Deployment Server.
+        > This is the *1st* deployment chapter of the [Dash Enterprise Documentation](/Docs/dash-deployment-server).
+        > The [next chapter](/Docs/dash-deployment-server/deployment) covers deploying a Dash App on Dash Enterprise.
 
         Before creating or deploying a dash app locally, you need to initialize
-        an app on Dash Deployment Server. This can be achieved using the Dash
+        an app on Dash Enterprise. This can be achieved using the Dash
         Deployment Server UI.
     ''')),
 
     dcc.Markdown(s('''
         ***
 
-        1. Navigate to the Dash Deployment Server UI by selecting **Dash App**
+        1. Navigate to the Dash Enterprise UI by selecting **Dash App**
         from the **+ Create** located in the top right-hand corner.
     ''')),
 
     html.Img(
-        alt='Dash Deployment Server UI',
+        alt='Dash Enterprise UI',
         src='/assets/images/dds/open-dds-ui.png',
         style={
             'width': '100%', 'border': 'thin lightgrey solid',
@@ -114,7 +114,7 @@ Initialize = html.Div(children=[
         &nbsp;
 
         If you have successfully initialized an app, advance to
-        [**Part 2. Deploy Dash Apps on Dash Deployment Server**](/Docs/dash-deployment-server/deployment).
+        [**Part 2. Deploy Dash Apps on Dash Enterprise**](/Docs/dash-deployment-server/deployment).
         If you have encountered any issues, see [**Troubleshooting**](/Docs/dash-deployment-server)
         for help.
 
@@ -127,17 +127,17 @@ Initialize = html.Div(children=[
 # Deploy App
 # # # # # # #
 Deploy = html.Div(children=[
-    html.H1('Part 2. Deploy Dash Apps on Dash Deployment Server'),
+    html.H1('Part 2. Deploy Dash Apps on Dash Enterprise'),
 
     rc.Blockquote(),
 
     dcc.Markdown(s(
     '''
-    > This is the *2nd* deployment chapter of the [Dash Deployment Server Documentation](/Docs/dash-deployment-server).
-    > The [previous chapter](/Docs/dash-deployment-server/initialize) covered initializing a Dash App on Dash Deployment Server.
+    > This is the *2nd* deployment chapter of the [Dash Enterprise Documentation](/Docs/dash-deployment-server).
+    > The [previous chapter](/Docs/dash-deployment-server/initialize) covered initializing a Dash App on Dash Enterprise.
 
 
-    To deploy an app to your Dash Deployment Server, you can either choose
+    To deploy an app to your Dash Enterprise, you can either choose
     to deploy a cloned sample app, create a new app following the tutorial,
     or deploy an existing app that you created locally.
 
@@ -230,7 +230,7 @@ def display_instructions2(platform):
                     #### Modify `config.py`
 
                     Read through `config.py` and modify the values as necessary.
-                    If Dash Deployment Server was set up with "path-based routing"
+                    If Dash Enterprise was set up with "path-based routing"
                     (the default), then you will just need to change the
                     `DASH_APP_NAME` to be equal to the name of the Dash App that you
                     set earlier.
@@ -240,10 +240,10 @@ def display_instructions2(platform):
                     '''
                     ***
 
-                    #### Configure your Dash Deployment Server to be your Git remote
+                    #### Configure your Dash Enterprise to be your Git remote
 
                     In the root of your folder, run the following command to create a
-                    remote host to your new app on Dash Deployment Server.
+                    remote host to your new app on Dash Enterprise.
 
                     &nbsp;
 
@@ -446,7 +446,7 @@ def display_instructions2(platform):
                     `ssh dokku@dash-server ps:scale APP-NAME worker=1`.
 
                     Note that this requires
-                    [Authenticating to Dash Deployment Server with SSH](/Docs/dash-deployment-server/ssh).
+                    [Authenticating to Dash Enterprise with SSH](/Docs/dash-deployment-server/ssh).
 
                     ''')),
 
@@ -482,10 +482,10 @@ def display_instructions2(platform):
                     '''
                     ***
 
-                    #### Configure your Dash Deployment Server to be your Git remote
+                    #### Configure your Dash Enterprise to be your Git remote
 
                     In the root of your folder, run the following command to create a
-                    remote host to your new app on Dash Deployment Server.
+                    remote host to your new app on Dash Enterprise.
 
                     &nbsp;
 
@@ -534,10 +534,10 @@ def display_instructions2(platform):
                     '''
                     ***
 
-                    #### Configure your Dash Deployment Server to be your Git remote
+                    #### Configure your Dash Enterprise to be your Git remote
 
                     In the root of your folder, run the following command to create a
-                    remote host to your new app on Dash Deployment Server.
+                    remote host to your new app on Dash Enterprise.
 
                     &nbsp;
 
@@ -586,22 +586,22 @@ def display_instructions_deploy(method):
         &nbsp;
 
         Replace `your-dash-app-name` with the name of your Dash App that you
-        supplied in the Dash Deployment Server and `your-dash-deployment-server`
-        with the domain of the Dash Deployment Server.
+        supplied in the Dash Enterprise and `your-dash-deployment-server`
+        with the domain of the Dash Enterprise.
 
         For example, if your Dash App name was `my-first-dash-app`
-        and the domain of your organizations Dash Deployment Server was
+        and the domain of your organizations Dash Enterprise was
         `dash.plotly.acme-corporation.com`, then this command would be
         `git remote add plotly dokku@dash.plotly.acme-corporation.com:my-first-dash-app`.
             ''' if method == 'SSH' else '''
         &nbsp;
 
         Replace `your-dash-app-name` with the name of your Dash App that
-        you supplied in the Dash Deployment Server and `your-dash-deployment-server`
-        with the domain of the Dash Deployment Server.
+        you supplied in the Dash Enterprise and `your-dash-deployment-server`
+        with the domain of the Dash Enterprise.
 
         For example, if your Dash App name was `my-first-dash-app`
-        and the domain of your organizations Dash Deployment Server was
+        and the domain of your organizations Dash Enterprise was
         `dash.plotly.acme-corporation.com`, then this command would be
         `git remote add plotly https://dash.plotly.acme-corporation.com/GIT/my-first-dash-app`.
         ''')),
@@ -612,7 +612,7 @@ def display_instructions_deploy(method):
 
         #### Deploying Changes
 
-        Now, you are ready to upload this folder to your Dash Deployment Server.
+        Now, you are ready to upload this folder to your Dash Enterprise.
         Files are transferred to the server using `git`:
         ''')),
 
@@ -633,7 +633,7 @@ def display_instructions_deploy(method):
         &nbsp;
 
         This command will push the code in this folder to the
-        Dash Deployment Server and while doing so, will install the
+        Dash Enterprise and while doing so, will install the
         necessary python packages and run your application
         automatically.
 
@@ -642,7 +642,7 @@ def display_instructions_deploy(method):
 
         If you install any other Python packages, add those packages to
         the `requirements.txt` file. Packages that are included in this
-        file will be installed automatically by the Dash Deployment Server.
+        file will be installed automatically by the Dash Enterprise.
         ''')),
 
         dcc.Markdown(s(
@@ -671,7 +671,7 @@ Requirements = html.Div(children=[
 
     dcc.Markdown(s(
     '''
-    To deploy dash apps to the Dash Deployment Server, there
+    To deploy dash apps to the Dash Enterprise, there
     are a few files required for successful deployment. Below is a common
     Dash App folder structure and a brief description of each file's function.
 
@@ -796,7 +796,7 @@ staticAssets = html.Div(children=[
 
     #### Embedding Images in Your Dash Apps
 
-    Apps deployed on the Dash Deployment Server are deployed under an app name
+    Apps deployed on the Dash Enterprise are deployed under an app name
     prefix. As a consequence, images that are added to the `assets` folder will
     require the app name prefix in the relative path. For example, with the
     below folder structure:
@@ -833,7 +833,7 @@ ConfigSys = html.Div(children=[
     In some cases you may need to install and configure system
     dependencies. Examples include installing and configuring
     database drivers or the Java JRE environment.
-    Dash Deployment Server supports these actions through an
+    Dash Enterprise supports these actions through an
     `apt-packages` file and a `predeploy` script.
 
     &nbsp;
@@ -906,7 +906,7 @@ ConfigSys = html.Div(children=[
 
     ##### Run Pre-Deploy Script Using `app.json`
 
-    Next we must instruct Dash Deployment Server to run our `setup_pyodbc`
+    Next we must instruct Dash Enterprise to run our `setup_pyodbc`
     file by adding a JSON configuration file named `app.json`
     into the root of our application folder.
 
@@ -963,7 +963,7 @@ EnvVars = html.Div(children=[
 
     #### Add Environment Variables
 
-    To add environment variables via the Dash Deployment Server UI,
+    To add environment variables via the Dash Enterprise UI,
     navigate to the application settings. Here, use the text boxes to
     add the environmental variable name and value. For example, `"DATABASE_USER"`
     and `"DATABASE_PASSWORD"`.
@@ -1053,7 +1053,7 @@ EnvVars = html.Div(children=[
 
     #### Delete Environment Variables
 
-    To remove an environment variable via the Dash Deployment Server UI,
+    To remove an environment variable via the Dash Enterprise UI,
     navigate to the application settings. Here, simply click the red
     cross situated to the right-hand side of the environment variable.
 
@@ -1078,8 +1078,8 @@ LocalDir = html.Div(children=[
     rc.Blockquote(),
 
     dcc.Markdown(s('''
-    In Dash Deployment Server, Dash Apps are run in isolated containers.
-    Dash Deployment Server builds the entire system for each individual app
+    In Dash Enterprise, Dash Apps are run in isolated containers.
+    Dash Enterprise builds the entire system for each individual app
     from scratch, including installing a fresh instance of Python, installing
     dependencies, and more. This isolation and containerization is great: it
     allows for one app's dependencies to not impact the next app's and,
@@ -1131,7 +1131,7 @@ LocalDir = html.Div(children=[
 
     #### Add Directory Mapping
 
-    To add a directory mapping via the Dash Deployment Server UI,
+    To add a directory mapping via the Dash Enterprise UI,
     navigate to the application **Settings** and scroll down to
     **Directory Mappings**. Here, use the text boxes to
     add the **Host Path** and **App Path**. For example, `/srv/app-data`
@@ -1240,7 +1240,7 @@ dcc.Markdown(s('''
 
     #### Remove Directory Mapping
 
-    To remove directory mappings via the Dash Deployment Server UI,
+    To remove directory mappings via the Dash Enterprise UI,
     navigate to the application **Settings** and scroll down to
     **Directory Mappings**. Next, use the red cross situated to the
     right-hand side of the environment variable.
@@ -1259,10 +1259,10 @@ dcc.Markdown(s('''
 
 
 # # # # # # #
-# Authenticating to Dash Deployment Server with SSH
+# Authenticating to Dash Enterprise with SSH
 # # # # # # #
 Ssh = html.Div(children=[
-    html.H1('Authenticating to Dash Deployment Server with SSH'),
+    html.H1('Authenticating to Dash Enterprise with SSH'),
 
     rc.Blockquote(),
 
@@ -1272,12 +1272,12 @@ Ssh = html.Div(children=[
     either HTTPS or SSH. If you are deploying with HTTPS, then you do not
     need to set up an SSH key. Thus, you can skip this tutorial and go
     straight to
-    [Initialize Dash Apps on Dash Deployment Server](/Docs/dash-deployment-server/initialize).
+    [Initialize Dash Apps on Dash Enterprise](/Docs/dash-deployment-server/initialize).
 
     &nbsp;
 
     If you are deploying with SSH then you need to add a SSH Key to the
-    Dash Deployment Server. SSH Keys are used to authenticate your git
+    Dash Enterprise. SSH Keys are used to authenticate your git
     session with the server. Deploying with SSH takes a little bit more
     time to set up but it allows you to deploy without typing in your
     username and password each time. Continue below for instructions on
@@ -1293,11 +1293,11 @@ Ssh = html.Div(children=[
     We recommend deploying with HTTPS for most of our users. However, there
     are a few cases where deploying with SSH is advantageous:
 
-    - If your Dash Deployment Server is using a **self-signed certificate**,
+    - If your Dash Enterprise is using a **self-signed certificate**,
     deploying with HTTPS
     [requires some extra, challenging configuration](https://stackoverflow.com/questions/11621768/).
     In these cases, it will be easier to set up deploying with SSH.
-    - If your Dash Deployment Server is configured with **SAML**, then the
+    - If your Dash Enterprise is configured with **SAML**, then the
     HTTPS method will not work.
 
     ***
@@ -1455,9 +1455,9 @@ def display_instructions(platform):
         dcc.Markdown(s('''
         &nbsp;
 
-        **2. Open the Dash Deployment Server UI**
+        **2. Open the Dash Enterprise UI**
 
-        You can find the Dash Deployment Server UI by selecting "Dash App"
+        You can find the Dash Enterprise UI by selecting "Dash App"
         from Plotly's "Create" menu.
 
         > *The Dash App item in the Create menu takes you to the Dash
@@ -1522,7 +1522,7 @@ def display_instructions(platform):
         This file is located in `~/.ssh/config`. If it's not there, then
         create it. Add the following lines to
         this file, replacing `your-dash-deployment-server` with the domain of
-        your Dash Deployment Server (without `http://` or `https://`).
+        your Dash Enterprise (without `http://` or `https://`).
         ''')),
 
         dcc.Markdown('''Host your-dash-deployment-server
@@ -1548,7 +1548,7 @@ def display_instructions(platform):
         ***
 
         If you have successfully added your SSH Key, advance to
-        [**Part 1. Initialize Dash Apps on Dash Deployment Server**](/Docs/dash-deployment-server/initialize).
+        [**Part 1. Initialize Dash Apps on Dash Enterprise**](/Docs/dash-deployment-server/initialize).
         '''))
     ]
 
@@ -1684,10 +1684,10 @@ AppPrivacy = html.Div(children=[
     dcc.Markdown(s('''
     &nbsp;
 
-    Starting in Version 3.0.0 of Dash Deployment Server, you can restrict who is able to view your app
+    Starting in Version 3.0.0 of Dash Enterprise, you can restrict who is able to view your app
     from the app's management page. Find a list of links to these pages for your apps at
     `https://<your-dash-deployment-server>.com/Manager/apps`. Contact support
-    if you have any questions about privacy in previous versions of Dash Deployment Server.
+    if you have any questions about privacy in previous versions of Dash Enterprise.
 
     &nbsp;
     ''')),
@@ -1735,7 +1735,7 @@ Checks = html.Div(children=[
     dcc.Markdown(s('''
     &nbsp;
 
-    Before an app is deployed to Dash Deployment Server, a check is performed to make sure that
+    Before an app is deployed to Dash Enterprise, a check is performed to make sure that
     the app is functional. The default check will test to see if the app has encountered a fatal error
     in the first 10 seconds of running.
 
@@ -1809,7 +1809,7 @@ PrivatePackages = html.Div(children=[
 
     dcc.Markdown(s('''
 
-    When a Dash App is deployed on the Dash Deployment Server, the
+    When a Dash App is deployed on the Dash Enterprise, the
     `requirements.txt` will install the relevant python dependecies. If you
     want to add private python packages you will need amend the
     `requirements.txt` file. This can be done via two methods: (1) using
@@ -1862,7 +1862,7 @@ PrivatePackages = html.Div(children=[
     &nbsp;
 
     `AUTH_USER` and `AUTH_PASSWORD` variables can be added to your Dash App via
-    the Dash Deployment Server UI. For more information about adding
+    the Dash Enterprise UI. For more information about adding
     environment variables to your Dash Apps, see
     [Setting Environment Variables](/Docs/dash-deployment-server/environment-variables)
 
@@ -1890,9 +1890,9 @@ Redis = html.Div(children=[
 
     &nbsp;
 
-    While Redis is an _in-memory database_, Dash Deployment Server regularly
+    While Redis is an _in-memory database_, Dash Enterprise regularly
     backs up its data to the underlying server. So, it's safe for production
-    usage. Dash Deployment Server can dynamically spin up and manage secure
+    usage. Dash Enterprise can dynamically spin up and manage secure
     instances of Redis for your application.
     ''')),
 
@@ -1932,7 +1932,7 @@ Redis = html.Div(children=[
     &nbsp;
 
     In Plotly Enterprise 2.5.0 it is possible to create and link a Redis
-    Database to your Dash App using the Dash Deployment Server UI.
+    Database to your Dash App using the Dash Enterprise UI.
     Here, you have two options:
 
     &nbsp;
@@ -1968,7 +1968,7 @@ Redis = html.Div(children=[
     &nbsp;
 
     Next, navigate to **Apps** and create a new app (for more info see
-    ['Part 1. Initialize Dash Apps on Dash Deployment Server'](/Docs/dash-deployment-server/initialize)),
+    ['Part 1. Initialize Dash Apps on Dash Enterprise'](/Docs/dash-deployment-server/initialize)),
     in the 'Create App' modal you have the option of linking a database.
     Here, use the dropdown to select the database that you created previously
     (see image below).
@@ -1988,7 +1988,7 @@ Redis = html.Div(children=[
 
     ##### Create and Link a Database After an App Has Been Initialized.
 
-    In the Dash Deployment Server UI, select the app then navigate
+    In the Dash Enterprise UI, select the app then navigate
     to the settings page. In Databases, use the dropdown to select
     **create and link database** then **Add**.
 
@@ -2009,7 +2009,7 @@ Redis = html.Div(children=[
     #### Create and Link (via Command Line)
 
     While it is now possible to create and link Redis Databases via the
-    Dash Deployment Server UI, it is still possible to create and link a Redis
+    Dash Enterprise UI, it is still possible to create and link a Redis
     database via the command line (using ssh):
 
     ''')),
@@ -2187,21 +2187,21 @@ StagingApp = html.Div(children=[
 ])
 
 # # # # # # #
-# Dash Deployment Server PDF Service
+# Dash Enterprise PDF Service
 # # # # # # #
 pdfService = html.Div(children=[
-    html.H1('Dash Deployment Server PDF Service'),
+    html.H1('Dash Enterprise PDF Service'),
 
         rc.Blockquote(),
 
         dcc.Markdown(s(
         '''
 
-        The Dash Deployment Server has an API endpoint for creating PDF exports
+        The Dash Enterprise has an API endpoint for creating PDF exports
         of your Dash applications. The API is simple: pass in the URL of your
         Dash app and the sizing parameters and get back a PDF print out. You can
         automate PDF generation with
-        [Dash Deployment Server's Celery task queues](https://dash.plot.ly/dash-deployment-server/celery-process)
+        [Dash Enterprise's Celery task queues](https://dash.plot.ly/dash-deployment-server/celery-process)
         or you can generate these PDFs on-the-fly.
 
         ***
@@ -2374,7 +2374,7 @@ pdfService = html.Div(children=[
 
         Plotly helps companies modernize their reporting infrastructure with
         Dash. In particular, we help organizations with:
-        - Our modules for saving and loading reports in Dash Deployment Server
+        - Our modules for saving and loading reports in Dash Enterprise
         - Converting existing PDF reports into Dash application code
         - Creating high-quality, branded PDF templates
 
@@ -2397,7 +2397,7 @@ Troubleshooting = html.Div(children=[
     dcc.Markdown(s(
     '''
     This section describes some of the common errors you may encounter when
-    trying to deploy to the Dash Deployment Server, and provides information
+    trying to deploy to the Dash Enterprise, and provides information
     about how to resolve these errors. If you can't find the information
     you're looking for, or need help, [contact our support team](/Docs/dash-deployment-server/support).
 
@@ -2472,7 +2472,7 @@ Troubleshooting = html.Div(children=[
         &nbsp;
 
         We recommend deploying with HTTPS for most of our users.
-        However, if your Dash Deployment Server is using a **self-signed
+        However, if your Dash Enterprise is using a **self-signed
         certificate**, deploying with HTTPS
         [requires some extra, challenging configuration](https://stackoverflow.com/questions/11621768/).
         In these cases, it will be easier to set up deploying with SSH.
@@ -2714,7 +2714,7 @@ Troubleshooting = html.Div(children=[
         dcc.Markdown(s(
             '''
             Note that this requires
-            [Authenticating to Dash Deployment Server with SSH](/Docs/dash-deployment-server/ssh).
+            [Authenticating to Dash Enterprise with SSH](/Docs/dash-deployment-server/ssh).
              ''')),
     ]),
 
@@ -2731,7 +2731,7 @@ Portal = html.Div(children=[
 
     dcc.Markdown(s('''
     Located at `https://your-dash-deployment-server/Portal`,
-    the Dash App Portal is the front page for your Dash Deployment Server.
+    the Dash App Portal is the front page for your Dash Enterprise.
     It allows multiple users to prominently display their selected apps in
     one central location.
 
@@ -2823,7 +2823,7 @@ AdminPanel = html.Div(children=[
     rc.Blockquote(),
 
     dcc.Markdown(s('''
-    The Admin panel allows Admin users, users with Staff and Superuser Status, to manage all users of the Dash Deployment Server.
+    The Admin panel allows Admin users, users with Staff and Superuser Status, to manage all users of the Dash Enterprise.
     From here they can add, view, modify, and delete user accounts. The panel can be accessed from the navbar
     dropdown in the /Manager or /Portal pages as shown below.
 
@@ -2905,7 +2905,7 @@ Analytics = html.Div(children=[
 
     After you have successfully deployed a Dash App to the Dash Deployment
     Server, you can monitor app performance via the app analytics and logs.
-    Here, navigate to the Dash Deployment Server UI and select the app to
+    Here, navigate to the Dash Enterprise UI and select the app to
     display analytics.
 
     ''')),
@@ -2941,7 +2941,7 @@ Logs = html.Div(children=[
     #### Dash App Logs (via UI)
 
     If you have successfully deployed a Dash App to the Dash Deployment
-    Server, you can view the app's logs via the Dash Deployment Server UI.
+    Server, you can view the app's logs via the Dash Enterprise UI.
     From your list of apps, open the app and then select **Logs**. This will
     display the most recent 500 log entries for your app. For the complete list,
     use the command line method outlined below.
@@ -3120,7 +3120,7 @@ Git = html.Div(children=[
 
     Once you have initialized your local Git repository or cloned an existing
     repository from Github, you need to create a remote repository on the
-    Dash Deployment Server, which you will deploy your changes to.
+    Dash Enterprise, which you will deploy your changes to.
     Note that this remote repository will be your live / production Dash App.
 
     &nbsp;
@@ -3193,7 +3193,7 @@ Git = html.Div(children=[
 
     By default, Dash apps run on `localhost` - you can only access them on
     your local machine. To share a Dash app, you need to "deploy" your Dash app
-    to the Dash Deployment Server. This can be achieved via a series of
+    to the Dash Enterprise. This can be achieved via a series of
     commands. Namely,
 
     - `git status` allows you to view which files have been changed.
@@ -3201,7 +3201,7 @@ Git = html.Div(children=[
     - `git add .` will add all your changes.
     - `git commit -m "a description of the changes"` will commit you changes.
     - `git push <repository-name> master` will deploy your code to
-    Dash Deployment Server.
+    Dash Enterprise.
 
     &nbsp;
 
