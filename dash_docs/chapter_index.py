@@ -19,6 +19,7 @@ def component_list(package, content_module, base_url, import_alias):
     return [
         {
             'url': '/{}/{}'.format(base_url, component.lower()),
+            'url': '/Docs/{}/{}'.format(base_url, component.lower()),
             'name': '{}.{}'.format(import_alias, component),
             'content': (
                 getattr(content_module, component)
