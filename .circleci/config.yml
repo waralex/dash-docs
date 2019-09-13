@@ -39,8 +39,7 @@ jobs:
           name: Run tests
           command: |
               . venv/bin/activate
-              git clone --depth 1 https://github.com/plotly/dash.git dash-main
-              cd dash-main && pip install -e .[testing] && cd ..
+              pip install -e git+https://github.com/plotly/dash.git#egg=dash[testing]
               pytest tests/snapshots
 
   "python-3.6":
