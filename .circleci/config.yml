@@ -11,7 +11,6 @@ jobs:
       - image: circleci/python:2.7-stretch-browsers
         environment:
           PERCY_PARALLEL_TOTAL: '-1'
-
     steps:
       - checkout
 
@@ -40,7 +39,14 @@ jobs:
           command: |
               . venv/bin/activate
               pip install -e git+https://github.com/plotly/dash.git@percy-runner#egg=dash[testing]
-              pytest tests/snapshots
+              pytest --junitxml=test-reports/snapshots.xml tests/snapshots
+      - store_artifacts:
+          path: test-reports
+      - store_test_results:
+          path: test-reports
+      - store_artifacts:
+          path: /tmp/dash_artifacts
+
 
   "python-3.6":
     <<: *test-template
