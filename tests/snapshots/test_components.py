@@ -1,42 +1,7 @@
-def test_snap200_dcc_resources(chapter_map, dash_doc):
-    dcc_resources = [
-        _ for _ in chapter_map if _.startswith("/dash-core-components/")
-    ]
-    for resource in dcc_resources:
-        dash_doc.visit_and_snapshot(
-            resource, hook_id="wait-for-page-{}".format(resource)
-        )
-
-
-def test_snap300_dds_resources(chapter_map, dash_doc):
-    dds_resources = [
-        _ for _ in chapter_map if _.startswith("/dash-deployment-server/")
-    ]
-    for resource in dds_resources:
-        dash_doc.visit_and_snapshot(
-            resource, hook_id="wait-for-page-{}".format(resource)
-        )
-
-
-def test_snap400_dashtable_resources(chapter_map, dash_doc):
-    table_resources = [_ for _ in chapter_map if _.startswith("/datatable/")]
-    for resource in table_resources:
-        dash_doc.visit_and_snapshot(
-            resource, hook_id="wait-for-page-{}".format(resource)
-        )
-
-
-def test_snap500_cytoscape_resources(chapter_map, dash_doc):
-    cytoscapes = [_ for _ in chapter_map if _.startswith("/cytoscape/")]
-    for resource in cytoscapes:
-        dash_doc.visit_and_snapshot(
-            resource, hook_id="wait-for-page-{}".format(resource)
-        )
-
-
-def test_snap600_daq_resources(chapter_map, dash_doc):
-    daqs = [_ for _ in chapter_map if _.startswith("/dash-daq/")]
-    for resource in daqs:
-        dash_doc.visit_and_snapshot(
-            resource, hook_id="wait-for-page-{}".format(resource)
-        )
+def test_snap100_component_sub_pages(component_map, dash_doc):
+    for _, grouper in component_map:
+        for resources in grouper:
+            href = "/".join(resources)
+            dash_doc.visit_and_snapshot(
+                href, hook_id="wait-for-page-/{}".format(href)
+            )
