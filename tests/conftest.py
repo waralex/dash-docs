@@ -43,7 +43,7 @@ def chapter_map():
 @pytest.fixture(scope="session")
 def index_pages(chapter_map):
     yield [
-        _
+        _[0]
         for _ in chapter_map
         if len(_) == 1 and _[0] not in SNAPSHOT_EXCEPTIONS
     ]
