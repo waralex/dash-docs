@@ -1,3 +1,4 @@
+import os
 import pytest
 from dash.testing.browser import Browser
 from dash.testing.application_runners import ProcessRunner
@@ -19,6 +20,9 @@ def dash_doc(doc_server, request):
         remote_url=request.config.getoption("remote_url"),
         headless=request.config.getoption("headless"),
         options=request.config.hook.pytest_setup_options(),
+        percy_assets_root=os.path.join(
+            os.path.dirname(__file__), "..", "assets"
+        ),
         percy_finalize=request.config.getoption("nopercyfinalize"),
     ) as browser:
         browser.server_url = doc_server.url

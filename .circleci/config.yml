@@ -39,7 +39,7 @@ jobs:
           name: Run tests
           command: |
               . venv/bin/activate
-              pip install -e git+https://github.com/plotly/dash.git#egg=dash[testing]
+              pip install -e git+https://github.com/plotly/dash.git@percy-runner#egg=dash[testing]
               pytest tests/snapshots
 
   "python-3.6":
