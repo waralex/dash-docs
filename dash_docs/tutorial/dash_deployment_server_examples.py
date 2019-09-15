@@ -2188,12 +2188,16 @@ pdfService = html.Div(children=[
         dcc.Markdown(
         '''
 
-        The Dash Enterprise has an API endpoint for creating PDF exports
+        The Dash Enterprise platform has an API endpoint for creating PDF exports
         of your Dash applications. The API is simple: pass in the URL of your
         Dash app and the sizing parameters and get back a PDF print out. You can
         automate PDF generation with
         [Dash Enterprise's Celery task queues](/Docs/dash-enterprise/celery-process)
         or you can generate these PDFs on-the-fly.
+
+        This API endpoint is used by the Dash Enterprise Snapshot Engine library.
+        Refer to the [Snapshot Engine documentation](/Docs/dash-snapshots)
+        for more examples.
 
         ***
 

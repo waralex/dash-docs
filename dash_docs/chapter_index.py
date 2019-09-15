@@ -632,7 +632,7 @@ URLS = [
                 'url': '/testing',
                 'content': tutorial.testing.layout,
                 'name': 'Dash Testing',
-                'description': '(New in Dash 1.0!) An introduction to testing your dash app with selenium'
+                'description': 'An introduction to testing your dash app with selenium'
             }
         ],
     },
