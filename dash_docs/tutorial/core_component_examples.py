@@ -4,7 +4,7 @@ import dash_html_components as html
 
 from dash_docs import styles
 from dash_docs import tools
-from dash_docs.tutorial.utils.convert_props_to_table import generate_prop_table
+from dash_docs.tutorial.utils.convert_props_to_table import generate_prop_info
 from dash_docs.tutorial.utils.component_block import ComponentBlock
 from dash_docs.tutorial.components import Syntax, Example
 
@@ -154,7 +154,7 @@ dcc.Dropdown(
 
     html.Hr(),
     html.H3("Dropdown Properties"),
-    generate_prop_table('Dropdown')
+    generate_prop_info('Dropdown')
 ])
 
 # Slider
@@ -251,7 +251,7 @@ dcc.Slider(
     ),
     html.Hr(),
     html.H3("Slider Properties"),
-    generate_prop_table('Slider')
+    generate_prop_info('Slider')
 ])
 
 # RangeSlider
@@ -388,14 +388,14 @@ dcc.RangeSlider(
              className='example-container',
              style={'overflow': 'hidden', 'padding': '20px'}),
     html.Hr(),
-    generate_prop_table('RangeSlider')
+    generate_prop_info('RangeSlider')
 ])
 
 
 # Checklist
 Checklist = html.Div(children=[
     html.H3('Checklist Properties'),
-    generate_prop_table('Checklist')
+    generate_prop_info('Checklist')
 ])
 
 
@@ -433,14 +433,14 @@ Input = html.Div(children=[
     Example(examples['input-number-type'][1]),
     html.Br(),
     html.H3('Input Properties'),
-    generate_prop_table('Input')
+    generate_prop_info('Input')
 ])
 
 
 # RadioItems
 RadioItems = html.Div(children=[
     html.H3('RadioItem Properties'),
-    generate_prop_table('RadioItems')
+    generate_prop_info('RadioItems')
 ])
 
 # Button
@@ -467,7 +467,7 @@ Button = html.Div(children=[
     html.Br(),
     html.H3('Button Properties'),
     html.Hr(),
-    generate_prop_table('Button', html)
+    generate_prop_info('Button', html)
 ])
 
 
@@ -575,7 +575,7 @@ dcc.Markdown('''
 
     html.Hr(),
     html.H3('Markdown Properties'),
-    generate_prop_table('Markdown')
+    generate_prop_info('Markdown')
 ])
 
 # DatePickerRange
@@ -814,7 +814,7 @@ dcc.DatePickerRange(
 )''', style=styles.code_container),
     html.Hr(),
     html.H3('DatePickerRange Properties'),
-    generate_prop_table('DatePickerRange')
+    generate_prop_info('DatePickerRange')
 ])
 
 # DatePickerSingle
@@ -1051,7 +1051,7 @@ dcc.DatePickerSingle(
 
     html.Hr(),
     html.H3('DatePickerSingle Properties'),
-    generate_prop_table('DatePickerSingle')
+    generate_prop_info('DatePickerSingle')
 ])
 
 # Link
@@ -1059,13 +1059,13 @@ Link = html.Div(children=[
     html.H3('Link Example'),
     dcc.Markdown('To learn more about links, see the chapter on [Dash URLs](/Docs/urls)'),
     html.H3('Link Properties'),
-    generate_prop_table('Link')
+    generate_prop_info('Link')
 ])
 
 # Textarea
 Textarea = html.Div(children=[
     html.H3('Textarea Properties'),
-    generate_prop_table('Textarea')
+    generate_prop_info('Textarea')
 ])
 
 # Tabs
@@ -1176,9 +1176,9 @@ Tabs = html.Div(children=[
     html.Hr(),
 
     html.H3('Tabs properties'),
-    generate_prop_table('Tabs'),
+    generate_prop_info('Tabs'),
     html.H3('Tab properties'),
-    generate_prop_table('Tab')
+    generate_prop_info('Tab')
 ])
 
 # Graphs
@@ -1193,7 +1193,7 @@ Graphs = html.Div([
     Syntax(examples['graph-config'][0]),
     Example(examples['graph-config'][1]),
     html.H3('Graph Properties'),
-    generate_prop_table('Graph')
+    generate_prop_info('Graph')
 ])
 
 # Upload
@@ -1241,7 +1241,7 @@ Upload = html.Div([
     html.Hr(),
 
     html.H2('Upload Component Properties'),
-    generate_prop_table('Upload')
+    generate_prop_info('Upload')
 ])
 
 # ConfirmDialog
@@ -1255,7 +1255,7 @@ ConfirmDialog = html.Div([
     '''),
     Syntax(examples['confirm'][0]),
     Example(examples['confirm'][1]),
-    generate_prop_table('ConfirmDialog')
+    generate_prop_info('ConfirmDialog')
 ])
 
 # ConfirmDialogProvider
@@ -1267,7 +1267,7 @@ ConfirmDialogProvider = html.Div([
     '''),
     Syntax(examples['confirm-provider'][0]),
     Example(examples['confirm-provider'][1]),
-    generate_prop_table('ConfirmDialogProvider')
+    generate_prop_info('ConfirmDialogProvider')
 ])
 
 
@@ -1312,7 +1312,7 @@ Store = html.Div([
     Syntax(examples['store-share'][0]),
     Example(examples['store-share'][1]),
 
-    generate_prop_table('Store'),
+    generate_prop_info('Store'),
 ])
 
 
@@ -1345,7 +1345,7 @@ LogoutButton = html.Div([
     Syntax(examples['logout_button'][0]),
     Example(examples['logout_button'][1]),
 
-    generate_prop_table('LogoutButton')
+    generate_prop_info('LogoutButton')
 ])
 
 # Loading component
@@ -1363,7 +1363,7 @@ LoadingComponent = html.Div([
     dcc.Markdown('''
     Please also check out [this section on loading states](/Docs/loading-states) if you want a more customizable experience.
     '''),
-    generate_prop_table('Loading')
+    generate_prop_info('Loading')
 ])
 
 # Location
@@ -1382,5 +1382,5 @@ Location = html.Div([
     - `hash` = `"#quiz"`
     '''),
 
-    generate_prop_table('Location')
+    generate_prop_info('Location')
 ])

@@ -16,8 +16,6 @@ if os.environ.get('DASH_APP_LOCATION', '') != 'ABSOLUTE':
 else:
     from server import app
 
-def s(string_block):
-    return string_block.replace('    ', '')
 
 # # # # # # #
 # Initialize
@@ -27,21 +25,21 @@ Initialize = html.Div(children=[
 
     rc.Blockquote(),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
         > This is the *1st* deployment chapter of the [Dash Enterprise Documentation](/Docs/dash-enterprise).
         > The [next chapter](/Docs/dash-enterprise/deployment) covers deploying a Dash App on Dash Enterprise.
 
         Before creating or deploying a dash app locally, you need to initialize
         an app on Dash Enterprise. This can be achieved using the Dash
         Deployment Server UI.
-    ''')),
+    '''),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
         ***
 
         1. Navigate to the Dash Enterprise UI by selecting **Dash App**
         from the **+ Create** located in the top right-hand corner.
-    ''')),
+    '''),
 
     html.Img(
         alt='Dash Enterprise UI',
@@ -52,7 +50,7 @@ Initialize = html.Div(children=[
         }
     ),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
 
         &nbsp;
 
@@ -63,7 +61,7 @@ Initialize = html.Div(children=[
         hit **Create**. It is important to keep in mind that this name is going
         to be part of the URL for your application.
 
-    ''')),
+    '''),
 
     html.Img(
         alt='Initialize App',
@@ -74,14 +72,14 @@ Initialize = html.Div(children=[
         }
     ),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
 
         &nbsp;
 
         3. After you have created the app, it should appear in your list of
         apps.
 
-    ''')),
+    '''),
 
     html.Img(
         alt='List of Apps',
@@ -92,13 +90,13 @@ Initialize = html.Div(children=[
         }
     ),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
 
         &nbsp;
 
         4. Now, select the dash app to access the app overview.
 
-    ''')),
+    '''),
 
     html.Img(
         alt='Dash App Overview',
@@ -109,7 +107,7 @@ Initialize = html.Div(children=[
         }
     ),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
 
         &nbsp;
 
@@ -118,7 +116,7 @@ Initialize = html.Div(children=[
         If you have encountered any issues, see [**Troubleshooting**](/Docs/dash-enterprise)
         for help.
 
-    ''')),
+    '''),
 
 ])
 
@@ -131,7 +129,7 @@ Deploy = html.Div(children=[
 
     rc.Blockquote(),
 
-    dcc.Markdown(s(
+    dcc.Markdown(
     '''
     > This is the *2nd* deployment chapter of the [Dash Enterprise Documentation](/Docs/dash-enterprise).
     > The [previous chapter](/Docs/dash-enterprise/initialize) covered initializing a Dash App on Dash Enterprise.
@@ -141,15 +139,15 @@ Deploy = html.Div(children=[
     to deploy a cloned sample app, create a new app following the tutorial,
     or deploy an existing app that you created locally.
 
-    ''')),
+    '''),
 
-    dcc.Markdown(s(
+    dcc.Markdown(
     '''
     ***
 
     #### Which OS Are You Using?
 
-    ''')),
+    '''),
 
     dcc.RadioItems(
         id='platform-2',
@@ -177,7 +175,7 @@ Deploy = html.Div(children=[
               [Input('platform-2', 'value')])
 def display_instructions2(platform):
     return [
-        dcc.Markdown(s(
+        dcc.Markdown(
         '''
 
         ***
@@ -193,50 +191,38 @@ def display_instructions2(platform):
 
         &nbsp;
 
-        ''')),
+        '''),
 
         dcc.Tabs(id="tabs", children=[
             dcc.Tab(label='Clone Sample App', children=[
                 html.Div([
-                    dcc.Markdown(s(
+                    dcc.Markdown(
                     '''
 
                     &nbsp;
 
                     #### Clone the [Dash On Premise Sample App](https://github.com/plotly/dash-on-premise-sample-app) from GitHub.
 
-                    ''')),
+                    '''),
 
-                    (dcc.Markdown(s('''
+                    (dcc.Markdown('''
                     &nbsp;
 
                     First, install [Git for Windows](https://git-scm.com/download/win).
                     Then, in Git Bash:
-                    ''')) if platform == 'Windows' else
+                    ''') if platform == 'Windows' else
                     ''),
 
-                    dcc.Markdown(s(
+                    dcc.Markdown(
                     '''
                     ```shell
                     $ git clone https://github.com/plotly/dash-on-premise-sample-app.git
                     ```
-                    '''),
+                    ''',
                     style=styles.code_container),
 
-                    dcc.Markdown(s(
-                    '''
-                    ***
 
-                    #### Modify `config.py`
-
-                    Read through `config.py` and modify the values as necessary.
-                    If Dash Enterprise was set up with "path-based routing"
-                    (the default), then you will just need to change the
-                    `DASH_APP_NAME` to be equal to the name of the Dash App that you
-                    set earlier.
-                    ''')),
-
-                    dcc.Markdown(s(
+                    dcc.Markdown(
                     '''
                     ***
 
@@ -257,26 +243,26 @@ def display_instructions2(platform):
 
                     &nbsp;
 
-                    ''')),
+                    '''),
                 ])
             ]),
             dcc.Tab(label='Create New App', children=[
                 html.Div([
-                    (dcc.Markdown(s('''
+                    (dcc.Markdown('''
                     &nbsp;
 
                     First, install [Git for Windows](https://git-scm.com/download/win).
                     Then, in Git Bash:
-                    ''')) if platform == 'Windows' else
+                    ''') if platform == 'Windows' else
                     ''),
 
-                    dcc.Markdown(s(
+                    dcc.Markdown(
                     '''
 
                     &nbsp;
 
                     #### Create a New Folder
-                    ''')),
+                    '''),
 
                     dcc.Markdown(
                     '''
@@ -286,14 +272,14 @@ def display_instructions2(platform):
                     ```
                     ''', style=styles.code_container),
 
-                    dcc.Markdown(s(
+                    dcc.Markdown(
                     '''
 
                     ***
 
                     #### Initialize the Folder with `git` and a `virtualenv`
 
-                    ''')),
+                    '''),
 
                     dcc.Markdown(
                     ('''
@@ -311,13 +297,13 @@ def display_instructions2(platform):
                     ```
                     '''), style=styles.code_container),
 
-                    dcc.Markdown(s(
+                    dcc.Markdown(
                     '''
                     &nbsp;
 
                     `virtualenv` creates a fresh Python instance. You will need
                     to reinstall your app's dependencies with this virtualenv:
-                    ''')),
+                    '''),
 
                     dcc.Markdown(
                     '''
@@ -327,13 +313,13 @@ def display_instructions2(platform):
                     ```
                     ''', style=styles.code_container),
 
-                    dcc.Markdown(s(
+                    dcc.Markdown(
                     '''
                     &nbsp;
 
                     You will also need a new dependency, `gunicorn`, for
                     deploying the app:
-                    ''')),
+                    '''),
 
                     dcc.Markdown(
                     '''
@@ -342,7 +328,7 @@ def display_instructions2(platform):
                     ```
                     ''', style=styles.code_container),
 
-                    dcc.Markdown(s(
+                    dcc.Markdown(
                     '''
                     ***
                     #### Create Relevant Files For Deployment
@@ -354,7 +340,7 @@ def display_instructions2(platform):
                     `app.py` This is the entry point to your application,
                     it contains your Dash app code. This file must contain a
                     line that defines the server variable: `server = app.server`
-                    ''')),
+                    '''),
 
                     dcc.Markdown(
                     '''
@@ -392,7 +378,7 @@ def display_instructions2(platform):
                     ''',
                     style=styles.code_container),
 
-                    dcc.Markdown(s('''
+                    dcc.Markdown('''
                     ***
 
                     **`.gitignore`**
@@ -400,7 +386,7 @@ def display_instructions2(platform):
                     `.gitignore` Determines which files and folders are
                     ignored in git, and therefore ignored (i.e. not copied
                     to the server) when you deploy your application.
-                    ''')),
+                    '''),
 
                     dcc.Markdown(
                     '''
@@ -412,7 +398,7 @@ def display_instructions2(platform):
                     ```
                     ''', style=styles.code_container),
 
-                    dcc.Markdown(s(
+                    dcc.Markdown(
                     '''
                     ***
 
@@ -425,7 +411,7 @@ def display_instructions2(platform):
                     that will run your application, make sure to add this in
                     your requirements.txt file.
 
-                    ''')),
+                    '''),
 
                     dcc.Markdown(
                     '''
@@ -434,7 +420,7 @@ def display_instructions2(platform):
                     ```
                     ''', style=styles.code_container),
 
-                    dcc.Markdown(s(
+                    dcc.Markdown(
                     '''
                     For some applications, you may require using the `worker`
                     process. For example, the [Dash Redis Demo](https://github.com/plotly/dash-redis-demo)
@@ -448,9 +434,9 @@ def display_instructions2(platform):
                     Note that this requires
                     [Authenticating to Dash Enterprise with SSH](/Docs/dash-enterprise/ssh).
 
-                    ''')),
+                    '''),
 
-                    dcc.Markdown(s(
+                    dcc.Markdown(
                     '''
                     ***
 
@@ -458,7 +444,7 @@ def display_instructions2(platform):
 
                     `requirements.txt` Describes the app's python dependencies.
                     You can fill this file in automatically with:
-                    ''')),
+                    '''),
 
                     dcc.Markdown(
                     '''
@@ -467,7 +453,7 @@ def display_instructions2(platform):
                     ```
                     ''', style=styles.code_container),
 
-                    dcc.Markdown(s(
+                    dcc.Markdown(
                     '''
                     ***
 
@@ -476,9 +462,9 @@ def display_instructions2(platform):
                     `runtime.txt` This optional file specifies python runtime.
                     For example, its contents would be `python-2.7.15` or
                     `python-3.6.6`. If omitted, Python 3.6.7 will be installed.
-                    ''')),
+                    '''),
 
-                    dcc.Markdown(s(
+                    dcc.Markdown(
                     '''
                     ***
 
@@ -499,20 +485,20 @@ def display_instructions2(platform):
 
                     &nbsp;
 
-                    ''')),
+                    '''),
                 ])
             ]),
             dcc.Tab(label='Deploy Existing App', children=[
                 html.Div([
-                    (dcc.Markdown(s('''
+                    (dcc.Markdown('''
                     &nbsp;
 
                     First, install [Git for Windows](https://git-scm.com/download/win).
                     Then, in Git Bash:
-                    ''')) if platform == 'Windows' else
+                    ''') if platform == 'Windows' else
                     ''),
 
-                    dcc.Markdown(s(
+                    dcc.Markdown(
                     '''
 
                     &nbsp;
@@ -520,7 +506,7 @@ def display_instructions2(platform):
                     #### Initialize the Folder With Git
 
 
-                    ''')),
+                    '''),
 
                     dcc.Markdown(
                     '''
@@ -530,7 +516,7 @@ def display_instructions2(platform):
                     ```
                     ''', style=styles.code_container),
 
-                    dcc.Markdown(s(
+                    dcc.Markdown(
                     '''
                     ***
 
@@ -551,7 +537,7 @@ def display_instructions2(platform):
 
                     &nbsp;
 
-                    ''')),
+                    '''),
                 ])
             ]),
         ]),
@@ -562,13 +548,13 @@ def display_instructions2(platform):
               [Input('deploy-method', 'value')])
 def display_instructions_deploy(method):
     return [
-        dcc.Markdown(s('''
+        dcc.Markdown('''
 
         &nbsp;
 
-        ''')),
+        '''),
 
-        dcc.Markdown(s(
+        dcc.Markdown(
         '''
         ```shell
         $ git remote add plotly dokku@your-dash-enterprise:your-dash-app-name
@@ -576,18 +562,19 @@ def display_instructions_deploy(method):
         ''' if method == 'SSH' else
         '''
         ```shell
-        $ git remote add plotly https://your-dash-enterprise/GIT/your-dash-app-name
-        ```'''),
+        $ git remote add plotly https://your-dash-enterprise-server/GIT/your-dash-app-name
+        ```
+        ''',
         style=styles.code_container,
         ),
 
-        dcc.Markdown(s(
+        dcc.Markdown(
         '''
         &nbsp;
 
         Replace `your-dash-app-name` with the name of your Dash App that you
-        supplied in the Dash Enterprise and `your-dash-enterprise`
-        with the domain of the Dash Enterprise.
+        supplied in Dash Enterprise and `your-dash-enterprise`
+        with the domain of your Dash Enterprise platform.
 
         For example, if your Dash App name was `my-first-dash-app`
         and the domain of your organizations Dash Enterprise was
@@ -597,16 +584,16 @@ def display_instructions_deploy(method):
         &nbsp;
 
         Replace `your-dash-app-name` with the name of your Dash App that
-        you supplied in the Dash Enterprise and `your-dash-enterprise`
-        with the domain of the Dash Enterprise.
+        you supplied in the Dash Enterprise platform and `your-dash-enterprise`
+        with the domain of your Dash Enterprise platform.
 
         For example, if your Dash App name was `my-first-dash-app`
         and the domain of your organizations Dash Enterprise was
         `dash.plotly.acme-corporation.com`, then this command would be
         `git remote add plotly https://dash.plotly.acme-corporation.com/GIT/my-first-dash-app`.
-        ''')),
+        '''),
 
-        dcc.Markdown(s(
+        dcc.Markdown(
         '''
         ***
 
@@ -614,9 +601,9 @@ def display_instructions_deploy(method):
 
         Now, you are ready to upload this folder to your Dash Enterprise.
         Files are transferred to the server using `git`:
-        ''')),
+        '''),
 
-        dcc.Markdown(s(
+        dcc.Markdown(
         '''
         ```shell
         $ git status # view the changed files
@@ -625,9 +612,9 @@ def display_instructions_deploy(method):
         $ git commit -m 'a description of the changes'
         $ git push plotly master
         ```
-        '''), style=styles.code_container),
+        ''', style=styles.code_container),
 
-        dcc.Markdown(s(
+        dcc.Markdown(
         '''
 
         &nbsp;
@@ -642,10 +629,10 @@ def display_instructions_deploy(method):
 
         If you install any other Python packages, add those packages to
         the `requirements.txt` file. Packages that are included in this
-        file will be installed automatically by the Dash Enterprise.
-        ''')),
+        file will be installed automatically by Dash Enterprise.
+        '''),
 
-        dcc.Markdown(s(
+        dcc.Markdown(
         '''
 
         ***
@@ -657,7 +644,7 @@ def display_instructions_deploy(method):
         or if you have a specific error, take a look at
         [Common Errors](/Docs/dash-enterprise/troubleshooting).
 
-        '''))
+        ''')
     ]
 
 
@@ -669,9 +656,9 @@ Requirements = html.Div(children=[
 
     rc.Blockquote(),
 
-    dcc.Markdown(s(
+    dcc.Markdown(
     '''
-    To deploy dash apps to the Dash Enterprise, there
+    To deploy dash apps to Dash Enterprise, there
     are a few files required for successful deployment. Below is a common
     Dash App folder structure and a brief description of each file's function.
 
@@ -760,7 +747,7 @@ Requirements = html.Div(children=[
     An optional folder that contains CSS stylesheets, images, or
     custom JavaScript files. [Learn more about assets](/Docs/external-resources).
 
-    ''').format(
+    '''.format(
         dash.__version__,
         dash_auth.__version__,
         dash_renderer.__version__,
@@ -777,7 +764,7 @@ staticAssets = html.Div(children=[
 
     rc.Blockquote(),
 
-    dcc.Markdown(s(
+    dcc.Markdown(
     '''
     ***
 
@@ -796,7 +783,7 @@ staticAssets = html.Div(children=[
 
     #### Embedding Images in Your Dash Apps
 
-    Apps deployed on the Dash Enterprise are deployed under an app name
+    Apps deployed on Dash Enterprise are deployed under an app name
     prefix. As a consequence, images that are added to the `assets` folder will
     require the app name prefix in the relative path. For example, with the
     below folder structure:
@@ -812,13 +799,14 @@ staticAssets = html.Div(children=[
 
     your `app.py` file you would include:
 
-    ''')),
+    '''),
 
-    dcc.Markdown(s('''
+    dcc.Markdown(
+    '''
     ```python
     html.Img(src=app.get_asset_url('my-image.png'))
     ```
-    '''), style=styles.code_container)
+    ''', style=styles.code_container)
 ])
 
 # # # # # # #
@@ -829,7 +817,7 @@ ConfigSys = html.Div(children=[
 
     rc.Blockquote(),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
     In some cases you may need to install and configure system
     dependencies. Examples include installing and configuring
     database drivers or the Java JRE environment.
@@ -859,7 +847,7 @@ ConfigSys = html.Div(children=[
     the ODBC driver we could include an `apt-packages` file that
     looks like:
 
-    ''')),
+    '''),
 
     dcc.Markdown('''
     ```shell
@@ -868,7 +856,7 @@ ConfigSys = html.Div(children=[
     ```
     ''', style=styles.code_container),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
 
     ***
 
@@ -892,16 +880,16 @@ ConfigSys = html.Div(children=[
     named it `setup_pyodbc` and installed it in the root of our
     application folder.
 
-    ''')),
+    '''),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
     ```shell
     cp /app/odbc.ini /etc/odbc.ini
     cp /app/odbcinst.ini /etc/odbcinst.ini
     ```
-    '''), style=styles.code_container),
+    ''', style=styles.code_container),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
     &nbsp;
 
     ##### Run Pre-Deploy Script Using `app.json`
@@ -910,7 +898,7 @@ ConfigSys = html.Div(children=[
     file by adding a JSON configuration file named `app.json`
     into the root of our application folder.
 
-    ''')),
+    '''),
 
     dcc.Markdown('''
     ```json
@@ -924,7 +912,7 @@ ConfigSys = html.Div(children=[
     ```
     ''', style=styles.code_container),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
     ***
 
     Now when the application is deployed, it will install the apt
@@ -935,7 +923,7 @@ ConfigSys = html.Div(children=[
     To see this example code in action
     [check out our ODBC example](https://github.com/plotly/dash-on-premise-sample-app/pull/3#issue-144272510)
      On-Premises application.
-    '''))
+    ''')
 ])
 
 
@@ -947,7 +935,7 @@ EnvVars = html.Div(children=[
 
     rc.Blockquote(),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
     In Plotly Enterprise 2.5.0, you can store secrets as environment variables
     instead of in your application. It's good practice to keep application
     secrets like database passwords outside of your code so that they aren't
@@ -955,9 +943,9 @@ EnvVars = html.Div(children=[
     you can store them as environment variables and your Dash Application code
     can reference them dynamically.
 
-    ''')),
+    '''),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
 
     ***
 
@@ -968,7 +956,7 @@ EnvVars = html.Div(children=[
     add the environmental variable name and value. For example, `"DATABASE_USER"`
     and `"DATABASE_PASSWORD"`.
 
-    ''')),
+    '''),
 
     html.Img(
         alt='Add Environment Variables',
@@ -979,7 +967,7 @@ EnvVars = html.Div(children=[
         }
     ),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
 
     ***
 
@@ -987,37 +975,37 @@ EnvVars = html.Div(children=[
 
     You can reference these variables with the `os.environ` module:
 
-    ''')),
+    '''),
 
-    dcc.Markdown(s(
+    dcc.Markdown(
     '''
     ```python
     database_password = os.environ['DATABASE_PASSWORD']
     ```
-    '''),
+    ''',
     style=styles.code_container,
     ),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
     &nbsp;
 
     Alternatively, if the variable isn't in your environment and you want
     to fall back to some other value, use:
 
-    ''')),
+    '''),
 
-    dcc.Markdown(s(
+    dcc.Markdown(
     '''
     ```
     database_password = os.environ.get('DATABASE_PASSWORD', 'my-default-database-password')
     ```
-    '''),
+    ''',
     style=styles.code_container,
     ),
 
 
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
     ***
 
     #### Defining Environment Variables In Your Local Environment
@@ -1034,21 +1022,21 @@ EnvVars = html.Div(children=[
     &nbsp;
 
     Alternatively, you can define them for your session by "exporting" them:
-    ''')),
+    '''),
 
-    dcc.Markdown(s(
+    dcc.Markdown(
     '''
     ```shell
     $ export DATABASE_USER=chris
     $ export DATABASE_PASSWORD=my-password
     $ python app.py
     ```
-    '''),
+    ''',
     style=styles.code_container,
     ),
 
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
     ***
 
     #### Delete Environment Variables
@@ -1057,7 +1045,7 @@ EnvVars = html.Div(children=[
     navigate to the application settings. Here, simply click the red
     cross situated to the right-hand side of the environment variable.
 
-    ''')),
+    '''),
 
     html.Img(
         alt='Delete Environment Variables',
@@ -1077,7 +1065,7 @@ LocalDir = html.Div(children=[
 
     rc.Blockquote(),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
     In Dash Enterprise, Dash Apps are run in isolated containers.
     Dash Enterprise builds the entire system for each individual app
     from scratch, including installing a fresh instance of Python, installing
@@ -1114,7 +1102,7 @@ LocalDir = html.Div(children=[
     the *Allowed Directories for Mapping* section of the settings page and add the path(s)
     of approved directories.
 
-    ''')),
+    '''),
 
     html.Img(
         alt='Add Admin/Superuser Status',
@@ -1125,7 +1113,7 @@ LocalDir = html.Div(children=[
         }
     ),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
 
     ***
 
@@ -1137,7 +1125,7 @@ LocalDir = html.Div(children=[
     add the **Host Path** and **App Path**. For example, `/srv/app-data`
     and `/data`.
 
-    ''')),
+    '''),
 
     html.Img(
         alt='Add Directory Mapping',
@@ -1148,7 +1136,7 @@ LocalDir = html.Div(children=[
         }
     ),
 
-dcc.Markdown(s('''
+dcc.Markdown('''
 
     &nbsp;
 
@@ -1157,7 +1145,7 @@ dcc.Markdown(s('''
 
     &nbsp;
 
-    ''')),
+    '''),
 
     html.Img(
         alt='Add Directory Mapping',
@@ -1168,7 +1156,7 @@ dcc.Markdown(s('''
         }
     ),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
 
     ***
 
@@ -1177,18 +1165,18 @@ dcc.Markdown(s('''
     If you have mapped the directory from `/srv/app-data` to `/data`, then you
     can read files from this folder in your application with the following code:
 
-    ''')),
+    '''),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
     ```python
     import os
     file_pathname = os.path.join(os.sep, 'data', 'my-dataset.csv')
     ```
-    '''),
+    ''',
     style=styles.code_container,
     ),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
     &nbsp;
 
     In some cases, the filesystems that you reference in your deployed
@@ -1196,7 +1184,7 @@ dcc.Markdown(s('''
     In your application code, you can check which environment you are in
     with the following code:
 
-    ''')),
+    '''),
 
     dcc.Markdown(
     '''
@@ -1212,7 +1200,7 @@ dcc.Markdown(s('''
     style=styles.code_container,
     ),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
     ***
 
     #### Recommendations
@@ -1245,7 +1233,7 @@ dcc.Markdown(s('''
     **Directory Mappings**. Next, use the red cross situated to the
     right-hand side of the environment variable.
 
-    ''')),
+    '''),
 
     html.Img(
         alt='Remove Directory Mapping',
@@ -1266,7 +1254,7 @@ Ssh = html.Div(children=[
 
     rc.Blockquote(),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
 
     In Plotly Enterprise 2.4.0 and above, you can deploy your apps using
     either HTTPS or SSH. If you are deploying with HTTPS, then you do not
@@ -1285,9 +1273,9 @@ Ssh = html.Div(children=[
 
     ***
 
-    ''')),
+    '''),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
     #### Why Deploy with SSH?
 
     We recommend deploying with HTTPS for most of our users. However, there
@@ -1313,12 +1301,12 @@ Ssh = html.Div(children=[
 
     ## Generate and Add an SSH Key
 
-    ''')),
+    '''),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
     #### Which OS Are You Using?
 
-    ''')),
+    '''),
 
     dcc.RadioItems(
         id='platform',
@@ -1336,31 +1324,31 @@ Ssh = html.Div(children=[
 def display_instructions(platform):
     return [
 
-        (dcc.Markdown(s('''
+        (dcc.Markdown('''
         These instructions assume that you are using
         **Git Bash** on Windows, which is included in the
         official [Git for Windows release](https://git-scm.com/download/win).
-        ''')) if platform == 'Windows' else
+        ''') if platform == 'Windows' else
         ''),
 
-        dcc.Markdown(s('''
+        dcc.Markdown('''
         ***
 
         #### Generate a New SSH Key
 
-        ''')),
+        '''),
 
-        dcc.Markdown(s(
+        dcc.Markdown(
         '**1. Open Git Bash**' if platform == 'Windows' else
         '**1. Open Terminal**'
-        )),
+        ),
 
-        dcc.Markdown(s('''
+        dcc.Markdown('''
         **2. Generate Key**
 
         This command will walk you
         through a few instructions.
-        ''')),
+        '''),
 
         dcc.Markdown(
         '''
@@ -1371,13 +1359,13 @@ def display_instructions(platform):
         style=styles.code_container,
         ),
 
-        dcc.Markdown(s('''
+        dcc.Markdown('''
         ***
 
         #### Check the SSH-Agent
 
         **1. Ensure the ssh-agent is running:**
-        ''')),
+        '''),
 
         dcc.Markdown(
             (
@@ -1394,14 +1382,14 @@ def display_instructions(platform):
             style=styles.code_container,
         ),
 
-        dcc.Markdown(s('''
+        dcc.Markdown('''
         &nbsp;
 
         **2. Run `ssh-add`**
 
         Replace `id_rsa` with the name of the key that you
         created above if it is different.
-        ''')),
+        '''),
 
         dcc.Markdown(
             (
@@ -1418,7 +1406,7 @@ def display_instructions(platform):
             style=styles.code_container,
         ),
 
-        dcc.Markdown(s('''
+        dcc.Markdown('''
         ***
 
         #### Copy and Add SSH Key
@@ -1428,7 +1416,7 @@ def display_instructions(platform):
         Replace `id_rsa.pub` with the name of the key that you
         created above if it is different.
 
-        ''')),
+        '''),
 
         dcc.Markdown(
             (
@@ -1452,7 +1440,7 @@ def display_instructions(platform):
             style=styles.code_container,
         ),
 
-        dcc.Markdown(s('''
+        dcc.Markdown('''
         &nbsp;
 
         **2. Open the Dash Enterprise UI**
@@ -1462,7 +1450,7 @@ def display_instructions(platform):
 
         > *The Dash App item in the Create menu takes you to the Dash
         Deployment Server UI*
-        ''')),
+        '''),
 
         html.Img(
             alt='Dash App Create Menu',
@@ -1473,7 +1461,7 @@ def display_instructions(platform):
             }
         ),
 
-        dcc.Markdown(s('''
+        dcc.Markdown('''
         &nbsp;
 
         **3. Add SSH Key**
@@ -1481,7 +1469,7 @@ def display_instructions(platform):
         Select **SSH Keys** in the top navigation menu of the Dash
         Deployment Server UI. Here, select **Add Key** and in the 'Add
         SSH Key' modal, paste in your SSH Key.
-        ''')),
+        '''),
 
         html.Img(
             alt='Add SSH Key',
@@ -1492,14 +1480,14 @@ def display_instructions(platform):
             }
         ),
 
-        dcc.Markdown(s('''
+        dcc.Markdown('''
         &nbsp;
 
         **4. Confirm it Has Been Added**
 
         Once you've added an SSH key, it should be added to your list of SSH
         Keys like the image below.
-        ''')),
+        '''),
 
         html.Img(
             alt='List of SSH Keys',
@@ -1510,7 +1498,7 @@ def display_instructions(platform):
             }
         ),
 
-        dcc.Markdown(s('''
+        dcc.Markdown('''
         ***
 
         #### Modify SSH Config
@@ -1521,35 +1509,38 @@ def display_instructions(platform):
 
         This file is located in `~/.ssh/config`. If it's not there, then
         create it. Add the following lines to
-        this file, replacing `your-dash-enterprise` with the domain of
-        your Dash Enterprise (without `http://` or `https://`).
-        ''')),
+        this file, replacing `your-dash-enterprise-server` with the domain of
+        your Dash Enterprise server (without `http://` or `https://`).
+        '''),
 
-        dcc.Markdown('''Host your-dash-enterprise
-        Port 3022''', style=styles.code_container),
+        dcc.Markdown('''
+        ```
+        Host your-dash-enterprise-server
+            Port 3022
+        ```''', style=styles.code_container),
 
-        (dcc.Markdown(s('''
+        (dcc.Markdown('''
         If you're having trouble opening this file, you can run
         `$ open ~/.ssh/config` which will open the file using your default
         editor. If the file doesn't exist, then you can open that hidden
         folder with just `$ open ~/.ssh`
-        ''')) if platform == 'Mac' else ''),
+        ''') if platform == 'Mac' else ''),
 
-        (dcc.Markdown(s('''
+        (dcc.Markdown('''
         Please be careful not to save your SSH config as a .txt file as
         it will not be recognized by Git when deploying your applications.
         If you are using Notepad to create your SSH config, you can force the
         removal of the .txt extension by naming the file "config", including
         the quotes, in the Save As dialog box.
-        ''')) if platform == 'Windows' else ''),
+        ''') if platform == 'Windows' else ''),
 
 
-        dcc.Markdown(s('''
+        dcc.Markdown('''
         ***
 
         If you have successfully added your SSH Key, advance to
         [**Part 1. Initialize Dash Apps on Dash Enterprise**](/Docs/dash-enterprise/initialize).
-        '''))
+        ''')
     ]
 
 
@@ -1561,7 +1552,7 @@ Authentication = html.Div(children=[
 
     rc.Blockquote(),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
     DDS will automatically implement user authentication if your
     [Dash app's privacy](/Docs/dash-enterprise/privacy) is set to *Restricted* (the default setting)
     or *Authorized* but not if is set to *Unauthorized*. You can access the authentication data within your app
@@ -1569,9 +1560,9 @@ Authentication = html.Div(children=[
 
     ***
 
-    ''')),
+    '''),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
 
     ## Using `dash-enterprise-auth` in an Existing Dash App
 
@@ -1588,7 +1579,7 @@ Authentication = html.Div(children=[
     `create_logout_button` locally you will have to set an environment variable called
     `DASH_LOGOUT_URL`. You can do this by running your code with `DASH_LOGOUT_URL=plot.ly python app.py`.
 
-    ''')),
+    '''),
 
 
     dcc.Markdown('''
@@ -1681,7 +1672,7 @@ AppPrivacy = html.Div(children=[
 
     rc.Blockquote(),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
     &nbsp;
 
     Starting in Version 3.0.0 of Dash Enterprise, you can restrict who is able to view your app
@@ -1690,7 +1681,7 @@ AppPrivacy = html.Div(children=[
     if you have any questions about privacy in previous versions of Dash Enterprise.
 
     &nbsp;
-    ''')),
+    '''),
 
     html.Img(
         alt='DDS Apps List',
@@ -1701,7 +1692,7 @@ AppPrivacy = html.Div(children=[
         }
     ),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
     &nbsp;
 
     From the settings tab of your app's management page, scroll down
@@ -1711,7 +1702,7 @@ AppPrivacy = html.Div(children=[
     the app. Additionally, if LDAP is enabled, you can also add entire LDAP groups.
 
     &nbsp;
-    ''')),
+    '''),
 
     html.Img(
         alt='Dash App Privacy Settings',
@@ -1732,7 +1723,7 @@ Checks = html.Div(children=[
 
     rc.Blockquote(),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
     &nbsp;
 
     Before an app is deployed to Dash Enterprise, a check is performed to make sure that
@@ -1745,11 +1736,11 @@ Checks = html.Div(children=[
     test and what content it should find there.
 
     &nbsp;
-    ''')),
+    '''),
 
     html.H3('Checks Settings'),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
 
     You can specify values for `WAIT`, `TIMEOUT`, and `ATTEMPTS` to set the period of time
     that DDS waits before performing the check, the amount of time before it times out, and the number of times
@@ -1758,9 +1749,9 @@ Checks = html.Div(children=[
     In the example `CHECKS` file below, DDS will wait 15 seconds before performing the check, allow up to 10 seconds
     for a response from the app and perform the check 3 times before marking it as a failure.
 
-    ''')),
+    '''),
 
-    dcc.Markdown(s(
+    dcc.Markdown(
         '''
         ```shell
         WAIT=15
@@ -1769,21 +1760,21 @@ Checks = html.Div(children=[
 
         /app-name/_dash_layout sample text which is inside the layout
         ```
-        '''), style=styles.code_container
+        ''', style=styles.code_container
     ),
 
     html.H3('Checks Instructions'),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
 
    The instructions are specified in the format of a relative link followed by content that DDS
    should find in the response. The expected content can be omitted if text content doesn't make sense (e.g if
    you want to check whether an image can be served). The example below checks the layout for the text `Sample App`,
    that `_dash-undo-redo` is included in the dash.css file and that dash-logo.png is being served by the app.
 
-   ''')),
+   '''),
 
-    dcc.Markdown(s(
+    dcc.Markdown(
         '''
         ```
         WAIT=5
@@ -1794,7 +1785,7 @@ Checks = html.Div(children=[
         /app-name/assets/dash.css _dash-undo-redo
         /app-name/assets/images/dash-logo.png
         ```
-        '''), style=styles.code_container
+        ''', style=styles.code_container
     ),
 ])
 
@@ -1807,7 +1798,7 @@ PrivatePackages = html.Div(children=[
 
     rc.Blockquote(),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
 
     When a Dash App is deployed on the Dash Enterprise, the
     `requirements.txt` will install the relevant python dependecies. If you
@@ -1847,18 +1838,18 @@ PrivatePackages = html.Div(children=[
     the `requirements.txt` file. Thus, private python packages can be added by
     using the `${VARIABLE}` syntax. For example,
 
-    ''')),
+    '''),
 
-    dcc.Markdown(s(
+    dcc.Markdown(
     '''
     ```shell
     git+http://${AUTH_USER}:${AUTH_PASSWORD}@git.example.com/MyProject#egg=MyProject
     ```
-    '''),
+    ''',
     style=styles.code_container,
     ),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
     &nbsp;
 
     `AUTH_USER` and `AUTH_PASSWORD` variables can be added to your Dash App via
@@ -1866,7 +1857,7 @@ PrivatePackages = html.Div(children=[
     environment variables to your Dash Apps, see
     [Setting Environment Variables](/Docs/dash-enterprise/environment-variables)
 
-    '''))
+    ''')
 ])
 
 
@@ -1878,7 +1869,7 @@ Redis = html.Div(children=[
 
     rc.Blockquote(),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
     Redis is a powerful in-memory database that is well-suited for many Dash
     applications. In particular, you can use Redis to:
 
@@ -1894,9 +1885,9 @@ Redis = html.Div(children=[
     backs up its data to the underlying server. So, it's safe for production
     usage. Dash Enterprise can dynamically spin up and manage secure
     instances of Redis for your application.
-    ''')),
+    '''),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
     ***
 
     #### Enable Redis Databases
@@ -1907,7 +1898,7 @@ Redis = html.Div(children=[
     (`https://<your.plotly.domain>:8800/settings`), then under **Special Options
     & Customizations** select **Enable Dash Customizations** and **Enable Redis
     Databases** for Dash Apps.
-    ''')),
+    '''),
 
     html.Img(
         alt='Enable Redis Databases',
@@ -1918,7 +1909,7 @@ Redis = html.Div(children=[
         }
     ),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
     ***
 
     #### Create and Link (via UI)
@@ -1953,7 +1944,7 @@ Redis = html.Div(children=[
 
     Once your Redis Database has been created, you'll notice that it is
     added to your list of databases.
-    ''')),
+    '''),
 
     html.Img(
         alt='Create Database',
@@ -1964,7 +1955,7 @@ Redis = html.Div(children=[
         }
     ),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
     &nbsp;
 
     Next, navigate to **Apps** and create a new app (for more info see
@@ -1972,7 +1963,7 @@ Redis = html.Div(children=[
     in the 'Create App' modal you have the option of linking a database.
     Here, use the dropdown to select the database that you created previously
     (see image below).
-    ''')),
+    '''),
 
     html.Img(
         alt='Link Database',
@@ -1983,7 +1974,7 @@ Redis = html.Div(children=[
         }
     ),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
     &nbsp;
 
     ##### Create and Link a Database After an App Has Been Initialized.
@@ -1992,7 +1983,7 @@ Redis = html.Div(children=[
     to the settings page. In Databases, use the dropdown to select
     **create and link database** then **Add**.
 
-    ''')),
+    '''),
 
     html.Img(
         alt='Create and Link Database in App',
@@ -2003,7 +1994,7 @@ Redis = html.Div(children=[
         }
     ),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
     ***
 
     #### Create and Link (via Command Line)
@@ -2012,19 +2003,19 @@ Redis = html.Div(children=[
     Dash Enterprise UI, it is still possible to create and link a Redis
     database via the command line (using ssh):
 
-    ''')),
+    '''),
 
-    dcc.Markdown(s(
+    dcc.Markdown(
     '''
     ```shell
     $ ssh dokku@YOUR_DASH_SERVER redis:create SERVICE-NAME
     $ ssh dokku@YOUR_DASH_SERVER redis:link SERVICE-NAME APP-NAME
     ```
-    '''),
+    ''',
     style=styles.code_container,
     ),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
 
     &nbsp;
 
@@ -2035,27 +2026,27 @@ Redis = html.Div(children=[
     * `APP-NAME` with the name of your app (as specified in the
     Dash App Manager).
 
-    ''')),
+    '''),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
     ***
 
     #### Referencing Redis in Your Code
 
     You can reference your Redis Database with the `os.environ` module:
 
-    ''')),
+    '''),
 
-    dcc.Markdown(s(
+    dcc.Markdown(
     '''
     ```shell
     redis_instance = redis.StrictRedis.from_url(os.environ["REDIS_URL"])
     ```
-    '''),
+    ''',
     style=styles.code_container,
     ),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
     ***
 
     #### Running Redis on Your Local Machine
@@ -2068,18 +2059,18 @@ Redis = html.Div(children=[
     By referencing Redis in our code, we'll need to add the variable to our
     local environment as well. One easy way to do this is to define the
     variable on-the-fly when you run `python app.py`.
-    ''')),
+    '''),
 
-    dcc.Markdown(s(
+    dcc.Markdown(
     '''
     ```shell
     $ REDIS_URL=redis://<your-redis-instance-ip>:6379 python app.py
     ```
-    '''),
+    ''',
     style=styles.code_container,
     ),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
     &nbsp;
 
     ##### Windows Users
@@ -2089,7 +2080,7 @@ Redis = html.Div(children=[
     the Redis in that linux environment. Otherwise, we recommend installing
     these [64-bit binary releases of Redis](https://github.com/ServiceStack/redis-windows#option-3-running-microsofts-native-port-of-redis).
 
-    '''))
+    ''')
 ])
 
 
@@ -2101,7 +2092,7 @@ Celery = html.Div(children=[
 
     rc.Blockquote(),
 
-    dcc.Markdown(s(
+    dcc.Markdown(
     '''
     Celery is a reliable asynchronous task queue/job queue that supports both
     real-time processing and task scheduling in production systems. This makes
@@ -2117,7 +2108,7 @@ Celery = html.Div(children=[
     For more information about Celery, visit
     [Celery's documentation](http://docs.celeryproject.org/en/latest/).
 
-    ''')),
+    '''),
 
 ])
 
@@ -2129,7 +2120,7 @@ StagingApp = html.Div(children=[
 
     rc.Blockquote(),
 
-    dcc.Markdown(s(
+    dcc.Markdown(
     '''
     Once you have deployed your application, your end-users will expect that
     it is stable and ready for consumption. So, what do you do if you want to
@@ -2155,17 +2146,17 @@ StagingApp = html.Div(children=[
     Add a new remote that points to this URL. In this example,
     we'll name the remote "stage":
 
-    ''')),
+    '''),
 
-    dcc.Markdown(s(
+    dcc.Markdown(
     '''
     ```shell
     $ git add remote stage https://your-dash-enterprise/GIT/your-dash-app-name-stage
     ```
-    '''),
+    ''',
     style=styles.code_container),
 
-    dcc.Markdown(s(
+    dcc.Markdown(
     '''
     ***
 
@@ -2175,13 +2166,13 @@ StagingApp = html.Div(children=[
     with your other app. Instead of `$ git push plotly master`, you'll deploy
     to your staging app with:
 
-    ''')),
+    '''),
 
-    dcc.Markdown(s(
+    dcc.Markdown(
     '''
     ```shell
     $ git push stage master
-    ```'''),
+    ```''',
     style=styles.code_container),
 
 ])
@@ -2194,7 +2185,7 @@ pdfService = html.Div(children=[
 
         rc.Blockquote(),
 
-        dcc.Markdown(s(
+        dcc.Markdown(
         '''
 
         The Dash Enterprise has an API endpoint for creating PDF exports
@@ -2208,7 +2199,7 @@ pdfService = html.Div(children=[
 
         #### API Parameters
 
-        ''')),
+        '''),
 
         dcc.Markdown('''
         ```bash
@@ -2231,7 +2222,7 @@ pdfService = html.Div(children=[
         ''',
         style=styles.code_container),
 
-        dcc.Markdown(s(
+        dcc.Markdown(
         '''
 
         - `url` - The URL to download
@@ -2243,28 +2234,28 @@ pdfService = html.Div(children=[
         appears on the screen before taking a screenshot. This ensures that
         the page has finished loading before taking a screenshot.
         In general, we recommend:
-            - If there are no graphs on the page, then embed an
-            `html.Div(id='waitfor')` in your `app.layout` or return it from
-            the callback that gets executed last. With the id `waitfor`, the
-            `wait_selector` would be `"#waitfor"`.
-            - If the page has `dcc.Graph` elements on it, then you'll want
-            to wait until these graphs have finished renderering. To do this,
-            set the `wait_selector` to be `#graph_id .svg-container` where
-            `"graph_id"` corresponds to the ID of the `dcc.Graph` component.
-            `.svg-container` refers to a CSS class of an element that plotly
-            inserts in the graph when it has finished rendering.
+          - If there are no graphs on the page, then embed an
+          `html.Div(id='waitfor')` in your `app.layout` or return it from
+          the callback that gets executed last. With the id `waitfor`, the
+          `wait_selector` would be `"#waitfor"`.
+          - If the page has `dcc.Graph` elements on it, then you'll want
+          to wait until these graphs have finished renderering. To do this,
+          set the `wait_selector` to be `#graph_id .svg-container` where
+          `"graph_id"` corresponds to the ID of the `dcc.Graph` component.
+          `.svg-container` refers to a CSS class of an element that plotly
+          inserts in the graph when it has finished rendering.
         - `pdf_options` - PDF sizing options. These options are similar to the
         options that you see when you print a web page using your web browser.
         They include:
-            - `pageSize`: Page size of the generated PDF. Available options:
+          - `pageSize`: Page size of the generated PDF. Available options:
             `A3`, `A4`, `A5`, `Legal`, `Tabloid` or
             `{"width": ..., "height": ...}` where `width` and `height` are
             integers specified in microns.
-            - `marginsType`: Specifies the type of margins to use. `0` for
+          - `marginsType`: Specifies the type of margins to use. `0` for
             default margin, `1` for no margin, and `2` for minimum margin. We
             recommend using `1` and controlling the margins yourself through
             your app's CSS.
-            - `landscape` (optional): `True` for landscape, `False` for portrait.
+          - `landscape` (optional): `True` for landscape, `False` for portrait.
 
         ***
 
@@ -2278,7 +2269,7 @@ pdfService = html.Div(children=[
         DASH_DOMAIN_BASE, DASH_APP_NAME and DASH_SECRET_KEY. You can find them in the list of your app's
         environment variables. See [our doc on environment variables](/Docs/dash-enterprise/environment-variables)
         for more details.
-        ''')),
+        '''),
 
         dcc.Markdown(
         '''
@@ -2366,7 +2357,7 @@ pdfService = html.Div(children=[
         ''',
         style=styles.code_container),
 
-        dcc.Markdown(s('''
+        dcc.Markdown('''
 
         ***
 
@@ -2382,7 +2373,7 @@ pdfService = html.Div(children=[
         [reach out to us directly](https://go.plot.ly/dash-doc)
         to learn more.
 
-        ''')),
+        '''),
 
 ])
 
@@ -2394,7 +2385,7 @@ Troubleshooting = html.Div(children=[
 
     rc.Blockquote(),
 
-    dcc.Markdown(s(
+    dcc.Markdown(
     '''
     This section describes some of the common errors you may encounter when
     trying to deploy to the Dash Enterprise, and provides information
@@ -2405,7 +2396,7 @@ Troubleshooting = html.Div(children=[
 
     #### Package Versioning
 
-    ''')),
+    '''),
 
     html.Details([
         html.Summary("Are using the latest versions?"),
@@ -2422,7 +2413,7 @@ Troubleshooting = html.Div(children=[
             dcc.__version__,
         ), style=styles.code_container),
 
-        dcc.Markdown(s('''
+        dcc.Markdown('''
         > A quick note on checking your versions and on upgrading.
         > These docs are run using the versions listed above and these
         > versions should be the latest versions available.
@@ -2445,29 +2436,29 @@ Troubleshooting = html.Div(children=[
         > - [plotly changelog](https://github.com/plotly/plotly.py/blob/master/CHANGELOG.md)
         >
         > All of these packages adhere to [semver](https://semver.org/).
-        '''.format(dash_renderer.__version__, plotly.__version__)))
+        '''.format(dash_renderer.__version__, plotly.__version__))
     ]),
 
-    dcc.Markdown(s(
+    dcc.Markdown(
     '''
     ***
 
     #### Deploying with Self-Signed Certificates?
 
-    ''')),
+    '''),
 
     html.Details([
         html.Summary("SSL certificate problem: self signed certificate"),
 
-        dcc.Markdown(s(
+        dcc.Markdown(
         '''
         ```shell
         fatal: unable to access 'https://<your-dash-enterprise>/GIT/your-dash-app-name/': SSL certificate problem: self signed certificate
         ```
-        '''),
+        ''',
         style=styles.code_container),
 
-        dcc.Markdown(s(
+        dcc.Markdown(
         '''
         &nbsp;
 
@@ -2476,39 +2467,41 @@ Troubleshooting = html.Div(children=[
         certificate**, deploying with HTTPS
         [requires some extra, challenging configuration](https://stackoverflow.com/questions/11621768/).
         In these cases, it will be easier to set up deploying with SSH.
-        '''))
+        ''')
     ]),
 
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
     ***
 
     #### Deployment Failing?
 
-    ''')),
+    '''),
 
     html.Details([
         html.Summary("Could not find a version that satisfies the requirement"),
 
         dcc.Markdown(
-        '''...
-    remote: -----> Cleaning up...
-    remote: -----> Building my-dash-app from herokuish...
-    remote: -----> Injecting apt repositories and packages ...
-    remote: -----> Adding BUILD_ENV to build environment...
-    remote:        -----> Python app detected
-    remote:        !     The latest version of Python 2 is python-2.7.15 (you are using python-2.7.13, which is unsupported).
-    remote:        !     We recommend upgrading by specifying the latest version (python-2.7.15).
-    remote:        Learn More: https://devcenter.heroku.com/articles/python-runtimes
-    remote: -----> Installing python-2.7.13
-    remote: -----> Installing pip
-    remote: -----> Installing requirements with pip
-    remote:        Collecting dash==0.29.1 (from -r /tmp/build/requirements.txt (line 1))
-    remote:        Could not find a version that satisfies the requirement dash==0.29.1 (from -r /tmp/build/requirements.txt (line 1)) (from versions: 0.17.4, 0.17.5, 0.17.7, 0.17.8rc1, 0.17.8rc2, 0.17.8rc3, 0.18.0, 0.18.1, 0.18.2, 0.18.3rc1, 0.18.3, 0.19.0, 0.20.0, 0.21.0, 0.21.1, 0.22.0rc1, 0.22.0rc2, 0.22.0, 0.23.1, 0.24.0, 0.24.1rc1, 0.24.1, 0.24.2, 0.25.0)
-    remote:        No matching distribution found for dash==0.29.1 (from -r /tmp/build/requirements.txt (line 1))''',
+        '''
+        ```shell
+        ...
+        remote: -----> Cleaning up...
+        remote: -----> Building my-dash-app from herokuish...
+        remote: -----> Injecting apt repositories and packages ...
+        remote: -----> Adding BUILD_ENV to build environment...
+        remote:        -----> Python app detected
+        remote:        !     The latest version of Python 2 is python-2.7.15 (you are using python-2.7.13, which is unsupported).
+        remote:        !     We recommend upgrading by specifying the latest version (python-2.7.15).
+        remote:        Learn More: https://devcenter.heroku.com/articles/python-runtimes
+        remote: -----> Installing python-2.7.13
+        remote: -----> Installing pip
+        remote: -----> Installing requirements with pip
+        remote:        Collecting dash==0.29.1 (from -r /tmp/build/requirements.txt (line 1))
+        remote:        Could not find a version that satisfies the requirement dash==0.29.1 (from -r /tmp/build/requirements.txt (line 1)) (from versions: 0.17.4, 0.17.5, 0.17.7, 0.17.8rc1, 0.17.8rc2, 0.17.8rc3, 0.18.0, 0.18.1, 0.18.2, 0.18.3rc1, 0.18.3, 0.19.0, 0.20.0, 0.21.0, 0.21.1, 0.22.0rc1, 0.22.0rc2, 0.22.0, 0.23.1, 0.24.0, 0.24.1rc1, 0.24.1, 0.24.2, 0.25.0)
+        remote:        No matching distribution found for dash==0.29.1 (from -r /tmp/build/requirements.txt (line 1))```''',
         style=styles.code_container),
 
-        dcc.Markdown(s(
+        dcc.Markdown(
         '''
         &nbsp;
 
@@ -2516,47 +2509,49 @@ Troubleshooting = html.Div(children=[
         your `requirements.txt` file. To resolve, check the versioning in your
         `requirements.txt` file. For example, the above failed because
         `dash==29.1` isn't a version of dash. If you're working in a virtualenv then
-        you can check your versioning with the command:
-        ''')),
+        you can check your version with the command:
+        '''),
 
-        dcc.Markdown('$ pip list', style=styles.code_container),
+        dcc.Markdown('```\n$ pip list\n```', style=styles.code_container),
 
-        dcc.Markdown(s(
+        dcc.Markdown(
         '''
         &nbsp;
 
         if it is differs from your `requirements.txt`, you can update it with the command:
-        ''')),
+        '''),
 
-        dcc.Markdown('$ pip freeze > requirements.txt', style=styles.code_container),
+        dcc.Markdown('```\n$ pip freeze > requirements.txt\n```', style=styles.code_container),
 
-        dcc.Markdown(s(
+        dcc.Markdown(
         '''
         &nbsp;
 
         For more information see [Application Structure](/Docs/dash-enterprise/application-structure).
 
         &nbsp;
-        '''))
+        ''')
     ]),
 
     html.Details([
         html.Summary("Failed to find application object 'server' in 'app"),
 
         dcc.Markdown(
-        '''...
-    remote:        Failed to find application object 'server' in 'app'
-    remote:        [2018-08-16 16:00:49 +0000] [181] [INFO] Worker exiting (pid: 181)
-    remote:        [2018-08-16 16:00:49 +0000] [12] [INFO] Shutting down: Master
-    remote:        [2018-08-16 16:00:49 +0000] [12] [INFO] Reason: App failed to load.
-    remote:        [2018-08-16 16:00:51 +0000] [12] [INFO] Starting gunicorn 19.9.0
-    remote:        [2018-08-16 16:00:51 +0000] [12] [INFO] Listening at: http://0.0.0.0:5000 (12)
-    remote:        [2018-08-16 16:00:51 +0000] [12] [INFO] Using worker: sync
-    remote:        [2018-08-16 16:00:51 +0000] [179] [INFO] Booting worker with pid: 179
-    remote:        [2018-08-16 16:00:51 +0000] [180] [INFO] Booting worker with pid: 180''',
+        '''
+        ```shell
+        ...
+        remote:        Failed to find application object 'server' in 'app'
+        remote:        [2018-08-16 16:00:49 +0000] [181] [INFO] Worker exiting (pid: 181)
+        remote:        [2018-08-16 16:00:49 +0000] [12] [INFO] Shutting down: Master
+        remote:        [2018-08-16 16:00:49 +0000] [12] [INFO] Reason: App failed to load.
+        remote:        [2018-08-16 16:00:51 +0000] [12] [INFO] Starting gunicorn 19.9.0
+        remote:        [2018-08-16 16:00:51 +0000] [12] [INFO] Listening at: http://0.0.0.0:5000 (12)
+        remote:        [2018-08-16 16:00:51 +0000] [12] [INFO] Using worker: sync
+        remote:        [2018-08-16 16:00:51 +0000] [179] [INFO] Booting worker with pid: 179
+        remote:        [2018-08-16 16:00:51 +0000] [180] [INFO] Booting worker with pid: 180```''',
         style=styles.code_container),
 
-        dcc.Markdown(s(
+        dcc.Markdown(
         '''
         &nbsp;
 
@@ -2570,7 +2565,7 @@ Troubleshooting = html.Div(children=[
         [Application Structure](/Docs/dash-enterprise/application-structure).
 
         &nbsp;
-        '''))
+        ''')
     ]),
 
     html.Details([
@@ -2585,7 +2580,7 @@ Troubleshooting = html.Div(children=[
             ''',
             style=styles.code_container),
 
-        dcc.Markdown(s(
+        dcc.Markdown(
             '''
             &nbsp;
 
@@ -2593,9 +2588,10 @@ Troubleshooting = html.Div(children=[
             means that the ssh authentication has failed. This can be for a variety of
             reasons so it is useful to run git push again with ssh debugging enabled by
             adding `GIT_SSH_COMMAND='ssh -v'` before your `git push` command.
-            ''')),
+            '''),
 
         dcc.Markdown('''
+        ```python
         $ GIT_SSH_COMMAND='ssh -v' git push plotly master
 
         # OpenSSH_7.6p1 Ubuntu-4ubuntu0.1, OpenSSL 1.0.2n  7 Dec 2017
@@ -2619,9 +2615,9 @@ Troubleshooting = html.Div(children=[
         # debug1: Trying private key: /home/michael/.ssh/id_ed25519
         # debug1: Next authentication method: password
         dokku@dash.local's password:
-        ''', style=styles.code_container),
+        ```''', style=styles.code_container),
 
-        dcc.Markdown(s(
+        dcc.Markdown(
             '''
             &nbsp;
 
@@ -2637,35 +2633,43 @@ Troubleshooting = html.Div(children=[
             Server is not among those offered you will need to add it to your `ssh-agent`
             with `ssh-add ~/path/to/your/key`. More details on `ssh-agent` are included in the
             [ssh chapter](/Docs/dash-enterprise/ssh).
-            '''))
+            ''')
     ]),
 
     html.Details([
         html.Summary("Got permission denied while trying to connect to the Docker daemon socket"),
 
-        dcc.Markdown(s(
-        '''$ Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get http://%2Fvar%2Frun%2Fdocker.sock/v1.38/containers/json?all=1&filters=%7B%22label%22%3A%7B%22dokku%22%3Atrue%7D%2C%22status%22%3A%7B%22exited%22%3Atrue%7D%7D: dial unix /var/run/docker.sock: connect: permission denied'''),
+        dcc.Markdown(
+        '''
+        ```
+        $ Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get http://%2Fvar%2Frun%2Fdocker.sock/v1.38/containers/json?all=1&filters=%7B%22label%22%3A%7B%22dokku%22%3Atrue%7D%2C%22status%22%3A%7B%22exited%22%3Atrue%7D%7D: dial unix /var/run/docker.sock: connect: permission denied
+        ```
+        ''',
         style=styles.code_container),
 
-        dcc.Markdown(s(
+        dcc.Markdown(
         '''
         &nbsp;
 
         If you're receiving the above user permission error, please
         [contact support](/Docs/dash-enterprise/support).
-        '''))
+        ''')
     ]),
 
     html.Details([
         html.Summary("Unable to select a buildpack"),
 
-        dcc.Markdown(s(
-            '''...
+        dcc.Markdown(
+            '''
+            ```shell
+            ...
             remote:            Adding BUILD_ENV to build environment...
-            remote:            Unable to select a buildpack'''),
+            remote:            Unable to select a buildpack
+            ```
+            ''',
                               style=styles.code_container),
-        dcc.Markdown(s(
-            ''''
+        dcc.Markdown(
+            '''
             &nbsp;
 
             This error might occur if you are trying to push from a branch
@@ -2675,47 +2679,47 @@ Troubleshooting = html.Div(children=[
 
             &nbsp;
             '''
-        )),
+        ),
     ]),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
     ***
 
     #### Problems Using a Celery Process?
 
-    ''')),
+    '''),
 
     html.Details([
         html.Summary("Callbacks using async processes aren't running and `Celery` is not present in app logs"),
 
         html.Br(),
 
-        dcc.Markdown(s(
+        dcc.Markdown(
             '''
             These applications require using a `worker`
             process. When using a `worker` process in your `Procfile`,
             you will have to explicitly start it after deploying. To
             scale a `worker` process:
-            ''')),
+            '''),
 
-        dcc.Markdown('$ ssh dokku@dash-server ps:scale APP-NAME worker=1',
+        dcc.Markdown('```\n$ ssh dokku@dash-server ps:scale APP-NAME worker=1\n```',
                               style=styles.code_container),
-        dcc.Markdown(s(
+        dcc.Markdown(
             '''
 
             If you have multiple `worker` processes in your `Procfile`
             (e.g `worker-default` *and* `worker-beat`) you can scale them
             up simultaneously with:
-            ''')),
+            '''),
 
-        dcc.Markdown('$ ssh dokku@YOUR_DASH_SERVER ps:scale APP-NAME worker-default=1 worker-beat=1',
+        dcc.Markdown('```\n$ ssh dokku@YOUR_DASH_SERVER ps:scale APP-NAME worker-default=1 worker-beat=1\n```',
                               style=styles.code_container),
 
-        dcc.Markdown(s(
+        dcc.Markdown(
             '''
             Note that this requires
             [Authenticating to Dash Enterprise with SSH](/Docs/dash-enterprise/ssh).
-             ''')),
+             '''),
     ]),
 
 ])
@@ -2729,9 +2733,9 @@ Portal = html.Div(children=[
 
     rc.Blockquote(),
 
-    dcc.Markdown(s('''
-    Located at `https://your-dash-enterprise/Portal`,
-    the Dash App Portal is the front page for your Dash Enterprise.
+    dcc.Markdown('''
+    Located at `https://your-dash-enterprise-server/Portal`,
+    the Dash App Portal is the front page for your Dash Enterprise platform.
     It allows multiple users to prominently display their selected apps in
     one central location.
 
@@ -2739,7 +2743,7 @@ Portal = html.Div(children=[
     be customized.
 
     &nbsp;
-    ''')),
+    '''),
 
     html.Img(
         alt='Default Dash App Portal',
@@ -2750,7 +2754,7 @@ Portal = html.Div(children=[
         }
     ),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
 
     ### Dash Apps on the Portal
 
@@ -2761,7 +2765,7 @@ Portal = html.Div(children=[
 
     &nbsp;
 
-    ''')),
+    '''),
 
     html.Img(
         alt='Dash App Portal Settings',
@@ -2772,7 +2776,7 @@ Portal = html.Div(children=[
         }
     ),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
     &nbsp;
 
     ### Customize the Portal
@@ -2781,7 +2785,7 @@ Portal = html.Div(children=[
     to see its settings (or go to `/Manager/settings/portal/general`).
 
     &nbsp;
-    ''')),
+    '''),
 
     html.Img(
         alt='Customized Portal',
@@ -2792,14 +2796,14 @@ Portal = html.Div(children=[
         }
     ),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
     &nbsp;
 
     Here, you can decide who can view the portal and customize
     its appearance.
 
     &nbsp;
-    ''')),
+    '''),
 
     html.Img(
         alt='Customized Portal',
@@ -2822,13 +2826,13 @@ AdminPanel = html.Div(children=[
 
     rc.Blockquote(),
 
-    dcc.Markdown(s('''
-    The Admin panel allows Admin users, users with Staff and Superuser Status, to manage all users of the Dash Enterprise.
+    dcc.Markdown('''
+    The Admin panel allows Admin users, users with Staff and Superuser Status, to manage all users of the Dash Enterprise platform.
     From here they can add, view, modify, and delete user accounts. The panel can be accessed from the navbar
     dropdown in the /Manager or /Portal pages as shown below.
 
     &nbsp;
-    ''')),
+    '''),
 
     html.Img(
         alt='DDS admin panel link',
@@ -2839,7 +2843,7 @@ AdminPanel = html.Div(children=[
         }
     ),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
 
     Only Admin users have access to the admin panel and other users will
     not be able to see the above link.
@@ -2850,7 +2854,7 @@ AdminPanel = html.Div(children=[
 
     &nbsp;
 
-    ''')),
+    '''),
 
     html.Img(
         alt='Users summary section',
@@ -2861,7 +2865,7 @@ AdminPanel = html.Div(children=[
         }
     ),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
     &nbsp;
 
     A specific user account can be accessed and modified by clicking on a username. This view
@@ -2869,7 +2873,7 @@ AdminPanel = html.Div(children=[
     with the account) or delete it altogether.
 
     &nbsp;
-    ''')),
+    '''),
 
     html.Img(
         alt='Modify user section',
@@ -2880,13 +2884,13 @@ AdminPanel = html.Div(children=[
         }
     ),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
     &nbsp;
 
     For more information contact `onpremise.support@plot.ly`.
 
     &nbsp;
-    '''))
+    ''')
 
 
 ])
@@ -2900,7 +2904,7 @@ Analytics = html.Div(children=[
 
     rc.Blockquote(),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
     #### Dash App Analytics
 
     After you have successfully deployed a Dash App to the Dash Deployment
@@ -2908,7 +2912,7 @@ Analytics = html.Div(children=[
     Here, navigate to the Dash Enterprise UI and select the app to
     display analytics.
 
-    ''')),
+    '''),
 
     html.Img(
         alt='App Analytics',
@@ -2928,7 +2932,7 @@ Logs = html.Div(children=[
 
     rc.Blockquote(),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
     ***
 
     Dash apps create a log of usage data as well as any `print` statements
@@ -2945,7 +2949,7 @@ Logs = html.Div(children=[
     From your list of apps, open the app and then select **Logs**. This will
     display the most recent 500 log entries for your app. For the complete list,
     use the command line method outlined below.
-    ''')),
+    '''),
 
     html.Img(
         alt='App Logs',
@@ -2956,7 +2960,7 @@ Logs = html.Div(children=[
         }
     ),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
     ***
 
     #### Dash App Logs (via Command Line)
@@ -2965,17 +2969,17 @@ Logs = html.Div(children=[
     To view the logs for a specific Dash App run the following command
     in your terminal:
 
-    ''')),
+    '''),
 
-    dcc.Markdown(s(
+    dcc.Markdown(
     '''
     ```shell
     $ ssh dokku@<your-dash-domain> logs <your-app-name> --num -1
     ```
-    '''),
+    ''',
     style=styles.code_container),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
 
     &nbsp;
 
@@ -2992,7 +2996,7 @@ Logs = html.Div(children=[
        from the latest app deploy.
     - `--tail`, `-t`: Continuously stream the logs.
     - `--quiet`, `-q`: Display the raw logs without colors, times, and names.
-    ''')),
+    '''),
 ])
 
 
@@ -3004,7 +3008,7 @@ Support = html.Div(children=[
 
     rc.Blockquote(),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
     ***
 
     #### Need to Contact Support?
@@ -3014,9 +3018,9 @@ Support = html.Div(children=[
     messages you encounter, as well as available logs. See [App Logs](/Docs/dash-enterprise/logs) on how
     to obtain Dash App logs. Additionally, see below for the Plotly Enterprise support
     bundle.
-    ''')),
+    '''),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
     ***
 
     #### Enterprise Support Bundle
@@ -3027,7 +3031,7 @@ Support = html.Div(children=[
     will need admin permissions to access the Server Manager.
     Navigate to the Server Manager and then select the Support tab.
     There you will see the option to download the support bundle.
-    '''))
+    ''')
 ])
 
 # # # # # # #
@@ -3038,7 +3042,7 @@ Git = html.Div(children=[
 
     rc.Blockquote(),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
 
     ***
 
@@ -3056,9 +3060,9 @@ Git = html.Div(children=[
 
     ***
 
-    ''')),
+    '''),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
 
     #### Initialize a Repository
 
@@ -3068,19 +3072,19 @@ Git = html.Div(children=[
     Server. You need to initialize the local Git repository from your app's
     root folder, thus:
 
-    ''')),
+    '''),
 
-    dcc.Markdown(s(
+    dcc.Markdown(
     '''
     ```shell
     $ cd myDashApp
     $ git init
     Initialized empty Git repository in .git/
     ```
-    '''),
+    ''',
     style=styles.code_container),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
     ***
 
     #### Cloning a Repository
@@ -3090,19 +3094,19 @@ Git = html.Div(children=[
     you'll need to clone the repository. You can achieve this by using the
     `git clone` command:
 
-    ''')),
+    '''),
 
-    dcc.Markdown(s(
+    dcc.Markdown(
     '''
     ```shell
     $ git clone <respository-name>
     ```
-    '''),
+    ''',
     style=styles.code_container),
 
-    dcc.Markdown(s('''&nbsp;''')),
+    dcc.Markdown('''&nbsp;'''),
 
-    rc.Notebox(s('''
+    rc.Notebox('''
 
     **Note:** the above command will generate a local Git repository on your
     machine, which by default will include the remote Github repository
@@ -3110,9 +3114,9 @@ Git = html.Div(children=[
     repository, you can remove it. See the next section **Remote Repositories**
     for how to view and remove remote repositories.
 
-    ''')),
+    '''),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
 
     ***
 
@@ -3127,65 +3131,65 @@ Git = html.Div(children=[
 
     To create a remote repository
 
-    ''')),
+    '''),
 
-    dcc.Markdown(s(
+    dcc.Markdown(
     '''
     ```shell
     $ git remote add <remote-name> <remote-URL>
     ```
-    '''),
+    ''',
     style=styles.code_container),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
 
     &nbsp;
 
     To view all remotes:
 
-    ''')),
+    '''),
 
-    dcc.Markdown(s(
+    dcc.Markdown(
     '''
     ```shell
     $ git remote -v
     ```
-    '''),
+    ''',
     style=styles.code_container),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
 
     &nbsp;
 
     To rename a remote repository:
 
-    ''')),
+    '''),
 
-    dcc.Markdown(s(
+    dcc.Markdown(
     '''
     ```shell
     $ git remote rename <existing-name> <new-name>
     ```
-    '''),
+    ''',
     style=styles.code_container),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
 
     &nbsp;
 
     To remove a remote repository:
 
-    ''')),
+    '''),
 
-    dcc.Markdown(s(
+    dcc.Markdown(
     '''
     ```shell
     $ git remote rm <remote-name>
     ```
-    '''),
+    ''',
     style=styles.code_container),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
 
     ***
 
@@ -3193,7 +3197,7 @@ Git = html.Div(children=[
 
     By default, Dash apps run on `localhost` - you can only access them on
     your local machine. To share a Dash app, you need to "deploy" your Dash app
-    to the Dash Enterprise. This can be achieved via a series of
+    to the Dash Enterprise platform. This can be achieved via a series of
     commands. Namely,
 
     - `git status` allows you to view which files have been changed.
@@ -3205,32 +3209,32 @@ Git = html.Div(children=[
 
     &nbsp;
 
-    ''')),
+    '''),
 
-    rc.Notebox(s('''
+    rc.Notebox('''
     `git status` and `git diff` are optional and are only required if you
     wish to inspect before adding changes.
-    ''')),
+    '''),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
 
     &nbsp;
 
     The demonstration below is a common way to deploy your changes:
 
-    ''')),
+    '''),
 
-    dcc.Markdown(s(
+    dcc.Markdown(
     '''
     ```shell
     $ git add .
     $ git commit -m "a description of the changes"
     $ git push <respository-name> master
     ```
-    '''),
+    ''',
     style=styles.code_container),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
 
     ***
 
@@ -3244,50 +3248,50 @@ Git = html.Div(children=[
 
     To view all branches:
 
-    ''')),
+    '''),
 
-    dcc.Markdown(s(
+    dcc.Markdown(
     '''
     ```shell
     $ git branch
     ```
-    '''),
+    ''',
     style=styles.code_container),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
 
     &nbsp;
 
     To create a new branch:
 
-    ''')),
+    '''),
 
-    dcc.Markdown(s(
+    dcc.Markdown(
     '''
     ```shell
     $ git branch <branchname>
     ```
-    '''),
+    ''',
     style=styles.code_container),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
 
     &nbsp;
 
     Once you've created a new branch, you need to check it out (i.e. navigate
     to it).
 
-    ''')),
+    '''),
 
-    dcc.Markdown(s(
+    dcc.Markdown(
     '''
     ```
     $ git checkout <branchname>
     ```
-    '''),
+    ''',
     style=styles.code_container),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
 
     &nbsp;
 
@@ -3296,59 +3300,59 @@ Git = html.Div(children=[
     `git commit -m "description"` commands. To deploy these to Dash Deployment
     Server, you will need to deploy the branch into master:
 
-    ''')),
+    '''),
 
-    dcc.Markdown(s(
+    dcc.Markdown(
     '''
     ```shell
     $ git add .
     $ git commit -m "a description of changes"
     $ git push <remote-name> <branchname>:master
-    '''),
+    ''',
     style=styles.code_container),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
 
     &nbsp;
 
     To rename a branch:
 
-    ''')),
+    '''),
 
-    dcc.Markdown(s(
+    dcc.Markdown(
     '''
     ```shell
     $ git branch -m <existing-name> <new-name>
     ```
-    '''),
+    ''',
     style=styles.code_container),
 
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
 
     &nbsp;
 
     If you no longer require the branch, you can remove a branch:
 
-    ''')),
+    '''),
 
-    dcc.Markdown(s(
+    dcc.Markdown(
     '''
     ```shell
     $ git branch -D <branch-name>
     ```
-    '''),
+    ''',
     style=styles.code_container),
 
-    dcc.Markdown(s('''&nbsp;''')),
+    dcc.Markdown('''&nbsp;'''),
 
-    rc.Notebox(s('''
+    rc.Notebox('''
 
     **Note:** using `-D` will delete the branch and all unmerged changes.
 
-    ''')),
+    '''),
 
-    dcc.Markdown(s('''
+    dcc.Markdown('''
 
     ***
 
@@ -3359,5 +3363,5 @@ Git = html.Div(children=[
 
 
 
-    '''))
+    ''')
 ])

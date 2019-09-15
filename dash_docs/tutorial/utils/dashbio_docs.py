@@ -5,13 +5,11 @@ import sys
 import dash
 import dash_core_components as dcc
 import dash_html_components as html
+import dash_bio
 
-if __name__ != '__main__':
-    from dash_docs import styles
-    from dash_docs.tutorial.utils.component_block import ComponentBlock
-    from dash_docs.tutorial.utils.convert_props_to_table import js_to_py_type
-else:
-    from convert_props_to_table import js_to_py_type
+from dash_docs import styles
+from dash_docs.tutorial.utils.component_block import ComponentBlock
+from dash_docs.tutorial.utils.convert_props_to_list import generate_prop_info
 
 import json
 
@@ -359,7 +357,7 @@ def create_default_example(
             component_name.replace('-', ' ')
         )),
         dcc.Markdown(
-            '```python  \n' + example_code[0] + '  \n```',
+            example_code[0]
         ),
         html.Div(
             example_code[1],
@@ -376,7 +374,7 @@ def create_examples(
     for example in examples_data:
         examples += [
             html.H3(example['param_name'].title()),
-            dcc.Markdown('```python  \n' + example['description'] + '  \n```'),
+            dcc.Markdown(example['description']),
             ComponentBlock(example['code']),
             html.Hr()
         ]
@@ -524,22 +522,7 @@ def create_doc_page(examples, component_names, component_name, component_example
                                examples[component_name],
                                styles=styles) +
         component_examples +
-        [generate_prop_table(
+        [generate_prop_info(
             c_name,
-            component_names,
-            'dash_bio')]
+            lib=dash_bio)]
     )
-
-
-if __name__ == '__main__':
-
-    app = dash.Dash()
-
-    components = get_component_names('dash_bio')
-    app.layout = html.Div(
-        [generate_prop_table(component, components, 'dash_bio')
-         for component in components['react']] +
-        [generate_prop_table(component, components, 'dash_bio')
-         for component in components['python']]
-    )
-    app.run_server(debug=True)
