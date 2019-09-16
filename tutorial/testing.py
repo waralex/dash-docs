@@ -169,7 +169,7 @@ layout = html.Div([
     - dash_process_server
 
     This is close to your production/deployed environment. Start your Dash App
-    with `waitress`(by default if raw_command not provided) in a Python
+    with `waitress`(by default if `raw_command` is not provided) in a Python
     `subprocess`. You can control the process runner with two supplemental
     arguments. To run the application with alternative deployment options, use
     the `raw_command` argument; to extend the timeout if your application needs
