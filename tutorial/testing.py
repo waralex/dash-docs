@@ -401,7 +401,7 @@ layout = html.Div([
     is required if you run your tests in parallel, then you add an extra
     `percy finalize --all` step at the end. For more details, please visit
     [Percy Documents](https://docs.percy.io/docs/parallel-test-suites).
-    2. `--percy-assets` let Percy know where to collect additional assets
+    2. `--percy-assets` lets Percy know where to collect additional assets
     such as CSS files. You can refer to the example we used for [`dash-docs`](https://github.com/plotly/dash-docs/blob/b10701c8514b87d86645f6edeb808ccdcfa4143d/tests/conftest.py#L17-L32).
     """),
 ])
