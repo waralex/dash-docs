@@ -274,7 +274,7 @@ layout = html.Div([
     | `switch_window(idx)` | switch to window by window index. shortcut to `driver.switch_to.window`. raise `BrowserError` if no second window present in browser |
     | `open_new_tab(url=None)` | open a new tab in browser with window name `new window`. `url` if not set, equals to `server_url` |
     | `percy_snapshot(name)` | visual test API shortcut to `percy_runner.snapshot` it also combines the snapshot `name` with python versions |
-    | `visit_and_snapshot(resource_path, hook_id, assert_check=True)` | common task used in dash-docs testing: it visits a URL path by `resource_path`, makes sure the page is fully loaded by the `hook_id` at the bottom, take a snapshot and return to the main page. `assert_check` is a switch to enable/disbale the assertion on devtool error alert icons |
+    | `visit_and_snapshot(resource_path, hook_id, assert_check=True)` | common task used in dash-docs testing: it visits a URL path by `resource_path`, makes sure the page is fully loaded by the `hook_id` at the bottom, takes a snapshot and returns to the main page. `assert_check` is a switch to enable/disable an assertion that there is no devtools error alert icon |
     | `take_snapshot(name)` | hook method to take a snapshot while selenium test fails. the snapshot is placed under `/tmp/dash_artifacts` in Linux or `%TEMP` in windows with a filename combining test case `name` and the running selenium session id |
     | `get_logs()` | return a list of `SEVERE` level logs after last reset time stamps (default to 0, resettable by `reset_log_timestamp`. **Chrome only** |
     | `clear_input()` | simulate key press to clear the input |
