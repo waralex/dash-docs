@@ -74,7 +74,7 @@ layout = html.Div([
         '''
     )),
 
-    '''
+    dcc.Markdown(dedent('''
     # Editable DataTable
 
     The DataTable is editable. Like a spreadsheet, it can be used
