@@ -97,7 +97,10 @@ layout = html.Div([
     In the example below, you can use the dropdown to choose to load
     either the `style_cell` property or the `data` property. When you
     select the property, there will be a simulated delay (to mimic a
-    delay you might get when communicating with a server).
+    delay you might get when communicating with a server). Although
+    this isn't the case in the example, you can also use the
+    `.dash-loading` CSS selector to apply specific styling while the
+    table is waiting.
 
     If you select `style_cell`, you'll be able to edit the cell as the
     value is loading; if you select `data`, you won't. Try it out
