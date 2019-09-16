@@ -398,7 +398,7 @@ layout = html.Div([
     There are two customized `pytest` arguments to tune Percy runner:
 
     1. `--nopercyfinalize` disables the Percy finalize in dash fixtures. This
-    is required if you run your tests in parallel, plus an extra
+    is required if you run your tests in parallel, then you add an extra
     `percy finalize --all` step at the end. For more details, please visit
     [Percy Documents](https://docs.percy.io/docs/parallel-test-suites).
     2. `--percy-assets` let Percy know where to collect additional assets
