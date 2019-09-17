@@ -16,7 +16,8 @@ examples = {
         'editing_uploading.py',
         'editing_columns.py',
         'editing_rows_and_columns.py',
-        'editing_updating_self.py'
+        'editing_updating_self.py',
+        'editing_loading_state.py'
     ]
 }
 
@@ -28,7 +29,52 @@ Display = CreateDisplay({
 layout = html.Div([
 
     dcc.Markdown(dedent(
-    '''
+        '''
+        # Editable DataTable
+
+        The DataTable is editable. Like a spreadsheet, it can be used
+        as an input for controlling models with a variable number
+        of inputs.
+
+        This chapter includes recipes for:
+
+        - Reading the contents of the DataTable
+        - Filtering out null values
+        - Uploading data
+        - Determining which cell has changed
+        - Adding or removing columns
+        - Adding or removing rows
+        - Clearable, deletable, renamable, and hideable columns
+        - Export DataTable
+        '''
+    )),
+
+    dcc.Markdown('***'),
+
+    dcc.Markdown(dedent(
+        '''
+        ## Predefined Columns
+
+        In this example, we initialize a table with 10 blank rows and
+        a few predefined columns. To retrieve the data, just listen to the
+        `data` property.
+
+        A few notes:
+        - If you copy and paste data that is larger than the rows, then the
+        table will expand to contain the contents.
+        Try it out by [copying and pasting this dataset](https://docs.google.com/spreadsheets/d/1MWj7AjngD_fH7vkVhEMIRo51Oty295kE36-DFnQElrg/edit?usp=sharing).
+        - Unlike other spreadsheet programs, the DataTable has a fixed number of
+        rows. So, if your model has an arbitrary number of parameters
+        (rows or columns), we recommend initializing your table with a
+        large number of empty rows and columns.
+        - When copying data from the table to an external spreadsheet or
+        between two tables in different tabs, you can choose to include column headers
+        by adding `include_headers_on_copy_paste=True`. However, headers are ignored
+        when copying between two tables in the same tab.
+        '''
+    )),
+
+    dcc.Markdown(dedent('''
     # Editable DataTable
 
     The DataTable is editable. Like a spreadsheet, it can be used
@@ -44,7 +90,7 @@ layout = html.Div([
     - Adding or removing columns
     - Adding or removing rows
     - Clearable, deletable, renamable, and hideable columns
-    - Export DataTable 
+    - Export DataTable
 
     ***
 
@@ -63,8 +109,8 @@ layout = html.Div([
     (rows or columns), we recommend initializing your table with a
     large number of empty rows and columns.
     - When copying data from the table to an external spreadsheet or
-    between two tables in different tabs, you can choose to include column headers 
-    by adding `include_headers_on_copy_paste=True`. However, headers are ignored 
+    between two tables in different tabs, you can choose to include column headers
+    by adding `include_headers_on_copy_paste=True`. However, headers are ignored
     when copying between two tables in the same tab.
     ''')),
 
@@ -72,10 +118,45 @@ layout = html.Div([
         examples['editing_simple.py'][0],
         style=styles.code_container
     ),
+
     html.Div(
         examples['editing_simple.py'][1],
         className='example-container'
     ),
+
+    dcc.Markdown(dedent('''
+    ## Integration with Dash loading states
+
+    As of table version 4.3.0, Dash loading states also have some
+    control over whether the table is editable. If the `data` property
+    is loading (e.g., while retrieving data from a server), you will
+    be unable to edit the cells and the dropdowns. This avoids cases
+    in which the edited value (input from the user) conflicts with the
+    value that is returned by the server.
+
+    In the example below, you can use the dropdown to choose to load
+    either the `style_cell` property or the `data` property. When you
+    select the property, there will be a simulated delay (to mimic a
+    delay you might get when communicating with a server). Although
+    this isn't the case in the example, you can also use the
+    `.dash-loading` CSS selector to apply specific styling while the
+    table is waiting.
+
+    If you select `style_cell`, you'll be able to edit the cell as the
+    value is loading; if you select `data`, you won't. Try it out
+    yourself!
+
+    ''')),
+
+    dcc.Markdown(
+        examples['editing_loading_state.py'][0],
+        style=styles.code_container
+    ),
+    html.Div(
+        examples['editing_loading_state.py'][1],
+        className='example-container'
+    ),
+
 
     dcc.Markdown(dedent('''
     ## Filtering out Empty Cells
@@ -199,30 +280,30 @@ layout = html.Div([
         examples['editing_updating_self.py'][1],
         className='example-container'
     ),
-    
+
     dcc.Markdown(dedent(
     '''
-    ## Modify the data table content 
+    ## Modify the data table content
 
     Columns in the table can be hidden, deleted, cleared, and renamed. Each of these actions
     are represented by a small icon in the column headers. If there is more than one header row,
-    you can choose where the icons appear. If you want to override these icons, you can do so 
+    you can choose where the icons appear. If you want to override these icons, you can do so
     by using table css selectors, as demonstrated by the example.
 
-    When the clear or delete action is performed, the associated filters are also cleared. 
-    Hiding or deleting can only be done if there are more than one column left in the 
-    table after the action is performed. 
+    When the clear or delete action is performed, the associated filters are also cleared.
+    Hiding or deleting can only be done if there are more than one column left in the
+    table after the action is performed.
 
-    In this example, we have included a variety of column actions. Try: 
+    In this example, we have included a variety of column actions. Try:
 
     - Clear the first column: the content is cleared (or multiple columns when headers are merged)
     without deleting the column itself.
-    - Delete the second column: column is deleted from the table and can't be seen again unless the 
+    - Delete the second column: column is deleted from the table and can't be seen again unless the
     page is refreshed.
-    - Rename the third column: the content of selected column headers is edited. 
+    - Rename the third column: the content of selected column headers is edited.
     - Hide the fourth column: the entire column is hidden from view and can be made visible again
     through the toggle columns button.
-    
+
     '''
     )),
 
@@ -232,9 +313,9 @@ layout = html.Div([
             columns=[
                 {"name": ["", "Year"], "id": "year", "clearable": "first" },
                 {"name": ["City", "Montreal"], "id": "montreal", "deletable": [False, True]},
-                {"name": ["City", "Toronto"], "id": "toronto", "renameable": True },
+                {"name": ["City", "Toronto"], "id": "toronto", "renamable": True },
                 {"name": ["City", "Ottawa"], "id": "ottawa", "hideable": "last"},
-                {"name": ["City", "Vancouver"], "id": "vancouver", "clearable": True, "renameable": True, "hideable": True, "deletable": True },
+                {"name": ["City", "Vancouver"], "id": "vancouver", "clearable": True, "renamable": True, "hideable": True, "deletable": True },
                 {"name": ["Climate", "Temperature"], "id": "temp"},
                 {"name": ["Climate", "Humidity"], "id": "humidity"},
             ],
@@ -251,24 +332,24 @@ layout = html.Div([
                 for i in range(10)
             ],
             css=[
-                {"selector": ".column-header--delete svg", "rule": 'display: "none"'}, 
+                {"selector": ".column-header--delete svg", "rule": 'display: "none"'},
                 {"selector": ".column-header--delete::before", "rule": 'content: "X"'}
             ]
         )
         '''),
-    
+
     dcc.Markdown(dedent(
     '''
     ## Export Data Table
     The table data can be exported either as csv or xlsx file. You can customize table
     headers in the export file. Headers can be column ids, names or as displayed.
-    The difference between `export_headers: name` and `export_headers: display` is that you have 
-    the option to download the table with merged headers if your table headers are merged. 
-    Finally, if an action was performed on columns (cleared, deleted,hidden, sorted, filtered), then 
-    the downloaded table will display the current view. 
-    
-    - Note that `display` mode is only supported for `export_format: xlsx` due to the fact that 
-    headers in csv files can not be merged. 
+    The difference between `export_headers: name` and `export_headers: display` is that you have
+    the option to download the table with merged headers if your table headers are merged.
+    Finally, if an action was performed on columns (cleared, deleted,hidden, sorted, filtered), then
+    the downloaded table will display the current view.
+
+    - Note that `display` mode is only supported for `export_format: xlsx` due to the fact that
+    headers in csv files can not be merged.
     '''
     )),
 
@@ -278,7 +359,7 @@ layout = html.Div([
             columns=[
                 {"name": ["", "Year"], "id": "year" },
                 {"name": ["City", "Montreal"], "id": "montreal", "deletable": [False, True]},
-                {"name": ["City", "Toronto"], "id": "toronto", "renameable": True },
+                {"name": ["City", "Toronto"], "id": "toronto", "renamable": True },
                 {"name": ["City", "Ottawa"], "id": "ottawa", "hideable": "last"},
                 {"name": ["City", "Vancouver"], "id": "vancouver"},
                 {"name": ["Climate", "Temperature"], "id": "temp"},
@@ -301,5 +382,5 @@ layout = html.Div([
             merge_duplicate_headers=True
         )
         '''),
-     
+
 ])

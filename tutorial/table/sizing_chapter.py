@@ -191,11 +191,10 @@ layout = html.Div(
         Display(
         '''
         dash_table.DataTable(
-            style_data={'whiteSpace': 'normal'},
-            css=[{
-                'selector': '.dash-cell div.dash-cell-value',
-                'rule': 'display: inline; white-space: inherit; overflow: inherit; text-overflow: inherit;'
-            }],
+            style_data={
+                'whiteSpace': 'normal',
+                'height': 'auto'
+            },
             data=df_election.to_dict('records'),
             columns=[{'id': c, 'name': c} for c in df_election.columns]
         )
@@ -221,12 +220,7 @@ layout = html.Div(
         dash_table.DataTable(
             data=df_election.to_dict('records'),
             columns=[{'id': c, 'name': c} for c in df_election.columns],
-            css=[{
-                'selector': '.dash-cell div.dash-cell-value',
-                'rule': 'display: inline; white-space: inherit; overflow: inherit; text-overflow: inherit;'
-            }],
             style_cell={
-                'whiteSpace': 'no-wrap',
                 'overflow': 'hidden',
                 'textOverflow': 'ellipsis',
                 'maxWidth': 0,
@@ -277,13 +271,10 @@ layout = html.Div(
             columns=[{'id': c, 'name': c} for c in df_election.columns],
             style_table={'overflowX': 'scroll'},
             style_cell={
+                'height': 'auto',
                 'minWidth': '0px', 'maxWidth': '180px',
                 'whiteSpace': 'normal'
-            },
-            css=[{
-                'selector': '.dash-cell div.dash-cell-value',
-                'rule': 'display: inline; white-space: inherit; overflow: inherit; text-overflow: inherit;'
-            }],
+            }
         )
         '''),
 
@@ -295,14 +286,9 @@ layout = html.Div(
             style_table={'overflowX': 'scroll'},
             style_cell={
                 'minWidth': '0px', 'maxWidth': '180px',
-                'whiteSpace': 'no-wrap',
                 'overflow': 'hidden',
                 'textOverflow': 'ellipsis',
-            },
-            css=[{
-                'selector': '.dash-cell div.dash-cell-value',
-                'rule': 'display: inline; white-space: inherit; overflow: inherit; text-overflow: inherit;'
-            }],
+            }
         )
         '''),
 
@@ -321,14 +307,11 @@ layout = html.Div(
             columns=[{'id': c, 'name': c} for c in df_election.columns],
             style_table={'overflowX': 'scroll'},
             style_cell={
+                'height': 'auto',
                 # all three widths are needed
                 'minWidth': '180px', 'width': '180px', 'maxWidth': '180px',
                 'whiteSpace': 'normal'
-            },
-            css=[{
-                'selector': '.dash-cell div.dash-cell-value',
-                'rule': 'display: inline; white-space: inherit; overflow: inherit; text-overflow: inherit;'
-            }],
+            }
         )
         '''),
 
@@ -341,14 +324,9 @@ layout = html.Div(
             style_cell={
                 # all three widths are needed
                 'minWidth': '180px', 'width': '180px', 'maxWidth': '180px',
-                'whiteSpace': 'no-wrap',
                 'overflow': 'hidden',
                 'textOverflow': 'ellipsis',
-            },
-            css=[{
-                'selector': '.dash-cell div.dash-cell-value',
-                'rule': 'display: inline; white-space: inherit; overflow: inherit; text-overflow: inherit;'
-            }],
+            }
         )
         '''),
 
@@ -384,14 +362,9 @@ layout = html.Div(
             style_cell={
                 # all three widths are needed
                 'minWidth': '180px', 'width': '180px', 'maxWidth': '180px',
-                'whiteSpace': 'no-wrap',
                 'overflow': 'hidden',
                 'textOverflow': 'ellipsis',
-            },
-            css=[{
-                'selector': '.dash-cell div.dash-cell-value',
-                'rule': 'display: inline; white-space: inherit; overflow: inherit; text-overflow: inherit;'
-            }],
+            }
         )
         '''),
 
@@ -546,7 +519,7 @@ layout = html.Div(
         In the example above, the headers become hidden when you scroll down.
 
         You can keep these headers visible by supplying `fixed_rows={ 'headers': True, 'data': 0 }`.
-    
+
         > Note that fixing rows introduces some changes to the underlying
         > markup of the table and may impact the way that your
         > columns are rendered or sized.
