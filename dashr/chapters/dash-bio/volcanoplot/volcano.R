@@ -23,7 +23,7 @@ layout <- htmlDiv(
     htmlH1("VolcanoPlot Examples and Reference"),
     dccMarkdown("
 See Volcano Plot in action
-[here](https://dash-bio.plotly.host/dash-volcano-plot/).
+[here](https://dash-gallery.plotly.host/dash-volcano-plot/).
     "),
 
     htmlH2("Default Volcano Plot"),

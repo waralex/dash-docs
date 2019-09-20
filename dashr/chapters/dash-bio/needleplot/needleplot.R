@@ -20,7 +20,7 @@ examples <- list(
 dashbio_intro <- htmlDiv(list(
   dccMarkdown('# NeedlePlot Examples and Reference'),
   dccMarkdown('
-  See Needleplot in action [here](https://dash-bio.plotly.host/dash-needle-plot/)
+  See Needleplot in action [here](https://dash-gallery.plotly.host/dash-needle-plot/)
   ')
 ))
 

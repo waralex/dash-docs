@@ -22,7 +22,7 @@ dashbio_intro <- htmlDiv(list(
 
 
   dccMarkdown('
-  See Ideogram in action [here](https://dash-bio.plotly.host/dash-ideogram/)
+  See Ideogram in action [here](https://dash-gallery.plotly.host/dash-ideogram/)
   ')
 ))
 

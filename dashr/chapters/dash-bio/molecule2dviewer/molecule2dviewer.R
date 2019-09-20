@@ -20,7 +20,7 @@ examples <- list(
 dashbio_intro <- htmlDiv(list(
   dccMarkdown('# Molecule2dViewer Examples and Reference'),
   dccMarkdown('
-  See Molecule2dViewer in action [here](http://dash-bio.plotly.host/dash-molecule-2d-viewer)
+  See Molecule2dViewer in action [here](https://dash-gallery.plotly.host/dash-molecule-2d-viewer/)
   ')
 ))
 

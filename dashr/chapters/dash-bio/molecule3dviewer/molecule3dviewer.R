@@ -20,7 +20,7 @@ layout <- htmlDiv(
   list(
     htmlH1("Molecule3dViewer Examples and Reference"),
     dccMarkdown("
-See Molecule 3D Viewer in action [here](https://dash-bio.plotly.host/dash-molecule3d/).
+See Molecule 3D Viewer in action [here](https://dash-gallery.plotly.host/dash-molecule-3d-viewer/).
     "),
 
     htmlH2("Default Molecule 3D Viewer"),

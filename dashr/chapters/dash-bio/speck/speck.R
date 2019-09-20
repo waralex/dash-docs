@@ -32,7 +32,7 @@ examples <- list(
 dashbio_intro <- htmlDiv(list(
   dccMarkdown('# Speck Examples and Reference'),
   dccMarkdown('
-  See Speck in action [here](https://dash-bio.plotly.host/dash-speck/)
+  See Speck in action [here](https://dash-gallery.plotly.host/dash-speck/)
   ')
 ))
 

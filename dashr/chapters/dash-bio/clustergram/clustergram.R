@@ -21,7 +21,7 @@ dashbio_intro <- htmlDiv(list(
   dccMarkdown('# Clustergram Examples and Reference'),
 
   dccMarkdown('
-  See Clustergram in action [here](https://dash-bio.plotly.host/dash-clustergram/)
+  See Clustergram in action [here](https://dash-gallery.plotly.host/dash-clustergram/)
   ')
 ))
 

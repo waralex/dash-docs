@@ -21,7 +21,7 @@ dashbio_intro <- htmlDiv(list(
   dccMarkdown('# Circos Examples and Reference'),
 
   dccMarkdown('
-  See Circos in action [here](https://dash-bio.plotly.host/dash-circos/)
+  See Circos in action [here](https://dash-gallery.plotly.host/dash-circos/)
   ')
 ))
 

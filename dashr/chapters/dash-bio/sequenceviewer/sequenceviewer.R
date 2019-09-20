@@ -20,7 +20,7 @@ examples <- list(
 dashbio_intro <- htmlDiv(list(
   dccMarkdown('# Sequence Viewer Examples and Reference'),
   dccMarkdown('
-  See Sequence Viewer in action [here](https://dash-bio.plotly.host/dash-sequence-viewer/)
+  See Sequence Viewer in action [here](https://dash-gallery.plotly.host/dash-sequence-viewer/)
   ')
 ))
 
