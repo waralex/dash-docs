@@ -955,11 +955,13 @@ daq.Tank(
 
     html.Hr(),
 
-    html.H3('Size') ,
-    dcc.Markdown("Control the height of the tank by setting `size`."),
+    html.H3('Height and width') ,
+    dcc.Markdown("Control the size of the tank by setting \
+    `height` and `width`."),
     ComponentBlock('''import dash_daq as daq
 daq.Tank(
-    size=100,
+    height=75,
+    width=200,
     value=6,
     style={'margin-left': '50px'}
 )
@@ -1044,12 +1046,14 @@ daq.Thermometer(
 
     html.Hr(),
 
-    html.H3('Size'),
-    dcc.Markdown("Control the size of the thermometer using `size`."),
+    html.H3('Height and width'),
+    dcc.Markdown("Control the size of the thermometer by setting \
+    `height` and `width`."),
     ComponentBlock('''import dash_daq as daq
 daq.Thermometer(
     value=5,
-    size=100
+    height=150,
+    width=5
 )''', style=styles.code_container),
 
     html.Hr(),
