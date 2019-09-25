@@ -60,7 +60,7 @@ layout = html.Div([
     - `dev_tools_ui`, bool, set to `False` to explicitly disable dev tools UI in debugger mode (default=True)
     - `dev_tools_props_check`, bool, set to `False` to explicitly disable component props validation (default=True)
     - `dev_tools_hot_reload`, bool, set to `True` to enable hot reload (default=False).
-    - `dev_tools_hot_reload_interval`, int, interval in seconds at which the renderer will request the reload hash and update the browser page if it changed. (default=3).
+    - `dev_tools_hot_reload_interval`, float, interval in seconds at which the renderer will request the reload hash and update the browser page if it changed. (default=3).
     - `dev_tools_hot_reload_watch_interval`, float, delay in seconds between each walk of the assets folder to detect file changes. (default=0.5 seconds)
     - `dev_tools_hot_reload_max_retry`, int, number of times the reloader is allowed to fail before stopping and sending an alert. (default=8)
     - `dev_tools_silence_routes_logging`, bool, remove the routes access logging from the console.
