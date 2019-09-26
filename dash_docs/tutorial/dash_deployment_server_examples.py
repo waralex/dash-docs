@@ -30,25 +30,18 @@ Initialize = html.Div(children=[
         > The [next chapter](/Docs/dash-enterprise/deployment) covers deploying a Dash App on Dash Enterprise.
 
         Before creating or deploying a dash app locally, you need to initialize
-        an app on Dash Enterprise. This can be achieved using the Dash
-        Deployment Server UI.
+        an app on Dash Enterprise.
+
+        This can be achieved by visiting the Dash App Manager at
+        `https://your-dash-server/Manager`
     '''),
 
     dcc.Markdown('''
         ***
 
-        1. Navigate to the Dash Enterprise UI by selecting **Dash App**
-        from the **+ Create** located in the top right-hand corner.
+        1. Navigate to the Dash Enterprise App Manager at
+        https://your-dash-server/Manager
     '''),
-
-    html.Img(
-        alt='Dash Enterprise UI',
-        src='/Docs/assets/dds/open-dds-ui.png',
-        style={
-            'width': '100%', 'border': 'thin lightgrey solid',
-            'border-radius': '4px'
-        }
-    ),
 
     dcc.Markdown('''
 
@@ -182,8 +175,8 @@ def display_instructions2(platform):
 
         #### What Would You Like To Do?
 
-        If you haven't deployed an app, you can get started by selecting
-        **Clone Sample App** to clone our sample app, which is already setup
+        If you haven't deployed an app, you can get started by
+        **Downloading a Sample App**, which is already setup
         for deployment. Alternatively, you can select **Create New App** to
         run through creating and deploying an app from the beginning.
         Otherwise, if you already have an exisiting app locally that you would
@@ -194,29 +187,35 @@ def display_instructions2(platform):
         '''),
 
         dcc.Tabs(id="tabs", children=[
-            dcc.Tab(label='Clone Sample App', children=[
+            dcc.Tab(label='Download a Sample App', children=[
                 html.Div([
                     dcc.Markdown(
                     '''
 
                     &nbsp;
 
-                    #### Clone the [Dash On Premise Sample App](https://github.com/plotly/dash-on-premise-sample-app) from GitHub.
+                    #### [Download the sample app](/Docs/templates/sample-app)
+
+                    First, unzip the file.
 
                     '''),
 
                     (dcc.Markdown('''
                     &nbsp;
 
-                    First, install [Git for Windows](https://git-scm.com/download/win).
-                    Then, in Git Bash:
+                    Then, install [Git for Windows](https://git-scm.com/download/win).
+
                     ''') if platform == 'Windows' else
                     ''),
 
                     dcc.Markdown(
                     '''
+                    In Git Bash, navigate into the sample app folder and
+                    initialize the repository.
+
                     ```shell
-                    $ git clone https://github.com/plotly/dash-on-premise-sample-app.git
+                    $ cd sample-app
+                    $ git init
                     ```
                     ''',
                     style=styles.code_container),
@@ -407,7 +406,7 @@ def display_instructions2(platform):
                     Declares what commands are run by app's containers. This is
                     commonly, `web: gunicorn app:server --workers 4` where app
                     refers to the file `app.py` and server refers to the variable
-                    named server inside that file. gunicorn is the web server
+                    named `server` inside that file. gunicorn is the web server
                     that will run your application, make sure to add this in
                     your requirements.txt file.
 
@@ -423,18 +422,16 @@ def display_instructions2(platform):
                     dcc.Markdown(
                     '''
                     For some applications, you may require using the `worker`
-                    process. For example, the
-                    [Dash Redis Demo](https://github.com/plotly/dash-redis-demo)
-                    includes Celery - an asynchronous task queue/job queue.
-                    When using a `worker` process in your `Procfile`,
-                    you will need to include a `DOKKU_SCALE` file (see below)
-                    or explicitly start it after deploying. To scale a `worker`
-                    process after deploying:
+                    process. For example, the [Snapshot Engine examples](/Docs/dash-snapshots)
+                    use Celery - an asynchronous task/job queue & scheduler.
 
-                    `ssh dokku@dash-server ps:scale APP-NAME worker=1`.
-
-                    Note that this requires
-                    [Authenticating to Dash Enterprise with SSH](/Docs/dash-enterprise/ssh).
+                    In this case, your `Procfile` might look something like this:
+                    ```shell
+                    web: gunicorn app:server --workers 4
+                    worker: celery -A app:celery_instance worker
+                    ```
+                    When using a `worker` process in your `Procfile`
+                    you will need to include a `DOKKU_SCALE` file (see below).
 
                     '''),
 
@@ -457,11 +454,26 @@ def display_instructions2(platform):
 
                     dcc.Markdown(
                     '''
+                    If you are using one of the enterprise packages, like
+                    `dash-design-kit` or `dash-snapshots`, then you'll also
+                    need to prefix this file with a "`--extra-index-url`" flag.
+                    `--extra-index-url` will specify the download location
+                    of these packages. For example, this file might look like:
+                    ```
+                    --extra-index-url=https://your-dash-server.com/Docs/packages
+                    dash-design-kit
+                    dash
+                    gunicorn
+                    ```
+
                     ***
 
                     **`DOKKU_SCALE`**
 
-                    OPTIONAL: Declares web and worker settings for deployment.
+                    Optional. This should only be used when your `Procfile`
+                    contains a `worker: ` command. This file will specify
+                    the number of containers that should be used to run the
+                    web & worker processes.
 
                     '''),
 
@@ -469,7 +481,7 @@ def display_instructions2(platform):
                     '''
                     ```shell
                     web=1
-                    worker=2
+                    worker=1
                     ```
                     ''', style=styles.code_container),
 
@@ -742,6 +754,19 @@ Requirements = html.Div(children=[
     dash-html-components=={}
     ```
 
+    If you are using one of the Dash Enterprise packages, like
+    `dash-design-kit` or `dash-snapshots`, then you'll also
+    need to prefix this file with a "`--extra-index-url`" flag.
+    `--extra-index-url` will specify the download location
+    of these packages. For example, this file might look like:
+    ```
+    --extra-index-url=https://your-dash-server.com/Docs/packages
+    dash-design-kit
+    dash
+    gunicorn
+    ```
+
+
     ***
 
     `runtime.txt`
@@ -838,8 +863,8 @@ ConfigSys = html.Div(children=[
     We have a collection of sample apps that install common system-level
     dependencies. These applications are _ready to deploy_:
 
-    - [Oracle cx_Oracle Database](https://github.com/plotly/dash-on-premise-sample-app/pull/2#issue-144246327)
-    - [Pyodbc Database Driver](https://github.com/plotly/dash-on-premise-sample-app/pull/3#issue-144272510)
+    - [Oracle cx_Oracle Database](/Docs/templates/oracle-sample-app)
+    - [Pyodbc Database Driver](/Docs/templates/pyodbc-sample-app)
 
     &nbsp;
 
@@ -945,8 +970,9 @@ EnvVars = html.Div(children=[
     rc.Blockquote(),
 
     dcc.Markdown('''
-    In Plotly Enterprise 2.5.0, you can store secrets as environment variables
-    instead of in your application. It's good practice to keep application
+    In Plotly Enterprise 2.5.0 and up, you can store secrets as environment variables
+    instead of hardcoded in your application code.
+    It's good practice to keep application
     secrets like database passwords outside of your code so that they aren't
     mistakenly exposed or shared. Instead of storing these secrets in code,
     you can store them as environment variables and your Dash Application code
@@ -1452,31 +1478,10 @@ def display_instructions(platform):
         dcc.Markdown('''
         &nbsp;
 
-        **2. Open the Dash Enterprise UI**
-
-        You can find the Dash Enterprise UI by selecting "Dash App"
-        from Plotly's "Create" menu.
-
-        > *The Dash App item in the Create menu takes you to the Dash
-        Deployment Server UI*
-        '''),
-
-        html.Img(
-            alt='Dash App Create Menu',
-            src='/Docs/assets/dds/open-dds-ui.png',
-            style={
-                'width': '100%', 'border': 'thin lightgrey solid',
-                'border-radius': '4px'
-            }
-        ),
-
-        dcc.Markdown('''
-        &nbsp;
-
-        **3. Add SSH Key**
+        **2. Add SSH Key**
 
         Select **SSH Keys** in the top navigation menu of the Dash
-        Deployment Server UI. Here, select **Add Key** and in the 'Add
+        Enterprise UI. Here, select **Add Key** and in the 'Add
         SSH Key' modal, paste in your SSH Key.
         '''),
 
@@ -1492,7 +1497,7 @@ def display_instructions(platform):
         dcc.Markdown('''
         &nbsp;
 
-        **4. Confirm it Has Been Added**
+        **3. Confirm it Has Been Added**
 
         Once you've added an SSH key, it should be added to your list of SSH
         Keys like the image below.
@@ -2260,15 +2265,17 @@ pdfService = html.Div(children=[
         - `pdf_options` - PDF sizing options. These options are similar to the
         options that you see when you print a web page using your web browser.
         They include:
-          - `pageSize`: Page size of the generated PDF. Available options:
-            `A3`, `A4`, `A5`, `Legal`, `Tabloid` or
-            `{"width": ..., "height": ...}` where `width` and `height` are
-            integers specified in microns.
+          - `pageSize`: Predefined page size of the generated PDF. Available options:
+            `A3`, `A4`, `A5`, `Legal`, `Tabloid`. Custom page sizes can be
+            provided with the top level `page_size` property (see below).
+
           - `marginsType`: Specifies the type of margins to use. `0` for
             default margin, `1` for no margin, and `2` for minimum margin. We
             recommend using `1` and controlling the margins yourself through
             your app's CSS.
           - `landscape` (optional): `True` for landscape, `False` for portrait.
+          - 'page_size' (optional): A dict specifying `width` & `height`
+          in microns, e.g. {'width': 296700, 'height': 209900}.
 
         ***
 
@@ -2712,27 +2719,13 @@ Troubleshooting = html.Div(children=[
             These applications require using a `worker`
             process. When using a `worker` process in your `Procfile`,
             you will have to explicitly start it after deploying. To
-            scale a `worker` process:
+            scale a `worker` process, provide a `DOKKU_SCALE` file with
+            something like this:
             '''),
 
-        dcc.Markdown('```\n$ ssh dokku@dash-server ps:scale APP-NAME worker=1\n```',
-                              style=styles.code_container),
-        dcc.Markdown(
-            '''
-
-            If you have multiple `worker` processes in your `Procfile`
-            (e.g `worker-default` *and* `worker-beat`) you can scale them
-            up simultaneously with:
-            '''),
-
-        dcc.Markdown('```\n$ ssh dokku@YOUR_DASH_SERVER ps:scale APP-NAME worker-default=1 worker-beat=1\n```',
+        dcc.Markdown('```\n$web=1\nworker=1```',
                               style=styles.code_container),
 
-        dcc.Markdown(
-            '''
-            Note that this requires
-            [Authenticating to Dash Enterprise with SSH](/Docs/dash-enterprise/ssh).
-             '''),
     ]),
 
 ])
