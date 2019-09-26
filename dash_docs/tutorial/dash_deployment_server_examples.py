@@ -76,8 +76,8 @@ Initialize = html.Div(children=[
 
         &nbsp;
 
-        3. After you have created the app, it should appear in your list of
-        apps.
+        3. After you have created the app, the app overview page will open with
+        deployment instructions.
 
     '''),
 
@@ -423,11 +423,13 @@ def display_instructions2(platform):
                     dcc.Markdown(
                     '''
                     For some applications, you may require using the `worker`
-                    process. For example, the [Dash Redis Demo](https://github.com/plotly/dash-redis-demo)
+                    process. For example, the
+                    [Dash Redis Demo](https://github.com/plotly/dash-redis-demo)
                     includes Celery - an asynchronous task queue/job queue.
                     When using a `worker` process in your `Procfile`,
-                    you will have to explicitly start it after deploying. To
-                    scale a `worker` process:
+                    you will need to include a `DOKKU_SCALE` file (see below)
+                    or explicitly start it after deploying. To scale a `worker`
+                    process after deploying:
 
                     `ssh dokku@dash-server ps:scale APP-NAME worker=1`.
 
@@ -457,12 +459,19 @@ def display_instructions2(platform):
                     '''
                     ***
 
-                    **`runtime.txt`**
+                    **`DOKKU_SCALE`**
 
-                    `runtime.txt` This optional file specifies python runtime.
-                    For example, its contents would be `python-2.7.15` or
-                    `python-3.6.6`. If omitted, Python 3.6.7 will be installed.
+                    OPTIONAL: Declares web and worker settings for deployment.
+
                     '''),
+
+                    dcc.Markdown(
+                    '''
+                    ```shell
+                    web=1
+                    worker=2
+                    ```
+                    ''', style=styles.code_container),
 
                     dcc.Markdown(
                     '''
