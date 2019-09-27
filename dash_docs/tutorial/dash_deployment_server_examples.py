@@ -194,9 +194,9 @@ def display_instructions2(platform):
 
                     &nbsp;
 
-                    #### [Download the sample app](/Docs/templates/sample-app)
+                    #### [Visit the sample app page](/Docs/templates/sample-app)
 
-                    And unzip the file.
+                    And download & unzip the files.
 
                     '''),
 
