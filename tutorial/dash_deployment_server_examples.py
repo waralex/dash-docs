@@ -1670,7 +1670,10 @@ AppPrivacy = html.Div(children=[
     &nbsp;
 
     Starting in Version 3.0.0 of Dash Deployment Server, you can restrict who is able to view your app
-    from the app's management page. Find a list of links to these pages for your apps at
+    from the app's management page. This will also restrict who will be able to see it in the
+    [Dash App Portal](/dash-deployment-server/portal).
+    
+    Find a list of links to these pages for your apps at
     `https://<your-dash-deployment-server>.com/Manager/apps`. Contact support
     if you have any questions about privacy in previous versions of Dash Deployment Server.
 
@@ -2756,6 +2759,10 @@ Portal = html.Div(children=[
     enable the *Show in Portal* Toggle in your app's settings from
     within the DDS app manager and then edit your app's metadata to
     make it easier to find/customize its appearance.
+    
+    > Note that only users with access to your app will be able
+    to see it in the portal. For more information about setting app pricacy
+    see [Dash App Privacy](/dash-deployment-server/privacy).
 
     &nbsp;
 
