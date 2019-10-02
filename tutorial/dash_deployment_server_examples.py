@@ -1567,7 +1567,7 @@ Cli = html.Div(children=[
 
     #### App-related Commands:
     
-    > These commands can only be run the app-owner.'''),
+    > These commands can only be run by the app-owner or an admin account.'''),
 
     html.Details([
         html.Summary('Lock app'),
@@ -1596,9 +1596,9 @@ Cli = html.Div(children=[
         In some cases, it may be necessary to remove an existing deploy lock.
         This can be performed via the apps:unlock command.
         
-        > **Warning**: Removing the deploy lock will not stop in progress deploys.
+        > **Warning**: Removing the deploy lock will not stop in-progress deploys.
         At this time, in-progress deploys will need to be manually terminated by
-        someone with server access.
+        someone with access to the Dash Enterprise server console.
     
         **Example:**
         `ssh dokku@your-dash-deployment-server -p PORT apps:unlock my-dash-app`
@@ -1785,7 +1785,7 @@ Cli = html.Div(children=[
 
     #### Service-related Commands:
 
-    > These commands can only be run the service-owner.'''),
+    > These commands, for services such as Redis DBs, can only be run by the service-owner.'''),
 
     html.Details([
         html.Summary("Export the contents of a Redis database"),
@@ -1918,7 +1918,7 @@ Cli = html.Div(children=[
 
     #### Service Linking Commands:
 
-    > These commands can only be run by the user which owns both the service as well as the application.
+    > These commands can only be run by the user who owns both the service as well as the application.
     '''),
 
     html.Details([
