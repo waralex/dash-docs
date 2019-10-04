@@ -54,6 +54,10 @@ reusable_components.Section("User Interface", [
         reusable_components.Chapter('Linking a Redis Database',
                 '/dash-deployment-server/redis-database',
                 'Create and link an in-memory database to your Dash Apps.'),
+        reusable_components.Chapter('Manage App Resources',
+                '/dash-deployment-server/resource-management',
+                'Manage the number of containers, CPUs '
+                'and amount of RAM provisioned to each app.'),
         reusable_components.Chapter('Setting Environment Variables',
                 '/dash-deployment-server/environment-variables',
                 'Environment variables are commonly used to store secret '

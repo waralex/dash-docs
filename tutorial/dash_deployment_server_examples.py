@@ -2079,6 +2079,73 @@ Redis = html.Div(children=[
 
 
 # # # # # # #
+# Resources
+# # # # # # #
+Resources = html.Div(children=[
+    html.H1('Manage App Resources'),
+
+    rc.Blockquote(),
+
+    dcc.Markdown('''
+    As of version 3.2 of Dash Enterprise, it is possible to scale app resources from
+    the UI. This includes all processes defined in an app's `Procfile` and, If HA mode
+    is enabled in your Dash Enterprise install, then you will also be able to set the
+    CPU and RAM that your app uses.
+    
+    From your app's settings section, navigate to the **Resources** tab to manage
+    app resources.
+    '''),
+
+    html.Img(
+        alt='Resources Tab Screenshot',
+        src='/assets/images/dds/resources_page_no_dokku_scale.png',
+        style={
+            'width': '100%', 'border': 'thin lightgrey solid',
+            'border-radius': '4px'
+        }
+    ),
+
+    dcc.Markdown('''
+    ***
+    Each row in the screenshot above represents a line of the `Procfile`
+    of your app. The above might correspond to a `Procfile` that looks like
+    this:
+    
+    ```sh
+    web: gunicorn --workers 2 app:server
+    worker-default: celery -A tasks worker --loglevel=info
+    ```
+    
+    Dash Enterprise automatically scales `web` processes to 1 but
+    all others are initially set to 0 and will need to be scaled up
+    before the app can use them. You can do this here by editing the
+    input box and hitting the *save* button.
+    
+    > **Note that scaling the `web` processes in the above app from 1 to 2
+    will increase the total number of gunicorn workers available to it
+    from 2 to 4 (the 2 gunicorn workers are created in each process container).**
+    
+    ***
+    
+    If a `DOKKU_SCALE` file is included in the root directory of your app,
+    scaling must be done in your app's code using that file and all process
+    scaling options here will be greyed out.
+     
+    '''),
+
+    html.Img(
+        alt='Resources Tab Screenshot if  a DOKKU_SCALE file exists',
+        src='/assets/images/dds/resources_page_dokku_scale_exists.png',
+        style={
+            'width': '100%', 'border': 'thin lightgrey solid',
+            'border-radius': '4px'
+        }
+    ),
+
+])
+
+
+# # # # # # #
 # Linking a Celery Process
 # # # # # # #
 Celery = html.Div(children=[

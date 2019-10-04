@@ -722,6 +722,13 @@ chapters = {
         'description': 'Create and link an in-memory database to your Dash Apps.'
     },
 
+    'resource-management': {
+        'url': '/dash-deployment-server/resource-management',
+        'content': dds_examples.Resources,
+        'name': 'Manage App Resources',
+        'description': 'Manage the number of containers, CPUs and amount of RAM provisioned to each app.'
+    },
+
     'celery-examples': {
         'url': '/dash-deployment-server/celery-process',
         'content': dds_examples.Celery,
