@@ -420,8 +420,9 @@ def display_instructions2(platform):
                     process. For example, the [Dash Redis Demo](https://github.com/plotly/dash-redis-demo)
                     includes Celery - an asynchronous task queue/job queue.
                     When using a `worker` process in your `Procfile`,
-                    you will have to explicitly start it after deploying. To
-                    scale a `worker` process:
+                    you will have to explicitly start it after deploying. You can
+                    see how to scale worker processes from the UI in our [resource management section](/dash-deployment-server/resource-management).
+                    To scale a `worker` process using the command line use:
 
                     `ssh dokku@dash-server ps:scale APP-NAME worker=1`.
 
@@ -2759,8 +2760,9 @@ Troubleshooting = html.Div(children=[
             '''
             These applications require using a `worker`
             process. When using a `worker` process in your `Procfile`,
-            you will have to explicitly start it after deploying. To
-            scale a `worker` process:
+            you will have to explicitly start it after deploying. You can
+            see how to scale worker processes from the UI in our [resource management section](/dash-deployment-server/resource-management).
+            To scale a `worker` process using the command line use:
             '''),
 
         dcc.Markdown('```\n$ ssh dokku@dash-server ps:scale APP-NAME worker=1\n```',
