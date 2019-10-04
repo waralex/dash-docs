@@ -437,7 +437,7 @@ URLS = [
                     {
                         'url': '/canvas',
                         'name': 'Overview & Reference',
-                        'content': tutorial.canvas,
+                        'content': tutorial.canvas.layout,
                         'description': (
                             'Image rendering, drawing, annotations '
                             'for image processing applications.'
