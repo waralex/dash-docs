@@ -8,14 +8,9 @@ source('dashr/styles.R', local=styles)
 library('dash')
 library('dashCoreComponents')
 library('dashHtmlComponents')
-library('dashBio')
 library('dashTable')
 library('dashDaq')
-library('readr')
-library('heatmaply')
 library('data.table')
-library('jsonlite')
-library('rjson')
 
 
 # Necessary Functions:
@@ -51,11 +46,11 @@ integrate data acquisition and controls into your Dash applications.
 The source is on GitHub at [plotly/dash-daq](https://github.com/plotly/dash-daq).
   "
   ),
-  
+
   dccMarkdown(sprintf(
     "These docs are using version %s.", packageVersion("dashDaq")
   )),
-  
+
   dccMarkdown(
     paste(
       "```r",
@@ -335,7 +330,7 @@ darkThemeProvider <- htmlDiv(list(
 ))
 
 
-layout <- htmlDiv( 
+layout <- htmlDiv(
   list(
     dashDaqIntro,
     htmlHr(),
@@ -394,5 +389,3 @@ layout <- htmlDiv(
     dccMarkdown("[Back to the Table of Contents](/)")
   )
 )
-
-
