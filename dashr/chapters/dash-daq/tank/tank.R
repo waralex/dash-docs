@@ -51,14 +51,15 @@ daqTank(
   )))
 
 tankSize <-  htmlDiv(list(
-  htmlH3("Size"),
-  dccMarkdown("Control the height of the tank by setting `size`."),
+  htmlH3("Height and width"),
+  dccMarkdown("Control the size of the tank by setting `height` and `width`."),
   utils$LoadAndDisplayComponent(
     '
 library(dashDaq)
 
 daqTank(
-    size = 100,
+    height = 75,
+    width = 200,
     value = 6,
     style = list("margin-left" = "50px")
 )
