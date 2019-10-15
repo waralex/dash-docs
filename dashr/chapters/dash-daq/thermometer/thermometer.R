@@ -52,14 +52,15 @@ daqThermometer(
   )))
 
 thermometerSize <-  htmlDiv(list(
-  htmlH3("Size"),
-  dccMarkdown("Control the size of the thermometer by setting `size`."),
+  htmlH3("Height and width"),
+  dccMarkdown("Control the size of the thermometer by setting `height` and `width`."),
   utils$LoadAndDisplayComponent('
 library(dashDaq)
 
 daqThermometer(
     id = "my-daq-tsize",
-    size = 100,
+    height = 150,
+    width = 5,
     value = 5)
   '
   )))
