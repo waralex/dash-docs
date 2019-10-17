@@ -242,7 +242,7 @@ app$callback(
   function(pathname) {
     switch(
       pathname,
-      '/introduction' = return(chapters.Wwats_dash$layout),
+      '/introduction' = return(chapters.whats_dash$layout),
       # Dash Tutorial
       '/installation' = return(chapters.installation$layout),
       '/getting-started' = return(chapters.getting_started$layout),
@@ -349,12 +349,12 @@ app$callback(
               list(
                 components$Chapter(
                 'Introduction',
-                href='https://dash.plot.ly/introduction',
+                href='/introduction',
                 caption="A quick paragraph about Dash and a link to the talk at Plotcon that started it all."
                 ),
                 components$Chapter(
                 'Announcement Essay',
-                href='https://medium.com/@plotlygraphs/introducing-dash-5ecf7191b503',
+                href='https://medium.com/plotly/announcing-dash-for-r-82dce99bae13',
                 caption="Our extended essay on Dash. An extended discussion of Dash's architecture and our motivation behind the project."
                 ),
                 components$Chapter(
@@ -414,7 +414,7 @@ app$callback(
                 'Part 7. FAQs and Gotchas',
                 href='/faqs',
                 caption="If you have read through the rest of the tutorial and still have questions
-                or are encountering unexpected behaviour,this chapter may be useful."
+                or are encountering unexpected behaviour, this chapter may be useful."
                 )
               )
             ),
@@ -431,7 +431,7 @@ app$callback(
                 components$Chapter(
                 'Dash HTML Components',
                 href='/dash-html-components',
-                caption="Dash provides all of the available HTML tags as user-friendly Python classes.
+                caption="Dash provides all of the available HTML tags as user-friendly R functions.
                 This chapter explains how this works and the few important key differences between Dash HTML components and standard html."
                 ),
                 components$Chapter(
@@ -454,7 +454,7 @@ app$callback(
                 'Dash Cytoscape',
                 href='/cytoscape',
                 caption="(New! Released Feb 5, 2019) Dash Cytoscape is our new network visualization component. It offers a declarative and
-                pythonic interface to create beautiful, customizable, interactive and reactive graphs."
+                user-friendly R interface to create beautiful, customizable, interactive and reactive graphs."
                 ),
                 components$Chapter(
                 'Dash Bio Components',
@@ -473,7 +473,7 @@ app$callback(
                 href='/plugins',
                 caption="Dash components are built with React.js. Dash provides
                 a React → Dash toolchain that generates a Dash-compatible interface to
-                these components in Python."
+                these components in R."
                 ),
                 components$Chapter(
                 'Integrating D3.js into Dash Components',

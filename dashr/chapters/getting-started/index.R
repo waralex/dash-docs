@@ -15,6 +15,10 @@ examples <- list(
   dropdown.doc=utils$LoadExampleCode('dashr/chapters/getting-started/examples/markdown-doc-dropdown.R')
 )
 
+dccDropdownProps <- props_to_list("dccDropdown")
+dccDropdownPropsDF <- rbindlist(dccDropdownProps, fill = TRUE)
+dccDropdownTable <- generate_table(dccDropdownPropsDF)
+
 layout <- htmlDiv(list(
   dccMarkdown("
 # Dash Layout
@@ -197,8 +201,12 @@ Dash components are declarative: every configurable aspect of these components
 is set during instantiation as a keyword argument. Call help in your R console
 on any of the components to learn more about a component and its available arguments.
   "),
-  # dropdown help with example
-  examples$dropdown.doc$source,
+
+  dccMarkdown('```r
+help(dccDropdown)
+```'),
+  dccDropdownTable,
+  htmlBr(),
 
   dccMarkdown("
 # Summary
@@ -208,8 +216,8 @@ classes for all of the HTML tags and the keyword arguments describe the HTML
 attributes like style, className, and id. The `dashCoreComponents` package generates
 higher-level components like controls and graphs.
 For reference, see:
-- [dashCoreComponents gallery](https://dash.plot.ly/dash-core-components)
-- [dashHtmlComponents gallery](https://dash.plot.ly/dash-html-components)
+- [dashCoreComponents gallery](https://dashr.plot.ly/dash-core-components)
+- [dashHtmlComponents gallery](https://dashr.plot.ly/dash-html-components)
 
 
 The next part of the Dash tutorial covers how to make these apps interactive.
