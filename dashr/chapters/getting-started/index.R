@@ -1,8 +1,10 @@
 library(dash)
 library(dashCoreComponents)
 library(dashHtmlComponents)
+library(data.table)
 
 utils <- new.env()
+source('dashr/utils.R')
 source('dashr/utils.R', local=utils)
 
 examples <- list(
@@ -202,9 +204,30 @@ is set during instantiation as a keyword argument. Call help in your R console
 on any of the components to learn more about a component and its available arguments.
   "),
 
-  dccMarkdown('```r
+dccMarkdown('```r
 help(dccDropdown)
 ```'),
+
+dccMarkdown('
+**Description**
+
+Dropdown is an interactive dropdown element for selecting one or more items.
+The values and labels of the dropdown items are specified in the "options"
+property and the selected item(s) are specified with the "value" property.
+Use a dropdown when you have many options (more than 5) or when you are
+constrained for space. Otherwise, you can use RadioItems or a Checklist,
+which have the benefit of showing the users all of the items at once.
+
+**Usage**
+'),
+
+dccMarkdown('```r
+
+dccDropdown(id=NULL, options=NULL, value=NULL, optionHeight=NULL, className=NULL,
+clearable=NULL, disabled=NULL, multi=NULL, placeholder=NULL, searchable=NULL,
+style=NULL, loading_state=NULL)
+```'),
+
   dccDropdownTable,
   htmlBr(),
 
@@ -222,7 +245,6 @@ For reference, see:
 
 The next part of the Dash tutorial covers how to make these apps interactive.
 
-Dash Tutorial Part 3: Basic Callbacks
 [Dash Tutorial Part 3: Basic Callbacks](/getting-started-part-2)
   "),
 

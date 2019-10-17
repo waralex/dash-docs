@@ -391,7 +391,7 @@ app$callback(
                 allowing one update in the UI to trigger several updates across the app."
                 ),
                 components$Chapter(
-                'Part 4. Callbacks With State',
+                'Part 4. More About Callbacks',
                 href='/state',
                 caption="Basic callbacks are fired whenever the values change.
                 Use Dash `state` with Dash `inputs` to pass in extra values whenever the `inputs` change.

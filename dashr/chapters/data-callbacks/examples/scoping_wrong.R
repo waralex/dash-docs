@@ -41,4 +41,4 @@ app$callback(output('output', 'children'),
                sprintf(paste(c('the output is', unlist(df))))
              })
 
-# app$run_server()
+app$run_server()
