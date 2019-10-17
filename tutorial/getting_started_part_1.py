@@ -47,7 +47,7 @@ layout = html.Div([
     Dash provides Python classes for all of the visual components of
     the application. We maintain a set of components in the
     `dash_core_components` and the `dash_html_components` library
-    but you can also [build your own](https://github.com/plotly/dash-components-archetype)
+    but you can also [build your own](https://github.com/plotly/dash-component-boilerplate)
     with JavaScript and React.js.
 
     '''.replace('    ', '')),

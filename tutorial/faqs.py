@@ -32,7 +32,7 @@ layout = html.Div([
 
     **Q:** *How can I customize the appearance of my Dash app?*
 
-    **A:** Dash apps are rendered in the browser as modern standards compliant
+    **A:** Dash apps are rendered in the browser as modern standards-compliant
       web apps. This means that you can use CSS to style your Dash app as you
       would standard HTML.
 
