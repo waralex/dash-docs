@@ -132,8 +132,8 @@ source('dashr/chapters/dash-daq/toggle-switch/toggleswitch.R', local = chapters.
 chapters.darkthemeprovider <- new.env()
 source('dashr/chapters/dash-daq/dark-theme-provider/darkthemeprovider.R', local = chapters.darkthemeprovider)
 # Component Libraries (Dash Canvas)
-# chapters.dashCanvas <- new.env()
-# source('dashr/chapters/dash-canvas/index.R', local=chapters.dashCanvas)
+chapters.dashCanvas <- new.env()
+source('dashr/chapters/dash-canvas/index.R', local=chapters.dashCanvas)
 # Component Libraries (Dash Cytoscape)
 chapters.dashCytoscape <- new.env()
 source('dashr/chapters/dash-cytoscape/index.R', local=chapters.dashCytoscape)
@@ -307,7 +307,7 @@ app$callback(
       '/dash-daq/toggleswitch' = return(chapters.toggleswitch$layout),
       '/dash-daq/darkthemeprovider' = return(chapters.darkthemeprovider$layout),
       # Component Libraries (Dash Canvas)
-      # '/canvas' = return(chapters.dashCanvas$layout),
+      '/dash-canvas' = return(chapters.dashCanvas$layout),
       # Component Libraries (Dash Cytoscape)
       '/cytoscape' = return(chapters.dashCytoscape$layout),
       '/cytoscape/elements' = return(chapters.dashCytoscape1$layout),
@@ -445,11 +445,11 @@ app$callback(
                 href='/dash-daq',
                 caption="Beautifully styled technical components for data acquisition and engineering applications."
                 ),
-                # components$Chapter(
-                # 'Dash Canvas',
-                # href='/canvas',
-                # caption="(New! Released March 2019) Drawing and annotations for image processing."
-                # ),
+                components$Chapter(
+                'Dash Canvas',
+                href='/dash-canvas',
+                caption="(New! Released March 2019) Drawing and annotations for image processing."
+                ),
                 components$Chapter(
                 'Dash Cytoscape',
                 href='/cytoscape',
@@ -460,7 +460,7 @@ app$callback(
                 'Dash Bio Components',
                 href='/dash-bio',
                 caption="(New! Released April 2019) Components dedicated to visualizing bioinformatics data."
-                )
+                )             
               )
             ),
 
