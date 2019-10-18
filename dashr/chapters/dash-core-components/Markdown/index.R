@@ -19,38 +19,43 @@ layout <- htmlDiv(list(
     [CommonMark](http://commonmark.org/) specification of Markdown."),
   htmlBr(),
   htmlH3("Headers"),
-  
-utils$LoadAndDisplayComponent("
-library(dashCoreComponents)
-dccMarkdown('
-                              
-# This is an <h1> tag
-                              
-## This is an <h2> tag
-                              
-###### This is an <h6> tag)
-                                             
-                                             
-  '
-    
-  )"),
 
 utils$LoadAndDisplayComponent("
 library(dashCoreComponents)
-dccMarkdown('
+dccMarkdown(
+  '
+
+# This is an <h1> tag
+
+## This is an <h2> tag
+
+###### This is an <h6> tag)
+
+  '
+)
+"
+),
+
+utils$LoadAndDisplayComponent("
+library(dashCoreComponents)
+dccMarkdown(
+  '
 
   *This text will be italic*
 
   _This will also be italic_
-                                
-                              
+
+
   **This text will be bold**
-                              
+
   __This will also be bold__
-                              
+
   _You **can** combine them_
-'
-)"),
+
+  '
+)
+"
+),
 
 htmlHr(),
 htmlH3("Lists"),
@@ -58,30 +63,42 @@ htmlH3("Unordered"),
 
 utils$LoadAndDisplayComponent("
 library(dashCoreComponents)
-dccMarkdown('
+dccMarkdown(
+  '
 * Item 1
 * Item 2
   * Item 2a
   * Item 2b
-')"),
+  '
+)
+"
+),
 
 htmlH3("Block Quotes"),
 
 utils$LoadAndDisplayComponent("
 library(dashCoreComponents)
-dccMarkdown('
+dccMarkdown(
+  '
 >
 > Block quotes are used to highlight text.
 >
-')"),
+  '
+)
+"
+),
 
 htmlHr(),
 htmlH3("Links"),
 utils$LoadAndDisplayComponent("
 library(dashCoreComponents)
-dccMarkdown('
-[Dash User Guide](https://dashr.plot.ly/)')
-"),
+dccMarkdown(
+  '
+[Dash User Guide](https://dashr.plot.ly/)
+  '
+)
+"
+),
 
 htmlHr(),
 htmlH3("Inline Code"),
@@ -89,8 +106,13 @@ htmlP("Any block of text surrounded by ` ` will rendered as inline-code. "),
 
 utils$LoadAndDisplayComponent("
 library(dashCoreComponents)
-dccMarkdown('
-Inline code snippet = `TRUE` ') "),
+dccMarkdown(
+  '
+Inline code snippet = `TRUE`
+  '
+)
+"
+),
 
 htmlHr(),
 htmlH3('Markdown Properties'),
@@ -104,9 +126,3 @@ dccMarkdown("
 ")
 
 ))
-
-
-
-
-
-

@@ -58,8 +58,8 @@ we recommend initializing your table with a large number of empty rows and colum
                 "),
 
 
-    examples$predefinedColumns$source_code,
-    examples$predefinedColumns$layout,
+    #examples$predefinedColumns$source_code,
+    #examples$predefinedColumns$layout,
 
     dccMarkdown("
 ## Filtering out Empty Cells

@@ -1,6 +1,6 @@
 dashDataTable(
-  data = df_to_list(df), 
-  columns = lapply(colnames(df), 
+  data = df_to_list(df),
+  columns = lapply(colnames(df),
                    function(colName){
                      list(
                        id = colName,
@@ -8,3 +8,4 @@ dashDataTable(
                      )
                    })
 )
+

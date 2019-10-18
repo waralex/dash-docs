@@ -8,3 +8,4 @@ df <- data.frame(
   Humidity = 10:60,
   pressure = c(2, 10924, 3912, -10, 3591.2, 15)
 )
+

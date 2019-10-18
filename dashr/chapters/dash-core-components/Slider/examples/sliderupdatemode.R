@@ -31,5 +31,5 @@ app$callback(
     sprintf('Linear Value: %g | Log Value: %0.2f', value, transform_value(value))
   })
 
-#app$run_server()
+app$run_server()
 

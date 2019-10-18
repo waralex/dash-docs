@@ -25,7 +25,7 @@ app$callback(
                 input(id = 'my-date-picker-range', property = 'end_date')),
   function(start_date, end_date){
     string_prefix = 'You have selected: '
-    
+
     if(is.null(start_date) == FALSE){
       start_date = format(as.Date(start_date), format = '%B %d,%Y')
       string_prefix = paste(string_prefix, 'Start Date ', start_date, sep = "")
@@ -33,7 +33,7 @@ app$callback(
     if(is.null(end_date) == FALSE){
       end_date = format(as.Date(end_date), format = '%B %d,%Y')
       string_prefix = paste(string_prefix, 'End Date: ', end_date, sep = "")
-      
+
     }
     if(nchar(string_prefix) == nchar('You have selected: ')){
       return('Select a date to see it displayed here')
@@ -42,7 +42,7 @@ app$callback(
       return(string_prefix)
     }
   }
-  
+
 )
 
 app$run_server()

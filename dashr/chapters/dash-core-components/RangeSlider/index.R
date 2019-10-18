@@ -19,13 +19,13 @@ layout = htmlDiv(list(
   htmlP("An example of a basic RangeSlider tied to a callback."),
   examples$rangeslider1$source,
   examples$rangeslider1$layout,
-  
+
   htmlHr(),
   htmlH3('Marks and Steps'),
   dccMarkdown("If slider `marks` are defined and `step` is set to `NULL` \
                  then the slider will only be able to select values that \
               have been predefined by the `marks`."),
-  
+
   utils$LoadAndDisplayComponent2(
     '
 library(dashCoreComponents)
@@ -43,15 +43,15 @@ dccRangeSlider(
     )
    '
   ),
-  
+
   htmlHr(),
   htmlH3('Included and Styling Marks'),
-  
+
   dccMarkdown("By default, `included=TRUE`, meaning the rail trailing the \
                  handle will be highlighted. To have the handle act as a \
               discrete value set `included=FALSE`. To style `marks`, \
               include a style css attribute alongside the key value."),
-  
+
   htmlDiv(list(utils$LoadAndDisplayComponent2(
     '
 library(dashCoreComponents)
@@ -65,10 +65,10 @@ dccRangeSlider(
     "100" = list("label" = "100°C" , "style" = list("color" = "#FF4500"))
     )
     )
-    
-    '
+
+  '
   ))),
-  
+
   htmlDiv(list(utils$LoadAndDisplayComponent2(
     '
 library(dashCoreComponents)
@@ -84,15 +84,15 @@ dccRangeSlider(
 
     included=FALSE
     )
-    
-    '
+
+  '
   ))),
-  
+
   htmlHr(),
   htmlH3('Multiple Handles'),
   dccMarkdown("To create multiple handles \
                   just define more values for `value`!"),
-  
+
   htmlDiv(list(utils$LoadAndDisplayComponent2(
     '
 library(dashCoreComponents)
@@ -101,12 +101,12 @@ dccRangeSlider(
     max=30,
     value=list(1, 3, 4, 5, 12, 17)
   )
-    '
+  '
   ))),
-  
+
   htmlHr(),
   htmlH3('Pushable Handles'),
-  
+
   dccMarkdown("The `pushable` property is either a `boolean` or a numerical value. \
                 The numerical value determines the minimum distance between \
               the handles. Try moving the handles around!"),
@@ -117,14 +117,14 @@ dccRangeSlider(
     min=0,
     max=30,
     value=list(1, 3, 4, 5, 12, 17),
-    pushable = 2 
+    pushable = 2
   )
-    '
-  ))), #Fix example, not pushing. 
+  '
+  ))), #Fix example, not pushing.
 
   htmlHr(),
   htmlH3('Crossing Handles'),
-  
+
   dccMarkdown("If `allowCross=FALSE`, the handles will not be allowed to\
                   cross over each other"),
   htmlDiv(list(utils$LoadAndDisplayComponent2(
@@ -136,10 +136,10 @@ dccRangeSlider(
     value=list(10,15),
     allowCross = FALSE
     )
-    '
+  '
   ))),
   htmlHr(),
-  
+
   htmlH3('Non-Linear Slider and Updatemode'),
   dccMarkdown("Create a logarithmic slider by setting `marks`\
                to be logarithmic and adjusting the slider's output \
@@ -150,18 +150,18 @@ dccRangeSlider(
                is moved. \
                Contrast the callback output with the first example on this \
                page to see the difference."),
-  
+
   examples$rangeslidernonlinear$source,
   examples$rangeslidernonlinear$layout,
-  
+
   htmlH3('RangeSlider Properties'),
   examples$rangesliderproptable$layout,
-  
+
   htmlHr(),
   dccMarkdown("
 [Back to the Table of Contents](/)
               ")
-  
-  
-  
+
+
+
 ))

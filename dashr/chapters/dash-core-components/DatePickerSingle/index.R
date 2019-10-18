@@ -11,10 +11,10 @@ examples <- list(
 )
 
 layout <- htmlDiv(list(
-  
+
   htmlH1("DatePickerSingle Examples and Reference"),
   htmlHr(),
-  
+
   htmlH3("Calendar Clear and Portals"),
   dccMarkdown("When the `clearable` property is set to `TRUE` \
                the component will be rendered with a small 'x' \
@@ -23,10 +23,10 @@ layout <- htmlDiv(list(
                portal types, one being a full screen portal \
                (`with_full_screen_portal`) and another being a simple \
                screen overlay, like the one shown below (`with_portal`)."),
-  
+
   examples$simpledate$source,
   examples$simpledate$layout,
-  
+
   htmlHr(),
   htmlH3('Month and Display Format'),
   dccMarkdown("The `display_format` property \
@@ -99,7 +99,7 @@ layout <- htmlDiv(list(
       htmlTd('Unix ms timestamp')
       ))
   )),
-  
+
   htmlHr(),
   htmlH3('Display Format Examples'),
   dccMarkdown("You can utilize any permutation of the string tokens \
@@ -111,7 +111,7 @@ dccDatePickerSingle(
     date="2017-06-21",
     display_format="MMM Do, YY"
   )
-    '
+  '
   ),
 
 utils$LoadAndDisplayComponent(

@@ -26,7 +26,7 @@ layout <- htmlDiv(
     > editing, and exploring large datasets.*
     >
     > *DataTable is rendered with standard,
-    > semantic HTML `<table/>` markup, which makes it accessible,
+    > semantic HTML* `<table/>` *markup, which makes it accessible,
     > responsive, and easy to style.*
     >
     > *7 months in the making, this is the most complex Dash component that Plotly has written,
@@ -36,7 +36,7 @@ layout <- htmlDiv(
     > We're excited to continue to work with users and companies that
     > [invest in DataTable's future](https://plot.ly/products/consulting-and-oem/?_ga=2.1935537.1022559183.1559571095-1541667138.1549398001).*
     >
-    > *DataTable is in `Alpha`. This is more of a statement on the DataTable API rather than on its features.
+    > *DataTable is in* `Alpha`.* This is more of a statement on the DataTable API rather than on its features.
     > The table currently works beautifully and is already used in production at F500 companies.
     > However, we expect to make a few more breaking changes to its API and behavior within the next couple of months.
     > Once the community feels good about its API, we'll lock it down and we'll commit to reducing the frequency of

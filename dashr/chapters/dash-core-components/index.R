@@ -477,7 +477,7 @@ htmlDiv(list(utils$LoadAndDisplayComponent(
   '
 library(dashCoreComponents)
 store = dccStore(
-  id = "my-store", 
+  id = "my-store",
   data = list("my-data" = "data")
 )
   '
@@ -538,16 +538,23 @@ dccMarkdown(
 
   "
 ),
-htmlDiv(list(utils$LoadAndDisplayComponent(
-  '
-#library(dashCoreComponents)
-#location = dccLocation(id= "url", refresh= FALSE)
-  '
-))),
+# htmlDiv(list(utils$LoadAndDisplayComponent(
+#   '
+# library(dashCoreComponents)
+# location = dccLocation(id= "url", refresh= FALSE)
+#   '
+#)
+dccMarkdown("```r
+library(dashCoreComponents)
+location = dccLocation(id = 'url', refresh = FALSE)
+
+```",
+className = "example-container"),
 
 htmlBr(),
 htmlDiv(referenceLink('Location', 'More Location Examples and Reference')),
-htmlBr()
+htmlHr(),
+dccMarkdown("[Back to the Table of Contents](/)")
 
 )
 

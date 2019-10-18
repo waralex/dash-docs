@@ -25,4 +25,4 @@ app$callback(output('output-container', 'children'),
   sprintf("You have selected \"%s\"", dropdown_value)
 })
 
-# app$run_server()
+app$run_server()

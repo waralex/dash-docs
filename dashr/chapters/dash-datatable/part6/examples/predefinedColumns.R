@@ -20,7 +20,7 @@ app$layout(
               name = 'Model'
             )
           ),
-          lapply(params, 
+          lapply(params,
                  function(colName){
                    list(
                      id = colName,
@@ -39,7 +39,7 @@ app$layout(
                           c('Model', params)
                         )
                       }
-                      
+
         ),
         editable = TRUE
       ),
@@ -53,23 +53,55 @@ app$callback(
   params = list(input(id = 'table-editing-simple', property = 'data'),
                 input(id = 'table-editing-simple', property = 'columns')),
   function(rows, columns) {
-    
+
     df <- do.call(rbind, rows)
+    #browser()
     list(
       data = list(
         list(
           type = 'parcoords',
-          dimensions = lapply(columns,
-                              function(column) {
-                                list(
-                                  label = column[['name']],
-                                  values = df[, column[['id']]]
-                                )
-                              })
+          # dimensions = lapply(columns,
+          #                     function(column) {
+          #                       list(
+          #                         range = ifelse(column[["name"]] == "Model", c(1,4), c(-1,1)),
+          #                         label = column[['name']],
+          #                         values = unlist(df[, column[['id']]])
+          #                       )
+          #                     })
+
+          dimensions = list(
+            list(range = c(1,4),
+                 constraintrange = c(1,2),
+                 label = 'Model', values = c(1,2,3,4)),
+            list(range = c(-1,1),
+                 tickvals = c(1.5,3,4.5),
+                 label = 'Weight', values = c(0,0,0,0)),
+            list(range = c(-1,1),
+                 tickvals = c(1.5,3,4.5),
+                 label = 'Torque', values = c(0,0,0,0)),
+            list(range = c(-1,1),
+                 tickvals = c(1.5,3,4.5),
+                 label = 'Width', values = c(0,0,0,0)),
+            list(range = c(-1,1),
+                 tickvals = c(1.5,3,4.5),
+                 label = 'Height', values = c(0,0,0,0)),
+            list(range = c(-1,1),
+                 tickvals = c(1.5,3,4.5),
+                 label = 'Efficiency', values = c(0,0,0,0)),
+            list(range = c(-1,1),
+                 tickvals = c(1.5,3,4.5),
+                 label = 'Power', values = c(0,0,0,0)),
+            list(range = c(-1,1),
+                 tickvals = c(1.5,3,4.5),
+                 label = 'Displacement', values = c(0,0,0,0))
+          )
+
+
         )
-      ) 
+      )
     )
   }
 )
 
-app$run_server()
+#app$run_server(port = 8054)
+
