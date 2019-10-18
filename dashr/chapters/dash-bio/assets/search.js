@@ -4,8 +4,8 @@ if (window.location.pathname.indexOf('search') > 0){
 
 		var search = instantsearch({
 			// Replace with your own values
-			appId: '7EK9KHJW8M',
-			apiKey: '4dae07ded6a721de73bde7356eec9280',
+			appId: '',
+			apiKey: '',
 			indexName: 'dash_docs',
 			urlSync: false,
 			searchFunction: function (helper) {
