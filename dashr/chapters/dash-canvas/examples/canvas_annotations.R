@@ -44,8 +44,8 @@ app$callback(
     } else {
       data <- fromJSON(json)
       df <- data[['objects']]
-      df <- df[2:nrow(df), ]
-      return(df)
+      df_filtered <- df[2:length(df)]
+      return(df_filtered)
     }
   }
 )
