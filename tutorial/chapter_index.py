@@ -167,7 +167,7 @@ chapters = {
         'url': '/datatable',
         'content': dash_table_index.layout,
         'name': 'Dash DataTable',
-        'description': '(New! Released Nov 2, 2018) The Dash DataTable is our latest and ' \
+        'description': '(Released Nov 2, 2018) The Dash DataTable is our latest and ' \
                        'most advanced component. It is an interactive table that ' \
                        'supports rich styling, ' \
                        'conditional formatting, editing, sorting, filtering, ' \
@@ -178,7 +178,7 @@ chapters = {
         'url': '/cytoscape',
         'content': dash_cytoscape_index.layout,
         'name': 'Dash Cytoscape',
-        'description': '(New! Released Feb 5, 2019) Dash Cytoscape is our new network ' \
+        'description': '(Released Feb 5, 2019) Dash Cytoscape is our new network ' \
                        'visualization component. It offers a declarative and ' \
                        'pythonic interface to create beautiful, customizable, ' \
                        'interactive and reactive graphs.'
@@ -197,7 +197,7 @@ chapters = {
         'url': '/dash-bio',
         'content': dashbio.layout,
         'name': 'Dash Bio Components',
-        'description': '(New! Released April 2019) Components dedicated to visualizing \
+        'description': '(Released April 2019) Components dedicated to visualizing \
         bioinformatics data.'
     },
 
@@ -205,7 +205,7 @@ chapters = {
         'url': '/canvas',
         'content': canvas.layout,
         'name': 'Dash Canvas',
-        'description': '(New! Released March 2019) Drawing and annotations for image processing.'
+        'description': '(Released March 2019) Drawing and annotations for image processing.'
     },
 
     'plugins': {
@@ -271,7 +271,7 @@ chapters = {
         'content': persistence.layout,
         'name': 'Persisting User Preferences',
         'description': '''
-            (New! released September 2019 with Dash 1.3) Save user choices
+            (Released September 2019 with Dash 1.3) Save user choices
             across page reloads, or just when removing and re-adding a
             component. Learn how to use persistence, and how to enable it
             in components you write yourself.
