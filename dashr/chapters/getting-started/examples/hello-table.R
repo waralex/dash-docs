@@ -5,8 +5,8 @@ library(dashHtmlComponents)
 df <- read.csv(url("https://gist.githubusercontent.com/chriddyp/c78bf172206ce24f77d6363a2d754b59/raw/c353e8ef842413cae56ae3920b8fd78468aa4cb2/usa-agricultural-exports-2011.csv"))
 
 generate_table <- function(df, nrows=10) {
-  
-  rows <- lapply(1: min(nrows, nrow(df)), 
+
+  rows <- lapply(1: min(nrows, nrow(df)),
                  function(i) {
                    htmlTr(children = lapply(as.character(df[i,]), htmlTd))
                  }
@@ -28,4 +28,4 @@ app$layout(
   )
 )
 
-#app$run_server()
+app$run_server()

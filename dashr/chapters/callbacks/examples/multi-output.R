@@ -41,4 +41,4 @@ app$callback(
     sprintf("You've entered \"%s\"", dropdown_value)
 })
 
-#app$run_server()
+app$run_server()
