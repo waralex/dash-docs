@@ -150,7 +150,8 @@ edges <- lapply(
   )
 
 elements <- c(nodes, edges)
-      ")
+  "
+      )
     )
   ),
 

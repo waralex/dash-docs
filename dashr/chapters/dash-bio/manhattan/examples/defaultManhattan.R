@@ -4,7 +4,7 @@ library(data.table)
 
 app <- Dash$new()
 
-data = read.table("assets/sample_data/manhattan_data.csv",
+data = read.table("https://raw.githubusercontent.com/plotly/dash-docs/master/assets/sample_data/manhattan_data.csv",
                   header = TRUE, sep = ",")
 
 

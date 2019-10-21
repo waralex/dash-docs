@@ -211,7 +211,8 @@ my_stylesheet <- list(
     )
   )
 )
-      ")
+  "
+      )
     )
   ),
 

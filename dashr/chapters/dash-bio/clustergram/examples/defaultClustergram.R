@@ -11,7 +11,7 @@ library(data.table)
 app <- Dash$new()
 
 
-df = read.table("assets/sample_data/clustergram_mtcars.tsv",
+df = read.table("https://raw.githubusercontent.com/plotly/dash-docs/master/assets/sample_data/clustergram_mtcars.tsv",
                         skip = 4, sep ="\t",  row.names = 1, header = TRUE)
 
 
