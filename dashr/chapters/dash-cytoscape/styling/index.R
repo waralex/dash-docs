@@ -115,7 +115,7 @@ directed_elements <- c(directed_nodes, directed_edges)
 layout <- htmlDiv(list(
   htmlH1("Cytoscape Styling"),
 
-  htmlH2("The `stylesheet` parameter"),
+  dccMarkdown("## The `stylesheet` parameter"),
   dccMarkdown("
 Just like how the `elements` parameter takes as an input a list of
 named lists specifying all the elements in the graph, the stylesheet takes
@@ -149,6 +149,7 @@ chapter, but this time we examine the stylesheet:
     children = list(
       htmlSummary('View simple elements'),
       utils$LoadAndDisplayComponent("
+
 simple_elements <- list(
   # Nodes
   list(
@@ -176,7 +177,8 @@ simple_elements <- list(
   list('data' = list('source' = 'three', 'target' = 'four'), 'classes' = 'red'),
   list('data' = list('source' = 'two', 'target' = 'four'))
 )
-      ")
+  "
+      )
     )
   ),
   # Block 3.1
@@ -267,7 +269,8 @@ weighted_elements <- list(
   list('data' = list('source' = 'C', 'target' = 'E', 'weight' = 5)),
   list('data' = list('source' = 'D', 'target' = 'A', 'weight' = 6))
 )
-      ")
+  "
+      )
     )
   ),
   dccMarkdown("
@@ -354,7 +357,8 @@ named_elements <- list(
   list('data' = list('source' = 'C', 'target' = 'E')),
   list('data' = list('source' = 'D', 'target' = 'A'))
 )
-      ")
+  "
+      )
     )
   ),
   # Block 3.4
@@ -502,7 +506,8 @@ double_edges <- lapply(
 )
 
 double_edged_el <- c(double_edged_nodes, double_edges)
-      ")
+  "
+      )
     )
   ),
   # Block 3.8
@@ -582,7 +587,8 @@ directed_edges <- lapply(
 )
 
 directed_elements <- c(directed_nodes, directed_edges)
-      ")
+  "
+      )
     )
   ),
   # Block 3.9
