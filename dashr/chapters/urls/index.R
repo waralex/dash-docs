@@ -8,11 +8,11 @@ source('dashr/utils.R', local=utils)
 layout <- htmlDiv(list(
   htmlH1('Multi-Page Apps and URL Support'),
   dccMarkdown("
-Dash renders web applications as a 'single-page app'. This means 
+Dash renders web applications as a 'single-page app'. This means
 that the application does not completely reload when the user
 navigates the application, making browsing very fast.
 
-There are two new components that aid page navigation: 
+There are two new components that aid page navigation:
 [`dccLocation`](dash-core-components/location) and `dccLink`.
 
 `dccLocation` represents the location bar in your web browser
@@ -23,7 +23,7 @@ through the pathname property. Here's a simple example:
     library(dashCoreComponents)
     library(dashHtmlComponents)
 
-    app <- Dash$new(external_stylesheets = list('https://codepen.io/chriddyp/pen/bWLwgP.css'))   
+    app <- Dash$new(external_stylesheets = list('https://codepen.io/chriddyp/pen/bWLwgP.css'))
 
     app$layout(htmlDiv(list(
               # represents the URL bar, doesn't render anything
@@ -31,7 +31,7 @@ through the pathname property. Here's a simple example:
               dccLink('Navigate to \"/\"', href='/'),
               htmlBr(),
               dccLink('Navigate to \"/page-2\"', href='/page-2'),
-              
+
               # content will be rendered in this element
               htmlDiv(id='page-content')
             )
@@ -46,7 +46,7 @@ through the pathname property. Here's a simple example:
               sprintf('You are on page %s', pathname)
               }
     )
-  
+
     app$run_server(debug = TRUE)
 ```
 
@@ -58,7 +58,7 @@ could use the `pathname` to display different content.
 The `dccLink` element updates the pathname of the browser
 _without refreshing the page_. If you used a `htmlA` element
 instead, the pathname would update but the page would refresh.
-              
+
 Here is a GIF of what this example looks like. Note how
 clicking on the `Link` doesn't refresh the page even though
 it updates the URL!
@@ -168,7 +168,7 @@ depending on the URL:
               }
     )
 
-    app$run_server(debug=TRUE)     
+    app$run_server(debug=TRUE)
 ```
 "),
   htmlImg(
@@ -178,17 +178,17 @@ depending on the URL:
 dccMarkdown("
 - In this example, we're displaying different layouts through
 the `display_page` function. A few notes: Each page can have
-interactive elements even though those elements may not be in 
+interactive elements even though those elements may not be in
 the initial view. Dash handles these \"dynamically generated\"
 components gracefully: as they are rendered, they will trigger
 the callbacks with their initial values.
 - Since we're adding callbacks to elements that don't exist
 in the app.layout, Dash will raise an exception to warn us that
 we might be doing something wrong. In this case, we're adding
-the elements through a callback, so we can ignore the exception 
-by setting `app$run_server(suppress_callback_exceptions = TRUE)`. It 
-is also possible to do this without suppressing callback exceptions. 
-See the example below for details. 
+the elements through a callback, so we can ignore the exception
+by setting `app$run_server(suppress_callback_exceptions = TRUE)`. It
+is also possible to do this without suppressing callback exceptions.
+See the example below for details.
 - You can modify this example to import the different page's `layout`s
 in different files.
 - This Dash Userguide that you're looking at is itself a multi-page
@@ -217,7 +217,7 @@ File structure:
 
 ```r
     library(dash)
-              
+
     app <- Dash$new(suppress_callback_exceptions = TRUE,
                     external_stylesheets = list('https://codepen.io/chriddyp/pen/bWLwgP.css'))
 ```
@@ -228,7 +228,7 @@ File structure:
     library(dash)
     library(dashHtmlComponents)
     library(dashCoreComponents)
-              
+
     app1_layout <- htmlDiv(list(
         htmlH3('App 1'),
               dccDropdown(
@@ -266,7 +266,7 @@ And similarly for other apps
     library(dash)
     library(dashHtmlComponents)
     library(dashCoreComponents)
-              
+
     app$layout(htmlDiv(list(
         dccLocation(id='url', refresh=FALSE),
         htmlDiv(id='page-content')
@@ -289,7 +289,7 @@ And similarly for other apps
     )
 
     app$run_server(debug=TRUE)
-```              
+```
 
 ---
 
@@ -307,7 +307,7 @@ Alternatively, you may prefer a flat project layout with callbacks and layouts s
 `app.R`
 ```r
     library(dash)
-              
+
               app <- Dash$new(suppress_callback_exceptions = TRUE,
               external_stylesheets = list('https://codepen.io/chriddyp/pen/bWLwgP.css'))
 ```
@@ -380,7 +380,7 @@ Alternatively, you may prefer a flat project layout with callbacks and layouts s
     library(dash)
     library(dashHtmlComponents)
     library(dashCoreComponents)
-              
+
     app$layout(htmlDiv(list(
         dccLocation(id='url', refresh=FALSE),
         htmlDiv(id='page-content')
@@ -401,7 +401,7 @@ Alternatively, you may prefer a flat project layout with callbacks and layouts s
                   return('404')
               }
     )
-  
+
   app$run_server(debug=TRUE)
 ```
 
@@ -413,6 +413,7 @@ imports: the files containing the callback definitions require access to the Das
 this were imported from `index.R`, the initial loading of `index.R` would ultimately require itself to be
 already imported, which cannot be satisfied.
   "),
+htmlHr(),
 dccMarkdown("
 [Back to the Table of Contents](/)
               ")
