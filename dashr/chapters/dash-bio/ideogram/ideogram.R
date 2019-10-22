@@ -22,7 +22,7 @@ dashbio_intro <- htmlDiv(list(
 
 
   dccMarkdown('
-  See Ideogram in action [here](https://dash-gallery.plotly.host/dash-ideogram/)
+  See Ideogram in action [here](https://dash-gallery.plotly.host/dash-ideogram/).
   ')
 ))
 
@@ -48,7 +48,7 @@ dashbioIdeogram(
     chrHeight = 800,
     chrWidth = 200
 )
-    '
+  '
   )
 ))
 
@@ -64,7 +64,7 @@ dashbioIdeogram(
     chromosomes = list("X", "Y"),
     annotationsPath = "https://eweitz.github.io/ideogram/data/annotations/SRR562646.json"
 )
-    '
+  '
   )
 ))
 
@@ -79,7 +79,7 @@ dashbioIdeogram(
     id = "ideogram-rotation",
     rotatable = FALSE
 )
-    '
+  '
   )
 ))
 
@@ -94,7 +94,7 @@ dashbioIdeogram(
     id = "ideogram-orientation",
     rotatable = "horizontal"
 )
-    '
+  '
   )
 ))
 
@@ -111,7 +111,7 @@ dashbioIdeogram(
     chromosomes = list("X"),
     brush = "chrX:1-10000000"
 )
-    '
+  '
   )
 ))
 

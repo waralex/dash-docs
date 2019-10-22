@@ -28,7 +28,7 @@ app$callback(
   params = list(
     input(id = "my-dashbio-molecule2d", property = "selectedAtomIds")
   ),
-  
+
   update_selected_atoms <- function(ids){
     if (is.null(ids[[1]]) | length(ids) < 1 ) {
       return("No atom has been selected. Select atoms by clicking on them.")
@@ -39,5 +39,4 @@ app$callback(
   }
 )
 
-
-# app$run_server(showcase = TRUE)
+app$run_server(showcase = TRUE)

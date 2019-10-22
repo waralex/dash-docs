@@ -20,7 +20,7 @@ examples <- list(
 dashbio_intro <- htmlDiv(list(
   dccMarkdown('# ManhattanPlot Examples and Reference'),
   dccMarkdown('
-  See ManhattanPlot in action [here](https://dash-gallery.plotly.host/dash-manhattan-plot/)
+  See ManhattanPlot in action [here](https://dash-gallery.plotly.host/dash-manhattan-plot/).
   ')
 ))
 
@@ -51,7 +51,7 @@ dccGraph(
     genomewideline_color = "#AA5500"
   )
 )
-    '
+  '
   )
 ))
 
@@ -71,7 +71,7 @@ dccGraph(
     highlight_color = "#00FFAA"
   )
 )
-    '
+  '
   )
 ))
 

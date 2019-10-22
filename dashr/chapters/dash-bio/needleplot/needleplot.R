@@ -20,7 +20,7 @@ examples <- list(
 dashbio_intro <- htmlDiv(list(
   dccMarkdown('# NeedlePlot Examples and Reference'),
   dccMarkdown('
-  See Needleplot in action [here](https://dash-gallery.plotly.host/dash-needle-plot/)
+  See Needleplot in action [here](https://dash-gallery.plotly.host/dash-needle-plot/).
   ')
 ))
 
@@ -53,7 +53,7 @@ dashbioNeedlePlot(
     "headColor" = list("#FFDD00", "#000000")
   )
 )
-    '
+  '
   )
 ))
 
@@ -73,7 +73,7 @@ dashbioNeedlePlot(
     "domainColor" = list("#FFDD00", "#00FFDD", "#0F0F0F", "#D3D3D3")
   )
 )
-    '
+  '
   )
 ))
 

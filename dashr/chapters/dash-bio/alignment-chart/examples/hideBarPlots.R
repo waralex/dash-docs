@@ -15,6 +15,4 @@ app$layout(htmlDiv(list(
   )
 )))
 
-
-
-#app$run_server()
+app$run_server()

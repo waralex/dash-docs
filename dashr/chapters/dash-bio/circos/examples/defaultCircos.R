@@ -29,7 +29,7 @@ app$layout(htmlDiv(list(
         )
       )
     ))
-    
+
   )
   ,
   "Graph type: ",
@@ -41,10 +41,10 @@ app$layout(htmlDiv(list(
     ),
     value = "chords"
   ),
-  
+
   "Event data:",
   htmlDiv(id='default-circos-output')
-  
+
 )))
 
 app$callback(
@@ -83,9 +83,9 @@ app$callback(
           )
         )
         )
-        
+
       }
-      
+
       else if (value == 'histogram') {
         tracks = list(list(
           'type' = 'HISTOGRAM',
@@ -101,12 +101,10 @@ app$callback(
           )
         )
         )
-        
+
       }
     return(tracks)
   }
 )
 
-#app$run_server()
-
-
+app$run_server()

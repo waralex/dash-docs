@@ -20,7 +20,7 @@ examples <- list(
 dashbio_intro <- htmlDiv(list(
   dccMarkdown('# OncoPrint Examples and Reference'),
   dccMarkdown('
-  See OncoPrint in action [here](https://dash-gallery.plotly.host/dash-onco-print/)
+  See OncoPrint in action [here](https://dash-gallery.plotly.host/dash-onco-print/).
   ')
 ))
 
@@ -52,7 +52,7 @@ dashbioOncoPrint(
 
   backgroundcolor = "#F3F6FA"
 )
-    '
+  '
   )
 ))
 
@@ -71,7 +71,7 @@ dashbioOncoPrint(
   width = 500,
   padding = 0.25
 )
-    '
+  '
   )
 ))
 
@@ -89,7 +89,7 @@ dashbioOncoPrint(
   showlegend = FALSE,
   showoverview = FALSE
 )
-    '
+  '
   )
 ))
 

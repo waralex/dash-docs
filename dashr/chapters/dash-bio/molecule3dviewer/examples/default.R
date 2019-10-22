@@ -30,7 +30,7 @@ app$layout(
 app$callback(
   output = list(id = 'molecule3d-output', property = 'children'),
   params = list(input(id = 'my-dashbio-molecule3d-default', property = 'selectedAtomIds')),
-  
+
   show_selected_atoms <- function(atom_ids) {
     if (is.null(atom_ids[[1]]) | length(atom_ids) < 1 ) {
       return("No atom has been selected. Click somewhere on the molecular structure to select an atom.")
@@ -41,4 +41,4 @@ app$callback(
   }
 )
 
- # app$run_server()
+app$run_server()

@@ -34,9 +34,9 @@ app$layout(htmlDiv(list(
     value = c("Mazda RX4", "Valiant"),
     multi = TRUE
   ),
-  
+
   htmlDiv(id = "default-clustergram-output")
-  
+
 )))
 
 app$callback(
@@ -44,16 +44,16 @@ app$callback(
   params = list(
     input(id = 'rows-to-display', property = "value")
   ),
-  
+
   update_clustergram <- function(value) {
     if (length(value) < 2) {
       return("Please select at least two rows to display.")
     }
     else{
-      
+
       df <- subset(df, rownames(df) %in% value)
       return(
-        dccGraph(figure = heatmaply(df, 
+        dccGraph(figure = heatmaply(df,
                                     row_labels = list(row.names(data)),
                                     hide_labels = list("row"),
                                     column_labels = as.list(colnames(data)),
@@ -68,8 +68,4 @@ app$callback(
   }
 )
 
-
-
-
-#app$run_server(showcase = TRUE)
-
+app$run_server()

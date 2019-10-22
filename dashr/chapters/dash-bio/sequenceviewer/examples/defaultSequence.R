@@ -13,7 +13,7 @@ app$layout(htmlDiv(list(
     id = 'my-default-sequence-viewer',
     sequence = fasta_str
   ),
-  
+
   htmlDiv(id = 'sequence-viewer-default-output')
 )))
 
@@ -23,7 +23,7 @@ app$callback(
   params = list(
     input(id = 'my-default-sequence-viewer', property = "mouseSelection")
   ),
-  
+
   update_output <- function(value) {
     if ((length(value) == 0)| is.null(value[[1]])) {
       return("There is no mouse selection.")
@@ -34,4 +34,4 @@ app$callback(
   }
 )
 
-# app$run_server(showcase = TRUE)
+app$run_server()

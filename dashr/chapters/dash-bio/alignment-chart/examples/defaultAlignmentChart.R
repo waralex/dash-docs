@@ -11,7 +11,7 @@ app$layout(htmlDiv(list(
     id = "my-alignment-viewer",
     data = data
     ),
-    
+
     htmlDiv(id = "alignment-viewer-output")
 )))
 
@@ -20,7 +20,7 @@ app$callback(
   params = list(
     input(id = "my-alignment-viewer", property = "eventDatum")
   ),
-  
+
   update_output <- function(value) {
     if (!exists("value")) {
       return("No data.")
@@ -31,4 +31,4 @@ app$callback(
   }
 )
 
-#app$run_server()
+app$run_server()

@@ -12,18 +12,18 @@ listOfOptions <- lapply(chromosomes, function(x) {
 
 app$layout(htmlDiv(list(
   'Select which chromosomes to display on the ideogram below:',
-  
+
   dccDropdown(
     id='displayed-chromosomes',
     options = listOfOptions,
     multi=TRUE,
     value = listOfOptions
   ),
-  
+
   dashbioIdeogram(
     id='default-ideogram'
   ),
-  
+
   htmlDiv(id='ideogram-rotated')
 )))
 
@@ -54,5 +54,4 @@ app$callback(
   }
 )
 
-
-# app$run_server()
+app$run_server()

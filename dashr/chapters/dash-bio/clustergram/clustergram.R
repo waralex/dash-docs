@@ -21,7 +21,7 @@ dashbio_intro <- htmlDiv(list(
   dccMarkdown('# Clustergram Examples and Reference'),
 
   dccMarkdown('
-  See Clustergram in action [here](https://dash-gallery.plotly.host/dash-clustergram/)
+  See Clustergram in action [here](https://dash-gallery.plotly.host/dash-clustergram/).
   ')
 ))
 
@@ -63,7 +63,7 @@ dccGraph(figure = heatmaply(df,
                             midpoint = 200
           )
         )
-    '
+  '
   )
 ))
 
@@ -101,7 +101,7 @@ dccGraph(figure = heatmaply(df,
                             k_row = 2
           )
         )
-    '
+  '
   )
 ))
 
@@ -134,7 +134,7 @@ dccGraph(figure = heatmaply(df,
 
           )
         )
-    '
+  '
   )
 ))
 
@@ -165,7 +165,7 @@ dccGraph(figure = heatmaply(df,
 
           )
         )
-    '
+  '
   )
 ))
 
@@ -200,7 +200,7 @@ dccGraph(figure = heatmaply(df[, -c(8,9)],
 
           )
         )
-    '
+  '
   )
 ))
 

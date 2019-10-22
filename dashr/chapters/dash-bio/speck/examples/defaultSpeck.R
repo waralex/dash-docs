@@ -9,29 +9,17 @@ app <- Dash$new()
 
 
 importSpeck <- function(filepath,
-                        
                         header = FALSE,
-                        
                         skip = 2) {
-  
   textdata <- read.table(
-    
-    text = paste0(
-      
-      readLines(filepath), collapse="\n"
-      
-    ),
-    
+    text = paste0(readLines(filepath), collapse="\n"),
     header = header,
-    
     skip = skip,
-    
     col.names = c("symbol", "x", "y", "z"),
-    
     stringsAsFactors = FALSE)
-  
+
   return(dashTable::df_to_list(textdata))
-  
+
 }
 
 
@@ -46,7 +34,7 @@ app$layout(htmlDiv(list(
     ),
     value = "default"
   ),
-  
+
   dashbioSpeck(
     id = "default-speck",
     data = data
@@ -59,17 +47,10 @@ app$callback(
   params = list(
     input(id = "speck-preset-views", property = "value")
   ),
-  
+
   update_preset_view <- function(preset_name) {
     return(preset_name)
   }
 )
 
-# app$run_server(showcase = TRUE)
-
-
-
-
-
-
-
+app$run_server()

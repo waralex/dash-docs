@@ -21,7 +21,7 @@ dashbio_intro <- htmlDiv(list(
   dccMarkdown('# AlignmentChart Examples and Reference'),
 
   dccMarkdown('
-  See AlignmentChart in action [here](https://dash-gallery.plotly.host/dash-alignment-chart/)
+  See AlignmentChart in action [here](https://dash-gallery.plotly.host/dash-alignment-chart/).
   ')
 ))
 

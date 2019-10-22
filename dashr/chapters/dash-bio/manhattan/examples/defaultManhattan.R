@@ -10,30 +10,30 @@ data = read.table("https://raw.githubusercontent.com/plotly/dash-docs/master/ass
 
 
 genMark <- function(n){
-  
+
   l <- list(sprintf('%s', n))
-  
+
   names(l) <- 'label'
-  
+
   return(l)
-  
+
 }
 
 genMarks <- function(min, max, by){
-  
+
   s <- seq(from=min, to=max, by)
-  
+
   l <- lapply(s, genMark)
-  
+
   names(l) <- s
-  
+
   return(l)
-  
+
 }
 
 app$layout(htmlDiv(list(
   'Threshold Value',
-  
+
   dccSlider(
     id = 'default-manhattanplot-input',
     min = 1,
@@ -42,9 +42,9 @@ app$layout(htmlDiv(list(
     value = 6,
     marks = genMarks(1,10,1)
   ),
-  
+
   htmlBr(),
-  
+
   htmlDiv(
     dccGraph(
       id = 'my-default-manhattanplot',
@@ -59,7 +59,7 @@ app$callback(
   output(id = "my-default-manhattanplot", property = "figure"),
   params = list(
     input(id = 'default-manhattanplot-input', property = 'value')),
-    
+
     update_manhattanplot <- function(threshold){
       return(
         dashbioManhattan(
@@ -70,7 +70,4 @@ app$callback(
     }
   )
 
-
-
-
-# app$run_server(showcase = TRUE)
+app$run_server(showcase = TRUE)

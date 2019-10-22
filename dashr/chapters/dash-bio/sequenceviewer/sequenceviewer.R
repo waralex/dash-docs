@@ -20,7 +20,7 @@ examples <- list(
 dashbio_intro <- htmlDiv(list(
   dccMarkdown('# Sequence Viewer Examples and Reference'),
   dccMarkdown('
-  See Sequence Viewer in action [here](https://dash-gallery.plotly.host/dash-sequence-viewer/)
+  See Sequence Viewer in action [here](https://dash-gallery.plotly.host/dash-sequence-viewer/).
   ')
 ))
 
@@ -52,7 +52,7 @@ dashbioSequenceViewer(
   showLineNumbers = FALSE,
   charsPerLine = 20
 )
-    '
+  '
   )
 ))
 
@@ -73,7 +73,7 @@ dashbioSequenceViewer(
   sequence = fasta_str,
   selection = list(10, 20, "green")
 )
-    '
+  '
   )
 ))
 
@@ -94,7 +94,7 @@ dashbioSequenceViewer(
   sequence = fasta_str,
   toolbar = TRUE
 )
-    '
+  '
   )
 ))
 
@@ -116,7 +116,7 @@ dashbioSequenceViewer(
   title = "Insulin",
   badge = FALSE
 )
-    '
+  '
   )
 ))
 

@@ -21,10 +21,10 @@ app$layout(
         max = 3,
         step = 0.05,
         marks = setNames(
-          lapply(-3:3, 
+          lapply(-3:3,
                  function(i){
                    list(label = as.character(i))
-                 }), 
+                 }),
           -3:3
         ),
         value = c(-0.5, 1)
@@ -55,4 +55,4 @@ app$callback(
   }
 )
 
-# app$run_server()
+app$run_server()
