@@ -28,7 +28,8 @@ layout = html.Div([
 
     The Dash testing is now part of the main Dash package. After
     `pip install dash[testing]`, the Dash `pytest` fixtures are available, you
-    just need to install the WebDrivers and you are ready to test.
+    just need to install the WebDrivers or use a remote Selenium-Grid and you
+    are ready to test.
 
     - [Chrome Driver](http://chromedriver.chromium.org/getting-started)
     - [Firefox Gecko Driver](https://github.com/mozilla/geckodriver/releases)
@@ -42,6 +43,42 @@ layout = html.Div([
     main benefit for us is it's lighter and faster to run without a UI. You
     can check the details from both [Firefox](https://developer.mozilla.org/en-US/docs/Mozilla/Firefox/Headless_mode)
     and [Chrome](https://developers.google.com/web/updates/2017/04/headless-chrome).
+
+    Remote WebDriver support is added in Dash *1.3.0*. There are two ways to use it:
+
+    1. Run `pytest --remote -k bsly001` to grab a Chrome WebDriver from a local
+    hosted grid at `http://localhost:4444/wd/hub`
+    2. Run `pytest --webdriver Firefox --remote-url https://grid_provioder_endpoints`
+    to connect with a remote grid in the cloud running Firefox (default Chrome).
+    Note that you don't need to use `--remote` as soon as the `--remote-url`
+    value is set and different than the default one.
+
+    ### Caveats
+
+    It's important to note that we cannot fully test and guarantee that the
+    above cases will work with any given selenium grid you have. The limitation
+    might come from how the network is set up, the limitation of different
+    hosting OS or how docker-compose was configured.
+
+    You might need to do some auxiliary WebDriver Options tuning to run the
+    tests in a particular Selenium-Grid. The first useful tip is to change the
+    default logging level with `--log-cli-level DEBUG`. Secondly, there is a
+    back door for browser option customization by a `pytest_setup_options` hook
+    defined in `plugin.py`.
+
+    The example below is to use the `headless` mode with Chrome WebDriver in
+    Windows, there is a [workaround](https://bugs.chromium.org/p/chromium/issues/detail?id=737678)
+    by adding `--disable-gpu` in the options.
+
+    ```Python
+    # add this in the conftest.py under tests folder
+    from selenium.webdriver.chrome.options import Options
+
+    def pytest_setup_options():
+        options = Options()
+        options.add_argument('--disable-gpu')
+        return options
+    ```
 
     **Notes**:
 
@@ -168,10 +205,14 @@ layout = html.Div([
 
     - dash_process_server
 
-    Start your Dash App with `waitress` in a Python `subprocess`. This is
-    close to your production/deployed environment.  **Note:**  *You need to
-    configure your `PYTHONPATH` so that the Dash app source file is
-    directly importable*.
+    This is close to your production/deployed environment. Start your Dash App
+    with `waitress`(by default if `raw_command` is not provided) in a Python
+    `subprocess`. You can control the process runner with two supplemental
+    arguments. To run the application with alternative deployment options, use
+    the `raw_command` argument; to extend the timeout if your application needs
+    more than the default three seconds to launch, use the `start_timeout`
+    argument. Note: *You need to configure your `PYTHONPATH` so that the Dash
+    app source file is directly importable*.
 
     And `Dash for R` test fixtures have a prefix `dashr`.
 
@@ -260,7 +301,8 @@ layout = html.Div([
     | `find_elements(selector)` | return a list of all elements matching by the `CSS selector`, shortcut to `driver.find_elements_by_css_selector`|
     | `multiple_click(selector, clicks)`| find the element with the `CSS selector` and clicks it with number of `clicks` |
     | `wait_for_element(selector, timeout=None)` | shortcut to `wait_for_element_by_css_selector` the long version is kept for back compatibility. `timeout` if not set, equals to the fixture's `wait_timeout`|
-    | `wait_for_element_by_css_selector(selector, timeout=None)` | explicit wait until the element to present, shortcut to `WebDriverWait` with `EC.presence_of_element_located` |
+    | `wait_for_element_by_css_selector(selector, timeout=None)` | explicit wait until the element is present, shortcut to `WebDriverWait` with `EC.presence_of_element_located` |
+    | `wait_for_element_by_id(element_id, timeout=None)` | explicit wait until the element is present, shortcut to `WebDriverWait` with `EC.presence_of_element_located` |
     | `wait_for_style_to_equal(selector, style, value, timeout=None)` | explicit wait until the element's style has expected `value`. shortcut to `WebDriverWait` with custom wait condition `style_to_equal`. `timeout` if not set, equals to the fixture's `wait_timeout`  |
     | `wait_for_text_to_equal(selector, text, timeout=None)` | explicit wait until the element's text equals the expected `text`. shortcut to `WebDriverWait` with custom wait condition `text_to_equal`. `timeout` if not set, equals to the fixture's `wait_timeout` |
     | `wait_for_contains_text(selector, text, timeout=None)` | explicit wait until the element's text contains the expected `text`. shortcut to `WebDriverWait` with custom wait condition `contains_text` condition. `timeout` if not set, equals to the fixture's `wait_timeout` |
@@ -269,6 +311,7 @@ layout = html.Div([
     | `switch_window(idx)` | switch to window by window index. shortcut to `driver.switch_to.window`. raise `BrowserError` if no second window present in browser |
     | `open_new_tab(url=None)` | open a new tab in browser with window name `new window`. `url` if not set, equals to `server_url` |
     | `percy_snapshot(name)` | visual test API shortcut to `percy_runner.snapshot` it also combines the snapshot `name` with python versions |
+    | `visit_and_snapshot(resource_path, hook_id, assert_check=True)` | common task used in dash-docs testing: it visits a URL path by `resource_path`, makes sure the page is fully loaded by the `hook_id` at the bottom, takes a snapshot and returns to the main page. `assert_check` is a switch to enable/disable an assertion that there is no devtools error alert icon |
     | `take_snapshot(name)` | hook method to take a snapshot while selenium test fails. the snapshot is placed under `/tmp/dash_artifacts` in Linux or `%TEMP` in windows with a filename combining test case `name` and the running selenium session id |
     | `get_logs()` | return a list of `SEVERE` level logs after last reset time stamps (default to 0, resettable by `reset_log_timestamp`. **Chrome only** |
     | `clear_input()` | simulate key press to clear the input |
@@ -306,17 +349,22 @@ layout = html.Div([
     app$run_server()
     '''
 
-    # a test case is a simple Python function with the same prefix convention
+    # A test case is a simple Python function with the same prefix convention
     # dashr is the default fixture combines the API for serving the app
     # and selenium tests.
     def test_rstr001_r_with_string(dashr):
-        # the app is a raw string variable defining the Dash App in R
+        # The app is a raw string variable defining the Dash App in R
+        # The app will use the directory of this Python file as the working dir.
+        # That determines where it will look for assets.
+        # You can change this with eg: dashr.start_server(app, cwd='/my/path/')
         dashr.start_server(app)
         assert dashr.find_element("#container").text == "Hello Dash for R Testing"
 
 
     def test_rstr002_r_with_file_path(dashr):
-        # alternatively, the app can be a filepath defining the Dash for R
+        # Alternatively, the app can be a filepath defining the Dash for R
+        # This app will use its own directory (.tests/assets/) as the working dir
+        # but again you can override it with `cwd`.
         dashr.start_server(app=".tests/assets/demo_hello.R")
         assert dashr.find_element("#container").text == "Hello Dash for R Testing"
     ```
@@ -386,5 +434,16 @@ layout = html.Div([
     under `Artifacts` Tab*
 
     ![CircleCI](https://user-images.githubusercontent.com/1394467/59371162-3f27a000-8d12-11e9-9060-7d8a8522c2c6.png)
+
+    ### Percy Snapshots
+
+    There are two customized `pytest` arguments to tune Percy runner:
+
+    1. `--nopercyfinalize` disables the Percy finalize in dash fixtures. This
+    is required if you run your tests in parallel, then you add an extra
+    `percy finalize --all` step at the end. For more details, please visit
+    [Percy Documents](https://docs.percy.io/docs/parallel-test-suites).
+    2. `--percy-assets` lets Percy know where to collect additional assets
+    such as CSS files. You can refer to the example we used for [`dash-docs`](https://github.com/plotly/dash-docs/blob/b10701c8514b87d86645f6edeb808ccdcfa4143d/tests/conftest.py#L17-L32).
     """),
 ])

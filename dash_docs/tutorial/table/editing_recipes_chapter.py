@@ -16,7 +16,8 @@ examples = {
         'editing_uploading.py',
         'editing_columns.py',
         'editing_rows_and_columns.py',
-        'editing_updating_self.py'
+        'editing_updating_self.py',
+        'editing_loading_state.py'
     ]
 }
 
@@ -28,7 +29,52 @@ Display = CreateDisplay({
 layout = html.Div([
 
     dcc.Markdown(dedent(
-    '''
+        '''
+        # Editable DataTable
+
+        The DataTable is editable. Like a spreadsheet, it can be used
+        as an input for controlling models with a variable number
+        of inputs.
+
+        This chapter includes recipes for:
+
+        - Reading the contents of the DataTable
+        - Filtering out null values
+        - Uploading data
+        - Determining which cell has changed
+        - Adding or removing columns
+        - Adding or removing rows
+        - Clearable, deletable, renamable, and hideable columns
+        - Export DataTable
+        '''
+    )),
+
+    dcc.Markdown('***'),
+
+    dcc.Markdown(dedent(
+        '''
+        ## Predefined Columns
+
+        In this example, we initialize a table with 10 blank rows and
+        a few predefined columns. To retrieve the data, just listen to the
+        `data` property.
+
+        A few notes:
+        - If you copy and paste data that is larger than the rows, then the
+        table will expand to contain the contents.
+        Try it out by [copying and pasting this dataset](https://docs.google.com/spreadsheets/d/1MWj7AjngD_fH7vkVhEMIRo51Oty295kE36-DFnQElrg/edit?usp=sharing).
+        - Unlike other spreadsheet programs, the DataTable has a fixed number of
+        rows. So, if your model has an arbitrary number of parameters
+        (rows or columns), we recommend initializing your table with a
+        large number of empty rows and columns.
+        - When copying data from the table to an external spreadsheet or
+        between two tables in different tabs, you can choose to include column headers
+        by adding `include_headers_on_copy_paste=True`. However, headers are ignored
+        when copying between two tables in the same tab.
+        '''
+    )),
+
+    dcc.Markdown(dedent('''
     # Editable DataTable
 
     The DataTable is editable. Like a spreadsheet, it can be used
@@ -72,10 +118,45 @@ layout = html.Div([
         examples['editing_simple.py'][0],
         style=styles.code_container
     ),
+
     html.Div(
         examples['editing_simple.py'][1],
         className='example-container'
     ),
+
+    dcc.Markdown(dedent('''
+    ## Integration with Dash loading states
+
+    As of table version 4.3.0, Dash loading states also have some
+    control over whether the table is editable. If the `data` property
+    is loading (e.g., while retrieving data from a server), you will
+    be unable to edit the cells and the dropdowns. This avoids cases
+    in which the edited value (input from the user) conflicts with the
+    value that is returned by the server.
+
+    In the example below, you can use the dropdown to choose to load
+    either the `style_cell` property or the `data` property. When you
+    select the property, there will be a simulated delay (to mimic a
+    delay you might get when communicating with a server). Although
+    this isn't the case in the example, you can also use the
+    `.dash-loading` CSS selector to apply specific styling while the
+    table is waiting.
+
+    If you select `style_cell`, you'll be able to edit the cell as the
+    value is loading; if you select `data`, you won't. Try it out
+    yourself!
+
+    ''')),
+
+    dcc.Markdown(
+        examples['editing_loading_state.py'][0],
+        style=styles.code_container
+    ),
+    html.Div(
+        examples['editing_loading_state.py'][1],
+        className='example-container'
+    ),
+
 
     dcc.Markdown(dedent('''
     ## Filtering out Empty Cells

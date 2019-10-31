@@ -77,7 +77,7 @@ layout = html.Div([
        (there are only two arguments for each of those objects).
        I have included them here for clarity but I will omit them from here on
        out for brevity and readability.
-    5. Don't confuse the `dash.dependencies.Input` object from the
+    5. Don't confuse the `dash.dependencies.Input` object and the
        `dash_core_components.Input` object. The former is just used in these
        callbacks and the latter is an actual component.
     6. Notice how we don't set a value for the `children` property of the

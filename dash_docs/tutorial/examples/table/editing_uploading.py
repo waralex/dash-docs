@@ -41,20 +41,30 @@ def parse_contents(contents, filename):
         return pd.read_excel(io.BytesIO(decoded))
 
 
-@app.callback(Output('datatable-upload-container', 'data'),
+@app.callback([Output('datatable-upload-container', 'data'),
+               Output('datatable-upload-container', 'columns')],
               [Input('datatable-upload', 'contents')],
               [State('datatable-upload', 'filename')])
 def update_output(contents, filename):
     if contents is None:
-        return [{}]
+        return [{}], []
     df = parse_contents(contents, filename)
-    return df.to_dict('records')
+    return df.to_dict('records'), [{"name": i, "id": i} for i in df.columns]
 
 
 @app.callback(Output('datatable-upload-graph', 'figure'),
               [Input('datatable-upload-container', 'data')])
 def display_graph(rows):
     df = pd.DataFrame(rows)
+
+    if (df.empty or len(df.columns) < 1):
+        return {
+            'data': [{
+                'x': [],
+                'y': [],
+                'type': 'bar'
+            }]
+        }
     return {
         'data': [{
             'x': df[df.columns[0]],

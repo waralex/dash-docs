@@ -11,7 +11,11 @@ layout = [dcc.Markdown('''
     application, making browsing very fast.
 
     There are two new components that aid page navigation:
+<<<<<<< HEAD:dash_docs/tutorial/urls.py
     [`dash_core_components.Location`](/Docs/dash-core-components/location) and `dash_core_components.Link`.
+=======
+    [`dash_core_components.Location`](/dash-core-components/location) and [`dash_core_components.Link`](dash-core-components/link).
+>>>>>>> master:tutorial/urls.py
 
     `dash_core_components.Location` represents the location bar in your web browser
     through the `pathname` property. Here's a simple example:
