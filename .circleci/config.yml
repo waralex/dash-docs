@@ -71,9 +71,9 @@ workflows:
       - percy-finalize:
           requires:
             - python-2.7
-  python3.6:
-    jobs:
-      - python-3.6
-  python3.7:
-    jobs:
-      - python-3.7
+  # python3.6:
+  #   jobs:
+  #     - python-3.6
+  # python3.7:
+  #   jobs:
+  #     - python-3.7
