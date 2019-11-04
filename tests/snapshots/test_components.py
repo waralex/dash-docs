@@ -5,11 +5,6 @@ def test_snap100_component_sub_pages(component_map, dash_doc):
             dash_doc.visit_and_snapshot(
                 href,
                 hook_id="wait-for-page-/{}".format(href),
-                wait_for_callbacks=(
-                    False
-                    if href
-                    in {"dash-core-components/store", "datatable/callbacks"}
-                    else True
-                ),
+                wait_for_callbacks=True,
                 assert_check=True,
             )
