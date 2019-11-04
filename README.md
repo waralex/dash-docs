@@ -40,4 +40,3 @@ PRs accepted! The Dash user guide is itself a Dash app. Each file in `tutorial` 
 
 Changes to master will get deployed automatically.
 
-
