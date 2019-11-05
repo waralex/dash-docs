@@ -218,7 +218,7 @@ layout = html.Div([
     # and selenium tests.
     def test_rstr001_r_with_string(dashr):
 
-        # Since the app is the string chunck we defined above, the dashr
+        # Since the app is the string chunk we defined above, the dashr
         # fixture creates an unique temporary folder to dump the content into
         # `app.R` and copies any possible subfolders (usually
         # assets or clientside source code) to the same temporary folder
