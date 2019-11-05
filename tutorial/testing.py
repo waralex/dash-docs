@@ -218,7 +218,7 @@ layout = html.Div([
     # and selenium tests.
     def test_rstr001_r_with_string(dashr):
 
-        # Since the app is the string chunck we defined above, the dashr
+        # Since the app is the string chunk we defined above, the dashr
         # fixture creates an unique temporary folder to dump the content into
         # `app.R` and copies any possible subfolders (usually
         # assets or clientside source code) to the same temporary folder
@@ -232,9 +232,9 @@ layout = html.Div([
 
     def test_rstr002_r_with_file_path(dashr):
 
-        # Alternatively, the app can be a filepath defining the Dash for R
+        # Alternatively, the app can be a path to a separate file containing your Dash for R app
         # the `os.path.dirname(__file__)` is an useful Python trick to get the path
-        # of a test path, so it will always work no matter where you start the
+        # of the currently running script, so it will always work no matter where you start the
         # test runner.
         dashr.start_server(
             app=os.path.join(os.path.dirname(__file__), "assets/demo_hello.R))
@@ -373,8 +373,8 @@ layout = html.Div([
     | `percy_snapshot(name, wait_for_callbacks=False)` | visual test API shortcut to `percy_runner.snapshot`. it also combines the snapshot `name` with the actual python versions. The `wait_for_callbacks` parameter controls whether the snapshot is taken only after all callbacks have fired; the default is `False`. |
     | `visit_and_snapshot(resource_path, hook_id, wait_for_callbacks=True, assert_check=True)` | This method automates a common task during dash-docs testing: the URL described by `resource_path` is visited, and completion of page loading is assured by waiting until the element described by `hook_id` is fetched. Once `hook_id` is available, `visit_and_snapshot` acquires a snapshot of the page and returns to the main page. `wait_for_callbacks` controls if the snapshot is taken until all dash callbacks are fired, default True. `assert_check` is a switch to enable/disable an assertion that there is no devtools error alert icon. |
     | `take_snapshot(name)` | hook method to take a snapshot while selenium test fails. the snapshot is placed under `/tmp/dash_artifacts` in Linux or `%TEMP` in windows with a filename combining test case `name` and the running selenium session id |
-    | `zoom_in_graph_by_ratio(elem_or_selector, start_fraction=0.5, zoom_box_fraction=0.2, compare=True)` | Given a specified fraction of the zoom box for an individual component, zoom out from a graph (identified either using a Selenium WebElement or CSS selector). The default specifies a rectangular zoom box which is 1/5 the dimension of the graph itself. The `compare` option controls whether the resulting SVG should be compared with the previous capture for changes. |
-    | `click_at_coord_fractions(elem_or_selector, fx, fy)` |  Use `ActionChains` to click a Selenium WebElement with a coordinate fractions |
+    | `zoom_in_graph_by_ratio(elem_or_selector, start_fraction=0.5, zoom_box_fraction=0.2, compare=True)` | zoom out a graph (provided with either a Selenium WebElement or CSS selector) with a zoom box fraction of component dimension, default start at middle with a rectangle of 1/5 of the dimension use `compare` to control if we check the SVG get changed |
+    | `click_at_coord_fractions(elem_or_selector, fx, fy)` |  Use `ActionChains` to click a Selenium WebElement at a location a given fraction of the way `fx` between its left (0) and right (1) edges, and `fy` between its top (0) and bottom (1) edges. |
     | `get_logs()` | return a list of `SEVERE` level logs after last reset time stamps (default to 0, resettable by `reset_log_timestamp`. **Chrome only** |
     | `clear_input()` | simulate key press to clear the input |
     | `driver` | property exposes the Selenium WebDriver as fixture property |
