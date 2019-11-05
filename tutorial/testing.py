@@ -234,7 +234,7 @@ layout = html.Div([
 
         # Alternatively, the app can be a filepath defining the Dash for R
         # the `os.path.dirname(__file__)` is an useful Python trick to get the path
-        # of a test path, so it will always work no matter where you start the
+        # of the currently running script, so it will always work no matter where you start the
         # test runner.
         dashr.start_server(
             app=os.path.join(os.path.dirname(__file__), "assets/demo_hello.R))
