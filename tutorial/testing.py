@@ -370,11 +370,11 @@ layout = html.Div([
     | `toggle_window()` | switch between the current working window and the newly opened one. |
     | `switch_window(idx)` | switch to window by window index. shortcut to `driver.switch_to.window`. raise `BrowserError` if no second window present in browser |
     | `open_new_tab(url=None)` | open a new tab in browser with window name `new window`. `url` if not set, equals to `server_url` |
-    | `percy_snapshot(name, wait_for_callbacks=False)` | visual test API shortcut to `percy_runner.snapshot` it also combines the snapshot `name` with the actual python versions. `wait_for_callbacks` controls if the snapshot is taken until all dash callbacks are fired, default False. |
-    | `visit_and_snapshot(resource_path, hook_id, wait_for_callbacks=True, assert_check=True)` | common task used in dash-docs testing: it visits a URL path by `resource_path`, makes sure the page is fully loaded by the `hook_id` at the bottom, takes a snapshot and returns to the main page.  `wait_for_callbacks` controls if the snapshot is taken until all dash callbacks are fired, default True. `assert_check` is a switch to enable/disable an assertion that there is no devtools error alert icon |
+    | `percy_snapshot(name, wait_for_callbacks=False)` | visual test API shortcut to `percy_runner.snapshot` it also combines the snapshot `name` with the actual python versions. The `wait_for_callbacks` parameter controls whether the snapshot is taken only after all callbacks have fired; the default is `False`. |
+    | `visit_and_snapshot(resource_path, hook_id, wait_for_callbacks=True, assert_check=True)` | This method automates a common task during dash-docs testing: the URL described by `resource_path` is visited, and completion of page loading is assured by waiting until the element described by `hook_id` is fetched. Once `hook_id` is available, `visit_and_snapshot` acquires a snapshot of the page and returns to the main page. `wait_for_callbacks` controls if the snapshot is taken until all dash callbacks are fired, default True. `assert_check` is a switch to enable/disable an assertion that there is no devtools error alert icon. |
     | `take_snapshot(name)` | hook method to take a snapshot while selenium test fails. the snapshot is placed under `/tmp/dash_artifacts` in Linux or `%TEMP` in windows with a filename combining test case `name` and the running selenium session id |
-    | `zoom_in_graph_by_ratio(elem_or_selector, start_fraction=0.5, zoom_box_fraction=0.2, compare=True)` | zoom out a graph (provided with either a Selenium WebElement or CSS selector) with a zoom box fraction of component dimension, default start at middle with a rectangle of 1/5 of the dimension use `compare` to control if we check the SVG get changed |
-    | `click_at_coord_fractions(elem_or_selector, fx, fy)` |  Use `ActionChains` to click a Selenium WebElement with a coordination fractions |
+    | `zoom_in_graph_by_ratio(elem_or_selector, start_fraction=0.5, zoom_box_fraction=0.2, compare=True)` | Given a specified fraction of the zoom box for an individual component, zoom out from a graph (identified either using a Selenium WebElement or CSS selector). The default specifies a rectangular zoom box which is 1/5 the dimension of the graph itself. The `compare` option controls whether the resulting SVG should be compared with the previous capture for changes. |
+    | `click_at_coord_fractions(elem_or_selector, fx, fy)` |  Use `ActionChains` to click a Selenium WebElement with a coordinate fractions |
     | `get_logs()` | return a list of `SEVERE` level logs after last reset time stamps (default to 0, resettable by `reset_log_timestamp`. **Chrome only** |
     | `clear_input()` | simulate key press to clear the input |
     | `driver` | property exposes the Selenium WebDriver as fixture property |
@@ -390,14 +390,14 @@ layout = html.Div([
     | API | Description |
     | --- | ----------- |
     | `devtools_error_count_locator` | property returns the selector of the error count number in the devtool UI |
-    | `dash_entry_locator` | property returns the selector of react entry point, it can be used to verify if an Dash is loaded |
+    | `dash_entry_locator` | property returns the selector of react entry point, it can be used to verify if an Dash app is loaded |
     | `dash_outerhtml_dom` | property returns the BeautifulSoup parsed Dash DOM from outerHTML |
     | `dash_innerhtml_dom` | property returns the BeautifulSoup parsed Dash DOM from innerHTML |
     | `redux_state_paths` | property returns the `window.store.getState().paths` |
     | `redux_state_rqs` | property returns `window.store.getState().requestQueue` |
     | `window_store` | property returns `window.store` |
-    | `get_local_storage(store_id="local")` | get the local storage by the id, default to `local` |
-    | `get_session_storage(session_id="session") ` | get the session storage by the id, default to `session` |
+    | `get_local_storage(store_id="local")` | get the value of local storage item by the id, default is `local` |
+    | `get_session_storage(session_id="session") ` | get the value of session storage item by the id, default is `session` |
     | `clear_local_storage()` | shortcut to `window.localStorage.clear()` |
     | `clear_session_storage()` | shortcut to `window.sessionStorage.clear()` |
     | `clear_storage()` | clears both local and session storages |
