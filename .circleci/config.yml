@@ -38,7 +38,7 @@ jobs:
           name: Run tests
           command: |
               . venv/bin/activate
-              pip install -e git+https://github.com/plotly/dash.git@dbg-dt-callbacks#egg=dash[testing]
+              pip install --progress-bar off -e git+https://github.com/plotly/dash.git@dbg-dt-callbacks#egg=dash[testing]
               pytest --log-cli-level INFO --junitxml=test-reports/snapshots.xml tests/snapshots
       - store_artifacts:
           path: test-reports
