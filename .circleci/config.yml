@@ -39,7 +39,7 @@ jobs:
           command: |
               . venv/bin/activate
               pip install -e git+https://github.com/plotly/dash.git@dbg-dt-callbacks#egg=dash[testing]
-              pytest --log-cli-level DEBUG --junitxml=test-reports/snapshots.xml tests/snapshots
+              pytest --log-cli-level INFO --junitxml=test-reports/snapshots.xml tests/snapshots
       - store_artifacts:
           path: test-reports
       - store_test_results:
