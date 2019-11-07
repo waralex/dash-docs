@@ -6,7 +6,7 @@ import dash_html_components as html
 
 from dash_docs.tutorial.components import Example, Syntax
 from dash_docs import tools
-
+from dash_docs import reusable_components
 
 def get_example_name(path):
     """Returns the name of an example given its path."""
@@ -19,7 +19,7 @@ examples = {get_example_name(path): tools.load_example(path) for path in
 
 
 layout = html.Div([
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     # FAQs and Gotchas
 
     > This is the *7th* and final chapter of the essential [Dash Tutorial](/Docs/).
@@ -93,7 +93,7 @@ layout = html.Div([
     Here's an example of how this can be done:'''),
     Syntax(examples['last_clicked_button'][0]),
     Example(examples['last_clicked_button'][1]),
-    dcc.Markdown('''
+    reusable_components.Markdown('''
 
     Prior to v0.38.0, you needed to compare timestamp properties like
     `n_clicks_timestamp` to find the most recent click. While existing uses of

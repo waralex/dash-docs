@@ -4,10 +4,11 @@ import dash_html_components as html
 
 from dash_docs import styles
 from dash_docs.tools import load_example, read_file
+from dash_docs import reusable_components
 
 layout = html.Div([
     html.H1(["Loading States"]),
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     Every component in `dash_core_components` or `dash_html_components` comes equipped with
     a `loading_state` prop. This prop contains an `is_loading` bool that tells you if the component is loading.
     Additionally, the `component_name` and `prop_name` attributes return the name of that component and the name of the
@@ -15,7 +16,7 @@ layout = html.Div([
     Dash uses this prop in the `Loading` component to display spinners if a component is loading. This means you can use the `Loading` component
     to wrap other components that you want to display a loading spinner for. Here's an example of what that looks like:
     '''),
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     ```python
     # -*- coding: utf-8 -*-
     import dash
@@ -62,7 +63,7 @@ layout = html.Div([
 
     ''', style=styles.code_container),
     html.Br(),
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     Please also check out the docs for the [Loading component](/Docs/dash-core-components/loading_component) for more information on how to use the Loading component.
 
     Aside from using the [`Loading`](/Docs/dash-core-components/loading_component) component, you can check if a certain component
@@ -71,7 +72,7 @@ layout = html.Div([
     you can target those components yourself with CSS, and create your own custom spinner
     for them. Here's an example of what that could look like:
     '''),
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     ```python
     # -*- coding: utf-8 -*-
     import dash
@@ -115,7 +116,7 @@ layout = html.Div([
     ''', style=styles.code_container),
     html.Br(),
     html.P("You could target all components in the layout above that are loading using the following CSS:"),
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     ```css
     *[data-dash-is-loading="true"]{
         visibility: hidden;

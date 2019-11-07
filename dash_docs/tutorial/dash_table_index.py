@@ -7,7 +7,7 @@ from textwrap import dedent
 from dash_docs.reusable_components import Section, Chapter
 from dash_docs import styles
 from dash_docs import tools
-
+from dash_docs import reusable_components
 
 examples = {
     example: tools.load_example('tutorial/examples/table/{}'.format(example))
@@ -17,7 +17,7 @@ examples = {
 
 preamble = html.Div([
 
-    dcc.Markdown(dedent('''
+    reusable_components.Markdown(dedent('''
     # Dash DataTable
 
     ''')),
@@ -29,7 +29,7 @@ preamble = html.Div([
         style={'border': 'none'}
     ),
 
-    dcc.Markdown(dedent('''
+    reusable_components.Markdown(dedent('''
     > **Released on November 2, 2018**
     >
     > Dash DataTable is an interactive table component designed for
@@ -66,7 +66,7 @@ preamble = html.Div([
     ''')),
 
     Section('Quickstart', [
-        dcc.Markdown(
+        reusable_components.Markdown(
             '''
             ```
             pip install dash=={}
@@ -75,7 +75,7 @@ preamble = html.Div([
             style=styles.code_container
         ),
 
-        dcc.Markdown(
+        reusable_components.Markdown(
             examples['simple.py'][0],
             style=styles.code_container
         ),

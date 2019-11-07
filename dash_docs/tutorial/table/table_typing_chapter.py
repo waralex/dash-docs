@@ -7,7 +7,7 @@ from textwrap import dedent
 import dash_table
 from .utils import section_title
 from dash_docs import styles, tools
-
+from dash_docs import reusable_components
 
 examples = {
     example: tools.load_example('tutorial/examples/table/{}'.format(example))
@@ -18,15 +18,15 @@ examples = {
 }
 
 layout = html.Div([
-    dcc.Markdown('# DataTable - Typing'),
+    reusable_components.Markdown('# DataTable - Typing'),
 
-    dcc.Markdown(dedent(
+    reusable_components.Markdown(dedent(
     '''
     This section will provide an overview of the DataTable's capabilities for typing, formatting,
     presentation and user input processing.
     ''')),
 
-    dcc.Markdown(dedent(
+    reusable_components.Markdown(dedent(
     '''
     ### Typing
     The DataTable provides support for per-column typing and allows for data validation and
@@ -44,7 +44,7 @@ layout = html.Div([
     By default, the column type is `any`.
     ''')),
 
-    dcc.Markdown(dedent(
+    reusable_components.Markdown(dedent(
     '''
     ### Presentation
     The DataTable provides multiple presentation schemes that can vary depending on the column's
@@ -59,7 +59,7 @@ layout = html.Div([
     By default, the column presentation is `input`.
     ''')),
 
-    dcc.Markdown(dedent(
+    reusable_components.Markdown(dedent(
     '''
     ### User Input Processing
     The DataTable provides a configurable input processing system that can accept, reject or
@@ -71,7 +71,7 @@ layout = html.Div([
     and `validation` column nested properties for details.
     ''')),
 
-    dcc.Markdown(dedent(
+    reusable_components.Markdown(dedent(
     '''
     ### Formatting
     The DataTable provides a configurable data formatting system that modifies how the data
@@ -85,20 +85,20 @@ layout = html.Div([
     At the moment, only `type='numeric'` formatting can be configured.
     ''')),
 
-    dcc.Markdown(dedent(
+    reusable_components.Markdown(dedent(
     '''
     ### Examples
     ''')),
 
 
     section_title('DataTable with template formatting'),
-    dcc.Markdown(dedent(
+    reusable_components.Markdown(dedent(
     '''
     This table contains two columns formatted by templates. The `Variation (%)` column is further
     configured by changing the sign behavior so that both the "+" and "-" sign are visible. Additional
     configuration changes can be chained after a ```Format(...)``` and a ```FormatTemplate.<template>(...)``` calls.
     ''')),
-    dcc.Markdown(
+    reusable_components.Markdown(
         examples['typing_formatting.1.py'][0],
         style=styles.code_container
     ),
@@ -108,7 +108,7 @@ layout = html.Div([
     ),
 
     section_title('DataTable with formatting'),
-    dcc.Markdown(dedent(
+    reusable_components.Markdown(dedent(
     '''
     This table contains columns with type `numeric` and `datetime`. The "max" columns have the default
     behavior and will not allow for invalid data to be passed in. The "min" columns are more permissive.
@@ -119,7 +119,7 @@ layout = html.Div([
     equivalent manual configuration is shown as comments in the code below. One can always see the resulting
     configuration for a given Format object by using ```Format(...).to_plotly_json()```.
     ''')),
-    dcc.Markdown(
+    reusable_components.Markdown(
         examples['typing_formatting.py'][0],
         style=styles.code_container
     ),

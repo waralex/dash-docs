@@ -2,7 +2,7 @@ import dash_core_components as dcc
 import dash_html_components as html
 
 from dash_docs import styles
-
+from dash_docs import reusable_components
 
 def Syntax(children, style=styles.code_container, summary=''):
     code = children
@@ -12,10 +12,10 @@ def Syntax(children, style=styles.code_container, summary=''):
     if summary:
         return html.Details([
             html.Summary(summary),
-            dcc.Markdown(code, style=style)
+            reusable_components.Markdown(code, style=style)
         ], open=True)
     else:
-        return dcc.Markdown(code, style=style)
+        return reusable_components.Markdown(code, style=style)
 
 
 def Example(example):

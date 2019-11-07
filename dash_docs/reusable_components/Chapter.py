@@ -1,5 +1,6 @@
 import dash_html_components as html
 import dash_core_components as dcc
+from dash_docs import reusable_components
 
 def s(string_block):
     return string_block.replace('    ', '')
@@ -17,7 +18,7 @@ def Chapter(name, href=None, caption=None):
         ),
         html.Small(
             className='toc--chapter-content',
-            children=dcc.Markdown(s(caption or '')),
+            children=reusable_components.Markdown(s(caption or '')),
             style={
                 'display': 'block',
                 'marginTop': '-10px' if caption else ''

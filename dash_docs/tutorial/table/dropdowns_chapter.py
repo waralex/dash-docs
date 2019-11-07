@@ -6,7 +6,7 @@ import dash_html_components as html
 from .utils import section_title
 from dash_docs import tools
 from dash_docs import styles
-
+from dash_docs import reusable_components
 
 examples = {
     example: tools.load_example('tutorial/examples/table/{}'.format(example))
@@ -16,7 +16,7 @@ examples = {
 
 layout = html.Div([
 
-    dcc.Markdown(dedent('''
+    reusable_components.Markdown(dedent('''
     # DataTable Dropdowns
 
     The DataTable includes support for per-column and
@@ -29,7 +29,7 @@ layout = html.Div([
     ''')),
 
     section_title('DataTable with Per-Column Dropdowns'),
-    dcc.Markdown(
+    reusable_components.Markdown(
         examples['dropdown_per_column.py'][0],
         style=styles.code_container
     ),
@@ -39,7 +39,7 @@ layout = html.Div([
     ),
 
     section_title('DataTable with Per-Row Dropdowns'),
-    dcc.Markdown(
+    reusable_components.Markdown(
         examples['dropdown_per_row.py'][0],
         style=styles.code_container
     ),

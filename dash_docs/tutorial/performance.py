@@ -2,6 +2,7 @@ import dash_core_components as dcc
 
 from dash_docs.tutorial.components import Syntax
 from dash_docs import tools
+from dash_docs import reusable_components
 
 examples = {
     'memoization': tools.load_example(
@@ -13,7 +14,7 @@ examples = {
 }
 
 layout = [
-    dcc.Markdown('''# Performance
+    reusable_components.Markdown('''# Performance
 
 This chapter contains several recommendations for improving the performance
 of your dash apps.
@@ -43,7 +44,7 @@ def slow_function(input):
     return 'Input was {}'.format(input)
     '''),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
 
 Calling `slow_function('test')` the first time will take 10 seconds.
 Calling it a second time with the same argument will take almost no time
@@ -68,7 +69,7 @@ Here is an example of `Flask-Caching` with Redis:
 
     Syntax(examples['performance_flask_caching'][0]),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
 
 ***
 
@@ -82,7 +83,7 @@ several callbacks.
 
     Syntax(examples['performance_flask_caching_dataset']),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
 
 ***
 
@@ -139,7 +140,7 @@ def large_params_function(largeValue1, largeValue2):
     return largeValueOutput
     '''),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
 
 ***
 
@@ -156,7 +157,7 @@ window.dash_clientside = Object.assign({}, window.dash_clientside, {
 });
     '''),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
 
 ***
 
@@ -177,7 +178,7 @@ app.clientside_callback(
 )
     '''),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
 
 ***
 

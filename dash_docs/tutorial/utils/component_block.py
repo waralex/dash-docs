@@ -2,7 +2,7 @@ import dash_core_components as dcc
 import dash_html_components as html
 
 from dash_docs import styles
-
+from dash_docs import reusable_components
 
 def ComponentBlock(example_string, **kwargs):
     scope = {}
@@ -26,7 +26,7 @@ def ComponentBlock(example_string, **kwargs):
 
         raise e
     return html.Div([
-        dcc.Markdown(
+        reusable_components.Markdown(
             '``` python \n' + example_string + '  \n```',
             style=styles.code_container
         ),

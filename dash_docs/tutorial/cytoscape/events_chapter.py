@@ -5,7 +5,7 @@ import dash_html_components as html
 from .utils import CreateDisplay
 from dash_docs import tools
 from dash_docs import styles
-
+from dash_docs import reusable_components
 
 examples = {
     example: tools.load_example(
@@ -78,7 +78,7 @@ Display = CreateDisplay({
 
 layout = html.Div([
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     # Cytoscape Event Callbacks
 
     In [part 4](/Docs/cytoscape/callbacks), we showed how to update Cytoscape with
@@ -108,12 +108,12 @@ layout = html.Div([
     )
     '''),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     This time, we will use the `tapNodeData` properties as input
     to our callbacks, which will simply dump the content into an `html.Pre`:
     '''),
 
-    dcc.Markdown(
+    reusable_components.Markdown(
         examples['event_callbacks.py'][0],
         style=styles.code_container
     ),
@@ -123,7 +123,7 @@ layout = html.Div([
         className='example-container'
     ),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     Notice that the `html.Div` is updated every time you click or tap a node,
     and returns the data dictionary of the node. Alternatively, you can use
     `tapNode` to obtain the entire element specification (given as a
@@ -135,7 +135,7 @@ layout = html.Div([
     or an edge. Simply replace the previous layout and callbacks by this:
     '''),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     ```py
         app.layout = html.Div([
             cyto.Cytoscape(
@@ -186,7 +186,7 @@ layout = html.Div([
         className='example-container'
     ),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
 
     ## Selecting multiple elements
 
@@ -195,7 +195,7 @@ layout = html.Div([
     multiple elements while holding Shift:
     '''),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     ```py
         app.layout = html.Div([
             cyto.Cytoscape(
@@ -205,7 +205,7 @@ layout = html.Div([
                 stylesheet=default_stylesheet,
                 style={'width': '100%', 'height': '450px'}
             ),
-            dcc.Markdown(id='cytoscape-selectedNodeData-markdown')
+            reusable_components.Markdown(id='cytoscape-selectedNodeData-markdown')
         ])
 
 
@@ -225,7 +225,7 @@ layout = html.Div([
         className='example-container'
     ),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     ## Advanced usage of callbacks
 
     Those event callbacks enable more advanced interactions between components.
@@ -243,7 +243,7 @@ layout = html.Div([
 
     html.Details(open=False, children=[
         html.Summary('Expand to see how to interactively style your elements'),
-        dcc.Markdown('''
+        reusable_components.Markdown('''
         ```py
         @app.callback(Output('cytoscape', 'stylesheet'),
                       [Input('cytoscape', 'tapNode'),
@@ -328,7 +328,7 @@ layout = html.Div([
         ''', style=styles.code_container),
     ]),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     Additionally, [`usage-elements.py`](https://github.com/plotly/dash-cytoscape/blob/master/usage-elements.py)
     lets you progressively expand your graph
     by using `tapNodeData` as the input and `elements` as the output.
@@ -348,7 +348,7 @@ layout = html.Div([
 
     html.Details(open=False, children=[
         html.Summary('Expand to see how to construct the dictionaries'),
-        dcc.Markdown('''
+        reusable_components.Markdown('''
         ```py
         with open('demos/data/sample_network.txt', 'r') as f:
             data = f.read().split('\\n')
@@ -406,7 +406,7 @@ layout = html.Div([
 
     html.Details(open=False, children=[
         html.Summary('Expand to see how to generate elements'),
-        dcc.Markdown('''
+        reusable_components.Markdown('''
         ```py
         @app.callback(Output('cytoscape', 'elements'),
                       [Input('cytoscape', 'tapNodeData')],
@@ -462,11 +462,10 @@ layout = html.Div([
         ''', style=styles.code_container),
     ]),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     To see more examples of events, check out the [event callbacks demo](https://dash-gallery.plotly.host/cytoscape-events)
     (the source file is available as [`usage-events.py`](https://github.com/plotly/dash-cytoscape/blob/master/usage-events.py) on the project repo)
     and the [Cytoscape references](/Docs/cytoscape/reference).
     ''')
 
 ])
-

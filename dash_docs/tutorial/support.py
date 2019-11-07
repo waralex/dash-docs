@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 import dash_core_components as dcc
+from dash_docs import reusable_components
 
-layout = dcc.Markdown('''
+layout = reusable_components.Markdown('''
 # Dash Support and Contact
 
 Dash is an open-source product that is

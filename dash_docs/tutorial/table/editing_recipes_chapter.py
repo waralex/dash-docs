@@ -6,7 +6,7 @@ from .utils import CreateDisplay
 
 from dash_docs import tools
 from dash_docs import styles
-
+from dash_docs import reusable_components
 
 examples = {
     example: tools.load_example('tutorial/examples/table/{}'.format(example))
@@ -28,7 +28,7 @@ Display = CreateDisplay({
 
 layout = html.Div([
 
-    dcc.Markdown(dedent(
+    reusable_components.Markdown(dedent(
         '''
         # Editable DataTable
 
@@ -49,9 +49,9 @@ layout = html.Div([
         '''
     )),
 
-    dcc.Markdown('***'),
+    reusable_components.Markdown('***'),
 
-    dcc.Markdown(dedent(
+    reusable_components.Markdown(dedent(
         '''
         ## Predefined Columns
 
@@ -74,7 +74,7 @@ layout = html.Div([
         '''
     )),
 
-    dcc.Markdown(dedent('''
+    reusable_components.Markdown(dedent('''
     # Editable DataTable
 
     The DataTable is editable. Like a spreadsheet, it can be used
@@ -114,7 +114,7 @@ layout = html.Div([
     when copying between two tables in the same tab.
     ''')),
 
-    dcc.Markdown(
+    reusable_components.Markdown(
         examples['editing_simple.py'][0],
         style=styles.code_container
     ),
@@ -124,7 +124,7 @@ layout = html.Div([
         className='example-container'
     ),
 
-    dcc.Markdown(dedent('''
+    reusable_components.Markdown(dedent('''
     ## Integration with Dash loading states
 
     As of table version 4.3.0, Dash loading states also have some
@@ -148,7 +148,7 @@ layout = html.Div([
 
     ''')),
 
-    dcc.Markdown(
+    reusable_components.Markdown(
         examples['editing_loading_state.py'][0],
         style=styles.code_container
     ),
@@ -158,7 +158,7 @@ layout = html.Div([
     ),
 
 
-    dcc.Markdown(dedent('''
+    reusable_components.Markdown(dedent('''
     ## Filtering out Empty Cells
     The DataTable will always return all of the cells in the table, even
     if the cells haven't been filled out. So, you'll likely want to filter
@@ -179,7 +179,7 @@ layout = html.Div([
 
     ''')),
 
-    dcc.Markdown(
+    reusable_components.Markdown(
         examples['editing_prune_empty_cells.py'][0],
         style=styles.code_container
     ),
@@ -189,7 +189,7 @@ layout = html.Div([
     ),
 
 
-    dcc.Markdown(dedent('''
+    reusable_components.Markdown(dedent('''
     ## Uploading Data
 
     A nice recipe is to tie the [`dcc.Upload`](/Docs/dash-core-components/upload)
@@ -203,7 +203,7 @@ layout = html.Div([
     '''
     )),
 
-    dcc.Markdown(
+    reusable_components.Markdown(
         examples['editing_uploading.py'][0],
         style=styles.code_container
     ),
@@ -212,7 +212,7 @@ layout = html.Div([
         className='example-container'
     ),
 
-    dcc.Markdown(dedent(
+    reusable_components.Markdown(dedent(
     '''
     ## Adding or removing columns
 
@@ -224,7 +224,7 @@ layout = html.Div([
     heatmap. Try adding or removing columns!
     ''')),
 
-    dcc.Markdown(
+    reusable_components.Markdown(
         examples['editing_columns.py'][0],
         style=styles.code_container
     ),
@@ -233,7 +233,7 @@ layout = html.Div([
         className='example-container'
     ),
 
-    dcc.Markdown(dedent(
+    reusable_components.Markdown(dedent(
     '''
     ## Adding or removing rows
 
@@ -243,7 +243,7 @@ layout = html.Div([
     '''
     )),
 
-    dcc.Markdown(
+    reusable_components.Markdown(
         examples['editing_rows_and_columns.py'][0],
         style=styles.code_container
     ),
@@ -252,7 +252,7 @@ layout = html.Div([
         className='example-container'
     ),
 
-    dcc.Markdown(dedent(
+    reusable_components.Markdown(dedent(
     '''
     ## Updating Columns of the Same Table
 
@@ -272,7 +272,7 @@ layout = html.Div([
     '''
     )),
 
-    dcc.Markdown(
+    reusable_components.Markdown(
         examples['editing_updating_self.py'][0],
         style=styles.code_container
     ),
@@ -281,7 +281,7 @@ layout = html.Div([
         className='example-container'
     ),
 
-    dcc.Markdown(dedent(
+    reusable_components.Markdown(dedent(
     '''
     ## Modify the data table content
 
@@ -338,7 +338,7 @@ layout = html.Div([
         )
         '''),
 
-    dcc.Markdown(dedent(
+    reusable_components.Markdown(dedent(
     '''
     ## Export Data Table
     The table data can be exported either as csv or xlsx file. You can customize table

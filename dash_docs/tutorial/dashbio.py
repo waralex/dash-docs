@@ -4,14 +4,15 @@ import dash_bio
 
 from dash_docs import styles
 from dash_docs.tutorial.utils.dashbio_docs import generate_docs
+from dash_docs import reusable_components
 
 DASHBIO_LIBRARY_HEADING = [
-    dcc.Markdown('''# Dash Bio'''),
+    reusable_components.Markdown('''# Dash Bio'''),
 
-    dcc.Markdown('''pip install dash-bio=={}'''.format(dash_bio.__version__),
+    reusable_components.Markdown('''pip install dash-bio=={}'''.format(dash_bio.__version__),
                           style=styles.code_container),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     Dash is a web application framework that provides pure Python abstraction
     around HTML, CSS, and JavaScript.
 
@@ -25,7 +26,7 @@ DASHBIO_LIBRARY_HEADING = [
     '''.replace('    ', '').format(dash_bio.__version__, dash_bio.__version__))
 ]
 
-DASHBIO_INSTALL_INSTRUCTIONS = dcc.Markdown(
+DASHBIO_INSTALL_INSTRUCTIONS = reusable_components.Markdown(
     '''
     ```
     >>> import dash_bio

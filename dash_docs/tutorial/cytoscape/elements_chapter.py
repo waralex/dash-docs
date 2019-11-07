@@ -5,7 +5,7 @@ import dash_html_components as html
 from .utils import CreateDisplay
 from dash_docs import tools
 from dash_docs import styles
-
+from dash_docs import reusable_components
 
 examples = {
     example: tools.load_example('tutorial/examples/cytoscape/{}'.format(example))
@@ -45,7 +45,7 @@ Display = CreateDisplay({
 
 layout = html.Div([
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     # Cytoscape Elements
 
     ## Element Declaration
@@ -93,7 +93,7 @@ layout = html.Div([
     )
     '''),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     Notice that we also need to specify the `id`, the `layout`, and the `style`
     of Cytoscape. The `id` parameter is needed for assigning callbacks,
     `style` lets you specify the CSS style of the component (similarly to core
@@ -146,7 +146,7 @@ layout = html.Div([
     )
     '''),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     > Note that those boolean properties can be overwritten by certain Cytoscape
     > parameters such as `autoungrabify` or `autounselectify`. Please refer to
     > [the reference](/Docs/cytoscape/reference) for more information.
@@ -193,7 +193,7 @@ layout = html.Div([
     )
     '''),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     > The stylesheet parameter will be described in depth in [part 3](/Docs/cytoscape/styling)
     > of this guide. We will show extensive examples of using selectors to
     > style groups, classes, and data values. Expand below if you still
@@ -202,7 +202,7 @@ layout = html.Div([
 
     html.Details(open=False, children=[
         html.Summary('View the Stylesheet'),
-        dcc.Markdown('''
+        reusable_components.Markdown('''
         ```py
         my_stylesheet = [
             # Group selectors
@@ -234,7 +234,7 @@ layout = html.Div([
 
     html.Hr(),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     ## Compound Nodes
 
     A concept introduced in Cytoscape.js, compound nodes are nodes that
@@ -245,7 +245,7 @@ layout = html.Div([
     Here is the example of an app using compound nodes:
     '''),
 
-    dcc.Markdown(
+    reusable_components.Markdown(
         examples['compound.py'][0],
         style=styles.code_container
     ),

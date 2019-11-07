@@ -1,7 +1,7 @@
 import dash_core_components as dcc
+from dash_docs import reusable_components
 
-
-layout = [dcc.Markdown('''
+layout = [reusable_components.Markdown('''
 # Live Updating Components
 
 ## The `dash_core_components.Interval` component
@@ -21,7 +21,7 @@ the callback on a predefined interval.
 This example pulls data from live satellite feeds and updates the graph
 and the text every second.
 '''),
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     ```python
     import datetime
 
@@ -120,7 +120,7 @@ and the text every second.
         style={'borderLeft': 'thin solid lightgrey'}
     ),
 
-dcc.Markdown('''
+reusable_components.Markdown('''
 
 ***
 

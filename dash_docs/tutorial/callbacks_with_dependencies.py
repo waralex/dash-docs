@@ -3,6 +3,7 @@ import dash_core_components as dcc
 import dash_html_components as html
 from dash_docs import styles
 from dash_docs import tools
+from dash_docs import reusable_components
 
 examples = [
     tools.load_example(s) for s in [
@@ -11,7 +12,7 @@ examples = [
 ]
 
 layout = [
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     ## Callback Resolution
 
     A core feature in Dash is callback dependency resolution.
@@ -39,7 +40,7 @@ layout = [
     Note how the text component depends on the values of all of the
     dropdowns but doesn't get updated until all three dropdowns have
     finished updating.'''.replace('    ', '')),
-    dcc.Markdown(
+    reusable_components.Markdown(
         examples[0][0],
         style=styles.code_container
     ),

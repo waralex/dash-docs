@@ -2,9 +2,10 @@ from textwrap import dedent
 
 import dash_core_components as dcc
 import dash_html_components as html
+from dash_docs import reusable_components
 
 layout = html.Div([
-    dcc.Markdown(dedent('''
+    reusable_components.Markdown(dedent('''
     # Dash 1.0
 
     Dash has been in active development for more than two years. In that time
@@ -50,7 +51,7 @@ layout = html.Div([
     ```
     app = dash.Dash(serve_locally=False)
     ```
-    
+
     > **Note that using `app.scripts.append_script` to load external js scripts
     > won't work while `serve_locally=True`. Please use the `external_scripts` argument
     > in your call to `dash.Dash` instead, as outlined in [the external resources section](/external-resources).**
@@ -104,10 +105,10 @@ layout = html.Div([
     ## `dash_core_components`
 
     ### Removed `SyntaxHighlighter` component
-    This is now built into `dcc.Markdown` using triple backticks, with optional
+    This is now built into `reusable_components.Markdown` using triple backticks, with optional
     short or long language name on the opening line:
     ````
-    dcc.Markdown(\'\'\'
+    reusable_components.Markdown(\'\'\'
     ```py
     def f(a, b):
         return a + b
@@ -119,7 +120,7 @@ layout = html.Div([
     If all lines (other than whitespace-only or blank lines) start with the
     same whitespace, it will be removed. Disable this with
     ```py
-    dcc.Markdown(dedent=False)
+    reusable_components.Markdown(dedent=False)
     ```
 
     ### Renamed `Checklist.values` prop to `value`

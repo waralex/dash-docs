@@ -1,7 +1,8 @@
 import dash_core_components as dcc
 from textwrap import dedent
+from dash_docs import reusable_components
 
-layout = dcc.Markdown(dedent(
+layout = reusable_components.Markdown(dedent(
     '''
     # Encapuslating D3.js Charts as Python Dash Components
 

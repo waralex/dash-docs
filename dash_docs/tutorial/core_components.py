@@ -6,7 +6,7 @@ from textwrap import dedent as s
 
 from dash_docs import tools
 from dash_docs.tutorial.utils.component_block import ComponentBlock
-
+from dash_docs import reusable_components
 
 examples = {
     'button': tools.load_example('tutorial/examples/core_components/button.py'),
@@ -17,7 +17,7 @@ examples = {
 layout = html.Div(className="gallery", children=[
     html.H1('Dash Core Components'),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
         Dash ships with supercharged components for interactive user interfaces.
         A core set of components, written and maintained by the Dash team,
         is available in the `dash-core-components` library.
@@ -27,7 +27,7 @@ layout = html.Div(className="gallery", children=[
         These docs are using version {}.
     '''.replace('    ', '').format(dcc.__version__)),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     ```
     >>> import dash_core_components as dcc
     >>> print(dcc.__version__)
@@ -203,7 +203,7 @@ dcc.RadioItems(
     html.Hr(),
 
     html.H3(dcc.Link('Button', href=tools.relpath('/dash-core-components/button'))),
-    dcc.Markdown(
+    reusable_components.Markdown(
         examples['button'][0],
         style=styles.code_container
     ),
@@ -253,7 +253,7 @@ dcc.DatePickerRange(
     html.H3(dcc.Link('Markdown', href=tools.relpath('/dash-core-components/markdown'))),
     ComponentBlock('''import dash_core_components as dcc
 
-    dcc.Markdown(\'\'\'
+    reusable_components.Markdown(\'\'\'
     #### Dash and Markdown
 
     Dash supports [Markdown](http://commonmark.org/help).
@@ -274,7 +274,7 @@ dcc.DatePickerRange(
     html.Hr(),
 
     html.H3('Interactive Tables'),
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     The `dash_html_components` library exposes all of the HTML tags.
     This includes the `Table`, `Tr`, and `Tbody` tags that can be used
     to create an HTML table. See
@@ -297,14 +297,14 @@ dcc.DatePickerRange(
     ),
 
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     [View the docs](/Docs/datatable) or [View the source](https://github.com/plotly/dash-table)
 
     ***
     '''.replace('    ', '')),
 
     html.H3(dcc.Link('Upload Component', href=tools.relpath('/dash-core-components/upload'))),
-    dcc.Markdown('''
+    reusable_components.Markdown('''
 
     The `dcc.Upload` component allows users to upload files into your app
     through drag-and-drop or the system's native file explorer.
@@ -322,16 +322,16 @@ dcc.DatePickerRange(
     dcc.Link(html.A('More Upload Examples and Reference'),
              href="/Docs/dash-core-components/upload"),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     ***
     '''.replace('    ', '')),
 
     html.H3('Tabs'),
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     The Tabs and Tab components can be used to create tabbed sections in your app.
     '''),
 
-    dcc.Markdown(
+    reusable_components.Markdown(
         examples['tabs'][0],
         style=styles.code_container
     ),
@@ -344,7 +344,7 @@ dcc.DatePickerRange(
     html.Hr(),
 
     html.H3(dcc.Link('Graphs', href=tools.relpath('/dash-core-components/graph'))),
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     The `Graph` component shares the same syntax as the open-source
     `plotly.py` library. View the [plotly.py docs](https://plot.ly/python)
     to learn more.
@@ -394,13 +394,13 @@ dcc.Graph(
     dcc.Link('More Graphs Examples and Reference',
              href="/Docs/dash-core-components/graph"),
     html.Br(),
-    dcc.Markdown('View the [plotly.py docs](https://plot.ly/python).'),
+    reusable_components.Markdown('View the [plotly.py docs](https://plot.ly/python).'),
 
-    dcc.Markdown('***'),
+    reusable_components.Markdown('***'),
 
     html.H3(dcc.Link('ConfirmDialog', href=tools.relpath('/dash-core-components/confirm'))),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
 The `dcc.ConfirmDialog` component send a dialog to the browser
 asking the user to confirm or cancel with a custom message.
     '''),
@@ -420,9 +420,9 @@ confirm = dcc.ConfirmDialog(
              href=tools.relpath('/dash-core-components/confirm')),
 
     html.Br(),
-    dcc.Markdown('***'),
+    reusable_components.Markdown('***'),
 
-    dcc.Markdown('There is also a `dcc.ConfirmDialogProvider`,'
+    reusable_components.Markdown('There is also a `dcc.ConfirmDialogProvider`,'
                  ' it will automatically wrap a child component '
                  ' to send a `dcc.ConfirmDialog` when clicked.'),
 
@@ -445,11 +445,11 @@ confirm = dcc.ConfirmDialogProvider(
 
     html.Br(),
 
-    dcc.Markdown('***'),
+    reusable_components.Markdown('***'),
 
     html.H3(dcc.Link('Store', href=tools.relpath('/dash-core-components/store'))),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     The store component can be used to keep data in the visitor's browser.
     The data is scoped to the user accessing the page.
 
@@ -468,18 +468,18 @@ confirm = dcc.ConfirmDialogProvider(
     store = dcc.Store(id='my-store', data={'my-data': 'data'})
     ''')),
 
-    dcc.Markdown('_The store must be used with callbacks_'),
+    reusable_components.Markdown('_The store must be used with callbacks_'),
 
     dcc.Link('More Store Examples and Reference',
              href=tools.relpath('/dash-core-components/store')),
 
     html.Br(),
 
-    dcc.Markdown('***'),
+    reusable_components.Markdown('***'),
     html.H3(dcc.Link('Logout Button',
                      href=tools.relpath('/dash-core-components/logout_button'))),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     The logout button can be used to perform logout mechanism.
 
     It's a simple form with a submit button, when the button is clicked,
@@ -496,11 +496,11 @@ confirm = dcc.ConfirmDialogProvider(
 
     html.Br(),
 
-    dcc.Markdown('***'),
+    reusable_components.Markdown('***'),
     html.H3(dcc.Link('Loading component',
                      href=tools.relpath('/dash-core-components/loading_component'))),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     The Loading component can be used to wrap components that you want to display a spinner for, if they take too long to load.
     It does this by checking if any of the Loading components' children have a `loading_state` prop set where `is_loading` is true.
     If true, it will display one of the built-in CSS spinners.
@@ -517,11 +517,11 @@ confirm = dcc.ConfirmDialogProvider(
     dcc.Link('More Loading Component Examples and Reference',
              href=tools.relpath('/dash-core-components/loading_component')),
 
-    dcc.Markdown('***'),
+    reusable_components.Markdown('***'),
 
     html.H3(dcc.Link('Location', href=tools.relpath('/dash-core-components/location'))),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     The location component represents the location bar in your web browser. Through its `href`, `pathname`,
     `search` and `hash` properties you can access different portions of your app's url.
 
@@ -533,7 +533,7 @@ confirm = dcc.ConfirmDialogProvider(
     - `hash` = `"#quiz"`
     '''),
 
-    dcc.Markdown(('''
+    reusable_components.Markdown(('''
     ```python
     import dash_core_components as dcc
 

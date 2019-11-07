@@ -4,9 +4,10 @@ import dash_core_components as dcc
 import dash_html_components as html
 import dash_auth
 from dash_docs import styles
+from dash_docs import reusable_components
 
 layout = html.Div([
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     # Authentication
 
     Authentication for dash apps is provided through a separate
@@ -45,7 +46,7 @@ layout = html.Div([
 
     '''.replace('    ', '')),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     ## Basic Auth Example
 
     Logging in through Basic Auth looks like this:
@@ -59,11 +60,11 @@ layout = html.Div([
             'border-radius': '4px'
         }),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     Installation:
     '''.replace('    ', '')),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     ```shell
     pip install dash=={}
     pip install dash-auth=={}
@@ -73,11 +74,11 @@ layout = html.Div([
         dash_auth.__version__
     ), style=styles.code_container),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     Example Code:
     '''.replace('    ', '')),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     ```python
     import dash
     import dash_auth
@@ -131,7 +132,7 @@ layout = html.Div([
     ```
     ''', style=styles.code_container),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     ## Plotly OAuth Example
 
     Logging in through Plotly OAuth looks like this:
@@ -145,11 +146,11 @@ layout = html.Div([
             'border-radius': '4px'
         }),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     Installation:
     '''.replace('    ', '')),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     ```shell
         pip install dash=={}
         pip install dash-auth=={}
@@ -159,11 +160,11 @@ layout = html.Div([
         dash_auth.__version__
     ), style=styles.code_container),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     Example Code:
     '''.replace('    ', '')),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     ```python
     import dash
     import dash_auth
@@ -219,7 +220,7 @@ layout = html.Div([
     ```
     ''', style=styles.code_container),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     ## Methods on PlotlyAuth Objects
 
 
@@ -239,7 +240,7 @@ layout = html.Div([
     You can set these variables directly in your code with:
     '''.replace('   ', '')),
 
-    dcc.Markdown(
+    reusable_components.Markdown(
         '''
         ```python
         import os
@@ -250,7 +251,7 @@ layout = html.Div([
         '''.replace('   ', ''),
         style=styles.code_container),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     or, if you are using [Dash Enterprise, you can keep your environment variables secret (view the docs)](/Docs/dash-enterprise/environment-variables).
 
     '''.replace('   ', '')),
@@ -263,11 +264,11 @@ layout = html.Div([
             'border-radius': '4px'
         }),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     Installation:
     '''.replace('    ', '')),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     ```shell
         pip install dash=={}  # The core dash backend
         pip install dash-auth=={}  # Dash Auth components
@@ -277,11 +278,11 @@ layout = html.Div([
         dash_auth.__version__,
     ), style=styles.code_container),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     Example Code:
     '''.replace('    ', '')),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     ```
     import dash
     import dash_auth

@@ -3,6 +3,7 @@ import dash_html_components as html
 
 from tutorial.tools import load_example
 from tutorial.components import Syntax, Example
+from dash_docs import reusable_components
 
 examples = {
     'persistence': load_example('tutorial/examples/persistence.py'),
@@ -10,7 +11,7 @@ examples = {
 }
 
 layout = html.Div([
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     # Persistence
 
     *New - released September 2019 with Dash 1.3*
@@ -72,7 +73,7 @@ layout = html.Div([
     Syntax(examples['persistence'][0]),
     Example(examples['persistence'][1]),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     ## Explicitly clearing saved data
 
     Persistence continues (subject to `persistence_type`) as long as the
@@ -87,7 +88,7 @@ layout = html.Div([
     Syntax(examples['persistence_clear'][0]),
     Example(examples['persistence_clear'][1]),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     ## For component developers
 
     Supporting persistence in your own components is easy. Just add the three

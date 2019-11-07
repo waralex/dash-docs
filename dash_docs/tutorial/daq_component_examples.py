@@ -9,6 +9,7 @@ from dash_docs import tools
 from dash_docs.tutorial.utils.convert_props_to_list import generate_prop_info
 from dash_docs.tutorial.utils.component_block import ComponentBlock
 from dash_docs.tutorial.components import Syntax, Example
+from dash_docs import reusable_components
 
 examples = {
     'boolean-switch': tools.load_example('tutorial/examples/daq_components/boolean_switch.py'),
@@ -38,7 +39,7 @@ BooleanSwitch = html.Div(children=[
     html.H3('Default Boolean Switch'),
     html.P("An example of a default boolean switch without \
             any extra properties."),
-    dcc.Markdown(
+    reusable_components.Markdown(
         examples['boolean-switch'][0],
         style=styles.code_container
     ),
@@ -50,7 +51,7 @@ BooleanSwitch = html.Div(children=[
 
     html.Hr(),
     html.H3('Color'),
-    dcc.Markdown("Set the color of the boolean switch with \
+    reusable_components.Markdown("Set the color of the boolean switch with \
     `color=#<hex_value>`."),
     ComponentBlock('''import dash_daq as daq
 
@@ -60,7 +61,7 @@ daq.BooleanSwitch(
 )''', style=styles.code_container),
     html.Hr(),
     html.H3('Label'),
-    dcc.Markdown("Set the label and label position using the `label` and `labelPosition` \
+    reusable_components.Markdown("Set the label and label position using the `label` and `labelPosition` \
     properties."),
     ComponentBlock('''import dash_daq as daq
 
@@ -71,7 +72,7 @@ daq.BooleanSwitch(
 )''', style=styles.code_container),
     html.Hr(),
     html.H3('Vertical Switch'),
-    dcc.Markdown("Create a vertical oriented switch by setting `vertical=True`."),
+    reusable_components.Markdown("Create a vertical oriented switch by setting `vertical=True`."),
     ComponentBlock('''import dash_daq as daq
 
 daq.BooleanSwitch(
@@ -81,7 +82,7 @@ daq.BooleanSwitch(
 )''', style=styles.code_container),
     html.Hr(),
     html.H3('Disabled Switch'),
-    dcc.Markdown("To disable the Boolean Switch set the property `disabled` to `True`."),
+    reusable_components.Markdown("To disable the Boolean Switch set the property `disabled` to `True`."),
     ComponentBlock('''import dash_daq as daq
 
 daq.BooleanSwitch(
@@ -101,7 +102,7 @@ ColorPicker = html.Div(children=[
     html.H3('Default Color Picker'),
     html.P("An example of a default Color Picker without \
             any extra properties."),
-    dcc.Markdown(
+    reusable_components.Markdown(
         examples['color-picker'][0],
         style=styles.code_container
     ),
@@ -113,7 +114,7 @@ ColorPicker = html.Div(children=[
 
     html.Hr(),
     html.H3('Size'),
-    dcc.Markdown("Set the size (width) of the color picker in pixels using the `size` property."),
+    reusable_components.Markdown("Set the size (width) of the color picker in pixels using the `size` property."),
     ComponentBlock('''import dash_daq as daq
 
 daq.ColorPicker(
@@ -122,7 +123,7 @@ daq.ColorPicker(
 )''', style=styles.code_container),
     html.Hr(),
     html.H3('Label'),
-    dcc.Markdown("Define the label and label position using the `label` and `labelPosition` \
+    reusable_components.Markdown("Define the label and label position using the `label` and `labelPosition` \
     properties."),
     ComponentBlock('''import dash_daq as daq
 
@@ -132,7 +133,7 @@ daq.ColorPicker(
 )''', style=styles.code_container),
     html.Hr(),
 html.H3('Disabled'),
-    dcc.Markdown("To disable the Color Picker set `disabled` to `True`."),
+    reusable_components.Markdown("To disable the Color Picker set `disabled` to `True`."),
     ComponentBlock('''import dash_daq as daq
 
 daq.ColorPicker(
@@ -141,7 +142,7 @@ daq.ColorPicker(
 )''', style=styles.code_container),
     html.Hr(),
 html.H3('Hex Colors'),
-    dcc.Markdown("Use hex values with the Color Picker by setting `value=dict(hex='#<hex_color>')`"),
+    reusable_components.Markdown("Use hex values with the Color Picker by setting `value=dict(hex='#<hex_color>')`"),
     ComponentBlock('''import dash_daq as daq
 
 daq.ColorPicker(
@@ -150,7 +151,7 @@ daq.ColorPicker(
 )''', style=styles.code_container),
     html.Hr(),
 html.H3('RGB Colors'),
-    dcc.Markdown("Use RGB color values with the Color Picker by setting: \
+    reusable_components.Markdown("Use RGB color values with the Color Picker by setting: \
     \n `value=(rgb=dict(r=<r_value>, g=<g_value>, b=<b_value>, a=<a_value>)`"),
     ComponentBlock('''import dash_daq as daq
 
@@ -171,7 +172,7 @@ Gauge = html.Div(children=[
     html.H3('Default Gauge'),
     html.P("An example of a default Gauge without \
             any extra properties."),
-    dcc.Markdown(
+    reusable_components.Markdown(
         examples['gauge'][0],
         style=styles.code_container
     ),
@@ -183,7 +184,7 @@ Gauge = html.Div(children=[
 
     html.Hr(),
     html.H3('Minimum and Maximum'),
-    dcc.Markdown("Specify the minimum and maximum values of the gauge, using the `min` and `max` properties. If \
+    reusable_components.Markdown("Specify the minimum and maximum values of the gauge, using the `min` and `max` properties. If \
     the scale is logarithmic the minimum and maximum will represent an exponent."),
     ComponentBlock('''import dash_daq as daq
 
@@ -195,7 +196,7 @@ daq.Gauge(
 )''', style=styles.code_container),
     html.Hr(),
     html.H3('Current Value and Units'),
-    dcc.Markdown("Show the current value of the gauge and the units with `showCurrentValue=True` \
+    reusable_components.Markdown("Show the current value of the gauge and the units with `showCurrentValue=True` \
     and `units=<units>`."),
     ComponentBlock('''import dash_daq as daq
 
@@ -209,7 +210,7 @@ daq.Gauge(
 )''', style=styles.code_container),
     html.Hr(),
     html.H3('Logarithmic Gauge'),
-    dcc.Markdown("To set the scale of the gauge to logarithmic use the property `logarithmic=True`."),
+    reusable_components.Markdown("To set the scale of the gauge to logarithmic use the property `logarithmic=True`."),
     ComponentBlock('''import dash_daq as daq
 
 daq.Gauge(
@@ -221,7 +222,7 @@ daq.Gauge(
 )''', style=styles.code_container),
     html.Hr(),
     html.H3('Color'),
-    dcc.Markdown("Set the color of the gauge by using the property `color=<hex_color>`."),
+    reusable_components.Markdown("Set the color of the gauge by using the property `color=<hex_color>`."),
     ComponentBlock('''import dash_daq as daq
 
 daq.Gauge(
@@ -233,7 +234,7 @@ daq.Gauge(
 )''', style=styles.code_container),
     html.Hr(),
     html.H3('Color Gradient'),
-    dcc.Markdown("Apply a color gradient to the gauge with the property: \
+    reusable_components.Markdown("Apply a color gradient to the gauge with the property: \
     \n `color={'gradient':True,'ranges':{'<color>':[<value>, <value>],'<color>':[<value>, <value>],'<color>':[<value>, <value>]}}`."),
     ComponentBlock('''import dash_daq as daq
 
@@ -246,7 +247,7 @@ daq.Gauge(
 )''', style=styles.code_container),
     html.Hr(),
     html.H3('Size'),
-    dcc.Markdown("Adjust the size of the gauge in pixels `size=200`."),
+    reusable_components.Markdown("Adjust the size of the gauge in pixels `size=200`."),
     ComponentBlock('''import dash_daq as daq
 
 daq.Gauge(
@@ -257,7 +258,7 @@ daq.Gauge(
 )''', style=styles.code_container),
     html.Hr(),
     html.H3('Scale'),
-    dcc.Markdown("Modify where the scale starts, the label interval, and actual interval \
+    reusable_components.Markdown("Modify where the scale starts, the label interval, and actual interval \
     with the `scale` property."),
     ComponentBlock('''import dash_daq as daq
 
@@ -278,9 +279,9 @@ GraduatedBar = html.Div(children=[
     html.H1('Graduated bar Examples and Reference'),
     html.Hr(),
     html.H3('Default Graduated bar'),
-    dcc.Markdown("An example of a default Graduated bar without \
+    reusable_components.Markdown("An example of a default Graduated bar without \
             any extra properties."),
-    dcc.Markdown(
+    reusable_components.Markdown(
         examples['graduated-bar'][0],
         style=styles.code_container
     ),
@@ -291,7 +292,7 @@ GraduatedBar = html.Div(children=[
     ),
     html.Hr(),
     html.H3('Orientation'),
-    dcc.Markdown("Change the orientation of the bar to vertical `vertical=True`."),
+    reusable_components.Markdown("Change the orientation of the bar to vertical `vertical=True`."),
     ComponentBlock('''import dash_daq as daq
 
 daq.GraduatedBar(
@@ -300,7 +301,7 @@ daq.GraduatedBar(
 )''', style=styles.code_container),
     html.Hr(),
     html.H3('Size'),
-    dcc.Markdown("Manually adjust the size of the bar in pixels with `size`."),
+    reusable_components.Markdown("Manually adjust the size of the bar in pixels with `size`."),
     ComponentBlock('''import dash_daq as daq
 
 daq.GraduatedBar(
@@ -309,7 +310,7 @@ daq.GraduatedBar(
 )''', style=styles.code_container),
     html.Hr(),
     html.H3('Max'),
-    dcc.Markdown("Manually set a maximum value with `max`."),
+    reusable_components.Markdown("Manually set a maximum value with `max`."),
     ComponentBlock('''import dash_daq as daq
 
 daq.GraduatedBar(
@@ -318,7 +319,7 @@ daq.GraduatedBar(
 )''', style=styles.code_container),
     html.Hr(),
     html.H3('Step'),
-    dcc.Markdown("Manually set the step size of each bar with `step`."),
+    reusable_components.Markdown("Manually set the step size of each bar with `step`."),
     ComponentBlock('''import dash_daq as daq
 
 daq.GraduatedBar(
@@ -328,7 +329,7 @@ daq.GraduatedBar(
 )''', style=styles.code_container),
     html.Hr(),
     html.H3('Show Current Value'),
-    dcc.Markdown("Display the current value of the graduated bar with `showCurrentValue=True`."),
+    reusable_components.Markdown("Display the current value of the graduated bar with `showCurrentValue=True`."),
     ComponentBlock('''import dash_daq as daq
 
 daq.GraduatedBar(
@@ -338,7 +339,7 @@ daq.GraduatedBar(
 )''', style=styles.code_container),
     html.Hr(),
     html.H3('Color Range'),
-    dcc.Markdown("Set a color range with:  \
+    reusable_components.Markdown("Set a color range with:  \
     \n `color={'ranges':{'<color>':[<value>, <value>],'<color>':[<value>, <value>],'<color>':[<value>, <value>]}}`"),
     ComponentBlock('''import dash_daq as daq
 
@@ -349,7 +350,7 @@ daq.GraduatedBar(
 )''', style=styles.code_container),
     html.Hr(),
     html.H3('Color Gradient'),
-    dcc.Markdown("Set a color gradient with: \
+    reusable_components.Markdown("Set a color gradient with: \
     \n `color={'gradient':True,'ranges':{'<color>':[<value>, <value>],'<color>':[<value>, <value>],'<color>':[<value>, <value>]}}`"),
     ComponentBlock('''import dash_daq as daq
 
@@ -368,9 +369,9 @@ Indicator = html.Div(children=[
     html.H1('Indicator Examples and Reference'),
     html.Hr(),
     html.H3('Default Indicator'),
-    dcc.Markdown("An example of a default Indicator without \
+    reusable_components.Markdown("An example of a default Indicator without \
         any extra properties."),
-    dcc.Markdown(
+    reusable_components.Markdown(
         examples['indicator'][0],
         style=styles.code_container
     ),
@@ -382,7 +383,7 @@ Indicator = html.Div(children=[
 
     html.Hr(),
     html.H3('Label'),
-    dcc.Markdown(
+    reusable_components.Markdown(
         "Define the label and label orientation with `label` and `labelPosition`."),
     ComponentBlock('''import dash_daq as daq
 
@@ -392,7 +393,7 @@ daq.Indicator(
   value=True
 )''', style=styles.code_container),
     html.H3('Boolean Indicator Off'),
-    dcc.Markdown("A boolean indicator set to off `value=False`."),
+    reusable_components.Markdown("A boolean indicator set to off `value=False`."),
     ComponentBlock('''import dash_daq as daq
 
 daq.Indicator(
@@ -401,7 +402,7 @@ daq.Indicator(
 )''', style=styles.code_container),
     html.Hr(),
     html.H3('Square'),
-    dcc.Markdown("Create a square boolean indicator by setting the \
+    reusable_components.Markdown("Create a square boolean indicator by setting the \
     `width` and `height` to the same value."),
     ComponentBlock('''import dash_daq as daq
 
@@ -412,7 +413,7 @@ daq.Indicator(
 )''', style=styles.code_container),
     html.Hr(),
     html.H3('Color'),
-    dcc.Markdown(
+    reusable_components.Markdown(
         "Define the color of the boolean indicator with `color='#<color>'`"),
     ComponentBlock('''import dash_daq as daq
 
@@ -431,9 +432,9 @@ Joystick = html.Div(children=[
     html.H1('Joystick Examples and Reference'),
     html.Hr(),
     html.H3('Default Joystick'),
-    dcc.Markdown("An example of a default Joystick without \
+    reusable_components.Markdown("An example of a default Joystick without \
     any extra properties."),
-    dcc.Markdown(
+    reusable_components.Markdown(
         examples['joystick'][0],
         style=styles.code_container
     ),
@@ -444,7 +445,7 @@ Joystick = html.Div(children=[
 
     html.Hr(),
     html.H3('Label'),
-    dcc.Markdown(
+    reusable_components.Markdown(
         "Change the label and label orientation with `label` and `labelPosition`."),
     ComponentBlock('''import dash_daq as daq
 
@@ -455,7 +456,7 @@ daq.Joystick(
 
     html.Hr(),
     html.H3('Size'),
-    dcc.Markdown(
+    reusable_components.Markdown(
         "Change the size of the joystick with `size`."),
     ComponentBlock('''import dash_daq as daq
 
@@ -474,9 +475,9 @@ Knob = html.Div(children=[
     html.H1('Knob Examples and Reference'),
     html.Hr(),
     html.H3('Default Knob'),
-    dcc.Markdown("An example of a default Knob without \
+    reusable_components.Markdown("An example of a default Knob without \
             any extra properties."),
-    dcc.Markdown(
+    reusable_components.Markdown(
         examples['knob'][0],
         style=styles.code_container
     ),
@@ -488,7 +489,7 @@ Knob = html.Div(children=[
 
     html.Hr(),
     html.H3('Size'),
-    dcc.Markdown("Set the size(diameter) of the knob in pixels with `size`."),
+    reusable_components.Markdown("Set the size(diameter) of the knob in pixels with `size`."),
     ComponentBlock('''import dash_daq as daq
 
 daq.Knob(
@@ -497,7 +498,7 @@ daq.Knob(
 )''', style=styles.code_container),
     html.Hr(),
     html.H3('Max'),
-    dcc.Markdown("Set the maximum value of the knob using `max`."),
+    reusable_components.Markdown("Set the maximum value of the knob using `max`."),
     ComponentBlock('''import dash_daq as daq
 
 daq.Knob(
@@ -506,7 +507,7 @@ daq.Knob(
 )''', style=styles.code_container),
     html.Hr(),
     html.H3('Color Ranges'),
-    dcc.Markdown("Control color ranges with: \
+    reusable_components.Markdown("Control color ranges with: \
     \n `color={'ranges':{'<color>':[<value>,<value>],'<color>':[<value>,<value>], '<color>':[<value>,<value>]}}`."),
     ComponentBlock('''import dash_daq as daq
 
@@ -517,7 +518,7 @@ daq.Knob(
 )''', style=styles.code_container),
     html.Hr(),
     html.H3('Color Gradient'),
-    dcc.Markdown("Set up a color gradient with: \
+    reusable_components.Markdown("Set up a color gradient with: \
     \n `color={'gradient':True,'ranges':{'<color>':[<value>,<value>],'<color>':[<value>,<value>], '<color>':[<value>,<value>]}}`."),
     ComponentBlock('''import dash_daq as daq
 
@@ -528,7 +529,7 @@ daq.Knob(
 )''', style=styles.code_container),
     html.Hr(),
     html.H3('Scale'),
-    dcc.Markdown("Adjust the scale interval, label interval, \
+    reusable_components.Markdown("Adjust the scale interval, label interval, \
     and start of the scale with `scale`."),
     ComponentBlock('''import dash_daq as daq
 
@@ -548,9 +549,9 @@ LEDDisplay = html.Div(children=[
     html.H1('LED display Examples and Reference'),
     html.Hr(),
     html.H3('Default LED display'),
-    dcc.Markdown("An example of a default LED display without \
+    reusable_components.Markdown("An example of a default LED display without \
             any extra properties."),
-    dcc.Markdown(
+    reusable_components.Markdown(
         examples['LED-display'][0],
         style=styles.code_container
     ),
@@ -562,7 +563,7 @@ LEDDisplay = html.Div(children=[
 
     html.Hr(),
     html.H3('Label'),
-    dcc.Markdown("Set the label and label position with \
+    reusable_components.Markdown("Set the label and label position with \
     `label` and `labelPosition`."),
     ComponentBlock('''import dash_daq as daq
 
@@ -572,7 +573,7 @@ daq.LEDDisplay(
     value='12:34'
 )''', style=styles.code_container),
     html.H3('Size'),
-    dcc.Markdown("Adjust the size of the LED display with `size`"),
+    reusable_components.Markdown("Adjust the size of the LED display with `size`"),
     ComponentBlock('''import dash_daq as daq
 
 daq.LEDDisplay(
@@ -582,7 +583,7 @@ daq.LEDDisplay(
 )''', style=styles.code_container),
     html.Hr(),
     html.H3('Color'),
-    dcc.Markdown("Adjust the color of the LED display with `color=#<hex_color>`"),
+    reusable_components.Markdown("Adjust the color of the LED display with `color=#<hex_color>`"),
     ComponentBlock('''import dash_daq as daq
 
 daq.LEDDisplay(
@@ -592,7 +593,7 @@ daq.LEDDisplay(
 )''', style=styles.code_container),
     html.Hr(),
     html.H3('Background Color'),
-    dcc.Markdown("Adjust the background color of the LED display using: \
+    reusable_components.Markdown("Adjust the background color of the LED display using: \
     \n `backgroundColor=#<hex_color>`"),
     ComponentBlock('''import dash_daq as daq
 
@@ -611,9 +612,9 @@ NumericInput = html.Div(children=[
     html.H1('Numeric Input Examples and Reference'),
     html.Hr(),
     html.H3('Default Numeric Input'),
-    dcc.Markdown("An example of a default numeric input without \
+    reusable_components.Markdown("An example of a default numeric input without \
             any extra properties."),
-    dcc.Markdown(
+    reusable_components.Markdown(
         examples['numeric-input'][0],
         style=styles.code_container
     ),
@@ -624,7 +625,7 @@ NumericInput = html.Div(children=[
     ),
     html.Hr(),
     html.H3('Label'),
-    dcc.Markdown("Set the label and label position with \
+    reusable_components.Markdown("Set the label and label position with \
     `label` and `labelPosition`."),
     ComponentBlock('''import dash_daq as daq
 
@@ -635,7 +636,7 @@ daq.NumericInput(
 )''', style=styles.code_container),
     html.Hr(),
     html.H3('Size'),
-    dcc.Markdown("Extend the size with `size`."),
+    reusable_components.Markdown("Extend the size with `size`."),
     ComponentBlock('''import dash_daq as daq
 
 daq.NumericInput(
@@ -644,7 +645,7 @@ daq.NumericInput(
 )''', style=styles.code_container),
     html.Hr(),
     html.H3('Max and Min'),
-    dcc.Markdown("Set the minimum and maximum bounds with `min` and `max`."),
+    reusable_components.Markdown("Set the minimum and maximum bounds with `min` and `max`."),
     ComponentBlock('''import dash_daq as daq
 
 daq.NumericInput(
@@ -654,7 +655,7 @@ daq.NumericInput(
 )''', style=styles.code_container),
     html.Hr(),
     html.H3('Disable'),
-    dcc.Markdown("Disable the numeric input by setting `disabled=True`."),
+    reusable_components.Markdown("Disable the numeric input by setting `disabled=True`."),
     ComponentBlock('''import dash_daq as daq
 
 daq.NumericInput(
@@ -674,9 +675,9 @@ PowerButton = html.Div(children=[
     html.H1('Power Button Examples and Reference'),
     html.Hr(),
     html.H3('Default Power Button'),
-    dcc.Markdown("An example of a default power button without \
+    reusable_components.Markdown("An example of a default power button without \
             any extra properties."),
-    dcc.Markdown(
+    reusable_components.Markdown(
         examples['power-button'][0],
         style=styles.code_container
     ),
@@ -688,7 +689,7 @@ PowerButton = html.Div(children=[
 
     html.Hr(),
     html.H3('Label'),
-    dcc.Markdown("Set the label and label position with `label` and `labelPosition`."),
+    reusable_components.Markdown("Set the label and label position with `label` and `labelPosition`."),
     ComponentBlock('''import dash_daq as daq
 
 daq.PowerButton(
@@ -698,7 +699,7 @@ daq.PowerButton(
 )''', style=styles.code_container),
     html.Hr(),
     html.H3('Size'),
-    dcc.Markdown("Adjust the size (diameter in pixels) of the power button with `size`."),
+    reusable_components.Markdown("Adjust the size (diameter in pixels) of the power button with `size`."),
     ComponentBlock('''import dash_daq as daq
 
 daq.PowerButton(
@@ -706,7 +707,7 @@ daq.PowerButton(
     size=100
 )''', style=styles.code_container),
     html.H3('Color'),
-    dcc.Markdown("Set the color of the power button with `color`."),
+    reusable_components.Markdown("Set the color of the power button with `color`."),
     ComponentBlock('''import dash_daq as daq
 
 daq.PowerButton(
@@ -723,9 +724,9 @@ PrecisionInput = html.Div(children=[
     html.H1('Precision Input Examples and Reference'),
     html.Hr(),
     html.H3('Default Precision Input'),
-    dcc.Markdown("An example of a default precision input without \
+    reusable_components.Markdown("An example of a default precision input without \
             any extra properties."),
-    dcc.Markdown(
+    reusable_components.Markdown(
         examples['precision-input'][0],
         style=styles.code_container
     ),
@@ -736,7 +737,7 @@ PrecisionInput = html.Div(children=[
     ),
     html.Hr(),
     html.H3('Label'),
-    dcc.Markdown("Set the label and label position with `label` and `labelPosition`."),
+    reusable_components.Markdown("Set the label and label position with `label` and `labelPosition`."),
     ComponentBlock('''import dash_daq as daq
 
 daq.PrecisionInput(
@@ -747,7 +748,7 @@ daq.PrecisionInput(
 )''', style=styles.code_container),
     html.Hr(),
     html.H3('Precision'),
-    dcc.Markdown("The `precision` property is mandatory for this component. The `precision` property \
+    reusable_components.Markdown("The `precision` property is mandatory for this component. The `precision` property \
     indicates the accuracy of the specified number."),
     ComponentBlock('''import dash_daq as daq
 
@@ -757,7 +758,7 @@ daq.PrecisionInput(
 )''', style=styles.code_container),
     html.Hr(),
     html.H3('Max and Min'),
-    dcc.Markdown("Set the maximum and minimum value of the numeric input with `max` and `min`."),
+    reusable_components.Markdown("Set the maximum and minimum value of the numeric input with `max` and `min`."),
     ComponentBlock('''import dash_daq as daq
 
 daq.PrecisionInput(
@@ -768,7 +769,7 @@ daq.PrecisionInput(
 )''', style=styles.code_container),
     html.Hr(),
     html.H3('Size'),
-    dcc.Markdown("Set the length (in pixels) of the numeric input `size`."),
+    reusable_components.Markdown("Set the length (in pixels) of the numeric input `size`."),
     ComponentBlock('''import dash_daq as daq
 
 daq.PrecisionInput(
@@ -778,7 +779,7 @@ daq.PrecisionInput(
 )''', style=styles.code_container),
     html.Hr(),
     html.H3('Disabled'),
-    dcc.Markdown("Disable the precision input by setting `disabled=True`."),
+    reusable_components.Markdown("Disable the precision input by setting `disabled=True`."),
     ComponentBlock('''import dash_daq as daq
 
 daq.PrecisionInput(
@@ -796,9 +797,9 @@ StopButton = html.Div(children=[
     html.H1('Stop Button Examples and Reference'),
     html.Hr(),
     html.H3('Default Stop Button'),
-    dcc.Markdown("An example of a default stop button without \
+    reusable_components.Markdown("An example of a default stop button without \
             any extra properties."),
-    dcc.Markdown(
+    reusable_components.Markdown(
         examples['stop-button'][0],
         style=styles.code_container
     ),
@@ -810,7 +811,7 @@ StopButton = html.Div(children=[
 
     html.Hr(),
     html.H3('Label'),
-    dcc.Markdown("Set the label and label position with `label` and `labelPosition`."),
+    reusable_components.Markdown("Set the label and label position with `label` and `labelPosition`."),
     ComponentBlock('''import dash_daq as daq
 
 daq.StopButton(
@@ -819,7 +820,7 @@ daq.StopButton(
 )''', style=styles.code_container),
     html.Hr(),
     html.H3('Size'),
-    dcc.Markdown("Adjust the size (width in pixels) of the stop button with `size`."),
+    reusable_components.Markdown("Adjust the size (width in pixels) of the stop button with `size`."),
     ComponentBlock('''import dash_daq as daq
 
 daq.StopButton(
@@ -827,7 +828,7 @@ daq.StopButton(
 )''', style=styles.code_container),
     html.Hr(),
     html.H3('Button Text'),
-    dcc.Markdown("Set the text displayed in the button `buttonText`."),
+    reusable_components.Markdown("Set the text displayed in the button `buttonText`."),
     ComponentBlock('''import dash_daq as daq
 
 daq.StopButton(
@@ -835,7 +836,7 @@ daq.StopButton(
 )''', style=styles.code_container),
     html.Hr(),
     html.H3('Disabled'),
-    dcc.Markdown("Disable the button by setting `disabled=True`."),
+    reusable_components.Markdown("Disable the button by setting `disabled=True`."),
     ComponentBlock('''import dash_daq as daq
 
 daq.StopButton(
@@ -851,9 +852,9 @@ Slider = html.Div(children=[
     html.H1('Slider Examples and Reference'),
     html.Hr(),
     html.H3('Default Slider'),
-    dcc.Markdown("An example of a default slider without \
+    reusable_components.Markdown("An example of a default slider without \
             any extra properties."),
-    dcc.Markdown(
+    reusable_components.Markdown(
         examples['slider'][0],
         style=styles.code_container
     ),
@@ -866,7 +867,7 @@ Slider = html.Div(children=[
     html.Hr(),
 
     html.H3('Marks'),
-    dcc.Markdown("Set custom marks on the slider using with `marks`."),
+    reusable_components.Markdown("Set custom marks on the slider using with `marks`."),
     ComponentBlock('''import dash_daq as daq
 daq.Slider(
     min=0, max=100, value=30,
@@ -876,7 +877,7 @@ daq.Slider(
     html.Hr(),
 
     html.H3('Size'),
-    dcc.Markdown("Change the size of the slider using `size`."),
+    reusable_components.Markdown("Change the size of the slider using `size`."),
     ComponentBlock('''import dash_daq as daq
 daq.Slider(
     size=50
@@ -885,7 +886,7 @@ daq.Slider(
     html.Hr(),
 
     html.H3('Handle Label'),
-    dcc.Markdown("Set the labels for the handle that is dragged with `handleLabel`."),
+    reusable_components.Markdown("Set the labels for the handle that is dragged with `handleLabel`."),
     ComponentBlock('''import dash_daq as daq
 
 daq.Slider(
@@ -897,7 +898,7 @@ daq.Slider(
     html.Hr(),
 
     html.H3('Step'),
-    dcc.Markdown("Change the value of increments or decrements using `step`."),
+    reusable_components.Markdown("Change the value of increments or decrements using `step`."),
     ComponentBlock('''import dash_daq as daq
 daq.Slider(
     min=0,
@@ -910,7 +911,7 @@ daq.Slider(
     html.Hr(),
 
     html.H3('Vertical orientation'),
-    dcc.Markdown("Make the slider display vertically by setting `vertical=True`."),
+    reusable_components.Markdown("Make the slider display vertically by setting `vertical=True`."),
     ComponentBlock('''import dash_daq as daq
 daq.Slider(
     vertical=True
@@ -928,9 +929,9 @@ Tank = html.Div(children=[
     html.H1('Tank Examples and Reference'),
     html.Hr(),
     html.H3('Default Tank'),
-    dcc.Markdown("An example of a default tank without \
+    reusable_components.Markdown("An example of a default tank without \
             any extra properties."),
-    dcc.Markdown(
+    reusable_components.Markdown(
         examples['tank'][0],
         style=styles.code_container
     ),
@@ -943,7 +944,7 @@ Tank = html.Div(children=[
     html.Hr(),
 
     html.H3('Current value with units'),
-    dcc.Markdown("Display the current value, along with optional \
+    reusable_components.Markdown("Display the current value, along with optional \
     units with the `units` and `showCurrentValue` properties."),
     ComponentBlock('''import dash_daq as daq
 daq.Tank(
@@ -956,7 +957,7 @@ daq.Tank(
     html.Hr(),
 
     html.H3('Height and width') ,
-    dcc.Markdown("Control the size of the tank by setting \
+    reusable_components.Markdown("Control the size of the tank by setting \
     `height` and `width`."),
     ComponentBlock('''import dash_daq as daq
 daq.Tank(
@@ -970,7 +971,7 @@ daq.Tank(
     html.Hr(),
 
     html.H3('Label'),
-    dcc.Markdown("Display a label alongside your tank in the \
+    reusable_components.Markdown("Display a label alongside your tank in the \
     specified position with `label` and `labelPosition`."),
     ComponentBlock('''import dash_daq as daq
 daq.Tank(
@@ -982,7 +983,7 @@ daq.Tank(
     html.Hr(),
 
     html.H3('Custom scales'),
-    dcc.Markdown("Control the intervals at which labels are displayed, \
+    reusable_components.Markdown("Control the intervals at which labels are displayed, \
     as well as the labels themselves with the `scale` property."),
     ComponentBlock('''import dash_daq as daq
 daq.Tank(
@@ -995,7 +996,7 @@ daq.Tank(
     html.Hr(),
 
     html.H3('Logarithmic'),
-    dcc.Markdown("Use a logarithmic scale for the tank with the specified \
+    reusable_components.Markdown("Use a logarithmic scale for the tank with the specified \
     base by setting `logarithmic=True`."),
     ComponentBlock('''import dash_daq as daq
 daq.Tank(
@@ -1018,9 +1019,9 @@ Thermometer = html.Div(children=[
     html.H1('Thermometer Examples and Reference'),
     html.Hr(),
     html.H3('Default Thermometer'),
-    dcc.Markdown("An example of a default Thermometer without \
+    reusable_components.Markdown("An example of a default Thermometer without \
             any extra properties."),
-    dcc.Markdown(
+    reusable_components.Markdown(
         examples['thermometer'][0],
         style=styles.code_container
     ),
@@ -1033,7 +1034,7 @@ Thermometer = html.Div(children=[
     html.Hr(),
 
     html.H3('Current value with units'),
-    dcc.Markdown("Display the value of the thermometer along with \
+    reusable_components.Markdown("Display the value of the thermometer along with \
     optional units with ` showCurrentValue` and `units`."),
     ComponentBlock('''import dash_daq as daq
 daq.Thermometer(
@@ -1047,7 +1048,7 @@ daq.Thermometer(
     html.Hr(),
 
     html.H3('Height and width'),
-    dcc.Markdown("Control the size of the thermometer by setting \
+    reusable_components.Markdown("Control the size of the thermometer by setting \
     `height` and `width`."),
     ComponentBlock('''import dash_daq as daq
 daq.Thermometer(
@@ -1059,7 +1060,7 @@ daq.Thermometer(
     html.Hr(),
 
     html.H3('Label'),
-    dcc.Markdown("Display a label alongside the thermometer in \
+    reusable_components.Markdown("Display a label alongside the thermometer in \
     the specified positon by setting `label` and `labelPosition`."),
     ComponentBlock('''import dash_daq as daq
 daq.Thermometer(
@@ -1071,7 +1072,7 @@ daq.Thermometer(
     html.Hr(),
 
     html.H3('Custom scales'),
-    dcc.Markdown("Control the intervals at which labels are displayed, \
+    reusable_components.Markdown("Control the intervals at which labels are displayed, \
     as well as the labels themselves with the `scale` property."),
     ComponentBlock('''import dash_daq as daq
 daq.Thermometer(
@@ -1095,9 +1096,9 @@ ToggleSwitch = html.Div(children=[
     html.H1('Toggle Switch Examples and Reference'),
     html.Hr(),
     html.H3('Default Toggle Switch'),
-    dcc.Markdown("An example of a default toggle switch without \
+    reusable_components.Markdown("An example of a default toggle switch without \
             any extra properties."),
-    dcc.Markdown(
+    reusable_components.Markdown(
         examples['toggle-switch'][0],
         style=styles.code_container
     ),
@@ -1110,7 +1111,7 @@ ToggleSwitch = html.Div(children=[
     html.Hr(),
 
     html.H3('Vertical orientation'),
-    dcc.Markdown("Make the switch display vertically by setting `vertical=True`."),
+    reusable_components.Markdown("Make the switch display vertically by setting `vertical=True`."),
     ComponentBlock('''import dash_daq as daq
 daq.ToggleSwitch(
     vertical=True
@@ -1119,7 +1120,7 @@ daq.ToggleSwitch(
     html.Hr(),
 
     html.H3('Size'),
-    dcc.Markdown("Adjust the size of the toggle switch with `size`."),
+    reusable_components.Markdown("Adjust the size of the toggle switch with `size`."),
     ComponentBlock('''import dash_daq as daq
 daq.ToggleSwitch(
     size=100
@@ -1128,7 +1129,7 @@ daq.ToggleSwitch(
     html.Hr(),
 
     html.H3('Label'),
-    dcc.Markdown("Add a label to the toggle switch and specify \
+    reusable_components.Markdown("Add a label to the toggle switch and specify \
     its position using `label` and `labelPosition`."),
     ComponentBlock('''import dash_daq as daq
 daq.ToggleSwitch(
@@ -1148,9 +1149,9 @@ DarkThemeProvider = html.Div(children=[
     html.H1('Dark Theme Provider Examples and Reference'),
     html.Hr(),
     html.H3('Default Dark Theme Provider'),
-    dcc.Markdown("An example of a default dark theme provider without \
+    reusable_components.Markdown("An example of a default dark theme provider without \
             any extra properties."),
-    dcc.Markdown(
+    reusable_components.Markdown(
         examples['dark-theme-provider'][0],
         style=styles.code_container
     ),

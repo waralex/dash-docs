@@ -7,9 +7,9 @@ from dash_docs.tools import load_example
 import dash_daq as daq
 
 from dash_docs.tutorial.utils.simple_doc_generator import generate_docs
+from dash_docs import reusable_components
 
-
-daq_library_heading =  dcc.Markdown('''
+daq_library_heading =  reusable_components.Markdown('''
     # Dash DAQ
 
     Dash is a web application framework that provides pure Python abstraction
@@ -24,7 +24,7 @@ daq_library_heading =  dcc.Markdown('''
     '''.replace('    ', '').format(daq.__version__)
 )
 
-daq_install_instructions = dcc.Markdown('''
+daq_install_instructions = reusable_components.Markdown('''
     ```
     >>> import dash_daq as daq
     >>> print(daq.__version__)
@@ -171,13 +171,13 @@ layout_children += [
     html.H3(dcc.Link('DarkThemeProvider',
                      href=tools.relpath('/dash-daq/darkthemeprovider'))),
 
-    dcc.Markdown(
+    reusable_components.Markdown(
         '''A component placed at the root of the component \
         tree to make all components match the dark theme. '''
     ),
 
 
-    dcc.Markdown(dtp[0],
+    reusable_components.Markdown(dtp[0],
                           style=styles.code_container),
     html.Div(dtp[1]),
 

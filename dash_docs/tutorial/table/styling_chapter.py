@@ -5,6 +5,7 @@ import pandas as pd
 
 import dash_table
 from .utils import CreateDisplay
+from dash_docs import reusable_components
 
 data = OrderedDict(
     [
@@ -70,7 +71,7 @@ Display = CreateDisplay({
 layout = html.Div(
     style={"marginLeft": "auto", "marginRight": "auto", "width": "80%"},
     children=[
-        dcc.Markdown("""
+        reusable_components.Markdown("""
         # Styling the DataTable
 
         ## Default Styles
@@ -86,7 +87,7 @@ layout = html.Div(
         )
         """),
 
-        dcc.Markdown("""
+        reusable_components.Markdown("""
         ## Column Alignment
 
         When displaying numerical data, it's a good practice to use
@@ -115,7 +116,7 @@ layout = html.Div(
         )
         """),
 
-        dcc.Markdown("""
+        reusable_components.Markdown("""
         ## Styling the Table as a List
 
         The gridded view is a good default view for an editable table as it
@@ -138,7 +139,7 @@ layout = html.Div(
         )
         """),
 
-        dcc.Markdown("""
+        reusable_components.Markdown("""
         ## List Style with Minimal Headers
 
         In some contexts, the grey background can look a little heavy.
@@ -164,7 +165,7 @@ layout = html.Div(
         )
         """),
 
-        dcc.Markdown("""
+        reusable_components.Markdown("""
         ## Striped Rows
 
         When you're viewing datasets where you need to compare values within
@@ -202,7 +203,7 @@ layout = html.Div(
         )
         """),
 
-        dcc.Markdown("""
+        reusable_components.Markdown("""
         ## Multi-Headers
 
         Multi-headers are natively supported in the `DataTable`.
@@ -238,7 +239,7 @@ layout = html.Div(
         )
         """),
 
-        dcc.Markdown("""
+        reusable_components.Markdown("""
         ## Dark Theme with Cells
 
         You have full control over all of the elements in the table.
@@ -272,7 +273,7 @@ layout = html.Div(
         )
         """),
 
-        dcc.Markdown("""
+        reusable_components.Markdown("""
         ## Conditional Formatting - Highlighting Certain Rows
 
         You can draw attention to certain rows by providing a unique
@@ -305,7 +306,7 @@ layout = html.Div(
         )
         """),
 
-        dcc.Markdown("""
+        reusable_components.Markdown("""
         ## Conditional Formatting - Highlighting Columns
 
         Similarly, certain columns can be highlighted.
@@ -324,7 +325,7 @@ layout = html.Div(
         )
         """),
 
-        dcc.Markdown("""
+        reusable_components.Markdown("""
         ## Conditional Formatting - Highlighting Cells
 
         You can also highlight certain cells. For example, you may want to
@@ -371,7 +372,7 @@ layout = html.Div(
         )
         """),
 
-        dcc.Markdown("""
+        reusable_components.Markdown("""
         ## Styles Priority
 
         There is a specific order of priority for the style\_\* properties.
@@ -400,7 +401,7 @@ layout = html.Div(
         )
         """),
 
-        dcc.Markdown("""
+        reusable_components.Markdown("""
         ## Adding Borders
 
         Customize the table borders by adding `border` to style_* props.
@@ -414,7 +415,7 @@ layout = html.Div(
         )
         """),
 
-        dcc.Markdown("""
+        reusable_components.Markdown("""
         ## Styling editable
 
         Editable columns can be styled using  `column_editable` in

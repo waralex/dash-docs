@@ -6,6 +6,7 @@ from textwrap import dedent
 from dash_docs.reusable_components import Section, Chapter
 from dash_docs import styles
 from dash_docs import tools
+from dash_docs import reusable_components
 
 examples = {
     example: tools.load_example('tutorial/examples/cytoscape/{}'.format(example))
@@ -14,7 +15,7 @@ examples = {
 
 preamble = html.Div([
 
-    dcc.Markdown(dedent('''
+    reusable_components.Markdown(dedent('''
     # Dash Cytoscape
 
     ''')),
@@ -26,7 +27,7 @@ preamble = html.Div([
         style={'border': 'none'}
     ),
 
-    dcc.Markdown(dedent('''
+    reusable_components.Markdown(dedent('''
     > Released on February 5th, 2019**
     >
     > Dash Cytoscape is a graph visualization component for creating easily
@@ -41,7 +42,7 @@ preamble = html.Div([
     ''')),
 
     Section('Quickstart', [
-        dcc.Markdown(
+        reusable_components.Markdown(
             '''
             ```
             pip install dash-cytoscape=={}
@@ -50,14 +51,14 @@ preamble = html.Div([
             style=styles.code_container
         ),
 
-        dcc.Markdown(
+        reusable_components.Markdown(
             examples['simple.py'][0],
             style=styles.code_container
         ),
 
         html.Div(examples['simple.py'][1], className='example-container'),
 
-        dcc.Markdown(dedent('''
+        reusable_components.Markdown(dedent('''
         > Dash Cytoscape graphs are interactive! Scroll to zoom and drag on
         > the canvas to move the entire graph around. You can move nodes by
         > *dragging* it, or by *clicking, holding, and moving your mouse*

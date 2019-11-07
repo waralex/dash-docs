@@ -7,7 +7,7 @@ import dash_html_components as html
 from .utils import CreateDisplay
 from dash_docs import tools
 from dash_docs import styles
-
+from dash_docs import reusable_components
 
 nodes = [
     {
@@ -55,7 +55,7 @@ Display = CreateDisplay({
 
 layout = html.Div([
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     # Cytoscape Layouts
 
     The layout parameter of `cyto.Cytoscape` takes as argument a
@@ -94,7 +94,7 @@ layout = html.Div([
     )
     '''),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     > Here, we provided toy elements using geographically positioned nodes. If
     > you'd like to reproduce this example by yourself, check out the code
     > below.
@@ -103,7 +103,7 @@ layout = html.Div([
 
     html.Details(open=False, children=[
         html.Summary('View Elements Declaration'),
-        dcc.Markdown('''
+        reusable_components.Markdown('''
         ```py
         nodes = [
             {
@@ -143,7 +143,7 @@ layout = html.Div([
         ''', style=styles.code_container),
     ]),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     ## Display Methods
 
     In most cases, the position of the nodes will not be given. In these
@@ -173,7 +173,7 @@ layout = html.Div([
     )
     '''),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
 
     ## Fine-tuning the Layouts
 
@@ -198,7 +198,7 @@ layout = html.Div([
     )
     '''),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     In the case of the circle layout, we can force the nodes to start and end
     at a certain angle in radians (import `math` for this example):
     '''),
@@ -217,7 +217,7 @@ layout = html.Div([
     )
     '''),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     For the `breadthfirst` layout, a tree is created from the existing nodes
     by performing a breadth-first search of the graph. By default, the root(s)
     of the tree is inferred, but can also be specified as an option. Here is
@@ -236,7 +236,7 @@ layout = html.Div([
     )
     '''),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     Here is what would happen if we chose Montreal and Vancouver instead:
     '''),
 
@@ -252,7 +252,7 @@ layout = html.Div([
     )
     '''),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     > Notice here that we are not giving the ID of the nodes to the `roots`
     > key, but instead using a specific syntax to select the desired elements.
     > This concept of [selector is extensively documented in Cytoscape.js](http://js.cytoscape.org/#selectors),
@@ -278,7 +278,7 @@ layout = html.Div([
     )
     '''),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     > In the callbacks chapter, you will learn how to interactively update your layout; in order
     > to use `preset`, you will need to specify the position of each node.
 
@@ -301,12 +301,12 @@ layout = html.Div([
     )
     '''),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     ## Loading External Layout
 
     > External layouts are now available! Update your `dash-cytoscape` to
     > [version 0.1.1](https://github.com/plotly/dash-cytoscape/pull/50) or later.
-    
+
     The following external layouts are distributed with the official `dash-cytoscape` library:
     * [cose-bilkent](https://github.com/cytoscape/cytoscape.js-cose-bilkent)
     * [cola](https://github.com/cytoscape/cytoscape.js-cola)
@@ -319,7 +319,7 @@ layout = html.Div([
     `dash_cytoscape`:
     '''),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     ```py
     import dash
     from dash.dependencies import Input, Output, State
@@ -336,7 +336,7 @@ layout = html.Div([
     ```
     ''', style=styles.code_container),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     We also provided a
     [demo app directly derived from `usage-elements`](https://github.com/plotly/dash-cytoscape/blob/master/demos/usage-elements-extra.py),
     but with the option to use the external layouts.

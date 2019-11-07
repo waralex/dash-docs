@@ -1,7 +1,8 @@
 import dash_core_components as dcc
 import dash_html_components as html
+from dash_docs import reusable_components
 
-layout = html.Div([dcc.Markdown('''
+layout = html.Div([reusable_components.Markdown('''
 # React for Python Developers: a primer
 
 ## Introduction

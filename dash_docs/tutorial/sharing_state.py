@@ -5,6 +5,7 @@ import dash_html_components as html
 
 from dash_docs.tutorial.components import Example, Syntax
 from dash_docs import tools
+from dash_docs import reusable_components
 
 examples = {
     'filesystem-session-cache': tools.load_example(
@@ -14,7 +15,7 @@ examples = {
 
 
 layout = html.Div([
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     # Sharing State Between Callbacks
 
     > This is the *6th* chapter of the essential [Dash Tutorial](/Docs/).  The
@@ -51,7 +52,7 @@ layout = html.Div([
     from Fahrenheit to Celsius!
     '''),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
 
     ## Why `global` variables will break your app
 
@@ -138,7 +139,7 @@ def update_output_1(value):
     variable inside the callback, or follow one of the strategies
     outlined in the next part of this guide.'''),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
         ## Sharing Data Between Callbacks
 
         In order to share data safely across multiple python
@@ -222,7 +223,7 @@ def update_output_1(value):
             return table
     ''')),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
         ***
 
         ## Example 2 - Computing Aggregations Upfront
@@ -289,7 +290,7 @@ def update_output_1(value):
         filtered or aggregated data to multiple callbacks.
     '''),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
         ***
 
         ## Example 3 - Caching and Signaling
@@ -487,7 +488,7 @@ def update_output_1(value):
     )),
 
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
         ***
 
         ## Example 4 - User-Based Session Data on the Server
@@ -540,7 +541,7 @@ def update_output_1(value):
         )
     ),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
         There are three things to notice in this example:
         - The timestamps of the dataframe don't update when we retrieve
         the data. This data is cached as part of the user's session.

@@ -5,7 +5,7 @@ import dash_html_components as html
 from .utils import CreateDisplay
 from dash_docs import tools
 from dash_docs import styles
-
+from dash_docs import reusable_components
 
 examples = {
     example: tools.load_example(
@@ -79,7 +79,7 @@ Display = CreateDisplay({
 
 layout = html.Div([
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     # Dash Callbacks for Cytoscape
 
     [Dash callbacks](/Docs/getting-started-part-2) allow you to update your
@@ -100,7 +100,7 @@ layout = html.Div([
 
     html.Details(open=False, children=[
         html.Summary('View Elements Declaration'),
-        dcc.Markdown('''
+        reusable_components.Markdown('''
         ```py
         nodes = [
             {
@@ -151,7 +151,7 @@ layout = html.Div([
     )
     '''),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     What we want to modify is the argument to `layout`. To do so, we could use
     a `dash_core_components.Dropdown` with the name of the layouts as options.
     We could set the default value to 'grid', and force it to be unclearable
@@ -170,12 +170,12 @@ layout = html.Div([
     )
     '''),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     The construction of the callback becomes extremely easy. We simply create
     a function as such:
     '''),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     ```py
     @app.callback(Output('cytoscape-callbacks-1', 'layout'),
                   [Input('dropdown-callbacks-1', 'value')])
@@ -184,13 +184,13 @@ layout = html.Div([
     ```
     ''', style=styles.code_container),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     In fact, it is even possible to animate the layouts after an update!
     Simply enable `animate`:
 
     '''),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     ```py
     @app.callback(Output('cytoscape-callbacks-1', 'layout'),
                   [Input('dropdown-callbacks-1', 'value')])
@@ -202,11 +202,11 @@ layout = html.Div([
     ```
     ''', style=styles.code_container),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     Piecing everything together, we get:
     '''),
 
-    dcc.Markdown(
+    reusable_components.Markdown(
         examples['update_layout.py'][0],
         style=styles.code_container
     ),
@@ -216,7 +216,7 @@ layout = html.Div([
         className='example-container'
     ),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     > Notice we did not include an animation for `preset`. As discussed in the layout chapter, you
     > will need to specify the position of the nodes inside of the `layout` dictionary. Check out
     > [this example](https://github.com/plotly/dash-cytoscape/blob/master/demos/usage-preset-animation.py)
@@ -231,7 +231,7 @@ layout = html.Div([
 
     '''),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     ```py
     default_stylesheet = [
         {
@@ -251,7 +251,7 @@ layout = html.Div([
     ```
     ''', style=styles.code_container),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
 
     This is generally declared at the beginning of your script, before layout
     declaration (therefore it is shared accross sessions). The city graph will
@@ -270,7 +270,7 @@ layout = html.Div([
     )
     '''),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     We might want to use text fields to input the color we want to add:
     '''),
 
@@ -287,13 +287,13 @@ layout = html.Div([
     ])
     '''),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     All we need now is to assign a callback that will add new styles to the
     default stylesheet in order to change the default color:
 
     '''),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     ```py
     @app.callback(Output('cytoscape-callbacks-2', 'stylesheet'),
               [Input('input-line-color', 'value'),
@@ -324,7 +324,7 @@ layout = html.Div([
     ```
     ''', style=styles.code_container),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
 
     Notice that we are setting the line and background color to an empty
     string when they are set to `None`; this is to avoid feeding `None`
@@ -339,7 +339,7 @@ layout = html.Div([
     Below, we show how the entire app is constructed:
     '''),
 
-    dcc.Markdown(
+    reusable_components.Markdown(
         examples['stylesheet_callbacks.py'][0],
         style=styles.code_container
     ),
@@ -349,7 +349,7 @@ layout = html.Div([
         className='example-container'
     ),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     In this example, we are not appending the new styles
     directly to the default style, but instead concatenating
     `default_stylesheet` with `new_styles`. This is because any modification
@@ -379,12 +379,12 @@ layout = html.Div([
     ])
     '''),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     The following callback would be needed:
 
     '''),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     ```py
     @app.callback(Output('cytoscape-callbacks-2', 'elements'),
                   [Input('btn-add-node-example', 'n_clicks_timestamp'),
@@ -405,7 +405,7 @@ layout = html.Div([
     ```
     ''', style=styles.code_container),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
 
     The first conditional `if int(btn_add) > int(btn_remove)` verifies whether
     the add button was just clicked. If it wasn't, then the remove button is
@@ -427,7 +427,7 @@ layout = html.Div([
     You can find the complete app below:
     '''),
 
-    dcc.Markdown(
+    reusable_components.Markdown(
         examples['elements_callbacks.py'][0],
         style=styles.code_container
     ),

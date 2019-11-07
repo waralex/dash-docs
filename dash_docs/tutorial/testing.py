@@ -1,9 +1,9 @@
 import dash_html_components as html
 import dash_core_components as dcc
-
+from dash_docs import reusable_components
 
 layout = html.Div([
-    dcc.Markdown(u"""
+    reusable_components.Markdown(u"""
     # Dash Testing
 
     *New in Dash v1.0*

@@ -2,10 +2,11 @@
 import dash_core_components as dcc
 import dash_html_components as html
 from dash_docs import styles
+from dash_docs import reusable_components
 
 layout = html.Div(children=[
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     # Dash HTML Components
 
     Dash is a web application framework that provides pure Python abstraction
@@ -20,7 +21,7 @@ layout = html.Div(children=[
     Here is an example of a simple HTML structure:
     '''),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     ```py
     import dash_html_components as html
 
@@ -37,7 +38,7 @@ layout = html.Div(children=[
         'which gets converted (behind the scenes) into the '
         'following HTML in your web-app:'
     ),
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     ```html
     <div>
         <h1>Hello Dash</h1>
@@ -48,7 +49,7 @@ layout = html.Div(children=[
     </div>
     ```
     ''', style=styles.code_container),
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     If you're not comfortable with HTML, don't worry!
     You can get 95% of the way there with just a few elements
     and attributes.
@@ -56,11 +57,11 @@ layout = html.Div(children=[
     [Markdown](http://commonmark.org/help).
     '''),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     ```py
     import dash_core_components as dcc
 
-    dcc.Markdown(\'\'\'
+    reusable_components.Markdown(\'\'\'
     #### Dash and Markdown
 
     Dash supports [Markdown](http://commonmark.org/help).
@@ -73,7 +74,7 @@ layout = html.Div(children=[
     ```
     ''', style=styles.code_container),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     #### Dash and Markdown
 
     Dash supports [Markdown](http://commonmark.org/help).
@@ -83,7 +84,7 @@ layout = html.Div(children=[
     [links](http://commonmark.org/help), inline `code` snippets, lists,
     quotes, and more.''', className='example-container'),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     If you're using HTML components, then you also have access to
     properties like `style`, `class`, and `id`.
     All of these attributes are available in the Python classes.
@@ -98,7 +99,7 @@ layout = html.Div(children=[
     Let's take a look at an example.
     '''),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     ```py
     import dash_html_components as html
 
@@ -111,7 +112,7 @@ layout = html.Div(children=[
 
     html.Div('That dash code will render this HTML markup:'),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     ```html
     <div style="margin-bottom: 50px; margin-top: 25px;">
 

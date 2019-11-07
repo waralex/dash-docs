@@ -10,6 +10,7 @@ import dash_bio
 from dash_docs import styles
 from dash_docs.tutorial.utils.component_block import ComponentBlock
 from dash_docs.tutorial.utils.convert_props_to_list import generate_prop_info
+from dash_docs import reusable_components
 
 import json
 
@@ -64,7 +65,7 @@ def IframeComponentBlock(
     '''
 
     return html.Div([
-        dcc.Markdown(
+        reusable_components.Markdown(
             '```python  \n' + example_string + '  \n```',
             style=styles.code_container
         ),
@@ -261,7 +262,7 @@ component = {}
                              component_name.lower())),
                 id=component_name.replace(' ', '-').lower())),
 
-        dcc.Markdown(description),
+        reusable_components.Markdown(description),
 
         component_demo,
 
@@ -289,7 +290,7 @@ def generate_docs(
     dash_bio).
     :param (str) library_short: The short name of the library, used in an
     import statement (i.e., import library_name as library_short).
-    :param (obj) library_heading: A dcc.Markdown object that will be
+    :param (obj) library_heading: A reusable_components.Markdown object that will be
     at the top of the documentation page; it should provide a brief
     description of the library.
     :param (obj) library_install_instructions: A dcc.SyntaxHighligher
@@ -342,7 +343,7 @@ def create_default_example(
     '''
 
     return [
-        dcc.Markdown('See {} in action [here](http://dash-gallery.plotly.host/dash-{}).'.format(
+        reusable_components.Markdown('See {} in action [here](http://dash-gallery.plotly.host/dash-{}).'.format(
             component_name.replace('-', ' ').title(),
             component_name
         )),
@@ -356,7 +357,7 @@ def create_default_example(
         any extra properties.".format(
             component_name.replace('-', ' ')
         )),
-        dcc.Markdown(
+        reusable_components.Markdown(
             example_code[0]
         ),
         html.Div(
@@ -374,7 +375,7 @@ def create_examples(
     for example in examples_data:
         examples += [
             html.H3(example['param_name'].title()),
-            dcc.Markdown(example['description']),
+            reusable_components.Markdown(example['description']),
             ComponentBlock(example['code']),
             html.Hr()
         ]
@@ -475,10 +476,10 @@ def generate_prop_table(
                 prop_default = ''
 
         tableRows.append(
-            html.Tr([html.Td(dcc.Markdown(prop_name)),
-                     html.Td(dcc.Markdown(prop_desc)),
-                     html.Td(dcc.Markdown(prop_type)),
-                     html.Td(dcc.Markdown('```python \n' + prop_default + '\n```'))])
+            html.Tr([html.Td(reusable_components.Markdown(prop_name)),
+                     html.Td(reusable_components.Markdown(prop_desc)),
+                     html.Td(reusable_components.Markdown(prop_type)),
+                     html.Td(reusable_components.Markdown('```python \n' + prop_default + '\n```'))])
         )
 
     return html.Div([

@@ -3,6 +3,7 @@ import dash_html_components as html
 
 from dash_docs.tools import load_example
 from dash_docs.tutorial.components import Example, Syntax
+from dash_docs import reusable_components
 
 examples = {
     'simple-graph-events': load_example(
@@ -16,7 +17,7 @@ examples = {
 }
 
 layout = html.Div([
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     # Interactive Visualizations
 
     > This is the *5th* chapter of the [Dash Tutorial](/Docs/).
@@ -40,7 +41,7 @@ layout = html.Div([
 
     Dash components are described declaratively by a set of attributes.
     All of these attributes can be updated by callback functions, but only
-    a subset of these attributes are updated through user interaction, such as  
+    a subset of these attributes are updated through user interaction, such as
     when you click on an option in a `dcc.Dropdown` component and the
     `value` property of that component changes.
 
@@ -70,7 +71,7 @@ layout = html.Div([
     """),
     Example(examples['world-indicators'][1]),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     Try mousing over the points in the scatter plot on the left.
     Notice how the line graphs on the right update based off of the point that
     you are hovering over.
@@ -94,7 +95,7 @@ layout = html.Div([
             'border-radius': '4px'
         }),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     Try clicking and dragging in any of the plots to filter different regions.
     On every selection, the three graph callbacks are fired with the latest
     selected regions of each plot. A pandas dataframe is filtered based off
@@ -107,7 +108,7 @@ layout = html.Div([
     chart type.
     '''),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
 
     ### Current Limitations
 

@@ -1,13 +1,13 @@
 import dash_core_components as dcc
 import dash_html_components as html
 from textwrap import dedent
-
+from dash_docs import reusable_components
 
 
 def CreateDisplay(scope):
     def Display(example_string):
         return html.Div([
-            dcc.Markdown(
+            reusable_components.Markdown(
                 '```python  \n ' + dedent(example_string).strip() + '  \n```',
                 style={'marginBottom': 10, 'borderLeft': 'thin #C8D4E3 solid'}
             ),

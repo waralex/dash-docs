@@ -6,3 +6,4 @@ from .Chapter import Chapter
 from .Blockquote import Blockquote
 from .Notebox import Notebox
 from .TOC import TOC, TOCChapters
+from .Markdown import Markdown

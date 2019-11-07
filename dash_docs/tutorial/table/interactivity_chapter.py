@@ -5,7 +5,7 @@ import dash_core_components as dcc
 
 from dash_docs import tools
 from dash_docs import styles
-
+from dash_docs import reusable_components
 
 examples = {
     example: tools.load_example('tutorial/examples/table/{}'.format(example))
@@ -16,7 +16,7 @@ examples = {
 layout = html.Div(
     [
 
-        dcc.Markdown(dedent("""
+        reusable_components.Markdown(dedent("""
         # DataTable Interactivity
 
         `DataTable` includes several features for modifying and transforming
@@ -47,7 +47,7 @@ layout = html.Div(
         > [Full filter syntax reference](/Docs/datatable/filtering)
         """)),
 
-        dcc.Markdown(dedent("""
+        reusable_components.Markdown(dedent("""
         By default, these transformations are done clientside.
         Your Dash callbacks can respond to these modifications
         by listening to the `data` property as an `Input`.
@@ -58,7 +58,7 @@ layout = html.Div(
         [sorting or filtering in Python instead](/Docs/datatable/callbacks).
         """)),
 
-        dcc.Markdown(
+        reusable_components.Markdown(
             examples['interactivity_connected_to_graph.py'][0],
             style=styles.code_container
         ),
@@ -68,7 +68,7 @@ layout = html.Div(
             className='example-container'
         ),
 
-        dcc.Markdown(dedent("""
+        reusable_components.Markdown(dedent("""
         ## Row IDs
 
         When using transformations - sorting, filtering, pagination - it can be
@@ -131,7 +131,7 @@ layout = html.Div(
         sorting and filtering.
         """)),
 
-        dcc.Markdown(
+        reusable_components.Markdown(
             examples['interactivity_row_ids.py'][0],
             style=styles.code_container
         ),

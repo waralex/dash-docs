@@ -7,6 +7,7 @@ from dash_docs import tools
 from dash_docs.tutorial.utils.convert_props_to_list import generate_prop_info
 from dash_docs.tutorial.utils.component_block import ComponentBlock
 from dash_docs.tutorial.components import Syntax, Example
+from dash_docs import reusable_components
 
 examples = {
     'confirm': tools.load_example('tutorial/examples/core_components/confirm.py'),
@@ -48,7 +49,7 @@ Dropdown = html.Div(children=[
     html.H3('Default Dropdown'),
     html.P("An example of a default dropdown without \
             any extra properties."),
-    dcc.Markdown(
+    reusable_components.Markdown(
         examples['dropdown'][0],
         style=styles.code_container
     ),
@@ -60,7 +61,7 @@ Dropdown = html.Div(children=[
 
     html.Hr(),
     html.H3('Multi-Value Dropdown'),
-    dcc.Markdown("A dropdown component with the `multi` property set to `True` \
+    reusable_components.Markdown("A dropdown component with the `multi` property set to `True` \
                   will allow the user to select more than one value \
                   at a time."),
     ComponentBlock('''import dash_core_components as dcc
@@ -77,7 +78,7 @@ dcc.Dropdown(
     html.Hr(),
 
     html.H3('Disable Search'),
-    dcc.Markdown("The `searchable` property is set to `True` by default on all \
+    reusable_components.Markdown("The `searchable` property is set to `True` by default on all \
             `Dropdown` components. To prevent searching the dropdown \
             value, just set the `searchable` property to `False`. \
             Try searching for 'New York' on this dropdown below and compare \
@@ -95,7 +96,7 @@ dcc.Dropdown(
     html.Hr(),
 
     html.H3('Dropdown Clear'),
-    dcc.Markdown("The `clearable` property is set to `True` by default on all \
+    reusable_components.Markdown("The `clearable` property is set to `True` by default on all \
             `Dropdown` components. To prevent the clearing of the selected dropdown \
             value, just set the `clearable` property to `False`"),
     ComponentBlock('''import dash_core_components as dcc
@@ -112,7 +113,7 @@ dcc.Dropdown(
 
     html.Hr(),
     html.H3('Placeholder Text'),
-    dcc.Markdown("The `placeholder` property allows you to define \
+    reusable_components.Markdown("The `placeholder` property allows you to define \
                  default text shown when no value is selected."),
     ComponentBlock('''import dash_core_components as dcc
 
@@ -127,7 +128,7 @@ dcc.Dropdown(
 
     html.Hr(),
     html.H3('Disable Dropdown'),
-    dcc.Markdown("To disable the dropdown just set `disabled=True`."),
+    reusable_components.Markdown("To disable the dropdown just set `disabled=True`."),
     ComponentBlock('''import dash_core_components as dcc
 
 dcc.Dropdown(
@@ -141,7 +142,7 @@ dcc.Dropdown(
 
     html.Hr(),
     html.H3('Disable Options'),
-    dcc.Markdown("To disable a particular option inside the dropdown \
+    reusable_components.Markdown("To disable a particular option inside the dropdown \
                  menu, set the `disabled` property in the options."),
     ComponentBlock('''import dash_core_components as dcc
 
@@ -158,7 +159,7 @@ dcc.Dropdown(
            depending on the search terms the user types. For example purpose \
            the options are empty on first load, as soon as you start typing \
            they will be loaded with the corresponding values."),
-    dcc.Markdown(
+    reusable_components.Markdown(
         examples['dropdown-dynamic-options'][0],
         style=styles.code_container
     ),
@@ -179,7 +180,7 @@ Slider = html.Div(children=[
     html.Hr(),
     html.H3('Simple Slider Example'),
     html.P("An example of a basic slider tied to a callback."),
-    dcc.Markdown(
+    reusable_components.Markdown(
         examples['slider'][0],
         style=styles.code_container,
     ),
@@ -187,7 +188,7 @@ Slider = html.Div(children=[
     html.Div(examples['slider'][1], className='example-container'),
     html.Hr(),
     html.H3('Marks and Steps'),
-    dcc.Markdown("If slider `marks` are defined and `step` is set to `None` \
+    reusable_components.Markdown("If slider `marks` are defined and `step` is set to `None` \
                  then the slider will only be able to select values that \
                  have been predefined by the `marks`. Note that the default \
                  is `step=1`, so you must explicitly specify `None` to get \
@@ -211,7 +212,7 @@ dcc.Slider(
     html.Hr(),
 
     html.H3('Included and Styling Marks'),
-    dcc.Markdown("By default, `included=True`, meaning the rail trailing the \
+    reusable_components.Markdown("By default, `included=True`, meaning the rail trailing the \
                  handle will be highlighted. To have the handle act as a \
                  discrete value set `included=False`. To style `marks`, \
                  include a style css attribute alongside the key value."),
@@ -247,7 +248,7 @@ dcc.Slider(
 
     html.Hr(),
     html.H3('Non-Linear Slider and Updatemode'),
-    dcc.Markdown("Create a logarithmic slider by setting the labels of the \
+    reusable_components.Markdown("Create a logarithmic slider by setting the labels of the \
                  `marks` property \
                  to be logarithmic and adjusting the slider's output \
                  `value` in the callbacks. The `updatemode` property \
@@ -256,7 +257,7 @@ dcc.Slider(
                  which means a callback is triggered everytime the handle \
                  is moved. The default setting is `mouseup` which triggers \
                  the callback when you release your mouse from the slider."),
-    dcc.Markdown(
+    reusable_components.Markdown(
         examples['slider-updatemode'][0],
         style=styles.code_container,
     ),
@@ -276,7 +277,7 @@ RangeSlider = html.Div(children=[
     html.Hr(),
     html.H3('Simple RangeSlider Example'),
     html.P("An example of a basic RangeSlider tied to a callback."),
-    dcc.Markdown(
+    reusable_components.Markdown(
         examples['rangeslider'][0],
         style=styles.code_container,
     ),
@@ -288,7 +289,7 @@ RangeSlider = html.Div(children=[
 
     html.Hr(),
     html.H3('Marks and Steps'),
-    dcc.Markdown("If slider `marks` are defined and `step` is set to `None` \
+    reusable_components.Markdown("If slider `marks` are defined and `step` is set to `None` \
                  then the slider will only be able to select values that \
                  have been predefined by the `marks`. \
                  Note that the default is `step=1`, so you must explicitly \
@@ -311,7 +312,7 @@ dcc.RangeSlider(
     html.Hr(),
 
     html.H3('Included and Styling Marks'),
-    dcc.Markdown("By default, `included=True`, meaning the rail trailing the \
+    reusable_components.Markdown("By default, `included=True`, meaning the rail trailing the \
                  handle will be highlighted. To have the handle act as a \
                  discrete value set `included=False`. To style `marks`, \
                  include a style css attribute alongside the key value."),
@@ -347,7 +348,7 @@ dcc.RangeSlider(
     html.Hr(),
 
     html.H3('Multiple Handles'),
-    dcc.Markdown('To create multiple handles \
+    reusable_components.Markdown('To create multiple handles \
                   just define more values for `value`!'),
     ComponentBlock('''import dash_core_components as dcc
 
@@ -359,7 +360,7 @@ dcc.RangeSlider(
     ''', style=styles.code_container),
     html.Hr(),
     html.H3('Pushable Handles'),
-    dcc.Markdown("The `pushable` property is either a `boolean` or a numerical value. \
+    reusable_components.Markdown("The `pushable` property is either a `boolean` or a numerical value. \
                 The numerical value determines the minimum distance between \
                 the handles. Try moving the handles around!"),
     ComponentBlock('''import dash_core_components as dcc
@@ -373,7 +374,7 @@ dcc.RangeSlider(
     html.Hr(),
 
     html.H3('Crossing Handles'),
-    dcc.Markdown("If `allowCross=False`, the handles will not be allowed to\
+    reusable_components.Markdown("If `allowCross=False`, the handles will not be allowed to\
                   cross over each other"),
     ComponentBlock('''import dash_core_components as dcc
 
@@ -387,7 +388,7 @@ dcc.RangeSlider(
     html.Hr(),
 
     html.H3('Non-Linear Slider and Updatemode'),
-    dcc.Markdown("Create a logarithmic slider by setting `marks`\
+    reusable_components.Markdown("Create a logarithmic slider by setting `marks`\
                  to be logarithmic and adjusting the slider's output \
                  `value` in the callbacks. The `updatemode` property \
                  allows us to determine when we want a callback to be \
@@ -396,7 +397,7 @@ dcc.RangeSlider(
                  is moved. \
                  Contrast the callback output with the first example on this \
                  page to see the difference."),
-    dcc.Markdown(
+    reusable_components.Markdown(
         examples['rangeslider-nonlinear'][0],
         style=styles.code_container,
     ),
@@ -428,7 +429,7 @@ Input = html.Div(children=[
     Example(examples['input-basic'][1]),
     html.Br(),
     html.H3('Number Input'),
-    dcc.Markdown("""
+    reusable_components.Markdown("""
 
     *fixed and enhanced in Dash v1.1*
 
@@ -466,7 +467,7 @@ Button = html.Div(children=[
     html.Br(),
     html.H3('Button Basic Example'),
     html.Hr(),
-    dcc.Markdown("An example of a default button without any extra properties \
+    reusable_components.Markdown("An example of a default button without any extra properties \
     and `n_clicks` in the callback. `n_clicks` is an integer that represents \
     that number of times the button has been clicked. Note that the original \
     value is `None`."),
@@ -475,7 +476,7 @@ Button = html.Div(children=[
     html.Br(),
     html.H3('Button with n_clicks_timestamp'),
     html.Hr(),
-    dcc.Markdown("This example utilizes the `n_clicks_timestamp` property, \
+    reusable_components.Markdown("This example utilizes the `n_clicks_timestamp` property, \
     which returns an integer representation of time. This is useful for \
     determining when the button was last clicked."),
     Syntax(examples['button_n_clicks_timestamp'][0]),
@@ -492,7 +493,7 @@ Markdown = html.Div(children=[
     html.H1("Markdown Examples and Reference"),
     html.Hr(),
     html.H3("Syntax Guide"),
-    dcc.Markdown("These examples are based on the \
+    reusable_components.Markdown("These examples are based on the \
     [GitHub Markdown Guide](https://guides.github.com/features/mastering-markdown/).\
     The Dash Markdown component uses the \
     [CommonMark](http://commonmark.org/) specification of Markdown."),
@@ -500,7 +501,7 @@ Markdown = html.Div(children=[
     html.H3("Headers"),
     ComponentBlock("""import dash_core_components as dcc
 
-dcc.Markdown('''
+reusable_components.Markdown('''
 
 # This is an <h1> tag
 
@@ -511,7 +512,7 @@ dcc.Markdown('''
     html.H3("Emphasis"),
     ComponentBlock("""import dash_core_components as dcc
 
-dcc.Markdown('''
+reusable_components.Markdown('''
 *This text will be italic*
 
 _This will also be italic_
@@ -528,7 +529,7 @@ _You **can** combine them_
     html.H3("Unordered"),
     ComponentBlock("""import dash_core_components as dcc
 
-dcc.Markdown('''
+reusable_components.Markdown('''
 * Item 1
 * Item 2
   * Item 2a
@@ -538,7 +539,7 @@ dcc.Markdown('''
     html.H3("Block Quotes"),
     ComponentBlock("""import dash_core_components as dcc
 
-dcc.Markdown('''
+reusable_components.Markdown('''
 >
 > Block quotes are used to highlight text.
 >
@@ -548,7 +549,7 @@ dcc.Markdown('''
     html.H3("Links"),
     ComponentBlock("""import dash_core_components as dcc
 
-dcc.Markdown('''
+reusable_components.Markdown('''
 [Dash User Guide](/Docs/)
 ''')"""),
     html.Hr(),
@@ -556,11 +557,11 @@ dcc.Markdown('''
     html.P("Any block of text surrounded by ` ` will rendered as inline-code. "),
     # Don't use ComponentBlock for markdown block quotes... too complicated to
     # get all the nested quotes right!
-    dcc.Markdown("""
+    reusable_components.Markdown("""
     ````py
     import dash_core_components as dcc
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
 
     Inline code snippet: `True`
 
@@ -575,7 +576,7 @@ dcc.Markdown('''
     ''')
     ````
     """),
-    html.Div(dcc.Markdown('''
+    html.Div(reusable_components.Markdown('''
 
     Inline code snippet: `True`
 
@@ -599,14 +600,14 @@ DatePickerRange = html.Div(children=[
     html.H1("DatePickerRange Examples and Reference"),
     html.Hr(),
     html.H3("Simple DatePickerRange Example"),
-    dcc.Markdown("This is a simple example of a `DatePickerRange` \
+    reusable_components.Markdown("This is a simple example of a `DatePickerRange` \
                  component tied to a callback. The `min_date_allowed` and \
                  `max_date_allowed` properties define the minimum and \
                  maximum selectable \
                  dates on the calendar while `initial_visible_month` defines \
                  the calendar month that is first displayed when the \
                  `DatePickerRange` component is opened."),
-    dcc.Markdown(
+    reusable_components.Markdown(
         examples['date_picker_range'][0],
         style=styles.code_container
     ),
@@ -617,7 +618,7 @@ DatePickerRange = html.Div(children=[
     ),
     html.Hr(),
     html.H3('Month and Display Format'),
-    dcc.Markdown("The `display_format` property \
+    reusable_components.Markdown("The `display_format` property \
                  determines how selected dates are displayed \
                  in the `DatePickerRange` component. The `month_format` \
                  property determines how calendar headers are displayed when \
@@ -632,64 +633,64 @@ DatePickerRange = html.Div(children=[
             html.Th('Description', style={'text-align': 'left', 'width': '60%'})
         ]),
         html.Tr([
-            html.Td(dcc.Markdown('`YYYY`'), style={'text-align': 'left'}),
-            html.Td(dcc.Markdown('`2014`'), style={'text-align': 'left'}),
+            html.Td(reusable_components.Markdown('`YYYY`'), style={'text-align': 'left'}),
+            html.Td(reusable_components.Markdown('`2014`'), style={'text-align': 'left'}),
             html.Td('4 or 2 digit year')
         ]),
         html.Tr([
-            html.Td(dcc.Markdown('`YY`'), style={'text-align': 'left'}),
-            html.Td(dcc.Markdown('`14`'), style={'text-align': 'left'}),
+            html.Td(reusable_components.Markdown('`YY`'), style={'text-align': 'left'}),
+            html.Td(reusable_components.Markdown('`14`'), style={'text-align': 'left'}),
             html.Td('2 digit year')
         ]),
         html.Tr([
-            html.Td(dcc.Markdown('`Y`'), style={'text-align': 'left'}),
-            html.Td(dcc.Markdown('`-25`'), style={'text-align': 'left'}),
+            html.Td(reusable_components.Markdown('`Y`'), style={'text-align': 'left'}),
+            html.Td(reusable_components.Markdown('`-25`'), style={'text-align': 'left'}),
             html.Td('Year with any number of digits and sign')
         ]),
         html.Tr([
-            html.Td(dcc.Markdown('`Q`'), style={'text-align': 'left'}),
-            html.Td(dcc.Markdown('`1..4`'), style={'text-align': 'left'}),
+            html.Td(reusable_components.Markdown('`Q`'), style={'text-align': 'left'}),
+            html.Td(reusable_components.Markdown('`1..4`'), style={'text-align': 'left'}),
             html.Td('Quarter of year. Sets month to first month in quarter.')
         ]),
         html.Tr([
-            html.Td(dcc.Markdown('`M MM`'), style={'text-align': 'left'}),
-            html.Td(dcc.Markdown('`1..12`'), style={'text-align': 'left'}),
+            html.Td(reusable_components.Markdown('`M MM`'), style={'text-align': 'left'}),
+            html.Td(reusable_components.Markdown('`1..12`'), style={'text-align': 'left'}),
             html.Td('Month number')
         ]),
         html.Tr([
-            html.Td(dcc.Markdown('`MMM MMMM`'), style={'text-align': 'left'}),
-            html.Td(dcc.Markdown('`Jan..December`'), style={'text-align': 'left'}),
+            html.Td(reusable_components.Markdown('`MMM MMMM`'), style={'text-align': 'left'}),
+            html.Td(reusable_components.Markdown('`Jan..December`'), style={'text-align': 'left'}),
             html.Td('Month name')
         ]),
         html.Tr([
-            html.Td(dcc.Markdown('`D DD`'), style={'text-align': 'left'}),
-            html.Td(dcc.Markdown('`1..31`'), style={'text-align': 'left'}),
+            html.Td(reusable_components.Markdown('`D DD`'), style={'text-align': 'left'}),
+            html.Td(reusable_components.Markdown('`1..31`'), style={'text-align': 'left'}),
             html.Td('Day of month')
         ]),
         html.Tr([
-            html.Td(dcc.Markdown('`Do`'), style={'text-align': 'left'}),
-            html.Td(dcc.Markdown('`1st..31st`'), style={'text-align': 'left'}),
+            html.Td(reusable_components.Markdown('`Do`'), style={'text-align': 'left'}),
+            html.Td(reusable_components.Markdown('`1st..31st`'), style={'text-align': 'left'}),
             html.Td('Day of month with ordinal')
         ]),
         html.Tr([
-            html.Td(dcc.Markdown('`DDD DDDD`'), style={'text-align': 'left'}),
-            html.Td(dcc.Markdown('`1..365`'), style={'text-align': 'left'}),
+            html.Td(reusable_components.Markdown('`DDD DDDD`'), style={'text-align': 'left'}),
+            html.Td(reusable_components.Markdown('`1..365`'), style={'text-align': 'left'}),
             html.Td('Day of year')
         ]),
         html.Tr([
-            html.Td(dcc.Markdown('`X`'), style={'text-align': 'left'}),
-            html.Td(dcc.Markdown('`1410715640.579`'), style={'text-align': 'left'}),
+            html.Td(reusable_components.Markdown('`X`'), style={'text-align': 'left'}),
+            html.Td(reusable_components.Markdown('`1410715640.579`'), style={'text-align': 'left'}),
             html.Td('Unix timestamp')
         ]),
         html.Tr([
-            html.Td(dcc.Markdown('`x`'), style={'text-align': 'left'}),
-            html.Td(dcc.Markdown('`1410715640579`'), style={'text-align': 'left'}),
+            html.Td(reusable_components.Markdown('`x`'), style={'text-align': 'left'}),
+            html.Td(reusable_components.Markdown('`1410715640579`'), style={'text-align': 'left'}),
             html.Td('Unix ms timestamp')
         ]),
     ], style={'margin': 'auto'}),
     html.Br(),
     html.H3("Display Format Examples"),
-    dcc.Markdown("You can utilize any permutation of the string tokens \
+    reusable_components.Markdown("You can utilize any permutation of the string tokens \
                  shown in the table above to change how selected dates are \
                  displayed in the `DatePickerRange` component."),
     ComponentBlock('''import dash_core_components as dcc
@@ -730,7 +731,7 @@ dcc.DatePickerRange(
     html.Br(),
 
     html.H3("Month Format Examples"),
-    dcc.Markdown("Similar to the `display_format`, you can set `month_format` \
+    reusable_components.Markdown("Similar to the `display_format`, you can set `month_format` \
                  to any permutation of the string tokens \
                  shown in the table above to change how calendar titles \
                  are displayed in the `DatePickerRange` component."),
@@ -770,12 +771,12 @@ dcc.DatePickerRange(
     html.Hr(),
 
     html.H3("Vertical Calendar and Placeholder Text"),
-    dcc.Markdown("The `DatePickerRange` component can be rendered in two \
+    reusable_components.Markdown("The `DatePickerRange` component can be rendered in two \
                   orientations, either horizontally or vertically. \
                   If `calendar_orientation` is set to `'vertical'`, it will \
                   be rendered vertically and will default to `'horizontal'` \
                   if not defined."),
-    dcc.Markdown("The `start_date_placeholder_text` and \
+    reusable_components.Markdown("The `start_date_placeholder_text` and \
                   `end_date_placeholder_text` define the grey default text \
                   defined in the calendar input boxes when no date is \
                   selected."),
@@ -791,13 +792,13 @@ dcc.DatePickerRange(
     html.Hr(),
 
     html.H3("Minimum Nights, Calendar Clear, and Portals"),
-    dcc.Markdown("The `minimum_nights` property defines the number of \
+    reusable_components.Markdown("The `minimum_nights` property defines the number of \
                   nights that must be in between the range of two \
                   selected dates."),
-    dcc.Markdown("When the `clearable` property is set to `True` \
+    reusable_components.Markdown("When the `clearable` property is set to `True` \
                   the component will be rendered with a small 'x' \
                   that will remove all selected dates when selected."),
-    dcc.Markdown("The `DatePickerRange` component supports two different \
+    reusable_components.Markdown("The `DatePickerRange` component supports two different \
                   portal types, one being a full screen portal \
                   (`with_full_screen_portal`) and another being a simple \
                   screen overlay, like the one shown below (`with_portal`)."),
@@ -814,9 +815,9 @@ dcc.DatePickerRange(
     html.Hr(),
 
     html.H3("Right to Left Calendars and First Day of Week"),
-    dcc.Markdown("When the `is_RTL` property is set to `True` \
+    reusable_components.Markdown("When the `is_RTL` property is set to `True` \
                   the calendar will be rendered from right to left."),
-    dcc.Markdown("The `first_day_of_week` property allows you to \
+    reusable_components.Markdown("The `first_day_of_week` property allows you to \
                   define which day of the week will be set as the first \
                   day of the week. In the example below, Tuesday is \
                   the first day of the week."),
@@ -838,7 +839,7 @@ DatePickerSingle = html.Div(children=[
     html.H1("DatePickerSingle Examples and Reference"),
     html.Hr(),
     html.H3("Simple DatePickerSingle Example"),
-    dcc.Markdown("This is a simple example of a `DatePickerSingle` \
+    reusable_components.Markdown("This is a simple example of a `DatePickerSingle` \
         component tied to a callback. You can use either date objects \
         (`datetime.date` or `datetime.datetime`) or strings in the form \
         `YYYY-MM-DD` to provide dates to Dash components. Strings are \
@@ -848,7 +849,7 @@ DatePickerSingle = html.Div(children=[
         properties define the minimum and maximum selectable dates on the calendar \
         while `initial_visible_month` defines the calendar month that is \
         first displayed when the `DatePickerSingle` component is opened."),
-    dcc.Markdown(
+    reusable_components.Markdown(
         examples['date_picker_single'][0],
         style=styles.code_container
     ),
@@ -861,7 +862,7 @@ DatePickerSingle = html.Div(children=[
     html.Hr(),
 
     html.H3('Month and Display Format'),
-    dcc.Markdown("The `display_format` property \
+    reusable_components.Markdown("The `display_format` property \
                  determines how selected dates are displayed \
                  in the `DatePickerSingle` component. The `month_format` \
                  property determines how calendar headers are displayed when \
@@ -876,58 +877,58 @@ DatePickerSingle = html.Div(children=[
             html.Th('Description', style={'text-align': 'left', 'width': '60%'})
         ]),
         html.Tr([
-            html.Td(dcc.Markdown('`YYYY`'), style={'text-align': 'left'}),
-            html.Td(dcc.Markdown('`2014`'), style={'text-align': 'left'}),
+            html.Td(reusable_components.Markdown('`YYYY`'), style={'text-align': 'left'}),
+            html.Td(reusable_components.Markdown('`2014`'), style={'text-align': 'left'}),
             html.Td('4 or 2 digit year')
         ]),
         html.Tr([
-            html.Td(dcc.Markdown('`YY`'), style={'text-align': 'left'}),
-            html.Td(dcc.Markdown('`14`'), style={'text-align': 'left'}),
+            html.Td(reusable_components.Markdown('`YY`'), style={'text-align': 'left'}),
+            html.Td(reusable_components.Markdown('`14`'), style={'text-align': 'left'}),
             html.Td('2 digit year')
         ]),
         html.Tr([
-            html.Td(dcc.Markdown('`Y`'), style={'text-align': 'left'}),
-            html.Td(dcc.Markdown('`-25`'), style={'text-align': 'left'}),
+            html.Td(reusable_components.Markdown('`Y`'), style={'text-align': 'left'}),
+            html.Td(reusable_components.Markdown('`-25`'), style={'text-align': 'left'}),
             html.Td('Year with any number of digits and sign')
         ]),
         html.Tr([
-            html.Td(dcc.Markdown('`Q`'), style={'text-align': 'left'}),
-            html.Td(dcc.Markdown('`1..4`'), style={'text-align': 'left'}),
+            html.Td(reusable_components.Markdown('`Q`'), style={'text-align': 'left'}),
+            html.Td(reusable_components.Markdown('`1..4`'), style={'text-align': 'left'}),
             html.Td('Quarter of year. Sets month to first month in quarter.')
         ]),
         html.Tr([
-            html.Td(dcc.Markdown('`M MM`'), style={'text-align': 'left'}),
-            html.Td(dcc.Markdown('`1..12`'), style={'text-align': 'left'}),
+            html.Td(reusable_components.Markdown('`M MM`'), style={'text-align': 'left'}),
+            html.Td(reusable_components.Markdown('`1..12`'), style={'text-align': 'left'}),
             html.Td('Month number')
         ]),
         html.Tr([
-            html.Td(dcc.Markdown('`MMM MMMM`'), style={'text-align': 'left'}),
-            html.Td(dcc.Markdown('`Jan..December`'), style={'text-align': 'left'}),
+            html.Td(reusable_components.Markdown('`MMM MMMM`'), style={'text-align': 'left'}),
+            html.Td(reusable_components.Markdown('`Jan..December`'), style={'text-align': 'left'}),
             html.Td('Month name')
         ]),
         html.Tr([
-            html.Td(dcc.Markdown('`D DD`'), style={'text-align': 'left'}),
-            html.Td(dcc.Markdown('`1..31`'), style={'text-align': 'left'}),
+            html.Td(reusable_components.Markdown('`D DD`'), style={'text-align': 'left'}),
+            html.Td(reusable_components.Markdown('`1..31`'), style={'text-align': 'left'}),
             html.Td('Day of month')
         ]),
         html.Tr([
-            html.Td(dcc.Markdown('`Do`'), style={'text-align': 'left'}),
-            html.Td(dcc.Markdown('`1st..31st`'), style={'text-align': 'left'}),
+            html.Td(reusable_components.Markdown('`Do`'), style={'text-align': 'left'}),
+            html.Td(reusable_components.Markdown('`1st..31st`'), style={'text-align': 'left'}),
             html.Td('Day of month with ordinal')
         ]),
         html.Tr([
-            html.Td(dcc.Markdown('`DDD DDDD`'), style={'text-align': 'left'}),
-            html.Td(dcc.Markdown('`1..365`'), style={'text-align': 'left'}),
+            html.Td(reusable_components.Markdown('`DDD DDDD`'), style={'text-align': 'left'}),
+            html.Td(reusable_components.Markdown('`1..365`'), style={'text-align': 'left'}),
             html.Td('Day of year')
         ]),
         html.Tr([
-            html.Td(dcc.Markdown('`X`'), style={'text-align': 'left'}),
-            html.Td(dcc.Markdown('`1410715640.579`'), style={'text-align': 'left'}),
+            html.Td(reusable_components.Markdown('`X`'), style={'text-align': 'left'}),
+            html.Td(reusable_components.Markdown('`1410715640.579`'), style={'text-align': 'left'}),
             html.Td('Unix timestamp')
         ]),
         html.Tr([
-            html.Td(dcc.Markdown('`x`'), style={'text-align': 'left'}),
-            html.Td(dcc.Markdown('`1410715640579`'), style={'text-align': 'left'}),
+            html.Td(reusable_components.Markdown('`x`'), style={'text-align': 'left'}),
+            html.Td(reusable_components.Markdown('`1410715640579`'), style={'text-align': 'left'}),
             html.Td('Unix ms timestamp')
         ]),
     ], style={'margin': 'auto'}),
@@ -935,7 +936,7 @@ DatePickerSingle = html.Div(children=[
     html.Br(),
 
     html.H3("Display Format Examples"),
-    dcc.Markdown("You can utilize any permutation of the string tokens \
+    reusable_components.Markdown("You can utilize any permutation of the string tokens \
                  shown in the table above to change how selected dates are \
                  displayed in the `DatePickerSingle` component."),
     ComponentBlock('''import dash_core_components as dcc
@@ -971,7 +972,7 @@ dcc.DatePickerSingle(
 )''', style=styles.code_container),
     html.Br(),
     html.H3("Month Format Examples"),
-    dcc.Markdown("Similar to the `display_format`, you can set `month_format` \
+    reusable_components.Markdown("Similar to the `display_format`, you can set `month_format` \
                  to any permutation of the string tokens \
                  shown in the table above to change how calendar titles \
                  are displayed in the `DatePickerSingle` component."),
@@ -1011,12 +1012,12 @@ dcc.DatePickerSingle(
 )''', style=styles.code_container),
     html.Hr(),
     html.H3("Vertical Calendar and Placeholder Text"),
-    dcc.Markdown("The `DatePickerSingle` component can be rendered in two \
+    reusable_components.Markdown("The `DatePickerSingle` component can be rendered in two \
                   orientations, either horizontally or vertically. \
                   If `calendar_orientation` is set to `'vertical'`, it will \
                   be rendered vertically and will default to `'horizontal'` \
                   if not defined."),
-    dcc.Markdown("The `placeholder` defines the grey default \
+    reusable_components.Markdown("The `placeholder` defines the grey default \
                   text defined in the calendar input boxes when no date is \
                   selected."),
     ComponentBlock('''import dash_core_components as dcc
@@ -1031,10 +1032,10 @@ dcc.DatePickerSingle(
     html.Hr(),
 
     html.H3("Calendar Clear and Portals"),
-    dcc.Markdown("When the `clearable` property is set to `True` \
+    reusable_components.Markdown("When the `clearable` property is set to `True` \
                   the component will be rendered with a small 'x' \
                   that will remove all selected dates when selected."),
-    dcc.Markdown("The `DatePickerSingle` component supports two different \
+    reusable_components.Markdown("The `DatePickerSingle` component supports two different \
                   portal types, one being a full screen portal \
                   (`with_full_screen_portal`) and another being a simple \
                   screen overlay, like the one shown below (`with_portal`)."),
@@ -1050,9 +1051,9 @@ dcc.DatePickerSingle(
     html.Hr(),
 
     html.H3("Right to Left Calendars and First Day of Week"),
-    dcc.Markdown("When the `is_RTL` property is set to `True` \
+    reusable_components.Markdown("When the `is_RTL` property is set to `True` \
                   the calendar will be rendered from right to left."),
-    dcc.Markdown("The `first_day_of_week` property allows you to \
+    reusable_components.Markdown("The `first_day_of_week` property allows you to \
                   define which day of the week will be set as the first \
                   day of the week. In the example below, Tuesday is \
                   the first day of the week."),
@@ -1073,7 +1074,7 @@ dcc.DatePickerSingle(
 # Link
 Link = html.Div(children=[
     html.H3('Link Example'),
-    dcc.Markdown('To learn more about links, see the chapter on [Dash URLs](/Docs/urls)'),
+    reusable_components.Markdown('To learn more about links, see the chapter on [Dash URLs](/Docs/urls)'),
     html.H3('Link Properties'),
     generate_prop_info('Link')
 ])
@@ -1087,7 +1088,7 @@ Textarea = html.Div(children=[
 # Tabs
 Tabs = html.Div(children=[
     html.H1('Tabs Examples and Reference'),
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     The Tabs and Tab components can be used to create tabbed sections in your app.
     The `Tab` component controls the style and value of the individual tab
     and the `Tabs` component hold a collection of `Tab` components.
@@ -1103,33 +1104,33 @@ Tabs = html.Div(children=[
     '''),
 
     html.H2('Method 1. Content as Callback'),
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     Attach a callback to the Tabs `value` prop and update a container's `children`
     property in your callback.
     '''),
-    dcc.Markdown(
+    reusable_components.Markdown(
         examples['tabs_callback'][0],
         style=styles.code_container
     ),
     html.Div(examples['tabs_callback'][1], className='example-container'),
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     In the example above, our callback contains all of the content. In practice,
     we'll keep the tab's content in separate files and import the data.
     For an example, see the [URLs and Multi-Page App Tutorial](/Docs/urls).
     '''),
 
     html.H2('Method 2. Content as Tab Children'),
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     Instead of displaying the content through a callback, you can embed the content
     directly as the `children` property in the `Tab` component:
     '''),
 
-    dcc.Markdown(
+    reusable_components.Markdown(
         examples['tabs_simple'][0],
         style=styles.code_container
     ),
     html.Div(examples['tabs_simple'][1], className='example-container'),
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     Note that this method has a drawback: it requires that you compute the children property for each individual
     tab _upfront_ and send all of the tab's content over the network _at once_.
     The callback method allows you to compute the tab's content _on the fly_
@@ -1138,11 +1139,11 @@ Tabs = html.Div(children=[
 
     html.H2('Styling the Tabs component'),
     html.H3('With CSS classes'),
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     Styling the Tabs (and Tab) component can either be done using CSS classes by providing your own to the `className` property:
     '''),
 
-    dcc.Markdown(
+    reusable_components.Markdown(
         examples['tabs_styled_with_classes'][0],
         style=styles.code_container
     ),
@@ -1150,14 +1151,14 @@ Tabs = html.Div(children=[
 
     html.Br(),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     Notice how the container of the Tabs can be styled as well by supplying a class to the `parent_className` prop, which we use here to draw a border below it, positioning the actual Tabs (with padding) more in the center.
     We also added `display: flex` and `justify-content: center` to the regular `Tab` components, so that labels with multiple lines will not break the flow of the text.
 
     The corresponding CSS file (`assets/tabs.css`) looks like this. Save the file in an `assets` folder (it can be named anything you want). Dash will automatically include this CSS when the app is loaded. [Learn more about including CSS in your app here.](/Docs/external-resources)
     '''),
 
-    dcc.Markdown(
+    reusable_components.Markdown(
         '```css\n' + examples['tabs_styled_with_classes_css'] + '\n```',
         style=styles.code_container
     ),
@@ -1166,11 +1167,11 @@ Tabs = html.Div(children=[
     html.Br(),
 
     html.H3('With inline styles'),
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     An alternative to providing CSS classes is to provide style dictionaries directly:
     '''),
 
-    dcc.Markdown(
+    reusable_components.Markdown(
         examples['tabs_styled_with_inline'][0],
         style=styles.code_container
     ),
@@ -1178,12 +1179,12 @@ Tabs = html.Div(children=[
 
     html.Br(),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     Lastly, you can set the colors of the Tabs components in the `color` prop, by specifying the "border", "primary", and "background" colors in a dict. Make sure you set them
     all, if you're using them!
     '''),
 
-    dcc.Markdown(
+    reusable_components.Markdown(
         examples['tabs_styled_with_props'][0],
         style=styles.code_container
     ),
@@ -1200,7 +1201,7 @@ Tabs = html.Div(children=[
 # Graphs
 Graphs = html.Div([
     html.H1('Graph Reference'),
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     Custimize the [Plotly.js config options](https://plot.ly/javascript/configuration-options/) of your graph using
     the `config` property. The example below uses the `showSendToCloud` and `plotlyServerURL` options include a
     save button in the modebar of the graph which exports the figure to URL specified by `plotlyServerURL`.
@@ -1215,7 +1216,7 @@ Graphs = html.Div([
 # Upload
 Upload = html.Div([
     html.H1('Upload Component'),
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     The Dash upload component allows your app's viewers to upload files,
     like excel spreadsheets or images, into your application.
     Your Dash app can access the contents of an upload by listening to
@@ -1227,7 +1228,7 @@ Upload = html.Div([
 
     '''),
 
-    Syntax(examples['upload-datafile'][0], summary=dcc.Markdown('''
+    Syntax(examples['upload-datafile'][0], summary=reusable_components.Markdown('''
         Here's an example that parses CSV or Excel files and displays
         the results in a table. Note that this example uses the
         `DataTable` from the
@@ -1239,13 +1240,13 @@ Upload = html.Div([
 
     html.Hr(),
 
-    Syntax(examples['upload-image'][0], summary=dcc.Markdown('''
+    Syntax(examples['upload-image'][0], summary=reusable_components.Markdown('''
         This next example responds to image uploads by displaying them
         in the app with the `html.Img` component.
     ''')),
     Example(examples['upload-image'][1]),
 
-    Syntax(examples['upload-gallery'][0], summary=dcc.Markdown('''
+    Syntax(examples['upload-gallery'][0], summary=reusable_components.Markdown('''
         The `children` attribute of the `Upload` component accepts any
         Dash component. Clicking on the children element will trigger the
         upload action, as will dragging and dropping files.
@@ -1263,7 +1264,7 @@ Upload = html.Div([
 # ConfirmDialog
 ConfirmDialog = html.Div([
     html.H1('ConfirmDialog component'),
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     ConfirmDialog is used to display the browser's native "confirm" modal,
     with an optional message and two buttons ("OK" and "Cancel").
     This ConfirmDialog can be used in conjunction with buttons when the user
@@ -1277,7 +1278,7 @@ ConfirmDialog = html.Div([
 # ConfirmDialogProvider
 ConfirmDialogProvider = html.Div([
     html.H1('ConfirmDialogProvider component'),
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     Send a [ConfirmDialog](/Docs/dash-core-components/confirm) when the user
     clicks the children of this component, usually a button.
     '''),
@@ -1289,7 +1290,7 @@ ConfirmDialogProvider = html.Div([
 
 Store = html.Div([
     html.H1('Store component'),
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     Store json data in the browser.
 
     ## limitations.
@@ -1335,7 +1336,7 @@ Store = html.Div([
 LogoutButton = html.Div([
     html.H1('LogoutButton'),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     Please note that no authentication is performed in Dash by default
     and you have to implement the authentication yourself.
 
@@ -1368,7 +1369,7 @@ LogoutButton = html.Div([
 LoadingComponent = html.Div([
     html.H1('Loading Component'),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     Here’s a simple example that wraps the outputs for a couple of `Input` components in the `Loading` component. As you can see, you can define the type of spinner you would like to show (refer to the reference table below for all possible types of spinners).
     You can modify other attributes as well, such as `fullscreen=True` if you would like the spinner to be displayed fullscreen. Notice that, the Loading component traverses all
     of it's children to find a loading state, as demonstrated in the second callback, so that even nested children will get picked up.
@@ -1376,7 +1377,7 @@ LoadingComponent = html.Div([
 
     Syntax(examples['loading_component'][0]),
     Example(examples['loading_component'][1]),
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     Please also check out [this section on loading states](/Docs/loading-states) if you want a more customizable experience.
     '''),
     generate_prop_info('Loading')
@@ -1386,7 +1387,7 @@ LoadingComponent = html.Div([
 Location = html.Div([
     html.H1('Location Component'),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     The location component represents the location bar in your web browser. Through its `href`, `pathname`,
     `search` and `hash` properties you can access different portions of your app's url.
 

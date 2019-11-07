@@ -5,6 +5,7 @@ import dash_html_components as html
 from dash_docs import styles
 from dash_docs.tools import load_example
 from dash_docs.tutorial.components import Example, Syntax
+from dash_docs import reusable_components
 
 examples = [
     load_example(example) for example in [
@@ -21,7 +22,7 @@ examples = [
 layout = html.Div([
 
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     # Dash Layout
 
     > This is the *2nd* chapter of the [Dash Tutorial](/Docs/).
@@ -30,14 +31,14 @@ layout = html.Div([
     '''),
 
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
 
     This tutorial will walk you through a fundamental aspect of Dash apps, the
     app `layout`, through {} self-contained apps.
 
     '''.format(len(examples)).replace('    ', '')),
 
-    dcc.Markdown('''***
+    reusable_components.Markdown('''***
 
     Dash apps are composed of two parts. The first part is the "`layout`" of
     the app and it describes what the application looks like.
@@ -55,7 +56,7 @@ layout = html.Div([
     Syntax(examples[0][0], summary='''
         To get started, create a file named `app.py` with the following code:
     '''),
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     Run the app with
 
     ```
@@ -69,7 +70,7 @@ layout = html.Div([
 
     Example(examples[0][1]),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     Note:
 
     1. The `layout` is composed of a tree of "components" like `html.Div`
@@ -130,7 +131,7 @@ HTML tag as well as keyword arguments for all of the HTML arguments.
         'padding-bottom': '30px'
     }),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
         In this example, we modified the inline styles of the `html.Div`
         and `html.H1` components with the `style` property.
 
@@ -173,7 +174,7 @@ HTML tag as well as keyword arguments for all of the HTML arguments.
 
     Example(examples[2][1]),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
         #### More about Visualization
 
         The `dash_core_components` library includes a component called `Graph`.
@@ -197,7 +198,7 @@ HTML tag as well as keyword arguments for all of the HTML arguments.
 
     Example(examples[3][1]),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
         *These graphs are interactive and responsive.
          **Hover** over points to see their values,
          **click** on legend items to toggle traces,
@@ -216,7 +217,7 @@ HTML tag as well as keyword arguments for all of the HTML arguments.
 
     Example(examples[4][1]),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
         #### Core Components
 
         The `dash_core_components` includes a set of higher-level components like
@@ -241,7 +242,7 @@ HTML tag as well as keyword arguments for all of the HTML arguments.
 
     html.Div(examples[5][1], className="example-container"),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
 
         #### Calling `help`
 
@@ -253,7 +254,7 @@ HTML tag as well as keyword arguments for all of the HTML arguments.
     '''.replace('    ', '')),
 
     html.Div(
-        dcc.Markdown('''```shell
+        reusable_components.Markdown('''```shell
 >>> help(dcc.Dropdown)
 class Dropdown(dash.development.base_component.Component)
 |  A Dropdown component.
@@ -280,7 +281,7 @@ class Dropdown(dash.development.base_component.Component)
 |  array of items with values corresponding to those in the
 |  `options` prop.```'''), style=styles.code_container),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
         ### Summary
 
         The `layout` of a Dash app describes what the app looks like.

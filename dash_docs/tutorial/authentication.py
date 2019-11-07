@@ -1,6 +1,7 @@
 import dash_core_components as dcc
+from dash_docs import reusable_components
 
-layout = dcc.Markdown('''
+layout = reusable_components.Markdown('''
 # Authentication
 
 Dash provides authentication and user-based logins through the Plotly platform.

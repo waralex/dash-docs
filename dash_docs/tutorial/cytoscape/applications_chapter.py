@@ -3,6 +3,7 @@ import dash_html_components as html
 
 from dash_docs import tools
 from dash_docs import styles
+from dash_docs import reusable_components
 
 examples = {
     example: tools.load_example(
@@ -16,7 +17,7 @@ examples = {
 
 layout = html.Div([
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     # Cytoscape with Biopython
 
     In this chapter, we will show an example of automatically generating a
@@ -35,14 +36,14 @@ layout = html.Div([
 
     '''),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     ```py
     from Bio import Phylo
     tree = Phylo.read('data/apaf.xml', 'phyloxml')
     ```
     ''', style=styles.code_container),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
 
     Then, we need to use a function to parse the data. We will construct a
     function `generate_elements(...)`, which will first generate the column
@@ -54,7 +55,7 @@ layout = html.Div([
 
     html.Details(open=False, children=[
         html.Summary('get_col_positions() function definition'),
-        dcc.Markdown('''
+        reusable_components.Markdown('''
         ```py
         def get_col_positions(tree, column_width=80):
             taxa = tree.get_terminals()
@@ -80,7 +81,7 @@ layout = html.Div([
 
     html.Details(open=False, children=[
         html.Summary('get_row_positions() function definition'),
-        dcc.Markdown('''
+        reusable_components.Markdown('''
         ```py
         def get_row_positions(tree):
             taxa = tree.get_terminals()
@@ -101,7 +102,7 @@ layout = html.Div([
 
     html.Details(open=False, children=[
         html.Summary('add_to_elements() function definition'),
-        dcc.Markdown('''
+        reusable_components.Markdown('''
         ```py
         def add_to_elements(clade, clade_id):
             children = clade.clades
@@ -166,7 +167,7 @@ layout = html.Div([
         ''', style=styles.code_container),
     ]),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     > You might notice that we use something called support clades. Those are
     > simply used to modify the shape of the tree so that it resembles
     > traditional phylogeny tree layouts.
@@ -174,7 +175,7 @@ layout = html.Div([
     Finally, we finish building `generate_elements` with the following code:
     '''),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     ```py
     import math
 
@@ -201,7 +202,7 @@ layout = html.Div([
     ''', style=styles.code_container),
 
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     > Note that `add_to_elements` changes the `nodes` and `edges` lists in place.
 
     ## Defining layout and stylesheet
@@ -211,7 +212,7 @@ layout = html.Div([
     phylogeny trees to match aesthetically the traditional methods. We define:
     '''),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     ```py
     layout = {'name': 'preset'}
 
@@ -251,7 +252,7 @@ layout = html.Div([
     ```
     ''', style=styles.code_container),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     ## Layout and Callbacks
 
     At this point, we simply need to create the layout of the app, which will
@@ -262,7 +263,7 @@ layout = html.Div([
     by the number 0 or 1, since there are two subclades per clade.
     '''),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     ```py
     # Start the app
     app = dash.Dash(__name__)
@@ -303,13 +304,13 @@ layout = html.Div([
     ```
     ''', style=styles.code_container),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     This results in the following app:
     '''),
 
     html.Details(open=False, children=[
         html.Summary('View the complete source code'),
-        dcc.Markdown(
+        reusable_components.Markdown(
             examples['usage-phylogeny.py'][0],
             style=styles.code_container
         )

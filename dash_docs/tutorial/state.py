@@ -3,6 +3,7 @@ import dash_html_components as html
 
 from dash_docs.tutorial.components import Example, Syntax
 from dash_docs import tools
+from dash_docs import reusable_components
 
 examples = {
     'basic-input': tools.load_example('tutorial/examples/basic-input.py'),
@@ -14,17 +15,17 @@ examples = {
 layout = html.Div([
     html.H1('Dash State and PreventUpdate'),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
         ## Dash State
         > This is the *4th* chapter of the [Dash Tutorial](/Docs/).
         > The [previous chapter](/Docs/getting-started-part-2) covered Dash Callbacks
-        > and the [next chapter](/Docs/interactive-graphing) covers interactive 
+        > and the [next chapter](/Docs/interactive-graphing) covers interactive
         > graphing and crossfiltering.
         > Just getting started? Make sure to
         > [install the necessary dependencies](/Docs/installation).
     '''),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
         In the previous chapter on
         [basic Dash callbacks](/Docs/getting-started-part-2),
         our callbacks looked something like:
@@ -32,7 +33,7 @@ layout = html.Div([
     Syntax(examples['basic-input'][0]),
     Example(examples['basic-input'][1]),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
         In this example, the callback function is fired whenever any of the
         attributes described by the `dash.dependencies.Input` change.
         Try it for yourself by entering data in the inputs above.
@@ -45,7 +46,7 @@ layout = html.Div([
     Syntax(examples['basic-state'][0]),
     Example(examples['basic-state'][1]),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
         In this example, changing text in the `dcc.Input` boxes won't fire
         the callback but clicking on the button will. The current values of
         the `dcc.Input` values are still passed into the callback even though
@@ -57,17 +58,17 @@ layout = html.Div([
         clicked on. It is available in every component in the
         `dash_html_components` library.
 
-        ## Using PreventUpdate in Callback  
-        
-        In certain situations, you don't want to update the callback output. You can 
-        achieve this by raising `PreventUpdate` Exception in the callback function. 
+        ## Using PreventUpdate in Callback
+
+        In certain situations, you don't want to update the callback output. You can
+        achieve this by raising `PreventUpdate` Exception in the callback function.
     '''),
     Syntax(examples['prevent-update-button'][0]),
     Example(examples['prevent-update-button'][1]),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
         This example illustrates how you can show an error while keeping the previous
-        input, using `dash.no_update` to update the output partially. 
+        input, using `dash.no_update` to update the output partially.
     '''),
     Syntax(examples['prevent-update'][0]),
     Example(examples['prevent-update'][1]),

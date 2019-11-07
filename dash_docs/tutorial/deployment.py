@@ -1,7 +1,8 @@
 import dash_core_components as dcc
 from dash_docs import styles
+from dash_docs import reusable_components
 
-layout = [dcc.Markdown('''
+layout = [reusable_components.Markdown('''
 # Deploying Dash Apps
 
 By default, Dash apps run on `localhost` - you can only access them on your
@@ -34,7 +35,7 @@ Dash apps are web applications. Dash uses Flask as the web framework.
 The underlying Flask app is available at `app.server`, that is:
 '''),
 
-          dcc.Markdown('''
+          reusable_components.Markdown('''
           ```python
           import dash
 
@@ -44,11 +45,11 @@ The underlying Flask app is available at `app.server`, that is:
           ```
           ''', style=styles.code_container),
 
-          dcc.Markdown('''
+          reusable_components.Markdown('''
 You can also pass your own flask app instance into Dash:
 '''),
 
-          dcc.Markdown('''
+          reusable_components.Markdown('''
           ```python
           import flask
 
@@ -57,7 +58,7 @@ You can also pass your own flask app instance into Dash:
           ```
           ''', style=styles.code_container),
 
-          dcc.Markdown('''
+          reusable_components.Markdown('''
 By exposing this `server` variable, you can deploy Dash apps like you would
 any Flask app. For more, see the official [Flask Guide to Deployment](http://flask.pocoo.org/docs/latest/deploying/).
 Note that
@@ -81,14 +82,14 @@ Here is a simple example. This example requires a Heroku account,
 **Step 1. Create a new folder for your project:**
 '''),
 
-          dcc.Markdown('''
+          reusable_components.Markdown('''
           ```shell
           $ mkdir dash_app_example
           $ cd dash_app_example
           ```
           ''', style=styles.code_container),
 
-          dcc.Markdown('''
+          reusable_components.Markdown('''
 
 ***
 
@@ -96,7 +97,7 @@ Here is a simple example. This example requires a Heroku account,
 
 '''),
 
-          dcc.Markdown('''
+          reusable_components.Markdown('''
           ```shell
           $ git init        # initializes an empty git repo
           $ virtualenv venv # creates a virtualenv called "venv"
@@ -104,29 +105,29 @@ Here is a simple example. This example requires a Heroku account,
           ```
           ''',style=styles.code_container),
 
-          dcc.Markdown('''
+          reusable_components.Markdown('''
 `virtualenv` creates a fresh Python instance. You will need to reinstall your
 app's dependencies with this virtualenv:
 '''),
 
-          dcc.Markdown('''
+          reusable_components.Markdown('''
           ```shell
           $ pip install dash
           $ pip install plotly
           ```
           ''', style=styles.code_container),
 
-          dcc.Markdown('''
+          reusable_components.Markdown('''
 You will also need a new dependency, `gunicorn`, for deploying the app:
 '''),
 
-          dcc.Markdown('''
+          reusable_components.Markdown('''
           ```shell
           $ pip install gunicorn
           ```
           ''', style=styles.code_container),
 
-          dcc.Markdown('''***
+          reusable_components.Markdown('''***
 **Step 3. Initialize the folder with a sample app (`app.py`), a `.gitignore` file, `requirements.txt`, and a `Procfile` for deployment**
 
 Create the following files in your project folder:
@@ -134,7 +135,7 @@ Create the following files in your project folder:
 **`app.py`**
 '''),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     ```python
     import os
 
@@ -168,13 +169,13 @@ Create the following files in your project folder:
     ```
     ''', style=styles.code_container),
 
-          dcc.Markdown('''
+          reusable_components.Markdown('''
 ***
 
 **`.gitignore`**
 '''),
 
-          dcc.Markdown('''
+          reusable_components.Markdown('''
           ```shell
           venv
           *.pyc
@@ -183,19 +184,19 @@ Create the following files in your project folder:
           ```
           ''', style=styles.code_container),
 
-          dcc.Markdown('''
+          reusable_components.Markdown('''
           ***
 
           **`Procfile`**
           '''),
 
-          dcc.Markdown('''
+          reusable_components.Markdown('''
           ```shell
           web: gunicorn app:server
           ```
           ''', style=styles.code_container),
 
-          dcc.Markdown('''
+          reusable_components.Markdown('''
 (Note that `app` refers to the filename `app.py`.
 `server` refers to the variable `server` inside that file).
 
@@ -207,19 +208,19 @@ Create the following files in your project folder:
 You can fill this file in automatically with:
 '''),
 
-          dcc.Markdown('''
+          reusable_components.Markdown('''
           ```shell
           $ pip freeze > requirements.txt
           ```
           ''', style=styles.code_container),
 
-          dcc.Markdown('''
+          reusable_components.Markdown('''
 ***
 
 **4. Initialize Heroku, add files to Git, and deploy**
 '''),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     ```shell
     $ heroku create my-dash-app # change my-dash-app to a unique name
     $ git add . # add all files to git
@@ -229,7 +230,7 @@ You can fill this file in automatically with:
     ```
     ''', style=styles.code_container),
 
-          dcc.Markdown('''
+          reusable_components.Markdown('''
 You should be able to view your app at `https://my-dash-app.herokuapp.com`
 (changing `my-dash-app` to the name of your app).
 
@@ -240,7 +241,7 @@ to git and push those changes to heroku.
 
 '''),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     ```shell
     $ git status # view the changes
     $ git add .  # add all the changes
@@ -249,7 +250,7 @@ to git and push those changes to heroku.
     ```
 ''', style=styles.code_container),
 
-          dcc.Markdown('''
+          reusable_components.Markdown('''
 
 ***
 

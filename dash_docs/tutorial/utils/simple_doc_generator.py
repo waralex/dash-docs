@@ -3,7 +3,7 @@ import dash_html_components as html
 
 from dash_docs import styles
 from dash_docs.tutorial.utils.component_block import ComponentBlock
-
+from dash_docs import reusable_components
 
 def generate_code_container(
         component_name,
@@ -75,7 +75,7 @@ def generate_code_container(
                              component_name.lower())),
                 id=component_name.replace(' ', '-').lower())),
 
-        dcc.Markdown(description),
+        reusable_components.Markdown(description),
 
         ComponentBlock(
             example_string
@@ -105,7 +105,7 @@ def generate_docs(
                                 separated by dashes ('-').
     :param (object) library_heading: An object that contains a description of
                                      the library and its components. Usually
-                                     a dcc.Markdown() object.
+                                     a reusable_components.Markdown() object.
     '''
 
     layout_children = [library_heading]

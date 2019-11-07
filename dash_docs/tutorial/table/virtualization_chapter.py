@@ -8,7 +8,7 @@ from textwrap import dedent
 
 from dash_docs import tools
 from dash_docs import styles
-
+from dash_docs import reusable_components
 
 examples = {
     example: tools.load_example('tutorial/examples/table/{}'.format(example))
@@ -17,7 +17,7 @@ examples = {
 
 layout = html.Div(
     [
-        dcc.Markdown(dedent(
+        reusable_components.Markdown(dedent(
         """
         # Virtualization
 
@@ -41,7 +41,7 @@ layout = html.Div(
             )
         ),
 
-        dcc.Markdown(
+        reusable_components.Markdown(
             examples['virtualization.py'][0],
             style=styles.code_container
         ),

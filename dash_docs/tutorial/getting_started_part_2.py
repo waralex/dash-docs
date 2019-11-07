@@ -4,6 +4,7 @@ import dash_html_components as html
 
 from dash_docs import styles
 from dash_docs.tools import load_example
+from dash_docs import reusable_components
 
 examples = [
     load_example(example) for example in [
@@ -18,7 +19,7 @@ examples = [
 
 layout = html.Div([
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     # Basic Dash Callbacks
 
     > This is the *3rd* chapter of the [Dash Tutorial](/Docs/).
@@ -29,7 +30,7 @@ layout = html.Div([
 
     '''),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
 
         In the [previous chapter on the `app.layout`](/Docs/getting-started) we
         learned that the `app.layout` describes what the app looks like and is
@@ -50,14 +51,14 @@ layout = html.Div([
     Dash App Layout
     ''', id='dash-app-layout'),
 
-    dcc.Markdown(
+    reusable_components.Markdown(
         examples[0][0],
         style=styles.code_container
     ),
 
     html.Div(examples[0][1], className="example-container"),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     Try typing in the text box. The children of the output component updates
     right away. Let's break down what's happening here:
 
@@ -106,7 +107,7 @@ layout = html.Div([
     `dcc.Graph`.
     '''),
 
-    dcc.Markdown(
+    reusable_components.Markdown(
         examples[1][0],
         style=styles.code_container
     ),
@@ -117,7 +118,7 @@ layout = html.Div([
         'paddingBottom': '30px'
     }),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     In this example, the `"value"` property of the `Slider` is the input of the
     app and the output of the app is the `"figure"` property of the `Graph`.
     Whenever the `value` of the `Slider` changes, Dash calls the callback
@@ -161,7 +162,7 @@ layout = html.Div([
 
     '''),
 
-    dcc.Markdown(
+    reusable_components.Markdown(
         examples[2][0],
         style=styles.code_container
     ),
@@ -171,7 +172,7 @@ layout = html.Div([
         'padding-bottom': '30px'
     }),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
 
     In this example, the `update_graph` function gets called whenever the
     `value` property of the `Dropdown`, `Slider`, or `RadioItems` components
@@ -201,14 +202,14 @@ layout = html.Div([
     slow database query.
     '''),
 
-    dcc.Markdown(
+    reusable_components.Markdown(
         examples[3][0],
         style=styles.code_container
     ),
 
     html.Div(examples[3][1], className="example-container"),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     A word of caution: it's not always a good idea to combine Outputs, even if
     you can:
 
@@ -227,14 +228,14 @@ layout = html.Div([
     Here's a simple example.
     '''),
 
-    dcc.Markdown(
+    reusable_components.Markdown(
         examples[4][0],
         style=styles.code_container
     ),
 
     html.Div(examples[4][1], className="example-container"),
 
-    dcc.Markdown(u'''
+    reusable_components.Markdown(u'''
     The first callback updates the available options in the second `RadioItems`
     component based off of the selected value in the first `RadioItems`
     component.
@@ -250,7 +251,7 @@ layout = html.Div([
 
     '''),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
 
     ### Summary
 
@@ -268,7 +269,7 @@ layout = html.Div([
     '''),
 
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
         The next part of the Dash tutorial covers additional concepts of
         Dash callbacks: `State` and `PreventUpdate`
     '''),

@@ -6,7 +6,7 @@ from textwrap import dedent
 
 import dash_table
 from dash_docs import styles, tools
-
+from dash_docs import reusable_components
 
 examples = {
     example: tools.load_example('tutorial/examples/table/{}'.format(example))
@@ -22,9 +22,9 @@ examples = {
 }
 
 layout = html.Div([
-    dcc.Markdown('# DataTable - Python Callbacks'),
+    reusable_components.Markdown('# DataTable - Python Callbacks'),
 
-    dcc.Markdown(dedent(
+    reusable_components.Markdown(dedent(
     '''
     ### Backend Paging
 
@@ -37,7 +37,7 @@ layout = html.Div([
     load your data from any Python data source.
     ''')),
 
-    dcc.Markdown(
+    reusable_components.Markdown(
         examples['callbacks_paging.py'][0],
         style=styles.code_container
     ),
@@ -48,7 +48,7 @@ layout = html.Div([
 
     html.Hr(),
 
-    dcc.Markdown(dedent('''
+    reusable_components.Markdown(dedent('''
     With backend paging, we can have front-end sorting and filtering
     but it will only filter and sort the data that exists on the page.
 
@@ -65,9 +65,9 @@ layout = html.Div([
     - The filter string is now in `filter`, not `filtering_settings`
     ''')),
 
-    dcc.Markdown('### Backend Paging and Page Numbers'),
+    reusable_components.Markdown('### Backend Paging and Page Numbers'),
 
-    dcc.Markdown(dedent('''
+    reusable_components.Markdown(dedent('''
 
     The pagination menu includes the number of the current page and
     the total page count. With native (i.e., frontend) pagination, the
@@ -86,7 +86,7 @@ layout = html.Div([
     page specified by `page_count`!*
     ''')),
 
-    dcc.Markdown(
+    reusable_components.Markdown(
         examples['callbacks_paging_page_count.py'][0],
         style=styles.code_container
     ),
@@ -95,9 +95,9 @@ layout = html.Div([
         className='example-container'
     ),
 
-    dcc.Markdown('### Backend Paging with Sorting'),
+    reusable_components.Markdown('### Backend Paging with Sorting'),
 
-    dcc.Markdown(
+    reusable_components.Markdown(
         examples['callbacks_paging_and_sorting.py'][0],
         style=styles.code_container
     ),
@@ -106,9 +106,9 @@ layout = html.Div([
         className='example-container'
     ),
 
-    dcc.Markdown('### Backend Paging with Multi Column Sorting'),
+    reusable_components.Markdown('### Backend Paging with Multi Column Sorting'),
 
-    dcc.Markdown(dedent('''
+    reusable_components.Markdown(dedent('''
     Multi-column sort allows you to sort by multiple columns.
     This is useful when you have categorical columns with repeated
     values and you're interested in seeing the sorted values for
@@ -117,7 +117,7 @@ layout = html.Div([
     In this example, try sorting by continent and then any other column.
     ''')),
 
-    dcc.Markdown(
+    reusable_components.Markdown(
         examples['callbacks_paging_multicolumn_sorting.py'][0],
         style=styles.code_container
     ),
@@ -126,9 +126,9 @@ layout = html.Div([
         className='example-container'
     ),
 
-    dcc.Markdown('### Backend Paging with Filtering'),
+    reusable_components.Markdown('### Backend Paging with Filtering'),
 
-    dcc.Markdown(dedent('''
+    reusable_components.Markdown(dedent('''
     DataTable's front-end filtering has its own filtering expression
     language.
 
@@ -155,7 +155,7 @@ layout = html.Div([
 
     ''')),
 
-    dcc.Markdown(
+    reusable_components.Markdown(
         examples['callbacks_filtering.py'][0],
         style=styles.code_container
     ),
@@ -164,8 +164,8 @@ layout = html.Div([
         className='example-container'
     ),
 
-    dcc.Markdown('### Backend Paging with Filtering and Multi-Column Sorting'),
-    dcc.Markdown(
+    reusable_components.Markdown('### Backend Paging with Filtering and Multi-Column Sorting'),
+    reusable_components.Markdown(
         examples['callbacks_sorting_filtering.py'][0],
         style=styles.code_container
     ),
@@ -174,13 +174,13 @@ layout = html.Div([
         className='example-container'
     ),
 
-    dcc.Markdown('### Connecting Backend Paging with a Graph'),
+    reusable_components.Markdown('### Connecting Backend Paging with a Graph'),
 
-    dcc.Markdown(dedent('''
+    reusable_components.Markdown(dedent('''
     This final example ties it all together: the graph component
     displays the current page of the `data`.
     ''')),
-    dcc.Markdown(
+    reusable_components.Markdown(
         examples['callbacks_filtering_graph.py'][0],
         style=styles.code_container
     ),

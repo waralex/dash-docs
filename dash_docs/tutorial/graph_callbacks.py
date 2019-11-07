@@ -3,6 +3,7 @@ import dash_core_components as dcc
 
 from dash_docs import styles
 from dash_docs import tools
+from dash_docs import reusable_components
 
 print('Loading examples')
 examples = [
@@ -14,7 +15,7 @@ examples = [
 ]
 
 
-layout = [dcc.Markdown('''
+layout = [reusable_components.Markdown('''
 # Graph Callbacks
 
 Dash renders graphs using the interactive
@@ -34,14 +35,14 @@ By setting those properties as `Input` properties, you can
 update your Dash application in response to these events.
 
 '''),
-          dcc.Markdown(examples[0][0], style=styles.code_container),
+          reusable_components.Markdown(examples[0][0], style=styles.code_container),
 
           html.Div(examples[0][1], className="example-container")
 ]
 
 
 layout.extend([
-    dcc.Markdown('''
+    reusable_components.Markdown('''
 
 ***
 
@@ -57,7 +58,7 @@ In this example, we use the `customdata` property to add extra
 metadata for the points that we've hovered over or selected.
 '''),
 
-    dcc.Markdown(examples[1][0], style=styles.code_container),
+    reusable_components.Markdown(examples[1][0], style=styles.code_container),
     html.Div(
         examples[1][1],
         className="example-container",
@@ -66,7 +67,7 @@ metadata for the points that we've hovered over or selected.
 ])
 
 layout.extend([
-    dcc.Markdown('''
+    reusable_components.Markdown('''
 
 This graph is highly interactive. Hovering over values will trigger our
 callbacks and highlight the associated point (country) in the other graph.
@@ -82,7 +83,7 @@ Here's another take on this dataset. Hovering over a value will replot the
 chart with that country's historical trajectory.
 '''),
 
-    dcc.Markdown(
+    reusable_components.Markdown(
         examples[2][0],
         style=styles.code_container
     ),

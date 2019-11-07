@@ -3,7 +3,7 @@ import dash_html_components as html
 import dash_core_components as dcc
 import re
 from textwrap import dedent
-
+from dash_docs import reusable_components
 
 def generate_prop_info(component_name, lib=dcc):
     component = getattr(lib, component_name)
@@ -12,7 +12,7 @@ def generate_prop_info(component_name, lib=dcc):
     regex = r'''^([^\(]*)\s*\(([^;]*);\s*(.+?)\):\s*(.*?)\s*$'''
 
     return_div = [
-        dcc.Markdown(dedent(
+        reusable_components.Markdown(dedent(
             '''
             > Access this documentation in your Python terminal with:
             > ```
@@ -37,7 +37,7 @@ def generate_prop_info(component_name, lib=dcc):
         )
 
         if r is None:
-            return_div.append(dcc.Markdown(dedent(prop.replace('\n', ' '))))
+            return_div.append(reusable_components.Markdown(dedent(prop.replace('\n', ' '))))
             continue
 
         (prop_name, prop_type, prop_optional_default, prop_desc) = r.groups()
@@ -104,7 +104,7 @@ def generate_prop_info(component_name, lib=dcc):
             prop_type = '*{}*; '.format(prop_type)
             prop_type = prop_type.replace('|', '*|*')
 
-        return_div.append(dcc.Markdown(dedent(
+        return_div.append(reusable_components.Markdown(dedent(
             '''**`{}`** ({}{}): {}'''.format(
                 prop_name,
                 prop_type,

@@ -1,8 +1,10 @@
 import dash_html_components as html
 import dash_core_components as dcc
 
+from dash_docs import reusable_components
+
 layout = html.Div([
-    dcc.Markdown('''
+    reusable_components.Markdown('''
         ## Introduction to Dash
 
         Dash is a productive Python framework for building web applications.
@@ -29,7 +31,7 @@ layout = html.Div([
         or read our [announcement letter](https://medium.com/@plotlygraphs/introducing-dash-5ecf7191b503).
 
         Dash is an open source library, released under the permissive MIT license.
-        [Plotly](https://plot.ly) develops Dash and offers a [platform for easily deploying Dash 
+        [Plotly](https://plot.ly) develops Dash and offers a [platform for easily deploying Dash
         apps in an enterprise environment](https://plot.ly/dash/pricing).
         If you're interested, [please get in touch](https://go.plot.ly/dash-doc).
 

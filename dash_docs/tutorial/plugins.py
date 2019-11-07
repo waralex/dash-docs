@@ -1,8 +1,8 @@
 import dash_core_components as dcc
 import dash_html_components as html
+from dash_docs import reusable_components
 
-
-layout = [dcc.Markdown('''
+layout = [reusable_components.Markdown('''
 # Writing your own components
 
 One of the really cool things about dash is that

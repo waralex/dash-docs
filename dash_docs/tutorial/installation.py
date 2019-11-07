@@ -9,10 +9,11 @@ import dash_daq
 import plotly
 
 from dash_docs import styles
+from dash_docs import reusable_components
 
 layout = html.Div([
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     # Dash Installation
 
     In your terminal, install several dash libraries.
@@ -20,7 +21,7 @@ layout = html.Div([
     so install and upgrade frequently.
     Python 2 and 3 are supported.'''),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     ```shell
     pip install dash=={}  # The core dash backend
     pip install dash-daq=={}  # DAQ components (newly open-sourced!)
@@ -30,7 +31,7 @@ layout = html.Div([
         dash_daq.__version__
     ), style=styles.code_container),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     > **Note**: starting with dash 0.37.0, dash automatically installs dash-renderer, dash-core-components,
     > dash-html-components, and dash-table, using known-compatible versions of each. You need not and
     > should not install these separately any longer, only dash itself.
@@ -44,7 +45,7 @@ layout = html.Div([
 
     html.Hr(),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     > A quick note on checking your versions and on upgrading.
     > These docs are run using the versions listed above and these
     > versions should be the latest versions available.

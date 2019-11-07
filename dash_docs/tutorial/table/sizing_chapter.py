@@ -6,6 +6,7 @@ from textwrap import dedent
 
 import dash_table
 from .utils import CreateDisplay
+from dash_docs import reusable_components
 
 data = OrderedDict(
     [
@@ -75,7 +76,7 @@ layout = html.Div(
         html.H1('DataTable Sizing'),
 
         html.H3('Default Styles'),
-        dcc.Markdown(dedent(
+        reusable_components.Markdown(dedent(
         '''
         By default, the table will expand to the width of its container.
         The width of the columns is determined automatically in order to
@@ -91,7 +92,7 @@ layout = html.Div(
         '''
         ),
 
-        dcc.Markdown(dedent(
+        reusable_components.Markdown(dedent(
         '''
         > The set of examples on this page are rendered with a few different
         > dataframes that have different sizes and shapes. In particular,
@@ -104,7 +105,7 @@ layout = html.Div(
 
         html.Details(open=False, children=[
             html.Summary('View the Datasets'),
-            dcc.Markdown(dedent(
+            reusable_components.Markdown(dedent(
             '''
             ```python
             data = OrderedDict(
@@ -163,7 +164,7 @@ layout = html.Div(
 
         html.Hr(),
 
-        dcc.Markdown(dedent(
+        reusable_components.Markdown(dedent(
         '''
         The default styles work well for a small number of columns and short
         text. However, if you are rendering a large number of columns or
@@ -176,7 +177,7 @@ layout = html.Div(
         '''
         )),
 
-        dcc.Markdown(dedent(
+        reusable_components.Markdown(dedent(
         '''
         ### Overflow Strategies - Multiple Lines
 
@@ -200,7 +201,7 @@ layout = html.Div(
         )
         '''),
 
-        dcc.Markdown(dedent(
+        reusable_components.Markdown(dedent(
         """
         ### Overflow Strategies - Overflowing Into Ellipses
 
@@ -228,7 +229,7 @@ layout = html.Div(
         )
         '''),
 
-        dcc.Markdown(dedent(
+        reusable_components.Markdown(dedent(
         '''
         ### Overflow Strategies - Horizontal Scroll
 
@@ -246,7 +247,7 @@ layout = html.Div(
         )
         '''),
 
-        dcc.Markdown(dedent(
+        reusable_components.Markdown(dedent(
         '''
         Note how we haven't explicitly set the width of the individual columns
         yet. The widths of the columns have been computed dynamically depending
@@ -292,7 +293,7 @@ layout = html.Div(
         )
         '''),
 
-        dcc.Markdown(dedent(
+        reusable_components.Markdown(dedent(
         '''
         Alternatively, you can fix the width of each column by adding `width`.
         In this case, the column's width will be constant, even if its contents
@@ -330,7 +331,7 @@ layout = html.Div(
         )
         '''),
 
-        dcc.Markdown(dedent(
+        reusable_components.Markdown(dedent(
         '''
         ### Horizontal Scrolling via Fixed Columns
 
@@ -369,9 +370,9 @@ layout = html.Div(
         '''),
 
 
-        dcc.Markdown("### Individual Column Widths"),
+        reusable_components.Markdown("### Individual Column Widths"),
 
-        dcc.Markdown(dedent(
+        reusable_components.Markdown(dedent(
         '''
         The widths of individual columns can be supplied through the
         `style_cell_conditional` property. These widths can be specified as
@@ -415,8 +416,8 @@ layout = html.Div(
         )
         '''),
 
-        # dcc.Markdown("### Underspecified Widths"),
-        # dcc.Markdown(dedent(
+        # reusable_components.Markdown("### Underspecified Widths"),
+        # reusable_components.Markdown(dedent(
         # '''
         # The widths can be under-specified. Here, we're only setting the width for
         # the three columns in the middle, the rest of the columns are
@@ -452,8 +453,8 @@ layout = html.Div(
         # )
         # '''),
 
-        # dcc.Markdown("### Widths that are smaller than the content"),
-        # dcc.Markdown(dedent(
+        # reusable_components.Markdown("### Widths that are smaller than the content"),
+        # reusable_components.Markdown(dedent(
         # '''
         # In this case, we're setting the width to 20px, which is smaller
         # than the "10924" number in the "Ind" column.
@@ -488,7 +489,7 @@ layout = html.Div(
         # )
         # '''),
 
-        dcc.Markdown(dedent(
+        reusable_components.Markdown(dedent(
         '''
         ## Table Height and Vertical Scrolling
 
@@ -512,7 +513,7 @@ layout = html.Div(
         )
         '''),
 
-        dcc.Markdown(dedent(
+        reusable_components.Markdown(dedent(
         '''
         ### Vertical Scrolling via Fixed Rows
 
@@ -537,8 +538,8 @@ layout = html.Div(
         )
         '''),
 
-        dcc.Markdown("### Height vs Max Height"),
-        dcc.Markdown(dedent(
+        reusable_components.Markdown("### Height vs Max Height"),
+        reusable_components.Markdown(dedent(
         '''
         With `max-height`, if the table's contents are shorter than the
         `max-height`, then the container will be shorter.
@@ -568,7 +569,7 @@ layout = html.Div(
         )
         '''),
 
-        dcc.Markdown('''
+        reusable_components.Markdown('''
         and here is `height` with the same content. Note how the table's
         container takes up all 300px.
 

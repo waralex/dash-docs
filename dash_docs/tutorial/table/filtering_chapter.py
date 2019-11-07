@@ -5,7 +5,7 @@ import dash_core_components as dcc
 
 from dash_docs import tools
 from dash_docs import styles
-
+from dash_docs import reusable_components
 
 examples = {
     example: tools.load_example('tutorial/examples/table/{}'.format(example))
@@ -14,7 +14,7 @@ examples = {
 
 layout = html.Div(
     [
-        dcc.Markdown(dedent("""
+        reusable_components.Markdown(dedent("""
         # DataTable Filtering
 
         As discussed in the [interactivity chapter](), `DataTable` includes
@@ -62,8 +62,8 @@ layout = html.Div(
                 html.H4(
                     html.P([html.Code('='), ' ', html.Code('eq')]),
                     style={'margin': '0'}),
-                dcc.Markdown('Default operator for `number` columns')]),
-            html.Td(dcc.Markdown(dedent("""
+                reusable_components.Markdown('Default operator for `number` columns')]),
+            html.Td(reusable_components.Markdown(dedent("""
             Are the two numbers equal? Regardless of type, will first try to
             convert both sides to numbers and compare the numbers. If either
             cannot be converted to a number, looks for an exact match.
@@ -71,9 +71,9 @@ layout = html.Div(
         ]), html.Tr([
             html.Td([
                 html.H4(html.P(html.Code('contains')), style={'margin': '0'}),
-                dcc.Markdown('Default operator for `text` and `any` columns')
+                reusable_components.Markdown('Default operator for `text` and `any` columns')
             ]),
-            html.Td(dcc.Markdown(dedent("""
+            html.Td(reusable_components.Markdown(dedent("""
             Does the text value contain the requested substring?
             May match the beginning, end, or anywhere in the middle. The match
             is case-sensitive and exact.
@@ -83,8 +83,8 @@ layout = html.Div(
                 html.H4(
                     html.P(html.Code('datestartswith')),
                     style={'margin': '0'}),
-                dcc.Markdown('Default operator for `datetime` columns')]),
-            html.Td(dcc.Markdown(dedent("""
+                reusable_components.Markdown('Default operator for `datetime` columns')]),
+            html.Td(reusable_components.Markdown(dedent("""
             Does the datetime start with the given parts? Enter a partial
             datetime, this will match any date that has at least as much
             precision and starts with the same pieces. For example,
@@ -100,7 +100,7 @@ layout = html.Div(
                 html.Code('<='), ' ', html.Code('le'), html.Br(),
                 html.Code('!='), ' ', html.Code('ne')
             ]), style={'margin': '0'})),
-            html.Td(dcc.Markdown(dedent("""
+            html.Td(reusable_components.Markdown(dedent("""
             Comparison: greater than, less than, greater or equal, less or
             equal, and not equal. Two strings compare by their dictionary
             order, with numbers and most symbols coming before letters, and
@@ -109,12 +109,12 @@ layout = html.Div(
         ])]),
         html.Br(),
 
-        dcc.Markdown(dedent("""
+        reusable_components.Markdown(dedent("""
 
         ## Frontend Filtering Example:
 
         """)),
-        dcc.Markdown(
+        reusable_components.Markdown(
             examples['filtering_fe.py'][0],
             style=styles.code_container
         ),
@@ -124,7 +124,7 @@ layout = html.Div(
             className='example-container'
         ),
 
-        dcc.Markdown(dedent("""
+        reusable_components.Markdown(dedent("""
         ## Back-end Filtering
 
         For large dataframes, you can perform the filtering in Python instead
@@ -147,7 +147,7 @@ layout = html.Div(
         Example:
         """)),
 
-        dcc.Markdown(
+        reusable_components.Markdown(
             examples['filtering_be.py'][0],
             style=styles.code_container
         ),

@@ -5,7 +5,7 @@ import dash_html_components as html
 from .utils import CreateDisplay
 from dash_docs import tools
 from dash_docs import styles
-
+from dash_docs import reusable_components
 
 examples = {
     example: tools.load_example('tutorial/examples/cytoscape/{}'.format(example))
@@ -97,7 +97,7 @@ Display = CreateDisplay({
 
 layout = html.Div([
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     # Cytoscape Styling
 
     ## The `stylesheet` parameter
@@ -127,7 +127,7 @@ layout = html.Div([
 
     html.Details(open=False, children=[
         html.Summary('View simple elements'),
-        dcc.Markdown('''
+        reusable_components.Markdown('''
         ```py
         simple_elements = [
             {
@@ -191,7 +191,7 @@ layout = html.Div([
     )
     '''),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     In this example, we use the group and class selectors. Group selectors
     consist of either the string `'node'` or the string `'edge'`, since an
     element can only be one or the other.
@@ -229,7 +229,7 @@ layout = html.Div([
 
     html.Details(open=False, children=[
         html.Summary('View weighted elements'),
-        dcc.Markdown('''
+        reusable_components.Markdown('''
         ```py
         weighted_elements = [
             {'data': {'id': 'A'}},
@@ -249,7 +249,7 @@ layout = html.Div([
         ''', style=styles.code_container),
     ]),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     If you want to highlight all the of the edges above a certain weight
     (e.g. 3), use the selector `'[weight > 3]'`. For example:
     '''),
@@ -277,7 +277,7 @@ layout = html.Div([
     )
     '''),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     Similarly, if you want to have weights smaller or equal to 3, you would
     write:
     '''),
@@ -305,7 +305,7 @@ layout = html.Div([
     )
     '''),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     Comparisons also work for string matching problems. Given the same graph
     as before, but with a data key `'firstname'` for each node:
     ```
@@ -318,7 +318,7 @@ layout = html.Div([
 
     html.Details(open=False, children=[
         html.Summary('View named elements'),
-        dcc.Markdown('''
+        reusable_components.Markdown('''
         ```py
         named_elements = [
             {'data': {'id': 'A', 'firstname': 'Albert'}},
@@ -362,7 +362,7 @@ layout = html.Div([
     )
     '''),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     Now, if we want to select all the elements where `'firstname'` *does not*
     contain `'ert'`, then we can run:
     '''),
@@ -391,7 +391,7 @@ layout = html.Div([
     )
     '''),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     Other options also exist for matching specific parts of the string. For
     example, if we want to only select the prefix, we can use `^=` as such:
     '''),
@@ -420,7 +420,7 @@ layout = html.Div([
     )
     '''),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     This can also be prepended by modifiers. For example, `@` added in front
     of an operator will render the string matched case insensitive.
     '''),
@@ -449,7 +449,7 @@ layout = html.Div([
     )
     '''),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     View the [complete list of matching operations](http://js.cytoscape.org/#selectors/data)
      for data selectors.
 
@@ -463,7 +463,7 @@ layout = html.Div([
 
     html.Details(open=False, children=[
         html.Summary('View double-edged elements'),
-        dcc.Markdown('''
+        reusable_components.Markdown('''
         ```py
         double_edges = [
             {'data': {'id': src+tgt, 'source': src, 'target': tgt}}
@@ -516,7 +516,7 @@ layout = html.Div([
     )
     '''),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     Many curve styles are accepted, and support further customization such as
     the distance between edges and curvature radius. You can find them in
     the [JavaScript docs](http://js.cytoscape.org/#style/bezier-edges).
@@ -531,7 +531,7 @@ layout = html.Div([
 
     html.Details(open=False, children=[
         html.Summary('View directed elements'),
-        dcc.Markdown('''
+        reusable_components.Markdown('''
         ```py
         directed_edges = [
             {'data': {'id': src+tgt, 'source': src, 'target': tgt}}
@@ -601,7 +601,7 @@ layout = html.Div([
     )
     '''),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     Notice here that we prepend a position indicator for the color and shape
     keys. In the previous example, all four possible positions are displayed.
     In fact, you can even the edges with multiple arrows, all with different
@@ -615,7 +615,7 @@ layout = html.Div([
     an interactive tree of animal phylogeny using images from Wikimedia.
     '''),
 
-    dcc.Markdown(
+    reusable_components.Markdown(
         examples['images.py'][0],
         style=styles.code_container
     ),

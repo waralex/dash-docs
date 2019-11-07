@@ -2,8 +2,9 @@
 import dash_core_components as dcc
 import dash_html_components as html
 from dash_docs import styles
+from dash_docs import reusable_components
 
-layout = [dcc.Markdown('''
+layout = [reusable_components.Markdown('''
     # Multi-Page Apps and URL Support
 
     Dash renders web applications as a "single-page app". This means that
@@ -22,7 +23,7 @@ layout = [dcc.Markdown('''
 
     '''),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     ```python
     import dash
     import dash_core_components as dcc
@@ -60,7 +61,7 @@ layout = [dcc.Markdown('''
     ```
     ''', style=styles.code_container),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     In this example, the callback `display_page` receives the current pathname
     (the last part of the URL) of the page. The callback simply displays the
     `pathname` on page but it could use the `pathname` to display different
@@ -80,7 +81,7 @@ layout = [dcc.Markdown('''
     You can modify the example above to display different pages depending on the URL:
     '''),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     ```python
     import dash
     import dash_core_components as dcc
@@ -169,7 +170,7 @@ layout = [dcc.Markdown('''
     ```
     ''', style=styles.code_container),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     ![Dash app with multiple pages](https://raw.githubusercontent.com/plotly/dash-docs/master/images/url-support-pages.gif)
 
     In this example, we're displaying different layouts through the `display_page`
@@ -189,7 +190,7 @@ layout = [dcc.Markdown('''
     these same principles.
     '''),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     ***
 
     ## Dynamically Create a Layout for Multi-Page App Validation
@@ -209,7 +210,7 @@ layout = [dcc.Markdown('''
     layout to the validator if there is no request context and returns the incomplete
     index layout otherwise.
     '''),
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     ```py
     import dash
     import dash_core_components as dcc
@@ -311,7 +312,7 @@ layout = [dcc.Markdown('''
     ```
     ''', style={'borderLeft': 'thin solid lightgrey'}),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     ***
 
     # Structuring a Multi-Page App
@@ -335,7 +336,7 @@ layout = [dcc.Markdown('''
     `app.py`
     '''),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     ```py
     import dash
 
@@ -347,13 +348,13 @@ layout = [dcc.Markdown('''
     ```
     ''', style=styles.code_container),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     ***
 
     `apps/app1.py`
     '''),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     ```py
     import dash_core_components as dcc
     import dash_html_components as html
@@ -384,7 +385,7 @@ layout = [dcc.Markdown('''
     ```
     ''', style=styles.code_container),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     And similarly for other apps
     ***
 
@@ -393,7 +394,7 @@ layout = [dcc.Markdown('''
     `index.py` loads different apps on different urls like this:
     '''),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     ```py
     import dash_core_components as dcc
     import dash_html_components as html
@@ -423,7 +424,7 @@ layout = [dcc.Markdown('''
         app.run_server(debug=True)
     ```
     ''', style=styles.code_container),
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     ***
 
     Alternatively, you may prefer a flat project layout with callbacks and layouts
@@ -440,7 +441,7 @@ layout = [dcc.Markdown('''
 
     `app.py`
     '''),
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     ```py
     import dash
 
@@ -452,12 +453,12 @@ layout = [dcc.Markdown('''
     ```
     ''', style=styles.code_container),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     ***
 
     `callbacks.py`
     '''),
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     ```py
     from dash.dependencies import Input, Output
 
@@ -477,12 +478,12 @@ layout = [dcc.Markdown('''
     ```
     ''', style=styles.code_container),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     ***
 
     `layouts.py`
     '''),
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     ```py
     import dash_core_components as dcc
     import dash_html_components as html
@@ -517,12 +518,12 @@ layout = [dcc.Markdown('''
     ```
     ''', style=styles.code_container),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     ***
 
     `index.py`
     '''),
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     ```python
     import dash_core_components as dcc
     import dash_html_components as html
@@ -552,7 +553,7 @@ layout = [dcc.Markdown('''
     ```
     ''', style=styles.code_container),
 
-    dcc.Markdown('''
+    reusable_components.Markdown('''
     ***
 
     It is worth noting that in both of these project structures, the Dash instance
