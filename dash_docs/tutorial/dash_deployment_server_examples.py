@@ -10,7 +10,7 @@ import os
 import plotly
 from dash_docs import styles
 from dash_docs import reusable_components as rc
-
+from dash_docs import tools
 
 if os.environ.get('DASH_APP_LOCATION', '') != 'ABSOLUTE':
     from dash_docs.server import app
@@ -59,7 +59,7 @@ Initialize = html.Div(children=[
 
     html.Img(
         alt='Initialize App',
-        src='/Docs/assets/dds/add-app.PNG',
+        src=tools.relpath('/assets/images/dds/add-app.png'),
         style={
             'width': '100%', 'border': 'thin lightgrey solid',
             'border-radius': '4px'
@@ -77,7 +77,7 @@ Initialize = html.Div(children=[
 
     html.Img(
         alt='List of Apps',
-        src='/Docs/assets/dds/list-of-apps.PNG',
+        src=tools.relpath('/assets/images/dds/list-of-apps.png'),
         style={
             'width': '100%', 'border': 'thin lightgrey solid',
             'border-radius': '4px'
@@ -94,7 +94,7 @@ Initialize = html.Div(children=[
 
     html.Img(
         alt='Dash App Overview',
-        src='/Docs/assets/dds/app-overview.PNG',
+        src=tools.relpath('/assets/images/dds/app-overview.png'),
         style={
             'width': '100%', 'border': 'thin lightgrey solid',
             'border-radius': '4px'
@@ -839,7 +839,7 @@ staticAssets = html.Div(children=[
     dcc.Markdown(
     '''
     ```python
-    html.Img(src=app.get_asset_url('my-image.png'))
+    html.Img(src=app.get_asset_url('my-image.png')))
     ```
     ''', style=styles.code_container)
 ])
@@ -996,7 +996,7 @@ EnvVars = html.Div(children=[
 
     html.Img(
         alt='Add Environment Variables',
-        src='/Docs/assets/dds/add-env-variable.PNG',
+        src=tools.relpath('/assets/images/dds/add-env-variable.png'),
         style={
             'width': '100%', 'border': 'thin lightgrey solid',
             'border-radius': '4px'
@@ -1085,7 +1085,7 @@ EnvVars = html.Div(children=[
 
     html.Img(
         alt='Delete Environment Variables',
-        src='/Docs/assets/dds/remove-env-variable.PNG',
+        src=tools.relpath('/assets/images/dds/remove-env-variable.png'),
         style={
             'width': '100%', 'border': 'thin lightgrey solid',
             'border-radius': '4px'
@@ -1142,7 +1142,7 @@ LocalDir = html.Div(children=[
 
     html.Img(
         alt='Add Admin/Superuser Status',
-        src='/Docs/assets/dds/specify-directories-for-mapping.png',
+        src=tools.relpath('/assets/images/dds/specify-directories-for-mapping.png'),
         style={
             'width': '100%', 'border': 'thin lightgrey solid',
             'border-radius': '4px'
@@ -1165,7 +1165,7 @@ LocalDir = html.Div(children=[
 
     html.Img(
         alt='Add Directory Mapping',
-        src='/Docs/assets/dds/add-dir-map.PNG',
+        src=tools.relpath('/assets/images/dds/add-dir-map.png'),
         style={
             'width': '100%', 'border': 'thin lightgrey solid',
             'border-radius': '4px'
@@ -1185,7 +1185,7 @@ dcc.Markdown('''
 
     html.Img(
         alt='Add Directory Mapping',
-        src='/Docs/assets/dds/map-directory-not-approved.png',
+        src=tools.relpath('/assets/images/dds/map-directory-not-approved.png'),
         style={
             'width': '100%', 'border': 'thin lightgrey solid',
             'border-radius': '4px'
@@ -1273,7 +1273,7 @@ dcc.Markdown('''
 
     html.Img(
         alt='Remove Directory Mapping',
-        src='/Docs/assets/dds/remove-dir-map.PNG',
+        src=tools.relpath('/assets/images/dds/remove-dir-map.png'),
         style={
             'width': '100%', 'border': 'thin lightgrey solid',
             'border-radius': '4px'
@@ -1488,7 +1488,7 @@ def display_instructions(platform):
 
         html.Img(
             alt='Add SSH Key',
-            src='/Docs/assets/dds/add-ssh-key.png',
+            src=tools.relpath('/assets/images/dds/add-ssh-key.png'),
             style={
                 'width': '100%', 'border': 'thin lightgrey solid',
                 'border-radius': '4px'
@@ -1506,7 +1506,7 @@ def display_instructions(platform):
 
         html.Img(
             alt='List of SSH Keys',
-            src='/Docs/assets/dds/list-of-ssh-keys.png',
+            src=tools.relpath('/assets/images/dds/list-of-ssh-keys.png'),
             style={
                 'width': '100%', 'border': 'thin lightgrey solid',
                 'border-radius': '4px'
@@ -2119,7 +2119,7 @@ AppPrivacy = html.Div(children=[
 
     html.Img(
         alt='DDS Apps List',
-        src='/Docs/assets/dds/manager-apps-list.png',
+        src=tools.relpath('/assets/images/dds/manager-apps-list.png'),
         style={
             'width': '100%', 'border': 'thin lightgrey solid',
             'border-radius': '4px'
@@ -2140,7 +2140,7 @@ AppPrivacy = html.Div(children=[
 
     html.Img(
         alt='Dash App Privacy Settings',
-        src='/Docs/assets/dds/app-settings-privacy.png',
+        src=tools.relpath('/assets/images/dds/app-settings-privacy.png'),
         style={
             'width': '100%', 'border': 'thin lightgrey solid',
             'border-radius': '4px'
@@ -2336,7 +2336,7 @@ Redis = html.Div(children=[
 
     html.Img(
         alt='Enable Redis Databases',
-        src='/Docs/assets/dds/enable-redis.PNG',
+        src=tools.relpath('/assets/images/dds/enable-redis.png'),
         style={
             'width': '100%', 'border': 'thin lightgrey solid',
             'border-radius': '4px'
@@ -2382,7 +2382,7 @@ Redis = html.Div(children=[
 
     html.Img(
         alt='Create Database',
-        src='/Docs/assets/dds/create-redis-db.PNG',
+        src=tools.relpath('/assets/images/dds/create-redis-db.png'),
         style={
             'width': '100%', 'border': 'thin lightgrey solid',
             'border-radius': '4px'
@@ -2401,7 +2401,7 @@ Redis = html.Div(children=[
 
     html.Img(
         alt='Link Database',
-        src='/Docs/assets/dds/link-redis-db.PNG',
+        src=tools.relpath('/assets/images/dds/link-redis-db.png'),
         style={
             'width': '100%', 'border': 'thin lightgrey solid',
             'border-radius': '4px'
@@ -2421,7 +2421,7 @@ Redis = html.Div(children=[
 
     html.Img(
         alt='Create and Link Database in App',
-        src='/Docs/assets/dds/create-and-link-redis-db.PNG',
+        src=tools.relpath('/assets/images/dds/create-and-link-redis-db.png'),
         style={
             'width': '100%', 'border': 'thin lightgrey solid',
             'border-radius': '4px'
@@ -3176,7 +3176,7 @@ Portal = html.Div(children=[
 
     html.Img(
         alt='Default Dash App Portal',
-        src='/Docs/assets/dds/default-portal.png',
+        src=tools.relpath('/assets/images/dds/default-portal.png'),
         style={
             'width': '100%', 'border': 'thin lightgrey solid',
             'border-radius': '4px'
@@ -3202,7 +3202,7 @@ Portal = html.Div(children=[
 
     html.Img(
         alt='Dash App Portal Settings',
-        src='/Docs/assets/dds/manager-app-settings-portal.png',
+        src=tools.relpath('/assets/images/dds/manager-app-settings-portal.png'),
         style={
             'width': '100%', 'border': 'thin lightgrey solid',
             'border-radius': '4px'
@@ -3222,7 +3222,7 @@ Portal = html.Div(children=[
 
     html.Img(
         alt='Customized Portal',
-        src='/Docs/assets/dds/manager-settings-portal.png',
+        src=tools.relpath('/assets/images/dds/manager-settings-portal.png'),
         style={
             'width': '100%', 'border': 'thin lightgrey solid',
             'border-radius': '4px'
@@ -3240,7 +3240,7 @@ Portal = html.Div(children=[
 
     html.Img(
         alt='Customized Portal',
-        src='/Docs/assets/dds/custom-portal.png',
+        src=tools.relpath('/assets/images/dds/custom-portal.png'),
         style={
             'width': '100%', 'border': 'thin lightgrey solid',
             'border-radius': '4px'
@@ -3269,7 +3269,7 @@ AdminPanel = html.Div(children=[
 
     html.Img(
         alt='DDS admin panel link',
-        src='/Docs/assets/dds/dash-enterprise-admin-panel-link.png',
+        src=tools.relpath('/assets/images/dds/dash-enterprise-admin-panel-link.png'),
         style={
             'width': '100%', 'border': 'thin lightgrey solid',
             'border-radius': '4px'
@@ -3291,7 +3291,7 @@ AdminPanel = html.Div(children=[
 
     html.Img(
         alt='Users summary section',
-        src='/Docs/assets/dds/admin-users-screen-table.png',
+        src=tools.relpath('/assets/images/dds/admin-users-screen-table.png'),
         style={
             'width': '100%', 'border': 'thin lightgrey solid',
             'border-radius': '4px'
@@ -3310,7 +3310,7 @@ AdminPanel = html.Div(children=[
 
     html.Img(
         alt='Modify user section',
-        src='/Docs/assets/dds/admin-change-user-section.png',
+        src=tools.relpath('/assets/images/dds/admin-change-user-section.png'),
         style={
             'width': '100%', 'border': 'thin lightgrey solid',
             'border-radius': '4px'
@@ -3349,7 +3349,7 @@ Analytics = html.Div(children=[
 
     html.Img(
         alt='App Analytics',
-        src='/Docs/assets/dds/analytics.png',
+        src=tools.relpath('/assets/images/dds/analytics.png'),
         style={
             'width': '100%', 'border': 'thin lightgrey solid',
             'border-radius': '4px'
@@ -3386,7 +3386,7 @@ Logs = html.Div(children=[
 
     html.Img(
         alt='App Logs',
-        src='/Docs/assets/dds/logs.png',
+        src=tools.relpath('/assets/images/dds/logs.png'),
         style={
             'width': '100%', 'border': 'thin lightgrey solid',
             'border-radius': '4px'
