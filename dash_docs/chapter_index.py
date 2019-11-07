@@ -615,6 +615,18 @@ URLS = [
             },
 
             {
+                'url': '/persistence',
+                'content': tutorial.persistence.layout,
+                'name': 'Persisting User Preferences & Control Values',
+                'description': '''
+                    (Released September 2019 with Dash 1.3) Save user choices
+                    across page reloads, or just when removing and re-adding a
+                    component. Learn how to use persistence, and how to enable it
+                    in components you write yourself.
+                '''
+            },
+
+            {
                 'url': '/devtools',
                 'content': tutorial.devtools.layout,
                 'name': 'Dev tools',
