@@ -259,7 +259,7 @@ component = {}
                          href=tools.relpath('/{}/{}'.format(
                              library_name.replace('_', '-'),
                              component_name.lower())),
-                id=component_name.replace(' ', '-').lower()),
+                id=component_name.replace(' ', '-').lower())),
 
         dcc.Markdown(description),
 
@@ -270,7 +270,7 @@ component = {}
         dcc.Link('More {} Examples and Reference'.format(component_name),
                  href=tools.relpath('/{}/{}'.format(
                      library_name.replace('_', '-'),
-                     component_name.lower()))
+                     component_name.lower())))
     ]
 
 
