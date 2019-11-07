@@ -70,7 +70,7 @@ def generate_code_container(
         html.Hr(),
 
         html.H3(dcc.Link(component_name,
-                         href='/Docs/{}/{}'.format(
+                         href=tools.relpath('/{}/{}'.format(
                              library_name,
                              component_name.lower())),
                 id=component_name.replace(' ', '-').lower()),
@@ -84,7 +84,7 @@ def generate_code_container(
         html.Br(), 
         
         dcc.Link('More {} Examples and Reference'.format(component_name),
-                 href='/Docs/{}/{}'.format(
+                 href=tools.relpath('/{}/{}'.format(
                      library_name,
                      component_name.lower()))
     ]
