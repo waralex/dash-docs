@@ -35,9 +35,9 @@ header = html.Div(
 
             html.Div(className='links', children=[
                 html.A('pricing', className='link', href='https://plot.ly/dash/pricing'),
-                html.A('user guide', className='link active', href='/Docs/'),
+                html.A('user guide', className='link active', href=tools.relpath('/')),
                 html.A('plotly', className='link', href='https://plot.ly/'),
-                html.A(children=[html.I(className="fa fa-search")], className='link', href='/Docs/search')
+                html.A(children=[html.I(className="fa fa-search")], className='link', href=tools.relpath('/search'))
             ])
         ]
     )

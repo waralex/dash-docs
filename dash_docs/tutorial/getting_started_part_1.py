@@ -232,7 +232,7 @@ HTML tag as well as keyword arguments for all of the HTML arguments.
         You can view all of the available components in the
     ''', dcc.Link(
         'Dash Core Components Gallery',
-        href='/Docs/dash-core-components'
+        href=tools.relpath('/dash-core-components')
     )]),
 
     Syntax(
@@ -298,13 +298,13 @@ class Dropdown(dash.development.base_component.Component)
         html.Li(
             dcc.Link(
                 [html.Code('dash_core_components'), ' gallery'],
-                href='/Docs/dash-core-components'
+                href=tools.relpath('/dash-core-components')
             )
         ),
         html.Li(
             dcc.Link(
                 [html.Code('dash_html_components'), ' gallery'],
-                href='/Docs/dash-html-components'
+                href=tools.relpath('/dash-html-components')
             )
         )
     ]),

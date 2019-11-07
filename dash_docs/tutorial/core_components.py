@@ -37,7 +37,7 @@ layout = html.Div(className="gallery", children=[
     style=styles.code_container),
 
     html.Hr(),
-    html.H3(dcc.Link('Dropdown', href='/Docs/dash-core-components/dropdown')),
+    html.H3(dcc.Link('Dropdown', href=tools.relpath('/dash-core-components/dropdown'))),
     ComponentBlock('''import dash_core_components as dcc
 
 dcc.Dropdown(
@@ -66,7 +66,7 @@ dcc.Dropdown(
 
     html.Hr(),
 
-    html.H3(dcc.Link('Slider', href='/Docs/dash-core-components/slider')),
+    html.H3(dcc.Link('Slider', href=tools.relpath('/dash-core-components/slider'))),
     ComponentBlock('''import dash_core_components as dcc
 
 dcc.Slider(
@@ -90,7 +90,7 @@ dcc.Slider(
 
     html.Hr(),
 
-    html.H3(dcc.Link('RangeSlider', href='/Docs/dash-core-components/rangeslider')),
+    html.H3(dcc.Link('RangeSlider', href=tools.relpath('/dash-core-components/rangeslider'))),
     ComponentBlock('''import dash_core_components as dcc
 
 dcc.RangeSlider(
@@ -115,7 +115,7 @@ dcc.RangeSlider(
 
     html.Hr(),
 
-    html.H3(dcc.Link('Input', href='/Docs/dash-core-components/input')),
+    html.H3(dcc.Link('Input', href=tools.relpath('/dash-core-components/input'))),
     ComponentBlock('''import dash_core_components as dcc
 
 dcc.Input(
@@ -129,7 +129,7 @@ dcc.Input(
 
     html.Hr(),
 
-    html.H3(dcc.Link('Textarea', href='/Docs/dash-core-components/textarea')),
+    html.H3(dcc.Link('Textarea', href=tools.relpath('/dash-core-components/textarea'))),
     ComponentBlock('''import dash_core_components as dcc
 
 dcc.Textarea(
@@ -145,7 +145,7 @@ dcc.Textarea(
 
     html.Hr(),
 
-    html.H3(dcc.Link('Checkboxes', href='/Docs/dash-core-components/checklist')),
+    html.H3(dcc.Link('Checkboxes', href=tools.relpath('/dash-core-components/checklist'))),
     ComponentBlock('''import dash_core_components as dcc
 
 dcc.Checklist(
@@ -173,7 +173,7 @@ dcc.Checklist(
     dcc.Link(html.A('Checklist Properties'),
              href="/Docs/dash-core-components/checklist"),
     html.Hr(),
-    html.H3(dcc.Link('Radio Items', href='/Docs/dash-core-components/radioitems')),
+    html.H3(dcc.Link('Radio Items', href=tools.relpath('/dash-core-components/radioitems'))),
     ComponentBlock('''import dash_core_components as dcc
 
 dcc.RadioItems(
@@ -202,7 +202,7 @@ dcc.RadioItems(
 
     html.Hr(),
 
-    html.H3(dcc.Link('Button', href='/Docs/dash-core-components/button')),
+    html.H3(dcc.Link('Button', href=tools.relpath('/dash-core-components/button'))),
     dcc.Markdown(
         examples['button'][0],
         style=styles.code_container
@@ -215,13 +215,13 @@ dcc.RadioItems(
         'For more on ',
         html.Code('dash.dependencies.State'),
         ', see the tutorial on ',
-        dcc.Link('Dash State', href='/Docs/state'),
+        dcc.Link('Dash State', href=tools.relpath('/state')),
         '.'
     ]),
 
     html.Hr(),
 
-    html.H3(dcc.Link('DatePickerSingle', href='/Docs/dash-core-components/datepickersingle')),
+    html.H3(dcc.Link('DatePickerSingle', href=tools.relpath('/dash-core-components/datepickersingle'))),
     ComponentBlock('''import dash_core_components as dcc
 from datetime import datetime as dt
 
@@ -234,7 +234,7 @@ dcc.DatePickerSingle(
              href="/Docs/dash-core-components/datepickersingle"),
     html.Hr(),
 
-    html.H3(dcc.Link('DatePickerRange', href='/Docs/dash-core-components/datepickerrange')),
+    html.H3(dcc.Link('DatePickerRange', href=tools.relpath('/dash-core-components/datepickerrange'))),
     ComponentBlock('''import dash_core_components as dcc
 from datetime import datetime as dt
 
@@ -250,7 +250,7 @@ dcc.DatePickerRange(
 
     html.Hr(),
 
-    html.H3(dcc.Link('Markdown', href='/Docs/dash-core-components/markdown')),
+    html.H3(dcc.Link('Markdown', href=tools.relpath('/dash-core-components/markdown'))),
     ComponentBlock('''import dash_core_components as dcc
 
     dcc.Markdown(\'\'\'
@@ -303,7 +303,7 @@ dcc.DatePickerRange(
     ***
     '''.replace('    ', '')),
 
-    html.H3(dcc.Link('Upload Component', href='/Docs/dash-core-components/upload')),
+    html.H3(dcc.Link('Upload Component', href=tools.relpath('/dash-core-components/upload'))),
     dcc.Markdown('''
 
     The `dcc.Upload` component allows users to upload files into your app
@@ -343,7 +343,7 @@ dcc.DatePickerRange(
 
     html.Hr(),
 
-    html.H3(dcc.Link('Graphs', href='/Docs/dash-core-components/graph')),
+    html.H3(dcc.Link('Graphs', href=tools.relpath('/dash-core-components/graph'))),
     dcc.Markdown('''
     The `Graph` component shares the same syntax as the open-source
     `plotly.py` library. View the [plotly.py docs](https://plot.ly/python)
@@ -398,7 +398,7 @@ dcc.Graph(
 
     dcc.Markdown('***'),
 
-    html.H3(dcc.Link('ConfirmDialog', href='/Docs/dash-core-components/confirm')),
+    html.H3(dcc.Link('ConfirmDialog', href=tools.relpath('/dash-core-components/confirm'))),
 
     dcc.Markdown('''
 The `dcc.ConfirmDialog` component send a dialog to the browser
@@ -417,7 +417,7 @@ confirm = dcc.ConfirmDialog(
     html.Br(),
 
     dcc.Link('More ConfirmDialog Examples and Reference',
-             href='/Docs/dash-core-components/confirm'),
+             href=tools.relpath('/dash-core-components/confirm')),
 
     html.Br(),
     dcc.Markdown('***'),
@@ -441,13 +441,13 @@ confirm = dcc.ConfirmDialogProvider(
     html.Br(),
 
     dcc.Link('More ConfirmDialogProvider Examples and Reference',
-             href='/Docs/dash-core-components/confirm-provider'),
+             href=tools.relpath('/dash-core-components/confirm-provider')),
 
     html.Br(),
 
     dcc.Markdown('***'),
 
-    html.H3(dcc.Link('Store', href='/Docs/dash-core-components/store')),
+    html.H3(dcc.Link('Store', href=tools.relpath('/dash-core-components/store'))),
 
     dcc.Markdown('''
     The store component can be used to keep data in the visitor's browser.
@@ -471,13 +471,13 @@ confirm = dcc.ConfirmDialogProvider(
     dcc.Markdown('_The store must be used with callbacks_'),
 
     dcc.Link('More Store Examples and Reference',
-             href='/Docs/dash-core-components/store'),
+             href=tools.relpath('/dash-core-components/store')),
 
     html.Br(),
 
     dcc.Markdown('***'),
     html.H3(dcc.Link('Logout Button',
-                     href='/Docs/dash-core-components/logout_button')),
+                     href=tools.relpath('/dash-core-components/logout_button'))),
 
     dcc.Markdown('''
     The logout button can be used to perform logout mechanism.
@@ -490,7 +490,7 @@ confirm = dcc.ConfirmDialogProvider(
     '''),
 
     dcc.Link('More Logout Button Examples and Reference',
-             href='/Docs/dash-core-components/logout_button'),
+             href=tools.relpath('/dash-core-components/logout_button')),
 
     html.Div(id='hidden', style={'display': 'none'}),
 
@@ -498,7 +498,7 @@ confirm = dcc.ConfirmDialogProvider(
 
     dcc.Markdown('***'),
     html.H3(dcc.Link('Loading component',
-                     href='/Docs/dash-core-components/loading_component')),
+                     href=tools.relpath('/dash-core-components/loading_component'))),
 
     dcc.Markdown('''
     The Loading component can be used to wrap components that you want to display a spinner for, if they take too long to load.
@@ -515,11 +515,11 @@ confirm = dcc.ConfirmDialogProvider(
     ''')),
 
     dcc.Link('More Loading Component Examples and Reference',
-             href='/Docs/dash-core-components/loading_component'),
+             href=tools.relpath('/dash-core-components/loading_component')),
 
     dcc.Markdown('***'),
 
-    html.H3(dcc.Link('Location', href='/Docs/dash-core-components/location')),
+    html.H3(dcc.Link('Location', href=tools.relpath('/dash-core-components/location'))),
 
     dcc.Markdown('''
     The location component represents the location bar in your web browser. Through its `href`, `pathname`,
@@ -544,7 +544,7 @@ confirm = dcc.ConfirmDialogProvider(
     html.Br(),
 
     dcc.Link('More Location Examples and Reference',
-             href='/Docs/dash-core-components/location'),
+             href=tools.relpath('/dash-core-components/location')),
 
     html.Br(),
 ])
