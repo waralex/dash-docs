@@ -13,7 +13,7 @@ layout = [reusable_components.Markdown('''
 
     There are two new components that aid page navigation:
 <<<<<<< HEAD:dash_docs/tutorial/urls.py
-    [`dash_core_components.Location`](/Docs/dash-core-components/location) and `dash_core_components.Link`.
+    [`dash_core_components.Location`](/dash-core-components/location) and `dash_core_components.Link`.
 =======
     [`dash_core_components.Location`](/dash-core-components/location) and [`dash_core_components.Link`](dash-core-components/link).
 >>>>>>> master:tutorial/urls.py

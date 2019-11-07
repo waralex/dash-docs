@@ -20,11 +20,11 @@ layout = html.Div([
     reusable_components.Markdown('''
     # Interactive Visualizations
 
-    > This is the *5th* chapter of the [Dash Tutorial](/Docs/).
-    > The [previous chapter](/Docs/state) covered callbacks with `State` and `PreventUpdate`.
-    > The [next chapter](/Docs/sharing-data-between-callbacks) describes how to
+    > This is the *5th* chapter of the [Dash Tutorial](/).
+    > The [previous chapter](/state) covered callbacks with `State` and `PreventUpdate`.
+    > The [next chapter](/sharing-data-between-callbacks) describes how to
     > share data between callbacks.
-    > Just getting started? Make sure to [install the necessary dependencies](/Docs/installation).
+    > Just getting started? Make sure to [install the necessary dependencies](/installation).
 
     The `dash_core_components` library includes a component called `Graph`.
 

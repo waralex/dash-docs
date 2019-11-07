@@ -252,7 +252,7 @@ layout = html.Div([
         style=styles.code_container),
 
     reusable_components.Markdown('''
-    or, if you are using [Dash Enterprise, you can keep your environment variables secret (view the docs)](/Docs/dash-enterprise/environment-variables).
+    or, if you are using [Dash Enterprise, you can keep your environment variables secret (view the docs)](/dash-enterprise/environment-variables).
 
     '''.replace('   ', '')),
 

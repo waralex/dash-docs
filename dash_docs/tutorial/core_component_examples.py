@@ -550,7 +550,7 @@ reusable_components.Markdown('''
     ComponentBlock("""import dash_core_components as dcc
 
 reusable_components.Markdown('''
-[Dash User Guide](/Docs/)
+[Dash User Guide](/)
 ''')"""),
     html.Hr(),
     html.H3("Inline Code"),
@@ -1074,7 +1074,7 @@ dcc.DatePickerSingle(
 # Link
 Link = html.Div(children=[
     html.H3('Link Example'),
-    reusable_components.Markdown('To learn more about links, see the chapter on [Dash URLs](/Docs/urls)'),
+    reusable_components.Markdown('To learn more about links, see the chapter on [Dash URLs](/urls)'),
     html.H3('Link Properties'),
     generate_prop_info('Link')
 ])
@@ -1116,7 +1116,7 @@ Tabs = html.Div(children=[
     reusable_components.Markdown('''
     In the example above, our callback contains all of the content. In practice,
     we'll keep the tab's content in separate files and import the data.
-    For an example, see the [URLs and Multi-Page App Tutorial](/Docs/urls).
+    For an example, see the [URLs and Multi-Page App Tutorial](/urls).
     '''),
 
     html.H2('Method 2. Content as Tab Children'),
@@ -1155,7 +1155,7 @@ Tabs = html.Div(children=[
     Notice how the container of the Tabs can be styled as well by supplying a class to the `parent_className` prop, which we use here to draw a border below it, positioning the actual Tabs (with padding) more in the center.
     We also added `display: flex` and `justify-content: center` to the regular `Tab` components, so that labels with multiple lines will not break the flow of the text.
 
-    The corresponding CSS file (`assets/tabs.css`) looks like this. Save the file in an `assets` folder (it can be named anything you want). Dash will automatically include this CSS when the app is loaded. [Learn more about including CSS in your app here.](/Docs/external-resources)
+    The corresponding CSS file (`assets/tabs.css`) looks like this. Save the file in an `assets` folder (it can be named anything you want). Dash will automatically include this CSS when the app is loaded. [Learn more about including CSS in your app here.](/external-resources)
     '''),
 
     reusable_components.Markdown(
@@ -1279,7 +1279,7 @@ ConfirmDialog = html.Div([
 ConfirmDialogProvider = html.Div([
     html.H1('ConfirmDialogProvider component'),
     reusable_components.Markdown('''
-    Send a [ConfirmDialog](/Docs/dash-core-components/confirm) when the user
+    Send a [ConfirmDialog](/dash-core-components/confirm) when the user
     clicks the children of this component, usually a button.
     '''),
     Syntax(examples['confirm-provider'][0]),
@@ -1378,7 +1378,7 @@ LoadingComponent = html.Div([
     Syntax(examples['loading_component'][0]),
     Example(examples['loading_component'][1]),
     reusable_components.Markdown('''
-    Please also check out [this section on loading states](/Docs/loading-states) if you want a more customizable experience.
+    Please also check out [this section on loading states](/loading-states) if you want a more customizable experience.
     '''),
     generate_prop_info('Loading')
 ])

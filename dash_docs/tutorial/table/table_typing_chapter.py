@@ -52,7 +52,7 @@ layout = html.Div([
 
     The following types are supported by all types:
     - `input`: a text input field
-    - `dropdown`: see [DataTable Dropdowns](/Docs/datatable/dropdowns) for more details
+    - `dropdown`: see [DataTable Dropdowns](/datatable/dropdowns) for more details
 
     Additional presentations will be added in the future.
 
@@ -67,7 +67,7 @@ layout = html.Div([
     the input to make it fit with the expected data type. Specific validation cases can be
     configured on a per-column basis.
 
-    See the table's [reference](/Docs/datatable/reference) `on_change.action`, `on_change.failure`
+    See the table's [reference](/datatable/reference) `on_change.action`, `on_change.failure`
     and `validation` column nested properties for details.
     ''')),
 

@@ -81,7 +81,7 @@ layout = html.Div([
     reusable_components.Markdown('''
     # Cytoscape Event Callbacks
 
-    In [part 4](/Docs/cytoscape/callbacks), we showed how to update Cytoscape with
+    In [part 4](/cytoscape/callbacks), we showed how to update Cytoscape with
     other components by assigning callbacks that output to `'elements',
     'stylesheet', 'layout'`. Moreover, it is also possible to use properties
     of Cytoscape as an input to callbacks, which can be used to update other
@@ -91,7 +91,7 @@ layout = html.Div([
     `tapNode`, which returns a complete description of the node object when
     the user clicks or taps on a node, `mouseoverEdgeData`, which returns only
     the data dictionary of the edge that was most recently hovered by the user.
-    The complete list can be found in the [Dash Cytoscape Reference](/Docs/cytoscape/reference).
+    The complete list can be found in the [Dash Cytoscape Reference](/cytoscape/reference).
 
     ## Simple callback construction
 
@@ -465,7 +465,7 @@ layout = html.Div([
     reusable_components.Markdown('''
     To see more examples of events, check out the [event callbacks demo](https://dash-gallery.plotly.host/cytoscape-events)
     (the source file is available as [`usage-events.py`](https://github.com/plotly/dash-cytoscape/blob/master/usage-events.py) on the project repo)
-    and the [Cytoscape references](/Docs/cytoscape/reference).
+    and the [Cytoscape references](/cytoscape/reference).
     ''')
 
 ])
