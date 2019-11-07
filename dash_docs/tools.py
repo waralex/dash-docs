@@ -9,6 +9,19 @@ else:
     from server import app
 
 
+def relpath(path):
+    if 'DASH_DOCS_URL_PREFIX' in os.environ:
+        # In enterprise docs, all assets are under `/Docs`
+        if path.startswith('/assets'):
+            return '/Docs{}'.format(path)
+        return '{}{}{}'.format(
+            '/Docs',
+            os.environ['DASH_DOCS_URL_PREFIX'],
+            path
+        )
+    return path
+
+
 def exception_handler(func):
     def wrapper(path):
         try:
