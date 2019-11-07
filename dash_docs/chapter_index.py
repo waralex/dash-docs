@@ -8,7 +8,7 @@ import dash_cytoscape
 import dash_bio
 
 from .reusable_components import TOC, TOCChapters
-
+from dash_docs import tools
 
 ## The chapters dict is used to generate the dash-docs search index
 ## If edited, update the search index by running `python dash_search_index.py`
@@ -18,7 +18,7 @@ from .reusable_components import TOC, TOCChapters
 def component_list(package, content_module, base_url, import_alias):
     return [
         {
-            'url': '/Docs/{}/{}'.format(base_url, component.lower()),
+            'url': tools.relpath('/{}/{}'.format(base_url, component.lower())),
             'name': '{}.{}'.format(import_alias, component),
             'content': (
                 getattr(content_module, component)
