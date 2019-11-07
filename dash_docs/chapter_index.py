@@ -383,30 +383,11 @@ URLS = [
                     }
                 ] + component_list(
                     dash_bio,
-                    None,
+                    tutorial.dashbio_examples,
                     'dash-bio',
                     'dash_bio'
                 )
             },
-            # {
-            #     'name': 'Dash Bio',
-            #     'chapters': [
-            #         {
-            #             'url': '/dash-bio/',
-            #             'name': 'Overview',
-            #             'content': tutorial.dashbio.layout,
-            #             'description': (
-            #                 'Components dedicated to visualizing bioinformatics data.'
-            #             )
-            #         }
-            #     ] +
-            #     # component_list(
-            #     #     dash_bio,
-            #     #     tutorial.dashbio_examples,
-            #     #     'dash-bio',
-            #     #     'dash_bio'
-            #     # )
-            # },
 
             {
                 'name': 'Dash DAQ',
