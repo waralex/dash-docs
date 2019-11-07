@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from dash import Dash
 
-from flask import Flask, redirect
+from flask import Flask, redirect, escape
 
 import os
 
@@ -34,3 +34,9 @@ def redirectMigration():
 @server.route('/gallery')
 def redirectGallery():
     return redirect("https://dash-gallery.plotly.host/Portal/", code=302)
+
+
+@server.route('/dash-deployment-server/<path:subpath>')
+def redirectToEnterprise(subpath):
+    # show the subpath after /path/
+    return redirect('/dash-enterprise/{}'.format(escape(subpath)), code=302)
