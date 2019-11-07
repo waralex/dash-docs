@@ -27,7 +27,7 @@ preamble = html.Div([
     ),
 
     dcc.Markdown(dedent('''
-    > **New! Released on February 5th, 2019**
+    > Released on February 5th, 2019**
     >
     > Dash Cytoscape is a graph visualization component for creating easily
     > customizable, high-performance, interactive, and web-based networks. It
@@ -37,7 +37,7 @@ preamble = html.Div([
     > Dash components, as well as established computational biology and network
     > science libraries such as Biopython and networkX.
     >
-    > -- xhlulu
+    > -- xhlulu and the Dash Team
     ''')),
 
     Section('Quickstart', [
