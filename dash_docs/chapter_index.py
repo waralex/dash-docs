@@ -83,7 +83,7 @@ URLS = [
                 'content': tutorial.introduction.layout
             },
             {
-                'url': 'http://eepurl.com/dE7CHT',
+                'url': 'https://go.plot.ly/dash-club',
                 'name': 'Dash Club',
                 'description': '''
                     An email newsletter by chriddyp, the creator of Dash.
