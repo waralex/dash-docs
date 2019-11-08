@@ -24,7 +24,6 @@ layout = html.Div([
     reusable_components.Markdown('''
     ```shell
     pip install dash=={}  # The core dash backend
-    pip install dash-daq=={}  # DAQ components (newly open-sourced!)
     ```
     '''.format(
         dash.__version__,
