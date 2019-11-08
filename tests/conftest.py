@@ -3,7 +3,7 @@ from itertools import groupby
 import pytest
 from dash.testing.browser import Browser
 from dash.testing.application_runners import ProcessRunner
-from tutorial.chapter_index import chapters
+from dash_docs.chapter_index import URLS, URL_TO_CONTENT_MAP
 
 
 @pytest.fixture(scope="session")
