@@ -731,6 +731,14 @@ def create_url_mapping(url_set):
             create_url_mapping(section['chapters'])
 create_url_mapping(URLS)
 
+URL_TO_META_MAP = {}
+def create_meta_map(url_set):
+    for section in url_set:
+        if 'url' in section:
+            URL_TO_META_MAP[section['url'].rstrip('/')] = section
+        if 'chapters' in section:
+            create_meta_map(section['chapters'])
+create_meta_map(URLS)
 
 def find_section(url_set, name):
     for section in url_set:
