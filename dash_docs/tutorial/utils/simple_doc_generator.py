@@ -4,6 +4,7 @@ import dash_html_components as html
 from dash_docs import styles
 from dash_docs.tutorial.utils.component_block import ComponentBlock
 from dash_docs import reusable_components
+from dash_docs import tools
 
 def generate_code_container(
         component_name,

@@ -7,7 +7,7 @@ import dash_daq
 import dash_cytoscape
 import dash_bio
 
-from dash_docs import reusable_components
+from dash_docs import reusable_components, tools
 from .reusable_components import TOC, TOCChapters
 
 ## The chapters dict is used to generate the dash-docs search index

@@ -7,7 +7,7 @@ from dash_docs.tools import load_example
 import dash_daq as daq
 
 from dash_docs.tutorial.utils.simple_doc_generator import generate_docs
-from dash_docs import reusable_components
+from dash_docs import reusable_components, tools
 
 daq_library_heading =  reusable_components.Markdown('''
     # Dash DAQ

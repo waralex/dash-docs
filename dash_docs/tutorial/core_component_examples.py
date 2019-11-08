@@ -501,7 +501,7 @@ Markdown = html.Div(children=[
     html.H3("Headers"),
     ComponentBlock("""import dash_core_components as dcc
 
-reusable_components.Markdown('''
+dcc.Markdown('''
 
 # This is an <h1> tag
 
@@ -512,7 +512,7 @@ reusable_components.Markdown('''
     html.H3("Emphasis"),
     ComponentBlock("""import dash_core_components as dcc
 
-reusable_components.Markdown('''
+dcc.Markdown('''
 *This text will be italic*
 
 _This will also be italic_
@@ -529,7 +529,7 @@ _You **can** combine them_
     html.H3("Unordered"),
     ComponentBlock("""import dash_core_components as dcc
 
-reusable_components.Markdown('''
+dcc.Markdown('''
 * Item 1
 * Item 2
   * Item 2a
@@ -539,7 +539,7 @@ reusable_components.Markdown('''
     html.H3("Block Quotes"),
     ComponentBlock("""import dash_core_components as dcc
 
-reusable_components.Markdown('''
+dcc.Markdown('''
 >
 > Block quotes are used to highlight text.
 >
@@ -549,7 +549,7 @@ reusable_components.Markdown('''
     html.H3("Links"),
     ComponentBlock("""import dash_core_components as dcc
 
-reusable_components.Markdown('''
+dcc.Markdown('''
 [Dash User Guide](/)
 ''')"""),
     html.Hr(),
@@ -561,7 +561,7 @@ reusable_components.Markdown('''
     ````py
     import dash_core_components as dcc
 
-    reusable_components.Markdown('''
+    dcc.Markdown('''
 
     Inline code snippet: `True`
 

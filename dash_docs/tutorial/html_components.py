@@ -61,7 +61,7 @@ layout = html.Div(children=[
     ```py
     import dash_core_components as dcc
 
-    reusable_components.Markdown(\'\'\'
+    dcc.Markdown(\'\'\'
     #### Dash and Markdown
 
     Dash supports [Markdown](http://commonmark.org/help).

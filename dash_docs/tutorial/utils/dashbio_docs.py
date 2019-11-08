@@ -7,7 +7,7 @@ import dash_core_components as dcc
 import dash_html_components as html
 import dash_bio
 
-from dash_docs import styles
+from dash_docs import styles, tools
 from dash_docs.tutorial.utils.component_block import ComponentBlock
 from dash_docs.tutorial.utils.convert_props_to_list import generate_prop_info
 from dash_docs import reusable_components

@@ -1,5 +1,6 @@
 import dash_core_components as dcc
 from dash_docs import tools
+import re
 
 # Use our own Markdown function so that we can
 # use `relpath` for the embedded URLs

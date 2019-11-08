@@ -253,7 +253,7 @@ dcc.DatePickerRange(
     html.H3(dcc.Link('Markdown', href=tools.relpath('/dash-core-components/markdown'))),
     ComponentBlock('''import dash_core_components as dcc
 
-    reusable_components.Markdown(\'\'\'
+    dcc.Markdown(\'\'\'
     #### Dash and Markdown
 
     Dash supports [Markdown](http://commonmark.org/help).

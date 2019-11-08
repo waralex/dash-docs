@@ -8,7 +8,7 @@ import dash_daq
 
 import plotly
 
-from dash_docs import styles
+from dash_docs import styles, tools
 from dash_docs import reusable_components
 
 layout = html.Div([

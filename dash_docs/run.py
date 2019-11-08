@@ -9,7 +9,8 @@ from dash.dependencies import Input, Output
 from .server import app, server
 
 from .import chapter_index
-from .tutorial import home
+from dash_docs import tools
+from dash_docs.tutorial import home
 
 
 def create_contents(contents):
