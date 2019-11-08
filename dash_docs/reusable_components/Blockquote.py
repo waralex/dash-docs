@@ -5,4 +5,13 @@ def s(string_block):
     return string_block.replace('    ', '')
 
 def Blockquote():
-    return html.Div()
+    return dcc.Markdown(s(
+    '''
+    > This documentation is for the
+    [Dash Enterprise](https://plot.ly/dash),
+    Plotly's commercial platform for managing and improving
+    Dash applications in your organization.
+    [View the docs](/dash-enterprise/) or
+    [request a trial](https://go.plot.ly/dash-doc).
+    '''
+    ))
