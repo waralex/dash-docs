@@ -50,7 +50,7 @@ def update_figure(selected_year):
 
     return {
         'data': traces,
-        'layout': go.Layout(
+        'layout': dict(
             xaxis={'type': 'log', 'title': 'GDP Per Capita'},
             yaxis={'title': 'Life Expectancy', 'range': [20, 90]},
             margin={'l': 40, 'b': 40, 't': 10, 'r': 10},
