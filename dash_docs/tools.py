@@ -1,8 +1,6 @@
 import os
 import re
 
-print('====== tools ======')
-
 if os.environ.get('DASH_APP_LOCATION', '') != 'ABSOLUTE':
     from .server import app
 else:
