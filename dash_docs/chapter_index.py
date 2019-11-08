@@ -679,14 +679,14 @@ URLS = [
         'name': 'Dash Enterprise',
         'description': (
             """
-            Dash Enterprise is Plotly's commercial offering for hosting
-            and sharing Dash apps on-premises or in the cloud.
+            Dash Enterprise is Plotly's commercial offering for managing
+            and improving your Dash apps in your organization.
             """
         ),
         'chapters': [
             {
                 'name': 'About Dash Enterprise',
-                'url': 'https://plot.ly/dash/pricing'
+                'url': 'https://plot.ly/dash/'
             },
             {
                 'name': 'Dash Enterprise Documentation',

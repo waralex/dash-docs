@@ -1568,10 +1568,10 @@ Cli = html.Div(children=[
     rc.Blockquote(),
 
     reusable_components.Markdown('''
-    After setting up SSH authentication (see our [ssh doc](/dash-deployment-server/ssh)), you will
+    After setting up SSH authentication (see our [ssh doc](/dash-enterprise/ssh)), you will
     be able to use the commands below to help manage your apps from the command line.
 
-    All commands are performed using `ssh dokku@your-dash-deployment-server -p PORT command flags appname` where
+    All commands are performed using `ssh dokku@your-dash-enterprise -p PORT command flags appname` where
     `PORT` is the ssh port for DDS (usually 3022). DDS will compare the private key supplied to the ssh command
     and the public key uploaded to DDS in order to authenticate the user initiating the request.
 
@@ -1604,7 +1604,7 @@ Cli = html.Div(children=[
         **Example:**
 
 
-        `ssh dokku@your-dash-deployment-server -p PORT apps:lock my-dash-app`
+        `ssh dokku@your-dash-enterprise -p PORT apps:lock my-dash-app`
 
 
         &nbsp;
@@ -1623,7 +1623,7 @@ Cli = html.Div(children=[
         someone with access to the Dash Enterprise server console.
 
         **Example:**
-        `ssh dokku@your-dash-deployment-server -p PORT apps:unlock my-dash-app`
+        `ssh dokku@your-dash-enterprise -p PORT apps:unlock my-dash-app`
 
         &nbsp;
         # ''')]),
@@ -1636,7 +1636,7 @@ Cli = html.Div(children=[
         You can get logs of an app using the logs command:
 
         **Example:**
-        `ssh dokku@your-dash-deployment-server -p PORT logs my-dash-app`
+        `ssh dokku@your-dash-enterprise -p PORT logs my-dash-app`
 
         `logs` also support following flags:
 
@@ -1649,7 +1649,7 @@ Cli = html.Div(children=[
 
         You can use these flags as follows:
 
-        `ssh dokku@your-dash-deployment-server -p PORT logs my-dash-app -t -p web`
+        `ssh dokku@your-dash-enterprise -p PORT logs my-dash-app -t -p web`
 
         &nbsp;
         ''')]),
@@ -1664,7 +1664,7 @@ Cli = html.Div(children=[
 
         **Example:**
 
-        `ssh dokku@your-dash-deployment-server -p PORT logs:failed my-dash-app`
+        `ssh dokku@your-dash-enterprise -p PORT logs:failed my-dash-app`
 
         &nbsp;
         ''')]),
@@ -1678,7 +1678,7 @@ Cli = html.Div(children=[
 
         **Example:**
 
-        `ssh dokku@your-dash-deployment-server -p PORT ps:rebuild my-dash-app`
+        `ssh dokku@your-dash-enterprise -p PORT ps:rebuild my-dash-app`
 
         &nbsp;
         ''')]),
@@ -1692,7 +1692,7 @@ Cli = html.Div(children=[
 
         **Example:**
 
-        `ssh dokku@your-dash-deployment-server -p PORT ps:report my-dash-app`
+        `ssh dokku@your-dash-enterprise -p PORT ps:report my-dash-app`
 
         You can also retrieve a specific piece of service info via flags:
         ```
@@ -1703,7 +1703,7 @@ Cli = html.Div(children=[
         --restart-policy    # Display the restart policy for the app
         ```
 
-        `ssh dokku@your-dash-deployment-server -p PORT ps:report my-dash-app --processes`
+        `ssh dokku@your-dash-enterprise -p PORT ps:report my-dash-app --processes`
 
         &nbsp;
         ''')]),
@@ -1717,7 +1717,7 @@ Cli = html.Div(children=[
 
             **Example:**
 
-            `ssh dokku@your-dash-deployment-server -p PORT ps:restart my-dash-app`
+            `ssh dokku@your-dash-enterprise -p PORT ps:restart my-dash-app`
 
             &nbsp;
             ''')
@@ -1733,7 +1733,7 @@ Cli = html.Div(children=[
 
             **Example:**
 
-            `ssh dokku@your-dash-deployment-server -p PORT ps:stop my-dash-app`
+            `ssh dokku@your-dash-enterprise -p PORT ps:stop my-dash-app`
 
             &nbsp;
         ''')
@@ -1748,7 +1748,7 @@ Cli = html.Div(children=[
 
             **Example:**
 
-            `ssh dokku@your-dash-deployment-server -p PORT ps:start my-dash-app`
+            `ssh dokku@your-dash-enterprise -p PORT ps:start my-dash-app`
 
             &nbsp;
         ''')
@@ -1765,17 +1765,17 @@ Cli = html.Div(children=[
 
         **Example:**
 
-        `ssh dokku@your-dash-deployment-server -p PORT ps:scale my-dash-app web=1`
+        `ssh dokku@your-dash-enterprise -p PORT ps:scale my-dash-app web=1`
 
         This command can be used to scale multiple process types at the same time.
 
-        `ssh dokku@your-dash-deployment-server -p PORT ps:scale my-dash-app web=1 worker=1`
+        `ssh dokku@your-dash-enterprise -p PORT ps:scale my-dash-app web=1 worker=1`
 
         The ps:scale command with no process type argument will output
         the current scaling settings for an application:
 
         ```
-        ssh dokku@your-dash-deployment-server -p PORT ps:scale my-dash-app
+        ssh dokku@your-dash-enterprise -p PORT ps:scale my-dash-app
         -----> Scaling for my-dash-app
         -----> proctype           qty
         -----> --------           ---
@@ -1793,11 +1793,11 @@ Cli = html.Div(children=[
             &nbsp;
 
             List bind mounts for an app's container(s) (host:container).
-            See our doc on [mapping local directories](/dash-deployment-server/map-local-directories) for more info on
+            See our doc on [mapping local directories](/dash-enterprise/map-local-directories) for more info on
             how to set these up.
 
             **Example:**
-            `ssh dokku@your-dash-deployment-server -p PORT storage:list my-dash-app`
+            `ssh dokku@your-dash-enterprise -p PORT storage:list my-dash-app`
 
             &nbsp;
         ''')
@@ -1818,11 +1818,11 @@ Cli = html.Div(children=[
 
             **Example:**
 
-            `ssh dokku@your-dash-deployment-server -p PORT redis:export redis-db`
+            `ssh dokku@your-dash-enterprise -p PORT redis:export redis-db`
 
             You can redirect this output to a file:
 
-           `ssh dokku@your-dash-deployment-server -p PORT redis:export redis-db > db.dump`
+           `ssh dokku@your-dash-enterprise -p PORT redis:export redis-db > db.dump`
 
         ''')
     ]),
@@ -1836,7 +1836,7 @@ Cli = html.Div(children=[
 
             **Example:**
 
-            `ssh dokku@your-dash-deployment-server -p PORT redis:import redis-db < db.dump`
+            `ssh dokku@your-dash-enterprise -p PORT redis:import redis-db < db.dump`
 
             &nbsp;
         ''')
@@ -1851,21 +1851,21 @@ Cli = html.Div(children=[
 
             **Example:**
 
-            `ssh dokku@your-dash-deployment-server -p PORT redis:info redis-db`
+            `ssh dokku@your-dash-enterprise -p PORT redis:info redis-db`
 
             You can also retrieve a specific piece of service info via flags:
 
             ```
-            ssh dokku@your-dash-deployment-server -p PORT redis:info redis-db --config-dir
-            ssh dokku@your-dash-deployment-server -p PORT redis:info redis-db --data-dir
-            ssh dokku@your-dash-deployment-server -p PORT redis:info redis-db --dsn
-            ssh dokku@your-dash-deployment-server -p PORT redis:info redis-db --exposed-ports
-            ssh dokku@your-dash-deployment-server -p PORT redis:info redis-db --id
-            ssh dokku@your-dash-deployment-server -p PORT redis:info redis-db --internal-ip
-            ssh dokku@your-dash-deployment-server -p PORT redis:info redis-db --links
-            ssh dokku@your-dash-deployment-server -p PORT redis:info redis-db --service-root
-            ssh dokku@your-dash-deployment-server -p PORT redis:info redis-db --status
-            ssh dokku@your-dash-deployment-server -p PORT redis:info redis-db --version
+            ssh dokku@your-dash-enterprise -p PORT redis:info redis-db --config-dir
+            ssh dokku@your-dash-enterprise -p PORT redis:info redis-db --data-dir
+            ssh dokku@your-dash-enterprise -p PORT redis:info redis-db --dsn
+            ssh dokku@your-dash-enterprise -p PORT redis:info redis-db --exposed-ports
+            ssh dokku@your-dash-enterprise -p PORT redis:info redis-db --id
+            ssh dokku@your-dash-enterprise -p PORT redis:info redis-db --internal-ip
+            ssh dokku@your-dash-enterprise -p PORT redis:info redis-db --links
+            ssh dokku@your-dash-enterprise -p PORT redis:info redis-db --service-root
+            ssh dokku@your-dash-enterprise -p PORT redis:info redis-db --status
+            ssh dokku@your-dash-enterprise -p PORT redis:info redis-db --version
             ```
 
             &nbsp;
@@ -1881,11 +1881,11 @@ Cli = html.Div(children=[
 
             **Example:**
 
-            `ssh dokku@your-dash-deployment-server -p PORT redis:logs redis-db`
+            `ssh dokku@your-dash-enterprise -p PORT redis:logs redis-db`
 
             By default, logs will not be tailed, but you can do this with the --tail flag:
 
-            `ssh dokku@your-dash-deployment-server -p PORT redis:logs redis-db --tail`
+            `ssh dokku@your-dash-enterprise -p PORT redis:logs redis-db --tail`
 
             &nbsp;
         ''')
@@ -1900,7 +1900,7 @@ Cli = html.Div(children=[
 
         **Example:**
 
-        `ssh dokku@your-dash-deployment-server -p PORT redis:restart redis-db`
+        `ssh dokku@your-dash-enterprise -p PORT redis:restart redis-db`
 
         &nbsp;
     ''')
@@ -1915,7 +1915,7 @@ Cli = html.Div(children=[
 
         **Example:**
 
-        `ssh dokku@your-dash-deployment-server -p PORT redis:stop redis-db`
+        `ssh dokku@your-dash-enterprise -p PORT redis:stop redis-db`
 
         &nbsp;
     ''')
@@ -1930,7 +1930,7 @@ Cli = html.Div(children=[
 
         **Example:**
 
-        `ssh dokku@your-dash-deployment-server -p PORT redis:start redis-db`
+        `ssh dokku@your-dash-enterprise -p PORT redis:start redis-db`
 
         &nbsp;
     ''')
@@ -1952,7 +1952,7 @@ Cli = html.Div(children=[
 
         **Example:**
 
-        `ssh dokku@your-dash-deployment-server -p PORT redis:link redis-db my-dash-app`
+        `ssh dokku@your-dash-enterprise -p PORT redis:link redis-db my-dash-app`
 
         &nbsp;
     ''')
@@ -1967,7 +1967,7 @@ Cli = html.Div(children=[
 
         **Example:**
 
-        `ssh dokku@your-dash-deployment-server -p PORT redis:unlink redis-db my-dash-app`
+        `ssh dokku@your-dash-enterprise -p PORT redis:unlink redis-db my-dash-app`
 
         &nbsp;
     ''')
@@ -2109,7 +2109,7 @@ AppPrivacy = html.Div(children=[
     Starting in Version 3.0.0 of Dash Enterprise, you can restrict
     who is able to view your app from the app's management page.
      This will also restrict who will be able to see it in the
-    [Dash App Portal](/dash-deployment-server/portal).
+    [Dash App Portal](/dash-enterprise/portal).
 
     Find a list of links to these pages for your apps at
     `https://<your-dash-enterprise>.com/Manager/apps`. Contact support
@@ -3195,7 +3195,7 @@ Portal = html.Div(children=[
 
     > Note that only users with access to your app will be able
     to see it in the portal. For more information about setting app pricacy
-    see [Dash App Privacy](/dash-deployment-server/privacy).
+    see [Dash App Privacy](/dash-enterprise/privacy).
 
     &nbsp;
 

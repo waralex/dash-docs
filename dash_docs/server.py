@@ -19,11 +19,11 @@ app.config.suppress_callback_exceptions = True
 
 @server.route('/deployment/on-premise')
 def redirectDDS():
-    return redirect("/dash-deployment-server", code=302)
+    return redirect("/dash-enterprise", code=302)
 
-@server.route('/dash-deployment-server/enviornment-variables')
+@server.route('/dash-enterprise/enviornment-variables')
 def redirectEnvVar():
-    return redirect("/dash-deployment-server/environment-variables", code=302)
+    return redirect("/dash-enterprise/environment-variables", code=302)
 
 
 @server.route('/dash-1-0-migration.')
@@ -36,7 +36,7 @@ def redirectGallery():
     return redirect("https://dash-gallery.plotly.host/Portal/", code=302)
 
 
-@server.route('/dash-deployment-server/<path:subpath>')
+@server.route('/dash-enterprise/<path:subpath>')
 def redirectToEnterprise(subpath):
     # show the subpath after /path/
     return redirect('/dash-enterprise/{}'.format(escape(subpath)), code=302)

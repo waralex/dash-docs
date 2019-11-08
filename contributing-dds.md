@@ -1,6 +1,6 @@
 # Dash Enterprise Documentation
 
-The Dash Enterprise documentation `/dash-deployment-server/` consists of a series of chapters relevant to Plotly Enterprise + DDS users. If you wish to contribute to these documents, please follow the instruction below.
+The Dash Enterprise documentation `/dash-enterprise/` consists of a series of chapters relevant to Plotly Enterprise + DDS users. If you wish to contribute to these documents, please follow the instruction below.
 
 ## Editing Existing Content
 
@@ -12,7 +12,7 @@ If you would like to edit or add content to an existing chapter (e.g. "Linking t
 
 Files that need edited include:
 - `tutorial/dash_deployment_server_examples.py` Home to chapter content.
-- `tutorial/dash_deployment_server.py` Defines the layout of `dash.plot.ly/dash-deployment-server/`
+- `tutorial/dash_deployment_server.py` Defines the layout of `dash.plot.ly/dash-enterprise/`
 - `tutorial/chapter_index.py` Defines the layout of `dash.plot.ly` and the search index.
 - `tests/test_intergration.py` Links for Percy snapshots.
 
@@ -28,7 +28,7 @@ For example,
 
 ```
 reusable_components.Chapter('Linking a Redis Database',
-            '/dash-deployment-server/redis-database',
+            '/dash-enterprise/redis-database',
             'Create and link an in-memory database to your Dash Apps.')
 ```
 
@@ -72,7 +72,7 @@ For example,
 
 ```
 'redis-examples': {
-      'url': '/dash-deployment-server/redis-database',
+      'url': '/dash-enterprise/redis-database',
       'content': dds_examples.Redis,
       'name': 'Linking a Redis Database',
       'description': 'Create and link an in-memory database to your Dash Apps.'

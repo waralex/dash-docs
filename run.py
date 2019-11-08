@@ -215,11 +215,11 @@ def display_content(pathname):
                if chapters[c]['url'] == pathname]
 
     if matched and matched[0] != 'index':
-        if 'dash-deployment-server/' in pathname:
+        if 'dash-enterprise/' in pathname:
             content = html.Div([
                 html.Div(chapters[matched[0]]['content']),
                 html.Hr(),
-                dcc.Link(html.A('Back to Dash Deployment Server Documentation'), href='/dash-deployment-server'),
+                dcc.Link(html.A('Back to Dash Enterprise Documentation'), href='/dash-enterprise'),
                 html.Div(id='wait-for-page-{}'.format(pathname)),
             ])
         elif 'datatable/' in pathname:

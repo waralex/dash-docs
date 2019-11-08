@@ -10,6 +10,15 @@ def s(string_block):
 layout = html.Div(className='toc', children=[
     html.H1('Dash Enterprise Documentation'),
 
+    reusable_components.Section("What's Dash Enterprise?", [
+        reusable_components.Chapter('Learn More About Dash Enterprise',
+                'https://plot.ly/dash/pricing/',
+                """Dash Enterprise is Plotly's commercial offering
+                   for managing and improving your Dash apps in your
+                   organization. [Learn more](https://plot.ly/dash) or
+                   [request a trial](https://go.plot.ly/dash-doc).""")
+    ]) if 'DASH_DOCS_URL_PREFIX' not in os.environ else '',
+
     reusable_components.Section("Deployment", [
         reusable_components.Chapter('Part 1. Initialize Dash Apps on Dash Enterprise',
                 '/dash-enterprise/initialize',
@@ -62,7 +71,7 @@ reusable_components.Section("User Interface", [
                 "We recommend getting started with the HTTPS method. "
                 "In this section, you'll learn more about deploying with SSH."),
         reusable_components.Chapter('Managing Dash Apps from the Command Line',
-                '/dash-deployment-server/cli',
+                '/dash-enterprise/cli',
                 "A list of commands to manage Dash apps and services using"
                 " the command line."),
         reusable_components.Chapter('Dash Enterprise Auth Features',
