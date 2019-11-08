@@ -32,10 +32,10 @@ header = html.Div(
             html.A(html.Img(
                 src='/assets/images/logo.png',
                 className='logo'
-            ), href='https://plot.ly/products/dash'),
+            ), href='/'),
 
             html.Div(className='links', children=[
-                html.A('pricing', className='link', href='https://plot.ly/dash/pricing'),
+                html.A('dash enterprise', className='link', href='https://plot.ly/dash/'),
                 html.A('user guide', className='link active', href=tools.relpath('/')),
                 html.A('plotly', className='link', href='https://plot.ly/'),
                 html.A(children=[html.I(className="fa fa-search")], className='link', href=tools.relpath('/search'))
