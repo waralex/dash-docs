@@ -12,8 +12,8 @@ class CustomDash(Dash):
         kwargs.pop('title')
 
         meta_kwargs = dict(
-            title=URL_TO_META_MAP.get(request.path, 'Dash User Guide').get('name', 'Dash User Guide'),
-            description=URL_TO_META_MAP.get(request.path, 'Dash User Guide & Documentation').get('description', 'Dash User Guide & Documentation'),
+            title=URL_TO_META_MAP.get(request.path, {}).get('name', 'Dash User Guide'),
+            description=URL_TO_META_MAP.get(request.path, {}).get('description', 'Dash User Guide & Documentation'),
             **kwargs
         )
 
