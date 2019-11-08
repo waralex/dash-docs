@@ -13,4 +13,16 @@ styles = {
     }
 }
 
-layout = TOC(URLS)
+layout = html.Div([
+    html.H1('Dash User Guide'),
+
+    dcc.Markdown(
+        '''
+        *This user guide is for the Python implementation of Dash.
+        Dash is also available in R.
+        View the [Dash for R User Guide & Documentation](https://dashr.plot.ly)*
+        ''', style={'fontSize': 14}
+    ),
+
+    TOC(URLS)
+])
