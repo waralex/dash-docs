@@ -840,7 +840,7 @@ staticAssets = html.Div(children=[
     reusable_components.Markdown(
     '''
     ```python
-    html.Img(src=app.get_asset_url('my-image.png')))
+    html.Img(src=app.get_asset_url('my-image.png'))
     ```
     ''', style=styles.code_container)
 ])
