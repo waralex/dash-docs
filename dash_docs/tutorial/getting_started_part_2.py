@@ -4,6 +4,7 @@ import dash_html_components as html
 
 from dash_docs import styles
 from dash_docs.tools import load_example
+from dash_docs import tools
 from dash_docs import reusable_components
 
 examples = [
@@ -276,7 +277,7 @@ layout = html.Div([
 
     dcc.Link(
         'Dash Tutorial Part 4: More about callbacks',
-        href="/Docs/state"
+        href=tools.relpath("/state")
     )
 
 

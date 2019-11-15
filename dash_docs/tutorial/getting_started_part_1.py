@@ -317,7 +317,7 @@ class Dropdown(dash.development.base_component.Component)
 
     dcc.Link(
         'Dash Tutorial Part 3: Basic Callbacks',
-        href="/Docs/getting-started-part-2"
+        href=tools.relpath("/getting-started-part-2")
     )
 
 ])
