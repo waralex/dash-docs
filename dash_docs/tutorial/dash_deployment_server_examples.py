@@ -2733,7 +2733,7 @@ pdfService = html.Div(children=[
             html.Label('Website URL'),
             dcc.Input(
                 id='website',
-                value='/Docs'
+                value='https://dash.plot.ly'
             ),
 
             html.Div(html.B('CSS Selector')),
