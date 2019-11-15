@@ -32,36 +32,13 @@ def dash_doc(doc_server, request):
         yield browser
 
 
-SNAPSHOT_EXCEPTIONS = {"dash-bio", "external-resources", "search", "gallery"}
-
-
-@pytest.fixture(scope="session")
-def chapter_map():
-    yield [v["url"][1:].split("/") for _, v in chapters.items()]
+SNAPSHOT_EXCEPTIONS = {"/dash-bio", "/external-resources", "/search", "/gallery"}
 
 
 @pytest.fixture(scope="session")
 def index_pages(chapter_map):
     yield [
-        _[0]
-        for _ in chapter_map
-        if len(_) == 1 and _[0] not in SNAPSHOT_EXCEPTIONS
+        path
+        for path in URL_TO_CONTENT_MAP
+        if path not in SNAPSHOT_EXCEPTIONS
     ]
-
-
-@pytest.fixture(scope="session")
-def component_map(chapter_map):
-    def key_func(x):
-        return x[0]
-
-    yield groupby(
-        sorted(
-            (
-                _
-                for _ in chapter_map
-                if len(_) > 1 and _[0] not in SNAPSHOT_EXCEPTIONS
-            ),
-            key=key_func,
-        ),
-        key_func,
-    )
