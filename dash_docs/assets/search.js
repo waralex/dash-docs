@@ -1,6 +1,10 @@
-if (window.location.pathname.indexOf('search') > 0){
-	var interval = setInterval(searchInterval, 500)
+if (window.location.pathname.replace(/\//g, '') === 'search'){
+	var interval = setInterval(searchInterval, 500);
+    var searchSelector = '#search-input';
 	function searchInterval(){
+        if (!document.querySelector(searchSelector)) {
+            return;
+        }
 
 		var search = instantsearch({
 			// Replace with your own values
@@ -20,7 +24,7 @@ if (window.location.pathname.indexOf('search') > 0){
 
 		search.addWidget(
 			instantsearch.widgets.searchBox({
-				container: '#search-input',
+				container: searchSelector,
 				magnifier: false,
 				reset: false,
 				queryHook: function(query, search) {
@@ -29,7 +33,7 @@ if (window.location.pathname.indexOf('search') > 0){
 					} else {
 						search(query);
 					}
-				} 
+				}
 			})
 		);
 

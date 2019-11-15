@@ -12,6 +12,7 @@ from .import chapter_index
 from dash_docs import tools
 from dash_docs.tutorial import home
 
+from dash_docs.tutorial import search
 
 def create_contents(contents):
     h = []
@@ -102,8 +103,17 @@ def display_content(pathname):
             html.Div(id='wait-for-page-{}'.format(pathname)),
         ]
 
+    elif pathname == '/search':
+        return create_backlinks(pathname) + [
+            html.Br(),
+            search.layout
+        ]
+
     else:
-        return '404 - {}'.format(pathname)
+        return [
+            html.Div('Page {} not found'.format(pathname), className='warning-box'),
+            home.layout
+        ]
 
 
 if __name__ == '__main__':
