@@ -10,10 +10,7 @@ else:
 def relpath(path):
     if path.startswith('/') and 'DASH_DOCS_URL_PREFIX' in os.environ:
         # In enterprise docs, all assets are under `/Docs`
-        if path.startswith('/assets'):
-            return '/Docs{}'.format(path)
-        return '{}{}{}'.format(
-            '/Docs',
+        return '{}{}'.format(
             os.environ['DASH_DOCS_URL_PREFIX'],
             path
         )
