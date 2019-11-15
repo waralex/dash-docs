@@ -62,7 +62,7 @@ URLS = [
                 )
             },
             {
-                'url': '/gallery',
+                'url': 'https://dash-gallery.plotly.host/Portal/',
                 'name': 'Dash App Gallery',
                 'description': '''
                     A glimpse into what's possible with Dash.
@@ -214,7 +214,7 @@ URLS = [
 
                 'chapters': [
                     {
-                        'url': '/dashtable',
+                        'url': '/datatable',
                         'name': 'Overview',
                         'description': (
                             '`dash_table.DataTable` is an interactive table that ' \
@@ -227,7 +227,7 @@ URLS = [
                     },
 
                     {
-                        'url': '/dashtable/reference',
+                        'url': '/datatable/reference',
                         'name': 'Reference',
                         'content': tutorial.table.reference_chapter.layout,
                         'description': '''
