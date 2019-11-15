@@ -704,8 +704,6 @@ URLS = [
 def create_index_pages(url_set):
     for section in url_set:
         if 'autogenerate_index' in section and section['autogenerate_index']:
-            print('Setting content for ')
-            print(section['url'])
             section['content'] = html.Div([
                 html.Div(section.get('preamble', '')),
                 # Convention is to let the first chapter
