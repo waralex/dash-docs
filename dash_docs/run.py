@@ -68,6 +68,23 @@ app.layout = html.Div(
 )
 
 
+def create_backlinks(pathname):
+    parts = pathname.strip('/').split('/')
+    links = [
+        dcc.Link('Table of Contents', href='/')
+    ]
+    for i, part in enumerate(parts[:-1]):
+        links += [
+            html.Span(' > '),
+            dcc.Link(
+                part.replace('-', ' ').title(),
+                href='/' + '/'.join(parts[:i + 1])
+            )
+        ]
+    links += [html.Span(' > ' + parts[-1].replace('-', ' ').title())]
+    return links
+
+
 @app.callback(Output('chapter', 'children'),
               [Input('location', 'pathname')])
 def display_content(pathname):
@@ -76,7 +93,15 @@ def display_content(pathname):
     pathname = pathname.rstrip('/')
 
     if pathname in chapter_index.URL_TO_CONTENT_MAP:
-        return chapter_index.URL_TO_CONTENT_MAP[pathname]
+        backlinks = create_backlinks(pathname)
+        return backlinks + [
+            html.Br(),
+            chapter_index.URL_TO_CONTENT_MAP[pathname],
+            html.Hr()
+        ] + backlinks + [
+            html.Div(id='wait-for-page-{}'.format(pathname)),
+        ]
+
     else:
         return '404 - {}'.format(pathname)
 
