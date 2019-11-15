@@ -61,8 +61,8 @@ dcc.Dropdown(
     value="MTL"
 )''', style=styles.code_container),
     html.Br(),
-    dcc.Link(html.A('More Dropdown Examples and Reference'),
-             href="/Docs/dash-core-components/dropdown"),
+    dcc.Link('More Dropdown Examples and Reference',
+             href=tools.relpath("/dash-core-components/dropdown")),
 
     html.Hr(),
 
@@ -85,8 +85,8 @@ dcc.Slider(
     value=5,
 )''', style=styles.code_container),
     html.Br(),
-    dcc.Link(html.A('More Slider Examples and Reference'),
-             href="/Docs/dash-core-components/slider"),
+    dcc.Link('More Slider Examples and Reference',
+             href=tools.relpath("/dash-core-components/slider")),
 
     html.Hr(),
 
@@ -110,8 +110,8 @@ dcc.RangeSlider(
     value=[-3, 4]
 )''', style=styles.code_container),
     html.Br(),
-    dcc.Link(html.A('More RangeSlider Examples and Reference'),
-             href="/Docs/dash-core-components/rangeslider"),
+    dcc.Link('More RangeSlider Examples and Reference',
+             href=tools.relpath("/dash-core-components/rangeslider")),
 
     html.Hr(),
 
@@ -124,8 +124,8 @@ dcc.Input(
     value=''
 )''', style=styles.code_container),
     html.Br(),
-    dcc.Link(html.A('More Input Examples and Reference'),
-             href="/Docs/dash-core-components/input"),
+    dcc.Link('More Input Examples and Reference',
+             href=tools.relpath("/dash-core-components/input")),
 
     html.Hr(),
 
@@ -140,8 +140,8 @@ dcc.Textarea(
 
     html.Br(),
     html.Br(),
-    dcc.Link(html.A('Textarea Reference'),
-             href="/Docs/dash-core-components/textarea"),
+    dcc.Link('Textarea Reference',
+             href=tools.relpath("/dash-core-components/textarea")),
 
     html.Hr(),
 
@@ -170,8 +170,8 @@ dcc.Checklist(
 )''', style=styles.code_container),
 
     html.Br(),
-    dcc.Link(html.A('Checklist Properties'),
-             href="/Docs/dash-core-components/checklist"),
+    dcc.Link('Checklist Properties',
+             href=tools.relpath("/dash-core-components/checklist")),
     html.Hr(),
     html.H3(dcc.Link('Radio Items', href=tools.relpath('/dash-core-components/radioitems'))),
     ComponentBlock('''import dash_core_components as dcc
@@ -197,8 +197,8 @@ dcc.RadioItems(
     labelStyle={'display': 'inline-block'}
 )''', style=styles.code_container),
     html.Br(),
-    dcc.Link(html.A('RadioItems Reference'),
-             href="/Docs/dash-core-components/radioitems"),
+    dcc.Link('RadioItems Reference',
+             href=tools.relpath("/dash-core-components/radioitems")),
 
     html.Hr(),
 
@@ -209,8 +209,8 @@ dcc.RadioItems(
     ),
     html.Div(examples['button'][1], className='example-container'),
     html.Br(),
-    dcc.Link(html.A('More Button Examples and Reference'),
-             href="/Docs/dash-core-components/button"),
+    dcc.Link('More Button Examples and Reference',
+             href=tools.relpath("/dash-core-components/button")),
     html.P([
         'For more on ',
         html.Code('dash.dependencies.State'),
@@ -230,8 +230,8 @@ dcc.DatePickerSingle(
     date=dt(1997, 5, 10)
 )
 ''', style=styles.code_container),
-    dcc.Link(html.A('More DatePickerSingle Examples and Reference'),
-             href="/Docs/dash-core-components/datepickersingle"),
+    dcc.Link('More DatePickerSingle Examples and Reference',
+             href=tools.relpath("/dash-core-components/datepickersingle")),
     html.Hr(),
 
     html.H3(dcc.Link('DatePickerRange', href=tools.relpath('/dash-core-components/datepickerrange'))),
@@ -245,8 +245,8 @@ dcc.DatePickerRange(
 )
 ''', style=styles.code_container),
     html.Br(),
-    dcc.Link(html.A('More DatePickerRange Examples and Reference'),
-             href="/Docs/dash-core-components/datepickerrange"),
+    dcc.Link('More DatePickerRange Examples and Reference',
+             href=tools.relpath("/dash-core-components/datepickerrange")),
 
     html.Hr(),
 
@@ -268,8 +268,8 @@ dcc.DatePickerRange(
     ),
 
     html.Br(),
-    dcc.Link(html.A('More Markdown Examples and Reference'),
-             href="/Docs/dash-core-components/markdown"),
+    dcc.Link('More Markdown Examples and Reference',
+             href=tools.relpath("/dash-core-components/markdown")),
 
     html.Hr(),
 
@@ -319,8 +319,8 @@ dcc.DatePickerRange(
         )
     ),
 
-    dcc.Link(html.A('More Upload Examples and Reference'),
-             href="/Docs/dash-core-components/upload"),
+    dcc.Link('More Upload Examples and Reference',
+             href=tools.relpath("/dash-core-components/upload")),
 
     reusable_components.Markdown('''
     ***
@@ -339,7 +339,7 @@ dcc.DatePickerRange(
     html.Div(examples['tabs'][1], className='example-container'),
 
     dcc.Link('More Tabs Examples and Reference',
-             href="/Docs/dash-core-components/tabs"),
+             href=tools.relpath("/dash-core-components/tabs")),
 
     html.Hr(),
 
@@ -392,7 +392,7 @@ dcc.Graph(
 
     html.Br(),
     dcc.Link('More Graphs Examples and Reference',
-             href="/Docs/dash-core-components/graph"),
+             href=tools.relpath("/dash-core-components/graph")),
     html.Br(),
     reusable_components.Markdown('View the [plotly.py docs](https://plot.ly/python).'),
 
