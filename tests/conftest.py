@@ -36,7 +36,7 @@ SNAPSHOT_EXCEPTIONS = {"/dash-bio", "/external-resources", "/search", "/gallery"
 
 
 @pytest.fixture(scope="session")
-def index_pages(chapter_map):
+def index_pages():
     yield [
         path
         for path in URL_TO_CONTENT_MAP
