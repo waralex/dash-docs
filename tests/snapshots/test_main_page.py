@@ -4,7 +4,7 @@ def test_snap001_index_page_links(dash_doc, index_pages):
 
     for resource in index_pages:
         dash_doc.visit_and_snapshot(
-            resource, hook_id="wait-for-page-/{}".format(resource)
+            resource, hook_id="wait-for-page-{}".format(resource)
         )
 
 
