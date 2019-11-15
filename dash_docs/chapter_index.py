@@ -379,7 +379,7 @@ URLS = [
                             'Dash Bio is a component library '
                             'dedicated to visualizing bioinformatics data.'
                         ),
-                        'autogenerate_index': True,
+                        'content': tutorial.dashbio.layout
                     }
                 ] + component_list(
                     dash_bio,
