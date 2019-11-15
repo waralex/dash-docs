@@ -570,7 +570,10 @@ URLS = [
                 'url': '/live-updates',
                 'content': tutorial.live_updates.layout,
                 'name': 'Live Updates',
-                'description': 'Update your apps on page load or on a predefined ' \
+                'description': '''
+                    Update your apps on page load or
+                    on a predefined interval (e.g. every 5 seconds)
+                '''
             },
 
             {
