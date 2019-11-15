@@ -9,7 +9,7 @@ from dash_docs.chapter_index import URLS, URL_TO_CONTENT_MAP
 @pytest.fixture(scope="session")
 def doc_server():
     with ProcessRunner() as server:
-        server(raw_command="python run.py", port=8060, start_timeout=60)
+        server(raw_command="python index.py", port=8060, start_timeout=60)
         yield server
 
 
