@@ -1,8 +1,5 @@
-from collections import OrderedDict
-
 import dash_html_components as html
 import dash_core_components as dcc
-import dash_table
 
 from dash.dependencies import Input, Output
 
@@ -86,6 +83,14 @@ def create_backlinks(pathname):
     return links
 
 
+def flat_list(*args):
+    out = []
+    for arg in args:
+        out += arg if isinstance(arg, list) else [arg]
+
+    return out
+
+
 @app.callback(Output('chapter', 'children'),
               [Input('location', 'pathname')])
 def display_content(pathname):
@@ -95,25 +100,23 @@ def display_content(pathname):
 
     if pathname in chapter_index.URL_TO_CONTENT_MAP:
         backlinks = create_backlinks(pathname)
-        return backlinks + [
+        return flat_list(
+            backlinks,
             html.Br(),
             chapter_index.URL_TO_CONTENT_MAP[pathname],
-            html.Hr()
-        ] + backlinks + [
+            html.Hr(),
+            backlinks,
             html.Div(id='wait-for-page-{}'.format(pathname)),
-        ]
+        )
 
     elif pathname == '/search':
-        return create_backlinks(pathname) + [
-            html.Br(),
-            search.layout
-        ]
+        return flat_list(create_backlinks(pathname), html.Br(), search.layout)
 
     else:
-        return [
+        return flat_list(
             html.Div('Page {} not found'.format(pathname), className='warning-box'),
             home.layout
-        ]
+        )
 
 
 if __name__ == '__main__':
