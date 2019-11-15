@@ -3,9 +3,10 @@ def test_snap001_index_page_links(dash_doc, index_pages):
     dash_doc.percy_snapshot("index - 1")
 
     for resource in index_pages:
-        dash_doc.visit_and_snapshot(
-            resource, hook_id="wait-for-page-{}".format(resource)
-        )
+        if resource.startswith('/'):
+            dash_doc.visit_and_snapshot(
+                resource, hook_id="wait-for-page-{}".format(resource)
+            )
 
 
 def test_snap002_external_resources(dash_doc):
