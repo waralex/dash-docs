@@ -27,12 +27,12 @@ app.layout = html.Div([
     dcc.Dropdown(
         id='needleplot-rangeslider',
         options=[
-            {'label': 'Show', 'value': True},
-            {'label': 'Hide', 'value': False}
+            {'label': 'Show', 'value': 1},
+            {'label': 'Hide', 'value': 0}
         ],
         clearable=False,
         multi=False,
-        value=True
+        value=1
     ),
     dashbio.NeedlePlot(
         id='my-dashbio-needleplot',
@@ -46,7 +46,7 @@ app.layout = html.Div([
     [dash.dependencies.Input('needleplot-rangeslider', 'value')]
 )
 def update_needleplot(show_rangeslider):
-    return show_rangeslider
+    return True if show_rangeslider else False
 
 
 if __name__ == '__main__':
