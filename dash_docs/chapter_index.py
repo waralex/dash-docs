@@ -80,7 +80,7 @@ URLS = [
                     "intuitive, powerful, and extensible as Dash continues to "
                     "evolve."
                 ),
-                'content': tutorial.introduction.layout
+                'content': tutorial.migration.layout
             },
             {
                 'url': 'https://go.plot.ly/dash-club',

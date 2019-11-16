@@ -7,7 +7,7 @@
       -webkit-print-color-adjust: exact;
   }
   @page {
-      margin: 1.25in; 
+      margin: 1.25in;
   }
   .example-container {
       page-break-inside: avoid;
@@ -15,9 +15,9 @@
 }
 
 #pdf-docs {
-    font-family: Arial; 
-    font-size: 14pt; 
-    width:8.5in; 
+    font-family: Arial;
+    font-size: 14pt;
+    width:8.5in;
 }
 #pdf-docs-title {
     font-size: 76pt;
@@ -34,7 +34,7 @@
     font-size: 68pt;
     text-align: center;
     margin: 0px;
-    margin-top: 4in; 
+    margin-top: 4in;
     page-break-after: always;
 }
 
@@ -65,13 +65,13 @@
 #pdf-docs-toc {
     page-break-after: always;
     font-family: Dosis;
-    margin-top: 1.25in; 
+    margin-top: 1.25in;
 }
 #pdf-docs-toc a, .toc-chapter-links a {
     background-color: rgba(0,0,0,0);
 }
 #pdf-docs-toc h1 {
-    font-size: 48pt; 
+    font-size: 48pt;
     text-align: center;
 }
 .toc-section-link {
@@ -86,5 +86,9 @@
     text-decoration: none;
 }
 .toc-chapter-links a::before {
-    content: "→ "
+    content: ""
+}
+
+.toc-chapter-links a.sub-chapter::before {
+    content: " - "
 }
