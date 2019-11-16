@@ -47,7 +47,7 @@ default_stylesheet = [
     {
         'selector': 'node',
         'style': {
-            'background-color': 'BFD7B5',
+            'background-color': '#BFD7B5',
             'label': 'data(label)'
         }
     },
@@ -87,10 +87,10 @@ app.layout = html.Div([
                Input('input-bg-color', 'value')])
 def update_stylesheet(line_color, bg_color):
     if line_color is None:
-        line_color = ''
+        line_color = 'transparent'
 
     if bg_color is None:
-        bg_color = ''
+        bg_color = 'transparent'
 
     new_styles = [
         {

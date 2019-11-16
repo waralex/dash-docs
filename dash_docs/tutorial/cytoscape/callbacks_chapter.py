@@ -43,7 +43,7 @@ edges = [
         ('hou', 'chi'),
         ('to', 'mtl'),
         ('mtl', 'bos'),
-        ('nyc', 'boston'),
+        ('nyc', 'bos'),
         ('to', 'hou'),
         ('to', 'nyc'),
         ('la', 'nyc'),
@@ -127,7 +127,7 @@ layout = html.Div([
                 ('hou', 'chi'),
                 ('to', 'mtl'),
                 ('mtl', 'bos'),
-                ('nyc', 'boston'),
+                ('nyc', 'bos'),
                 ('to', 'hou'),
                 ('to', 'nyc'),
                 ('la', 'nyc'),
@@ -237,7 +237,7 @@ layout = html.Div([
         {
             'selector': 'node',
             'style': {
-                'background-color': 'BFD7B5',
+                'background-color': '#BFD7B5',
                 'label': 'data(label)'
             }
         },
