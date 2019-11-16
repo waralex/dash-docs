@@ -7,7 +7,7 @@ external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 app.layout = html.Div([
     dcc.Dropdown(
-        id='my-dropdown',
+        id='export-graph-dropdown',
         options=[
             {'label': 'New York City', 'value': 'NYC'},
             {'label': 'Montreal', 'value': 'MTL'},
@@ -27,10 +27,10 @@ app.layout = html.Div([
 
 @app.callback(
     dash.dependencies.Output('graph', 'figure'),
-    [dash.dependencies.Input('my-dropdown', 'value')])
+    [dash.dependencies.Input('export-graph-dropdown', 'value')])
 def update_output(value):
     y_array_dict = {
-        'NYC': [4,2,3],
+        'NYC': [4, 2, 3],
         'MTL': [1, 2, 4],
         'SF': [5, 3, 6]
     }

@@ -1,27 +1,23 @@
 # -*- coding: utf-8 -*-
 import dash
 from dash.dependencies import Input, Output
-import dash_core_components as dcc
 import dash_html_components as html
-
-import datetime
-import json
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
 app.layout = html.Div([
-    html.Button('Button 1', id='btn-1', n_clicks_timestamp=0),
-    html.Button('Button 2', id='btn-2', n_clicks_timestamp=0),
-    html.Button('Button 3', id='btn-3', n_clicks_timestamp=0),
+    html.Button('Button 1', id='btn-nclicks-1', n_clicks_timestamp=0),
+    html.Button('Button 2', id='btn-nclicks-2', n_clicks_timestamp=0),
+    html.Button('Button 3', id='btn-nclicks-3', n_clicks_timestamp=0),
     html.Div(id='container-button-timestamp')
 ])
 
 @app.callback(Output('container-button-timestamp', 'children'),
-              [Input('btn-1', 'n_clicks_timestamp'),
-               Input('btn-2', 'n_clicks_timestamp'),
-               Input('btn-3', 'n_clicks_timestamp')])
+              [Input('btn-nclicks-1', 'n_clicks_timestamp'),
+               Input('btn-nclicks-2', 'n_clicks_timestamp'),
+               Input('btn-nclicks-3', 'n_clicks_timestamp')])
 def displayClick(btn1, btn2, btn3):
     if int(btn1) > int(btn2) and int(btn1) > int(btn3):
         msg = 'Button 1 was most recently clicked'

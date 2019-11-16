@@ -2,8 +2,6 @@ import dash
 import dash_core_components as dcc
 import dash_html_components as html
 
-print(dcc.__version__) # 0.6.0 or above is required
-
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
@@ -16,7 +14,7 @@ app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 app.config.suppress_callback_exceptions = True
 
 app.layout = html.Div([
-    dcc.Location(id='url', refresh=False),
+    dcc.Location(id='page-url', refresh=False),
     html.Div(id='page-content')
 ])
 
@@ -72,7 +70,7 @@ def page_2_radios(value):
 
 # Update the index
 @app.callback(dash.dependencies.Output('page-content', 'children'),
-              [dash.dependencies.Input('url', 'pathname')])
+              [dash.dependencies.Input('page-url', 'pathname')])
 def display_page(pathname):
     if pathname == '/page-1':
         return page_1_layout

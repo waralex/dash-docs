@@ -7,7 +7,7 @@ external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 app.layout = html.Div([
     dcc.Dropdown(
-        id='my-dropdown',
+        id='demo-dropdown',
         options=[
             {'label': 'New York City', 'value': 'NYC'},
             {'label': 'Montreal', 'value': 'MTL'},
@@ -15,13 +15,13 @@ app.layout = html.Div([
         ],
         value='NYC'
     ),
-    html.Div(id='output-container')
+    html.Div(id='dd-output-container')
 ])
 
 
 @app.callback(
-    dash.dependencies.Output('output-container', 'children'),
-    [dash.dependencies.Input('my-dropdown', 'value')])
+    dash.dependencies.Output('dd-output-container', 'children'),
+    [dash.dependencies.Input('demo-dropdown', 'value')])
 def update_output(value):
     return 'You have selected "{}"'.format(value)
 

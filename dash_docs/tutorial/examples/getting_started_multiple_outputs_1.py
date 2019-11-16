@@ -9,7 +9,7 @@ app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
 app.layout = html.Div([
     dcc.Input(
-        id='num',
+        id='num-multi',
         type='number',
         value=5
     ),
@@ -29,7 +29,7 @@ app.layout = html.Div([
      Output('twos', 'children'),
      Output('threes', 'children'),
      Output('x^x', 'children')],
-    [Input('num', 'value')])
+    [Input('num-multi', 'value')])
 def callback_a(x):
     return x**2, x**3, 2**x, 3**x, x**x
 

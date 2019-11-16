@@ -14,14 +14,14 @@ all_options = {
 }
 app.layout = html.Div([
     dcc.RadioItems(
-        id='countries-dropdown',
+        id='countries-radio',
         options=[{'label': k, 'value': k} for k in all_options.keys()],
         value='America'
     ),
 
     html.Hr(),
 
-    dcc.RadioItems(id='cities-dropdown'),
+    dcc.RadioItems(id='cities-radio'),
 
     html.Hr(),
 
@@ -30,23 +30,23 @@ app.layout = html.Div([
 
 
 @app.callback(
-    Output('cities-dropdown', 'options'),
-    [Input('countries-dropdown', 'value')])
+    Output('cities-radio', 'options'),
+    [Input('countries-radio', 'value')])
 def set_cities_options(selected_country):
     return [{'label': i, 'value': i} for i in all_options[selected_country]]
 
 
 @app.callback(
-    Output('cities-dropdown', 'value'),
-    [Input('cities-dropdown', 'options')])
+    Output('cities-radio', 'value'),
+    [Input('cities-radio', 'options')])
 def set_cities_value(available_options):
     return available_options[0]['value']
 
 
 @app.callback(
     Output('display-selected-values', 'children'),
-    [Input('countries-dropdown', 'value'),
-     Input('cities-dropdown', 'value')])
+    [Input('countries-radio', 'value'),
+     Input('cities-radio', 'value')])
 def set_display_children(selected_country, selected_city):
     return u'{} is a city in {}'.format(
         selected_city, selected_country,

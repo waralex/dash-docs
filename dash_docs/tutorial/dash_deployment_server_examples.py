@@ -188,7 +188,7 @@ def display_instructions2(platform):
 
         '''),
 
-        dcc.Tabs(id="tabs", children=[
+        dcc.Tabs([
             dcc.Tab(label='Download a Sample App', children=[
                 html.Div([
                     reusable_components.Markdown(

@@ -26,7 +26,7 @@ app.layout = html.Div([
         ], className='six columns')
     ], className='row'),
     dcc.Slider(
-        id='year-slider',
+        id='common-year-slider',
         marks={
             i: str((str(i) if (i-2) % 10 == 0 else ''))
             for i in years
@@ -101,10 +101,10 @@ def create_figure(year, selectedData, hoverData, yaxis_column):
 
 @app.callback(
     Output('graph-left', 'figure'),
-    [Input('year-slider', 'value'),
+    [Input('common-year-slider', 'value'),
      Input('graph-right', 'selectedData'),
      Input('graph-right', 'hoverData')])
-def filterScatterPlot(sliderValue, selectedData, hoverData):
+def filterLeftPlot(sliderValue, selectedData, hoverData):
     figure = create_figure(sliderValue, selectedData, hoverData, 'lifeExp')
     figure['layout']['yaxis'] = {
         'title': 'Life Expectancy',
@@ -115,10 +115,10 @@ def filterScatterPlot(sliderValue, selectedData, hoverData):
 
 @app.callback(
     Output('graph-right', 'figure'),
-    [Input('year-slider', 'value'),
+    [Input('common-year-slider', 'value'),
      Input('graph-left', 'selectedData'),
      Input('graph-left', 'hoverData')])
-def filterScatterPlot(sliderValue, selectedData, hoverData):
+def filterRightPlot(sliderValue, selectedData, hoverData):
     figure = create_figure(sliderValue, selectedData, hoverData, 'pop')
     figure['layout']['yaxis'] = {
         'title': 'Population', 'type': 'log',
