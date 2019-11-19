@@ -39,7 +39,7 @@ jobs:
           command: |
               . venv/bin/activate
               pip install --progress-bar off -e git+https://github.com/plotly/dash.git#egg=dash[testing]
-              pytest --log-cli-level INFO --nopercyfinalize --junitxml=test-reports/snapshots.xml tests
+              pytest --log-cli-level DEBUG --nopercyfinalize --junitxml=test-reports/snapshots.xml tests
       - store_artifacts:
           path: test-reports
       - store_test_results:
