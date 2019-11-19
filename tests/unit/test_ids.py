@@ -1,5 +1,8 @@
 import os
 import re
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 def test_no_duplicate_ids():
@@ -8,11 +11,13 @@ def test_no_duplicate_ids():
         os.path.join(os.path.split(__file__)[0], '..', '..', 'dash_docs')
     )
     id_regex = re.compile(r'\Wid\s*[=:]\s*(\'([^\']*)\'|"([^"]*)")')
+    cnt = 0
     for root, dir, files in os.walk(root_dir):
         for filename in files:
             if not filename.endswith('.py'):
                 continue
             path = os.path.join(root, filename)
+            cnt += 1
             with open(path) as f:
                 file_ids = {}
                 multiline_str = ''
@@ -47,3 +52,4 @@ def test_no_duplicate_ids():
                 # allow duplicates within one file - sometimes that's intended,
                 # if not we'd have caught it already
                 found_ids.update(file_ids)
+    logger.info('completed test_no_duplicate_ids, tested {} files'.format(cnt))
