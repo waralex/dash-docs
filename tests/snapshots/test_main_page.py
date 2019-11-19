@@ -1,12 +1,33 @@
+from time import sleep
+
+
 def test_snap001_index_page_links(dash_doc, index_pages):
     dash_doc.wait_for_element(".toc .toc--chapter-content")
     dash_doc.percy_snapshot("index - 1")
 
     for resource in index_pages:
         if resource.startswith('/'):
-            dash_doc.visit_and_snapshot(
-                resource, hook_id="wait-for-page-{}".format(resource)
-            )
+            hook_id = "wait-for-page-{}".format(resource)
+            res = resource.lstrip("/")
+            if res in ['getting-started-part-2', 'datatable/callbacks']:
+                # these two pages have an intermittent problem with their
+                # resource queues not clearing properly. While we sort this out,
+                # just wait a reasonably long time on these pages.
+                # code copied out of dash.testing.browser & modified
+                # if we end up wanting to keep this we can add a sleep time to
+                # the visit_and_snapshot signature.
+                dash_doc.driver.get(
+                    "{}/{}".format(dash_doc.server_url.rstrip("/"), res)
+                )
+                dash_doc.wait_for_element_by_id(hook_id)
+                sleep(3)
+                dash_doc.percy_snapshot(res, wait_for_callbacks=False)
+                assert not dash_doc.driver.find_elements_by_css_selector(
+                    "div.dash-debug-alert"
+                ), "devtools should not raise an error alert"
+                dash_doc.driver.back()
+            else:
+                dash_doc.visit_and_snapshot(res, hook_id=hook_id)
 
 
 def test_snap002_external_resources(dash_doc):
