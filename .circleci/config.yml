@@ -39,7 +39,7 @@ jobs:
           command: |
               . venv/bin/activate
               set -eo pipefail
-              pip install --progress-bar off -e git+https://github.com/plotly/dash.git@73c1fcb83ea52ef29c5c0a0ca3649691e32c2829#egg=dash[testing]
+              pip install --progress-bar off -e git+https://github.com/plotly/dash.git@debug-runner#egg=dash[testing]
               pytest tests/unit
               pytest --log-cli-level INFO --nopercyfinalize --junitxml=test-reports/snapshots.xml tests/integration
       - store_artifacts:
