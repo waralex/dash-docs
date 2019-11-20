@@ -83,7 +83,6 @@ def redirectGallery():
     return redirect("https://dash-gallery.plotly.host/Portal/", code=302)
 
 
-@server.route('/dash-enterprise/<path:subpath>')
+@server.route('/dash-deployment-server/<path:subpath>')
 def redirectToEnterprise(subpath):
-    # show the subpath after /path/
     return redirect('/dash-enterprise/{}'.format(escape(subpath)), code=302)
