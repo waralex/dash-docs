@@ -22,7 +22,7 @@ def dash_doc(doc_server, request):
         headless=request.config.getoption("headless"),
         options=request.config.hook.pytest_setup_options(),
         percy_assets_root=os.path.join(
-            os.path.dirname(__file__), "..", "assets"
+            os.path.dirname(__file__), "..", "..", "dash_docs", "assets"
         ),
         percy_finalize=request.config.getoption("nopercyfinalize"),
     ) as browser:
