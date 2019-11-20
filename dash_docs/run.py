@@ -180,14 +180,14 @@ def display_content(pathname):
     pathname = pathname.rstrip('/')
 
     def make_page(page_path):
-        backlinks = create_backlinks(pathname)
+        backlinks = create_backlinks(page_path)
         return flat_list(
             backlinks,
             html.Br(),
-            chapter_index.URL_TO_CONTENT_MAP[pathname],
+            chapter_index.URL_TO_CONTENT_MAP[page_path],
             html.Hr(),
             backlinks,
-            html.Div(id='wait-for-page-{}'.format(pathname)),
+            html.Div(id='wait-for-page-{}'.format(page_path)),
         )
 
     if pathname in chapter_index.URL_TO_CONTENT_MAP:
@@ -209,7 +209,7 @@ def display_content(pathname):
         # to where the user was trying to go
         parts = pathname.lstrip('/').split('/')
         for i in reversed(range(len(parts) - 1)):
-            partial_path = '/' + '/'.join(parts[:i])
+            partial_path = '/' + '/'.join(parts[:i + 1])
             if partial_path in chapter_index.URL_TO_CONTENT_MAP:
                 return flat_list(warning_box, make_page(partial_path))
 
