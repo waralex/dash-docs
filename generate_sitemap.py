@@ -3,7 +3,7 @@ from dash_docs import chapter_index
 
 def create_sitemap():
     sitemap = ''
-    for url in chapter_index.URL_TO_CONTENT_MAP:
+    for url in sorted(chapter_index.URL_TO_CONTENT_MAP.keys()):
         if url.startswith('/'):
             sitemap += (
                 '<url>\n' +
