@@ -1279,7 +1279,7 @@ ConfirmDialog = html.Div([
 ConfirmDialogProvider = html.Div([
     html.H1('ConfirmDialogProvider component'),
     reusable_components.Markdown('''
-    Send a [ConfirmDialog](/dash-core-components/confirm) when the user
+    Send a [ConfirmDialog](/dash-core-components/confirmdialog) when the user
     clicks the children of this component, usually a button.
     '''),
     Syntax(examples['confirm-provider'][0]),

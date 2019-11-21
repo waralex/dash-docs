@@ -8,7 +8,7 @@ from dash.dependencies import Output, Input
 app = dash.Dash(__name__)
 
 
-_app_route = '/dash-core-components/logout_button'
+_app_route = '/dash-core-components/logoutbutton'
 
 
 # Create a login route

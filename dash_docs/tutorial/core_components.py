@@ -403,7 +403,7 @@ dcc.Graph(
 
     reusable_components.Markdown('***'),
 
-    html.H3(dcc.Link('ConfirmDialog', href=tools.relpath('/dash-core-components/confirm'))),
+    html.H3(dcc.Link('ConfirmDialog', href=tools.relpath('/dash-core-components/confirmdialog'))),
 
     reusable_components.Markdown('''
 The `dcc.ConfirmDialog` component send a dialog to the browser
@@ -422,7 +422,7 @@ confirm = dcc.ConfirmDialog(
     html.Br(),
 
     dcc.Link('More ConfirmDialog Examples and Reference',
-             href=tools.relpath('/dash-core-components/confirm')),
+             href=tools.relpath('/dash-core-components/confirmdialog')),
 
     html.Br(),
     reusable_components.Markdown('***'),
@@ -446,7 +446,7 @@ confirm = dcc.ConfirmDialogProvider(
     html.Br(),
 
     dcc.Link('More ConfirmDialogProvider Examples and Reference',
-             href=tools.relpath('/dash-core-components/confirm-provider')),
+             href=tools.relpath('/dash-core-components/confirmdialogprovider')),
 
     html.Br(),
 
@@ -482,7 +482,7 @@ confirm = dcc.ConfirmDialogProvider(
 
     reusable_components.Markdown('***'),
     html.H3(dcc.Link('Logout Button',
-                     href=tools.relpath('/dash-core-components/logout_button'))),
+                     href=tools.relpath('/dash-core-components/logoutbutton'))),
 
     reusable_components.Markdown('''
     The logout button can be used to perform logout mechanism.
@@ -495,7 +495,7 @@ confirm = dcc.ConfirmDialogProvider(
     '''),
 
     dcc.Link('More Logout Button Examples and Reference',
-             href=tools.relpath('/dash-core-components/logout_button')),
+             href=tools.relpath('/dash-core-components/logoutbutton')),
 
     html.Div(id='hidden', style={'display': 'none'}),
 
@@ -503,7 +503,7 @@ confirm = dcc.ConfirmDialogProvider(
 
     reusable_components.Markdown('***'),
     html.H3(dcc.Link('Loading component',
-                     href=tools.relpath('/dash-core-components/loading_component'))),
+                     href=tools.relpath('/dash-core-components/loading'))),
 
     reusable_components.Markdown('''
     The Loading component can be used to wrap components that you want to display a spinner for, if they take too long to load.
@@ -520,7 +520,7 @@ confirm = dcc.ConfirmDialogProvider(
     ''')),
 
     dcc.Link('More Loading Component Examples and Reference',
-             href=tools.relpath('/dash-core-components/loading_component')),
+             href=tools.relpath('/dash-core-components/loading')),
 
     reusable_components.Markdown('***'),
 

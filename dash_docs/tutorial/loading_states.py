@@ -64,9 +64,9 @@ layout = html.Div([
     ''', style=styles.code_container),
     html.Br(),
     reusable_components.Markdown('''
-    Please also check out the docs for the [Loading component](/dash-core-components/loading_component) for more information on how to use the Loading component.
+    Please also check out the docs for the [Loading component](/dash-core-components/loading) for more information on how to use the Loading component.
 
-    Aside from using the [`Loading`](/dash-core-components/loading_component) component, you can check if a certain component
+    Aside from using the [`Loading`](/dash-core-components/loading) component, you can check if a certain component
     (either from `dash_core_components` or `dash_html_components`) is loading by checking the
     `data-dash-is-loading` attribute set on that component's HTML output. This means that
     you can target those components yourself with CSS, and create your own custom spinner
