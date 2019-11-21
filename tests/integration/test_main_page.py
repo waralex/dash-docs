@@ -33,6 +33,7 @@ def test_snap001_index_page_links(dash_doc, index_pages):
                 ), "devtools should not raise an error alert"
             else:
                 dash_doc.visit_and_snapshot(res, hook_id=hook_id, stay_on_page=True)
+
             linked_paths = dash_doc.execute_script(
                 'Array.from(document.querySelectorAll(\'a[href^="/"]\'))'
                 '.map(a=>a.attributes.href.value)'
@@ -42,6 +43,8 @@ def test_snap001_index_page_links(dash_doc, index_pages):
                     msg = '{} --- on page {}'.format(link, resource)
                     logger.info(msg)
                     bad_links.append(msg)
+
+            dash_doc.driver.back()
 
     assert bad_links == []
 
