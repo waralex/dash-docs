@@ -208,7 +208,7 @@ dcc.RadioItems(
     The regular `dash_html_components.Button` component does the job quite well,
     but we've included it here because this is the one plain `html` component
     that's commonly used as a callback input:
-    ''')
+    '''),
     reusable_components.Markdown(
         examples['button'][0],
         style=styles.code_container
