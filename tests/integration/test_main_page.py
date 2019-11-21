@@ -11,6 +11,8 @@ def test_snap001_index_page_links(dash_doc, index_pages):
     dash_doc.percy_snapshot("index - 1")
     bad_links = []
 
+    good_links = ['/', '/search']
+
     for resource in index_pages:
         if resource.startswith('/'):
             hook_id = "wait-for-page-{}".format(resource)
@@ -39,7 +41,7 @@ def test_snap001_index_page_links(dash_doc, index_pages):
                 '.map(a=>a.attributes.href.value)'
             )
             for link in linked_paths:
-                if link not in URL_TO_CONTENT_MAP:
+                if link not in URL_TO_CONTENT_MAP and link not in good_links:
                     msg = '{} --- on page {}'.format(link, resource)
                     logger.info(msg)
                     bad_links.append(msg)
