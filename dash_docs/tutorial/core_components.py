@@ -283,8 +283,7 @@ dcc.DatePickerRange(
     reusable_components.Markdown('''
     The `dash_html_components` library exposes all of the HTML tags.
     This includes the `Table`, `Tr`, and `Tbody` tags that can be used
-    to create an HTML table. See
-    [Create Your First Dash App, Part 1](/getting-started-part-1)
+    to create an HTML table. See [Dash Layout](/getting-started)
     for an example.
 
     Dash provides an interactive `DataTable` as part of the `data-table`
