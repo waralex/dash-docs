@@ -202,15 +202,21 @@ dcc.RadioItems(
 
     html.Hr(),
 
-    html.H3(dcc.Link('Button', href=tools.relpath('/dash-core-components/button'))),
+    html.H3(dcc.Link('Button', href=tools.relpath('/dash-html-components/button'))),
+    reusable_components.Markdown('''
+    There actually is no `Button` component in `dash_core_components`.
+    The regular `dash_html_components.Button` component does the job quite well,
+    but we've included it here because this is the one plain `html` component
+    that's commonly used as a callback input:
+    ''')
     reusable_components.Markdown(
         examples['button'][0],
         style=styles.code_container
     ),
     html.Div(examples['button'][1], className='example-container'),
     html.Br(),
-    dcc.Link('More Button Examples and Reference',
-             href=tools.relpath("/dash-core-components/button")),
+    dcc.Link('html.Button Reference',
+             href=tools.relpath("/dash-html-components/button")),
     html.P([
         'For more on ',
         html.Code('dash.dependencies.State'),
