@@ -433,7 +433,8 @@ def display_instructions2(platform):
                     rc.Markdown(
                     '''
                     For some applications, you may require using the `worker`
-                    process. For example, the Snapshot Engine examples
+                    process. For example, the
+                    [Snapshot Engine](https://plot.ly/dash/snapshot-engine/) examples
                     use Celery - an asynchronous task/job queue & scheduler.
 
                     In this case, your `Procfile` might look something like this:
@@ -874,8 +875,8 @@ ConfigSys = html.Div(children=[
     We have a collection of sample apps that install common system-level
     dependencies. These applications are _ready to deploy_:
 
-    - Oracle cx_Oracle Database
-    - Pyodbc Database Driver
+    - [Oracle cx_Oracle Database](https://github.com/plotly/dash-on-premise-sample-app/pull/3/files)
+    - [Pyodbc Database Driver](https://github.com/plotly/dash-on-premise-sample-app/pull/2)
 
     &nbsp;
 
@@ -2640,7 +2641,9 @@ pdfService = html.Div(children=[
         or you can generate these PDFs on-the-fly.
 
         This API endpoint is used by the Dash Enterprise Snapshot Engine library.
-        Refer to the Snapshot Engine documentation for more examples.
+        Refer to the
+        [Snapshot Engine documentation](https://plot.ly/dash/snapshot-engine/)
+        for more examples.
 
         ***
 
