@@ -23,7 +23,7 @@ layout = html.Div([
     > with the `dash_core_components.Graph` component.  The [rest of the Dash
     > documentation](/) covers other topics like multi-page apps and component
     > libraries.  Just getting started? Make sure to [install the necessary
-    > dependencies](/installation). The [next and final chapter](/faq) covers
+    > dependencies](/installation). The [next and final chapter](/faqs) covers
     > frequently asked questions and gotchas.
 
     One of the core Dash principles explained in the
