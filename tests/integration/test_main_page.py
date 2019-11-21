@@ -35,7 +35,7 @@ def test_snap001_index_page_links(dash_doc, index_pages):
                 dash_doc.visit_and_snapshot(res, hook_id=hook_id, stay_on_page=True)
 
             linked_paths = dash_doc.driver.execute_script(
-                'Array.from(document.querySelectorAll(\'a[href^="/"]\'))'
+                'return Array.from(document.querySelectorAll(\'a[href^="/"]\'))'
                 '.map(a=>a.attributes.href.value)'
             )
             for link in linked_paths:
