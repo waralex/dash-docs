@@ -1,9 +1,17 @@
 from time import sleep
+import logging
+
+from dash_docs.chapter_index import URL_TO_CONTENT_MAP
+
+logger = logging.getLogger(__name__)
 
 
 def test_snap001_index_page_links(dash_doc, index_pages):
     dash_doc.wait_for_element(".toc .toc--chapter-content")
     dash_doc.percy_snapshot("index - 1")
+    bad_links = []
+
+    good_links = ['/', '/search']
 
     for resource in index_pages:
         if resource.startswith('/'):
@@ -25,9 +33,22 @@ def test_snap001_index_page_links(dash_doc, index_pages):
                 assert not dash_doc.driver.find_elements_by_css_selector(
                     "div.dash-debug-alert"
                 ), "devtools should not raise an error alert"
-                dash_doc.driver.back()
             else:
-                dash_doc.visit_and_snapshot(res, hook_id=hook_id)
+                dash_doc.visit_and_snapshot(res, hook_id=hook_id, stay_on_page=True)
+
+            linked_paths = dash_doc.driver.execute_script(
+                'return Array.from(document.querySelectorAll(\'a[href^="/"]\'))'
+                '.map(a=>a.attributes.href.value)'
+            )
+            for link in linked_paths:
+                if link not in URL_TO_CONTENT_MAP and link not in good_links:
+                    msg = '{} --- on page {}'.format(link, resource)
+                    logger.info(msg)
+                    bad_links.append(msg)
+
+            dash_doc.driver.back()
+
+    assert bad_links == []
 
 
 def test_snap002_external_resources(dash_doc):

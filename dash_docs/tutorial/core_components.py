@@ -202,15 +202,21 @@ dcc.RadioItems(
 
     html.Hr(),
 
-    html.H3(dcc.Link('Button', href=tools.relpath('/dash-core-components/button'))),
+    html.H3(dcc.Link('Button', href=tools.relpath('/dash-html-components/button'))),
+    reusable_components.Markdown('''
+    There actually is no `Button` component in `dash_core_components`.
+    The regular `dash_html_components.Button` component does the job quite well,
+    but we've included it here because this is the one plain `html` component
+    that's commonly used as a callback input:
+    '''),
     reusable_components.Markdown(
         examples['button'][0],
         style=styles.code_container
     ),
     html.Div(examples['button'][1], className='example-container'),
     html.Br(),
-    dcc.Link('More Button Examples and Reference',
-             href=tools.relpath("/dash-core-components/button")),
+    dcc.Link('html.Button Reference',
+             href=tools.relpath("/dash-html-components/button")),
     html.P([
         'For more on ',
         html.Code('dash.dependencies.State'),
@@ -277,8 +283,7 @@ dcc.DatePickerRange(
     reusable_components.Markdown('''
     The `dash_html_components` library exposes all of the HTML tags.
     This includes the `Table`, `Tr`, and `Tbody` tags that can be used
-    to create an HTML table. See
-    [Create Your First Dash App, Part 1](/getting-started-part-1)
+    to create an HTML table. See [Dash Layout](/getting-started)
     for an example.
 
     Dash provides an interactive `DataTable` as part of the `data-table`
@@ -397,7 +402,7 @@ dcc.Graph(
 
     reusable_components.Markdown('***'),
 
-    html.H3(dcc.Link('ConfirmDialog', href=tools.relpath('/dash-core-components/confirm'))),
+    html.H3(dcc.Link('ConfirmDialog', href=tools.relpath('/dash-core-components/confirmdialog'))),
 
     reusable_components.Markdown('''
 The `dcc.ConfirmDialog` component send a dialog to the browser
@@ -416,7 +421,7 @@ confirm = dcc.ConfirmDialog(
     html.Br(),
 
     dcc.Link('More ConfirmDialog Examples and Reference',
-             href=tools.relpath('/dash-core-components/confirm')),
+             href=tools.relpath('/dash-core-components/confirmdialog')),
 
     html.Br(),
     reusable_components.Markdown('***'),
@@ -440,7 +445,7 @@ confirm = dcc.ConfirmDialogProvider(
     html.Br(),
 
     dcc.Link('More ConfirmDialogProvider Examples and Reference',
-             href=tools.relpath('/dash-core-components/confirm-provider')),
+             href=tools.relpath('/dash-core-components/confirmdialogprovider')),
 
     html.Br(),
 
@@ -476,7 +481,7 @@ confirm = dcc.ConfirmDialogProvider(
 
     reusable_components.Markdown('***'),
     html.H3(dcc.Link('Logout Button',
-                     href=tools.relpath('/dash-core-components/logout_button'))),
+                     href=tools.relpath('/dash-core-components/logoutbutton'))),
 
     reusable_components.Markdown('''
     The logout button can be used to perform logout mechanism.
@@ -489,7 +494,7 @@ confirm = dcc.ConfirmDialogProvider(
     '''),
 
     dcc.Link('More Logout Button Examples and Reference',
-             href=tools.relpath('/dash-core-components/logout_button')),
+             href=tools.relpath('/dash-core-components/logoutbutton')),
 
     html.Div(id='hidden', style={'display': 'none'}),
 
@@ -497,7 +502,7 @@ confirm = dcc.ConfirmDialogProvider(
 
     reusable_components.Markdown('***'),
     html.H3(dcc.Link('Loading component',
-                     href=tools.relpath('/dash-core-components/loading_component'))),
+                     href=tools.relpath('/dash-core-components/loading'))),
 
     reusable_components.Markdown('''
     The Loading component can be used to wrap components that you want to display a spinner for, if they take too long to load.
@@ -514,7 +519,7 @@ confirm = dcc.ConfirmDialogProvider(
     ''')),
 
     dcc.Link('More Loading Component Examples and Reference',
-             href=tools.relpath('/dash-core-components/loading_component')),
+             href=tools.relpath('/dash-core-components/loading')),
 
     reusable_components.Markdown('***'),
 

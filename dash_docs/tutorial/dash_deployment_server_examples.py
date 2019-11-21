@@ -11,12 +11,21 @@ import plotly
 from dash_docs import styles
 from dash_docs import reusable_components as rc
 from dash_docs import tools
-from dash_docs import reusable_components
 
 if os.environ.get('DASH_APP_LOCATION', '') != 'ABSOLUTE':
     from dash_docs.server import app
 else:
     from server import app
+
+
+def Blockquote():
+    return rc.Markdown('''
+        > This documentation is for [Dash Enterprise](https://plot.ly/dash),
+        Plotly's commercial platform for managing and improving
+        Dash applications in your organization.
+        [View the docs](/dash-enterprise) or
+        [request a trial](https://go.plot.ly/dash-doc).
+    ''')
 
 
 # # # # # # #
@@ -25,9 +34,9 @@ else:
 Initialize = html.Div(children=[
     html.H1('Part 1. Initialize Dash Apps on Dash Enterprise'),
 
-    rc.Blockquote(),
+    Blockquote(),
 
-    reusable_components.Markdown('''
+    rc.Markdown('''
         > This is the *1st* deployment chapter of the [Dash Enterprise Documentation](/dash-enterprise).
         > The [next chapter](/dash-enterprise/deployment) covers deploying a Dash App on Dash Enterprise.
 
@@ -38,14 +47,14 @@ Initialize = html.Div(children=[
         `https://your-dash-server/Manager`
     '''),
 
-    reusable_components.Markdown('''
+    rc.Markdown('''
         ***
 
         1. Navigate to the Dash Enterprise App Manager at
         https://your-dash-server/Manager
     '''),
 
-    reusable_components.Markdown('''
+    rc.Markdown('''
 
         &nbsp;
 
@@ -67,7 +76,7 @@ Initialize = html.Div(children=[
         }
     ),
 
-    reusable_components.Markdown('''
+    rc.Markdown('''
 
         &nbsp;
 
@@ -85,7 +94,7 @@ Initialize = html.Div(children=[
         }
     ),
 
-    reusable_components.Markdown('''
+    rc.Markdown('''
 
         &nbsp;
 
@@ -102,7 +111,7 @@ Initialize = html.Div(children=[
         }
     ),
 
-    reusable_components.Markdown('''
+    rc.Markdown('''
 
         &nbsp;
 
@@ -122,9 +131,9 @@ Initialize = html.Div(children=[
 Deploy = html.Div(children=[
     html.H1('Part 2. Deploy Dash Apps on Dash Enterprise'),
 
-    rc.Blockquote(),
+    Blockquote(),
 
-    reusable_components.Markdown(
+    rc.Markdown(
     '''
     > This is the *2nd* deployment chapter of the [Dash Enterprise Documentation](/dash-enterprise).
     > The [previous chapter](/dash-enterprise/initialize) covered initializing a Dash App on Dash Enterprise.
@@ -136,7 +145,7 @@ Deploy = html.Div(children=[
 
     '''),
 
-    reusable_components.Markdown(
+    rc.Markdown(
     '''
     ***
 
@@ -170,7 +179,7 @@ Deploy = html.Div(children=[
               [Input('platform-2', 'value')])
 def display_instructions2(platform):
     return [
-        reusable_components.Markdown(
+        rc.Markdown(
         '''
 
         ***
@@ -191,18 +200,18 @@ def display_instructions2(platform):
         dcc.Tabs([
             dcc.Tab(label='Download a Sample App', children=[
                 html.Div([
-                    reusable_components.Markdown(
+                    rc.Markdown(
                     '''
 
                     &nbsp;
 
-                    #### [Visit the sample app page](/templates/sample-app)
+                    #### [Visit the sample app page](https://dash-gallery.plotly.host/Portal/)
 
                     And download & unzip the files.
 
                     '''),
 
-                    (reusable_components.Markdown('''
+                    (rc.Markdown('''
                     &nbsp;
 
                     Then, install [Git for Windows](https://git-scm.com/download/win).
@@ -210,7 +219,7 @@ def display_instructions2(platform):
                     ''') if platform == 'Windows' else
                     ''),
 
-                    reusable_components.Markdown(
+                    rc.Markdown(
                     '''
                     In Git Bash, navigate into the sample app folder and
                     initialize the repository.
@@ -223,7 +232,7 @@ def display_instructions2(platform):
                     style=styles.code_container),
 
 
-                    reusable_components.Markdown(
+                    rc.Markdown(
                     '''
                     ***
 
@@ -249,7 +258,7 @@ def display_instructions2(platform):
             ]),
             dcc.Tab(label='Create New App', children=[
                 html.Div([
-                    (reusable_components.Markdown('''
+                    (rc.Markdown('''
                     &nbsp;
 
                     First, install [Git for Windows](https://git-scm.com/download/win).
@@ -257,7 +266,7 @@ def display_instructions2(platform):
                     ''') if platform == 'Windows' else
                     ''),
 
-                    reusable_components.Markdown(
+                    rc.Markdown(
                     '''
 
                     &nbsp;
@@ -265,7 +274,7 @@ def display_instructions2(platform):
                     #### Create a New Folder
                     '''),
 
-                    reusable_components.Markdown(
+                    rc.Markdown(
                     '''
                     ```shell
                     $ mkdir dash_app_example
@@ -273,7 +282,7 @@ def display_instructions2(platform):
                     ```
                     ''', style=styles.code_container),
 
-                    reusable_components.Markdown(
+                    rc.Markdown(
                     '''
 
                     ***
@@ -282,7 +291,7 @@ def display_instructions2(platform):
 
                     '''),
 
-                    reusable_components.Markdown(
+                    rc.Markdown(
                     ('''
                     ```shell
                     $ git init # initializes an empty git repo
@@ -298,7 +307,7 @@ def display_instructions2(platform):
                     ```
                     '''), style=styles.code_container),
 
-                    reusable_components.Markdown(
+                    rc.Markdown(
                     '''
                     &nbsp;
 
@@ -306,7 +315,7 @@ def display_instructions2(platform):
                     to reinstall your app's dependencies with this virtualenv:
                     '''),
 
-                    reusable_components.Markdown(
+                    rc.Markdown(
                     '''
                     ```shell
                     $ pip install dash
@@ -314,7 +323,7 @@ def display_instructions2(platform):
                     ```
                     ''', style=styles.code_container),
 
-                    reusable_components.Markdown(
+                    rc.Markdown(
                     '''
                     &nbsp;
 
@@ -322,14 +331,14 @@ def display_instructions2(platform):
                     deploying the app:
                     '''),
 
-                    reusable_components.Markdown(
+                    rc.Markdown(
                     '''
                     ```shell
                     $ pip install gunicorn
                     ```
                     ''', style=styles.code_container),
 
-                    reusable_components.Markdown(
+                    rc.Markdown(
                     '''
                     ***
                     #### Create Relevant Files For Deployment
@@ -343,7 +352,7 @@ def display_instructions2(platform):
                     line that defines the server variable: `server = app.server`
                     '''),
 
-                    reusable_components.Markdown(
+                    rc.Markdown(
                     '''
                     ```python
                     import os
@@ -379,7 +388,7 @@ def display_instructions2(platform):
                     ''',
                     style=styles.code_container),
 
-                    reusable_components.Markdown('''
+                    rc.Markdown('''
                     ***
 
                     **`.gitignore`**
@@ -389,7 +398,7 @@ def display_instructions2(platform):
                     to the server) when you deploy your application.
                     '''),
 
-                    reusable_components.Markdown(
+                    rc.Markdown(
                     '''
                     ```shell
                     venv
@@ -399,7 +408,7 @@ def display_instructions2(platform):
                     ```
                     ''', style=styles.code_container),
 
-                    reusable_components.Markdown(
+                    rc.Markdown(
                     '''
                     ***
 
@@ -414,17 +423,18 @@ def display_instructions2(platform):
 
                     '''),
 
-                    reusable_components.Markdown(
+                    rc.Markdown(
                     '''
                     ```shell
                     web: gunicorn app:server --workers 4
                     ```
                     ''', style=styles.code_container),
 
-                    reusable_components.Markdown(
+                    rc.Markdown(
                     '''
                     For some applications, you may require using the `worker`
-                    process. For example, the [Snapshot Engine examples](/dash-snapshots)
+                    process. For example, the
+                    [Snapshot Engine](https://plot.ly/dash/snapshot-engine/) examples
                     use Celery - an asynchronous task/job queue & scheduler.
 
                     In this case, your `Procfile` might look something like this:
@@ -437,7 +447,7 @@ def display_instructions2(platform):
 
                     '''),
 
-                    reusable_components.Markdown(
+                    rc.Markdown(
                     '''
                     ***
 
@@ -447,14 +457,14 @@ def display_instructions2(platform):
                     You can fill this file in automatically with:
                     '''),
 
-                    reusable_components.Markdown(
+                    rc.Markdown(
                     '''
                     ```shell
                     $ pip freeze > requirements.txt
                     ```
                     ''', style=styles.code_container),
 
-                    reusable_components.Markdown(
+                    rc.Markdown(
                     '''
                     If you are using one of the enterprise packages, like
                     `dash-design-kit` or `dash-snapshots`, then you'll also
@@ -479,7 +489,7 @@ def display_instructions2(platform):
 
                     '''),
 
-                    reusable_components.Markdown(
+                    rc.Markdown(
                     '''
                     ```shell
                     web=1
@@ -487,7 +497,7 @@ def display_instructions2(platform):
                     ```
                     ''', style=styles.code_container),
 
-                    reusable_components.Markdown(
+                    rc.Markdown(
                     '''
                     ***
 
@@ -513,7 +523,7 @@ def display_instructions2(platform):
             ]),
             dcc.Tab(label='Deploy Existing App', children=[
                 html.Div([
-                    (reusable_components.Markdown('''
+                    (rc.Markdown('''
                     &nbsp;
 
                     First, install [Git for Windows](https://git-scm.com/download/win).
@@ -521,7 +531,7 @@ def display_instructions2(platform):
                     ''') if platform == 'Windows' else
                     ''),
 
-                    reusable_components.Markdown(
+                    rc.Markdown(
                     '''
 
                     &nbsp;
@@ -531,7 +541,7 @@ def display_instructions2(platform):
 
                     '''),
 
-                    reusable_components.Markdown(
+                    rc.Markdown(
                     '''
                     ```shell
                     $ cd <your-folder-name>
@@ -539,7 +549,7 @@ def display_instructions2(platform):
                     ```
                     ''', style=styles.code_container),
 
-                    reusable_components.Markdown(
+                    rc.Markdown(
                     '''
                     ***
 
@@ -571,13 +581,13 @@ def display_instructions2(platform):
               [Input('deploy-method', 'value')])
 def display_instructions_deploy(method):
     return [
-        reusable_components.Markdown('''
+        rc.Markdown('''
 
         &nbsp;
 
         '''),
 
-        reusable_components.Markdown(
+        rc.Markdown(
         '''
         ```shell
         $ git remote add plotly dokku@your-dash-enterprise:your-dash-app-name
@@ -591,7 +601,7 @@ def display_instructions_deploy(method):
         style=styles.code_container,
         ),
 
-        reusable_components.Markdown(
+        rc.Markdown(
         '''
         &nbsp;
 
@@ -616,7 +626,7 @@ def display_instructions_deploy(method):
         `git remote add plotly https://dash.plotly.acme-corporation.com/GIT/my-first-dash-app`.
         '''),
 
-        reusable_components.Markdown(
+        rc.Markdown(
         '''
         ***
 
@@ -626,7 +636,7 @@ def display_instructions_deploy(method):
         Files are transferred to the server using `git`:
         '''),
 
-        reusable_components.Markdown(
+        rc.Markdown(
         '''
         ```shell
         $ git status # view the changed files
@@ -637,7 +647,7 @@ def display_instructions_deploy(method):
         ```
         ''', style=styles.code_container),
 
-        reusable_components.Markdown(
+        rc.Markdown(
         '''
 
         &nbsp;
@@ -655,7 +665,7 @@ def display_instructions_deploy(method):
         file will be installed automatically by Dash Enterprise.
         '''),
 
-        reusable_components.Markdown(
+        rc.Markdown(
         '''
 
         ***
@@ -677,9 +687,9 @@ def display_instructions_deploy(method):
 Requirements = html.Div(children=[
     html.H1('Application Structure'),
 
-    rc.Blockquote(),
+    Blockquote(),
 
-    reusable_components.Markdown(
+    rc.Markdown(
     '''
     To deploy dash apps to Dash Enterprise, there
     are a few files required for successful deployment. Below is a common
@@ -798,9 +808,9 @@ Requirements = html.Div(children=[
 staticAssets = html.Div(children=[
     html.H1('Adding Static Assets'),
 
-    rc.Blockquote(),
+    Blockquote(),
 
-    reusable_components.Markdown(
+    rc.Markdown(
     '''
     ***
 
@@ -837,7 +847,7 @@ staticAssets = html.Div(children=[
 
     '''),
 
-    reusable_components.Markdown(
+    rc.Markdown(
     '''
     ```python
     html.Img(src=app.get_asset_url('my-image.png'))
@@ -851,9 +861,9 @@ staticAssets = html.Div(children=[
 ConfigSys = html.Div(children=[
     html.H1('Configuring System Dependencies'),
 
-    rc.Blockquote(),
+    Blockquote(),
 
-    reusable_components.Markdown('''
+    rc.Markdown('''
     In some cases you may need to install and configure system
     dependencies. Examples include installing and configuring
     database drivers or the Java JRE environment.
@@ -865,8 +875,8 @@ ConfigSys = html.Div(children=[
     We have a collection of sample apps that install common system-level
     dependencies. These applications are _ready to deploy_:
 
-    - [Oracle cx_Oracle Database](/templates/oracle-sample-app)
-    - [Pyodbc Database Driver](/templates/pyodbc-sample-app)
+    - [Oracle cx_Oracle Database](https://github.com/plotly/dash-on-premise-sample-app/pull/3/files)
+    - [Pyodbc Database Driver](https://github.com/plotly/dash-on-premise-sample-app/pull/2)
 
     &nbsp;
 
@@ -885,14 +895,14 @@ ConfigSys = html.Div(children=[
 
     '''),
 
-    reusable_components.Markdown('''
+    rc.Markdown('''
     ```shell
     unixodbc
     unixodbc-dev
     ```
     ''', style=styles.code_container),
 
-    reusable_components.Markdown('''
+    rc.Markdown('''
 
     ***
 
@@ -918,14 +928,14 @@ ConfigSys = html.Div(children=[
 
     '''),
 
-    reusable_components.Markdown('''
+    rc.Markdown('''
     ```shell
     cp /app/odbc.ini /etc/odbc.ini
     cp /app/odbcinst.ini /etc/odbcinst.ini
     ```
     ''', style=styles.code_container),
 
-    reusable_components.Markdown('''
+    rc.Markdown('''
     &nbsp;
 
     ##### Run Pre-Deploy Script Using `app.json`
@@ -936,7 +946,7 @@ ConfigSys = html.Div(children=[
 
     '''),
 
-    reusable_components.Markdown('''
+    rc.Markdown('''
     ```json
     {
         "scripts": {
@@ -948,7 +958,7 @@ ConfigSys = html.Div(children=[
     ```
     ''', style=styles.code_container),
 
-    reusable_components.Markdown('''
+    rc.Markdown('''
     ***
 
     Now when the application is deployed, it will install the apt
@@ -969,9 +979,9 @@ ConfigSys = html.Div(children=[
 EnvVars = html.Div(children=[
     html.H1('Setting Environment Variables'),
 
-    rc.Blockquote(),
+    Blockquote(),
 
-    reusable_components.Markdown('''
+    rc.Markdown('''
     In Plotly Enterprise 2.5.0 and up, you can store secrets as environment variables
     instead of hardcoded in your application code.
     It's good practice to keep application
@@ -982,7 +992,7 @@ EnvVars = html.Div(children=[
 
     '''),
 
-    reusable_components.Markdown('''
+    rc.Markdown('''
 
     ***
 
@@ -1004,7 +1014,7 @@ EnvVars = html.Div(children=[
         }
     ),
 
-    reusable_components.Markdown('''
+    rc.Markdown('''
 
     ***
 
@@ -1014,7 +1024,7 @@ EnvVars = html.Div(children=[
 
     '''),
 
-    reusable_components.Markdown(
+    rc.Markdown(
     '''
     ```python
     database_password = os.environ['DATABASE_PASSWORD']
@@ -1023,7 +1033,7 @@ EnvVars = html.Div(children=[
     style=styles.code_container,
     ),
 
-    reusable_components.Markdown('''
+    rc.Markdown('''
     &nbsp;
 
     Alternatively, if the variable isn't in your environment and you want
@@ -1031,7 +1041,7 @@ EnvVars = html.Div(children=[
 
     '''),
 
-    reusable_components.Markdown(
+    rc.Markdown(
     '''
     ```
     database_password = os.environ.get('DATABASE_PASSWORD', 'my-default-database-password')
@@ -1042,7 +1052,7 @@ EnvVars = html.Div(children=[
 
 
 
-    reusable_components.Markdown('''
+    rc.Markdown('''
     ***
 
     #### Defining Environment Variables In Your Local Environment
@@ -1061,7 +1071,7 @@ EnvVars = html.Div(children=[
     Alternatively, you can define them for your session by "exporting" them:
     '''),
 
-    reusable_components.Markdown(
+    rc.Markdown(
     '''
     ```shell
     $ export DATABASE_USER=chris
@@ -1073,7 +1083,7 @@ EnvVars = html.Div(children=[
     ),
 
 
-    reusable_components.Markdown('''
+    rc.Markdown('''
     ***
 
     #### Delete Environment Variables
@@ -1100,9 +1110,9 @@ EnvVars = html.Div(children=[
 LocalDir = html.Div(children=[
     html.H1('Mapping Local Directories Examples and Reference'),
 
-    rc.Blockquote(),
+    Blockquote(),
 
-    reusable_components.Markdown('''
+    rc.Markdown('''
     In Dash Enterprise, Dash Apps are run in isolated containers.
     Dash Enterprise builds the entire system for each individual app
     from scratch, including installing a fresh instance of Python, installing
@@ -1150,7 +1160,7 @@ LocalDir = html.Div(children=[
         }
     ),
 
-    reusable_components.Markdown('''
+    rc.Markdown('''
 
     ***
 
@@ -1173,7 +1183,7 @@ LocalDir = html.Div(children=[
         }
     ),
 
-reusable_components.Markdown('''
+rc.Markdown('''
 
     &nbsp;
 
@@ -1193,7 +1203,7 @@ reusable_components.Markdown('''
         }
     ),
 
-    reusable_components.Markdown('''
+    rc.Markdown('''
 
     ***
 
@@ -1204,7 +1214,7 @@ reusable_components.Markdown('''
 
     '''),
 
-    reusable_components.Markdown('''
+    rc.Markdown('''
     ```python
     import os
     file_pathname = os.path.join(os.sep, 'data', 'my-dataset.csv')
@@ -1213,7 +1223,7 @@ reusable_components.Markdown('''
     style=styles.code_container,
     ),
 
-    reusable_components.Markdown('''
+    rc.Markdown('''
     &nbsp;
 
     In some cases, the filesystems that you reference in your deployed
@@ -1223,7 +1233,7 @@ reusable_components.Markdown('''
 
     '''),
 
-    reusable_components.Markdown(
+    rc.Markdown(
     '''
     ```python
     if 'DASH_APP_NAME' in os.environ:
@@ -1237,7 +1247,7 @@ reusable_components.Markdown('''
     style=styles.code_container,
     ),
 
-    reusable_components.Markdown('''
+    rc.Markdown('''
     ***
 
     #### Recommendations
@@ -1289,9 +1299,9 @@ reusable_components.Markdown('''
 Ssh = html.Div(children=[
     html.H1('Authenticating to Dash Enterprise with SSH'),
 
-    rc.Blockquote(),
+    Blockquote(),
 
-    reusable_components.Markdown('''
+    rc.Markdown('''
 
     In Plotly Enterprise 2.4.0 and above, you can deploy your apps using
     either HTTPS or SSH. If you are deploying with HTTPS, then you do not
@@ -1312,7 +1322,7 @@ Ssh = html.Div(children=[
 
     '''),
 
-    reusable_components.Markdown('''
+    rc.Markdown('''
     #### Why Deploy with SSH?
 
     We recommend deploying with HTTPS for most of our users. However, there
@@ -1340,7 +1350,7 @@ Ssh = html.Div(children=[
 
     '''),
 
-    reusable_components.Markdown('''
+    rc.Markdown('''
     #### Which OS Are You Using?
 
     '''),
@@ -1361,33 +1371,33 @@ Ssh = html.Div(children=[
 def display_instructions(platform):
     return [
 
-        (reusable_components.Markdown('''
+        (rc.Markdown('''
         These instructions assume that you are using
         **Git Bash** on Windows, which is included in the
         official [Git for Windows release](https://git-scm.com/download/win).
         ''') if platform == 'Windows' else
         ''),
 
-        reusable_components.Markdown('''
+        rc.Markdown('''
         ***
 
         #### Generate a New SSH Key
 
         '''),
 
-        reusable_components.Markdown(
+        rc.Markdown(
         '**1. Open Git Bash**' if platform == 'Windows' else
         '**1. Open Terminal**'
         ),
 
-        reusable_components.Markdown('''
+        rc.Markdown('''
         **2. Generate Key**
 
         This command will walk you
         through a few instructions.
         '''),
 
-        reusable_components.Markdown(
+        rc.Markdown(
         '''
         ```
         $ ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
@@ -1396,7 +1406,7 @@ def display_instructions(platform):
         style=styles.code_container,
         ),
 
-        reusable_components.Markdown('''
+        rc.Markdown('''
         ***
 
         #### Check the SSH-Agent
@@ -1404,7 +1414,7 @@ def display_instructions(platform):
         **1. Ensure the ssh-agent is running:**
         '''),
 
-        reusable_components.Markdown(
+        rc.Markdown(
             (
             '''
             ```shell
@@ -1419,7 +1429,7 @@ def display_instructions(platform):
             style=styles.code_container,
         ),
 
-        reusable_components.Markdown('''
+        rc.Markdown('''
         &nbsp;
 
         **2. Run `ssh-add`**
@@ -1428,7 +1438,7 @@ def display_instructions(platform):
         created above if it is different.
         '''),
 
-        reusable_components.Markdown(
+        rc.Markdown(
             (
             '''
             ```shell
@@ -1443,7 +1453,7 @@ def display_instructions(platform):
             style=styles.code_container,
         ),
 
-        reusable_components.Markdown('''
+        rc.Markdown('''
         ***
 
         #### Copy and Add SSH Key
@@ -1455,7 +1465,7 @@ def display_instructions(platform):
 
         '''),
 
-        reusable_components.Markdown(
+        rc.Markdown(
             (
             '''
             ```shell
@@ -1477,7 +1487,7 @@ def display_instructions(platform):
             style=styles.code_container,
         ),
 
-        reusable_components.Markdown('''
+        rc.Markdown('''
         &nbsp;
 
         **2. Add SSH Key**
@@ -1496,7 +1506,7 @@ def display_instructions(platform):
             }
         ),
 
-        reusable_components.Markdown('''
+        rc.Markdown('''
         &nbsp;
 
         **3. Confirm it Has Been Added**
@@ -1514,7 +1524,7 @@ def display_instructions(platform):
             }
         ),
 
-        reusable_components.Markdown('''
+        rc.Markdown('''
         ***
 
         #### Modify SSH Config
@@ -1529,20 +1539,20 @@ def display_instructions(platform):
         your Dash Enterprise server (without `http://` or `https://`).
         '''),
 
-        reusable_components.Markdown('''
+        rc.Markdown('''
         ```
         Host your-dash-enterprise-server
             Port 3022
         ```''', style=styles.code_container),
 
-        (reusable_components.Markdown('''
+        (rc.Markdown('''
         If you're having trouble opening this file, you can run
         `$ open ~/.ssh/config` which will open the file using your default
         editor. If the file doesn't exist, then you can open that hidden
         folder with just `$ open ~/.ssh`
         ''') if platform == 'Mac' else ''),
 
-        (reusable_components.Markdown('''
+        (rc.Markdown('''
         Please be careful not to save your SSH config as a .txt file as
         it will not be recognized by Git when deploying your applications.
         If you are using Notepad to create your SSH config, you can force the
@@ -1551,7 +1561,7 @@ def display_instructions(platform):
         ''') if platform == 'Windows' else ''),
 
 
-        reusable_components.Markdown('''
+        rc.Markdown('''
         ***
 
         If you have successfully added your SSH Key, advance to
@@ -1565,9 +1575,9 @@ def display_instructions(platform):
 Cli = html.Div(children=[
     html.H1('Managing Dash Apps from the Command Line '),
 
-    rc.Blockquote(),
+    Blockquote(),
 
-    reusable_components.Markdown('''
+    rc.Markdown('''
     After setting up SSH authentication (see our [ssh doc](/dash-enterprise/ssh)), you will
     be able to use the commands below to help manage your apps from the command line.
 
@@ -1582,7 +1592,7 @@ Cli = html.Div(children=[
 
     '''),
 
-    reusable_components.Markdown('''
+    rc.Markdown('''
 
     ### List of exposed DDS commands:
 
@@ -1593,7 +1603,7 @@ Cli = html.Div(children=[
 
     html.Details([
         html.Summary('Lock app'),
-        reusable_components.Markdown('''
+        rc.Markdown('''
         &nbsp;
 
         If you wish to disable deploying for a period of time, this can be
@@ -1612,7 +1622,7 @@ Cli = html.Div(children=[
 
     html.Details([
         html.Summary('Unlock app'),
-        reusable_components.Markdown('''
+        rc.Markdown('''
         &nbsp;
 
         In some cases, it may be necessary to remove an existing deploy lock.
@@ -1630,7 +1640,7 @@ Cli = html.Div(children=[
 
     html.Details([
         html.Summary('Get app logs'),
-        reusable_components.Markdown('''
+        rc.Markdown('''
         &nbsp;
 
         You can get logs of an app using the logs command:
@@ -1656,7 +1666,7 @@ Cli = html.Div(children=[
 
     html.Details([
         html.Summary('Get logs from failed deploy'),
-        reusable_components.Markdown('''
+        rc.Markdown('''
         &nbsp;
 
         In some cases, it may be useful to retrieve the logs from a previously failed deploy.
@@ -1671,7 +1681,7 @@ Cli = html.Div(children=[
 
     html.Details([
         html.Summary("Rebuild an app's environment"),
-        reusable_components.Markdown('''
+        rc.Markdown('''
         &nbsp;
 
         You can trigger an application to rebuild its environment using `ps:rebuild`.
@@ -1685,7 +1695,7 @@ Cli = html.Div(children=[
 
     html.Details([
         html.Summary("Get a report of your app's status"),
-        reusable_components.Markdown('''
+        rc.Markdown('''
         &nbsp;
 
         This command displays a process report for one or more apps.
@@ -1710,7 +1720,7 @@ Cli = html.Div(children=[
 
     html.Details([
         html.Summary("Restart an app"),
-        reusable_components.Markdown('''
+        rc.Markdown('''
             &nbsp;
 
             Applications can be restarted, which is functionally identical to releasing and deploying an application.
@@ -1725,7 +1735,7 @@ Cli = html.Div(children=[
 
     html.Details([
         html.Summary("Stop an app"),
-        reusable_components.Markdown('''
+        rc.Markdown('''
             &nbsp;
 
             Deployed applications can be stopped using the ps:stop command.
@@ -1741,7 +1751,7 @@ Cli = html.Div(children=[
 
     html.Details([
         html.Summary("Start an app"),
-        reusable_components.Markdown('''
+        rc.Markdown('''
             &nbsp;
 
             All stopped containers can be started using the ps:start command.
@@ -1756,7 +1766,7 @@ Cli = html.Div(children=[
 
     html.Details([
         html.Summary("Scale app processes"),
-        reusable_components.Markdown('''
+        rc.Markdown('''
         &nbsp;
 
         DDS can also manage scaling applications (increase the number of containers for processes defined
@@ -1789,7 +1799,7 @@ Cli = html.Div(children=[
 
     html.Details([
         html.Summary("List persistent storage directories"),
-        reusable_components.Markdown('''
+        rc.Markdown('''
             &nbsp;
 
             List bind mounts for an app's container(s) (host:container).
@@ -1803,7 +1813,7 @@ Cli = html.Div(children=[
         ''')
     ]),
 
-    reusable_components.Markdown('''
+    rc.Markdown('''
 
     #### Service-related Commands:
 
@@ -1811,7 +1821,7 @@ Cli = html.Div(children=[
 
     html.Details([
         html.Summary("Export the contents of a Redis database"),
-        reusable_components.Markdown('''
+        rc.Markdown('''
             &nbsp;
 
             Export a dump of the Redis service database. By default, datastore output is exported to stdout:
@@ -1829,7 +1839,7 @@ Cli = html.Div(children=[
 
     html.Details([
         html.Summary("Upload an existing redis dump to Redis database"),
-        reusable_components.Markdown('''
+        rc.Markdown('''
             &nbsp;
 
             Import a datastore dump:
@@ -1844,7 +1854,7 @@ Cli = html.Div(children=[
 
     html.Details([
         html.Summary("Get connection info for a Redis service"),
-        reusable_components.Markdown('''
+        rc.Markdown('''
             &nbsp;
 
             Print the connection information. Get connection information as follows:
@@ -1874,7 +1884,7 @@ Cli = html.Div(children=[
 
     html.Details([
         html.Summary("Get Redis logs"),
-        reusable_components.Markdown('''
+        rc.Markdown('''
             &nbsp;
 
             Print the most recent log(s) for this service.
@@ -1893,7 +1903,7 @@ Cli = html.Div(children=[
 
     html.Details([
         html.Summary("Restart a Redis service"),
-        reusable_components.Markdown('''
+        rc.Markdown('''
         &nbsp;
 
         Restart the service:
@@ -1908,7 +1918,7 @@ Cli = html.Div(children=[
 
     html.Details([
         html.Summary("Stop a Redis service"),
-        reusable_components.Markdown('''
+        rc.Markdown('''
         &nbsp;
 
         Stop the service:
@@ -1923,7 +1933,7 @@ Cli = html.Div(children=[
 
     html.Details([
         html.Summary("Start a stopped Redis service"),
-        reusable_components.Markdown('''
+        rc.Markdown('''
         &nbsp;
 
         Start the service:
@@ -1936,7 +1946,7 @@ Cli = html.Div(children=[
     ''')
     ]),
 
-    reusable_components.Markdown('''
+    rc.Markdown('''
 
     #### Service Linking Commands:
 
@@ -1945,7 +1955,7 @@ Cli = html.Div(children=[
 
     html.Details([
         html.Summary("Link Redis to an app"),
-        reusable_components.Markdown('''
+        rc.Markdown('''
         &nbsp;
 
         Link the Redis service to the app. This will also restart your app:
@@ -1960,7 +1970,7 @@ Cli = html.Div(children=[
 
     html.Details([
         html.Summary("Unlink Redis from an app"),
-        reusable_components.Markdown('''
+        rc.Markdown('''
         &nbsp;
 
         Unlink the Redis service from the app. This will also restart your app and unset related environment variables:
@@ -1981,9 +1991,9 @@ Cli = html.Div(children=[
 Authentication = html.Div(children=[
     html.H1('Dash App Authentication'),
 
-    rc.Blockquote(),
+    Blockquote(),
 
-    reusable_components.Markdown('''
+    rc.Markdown('''
     DDS will automatically implement user authentication if your
     [Dash app's privacy](/dash-enterprise/privacy) is set to *Restricted* (the default setting)
     or *Authorized* but not if is set to *Unauthorized*. You can access the authentication data within your app
@@ -1993,7 +2003,7 @@ Authentication = html.Div(children=[
 
     '''),
 
-    reusable_components.Markdown('''
+    rc.Markdown('''
 
     ## Using `dash-enterprise-auth` in an Existing Dash App
 
@@ -2013,7 +2023,7 @@ Authentication = html.Div(children=[
     '''),
 
 
-    reusable_components.Markdown('''
+    rc.Markdown('''
     ```python
     import dash
     from dash.dependencies import Input, Output
@@ -2101,9 +2111,9 @@ Authentication = html.Div(children=[
 AppPrivacy = html.Div(children=[
     html.H1('Dash App Privacy'),
 
-    rc.Blockquote(),
+    Blockquote(),
 
-    reusable_components.Markdown('''
+    rc.Markdown('''
     &nbsp;
 
     Starting in Version 3.0.0 of Dash Enterprise, you can restrict
@@ -2127,7 +2137,7 @@ AppPrivacy = html.Div(children=[
         }
     ),
 
-    reusable_components.Markdown('''
+    rc.Markdown('''
     &nbsp;
 
     From the settings tab of your app's management page, scroll down
@@ -2156,9 +2166,9 @@ AppPrivacy = html.Div(children=[
 Checks = html.Div(children=[
     html.H1('Dash Deployment Health Checks'),
 
-    rc.Blockquote(),
+    Blockquote(),
 
-    reusable_components.Markdown('''
+    rc.Markdown('''
     &nbsp;
 
     Before an app is deployed to Dash Enterprise, a check is performed to make sure that
@@ -2175,7 +2185,7 @@ Checks = html.Div(children=[
 
     html.H3('Checks Settings'),
 
-    reusable_components.Markdown('''
+    rc.Markdown('''
 
     You can specify values for `WAIT`, `TIMEOUT`, and `ATTEMPTS` to set the period of time
     that DDS waits before performing the check, the amount of time before it times out, and the number of times
@@ -2186,7 +2196,7 @@ Checks = html.Div(children=[
 
     '''),
 
-    reusable_components.Markdown(
+    rc.Markdown(
         '''
         ```shell
         WAIT=15
@@ -2200,7 +2210,7 @@ Checks = html.Div(children=[
 
     html.H3('Checks Instructions'),
 
-    reusable_components.Markdown('''
+    rc.Markdown('''
 
    The instructions are specified in the format of a relative link followed by content that DDS
    should find in the response. The expected content can be omitted if text content doesn't make sense (e.g if
@@ -2209,7 +2219,7 @@ Checks = html.Div(children=[
 
    '''),
 
-    reusable_components.Markdown(
+    rc.Markdown(
         '''
         ```
         WAIT=5
@@ -2231,9 +2241,9 @@ Checks = html.Div(children=[
 PrivatePackages = html.Div(children=[
     html.H1('Adding Private Python Packages'),
 
-    rc.Blockquote(),
+    Blockquote(),
 
-    reusable_components.Markdown('''
+    rc.Markdown('''
 
     When a Dash App is deployed on the Dash Enterprise, the
     `requirements.txt` will install the relevant python dependecies. If you
@@ -2275,7 +2285,7 @@ PrivatePackages = html.Div(children=[
 
     '''),
 
-    reusable_components.Markdown(
+    rc.Markdown(
     '''
     ```shell
     git+http://${AUTH_USER}:${AUTH_PASSWORD}@git.example.com/MyProject#egg=MyProject
@@ -2284,7 +2294,7 @@ PrivatePackages = html.Div(children=[
     style=styles.code_container,
     ),
 
-    reusable_components.Markdown('''
+    rc.Markdown('''
     &nbsp;
 
     `AUTH_USER` and `AUTH_PASSWORD` variables can be added to your Dash App via
@@ -2302,9 +2312,9 @@ PrivatePackages = html.Div(children=[
 Redis = html.Div(children=[
     html.H1('Create and Link Redis Database'),
 
-    rc.Blockquote(),
+    Blockquote(),
 
-    reusable_components.Markdown('''
+    rc.Markdown('''
     Redis is a powerful in-memory database that is well-suited for many Dash
     applications. In particular, you can use Redis to:
 
@@ -2322,7 +2332,7 @@ Redis = html.Div(children=[
     instances of Redis for your application.
     '''),
 
-    reusable_components.Markdown('''
+    rc.Markdown('''
     ***
 
     #### Enable Redis Databases
@@ -2344,7 +2354,7 @@ Redis = html.Div(children=[
         }
     ),
 
-    reusable_components.Markdown('''
+    rc.Markdown('''
     ***
 
     #### Create and Link (via UI)
@@ -2390,7 +2400,7 @@ Redis = html.Div(children=[
         }
     ),
 
-    reusable_components.Markdown('''
+    rc.Markdown('''
     &nbsp;
 
     Next, navigate to **Apps** and create a new app (for more info see
@@ -2409,7 +2419,7 @@ Redis = html.Div(children=[
         }
     ),
 
-    reusable_components.Markdown('''
+    rc.Markdown('''
     &nbsp;
 
     ##### Create and Link a Database After an App Has Been Initialized.
@@ -2429,7 +2439,7 @@ Redis = html.Div(children=[
         }
     ),
 
-    reusable_components.Markdown('''
+    rc.Markdown('''
     ***
 
     #### Create and Link (via Command Line)
@@ -2440,7 +2450,7 @@ Redis = html.Div(children=[
 
     '''),
 
-    reusable_components.Markdown(
+    rc.Markdown(
     '''
     ```shell
     $ ssh dokku@YOUR_DASH_SERVER redis:create SERVICE-NAME
@@ -2450,7 +2460,7 @@ Redis = html.Div(children=[
     style=styles.code_container,
     ),
 
-    reusable_components.Markdown('''
+    rc.Markdown('''
 
     &nbsp;
 
@@ -2463,7 +2473,7 @@ Redis = html.Div(children=[
 
     '''),
 
-    reusable_components.Markdown('''
+    rc.Markdown('''
     ***
 
     #### Referencing Redis in Your Code
@@ -2472,7 +2482,7 @@ Redis = html.Div(children=[
 
     '''),
 
-    reusable_components.Markdown(
+    rc.Markdown(
     '''
     ```shell
     redis_instance = redis.StrictRedis.from_url(os.environ["REDIS_URL"])
@@ -2481,7 +2491,7 @@ Redis = html.Div(children=[
     style=styles.code_container,
     ),
 
-    reusable_components.Markdown('''
+    rc.Markdown('''
     ***
 
     #### Running Redis on Your Local Machine
@@ -2496,7 +2506,7 @@ Redis = html.Div(children=[
     variable on-the-fly when you run `python app.py`.
     '''),
 
-    reusable_components.Markdown(
+    rc.Markdown(
     '''
     ```shell
     $ REDIS_URL=redis://<your-redis-instance-ip>:6379 python app.py
@@ -2505,7 +2515,7 @@ Redis = html.Div(children=[
     style=styles.code_container,
     ),
 
-    reusable_components.Markdown('''
+    rc.Markdown('''
     &nbsp;
 
     ##### Windows Users
@@ -2525,9 +2535,9 @@ Redis = html.Div(children=[
 Celery = html.Div(children=[
     html.H1('Linking a Celery Process'),
 
-    rc.Blockquote(),
+    Blockquote(),
 
-    reusable_components.Markdown(
+    rc.Markdown(
     '''
     Celery is a reliable asynchronous task queue/job queue that supports both
     real-time processing and task scheduling in production systems. This makes
@@ -2553,9 +2563,9 @@ Celery = html.Div(children=[
 StagingApp = html.Div(children=[
     html.H1('Create a Staging Dash App'),
 
-    rc.Blockquote(),
+    Blockquote(),
 
-    reusable_components.Markdown(
+    rc.Markdown(
     '''
     Once you have deployed your application, your end-users will expect that
     it is stable and ready for consumption. So, what do you do if you want to
@@ -2583,7 +2593,7 @@ StagingApp = html.Div(children=[
 
     '''),
 
-    reusable_components.Markdown(
+    rc.Markdown(
     '''
     ```shell
     $ git add remote stage https://your-dash-enterprise/GIT/your-dash-app-name-stage
@@ -2591,7 +2601,7 @@ StagingApp = html.Div(children=[
     ''',
     style=styles.code_container),
 
-    reusable_components.Markdown(
+    rc.Markdown(
     '''
     ***
 
@@ -2603,7 +2613,7 @@ StagingApp = html.Div(children=[
 
     '''),
 
-    reusable_components.Markdown(
+    rc.Markdown(
     '''
     ```shell
     $ git push stage master
@@ -2618,9 +2628,9 @@ StagingApp = html.Div(children=[
 pdfService = html.Div(children=[
     html.H1('Dash Enterprise PDF Service'),
 
-        rc.Blockquote(),
+        Blockquote(),
 
-        reusable_components.Markdown(
+        rc.Markdown(
         '''
 
         The Dash Enterprise platform has an API endpoint for creating PDF exports
@@ -2631,7 +2641,8 @@ pdfService = html.Div(children=[
         or you can generate these PDFs on-the-fly.
 
         This API endpoint is used by the Dash Enterprise Snapshot Engine library.
-        Refer to the [Snapshot Engine documentation](/dash-snapshots)
+        Refer to the
+        [Snapshot Engine documentation](https://plot.ly/dash/snapshot-engine/)
         for more examples.
 
         ***
@@ -2640,7 +2651,7 @@ pdfService = html.Div(children=[
 
         '''),
 
-        reusable_components.Markdown('''
+        rc.Markdown('''
         ```bash
         POST https://<your-dash-enterprise>/Manager/api/generate_report
         content-type: application/json
@@ -2661,7 +2672,7 @@ pdfService = html.Div(children=[
         ''',
         style=styles.code_container),
 
-        reusable_components.Markdown(
+        rc.Markdown(
         '''
 
         - `url` - The URL to download
@@ -2712,7 +2723,7 @@ pdfService = html.Div(children=[
         for more details.
         '''),
 
-        reusable_components.Markdown(
+        rc.Markdown(
         '''
         ```python
 
@@ -2798,7 +2809,7 @@ pdfService = html.Div(children=[
         ''',
         style=styles.code_container),
 
-        reusable_components.Markdown('''
+        rc.Markdown('''
 
         ***
 
@@ -2824,9 +2835,9 @@ pdfService = html.Div(children=[
 Troubleshooting = html.Div(children=[
     html.H1('Common Errors'),
 
-    rc.Blockquote(),
+    Blockquote(),
 
-    reusable_components.Markdown(
+    rc.Markdown(
     '''
     This section describes some of the common errors you may encounter when
     trying to deploy to the Dash Enterprise, and provides information
@@ -2842,7 +2853,7 @@ Troubleshooting = html.Div(children=[
     html.Details([
         html.Summary("Are using the latest versions?"),
 
-        reusable_components.Markdown('''
+        rc.Markdown('''
         ```shell
         dash=={}
         dash-html-components=={}
@@ -2856,7 +2867,7 @@ Troubleshooting = html.Div(children=[
             dt.__version__
         ), style=styles.code_container),
 
-        reusable_components.Markdown('''
+        rc.Markdown('''
         > A quick note on checking your versions and on upgrading.
         > These docs are run using the versions listed above and these
         > versions should be the latest versions available.
@@ -2883,7 +2894,7 @@ Troubleshooting = html.Div(children=[
         '''.format(dash_renderer.__version__, plotly.__version__))
     ]),
 
-    reusable_components.Markdown(
+    rc.Markdown(
     '''
     ***
 
@@ -2894,7 +2905,7 @@ Troubleshooting = html.Div(children=[
     html.Details([
         html.Summary("SSL certificate problem: self signed certificate"),
 
-        reusable_components.Markdown(
+        rc.Markdown(
         '''
         ```shell
         fatal: unable to access 'https://<your-dash-enterprise>/GIT/your-dash-app-name/': SSL certificate problem: self signed certificate
@@ -2902,7 +2913,7 @@ Troubleshooting = html.Div(children=[
         ''',
         style=styles.code_container),
 
-        reusable_components.Markdown(
+        rc.Markdown(
         '''
         &nbsp;
 
@@ -2915,7 +2926,7 @@ Troubleshooting = html.Div(children=[
     ]),
 
 
-    reusable_components.Markdown('''
+    rc.Markdown('''
     ***
 
     #### Deployment Failing?
@@ -2925,7 +2936,7 @@ Troubleshooting = html.Div(children=[
     html.Details([
         html.Summary("Could not find a version that satisfies the requirement"),
 
-        reusable_components.Markdown(
+        rc.Markdown(
         '''
         ```shell
         ...
@@ -2945,7 +2956,7 @@ Troubleshooting = html.Div(children=[
         remote:        No matching distribution found for dash==0.29.1 (from -r /tmp/build/requirements.txt (line 1))```''',
         style=styles.code_container),
 
-        reusable_components.Markdown(
+        rc.Markdown(
         '''
         &nbsp;
 
@@ -2956,18 +2967,18 @@ Troubleshooting = html.Div(children=[
         you can check your version with the command:
         '''),
 
-        reusable_components.Markdown('```\n$ pip list\n```', style=styles.code_container),
+        rc.Markdown('```\n$ pip list\n```', style=styles.code_container),
 
-        reusable_components.Markdown(
+        rc.Markdown(
         '''
         &nbsp;
 
         if it is differs from your `requirements.txt`, you can update it with the command:
         '''),
 
-        reusable_components.Markdown('```\n$ pip freeze > requirements.txt\n```', style=styles.code_container),
+        rc.Markdown('```\n$ pip freeze > requirements.txt\n```', style=styles.code_container),
 
-        reusable_components.Markdown(
+        rc.Markdown(
         '''
         &nbsp;
 
@@ -2980,7 +2991,7 @@ Troubleshooting = html.Div(children=[
     html.Details([
         html.Summary("Failed to find application object 'server' in 'app"),
 
-        reusable_components.Markdown(
+        rc.Markdown(
         '''
         ```shell
         ...
@@ -2995,7 +3006,7 @@ Troubleshooting = html.Div(children=[
         remote:        [2018-08-16 16:00:51 +0000] [180] [INFO] Booting worker with pid: 180```''',
         style=styles.code_container),
 
-        reusable_components.Markdown(
+        rc.Markdown(
         '''
         &nbsp;
 
@@ -3015,7 +3026,7 @@ Troubleshooting = html.Div(children=[
     html.Details([
         html.Summary("SSH deploy: git push is asking for password."),
 
-        reusable_components.Markdown(
+        rc.Markdown(
             '''
             ```shell
             $ git push multipage master
@@ -3024,7 +3035,7 @@ Troubleshooting = html.Div(children=[
             ''',
             style=styles.code_container),
 
-        reusable_components.Markdown(
+        rc.Markdown(
             '''
             &nbsp;
 
@@ -3034,7 +3045,7 @@ Troubleshooting = html.Div(children=[
             adding `GIT_SSH_COMMAND='ssh -v'` before your `git push` command.
             '''),
 
-        reusable_components.Markdown('''
+        rc.Markdown('''
         ```python
         $ GIT_SSH_COMMAND='ssh -v' git push plotly master
 
@@ -3061,7 +3072,7 @@ Troubleshooting = html.Div(children=[
         dokku@dash.local's password:
         ```''', style=styles.code_container),
 
-        reusable_components.Markdown(
+        rc.Markdown(
             '''
             &nbsp;
 
@@ -3083,7 +3094,7 @@ Troubleshooting = html.Div(children=[
     html.Details([
         html.Summary("Got permission denied while trying to connect to the Docker daemon socket"),
 
-        reusable_components.Markdown(
+        rc.Markdown(
         '''
         ```
         $ Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get http://%2Fvar%2Frun%2Fdocker.sock/v1.38/containers/json?all=1&filters=%7B%22label%22%3A%7B%22dokku%22%3Atrue%7D%2C%22status%22%3A%7B%22exited%22%3Atrue%7D%7D: dial unix /var/run/docker.sock: connect: permission denied
@@ -3091,7 +3102,7 @@ Troubleshooting = html.Div(children=[
         ''',
         style=styles.code_container),
 
-        reusable_components.Markdown(
+        rc.Markdown(
         '''
         &nbsp;
 
@@ -3103,7 +3114,7 @@ Troubleshooting = html.Div(children=[
     html.Details([
         html.Summary("Unable to select a buildpack"),
 
-        reusable_components.Markdown(
+        rc.Markdown(
             '''
             ```shell
             ...
@@ -3112,7 +3123,7 @@ Troubleshooting = html.Div(children=[
             ```
             ''',
                               style=styles.code_container),
-        reusable_components.Markdown(
+        rc.Markdown(
             '''
             &nbsp;
 
@@ -3126,7 +3137,7 @@ Troubleshooting = html.Div(children=[
         ),
     ]),
 
-    reusable_components.Markdown('''
+    rc.Markdown('''
     ***
 
     #### Problems Using a Celery Process?
@@ -3138,7 +3149,7 @@ Troubleshooting = html.Div(children=[
 
         html.Br(),
 
-        reusable_components.Markdown(
+        rc.Markdown(
             '''
             These applications require using a `worker`
             process. When using a `worker` process in your `Procfile`,
@@ -3147,7 +3158,7 @@ Troubleshooting = html.Div(children=[
             something like this:
             '''),
 
-        reusable_components.Markdown('```\n$web=1\nworker=1```',
+        rc.Markdown('```\n$web=1\nworker=1```',
                               style=styles.code_container),
 
     ]),
@@ -3161,9 +3172,9 @@ Troubleshooting = html.Div(children=[
 Portal = html.Div(children=[
     html.H1('Dash App Portal'),
 
-    rc.Blockquote(),
+    Blockquote(),
 
-    reusable_components.Markdown('''
+    rc.Markdown('''
     Located at `https://your-dash-enterprise-server/Portal`,
     the Dash App Portal is the front page for your Dash Enterprise platform.
     It allows multiple users to prominently display their selected apps in
@@ -3184,7 +3195,7 @@ Portal = html.Div(children=[
         }
     ),
 
-    reusable_components.Markdown('''
+    rc.Markdown('''
 
     ### Dash Apps on the Portal
 
@@ -3210,7 +3221,7 @@ Portal = html.Div(children=[
         }
     ),
 
-    reusable_components.Markdown('''
+    rc.Markdown('''
     &nbsp;
 
     ### Customize the Portal
@@ -3230,7 +3241,7 @@ Portal = html.Div(children=[
         }
     ),
 
-    reusable_components.Markdown('''
+    rc.Markdown('''
     &nbsp;
 
     Here, you can decide who can view the portal and customize
@@ -3258,9 +3269,9 @@ Portal = html.Div(children=[
 AdminPanel = html.Div(children=[
     html.H1('Admin Panel'),
 
-    rc.Blockquote(),
+    Blockquote(),
 
-    reusable_components.Markdown('''
+    rc.Markdown('''
     The Admin panel allows Admin users, users with Staff and Superuser Status, to manage all users of the Dash Enterprise platform.
     From here they can add, view, modify, and delete user accounts. The panel can be accessed from the navbar
     dropdown in the /Manager or /Portal pages as shown below.
@@ -3277,7 +3288,7 @@ AdminPanel = html.Div(children=[
         }
     ),
 
-    reusable_components.Markdown('''
+    rc.Markdown('''
 
     Only Admin users have access to the admin panel and other users will
     not be able to see the above link.
@@ -3299,7 +3310,7 @@ AdminPanel = html.Div(children=[
         }
     ),
 
-    reusable_components.Markdown('''
+    rc.Markdown('''
     &nbsp;
 
     A specific user account can be accessed and modified by clicking on a username. This view
@@ -3318,7 +3329,7 @@ AdminPanel = html.Div(children=[
         }
     ),
 
-    reusable_components.Markdown('''
+    rc.Markdown('''
     &nbsp;
 
     For more information contact `onpremise.support@plot.ly`.
@@ -3336,9 +3347,9 @@ AdminPanel = html.Div(children=[
 Analytics = html.Div(children=[
     html.H1('Dash App Analytics'),
 
-    rc.Blockquote(),
+    Blockquote(),
 
-    reusable_components.Markdown('''
+    rc.Markdown('''
     #### Dash App Analytics
 
     After you have successfully deployed a Dash App to the Dash Deployment
@@ -3364,9 +3375,9 @@ Analytics = html.Div(children=[
 Logs = html.Div(children=[
     html.H1('Dash App Logs'),
 
-    rc.Blockquote(),
+    Blockquote(),
 
-    reusable_components.Markdown('''
+    rc.Markdown('''
     ***
 
     Dash apps create a log of usage data as well as any `print` statements
@@ -3394,7 +3405,7 @@ Logs = html.Div(children=[
         }
     ),
 
-    reusable_components.Markdown('''
+    rc.Markdown('''
     ***
 
     #### Dash App Logs (via Command Line)
@@ -3405,7 +3416,7 @@ Logs = html.Div(children=[
 
     '''),
 
-    reusable_components.Markdown(
+    rc.Markdown(
     '''
     ```shell
     $ ssh dokku@<your-dash-domain> logs <your-app-name> --num -1
@@ -3413,7 +3424,7 @@ Logs = html.Div(children=[
     ''',
     style=styles.code_container),
 
-    reusable_components.Markdown('''
+    rc.Markdown('''
 
     &nbsp;
 
@@ -3440,9 +3451,9 @@ Logs = html.Div(children=[
 Support = html.Div(children=[
     html.H1('Plotly Enterprise Support'),
 
-    rc.Blockquote(),
+    Blockquote(),
 
-    reusable_components.Markdown('''
+    rc.Markdown('''
     ***
 
     #### Need to Contact Support?
@@ -3454,7 +3465,7 @@ Support = html.Div(children=[
     bundle.
     '''),
 
-    reusable_components.Markdown('''
+    rc.Markdown('''
     ***
 
     #### Enterprise Support Bundle
@@ -3474,9 +3485,9 @@ Support = html.Div(children=[
 Git = html.Div(children=[
     html.H1('Advanced Git'),
 
-    rc.Blockquote(),
+    Blockquote(),
 
-    reusable_components.Markdown('''
+    rc.Markdown('''
 
     ***
 
@@ -3496,7 +3507,7 @@ Git = html.Div(children=[
 
     '''),
 
-    reusable_components.Markdown('''
+    rc.Markdown('''
 
     #### Initialize a Repository
 
@@ -3508,7 +3519,7 @@ Git = html.Div(children=[
 
     '''),
 
-    reusable_components.Markdown(
+    rc.Markdown(
     '''
     ```shell
     $ cd myDashApp
@@ -3518,7 +3529,7 @@ Git = html.Div(children=[
     ''',
     style=styles.code_container),
 
-    reusable_components.Markdown('''
+    rc.Markdown('''
     ***
 
     #### Cloning a Repository
@@ -3530,7 +3541,7 @@ Git = html.Div(children=[
 
     '''),
 
-    reusable_components.Markdown(
+    rc.Markdown(
     '''
     ```shell
     $ git clone <respository-name>
@@ -3538,7 +3549,7 @@ Git = html.Div(children=[
     ''',
     style=styles.code_container),
 
-    reusable_components.Markdown('''&nbsp;'''),
+    rc.Markdown('''&nbsp;'''),
 
     rc.Notebox('''
 
@@ -3550,7 +3561,7 @@ Git = html.Div(children=[
 
     '''),
 
-    reusable_components.Markdown('''
+    rc.Markdown('''
 
     ***
 
@@ -3567,7 +3578,7 @@ Git = html.Div(children=[
 
     '''),
 
-    reusable_components.Markdown(
+    rc.Markdown(
     '''
     ```shell
     $ git remote add <remote-name> <remote-URL>
@@ -3575,7 +3586,7 @@ Git = html.Div(children=[
     ''',
     style=styles.code_container),
 
-    reusable_components.Markdown('''
+    rc.Markdown('''
 
     &nbsp;
 
@@ -3583,7 +3594,7 @@ Git = html.Div(children=[
 
     '''),
 
-    reusable_components.Markdown(
+    rc.Markdown(
     '''
     ```shell
     $ git remote -v
@@ -3591,7 +3602,7 @@ Git = html.Div(children=[
     ''',
     style=styles.code_container),
 
-    reusable_components.Markdown('''
+    rc.Markdown('''
 
     &nbsp;
 
@@ -3599,7 +3610,7 @@ Git = html.Div(children=[
 
     '''),
 
-    reusable_components.Markdown(
+    rc.Markdown(
     '''
     ```shell
     $ git remote rename <existing-name> <new-name>
@@ -3607,7 +3618,7 @@ Git = html.Div(children=[
     ''',
     style=styles.code_container),
 
-    reusable_components.Markdown('''
+    rc.Markdown('''
 
     &nbsp;
 
@@ -3615,7 +3626,7 @@ Git = html.Div(children=[
 
     '''),
 
-    reusable_components.Markdown(
+    rc.Markdown(
     '''
     ```shell
     $ git remote rm <remote-name>
@@ -3623,7 +3634,7 @@ Git = html.Div(children=[
     ''',
     style=styles.code_container),
 
-    reusable_components.Markdown('''
+    rc.Markdown('''
 
     ***
 
@@ -3650,7 +3661,7 @@ Git = html.Div(children=[
     wish to inspect before adding changes.
     '''),
 
-    reusable_components.Markdown('''
+    rc.Markdown('''
 
     &nbsp;
 
@@ -3658,7 +3669,7 @@ Git = html.Div(children=[
 
     '''),
 
-    reusable_components.Markdown(
+    rc.Markdown(
     '''
     ```shell
     $ git add .
@@ -3668,7 +3679,7 @@ Git = html.Div(children=[
     ''',
     style=styles.code_container),
 
-    reusable_components.Markdown('''
+    rc.Markdown('''
 
     ***
 
@@ -3684,7 +3695,7 @@ Git = html.Div(children=[
 
     '''),
 
-    reusable_components.Markdown(
+    rc.Markdown(
     '''
     ```shell
     $ git branch
@@ -3692,7 +3703,7 @@ Git = html.Div(children=[
     ''',
     style=styles.code_container),
 
-    reusable_components.Markdown('''
+    rc.Markdown('''
 
     &nbsp;
 
@@ -3700,7 +3711,7 @@ Git = html.Div(children=[
 
     '''),
 
-    reusable_components.Markdown(
+    rc.Markdown(
     '''
     ```shell
     $ git branch <branchname>
@@ -3708,7 +3719,7 @@ Git = html.Div(children=[
     ''',
     style=styles.code_container),
 
-    reusable_components.Markdown('''
+    rc.Markdown('''
 
     &nbsp;
 
@@ -3717,7 +3728,7 @@ Git = html.Div(children=[
 
     '''),
 
-    reusable_components.Markdown(
+    rc.Markdown(
     '''
     ```
     $ git checkout <branchname>
@@ -3725,7 +3736,7 @@ Git = html.Div(children=[
     ''',
     style=styles.code_container),
 
-    reusable_components.Markdown('''
+    rc.Markdown('''
 
     &nbsp;
 
@@ -3736,7 +3747,7 @@ Git = html.Div(children=[
 
     '''),
 
-    reusable_components.Markdown(
+    rc.Markdown(
     '''
     ```shell
     $ git add .
@@ -3745,7 +3756,7 @@ Git = html.Div(children=[
     ''',
     style=styles.code_container),
 
-    reusable_components.Markdown('''
+    rc.Markdown('''
 
     &nbsp;
 
@@ -3753,7 +3764,7 @@ Git = html.Div(children=[
 
     '''),
 
-    reusable_components.Markdown(
+    rc.Markdown(
     '''
     ```shell
     $ git branch -m <existing-name> <new-name>
@@ -3762,7 +3773,7 @@ Git = html.Div(children=[
     style=styles.code_container),
 
 
-    reusable_components.Markdown('''
+    rc.Markdown('''
 
     &nbsp;
 
@@ -3770,7 +3781,7 @@ Git = html.Div(children=[
 
     '''),
 
-    reusable_components.Markdown(
+    rc.Markdown(
     '''
     ```shell
     $ git branch -D <branch-name>
@@ -3778,7 +3789,7 @@ Git = html.Div(children=[
     ''',
     style=styles.code_container),
 
-    reusable_components.Markdown('''&nbsp;'''),
+    rc.Markdown('''&nbsp;'''),
 
     rc.Notebox('''
 
@@ -3786,7 +3797,7 @@ Git = html.Div(children=[
 
     '''),
 
-    reusable_components.Markdown('''
+    rc.Markdown('''
 
     ***
 
