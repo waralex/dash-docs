@@ -205,7 +205,7 @@ def display_instructions2(platform):
 
                     &nbsp;
 
-                    #### [Visit the sample app page](/templates/sample-app)
+                    #### [Visit the sample app page](https://dash-gallery.plotly.host/Portal/)
 
                     And download & unzip the files.
 
@@ -433,7 +433,7 @@ def display_instructions2(platform):
                     rc.Markdown(
                     '''
                     For some applications, you may require using the `worker`
-                    process. For example, the [Snapshot Engine examples](/dash-snapshots)
+                    process. For example, the Snapshot Engine examples
                     use Celery - an asynchronous task/job queue & scheduler.
 
                     In this case, your `Procfile` might look something like this:
@@ -874,8 +874,8 @@ ConfigSys = html.Div(children=[
     We have a collection of sample apps that install common system-level
     dependencies. These applications are _ready to deploy_:
 
-    - [Oracle cx_Oracle Database](/templates/oracle-sample-app)
-    - [Pyodbc Database Driver](/templates/pyodbc-sample-app)
+    - Oracle cx_Oracle Database
+    - Pyodbc Database Driver
 
     &nbsp;
 
@@ -2640,8 +2640,7 @@ pdfService = html.Div(children=[
         or you can generate these PDFs on-the-fly.
 
         This API endpoint is used by the Dash Enterprise Snapshot Engine library.
-        Refer to the [Snapshot Engine documentation](/dash-snapshots)
-        for more examples.
+        Refer to the Snapshot Engine documentation for more examples.
 
         ***
 
