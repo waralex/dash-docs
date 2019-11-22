@@ -29,6 +29,7 @@ class CustomDash(Dash):
                     name="description"
                     content="{description}"
                 >
+                <meta name="google-site-verification" content="EgLBLquJuqD_NR96F-pKLhTy9ZKQlWIoQlexW_OVKrM" />
                 <title>{title}</title>
                 {favicon}
                 {css}
