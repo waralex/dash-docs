@@ -229,8 +229,6 @@ style=NULL, loading_state=NULL)
 ```'),
 
   dccDropdownTable,
-  htmlBr(),
-
   dccMarkdown("
 # Summary
 The layout of a Dash app describes what the app looks like.
