@@ -24,7 +24,7 @@ app$layout(
     list(
       htmlH4(children='US Agriculture Exports (2011)'),
       generate_table(df)
-    )
+    ), style= list("overflow-x" = "scroll")
   )
 )
 

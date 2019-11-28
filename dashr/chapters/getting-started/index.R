@@ -59,7 +59,7 @@ dccMarkdown("
 Run the app with
 
    ```
-   $ Rscript index.R
+   $ Rscript app.R
    Fire started at 127.0.0.1:8050
    start: 127.0.0.1:8050
    ```
