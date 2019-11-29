@@ -44,25 +44,42 @@ def get_component_names(library_name):
 
 # code containers
 
-def IframeComponentBlock(
+def imageComponentBlock(
         example_string,
         location,
-        height=600,
-        width=600
+        height=None,
+        width=400
 ):
     '''Generate a container that is visually similar to the
-    ComponentBlock for components that require an externally hosted app.
+    ComponentBlock for components that require an externally hosted image.
 
     :param (str) example_string: String containing the code that is
-    used in the application from the iframe.
-    :param (str) location: The URL of the app.
-    :param (int) height: The height of the iframe.
-    :param (int) width: The width of the iframe.
+    used in the application from the image.
+    :param (str) location: The URL of the image.
+    :param (int) height: The height of the image.
+    :param (int) width: The width of the image.
 
     :rtype (dict): A dash_html_components div containing the code
-    container and the iframe.
+    container and the image.
 
     '''
+
+    try:
+        exec(example_string, {})
+    except Exception as e:
+        print('\nError running\n{}\n{}'.format(
+            example_string,
+            ('======================================' +
+             '======================================')
+        ))
+        raise e
+
+    demo_location = re.match('.*pic_(.*)\.png\?raw=true', location)
+
+    if demo_location is not None:
+        demo_location = demo_location.group(1)
+    else:
+        demo_location = ''
 
     return html.Div([
         reusable_components.Markdown(
@@ -71,12 +88,15 @@ def IframeComponentBlock(
         ),
         html.Div(
             className='example-container',
-            children=html.Iframe(
-                width='{}px'.format(width),
-                height='{}px'.format(height),
-                style={'border': 'none'},
-                src=location
-            )
+            children=[
+                dcc.Markdown(
+                    '> Try a live demo at http://dash-gallery.plotly.host/docs-demos-dashbio/{}'.format(demo_location, demo_location)
+                ),
+                html.Img(
+                    style={'border': 'none', 'width': '75%', 'max-width': '500px'},
+                    src=location
+                )
+            ]
         )
     ])
 
@@ -92,7 +112,7 @@ def generate_component_example(
         library_imports=None,
         setup_code='',
         component_wrap=None,
-        iframe_info=None
+        image_info=None
 ):
     '''Generate an example for a component, with hyperlinks to the
     appropriate component-specific pages.
@@ -241,10 +261,10 @@ component = {}
 
 
     # load the iframe if that is where the app is
-    if iframe_info is not None:
-        component_demo = IframeComponentBlock(
+    if image_info is not None:
+        component_demo = imageComponentBlock(
             example_string,
-            **iframe_info
+            **image_info
         )
     else:
         component_demo = ComponentBlock(
