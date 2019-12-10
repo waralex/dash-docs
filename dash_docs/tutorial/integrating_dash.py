@@ -84,7 +84,7 @@ layout = html.Div([
     ## Combining One or More Dash Apps with Existing WSGI Apps
 
     This approach uses Werkzeug's
-    [`DispatcherMiddleware`](http://werkzeug.pocoo.org/docs/latest/middlewares/)
+    [`DispatcherMiddleware`](http://werkzeug.pocoo.org/docs/latest/middleware/)
     to combine one or more Dash apps with existing WSGI apps (including
     Flask). It is useful when you want to combine multiple Dash apps or when
     your existing app is a non-Flask WSGI app.
