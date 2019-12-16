@@ -46,7 +46,7 @@ layout = html.Div([
     `http://localhost:8050/dash`) of a Flask app:
     """
     ),
-    Syntax(dedent(
+    Syntax(
     '''
     import flask
     import dash
@@ -69,7 +69,7 @@ layout = html.Div([
     if __name__ == '__main__':
         app.run_server(debug=True)
     '''
-    )),
+    ),
     reusable_components.Markdown(
     """
     > **Note**: it is important to set the `name` parameter of the Dash instance
@@ -93,7 +93,7 @@ layout = html.Div([
     """
     ),
     reusable_components.Markdown("`flask_app.py`"),
-    Syntax(dedent(
+    Syntax(
     """
     from flask import Flask
 
@@ -103,10 +103,10 @@ layout = html.Div([
     def index():
         return 'Hello Flask app'
     """
-    )),
+    ),
     html.Hr(),
     reusable_components.Markdown("`app1.py`"),
-    Syntax(dedent(
+    Syntax(
     """
     import dash
     import dash_html_components as html
@@ -118,10 +118,10 @@ layout = html.Div([
 
     app.layout = html.Div("Dash app 1")
     """
-    )),
+    ),
     html.Hr(),
     reusable_components.Markdown("`app2.py`"),
-    Syntax(dedent(
+    Syntax(
     """
     import dash
     import dash_html_components as html
@@ -133,10 +133,10 @@ layout = html.Div([
 
     app.layout = html.Div("Dash app 2")
     """
-    )),
+    ),
     html.Hr(),
     reusable_components.Markdown("`wsgi.py`"),
-    Syntax(dedent(
+    Syntax(
     """
     from werkzeug.wsgi import DispatcherMiddleware
 
@@ -148,7 +148,7 @@ layout = html.Div([
         '/app2': app2.server,
     })
     """
-    )),
+    ),
     reusable_components.Markdown(
     """
     In this example, the Flask app has been mounted at `/` and the two Dash apps
@@ -173,7 +173,7 @@ layout = html.Div([
     `run.py`
     """
     ),
-    Syntax(dedent(
+    Syntax(
     """
     from werkzeug.wsgi import DispatcherMiddleware
     from werkzeug.serving import run_simple
@@ -189,7 +189,7 @@ layout = html.Div([
     if __name__ == '__main__':
         run_simple('localhost', 8050, application)
     """
-    )),
+    ),
     reusable_components.Markdown(
     """
     If you need access to the Dash development tools when using this approach
@@ -198,12 +198,12 @@ layout = html.Div([
     can be added before the initialisation of the `DispatcherMiddleware` to do this:
     """
     ),
-    Syntax(dedent(
+    Syntax(
     """
     app1.enable_dev_tools(debug=True)
     app2.enable_dev_tools(debug=True)
     """
-    )),
+    ),
     reusable_components.Markdown(
     """
     > **Note:** debug mode should not be enabled in production. When using debug

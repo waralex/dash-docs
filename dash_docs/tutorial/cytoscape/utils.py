@@ -8,11 +8,11 @@ def CreateDisplay(scope):
     def Display(example_string):
         return html.Div([
             reusable_components.Markdown(
-                '```py \n' + dedent(example_string).strip() + '\n ```',
+                '```py \n' + example_string.strip() + '\n ```',
                 style={'marginBottom': 10, 'borderLeft': 'thin #C8D4E3 solid'}
             ),
             html.Div(
-                children=eval(dedent(example_string), scope),
+                children=eval(example_string, scope),
                 style={
                     'border': 'thin lightgrey solid',
                     'margin-top': '-10px',
@@ -40,6 +40,6 @@ def PythonSnippet(code):
         code = code[1:]
 
     return reusable_components.Markdown(
-        '```py \n' + dedent(code) + '\n ```',
+        '```py \n' + code + '\n ```',
         style=styles.code_container
     )
