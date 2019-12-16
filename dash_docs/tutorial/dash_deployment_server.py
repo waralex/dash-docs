@@ -5,7 +5,7 @@ from dash_docs import reusable_components
 
 
 def s(string_block):
-    return string_block.replace('    ', '')
+    return string_block
 
 
 layout = html.Div(className='toc', children=[

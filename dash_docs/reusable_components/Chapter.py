@@ -3,7 +3,7 @@ import dash_core_components as dcc
 from .Markdown import Markdown
 
 def s(string_block):
-    return string_block.replace('    ', '')
+    return string_block
 
 def Chapter(name, href=None, caption=None):
     linkComponent = html.A if href.startswith('http') else dcc.Link

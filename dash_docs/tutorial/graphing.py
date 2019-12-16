@@ -52,7 +52,7 @@ layout = html.Div([
     These properties update when you hover over points, click on points, or
     select regions of points in a graph.
 
-    '''.replace('    ', '')),
+    '''),
 
     Syntax(
         examples['simple-graph-events'][0],

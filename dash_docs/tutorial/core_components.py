@@ -24,7 +24,7 @@ layout = html.Div(className="gallery", children=[
         The source is on GitHub at [plotly/dash-core-components](https://github.com/plotly/dash-core-components).
 
         These docs are using version {}.
-    '''.replace('    ', '').format(dcc.__version__)),
+    '''.format(dcc.__version__)),
 
     reusable_components.Markdown('''
     ```
@@ -32,7 +32,7 @@ layout = html.Div(className="gallery", children=[
     >>> print(dcc.__version__)
     {}
     ```
-    '''.replace('    ', '').format(dcc.__version__),
+    '''.format(dcc.__version__),
     style=styles.code_container),
 
     html.Hr(),
@@ -289,7 +289,7 @@ dcc.DatePickerRange(
     project. This table includes built-in filtering, row-selection,
     editing, and sorting.
 
-    '''.replace('    ', '')),
+    '''),
 
     html.A(
         className="image-link",
@@ -305,14 +305,14 @@ dcc.DatePickerRange(
     [View the docs](/datatable) or [View the source](https://github.com/plotly/dash-table)
 
     ***
-    '''.replace('    ', '')),
+    '''),
 
     html.H3(dcc.Link('Upload Component', href=tools.relpath('/dash-core-components/upload'))),
     reusable_components.Markdown('''
 
     The `dcc.Upload` component allows users to upload files into your app
     through drag-and-drop or the system's native file explorer.
-    '''.replace('    ', '')),
+    '''),
 
     html.A(
         className="image-link",
@@ -328,7 +328,7 @@ dcc.DatePickerRange(
 
     reusable_components.Markdown('''
     ***
-    '''.replace('    ', '')),
+    '''),
 
     html.H3('Tabs'),
     reusable_components.Markdown('''
@@ -352,7 +352,7 @@ dcc.DatePickerRange(
     The `Graph` component shares the same syntax as the open-source
     `plotly.py` library. View the [plotly.py docs](https://plot.ly/python)
     to learn more.
-    '''.replace('    ', '')),
+    '''),
     ComponentBlock('''import dash_core_components as dcc
 
 dcc.Graph(
