@@ -16,7 +16,7 @@ examples = {
 
 layout = html.Div(
     [
-        reusable_components.Markdown(dedent(
+        reusable_components.Markdown(
         """
         # Virtualization
 
@@ -37,7 +37,6 @@ layout = html.Div(
         The example below prevents runtime style changes by fixing the column
         widths and setting the white-space CSS property in the cells to normal.
         """
-            )
         ),
 
         reusable_components.Markdown(
