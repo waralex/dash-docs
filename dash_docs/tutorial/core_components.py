@@ -2,7 +2,6 @@
 import dash_core_components as dcc
 import dash_html_components as html
 from dash_docs import styles
-from textwrap import dedent as s
 
 from dash_docs import tools
 from dash_docs.tutorial.utils.component_block import ComponentBlock

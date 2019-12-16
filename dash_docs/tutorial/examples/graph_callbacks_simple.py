@@ -1,5 +1,4 @@
 import json
-from textwrap import dedent as d
 
 import dash
 import dash_core_components as dcc

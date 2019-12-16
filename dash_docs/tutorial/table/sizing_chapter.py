@@ -2,7 +2,6 @@ from collections import OrderedDict
 import dash_core_components as dcc
 import dash_html_components as html
 import pandas as pd
-from textwrap import dedent
 
 import dash_table
 from .utils import CreateDisplay
@@ -76,13 +75,13 @@ layout = html.Div(
         html.H1('DataTable Sizing'),
 
         html.H3('Default Styles'),
-        reusable_components.Markdown(dedent(
+        reusable_components.Markdown(
         '''
         By default, the table will expand to the width of its container.
         The width of the columns is determined automatically in order to
         accommodate the content in the cells.
         '''
-        )),
+        ),
         Display(
         '''
         dash_table.DataTable(
@@ -92,7 +91,7 @@ layout = html.Div(
         '''
         ),
 
-        reusable_components.Markdown(dedent(
+        reusable_components.Markdown(
         '''
         > The set of examples on this page are rendered with a few different
         > dataframes that have different sizes and shapes. In particular,
@@ -101,11 +100,11 @@ layout = html.Div(
         > machine, then open up the menu below to copy and paste
         > the code behind these datasets.
         '''
-        )),
+        ),
 
         html.Details(open=False, children=[
             html.Summary('View the Datasets'),
-            reusable_components.Markdown(dedent(
+            reusable_components.Markdown(
             '''
             ```python
             data = OrderedDict(
@@ -159,12 +158,12 @@ layout = html.Div(
                 }
             )
             ```
-            '''))
+            ''')
         ]),
 
         html.Hr(),
 
-        reusable_components.Markdown(dedent(
+        reusable_components.Markdown(
         '''
         The default styles work well for a small number of columns and short
         text. However, if you are rendering a large number of columns or
@@ -175,9 +174,9 @@ layout = html.Div(
         > better accommodate wide content while keeping the table full-width
         > and responsive. Subscribe to [plotly/dash-table#197](https://github.com/plotly/dash-table/issues/197) for more.
         '''
-        )),
+        ),
 
-        reusable_components.Markdown(dedent(
+        reusable_components.Markdown(
         '''
         ### Overflow Strategies - Multiple Lines
 
@@ -188,7 +187,7 @@ layout = html.Div(
         > We're looking at simplifying this in this issue:
         > [https://github.com/plotly/dash-table/issues/188](https://github.com/plotly/dash-table/issues/188)
         '''
-        )),
+        ),
         Display(
         '''
         dash_table.DataTable(
@@ -201,7 +200,7 @@ layout = html.Div(
         )
         '''),
 
-        reusable_components.Markdown(dedent(
+        reusable_components.Markdown(
         """
         ### Overflow Strategies - Overflowing Into Ellipses
 
@@ -215,7 +214,7 @@ layout = html.Div(
         If you want to just hide the content instead of displaying ellipses,
         then set `textOverflow` to `'clip'` instead of `'ellipsis'`.
         """
-        )),
+        ),
         Display(
         '''
         dash_table.DataTable(
@@ -229,14 +228,14 @@ layout = html.Div(
         )
         '''),
 
-        reusable_components.Markdown(dedent(
+        reusable_components.Markdown(
         '''
         ### Overflow Strategies - Horizontal Scroll
 
         Instead of trying to fit all of the content in the container, you could
         overflow the entire container into a scrollable container.
         '''
-        )),
+        ),
 
         Display(
         '''
@@ -247,7 +246,7 @@ layout = html.Div(
         )
         '''),
 
-        reusable_components.Markdown(dedent(
+        reusable_components.Markdown(
         '''
         Note how we haven't explicitly set the width of the individual columns
         yet. The widths of the columns have been computed dynamically depending
@@ -263,7 +262,7 @@ layout = html.Div(
         exceed the `maxWidth`, then the column will only take up the
         necessary amount of horizontal space.
         '''
-        )),
+        ),
 
         Display(
         '''
@@ -293,13 +292,13 @@ layout = html.Div(
         )
         '''),
 
-        reusable_components.Markdown(dedent(
+        reusable_components.Markdown(
         '''
         Alternatively, you can fix the width of each column by adding `width`.
         In this case, the column's width will be constant, even if its contents
         are shorter or wider.
         '''
-        )),
+        ),
 
         Display(
         '''
@@ -331,7 +330,7 @@ layout = html.Div(
         )
         '''),
 
-        reusable_components.Markdown(dedent(
+        reusable_components.Markdown(
         '''
         ### Horizontal Scrolling via Fixed Columns
 
@@ -343,7 +342,7 @@ layout = html.Div(
         > are rendered or sized.
         > For more information, subscribe to [dash-table#201](https://github.com/plotly/dash-table/issues/201).
         '''
-        )),
+        ),
 
         Display(
         '''
@@ -372,14 +371,14 @@ layout = html.Div(
 
         reusable_components.Markdown("### Individual Column Widths"),
 
-        reusable_components.Markdown(dedent(
+        reusable_components.Markdown(
         '''
         The widths of individual columns can be supplied through the
         `style_cell_conditional` property. These widths can be specified as
         percentages or fixed pixels. You can supply the widths for _all_ of the
         columns or just a few of them.
         '''
-        )),
+        ),
 
         # html_table(
         #     df,
@@ -417,14 +416,14 @@ layout = html.Div(
         '''),
 
         # reusable_components.Markdown("### Underspecified Widths"),
-        # reusable_components.Markdown(dedent(
+        # reusable_components.Markdown(
         # '''
         # The widths can be under-specified. Here, we're only setting the width for
         # the three columns in the middle, the rest of the columns are
         # automatically sized to fit the rest of the container.
         # The columns have a width of 50px, or the width of this line:
         # '''
-        # )),
+        # ),
         # html.Div(
         #     style={"width": 50, "height": 10, "backgroundColor": "hotpink"}
         # ),
@@ -454,13 +453,13 @@ layout = html.Div(
         # '''),
 
         # reusable_components.Markdown("### Widths that are smaller than the content"),
-        # reusable_components.Markdown(dedent(
+        # reusable_components.Markdown(
         # '''
         # In this case, we're setting the width to 20px, which is smaller
         # than the "10924" number in the "Ind" column.
         # The table does not allow it.
         # '''
-        # )),
+        # ),
         # html.Div(
         #     style={"width": 20, "height": 10, "backgroundColor": "hotpink"}
         # ),
@@ -489,7 +488,7 @@ layout = html.Div(
         # )
         # '''),
 
-        reusable_components.Markdown(dedent(
+        reusable_components.Markdown(
         '''
         ## Table Height and Vertical Scrolling
 
@@ -500,7 +499,7 @@ layout = html.Div(
         and adding a scrollbar with `overflowY: 'scroll'`.
         With `maxHeight`, the table's contents will only become scrollable
         if the contents are taller than that height.
-        ''')),
+        '''),
         Display(
         '''
         dash_table.DataTable(
@@ -513,7 +512,7 @@ layout = html.Div(
         )
         '''),
 
-        reusable_components.Markdown(dedent(
+        reusable_components.Markdown(
         '''
         ### Vertical Scrolling via Fixed Rows
 
@@ -527,7 +526,7 @@ layout = html.Div(
         > In particular, you'll need to set an explicit pixel-based widths
         > for each of the columns.
         > For more information, subscribe to [dash-table#201](https://github.com/plotly/dash-table/issues/201).
-        ''')),
+        '''),
         Display(
         '''
         dash_table.DataTable(
@@ -539,7 +538,7 @@ layout = html.Div(
         '''),
 
         reusable_components.Markdown("### Height vs Max Height"),
-        reusable_components.Markdown(dedent(
+        reusable_components.Markdown(
         '''
         With `max-height`, if the table's contents are shorter than the
         `max-height`, then the container will be shorter.
@@ -548,7 +547,7 @@ layout = html.Div(
 
         Here, we're setting max-height to 300, or the height of the pink line.
         Note how the table renders shorter than this line.
-        ''')),
+        '''),
         html.Div(
             style={"width": 5, "height": 300, "backgroundColor": "hotpink"}
         ),

@@ -1,11 +1,10 @@
-from textwrap import dedent
 
 import dash_core_components as dcc
 import dash_html_components as html
 from dash_docs import reusable_components
 
 layout = html.Div([
-    reusable_components.Markdown(dedent('''
+    reusable_components.Markdown('''
     # Dash 1.0
 
     Dash has been in active development for more than two years. In that time
@@ -67,7 +66,7 @@ layout = html.Div([
     This old `dash.Dash` kwarg has been superseded by the much more powerful
     `assets_folder`. If you want the old behavior, use a custom `server`:
     ```py
-    app = dash.Dash(server=Flask(static_folder='my_folder'))
+    app = dash.Dash(server=Flask(static_folder='my_folder')
     ```
 
     ### Removed `components_cache_max_age`
