@@ -101,23 +101,23 @@ layout = html.Div([
     ```
     to get the same look and feel of these examples.
 
-### Making your first change
+    ### Making your first change
 
-**New in dash 0.30.0 and dash-renderer 0.15.0**
+    **New in dash 0.30.0 and dash-renderer 0.15.0**
 
-Dash includes "hot-reloading", this features is activated by default when
-you run your app with `app.run_server(debug=True)`. This means that Dash
-will automatically refresh your browser when you make a change in your code.
+    Dash includes "hot-reloading", this features is activated by default when
+    you run your app with `app.run_server(debug=True)`. This means that Dash
+    will automatically refresh your browser when you make a change in your code.
 
-Give it a try: change the title "Hello Dash" in your application or change the `x` or the `y` data. Your app should auto-refresh with your change.
+    Give it a try: change the title "Hello Dash" in your application or change the `x` or the `y` data. Your app should auto-refresh with your change.
 
-> Don't like hot-reloading? You can turn this off with `app.run_server(dev_tools_hot_reload=False)`.
-> Learn more in [Dash Dev Tools documentation](/devtools) Questions? See the [community forum hot reloading discussion](https://community.plot.ly/t/announcing-hot-reload/14177).
+    > Don't like hot-reloading? You can turn this off with `app.run_server(dev_tools_hot_reload=False)`.
+    > Learn more in [Dash Dev Tools documentation](/devtools) Questions? See the [community forum hot reloading discussion](https://community.plot.ly/t/announcing-hot-reload/14177).
 
-#### More about HTML
+    #### More about HTML
 
-The `dash_html_components` library contains a component class for every
-HTML tag as well as keyword arguments for all of the HTML arguments.
+    The `dash_html_components` library contains a component class for every
+    HTML tag as well as keyword arguments for all of the HTML arguments.
 
     '''),
 
