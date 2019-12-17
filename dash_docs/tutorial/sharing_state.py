@@ -185,7 +185,7 @@ def update_output_1(value):
         as an input to the other callbacks. This example uses standard Dash
         callbacks and stores the JSON-ified data inside a hidden div in
         the app.
-    '''), children=s('''
+    '''), children='''
         global_df = pd.read_csv('...')
         app.layout = html.Div([
             dcc.Graph(id='graph'),
@@ -220,7 +220,7 @@ def update_output_1(value):
             dff = pd.read_json(jsonified_cleaned_data, orient='split')
             table = create_table(dff)
             return table
-    ''')),
+    '''),
 
     reusable_components.Markdown('''
         ***
@@ -237,7 +237,7 @@ def update_output_1(value):
         aggregations to the remaining callbacks.
     '''),
 
-    Syntax(children=s('''
+    Syntax(children='''
         @app.callback(
             Output('intermediate-value', 'children'),
             [Input('dropdown', 'value')])
@@ -285,9 +285,9 @@ def update_output_1(value):
             dff = pd.read_json(datasets['df_3'], orient='split')
             figure = create_figure_3(dff)
             return figure
-        '''), summary='''Here's a simple example of how you might transport
-        filtered or aggregated data to multiple callbacks.
-    '''),
+        ''', summary='''Here's a simple example of how you might transport
+        filtered or aggregated data to multiple callbacks.'''
+    ),
 
     reusable_components.Markdown('''
         ***
@@ -342,7 +342,7 @@ def update_output_1(value):
     ),
 
     Syntax(summary="Here's what this example looks like in code:",
-           children=s('''
+           children='''
         import os
         import copy
         import time
@@ -484,7 +484,7 @@ def update_output_1(value):
         if __name__ == '__main__':
             app.run_server(debug=True, processes=6)
         '''
-    )),
+    ),
 
 
     reusable_components.Markdown('''

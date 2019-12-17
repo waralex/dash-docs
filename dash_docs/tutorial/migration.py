@@ -178,5 +178,5 @@ layout = html.Div([
 
     `style_cell_conditional`: In prior versions `if.row_index` was evaluated for this prop but should not have been.
     Use `style_data_conditional` and `style_header_conditional` instead for `if.row_index` based styling.
-    '''))
+    ''')
 ])
