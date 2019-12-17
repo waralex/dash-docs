@@ -295,6 +295,8 @@ def update_output_1(value):
     ),
 
     reusable_components.Markdown('''
+        ***
+
         ## Example 3 - Caching and Signaling
 
         This example:
