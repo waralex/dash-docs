@@ -152,8 +152,8 @@ layout = html.Div([
 
     reusable_components.Markdown('''
     ```shell
-        pip install dash=={}
-        pip install dash-auth=={}
+    pip install dash=={}
+    pip install dash-auth=={}
     ```
     '''.format(
         dash.__version__,
