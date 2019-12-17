@@ -1,3 +1,4 @@
+from textwrap import dedent
 
 import dash_core_components as dcc
 import dash_html_components as html
@@ -8,11 +9,11 @@ def CreateDisplay(scope):
     def Display(example_string):
         return html.Div([
             reusable_components.Markdown(
-                '```py \n' + example_string.strip() + '\n ```',
+                '```py \n' + dedent(example_string).strip() + '\n ```',
                 style={'marginBottom': 10, 'borderLeft': 'thin #C8D4E3 solid'}
             ),
             html.Div(
-                children=eval(example_string, scope),
+                children=eval(dedent(example_string), scope),
                 style={
                     'border': 'thin lightgrey solid',
                     'margin-top': '-10px',
@@ -40,6 +41,6 @@ def PythonSnippet(code):
         code = code[1:]
 
     return reusable_components.Markdown(
-        '```py \n' + code + '\n ```',
+        '```py \n' + dedent(code) + '\n ```',
         style=styles.code_container
     )
