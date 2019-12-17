@@ -66,7 +66,7 @@ layout = html.Div([
     This old `dash.Dash` kwarg has been superseded by the much more powerful
     `assets_folder`. If you want the old behavior, use a custom `server`:
     ```py
-    app = dash.Dash(server=Flask(static_folder='my_folder')
+    app = dash.Dash(server=Flask(static_folder='my_folder'))
     ```
 
     ### Removed `components_cache_max_age`
