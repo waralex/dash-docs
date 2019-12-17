@@ -228,6 +228,8 @@ def update_output_1(value):
     ),
 
     reusable_components.Markdown('''
+        ***
+
         ## Example 2 - Computing Aggregations Upfront
 
         Sending the computed data over the network can be expensive if
@@ -489,6 +491,7 @@ def update_output_1(value):
 
 
     reusable_components.Markdown('''
+        ***
 
         ## Example 4 - User-Based Session Data on the Server
 
