@@ -38,7 +38,8 @@ layout = html.Div([
 
     '''.format(len(examples))),
 
-    reusable_components.Markdown('''***
+    reusable_components.Markdown('''
+    ***
 
     Dash apps are composed of two parts. The first part is the "`layout`" of
     the app and it describes what the application looks like.
