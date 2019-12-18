@@ -1,7 +1,7 @@
 import dash_html_components as html
 
 from dash_docs import styles
-from dash_docs import reusable_components
+from . import Markdown
 
 def Syntax(children, style=styles.code_container, summary=''):
     code = children
@@ -11,7 +11,7 @@ def Syntax(children, style=styles.code_container, summary=''):
     if summary:
         return html.Details([
             html.Summary(summary),
-            reusable_components.Markdown(code, style=style)
+            Markdown(code, style=style)
         ], open=True)
     else:
-        return reusable_components.Markdown(code, style=style)
+        return Markdown(code, style=style)
