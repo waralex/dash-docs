@@ -4,7 +4,6 @@ import dash_html_components as html
 
 from dash_docs import styles, tools
 from dash_docs.tools import load_example
-from dash_docs.tutorial.components import Example, Syntax
 from dash_docs import reusable_components
 
 examples = [
@@ -54,7 +53,7 @@ layout = html.Div([
 
     '''),
 
-    Syntax(examples[0][0], summary='''
+    reusable_components.Syntax(examples[0][0], summary='''
         To get started, create a file named `app.py` with the following code:
     '''),
     reusable_components.Markdown('''
@@ -69,7 +68,7 @@ layout = html.Div([
     in your web browser. You should see an app that looks like this.
     '''),
 
-    Example(examples[0][1]),
+    reusable_components.Example(examples[0][1]),
 
     reusable_components.Markdown('''
     Note:
@@ -122,7 +121,7 @@ layout = html.Div([
 
     '''),
 
-    Syntax(examples[1][0], summary='''
+    reusable_components.Syntax(examples[1][0], summary='''
         Let's customize the text in our app by modifying the inline styles of the
         components:
     '''),
@@ -165,7 +164,7 @@ layout = html.Div([
 
     '''.replace('   ', '')),
 
-    Syntax(
+    reusable_components.Syntax(
         examples[2][0],
         summary="""
             Here's a quick example that
@@ -173,7 +172,7 @@ layout = html.Div([
         """
     ),
 
-    Example(examples[2][1]),
+    reusable_components.Example(examples[2][1]),
 
     reusable_components.Markdown('''
         #### More about Visualization
@@ -193,11 +192,11 @@ layout = html.Div([
 
     '''),
 
-    Syntax(examples[3][0], summary='''
+    reusable_components.Syntax(examples[3][0], summary='''
     Here's an example that creates a scatter plot from a Pandas dataframe.
     '''),
 
-    Example(examples[3][1]),
+    reusable_components.Example(examples[3][1]),
 
     reusable_components.Markdown('''
         *These graphs are interactive and responsive.
@@ -214,9 +213,9 @@ layout = html.Div([
         `dash_core_components` library.
     '''),
 
-    Syntax(examples[4][0]),
+    reusable_components.Syntax(examples[4][0]),
 
-    Example(examples[4][1]),
+    reusable_components.Example(examples[4][1]),
 
     reusable_components.Markdown('''
         #### Core Components
@@ -237,7 +236,7 @@ layout = html.Div([
         href=tools.relpath('/dash-core-components')
     )]),
 
-    Syntax(
+    reusable_components.Syntax(
         examples[5][0],
         summary="Here are a few of the available components:"),
 

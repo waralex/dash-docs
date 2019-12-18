@@ -3,7 +3,6 @@ import dash_html_components as html
 
 from dash_docs import tools
 from dash_docs.tools import load_example
-from dash_docs.tutorial.components import Example, Syntax
 from dash_docs import reusable_components
 
 examples = {
@@ -54,23 +53,23 @@ layout = html.Div([
 
     '''),
 
-    Syntax(
+    reusable_components.Syntax(
         examples['simple-graph-events'][0],
         summary="""
             Here's an simple example that
             prints these attributes in the screen.
     """),
-    Example(examples['simple-graph-events'][1]),
+    reusable_components.Example(examples['simple-graph-events'][1]),
 
     html.Hr(),
 
     html.H3('Update Graphs on Hover'),
 
-    Syntax(examples['world-indicators'][0], summary="""
+    reusable_components.Syntax(examples['world-indicators'][0], summary="""
     Let's update our world indicators example from the previous chapter
     by updating time series when we hover over points in our scatter plot.
     """),
-    Example(examples['world-indicators'][1]),
+    reusable_components.Example(examples['world-indicators'][1]),
 
     reusable_components.Markdown('''
     Try mousing over the points in the scatter plot on the left.
@@ -82,7 +81,7 @@ layout = html.Div([
 
     html.H3('Generic Crossfilter Recipe'),
 
-    Syntax(examples['crossfilter-recipe'][0], summary="""
+    reusable_components.Syntax(examples['crossfilter-recipe'][0], summary="""
     Here's a slightly more generic example for crossfiltering across
     a six-column data set. Each scatter plot's selection filters the
     underlying dataset.

@@ -4,7 +4,6 @@ import os
 import dash_core_components as dcc
 import dash_html_components as html
 
-from dash_docs.tutorial.components import Example, Syntax
 from dash_docs import tools
 from dash_docs import reusable_components
 
@@ -91,8 +90,8 @@ layout = html.Div([
       of dictionaries `{ 'component_id.prop_name': value }`
 
     Here's an example of how this can be done:'''),
-    Syntax(examples['last_clicked_button'][0]),
-    Example(examples['last_clicked_button'][1]),
+    reusable_components.Syntax(examples['last_clicked_button'][0]),
+    reusable_components.Example(examples['last_clicked_button'][1]),
     reusable_components.Markdown('''
 
     Prior to v0.38.0, you needed to compare timestamp properties like

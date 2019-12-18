@@ -1,4 +1,3 @@
-import dash_core_components as dcc
 import dash_html_components as html
 
 from dash_docs import styles
@@ -16,7 +15,3 @@ def Syntax(children, style=styles.code_container, summary=''):
         ], open=True)
     else:
         return reusable_components.Markdown(code, style=style)
-
-
-def Example(example):
-    return html.Div(example, className='example-container')

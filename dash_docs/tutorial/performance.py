@@ -1,6 +1,5 @@
 import dash_core_components as dcc
 
-from dash_docs.tutorial.components import Syntax
 from dash_docs import tools
 from dash_docs import reusable_components
 
@@ -34,7 +33,7 @@ To better understand how memoization works, let's start with a simple example.
 
 '''),
 
-    Syntax('''
+    reusable_components.Syntax('''
 import time
 import functools32
 
@@ -67,7 +66,7 @@ data (clear your cache) every hour or every day.
 Here is an example of `Flask-Caching` with Redis:
 '''),
 
-    Syntax(examples['performance_flask_caching'][0]),
+    reusable_components.Syntax(examples['performance_flask_caching'][0]),
 
     reusable_components.Markdown('''
 
@@ -81,7 +80,7 @@ several callbacks.
 
 '''),
 
-    Syntax(examples['performance_flask_caching_dataset']),
+    reusable_components.Syntax(examples['performance_flask_caching_dataset']),
 
     reusable_components.Markdown('''
 
@@ -129,7 +128,7 @@ For example, the following callback:
 
 '''),
 
-    Syntax('''
+    reusable_components.Syntax('''
 @app.callback(
     Output('out-component', 'value'),
     [Input('in-component1', 'value'), Input('in-component2', 'value')]
@@ -149,7 +148,7 @@ folder like so:
 
 '''),
 
-    Syntax('''
+    reusable_components.Syntax('''
 window.dash_clientside = Object.assign({}, window.dash_clientside, {
     large_params_function: function(largeValue1, largeValue2) {
         return someTransform(largeValue1, largeValue2);
@@ -165,7 +164,7 @@ In Dash, the callback is now written as:
 
 '''),
 
-    Syntax('''
+    reusable_components.Syntax('''
 from dash.dependencies import ClientsideFunction, Input, Output
 
 app.clientside_callback(

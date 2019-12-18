@@ -1,7 +1,6 @@
 import dash_core_components as dcc
 import dash_html_components as html
 
-from dash_docs.tutorial.components import Example, Syntax
 from dash_docs import tools
 from dash_docs import reusable_components
 
@@ -30,8 +29,8 @@ layout = html.Div([
         [basic Dash callbacks](/getting-started-part-2),
         our callbacks looked something like:
     '''),
-    Syntax(examples['basic-input'][0]),
-    Example(examples['basic-input'][1]),
+    reusable_components.Syntax(examples['basic-input'][0]),
+    reusable_components.Example(examples['basic-input'][1]),
 
     reusable_components.Markdown('''
         In this example, the callback function is fired whenever any of the
@@ -43,8 +42,8 @@ layout = html.Div([
         `dcc.Input` as `dash.dependencies.State` and a button as
         `dash.dependencies.Input`.
     '''),
-    Syntax(examples['basic-state'][0]),
-    Example(examples['basic-state'][1]),
+    reusable_components.Syntax(examples['basic-state'][0]),
+    reusable_components.Example(examples['basic-state'][1]),
 
     reusable_components.Markdown('''
         In this example, changing text in the `dcc.Input` boxes won't fire
@@ -63,15 +62,15 @@ layout = html.Div([
         In certain situations, you don't want to update the callback output. You can
         achieve this by raising `PreventUpdate` Exception in the callback function.
     '''),
-    Syntax(examples['prevent-update-button'][0]),
-    Example(examples['prevent-update-button'][1]),
+    reusable_components.Syntax(examples['prevent-update-button'][0]),
+    reusable_components.Example(examples['prevent-update-button'][1]),
 
     reusable_components.Markdown('''
         This example illustrates how you can show an error while keeping the previous
         input, using `dash.no_update` to update the output partially.
     '''),
-    Syntax(examples['prevent-update'][0]),
-    Example(examples['prevent-update'][1]),
+    reusable_components.Syntax(examples['prevent-update'][0]),
+    reusable_components.Example(examples['prevent-update'][1]),
 
     dcc.Link(
         'Dash Tutorial Part 5. Interactive Graphing',

@@ -6,7 +6,6 @@ from dash_docs import styles
 from dash_docs import tools
 from dash_docs.tutorial.utils.convert_props_to_list import generate_prop_info
 from dash_docs.tutorial.utils.component_block import ComponentBlock
-from dash_docs.tutorial.components import Syntax, Example
 from dash_docs import reusable_components
 
 examples = {
@@ -421,12 +420,12 @@ Input = html.Div(children=[
     html.H1('Input Examples and Reference'),
     html.Hr(),
     html.H3('Supported Input Types'),
-    Syntax(examples['input-all-types'][0]),
-    Example(examples['input-all-types'][1]),
+    reusable_components.Syntax(examples['input-all-types'][0]),
+    reusable_components.Example(examples['input-all-types'][1]),
     html.Br(),
     html.H3('Debounce delays the Input processing'),
-    Syntax(examples['input-basic'][0]),
-    Example(examples['input-basic'][1]),
+    reusable_components.Syntax(examples['input-basic'][0]),
+    reusable_components.Example(examples['input-basic'][1]),
     html.Br(),
     html.H3('Number Input'),
     reusable_components.Markdown("""
@@ -446,8 +445,8 @@ Input = html.Div(children=[
     corresponding number type in callbacks is **Integer** instead of **Float**.
     Please add extra guard casting like `float()` within callbacks if needed.
     """),
-    Syntax(examples['input-number-type'][0]),
-    Example(examples['input-number-type'][1]),
+    reusable_components.Syntax(examples['input-number-type'][0]),
+    reusable_components.Example(examples['input-number-type'][1]),
     html.Br(),
     html.H3('Input Properties'),
     generate_prop_info('Input')
@@ -471,16 +470,16 @@ Button = html.Div(children=[
     and `n_clicks` in the callback. `n_clicks` is an integer that represents \
     that number of times the button has been clicked. Note that the original \
     value is `None`."),
-    Syntax(examples['button_basic'][0]),
-    Example(examples['button_basic'][1]),
+    reusable_components.Syntax(examples['button_basic'][0]),
+    reusable_components.Example(examples['button_basic'][1]),
     html.Br(),
     html.H3('Button with n_clicks_timestamp'),
     html.Hr(),
     reusable_components.Markdown("This example utilizes the `n_clicks_timestamp` property, \
     which returns an integer representation of time. This is useful for \
     determining when the button was last clicked."),
-    Syntax(examples['button_n_clicks_timestamp'][0]),
-    Example(examples['button_n_clicks_timestamp'][1]),
+    reusable_components.Syntax(examples['button_n_clicks_timestamp'][0]),
+    reusable_components.Example(examples['button_n_clicks_timestamp'][1]),
     html.Br(),
     html.H3('Button Properties'),
     html.Hr(),
@@ -1207,8 +1206,8 @@ Graphs = html.Div([
     save button in the modebar of the graph which exports the figure to URL specified by `plotlyServerURL`.
 
     '''),
-    Syntax(examples['graph-config'][0]),
-    Example(examples['graph-config'][1]),
+    reusable_components.Syntax(examples['graph-config'][0]),
+    reusable_components.Example(examples['graph-config'][1]),
     html.H3('Graph Properties'),
     generate_prop_info('Graph')
 ])
@@ -1228,7 +1227,7 @@ Upload = html.Div([
 
     '''),
 
-    Syntax(examples['upload-datafile'][0], summary=reusable_components.Markdown('''
+    reusable_components.Syntax(examples['upload-datafile'][0], summary=reusable_components.Markdown('''
         Here's an example that parses CSV or Excel files and displays
         the results in a table. Note that this example uses the
         `DataTable` from the
@@ -1236,24 +1235,24 @@ Upload = html.Div([
         project.
     ''')),
 
-    Example(examples['upload-datafile'][1]),
+    reusable_components.Example(examples['upload-datafile'][1]),
 
     html.Hr(),
 
-    Syntax(examples['upload-image'][0], summary=reusable_components.Markdown('''
+    reusable_components.Syntax(examples['upload-image'][0], summary=reusable_components.Markdown('''
         This next example responds to image uploads by displaying them
         in the app with the `html.Img` component.
     ''')),
-    Example(examples['upload-image'][1]),
+    reusable_components.Example(examples['upload-image'][1]),
 
-    Syntax(examples['upload-gallery'][0], summary=reusable_components.Markdown('''
+    reusable_components.Syntax(examples['upload-gallery'][0], summary=reusable_components.Markdown('''
         The `children` attribute of the `Upload` component accepts any
         Dash component. Clicking on the children element will trigger the
         upload action, as will dragging and dropping files.
         Here are a few different ways that you could style the upload
         component using standard dash components.
     ''')),
-    Example(examples['upload-gallery'][1]),
+    reusable_components.Example(examples['upload-gallery'][1]),
 
     html.Hr(),
 
@@ -1270,8 +1269,8 @@ ConfirmDialog = html.Div([
     This ConfirmDialog can be used in conjunction with buttons when the user
     is performing an action that should require an extra step of verification.
     '''),
-    Syntax(examples['confirm'][0]),
-    Example(examples['confirm'][1]),
+    reusable_components.Syntax(examples['confirm'][0]),
+    reusable_components.Example(examples['confirm'][1]),
     generate_prop_info('ConfirmDialog')
 ])
 
@@ -1282,8 +1281,8 @@ ConfirmDialogProvider = html.Div([
     Send a [ConfirmDialog](/dash-core-components/confirmdialog) when the user
     clicks the children of this component, usually a button.
     '''),
-    Syntax(examples['confirm-provider'][0]),
-    Example(examples['confirm-provider'][1]),
+    reusable_components.Syntax(examples['confirm-provider'][0]),
+    reusable_components.Example(examples['confirm-provider'][1]),
     generate_prop_info('ConfirmDialogProvider')
 ])
 
@@ -1321,13 +1320,13 @@ Store = html.Div([
     See https://github.com/plotly/dash-renderer/pull/81 for further discussion.
     '''),
     html.H2('Store clicks example'),
-    Syntax(examples['store-clicks'][0]),
-    Example(examples['store-clicks'][1]),
+    reusable_components.Syntax(examples['store-clicks'][0]),
+    reusable_components.Example(examples['store-clicks'][1]),
 
     html.H2('Share data between callbacks'),
 
-    Syntax(examples['store-share'][0]),
-    Example(examples['store-share'][1]),
+    reusable_components.Syntax(examples['store-share'][0]),
+    reusable_components.Example(examples['store-share'][1]),
 
     generate_prop_info('Store'),
 ])
@@ -1359,8 +1358,8 @@ LogoutButton = html.Div([
 
     html.H2('Custom authentication example'),
 
-    Syntax(examples['logout_button'][0]),
-    Example(examples['logout_button'][1]),
+    reusable_components.Syntax(examples['logout_button'][0]),
+    reusable_components.Example(examples['logout_button'][1]),
 
     generate_prop_info('LogoutButton')
 ])
@@ -1375,8 +1374,8 @@ LoadingComponent = html.Div([
     of it's children to find a loading state, as demonstrated in the second callback, so that even nested children will get picked up.
     '''),
 
-    Syntax(examples['loading_component'][0]),
-    Example(examples['loading_component'][1]),
+    reusable_components.Syntax(examples['loading_component'][0]),
+    reusable_components.Example(examples['loading_component'][1]),
     reusable_components.Markdown('''
     Please also check out [this section on loading states](/loading-states) if you want a more customizable experience.
     '''),

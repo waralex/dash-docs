@@ -8,13 +8,6 @@ from dash_docs import reusable_components
 
 from textwrap import dedent
 
-def Syntax(content):
-    return reusable_components.Markdown(
-        '```python  \n' + content.strip() + '  \n```',
-        style=styles.code_container
-    )
-
-
 layout = html.Div([
     reusable_components.Markdown(
     """
@@ -48,7 +41,7 @@ layout = html.Div([
     `http://localhost:8050/dash`) of a Flask app:
     """
     ),
-    Syntax(
+    reusable_components.Syntax(
         dedent(
             '''
             import flask
@@ -97,7 +90,7 @@ layout = html.Div([
     """
     ),
     reusable_components.Markdown("`flask_app.py`"),
-    Syntax(
+    reusable_components.Syntax(
         dedent(
             '''
                 from flask import Flask
@@ -112,7 +105,7 @@ layout = html.Div([
     ),
     html.Hr(),
     reusable_components.Markdown("`app1.py`"),
-    Syntax(
+    reusable_components.Syntax(
         dedent(
             """
                 import dash
@@ -129,7 +122,7 @@ layout = html.Div([
     ),
     html.Hr(),
     reusable_components.Markdown("`app2.py`"),
-    Syntax(
+    reusable_components.Syntax(
         dedent(
             """
                 import dash
@@ -146,7 +139,7 @@ layout = html.Div([
     ),
     html.Hr(),
     reusable_components.Markdown("`wsgi.py`"),
-    Syntax(
+    reusable_components.Syntax(
         dedent(
             """
                 from werkzeug.wsgi import DispatcherMiddleware
@@ -178,7 +171,7 @@ layout = html.Div([
             """
         )
     ),
-    Syntax("$ gunicorn wsgi:application"),
+    reusable_components.Syntax("$ gunicorn wsgi:application"),
     reusable_components.Markdown(
     """
     Alternatively, you can use the Werkzeug development server (which is not
@@ -187,7 +180,7 @@ layout = html.Div([
     `run.py`
     """
     ),
-    Syntax(
+    reusable_components.Syntax(
         dedent(
             """
                 from werkzeug.wsgi import DispatcherMiddleware
@@ -214,7 +207,7 @@ layout = html.Div([
     can be added before the initialisation of the `DispatcherMiddleware` to do this:
     """
     ),
-    Syntax(
+    reusable_components.Syntax(
         dedent(
             """
                 app1.enable_dev_tools(debug=True)

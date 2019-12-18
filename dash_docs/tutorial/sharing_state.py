@@ -2,7 +2,6 @@
 import dash_core_components as dcc
 import dash_html_components as html
 
-from dash_docs.tutorial.components import Example, Syntax
 from dash_docs import tools
 from dash_docs import reusable_components
 
@@ -84,7 +83,7 @@ layout = html.Div([
 
     '''),
 
-    Syntax('''df = pd.DataFrame({
+    reusable_components.Syntax('''df = pd.DataFrame({
     'a': [1, 2, 3],
     'b': [4, 1, 4],
     'c': ['x', 'y', 'z'],
@@ -114,7 +113,7 @@ def update_output_1(value):
     out of its scope. This type of pattern *will not work reliably*
     for the reasons outlined above.'''),
 
-    Syntax('''df = pd.DataFrame({
+    reusable_components.Syntax('''df = pd.DataFrame({
     'a': [1, 2, 3],
     'b': [4, 1, 4],
     'c': ['x', 'y', 'z'],
@@ -180,7 +179,7 @@ def update_output_1(value):
              it will just be displaying a subset or an aggregation of it.
     '''),
 
-    Syntax(
+    reusable_components.Syntax(
         summary=('''
         This example outlines how you can perform an expensive data processing
         step in one callback, serialize the output at JSON, and provide it
@@ -242,7 +241,7 @@ def update_output_1(value):
         aggregations to the remaining callbacks.
     '''),
 
-    Syntax(children=dedent('''
+    reusable_components.Syntax(children=dedent('''
         @app.callback(
             Output('intermediate-value', 'children'),
             [Input('dropdown', 'value')])
@@ -346,7 +345,7 @@ def update_output_1(value):
         className="gallery"
     ),
 
-    Syntax(summary="Here's what this example looks like in code:",
+    reusable_components.Syntax(summary="Here's what this example looks like in code:",
         children=dedent('''
             import os
             import copy
@@ -532,8 +531,8 @@ def update_output_1(value):
 
         '''),
 
-    Syntax(
-        # with Syntax + load_example we are wrapping twice, hence replace()
+    reusable_components.Syntax(
+        # with reusable_components.Syntax + load_example we are wrapping twice, hence replace()
         examples['filesystem-session-cache'][0].replace('```python ', ''),
         summary="Here's what this example looks like in code:"
     ),

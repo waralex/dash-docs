@@ -2,7 +2,6 @@ import dash_core_components as dcc
 import dash_html_components as html
 
 from dash_docs.tools import load_example
-from dash_docs.tutorial.components import Syntax, Example
 from dash_docs import reusable_components
 
 examples = {
@@ -70,8 +69,8 @@ layout = html.Div([
     different value for each city - resets if you open the page in a new tab.
     '''),
 
-    Syntax(examples['persistence'][0]),
-    Example(examples['persistence'][1]),
+    reusable_components.Syntax(examples['persistence'][0]),
+    reusable_components.Example(examples['persistence'][1]),
 
     reusable_components.Markdown('''
     ## Explicitly clearing saved data
@@ -85,8 +84,8 @@ layout = html.Div([
     `dash.no_update` until you detect the reset condition.
     '''),
 
-    Syntax(examples['persistence_clear'][0]),
-    Example(examples['persistence_clear'][1]),
+    reusable_components.Syntax(examples['persistence_clear'][0]),
+    reusable_components.Example(examples['persistence_clear'][1]),
 
     reusable_components.Markdown('''
     ## For component developers
