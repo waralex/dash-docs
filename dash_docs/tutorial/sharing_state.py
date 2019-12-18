@@ -5,8 +5,6 @@ import dash_html_components as html
 from dash_docs import tools
 from dash_docs import reusable_components
 
-from textwrap import dedent
-
 examples = {
     'filesystem-session-cache': tools.load_example(
         'tutorial/examples/sharing_state_filesystem_sessions.py'
@@ -187,7 +185,7 @@ def update_output_1(value):
         callbacks and stores the JSON-ified data inside a hidden div in
         the app.
         '''),
-        children=dedent('''
+        children='''
 
         global_df = pd.read_csv('...')
         app.layout = html.Div([
@@ -223,7 +221,7 @@ def update_output_1(value):
             dff = pd.read_json(jsonified_cleaned_data, orient='split')
             table = create_table(dff)
             return table
-        ''')
+        '''
     ),
 
     reusable_components.Markdown('''
@@ -241,7 +239,7 @@ def update_output_1(value):
         aggregations to the remaining callbacks.
     '''),
 
-    reusable_components.Syntax(children=dedent('''
+    reusable_components.Syntax(children='''
         @app.callback(
             Output('intermediate-value', 'children'),
             [Input('dropdown', 'value')])
@@ -289,7 +287,7 @@ def update_output_1(value):
             dff = pd.read_json(datasets['df_3'], orient='split')
             figure = create_figure_3(dff)
             return figure
-        '''), summary='''Here's a simple example of how you might transport
+        ''', summary='''Here's a simple example of how you might transport
         filtered or aggregated data to multiple callbacks.'''
     ),
 
@@ -346,7 +344,7 @@ def update_output_1(value):
     ),
 
     reusable_components.Syntax(summary="Here's what this example looks like in code:",
-        children=dedent('''
+        children='''
             import os
             import copy
             import time
@@ -487,7 +485,7 @@ def update_output_1(value):
 
             if __name__ == '__main__':
                 app.run_server(debug=True, processes=6)
-            ''')
+            '''
     ),
 
 
