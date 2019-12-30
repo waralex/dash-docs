@@ -1,6 +1,4 @@
-ARG DEBIAN_FRONTEND=noninteractive
 FROM rpkyle/heroku-docker-r:3.6.2_heroku18
-ENV PORT=8080
 
 # on build, copy application files
 COPY . /app/
