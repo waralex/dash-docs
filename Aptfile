@@ -3,3 +3,4 @@ libxml2-dev
 libv8-3.14-dev
 unattended-upgrades
 imagemagick-6-common
+libmagick++-dev
