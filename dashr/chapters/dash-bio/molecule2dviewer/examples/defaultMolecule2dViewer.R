@@ -39,4 +39,4 @@ app$callback(
   }
 )
 
-app$run_server(showcase = TRUE)
+app$run_server()
