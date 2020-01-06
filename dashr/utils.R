@@ -18,14 +18,12 @@ LoadExampleCode <- function(filename, wd = NULL) {
     # it will implicity be picked up by the
     # `eval` call below
     list('app <- Dash\\$new\\(\\)', ''),
-    list('app\\$run_server\\(\\)', ''),
-    list('app\\$run_server\\(dev_tools_hot_reload\\=FALSE\\)', '')
+    list('app\\$run_server\\(\\)', '')
   )
   for(replacement in replacements) {
     example.ready.for.eval <- gsub(
       replacement[1],
       replacement[2],
-      replacement[3],
       example.ready.for.eval
     )
   }
