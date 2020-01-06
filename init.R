@@ -25,6 +25,7 @@ install.packages("magick")
 install.packages("png")
 install.packages("foreach")
 install.packages("glue")
+install.packages("stringr")
 
 remotes::install_github("plotly/dashR", upgrade=TRUE)
 install.packages("manhattanly")
