@@ -194,6 +194,8 @@ chapters.deployment <- new.env()
 source('dashr/chapters/deployment/index.R', local=chapters.deployment)
 chapters.urls <- new.env()
 source('dashr/chapters/urls/index.R', local=chapters.urls)
+chapters.devtools <- new.env()
+source('dashr/chapters/devtools/index.R', local=chapters.devtools)
 
 header <- htmlDiv(
   className = 'header',
@@ -337,6 +339,7 @@ app$callback(
       # Beyond the Basics
       '/external-resources' = return(chapters.external_resources$layout),
       '/urls' = return(chapters.urls$layout),
+      '/devtools' = return(chapters.devtools$layout),      
       '/support' = return(chapters.support$layout),
       '/plugins' = return(chapters.plugins$layout),
       '/d3-react-components' = return(chapters.d3$layout),
@@ -500,6 +503,11 @@ app$callback(
                 'URL Routing & Multiple Apps',
                 href='/urls',
                 caption="Dash provides two components (`dccLink` and `dccLocation`) that allow you to easily make fast multipage apps using its own \"Single Page App (SPA)\" design pattern."
+                ),
+                components$Chapter(
+                'Dev tools',
+                href='/devtools',
+                caption="Dash dev tools reference"
                 )
               )
             ),
@@ -557,4 +565,4 @@ app$callback(
   }
 )
 
-app$run_server(host = "0.0.0.0", port = Sys.getenv('PORT'))
+app$run_server(host = "127.0.0.1", port = Sys.getenv('PORT'), debug = TRUE, dev_tools_hot_reload = FALSE, use_viewer = TRUE)
