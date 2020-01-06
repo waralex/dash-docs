@@ -3,6 +3,7 @@ library(dash)
 library(dashCoreComponents)
 library(dashHtmlComponents)
 library(jsonlite)
+library(stringr)
 
 components <- new.env()
 source('dashr/components.R', local=components)
