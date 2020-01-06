@@ -26,7 +26,7 @@ install.packages("png")
 install.packages("foreach")
 install.packages("glue")
 
-remotes::install_github("plotly/dashR", upgrade=TRUE, ref="dev")
+remotes::install_github("plotly/dashR", upgrade=TRUE)
 install.packages("manhattanly")
 remotes::install_github("plotly/dash-canvas", ref="93224c3")
 remotes::install_github("plotly/dash-cytoscape", ref="25b0301")
