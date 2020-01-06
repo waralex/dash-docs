@@ -565,4 +565,4 @@ app$callback(
   }
 )
 
-app$run_server(host = "127.0.0.1", port = Sys.getenv('PORT'), debug = TRUE, dev_tools_hot_reload = FALSE, use_viewer = TRUE)
+app$run_server(host = "0.0.0.0", port = Sys.getenv('PORT'))

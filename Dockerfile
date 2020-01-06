@@ -1,13 +1,10 @@
-FROM rpkyle/heroku-docker-r:3.6.2_heroku18
+FROM plotly/heroku-docker-r:3.6.2_heroku18
 
 # on build, copy application files
 COPY . /app/
 
 # on build, for installing additional dependencies etc.
 RUN if [ -f "/app/onbuild" ]; then bash /app/onbuild; fi;
-
-# workaround to avoid imagemagick policy headaches
-# RUN dpkg --remove --force-remove-reinstreq imagemagick-6-common:amd64
 
 # on build, for backward compatibility, look for /app/Aptfile and if it exists, install the packages contained
 RUN if [ -f "/app/Aptfile" ]; then apt-get -qy update && cat Aptfile | xargs apt-get --quiet --yes --allow-downgrades --allow-remove-essential --allow-change-held-packages -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" install && rm -rf /var/lib/apt/lists/*; fi;
