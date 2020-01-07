@@ -1,6 +1,6 @@
 FROM plotly/heroku-docker-r:3.6.2_heroku18
 
-RUN /usr/bin/R --no-save --quiet --slave -e "install.packages(c('remotes', 'later', 'jsonlite', 'rjson', 'listenv', 'anytime', 'readr', 'heatmaply', 'bezier', 'png', 'foreach', 'glue', 'stringr'))"
+RUN /usr/bin/R --no-save --quiet --slave -e "install.packages(c('remotes', 'later', 'jsonlite', 'rjson', 'listenv', 'anytime', 'readr', 'heatmaply', 'bezier', 'png', 'foreach', 'glue', 'stringr')); remotes::install_github('rpkyle/debbie'); debbie::install_deb('magick')"
 
 # on build, copy application files
 COPY . /app/
