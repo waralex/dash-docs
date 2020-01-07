@@ -7,8 +7,6 @@ r["CRAN"] <- "http://cloud.r-project.org"
 options(repos=r)
 
 # ======================================================================
-install.packages("magick")
-
 remotes::install_github("plotly/dashR", upgrade=TRUE)
 install.packages("manhattanly")
 remotes::install_github("plotly/dash-canvas", ref="93224c3")
