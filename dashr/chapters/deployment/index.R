@@ -13,16 +13,16 @@ own machine. To share a Dash app, you need to 'deploy' your Dash app to a
 server and open up the server's firewall to the public or to a restricted
 set of IP addresses.
 
-## Dash Deployment Server
+## Dash Enterprise 
 
-[Dash Deployment Server](https://plot.ly/dash/pricing/?_ga=2.218363033.1075922756.1562168385-916141078.1562168385) is Plotly's commercial product for deploying Dash
+[Dash Enterprise](https://plot.ly/dash/pricing/?_ga=2.249471751.1080104966.1578062860-1986131108.1567098614) is Plotly's commercial product for deploying Dash
 Apps on your company's servers or on AWS, Google Cloud, or Azure. It
 offers an enterprise-wide Dash App Portal, easy git-based deployment,
 automatic URL namespacing, built-in SSL support, LDAP authentication, and
-more. [Learn more about Dash Deployment Server](https://plot.ly/dash/pricing?_ga=2.218363033.1075922756.1562168385-916141078.1562168385) or [get in touch to start a
-trial](https://plotly.typeform.com/to/rkO85m?_ga=2.17487673.1075922756.1562168385-916141078.1562168385).
+more. [Learn more about Dash Enterprise](https://plot.ly/dash/pricing?_ga=2.249471751.1080104966.1578062860-1986131108.1567098614) or [get in touch to start a
+trial](https://go.plot.ly/dash-doc?_ga=2.48144423.1080104966.1578062860-1986131108.1567098614).
 
-For existing customers, see the [Dash Deployment Server Documentation](https://dash.plot.ly/dash-deployment-server).
+For existing customers, see the [Dash Enterprise Documentation](https://dash.plot.ly/dash-enterprise).
 
 ## Dash and Fiery
 
