@@ -7,25 +7,7 @@ r["CRAN"] <- "http://cloud.r-project.org"
 options(repos=r)
 
 # ======================================================================
-
-# packages go here
-install.packages("remotes")
-
-# installs Rcpp, rlang, BH
-install.packages("later")
-
-install.packages("jsonlite")
-install.packages("rjson")
-install.packages("listenv")
-install.packages("anytime")
-install.packages("readr")
-install.packages("heatmaply")
-install.packages("bezier")
 install.packages("magick")
-install.packages("png")
-install.packages("foreach")
-install.packages("glue")
-install.packages("stringr")
 
 remotes::install_github("plotly/dashR", upgrade=TRUE)
 install.packages("manhattanly")
