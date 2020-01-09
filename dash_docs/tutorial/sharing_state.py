@@ -556,5 +556,5 @@ def update_output_1(value):
     '''),
        dcc.Link(
         'Dash Tutorial Part 7. FAQs and Gotchas',
-        href=tools.relpath('/faqs')),
+        href=tools.relpath('/faqs'))
 ])
