@@ -99,15 +99,6 @@ Create the following files in your project folder:
 
 ---
 
-**`.gitignore`**
-
-```
-    venv
-    *.pyc
-    .DS_Store
-    .env
-```
-
 ---
 
 **`Dockerfile`**
@@ -169,9 +160,8 @@ install packages from both CRAN mirrors and GitHub repositories:
 
 **`apt-packages`**
 
-`apt-packages` describes system-level dependencies. A suggested
-initial configuration is below; add Debian/Ubuntu package names as
-needed for your applications.
+`apt-packages` describes system-level dependencies. For example, one might add
+three packages by including their names, one per line, within this file: 
 
 ```
     libcurl4-openssl-dev
@@ -186,11 +176,11 @@ needed for your applications.
     $ heroku create --stack container my-dash-app # change my-dash-app to a unique name    
     $ git add . # add all files to git
     $ git commit -m 'Initial app boilerplate'
-    $ git push heroku master # deploy code to heroku
-    $ heroku ps:scale web=1  # run the app with a 1 heroku 'dyno'
+    $ git push heroku master # deploy code to Heroku
+    $ heroku ps:scale web=1  # run the app with one Heroku 'dyno'
 ```
 
-You should be able to view your app at https://my-dash-app.herokuapp.com (changing my-dash-app to the name of your app).
+You should be able to access your app at https://my-dash-app.herokuapp.com (changing my-dash-app to the name of your app).
 
 ---
 
