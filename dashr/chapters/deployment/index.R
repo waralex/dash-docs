@@ -181,7 +181,7 @@ three packages by including their names, one per line, within this file:
     $ heroku ps:scale web=1  # run the app with one Heroku 'dyno'
 ```
 
-You should be able to access your app at https://my-dash-app.herokuapp.com (changing my-dash-app to the name of your app).
+You should be able to access your app at `https://my-dash-app.herokuapp.com` (changing my-dash-app to the name of your app).
 
 ---
 
