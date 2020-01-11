@@ -135,8 +135,10 @@ build:
 
 **`init.R`**
 
-`init.R` describes your R dependencies. Here is an example script. It's fairly trivial to
-install packages from both CRAN mirrors and GitHub repositories:
+`init.R` describes your R dependencies. Here is an example script. At minimum, you'll
+want to install Dash for R to ensure that you're always using the latest version. 
+
+It's fairly trivial to install packages from both CRAN mirrors and GitHub repositories:
 
 ```r
 # R script to run author supplied code, typically used to install additional R packages
