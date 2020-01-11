@@ -94,7 +94,7 @@ Create the following files in your project folder:
       }
     )
 
-    app$run_server(debug = TRUE)
+    app$run_server(host = '0.0.0.0', port = Sys.getenv('PORT', 8050)))
 ```
 
 ---
@@ -126,8 +126,9 @@ RUN if [ -f '/app/apt-packages' ]; then apt-get update -q && cat apt-packages | 
 
 # look for /app/init.R and if it exists, execute it
 RUN if [ -f '/app/init.R' ]; then /usr/bin/R --no-init-file --no-save --quiet --slave -f /app/init.R; fi; 
-              
-CMD cd /app && /usr/bin/R --no-save -f /app/run.R
+
+# here app.R needs to match the name of the file which contains your app              
+CMD cd /app && /usr/bin/R --no-save -f /app/app.R
 ```
 
 ---
@@ -182,8 +183,7 @@ needed for your applications.
 4. Initialize Heroku, add files to Git, and deploy
 
 ```
-    $ heroku create my-dash-app # change my-dash-app to a unique name
-    $ heroku stack:set container # use container as the stack type
+    $ heroku create --stack container my-dash-app # change my-dash-app to a unique name    
     $ git add . # add all files to git
     $ git commit -m 'Initial app boilerplate'
     $ git push heroku master # deploy code to heroku
