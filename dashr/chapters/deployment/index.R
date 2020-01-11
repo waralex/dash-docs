@@ -197,8 +197,8 @@ When you modify app.R with your own code, you will need to add the changes to gi
     $ git push heroku master
 ```
 
-This workflow for deploying apps on Heroku is analogous to how deployment works with Plotly's Enterprise offering. 
-[Learn more](https://plot.ly/dash/pricing/?_ga=2.176345125.1075922756.1562168385-916141078.1562168385) or [get in touch](https://plotly.typeform.com/to/rkO85m?_ga=2.176345125.1075922756.1562168385-916141078.1562168385).
+If you're ready to take your apps to the next level, and deliver interactive analytics at scale, we invite you to learn more about Dash Enterprise. 
+[Click here for more information](https://plot.ly/dash/pricing/?_ga=2.176345125.1075922756.1562168385-916141078.1562168385) or [get in touch](https://plotly.typeform.com/to/rkO85m?_ga=2.176345125.1075922756.1562168385-916141078.1562168385).
 
   "),
 htmlHr(),
