@@ -63,7 +63,7 @@ Step 2. Initialize the folder with `git`
 
 ---
 
-Step 3. Initialize the folder with a sample app (`app.R`), a `.gitignore` file, `Dockerfile`, `heroku.yml` for deployment
+Step 3. Initialize the folder with a sample app (`app.R`), a `.gitignore` file, `Dockerfile`, `heroku.yml` for deployment.
 
 Create the following files in your project folder:
 
@@ -71,7 +71,7 @@ Create the following files in your project folder:
 
 ```r
 
-    app <- Dash$new(external_stylesheets = list('https://codepen.io/chriddyp/pen/bWLwgP.css'))
+    app <- Dash$new()
 
     app$layout(htmlDiv(list(htmlH2('Hello World'),
               dccDropdown(id = 'dropdown',
