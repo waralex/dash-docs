@@ -63,7 +63,7 @@ Step 2. Initialize the folder with `git`
 
 ---
 
-Step 3. Initialize the folder with a sample app (`app.R`), a `.gitignore` file, `Dockerfile`, `heroku.yml` for deployment.
+Step 3. Initialize the folder with a sample app (`app.R`), a `.gitignore` file (not required, but will avoid committing any files that aren't necessary for your app to function), `Dockerfile`, `heroku.yml` for deployment.
 
 Create the following files in your project folder:
 
@@ -138,7 +138,7 @@ build:
 `init.R` describes your R dependencies. Here is an example script. At minimum, you'll
 want to install Dash for R to ensure that you're always using the latest version. 
 
-It's fairly trivial to install packages from both CRAN mirrors and GitHub repositories:
+It's fairly trivial to install packages from both CRAN mirrors and GitHub repositories.
 
 ```r
 # R script to run author supplied code, typically used to install additional R packages
@@ -155,7 +155,6 @@ It's fairly trivial to install packages from both CRAN mirrors and GitHub reposi
               install.packages('remotes')
               
               remotes::install_github('plotly/dashR', upgrade=TRUE)
-              install.packages('manhattanly')
 ```
 
 ---
