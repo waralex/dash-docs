@@ -5,6 +5,21 @@ library(dashHtmlComponents)
 library(jsonlite)
 library(stringr)
 
+getVersion <- function(package_name) {
+  cat(package_name, ": ", as.character(utils::packageVersion(package_name)), "\n", sep = "")
+}
+
+dashDeps <- c("dash", "dashHtmlComponents", "dashCoreComponents",
+"dashTable", "R6", "fiery", "routr",
+"plotly", "reqres", "jsonlite", "htmltools", "assertthat", "digest",
+"base64enc", "mime", "crayon")
+
+cat("########## Environment variables ##########\n")
+Sys.getenv()
+
+cat("########## Package versions      ##########\n")
+invisible(lapply(dashDeps, getVersion))
+
 components <- new.env()
 source('dashr/components.R', local=components)
 source('allcallbacks.R')
