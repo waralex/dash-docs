@@ -43,7 +43,7 @@ preamble = html.Div([
     Section('Quickstart', [
         reusable_components.Markdown(
             '''
-            ```
+            ```shell
             pip install dash-cytoscape=={}
             ```
             '''.format(dash_cytoscape.__version__),

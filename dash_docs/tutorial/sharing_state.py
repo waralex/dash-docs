@@ -554,5 +554,8 @@ def update_output_1(value):
 
         Questions? Discuss these examples on the
         [Dash Community Forum](https://community.plot.ly/c/dash).
-    ''')
+    '''),
+    dcc.Link(
+        'Dash Tutorial Part 7. FAQs and Gotchas',
+        href=tools.relpath('/faqs'))
 ])

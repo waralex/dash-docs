@@ -67,7 +67,7 @@ preamble = html.Div([
     Section('Quickstart', [
         reusable_components.Markdown(
             '''
-            ```
+            ```shell
             pip install dash=={}
             ```
             '''.format(dash.__version__),
