@@ -4,7 +4,6 @@ library(dashCanvas)
 library(dashTable)
 library(jsonlite)
 library(magrittr)
-library(compiler)
 
 filename <- 'https://upload.wikimedia.org/wikipedia/commons/e/e4/Mitochondria%2C_mammalian_lung_-_TEM_%282%29.jpg'
 canvas_width <- 500

@@ -1,6 +1,5 @@
 library(magrittr)
 library(bezier)
-library(compiler)
 library(foreach)
 library(png)
 library(magick)
@@ -9,8 +8,7 @@ library(glue)
 
 # Helper functions & syntactic sugars ---------------------------
 
-bezier_curve <- cmpfun(pointsOnBezier)
-foreach <- cmpfun(foreach)
+bezier_curve <- pointsOnBezier
 
 draw.bezier_curve <- function(n1, n2, s) {
   l1 <- length(n1)
