@@ -1469,8 +1469,8 @@ Ssh = html.Div(children=[
 
     If you already have an SSH key that you've used in other
     services, you can use that key instead of generating a new one.
-    For instructions on how to add an existing SSH Key to the Dash Deployment
-    Server, scroll down to **Copy and Add SSH Key**.
+    For instructions on how to add an existing SSH Key to Dash Enterprise,
+    scroll down to **Copy and Add SSH Key**.
 
     ***
 
@@ -1715,10 +1715,10 @@ Cli = html.Div(children=[
     be able to use the commands below to help manage your apps from the command line.
 
     All commands are performed using `ssh dokku@your-dash-enterprise -p PORT command flags appname` where
-    `PORT` is the ssh port for DDS (usually 3022). DDS will compare the private key supplied to the ssh command
-    and the public key uploaded to DDS in order to authenticate the user initiating the request.
+    `PORT` is the ssh port for Dash Enterprise (usually 3022). Dash Enterprise will compare the private key supplied to the ssh command
+    and the public key uploaded to Dash Enterprise in order to authenticate the user initiating the request.
 
-    > Note that using the same public key for multiple users on DDS isn't supported and will likely prevent it
+    > Note that using the same public key for multiple users on Dash Enterprise isn't supported and will likely prevent it
     > from authenticating to the correct user.
 
     ***
@@ -1727,7 +1727,7 @@ Cli = html.Div(children=[
 
     rc.Markdown('''
 
-    ### List of exposed DDS commands:
+    ### List of exposed Dash Enterprise commands:
 
 
     #### App-related Commands:
@@ -1902,8 +1902,8 @@ Cli = html.Div(children=[
         rc.Markdown('''
         &nbsp;
 
-        DDS can also manage scaling applications (increase the number of containers for processes defined
-        in the Procfile) via the `ps:scale` command. DDS only scales the web process by default so if you
+        Dash Enterprise can also manage scaling applications (increase the number of containers for processes defined
+        in the Procfile) via the `ps:scale` command. Dash Enterprise only scales the web process by default so if you
         define others you will need to scale them.
 
         **Example:**
@@ -2127,7 +2127,7 @@ Authentication = html.Div(children=[
     Blockquote(),
 
     rc.Markdown('''
-    DDS will automatically implement user authentication if your
+    Dash Enterprise will automatically implement user authentication if your
     <dccLink children="Dash app's privacy" href="/dash-enterprise/privacy"/>
     is set to *Restricted* (the default setting)
     or *Authorized* but not if is set to *Unauthorized*. You can access the authentication data within your app
@@ -2141,8 +2141,8 @@ Authentication = html.Div(children=[
 
     ## Using `dash-enterprise-auth` in an Existing Dash App
 
-    If you have previously deployed your Dash app to your Dash Deployment
-    Server, simply add `dash-enterprise-auth` to your `requirements.txt` file.
+    If you have previously deployed your Dash app to your Dash Enterprise,
+    simply add `dash-enterprise-auth` to your `requirements.txt` file.
 
     `dash-enterprise-auth` includes the method `create_logout_button` which allows you to
     add a logout button to your app's layout and it also includes three other methods,
@@ -2263,7 +2263,7 @@ AppPrivacy = html.Div(children=[
     '''),
 
     html.Img(
-        alt='DDS Apps List',
+        alt='Dash Enterprise Apps List',
         src=tools.relpath('/assets/images/dds/manager-apps-list.png'),
         style={
             'width': '100%', 'border': 'thin lightgrey solid',
@@ -2295,10 +2295,10 @@ AppPrivacy = html.Div(children=[
 
 
 # # # # # # #
-# Dash Deployment Health Checks
+# Dash Enterprise - App Health Checks
 # # # # # # #
 Checks = html.Div(children=[
-    html.H1('Dash Deployment Health Checks'),
+    html.H1('Dash Enterprise - App Health Checks'),
 
     Blockquote(),
 
@@ -2310,8 +2310,8 @@ Checks = html.Div(children=[
     in the first 10 seconds of running.
 
     It is possible to customize the health checks performed on your app by adding a file named `CHECKS` to
-    the root directory of your app. In this file you can specify **Checks Settings** to instruct DDS when
-    and how to perform the checks. You can also configure **Checks Instructions** to tell DDS what endpoints to
+    the root directory of your app. In this file you can specify **Checks Settings** to instruct Dash Enterprise when
+    and how to perform the checks. You can also configure **Checks Instructions** to tell Dash Enterprise what endpoints to
     test and what content it should find there.
 
     &nbsp;
@@ -2322,10 +2322,10 @@ Checks = html.Div(children=[
     rc.Markdown('''
 
     You can specify values for `WAIT`, `TIMEOUT`, and `ATTEMPTS` to set the period of time
-    that DDS waits before performing the check, the amount of time before it times out, and the number of times
+    that Dash Enterprise waits before performing the check, the amount of time before it times out, and the number of times
     it will run them before determining that the deployment failed.
 
-    In the example `CHECKS` file below, DDS will wait 15 seconds before performing the check, allow up to 10 seconds
+    In the example `CHECKS` file below, Dash Enterprise will wait 15 seconds before performing the check, allow up to 10 seconds
     for a response from the app and perform the check 3 times before marking it as a failure.
 
     '''),
@@ -2346,7 +2346,7 @@ Checks = html.Div(children=[
 
     rc.Markdown('''
 
-   The instructions are specified in the format of a relative link followed by content that DDS
+   The instructions are specified in the format of a relative link followed by content that Dash Enterprise
    should find in the response. The expected content can be omitted if text content doesn't make sense (e.g if
    you want to check whether an image can be served). The example below checks the layout for the text `Sample App`,
    that `_dash-undo-redo` is included in the dash.css file and that dash-logo.png is being served by the app.
@@ -2710,15 +2710,15 @@ StagingApp = html.Div(children=[
     separate applications: one for "production" consumption and another one
     for testing. You will share the URL of the "production" app to your
     end-users and you will use your "testing" app to try out different changes
-    before you send them to your production app. With Dash Deployment
-    Server, creating a separate testing app is easy:
+    before you send them to your production app. With Dash Enterprise,
+    creating a separate testing app is easy:
 
     ***
 
     ### Initialize a New Dash App
 
-    <dccLink href="/dash-enterprise/initialize" children="Initialize a new app"/> in the Dash
-    Deployment Server UI. We recommend giving it the same name as your
+    <dccLink href="/dash-enterprise/initialize" children="Initialize a new app"/> in the
+    Dash Enterprise UI. We recommend giving it the same name as your
     other app but appending `-stage` to it (e.g. `analytics-stage`).
 
     ***
@@ -2854,8 +2854,8 @@ pdfService = html.Div(children=[
         #### Basic Example
 
         This example provides a simple UI around the PDF API. You can run this
-        example locally or you can deploy this example to Dash
-        Deployment Server. A few things to note:
+        example locally or you can deploy this example to Dash Enterprise.
+        A few things to note:
 
          - If you're testing locally, you will have to specify default values for your
         DASH_DOMAIN_BASE, DASH_APP_NAME and DASH_SECRET_KEY. You can find them in the list of your app's
@@ -3224,8 +3224,8 @@ Troubleshooting = html.Div(children=[
             under the "Modify SSH Config" heading.
 
             The next two emphasized lines show the public keys that were offered (and
-            in this case rejected) by the server. If the RSA key that you added to Dash Deployment
-            Server is not among those offered you will need to add it to your `ssh-agent`
+            in this case rejected) by the server. If the RSA key that you added to
+            Dash Enterprise is not among those offered you will need to add it to your `ssh-agent`
             with `ssh-add ~/path/to/your/key`. More details on `ssh-agent` are included in the
             <dccLink href="/dash-enterprise/ssh" children="ssh chapter"/>.
             ''')
@@ -3341,7 +3341,7 @@ Portal = html.Div(children=[
 
     In order for your app to appear on the Dash App Portal, you need
     enable the *Show in Portal* Toggle in your app's settings from
-    within the DDS app manager and then edit your app's metadata to
+    within the Dash Enterprise app manager and then edit your app's metadata to
     make it easier to find/customize its appearance.
 
     > Note that only users with access to your app will be able
@@ -3366,7 +3366,7 @@ Portal = html.Div(children=[
 
     ### Customize the Portal
 
-    From the DDS app Manager, access the *Portal* tab
+    From the Dash Enterprise app Manager, access the *Portal* tab
     to see its settings (or go to `/Manager/settings/portal/general`).
 
     &nbsp;
@@ -3420,7 +3420,7 @@ AdminPanel = html.Div(children=[
     '''),
 
     html.Img(
-        alt='DDS admin panel link',
+        alt='Dash Enterprise admin panel link',
         src=tools.relpath('/assets/images/dds/dash-enterprise-admin-panel-link.png'),
         style={
             'width': '100%', 'border': 'thin lightgrey solid',
@@ -3492,8 +3492,8 @@ Analytics = html.Div(children=[
     rc.Markdown('''
     #### Dash App Analytics
 
-    After you have successfully deployed a Dash App to the Dash Deployment
-    Server, you can monitor app performance via the app analytics and logs.
+    After you have successfully deployed a Dash App to Dash Enterprise,
+    you can monitor app performance via the app analytics and logs.
     Here, navigate to the Dash Enterprise UI and select the app to
     display analytics.
 
@@ -3521,7 +3521,7 @@ Logs = html.Div(children=[
     ***
 
     Dash apps create a log of usage data as well as any `print` statements
-    called from your app. These logs can be accessed via the DDS UI or from the
+    called from your app. These logs can be accessed via the Dash Enterprise UI or from the
     command line. Note that they will be cleared each time you re-deploy
     your app.
 
@@ -3529,8 +3529,8 @@ Logs = html.Div(children=[
 
     #### Dash App Logs (via UI)
 
-    If you have successfully deployed a Dash App to the Dash Deployment
-    Server, you can view the app's logs via the Dash Enterprise UI.
+    If you have successfully deployed a Dash App to the Dash Enterprise,
+    you can view the app's logs via the Dash Enterprise UI.
     From your list of apps, open the app and then select **Logs**. This will
     display the most recent 500 log entries for your app. For the complete list,
     use the command line method outlined below.
@@ -3653,8 +3653,8 @@ Git = html.Div(children=[
 
     If you have created a new folder for your Dash App, or have an existing
     folder on your local machine, you need to initialize a local Git
-    repository before you can deploy your Dash App to the Dash Deployment
-    Server. You need to initialize the local Git repository from your app's
+    repository before you can deploy your Dash App to the Dash Enterprise.
+    You need to initialize the local Git repository from your app's
     root folder, thus:
 
     '''),
@@ -3882,8 +3882,8 @@ Git = html.Div(children=[
 
     If you have created a new branch and are happy with the changes, you can
     add and commit these changes using the common `git add . ` and
-    `git commit -m "description"` commands. To deploy these to Dash Deployment
-    Server, you will need to deploy the branch into master:
+    `git commit -m "description"` commands. To deploy these to Dash Enterprise,
+    you will need to deploy the branch into master:
 
     '''),
 
