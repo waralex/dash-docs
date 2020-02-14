@@ -126,7 +126,11 @@ def load_example(path):
             'datasets/gdp-life-exp-2007.csv',
 
             'https://plotly.github.io/datasets/country_indicators.csv':
-            'datasets/country_indicators.csv'
+            'datasets/country_indicators.csv',
+
+            'https://github.com/plotly/datasets/raw/master/26k-consumer-complaints.csv':
+            'datasets/26k-consumer-complaints.csv'
+
         }
         for key in find_and_replace:
             if key in _example:
