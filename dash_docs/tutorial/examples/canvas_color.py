@@ -8,7 +8,7 @@ import dash_daq as daq
 from dash_docs import tools
 
 
-filename = tools.relpath('/assets/images/gallery/flower-outline-coloring-page.jpg')
+filename = tools.relpath('assets/images/gallery/flower-outline-coloring-page.jpg')
 canvas_width = 300
 
 app = dash.Dash(__name__)

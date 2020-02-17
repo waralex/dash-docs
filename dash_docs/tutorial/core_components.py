@@ -296,7 +296,7 @@ dcc.DatePickerRange(
         className="image-link",
         href="https://github.com/plotly/dash-table-experiments",
         children=html.Img(
-            src="assets/images/gallery/DataTable.gif",
+            src=tools.relpath("assets/images/gallery/DataTable.gif"),
             alt="Example of a Dash Interactive Table"
         )
     ),
@@ -319,7 +319,7 @@ dcc.DatePickerRange(
         className="image-link",
         href="https://github.com/plotly/dash-core-components/pull/73",
         children=html.Img(
-            src="https://user-images.githubusercontent.com/1280389/30351245-6b93ee62-97e8-11e7-8e85-0411e9d6c98c.gif",
+            src=tools.relpath('assets/images/gallery/dash-upload.gif'),
             alt="Dash Upload Component"
         )
     ),
