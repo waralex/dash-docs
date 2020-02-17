@@ -3,7 +3,7 @@ import dash_core_components as dcc
 import dash_html_components as html
 
 from dash_docs import styles
-from dash_docs.tools import load_example, read_file
+from dash_docs.tools import load_example, read_file, relpath
 from dash_docs import reusable_components
 
 examples = {
@@ -505,7 +505,15 @@ Starting with Dash 1.0.0, `serve_locally` defaults to `True`.
     reusable_components.Markdown('''
 
     If you inspect the source of your app, you should see the meta tags appear:
-    ![Dash App with Custom Meta Tags](https://user-images.githubusercontent.com/1280389/43233036-cd050eae-9028-11e8-910e-f0d140c37e4c.png)
+
+    '''),
+
+    html.Img(
+        alt='Dash App with Custom Meta Tags',
+        src=relpath('assets/images/gallery/external-resources-head.png')
+    ),
+
+    reusable_components.Markdown('''
 
     ***
 
