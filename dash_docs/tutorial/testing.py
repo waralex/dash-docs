@@ -330,7 +330,7 @@ layout = html.Div([
 
     html.Img(
         alt='Dev Tools',
-        src=tools.relpath('assets/images/gallery/dash-testing-1.gif')
+        src=tools.relpath('assets/images/gallery/dash-testing-dev-tools.png')
     ),
 
     reusable_components.Markdown("""
