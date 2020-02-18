@@ -2,6 +2,7 @@
 import dash_core_components as dcc
 import dash_html_components as html
 from dash_docs import styles
+from dash_docs import tools
 from dash_docs import reusable_components
 
 layout = [reusable_components.Markdown('''
@@ -71,7 +72,14 @@ layout = [reusable_components.Markdown('''
     Here is a GIF of what this example looks like. Note how clicking on the `Link`
     doesn't refresh the page even though it updates the URL!
 
-    ![Example of a multi-page Dash app using the Location and Link components](https://raw.githubusercontent.com/plotly/dash-docs/master/images/url-support.gif)
+    '''),
+
+    html.Img(
+        alt='Example of a multi-page Dash app using the Location and Link components',
+        src=tools.relpath('assets/images/gallery/url-support.gif')
+    ),
+
+    reusable_components.Markdown('''
 
     ***
 
@@ -167,8 +175,12 @@ layout = [reusable_components.Markdown('''
     ```
     ''', style=styles.code_container),
 
+    html.Img(
+        alt='Dash app with multiple pages',
+        src=tools.relpath('assets/images/gallery/url-support-pages.gif')
+    ),
+
     reusable_components.Markdown('''
-    ![Dash app with multiple pages](https://raw.githubusercontent.com/plotly/dash-docs/master/images/url-support-pages.gif)
 
     In this example, we're displaying different layouts through the `display_page`
     function. A few notes:

@@ -1,6 +1,7 @@
 import dash_html_components as html
 import dash_core_components as dcc
 from dash_docs import reusable_components
+from dash_docs import tools
 
 layout = html.Div([
     reusable_components.Markdown(u"""
@@ -22,7 +23,14 @@ layout = html.Div([
     the App server locally and using a Selenium WebDriver to simulate
     the interaction inside a web browser.
 
-    ![demo](https://user-images.githubusercontent.com/1394467/59383731-83c13480-8d2e-11e9-8866-4ffdcd3b1b45.gif)
+    """),
+
+    html.Img(
+        alt='demo',
+        src=tools.relpath('assets/images/gallery/dash-testing.gif')
+    ),
+
+    reusable_components.Markdown("""
 
     ## Install
 
@@ -318,7 +326,14 @@ layout = html.Div([
     [Chrome Dev Tools Console](https://developers.google.com/web/tools/chrome-devtools/console/utilities)
     is always your good friend and playground.
 
-    ![dev tools](https://user-images.githubusercontent.com/1394467/59371148-3505a180-8d12-11e9-9ad6-7dce223b6019.png)
+    """),
+
+    html.Img(
+        alt='Dev Tools',
+        src=tools.relpath('assets/images/gallery/dash-testing-dev-tools.png')
+    ),
+
+    reusable_components.Markdown("""
 
     #### Waits
 
@@ -467,7 +482,14 @@ layout = html.Div([
     *Note: you can also check the snapshot directly in CircleCI web page
     under `Artifacts` Tab*
 
-    ![CircleCI](https://user-images.githubusercontent.com/1394467/59371162-3f27a000-8d12-11e9-9060-7d8a8522c2c6.png)
+    """),
+
+    html.Img(
+        alt='CircleCI',
+        src=tools.relpath('assets/images/gallery/dash-testing-ci.png')
+    ),
+
+    reusable_components.Markdown("""
 
     ### Percy Snapshots
 
