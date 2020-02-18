@@ -10,5 +10,5 @@ setup(
     ],
     include_package_data=True,
     install_requires=[],
-    version='0.3.3'
+    version='0.3.4'
 )
