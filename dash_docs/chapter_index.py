@@ -245,21 +245,21 @@ URLS = [
                         'url': '/datatable/sizing',
                         'content': tutorial.table.sizing_chapter.layout,
                         'name': 'Sizing',
-                        'description': """
+                        'description': '''
                             All about sizing the DataTable. Examples include:
                             - Setting the width and the height of the table
                             - Responsive table design
                             - Setting the widths of individual columns
                             - Handling long text
                             - Fixing rows and columns
-                        """
+                        '''
                     },
 
                     {
                         'url': '/datatable/style',
                         'content': tutorial.table.styling_chapter.layout,
                         'name': 'Styling',
-                        'description': """
+                        'description': '''
                             The style of the DataTable is highly customizable. This chapter
                             includes examples for:
                             - Conditional formatting
@@ -271,7 +271,7 @@ URLS = [
                             The sizing API for the table has been particularly tricky for
                             us to nail down, so be sure to read this chapter to understand the nuances,
                             limitations, and the APIs that we're exploring.
-                        """
+                        '''
                     },
 
                     {
@@ -693,10 +693,10 @@ URLS = [
     {
         'name': 'Dash Enterprise',
         'description': (
-            """
+            '''
             Dash Enterprise is Plotly's commercial offering for managing
             and improving your Dash apps in your organization.
-            """
+            '''
         ),
         'chapters': [
             {
@@ -843,8 +843,8 @@ URLS = [
                         'url': '/dash-enterprise/logs',
                         'content': tutorial.dds_examples.Logs,
                         'name': 'App Logs',
-                        'description': """Check your Dash App's logs via the Dash
-                        Enterprise UI or via the command line."""
+                        'description': '''Check your Dash App's logs via the Dash
+                        Enterprise UI or via the command line.'''
                     },
                     {
                         'url': '/dash-enterprise/troubleshooting',
