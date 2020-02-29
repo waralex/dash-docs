@@ -338,7 +338,7 @@ def update_output_1(value):
 
     html.Div(
         children=html.Img(
-            src='https://user-images.githubusercontent.com/1280389/31468665-bf1b6026-aeac-11e7-9388-d9a5e71d964e.gif',
+            src=tools.relpath('assets/images/gallery/caching.gif'),
             alt='Example of a Dash App that uses Caching'
         ),
         className="gallery"
@@ -538,7 +538,7 @@ def update_output_1(value):
 
     html.Div(
         children=html.Img(
-            src='https://user-images.githubusercontent.com/1280389/37941518-8f47b71a-313c-11e8-8b00-80ffbb012c4a.gif',
+            src=tools.relpath('assets/images/gallery/user-session-caching.gif'),
             alt='Example of a Dash App that uses User Session Caching'
         )
     ),

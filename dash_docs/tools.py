@@ -8,12 +8,13 @@ else:
 
 
 def relpath(path):
-    if path.startswith('/') and 'DASH_DOCS_URL_PREFIX' in os.environ:
+    if path.startswith('/') and 'DASH_DOCS_URL_PREFIX' in os.environ and not path.startswith('/{}'.format(os.environ['DASH_DOCS_URL_PREFIX'].strip('/'))):
         # In enterprise docs, all assets are under `/Docs`
         return '{}{}'.format(
             os.environ['DASH_DOCS_URL_PREFIX'].rstrip('/'),
             path
         )
+
     return path
 
 
@@ -126,7 +127,11 @@ def load_example(path):
             'datasets/gdp-life-exp-2007.csv',
 
             'https://plotly.github.io/datasets/country_indicators.csv':
-            'datasets/country_indicators.csv'
+            'datasets/country_indicators.csv',
+
+            'https://github.com/plotly/datasets/raw/master/26k-consumer-complaints.csv':
+            'datasets/26k-consumer-complaints.csv'
+
         }
         for key in find_and_replace:
             if key in _example:
