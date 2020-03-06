@@ -47,6 +47,7 @@ h6 { font-size: 20px; line-height: 1.6;  letter-spacing: 0; margin-bottom: 0.75r
     order: 0;
     flex: 1 0 0;
     padding-left: 5px;
+    padding-right: 5px;
 }
 
 .rhs-content {
