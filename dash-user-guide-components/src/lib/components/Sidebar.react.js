@@ -63,7 +63,7 @@ function searchChapter(chapter, searchWord) {
             'url', 'meta_keywords'
         ];
         for(let i=0; i<terms.length; i++) {
-            if(contains(searchWord, propOr('', terms[i], chapter).toLowerCase())) {
+            if(contains(searchWord.toLowerCase(), propOr('', terms[i], chapter).toLowerCase())) {
                 return true;
             }
         }

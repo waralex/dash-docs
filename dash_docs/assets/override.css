@@ -56,6 +56,11 @@ h6 { font-size: 20px; line-height: 1.6;  letter-spacing: 0; margin-bottom: 0.75r
     padding-left: 10px;
 }
 
+.content {
+    margin-left: 25px;
+    max-width: 800px;
+}
+
 /* Sidebar */
 .sidebar {
     background-color: #e4f5f2;
@@ -129,7 +134,7 @@ summary:hover {
 .sidebar a.active {
     background-color: white;
     border-right: solid #20293d 4px;
-    margin-right: -1px;
+    margin-right: -6px; /* -5 for the parent padding, -1 for the border */
 }
 
 /* Header */
