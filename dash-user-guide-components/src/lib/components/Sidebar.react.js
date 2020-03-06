@@ -72,7 +72,6 @@ function searchChapter(chapter, searchWord) {
 }
 
 function filterUrls (urls, search) {
-    console.warn('filterUrls: ', urls, search);
     const matches = [];
     traverse({'chapters': urls}, [], function(o, pathArray) {
         let matched = true;
@@ -83,7 +82,6 @@ function filterUrls (urls, search) {
         }
 
     })
-    console.warn('MATCHES: ', matches);
     window.matches = matches;
 
     if(matches.length > 0) {
@@ -105,8 +103,6 @@ function filterUrls (urls, search) {
             newObj = assocPath(matchPath, path(matchPath, {'chapters': urls}), newObj)
             searchResults.push(searchResult);
         });
-        console.warn('NEWOBJ: ', newObj);
-        console.warn('SEARCHRESULTS: ', searchResults);
         return {
             chapters: newObj.chapters,
             searchResults
@@ -145,7 +141,6 @@ export default class Sidebar extends Component {
 
         function handleKeyUp(event) {
             if (event.keyCode === 13) {
-                console.warn('preseed enter');
                 handleLocationChange();
             }
         }
@@ -235,22 +230,28 @@ class TreeSidebar extends Component {
 
                 // Assume that a chapter's path matches that of its parent
                 // TODO - find the first relative link
-                open = Boolean(find(
+                console.warn('CHECKING OPEN');
+                open = (
+                    (
+                        has('urls', chapter)
+                        &&
+                        Boolean(find(url =>
+                             url.startsWith(window.location.pathname)
+                        ), chapter.urls)
+                    )
+                    ||
+                    Boolean(find(
 
-                    subchapter => {
-                        return (
-                            propOr('', 'url', subchapter)
-                            .startsWith(window.location.pathname)
-                            ||
-                            (has('urls', subchapter) &&
-                             Boolean(find((url =>
-                                 url.startsWith(window.location.pathname)
-                            ), subchapter.urls)))
-                        );
-                    },
+                        subchapter => {
+                            return (
+                                propOr('', 'url', subchapter)
+                                .startsWith(window.location.pathname)
+                            );
+                        },
 
-                    chapter.chapters
-                ));
+                        chapter.chapters
+                    ))
+                );
                 chapter_elements.push(
                     <details open={open}>
                         <summary>{chapter.name}</summary>

@@ -98,8 +98,8 @@ h6 { font-size: 20px; line-height: 1.6;  letter-spacing: 0; margin-bottom: 0.75r
 .sidebar--0 summary {
     font-size: 15px;
 }
-.sidebar:not(.sidebar--0) summary {
-
+.sidebar--1 details {
+    padding-left: 10px;
 }
 .sidebar summary {
     font-family: "jubilat", sans-serif;
@@ -120,14 +120,15 @@ summary:hover {
 
 .sidebar a {
     display: block;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    padding: 5px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding: 3px 0px 3px 5px;
 }
 
 .sidebar a.active {
     background-color: white;
-    border-right: solid white 1px;
+    border-right: solid #20293d 4px;
+    margin-right: -1px;
 }
 
 /* Header */

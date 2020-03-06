@@ -412,474 +412,474 @@ URLS = [
     #                 'dash_bio'
     #             )
     #         },
-    #
-    #         {
-    #             'name': 'Dash DAQ',
-    #             'chapters': [
-    #                 {
-    #                     'url': '/dash-daq',
-    #                     'name': 'Overview',
-    #                     'content': tutorial.daq.layout,
-    #                     'description': (
-    #                         '''
-    #                         Beautifully styled technical components for
-    #                         data acquisition, monitoring, and engineering
-    #                         applications.
-    #                         '''
-    #                     )
-    #                 }
-    #             ] + component_list(
-    #                 dash_daq,
-    #                 tutorial.daq_examples,
-    #                 'dash-daq',
-    #                 'dash_daq'
-    #             )
-    #         },
-    #
-    #         {
-    #             'name': 'Dash Canvas',
-    #             'chapters': [
-    #                 {
-    #                     'url': '/canvas',
-    #                     'name': 'Overview & Reference',
-    #                     'content': tutorial.canvas.layout,
-    #                     'description': (
-    #                         'Image rendering, drawing, annotations '
-    #                         'for image processing applications.'
-    #                     )
-    #                 }
-    #             ]
-    #         },
-    #
-    #         {
-    #             'name': 'Dash Cytoscape',
-    #             'chapters': [
-    #                 {
-    #                     'url': '/cytoscape',
-    #                     'name': 'Overview',
-    #                     'description': (
-    #                         '''
-    #                         Dash Cytoscape is our new network visualization
-    #                         component. It offers a declarative and pythonic
-    #                         interface to create beautiful, customizable,
-    #                         interactive and reactive graphs.
-    #                         '''
-    #                     ),
-    #                     'autogenerate_index': True,
-    #                     'preamble': tutorial.dash_cytoscape_index.preamble
-    #                 },
-    #
-    #                 {
-    #                     'url': '/cytoscape/elements',
-    #                     'content': tutorial.cytoscape.elements_chapter.layout,
-    #                     'name': 'Basic Usage & Elements',
-    #                     'description': '''
-    #                     Overview of element declaration and manipulation.
-    #                     '''
-    #                 },
-    #
-    #                 {
-    #                     'url': '/cytoscape/layout',
-    #                     'content': tutorial.cytoscape.layout_chapter.layout,
-    #                     'name': 'Layouts',
-    #                     'description': '''
-    #                     Description of built-in layouts, and how to modify their properties.
-    #                     '''
-    #                 },
-    #
-    #                 {
-    #                     'url': '/cytoscape/styling',
-    #                     'content': tutorial.cytoscape.styling_chapter.layout,
-    #                     'name': 'Styling',
-    #                     'description': '''
-    #                     Methods to style elements with a CSS-like syntax.
-    #                     '''
-    #                 },
-    #
-    #                 {
-    #                     'url': '/cytoscape/callbacks',
-    #                     'content': tutorial.cytoscape.callbacks_chapter.layout,
-    #                     'name': 'Callbacks',
-    #                     'description': '''
-    #                     Methods to combine Dash callbacks to update your Cytoscape object.
-    #                     '''
-    #                 },
-    #
-    #                 {
-    #                     'url': '/cytoscape/events',
-    #                     'content': tutorial.cytoscape.events_chapter.layout,
-    #                     'name': 'User Interactions',
-    #                     'description': '''
-    #                     Overview of user-interaction events that trigger callbacks in Dash,
-    #                     and how to use them to update the Cytoscape component.
-    #                     '''
-    #                 },
-    #
-    #                 {
-    #                     'url': '/cytoscape/biopython',
-    #                     'content': tutorial.cytoscape.applications_chapter.layout,
-    #                     'name': 'Biopython Examples',
-    #                     'description': '''
-    #                     Examples of applications in bioinformatics using Biopython.
-    #                     '''
-    #                 },
-    #
-    #                 {
-    #                     'url': '/cytoscape/reference',
-    #                     'content': tutorial.cytoscape.reference_chapter.layout,
-    #                     'name': 'Reference',
-    #                     'description': '''
-    #                     Comprehensive list of all of the Cytoscape properties.
-    #                     '''
-    #                 },
-    #
-    #             ]
-    #         },
-    #
-    #     ]
-    # },
-    #
-    # {
-    #     'name': 'Creating Your Own Components',
-    #     'chapters': [
-    #         {
-    #             'name': 'React for Python Developers',
-    #             'description': (
-    #                 '''
-    #                 A tutorial on how to program in React and JavaScript
-    #                 for Python developers.
-    #                 '''
-    #             ),
-    #             'url': '/react-for-python-developers',
-    #             'content': tutorial.react_for_python_developers.layout,
-    #         },
-    #
-    #         {
-    #             'name': 'Build Your Own Components',
-    #             'description': 'Dash components are built with ' \
-    #                            '[React.js](https://reactjs.org/). Dash provides ' \
-    #                            'a React &rarr; Dash toolchain that generates a Dash-' \
-    #                            'compatible interface to these components in Python.',
-    #             'url': '/plugins',
-    #             'content': tutorial.plugins.layout,
-    #         },
-    #         {
-    #             'name': 'Integrating D3.js into Dash Components',
-    #             'description': (
-    #                 '''
-    #                 Tutorials and resources on encapsulating D3.js graphs in
-    #                 Dash-friendly React components.
-    #                 Includes two sample components: a D3.js network graph
-    #                 and a D3.js sunburst chart.
-    #                 '''
-    #             ),
-    #             'url': '/d3-react-components',
-    #             'content': tutorial.d3.layout,
-    #         }
-    #     ]
-    # },
-    #
-    # {
-    #     'name': 'Beyond the Basics',
-    #     'chapters': [
-    #         {
-    #             'url': '/performance',
-    #             'content': tutorial.performance.layout,
-    #             'name': 'Performance',
-    #             'description': 'There are two main ways to speed up dash apps: '\
-    #                            'caching and using WebGL chart types.'
-    #         },
-    #
-    #         {
-    #             'url': '/live-updates',
-    #             'content': tutorial.live_updates.layout,
-    #             'name': 'Live Updates',
-    #             'description': '''
-    #                 Update your apps on page load or
-    #                 on a predefined interval (e.g. every 5 seconds)
-    #             '''
-    #         },
-    #
-    #         {
-    #             'url': '/external-resources',
-    #             'content': tutorial.external_css_and_js.layout,
-    #             'name': 'Adding CSS & JS and Overriding the Page-Load Template',
-    #             'description': '''
-    #                 New in dash v0.22.0! Learn how to add custom CSS and JS to your
-    #                 application with the `assets` directory. Also, learn how to
-    #                 customize the HTML template that Dash serves on page load in order
-    #                 to add custom meta tags, customize the page's title, and more.
-    #             '''
-    #         },
-    #
-    #         {
-    #             'url': '/urls',
-    #             'content': tutorial.urls.layout,
-    #             'name': 'URL Routing and Multiple Apps',
-    #             'description': 'Dash provides two components (`dcc.Link` and ' \
-    #                            '`dcc.Location`) that allow you to easily make ' \
-    #                            'fast multipage apps using its own "Single Page ' \
-    #                            'App (SPA)" design pattern.'
-    #         },
-    #
-    #         {
-    #             'url': '/persistence',
-    #             'content': tutorial.persistence.layout,
-    #             'name': 'Persisting User Preferences & Control Values',
-    #             'description': '''
-    #                 (Released September 2019 with Dash 1.3) Save user choices
-    #                 across page reloads, or just when removing and re-adding a
-    #                 component. Learn how to use persistence, and how to enable it
-    #                 in components you write yourself.
-    #             '''
-    #         },
-    #
-    #         {
-    #             'url': '/devtools',
-    #             'content': tutorial.devtools.layout,
-    #             'name': 'Dev tools',
-    #             'description': 'Dash dev tools reference'
-    #         },
-    #
-    #         {
-    #             'url': '/loading-states',
-    #             'content': tutorial.loading_states.layout,
-    #             'name': 'Loading States',
-    #             'description': 'Getting the loading state of a component and adding a loading component'
-    #         },
-    #
-    #         {
-    #             'url': '/testing',
-    #             'content': tutorial.testing.layout,
-    #             'name': 'Dash Testing',
-    #             'description': 'An introduction to testing your dash app with selenium'
-    #         }
-    #     ],
-    # },
-    #
-    # {
-    #     'name': 'Production',
-    #     'chapters': [
-    #         {
-    #             'url': '/authentication',
-    #             'content': tutorial.auth.layout,
-    #             'name': 'Authentication',
-    #             'description': ''
-    #         },
-    #
-    #         {
-    #             'url': '/deployment',
-    #             'content': tutorial.deployment.layout,
-    #             'name': 'Deployment',
-    #             'description': 'To share a Dash app, you need to "deploy" your Dash ' \
-    #                            'app to a server'
-    #         },
-    #
-    #         {
-    #             'url': '/integrating-dash',
-    #             'content': tutorial.integrating_dash.layout,
-    #             'name': 'Integrating Dash with Existing Web Apps',
-    #             'description': 'Strategies for integrating Dash apps with existing web ' \
-    #                            'apps.'
-    #         }
-    #     ]
-    # },
-    #
-    # {
-    #     'name': 'Getting Help',
-    #     'chapters': [
-    #         {
-    #             'url': 'https://community.plot.ly/c/dash',
-    #             'description': '',
-    #             'name': 'The Dash Community Forum'
-    #         },
-    #         {
-    #             'url': '/support',
-    #             'name': 'Support and Contact',
-    #             'description': '',
-    #             'content': tutorial.support.layout,
-    #         }
-    #     ]
-    # },
-    #
-    # {
-    #     'name': 'Dash Enterprise',
-    #     'description': (
-    #         '''
-    #         Dash Enterprise is Plotly's commercial offering for managing
-    #         and improving your Dash apps in your organization.
-    #         '''
-    #     ),
-    #     'chapters': [
-    #         {
-    #             'name': 'About Dash Enterprise',
-    #             'url': 'https://plot.ly/dash/'
-    #         },
-    #         {
-    #             'name': 'Dash Enterprise Documentation',
-    #             'chapters': [
-    #                 {
-    #                     'name': 'Overview',
-    #                     'url': '/dash-enterprise',
-    #                     'content': tutorial.dash_deployment_server.layout
-    #                 },
-    #                 {
-    #                     'url': '/dash-enterprise/initialize',
-    #                     'content': tutorial.dds_examples.Initialize,
-    #                     'name': 'Part 1. Initialize Dash Apps on Dash Enterprise',
-    #                     'description': 'Initialize Dash Apps on Plotly Enterprise'
-    #                 },
-    #                 {
-    #                     'url': '/dash-enterprise/deployment',
-    #                     'content': tutorial.dds_examples.Deploy,
-    #                     'name': 'Part 2. Deploy Dash Apps on Dash Enterprise',
-    #                     'description': 'Deploy Dash Apps on Dash Enterprise'
-    #                 },
-    #                 {
-    #                     'url': '/dash-enterprise/application-structure',
-    #                     'content': tutorial.dds_examples.Requirements,
-    #                     'name': 'Application Structure',
-    #                     'description': 'Ensure that your app meets all the requirements for deployment.'
-    #                 },
-    #                 {
-    #                     'url': '/dash-enterprise/static-assets',
-    #                     'content': tutorial.dds_examples.staticAssets,
-    #                     'name': 'Adding Static Assets',
-    #                     'description': 'Learn how to include custom CSS, JS, and images with the `assets` directory.'
-    #                 },
-    #                 {
-    #                     'url': '/dash-enterprise/configure-system-dependencies',
-    #                     'content': tutorial.dds_examples.ConfigSys,
-    #                     'name': 'Configuring System Dependencie',
-    #                     'description': 'Install and configure system dependencies such '
-    #                     'as database drivers or the Java JRE environment.'
-    #                 },
-    #                 {
-    #                     'url': '/dash-enterprise/portal',
-    #                     'content': tutorial.dds_examples.Portal,
-    #                     'name': 'Dash App Portal',
-    #                     'description': 'Learn about the Dash App Portal '
-    #                 },
-    #                 {
-    #                     'url': '/dash-enterprise/admin-panel',
-    #                     'content': tutorial.dds_examples.AdminPanel,
-    #                     'name': 'Admin Panel',
-    #                     'description': 'Manage users in the Admin Panel '
-    #                 },
-    #                 {
-    #                     'url': '/dash-enterprise/privacy',
-    #                     'content': tutorial.dds_examples.AppPrivacy,
-    #                     'name': 'Dash App Privacy',
-    #                     'description': 'Dash App Privacy and Managing Collaborators'
-    #                 },
-    #                 {
-    #                     'url': '/dash-enterprise/redis-database',
-    #                     'content': tutorial.dds_examples.Redis,
-    #                     'name': 'Linking a Redis Database',
-    #                     'description': 'Create and link an in-memory database to your Dash Apps.'
-    #                 },
-    #                 {
-    #                     'url': '/dash-enterprise/environment-variables',
-    #                     'content': tutorial.dds_examples.EnvVars,
-    #                     'name': 'Setting Enviornment Variables',
-    #                     'description': 'Environment variables are commonly used to store '
-    #                     'secret variables like database passwords.'
-    #                 },
-    #                 {
-    #                     'url': '/dash-enterprise/map-local-directories',
-    #                     'content': tutorial.dds_examples.LocalDir,
-    #                     'name': 'Mapping Local Directories',
-    #                     'description': 'Directory mappings allow you to make directories '
-    #                     'on the Dash Enterprise available to your app.'
-    #                 },
-    #                 {
-    #                     'url': '/dash-enterprise/ssh',
-    #                     'content': tutorial.dds_examples.Ssh,
-    #                     'name': 'Authenticating to Dash Enterprise with SSH',
-    #                     'description': "There are two methods to deploy Dash Apps: HTTPS and SSH "
-    #                     "and we recommend getting started with the HTTPS method."
-    #                 },
-    #                 {
-    #                     'url': '/dash-enterprise/cli',
-    #                     'content': tutorial.dds_examples.Cli,
-    #                     'name': 'Managing Dash Apps via the Command Line',
-    #                     'description': "A list of commands to manage Dash apps available  "
-    #                     "to app owners from the command line via ssh."
-    #                 },
-    #                 {
-    #                     'url': '/dash-enterprise/app-authentication',
-    #                     'content': tutorial.dds_examples.Authentication,
-    #                     'name': 'Dash Enterprise Auth Features',
-    #                     'description': 'Accessing User Authentication Data in your Dash App'
-    #                 },
-    #                 {
-    #                     'url': '/dash-enterprise/checks',
-    #                     'content': tutorial.dds_examples.Checks,
-    #                     'name': 'Dash Enterprise App Health Checks',
-    #                     'description': 'Create custom checks to ensure that a newly deployed app can serve traffic.'
-    #                 },
-    #                 {
-    #                     'url': '/dash-enterprise/private-packages',
-    #                     'content': tutorial.dds_examples.PrivatePackages,
-    #                     'name': 'Adding Private Python Packages',
-    #                     'description': 'Intsall private python packages in your Dash Apps.'
-    #                 },
-    #                 {
-    #                     'url': '/dash-enterprise/celery-process',
-    #                     'content': tutorial.dds_examples.Celery,
-    #                     'name': 'Linking a Celery Process',
-    #                     'description': 'Add a task queue to your Dash Apps.'
-    #                 },
-    #                 {
-    #                     'url': '/dash-enterprise/staging-app',
-    #                     'content': tutorial.dds_examples.StagingApp,
-    #                     'name': 'Create a Staging Dash App ',
-    #                     'description': 'Use a staged Dash App to test changes before updating '
-    #                     'your prodcution Dash App.'
-    #                 },
-    #                 {
-    #                     'url': '/dash-enterprise/pdf-service',
-    #                     'content': tutorial.dds_examples.pdfService,
-    #                     'name': 'Dash Enterprise PDF Service',
-    #                     'description': 'Utilize the Dash Enterprise API endpoint for '
-    #                     'creating PDF exports of your Dash applications'
-    #                 },
-    #                 {
-    #                     'url': '/dash-enterprise/analytics',
-    #                     'content': tutorial.dds_examples.Analytics,
-    #                     'name': 'App Analytics',
-    #                     'description': 'View app analytics such as last updated, '
-    #                     'CPU usage, Memory Usage, and more.'
-    #                 },
-    #                 {
-    #                     'url': '/dash-enterprise/logs',
-    #                     'content': tutorial.dds_examples.Logs,
-    #                     'name': 'App Logs',
-    #                     'description': '''Check your Dash App's logs via the Dash
-    #                     Enterprise UI or via the command line.'''
-    #                 },
-    #                 {
-    #                     'url': '/dash-enterprise/troubleshooting',
-    #                     'content': tutorial.dds_examples.Troubleshooting,
-    #                     'name': 'Common Errors',
-    #                     'description': 'Common errors when deploying Dash Apps.'
-    #                 },
-    #                 {
-    #                     'url': '/dash-enterprise/support',
-    #                     'content': tutorial.dds_examples.Support,
-    #                     'name': 'Support',
-    #                     'description': 'Having trouble deploying your app? Our dedicated '
-    #                     'support team is available to help you out.'
-    #                 },
-    #                 {
-    #                     'url': '/dash-enterprise/git',
-    #                     'content': tutorial.dds_examples.Git,
-    #                     'name': 'Advanced Git',
-    #                     'description': 'A reference for git commands and how they are used '
-    #                     'with Dash Enterprise.'
-    #                 },
-    #             ]
-    #         }
+
+            {
+                'name': 'Dash DAQ',
+                'chapters': [
+                    {
+                        'url': '/dash-daq',
+                        'name': 'Overview',
+                        'content': tutorial.daq.layout,
+                        'description': (
+                            '''
+                            Beautifully styled technical components for
+                            data acquisition, monitoring, and engineering
+                            applications.
+                            '''
+                        )
+                    }
+                ] + component_list(
+                    dash_daq,
+                    tutorial.daq_examples,
+                    'dash-daq',
+                    'dash_daq'
+                )
+            },
+
+            {
+                'name': 'Dash Canvas',
+                'chapters': [
+                    {
+                        'url': '/canvas',
+                        'name': 'Overview & Reference',
+                        'content': tutorial.canvas.layout,
+                        'description': (
+                            'Image rendering, drawing, annotations '
+                            'for image processing applications.'
+                        )
+                    }
+                ]
+            },
+
+            {
+                'name': 'Dash Cytoscape',
+                'chapters': [
+                    {
+                        'url': '/cytoscape',
+                        'name': 'Overview',
+                        'description': (
+                            '''
+                            Dash Cytoscape is our new network visualization
+                            component. It offers a declarative and pythonic
+                            interface to create beautiful, customizable,
+                            interactive and reactive graphs.
+                            '''
+                        ),
+                        'autogenerate_index': True,
+                        'preamble': tutorial.dash_cytoscape_index.preamble
+                    },
+
+                    {
+                        'url': '/cytoscape/elements',
+                        'content': tutorial.cytoscape.elements_chapter.layout,
+                        'name': 'Basic Usage & Elements',
+                        'description': '''
+                        Overview of element declaration and manipulation.
+                        '''
+                    },
+
+                    {
+                        'url': '/cytoscape/layout',
+                        'content': tutorial.cytoscape.layout_chapter.layout,
+                        'name': 'Layouts',
+                        'description': '''
+                        Description of built-in layouts, and how to modify their properties.
+                        '''
+                    },
+
+                    {
+                        'url': '/cytoscape/styling',
+                        'content': tutorial.cytoscape.styling_chapter.layout,
+                        'name': 'Styling',
+                        'description': '''
+                        Methods to style elements with a CSS-like syntax.
+                        '''
+                    },
+
+                    {
+                        'url': '/cytoscape/callbacks',
+                        'content': tutorial.cytoscape.callbacks_chapter.layout,
+                        'name': 'Callbacks',
+                        'description': '''
+                        Methods to combine Dash callbacks to update your Cytoscape object.
+                        '''
+                    },
+
+                    {
+                        'url': '/cytoscape/events',
+                        'content': tutorial.cytoscape.events_chapter.layout,
+                        'name': 'User Interactions',
+                        'description': '''
+                        Overview of user-interaction events that trigger callbacks in Dash,
+                        and how to use them to update the Cytoscape component.
+                        '''
+                    },
+
+                    {
+                        'url': '/cytoscape/biopython',
+                        'content': tutorial.cytoscape.applications_chapter.layout,
+                        'name': 'Biopython Examples',
+                        'description': '''
+                        Examples of applications in bioinformatics using Biopython.
+                        '''
+                    },
+
+                    {
+                        'url': '/cytoscape/reference',
+                        'content': tutorial.cytoscape.reference_chapter.layout,
+                        'name': 'Reference',
+                        'description': '''
+                        Comprehensive list of all of the Cytoscape properties.
+                        '''
+                    },
+
+                ]
+            },
+
+        ]
+    },
+
+    {
+        'name': 'Creating Your Own Components',
+        'chapters': [
+            {
+                'name': 'React for Python Developers',
+                'description': (
+                    '''
+                    A tutorial on how to program in React and JavaScript
+                    for Python developers.
+                    '''
+                ),
+                'url': '/react-for-python-developers',
+                'content': tutorial.react_for_python_developers.layout,
+            },
+
+            {
+                'name': 'Build Your Own Components',
+                'description': 'Dash components are built with ' \
+                               '[React.js](https://reactjs.org/). Dash provides ' \
+                               'a React &rarr; Dash toolchain that generates a Dash-' \
+                               'compatible interface to these components in Python.',
+                'url': '/plugins',
+                'content': tutorial.plugins.layout,
+            },
+            {
+                'name': 'Integrating D3.js into Dash Components',
+                'description': (
+                    '''
+                    Tutorials and resources on encapsulating D3.js graphs in
+                    Dash-friendly React components.
+                    Includes two sample components: a D3.js network graph
+                    and a D3.js sunburst chart.
+                    '''
+                ),
+                'url': '/d3-react-components',
+                'content': tutorial.d3.layout,
+            }
+        ]
+    },
+
+    {
+        'name': 'Beyond the Basics',
+        'chapters': [
+            {
+                'url': '/performance',
+                'content': tutorial.performance.layout,
+                'name': 'Performance',
+                'description': 'There are two main ways to speed up dash apps: '\
+                               'caching and using WebGL chart types.'
+            },
+
+            {
+                'url': '/live-updates',
+                'content': tutorial.live_updates.layout,
+                'name': 'Live Updates',
+                'description': '''
+                    Update your apps on page load or
+                    on a predefined interval (e.g. every 5 seconds)
+                '''
+            },
+
+            {
+                'url': '/external-resources',
+                'content': tutorial.external_css_and_js.layout,
+                'name': 'Adding CSS & JS and Overriding the Page-Load Template',
+                'description': '''
+                    New in dash v0.22.0! Learn how to add custom CSS and JS to your
+                    application with the `assets` directory. Also, learn how to
+                    customize the HTML template that Dash serves on page load in order
+                    to add custom meta tags, customize the page's title, and more.
+                '''
+            },
+
+            {
+                'url': '/urls',
+                'content': tutorial.urls.layout,
+                'name': 'URL Routing and Multiple Apps',
+                'description': 'Dash provides two components (`dcc.Link` and ' \
+                               '`dcc.Location`) that allow you to easily make ' \
+                               'fast multipage apps using its own "Single Page ' \
+                               'App (SPA)" design pattern.'
+            },
+
+            {
+                'url': '/persistence',
+                'content': tutorial.persistence.layout,
+                'name': 'Persisting User Preferences & Control Values',
+                'description': '''
+                    (Released September 2019 with Dash 1.3) Save user choices
+                    across page reloads, or just when removing and re-adding a
+                    component. Learn how to use persistence, and how to enable it
+                    in components you write yourself.
+                '''
+            },
+
+            {
+                'url': '/devtools',
+                'content': tutorial.devtools.layout,
+                'name': 'Dev tools',
+                'description': 'Dash dev tools reference'
+            },
+
+            {
+                'url': '/loading-states',
+                'content': tutorial.loading_states.layout,
+                'name': 'Loading States',
+                'description': 'Getting the loading state of a component and adding a loading component'
+            },
+
+            {
+                'url': '/testing',
+                'content': tutorial.testing.layout,
+                'name': 'Dash Testing',
+                'description': 'An introduction to testing your dash app with selenium'
+            }
+        ],
+    },
+
+    {
+        'name': 'Production',
+        'chapters': [
+            {
+                'url': '/authentication',
+                'content': tutorial.auth.layout,
+                'name': 'Authentication',
+                'description': ''
+            },
+
+            {
+                'url': '/deployment',
+                'content': tutorial.deployment.layout,
+                'name': 'Deployment',
+                'description': 'To share a Dash app, you need to "deploy" your Dash ' \
+                               'app to a server'
+            },
+
+            {
+                'url': '/integrating-dash',
+                'content': tutorial.integrating_dash.layout,
+                'name': 'Integrating Dash with Existing Web Apps',
+                'description': 'Strategies for integrating Dash apps with existing web ' \
+                               'apps.'
+            }
+        ]
+    },
+
+    {
+        'name': 'Getting Help',
+        'chapters': [
+            {
+                'url': 'https://community.plot.ly/c/dash',
+                'description': '',
+                'name': 'The Dash Community Forum'
+            },
+            {
+                'url': '/support',
+                'name': 'Support and Contact',
+                'description': '',
+                'content': tutorial.support.layout,
+            }
+        ]
+    },
+
+    {
+        'name': 'Dash Enterprise',
+        'description': (
+            '''
+            Dash Enterprise is Plotly's commercial offering for managing
+            and improving your Dash apps in your organization.
+            '''
+        ),
+        'chapters': [
+            {
+                'name': 'About Dash Enterprise',
+                'url': 'https://plot.ly/dash/'
+            },
+            {
+                'name': 'Dash Enterprise Documentation',
+                'chapters': [
+                    {
+                        'name': 'Overview',
+                        'url': '/dash-enterprise',
+                        'content': tutorial.dash_deployment_server.layout
+                    },
+                    {
+                        'url': '/dash-enterprise/initialize',
+                        'content': tutorial.dds_examples.Initialize,
+                        'name': 'Part 1. Initialize Dash Apps on Dash Enterprise',
+                        'description': 'Initialize Dash Apps on Plotly Enterprise'
+                    },
+                    {
+                        'url': '/dash-enterprise/deployment',
+                        'content': tutorial.dds_examples.Deploy,
+                        'name': 'Part 2. Deploy Dash Apps on Dash Enterprise',
+                        'description': 'Deploy Dash Apps on Dash Enterprise'
+                    },
+                    {
+                        'url': '/dash-enterprise/application-structure',
+                        'content': tutorial.dds_examples.Requirements,
+                        'name': 'Application Structure',
+                        'description': 'Ensure that your app meets all the requirements for deployment.'
+                    },
+                    {
+                        'url': '/dash-enterprise/static-assets',
+                        'content': tutorial.dds_examples.staticAssets,
+                        'name': 'Adding Static Assets',
+                        'description': 'Learn how to include custom CSS, JS, and images with the `assets` directory.'
+                    },
+                    {
+                        'url': '/dash-enterprise/configure-system-dependencies',
+                        'content': tutorial.dds_examples.ConfigSys,
+                        'name': 'Configuring System Dependencie',
+                        'description': 'Install and configure system dependencies such '
+                        'as database drivers or the Java JRE environment.'
+                    },
+                    {
+                        'url': '/dash-enterprise/portal',
+                        'content': tutorial.dds_examples.Portal,
+                        'name': 'Dash App Portal',
+                        'description': 'Learn about the Dash App Portal '
+                    },
+                    {
+                        'url': '/dash-enterprise/admin-panel',
+                        'content': tutorial.dds_examples.AdminPanel,
+                        'name': 'Admin Panel',
+                        'description': 'Manage users in the Admin Panel '
+                    },
+                    {
+                        'url': '/dash-enterprise/privacy',
+                        'content': tutorial.dds_examples.AppPrivacy,
+                        'name': 'Dash App Privacy',
+                        'description': 'Dash App Privacy and Managing Collaborators'
+                    },
+                    {
+                        'url': '/dash-enterprise/redis-database',
+                        'content': tutorial.dds_examples.Redis,
+                        'name': 'Linking a Redis Database',
+                        'description': 'Create and link an in-memory database to your Dash Apps.'
+                    },
+                    {
+                        'url': '/dash-enterprise/environment-variables',
+                        'content': tutorial.dds_examples.EnvVars,
+                        'name': 'Setting Enviornment Variables',
+                        'description': 'Environment variables are commonly used to store '
+                        'secret variables like database passwords.'
+                    },
+                    {
+                        'url': '/dash-enterprise/map-local-directories',
+                        'content': tutorial.dds_examples.LocalDir,
+                        'name': 'Mapping Local Directories',
+                        'description': 'Directory mappings allow you to make directories '
+                        'on the Dash Enterprise available to your app.'
+                    },
+                    {
+                        'url': '/dash-enterprise/ssh',
+                        'content': tutorial.dds_examples.Ssh,
+                        'name': 'Authenticating to Dash Enterprise with SSH',
+                        'description': "There are two methods to deploy Dash Apps: HTTPS and SSH "
+                        "and we recommend getting started with the HTTPS method."
+                    },
+                    {
+                        'url': '/dash-enterprise/cli',
+                        'content': tutorial.dds_examples.Cli,
+                        'name': 'Managing Dash Apps via the Command Line',
+                        'description': "A list of commands to manage Dash apps available  "
+                        "to app owners from the command line via ssh."
+                    },
+                    {
+                        'url': '/dash-enterprise/app-authentication',
+                        'content': tutorial.dds_examples.Authentication,
+                        'name': 'Dash Enterprise Auth Features',
+                        'description': 'Accessing User Authentication Data in your Dash App'
+                    },
+                    {
+                        'url': '/dash-enterprise/checks',
+                        'content': tutorial.dds_examples.Checks,
+                        'name': 'Dash Enterprise App Health Checks',
+                        'description': 'Create custom checks to ensure that a newly deployed app can serve traffic.'
+                    },
+                    {
+                        'url': '/dash-enterprise/private-packages',
+                        'content': tutorial.dds_examples.PrivatePackages,
+                        'name': 'Adding Private Python Packages',
+                        'description': 'Intsall private python packages in your Dash Apps.'
+                    },
+                    {
+                        'url': '/dash-enterprise/celery-process',
+                        'content': tutorial.dds_examples.Celery,
+                        'name': 'Linking a Celery Process',
+                        'description': 'Add a task queue to your Dash Apps.'
+                    },
+                    {
+                        'url': '/dash-enterprise/staging-app',
+                        'content': tutorial.dds_examples.StagingApp,
+                        'name': 'Create a Staging Dash App ',
+                        'description': 'Use a staged Dash App to test changes before updating '
+                        'your prodcution Dash App.'
+                    },
+                    {
+                        'url': '/dash-enterprise/pdf-service',
+                        'content': tutorial.dds_examples.pdfService,
+                        'name': 'Dash Enterprise PDF Service',
+                        'description': 'Utilize the Dash Enterprise API endpoint for '
+                        'creating PDF exports of your Dash applications'
+                    },
+                    {
+                        'url': '/dash-enterprise/analytics',
+                        'content': tutorial.dds_examples.Analytics,
+                        'name': 'App Analytics',
+                        'description': 'View app analytics such as last updated, '
+                        'CPU usage, Memory Usage, and more.'
+                    },
+                    {
+                        'url': '/dash-enterprise/logs',
+                        'content': tutorial.dds_examples.Logs,
+                        'name': 'App Logs',
+                        'description': '''Check your Dash App's logs via the Dash
+                        Enterprise UI or via the command line.'''
+                    },
+                    {
+                        'url': '/dash-enterprise/troubleshooting',
+                        'content': tutorial.dds_examples.Troubleshooting,
+                        'name': 'Common Errors',
+                        'description': 'Common errors when deploying Dash Apps.'
+                    },
+                    {
+                        'url': '/dash-enterprise/support',
+                        'content': tutorial.dds_examples.Support,
+                        'name': 'Support',
+                        'description': 'Having trouble deploying your app? Our dedicated '
+                        'support team is available to help you out.'
+                    },
+                    {
+                        'url': '/dash-enterprise/git',
+                        'content': tutorial.dds_examples.Git,
+                        'name': 'Advanced Git',
+                        'description': 'A reference for git commands and how they are used '
+                        'with Dash Enterprise.'
+                    },
+                ]
+            }
         ]
     }
 
