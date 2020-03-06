@@ -31,7 +31,6 @@ dash-daq==0.3.1
 dash-html-components==1.0.2
 dash-renderer==1.2.4
 dash-table==4.6.1
-dash-user-guide-components==0.0.1
 dask==1.2.0
 decorator==4.3.0
 distlib==0.3.0

@@ -934,6 +934,8 @@ def _search_keywords(children):
     # Check if any of the component's proptypes are in the chapter so that
     # users can search for particular proptypes like selected_rows
     stringified_children = ''
+    if not hasattr(children, '_traverse'):
+        children = html.Div(children)
     for item in children._traverse():
         stringified_children += json.dumps(
             item,
