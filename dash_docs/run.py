@@ -10,6 +10,8 @@ from dash_docs import tools
 from dash_docs.tutorial import home
 
 from dash_docs.tutorial import search
+from dash_docs.reusable_components import Sidebar
+import dash_user_guide_components as dugc
 
 def create_contents(contents):
     h = []
@@ -33,10 +35,8 @@ header = html.Div(
             ), href='/'),
 
             html.Div(className='links', children=[
-                html.A('dash enterprise', className='link', href='https://plot.ly/dash/'),
-                html.A('user guide', className='link active', href=tools.relpath('/')),
-                html.A('plotly', className='link', href='https://plot.ly/'),
-                html.A(children=[html.I(className="fa fa-search")], className='link', href=tools.relpath('/search'))
+                html.A(children=[html.I(className="fa fa-search")], className='link', href=tools.relpath('/search')),
+                html.A('Community', href='https://community.plot.ly/c/dash')
             ])
         ]
     )
@@ -51,17 +51,25 @@ app.layout = html.Div(
         dcc.Store(id='memory-output'),
         dcc.Store(id='local', storage_type='local'),
         dcc.Store(id='session', storage_type='session'),
-        header,
-        html.Div([
-            html.Div(id='wait-for-layout'),
+
+        # div used in tests
+        html.Div(id='wait-for-layout'),
+
+        dcc.Location(id='location', refresh=False),
+
+        html.Div(className='content-wrapper', children=[
+            header,
+            # Sidebar(chapter_index.URLS),
+            dugc.Sidebar(urls=chapter_index.URLS_WITHOUT_CONTENT),
+            # Sidebar(label='test'),
             html.Div([
                 html.Div(
                     html.Div(id='chapter', className='content'),
                     className='content-container'
                 ),
-            ], className='container-width')
-        ], className='background'),
-        dcc.Location(id='location', refresh=False),
+            ], className='rhs-content container-width'),
+        ]),
+
     ]
 )
 
@@ -175,6 +183,7 @@ def flat_list(*args):
 @app.callback(Output('chapter', 'children'),
               [Input('location', 'pathname')])
 def display_content(pathname):
+    print(['display_content', pathname])
     if pathname is None or pathname == '/':
         return home.layout
     pathname = pathname.rstrip('/')

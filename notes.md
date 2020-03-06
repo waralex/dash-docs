@@ -1,0 +1,7 @@
+- We don't have a Docs home page yet, so I changed Docs / Dash to just the Dash logo
+- Need a fallback for Dash Enterprise
+- I prefer a shorter header
+- Body fonts seem too small
+- 12px seems too small
+- Flexbox prefixes?
+- Box shadow on input not working?
