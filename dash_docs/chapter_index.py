@@ -985,7 +985,6 @@ def index_pages(url_set):
     for section in url_set:
         if 'content' in section:
             section['meta_keywords'] = ', '.join(_search_keywords(section.get('content')))
-            print([section.get('url', ''), section['meta_keywords']])
         if 'chapters' in section:
             index_pages(section['chapters'])
 index_pages(URLS)
