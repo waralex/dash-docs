@@ -20,8 +20,10 @@ function PageMenu(props) {
             if (!el.href) {
                 // TODO - Some kind of URL character replacement
                 // TODO - Replace all, not just first occurance
-                el.id = `${replace(' ', '-', el.innerText).toLowerCase()}`;
+                el.id = `${replace(/ /g, '-', el.innerText).toLowerCase()}`;
             }
+            // TODO - Are these anchor links causing a callback to be fired
+            // because of the dcc.Location component?
             links.push(`
                 <div>
                     <a href="#${el.id}">${el.innerText}</a>
