@@ -29,10 +29,18 @@ header = html.Div(
         className='container-width',
         style={'height': '100%'},
         children=[
-            html.A(html.Img(
-                src='/assets/images/logo.png',
-                className='logo'
-            ), href='/'),
+
+            html.Span([
+                html.A(html.Img(
+                    src='/assets/images/logo-plotly.png',
+                ), href='https://plot.ly'),
+                html.Img(
+                    src='/assets/images/logo-seperator.png',
+                ),
+                dcc.Link(html.Img(
+                    src='/assets/images/logo-dash.png',
+                ), href='/'),
+            ], className='logo'),
 
             html.Div(className='links', children=[
                 html.A(children=[html.I(className="fa fa-search")], className='link', href=tools.relpath('/search')),
@@ -59,15 +67,17 @@ app.layout = html.Div(
 
         html.Div(className='content-wrapper', children=[
             header,
-            # Sidebar(chapter_index.URLS),
             dugc.Sidebar(urls=chapter_index.URLS_WITHOUT_CONTENT),
-            # Sidebar(label='test'),
+
             html.Div([
                 html.Div(
                     html.Div(id='chapter', className='content'),
                     className='content-container'
                 ),
             ], className='rhs-content container-width'),
+
+            dugc.PageMenu()
+
         ]),
 
     ]
@@ -183,7 +193,6 @@ def flat_list(*args):
 @app.callback(Output('chapter', 'children'),
               [Input('location', 'pathname')])
 def display_content(pathname):
-    print(['display_content', pathname])
     if pathname is None or pathname == '/':
         return home.layout
     pathname = pathname.rstrip('/')

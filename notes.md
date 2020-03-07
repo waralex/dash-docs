@@ -5,3 +5,5 @@
 - 12px seems too small
 - Flexbox prefixes?
 - Box shadow on input not working?
+- Replace lightgrey with #d8d8d8, or w/e our border color is
+- What is our link hover color & style?

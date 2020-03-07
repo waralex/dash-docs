@@ -52,8 +52,23 @@ h6 { font-size: 20px; line-height: 1.6;  letter-spacing: 0; margin-bottom: 0.75r
 
 .rhs-content {
     flex: 3 0px;
-    order 1;
+    order: 1;
     padding-left: 10px;
+}
+
+.page-menu {
+    order: 2;
+    flex: 1 0 0;
+    height: 100vh;
+}
+.page-menu a {
+    border-bottom-style: dotted;
+    text-decoration: none;
+    border-bottom-width: 1px;
+}
+.page-menu a:hover {
+    border-bottom-style: solid;
+    border-bottom-color: #0D67BF;
 }
 
 .content {
@@ -182,15 +197,24 @@ summary:hover {
 }
 
 
-.header .logo {
+.header .logo img {
   height: 95%;
+  border-top: 2px transparent solid;
+  border-bottom: 2px transparent solid;
+}
+.header .logo img:hover {
+    border-bottom: 2px rgb(61, 76, 120) solid;
 }
 
+/* Reference */
+.reference ul {
+    padding-left: 10px;
+}
 
 /* Example Container */
 
 .example-container {
-  border: thin lightgrey solid;
+  border: thin #d8d8d8 solid;
   padding: 15px;
   overflow-x: scroll;
 }
@@ -249,9 +273,11 @@ summary:hover {
 a {
   color: #506784;
   text-decoration: underline;
-  padding-left: 4px;
-  padding-right: 4px;
   border-radius: 1px;
+}
+.sidebar a {
+    padding-left: 4px;
+    padding-right: 4px;
 }
 
 .js-plotly-plot .plotly a {
@@ -297,10 +323,6 @@ a {
     border-radius: 5px;
     padding: 10px;
     margin-bottom: 10px;
-}
-
-table {
-    font-size: 1.4rem;
 }
 
 @media (min-width: 0px) {

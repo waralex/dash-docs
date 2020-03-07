@@ -781,7 +781,7 @@ DatePickerRange = html.Div(children=[
             html.Td(reusable_components.Markdown('`1410715640579`'), style={'text-align': 'left'}),
             html.Td('Unix ms timestamp')
         ]),
-    ], style={'margin': 'auto'}),
+    ]),
     html.Br(),
     html.H3("Display Format Examples"),
     reusable_components.Markdown("You can utilize any permutation of the string tokens \
@@ -1025,7 +1025,7 @@ DatePickerSingle = html.Div(children=[
             html.Td(reusable_components.Markdown('`1410715640579`'), style={'text-align': 'left'}),
             html.Td('Unix ms timestamp')
         ]),
-    ], style={'margin': 'auto'}),
+    ]),
 
     html.Br(),
 

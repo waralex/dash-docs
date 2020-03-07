@@ -17,6 +17,8 @@ import {
 } from 'ramda';
 import * as R from 'ramda';
 
+// import {Link} from 'dash-core-components';
+
 window.assocPath = assocPath;
 window.contains = contains;
 window.filter = filter;
@@ -230,7 +232,6 @@ class TreeSidebar extends Component {
 
                 // Assume that a chapter's path matches that of its parent
                 // TODO - find the first relative link
-                console.warn('CHECKING OPEN');
                 open = (
                     (
                         has('urls', chapter)
