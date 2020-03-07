@@ -13,6 +13,7 @@ dash_html_components-1.0.2.tar.gz
 dash_renderer-1.2.4.tar.gz
 dash_table-4.6.1.tar.gz
 dash-1.9.1.tar.gz[testing]
+
 dash-bio-utils==0.0.3rc3
 dash-cytoscape==0.0.5
 decorator==4.3.0
