@@ -1,5 +1,5 @@
 #/bin/sh
-if [ "$LANGUAGE" = "PYTHON" ]
-then gunicorn app:runserver
-else fakechroot fakeroot chroot /app/.root /bin/sh -c '/usr/bin/R -f /app/run.R --gui-none --no-save'
+if [ "$LANGUAGE" = "R" ]
+then fakechroot fakeroot chroot /app/.root /bin/sh -c '/usr/bin/R -f /app/run.R --gui-none --no-save'
+else gunicorn app:runserver
 fi
