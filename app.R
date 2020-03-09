@@ -5,5 +5,6 @@ metas <- list(
        content = 'Dash User Guide and Documentation. Dash is a framework for building analytical web apps in Python and R.')
 )
 
-app <- Dash$new(name = "Dash User Guide and Documentation - Dash by Plotly",
-                meta_tags = metas)
+app <- Dash$new(meta_tags = metas)
+
+app$title("Dash User Guide and Documentation - Dash by Plotly")
