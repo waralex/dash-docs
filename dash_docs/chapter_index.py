@@ -172,6 +172,15 @@ URLS = [
 
     {
         'name': 'Open Source Component Libraries',
+        'urls': [
+            '/dash-core-components/',
+            '/dash-html-components/',
+            '/datatable/',
+            '/dash-bio/'
+            '/dash-daq/',
+            '/canvas/',
+            '/cytoscape/'
+        ],
         'chapters': [
             {
                 'name': 'Dash Core Components',
