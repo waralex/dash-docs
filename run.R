@@ -580,4 +580,4 @@ app$callback(
   }
 )
 
-app$run_server(host = "0.0.0.0", port = Sys.getenv('PORT'))
+app$run_server()
