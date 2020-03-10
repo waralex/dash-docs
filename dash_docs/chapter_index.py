@@ -693,10 +693,10 @@ URLS = [
     {
         'name': 'Dash Enterprise',
         'description': (
-            """
+            '''
             Dash Enterprise is Plotly's commercial offering for managing
             and improving your Dash apps in your organization.
-            """
+            '''
         ),
         'chapters': [
             {
@@ -843,8 +843,8 @@ URLS = [
                         'url': '/dash-enterprise/logs',
                         'content': tutorial.dds_examples.Logs,
                         'name': 'App Logs',
-                        'description': """Check your Dash App's logs via the Dash
-                        Enterprise UI or via the command line."""
+                        'description': '''Check your Dash App's logs via the Dash
+                        Enterprise UI or via the command line.'''
                     },
                     {
                         'url': '/dash-enterprise/troubleshooting',
