@@ -27,10 +27,18 @@ header = html.Div(
         className='container-width',
         style={'height': '100%'},
         children=[
-            html.A(html.Img(
-                src='/assets/images/logo.png',
-                className='logo'
-            ), href='/'),
+
+            html.Span([
+                html.A(html.Img(
+                    src='/assets/images/logo-plotly.png',
+                ), href='https://plot.ly'),
+                html.Img(
+                    src='/assets/images/logo-seperator.png',
+                ),
+                dcc.Link(html.Img(
+                    src='/assets/images/logo-dash.png',
+                ), href='/'),
+            ], className='logo'),
 
             html.Div(className='links', children=[
                 html.A('dash enterprise', className='link', href='https://plot.ly/dash/'),
