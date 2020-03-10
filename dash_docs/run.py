@@ -204,7 +204,7 @@ def display_content(pathname):
     def make_page(page_path):
         backlinks = create_backlinks(page_path)
         return flat_list(
-            backlinks,
+            html.Div(className='backlinks', children=backlinks),
             html.Br(),
             chapter_index.URL_TO_CONTENT_MAP[page_path],
             html.Hr(),

@@ -65,25 +65,36 @@ h6 { font-size: 20px; line-height: 1.6;  letter-spacing: 0; margin-bottom: 0.75r
     margin-top: 30px;
     margin-left: 10px;
     font-size: 12px;
-    opacity: 0.75;
 }
 .page-menu--header {
     font-weight: bold;
     font-size: 13px;
+    opacity: 0.5;
 }
-.page-menu a {
+.page-menu--link {
     border-bottom-style: dotted;
     text-decoration: none;
     border-bottom-width: 1px;
+    cursor: pointer;
+    opacity: 0.5;
 }
-.page-menu a:hover {
+.page-menu--link:hover {
     border-bottom-style: solid;
     border-bottom-color: #0D67BF;
+    opacity: 1;
+    color: #0D67BF;
 }
 
 .content {
     margin-left: 25px;
     max-width: 800px;
+}
+
+.backlinks {
+    opacity: 0.5;
+}
+.backlinks a:hover {
+    opacity: 1.0;
 }
 
 /* Sidebar */
