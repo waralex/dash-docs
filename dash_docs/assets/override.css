@@ -67,6 +67,10 @@ h6 { font-size: 20px; line-height: 1.6;  letter-spacing: 0; margin-bottom: 0.75r
     font-size: 12px;
     opacity: 0.75;
 }
+.page-menu--header {
+    font-weight: bold;
+    font-size: 13px;
+}
 .page-menu a {
     border-bottom-style: dotted;
     text-decoration: none;

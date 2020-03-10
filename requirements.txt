@@ -43,7 +43,6 @@ Flask-Compress==1.4.0
 Flask-Cors==3.0.3
 Flask-SeaSurf==0.2.2
 funcsigs==1.0.2
-functools32==3.2.3.post2
 future==0.18.2
 GEOparse==1.1.0
 greenlet==0.4.14

@@ -14,19 +14,22 @@ function PageMenu(props) {
             return;
         }
         const links = [];
-        const elements = document.querySelectorAll('h2, h3, h4, h5, h6');
+        const elements = document.querySelectorAll('h1, h2, h3, h4, h5, h6');
         elements.forEach(el => {
 
             if (!el.href) {
-                // TODO - Some kind of URL character replacement
-                // TODO - Replace all, not just first occurance
                 el.id = `${replace(/ /g, '-', el.innerText).toLowerCase()}`;
             }
-            // TODO - Are these anchor links causing a callback to be fired
-            // because of the dcc.Location component?
+            /*
+             * TODO - Replace with a proper a and remove pageMenuScroll
+             * once https://github.com/plotly/dash-core-components/issues/769
+             * is fixed
+             */
             links.push(`
                 <div>
-                    <a href="#${el.id}">${el.innerText}</a>
+                    <span class="page-menu--link" onClick="pageMenuScroll('${el.id}')">
+                        ${el.innerText}
+                    </span>
                 </div>
             `);
         });
@@ -36,7 +39,7 @@ function PageMenu(props) {
 
     return (
         <div className='page-menu'>
-            <div>{'On This Page'}</div>
+            <div className='page-menu--header'>{'On This Page'}</div>
             <div id="page-menu--links"/>
         </div>
     )

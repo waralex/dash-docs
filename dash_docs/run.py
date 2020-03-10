@@ -1,5 +1,6 @@
 import dash_html_components as html
 import dash_core_components as dcc
+import json
 
 from dash.dependencies import Input, Output
 
@@ -21,6 +22,9 @@ def create_contents(contents):
         else:
             h.append(html.Li(i))
     return html.Ul(h)
+
+with open('SIDEBAR-INDEX.json', 'r') as f:
+    SIDEBAR_INDEX = json.loads(f.read())
 
 
 header = html.Div(
@@ -67,7 +71,7 @@ app.layout = html.Div(
 
         html.Div(className='content-wrapper', children=[
             header,
-            dugc.Sidebar(urls=chapter_index.URLS_WITHOUT_CONTENT),
+            dugc.Sidebar(urls=SIDEBAR_INDEX),
 
             html.Div([
                 html.Div(

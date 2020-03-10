@@ -2,6 +2,7 @@ import os
 from .import tutorial
 import json
 import plotly
+import six
 
 import dash
 import dash_html_components as html
@@ -933,14 +934,32 @@ def find_section(url_set, name):
 def _search_keywords(children):
     # Check if any of the component's proptypes are in the chapter so that
     # users can search for particular proptypes like selected_rows
-    stringified_children = ''
+
+    def _concat(unicode_or_str1, unicode_or_str2):
+        try:
+            unicode_or_str1 += unicode_or_str2.decode('utf8')
+        except Exception as e1:
+            try:
+                unicode_or_str1 += unicode(unicode_or_str2)
+            except Exception as e2:
+                print(unicode_or_str2)
+                import pdb; pdb.set_trace()
+                raise e2
+
+        return unicode_or_str2
+
+    stringified_children = u''
     if not hasattr(children, '_traverse'):
         children = html.Div(children)
     for item in children._traverse():
-        stringified_children += json.dumps(
-            item,
-            cls=plotly.utils.PlotlyJSONEncoder
-        )
+        if isinstance(item, six.string_types):
+            # I don't really get this, but there seems to be a mix
+            # of unicode and strings here
+            stringified_children += item
+        elif (hasattr(item, 'children') and
+              isinstance(item.children, six.string_types)):
+            stringified_children += item.children
+
     keywords = []
     common_keywords_to_ignore = [
         'id', 'className', 'loading_state', 'value'
@@ -981,19 +1000,17 @@ def _search_keywords(children):
 
     return keywords
 
+
 def index_pages(url_set):
     for section in url_set:
         if 'content' in section:
             section['meta_keywords'] = ', '.join(_search_keywords(section.get('content')))
         if 'chapters' in section:
             index_pages(section['chapters'])
-index_pages(URLS)
 
-URLS_WITHOUT_CONTENT = json.loads(json.dumps(URLS, cls=plotly.utils.PlotlyJSONEncoder))
 def create_urls_without_content(url_set):
     for section in url_set:
         if 'content' in section:
             section.pop('content')
         if 'chapters' in section:
             create_urls_without_content(section['chapters'])
-create_urls_without_content(URLS_WITHOUT_CONTENT)
