@@ -928,3 +928,87 @@ def find_section(url_set, name):
             return section
         elif 'chapters' in section:
             return find_section(section['chapters'], name)
+
+def _search_keywords(children):
+    # Check if any of the component's proptypes are in the chapter so that
+    # users can search for particular proptypes like selected_rows
+
+    def _concat(unicode_or_str1, unicode_or_str2):
+        try:
+            unicode_or_str1 += unicode_or_str2.decode('utf8')
+        except Exception as e1:
+            try:
+                unicode_or_str1 += unicode(unicode_or_str2)
+            except Exception as e2:
+                print(unicode_or_str2)
+                import pdb; pdb.set_trace()
+                raise e2
+
+        return unicode_or_str2
+
+    stringified_children = u''
+    if not hasattr(children, '_traverse'):
+        children = html.Div(children)
+    for item in children._traverse():
+        if isinstance(item, six.string_types):
+            # I don't really get this, but there seems to be a mix
+            # of unicode and strings here
+            stringified_children += item
+        elif (hasattr(item, 'children') and
+              isinstance(item.children, six.string_types)):
+            stringified_children += item.children
+
+    keywords = []
+    common_keywords_to_ignore = [
+        'id', 'className', 'loading_state', 'value'
+    ]
+    component_libraries = [
+        html, dcc, dash_table, dash_daq, dash_cytoscape, dash_bio
+    ]
+    for component_library in component_libraries:
+        component_names = [
+            i for i in dir(component_library)
+            if (
+                not i.startswith('_') and
+                i[0].upper() == i[0] and
+                type(getattr(component_library, i)) == dash.development.base_component.ComponentMeta
+            )
+        ]
+        for component_name in component_names:
+            if component_name in ['DarkThemeProvider']:
+                component = getattr(component_library, component_name)()
+            elif component_name == 'Circos':
+                component = getattr(component_library, component_name)(layout=None)
+            else:
+                try:
+                    component = getattr(component_library, component_name)(id='_')
+                except Exception as e:
+                    print(
+                        ">> This doesn't look like a component!\n" +
+                        'Add to the ignore list in _search_keywords:'
+                    )
+                    print([component_library, component_name])
+                    raise e
+            component_prop_types = component._prop_names
+            for prop in component_prop_types:
+                if (prop not in common_keywords_to_ignore and
+                        prop not in keywords and
+                        prop in stringified_children):
+                    keywords.append(prop)
+
+    return keywords
+
+
+def index_pages(url_set):
+    for section in url_set:
+        if 'content' in section:
+            section['meta_keywords'] = ', '.join(_search_keywords(section.get('content')))
+        if 'chapters' in section:
+            index_pages(section['chapters'])
+
+def create_urls_without_content(url_set):
+    for section in url_set:
+        if 'content' in section:
+            section.pop('content')
+        if 'chapters' in section:
+            create_urls_without_content(section['chapters'])

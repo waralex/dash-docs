@@ -1,0 +1,1788 @@
+[
+  {
+    "name": "What's Dash?",
+    "chapters": [
+      {
+        "url": "/introduction",
+        "name": "Introduction",
+        "description": "\n                    A quick paragraph about Dash and a link to the talk at\n                    Plotcon that started it all.\n                ",
+        "meta_keywords": "rel, form, open, high, low, required, cols, rows, pattern, data, on, base, view"
+      },
+      {
+        "url": "https://medium.com/@plotlygraphs/introducing-dash-5ecf7191b503",
+        "name": "Announcement Essay (2017)",
+        "description": "\n                    Our extended essay on Dash. An extended discussion of\n                    Dash's architecture and our motivation behind the project.\n                    "
+      },
+      {
+        "url": "https://dash-gallery.plotly.host/Portal/",
+        "name": "Dash App Gallery",
+        "description": "\n                    A glimpse into what's possible with Dash.\n                "
+      },
+      {
+        "url": "/dash-1-0-migration",
+        "name": "Dash 1.0.0 Migration",
+        "description": "Dash v1.0 is out! If you're new to Dash, just head down to the tutorial section below and get started. This section is for users Dash v0.x upgrading to v1.0. We've learned a lot from working with the amazing Dash community, and Dash v1.0 makes a number of changes to make your apps even more intuitive, powerful, and extensible as Dash continues to evolve.",
+        "meta_keywords": "children, key, href, rel, dir, hidden, lang, style, form, name, type, width, open, accept, action, content, low, max, min, start, label, multiple, size, headers, rows, default, options, clearable, date, multi, config, list, interval, debug, dedent, tooltip, data, content_style, columns, css, editable, fill_width, fixed_columns, fixed_rows, page_action, page_current, page_size, dropdown, dropdown_conditional, dropdown_data, tooltip_conditional, tooltip_data, filter_query, filter_action, sort_action, sort_mode, sort_as_null, style_cell, style_data, style_header, style_cell_conditional, style_data_conditional, style_header_conditional, derived_filter_query_structure, on, base"
+      },
+      {
+        "url": "https://go.plot.ly/dash-club",
+        "name": "Dash Club",
+        "description": "\n                    An email newsletter by chriddyp, the creator of Dash.\n                "
+      }
+    ]
+  },
+  {
+    "name": "Dash Tutorial",
+    "chapters": [
+      {
+        "url": "/installation",
+        "name": "Part 1. Installation",
+        "description": "How to install and upgrade dash libraries with pip",
+        "meta_keywords": "min, start, date, list, included, on"
+      },
+      {
+        "url": "/getting-started",
+        "name": "Part 2. Layout",
+        "description": "The Dash `layout` describes what your app will look like and is composed of a set of declarative Dash components.",
+        "meta_keywords": "children, key, href, rel, lang, style, title, controls, disabled, form, name, type, width, open, content, high, low, max, min, start, label, selected, multiple, size, placeholder, rows, default, options, displayed, multi, responsive, figure, config, list, refresh, debug, color, marks, count, data, colors, columns, css, dropdown, on, base, backgroundColor, elements, stylesheet, layout, pan, zoom, opacity, styles, labels, range, legend, view"
+      },
+      {
+        "url": "/getting-started-part-2",
+        "name": "Part 3. Basic Callbacks",
+        "description": "Dash apps are made interactive through Dash Callbacks: Python functions that are automatically called whenever an input component's property changes. Callbacks can be chained, allowing one update in the UI to trigger several updates across the app.",
+        "meta_keywords": "children, key, download, href, media, rel, style, title, controls, form, name, type, width, content, high, low, max, min, start, label, selected, multiple, size, wrap, scope, options, labelStyle, date, multi, figure, animate, list, pattern, step, debug, color, marks, count, included, data, css, editable, on, base, stylesheet, layout, pan, opacity, styles, range, legend"
+      },
+      {
+        "url": "/state",
+        "name": "Part 4. More About Callbacks",
+        "description": "Basic callbacks are fired whenever the values change. Use Dash `State` with Dash `Inputs` to pass in extra values whenever the `Inputs` change. `State` is useful for UIs that contain forms or buttons. Use the `PreventUpdate` exception to leave the callback output unchanged",
+        "meta_keywords": "children, n_clicks, href, style, form, name, type, content, low, min, start, date, debounce, list, step, debug, color, data, css, on, stylesheet, layout, styles"
+      },
+      {
+        "url": "/interactive-graphing",
+        "name": "Part 5. Interactive Graphing and Crossfiltering",
+        "description": "Bind interactivity to the Dash `Graph` component whenever you hover, click, or select points on your chart.",
+        "meta_keywords": "children, href, rel, shape, style, title, form, name, type, height, width, open, action, high, low, max, min, start, label, selected, size, wrap, options, labelStyle, date, clickData, hoverData, selectedData, relayoutData, figure, config, step, debug, color, dedent, marks, count, data, columns, css, on, base, angle, backgroundColor, stylesheet, layout, pan, zoom, opacity, annotations, styles, padding, range, selection, legend"
+      },
+      {
+        "url": "/sharing-data-between-callbacks",
+        "name": "Part 6. Sharing Data Between Callbacks",
+        "description": "`global` variables will break your Dash apps. However, there are other ways to share data between callbacks. This chapter is useful for callbacks that run expensive data processing tasks or process large data.",
+        "meta_keywords": "children, n_clicks, key, download, href, media, rel, shape, dir, hidden, style, alt, form, name, type, width, open, method, high, low, max, start, label, selected, multiple, size, rows, scope, options, date, multi, figure, config, pattern, step, debug, data, columns, css, dropdown, on, base, stylesheet, layout, pan, opacity, styles, range, view"
+      },
+      {
+        "url": "/faqs",
+        "name": "Part 7. FAQs & Gotchas",
+        "description": "If you have read through the rest of the tutorial and still have questions or are encountering unexpected behaviour, this chapter may be useful.",
+        "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, href, rel, target, dir, style, controls, src, disabled, form, name, type, accept, action, low, min, start, multiple, required, rows, default, date, multi, figure, config, list, debug, count, included, data, modified_timestamp, on, elements, stylesheet, layout, container, styles, toolbar"
+      }
+    ]
+  },
+  {
+    "name": "Open Source Component Libraries",
+    "urls": [
+      "/dash-core-components/",
+      "/dash-html-components/",
+      "/datatable/",
+      "/dash-bio//dash-daq/",
+      "/canvas/",
+      "/cytoscape/"
+    ],
+    "chapters": [
+      {
+        "name": "Dash Core Components",
+        "chapters": [
+          {
+            "url": "/dash-core-components/",
+            "name": "Overview",
+            "description": "The Dash Core Component library contains a set of higher-level components like sliders, graphs, dropdowns, tables, and more.",
+            "meta_keywords": "children, n_clicks, href, style, title, form, name, type, height, width, open, content, low, max, min, start, label, placeholder, rows, wrap, scope, default, options, labelStyle, message, start_date, end_date, end_date_placeholder_text, date, multi, figure, list, step, refresh, debug, color, pathname, search, hash, logout_url, marks, count, included, storage_type, data, css, on, stylesheet, layout, container, styles, range, showlegend, selection, legend"
+          },
+          {
+            "url": "/dash-core-components/checklist",
+            "name": "dcc.Checklist",
+            "meta_keywords": "key, style, disabled, name, type, action, low, min, label, selected, required, rows, wrap, default, options, inputStyle, inputClassName, labelStyle, labelClassName, persistence, persisted_props, persistence_type, list, refresh, data, on, container"
+          },
+          {
+            "url": "/dash-core-components/confirmdialog",
+            "name": "dcc.ConfirmDialog",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, style, form, name, action, min, label, rows, default, options, message, submit_n_clicks, submit_n_clicks_timestamp, cancel_n_clicks, cancel_n_clicks_timestamp, displayed, date, step, debug, css, dropdown, on, stylesheet, layout, styles"
+          },
+          {
+            "url": "/dash-core-components/confirmdialogprovider",
+            "name": "dcc.ConfirmDialogProvider",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, href, style, form, name, type, low, min, default, message, submit_n_clicks, submit_n_clicks_timestamp, cancel_n_clicks, cancel_n_clicks_timestamp, displayed, date, list, debug, css, on, stylesheet, layout, styles"
+          },
+          {
+            "url": "/dash-core-components/datepickerrange",
+            "name": "dcc.DatePickerRange",
+            "meta_keywords": "children, key, style, title, disabled, form, name, type, open, action, high, low, max, min, start, selected, size, headers, placeholder, rows, wrap, default, options, persistence, persisted_props, persistence_type, displayed, start_date, start_date_id, end_date_id, end_date, min_date_allowed, max_date_allowed, initial_visible_month, start_date_placeholder_text, end_date_placeholder_text, day_size, calendar_orientation, is_RTL, reopen_calendar_on_clear, number_of_months_shown, with_portal, with_full_screen_portal, first_day_of_week, minimum_nights, stay_open_on_select, show_outside_days, month_format, display_format, clearable, updatemode, date, figure, config, list, refresh, debug, vertical, data, css, dropdown, on, stylesheet, layout, container, orientation, styles, range"
+          },
+          {
+            "url": "/dash-core-components/datepickersingle",
+            "name": "dcc.DatePickerSingle",
+            "meta_keywords": "children, key, style, title, disabled, form, name, type, open, action, high, low, max, min, start, selected, size, headers, placeholder, rows, wrap, default, options, persistence, persisted_props, persistence_type, displayed, min_date_allowed, max_date_allowed, initial_visible_month, day_size, calendar_orientation, is_RTL, reopen_calendar_on_clear, number_of_months_shown, with_portal, with_full_screen_portal, first_day_of_week, stay_open_on_select, show_outside_days, month_format, display_format, clearable, date, figure, config, list, refresh, debug, included, vertical, data, css, dropdown, on, stylesheet, layout, container, orientation, styles"
+          },
+          {
+            "url": "/dash-core-components/dropdown",
+            "name": "dcc.Dropdown",
+            "meta_keywords": "children, key, style, disabled, form, name, type, height, action, low, min, start, label, selected, multiple, required, placeholder, rows, wrap, default, options, persistence, persisted_props, persistence_type, clearable, date, optionHeight, multi, searchable, search_value, list, refresh, debug, search, data, css, dropdown, on, stylesheet, layout, container, styles, selection"
+          },
+          {
+            "url": "/dash-core-components/graph",
+            "name": "dcc.Graph",
+            "meta_keywords": "children, key, download, href, rel, shape, dir, style, title, coords, src, form, name, type, height, width, open, action, high, low, max, min, start, selected, required, size, rows, default, options, date, responsive, clickData, clickAnnotationData, hoverData, clear_on_unhover, selectedData, relayoutData, extendData, restyleData, figure, animate, animation_options, config, list, color, data, filename, editable, on, base, scale, layout, pan, zoom, annotations, container, resolution, range, selection, legend, scrollZoom, view"
+          },
+          {
+            "url": "/dash-core-components/input",
+            "name": "dcc.Input",
+            "meta_keywords": "children, key, role, rel, dir, hidden, lang, spellCheck, style, title, autoFocus, disabled, form, name, type, width, checked, accept, action, autoComplete, content, low, max, min, label, selected, multiple, required, size, inputMode, maxLength, minLength, placeholder, readOnly, rows, default, kind, options, persistence, persisted_props, persistence_type, displayed, date, multi, debounce, list, pattern, selectionDirection, selectionEnd, selectionStart, step, n_submit, n_submit_timestamp, n_blur, n_blur_timestamp, refresh, debug, color, search, data, contents, css, on, base, units, stylesheet, layout, pan, styles, range, sequence, selection"
+          },
+          {
+            "url": "/dash-core-components/interval",
+            "name": "dcc.Interval",
+            "meta_keywords": "disabled, max, default, date, interval, n_intervals, max_intervals, count, on"
+          },
+          {
+            "url": "/dash-core-components/link",
+            "name": "dcc.Link",
+            "meta_keywords": "children, key, href, style, name, type, low, min, default, list, refresh, on, elements, styles"
+          },
+          {
+            "url": "/dash-core-components/loading",
+            "name": "dcc.Loading",
+            "meta_keywords": "children, key, style, name, type, low, min, wrap, default, displayed, list, fullscreen, debug, color, on"
+          },
+          {
+            "url": "/dash-core-components/location",
+            "name": "dcc.Location",
+            "meta_keywords": "href, name, min, required, rows, default, date, refresh, pathname, search, hash, on"
+          },
+          {
+            "url": "/dash-core-components/logoutbutton",
+            "name": "dcc.LogoutButton",
+            "meta_keywords": "children, key, dir, style, form, name, type, action, method, low, min, label, placeholder, default, debug, hash, logout_url, data, on, base, layout"
+          },
+          {
+            "url": "/dash-core-components/markdown",
+            "name": "dcc.Markdown",
+            "meta_keywords": "children, key, lang, style, name, type, high, low, min, default, options, config, list, dangerously_allow_html, dedent, highlight_config, css, on, theme, base, stylesheet, container, styles"
+          },
+          {
+            "url": "/dash-core-components/radioitems",
+            "name": "dcc.RadioItems",
+            "meta_keywords": "key, style, disabled, name, type, action, low, min, label, selected, required, rows, wrap, default, options, inputStyle, inputClassName, labelStyle, labelClassName, persistence, persisted_props, persistence_type, list, refresh, data, on, container"
+          },
+          {
+            "url": "/dash-core-components/rangeslider",
+            "name": "dcc.RangeSlider",
+            "meta_keywords": "children, key, style, disabled, form, name, type, height, action, high, low, max, min, label, selected, multiple, rows, default, persistence, persisted_props, persistence_type, updatemode, date, multi, list, step, refresh, debug, color, marks, allowCross, count, dots, included, pushable, tooltip, vertical, verticalHeight, data, css, on, logarithmic, stylesheet, layout, container, styles, range"
+          },
+          {
+            "url": "/dash-core-components/slider",
+            "name": "dcc.Slider",
+            "meta_keywords": "children, key, rel, style, disabled, form, name, type, height, action, high, low, max, min, label, selected, rows, default, persistence, persisted_props, persistence_type, updatemode, date, list, step, refresh, debug, color, marks, dots, included, tooltip, vertical, verticalHeight, data, css, on, logarithmic, stylesheet, layout, container, styles, labels, range"
+          },
+          {
+            "url": "/dash-core-components/store",
+            "name": "dcc.Store",
+            "meta_keywords": "children, n_clicks, key, style, form, name, type, content, low, max, min, label, selected, required, size, colSpan, rows, default, options, date, multi, figure, list, refresh, debug, count, included, storage_type, data, clear_data, modified_timestamp, columns, css, on, stylesheet, layout, pan, styles"
+          },
+          {
+            "url": "/dash-core-components/tab",
+            "name": "dcc.Tab",
+            "meta_keywords": "children, key, style, disabled, name, type, content, low, min, label, selected, default, displayed, list, color, disabled_style, disabled_className, selected_className, selected_style, on, styles"
+          },
+          {
+            "url": "/dash-core-components/tabs",
+            "name": "dcc.Tabs",
+            "meta_keywords": "children, key, href, dir, style, alt, controls, disabled, name, type, height, width, action, method, content, low, min, label, selected, multiple, rows, default, persistence, persisted_props, persistence_type, displayed, date, multi, figure, list, refresh, debug, color, vertical, data, disabled_style, disabled_className, selected_className, selected_style, content_className, parent_className, parent_style, content_style, mobile_breakpoint, colors, css, on, backgroundColor, stylesheet, layout, container, styles, labels, padding"
+          },
+          {
+            "url": "/dash-core-components/textarea",
+            "name": "dcc.Textarea",
+            "meta_keywords": "n_clicks, n_clicks_timestamp, key, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, autoFocus, disabled, form, name, type, action, content, low, max, min, required, cols, maxLength, minLength, placeholder, readOnly, rows, wrap, default, persistence, persisted_props, persistence_type, displayed, list, n_blur, n_blur_timestamp, refresh, tooltip, data, columns, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-core-components/upload",
+            "name": "dcc.Upload",
+            "meta_keywords": "children, key, rel, style, src, disabled, form, name, type, height, width, open, accept, action, content, low, max, min, multiple, size, rows, wrap, default, date, multi, list, debug, data, contents, filename, last_modified, disable_click, max_size, min_size, className_active, className_reject, className_disabled, style_active, style_reject, style_disabled, columns, css, on, base, backgroundColor, stylesheet, layout, pan, opacity, styles, view"
+          }
+        ]
+      },
+      {
+        "name": "Dash HTML Components",
+        "chapters": [
+          {
+            "url": "/dash-html-components/",
+            "name": "Overview",
+            "description": "Dash provides all of the available HTML tags as user-friendly Python classes. This chapter explains how this works and the few important key differences between Dash HTML components and standard html.",
+            "meta_keywords": "children, key, href, style, form, name, action, low, size, list, color, on, units, elements, layout, pan"
+          },
+          {
+            "url": "/dash-html-components/a",
+            "name": "html.A",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, download, href, hrefLang, media, rel, shape, target, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, content, low, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/abbr",
+            "name": "html.Abbr",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, content, low, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/acronym",
+            "name": "html.Acronym",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, content, low, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/address",
+            "name": "html.Address",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, content, low, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/area",
+            "name": "html.Area",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, download, href, hrefLang, media, rel, shape, target, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, alt, coords, form, name, type, content, low, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/article",
+            "name": "html.Article",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, content, low, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/aside",
+            "name": "html.Aside",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, content, low, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/audio",
+            "name": "html.Audio",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, media, rel, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, autoPlay, controls, crossOrigin, loop, muted, preload, src, form, name, type, content, low, min, start, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/b",
+            "name": "html.B",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, content, low, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/base",
+            "name": "html.Base",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, href, target, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, content, low, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, base, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/basefont",
+            "name": "html.Basefont",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, content, low, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, base, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/bdi",
+            "name": "html.Bdi",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, content, low, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/bdo",
+            "name": "html.Bdo",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, content, low, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/big",
+            "name": "html.Big",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, content, low, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/blink",
+            "name": "html.Blink",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, content, low, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/blockquote",
+            "name": "html.Blockquote",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, cite, form, name, type, content, low, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/br",
+            "name": "html.Br",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, content, low, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/button",
+            "name": "html.Button",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, target, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, autoFocus, disabled, form, formAction, formEncType, formMethod, formNoValidate, formTarget, name, type, action, method, content, low, min, rows, wrap, default, displayed, date, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/canvas",
+            "name": "html.Canvas",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, height, width, content, low, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/caption",
+            "name": "html.Caption",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, content, low, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/center",
+            "name": "html.Center",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, content, low, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/cite",
+            "name": "html.Cite",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, cite, form, name, type, content, low, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/code",
+            "name": "html.Code",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, content, low, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/col",
+            "name": "html.Col",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, span, content, low, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, pan, styles"
+          },
+          {
+            "url": "/dash-html-components/colgroup",
+            "name": "html.Colgroup",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, span, content, low, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, pan, styles"
+          },
+          {
+            "url": "/dash-html-components/command",
+            "name": "html.Command",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, disabled, form, name, type, checked, icon, radioGroup, content, low, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/content",
+            "name": "html.Content",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, content, low, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/data",
+            "name": "html.Data",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, content, low, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/datalist",
+            "name": "html.Datalist",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, content, low, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/dd",
+            "name": "html.Dd",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, content, low, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/del",
+            "name": "html.Del",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, cite, form, name, type, dateTime, content, low, min, rows, wrap, default, displayed, date, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/details",
+            "name": "html.Details",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, open, content, low, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/dfn",
+            "name": "html.Dfn",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, content, low, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/dialog",
+            "name": "html.Dialog",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, content, low, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/div",
+            "name": "html.Div",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, content, low, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/dl",
+            "name": "html.Dl",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, content, low, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/dt",
+            "name": "html.Dt",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, content, low, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/element",
+            "name": "html.Element",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, content, low, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/em",
+            "name": "html.Em",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, content, low, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/embed",
+            "name": "html.Embed",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, src, form, name, type, height, width, content, low, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/fieldset",
+            "name": "html.Fieldset",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, disabled, form, name, type, content, low, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/figcaption",
+            "name": "html.Figcaption",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, content, low, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/figure",
+            "name": "html.Figure",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, content, low, min, rows, wrap, default, displayed, figure, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/font",
+            "name": "html.Font",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, content, low, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/footer",
+            "name": "html.Footer",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, content, low, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/form",
+            "name": "html.Form",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, target, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, controls, form, name, type, accept, acceptCharset, action, autoComplete, encType, method, noValidate, content, low, min, rows, wrap, default, displayed, date, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/frame",
+            "name": "html.Frame",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, content, low, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/frameset",
+            "name": "html.Frameset",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, content, low, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/h1",
+            "name": "html.H1",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, content, low, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/h2",
+            "name": "html.H2",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, content, low, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/h3",
+            "name": "html.H3",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, content, low, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/h4",
+            "name": "html.H4",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, content, low, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/h5",
+            "name": "html.H5",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, content, low, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/h6",
+            "name": "html.H6",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, content, low, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/header",
+            "name": "html.Header",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, content, low, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/hgroup",
+            "name": "html.Hgroup",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, content, low, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/hr",
+            "name": "html.Hr",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, content, low, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/i",
+            "name": "html.I",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, content, low, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/iframe",
+            "name": "html.Iframe",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, src, form, name, type, height, width, open, sandbox, srcDoc, content, low, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/img",
+            "name": "html.Img",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, alt, crossOrigin, src, form, name, type, height, width, sizes, srcSet, useMap, content, low, min, size, rows, wrap, default, displayed, date, responsive, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/ins",
+            "name": "html.Ins",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, cite, form, name, type, dateTime, content, low, min, rows, wrap, default, displayed, date, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/isindex",
+            "name": "html.Isindex",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, content, low, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/kbd",
+            "name": "html.Kbd",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, content, low, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/keygen",
+            "name": "html.Keygen",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, autoFocus, disabled, form, name, type, challenge, keyType, content, low, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/label",
+            "name": "html.Label",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, htmlFor, content, low, min, label, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/legend",
+            "name": "html.Legend",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, content, low, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles, legend"
+          },
+          {
+            "url": "/dash-html-components/li",
+            "name": "html.Li",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, content, low, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/link",
+            "name": "html.Link",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, href, hrefLang, media, rel, target, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, crossOrigin, form, name, type, sizes, integrity, content, low, min, size, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/listing",
+            "name": "html.Listing",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, content, low, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/main",
+            "name": "html.Main",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, content, low, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/mapel",
+            "name": "html.MapEl",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, content, low, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/mark",
+            "name": "html.Mark",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, content, low, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/marquee",
+            "name": "html.Marquee",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, media, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, loop, form, name, type, content, low, min, start, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/meta",
+            "name": "html.Meta",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, charSet, content, httpEquiv, low, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/meter",
+            "name": "html.Meter",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, content, high, low, max, min, optimum, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles, range"
+          },
+          {
+            "url": "/dash-html-components/multicol",
+            "name": "html.Multicol",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, content, low, min, rows, wrap, default, displayed, multi, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/nav",
+            "name": "html.Nav",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, content, low, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/nextid",
+            "name": "html.Nextid",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, content, low, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/nobr",
+            "name": "html.Nobr",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, content, low, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/noscript",
+            "name": "html.Noscript",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, content, low, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/objectel",
+            "name": "html.ObjectEl",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, height, width, useMap, content, low, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/ol",
+            "name": "html.Ol",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, content, low, min, reversed, start, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/optgroup",
+            "name": "html.Optgroup",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, disabled, form, name, type, content, low, min, label, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/option",
+            "name": "html.Option",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, disabled, form, name, type, content, low, min, label, selected, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/output",
+            "name": "html.Output",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, htmlFor, content, low, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/p",
+            "name": "html.P",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, content, low, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/param",
+            "name": "html.Param",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, content, low, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/picture",
+            "name": "html.Picture",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, content, low, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/plaintext",
+            "name": "html.Plaintext",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, content, low, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/pre",
+            "name": "html.Pre",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, content, low, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/progress",
+            "name": "html.Progress",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, content, low, max, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/q",
+            "name": "html.Q",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, cite, form, name, type, content, low, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/rb",
+            "name": "html.Rb",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, content, low, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/rp",
+            "name": "html.Rp",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, content, low, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/rt",
+            "name": "html.Rt",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, content, low, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/rtc",
+            "name": "html.Rtc",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, content, low, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/ruby",
+            "name": "html.Ruby",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, content, low, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/s",
+            "name": "html.S",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, content, low, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/samp",
+            "name": "html.Samp",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, content, low, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/script",
+            "name": "html.Script",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, crossOrigin, src, form, name, type, integrity, charSet, content, low, min, async, defer, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/section",
+            "name": "html.Section",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, content, low, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/select",
+            "name": "html.Select",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, controls, autoFocus, disabled, form, name, type, width, autoComplete, content, low, min, multiple, required, size, rows, wrap, default, displayed, multi, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/shadow",
+            "name": "html.Shadow",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, content, low, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/slot",
+            "name": "html.Slot",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, content, low, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/small",
+            "name": "html.Small",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, content, low, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/source",
+            "name": "html.Source",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, media, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, src, form, name, type, sizes, srcSet, content, low, min, size, rows, wrap, default, displayed, date, responsive, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/spacer",
+            "name": "html.Spacer",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, content, low, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/span",
+            "name": "html.Span",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, span, content, low, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, pan, styles"
+          },
+          {
+            "url": "/dash-html-components/strike",
+            "name": "html.Strike",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, content, low, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/strong",
+            "name": "html.Strong",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, content, low, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/sub",
+            "name": "html.Sub",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, content, low, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/summary",
+            "name": "html.Summary",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, content, low, min, summary, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/sup",
+            "name": "html.Sup",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, content, low, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/table",
+            "name": "html.Table",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, content, low, min, summary, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/tbody",
+            "name": "html.Tbody",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, content, low, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/td",
+            "name": "html.Td",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, span, content, low, min, colSpan, headers, rowSpan, cols, rows, wrap, default, displayed, list, tooltip, data, columns, editable, on, elements, pan, styles"
+          },
+          {
+            "url": "/dash-html-components/template",
+            "name": "html.Template",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, content, low, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/textarea",
+            "name": "html.Textarea",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, controls, autoFocus, disabled, form, name, type, autoComplete, content, low, max, min, required, cols, inputMode, maxLength, minLength, placeholder, readOnly, rows, wrap, default, displayed, list, tooltip, data, contents, columns, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/tfoot",
+            "name": "html.Tfoot",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, content, low, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/th",
+            "name": "html.Th",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, rel, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, span, content, low, min, colSpan, headers, rowSpan, cols, rows, wrap, scope, default, displayed, list, tooltip, data, columns, editable, on, elements, pan, styles"
+          },
+          {
+            "url": "/dash-html-components/thead",
+            "name": "html.Thead",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, content, low, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/time",
+            "name": "html.Time",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, dateTime, content, low, min, rows, wrap, default, displayed, date, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/title",
+            "name": "html.Title",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, content, low, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/tr",
+            "name": "html.Tr",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, content, low, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/track",
+            "name": "html.Track",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, src, form, name, type, content, low, min, label, rows, wrap, default, kind, srcLang, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/u",
+            "name": "html.U",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, content, low, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/ul",
+            "name": "html.Ul",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, content, low, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/var",
+            "name": "html.Var",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, content, low, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/video",
+            "name": "html.Video",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, media, rel, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, autoPlay, controls, crossOrigin, loop, muted, preload, src, form, name, type, height, width, content, low, min, start, rows, wrap, default, poster, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/wbr",
+            "name": "html.Wbr",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, content, low, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          },
+          {
+            "url": "/dash-html-components/xmp",
+            "name": "html.Xmp",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, form, name, type, content, low, min, rows, wrap, default, displayed, list, tooltip, data, editable, on, elements, styles"
+          }
+        ]
+      },
+      {
+        "name": "Dash DataTable",
+        "chapters": [
+          {
+            "url": "/datatable",
+            "name": "Overview",
+            "description": "`dash_table.DataTable` is an interactive table that supports rich styling, conditional formatting, editing, sorting, filtering, and more.",
+            "autogenerate_index": true,
+            "preamble": {
+              "props": {
+                "children": [
+                  {
+                    "props": {
+                      "children": "\n# Dash DataTable\n\n",
+                      "dangerously_allow_html": false
+                    },
+                    "type": "Markdown",
+                    "namespace": "dash_core_components"
+                  },
+                  {
+                    "props": {
+                      "children": null,
+                      "height": "30px",
+                      "src": "https://ghbtns.com/github-btn.html?user=plotly&repo=dash-table&type=star&count=true&size=large",
+                      "width": "160px",
+                      "style": {
+                        "border": "none"
+                      }
+                    },
+                    "type": "Iframe",
+                    "namespace": "dash_html_components"
+                  },
+                  {
+                    "props": {
+                      "children": "\n> **Released on November 2, 2018**\n>\n> Dash DataTable is an interactive table component designed for\n> viewing, editing, and exploring large datasets.\n>\n> DataTable is rendered with standard, semantic HTML `<table/>` markup,\n> which makes it accessible, responsive, and easy to style.\n>\n> This component was written from scratch in React.js specifically\n> for the Dash community. Its API was designed to be ergonomic\n> and its behavior is completely customizable through its properties.\n>\n> 7 months in the making, this is the most complex Dash\n> component that Plotly has written, all from the ground-up\n> using React and TypeScript. DataTable was designed with a\n> featureset that allows that Dash users to create complex,\n> spreadsheet driven applications with no compromises.\n> We're excited to continue to work with users and companies\n> that [invest in DataTable's future](https://plot.ly/products/consulting-and-oem/).\n>\n> With `dash-table v4.0.0` - included in `dash v1.0.0` and released on\n> June 20, 2019 - we consider the API stable. We don't expect any\n> breaking changes any time soon, but if there are they will be\n> accompanied by a new major version of dash. If you've been using\n> DataTable with `dash v0.x` / `dash-table v3.x`, check out the\n> [Dash 1.0 Migration Guide](/dash-1-0-migration) for the full list of\n> changes.\n>\n> Otherwise, check out DataTable in the docs below.\n> If you make something cool with it, we'd love to see it! Share it\n> on the [community forum](https://community.plot.ly/t/show-and-tell-community-thread/7554)!\n>\n> -- chriddyp\n",
+                      "dangerously_allow_html": false
+                    },
+                    "type": "Markdown",
+                    "namespace": "dash_core_components"
+                  },
+                  {
+                    "props": {
+                      "children": [
+                        {
+                          "props": {
+                            "children": "Quickstart",
+                            "style": {
+                              "border-bottom": "thin lightgrey solid",
+                              "margin-top": "50px"
+                            }
+                          },
+                          "type": "H2",
+                          "namespace": "dash_html_components"
+                        },
+                        null,
+                        {
+                          "props": {
+                            "children": [
+                              {
+                                "props": {
+                                  "children": "\n            ```shell\n            pip install dash==1.9.1\n            ```\n            ",
+                                  "dangerously_allow_html": false,
+                                  "style": {
+                                    "borderLeft": "thin #C8D4E3 solid"
+                                  }
+                                },
+                                "type": "Markdown",
+                                "namespace": "dash_core_components"
+                              },
+                              {
+                                "props": {
+                                  "children": "```python \nimport dash\nimport dash_table\nimport pandas as pd\n\ndf = pd.read_csv('https://raw.githubusercontent.com/plotly/datasets/master/solar.csv')\n\napp = dash.Dash(__name__)\n\napp.layout = dash_table.DataTable(\n    id='table',\n    columns=[{\"name\": i, \"id\": i} for i in df.columns],\n    data=df.to_dict('records'),\n)\n\nif __name__ == '__main__':\n    app.run_server(debug=True)\n```",
+                                  "dangerously_allow_html": false,
+                                  "style": {
+                                    "borderLeft": "thin #C8D4E3 solid"
+                                  }
+                                },
+                                "type": "Markdown",
+                                "namespace": "dash_core_components"
+                              },
+                              {
+                                "props": {
+                                  "children": {
+                                    "props": {
+                                      "columns": [
+                                        {
+                                          "name": "State",
+                                          "id": "State"
+                                        },
+                                        {
+                                          "name": "Number of Solar Plants",
+                                          "id": "Number of Solar Plants"
+                                        },
+                                        {
+                                          "name": "Installed Capacity (MW)",
+                                          "id": "Installed Capacity (MW)"
+                                        },
+                                        {
+                                          "name": "Average MW Per Plant",
+                                          "id": "Average MW Per Plant"
+                                        },
+                                        {
+                                          "name": "Generation (GWh)",
+                                          "id": "Generation (GWh)"
+                                        }
+                                      ],
+                                      "data": [
+                                        {
+                                          "State": "California",
+                                          "Number of Solar Plants": 289,
+                                          "Installed Capacity (MW)": 4395,
+                                          "Average MW Per Plant": 15.3,
+                                          "Generation (GWh)": 10826
+                                        },
+                                        {
+                                          "State": "Arizona",
+                                          "Number of Solar Plants": 48,
+                                          "Installed Capacity (MW)": 1078,
+                                          "Average MW Per Plant": 22.5,
+                                          "Generation (GWh)": 2550
+                                        },
+                                        {
+                                          "State": "Nevada",
+                                          "Number of Solar Plants": 11,
+                                          "Installed Capacity (MW)": 238,
+                                          "Average MW Per Plant": 21.6,
+                                          "Generation (GWh)": 557
+                                        },
+                                        {
+                                          "State": "New Mexico",
+                                          "Number of Solar Plants": 33,
+                                          "Installed Capacity (MW)": 261,
+                                          "Average MW Per Plant": 7.9,
+                                          "Generation (GWh)": 590
+                                        },
+                                        {
+                                          "State": "Colorado",
+                                          "Number of Solar Plants": 20,
+                                          "Installed Capacity (MW)": 118,
+                                          "Average MW Per Plant": 5.9,
+                                          "Generation (GWh)": 235
+                                        },
+                                        {
+                                          "State": "Texas",
+                                          "Number of Solar Plants": 12,
+                                          "Installed Capacity (MW)": 187,
+                                          "Average MW Per Plant": 15.6,
+                                          "Generation (GWh)": 354
+                                        },
+                                        {
+                                          "State": "North Carolina",
+                                          "Number of Solar Plants": 148,
+                                          "Installed Capacity (MW)": 669,
+                                          "Average MW Per Plant": 4.5,
+                                          "Generation (GWh)": 1162
+                                        },
+                                        {
+                                          "State": "New York",
+                                          "Number of Solar Plants": 13,
+                                          "Installed Capacity (MW)": 53,
+                                          "Average MW Per Plant": 4.1,
+                                          "Generation (GWh)": 84
+                                        }
+                                      ],
+                                      "id": "table"
+                                    },
+                                    "type": "DataTable",
+                                    "namespace": "dash_table"
+                                  },
+                                  "className": "example-container"
+                                },
+                                "type": "Div",
+                                "namespace": "dash_html_components"
+                              }
+                            ],
+                            "className": "toc--chapters"
+                          },
+                          "type": "Ul",
+                          "namespace": "dash_html_components"
+                        }
+                      ],
+                      "className": "toc--section"
+                    },
+                    "type": "Div",
+                    "namespace": "dash_html_components"
+                  },
+                  {
+                    "props": {
+                      "children": [
+                        {
+                          "props": {
+                            "children": "User Guide",
+                            "style": {
+                              "border-bottom": "thin lightgrey solid",
+                              "margin-top": "50px"
+                            }
+                          },
+                          "type": "H2",
+                          "namespace": "dash_html_components"
+                        },
+                        null,
+                        {
+                          "props": {
+                            "children": [],
+                            "className": "toc--chapters"
+                          },
+                          "type": "Ul",
+                          "namespace": "dash_html_components"
+                        }
+                      ],
+                      "className": "toc--section"
+                    },
+                    "type": "Div",
+                    "namespace": "dash_html_components"
+                  }
+                ]
+              },
+              "type": "Div",
+              "namespace": "dash_html_components"
+            },
+            "meta_keywords": "rel, style, cite, form, name, type, height, width, action, content, high, low, min, start, multiple, headers, rows, default, date, multi, responsive, figure, config, list, debug, color, included, data, colors, columns, editable, dropdown, virtualization, on, theme, layout, pan, view"
+          },
+          {
+            "url": "/datatable/reference",
+            "name": "Reference",
+            "description": "\n                            A comprehensive list of all of the\n                            DataTable properties.\n                        ",
+            "meta_keywords": "n_clicks, n_clicks_timestamp, key, media, rel, dir, hidden, style, controls, form, name, type, height, width, open, accept, action, content, low, min, start, label, selected, multiple, required, size, headers, rows, default, options, persistence, persisted_props, persistence_type, displayed, clearable, date, multi, config, list, pattern, refresh, count, included, tooltip, vertical, data, contents, active_cell, columns, include_headers_on_copy_paste, locale_format, css, data_previous, data_timestamp, editable, end_cell, export_columns, export_format, export_headers, fill_width, hidden_columns, is_focused, merge_duplicate_headers, fixed_columns, fixed_rows, column_selectable, row_deletable, row_selectable, selected_cells, selected_rows, selected_columns, selected_row_ids, start_cell, style_as_list_view, page_action, page_current, page_count, page_size, dropdown, dropdown_conditional, dropdown_data, tooltip_conditional, tooltip_data, tooltip_delay, tooltip_duration, filter_query, filter_action, sort_action, sort_mode, sort_by, sort_as_null, style_table, style_cell, style_data, style_filter, style_header, style_cell_conditional, style_data_conditional, style_filter_conditional, style_header_conditional, virtualization, derived_filter_query_structure, derived_viewport_data, derived_viewport_indices, derived_viewport_row_ids, derived_viewport_selected_columns, derived_viewport_selected_rows, derived_viewport_selected_row_ids, derived_virtual_data, derived_virtual_indices, derived_virtual_row_ids, derived_virtual_selected_rows, derived_virtual_selected_row_ids, on, base, units, elements, container, perspective, styles, selection, view"
+          },
+          {
+            "url": "/datatable/sizing",
+            "name": "Sizing",
+            "description": "\n                            All about sizing the DataTable. Examples include:\n                            - Setting the width and the height of the table\n                            - Responsive table design\n                            - Setting the widths of individual columns\n                            - Handling long text\n                            - Fixing rows and columns\n                        ",
+            "meta_keywords": "shape, hidden, style, form, name, height, width, open, sizes, content, low, max, min, multiple, size, headers, rows, default, date, multi, responsive, search, data, contents, columns, fixed_columns, fixed_rows, style_table, style_cell, style_data, style_cell_conditional, on, base, pan, container, styles, range"
+          },
+          {
+            "url": "/datatable/style",
+            "name": "Styling",
+            "description": "\n                            The style of the DataTable is highly customizable. This chapter\n                            includes examples for:\n                            - Conditional formatting\n                            - Displaying multiple rows of headers\n                            - Highlighting rows, columns, and cells\n                            - Styling the table as a list view\n                            - Changing the colors (including a dark theme!)\n\n                            The sizing API for the table has been particularly tricky for\n                            us to nail down, so be sure to read this chapter to understand the nuances,\n                            limitations, and the APIs that we're exploring.\n                        ",
+            "meta_keywords": "children, key, href, lang, style, alt, form, name, type, content, high, low, multiple, headers, rows, default, date, multi, list, color, vertical, data, colors, columns, editable, merge_duplicate_headers, style_as_list_view, filter_query, style_cell, style_data, style_filter, style_header, style_cell_conditional, style_data_conditional, style_filter_conditional, style_header_conditional, on, base, backgroundColor, elements, styles, padding, range, view"
+          },
+          {
+            "url": "/datatable/interactivity",
+            "name": "Sorting, Filtering, Selecting, and Paging Natively",
+            "description": "\n                            The DataTable is interactive. This chapter demonstrates the\n                            interactive features of the table and how to wire up these\n                            interations to Python callbacks. These actions include:\n                            - Paging\n                            - Selecting Rows\n                            - Sorting Columns\n                            - Filtering Data\n                        ",
+            "meta_keywords": "children, key, href, hidden, style, title, alt, form, name, type, height, action, content, high, low, min, start, selected, multiple, size, rows, wrap, default, date, multi, figure, list, pattern, debug, color, count, data, colors, active_cell, columns, editable, end_cell, hidden_columns, column_selectable, row_deletable, row_selectable, selected_cells, selected_rows, selected_columns, selected_row_ids, start_cell, page_action, page_current, page_size, filter_action, sort_action, sort_mode, style_data, style_data_conditional, derived_viewport_indices, derived_viewport_row_ids, derived_viewport_selected_rows, derived_viewport_selected_row_ids, derived_virtual_data, derived_virtual_indices, derived_virtual_row_ids, derived_virtual_selected_rows, derived_virtual_selected_row_ids, on, layout, pan, container, styles, range, selection, view"
+          },
+          {
+            "url": "/datatable/callbacks",
+            "name": "Python-Driven Filtering, Paging, Sorting",
+            "description": "\n                            In Part 3, the paging, sorting, and filtering was done entirely\n                            clientside (in the browser). This means that you need to\n                            load all of the data into the table up-front. If your data is large,\n                            then this can be prohibitively slow.\n\n                            In this chapter, you'll learn how to write your own filtering,\n                            sorting, and paging backends in Python with Dash.\n                            We'll do the data processing with Pandas but you could write your\n                            own routines with SQL or even generate the data on the fly!\n                        ",
+            "meta_keywords": "children, dir, lang, style, alt, disabled, form, name, type, height, action, method, content, low, max, min, start, label, multiple, size, rows, wrap, options, displayed, date, multi, figure, list, debug, color, count, data, columns, page_action, page_current, page_count, page_size, filter_query, filter_action, sort_action, sort_mode, sort_by, on, layout, pan, container, range, sequence"
+          },
+          {
+            "url": "/datatable/editable",
+            "name": "Editable DataTable",
+            "description": "\n                            The DataTable is editable. Like a spreadsheet, it can be used\n                            as an input for controlling models with a variable number\n                            of inputs.\n\n                            This chapter includes recipes for:\n\n                            - Determining which cell has changed\n                            - Filtering out null values\n                            - Adding or removing columns\n                            - Adding or removing rows\n                            - Ensuring that a minimum set of rows are visible\n                            - Running Python computations on certain columns or cells\n                        ",
+            "meta_keywords": "children, n_clicks, download, href, hidden, style, coords, form, name, type, height, width, icon, action, content, low, min, label, selected, multiple, headers, placeholder, rows, options, displayed, clearable, date, multi, figure, list, refresh, debug, color, included, data, contents, filename, columns, include_headers_on_copy_paste, css, data_timestamp, editable, export_format, export_headers, merge_duplicate_headers, row_deletable, dropdown, style_cell, on, base, elements, stylesheet, layout, pan, container, styles, padding, range, view"
+          },
+          {
+            "url": "/datatable/typing",
+            "name": "Typing and User Input Processing",
+            "description": "\n                            In this chapter, you'll learn how to configure the table to\n                            - assign the column type\n                            - change the data presentation\n                            - change the data formatting\n                            - validate or coerce user data input\n                            - apply default behavior for valid and invalid data\n                        ",
+            "meta_keywords": "children, href, form, name, type, accept, action, high, low, max, min, multiple, headers, rows, default, displayed, date, multi, figure, config, list, debug, data, columns, editable, dropdown, on, base, precision, layout, pan, overview, sequence, view"
+          },
+          {
+            "url": "/datatable/dropdowns",
+            "name": "Dropdowns Inside DataTable",
+            "description": "\n                            Cells can be rendered as editable Dropdowns. This is our first\n                            stake in bringing a full typing system to the table.\n                            Rendering cells as dropdowns introduces some complexity in the\n                            markup and so there are a few limitations that you should be aware\n                            of.\n                        ",
+            "meta_keywords": "rel, form, name, label, options, debug, data, columns, editable, dropdown, dropdown_conditional, filter_query, on, layout, pan, container"
+          },
+          {
+            "url": "/datatable/virtualization",
+            "name": "Virtualization",
+            "description": "\n                            Examples using DataTable virtualization.\n                        ",
+            "meta_keywords": "style, form, name, height, width, action, content, low, headers, rows, debug, data, columns, fixed_rows, page_action, style_cell, style_data, style_data_conditional, virtualization, on, layout, pan, view"
+          },
+          {
+            "url": "/datatable/filtering",
+            "name": "Filtering Syntax",
+            "description": "\n                            An explanation and examples of filtering syntax for both frontend\n                            and backend filtering in the DataTable.\n                        ",
+            "meta_keywords": "children, key, href, rel, lang, style, form, name, type, height, width, accept, action, method, content, low, min, start, label, selected, size, placeholder, rows, wrap, default, options, date, config, list, debug, count, data, columns, css, editable, page_action, page_size, filter_query, filter_action, style_cell, virtualization, derived_filter_query_structure, on, base, precision, layout, pan"
+          }
+        ]
+      },
+      {
+        "name": "Dash DAQ",
+        "chapters": [
+          {
+            "url": "/dash-daq",
+            "name": "Overview",
+            "description": "\n                            Beautifully styled technical components for\n                            data acquisition, monitoring, and engineering\n                            applications.\n                            ",
+            "meta_keywords": "children, target, dir, style, controls, name, width, action, max, min, label, date, debug, color, data, on, theme, force, precision, targets, layout, range"
+          },
+          {
+            "url": "/dash-daq/booleanswitch",
+            "name": "dash_daq.BooleanSwitch",
+            "meta_keywords": "children, key, style, disabled, form, name, type, high, low, min, label, default, displayed, date, config, debug, color, vertical, css, on, theme, labelPosition, stylesheet, layout, styles"
+          },
+          {
+            "url": "/dash-daq/colorpicker",
+            "name": "dash_daq.ColorPicker",
+            "meta_keywords": "children, key, style, disabled, form, name, type, width, low, min, label, selected, size, default, displayed, date, config, debug, color, css, on, theme, labelPosition, stylesheet, layout, styles"
+          },
+          {
+            "url": "/dash-daq/darkthemeprovider",
+            "name": "dash_daq.DarkThemeProvider",
+            "meta_keywords": "children, key, target, style, name, type, low, max, min, label, default, date, list, debug, color, colors, css, on, theme, backgroundColor, precision, targets, stylesheet, layout, container, styles, padding"
+          },
+          {
+            "url": "/dash-daq/gauge",
+            "name": "dash_daq.Gauge",
+            "meta_keywords": "key, style, name, type, low, max, min, start, label, multiple, size, default, displayed, date, multi, config, list, step, interval, debug, color, marks, colors, css, on, theme, labelPosition, base, logarithmic, showCurrentValue, units, scale, stylesheet, layout, styles, labels, range"
+          },
+          {
+            "url": "/dash-daq/graduatedbar",
+            "name": "dash_daq.GraduatedBar",
+            "meta_keywords": "key, style, name, type, low, max, min, start, label, multiple, size, default, displayed, date, multi, config, list, step, debug, color, vertical, colors, css, on, labelPosition, showCurrentValue, stylesheet, layout, orientation, styles, range"
+          },
+          {
+            "url": "/dash-daq/indicator",
+            "name": "dash_daq.Indicator",
+            "meta_keywords": "n_clicks, key, style, name, type, height, width, low, min, label, size, default, displayed, date, config, debug, color, colors, css, on, theme, labelPosition, stylesheet, layout, orientation, styles"
+          },
+          {
+            "url": "/dash-daq/joystick",
+            "name": "dash_daq.Joystick",
+            "meta_keywords": "children, key, style, disabled, form, name, type, width, low, min, label, size, default, displayed, date, config, debug, color, css, on, theme, labelPosition, angle, force, stylesheet, layout, orientation, styles"
+          },
+          {
+            "url": "/dash-daq/knob",
+            "name": "dash_daq.Knob",
+            "meta_keywords": "children, key, style, disabled, form, name, type, low, max, min, start, label, multiple, size, default, displayed, date, multi, config, list, interval, debug, color, marks, colors, css, on, theme, labelPosition, scale, stylesheet, layout, styles, labels, range"
+          },
+          {
+            "url": "/dash-daq/leddisplay",
+            "name": "dash_daq.LEDDisplay",
+            "meta_keywords": "key, style, name, type, low, max, min, start, label, size, default, displayed, date, config, step, debug, color, colors, css, on, theme, labelPosition, backgroundColor, stylesheet, layout, styles"
+          },
+          {
+            "url": "/dash-daq/numericinput",
+            "name": "dash_daq.NumericInput",
+            "meta_keywords": "children, key, style, disabled, form, name, type, low, max, min, label, size, default, displayed, date, config, debug, css, on, theme, labelPosition, stylesheet, layout, styles"
+          },
+          {
+            "url": "/dash-daq/powerbutton",
+            "name": "dash_daq.PowerButton",
+            "meta_keywords": "children, key, style, disabled, form, name, type, low, min, label, size, default, displayed, date, config, debug, color, css, on, theme, labelPosition, stylesheet, layout, styles"
+          },
+          {
+            "url": "/dash-daq/precisioninput",
+            "name": "dash_daq.PrecisionInput",
+            "meta_keywords": "children, key, style, disabled, form, name, type, low, max, min, label, size, default, displayed, date, figure, config, debug, css, on, theme, labelPosition, precision, stylesheet, layout, styles"
+          },
+          {
+            "url": "/dash-daq/slider",
+            "name": "dash_daq.Slider",
+            "meta_keywords": "children, key, target, style, disabled, form, name, type, low, max, min, start, label, multiple, size, default, updatemode, date, multi, config, list, step, debug, color, marks, dots, included, vertical, colors, css, on, theme, labelPosition, showCurrentValue, targets, handleLabel, stylesheet, layout, orientation, styles, labels, range"
+          },
+          {
+            "url": "/dash-daq/stopbutton",
+            "name": "dash_daq.StopButton",
+            "meta_keywords": "children, n_clicks, key, style, disabled, form, name, type, width, low, min, label, size, default, displayed, date, config, list, debug, css, on, theme, labelPosition, buttonText, stylesheet, layout, styles"
+          },
+          {
+            "url": "/dash-daq/tank",
+            "name": "dash_daq.Tank",
+            "meta_keywords": "key, style, name, type, height, width, low, max, min, start, label, size, default, displayed, date, interval, debug, color, marks, css, on, labelPosition, base, logarithmic, showCurrentValue, units, scale, stylesheet, layout, styles, labels, range"
+          },
+          {
+            "url": "/dash-daq/thermometer",
+            "name": "dash_daq.Thermometer",
+            "meta_keywords": "key, style, name, type, height, width, low, max, min, start, label, size, default, displayed, date, config, interval, debug, color, marks, css, on, theme, labelPosition, base, logarithmic, showCurrentValue, units, scale, stylesheet, layout, styles, labels, range"
+          },
+          {
+            "url": "/dash-daq/toggleswitch",
+            "name": "dash_daq.ToggleSwitch",
+            "meta_keywords": "children, key, style, disabled, form, name, type, high, low, min, label, size, default, displayed, date, config, list, debug, color, vertical, css, on, theme, labelPosition, stylesheet, layout, orientation, styles"
+          }
+        ]
+      },
+      {
+        "name": "Dash Canvas",
+        "chapters": [
+          {
+            "url": "/canvas",
+            "name": "Overview & Reference",
+            "description": "Image rendering, drawing, annotations for image processing applications.",
+            "meta_keywords": "children, href, media, rel, shape, style, src, form, name, type, height, width, open, action, content, low, max, min, start, label, required, default, date, config, step, debug, color, included, data, contents, filename, columns, style_cell, on, scale, layout, pan, zoom, annotations, brush"
+          }
+        ]
+      },
+      {
+        "name": "Dash Cytoscape",
+        "chapters": [
+          {
+            "url": "/cytoscape",
+            "name": "Overview",
+            "description": "\n                            Dash Cytoscape is our new network visualization\n                            component. It offers a declarative and pythonic\n                            interface to create beautiful, customizable,\n                            interactive and reactive graphs.\n                            ",
+            "autogenerate_index": true,
+            "preamble": {
+              "props": {
+                "children": [
+                  {
+                    "props": {
+                      "children": "\n# Dash Cytoscape\n\n",
+                      "dangerously_allow_html": false
+                    },
+                    "type": "Markdown",
+                    "namespace": "dash_core_components"
+                  },
+                  {
+                    "props": {
+                      "children": null,
+                      "height": "30px",
+                      "src": "https://ghbtns.com/github-btn.html?user=plotly&repo=dash-cytoscape&type=star&count=true&size=large",
+                      "width": "160px",
+                      "style": {
+                        "border": "none"
+                      }
+                    },
+                    "type": "Iframe",
+                    "namespace": "dash_html_components"
+                  },
+                  {
+                    "props": {
+                      "children": "\n> Released on February 5th, 2019**\n>\n> Dash Cytoscape is a graph visualization component for creating easily\n> customizable, high-performance, interactive, and web-based networks. It\n> extends and renders [Cytoscape.js](http://js.cytoscape.org), and\n> offers deep integration with Dash layouts and callbacks, enabling the\n> creation of powerful networks in conjunction with the rich collection of\n> Dash components, as well as established computational biology and network\n> science libraries such as Biopython and networkX.\n>\n> -- xhlulu and the Dash Team\n",
+                      "dangerously_allow_html": false
+                    },
+                    "type": "Markdown",
+                    "namespace": "dash_core_components"
+                  },
+                  {
+                    "props": {
+                      "children": [
+                        {
+                          "props": {
+                            "children": "Quickstart",
+                            "style": {
+                              "border-bottom": "thin lightgrey solid",
+                              "margin-top": "50px"
+                            }
+                          },
+                          "type": "H2",
+                          "namespace": "dash_html_components"
+                        },
+                        null,
+                        {
+                          "props": {
+                            "children": [
+                              {
+                                "props": {
+                                  "children": "\n            ```shell\n            pip install dash-cytoscape==0.0.5\n            ```\n            ",
+                                  "dangerously_allow_html": false,
+                                  "style": {
+                                    "borderLeft": "thin #C8D4E3 solid"
+                                  }
+                                },
+                                "type": "Markdown",
+                                "namespace": "dash_core_components"
+                              },
+                              {
+                                "props": {
+                                  "children": "```python \nimport dash\nimport dash_cytoscape as cyto\nimport dash_html_components as html\n\napp = dash.Dash(__name__)\n\napp.layout = html.Div([\n    cyto.Cytoscape(\n        id='cytoscape-two-nodes',\n        layout={'name': 'preset'},\n        style={'width': '100%', 'height': '400px'},\n        elements=[\n            {'data': {'id': 'one', 'label': 'Node 1'}, 'position': {'x': 75, 'y': 75}},\n            {'data': {'id': 'two', 'label': 'Node 2'}, 'position': {'x': 200, 'y': 200}},\n            {'data': {'source': 'one', 'target': 'two'}}\n        ]\n    )\n])\n\nif __name__ == '__main__':\n    app.run_server(debug=True)\n```",
+                                  "dangerously_allow_html": false,
+                                  "style": {
+                                    "borderLeft": "thin #C8D4E3 solid"
+                                  }
+                                },
+                                "type": "Markdown",
+                                "namespace": "dash_core_components"
+                              },
+                              {
+                                "props": {
+                                  "children": {
+                                    "props": {
+                                      "children": [
+                                        {
+                                          "props": {
+                                            "id": "cytoscape-two-nodes",
+                                            "style": {
+                                              "width": "100%",
+                                              "height": "400px"
+                                            },
+                                            "elements": [
+                                              {
+                                                "data": {
+                                                  "id": "one",
+                                                  "label": "Node 1"
+                                                },
+                                                "position": {
+                                                  "x": 75,
+                                                  "y": 75
+                                                }
+                                              },
+                                              {
+                                                "data": {
+                                                  "id": "two",
+                                                  "label": "Node 2"
+                                                },
+                                                "position": {
+                                                  "x": 200,
+                                                  "y": 200
+                                                }
+                                              },
+                                              {
+                                                "data": {
+                                                  "source": "one",
+                                                  "target": "two"
+                                                }
+                                              }
+                                            ],
+                                            "layout": {
+                                              "name": "preset"
+                                            }
+                                          },
+                                          "type": "Cytoscape",
+                                          "namespace": "dash_cytoscape"
+                                        }
+                                      ]
+                                    },
+                                    "type": "Div",
+                                    "namespace": "dash_html_components"
+                                  },
+                                  "className": "example-container"
+                                },
+                                "type": "Div",
+                                "namespace": "dash_html_components"
+                              },
+                              {
+                                "props": {
+                                  "children": "\n> Dash Cytoscape graphs are interactive! Scroll to zoom and drag on\n> the canvas to move the entire graph around. You can move nodes by\n> *dragging* it, or by *clicking, holding, and moving your mouse*\n> to the desired location (and click again to release).\n>\n> This also work in mobile! Tap-and-hold on a node to move it, or on\n> the canvas to move the entire graph. Pinch your fingers outwards to\n> zoom in, or pinch them together to zoom out.\n",
+                                  "dangerously_allow_html": false
+                                },
+                                "type": "Markdown",
+                                "namespace": "dash_core_components"
+                              }
+                            ],
+                            "className": "toc--chapters"
+                          },
+                          "type": "Ul",
+                          "namespace": "dash_html_components"
+                        }
+                      ],
+                      "className": "toc--section"
+                    },
+                    "type": "Div",
+                    "namespace": "dash_html_components"
+                  },
+                  {
+                    "props": {
+                      "children": [
+                        {
+                          "props": {
+                            "children": "Dash Cytoscape User Guide",
+                            "style": {
+                              "border-bottom": "thin lightgrey solid",
+                              "margin-top": "50px"
+                            }
+                          },
+                          "type": "H2",
+                          "namespace": "dash_html_components"
+                        },
+                        null,
+                        {
+                          "props": {
+                            "children": [],
+                            "className": "toc--chapters"
+                          },
+                          "type": "Ul",
+                          "namespace": "dash_html_components"
+                        }
+                      ],
+                      "className": "toc--section"
+                    },
+                    "type": "Div",
+                    "namespace": "dash_html_components"
+                  }
+                ]
+              },
+              "type": "Div",
+              "namespace": "dash_html_components"
+            },
+            "meta_keywords": "rel, target, style, form, name, height, width, action, high, start, label, date, list, debug, data, on, base, elements, layout, zoom, view"
+          },
+          {
+            "url": "/cytoscape/elements",
+            "name": "Basic Usage & Elements",
+            "description": "\n                        Overview of element declaration and manipulation.\n                        ",
+            "meta_keywords": "children, key, href, shape, target, style, form, name, height, width, accept, content, low, start, label, selected, multiple, required, size, multi, figure, config, list, debug, color, count, data, on, base, angle, elements, stylesheet, layout, pan, autoungrabify, autounselectify, styles, range"
+          },
+          {
+            "url": "/cytoscape/layout",
+            "name": "Layouts",
+            "description": "\n                        Description of built-in layouts, and how to modify their properties.\n                        ",
+            "meta_keywords": "children, key, href, target, dir, style, form, name, height, width, accept, action, method, low, min, start, label, cols, rows, default, options, date, search, data, on, base, angle, force, elements, layout"
+          },
+          {
+            "url": "/cytoscape/styling",
+            "name": "Styling",
+            "description": "\n                        Methods to style elements with a CSS-like syntax.\n                        ",
+            "meta_keywords": "key, media, shape, target, dir, style, src, name, type, height, width, accept, method, content, high, low, min, start, label, multiple, rows, default, options, displayed, multi, config, list, pattern, debug, color, data, colors, on, scale, angle, elements, stylesheet, layout, styles"
+          },
+          {
+            "url": "/cytoscape/callbacks",
+            "name": "Callbacks",
+            "description": "\n                        Methods to combine Dash callbacks to update your Cytoscape object.\n                        ",
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, href, target, dir, style, alt, name, type, height, width, accept, low, max, start, label, multiple, default, options, clearable, date, multi, animate, debug, color, data, dropdown, on, force, elements, stylesheet, layout, overview, styles, view"
+          },
+          {
+            "url": "/cytoscape/events",
+            "name": "User Interactions",
+            "description": "\n                        Overview of user-interaction events that trigger callbacks in Dash,\n                        and how to use them to update the Cytoscape component.\n                        ",
+            "meta_keywords": "children, href, shape, target, style, form, name, height, width, open, action, content, low, min, start, label, selected, multiple, size, default, date, multi, list, debug, color, data, dropdown, on, elements, stylesheet, layout, pan, tapNode, tapNodeData, tapEdge, tapEdgeData, mouseoverNodeData, mouseoverEdgeData, selectedNodeData, opacity, styles, selection"
+          },
+          {
+            "url": "/cytoscape/biopython",
+            "name": "Biopython Examples",
+            "description": "\n                        Examples of applications in bioinformatics using Biopython.\n                        ",
+            "meta_keywords": "children, shape, target, style, form, name, height, width, method, high, low, max, min, label, cols, config, list, step, debug, color, data, on, angle, elements, stylesheet, layout, mouseoverEdgeData, opacity, sequences, styles, sequence"
+          },
+          {
+            "url": "/cytoscape/reference",
+            "name": "Reference",
+            "description": "\n                        Comprehensive list of all of the Cytoscape properties.\n                        ",
+            "meta_keywords": "children, key, rel, shape, target, dir, draggable, style, form, name, height, width, accept, method, content, low, max, min, start, label, selected, multiple, required, size, cols, rows, default, options, multi, animate, list, refresh, color, search, data, on, base, scale, elements, stylesheet, layout, pan, zoom, panningEnabled, userPanningEnabled, minZoom, maxZoom, zoomingEnabled, userZoomingEnabled, boxSelectionEnabled, autoungrabify, autolock, autounselectify, autoRefreshLayout, tapNode, tapNodeData, tapEdge, tapEdgeData, mouseoverNodeData, mouseoverEdgeData, selectedNodeData, selectedEdgeData, overview, ancestors, styles, padding, selection, view"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Creating Your Own Components",
+    "chapters": [
+      {
+        "name": "React for Python Developers",
+        "description": "\n                    A tutorial on how to program in React and JavaScript\n                    for Python developers.\n                    ",
+        "url": "/react-for-python-developers",
+        "meta_keywords": "children, key, download, rel, target, dir, lang, style, src, form, name, type, open, action, method, low, min, start, label, multiple, required, size, rows, wrap, default, message, displayed, date, multi, config, list, step, refresh, debug, color, included, data, dropdown, on, elements, layout, extension, styles, view"
+      },
+      {
+        "name": "Build Your Own Components",
+        "description": "Dash components are built with [React.js](https://reactjs.org/). Dash provides a React &rarr; Dash toolchain that generates a Dash-compatible interface to these components in Python.",
+        "url": "/plugins",
+        "meta_keywords": ""
+      },
+      {
+        "name": "Integrating D3.js into Dash Components",
+        "description": "\n                    Tutorials and resources on encapsulating D3.js graphs in\n                    Dash-friendly React components.\n                    Includes two sample components: a D3.js network graph\n                    and a D3.js sunburst chart.\n                    ",
+        "url": "/d3-react-components",
+        "meta_keywords": ""
+      }
+    ]
+  },
+  {
+    "name": "Beyond the Basics",
+    "chapters": [
+      {
+        "url": "/performance",
+        "name": "Performance",
+        "description": "There are two main ways to speed up dash apps: caching and using WebGL chart types.",
+        "meta_keywords": "children, rel, shape, dir, style, alt, form, name, type, width, sizes, high, low, max, min, start, label, async, multiple, required, size, rows, options, date, multi, figure, config, list, step, debug, color, data, columns, css, dropdown, on, base, stylesheet, layout, pan, annotations, styles, range"
+      },
+      {
+        "url": "/live-updates",
+        "name": "Live Updates",
+        "description": "\n                    Update your apps on page load or\n                    on a predefined interval (e.g. every 5 seconds)\n                ",
+        "meta_keywords": "children, href, style, alt, form, name, type, action, low, min, start, cols, rows, default, date, figure, list, interval, n_intervals, refresh, debug, vertical, data, css, dropdown, on, stylesheet, layout, pan, styles, padding, range, legend"
+      },
+      {
+        "url": "/external-resources",
+        "name": "Adding CSS & JS and Overriding the Page-Load Template",
+        "description": "\n                    New in dash v0.22.0! Learn how to add custom CSS and JS to your\n                    application with the `assets` directory. Also, learn how to\n                    customize the HTML template that Dash serves on page load in order\n                    to add custom meta tags, customize the page's title, and more.\n                ",
+        "meta_keywords": "children, key, download, href, rel, dir, lang, style, title, alt, controls, src, form, name, type, height, width, icon, method, integrity, content, high, low, min, start, required, size, rows, default, date, config, pattern, refresh, debug, color, pathname, search, included, data, contents, filename, css, on, base, scale, stylesheet, layout, zoom, container, styles, padding, range, view"
+      },
+      {
+        "url": "/urls",
+        "name": "URL Routing and Multiple Apps",
+        "description": "Dash provides two components (`dcc.Link` and `dcc.Location`) that allow you to easily make fast multipage apps using its own \"Single Page App (SPA)\" design pattern.",
+        "meta_keywords": "children, n_clicks, href, rel, style, form, name, type, content, low, label, selected, required, rows, options, date, multi, config, refresh, debug, pathname, included, css, dropdown, on, elements, stylesheet, layout, styles, range, view"
+      },
+      {
+        "url": "/persistence",
+        "name": "Persisting User Preferences & Control Values",
+        "description": "\n                    (Released September 2019 with Dash 1.3) Save user choices\n                    across page reloads, or just when removing and re-adding a\n                    component. Learn how to use persistence, and how to enable it\n                    in components you write yourself.\n                ",
+        "meta_keywords": "children, n_clicks, key, rel, lang, form, name, type, open, low, label, multiple, headers, rows, default, options, persistence, persisted_props, persistence_type, date, multi, list, refresh, debug, count, included, data, columns, editable, dropdown, on, layout, container"
+      },
+      {
+        "url": "/devtools",
+        "name": "Dev tools",
+        "description": "Dash dev tools reference",
+        "meta_keywords": "children, download, href, rel, dir, name, type, icon, action, low, max, min, selected, rows, default, date, config, step, interval, refresh, debug, hash, count, included, css, dropdown, on, angle"
+      },
+      {
+        "url": "/loading-states",
+        "name": "Loading States",
+        "description": "Getting the loading state of a component and adding a loading component",
+        "meta_keywords": "children, href, target, hidden, form, name, type, content, low, min, wrap, default, debug, color, data, css, on, layout"
+      },
+      {
+        "url": "/testing",
+        "name": "Dash Testing",
+        "description": "An introduction to testing your dash app with selenium",
+        "meta_keywords": "children, key, download, rel, target, dir, style, title, alt, controls, form, name, type, icon, open, accept, action, method, content, high, low, min, start, multiple, required, rows, wrap, default, options, message, date, multi, responsive, figure, config, list, pattern, step, count, included, filename, css, on, base, angle, elements, layout, zoom, container, selection, view"
+      }
+    ]
+  },
+  {
+    "name": "Production",
+    "chapters": [
+      {
+        "url": "/authentication",
+        "name": "Authentication",
+        "description": "",
+        "meta_keywords": "children, n_clicks, key, href, rel, dir, style, title, form, name, method, content, low, min, label, options, date, figure, list, debug, count, data, css, dropdown, on, base, stylesheet, layout, pan, container, styles, view"
+      },
+      {
+        "url": "/deployment",
+        "name": "Deployment",
+        "description": "To share a Dash app, you need to \"deploy\" your Dash app to a server",
+        "meta_keywords": "children, href, dir, style, form, name, open, low, start, label, selected, default, options, date, debug, count, filename, css, dropdown, on, base, scale, stylesheet, layout, pan, styles, view"
+      },
+      {
+        "url": "/integrating-dash",
+        "name": "Integrating Dash with Existing Web Apps",
+        "description": "Strategies for integrating Dash apps with existing web apps.",
+        "meta_keywords": "children, href, rel, dir, src, name, type, height, width, method, low, min, multiple, required, multi, list, debug, pathname, on, base, layout"
+      }
+    ]
+  },
+  {
+    "name": "Getting Help",
+    "chapters": [
+      {
+        "url": "https://community.plot.ly/c/dash",
+        "description": "",
+        "name": "The Dash Community Forum"
+      },
+      {
+        "url": "/support",
+        "name": "Support and Contact",
+        "description": "",
+        "meta_keywords": ""
+      }
+    ]
+  },
+  {
+    "name": "Dash Enterprise",
+    "description": "\n            Dash Enterprise is Plotly's commercial offering for managing\n            and improving your Dash apps in your organization.\n            ",
+    "chapters": [
+      {
+        "name": "About Dash Enterprise",
+        "url": "https://plot.ly/dash/"
+      },
+      {
+        "name": "Dash Enterprise Documentation",
+        "chapters": [
+          {
+            "name": "Overview",
+            "url": "/dash-enterprise",
+            "meta_keywords": "dir, alt, method, low, min, start, date, figure, config, list, data, on, base"
+          },
+          {
+            "url": "/dash-enterprise/initialize",
+            "name": "Part 1. Initialize Dash Apps on Dash Enterprise",
+            "description": "Initialize Dash Apps on Plotly Enterprise",
+            "meta_keywords": "children, href, form, name, open, low, min, start, count, on, overview, view"
+          },
+          {
+            "url": "/dash-enterprise/deployment",
+            "name": "Part 2. Deploy Dash Apps on Dash Enterprise",
+            "description": "Deploy Dash Apps on Dash Enterprise",
+            "meta_keywords": "children, href, form, low, on"
+          },
+          {
+            "url": "/dash-enterprise/application-structure",
+            "name": "Application Structure",
+            "description": "Ensure that your app meets all the requirements for deployment.",
+            "meta_keywords": "children, download, href, rel, dir, lang, style, form, name, open, content, low, min, required, placeholder, options, contents, css, on, base, stylesheet, container, styles"
+          },
+          {
+            "url": "/dash-enterprise/static-assets",
+            "name": "Adding Static Assets",
+            "description": "Learn how to include custom CSS, JS, and images with the `assets` directory.",
+            "meta_keywords": "children, href, rel, dir, src, form, name, low, included, on, sequence"
+          },
+          {
+            "url": "/dash-enterprise/configure-system-dependencies",
+            "name": "Configuring System Dependencie",
+            "description": "Install and configure system dependencies such as database drivers or the Java JRE environment.",
+            "meta_keywords": "children, href, form, name, action, low, figure, config, data, on, base"
+          },
+          {
+            "url": "/dash-enterprise/portal",
+            "name": "Dash App Portal",
+            "description": "Learn about the Dash App Portal ",
+            "meta_keywords": "children, href, style, form, low, min, selected, multiple, default, multi, data, on, view"
+          },
+          {
+            "url": "/dash-enterprise/admin-panel",
+            "name": "Admin Panel",
+            "description": "Manage users in the Admin Panel ",
+            "meta_keywords": "children, href, alt, form, name, low, min, summary, count, dropdown, on, pan, view"
+          },
+          {
+            "url": "/dash-enterprise/privacy",
+            "name": "Dash App Privacy",
+            "description": "Dash App Privacy and Managing Collaborators",
+            "meta_keywords": "children, href, form, name, list, on, view"
+          },
+          {
+            "url": "/dash-enterprise/redis-database",
+            "name": "Linking a Redis Database",
+            "description": "Create and link an in-memory database to your Dash Apps.",
+            "meta_keywords": "children, download, href, rel, form, name, low, start, multiple, options, multi, list, data, dropdown, on, base"
+          },
+          {
+            "url": "/dash-enterprise/environment-variables",
+            "name": "Setting Enviornment Variables",
+            "description": "Environment variables are commonly used to store secret variables like database passwords.",
+            "meta_keywords": "children, href, form, name, default, data, on, base"
+          },
+          {
+            "url": "/dash-enterprise/map-local-directories",
+            "name": "Mapping Local Directories",
+            "description": "Directory mappings allow you to make directories on the Dash Enterprise available to your app.",
+            "meta_keywords": "children, href, dir, form, name, low, min, default, message, config, pathname, data, on, container, perspective"
+          },
+          {
+            "url": "/dash-enterprise/ssh",
+            "name": "Authenticating to Dash Enterprise with SSH",
+            "description": "There are two methods to deploy Dash Apps: HTTPS and SSH and we recommend getting started with the HTTPS method.",
+            "meta_keywords": "children, key, href, form, name, method, low, figure, config, on"
+          },
+          {
+            "url": "/dash-enterprise/cli",
+            "name": "Managing Dash Apps via the Command Line",
+            "description": "A list of commands to manage Dash apps available  to app owners from the command line via ssh.",
+            "meta_keywords": "children, key, href, rel, dir, form, name, type, content, low, min, start, multiple, default, multi, config, list, color, count, data, colors, contents, on, base, scale, container"
+          },
+          {
+            "url": "/dash-enterprise/app-authentication",
+            "name": "Dash Enterprise Auth Features",
+            "description": "Accessing User Authentication Data in your Dash App",
+            "meta_keywords": "children, href, style, title, form, name, method, low, label, default, options, date, figure, config, debug, data, columns, css, dropdown, on, stylesheet, layout, container, styles, view"
+          },
+          {
+            "url": "/dash-enterprise/checks",
+            "name": "Dash Enterprise App Health Checks",
+            "description": "Create custom checks to ensure that a newly deployed app can serve traffic.",
+            "meta_keywords": "children, href, rel, dir, alt, form, name, content, low, min, default, figure, config, count, included, css, on, layout"
+          },
+          {
+            "url": "/dash-enterprise/private-packages",
+            "name": "Adding Private Python Packages",
+            "description": "Intsall private python packages in your Dash Apps.",
+            "meta_keywords": "children, href, rel, form, method, on"
+          },
+          {
+            "url": "/dash-enterprise/celery-process",
+            "name": "Linking a Celery Process",
+            "description": "Add a task queue to your Dash Apps.",
+            "meta_keywords": "children, href, rel, form, async, date, data, on"
+          },
+          {
+            "url": "/dash-enterprise/staging-app",
+            "name": "Create a Staging Dash App ",
+            "description": "Use a staged Dash App to test changes before updating your prodcution Dash App.",
+            "meta_keywords": "children, href, form, name, figure, on"
+          },
+          {
+            "url": "/dash-enterprise/pdf-service",
+            "name": "Dash Enterprise PDF Service",
+            "description": "Utilize the Dash Enterprise API endpoint for creating PDF exports of your Dash applications",
+            "meta_keywords": "children, n_clicks, key, download, href, target, dir, form, name, type, height, width, sizes, content, high, low, min, size, rows, default, options, list, debug, data, page_size, on, base, elements, layout, pan, container"
+          },
+          {
+            "url": "/dash-enterprise/analytics",
+            "name": "App Analytics",
+            "description": "View app analytics such as last updated, CPU usage, Memory Usage, and more.",
+            "meta_keywords": "children, href, form, on"
+          },
+          {
+            "url": "/dash-enterprise/logs",
+            "name": "App Logs",
+            "description": "Check your Dash App's logs via the Dash\n                        Enterprise UI or via the command line.",
+            "meta_keywords": "children, href, form, name, open, method, low, min, default, displayed, figure, list, color, data, colors, on, view"
+          },
+          {
+            "url": "/dash-enterprise/troubleshooting",
+            "name": "Common Errors",
+            "description": "Common errors when deploying Dash Apps.",
+            "meta_keywords": "children, key, href, form, name, method, low, start, label, async, size, options, message, date, multi, config, list, debug, count, included, data, on, scale, container"
+          },
+          {
+            "url": "/dash-enterprise/support",
+            "name": "Support",
+            "description": "Having trouble deploying your app? Our dedicated support team is available to help you out.",
+            "meta_keywords": "children, download, href, form, low, min, message, count, on"
+          },
+          {
+            "url": "/dash-enterprise/git",
+            "name": "Advanced Git",
+            "description": "A reference for git commands and how they are used with Dash Enterprise.",
+            "meta_keywords": "children, href, alt, form, name, low, required, default, on, view"
+          }
+        ]
+      }
+    ]
+  }
+]

@@ -1,5 +1,6 @@
 import dash_html_components as html
 import dash_core_components as dcc
+import json
 
 from dash.dependencies import Input, Output
 
@@ -10,6 +11,7 @@ from dash_docs import tools
 from dash_docs.tutorial import home
 
 from dash_docs.tutorial import search
+import dash_user_guide_components as dugc
 
 def create_contents(contents):
     h = []
@@ -19,6 +21,9 @@ def create_contents(contents):
         else:
             h.append(html.Li(i))
     return html.Ul(h)
+
+with open('SIDEBAR-INDEX.json', 'r') as f:
+    SIDEBAR_INDEX = json.loads(f.read())
 
 
 header = html.Div(
@@ -59,17 +64,27 @@ app.layout = html.Div(
         dcc.Store(id='memory-output'),
         dcc.Store(id='local', storage_type='local'),
         dcc.Store(id='session', storage_type='session'),
-        header,
-        html.Div([
-            html.Div(id='wait-for-layout'),
+
+        # div used in tests
+        html.Div(id='wait-for-layout'),
+
+        dcc.Location(id='location', refresh=False),
+
+        html.Div(className='content-wrapper', children=[
+            header,
+            dugc.Sidebar(urls=SIDEBAR_INDEX),
+
             html.Div([
                 html.Div(
                     html.Div(id='chapter', className='content'),
                     className='content-container'
                 ),
-            ], className='container-width')
-        ], className='background'),
-        dcc.Location(id='location', refresh=False),
+            ], className='rhs-content container-width'),
+
+            dugc.PageMenu()
+
+        ]),
+
     ]
 )
 
