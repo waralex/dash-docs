@@ -15,6 +15,7 @@ import {
     slice,
     without
 } from 'ramda';
+import Link from 'dash-core-components/lib/components/Link.react.js';
 
 /*
  * event polyfill for IE
@@ -237,12 +238,16 @@ function link(chapter) {
     }
     const active = window.location.pathname.trimRight('/') == chapter.url.trimRight('/');
 
-    // TODO - Replace with a dcc.Link
-    return (
-        <a href={chapter.url} title={title} className={`${active ? 'active': ''}`}>
-            {chapter.name}
-        </a>
-    );
+    const linkProps = {
+        href: chapter.url,
+        title: title,
+        className: `${active ? 'active': ''}`,
+        children: chapter.name
+    };
+    if (chapter.url.startsWith('http')) {
+        return <a {...linkProps}/>;
+    }
+    return <Link {...linkProps}/>;
 }
 
 class TreeSidebar extends Component {
