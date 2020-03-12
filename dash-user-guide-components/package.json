@@ -24,6 +24,7 @@
   "author": "Chris P <chris@plot.ly>",
   "license": "MIT",
   "dependencies": {
+    "@plotly/dash-component-plugins": "^1.2.0",
     "dash-core-components": "^1.8.1",
     "ramda": "^0.26.1"
   },

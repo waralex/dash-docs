@@ -150,6 +150,10 @@ export default class Sidebar extends Component {
                     <TreeSidebar
                         urls={urls}
                         depth={depth}
+                        force_closed={
+                            window.location.pathname === '/' &&
+                            this.state.search === ''
+                        }
                     />
                 }
             </div>
@@ -252,7 +256,7 @@ function link(chapter) {
 
 class TreeSidebar extends Component {
     render() {
-        const {all_open, depth, urls} = this.props;
+        const {force_closed, depth, urls} = this.props;
         const chapter_elements = [];
 
         for(let i=0; i<urls.length; i++) {
@@ -263,6 +267,8 @@ class TreeSidebar extends Component {
             } else if (chapter.chapters) {
 
                 open = (
+                    !force_closed
+                    &&
                     (
                         has('urls', chapter)
                         &&
@@ -287,9 +293,9 @@ class TreeSidebar extends Component {
                     <details open={open}>
                         <summary>{chapter.name}</summary>
                         <TreeSidebar
-                            all_open={all_open}
                             urls={chapter.chapters}
                             depth={depth+1}
+                            force_closed={force_closed}
                         />
                     </details>
                 );
