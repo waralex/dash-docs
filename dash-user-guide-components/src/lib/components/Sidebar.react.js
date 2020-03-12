@@ -15,6 +15,7 @@ import {
     slice,
     without
 } from 'ramda';
+import { History } from '@plotly/dash-component-plugins';
 import Link from 'dash-core-components/lib/components/Link.react.js';
 
 /*
@@ -107,7 +108,21 @@ export default class Sidebar extends Component {
     constructor(props) {
         super(props);
         this.state = {search: ''};
+        this.onLocationChanged = this.onLocationChanged.bind(this);
     }
+
+    onLocationChanged() {
+        this.forceUpdate();
+    }
+
+    componentDidMount() {
+        this._clearOnLocationChanged = History.onChange(this.onLocationChanged);
+    }
+
+    componentWillUnmount() {
+        this._clearOnLocationChanged();
+    }
+
 
     render() {
         const {depth, urls} = this.props;
