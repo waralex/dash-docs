@@ -3,9 +3,16 @@ if (window.location.pathname.replace(/\//g, '') === 'search'){
   var searchSelector = '#search-input';
 
   function searchInterval(){
-    var useIndex = window.location.href.indexOf('dashr.') > -1 ?
+    var rDocs = window.location.href.indexOf('dashr.') > -1
+    var useIndex = rDocs ?
       'dashr_docs': 
       'dash_docs';
+    var searchSelector = rDocs ?
+      '#search-inputR':
+      '#search-input';
+    var hitsContainer = rDocs ?
+      '#hitsR':
+      '#hits';
     if (!document.querySelector(searchSelector)) {
       return;
     }
@@ -43,7 +50,7 @@ if (window.location.pathname.replace(/\//g, '') === 'search'){
     
     search.addWidget(
       instantsearch.widgets.hits({
-        container: '#hits',
+        container: hitsContainer,
         templates: {
           item: document.getElementById('hit-template').innerHTML,
           empty: "We didn't find any results for the search <em>\"{{query}}\"</em>"
