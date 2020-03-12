@@ -49,7 +49,7 @@ class PageMenu extends Component {
                  * is fixed
                  */
                 links.push(`
-                    <div>
+                    <div class="page-menu--link-parent">
                         <span class="page-menu--link" onClick="pageMenuScroll('${el.id}')">
                             ${el.innerText}
                         </span>

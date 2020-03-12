@@ -71,6 +71,9 @@ h6 { font-size: 20px; line-height: 1.6;  letter-spacing: 0; margin-bottom: 0.75r
     font-size: 13px;
     opacity: 0.5;
 }
+.page-menu--link-parent {
+    margin-bottom: 4px;
+}
 .page-menu--link {
     border-bottom-style: dotted;
     text-decoration: none;
