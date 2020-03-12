@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {replace} from 'ramda';
+import { History } from '@plotly/dash-component-plugins';
+
 
 class PageMenu extends Component {
     constructor(props) {
