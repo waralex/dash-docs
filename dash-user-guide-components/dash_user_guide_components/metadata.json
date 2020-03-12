@@ -2,7 +2,15 @@
   "src/lib/components/PageMenu.react.js": {
     "description": "",
     "displayName": "PageMenu",
-    "methods": [],
+    "methods": [
+      {
+        "name": "onLocationChanged",
+        "docblock": null,
+        "modifiers": [],
+        "params": [],
+        "returns": null
+      }
+    ],
     "props": {
       "id": {
         "type": {
