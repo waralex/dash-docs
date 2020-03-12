@@ -5,6 +5,6 @@ metas <- list(
        content = 'Dash User Guide and Documentation. Dash is a framework for building analytical web apps in Python and R.')
 )
 
-app <- Dash$new(meta_tags = metas)
+app <- Dash$new(assets_folder="dash_docs/assets", meta_tags = metas)
 
 app$title("Dash User Guide and Documentation - Dash by Plotly")
