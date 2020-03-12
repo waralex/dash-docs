@@ -1,5 +1,7 @@
 library(dash)
 
+setwd("app")
+
 metas <- list(
   list(name = 'description', 
        content = 'Dash User Guide and Documentation. Dash is a framework for building analytical web apps in Python and R.')
