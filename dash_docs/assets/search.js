@@ -52,7 +52,7 @@ if (window.location.pathname.replace(/\//g, '') === 'search'){
       instantsearch.widgets.hits({
         container: hitsContainer,
         templates: {
-          item: document.getElementById('hit-template').innerHTML,
+          item: document.getElementById(rDocs ? 'hit-templateR' : 'hit-template').innerHTML,
           empty: "We didn't find any results for the search <em>\"{{query}}\"</em>"
         }
       })
