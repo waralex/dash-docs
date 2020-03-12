@@ -46,8 +46,7 @@ header = html.Div(
             ], className='logo'),
 
             html.Div(className='links', children=[
-                html.A(children=[html.I(className="fa fa-search")], className='link', href=tools.relpath('/search')),
-                html.A('Community', href='https://community.plot.ly/c/dash')
+                html.A('Community Forum', href='https://community.plot.ly/c/dash')
             ])
         ]
     )
