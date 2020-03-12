@@ -28,12 +28,16 @@ class PageMenu extends Component {
          * headers will be rendered in the DOM
          */
         function renderPageMenuLinks() {
-            if(document.getElementById('page-menu--links').innerText !== '') {
+            const parent = document.getElementById('page-menu--links');
+            if(parent.innerText !== '' &&
+                // When the single page app location changes, update the page menu
+                parent.className === window.location.pathname
+            ) {
                 window.clearInterval(renderPageMenuLinks);
                 return;
             }
-            const links = [];
             const elements = document.querySelectorAll('h1, h2, h3, h4, h5, h6');
+            const links = [];
             elements.forEach(el => {
 
                 if (!el.href) {
@@ -52,7 +56,8 @@ class PageMenu extends Component {
                     </div>
                 `);
             });
-            document.getElementById('page-menu--links').innerHTML = links.join('');
+            parent.innerHTML = links.join('');
+            parent.className = window.location.pathname;
         }
         window.setInterval(renderPageMenuLinks, 500);
 
