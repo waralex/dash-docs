@@ -21,6 +21,12 @@ Sys.getenv()
 cat("########## Package versions      ##########\n")
 invisible(lapply(dashDeps, getVersion))
 
+cat("########## Working directory     ##########\n")
+getwd()
+
+cat("########## App object            ##########\n")
+app
+
 components <- new.env()
 source('dashr/components.R', local=components)
 source('allcallbacks.R')
