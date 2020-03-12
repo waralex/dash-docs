@@ -1161,6 +1161,83 @@
         ]
       },
       {
+        "name": "Dash Bio",
+        "chapters": [
+          {
+            "url": "/dash-bio",
+            "name": "Overview",
+            "description": "Dash Bio is a component library dedicated to visualizing bioinformatics data.",
+            "autogenerate_index": false,
+            "meta_keywords": "target, hidden, style, alt, form, name, type, width, open, action, content, min, label, multiple, rows, options, multi, figure, config, list, color, tooltip, data, columns, on, layout, pan, opacity, tracks, sequences, container, chrHeight, resolution, modelData, backgroundOpacity, styles, labels, mutationData, sequence, view"
+          },
+          {
+            "url": "/dash-bio/alignmentchart",
+            "name": "dash_bio.AlignmentChart",
+            "meta_keywords": "children, dir, style, form, name, type, height, width, open, action, method, content, low, max, min, start, label, size, default, date, multi, list, step, interval, debug, color, vertical, data, colors, css, on, base, scale, stylesheet, layout, eventDatum, extension, colorscale, opacity, textcolor, textsize, showlabel, showid, showconservation, conservationcolor, conservationcolorscale, conservationopacity, conservationmethod, correctgap, showgap, gapcolor, gapcolorscale, gapopacity, groupbars, showconsensus, tilewidth, tileheight, overview, numtiles, scrollskip, tickstart, ticksteps, sequences, styles, labels, sequence, view"
+          },
+          {
+            "url": "/dash-bio/circos",
+            "name": "dash_bio.Circos",
+            "meta_keywords": "children, key, download, target, style, title, form, name, type, open, action, content, low, min, label, required, size, wrap, default, options, displayed, date, figure, config, list, debug, color, tooltip, data, colors, css, on, scale, stylesheet, layout, pan, zoom, eventDatum, enableDownloadSVG, enableZoomPan, selectEvent, tracks, container, styles, labels"
+          },
+          {
+            "url": "/dash-bio/clustergram",
+            "name": "dash_bio.Clustergram",
+            "meta_keywords": "children, key, rel, dir, hidden, style, form, name, height, width, action, content, high, low, max, min, label, required, size, rows, default, options, date, multi, figure, config, list, debug, color, data, colors, columns, css, on, base, scale, elements, stylesheet, layout, pan, annotations, styles, labels, range"
+          },
+          {
+            "url": "/dash-bio/fornacontainer",
+            "name": "dash_bio.FornaContainer",
+            "meta_keywords": "key, dir, style, loop, disabled, form, name, type, height, width, action, low, min, label, selected, required, size, default, options, displayed, date, multi, list, interval, debug, color, colors, css, on, base, scale, force, stylesheet, layout, pan, zoom, sequences, nodeFillColor, colorScheme, customColors, allowPanningAndZooming, container, styles, range, sequence, view"
+          },
+          {
+            "url": "/dash-bio/ideogram",
+            "name": "dash_bio.Ideogram",
+            "meta_keywords": "children, key, rel, shape, dir, style, form, name, type, height, width, action, low, min, start, label, selected, multiple, required, size, wrap, default, options, displayed, date, multi, list, debug, color, tooltip, vertical, data, colors, css, on, base, stylesheet, layout, pan, tracks, annotationsLayout, annotations, annotationsPath, annotationsData, annotationTracks, annotationHeight, annotationsColor, histogramScaling, barWidth, showAnnotTooltip, assembly, brush, brushData, container, chrHeight, chrMargin, chrWidth, chromosomes, dataDir, organism, localOrganism, homology, perspective, fullChromosomeLabels, resolution, filterable, orientation, ploidy, ploidyDesc, ancestors, rangeSet, rotatable, rotated, sex, showChromosomeLabels, showBandLabels, showFullyBanded, showNonNuclearChromosomes, styles, labels, range"
+          },
+          {
+            "url": "/dash-bio/manhattanplot",
+            "name": "dash_bio.ManhattanPlot",
+            "meta_keywords": "style, title, form, name, height, width, accept, action, method, content, high, low, max, min, label, required, size, default, date, figure, debug, color, marks, data, colors, columns, css, on, base, stylesheet, layout, pan, annotations, chromosomes, styles, xlabel, ylabel, range, showlegend, legend"
+          },
+          {
+            "url": "/dash-bio/molecule2dviewer",
+            "name": "dash_bio.Molecule2dViewer",
+            "meta_keywords": "children, key, target, style, form, name, type, height, width, open, action, content, low, min, selected, default, date, list, debug, data, css, on, stylesheet, layout, selectedAtomIds, modelData, styles, range, view"
+          },
+          {
+            "url": "/dash-bio/molecule3dviewer",
+            "name": "dash_bio.Molecule3dViewer",
+            "meta_keywords": "children, key, style, form, name, type, open, action, content, high, low, min, label, selected, default, list, debug, color, data, css, on, backgroundColor, stylesheet, layout, opacity, selectedAtomIds, modelData, selectionType, backgroundOpacity, styles, atomLabelsShown, labels, range, selection, view"
+          },
+          {
+            "url": "/dash-bio/needleplot",
+            "name": "dash_bio.NeedlePlot",
+            "meta_keywords": "key, style, name, type, open, action, content, low, min, label, default, options, displayed, clearable, date, multi, list, debug, color, data, css, on, stylesheet, layout, styles, mutationData, xlabel, ylabel, rangeSlider, needleStyle, domainStyle, range"
+          },
+          {
+            "url": "/dash-bio/oncoprint",
+            "name": "dash_bio.OncoPrint",
+            "meta_keywords": "children, key, style, alt, form, name, type, height, width, open, action, content, min, default, date, list, debug, color, data, colors, css, on, scale, stylesheet, layout, eventDatum, colorscale, overview, tracks, styles, padding, backgroundcolor, range, showlegend, showoverview, legend, view"
+          },
+          {
+            "url": "/dash-bio/sequenceviewer",
+            "name": "dash_bio.SequenceViewer",
+            "meta_keywords": "children, key, style, title, form, name, type, height, open, action, content, high, low, max, min, start, selected, wrap, default, displayed, date, list, debug, color, search, count, tooltip, data, css, on, stylesheet, layout, styles, sequence, showLineNumbers, wrapAminoAcids, charsPerLine, toolbar, sequenceMaxHeight, badge, selection, coverage, legend, coverageClicked, mouseSelection, subpartSelected, view"
+          },
+          {
+            "url": "/dash-bio/speck",
+            "name": "dash_bio.Speck",
+            "meta_keywords": "key, rel, style, controls, name, type, open, action, content, low, min, label, default, options, displayed, date, list, debug, data, css, on, stylesheet, layout, zoom, resolution, styles, scrollZoom, view, presetView"
+          },
+          {
+            "url": "/dash-bio/volcanoplot",
+            "name": "dash_bio.VolcanoPlot",
+            "meta_keywords": "style, title, form, name, height, width, accept, action, method, sizes, content, high, low, max, min, label, required, size, default, date, figure, list, step, debug, color, marks, included, data, colors, columns, css, on, stylesheet, layout, pan, annotations, styles, xlabel, ylabel, range"
+          }
+        ]
+      },
+      {
         "name": "Dash DAQ",
         "chapters": [
           {
