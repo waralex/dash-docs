@@ -376,3 +376,22 @@ a {
     display: block;
   }
 }
+
+@media (max-width: 950px) {
+    .page-menu {
+        display: none;
+    }
+}
+
+@media (max-width: 770px) {
+    .sidebar {
+        display: none;
+    }
+    .content {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+    .logo {
+        margin-left: 10px;
+    }
+}
