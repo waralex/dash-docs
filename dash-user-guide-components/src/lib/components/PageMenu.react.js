@@ -28,7 +28,7 @@ class PageMenu extends Component {
         const links = [];
         for(let i=0; i<elements.length; i++) {
             const el = elements[i];
-            if (!el.href) {
+            if (!el.id) {
                 el.id = `${replace(/ /g, '-', el.innerText).toLowerCase()}`;
             }
             /*
