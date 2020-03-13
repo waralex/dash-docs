@@ -2,7 +2,7 @@ if (window.location.pathname.replace(/\//g, '') === 'search'){
   var interval = setInterval(searchInterval, 500);
 
   function searchInterval(){
-    var rDocs = window.location.href.indexOf('dashr.') > -1
+    var rDocs = window.location.href.indexOf('dashr') > -1
     var useIndex = rDocs ?
       'dashr_docs': 
       'dash_docs';
