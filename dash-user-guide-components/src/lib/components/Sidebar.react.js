@@ -263,7 +263,7 @@ function link(chapter) {
         className: `${active ? 'active': ''}`,
         children: chapter.name
     };
-    if (chapter.url.startsWith('http')) {
+    if (chapter.url.indexOf('http') === 0) {
         return <a {...linkProps}/>;
     }
     return <Link {...linkProps}/>;
@@ -288,7 +288,7 @@ class TreeSidebar extends Component {
                         has('urls', chapter)
                         &&
                         Boolean(find(url =>
-                             url.startsWith(window.location.pathname)
+                             url.indexOf(window.location.pathname) === 0
                         ), chapter.urls)
                     )
                     ||
@@ -297,7 +297,7 @@ class TreeSidebar extends Component {
                         subchapter => {
                             return (
                                 propOr('', 'url', subchapter)
-                                .startsWith(window.location.pathname)
+                                .indexOf(window.location.pathname) === 0
                             );
                         },
 
