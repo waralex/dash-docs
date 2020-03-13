@@ -283,7 +283,7 @@ dcc.DatePickerRange(
     reusable_components.Markdown('''
     The `dash_html_components` library exposes all of the HTML tags.
     This includes the `Table`, `Tr`, and `Tbody` tags that can be used
-    to create an HTML table. See [Dash Layout](/getting-started)
+    to create an HTML table. See <dccLink href="/getting-started" children="Dash Layout"/>
     for an example.
 
     Dash provides an interactive `DataTable` as part of the `data-table`
@@ -296,14 +296,14 @@ dcc.DatePickerRange(
         className="image-link",
         href="https://github.com/plotly/dash-table-experiments",
         children=html.Img(
-            src="assets/images/gallery/DataTable.gif",
+            src=tools.relpath("assets/images/gallery/DataTable.gif"),
             alt="Example of a Dash Interactive Table"
         )
     ),
 
 
     reusable_components.Markdown('''
-    [View the docs](/datatable) or [View the source](https://github.com/plotly/dash-table)
+    <dccLink href="/datatable" children="View the docs"/> or [View the source](https://github.com/plotly/dash-table)
 
     ***
     '''.replace('    ', '')),
@@ -319,7 +319,7 @@ dcc.DatePickerRange(
         className="image-link",
         href="https://github.com/plotly/dash-core-components/pull/73",
         children=html.Img(
-            src="https://user-images.githubusercontent.com/1280389/30351245-6b93ee62-97e8-11e7-8e85-0411e9d6c98c.gif",
+            src=tools.relpath('assets/images/gallery/dash-upload.gif'),
             alt="Dash Upload Component"
         )
     ),

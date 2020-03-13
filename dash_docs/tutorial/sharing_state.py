@@ -18,16 +18,18 @@ layout = html.Div([
     reusable_components.Markdown('''
     # Sharing State Between Callbacks
 
-    > This is the *6th* chapter of the essential [Dash Tutorial](/).  The
-    > [previous chapter](/interactive-graphing) covered how to use callbacks
-    > with the `dash_core_components.Graph` component.  The [rest of the Dash
-    > documentation](/) covers other topics like multi-page apps and component
-    > libraries.  Just getting started? Make sure to [install the necessary
-    > dependencies](/installation). The [next and final chapter](/faqs) covers
-    > frequently asked questions and gotchas.
+    <blockquote>
+    This is the 6th chapter of the essential <dccLink children="Dash Tutorial" href="/"/>.  The
+    <dccLink href="/interactive-graphing" children="previous chapter"/> covered how to use callbacks
+    with the <code>dash_core_components.Graph</code> component.  The <dccLink href="/" children="rest of the Dash
+    documentation"/> covers other topics like multi-page apps and component
+    libraries.  Just getting started? Make sure to <dccLink children="install the necessary
+    dependencies" href="/installation"/>. The <dccLink href="/faqs" children="next and final chapter"/> covers
+    frequently asked questions and gotchas.
+    </blockquote>
 
     One of the core Dash principles explained in the
-    [Getting Started Guide on Callbacks](/getting-started-part-2)
+    <dccLink href="/getting-started-part-2" children="Getting Started Guide on Callbacks"/>
     is that **Dash Callbacks must never modify variables outside of their
     scope**. It is not safe to modify any `global` variables.
     This chapter explains why and provides some alternative patterns for
@@ -44,7 +46,7 @@ layout = html.Div([
     results to the rest of the callbacks.
 
     This need has been somewhat ameliorated now that you can have
-    [multiple outputs](/getting-started-part-2) for one callback. This way,
+    <dccLink href="/getting-started-part-2" children="multiple outputs"/> for one callback. This way,
     that expensive task can be done once and immediately used in all the
     outputs. But in some cases this still isn't ideal, for example if there are
     simple follow-on tasks that modify the results, like unit conversions. We
@@ -336,7 +338,7 @@ def update_output_1(value):
 
     html.Div(
         children=html.Img(
-            src='https://user-images.githubusercontent.com/1280389/31468665-bf1b6026-aeac-11e7-9388-d9a5e71d964e.gif',
+            src=tools.relpath('assets/images/gallery/caching.gif'),
             alt='Example of a Dash App that uses Caching'
         ),
         className="gallery"
@@ -368,7 +370,7 @@ def update_output_1(value):
         CACHE_CONFIG = {
             # try 'filesystem' if you don't want to setup redis
             'CACHE_TYPE': 'redis',
-            'CACHE_REDIS_URL': os.environ.get('REDIS_URL', 'localhost:6379')
+            'CACHE_REDIS_URL': os.environ.get('REDIS_URL', 'redis://localhost:6379')
         }
         cache = Cache()
         cache.init_app(app.server, config=CACHE_CONFIG)
@@ -536,7 +538,7 @@ def update_output_1(value):
 
     html.Div(
         children=html.Img(
-            src='https://user-images.githubusercontent.com/1280389/37941518-8f47b71a-313c-11e8-8b00-80ffbb012c4a.gif',
+            src=tools.relpath('assets/images/gallery/user-session-caching.gif'),
             alt='Example of a Dash App that uses User Session Caching'
         )
     ),
