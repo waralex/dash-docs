@@ -78,7 +78,7 @@ app.layout = html.Div(
                 ),
             ], className='rhs-content container-width'),
 
-            dugc.PageMenu()
+            dugc.PageMenu(id='pagemenu')
 
         ]),
 
@@ -192,7 +192,9 @@ def flat_list(*args):
     return out
 
 
-@app.callback(Output('chapter', 'children'),
+@app.callback([Output('chapter', 'children'),
+               # dummy variable so that a loading state is triggered
+               Output('pagemenu', 'dummy2')],
               [Input('location', 'pathname')])
 def display_content(pathname):
     if pathname is None or pathname == '/':
@@ -211,13 +213,13 @@ def display_content(pathname):
         )
 
     if pathname in chapter_index.URL_TO_CONTENT_MAP:
-        return make_page(pathname)
+        children = make_page(pathname)
 
     elif pathname == '/search':
-        return flat_list(create_backlinks(pathname), html.Br(), search.layout)
+        children = flat_list(create_backlinks(pathname), html.Br(), search.layout)
 
     elif pathname == '/all':
-        return build_all()
+        children = build_all()
 
     else:
         warning_box = html.Div(
@@ -233,7 +235,21 @@ def display_content(pathname):
             if partial_path in chapter_index.URL_TO_CONTENT_MAP:
                 return flat_list(warning_box, make_page(partial_path))
 
-        return flat_list(warning_box, home.layout)
+        children = flat_list(warning_box, home.layout)
+    return [children, '']
+
+
+# dummy callback to trigger a pagemenu rerender
+app.clientside_callback(
+    '''
+    function(children) {
+        console.warn('updating pagemenu');
+        return '';
+    }
+    ''',
+    Output('pagemenu', 'dummy'),
+    [Input('chapter', 'children')],
+)
 
 
 if __name__ == '__main__':
