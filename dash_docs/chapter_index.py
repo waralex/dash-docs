@@ -3,6 +3,7 @@ from .import tutorial
 import json
 import plotly
 import six
+import textwrap
 
 import dash
 import dash_html_components as html
@@ -25,14 +26,19 @@ def component_list(package, content_module, base_url, import_alias, component_li
         {
             'url': tools.relpath('/{}/{}'.format(base_url, component.lower())),
             'name': '{}.{}'.format(import_alias, component),
-            'description': '''
-                Official examples and reference documentation for {name}.
-                {name} is a {component_library} component.
-            '''.format(
+            'description': ' '.join([
+                'Official examples and reference documentation for {name}.',
+                '{which_library}'
+            ]).format(
                 name='{}.{}'.format(import_alias, component),
-                component_library=component_library
-
-            ),
+                component_library=component_library,
+                which_library=(
+                    '{name} is a {component_library} component.'.format(
+                        name='{}.{}'.format(import_alias, component),
+                        component_library=component_library,
+                    ) if component_library != import_alias else ''
+                )
+            ).strip(),
             'content': (
                 getattr(content_module, component)
                 if (content_module is not None and
@@ -923,6 +929,15 @@ def create_index_pages(url_set):
         if 'chapters' in section:
             create_index_pages(section['chapters'])
 create_index_pages(URLS)
+
+
+def normalize_description_and_urls(url_set):
+    for section in url_set:
+        if 'description' in url_set:
+            url_set['description'] = textwrap.dedent(url_set['description']).strip()
+        if 'url' in url_set:
+            url_set['url'] = url_set['url'].rstrip('/')
+normalize_description_and_urls(URLS)
 
 
 URL_TO_CONTENT_MAP = {}
