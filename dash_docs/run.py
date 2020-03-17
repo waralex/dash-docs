@@ -198,7 +198,7 @@ def flat_list(*args):
               [Input('location', 'pathname')])
 def display_content(pathname):
     if pathname is None or pathname == '/':
-        return home.layout
+        return [home.layout, '']
     pathname = pathname.rstrip('/')
 
     def make_page(page_path):
