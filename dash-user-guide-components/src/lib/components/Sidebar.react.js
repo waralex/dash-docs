@@ -147,7 +147,7 @@ export default class Sidebar extends Component {
             <div className="sidebar">
                 <input
                     autoFocus
-                    tabindex="1"
+                    tabIndex="1"
                     type="text"
                     autocomplete="false"
                     value={this.state.search}
