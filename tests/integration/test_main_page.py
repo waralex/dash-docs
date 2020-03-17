@@ -61,7 +61,7 @@ def test_snap002_external_resources(dash_doc):
 
 
 def test_snap003_search(dash_doc):
-    dash_doc.driver.get("/")
+    dash_doc.driver.get(dash_doc.server_url)
     dash_doc.wait_for_element_by_id("sidebar-search-input")
     dash_doc.percy_snapshot("search-blank")
     search = dash_doc.find_element("#sidebar-search-input")
