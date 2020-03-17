@@ -95,8 +95,9 @@
           {
             "url": "/dash-core-components/",
             "name": "Overview",
+            "breadcrumb": "Dash Core Components",
             "description": "The Dash Core Component library contains a set of higher-level components like sliders, graphs, dropdowns, tables, and more.",
-            "meta_keywords": "children, n_clicks, href, style, title, form, name, type, height, width, open, content, low, max, min, start, label, placeholder, rows, wrap, scope, default, options, labelStyle, message, start_date, end_date, end_date_placeholder_text, date, multi, figure, list, step, refresh, debug, color, pathname, search, hash, logout_url, marks, count, included, storage_type, data, css, on, stylesheet, layout, container, styles, range, showlegend, selection, legend"
+            "meta_keywords": "children, n_clicks, href, style, title, form, name, type, height, width, open, content, low, max, min, start, label, placeholder, rows, wrap, scope, default, options, labelStyle, message, start_date, end_date, end_date_placeholder_text, date, multi, figure, list, step, refresh, debug, color, pathname, search, hash, logout_url, marks, count, included, storage_type, data, css, on, stylesheet, layout, container, styles, range, showlegend, legend"
           },
           {
             "url": "/dash-core-components/checklist",
@@ -131,7 +132,7 @@
           {
             "url": "/dash-core-components/graph",
             "name": "dcc.Graph",
-            "meta_keywords": "children, key, download, href, rel, shape, dir, style, title, coords, src, form, name, type, height, width, open, action, high, low, max, min, start, selected, required, size, rows, default, options, date, responsive, clickData, clickAnnotationData, hoverData, clear_on_unhover, selectedData, relayoutData, extendData, restyleData, figure, animate, animation_options, config, list, color, data, filename, editable, on, base, scale, layout, pan, zoom, annotations, container, resolution, range, selection, legend, scrollZoom, view"
+            "meta_keywords": "children, key, download, href, rel, shape, dir, style, title, coords, src, form, name, type, height, width, open, accept, action, high, low, max, min, start, selected, required, size, rows, default, options, date, responsive, clickData, clickAnnotationData, hoverData, clear_on_unhover, selectedData, relayoutData, extendData, restyleData, figure, animate, animation_options, config, list, color, data, filename, editable, on, base, scale, force, layout, pan, zoom, annotations, container, resolution, range, selection, legend, scrollZoom, view"
           },
           {
             "url": "/dash-core-components/input",
@@ -216,6 +217,7 @@
           {
             "url": "/dash-html-components/",
             "name": "Overview",
+            "breadcrumb": "Dash HTML Components",
             "description": "Dash provides all of the available HTML tags as user-friendly Python classes. This chapter explains how this works and the few important key differences between Dash HTML components and standard html.",
             "meta_keywords": "children, key, href, style, form, name, action, low, size, list, color, on, units, elements, layout, pan"
           },
@@ -882,6 +884,7 @@
           {
             "url": "/datatable",
             "name": "Overview",
+            "breadcrumb": "Dash DataTable",
             "description": "`dash_table.DataTable` is an interactive table that supports rich styling, conditional formatting, editing, sorting, filtering, and more.",
             "autogenerate_index": true,
             "preamble": {
@@ -910,7 +913,7 @@
                   },
                   {
                     "props": {
-                      "children": "\n> **Released on November 2, 2018**\n>\n> Dash DataTable is an interactive table component designed for\n> viewing, editing, and exploring large datasets.\n>\n> DataTable is rendered with standard, semantic HTML `<table/>` markup,\n> which makes it accessible, responsive, and easy to style.\n>\n> This component was written from scratch in React.js specifically\n> for the Dash community. Its API was designed to be ergonomic\n> and its behavior is completely customizable through its properties.\n>\n> 7 months in the making, this is the most complex Dash\n> component that Plotly has written, all from the ground-up\n> using React and TypeScript. DataTable was designed with a\n> featureset that allows that Dash users to create complex,\n> spreadsheet driven applications with no compromises.\n> We're excited to continue to work with users and companies\n> that [invest in DataTable's future](https://plot.ly/products/consulting-and-oem/).\n>\n> With `dash-table v4.0.0` - included in `dash v1.0.0` and released on\n> June 20, 2019 - we consider the API stable. We don't expect any\n> breaking changes any time soon, but if there are they will be\n> accompanied by a new major version of dash. If you've been using\n> DataTable with `dash v0.x` / `dash-table v3.x`, check out the\n> [Dash 1.0 Migration Guide](/dash-1-0-migration) for the full list of\n> changes.\n>\n> Otherwise, check out DataTable in the docs below.\n> If you make something cool with it, we'd love to see it! Share it\n> on the [community forum](https://community.plot.ly/t/show-and-tell-community-thread/7554)!\n>\n> -- chriddyp\n",
+                      "children": "\n> Dash DataTable is an interactive table component designed for\n> viewing, editing, and exploring large datasets.\n>\n> DataTable is rendered with standard, semantic HTML `<table/>` markup,\n> which makes it accessible, responsive, and easy to style.\n>\n> This component was written from scratch in React.js specifically\n> for the Dash community. Its API was designed to be ergonomic\n> and its behavior is completely customizable through its properties.\n>\n> 7 months in the making, this is the most complex Dash\n> component that Plotly has written, all from the ground-up\n> using React and TypeScript. DataTable was designed with a\n> featureset that allows that Dash users to create complex,\n> spreadsheet driven applications with no compromises.\n> We're excited to continue to work with users and companies\n> that [invest in DataTable's future](https://plot.ly/products/consulting-and-oem/).\n>\n> With `dash-table v4.0.0` - included in `dash v1.0.0` and released on\n> June 20, 2019 - we consider the API stable. We don't expect any\n> breaking changes any time soon, but if there are they will be\n> accompanied by a new major version of dash. If you've been using\n> DataTable with `dash v0.x` / `dash-table v3.x`, check out the\n> [Dash 1.0 Migration Guide](/dash-1-0-migration) for the full list of\n> changes.\n>\n> Otherwise, check out DataTable in the docs below.\n> If you make something cool with it, we'd love to see it! Share it\n> on the [community forum](https://community.plot.ly/t/show-and-tell-community-thread/7554)!\n>\n> -- chriddyp\n",
                       "dangerously_allow_html": false
                     },
                     "type": "Markdown",
@@ -1166,6 +1169,7 @@
           {
             "url": "/dash-bio",
             "name": "Overview",
+            "breadcrumb": "Dash Bio",
             "description": "Dash Bio is a component library dedicated to visualizing bioinformatics data.",
             "autogenerate_index": false,
             "meta_keywords": "target, hidden, style, alt, form, name, type, width, open, action, content, min, label, multiple, rows, options, multi, figure, config, list, color, tooltip, data, columns, on, layout, pan, opacity, tracks, sequences, container, chrHeight, resolution, modelData, backgroundOpacity, styles, labels, mutationData, sequence, view"
@@ -1243,6 +1247,7 @@
           {
             "url": "/dash-daq",
             "name": "Overview",
+            "breadcrumb": "Dash DAQ",
             "description": "\n                            Beautifully styled technical components for\n                            data acquisition, monitoring, and engineering\n                            applications.\n                            ",
             "meta_keywords": "children, target, dir, style, controls, name, width, action, max, min, label, date, debug, color, data, on, theme, force, precision, targets, layout, range"
           },
@@ -1340,7 +1345,7 @@
             "url": "/canvas",
             "name": "Overview & Reference",
             "description": "Image rendering, drawing, annotations for image processing applications.",
-            "meta_keywords": "children, href, media, rel, shape, style, src, form, name, type, height, width, open, action, content, low, max, min, start, label, required, default, date, config, step, debug, color, included, data, contents, filename, columns, style_cell, on, scale, layout, pan, zoom, annotations, brush"
+            "meta_keywords": "children, href, rel, shape, style, src, form, name, type, height, width, open, action, content, low, max, min, start, label, required, default, date, config, step, debug, color, included, data, contents, filename, columns, style_cell, on, scale, layout, pan, zoom, annotations, brush"
           }
         ]
       },
@@ -1350,6 +1355,7 @@
           {
             "url": "/cytoscape",
             "name": "Overview",
+            "breadcrumb": "Dash Cytoscape",
             "description": "\n                            Dash Cytoscape is our new network visualization\n                            component. It offers a declarative and pythonic\n                            interface to create beautiful, customizable,\n                            interactive and reactive graphs.\n                            ",
             "autogenerate_index": true,
             "preamble": {
@@ -1612,8 +1618,8 @@
       {
         "url": "/performance",
         "name": "Performance",
-        "description": "There are two main ways to speed up dash apps: caching and using WebGL chart types.",
-        "meta_keywords": "children, rel, shape, dir, style, alt, form, name, type, width, sizes, high, low, max, min, start, label, async, multiple, required, size, rows, options, date, multi, figure, config, list, step, debug, color, data, columns, css, dropdown, on, base, stylesheet, layout, pan, annotations, styles, range"
+        "description": "There are three main ways to speed up Dash apps: caching, using WebGL chart types, and implementing clientside callbacks.",
+        "meta_keywords": "children, rel, shape, dir, style, alt, form, name, type, width, sizes, content, high, low, max, min, start, label, async, multiple, required, size, rows, options, date, multi, figure, config, list, step, debug, color, data, contents, columns, css, dropdown, on, base, stylesheet, layout, pan, annotations, styles, range"
       },
       {
         "url": "/live-updates",
@@ -1711,6 +1717,7 @@
         "chapters": [
           {
             "name": "Overview",
+            "breadcrumb": "Dash Enterprise",
             "url": "/dash-enterprise",
             "meta_keywords": "dir, alt, method, low, min, start, date, figure, config, list, data, on, base"
           },
