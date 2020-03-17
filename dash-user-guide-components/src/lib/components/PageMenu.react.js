@@ -51,7 +51,10 @@ class PageMenu extends Component {
             links.push(`
                 <div class="page-menu--link-parent">
                     <span class="page-menu--link" onClick="pageMenuScroll('${el.id}')">
-                        ${el.innerText}
+                        ${replace(
+                            /</g, '&lt;',
+                            replace(/>/g, '&gt;', el.innerText)
+                        )}
                     </span>
                 </div>
             `);
