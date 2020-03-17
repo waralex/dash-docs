@@ -1028,5 +1028,7 @@ def create_urls_without_content(url_set):
     for section in url_set:
         if 'content' in section:
             section.pop('content')
+        if 'preamble' in section:
+            section.pop('preamble')
         if 'chapters' in section:
             create_urls_without_content(section['chapters'])
