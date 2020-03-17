@@ -10,12 +10,11 @@ class CustomDash(Dash):
         kwargs.pop('title')
 
         if request.path in URL_TO_META_MAP:
-            if 'name' in URL_TO_META_MAP[request.path] or 'breadcrumb' in URL_TO_META_MAP[request.path]:
-                name = URL_TO_META_MAP[request.path].get('breadcrumb', URL_TO_META_MAP[request.path]['name'])
-                name = 'Dash ' + ''.join(name.split('.')[1:])
-                name += ' | Dash Documentation | Plotly'
-            else:
-                name = 'Dash Documentation & User Guide | Plotly'
+            name = URL_TO_META_MAP[request.path].get('breadcrumb', URL_TO_META_MAP[request.path]['name'])
+            name = 'Dash ' + ''.join(name.split('.')[1:])
+            name += ' | Dash Documentation | Plotly'
+        else:
+            name = 'Dash Documentation & User Guide | Plotly'
         meta_kwargs = dict(
             title=name,
             description=URL_TO_META_MAP.get(request.path, {}).get(
