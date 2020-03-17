@@ -6,9 +6,9 @@ jobs:
     steps:
       - run: percy finalize --all
 
-  "python-3.7": &test-template
+  "python-2.7": &test-template
     docker:
-      - image: circleci/python:3.7.5-stretch-browsers
+      - image: circleci/python:2.7.16-stretch-browsers
         environment:
           PERCY_PARALLEL_TOTAL: '-1'
     steps:
@@ -49,6 +49,18 @@ jobs:
       - store_artifacts:
           path: /tmp/dash_artifacts
 
+  "python-3.7":
+    <<: *test-template
+    run:
+      name: Use pytest 5.3.5 for python-3.7
+      command: |
+          . venv/bin/activate
+          pip uninstall pytest -y
+          pip install pytest==5.3.5
+    docker:
+      - image: circleci/python:3.7.5-stretch-browsers
+    environment:
+      PERCY_ENABLE: 0
 
   "python-3.6":
     <<: *test-template
@@ -57,15 +69,11 @@ jobs:
     environment:
       PERCY_ENABLE: 0
 
-  "python-2.7":
-    <<: *test-template
-    docker:
-      - image: circleci/python:2.7.16-stretch-browsers
-    environment:
-      PERCY_ENABLE: 0
-
 workflows:
   version: 2
+  python2.7:
+    jobs:
+      - python-2.7
   python3.7:
     jobs:
       - python-3.7
@@ -75,6 +83,3 @@ workflows:
   python3.6:
     jobs:
       - python-3.6
-  python2.7:
-    jobs:
-      - python-2.7
