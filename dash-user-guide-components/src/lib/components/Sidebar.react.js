@@ -249,7 +249,6 @@ class SearchResults extends Component {
 }
 
 function link(chapter) {
-
     let title = null;
     if (chapter.description_short) {
         title = chapter.description_short.trim();
@@ -282,7 +281,7 @@ class TreeSidebar extends Component {
                 continue;
             } else if (chapter.chapters) {
 
-                open = (
+                const open = (
                     !force_closed
                     &&
                     (
