@@ -19,8 +19,20 @@ class PageMenu extends Component {
     }
 
     renderLinksInDom() {
+        let timer;
+        function renderLinksInDomInner() {
         const parent = document.getElementById('page-menu--links');
         const elements = document.querySelectorAll('h1, h2, h3, h4, h5, h6');
+        if(elements.length === 0) {
+            /*
+             * Sometimes the page content isn't rendered on page load
+             * even though this component is updated by a callback that
+             * listens to the output of the content
+             */
+            timer = window.setTimeout(renderLinksInDomInner, 250);
+            return;
+        }
+        window.clearTimeout(timer);
         const ignoreElementsNodeList = document.querySelectorAll(`
             .example-container h1,
             .example-container h2,
@@ -60,6 +72,8 @@ class PageMenu extends Component {
             `);
         };
         parent.innerHTML = links.join('');
+        }
+        timer = setTimeout(renderLinksInDomInner, 0);
     }
 
     render() {
