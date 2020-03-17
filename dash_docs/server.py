@@ -133,3 +133,9 @@ def redirect_dcc_confirm():
 def redirect_faq():
     return redirect('/faqs', code=301)
 
+
+@server.before_request
+def clear_trailing():
+    rp = request.path
+    if rp != '/' and rp.endswith('/'):
+        return redirect(rp[:-1])
