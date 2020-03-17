@@ -381,13 +381,13 @@ a {
   }
 }
 
-@media (max-width: 950px) {
+@media (max-width: 1150px) {
     .page-menu {
         display: none;
     }
 }
 
-@media (max-width: 770px) {
+@media (max-width: 950px) {
     .sidebar {
         display: none;
     }
@@ -395,7 +395,16 @@ a {
         margin-left: 10px;
         margin-right: 10px;
     }
+    .content-wrapper {
+        display: block;
+    }
     .logo {
         margin-left: 10px;
     }
 }
+
+@media (max-width: 500px) {
+    .content {
+        margin-left: 0px;
+        margin-right: 0px;
+    }}
