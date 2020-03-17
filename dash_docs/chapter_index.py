@@ -20,11 +20,19 @@ from .reusable_components import TOC, TOCChapters
 ## in the root of this repo.
 
 
-def component_list(package, content_module, base_url, import_alias, escape_tags=False):
+def component_list(package, content_module, base_url, import_alias, component_library, escape_tags=False):
     return [
         {
             'url': tools.relpath('/{}/{}'.format(base_url, component.lower())),
             'name': '{}.{}'.format(import_alias, component),
+            'description': '''
+                Official examples and reference documentation for {name}.
+                {name} is a {component_library} component.
+            '''.format(
+                name='{}.{}'.format(import_alias, component),
+                component_library=component_library
+
+            ),
             'content': (
                 getattr(content_module, component)
                 if (content_module is not None and
@@ -202,7 +210,8 @@ URLS = [
                     dcc,
                     tutorial.examples,
                     'dash-core-components',
-                    'dcc'
+                    'dcc',
+                    'dash_core_components'
                 )
             },
 
@@ -225,6 +234,7 @@ URLS = [
                     None,
                     'dash-html-components',
                     'html',
+                    'dash_html_components',
                     escape_tags=True
                 )
             },
@@ -414,6 +424,7 @@ URLS = [
                     None if os.environ.get('IGNORE_DASH_BIO', False) else
                     tutorial.dashbio_examples,
                     'dash-bio',
+                    'dash_bio',
                     'dash_bio'
                 )
             },
@@ -438,6 +449,7 @@ URLS = [
                     dash_daq,
                     tutorial.daq_examples,
                     'dash-daq',
+                    'dash_daq',
                     'dash_daq'
                 )
             },
