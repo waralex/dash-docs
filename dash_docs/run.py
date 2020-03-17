@@ -203,7 +203,7 @@ def flat_list(*args):
               [Input('location', 'pathname')])
 def display_content(pathname):
     if pathname is None or pathname == '/':
-        return [home.layout, '', '']
+        return [home.layout, '', '', '']
     pathname = pathname.rstrip('/')
 
     backlinks = create_backlinks(pathname)
