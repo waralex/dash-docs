@@ -191,6 +191,7 @@ URLS = [
                 'chapters': [{
                     'url': '/dash-core-components/',
                     'name': 'Overview',
+                    'breadcrumb': 'Dash Core Components',
                     'description': (
                         'The Dash Core Component library contains a set '
                         'of higher-level components like sliders, graphs, '
@@ -211,6 +212,7 @@ URLS = [
                     {
                         'url': '/dash-html-components/',
                         'name': 'Overview',
+                        'breadcrumb': 'Dash HTML Components',
                         'description': 'Dash provides all of the available HTML tags ' \
                                        'as user-friendly Python classes. This chapter ' \
                                        'explains how this works and the few important ' \
@@ -234,6 +236,7 @@ URLS = [
                     {
                         'url': '/datatable',
                         'name': 'Overview',
+                        'breadcrumb': 'Dash DataTable',
                         'description': (
                             '`dash_table.DataTable` is an interactive table that ' \
                             'supports rich styling, ' \
@@ -393,6 +396,7 @@ URLS = [
                     dict({
                         'url': '/dash-bio',
                         'name': 'Overview',
+                        'breadcrumb': 'Dash Bio',
                         'description': (
                             'Dash Bio is a component library '
                             'dedicated to visualizing bioinformatics data.'
@@ -420,6 +424,7 @@ URLS = [
                     {
                         'url': '/dash-daq',
                         'name': 'Overview',
+                        'breadcrumb': 'Dash DAQ',
                         'content': tutorial.daq.layout,
                         'description': (
                             '''
@@ -458,6 +463,7 @@ URLS = [
                     {
                         'url': '/cytoscape',
                         'name': 'Overview',
+                        'breadcrumb': 'Dash Cytoscape',
                         'description': (
                             '''
                             Dash Cytoscape is our new network visualization
@@ -722,6 +728,7 @@ URLS = [
                 'chapters': [
                     {
                         'name': 'Overview',
+                        'breadcrumb': 'Dash Enterprise',
                         'url': '/dash-enterprise',
                         'content': tutorial.dash_deployment_server.layout
                     },
@@ -907,12 +914,18 @@ create_index_pages(URLS)
 
 
 URL_TO_CONTENT_MAP = {}
+URL_TO_BREADCRUMB_MAP = {}
 def create_url_mapping(url_set):
     for section in url_set:
         if 'url' in section:
-            URL_TO_CONTENT_MAP[section['url'].rstrip('/')] = section.get(
+            stripped_url = section['url'].rstrip('/')
+            URL_TO_CONTENT_MAP[stripped_url] = section.get(
                 'content',
                 'Content for {} not defined'.format(section['url'])
+            )
+            URL_TO_BREADCRUMB_MAP[stripped_url] = section.get(
+                'breadcrumb',
+                section['name']
             )
         if 'chapters' in section:
             create_url_mapping(section['chapters'])
