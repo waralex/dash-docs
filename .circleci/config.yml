@@ -6,9 +6,9 @@ jobs:
     steps:
       - run: percy finalize --all
 
-  "python-2.7": &test-template
+  "python-3.7": &test-template
     docker:
-      - image: circleci/python:2.7.16-stretch-browsers
+      - image: circleci/python:3.7.5-stretch-browsers
         environment:
           PERCY_PARALLEL_TOTAL: '-1'
     steps:
@@ -42,6 +42,11 @@ jobs:
               pip install --progress-bar off -e git+https://github.com/plotly/dash.git@test-window-store#egg=dash[testing]
               python -m pytest tests/unit
               pytest --log-cli-level INFO --nopercyfinalize --junitxml=test-reports/snapshots.xml tests/integration
+              if [[ "python --version | sed 's/[^0-9.]*//g'" =~ 3* ]] ;
+              then
+                  pip uninstall pytest -y
+                  pip install pytest==5.3.5
+              fi
       - store_artifacts:
           path: test-reports
       - store_test_results:
@@ -49,23 +54,18 @@ jobs:
       - store_artifacts:
           path: /tmp/dash_artifacts
 
-  "python-3.7":
-    <<: *test-template
-    run:
-      name: Use pytest 5.3.5 for python-3.7
-      command: |
-          . venv/bin/activate
-          pip uninstall pytest -y
-          pip install pytest==5.3.5
-    docker:
-      - image: circleci/python:3.7.5-stretch-browsers
-    environment:
-      PERCY_ENABLE: 0
 
   "python-3.6":
     <<: *test-template
     docker:
       - image: circleci/python:3.6.9-stretch-browsers
+    environment:
+      PERCY_ENABLE: 0
+
+  "python-2.7":
+    <<: *test-template
+    docker:
+      - image: circleci/python:2.7.16-stretch-browsers
     environment:
       PERCY_ENABLE: 0
 
