@@ -153,6 +153,7 @@ export default class Sidebar extends Component {
                     value={this.state.search}
                     onChange={e => this.setState({search: e.target.value})}
                     onKeyUp={handleKeyUp}
+                    id="sidebar-search-input"
                     placeholder={'Filter...'}
                 />
                 {
@@ -240,7 +241,7 @@ class SearchResults extends Component {
         }
 
         return (
-            <div>
+            <div className='search-results'>
                 {resultItems}
             </div>
         );
