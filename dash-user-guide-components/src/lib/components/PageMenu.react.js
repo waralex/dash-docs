@@ -19,32 +19,61 @@ class PageMenu extends Component {
     }
 
     renderLinksInDom() {
-        /*
-         * Display links directly via setInterval because we don't know when the
-         * headers will be rendered in the DOM
-         */
-        const parent = document.getElementById('page-menu--links');
-        const elements = document.querySelectorAll('h1, h2, h3, h4, h5, h6');
-        const links = [];
-        for(let i=0; i<elements.length; i++) {
-            const el = elements[i];
-            if (!el.id) {
-                el.id = `${replace(/ /g, '-', el.innerText).toLowerCase()}`;
+        let timer;
+        function renderLinksInDomInner() {
+            const parent = document.getElementById('page-menu--links');
+            const elements = document.querySelectorAll('h1, h2, h3, h4, h5, h6');
+            if(elements.length === 0) {
+                /*
+                 * Sometimes the page content isn't rendered on page load
+                 * even though this component is updated by a callback that
+                 * listens to the output of the content
+                 */
+                timer = window.setTimeout(renderLinksInDomInner, 250);
+                return;
             }
-            /*
-             * TODO - Replace with a proper a and remove pageMenuScroll
-             * once https://github.com/plotly/dash-core-components/issues/769
-             * is fixed
-             */
-            links.push(`
-                <div class="page-menu--link-parent">
-                    <span class="page-menu--link" onClick="pageMenuScroll('${el.id}')">
-                        ${el.innerText}
-                    </span>
-                </div>
+            window.clearTimeout(timer);
+            const ignoreElementsNodeList = document.querySelectorAll(`
+                .example-container h1,
+                .example-container h2,
+                .example-container h3,
+                .example-container h4,
+                .example-container h5,
+                .example-container h6
             `);
-        };
-        parent.innerHTML = links.join('');
+            const ignoreElementsArray = [];
+            for(let i=0; i<ignoreElementsNodeList.length; i++) {
+                ignoreElementsArray[i] = ignoreElementsNodeList[i];
+            }
+
+            const links = [];
+            for(let i=0; i<elements.length; i++) {
+                const el = elements[i];
+                if(ignoreElementsArray.indexOf(el) > -1) {
+                    continue;
+                }
+                if (!el.id) {
+                    el.id = `${replace(/ /g, '-', el.innerText).toLowerCase()}`;
+                }
+                /*
+                 * TODO - Replace with a proper a and remove pageMenuScroll
+                 * once https://github.com/plotly/dash-core-components/issues/769
+                 * is fixed
+                 */
+                links.push(`
+                    <div class="page-menu--link-parent">
+                        <span class="page-menu--link" onClick="pageMenuScroll('${el.id}')">
+                            ${replace(
+                                /</g, '&lt;',
+                                replace(/>/g, '&gt;', el.innerText)
+                            )}
+                        </span>
+                    </div>
+                `);
+            };
+            parent.innerHTML = links.join('');
+        }
+        timer = setTimeout(renderLinksInDomInner, 0);
     }
 
     render() {

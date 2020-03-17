@@ -72,10 +72,12 @@ app.layout = html.Div(
             dugc.Sidebar(urls=SIDEBAR_INDEX),
 
             html.Div([
+                html.Div(id='backlinks-top', className='backlinks'),
                 html.Div(
                     html.Div(id='chapter', className='content'),
                     className='content-container'
                 ),
+                html.Div(id='backlinks-bottom', className='backlinks'),
             ], className='rhs-content container-width'),
 
             dugc.PageMenu(id='pagemenu')
@@ -170,17 +172,19 @@ def build_all():
 def create_backlinks(pathname):
     parts = pathname.strip('/').split('/')
     links = [
-        dcc.Link('Table of Contents', href='/')
+        dcc.Link('Home', href='/')
     ]
     for i, part in enumerate(parts[:-1]):
+        href='/' + '/'.join(parts[:i + 1])
+        name = chapter_index.URL_TO_BREADCRUMB_MAP.get(href, '? {} ?'.format(href))
         links += [
             html.Span(' > '),
-            dcc.Link(
-                part.replace('-', ' ').title(),
-                href='/' + '/'.join(parts[:i + 1])
-            )
+            dcc.Link(name, href=href)
         ]
-    links += [html.Span(' > ' + parts[-1].replace('-', ' ').title())]
+    current_chapter_name = chapter_index.URL_TO_BREADCRUMB_MAP.get(
+        pathname.rstrip('/'), '? {} ?'.format(pathname)
+    )
+    links += [html.Span(' > ' + current_chapter_name)]
     return links
 
 
@@ -191,24 +195,21 @@ def flat_list(*args):
 
     return out
 
-
 @app.callback([Output('chapter', 'children'),
+               Output('backlinks-top', 'children'),
+               Output('backlinks-bottom', 'children'),
                # dummy variable so that a loading state is triggered
                Output('pagemenu', 'dummy2')],
               [Input('location', 'pathname')])
 def display_content(pathname):
     if pathname is None or pathname == '/':
-        return home.layout
+        return [home.layout, '', '']
     pathname = pathname.rstrip('/')
 
+    backlinks = create_backlinks(pathname)
     def make_page(page_path):
-        backlinks = create_backlinks(page_path)
         return flat_list(
-            html.Div(className='backlinks', children=backlinks),
-            html.Br(),
             chapter_index.URL_TO_CONTENT_MAP[page_path],
-            html.Hr(),
-            backlinks,
             html.Div(id='wait-for-page-{}'.format(page_path)),
         )
 
@@ -236,7 +237,7 @@ def display_content(pathname):
                 return flat_list(warning_box, make_page(partial_path))
 
         children = flat_list(warning_box, home.layout)
-    return [children, '']
+    return [children, backlinks, backlinks, '']
 
 
 # dummy callback to trigger a pagemenu rerender

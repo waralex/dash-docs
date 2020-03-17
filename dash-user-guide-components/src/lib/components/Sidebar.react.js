@@ -153,7 +153,8 @@ export default class Sidebar extends Component {
                     value={this.state.search}
                     onChange={e => this.setState({search: e.target.value})}
                     onKeyUp={handleKeyUp}
-                    placeholder={'Filter'}
+                    id="sidebar-search-input"
+                    placeholder={'Filter...'}
                 />
                 {
                     this.state.search.length > 2 ?
@@ -240,7 +241,7 @@ class SearchResults extends Component {
         }
 
         return (
-            <div>
+            <div className='search-results'>
                 {resultItems}
             </div>
         );
@@ -255,7 +256,7 @@ function link(chapter) {
     } else if (chapter.description) {
         title = chapter.description.trim();
     }
-    const active = window.location.pathname.trimRight('/') == chapter.url.trimRight('/');
+    const active = window.location.pathname.replace(/\/$/, "") == chapter.url.replace(/\/$/, "");
 
     const linkProps = {
         href: chapter.url,
