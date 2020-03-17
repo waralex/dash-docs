@@ -285,24 +285,26 @@ class TreeSidebar extends Component {
                     !force_closed
                     &&
                     (
-                        has('urls', chapter)
-                        &&
-                        Boolean(find(url =>
-                             url.indexOf(window.location.pathname) === 0
-                        ), chapter.urls)
+                        (
+                            has('urls', chapter)
+                            &&
+                            Boolean(find(url =>
+                                 url.indexOf(window.location.pathname) === 0
+                            ), chapter.urls)
+                        )
+                        ||
+                        Boolean(find(
+
+                            subchapter => {
+                                return (
+                                    propOr('', 'url', subchapter)
+                                    .indexOf(window.location.pathname) === 0
+                                );
+                            },
+
+                            chapter.chapters
+                        ))
                     )
-                    ||
-                    Boolean(find(
-
-                        subchapter => {
-                            return (
-                                propOr('', 'url', subchapter)
-                                .indexOf(window.location.pathname) === 0
-                            );
-                        },
-
-                        chapter.chapters
-                    ))
                 );
                 chapter_elements.push(
                     <details open={open}>
