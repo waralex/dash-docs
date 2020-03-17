@@ -153,7 +153,7 @@ export default class Sidebar extends Component {
                     value={this.state.search}
                     onChange={e => this.setState({search: e.target.value})}
                     onKeyUp={handleKeyUp}
-                    placeholder={'Filter'}
+                    placeholder={'Filter...'}
                 />
                 {
                     this.state.search.length > 2 ?
