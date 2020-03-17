@@ -189,7 +189,7 @@ URLS = [
             {
                 'name': 'Dash Core Components',
                 'chapters': [{
-                    'url': '/dash-core-components/',
+                    'url': '/dash-core-components',
                     'name': 'Overview',
                     'breadcrumb': 'Dash Core Components',
                     'description': (
@@ -210,7 +210,7 @@ URLS = [
                 'name': 'Dash HTML Components',
                 'chapters': [
                     {
-                        'url': '/dash-html-components/',
+                        'url': '/dash-html-components',
                         'name': 'Overview',
                         'breadcrumb': 'Dash HTML Components',
                         'description': 'Dash provides all of the available HTML tags ' \
