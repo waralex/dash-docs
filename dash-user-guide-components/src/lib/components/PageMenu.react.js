@@ -19,15 +19,27 @@ class PageMenu extends Component {
     }
 
     renderLinksInDom() {
-        /*
-         * Display links directly via setInterval because we don't know when the
-         * headers will be rendered in the DOM
-         */
         const parent = document.getElementById('page-menu--links');
         const elements = document.querySelectorAll('h1, h2, h3, h4, h5, h6');
+        const ignoreElementsNodeList = document.querySelectorAll(`
+            .example-container h1,
+            .example-container h2,
+            .example-container h3,
+            .example-container h4,
+            .example-container h5,
+            .example-container h6
+        `);
+        const ignoreElementsArray = [];
+        for(let i=0; i<ignoreElementsNodeList.length; i++) {
+            ignoreElementsArray[i] = ignoreElementsNodeList[i];
+        }
+
         const links = [];
         for(let i=0; i<elements.length; i++) {
             const el = elements[i];
+            if(ignoreElementsArray.indexOf(el) > -1) {
+                continue;
+            }
             if (!el.id) {
                 el.id = `${replace(/ /g, '-', el.innerText).toLowerCase()}`;
             }
