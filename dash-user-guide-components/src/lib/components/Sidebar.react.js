@@ -256,7 +256,7 @@ function link(chapter) {
     } else if (chapter.description) {
         title = chapter.description.trim();
     }
-    const active = window.location.pathname.trimRight('/') == chapter.url.trimRight('/');
+    const active = window.location.pathname.replace(/\/$/, "") == chapter.url.replace(/\/$/, "");
 
     const linkProps = {
         href: chapter.url,
