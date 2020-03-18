@@ -148,7 +148,7 @@ export default class Sidebar extends Component {
                 <input
                     autoFocus
                     tabIndex="1"
-                    type="text"
+                    type="search"
                     autocomplete="false"
                     value={this.state.search}
                     onChange={e => this.setState({search: e.target.value})}

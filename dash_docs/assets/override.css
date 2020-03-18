@@ -137,38 +137,41 @@ h6 { font-size: 20px; line-height: 1.6;  letter-spacing: 0; margin-bottom: 0.75r
     max-width: 250px;
 }
 
-.sidebar input {
-    display: block;
-    margin-top: 10px;
-    width: calc(100% - 20px);
+.sidebar input[type="text"],
+.sidebar input[type="search"] {
+    background-color: #fff;
     border-radius: 5px;
-    border: none;
-    height: 20px;
-    padding: 5px;
-    padding-left: 10px;
-    font-size: 14px;
+    border: 1px solid lightgrey;
+    box-sizing: border-box;
+    display: block;
+    font-size: inherit;
+    height: 38px;
     line-height: 1.42857143;
-    background-image: none;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    margin-top: 10px;
+    padding-left: 10px !important;
+    width: calc(100% - 20px);
     -webkit-box-shadow: inset 0 1px 1px
         rgba(0,0,0,.075);
-            box-shadow: inset 0 1px 1px
+    box-shadow: inset 0 1px 1px
         rgba(0,0,0,.075);
-        -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
-        transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
-        -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
-        transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
-        transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -webkit-transition: -webkit-box-shadow ease-in-out .15s;
+    transition: -webkit-box-shadow ease-in-out .15s;
+    -o-transition: box-shadow ease-in-out .15s;
+    transition: box-shadow ease-in-out .15s;
+    transition: box-shadow ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
 }
 
-.sidebar input:focus {
-    border-color: #849;
+.sidebar input[type="text"]:focus,
+.sidebar input[type="search"]:focus  {
+    border: none !important;
     outline: 0;
     -webkit-box-shadow: inset 0 1px 1px
-    rgba(0,0,0,.075),0 0 8px rgba(136,68,153,.6);
-            box-shadow: inset 0 1px 1px
-    rgba(0,0,0,.075),0 0 8px rgba(136,68,153,.6);
+        rgba(0,0,0,.075),0 0 8px rgba(136,68,153,.6);
+    box-shadow: inset 0 1px 1px
+        rgba(0,0,0,.075),0 0 8px rgba(136,68,153,.6);
+}
+.sidebar .search-results {
+    margin-top: 5px;
 }
 
 .sidebar--0 summary {
