@@ -53,7 +53,12 @@ class PageMenu extends Component {
                     continue;
                 }
                 if (!el.id) {
-                    el.id = `${replace(/ /g, '-', el.innerText).toLowerCase()}`;
+                    let id = replace(/ /g, '-', el.innerText).toLowerCase();
+                    // Remove ' since we use quotes below in `onClick=pageMenuScroll('`
+                    id = replace(/'/g, '', id);
+                    // Remove " just to be safe
+                    id = replace(/"/g, '', id);
+                    el.id = id;
                 }
                 /*
                  * TODO - Replace with a proper a and remove pageMenuScroll
