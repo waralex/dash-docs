@@ -54,7 +54,7 @@ header = html.Div(
                     src="https://ghbtns.com/github-btn.html?user=plotly&repo=dash&type=star&count=true&size=small",
                     style={
                         'border': 'none',
-                        'height': '50px',
+                        'height': '30px',
                         'verticalAlign': 'middle',
                         'marginTop': '9px',
                         'width': '105px'
