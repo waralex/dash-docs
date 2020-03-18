@@ -249,6 +249,9 @@ class SearchResults extends Component {
 }
 
 function link(chapter) {
+    if(!chapter.url) {
+        return null;
+    }
     let title = null;
     if (chapter.description_short) {
         title = chapter.description_short.trim();
