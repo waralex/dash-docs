@@ -46,6 +46,10 @@ header = html.Div(
                 ), href='/'),
             ], className='logo'),
 
+            # HEADS UP!
+            # If you are modifying these header links,
+            # make sure to check that the responsive design still works
+            # The breakpoints are set in override.css
             html.Div(className='links', children=[
                 html.A('Announcements', href='https://community.plot.ly/tag/announcements'),
                 html.A('Show & Tell', href='https://community.plot.ly/tag/show-and-tell'),
