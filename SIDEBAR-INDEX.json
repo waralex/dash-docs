@@ -1131,7 +1131,7 @@
             "url": "/dash-bio/clustergram",
             "name": "dash_bio.Clustergram",
             "description": "Official examples and reference documentation for dash_bio.Clustergram.",
-            "meta_keywords": "children, key, rel, dir, hidden, style, form, name, height, width, action, content, high, low, max, min, label, required, size, rows, default, options, date, multi, figure, config, list, debug, color, data, colors, columns, css, on, base, scale, elements, stylesheet, layout, pan, annotations, styles, labels, range"
+            "meta_keywords": "children, key, rel, dir, hidden, style, form, name, type, height, width, action, content, high, low, max, min, label, required, size, rows, default, options, date, multi, figure, config, list, debug, color, data, colors, columns, css, on, base, scale, elements, stylesheet, layout, pan, annotations, styles, labels, range"
           },
           {
             "url": "/dash-bio/fornacontainer",
@@ -1233,7 +1233,7 @@
             "url": "/dash-daq/graduatedbar",
             "name": "dash_daq.GraduatedBar",
             "description": "Official examples and reference documentation for dash_daq.GraduatedBar.",
-            "meta_keywords": "key, style, name, type, low, max, min, start, label, multiple, size, default, displayed, date, multi, config, list, step, debug, color, vertical, colors, css, on, labelPosition, showCurrentValue, stylesheet, layout, orientation, styles, range"
+            "meta_keywords": "key, style, name, type, low, max, min, start, label, multiple, size, default, displayed, date, multi, config, list, step, debug, color, vertical, colors, css, on, theme, labelPosition, showCurrentValue, stylesheet, layout, orientation, styles, range"
           },
           {
             "url": "/dash-daq/indicator",
