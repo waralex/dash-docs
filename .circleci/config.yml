@@ -42,11 +42,6 @@ jobs:
               pip install --progress-bar off -e git+https://github.com/plotly/dash.git@test-window-store#egg=dash[testing]
               python -m pytest tests/unit
               pytest --log-cli-level INFO --nopercyfinalize --junitxml=test-reports/snapshots.xml tests/integration
-              if [[ "python --version | sed 's/[^0-9.]*//g'" =~ 3* ]] ;
-              then
-                  pip uninstall pytest -y
-                  pip install pytest==5.3.5
-              fi
       - store_artifacts:
           path: test-reports
       - store_test_results:
