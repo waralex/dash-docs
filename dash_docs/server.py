@@ -11,8 +11,7 @@ class CustomDash(Dash):
 
         if request.path in URL_TO_META_MAP:
             name = URL_TO_META_MAP[request.path].get('breadcrumb', URL_TO_META_MAP[request.path]['name'])
-            name = 'Dash ' + ''.join(name.split('.')[1:])
-            name += ' | Dash Documentation | Plotly'
+            name += ' | Dash for Python Documentation | Plotly'
         else:
             name = 'Dash Documentation & User Guide | Plotly'
         meta_kwargs = dict(
