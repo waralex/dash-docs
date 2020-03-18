@@ -10,7 +10,7 @@ app <- Dash$new()
 #and put the csv in your assets folder!
 
 df <- read.csv(
-  file = "assets/gapminderDataFiveYear.csv",
+  file = "datasets/gapminderDataFiveYear.csv",
   stringsAsFactor=FALSE,
   check.names=FALSE
 )
