@@ -41,8 +41,8 @@ h6 { font-size: 20px; line-height: 1.6;  letter-spacing: 0; margin-bottom: 0.75r
     display: flex;
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
-        -ms-flex-flow: row wrap;
-            flex-flow: row wrap;
+        -ms-flex-flow: row nowrap;
+            flex-flow: row nowrap;
 }
 .content-wrapper > * {
   -webkit-box-flex: 1;

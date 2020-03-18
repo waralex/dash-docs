@@ -80,8 +80,9 @@ app.layout = html.Div(
 
         dcc.Location(id='location', refresh=False),
 
+        header,
+
         html.Div(className='content-wrapper', children=[
-            header,
             dugc.Sidebar(urls=SIDEBAR_INDEX),
 
             html.Div([
