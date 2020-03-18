@@ -251,7 +251,7 @@ def display_content(pathname):
                 return flat_list(warning_box, make_page(partial_path))
 
         children = flat_list(warning_box, home.layout)
-    return [children, backlinks, dash.no_update, backlinks, '']
+    return [children, backlinks, {'borderBottom': 'thin lightgrey solid'}, backlinks, '']
 
 
 # dummy callback to trigger a pagemenu rerender
