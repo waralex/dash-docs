@@ -46,7 +46,19 @@ header = html.Div(
             ], className='logo'),
 
             html.Div(className='links', children=[
-                html.A('Community Forum', href='https://community.plot.ly/c/dash')
+                html.A('Announcements', href='https://community.plot.ly/tag/announcements'),
+                html.A('Show & Tell', href='https://community.plot.ly/tag/show-and-tell'),
+                html.A('Community Forum', href='https://community.plot.ly/c/dash'),
+                html.Iframe(
+                    src="https://ghbtns.com/github-btn.html?user=plotly&repo=dash&type=star&count=true&size=small",
+                    style={
+                        'border': 'none',
+                        'height': '50px',
+                        'verticalAlign': 'middle',
+                        'marginTop': '9px',
+                        'width': '105px'
+                    }
+                ),
             ])
         ]
     )
