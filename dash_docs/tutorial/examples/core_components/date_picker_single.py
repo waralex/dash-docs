@@ -25,7 +25,7 @@ app.layout = html.Div([
 def update_output(date):
     string_prefix = 'You have selected: '
     if date is not None:
-        date = dt.strptime(date.split(' ')[0], '%Y-%m-%d')
+        date = dt.strptime(date.split('T')[0], '%Y-%m-%d')
         date_string = date.strftime('%B %d, %Y')
         return string_prefix + date_string
 
