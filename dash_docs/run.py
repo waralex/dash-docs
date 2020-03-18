@@ -1,3 +1,4 @@
+import dash
 import dash_html_components as html
 import dash_core_components as dcc
 import json
@@ -46,7 +47,19 @@ header = html.Div(
             ], className='logo'),
 
             html.Div(className='links', children=[
-                html.A('Community Forum', href='https://community.plot.ly/c/dash')
+                html.A('Announcements', href='https://community.plot.ly/tag/announcements'),
+                html.A('Show & Tell', href='https://community.plot.ly/tag/show-and-tell'),
+                html.A('Community Forum', href='https://community.plot.ly/c/dash'),
+                html.Iframe(
+                    src="https://ghbtns.com/github-btn.html?user=plotly&repo=dash&type=star&count=true&size=small",
+                    style={
+                        'border': 'none',
+                        'height': '30px',
+                        'verticalAlign': 'middle',
+                        'marginTop': '9px',
+                        'width': '105px'
+                    }
+                ),
             ])
         ]
     )
@@ -197,13 +210,14 @@ def flat_list(*args):
 
 @app.callback([Output('chapter', 'children'),
                Output('backlinks-top', 'children'),
+               Output('backlinks-top', 'style'),
                Output('backlinks-bottom', 'children'),
                # dummy variable so that a loading state is triggered
                Output('pagemenu', 'dummy2')],
               [Input('location', 'pathname')])
 def display_content(pathname):
     if pathname is None or pathname == '/':
-        return [home.layout, '', '', '']
+        return [home.layout, '', {'borderBottom': 'none'}, '', '']
     pathname = pathname.rstrip('/')
 
     backlinks = create_backlinks(pathname)
@@ -237,7 +251,7 @@ def display_content(pathname):
                 return flat_list(warning_box, make_page(partial_path))
 
         children = flat_list(warning_box, home.layout)
-    return [children, backlinks, backlinks, '']
+    return [children, backlinks, dash.no_update, backlinks, '']
 
 
 # dummy callback to trigger a pagemenu rerender
