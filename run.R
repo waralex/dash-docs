@@ -228,7 +228,7 @@ header <- htmlDiv(
       children = list(
         htmlA(htmlImg(
           style = list(height = '100%'),
-          src = 'https://dash.plot.ly/assets/images/logo.png'
+          src = 'https://dash.plot.ly/assets/images/logo-plotly.png'
         ), href = 'https://plot.ly/products/dash', className='logo-link'),
         htmlDiv(className='links', children = list(
           htmlA('pricing', className='link', href = 'https://plot.ly/dash/pricing'),
