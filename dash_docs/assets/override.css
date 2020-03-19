@@ -41,8 +41,8 @@ h6 { font-size: 20px; line-height: 1.6;  letter-spacing: 0; margin-bottom: 0.75r
     display: flex;
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
-        -ms-flex-flow: row wrap;
-            flex-flow: row wrap;
+        -ms-flex-flow: row nowrap;
+            flex-flow: row nowrap;
 }
 .content-wrapper > * {
   -webkit-box-flex: 1;
@@ -433,6 +433,9 @@ a {
     .content-wrapper {
         display: block;
     }
+    .backlinks {
+        padding: 10px;
+    }
     .logo {
         margin-left: 10px;
     }
@@ -442,4 +445,21 @@ a {
     .content {
         margin-left: 0px;
         margin-right: 0px;
-    }}
+    }
+    .backlinks {
+        padding: 0px;
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 670px) {
+    .header .links iframe {
+        display: none;
+    }
+}
+
+@media (max-width: 570px) {
+    .header .links {
+        display: none;
+    }
+}
