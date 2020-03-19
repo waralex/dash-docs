@@ -7,4 +7,4 @@ metas <- list(
 
 app <- Dash$new(assets_folder="dash_docs/assets", meta_tags = metas)
 
-app$title("Dash User Guide and Documentation - Dash by Plotly")
+app$title("Dash for R User Guide and Documentation | R & RStats | Plotly")
