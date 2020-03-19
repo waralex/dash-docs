@@ -44,7 +44,7 @@
         "url": "/getting-started",
         "name": "Part 2. Layout",
         "description": "The Dash `layout` describes what your app will look like and is composed of a set of declarative Dash components.",
-        "meta_keywords": "children, key, href, rel, lang, style, title, controls, disabled, form, name, type, width, open, content, high, low, max, min, start, label, selected, multiple, size, placeholder, rows, default, options, displayed, multi, figure, config, list, refresh, debug, color, marks, count, data, colors, columns, css, dropdown, on, base, backgroundColor, elements, stylesheet, layout, pan, zoom, opacity, styles, labels, range, legend, view"
+        "meta_keywords": "children, key, href, rel, lang, style, title, controls, disabled, form, name, type, width, open, content, high, low, max, min, start, label, selected, multiple, size, placeholder, rows, default, options, displayed, multi, responsive, figure, config, list, refresh, debug, color, marks, count, data, colors, columns, css, dropdown, on, base, backgroundColor, elements, stylesheet, layout, pan, zoom, opacity, styles, labels, range, legend, view"
       },
       {
         "url": "/getting-started-part-2",
@@ -139,7 +139,7 @@
             "url": "/dash-core-components/graph",
             "name": "dcc.Graph",
             "description": "Official examples and reference documentation for dcc.Graph. dcc.Graph is a dash_core_components component.",
-            "meta_keywords": "children, key, download, href, rel, shape, dir, style, title, coords, src, form, name, type, height, width, open, accept, action, high, low, max, min, start, selected, required, size, rows, default, options, date, clickData, clickAnnotationData, hoverData, clear_on_unhover, selectedData, relayoutData, extendData, restyleData, figure, animate, animation_options, config, list, color, data, filename, editable, on, base, scale, force, layout, pan, zoom, annotations, container, resolution, range, selection, legend, scrollZoom, view"
+            "meta_keywords": "children, key, download, href, rel, shape, dir, style, title, coords, src, form, name, type, height, width, open, accept, action, high, low, max, min, start, selected, required, size, rows, default, options, date, responsive, clickData, clickAnnotationData, hoverData, clear_on_unhover, selectedData, relayoutData, extendData, restyleData, figure, animate, animation_options, config, list, color, data, filename, editable, on, base, scale, force, layout, pan, zoom, annotations, container, resolution, range, selection, legend, scrollZoom, view"
           },
           {
             "url": "/dash-core-components/input",
@@ -601,7 +601,7 @@
             "url": "/dash-html-components/img",
             "name": "html.Img",
             "description": "Official examples and reference documentation for html.Img. html.Img is a dash_html_components component.",
-            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, alt, crossOrigin, src, form, name, type, height, width, sizes, srcSet, useMap, content, low, min, size, rows, wrap, default, displayed, date, list, tooltip, data, editable, on, elements, styles"
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, alt, crossOrigin, src, form, name, type, height, width, sizes, srcSet, useMap, content, low, min, size, rows, wrap, default, displayed, date, responsive, list, tooltip, data, editable, on, elements, styles"
           },
           {
             "url": "/dash-html-components/ins",
@@ -877,7 +877,7 @@
             "url": "/dash-html-components/source",
             "name": "html.Source",
             "description": "Official examples and reference documentation for html.Source. html.Source is a dash_html_components component.",
-            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, media, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, src, form, name, type, sizes, srcSet, content, low, min, size, rows, wrap, default, displayed, date, list, tooltip, data, editable, on, elements, styles"
+            "meta_keywords": "children, n_clicks, n_clicks_timestamp, key, role, data-*, aria-*, media, accessKey, contentEditable, contextMenu, dir, draggable, hidden, lang, spellCheck, style, tabIndex, title, src, form, name, type, sizes, srcSet, content, low, min, size, rows, wrap, default, displayed, date, responsive, list, tooltip, data, editable, on, elements, styles"
           },
           {
             "url": "/dash-html-components/spacer",
@@ -1040,7 +1040,7 @@
             "breadcrumb": "Dash DataTable",
             "description": "`dash_table.DataTable` is an interactive table that supports rich styling, conditional formatting, editing, sorting, filtering, and more.",
             "autogenerate_index": true,
-            "meta_keywords": "rel, style, cite, form, name, type, height, width, action, content, high, low, min, start, multiple, headers, rows, default, date, multi, figure, config, list, debug, color, included, data, colors, columns, editable, dropdown, virtualization, on, theme, layout, pan, view"
+            "meta_keywords": "rel, style, cite, form, name, type, height, width, action, content, high, low, min, start, multiple, headers, rows, default, date, multi, responsive, figure, config, list, debug, color, included, data, colors, columns, editable, dropdown, virtualization, on, theme, layout, pan, view"
           },
           {
             "url": "/datatable/reference",
@@ -1052,7 +1052,7 @@
             "url": "/datatable/sizing",
             "name": "Sizing",
             "description": "\n                            All about sizing the DataTable. Examples include:\n                            - Setting the width and the height of the table\n                            - Responsive table design\n                            - Setting the widths of individual columns\n                            - Handling long text\n                            - Fixing rows and columns\n                        ",
-            "meta_keywords": "shape, hidden, style, form, name, height, width, open, sizes, content, low, max, min, multiple, size, headers, rows, default, date, multi, search, data, contents, columns, fixed_columns, fixed_rows, style_table, style_cell, style_data, style_cell_conditional, on, base, pan, container, styles, range"
+            "meta_keywords": "shape, hidden, style, form, name, height, width, open, sizes, content, low, max, min, multiple, size, headers, rows, default, date, multi, responsive, search, data, contents, columns, fixed_columns, fixed_rows, style_table, style_cell, style_data, style_cell_conditional, on, base, pan, container, styles, range"
           },
           {
             "url": "/datatable/style",
@@ -1449,7 +1449,7 @@
         "url": "/testing",
         "name": "Dash Testing",
         "description": "An introduction to testing your dash app with selenium",
-        "meta_keywords": "children, key, download, rel, target, dir, style, title, alt, controls, form, name, type, icon, open, accept, action, method, content, high, low, min, start, multiple, required, rows, wrap, default, options, message, date, multi, figure, config, list, pattern, step, count, included, filename, css, on, base, angle, elements, layout, zoom, container, selection, view"
+        "meta_keywords": "children, key, download, rel, target, dir, style, title, alt, controls, form, name, type, icon, open, accept, action, method, content, high, low, min, start, multiple, required, rows, wrap, default, options, message, date, multi, responsive, figure, config, list, pattern, step, count, included, filename, css, on, base, angle, elements, layout, zoom, container, selection, view"
       }
     ]
   },
