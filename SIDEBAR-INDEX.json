@@ -1371,7 +1371,7 @@
             "url": "/cytoscape/reference",
             "name": "Reference",
             "description": "\n                        Comprehensive list of all of the Cytoscape properties.\n                        ",
-            "meta_keywords": "children, key, rel, shape, target, dir, draggable, style, form, name, height, width, accept, method, content, low, max, min, start, label, selected, multiple, required, size, cols, rows, default, options, multi, animate, list, refresh, color, search, included, data, on, base, scale, elements, stylesheet, layout, pan, zoom, panningEnabled, userPanningEnabled, minZoom, maxZoom, zoomingEnabled, userZoomingEnabled, boxSelectionEnabled, autoungrabify, autolock, autounselectify, autoRefreshLayout, tapNode, tapNodeData, tapEdge, tapEdgeData, mouseoverNodeData, mouseoverEdgeData, selectedNodeData, selectedEdgeData, overview, ancestors, styles, padding, selection, view"
+            "meta_keywords": "children, key, rel, shape, target, dir, draggable, style, form, name, height, width, accept, method, content, low, max, min, start, label, selected, multiple, required, size, cols, rows, default, options, multi, animate, list, refresh, color, search, data, on, base, scale, elements, stylesheet, layout, pan, zoom, panningEnabled, userPanningEnabled, minZoom, maxZoom, zoomingEnabled, userZoomingEnabled, boxSelectionEnabled, autoungrabify, autolock, autounselectify, autoRefreshLayout, tapNode, tapNodeData, tapEdge, tapEdgeData, mouseoverNodeData, mouseoverEdgeData, selectedNodeData, selectedEdgeData, overview, ancestors, styles, padding, selection, view"
           }
         ]
       }
