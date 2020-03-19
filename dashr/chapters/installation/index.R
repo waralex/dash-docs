@@ -9,7 +9,6 @@ In your terminal, install several dash libraries.
 These libraries are under active development, so install and upgrade frequently.
 Make sure you're on at least version `3.0.2` of R.
 You can see what version of R you have by entering version in the R CLI.
-CRAN is the easiest place to download the latest R version.
 "),
 
 dccMarkdown("
