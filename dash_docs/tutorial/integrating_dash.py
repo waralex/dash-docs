@@ -6,6 +6,12 @@ import dash_html_components as html
 from dash_docs import styles
 from dash_docs import reusable_components
 
+def Syntax(content):
+    return reusable_components.Markdown(
+        '``python  \n' + content.strip() + '  \n``',
+        style=s tyles.code_container
+    )'`')
+
 layout = html.Div([
     reusable_components.Markdown(
     """
@@ -39,7 +45,7 @@ layout = html.Div([
     `http://localhost:8050/dash`) of a Flask app:
     """
     ),
-    reusable_components.Syntax(
+    Syntax(
         '''
         import flask
         import dash
@@ -86,7 +92,7 @@ layout = html.Div([
     """
     ),
     reusable_components.Markdown("`flask_app.py`"),
-    reusable_components.Syntax(
+    Syntax(
         '''
             from flask import Flask
 
@@ -99,7 +105,7 @@ layout = html.Div([
     ),
     html.Hr(),
     reusable_components.Markdown("`app1.py`"),
-    reusable_components.Syntax(
+    Syntax(
         """
             import dash
             import dash_html_components as html
@@ -114,7 +120,7 @@ layout = html.Div([
     ),
     html.Hr(),
     reusable_components.Markdown("`app2.py`"),
-    reusable_components.Syntax(
+    Syntax(
         """
             import dash
             import dash_html_components as html
@@ -129,7 +135,7 @@ layout = html.Div([
     ),
     html.Hr(),
     reusable_components.Markdown("`wsgi.py`"),
-    reusable_components.Syntax(
+    Syntax(
         """
             from werkzeug.wsgi import DispatcherMiddleware
 
@@ -157,7 +163,7 @@ layout = html.Div([
             method. This can be run as a WSGI app like so:
         """
     ),
-    reusable_components.Syntax("$ gunicorn wsgi:application"),
+    Syntax("$ gunicorn wsgi:application"),
     reusable_components.Markdown(
     """
     Alternatively, you can use the Werkzeug development server (which is not
@@ -166,7 +172,7 @@ layout = html.Div([
     `run.py`
     """
     ),
-    reusable_components.Syntax(
+    Syntax(
         """
             from werkzeug.wsgi import DispatcherMiddleware
             from werkzeug.serving import run_simple
@@ -191,7 +197,7 @@ layout = html.Div([
     can be added before the initialisation of the `DispatcherMiddleware` to do this:
     """
     ),
-    reusable_components.Syntax(
+    Syntax(
         """
             app1.enable_dev_tools(debug=True)
             app2.enable_dev_tools(debug=True)

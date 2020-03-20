@@ -33,7 +33,7 @@ To better understand how memoization works, let's start with a simple example.
 
 '''),
 
-    reusable_components.Syntax('''
+    Syntax('''
 import time
 import functools32
 
@@ -66,7 +66,7 @@ data (clear your cache) every hour or every day.
 Here is an example of `Flask-Caching` with Redis:
 '''),
 
-    reusable_components.Syntax(examples['performance_flask_caching'][0]),
+    Syntax(examples['performance_flask_caching'][0]),
 
     reusable_components.Markdown('''
 
@@ -80,7 +80,7 @@ several callbacks.
 
 '''),
 
-    reusable_components.Syntax(examples['performance_flask_caching_dataset']),
+    Syntax(examples['performance_flask_caching_dataset']),
 
     reusable_components.Markdown('''
 
@@ -133,7 +133,7 @@ For example, the following callback:
 
 '''),
 
-    reusable_components.Syntax('''
+    Syntax('''
 @app.callback(
     Output('out-component', 'value'),
     [Input('in-component1', 'value'), Input('in-component2', 'value')]
@@ -176,7 +176,7 @@ the contents of the `.js` file would look like this:
 
 '''),
 
-    reusable_components.Syntax('''
+    Syntax('''
 window.dash_clientside = Object.assign({}, window.dash_clientside, {
     large_params_function: function(largeValue1, largeValue2) {
         return someTransform(largeValue1, largeValue2);
@@ -192,7 +192,7 @@ In Dash, the callback would now be written as:
 
 '''),
 
-    reusable_components.Syntax('''
+    Syntax('''
 from dash.dependencies import ClientsideFunction, Input, Output
 
 app.clientside_callback(

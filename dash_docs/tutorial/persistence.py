@@ -69,8 +69,8 @@ layout = html.Div([
     different value for each city - resets if you open the page in a new tab.
     '''),
 
-    reusable_components.Syntax(examples['persistence'][0]),
-    reusable_components.Example(examples['persistence'][1]),
+    Syntax(examples['persistence'][0]),
+    Example(examples['persistence'][1]),
 
     reusable_components.Markdown('''
     ## Explicitly clearing saved data
@@ -84,8 +84,8 @@ layout = html.Div([
     `dash.no_update` until you detect the reset condition.
     '''),
 
-    reusable_components.Syntax(examples['persistence_clear'][0]),
-    reusable_components.Example(examples['persistence_clear'][1]),
+    Syntax(examples['persistence_clear'][0]),
+    Example(examples['persistence_clear'][1]),
 
     reusable_components.Markdown('''
     ## For component developers

@@ -534,7 +534,7 @@ def update_output_1(value):
         '''),
 
     Syntax(
-        # with reusable_components.Syntax + load_example we are wrapping twice, hence replace()
+        # with Syntax + load_example we are wrapping twice, hence replace()
         examples['filesystem-session-cache'][0].replace('```python ', ''),
         summary="Here's what this example looks like in code:"
     ),

@@ -56,7 +56,7 @@ layout = html.Div([
 
     '''),
 
-    reusable_components.Syntax(examples[0][0], summary='''
+    Syntax(examples[0][0], summary='''
         To get started, create a file named `app.py` with the following code:
     '''),
     reusable_components.Markdown('''

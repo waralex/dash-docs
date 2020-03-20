@@ -55,23 +55,23 @@ layout = html.Div([
 
     '''),
 
-    reusable_components.Syntax(
+    Syntax(
         examples['simple-graph-events'][0],
         summary="""
             Here's an simple example that
             prints these attributes in the screen.
     """),
-    reusable_components.Example(examples['simple-graph-events'][1]),
+    Example(examples['simple-graph-events'][1]),
 
     html.Hr(),
 
     html.H3('Update Graphs on Hover'),
 
-    reusable_components.Syntax(examples['world-indicators'][0], summary="""
+    Syntax(examples['world-indicators'][0], summary="""
     Let's update our world indicators example from the previous chapter
     by updating time series when we hover over points in our scatter plot.
     """),
-    reusable_components.Example(examples['world-indicators'][1]),
+    Example(examples['world-indicators'][1]),
 
     reusable_components.Markdown('''
     Try mousing over the points in the scatter plot on the left.
@@ -83,7 +83,7 @@ layout = html.Div([
 
     html.H3('Generic Crossfilter Recipe'),
 
-    reusable_components.Syntax(examples['crossfilter-recipe'][0], summary="""
+    Syntax(examples['crossfilter-recipe'][0], summary="""
     Here's a slightly more generic example for crossfiltering across
     a six-column data set. Each scatter plot's selection filters the
     underlying dataset.
