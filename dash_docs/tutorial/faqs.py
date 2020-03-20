@@ -17,8 +17,6 @@ def get_example_name(path):
 examples = {get_example_name(path): tools.load_example(path) for path in
             ['tutorial/examples/faqs/last_clicked_button.py']}
 
-from dash_docs.tutorial.components import Example, Syntax
-
 layout = html.Div([
     reusable_components.Markdown('''
     # FAQs and Gotchas

@@ -8,9 +8,9 @@ from dash_docs import reusable_components
 
 def Syntax(content):
     return reusable_components.Markdown(
-        '``python  \n' + content.strip() + '  \n``',
-        style=s tyles.code_container
-    )'`')
+        '```python  \n' + content.strip() + '  \n```',
+        style=styles.code_container
+    )
 
 layout = html.Div([
     reusable_components.Markdown(
