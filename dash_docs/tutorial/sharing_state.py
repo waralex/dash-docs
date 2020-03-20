@@ -2,6 +2,7 @@
 import dash_core_components as dcc
 import dash_html_components as html
 
+from dash_docs.tutorial.components import Example, Syntax
 from dash_docs import tools
 from dash_docs import reusable_components
 
@@ -16,16 +17,18 @@ layout = html.Div([
     reusable_components.Markdown('''
     # Sharing State Between Callbacks
 
-    > This is the *6th* chapter of the essential [Dash Tutorial](/).  The
-    > [previous chapter](/interactive-graphing) covered how to use callbacks
-    > with the `dash_core_components.Graph` component.  The [rest of the Dash
-    > documentation](/) covers other topics like multi-page apps and component
-    > libraries.  Just getting started? Make sure to [install the necessary
-    > dependencies](/installation). The [next and final chapter](/faqs) covers
-    > frequently asked questions and gotchas.
+    <blockquote>
+    This is the 6th chapter of the essential <dccLink children="Dash Tutorial" href="/"/>.  The
+    <dccLink href="/interactive-graphing" children="previous chapter"/> covered how to use callbacks
+    with the <code>dash_core_components.Graph</code> component.  The <dccLink href="/" children="rest of the Dash
+    documentation"/> covers other topics like multi-page apps and component
+    libraries.  Just getting started? Make sure to <dccLink children="install the necessary
+    dependencies" href="/installation"/>. The <dccLink href="/faqs" children="next and final chapter"/> covers
+    frequently asked questions and gotchas.
+    </blockquote>
 
     One of the core Dash principles explained in the
-    [Getting Started Guide on Callbacks](/getting-started-part-2)
+    <dccLink href="/getting-started-part-2" children="Getting Started Guide on Callbacks"/>
     is that **Dash Callbacks must never modify variables outside of their
     scope**. It is not safe to modify any `global` variables.
     This chapter explains why and provides some alternative patterns for
@@ -42,7 +45,7 @@ layout = html.Div([
     results to the rest of the callbacks.
 
     This need has been somewhat ameliorated now that you can have
-    [multiple outputs](/getting-started-part-2) for one callback. This way,
+    <dccLink href="/getting-started-part-2" children="multiple outputs"/> for one callback. This way,
     that expensive task can be done once and immediately used in all the
     outputs. But in some cases this still isn't ideal, for example if there are
     simple follow-on tasks that modify the results, like unit conversions. We
@@ -81,7 +84,7 @@ layout = html.Div([
 
     '''),
 
-    reusable_components.Syntax('''df = pd.DataFrame({
+    Syntax('''df = pd.DataFrame({
     'a': [1, 2, 3],
     'b': [4, 1, 4],
     'c': ['x', 'y', 'z'],
@@ -111,7 +114,7 @@ def update_output_1(value):
     out of its scope. This type of pattern *will not work reliably*
     for the reasons outlined above.'''),
 
-    reusable_components.Syntax('''df = pd.DataFrame({
+    Syntax('''df = pd.DataFrame({
     'a': [1, 2, 3],
     'b': [4, 1, 4],
     'c': ['x', 'y', 'z'],
@@ -177,7 +180,7 @@ def update_output_1(value):
              it will just be displaying a subset or an aggregation of it.
     '''),
 
-    reusable_components.Syntax(
+    Syntax(
         summary=('''
         This example outlines how you can perform an expensive data processing
         step in one callback, serialize the output at JSON, and provide it
@@ -239,7 +242,7 @@ def update_output_1(value):
         aggregations to the remaining callbacks.
     '''),
 
-    reusable_components.Syntax(children='''
+    Syntax(children='''
         @app.callback(
             Output('intermediate-value', 'children'),
             [Input('dropdown', 'value')])
@@ -337,156 +340,157 @@ def update_output_1(value):
 
     html.Div(
         children=html.Img(
-            src='https://user-images.githubusercontent.com/1280389/31468665-bf1b6026-aeac-11e7-9388-d9a5e71d964e.gif',
+            src=tools.relpath('assets/images/gallery/caching.gif'),
             alt='Example of a Dash App that uses Caching'
         ),
         className="gallery"
     ),
 
-    reusable_components.Syntax(summary="Here's what this example looks like in code:",
-        children='''
-            import os
-            import copy
-            import time
-            import datetime
+    Syntax(summary="Here's what this example looks like in code:",
+           children='''
+        import os
+        import copy
+        import time
+        import datetime
 
-            import dash
-            import dash_core_components as dcc
-            import dash_html_components as html
-            import numpy as np
-            import pandas as pd
-            from dash.dependencies import Input, Output
-            from flask_caching import Cache
+        import dash
+        import dash_core_components as dcc
+        import dash_html_components as html
+        import numpy as np
+        import pandas as pd
+        from dash.dependencies import Input, Output
+        from flask_caching import Cache
 
 
-            external_stylesheets = [
-                # Dash CSS
-                'https://codepen.io/chriddyp/pen/bWLwgP.css',
-                # Loading screen CSS
-                'https://codepen.io/chriddyp/pen/brPBPO.css']
+        external_stylesheets = [
+            # Dash CSS
+            'https://codepen.io/chriddyp/pen/bWLwgP.css',
+            # Loading screen CSS
+            'https://codepen.io/chriddyp/pen/brPBPO.css']
 
-            app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
-            CACHE_CONFIG = {
-                # try 'filesystem' if you don't want to setup redis
-                'CACHE_TYPE': 'redis',
-                'CACHE_REDIS_URL': os.environ.get('REDIS_URL', 'localhost:6379')
-            }
-            cache = Cache()
-            cache.init_app(app.server, config=CACHE_CONFIG)
+        app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
+        CACHE_CONFIG = {
+            # try 'filesystem' if you don't want to setup redis
+            'CACHE_TYPE': 'redis',
+            'CACHE_REDIS_URL': os.environ.get('REDIS_URL', 'redis://localhost:6379')
+        }
+        cache = Cache()
+        cache.init_app(app.server, config=CACHE_CONFIG)
 
-            N = 100
+        N = 100
 
-            df = pd.DataFrame({
-                'category': (
-                    (['apples'] * 5 * N) +
-                    (['oranges'] * 10 * N) +
-                    (['figs'] * 20 * N) +
-                    (['pineapples'] * 15 * N)
-                )
+        df = pd.DataFrame({
+            'category': (
+                (['apples'] * 5 * N) +
+                (['oranges'] * 10 * N) +
+                (['figs'] * 20 * N) +
+                (['pineapples'] * 15 * N)
+            )
+        })
+        df['x'] = np.random.randn(len(df['category']))
+        df['y'] = np.random.randn(len(df['category']))
+
+        app.layout = html.Div([
+            dcc.Dropdown(
+                id='dropdown',
+                options=[{'label': i, 'value': i} for i in df['category'].unique()],
+                value='apples'
+            ),
+            html.Div([
+                html.Div(dcc.Graph(id='graph-1'), className="six columns"),
+                html.Div(dcc.Graph(id='graph-2'), className="six columns"),
+            ], className="row"),
+            html.Div([
+                html.Div(dcc.Graph(id='graph-3'), className="six columns"),
+                html.Div(dcc.Graph(id='graph-4'), className="six columns"),
+            ], className="row"),
+
+            # hidden signal value
+            html.Div(id='signal', style={'display': 'none'})
+        ])
+
+
+        # perform expensive computations in this "global store"
+        # these computations are cached in a globally available
+        # redis memory store which is available across processes
+        # and for all time.
+        @cache.memoize()
+        def global_store(value):
+            # simulate expensive query
+            print('Computing value with {}'.format(value))
+            time.sleep(5)
+            return df[df['category'] == value]
+
+
+        def generate_figure(value, figure):
+            fig = copy.deepcopy(figure)
+            filtered_dataframe = global_store(value)
+            fig['data'][0]['x'] = filtered_dataframe['x']
+            fig['data'][0]['y'] = filtered_dataframe['y']
+            fig['layout'] = {'margin': {'l': 20, 'r': 10, 'b': 20, 't': 10}}
+            return fig
+
+
+        @app.callback(Output('signal', 'children'), [Input('dropdown', 'value')])
+        def compute_value(value):
+            # compute value and send a signal when done
+            global_store(value)
+            return value
+
+
+        @app.callback(Output('graph-1', 'figure'), [Input('signal', 'children')])
+        def update_graph_1(value):
+            # generate_figure gets data from `global_store`.
+            # the data in `global_store` has already been computed
+            # by the `compute_value` callback and the result is stored
+            # in the global redis cached
+            return generate_figure(value, {
+                'data': [{
+                    'type': 'scatter',
+                    'mode': 'markers',
+                    'marker': {
+                        'opacity': 0.5,
+                        'size': 14,
+                        'line': {'border': 'thin darkgrey solid'}
+                    }
+                }]
             })
-            df['x'] = np.random.randn(len(df['category']))
-            df['y'] = np.random.randn(len(df['category']))
-
-            app.layout = html.Div([
-                dcc.Dropdown(
-                    id='dropdown',
-                    options=[{'label': i, 'value': i} for i in df['category'].unique()],
-                    value='apples'
-                ),
-                html.Div([
-                    html.Div(dcc.Graph(id='graph-1'), className="six columns"),
-                    html.Div(dcc.Graph(id='graph-2'), className="six columns"),
-                ], className="row"),
-                html.Div([
-                    html.Div(dcc.Graph(id='graph-3'), className="six columns"),
-                    html.Div(dcc.Graph(id='graph-4'), className="six columns"),
-                ], className="row"),
-
-                # hidden signal value
-                html.Div(id='signal', style={'display': 'none'})
-            ])
 
 
-            # perform expensive computations in this "global store"
-            # these computations are cached in a globally available
-            # redis memory store which is available across processes
-            # and for all time.
-            @cache.memoize()
-            def global_store(value):
-                # simulate expensive query
-                print('Computing value with {}'.format(value))
-                time.sleep(5)
-                return df[df['category'] == value]
+        @app.callback(Output('graph-2', 'figure'), [Input('signal', 'children')])
+        def update_graph_2(value):
+            return generate_figure(value, {
+                'data': [{
+                    'type': 'scatter',
+                    'mode': 'lines',
+                    'line': {'shape': 'spline', 'width': 0.5},
+                }]
+            })
 
 
-            def generate_figure(value, figure):
-                fig = copy.deepcopy(figure)
-                filtered_dataframe = global_store(value)
-                fig['data'][0]['x'] = filtered_dataframe['x']
-                fig['data'][0]['y'] = filtered_dataframe['y']
-                fig['layout'] = {'margin': {'l': 20, 'r': 10, 'b': 20, 't': 10}}
-                return fig
+        @app.callback(Output('graph-3', 'figure'), [Input('signal', 'children')])
+        def update_graph_3(value):
+            return generate_figure(value, {
+                'data': [{
+                    'type': 'histogram2d',
+                }]
+            })
 
 
-            @app.callback(Output('signal', 'children'), [Input('dropdown', 'value')])
-            def compute_value(value):
-                # compute value and send a signal when done
-                global_store(value)
-                return value
+        @app.callback(Output('graph-4', 'figure'), [Input('signal', 'children')])
+        def update_graph_4(value):
+            return generate_figure(value, {
+                'data': [{
+                    'type': 'histogram2dcontour',
+                }]
+            })
 
 
-            @app.callback(Output('graph-1', 'figure'), [Input('signal', 'children')])
-            def update_graph_1(value):
-                # generate_figure gets data from `global_store`.
-                # the data in `global_store` has already been computed
-                # by the `compute_value` callback and the result is stored
-                # in the global redis cached
-                return generate_figure(value, {
-                    'data': [{
-                        'type': 'scatter',
-                        'mode': 'markers',
-                        'marker': {
-                            'opacity': 0.5,
-                            'size': 14,
-                            'line': {'border': 'thin darkgrey solid'}
-                        }
-                    }]
-                })
-
-
-            @app.callback(Output('graph-2', 'figure'), [Input('signal', 'children')])
-            def update_graph_2(value):
-                return generate_figure(value, {
-                    'data': [{
-                        'type': 'scatter',
-                        'mode': 'lines',
-                        'line': {'shape': 'spline', 'width': 0.5},
-                    }]
-                })
-
-
-            @app.callback(Output('graph-3', 'figure'), [Input('signal', 'children')])
-            def update_graph_3(value):
-                return generate_figure(value, {
-                    'data': [{
-                        'type': 'histogram2d',
-                    }]
-                })
-
-
-            @app.callback(Output('graph-4', 'figure'), [Input('signal', 'children')])
-            def update_graph_4(value):
-                return generate_figure(value, {
-                    'data': [{
-                        'type': 'histogram2dcontour',
-                    }]
-                })
-
-
-            if __name__ == '__main__':
-                app.run_server(debug=True, processes=6)
-            '''
+        if __name__ == '__main__':
+            app.run_server(debug=True, processes=6)
+        '''
     ),
+
 
 
     reusable_components.Markdown('''
@@ -529,7 +533,7 @@ def update_output_1(value):
 
         '''),
 
-    reusable_components.Syntax(
+    Syntax(
         # with reusable_components.Syntax + load_example we are wrapping twice, hence replace()
         examples['filesystem-session-cache'][0].replace('```python ', ''),
         summary="Here's what this example looks like in code:"
@@ -537,7 +541,7 @@ def update_output_1(value):
 
     html.Div(
         children=html.Img(
-            src='https://user-images.githubusercontent.com/1280389/37941518-8f47b71a-313c-11e8-8b00-80ffbb012c4a.gif',
+            src=tools.relpath('assets/images/gallery/user-session-caching.gif'),
             alt='Example of a Dash App that uses User Session Caching'
         )
     ),

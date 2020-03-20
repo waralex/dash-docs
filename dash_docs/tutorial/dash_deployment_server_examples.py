@@ -23,8 +23,8 @@ def Blockquote():
         > This documentation is for [Dash Enterprise](https://plot.ly/dash),
         Plotly's commercial platform for managing and improving
         Dash applications in your organization.
-        [View the docs](/dash-enterprise) or
-        [request a trial](https://go.plot.ly/dash-doc).
+        <dccLink href="/dash-enterprise" children="View the docs"/> or
+        [request a trial](https://plot.ly/get-demo).
     ''')
 
 
@@ -37,8 +37,8 @@ Initialize = html.Div(children=[
     Blockquote(),
 
     rc.Markdown('''
-        > This is the *1st* deployment chapter of the [Dash Enterprise Documentation](/dash-enterprise).
-        > The [next chapter](/dash-enterprise/deployment) covers deploying a Dash App on Dash Enterprise.
+        > This is the *1st* deployment chapter of the <dccLink href="/dash-enterprise" children="Dash Enterprise Documentation"/>.
+        > The <dccLink href="/dash-enterprise/deployment" children="next chapter"/> covers deploying a Dash App on Dash Enterprise.
 
         Before creating or deploying a dash app locally, you need to initialize
         an app on Dash Enterprise.
@@ -116,8 +116,16 @@ Initialize = html.Div(children=[
         &nbsp;
 
         If you have successfully initialized an app, advance to
-        [**Part 2. Deploy Dash Apps on Dash Enterprise**](/dash-enterprise/deployment).
-        If you have encountered any issues, see [**Troubleshooting**](/dash-enterprise)
+        <b><dccLink
+            children="Part 2. Deploy Dash Apps on Dash Enterprise"
+            href="/dash-enterprise/deployment"/>
+        </b>.
+        If you have encountered any issues, see
+        <b><dccLink
+            children="Troubleshooting"
+            href="/dash-enterprise"
+            />
+        </b>
         for help.
 
     '''),
@@ -135,8 +143,8 @@ Deploy = html.Div(children=[
 
     rc.Markdown(
     '''
-    > This is the *2nd* deployment chapter of the [Dash Enterprise Documentation](/dash-enterprise).
-    > The [previous chapter](/dash-enterprise/initialize) covered initializing a Dash App on Dash Enterprise.
+    > This is the *2nd* deployment chapter of the <dccLink href="/dash-enterprise" children="Dash Enterprise Documentation"/>.
+    > The <dccLink href="/dash-enterprise/initialize" children="previous chapter"/> covered initializing a Dash App on Dash Enterprise.
 
 
     To deploy an app to your Dash Enterprise, you can either choose
@@ -249,7 +257,7 @@ def display_instructions2(platform):
                     doesn't require any extra configuration. However, if
                     you are using self-signed certificates or if your server
                     has SAML enabled, then you should deploy with SSH.
-                    [Configure SSH Authentication](/dash-enterprise/ssh).
+                    <dccLink href="/dash-enterprise/ssh" children="Configure SSH Authentication"/>.
 
                     &nbsp;
 
@@ -514,7 +522,7 @@ def display_instructions2(platform):
                     doesn't require any extra configuration. However, if
                     you are using self-signed certificates or if your server
                     has SAML enabled, then you should deploy with SSH.
-                    [Configure SSH Authentication](/dash-enterprise/ssh).
+                    <dccLink href="/dash-enterprise/ssh" children="Configure SSH Authentication"/>.
 
                     &nbsp;
 
@@ -566,7 +574,7 @@ def display_instructions2(platform):
                     doesn't require any extra configuration. However, if
                     you are using self-signed certificates or if your server
                     has SAML enabled, then you should deploy with SSH.
-                    [Configure SSH Authentication](/dash-enterprise/ssh).
+                    <dccLink href="/dash-enterprise/ssh" children="Configure SSH Authentication"/>.
 
                     &nbsp;
 
@@ -673,9 +681,9 @@ def display_instructions_deploy(method):
         #### Deploy Failed?
 
         If your depoly has been unsuccesful, you can check that you have the
-        [necessary files required for deployment](/dash-enterprise/application-structure),
+        <dccLink href="/dash-enterprise/application-structure" children="necessary files required for deployment"/>,
         or if you have a specific error, take a look at
-        [Common Errors](/dash-enterprise/troubleshooting).
+        <dccLink href="/dash-enterprise/troubleshooting" children="Common Errors"/>.
 
         ''')
     ]
@@ -695,7 +703,16 @@ Requirements = html.Div(children=[
     are a few files required for successful deployment. Below is a common
     Dash App folder structure and a brief description of each file's function.
 
+    The information below is presented by language; please choose either
+    Python or R depending on the implementation of Dash you are using.
     ***
+    '''
+    ),
+    dcc.Tabs([
+      dcc.Tab(label='Python', children=[
+        html.Div([
+          rc.Markdown(
+    '''
 
     ## Folder Reference
 
@@ -722,10 +739,11 @@ Requirements = html.Div(children=[
     ```server = app.server```
 
     ***
+
     `CHECKS`
 
     This optional file allows you to define custom checks to be performed on your app upon deployment.
-     [Learn more about the CHECKS file](/dash-enterprise/checks).
+     <dccLink href="/dash-enterprise/checks" children="Learn more about the CHECKS file"/>.
 
     ***
 
@@ -778,7 +796,6 @@ Requirements = html.Div(children=[
     gunicorn
     ```
 
-
     ***
 
     `runtime.txt`
@@ -791,16 +808,120 @@ Requirements = html.Div(children=[
     `assets`
 
     An optional folder that contains CSS stylesheets, images, or
-    custom JavaScript files. [Learn more about assets](/external-resources).
+    custom JavaScript files. <dccLink href="/external-resources" children="Learn more about assets"/>.
+    '''),
+    ])
+      ]),
+      dcc.Tab(label='R', children=[
+        html.Div([
+          rc.Markdown(
+          '''
 
-    '''.format(
-        dash.__version__,
-        dash_auth.__version__,
-        dash_renderer.__version__,
-        dcc.__version__,
-        html.__version__,
-    ))
-])
+    ## Folder Reference
+
+    ```
+    Dash_App/
+    |-- assets/
+       |-- app.css
+    |-- app.R
+    |-- .gitignore
+    |-- CHECKS
+    |-- Procfile
+    |-- .buildpacks
+    |-- apt-packages
+    ```
+
+    ***
+
+    ## Files Reference
+
+    `app.R`
+
+    This is the entry point to your application, it contains your Dash app code.
+    This file must contain a line that includes ```app$run_server()```, or which
+    loads an R script that does.
+
+    ***
+
+    `CHECKS`
+
+    This optional file allows you to define custom checks to be performed on your app upon deployment.
+     <dccLink href="/dash-enterprise/checks" children="Learn more about the CHECKS file"/>.
+
+    ***
+
+    `.gitignore`
+
+    Determines which files and folders are ignored in git, and therefore
+    ignored (i.e. not copied to the server) when you deploy your application.
+    An example of its contents would be:
+
+    ```
+    venv
+    *.pyc
+    .DS_Store
+    .env
+    ```
+
+    ***
+
+    `init.R`
+
+    ```
+    # R script to run author supplied code, typically used to install additional R packages
+    # ======================================================================
+
+    # packages go here
+    install.packages('remotes')
+
+    remotes::install_github('plotly/dashR', upgrade=TRUE)
+    ```
+
+    ***
+
+    `.buildpacks`
+
+    Specifies the buildpack used by the R application to provide a base environment
+    for deployment. This file should contain a URL to the buildpack and the relevant
+    branch, unless the buildpack is stored within `master`.
+
+    We recommend using Plotly's customized buildpack for R deployments:
+
+    ```
+    https://github.com/plotly/heroku-buildpack-r#heroku-18
+    ```
+
+    ***
+
+    `Procfile`
+
+    Declares what commands are run by app's containers. This is commonly,
+    ```web: R -f /app/app.R```, which launches the Dash app from the `/app`
+    subdirectory, where it will be copied during deployment.
+
+    ***
+
+    `apt-packages`
+
+    Describes the app's system-level dependencies. For example, one might include
+
+    ```
+    libcurl4-openssl-dev
+    libxml2-dev
+    libv8-3.14-dev
+    ```
+
+    ***
+
+    `assets`
+
+    An optional folder that contains CSS stylesheets, images, or
+    custom JavaScript files. <dccLink href="/external-resources" children="Learn more about assets"/>.
+    '''),
+    ])
+    ])
+    ])
+    ])
 
 # # # # # # #
 # Adding Static Assets
@@ -823,7 +944,7 @@ staticAssets = html.Div(children=[
 
     For more information about custom CSS, JavaScripts, HTML index template,
     meta tags, or serving Dash's component libaries locally, see
-    [Dash Docs](/external-resources).
+    <dccLink href="/external-resources" children="Dash Docs"/>.
 
     ***
 
@@ -881,7 +1002,7 @@ ConfigSys = html.Div(children=[
     &nbsp;
 
     If you need help configuring complex system level dependencies, please
-    reach out to our [support](/dash-enterprise/support) team.
+    reach out to our <dccLink href="/dash-enterprise/support" children="support"/> team.
 
     ***
 
@@ -1136,7 +1257,7 @@ LocalDir = html.Div(children=[
 
     Since this feature has security implications, only directories specified
     in the Plotly-On-Premise Server Manager can be mapped to Dash Apps.
-    > Note that in Plotly Enterprise versions before 3.1.0 only users with admin privelges
+    > Note that in Plotly Enterprise versions before 3.1.0 only users with admin privileges
     > could map local directories into their apps. Please contact `onpremise.support@plot.ly` if
     > you have any questions.
 
@@ -1269,7 +1390,7 @@ rc.Markdown('''
     [RHEL7 and CentOS documentation on CIFS and NFS](https://www.certdepot.net/rhel7-mount-unmount-cifs-nfs-network-file-systems/)
     , the official [Ubuntu NFS documentation](https://help.ubuntu.com/lts/serverguide/network-file-system.html.en),
     the official [Ubuntu CIFS documentation](https://wiki.ubuntu.com/MountWindowsSharesPermanently)
-    or [contact our support team](/dash-enterprise/support).
+    or <dccLink href="/dash-enterprise/support" children="contact our support team"/>.
 
     ***
 
@@ -1307,7 +1428,7 @@ Ssh = html.Div(children=[
     either HTTPS or SSH. If you are deploying with HTTPS, then you do not
     need to set up an SSH key. Thus, you can skip this tutorial and go
     straight to
-    [Initialize Dash Apps on Dash Enterprise](/dash-enterprise/initialize).
+    <dccLink href="/dash-enterprise/initialize" children="Initialize Dash Apps on Dash Enterprise"/>.
 
     &nbsp;
 
@@ -1341,8 +1462,8 @@ Ssh = html.Div(children=[
 
     If you already have an SSH key that you've used in other
     services, you can use that key instead of generating a new one.
-    For instructions on how to add an existing SSH Key to the Dash Deployment
-    Server, scroll down to **Copy and Add SSH Key**.
+    For instructions on how to add an existing SSH Key to Dash Enterprise,
+    scroll down to **Copy and Add SSH Key**.
 
     ***
 
@@ -1565,7 +1686,12 @@ def display_instructions(platform):
         ***
 
         If you have successfully added your SSH Key, advance to
-        [**Part 1. Initialize Dash Apps on Dash Enterprise**](/dash-enterprise/initialize).
+        <b>
+            <dccLink
+                children="Part 1. Initialize Dash Apps on Dash Enterprise"
+                href="/dash-enterprise/initialize"
+            />
+        </b>.
         ''')
     ]
 
@@ -1578,14 +1704,14 @@ Cli = html.Div(children=[
     Blockquote(),
 
     rc.Markdown('''
-    After setting up SSH authentication (see our [ssh doc](/dash-enterprise/ssh)), you will
+    After setting up SSH authentication (see our <dccLink href="/dash-enterprise/ssh" children="ssh doc"/>), you will
     be able to use the commands below to help manage your apps from the command line.
 
     All commands are performed using `ssh dokku@your-dash-enterprise -p PORT command flags appname` where
-    `PORT` is the ssh port for DDS (usually 3022). DDS will compare the private key supplied to the ssh command
-    and the public key uploaded to DDS in order to authenticate the user initiating the request.
+    `PORT` is the ssh port for Dash Enterprise (usually 3022). Dash Enterprise will compare the private key supplied to the ssh command
+    and the public key uploaded to Dash Enterprise in order to authenticate the user initiating the request.
 
-    > Note that using the same public key for multiple users on DDS isn't supported and will likely prevent it
+    > Note that using the same public key for multiple users on Dash Enterprise isn't supported and will likely prevent it
     > from authenticating to the correct user.
 
     ***
@@ -1594,7 +1720,7 @@ Cli = html.Div(children=[
 
     rc.Markdown('''
 
-    ### List of exposed DDS commands:
+    ### List of exposed Dash Enterprise commands:
 
 
     #### App-related Commands:
@@ -1769,8 +1895,8 @@ Cli = html.Div(children=[
         rc.Markdown('''
         &nbsp;
 
-        DDS can also manage scaling applications (increase the number of containers for processes defined
-        in the Procfile) via the `ps:scale` command. DDS only scales the web process by default so if you
+        Dash Enterprise can also manage scaling applications (increase the number of containers for processes defined
+        in the Procfile) via the `ps:scale` command. Dash Enterprise only scales the web process by default so if you
         define others you will need to scale them.
 
         **Example:**
@@ -1803,7 +1929,7 @@ Cli = html.Div(children=[
             &nbsp;
 
             List bind mounts for an app's container(s) (host:container).
-            See our doc on [mapping local directories](/dash-enterprise/map-local-directories) for more info on
+            See our doc on <dccLink href="/dash-enterprise/map-local-directories" children="mapping local directories"/> for more info on
             how to set these up.
 
             **Example:**
@@ -1994,8 +2120,9 @@ Authentication = html.Div(children=[
     Blockquote(),
 
     rc.Markdown('''
-    DDS will automatically implement user authentication if your
-    [Dash app's privacy](/dash-enterprise/privacy) is set to *Restricted* (the default setting)
+    Dash Enterprise will automatically implement user authentication if your
+    <dccLink children="Dash app's privacy" href="/dash-enterprise/privacy"/>
+    is set to *Restricted* (the default setting)
     or *Authorized* but not if is set to *Unauthorized*. You can access the authentication data within your app
     using the [`dash-enterprise-auth`](https://github.com/plotly/dash-enterprise-auth/) package.
 
@@ -2007,8 +2134,8 @@ Authentication = html.Div(children=[
 
     ## Using `dash-enterprise-auth` in an Existing Dash App
 
-    If you have previously deployed your Dash app to your Dash Deployment
-    Server, simply add `dash-enterprise-auth` to your `requirements.txt` file.
+    If you have previously deployed your Dash app to your Dash Enterprise,
+    simply add `dash-enterprise-auth` to your `requirements.txt` file.
 
     `dash-enterprise-auth` includes the method `create_logout_button` which allows you to
     add a logout button to your app's layout and it also includes three other methods,
@@ -2119,7 +2246,7 @@ AppPrivacy = html.Div(children=[
     Starting in Version 3.0.0 of Dash Enterprise, you can restrict
     who is able to view your app from the app's management page.
      This will also restrict who will be able to see it in the
-    [Dash App Portal](/dash-enterprise/portal).
+    <dccLink href="/dash-enterprise/portal" children="Dash App Portal"/>.
 
     Find a list of links to these pages for your apps at
     `https://<your-dash-enterprise>.com/Manager/apps`. Contact support
@@ -2129,7 +2256,7 @@ AppPrivacy = html.Div(children=[
     '''),
 
     html.Img(
-        alt='DDS Apps List',
+        alt='Dash Enterprise Apps List',
         src=tools.relpath('/assets/images/dds/manager-apps-list.png'),
         style={
             'width': '100%', 'border': 'thin lightgrey solid',
@@ -2161,10 +2288,10 @@ AppPrivacy = html.Div(children=[
 
 
 # # # # # # #
-# Dash Deployment Health Checks
+# Dash Enterprise - App Health Checks
 # # # # # # #
 Checks = html.Div(children=[
-    html.H1('Dash Deployment Health Checks'),
+    html.H1('Dash Enterprise - App Health Checks'),
 
     Blockquote(),
 
@@ -2176,8 +2303,8 @@ Checks = html.Div(children=[
     in the first 10 seconds of running.
 
     It is possible to customize the health checks performed on your app by adding a file named `CHECKS` to
-    the root directory of your app. In this file you can specify **Checks Settings** to instruct DDS when
-    and how to perform the checks. You can also configure **Checks Instructions** to tell DDS what endpoints to
+    the root directory of your app. In this file you can specify **Checks Settings** to instruct Dash Enterprise when
+    and how to perform the checks. You can also configure **Checks Instructions** to tell Dash Enterprise what endpoints to
     test and what content it should find there.
 
     &nbsp;
@@ -2188,10 +2315,10 @@ Checks = html.Div(children=[
     rc.Markdown('''
 
     You can specify values for `WAIT`, `TIMEOUT`, and `ATTEMPTS` to set the period of time
-    that DDS waits before performing the check, the amount of time before it times out, and the number of times
+    that Dash Enterprise waits before performing the check, the amount of time before it times out, and the number of times
     it will run them before determining that the deployment failed.
 
-    In the example `CHECKS` file below, DDS will wait 15 seconds before performing the check, allow up to 10 seconds
+    In the example `CHECKS` file below, Dash Enterprise will wait 15 seconds before performing the check, allow up to 10 seconds
     for a response from the app and perform the check 3 times before marking it as a failure.
 
     '''),
@@ -2212,7 +2339,7 @@ Checks = html.Div(children=[
 
     rc.Markdown('''
 
-   The instructions are specified in the format of a relative link followed by content that DDS
+   The instructions are specified in the format of a relative link followed by content that Dash Enterprise
    should find in the response. The expected content can be omitted if text content doesn't make sense (e.g if
    you want to check whether an image can be served). The example below checks the layout for the text `Sample App`,
    that `_dash-undo-redo` is included in the dash.css file and that dash-logo.png is being served by the app.
@@ -2300,7 +2427,7 @@ PrivatePackages = html.Div(children=[
     `AUTH_USER` and `AUTH_PASSWORD` variables can be added to your Dash App via
     the Dash Enterprise UI. For more information about adding
     environment variables to your Dash Apps, see
-    [Setting Environment Variables](/dash-enterprise/environment-variables)
+    <dccLink href="/dash-enterprise/environment-variables" children="Setting Environment Variables"/>
 
     ''')
 ])
@@ -2322,7 +2449,7 @@ Redis = html.Div(children=[
     - Enable queued and background processes with Celery.
     [Redis and Celery Demo App](https://github.com/plotly/dash-redis-demo)
     - Cache data from your callbacks across processes.
-    [Caching in Dash with Redis](/performance)
+    <dccLink href="/performance" children="Caching in Dash with Redis"/>
 
     &nbsp;
 
@@ -2404,7 +2531,10 @@ Redis = html.Div(children=[
     &nbsp;
 
     Next, navigate to **Apps** and create a new app (for more info see
-    ['Part 1. Initialize Dash Apps on Dash Enterprise'](/dash-enterprise/initialize)),
+    <dccLink
+        children="Part 1. Initialize Dash Apps on Dash Enterprise"
+        href="/dash-enterprise/initialize"
+    />,
     in the 'Create App' modal you have the option of linking a database.
     Here, use the dropdown to select the database that you created previously
     (see image below).
@@ -2573,15 +2703,15 @@ StagingApp = html.Div(children=[
     separate applications: one for "production" consumption and another one
     for testing. You will share the URL of the "production" app to your
     end-users and you will use your "testing" app to try out different changes
-    before you send them to your production app. With Dash Deployment
-    Server, creating a separate testing app is easy:
+    before you send them to your production app. With Dash Enterprise,
+    creating a separate testing app is easy:
 
     ***
 
     ### Initialize a New Dash App
 
-    [Initialize a new app](/dash-enterprise/initialize) in the Dash
-    Deployment Server UI. We recommend giving it the same name as your
+    <dccLink href="/dash-enterprise/initialize" children="Initialize a new app"/> in the
+    Dash Enterprise UI. We recommend giving it the same name as your
     other app but appending `-stage` to it (e.g. `analytics-stage`).
 
     ***
@@ -2637,7 +2767,10 @@ pdfService = html.Div(children=[
         of your Dash applications. The API is simple: pass in the URL of your
         Dash app and the sizing parameters and get back a PDF print out. You can
         automate PDF generation with
-        [Dash Enterprise's Celery task queues](/dash-enterprise/celery-process)
+        <dccLink
+            children="Dash Enterprise's Celery task queues"
+            href="/dash-enterprise/celery-process"
+        />
         or you can generate these PDFs on-the-fly.
 
         This API endpoint is used by the Dash Enterprise Snapshot Engine library.
@@ -2714,12 +2847,12 @@ pdfService = html.Div(children=[
         #### Basic Example
 
         This example provides a simple UI around the PDF API. You can run this
-        example locally or you can deploy this example to Dash
-        Deployment Server. A few things to note:
+        example locally or you can deploy this example to Dash Enterprise.
+        A few things to note:
 
          - If you're testing locally, you will have to specify default values for your
         DASH_DOMAIN_BASE, DASH_APP_NAME and DASH_SECRET_KEY. You can find them in the list of your app's
-        environment variables. See [our doc on environment variables](/dash-enterprise/environment-variables)
+        environment variables. See <dccLink href="/dash-enterprise/environment-variables" children="our doc on environment variables"/>
         for more details.
         '''),
 
@@ -2822,7 +2955,7 @@ pdfService = html.Div(children=[
         - Creating high-quality, branded PDF templates
 
         Get in touch with your sales rep or
-        [reach out to us directly](https://go.plot.ly/dash-doc)
+        [reach out to us directly](https://plot.ly/get-demo)
         to learn more.
 
         '''),
@@ -2842,7 +2975,7 @@ Troubleshooting = html.Div(children=[
     This section describes some of the common errors you may encounter when
     trying to deploy to the Dash Enterprise, and provides information
     about how to resolve these errors. If you can't find the information
-    you're looking for, or need help, [contact our support team](/dash-enterprise/support).
+    you're looking for, or need help, <dccLink href="/dash-enterprise/support" children="contact our support team"/>.
 
     ***
 
@@ -2851,7 +2984,7 @@ Troubleshooting = html.Div(children=[
     '''),
 
     html.Details([
-        html.Summary("Are using the latest versions?"),
+        html.Summary("Are you using the latest versions?"),
 
         rc.Markdown('''
         ```shell
@@ -2982,7 +3115,7 @@ Troubleshooting = html.Div(children=[
         '''
         &nbsp;
 
-        For more information see [Application Structure](/dash-enterprise/application-structure).
+        For more information see <dccLink href="/dash-enterprise/application-structure" children="Application Structure"/>.
 
         &nbsp;
         ''')
@@ -3017,7 +3150,7 @@ Troubleshooting = html.Div(children=[
         &nbsp;
 
         For more information see
-        [Application Structure](/dash-enterprise/application-structure).
+        <dccLink href="/dash-enterprise/application-structure" children="Application Structure"/>.
 
         &nbsp;
         ''')
@@ -3080,14 +3213,14 @@ Troubleshooting = html.Div(children=[
             have been commented out or omitted. Check the first uncommented out line in the sample
             output above to ensure that the domain is your Dash server's domain and that port is 3022.
             If it isn't, you will need to update your `~/.ssh/config` file to set the
-            correct port. You can see how to do that in our [ssh chapter](/dash-enterprise/ssh)
+            correct port. You can see how to do that in our <dccLink href="/dash-enterprise/ssh" children="ssh chapter"/>
             under the "Modify SSH Config" heading.
 
             The next two emphasized lines show the public keys that were offered (and
-            in this case rejected) by the server. If the RSA key that you added to Dash Deployment
-            Server is not among those offered you will need to add it to your `ssh-agent`
+            in this case rejected) by the server. If the RSA key that you added to
+            Dash Enterprise is not among those offered you will need to add it to your `ssh-agent`
             with `ssh-add ~/path/to/your/key`. More details on `ssh-agent` are included in the
-            [ssh chapter](/dash-enterprise/ssh).
+            <dccLink href="/dash-enterprise/ssh" children="ssh chapter"/>.
             ''')
     ]),
 
@@ -3107,7 +3240,7 @@ Troubleshooting = html.Div(children=[
         &nbsp;
 
         If you're receiving the above user permission error, please
-        [contact support](/dash-enterprise/support).
+        <dccLink href="/dash-enterprise/support" children="contact support"/>.
         ''')
     ]),
 
@@ -3201,12 +3334,12 @@ Portal = html.Div(children=[
 
     In order for your app to appear on the Dash App Portal, you need
     enable the *Show in Portal* Toggle in your app's settings from
-    within the DDS app manager and then edit your app's metadata to
+    within the Dash Enterprise app manager and then edit your app's metadata to
     make it easier to find/customize its appearance.
 
     > Note that only users with access to your app will be able
     to see it in the portal. For more information about setting app pricacy
-    see [Dash App Privacy](/dash-enterprise/privacy).
+    see <dccLink href="/dash-enterprise/privacy" children="Dash App Privacy"/>.
 
     &nbsp;
 
@@ -3226,7 +3359,7 @@ Portal = html.Div(children=[
 
     ### Customize the Portal
 
-    From the DDS app Manager, access the *Portal* tab
+    From the Dash Enterprise app Manager, access the *Portal* tab
     to see its settings (or go to `/Manager/settings/portal/general`).
 
     &nbsp;
@@ -3280,7 +3413,7 @@ AdminPanel = html.Div(children=[
     '''),
 
     html.Img(
-        alt='DDS admin panel link',
+        alt='Dash Enterprise admin panel link',
         src=tools.relpath('/assets/images/dds/dash-enterprise-admin-panel-link.png'),
         style={
             'width': '100%', 'border': 'thin lightgrey solid',
@@ -3352,8 +3485,8 @@ Analytics = html.Div(children=[
     rc.Markdown('''
     #### Dash App Analytics
 
-    After you have successfully deployed a Dash App to the Dash Deployment
-    Server, you can monitor app performance via the app analytics and logs.
+    After you have successfully deployed a Dash App to Dash Enterprise,
+    you can monitor app performance via the app analytics and logs.
     Here, navigate to the Dash Enterprise UI and select the app to
     display analytics.
 
@@ -3381,7 +3514,7 @@ Logs = html.Div(children=[
     ***
 
     Dash apps create a log of usage data as well as any `print` statements
-    called from your app. These logs can be accessed via the DDS UI or from the
+    called from your app. These logs can be accessed via the Dash Enterprise UI or from the
     command line. Note that they will be cleared each time you re-deploy
     your app.
 
@@ -3389,8 +3522,8 @@ Logs = html.Div(children=[
 
     #### Dash App Logs (via UI)
 
-    If you have successfully deployed a Dash App to the Dash Deployment
-    Server, you can view the app's logs via the Dash Enterprise UI.
+    If you have successfully deployed a Dash App to the Dash Enterprise,
+    you can view the app's logs via the Dash Enterprise UI.
     From your list of apps, open the app and then select **Logs**. This will
     display the most recent 500 log entries for your app. For the complete list,
     use the command line method outlined below.
@@ -3430,7 +3563,7 @@ Logs = html.Div(children=[
 
     This will work for any application that you own. This command
     authenticates with the server with ssh.
-    [Configure SSH Authentication](/dash-enterprise/ssh).
+    <dccLink href="/dash-enterprise/ssh" children="Configure SSH Authentication"/>.
 
     &nbsp;
 
@@ -3460,7 +3593,7 @@ Support = html.Div(children=[
 
     If you encounter any issues deploying your app, you can email
     `onpremise.support@plot.ly`. It is helpful to include any error
-    messages you encounter, as well as available logs. See [App Logs](/dash-enterprise/logs) on how
+    messages you encounter, as well as available logs. See <dccLink href="/dash-enterprise/logs" children="App Logs"/> on how
     to obtain Dash App logs. Additionally, see below for the Plotly Enterprise support
     bundle.
     '''),
@@ -3513,8 +3646,8 @@ Git = html.Div(children=[
 
     If you have created a new folder for your Dash App, or have an existing
     folder on your local machine, you need to initialize a local Git
-    repository before you can deploy your Dash App to the Dash Deployment
-    Server. You need to initialize the local Git repository from your app's
+    repository before you can deploy your Dash App to the Dash Enterprise.
+    You need to initialize the local Git repository from your app's
     root folder, thus:
 
     '''),
@@ -3742,8 +3875,8 @@ Git = html.Div(children=[
 
     If you have created a new branch and are happy with the changes, you can
     add and commit these changes using the common `git add . ` and
-    `git commit -m "description"` commands. To deploy these to Dash Deployment
-    Server, you will need to deploy the branch into master:
+    `git commit -m "description"` commands. To deploy these to Dash Enterprise,
+    you will need to deploy the branch into master:
 
     '''),
 

@@ -4,6 +4,7 @@ import dash_html_components as html
 
 from dash_docs import styles, tools
 from dash_docs.tools import load_example
+from dash_docs.tutorial.components import Example, Syntax
 from dash_docs import reusable_components
 
 examples = [
@@ -24,9 +25,11 @@ layout = html.Div([
     reusable_components.Markdown('''
     # Dash Layout
 
-    > This is the *2nd* chapter of the [Dash Tutorial](/).
-    > The [previous chapter](/installation) covered installation
-    > and the [next chapter](/getting-started-part-2) covers Dash callbacks.
+    <blockquote>
+    This is the 2nd chapter of the <dccLink children="Dash Tutorial" href="/"/>.
+    The <dccLink href="/installation" children="previous chapter"/> covered installation
+    and the <dccLink href="/getting-started-part-2" children="next chapter"/> covers Dash callbacks.
+    </blockquote>
     '''),
 
 
@@ -43,7 +46,7 @@ layout = html.Div([
     Dash apps are composed of two parts. The first part is the "`layout`" of
     the app and it describes what the application looks like.
     The second part describes the interactivity of the application and will be
-    covered in the [next chapter](/getting-started-part-2).
+    covered in the <dccLink href="/getting-started-part-2" children="next chapter"/>.
 
     Dash provides Python classes for all of the visual components of
     the application. We maintain a set of components in the
@@ -68,7 +71,7 @@ layout = html.Div([
     in your web browser. You should see an app that looks like this.
     '''),
 
-    reusable_components.Example(examples[0][1]),
+    Example(examples[0][1]),
 
     reusable_components.Markdown('''
     Note:
@@ -92,7 +95,7 @@ layout = html.Div([
     6. The fonts in your application will look a little bit different than
         what is displayed here. This application is using a
         custom CSS stylesheet to modify the default styles of the elements.
-        You can learn more in the [css tutorial](/external-resources),
+        You can learn more in the <dccLink href="/external-resources" children="css tutorial"/>,
         but for now you can initialize your app with
     ```
     external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
@@ -111,8 +114,8 @@ layout = html.Div([
 
     Give it a try: change the title "Hello Dash" in your application or change the `x` or the `y` data. Your app should auto-refresh with your change.
 
-    > Don't like hot-reloading? You can turn this off with `app.run_server(dev_tools_hot_reload=False)`.
-    > Learn more in [Dash Dev Tools documentation](/devtools) Questions? See the [community forum hot reloading discussion](https://community.plot.ly/t/announcing-hot-reload/14177).
+> Don't like hot-reloading? You can turn this off with `app.run_server(dev_tools_hot_reload=False)`.
+> Learn more in <dccLink href="/devtools" children="Dash Dev Tools documentation"/> Questions? See the [community forum hot reloading discussion](https://community.plot.ly/t/announcing-hot-reload/14177).
 
     #### More about HTML
 
@@ -121,7 +124,7 @@ layout = html.Div([
 
     '''),
 
-    reusable_components.Syntax(examples[1][0], summary='''
+    Syntax(examples[1][0], summary='''
         Let's customize the text in our app by modifying the inline styles of the
         components:
     '''),
@@ -164,7 +167,7 @@ layout = html.Div([
 
     '''.replace('   ', '')),
 
-    reusable_components.Syntax(
+    Syntax(
         examples[2][0],
         summary="""
             Here's a quick example that
@@ -172,7 +175,7 @@ layout = html.Div([
         """
     ),
 
-    reusable_components.Example(examples[2][1]),
+    Example(examples[2][1]),
 
     reusable_components.Markdown('''
         #### More about Visualization
@@ -192,11 +195,11 @@ layout = html.Div([
 
     '''),
 
-    reusable_components.Syntax(examples[3][0], summary='''
+    Syntax(examples[3][0], summary='''
     Here's an example that creates a scatter plot from a Pandas dataframe.
     '''),
 
-    reusable_components.Example(examples[3][1]),
+    Example(examples[3][1]),
 
     reusable_components.Markdown('''
         *These graphs are interactive and responsive.
@@ -213,9 +216,9 @@ layout = html.Div([
         `dash_core_components` library.
     '''),
 
-    reusable_components.Syntax(examples[4][0]),
+    Syntax(examples[4][0]),
 
-    reusable_components.Example(examples[4][1]),
+    Example(examples[4][1]),
 
     reusable_components.Markdown('''
         #### Core Components
@@ -236,7 +239,7 @@ layout = html.Div([
         href=tools.relpath('/dash-core-components')
     )]),
 
-    reusable_components.Syntax(
+    Syntax(
         examples[5][0],
         summary="Here are a few of the available components:"),
 

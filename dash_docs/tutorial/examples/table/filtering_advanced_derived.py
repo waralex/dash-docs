@@ -5,9 +5,6 @@ import json
 from dash_table import DataTable
 import pandas as pd
 
-url = ("https://github.com/plotly/datasets/raw/master/"
-       "26k-consumer-complaints.csv")
-
 types = {
     'id': 'numeric',
     'Complaint_ID': 'numeric',
@@ -16,7 +13,7 @@ types = {
     'Date_sent_to_company': 'datetime',
 }
 
-df = pd.read_csv(url)
+df = pd.read_csv('https://github.com/plotly/datasets/raw/master/26k-consumer-complaints.csv')
 df['id'] = df['Unnamed: 0']
 df = df.drop(['Unnamed: 0'], axis=1)
 df = df.reindex(columns=['id']+df.columns[:-1].tolist())

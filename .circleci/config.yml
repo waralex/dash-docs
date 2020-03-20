@@ -8,7 +8,7 @@ jobs:
 
   "python-3.7": &test-template
     docker:
-      - image: circleci/python:3.7-stretch-browsers
+      - image: circleci/python:3.7.5-stretch-browsers
         environment:
           PERCY_PARALLEL_TOTAL: '-1'
     steps:
@@ -39,7 +39,7 @@ jobs:
           command: |
               . venv/bin/activate
               set -eo pipefail
-              pip install --progress-bar off -e git+https://github.com/plotly/dash.git@dev#egg=dash[testing]
+              pip install --progress-bar off -e git+https://github.com/plotly/dash.git@test-window-store#egg=dash[testing]
               python -m pytest tests/unit
               pytest --log-cli-level INFO --nopercyfinalize --junitxml=test-reports/snapshots.xml tests/integration
       - store_artifacts:
@@ -53,20 +53,22 @@ jobs:
   "python-3.6":
     <<: *test-template
     docker:
-      - image: circleci/python:3.6-stretch-browsers
+      - image: circleci/python:3.6.9-stretch-browsers
     environment:
       PERCY_ENABLE: 0
 
   "python-2.7":
     <<: *test-template
     docker:
-      - image: circleci/python:2.7-stretch-browsers
+      - image: circleci/python:2.7.16-stretch-browsers
     environment:
       PERCY_ENABLE: 0
 
-
 workflows:
   version: 2
+  python2.7:
+    jobs:
+      - python-2.7
   python3.7:
     jobs:
       - python-3.7
@@ -76,6 +78,3 @@ workflows:
   python3.6:
     jobs:
       - python-3.6
-  python2.7:
-    jobs:
-      - python-2.7

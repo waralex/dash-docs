@@ -1,4 +1,3 @@
-
 import dash_html_components as html
 import dash_core_components as dcc
 
@@ -43,8 +42,8 @@ layout = html.Div(
         > spaces or special characters (including `-`, particularly in dates)
         > you need to wrap them in quotes.
         > Single quotes `'`, double quotes `"`, or backticks `\\`` all work.
-        > [Full filter syntax reference](/datatable/filtering)
-        """),
+        > <dccLink href="/datatable/filtering" children="Full filter syntax reference"/>
+        """)),
 
         reusable_components.Markdown("""
         By default, these transformations are done clientside.
@@ -54,8 +53,8 @@ layout = html.Div(
         Note that if `data` is an `Input` then the entire
         `data` will be passed over the network: if your dataframe is large,
         then this will become slow. For large dataframes, you can perform the
-        [sorting or filtering in Python instead](/datatable/callbacks).
-        """),
+        <dccLink href="/datatable/callbacks" children="sorting or filtering in Python instead"/>.
+        """)),
 
         reusable_components.Markdown(
             examples['interactivity_connected_to_graph.py'][0],

@@ -29,8 +29,6 @@ preamble = html.Div([
     ),
 
     reusable_components.Markdown('''
-    > **Released on November 2, 2018**
-    >
     > Dash DataTable is an interactive table component designed for
     > viewing, editing, and exploring large datasets.
     >

@@ -11,7 +11,7 @@ developed and maintained by [Plotly](https://plot.ly).
 ### Dash Demos and Enterprise Trials
 
 If you would like to trial or purchase a Dash Enterprise,
-[get in touch with us directly](https://go.plot.ly/dash-doc).
+[get in touch with us directly](https://plot.ly/get-demo).
 
 Our sales engineering team is happy to give you or your team
 a demo of Dash and Dash Enterprise too.
@@ -27,7 +27,7 @@ These workshops are lead by the authors of Dash and are tailored towards both be
 
 If you or your company would like to sponsor a specific feature or enterprise
 customization, get in touch with our
-[advanced development team](https://plot.ly/dash/pricing/).
+[advanced development team](https://plot.ly/get-pricing/).
 
 ### Community Support
 

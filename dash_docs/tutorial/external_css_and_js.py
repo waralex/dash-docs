@@ -3,7 +3,7 @@ import dash_core_components as dcc
 import dash_html_components as html
 
 from dash_docs import styles
-from dash_docs.tools import load_example, read_file
+from dash_docs.tools import load_example, read_file, relpath
 from dash_docs import reusable_components
 
 examples = {
@@ -211,7 +211,7 @@ layout = html.Div([
     Give it a try: Change the color in `typography.css` from `hotpink` to `orange` and see your application update.
 
     > Don't like hot-reloading? You can turn this off with `app.run_server(dev_tools_hot_reload=False)`.
-    > Learn more in [Dash Dev Tools documentation](/devtools). Questions? See the [community forum hot reloading discussion](https://community.plot.ly/t/announcing-hot-reload/14177).
+    > Learn more in <dccLink href="/devtools" children="Dash Dev Tools documentation"/>. Questions? See the [community forum hot reloading discussion](https://community.plot.ly/t/announcing-hot-reload/14177).
 
     '''),
 
@@ -505,7 +505,15 @@ Starting with Dash 1.0.0, `serve_locally` defaults to `True`.
     reusable_components.Markdown('''
 
     If you inspect the source of your app, you should see the meta tags appear:
-    ![Dash App with Custom Meta Tags](https://user-images.githubusercontent.com/1280389/43233036-cd050eae-9028-11e8-910e-f0d140c37e4c.png)
+
+    '''),
+
+    html.Img(
+        alt='Dash App with Custom Meta Tags',
+        src=relpath('assets/images/gallery/external-resources-head.png')
+    ),
+
+    reusable_components.Markdown('''
 
     ***
 
