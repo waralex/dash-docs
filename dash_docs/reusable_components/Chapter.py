@@ -16,7 +16,7 @@ def Chapter(name, href=None, caption=None):
         ),
         html.Small(
             className='toc--chapter-content',
-            children=Markdown(s(caption or '')),
+            children=Markdown(caption or ''),
             style={
                 'display': 'block',
                 'marginTop': '-10px' if caption else ''
