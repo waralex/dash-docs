@@ -152,14 +152,14 @@ layout = html.Div(
 
         reusable_components.Markdown("---"),
 
-        reusable_components.Markdown(dedent("""
+        reusable_components.Markdown("""
         # Advanced filter usage
 
         Filter queries can be as simple or as complicated as you want
         them to be. When something is typed into a column filter, it
         is automatically converted to a filter query on that column
         only.
-        """)),
+        """),
 
         reusable_components.Markdown(
             examples['filtering_advanced.py'][0],
@@ -171,7 +171,7 @@ layout = html.Div(
             className='example-container'
         ),
 
-        reusable_components.Markdown(dedent("""
+        reusable_components.Markdown("""
 
         The `filter_query` property is written to when the user
         filters the data by using the column filters. For example, if
@@ -271,7 +271,7 @@ layout = html.Div(
         pretty heavy lifting with the table! You can see an example of
         this below.
 
-        """)),
+        """),
 
         reusable_components.Markdown(
             examples['filtering_advanced_derived.py'][0],

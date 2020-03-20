@@ -43,7 +43,7 @@ layout = html.Div(
         > you need to wrap them in quotes.
         > Single quotes `'`, double quotes `"`, or backticks `\\`` all work.
         > <dccLink href="/datatable/filtering" children="Full filter syntax reference"/>
-        """)),
+        """),
 
         reusable_components.Markdown("""
         By default, these transformations are done clientside.
@@ -54,7 +54,7 @@ layout = html.Div(
         `data` will be passed over the network: if your dataframe is large,
         then this will become slow. For large dataframes, you can perform the
         <dccLink href="/datatable/callbacks" children="sorting or filtering in Python instead"/>.
-        """)),
+        """),
 
         reusable_components.Markdown(
             examples['interactivity_connected_to_graph.py'][0],
