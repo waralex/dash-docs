@@ -31,7 +31,11 @@ def exception_handler(func):
 def load_examples(index_filename, omit=[]):
     dir = os.path.dirname(os.path.relpath(index_filename))
     example_dir = os.path.join(dir, 'examples')
-    example_filenames = os.listdir(example_dir)
+    try:
+        example_filenames = os.listdir(example_dir)
+    except:
+        # e.g. no examples folder
+        return {}
 
     examples = {}
     for filename in example_filenames:
