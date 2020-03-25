@@ -23,8 +23,7 @@ def test_sidebar001(dash_doc):
     ]
     for i in range(len(testing_links)):
         dash_doc.wait_for_text_to_equal(
-            # nth-of-type is 1-indexed
-            '.page-menu--link:nth-of-type({})'.format(i+1),
+            '#page-menu--link-{}'.format(i),
             testing_links[i]
         )
 
@@ -44,9 +43,8 @@ def test_sidebar001(dash_doc):
         'Dash Enterprise',
     ]
 
-    for i in range(len(testing_links)):
+    for i in range(len(home_links)):
         dash_doc.wait_for_text_to_equal(
-            # nth-of-type is 1-indexed
-            '.page-menu--link:nth-of-type({})'.format(i+1),
+            '#page-menu--link-{}'.format(i),
             home_links[i]
         )
