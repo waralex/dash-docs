@@ -1,3 +1,7 @@
+import pytest
+import sys
+
+@pytest.mark.skipif(sys.version_info < (3, 6), reason="requires python3.6 or higher")
 def test_sidebar001(dash_doc):
     dash_doc.driver.get(dash_doc.server_url + '/testing')
     dash_doc.wait_for_element_by_id("page-menu--links")
