@@ -1,4 +1,4 @@
-from dash_docs.rc.Markdown import replace_relative_links
+from dash_docs.Markdown import replace_relative_links
 import os
 import pytest
 
