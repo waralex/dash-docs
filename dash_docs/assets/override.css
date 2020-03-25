@@ -285,7 +285,10 @@ summary:hover {
 .example-container {
   border: thin #d8d8d8 solid;
   padding: 15px;
-  overflow-x: scroll;
+  /*
+   * Note - don't do overflow-x: scroll because the dropdown menu
+   * will get clipped when opened
+   */
 }
 
 .example-container h1,
