@@ -136,6 +136,10 @@ def redirect_dcc_confirm():
 def redirect_faq():
     return redirect('/faqs', code=301)
 
+@server.route('/search')
+def redirect_search():
+    return redirect('/', code=302)
+
 
 @server.before_request
 def clear_trailing():
