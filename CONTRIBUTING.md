@@ -7,7 +7,7 @@ Here is an incomplete set of patterns that we use:
 
 2. All paths (`href` & `src`) need to use `tools.relpath`
 
-3. The markdown content needs to use `reusable_components.Markdown` instead of `dcc.Markdown`. `reusable_components.Markdown` will replace relative links with `tools.relpath`
+3. The markdown content needs to use `rc.Markdown` instead of `dcc.Markdown`. `rc.Markdown` will replace relative links with `tools.relpath`
 
 4. Two custom components are used. The source is in `dash-user-guide-components`. They are built into a tarball with a command like:
 ```

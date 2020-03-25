@@ -5,34 +5,31 @@ from dash_docs.tutorial.components import Example, Syntax
 from dash_docs import tools
 from dash_docs import reusable_components
 
-examples = {
-    'prevent-update': tools.load_example('tutorial/examples/prevent_update.py'),
-    'prevent-update-button': tools.load_example('tutorial/examples/prevent_update_button.py'),
-    'last-clicked-button': tools.load_example('tutorial/examples/last_clicked_button.py')
-}
+examples = tools.load_examples(__file__)
+
 
 layout = html.Div([
     html.H1('Advanced Callbacks'),
 
-    reusable_components.Markdown('''
+    rc.Markdown('''
     ## Catching errors with `PreventUpdate`
 
     In certain situations, you don't want to update the callback output. You can
     achieve this by raising a `PreventUpdate` exception in the callback function.
     '''),
-    Syntax(examples['prevent-update-button'][0]),
-    Example(examples['prevent-update-button'][1]),
+    Syntax(examples['prevent_update_button.py'][0]),
+    Example(examples['prevent_update_button.py'][1]),
 
-    reusable_components.Markdown('''
+    rc.Markdown('''
     ## Displaying errors with `dash.no_update`
 
     This example illustrates how you can show an error while keeping the previous
     input, using `dash.no_update` to update the output partially.
     '''),
-    Syntax(examples['prevent-update'][0]),
-    Example(examples['prevent-update'][1]),
+    Syntax(examples['prevent_update.py'][0]),
+    Example(examples['prevent_update.py'][1]),
 
-    reusable_components.Markdown('''
+    rc.Markdown('''
     ## Determining which `Input` has fired with `dash.callback_context`
 
     In addition to event properties like `n_clicks`
@@ -50,9 +47,9 @@ layout = html.Div([
 
     Here's an example of how this can be done:'''),
 
-    Syntax(examples['last-clicked-button'][0]),
-    Example(examples['last-clicked-button'][1]),
-    reusable_components.Markdown('''
+    Syntax(examples['last_clicked_button.py'][0]),
+    Example(examples['last_clicked_button.py'][1]),
+    rc.Markdown('''
     ### Legacy behaviour: using timestamps
 
     Prior to v0.38.0, you needed to compare timestamp properties like
@@ -65,7 +62,7 @@ layout = html.Div([
     ------------------------
     '''),
 
-    reusable_components.Markdown('''
+    rc.Markdown('''
     ## Improving performance with memoization
 
     Memoization allows you to bypass long computations by storing the
@@ -85,7 +82,7 @@ def slow_function(input):
     return 'Input was {}'.format(input)
     '''),
 
-    reusable_components.Markdown('''
+    rc.Markdown('''
     Calling `slow_function('test')` the first time will take 10 seconds.
     Calling it a second time with the same argument will take almost no time
     since the previously computed result was saved in memory and reused.

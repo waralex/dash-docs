@@ -1,19 +1,15 @@
 import dash_core_components as dcc
 import dash_html_components as html
 
-from dash_docs.tutorial.components import Example, Syntax
 from dash_docs import tools, styles
-from dash_docs import reusable_components
+from dash_docs import reusable_components as rc
 
-examples = {
-    'graph-update-fe-be': tools.load_example('tutorial/examples/clientside/graph_update_fe_be.py'),
-    'graph-update-fe-be-px': tools.load_example('tutorial/examples/clientside/graph_update_fe_be_px.py')
-}
+examples = tools.load_examples(__file__)
 
 layout = html.Div([
     html.H1('Clientside Callbacks'),
 
-    reusable_components.Markdown('''
+    rc.Markdown('''
     Sometimes callbacks can incur a significant overhead, especially when they:
     - receive and/or return very large quantities of data (transfer time)
     - are called very often (network latency, queuing, handshake)
@@ -33,7 +29,7 @@ layout = html.Div([
 
 '''),
 
-    Syntax('''
+    rc.Syntax('''
     @app.callback(
         Output('out-component', 'value'),
         [Input('in-component1', 'value'), Input('in-component2', 'value')]
@@ -44,7 +40,7 @@ layout = html.Div([
         return largeValueOutput
     '''),
 
-    reusable_components.Markdown('''
+    rc.Markdown('''
 
     ***
 
@@ -52,7 +48,7 @@ layout = html.Div([
 
 '''),
 
-    Syntax('''
+    rc.Syntax('''
     from dash.dependencies import Input, Output
 
     app.clientside_callback(
@@ -66,7 +62,7 @@ layout = html.Div([
     )
     '''),
 
-    reusable_components.Markdown('''
+    rc.Markdown('''
 
     ***
 
@@ -76,7 +72,7 @@ layout = html.Div([
 
     '''),
 
-    Syntax('''
+    rc.Syntax('''
     window.dash_clientside = Object.assign({}, window.dash_clientside, {
         clientside: {
             large_params_function: function(largeValue1, largeValue2) {
@@ -86,7 +82,7 @@ layout = html.Div([
     });
     '''),
 
-    reusable_components.Markdown('''
+    rc.Markdown('''
 
     ***
 
@@ -94,7 +90,7 @@ layout = html.Div([
 
     '''),
 
-    Syntax('''
+    rc.Syntax('''
     from dash.dependencies import ClientsideFunction, Input, Output
 
     app.clientside_callback(
@@ -107,7 +103,7 @@ layout = html.Div([
     )
     '''),
 
-    reusable_components.Markdown('''
+    rc.Markdown('''
 
     ***
 
@@ -122,10 +118,10 @@ layout = html.Div([
 
     '''),
 
-    Syntax(examples['graph-update-fe-be'][0]),
-    Example(examples['graph-update-fe-be'][1]),
+    rc.Syntax(examples['graph_update_fe_be.py'][0]),
+    rc.Example(examples['graph_update_fe_be.py'][1]),
 
-    reusable_components.Markdown('''
+    rc.Markdown('''
 
     Note that, in this example, we are manually creating the `figure`
     dictionary by extracting the relevant data from the
@@ -147,10 +143,10 @@ layout = html.Div([
 
     '''),
 
-    Syntax(examples['graph-update-fe-be-px'][0]),
-    Example(examples['graph-update-fe-be-px'][1]),
+    rc.Syntax(examples['graph_update_fe_be_px.py'][0]),
+    rc.Example(examples['graph_update_fe_be_px.py'][1]),
 
-    reusable_components.Markdown('''
+    rc.Markdown('''
 
     Again, you can expand the "Contents of figure storage" section
     above to see what gets generated. You may notice that this is
@@ -169,6 +165,6 @@ layout = html.Div([
     fail if a `Promise` is returned.
     3. Clientside callbacks are not possible if you need to refer to global
     variables on the server or a DB call is required.
-''')
+    ''')
 
 ])
