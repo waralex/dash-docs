@@ -19,18 +19,34 @@ def relpath(path):
 
 
 def exception_handler(func):
-    def wrapper(path):
+    def wrapper(path, **kwargs):
         try:
-            return func(path)
+            return func(path, **kwargs)
         except Exception as e:
             print('\nError running {}\n{}'.format(path, '=' * 76))
             raise e
     return wrapper
 
 
+def load_examples(index_filename, omit=[]):
+    dir = os.path.dirname(os.path.relpath(index_filename))
+    example_dir = os.path.join(dir, 'examples')
+    example_filenames = os.listdir(example_dir)
+
+    examples = {}
+    for filename in example_filenames:
+        full_filename = os.path.join(example_dir, filename)
+        if filename not in omit and os.path.isfile(full_filename):
+            examples[filename] = load_example(full_filename)
+    return examples
+
+
+
 @exception_handler
-def load_example(path):
-    with open(os.path.join(os.path.dirname(os.path.realpath(__file__)), path), 'r') as _f:
+def load_example(path, relative_path=False):
+    if relative_path:
+        path = os.path.join(os.path.dirname(os.path.realpath(__file__)), path)
+    with open(path, 'r') as _f:
         _source = _f.read()
         _example = _source
 
