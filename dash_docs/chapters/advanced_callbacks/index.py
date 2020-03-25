@@ -1,9 +1,8 @@
 import dash_core_components as dcc
 import dash_html_components as html
 
-from dash_docs.tutorial.components import Example, Syntax
 from dash_docs import tools
-from dash_docs import reusable_components
+from dash_docs import reusable_components as rc
 
 examples = tools.load_examples(__file__)
 
@@ -17,8 +16,8 @@ layout = html.Div([
     In certain situations, you don't want to update the callback output. You can
     achieve this by raising a `PreventUpdate` exception in the callback function.
     '''),
-    Syntax(examples['prevent_update_button.py'][0]),
-    Example(examples['prevent_update_button.py'][1]),
+    rc.Syntax(examples['prevent_update_button.py'][0]),
+    rc.Example(examples['prevent_update_button.py'][1]),
 
     rc.Markdown('''
     ## Displaying errors with `dash.no_update`
@@ -26,8 +25,8 @@ layout = html.Div([
     This example illustrates how you can show an error while keeping the previous
     input, using `dash.no_update` to update the output partially.
     '''),
-    Syntax(examples['prevent_update.py'][0]),
-    Example(examples['prevent_update.py'][1]),
+    rc.Syntax(examples['prevent_update.py'][0]),
+    rc.Example(examples['prevent_update.py'][1]),
 
     rc.Markdown('''
     ## Determining which `Input` has fired with `dash.callback_context`
@@ -47,8 +46,8 @@ layout = html.Div([
 
     Here's an example of how this can be done:'''),
 
-    Syntax(examples['last_clicked_button.py'][0]),
-    Example(examples['last_clicked_button.py'][1]),
+    rc.Syntax(examples['last_clicked_button.py'][0]),
+    rc.Example(examples['last_clicked_button.py'][1]),
     rc.Markdown('''
     ### Legacy behaviour: using timestamps
 
@@ -72,7 +71,7 @@ layout = html.Div([
 
 '''),
 
-    Syntax('''
+    rc.Syntax('''
 import time
 import functools32
 

@@ -191,7 +191,7 @@ URLS = [
                 'description': 'Now that you\'ve gotten through the basics, '
                 'take a look at other things you can do with callbacks - '
                 'from performance improvements to callback contexts.',
-                'content': chapters.advanced_callbacks.layout
+                'content': chapters.advanced_callbacks.index.layout
             },
             {
                 'url': '/clientside-callbacks',
@@ -201,7 +201,7 @@ URLS = [
                 'avoid the extra time that it takes to make a roundtrip '
                 'to the server. Clientside callbacks allow you to write '
                 'your callbacks in JavaScript that runs in the browser.',
-                'content': chapters.clientside_callbacks.layout
+                'content': chapters.clientside_callbacks.index.layout
             },
             {
                 'url': '/callback-gotchas',
@@ -211,7 +211,7 @@ URLS = [
                 'If you\'re running into unexpected callback behavior, '
                 'and the rest of the documentation hasn\'t shed any light on '
                 'the situation, try taking a look in this section.',
-                'content': chapters.callback_gotchas.layout
+                'content': chapters.callback_gotchas.index.layout
             }
         ]
     },

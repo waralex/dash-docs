@@ -2,9 +2,8 @@
 import dash_core_components as dcc
 import dash_html_components as html
 
-from dash_docs.tutorial.components import Example, Syntax
 from dash_docs import tools
-from dash_docs import reusable_components
+from dash_docs import reusable_components as rc
 
 layout = html.Div([
     html.H1('Callback Gotchas'),

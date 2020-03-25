@@ -23,7 +23,7 @@ from .import performance
 from .import persistence
 from .import plugins
 from .import sharing_data
-from .import clientside_callacks
+from .import clientside_callbacks
 from .import advanced_callbacks
 from .import callback_gotchas
 from .import support
