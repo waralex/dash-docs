@@ -46,7 +46,13 @@ def test_snap001_index_page_links(dash_doc, index_pages):
                     logger.info(msg)
                     bad_links.append(msg)
 
-            dash_doc.driver.execute_script("window.history.go(-1)")
+            try:
+                dash_doc.driver.execute_script("window.history.go(-1)")
+            except Exception as e:
+                raise Exception([
+                    Exception(['Error going back while on page ', resource]),
+                    e
+                ])
 
     assert bad_links == []
 
