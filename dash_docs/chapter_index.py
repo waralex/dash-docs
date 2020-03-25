@@ -1,5 +1,5 @@
 import os
-from .import tutorial
+from .import chapters
 import json
 import plotly
 import six
@@ -13,7 +13,7 @@ import dash_daq
 import dash_cytoscape
 import dash_bio
 
-from dash_docs import reusable_components, tools
+from dash_docs import reusable_components as rc, tools
 from .reusable_components import TOC, TOCChapters
 
 ## The chapters dict is used to generate the dash-docs search index
@@ -49,7 +49,7 @@ def component_list(package, content_module, base_url, import_alias, component_li
                         component
                     ))),
                     html.H2('Reference & Documentation'),
-                    reusable_components.Markdown(
+                    rc.Markdown(
                         getattr(package, component).__doc__,
                         escape_tags=escape_tags
                     ),
@@ -71,7 +71,7 @@ URLS = [
                     A quick paragraph about Dash and a link to the talk at
                     Plotcon that started it all.
                 ''',
-                'content': tutorial.introduction.layout
+                'content': chapters.introduction.index.layout
             },
             {
                 'url': 'https://medium.com/@plotlygraphs/introducing-dash-5ecf7191b503',
@@ -102,7 +102,7 @@ URLS = [
                     "intuitive, powerful, and extensible as Dash continues to "
                     "evolve."
                 ),
-                'content': tutorial.migration.layout
+                'content': chapters.migration.index.layout
             },
             {
                 'url': 'https://go.plot.ly/dash-club',
@@ -121,7 +121,7 @@ URLS = [
                 'url': '/installation',
                 'name': 'Part 1. Installation',
                 'description': 'How to install and upgrade dash libraries with pip',
-                'content': tutorial.installation.layout
+                'content': chapters.installation.index.layout
             },
             {
                 'url': '/getting-started',
@@ -131,7 +131,7 @@ URLS = [
                     'look like and is composed of a set of declarative '
                     'Dash components.'
                 ),
-                'content': tutorial.getting_started_part_1.layout
+                'content': chapters.getting_started.index.layout
             },
             {
                 'url': '/getting-started-part-2',
@@ -144,7 +144,7 @@ URLS = [
                     "can be chained, allowing one update in the "
                     "UI to trigger several updates across the app."
                 ),
-                'content': tutorial.getting_started_part_2.layout
+                'content': chapters.callbacks.index.layout
             },
             {
                 'url': '/state',
@@ -157,7 +157,7 @@ URLS = [
                     "forms or buttons. Use the `PreventUpdate` exception "
                     "to leave the callback output unchanged"
                 ),
-                'content': tutorial.state.layout
+                'content': chapters.state.index.layout
             },
             {
                 'url': '/interactive-graphing',
@@ -165,7 +165,7 @@ URLS = [
                 'description': 'Bind interactivity to the Dash `Graph` ' \
                                'component whenever you hover, click, or ' \
                                'select points on your chart.',
-                'content': tutorial.graphing.layout
+                'content': chapters.graph_crossfiltering.index.layout
             },
             {
                 'url': '/sharing-data-between-callbacks',
@@ -175,7 +175,7 @@ URLS = [
                                'between callbacks. This chapter is useful for ' \
                                'callbacks that run expensive data processing ' \
                                'tasks or process large data.',
-                'content': tutorial.sharing_state.layout
+                'content': chapters.sharing_data.index.layout
             },
             {
                 'url': '/faqs',
@@ -183,7 +183,7 @@ URLS = [
                 'description': 'If you have read through the rest of the ' \
                 'tutorial and still have questions or are encountering ' \
                 'unexpected behaviour, this chapter may be useful.',
-                'content': tutorial.faqs.layout
+                'content': chapters.faq_gotchas.index.layout
             }
         ]
     },
@@ -211,10 +211,10 @@ URLS = [
                         'of higher-level components like sliders, graphs, '
                         'dropdowns, tables, and more.'
                     ),
-                    'content': tutorial.core_components.layout
+                    'content': chapters.dash_core_components.index.layout
                 }] + component_list(
                     dcc,
-                    tutorial.examples,
+                    chapters.dash_core_components.content_module,
                     'dash-core-components',
                     'dcc',
                     'dash_core_components'
@@ -233,11 +233,11 @@ URLS = [
                                        'explains how this works and the few important ' \
                                        'key differences between Dash HTML components ' \
                                        'and standard html.',
-                        'content': tutorial.html_components.layout
+                        'content': chapters.dash_html_components.index.layout
                     }
                 ] + component_list(
                     html,
-                    None,
+                    chapters.dash_html_components.content_module,
                     'dash-html-components',
                     'html',
                     'dash_html_components',
@@ -260,13 +260,13 @@ URLS = [
                             'and more.'
                         ),
                         'autogenerate_index': True,
-                        'preamble': tutorial.dash_table_index.preamble,
+                        'preamble': chapters.dash_datatable.index.preamble,
                     },
 
                     {
                         'url': '/datatable/reference',
                         'name': 'Reference',
-                        'content': tutorial.table.reference_chapter.layout,
+                        'content': chapters.dash_datatable.reference.index.layout,
                         'description': '''
                             A comprehensive list of all of the
                             DataTable properties.
@@ -275,7 +275,7 @@ URLS = [
 
                     {
                         'url': '/datatable/sizing',
-                        'content': tutorial.table.sizing_chapter.layout,
+                        'content': chapters.dash_datatable.sizing.index.layout,
                         'name': 'Sizing',
                         'description': '''
                             All about sizing the DataTable. Examples include:
@@ -289,7 +289,7 @@ URLS = [
 
                     {
                         'url': '/datatable/style',
-                        'content': tutorial.table.styling_chapter.layout,
+                        'content': chapters.dash_datatable.styling.index.layout,
                         'name': 'Styling',
                         'description': '''
                             The style of the DataTable is highly customizable. This chapter
@@ -308,7 +308,7 @@ URLS = [
 
                     {
                         'url': '/datatable/interactivity',
-                        'content': tutorial.table.interactivity_chapter.layout,
+                        'content': chapters.dash_datatable.interactivity.index.layout,
                         'name': 'Sorting, Filtering, Selecting, and Paging Natively',
                         'description': '''
                             The DataTable is interactive. This chapter demonstrates the
@@ -323,7 +323,7 @@ URLS = [
 
                     {
                         'url': '/datatable/callbacks',
-                        'content': tutorial.table.table_callbacks_chapter.layout,
+                        'content': chapters.dash_datatable.callbacks.index.layout,
                         'name': 'Python-Driven Filtering, Paging, Sorting',
                         'description': '''
                             In Part 3, the paging, sorting, and filtering was done entirely
@@ -340,7 +340,7 @@ URLS = [
 
                     {
                         'url': '/datatable/editable',
-                        'content': tutorial.table.editing_recipes_chapter.layout,
+                        'content': chapters.dash_datatable.editing.index.layout,
                         'name': 'Editable DataTable',
                         'description': '''
                             The DataTable is editable. Like a spreadsheet, it can be used
@@ -360,7 +360,7 @@ URLS = [
 
                     {
                         'url': '/datatable/typing',
-                        'content': tutorial.table.table_typing_chapter.layout,
+                        'content': chapters.dash_datatable.typing.index.layout,
                         'name': 'Typing and User Input Processing',
                         'description': '''
                             In this chapter, you'll learn how to configure the table to
@@ -374,7 +374,7 @@ URLS = [
 
                     {
                         'url': '/datatable/dropdowns',
-                        'content': tutorial.table.dropdowns_chapter.layout,
+                        'content': chapters.dash_datatable.dropdowns.index.layout,
                         'name': 'Dropdowns Inside DataTable',
                         'description': '''
                             Cells can be rendered as editable Dropdowns. This is our first
@@ -387,7 +387,7 @@ URLS = [
 
                     {
                         'url': '/datatable/virtualization',
-                        'content': tutorial.table.virtualization_chapter.layout,
+                        'content': chapters.dash_datatable.virtualization.index.layout,
                         'name': 'Virtualization',
                         'description': '''
                             Examples using DataTable virtualization.
@@ -396,13 +396,14 @@ URLS = [
 
                     {
                         'url': '/datatable/filtering',
-                        'content': tutorial.table.filtering_chapter.layout,
+                        'content': chapters.dash_datatable.filtering.index.layout,
                         'name': 'Filtering Syntax',
                         'description': '''
                             An explanation and examples of filtering syntax for both frontend
                             and backend filtering in the DataTable.
                         '''
                     },
+
                 ]
             },
 
@@ -424,17 +425,16 @@ URLS = [
                         )
                     },
                     **({} if os.environ.get('IGNORE_DASH_BIO', False)
-                    else {'content': tutorial.dashbio.layout}))
+                    else {'content': chapters.dash_bio.index.layout}))
                 ] + component_list(
                     dash_bio,
                     None if os.environ.get('IGNORE_DASH_BIO', False) else
-                    tutorial.dashbio_examples,
+                    chapters.dash_bio.content_module,
                     'dash-bio',
                     'dash_bio',
                     'dash_bio'
                 )
             },
-
             {
                 'name': 'Dash DAQ',
                 'chapters': [
@@ -442,7 +442,7 @@ URLS = [
                         'url': '/dash-daq',
                         'name': 'Overview',
                         'breadcrumb': 'Dash DAQ',
-                        'content': tutorial.daq.layout,
+                        'content': chapters.dash_daq.index.layout,
                         'description': (
                             '''
                             Beautifully styled technical components for
@@ -453,7 +453,7 @@ URLS = [
                     }
                 ] + component_list(
                     dash_daq,
-                    tutorial.daq_examples,
+                    chapters.dash_daq.content_module,
                     'dash-daq',
                     'dash_daq',
                     'dash_daq'
@@ -466,7 +466,7 @@ URLS = [
                     {
                         'url': '/canvas',
                         'name': 'Overview & Reference',
-                        'content': tutorial.canvas.layout,
+                        'content': chapters.dash_canvas.index.layout,
                         'description': (
                             'Image rendering, drawing, annotations '
                             'for image processing applications.'
@@ -487,16 +487,16 @@ URLS = [
                             Dash Cytoscape is our new network visualization
                             component. It offers a declarative and pythonic
                             interface to create beautiful, customizable,
-                            interactive and reactive graphs.
+                            interactive and reactive network graphs.
                             '''
                         ),
                         'autogenerate_index': True,
-                        'preamble': tutorial.dash_cytoscape_index.preamble
+                        'preamble': chapters.dash_cytoscape.index.preamble
                     },
 
                     {
                         'url': '/cytoscape/elements',
-                        'content': tutorial.cytoscape.elements_chapter.layout,
+                        'content': chapters.dash_cytoscape.elements.index.layout,
                         'name': 'Basic Usage & Elements',
                         'description': '''
                         Overview of element declaration and manipulation.
@@ -505,7 +505,7 @@ URLS = [
 
                     {
                         'url': '/cytoscape/layout',
-                        'content': tutorial.cytoscape.layout_chapter.layout,
+                        'content': chapters.dash_cytoscape.layout.index.layout,
                         'name': 'Layouts',
                         'description': '''
                         Description of built-in layouts, and how to modify their properties.
@@ -514,7 +514,7 @@ URLS = [
 
                     {
                         'url': '/cytoscape/styling',
-                        'content': tutorial.cytoscape.styling_chapter.layout,
+                        'content': chapters.dash_cytoscape.styling.index.layout,
                         'name': 'Styling',
                         'description': '''
                         Methods to style elements with a CSS-like syntax.
@@ -523,7 +523,7 @@ URLS = [
 
                     {
                         'url': '/cytoscape/callbacks',
-                        'content': tutorial.cytoscape.callbacks_chapter.layout,
+                        'content': chapters.dash_cytoscape.callbacks.index.layout,
                         'name': 'Callbacks',
                         'description': '''
                         Methods to combine Dash callbacks to update your Cytoscape object.
@@ -532,7 +532,7 @@ URLS = [
 
                     {
                         'url': '/cytoscape/events',
-                        'content': tutorial.cytoscape.events_chapter.layout,
+                        'content': chapters.dash_cytoscape.events.index.layout,
                         'name': 'User Interactions',
                         'description': '''
                         Overview of user-interaction events that trigger callbacks in Dash,
@@ -542,7 +542,7 @@ URLS = [
 
                     {
                         'url': '/cytoscape/biopython',
-                        'content': tutorial.cytoscape.applications_chapter.layout,
+                        'content': chapters.dash_cytoscape.applications.index.layout,
                         'name': 'Biopython Examples',
                         'description': '''
                         Examples of applications in bioinformatics using Biopython.
@@ -551,7 +551,7 @@ URLS = [
 
                     {
                         'url': '/cytoscape/reference',
-                        'content': tutorial.cytoscape.reference_chapter.layout,
+                        'content': chapters.dash_cytoscape.reference.index.layout,
                         'name': 'Reference',
                         'description': '''
                         Comprehensive list of all of the Cytoscape properties.
@@ -576,7 +576,7 @@ URLS = [
                     '''
                 ),
                 'url': '/react-for-python-developers',
-                'content': tutorial.react_for_python_developers.layout,
+                'content': chapters.react_for_python_developers.index.layout,
             },
 
             {
@@ -586,8 +586,9 @@ URLS = [
                                'a React &rarr; Dash toolchain that generates a Dash-' \
                                'compatible interface to these components in Python.',
                 'url': '/plugins',
-                'content': tutorial.plugins.layout,
+                'content': chapters.plugins.index.layout,
             },
+
             {
                 'name': 'Integrating D3.js into Dash Components',
                 'description': (
@@ -599,7 +600,7 @@ URLS = [
                     '''
                 ),
                 'url': '/d3-react-components',
-                'content': tutorial.d3.layout,
+                'content': chapters.d3_react_components.index.layout,
             }
         ]
     },
@@ -609,7 +610,7 @@ URLS = [
         'chapters': [
             {
                 'url': '/performance',
-                'content': tutorial.performance.layout,
+                'content': chapters.performance.index.layout,
                 'name': 'Performance',
                 'description': 'There are three main ways to speed up Dash apps: '\
                                'caching, using WebGL chart types, and implementing '\
@@ -618,7 +619,7 @@ URLS = [
 
             {
                 'url': '/live-updates',
-                'content': tutorial.live_updates.layout,
+                'content': chapters.live_updates.index.layout,
                 'name': 'Live Updates',
                 'description': '''
                     Update your apps on page load or
@@ -628,7 +629,7 @@ URLS = [
 
             {
                 'url': '/external-resources',
-                'content': tutorial.external_css_and_js.layout,
+                'content': chapters.external_resources.index.layout,
                 'name': 'Adding CSS & JS and Overriding the Page-Load Template',
                 'description': '''
                     New in dash v0.22.0! Learn how to add custom CSS and JS to your
@@ -640,7 +641,7 @@ URLS = [
 
             {
                 'url': '/urls',
-                'content': tutorial.urls.layout,
+                'content': chapters.urls.index.layout,
                 'name': 'URL Routing and Multiple Apps',
                 'description': 'Dash provides two components (`dcc.Link` and ' \
                                '`dcc.Location`) that allow you to easily make ' \
@@ -650,7 +651,7 @@ URLS = [
 
             {
                 'url': '/persistence',
-                'content': tutorial.persistence.layout,
+                'content': chapters.persistence.index.layout,
                 'name': 'Persisting User Preferences & Control Values',
                 'description': '''
                     (Released September 2019 with Dash 1.3) Save user choices
@@ -662,24 +663,25 @@ URLS = [
 
             {
                 'url': '/devtools',
-                'content': tutorial.devtools.layout,
+                'content': chapters.devtools.index.layout,
                 'name': 'Dev tools',
                 'description': 'Dash dev tools reference'
             },
 
             {
                 'url': '/loading-states',
-                'content': tutorial.loading_states.layout,
+                'content': chapters.loading.index.layout,
                 'name': 'Loading States',
                 'description': 'Getting the loading state of a component and adding a loading component'
             },
 
             {
                 'url': '/testing',
-                'content': tutorial.testing.layout,
+                'content': chapters.testing.index.layout,
                 'name': 'Dash Testing',
                 'description': 'An introduction to testing your dash app with selenium'
             }
+
         ],
     },
 
@@ -688,14 +690,14 @@ URLS = [
         'chapters': [
             {
                 'url': '/authentication',
-                'content': tutorial.auth.layout,
+                'content': chapters.auth.index.layout,
                 'name': 'Authentication',
                 'description': ''
             },
 
             {
                 'url': '/deployment',
-                'content': tutorial.deployment.layout,
+                'content': chapters.deployment.index.layout,
                 'name': 'Deployment',
                 'description': 'To share a Dash app, you need to "deploy" your Dash ' \
                                'app to a server'
@@ -703,7 +705,7 @@ URLS = [
 
             {
                 'url': '/integrating-dash',
-                'content': tutorial.integrating_dash.layout,
+                'content': chapters.integrating_dash.index.layout,
                 'name': 'Integrating Dash with Existing Web Apps',
                 'description': 'Strategies for integrating Dash apps with existing web ' \
                                'apps.'
@@ -723,7 +725,7 @@ URLS = [
                 'url': '/support',
                 'name': 'Support and Contact',
                 'description': '',
-                'content': tutorial.support.layout,
+                'content': chapters.support.index.layout,
             }
         ]
     },
@@ -748,159 +750,159 @@ URLS = [
                         'name': 'Overview',
                         'breadcrumb': 'Dash Enterprise',
                         'url': '/dash-enterprise',
-                        'content': tutorial.dash_deployment_server.layout
+                        'content': chapters.dash_enterprise.index.layout
                     },
                     {
                         'url': '/dash-enterprise/initialize',
-                        'content': tutorial.dds_examples.Initialize,
+                        'content': chapters.dash_enterprise.dash_enterprise_chapters.Initialize,
                         'name': 'Part 1. Initialize Dash Apps on Dash Enterprise',
                         'description': 'Initialize Dash Apps on Plotly Enterprise'
                     },
                     {
                         'url': '/dash-enterprise/deployment',
-                        'content': tutorial.dds_examples.Deploy,
+                        'content': chapters.dash_enterprise.dash_enterprise_chapters.Deploy,
                         'name': 'Part 2. Deploy Dash Apps on Dash Enterprise',
                         'description': 'Deploy Dash Apps on Dash Enterprise'
                     },
                     {
                         'url': '/dash-enterprise/application-structure',
-                        'content': tutorial.dds_examples.Requirements,
+                        'content': chapters.dash_enterprise.dash_enterprise_chapters.Requirements,
                         'name': 'Application Structure',
                         'description': 'Ensure that your app meets all the requirements for deployment.'
                     },
                     {
                         'url': '/dash-enterprise/static-assets',
-                        'content': tutorial.dds_examples.staticAssets,
+                        'content': chapters.dash_enterprise.dash_enterprise_chapters.staticAssets,
                         'name': 'Adding Static Assets',
                         'description': 'Learn how to include custom CSS, JS, and images with the `assets` directory.'
                     },
                     {
                         'url': '/dash-enterprise/configure-system-dependencies',
-                        'content': tutorial.dds_examples.ConfigSys,
+                        'content': chapters.dash_enterprise.dash_enterprise_chapters.ConfigSys,
                         'name': 'Configuring System Dependencie',
                         'description': 'Install and configure system dependencies such '
                         'as database drivers or the Java JRE environment.'
                     },
                     {
                         'url': '/dash-enterprise/portal',
-                        'content': tutorial.dds_examples.Portal,
+                        'content': chapters.dash_enterprise.dash_enterprise_chapters.Portal,
                         'name': 'Dash App Portal',
                         'description': 'Learn about the Dash App Portal '
                     },
                     {
                         'url': '/dash-enterprise/admin-panel',
-                        'content': tutorial.dds_examples.AdminPanel,
+                        'content': chapters.dash_enterprise.dash_enterprise_chapters.AdminPanel,
                         'name': 'Admin Panel',
                         'description': 'Manage users in the Admin Panel '
                     },
                     {
                         'url': '/dash-enterprise/privacy',
-                        'content': tutorial.dds_examples.AppPrivacy,
+                        'content': chapters.dash_enterprise.dash_enterprise_chapters.AppPrivacy,
                         'name': 'Dash App Privacy',
                         'description': 'Dash App Privacy and Managing Collaborators'
                     },
                     {
                         'url': '/dash-enterprise/redis-database',
-                        'content': tutorial.dds_examples.Redis,
+                        'content': chapters.dash_enterprise.dash_enterprise_chapters.Redis,
                         'name': 'Linking a Redis Database',
                         'description': 'Create and link an in-memory database to your Dash Apps.'
                     },
                     {
                         'url': '/dash-enterprise/environment-variables',
-                        'content': tutorial.dds_examples.EnvVars,
+                        'content': chapters.dash_enterprise.dash_enterprise_chapters.EnvVars,
                         'name': 'Setting Enviornment Variables',
                         'description': 'Environment variables are commonly used to store '
                         'secret variables like database passwords.'
                     },
                     {
                         'url': '/dash-enterprise/map-local-directories',
-                        'content': tutorial.dds_examples.LocalDir,
+                        'content': chapters.dash_enterprise.dash_enterprise_chapters.LocalDir,
                         'name': 'Mapping Local Directories',
                         'description': 'Directory mappings allow you to make directories '
                         'on the Dash Enterprise available to your app.'
                     },
                     {
                         'url': '/dash-enterprise/ssh',
-                        'content': tutorial.dds_examples.Ssh,
+                        'content': chapters.dash_enterprise.dash_enterprise_chapters.Ssh,
                         'name': 'Authenticating to Dash Enterprise with SSH',
                         'description': "There are two methods to deploy Dash Apps: HTTPS and SSH "
                         "and we recommend getting started with the HTTPS method."
                     },
                     {
                         'url': '/dash-enterprise/cli',
-                        'content': tutorial.dds_examples.Cli,
+                        'content': chapters.dash_enterprise.dash_enterprise_chapters.Cli,
                         'name': 'Managing Dash Apps via the Command Line',
                         'description': "A list of commands to manage Dash apps available  "
                         "to app owners from the command line via ssh."
                     },
                     {
                         'url': '/dash-enterprise/app-authentication',
-                        'content': tutorial.dds_examples.Authentication,
+                        'content': chapters.dash_enterprise.dash_enterprise_chapters.Authentication,
                         'name': 'Dash Enterprise Auth Features',
                         'description': 'Accessing User Authentication Data in your Dash App'
                     },
                     {
                         'url': '/dash-enterprise/checks',
-                        'content': tutorial.dds_examples.Checks,
+                        'content': chapters.dash_enterprise.dash_enterprise_chapters.Checks,
                         'name': 'Dash Enterprise App Health Checks',
                         'description': 'Create custom checks to ensure that a newly deployed app can serve traffic.'
                     },
                     {
                         'url': '/dash-enterprise/private-packages',
-                        'content': tutorial.dds_examples.PrivatePackages,
+                        'content': chapters.dash_enterprise.dash_enterprise_chapters.PrivatePackages,
                         'name': 'Adding Private Python Packages',
                         'description': 'Intsall private python packages in your Dash Apps.'
                     },
                     {
                         'url': '/dash-enterprise/celery-process',
-                        'content': tutorial.dds_examples.Celery,
+                        'content': chapters.dash_enterprise.dash_enterprise_chapters.Celery,
                         'name': 'Linking a Celery Process',
                         'description': 'Add a task queue to your Dash Apps.'
                     },
                     {
                         'url': '/dash-enterprise/staging-app',
-                        'content': tutorial.dds_examples.StagingApp,
+                        'content': chapters.dash_enterprise.dash_enterprise_chapters.StagingApp,
                         'name': 'Create a Staging Dash App ',
                         'description': 'Use a staged Dash App to test changes before updating '
                         'your prodcution Dash App.'
                     },
                     {
                         'url': '/dash-enterprise/pdf-service',
-                        'content': tutorial.dds_examples.pdfService,
+                        'content': chapters.dash_enterprise.dash_enterprise_chapters.pdfService,
                         'name': 'Dash Enterprise PDF Service',
                         'description': 'Utilize the Dash Enterprise API endpoint for '
                         'creating PDF exports of your Dash applications'
                     },
                     {
                         'url': '/dash-enterprise/analytics',
-                        'content': tutorial.dds_examples.Analytics,
+                        'content': chapters.dash_enterprise.dash_enterprise_chapters.Analytics,
                         'name': 'App Analytics',
                         'description': 'View app analytics such as last updated, '
                         'CPU usage, Memory Usage, and more.'
                     },
                     {
                         'url': '/dash-enterprise/logs',
-                        'content': tutorial.dds_examples.Logs,
+                        'content': chapters.dash_enterprise.dash_enterprise_chapters.Logs,
                         'name': 'App Logs',
                         'description': '''Check your Dash App's logs via the Dash
                         Enterprise UI or via the command line.'''
                     },
                     {
                         'url': '/dash-enterprise/troubleshooting',
-                        'content': tutorial.dds_examples.Troubleshooting,
+                        'content': chapters.dash_enterprise.dash_enterprise_chapters.Troubleshooting,
                         'name': 'Common Errors',
                         'description': 'Common errors when deploying Dash Apps.'
                     },
                     {
                         'url': '/dash-enterprise/support',
-                        'content': tutorial.dds_examples.Support,
+                        'content': chapters.dash_enterprise.dash_enterprise_chapters.Support,
                         'name': 'Support',
                         'description': 'Having trouble deploying your app? Our dedicated '
                         'support team is available to help you out.'
                     },
                     {
                         'url': '/dash-enterprise/git',
-                        'content': tutorial.dds_examples.Git,
+                        'content': chapters.dash_enterprise.dash_enterprise_chapters.Git,
                         'name': 'Advanced Git',
                         'description': 'A reference for git commands and how they are used '
                         'with Dash Enterprise.'
