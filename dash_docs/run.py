@@ -27,6 +27,19 @@ with open('SIDEBAR-INDEX.json', 'r') as f:
     SIDEBAR_INDEX = json.loads(f.read())
 
 
+banner = html.Div([
+    '''
+    🏥 🏭 Working on the COVID-19 response in Canada? Plotly & the Canadian
+    Gov\'t can help you and your organization.
+    ''',
+    html.A(
+        'Learn more & get in touch',
+        href='https://chriddyp.typeform.com/to/oWAP3T',
+        target='_blank'
+    )
+], id='banner')
+
+
 header = html.Div(
     className='header',
     children=html.Div(
@@ -83,6 +96,8 @@ app.layout = html.Div(
         html.Div(id='wait-for-layout'),
 
         dcc.Location(id='location', refresh=False),
+
+        banner,
 
         header,
 
