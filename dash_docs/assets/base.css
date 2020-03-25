@@ -206,7 +206,9 @@ ol ul {
   font-size: 90%; }
 li {
   margin-bottom: 1rem; }
-
+ol li p {
+    display: inline;
+}
 
 /* Tables
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
