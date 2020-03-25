@@ -217,7 +217,7 @@ dcc.RadioItems(
         'For more on ',
         html.Code('dash.dependencies.State'),
         ', see the tutorial on ',
-        dcc.Link('Dash State', href=tools.relpath('/state')),
+        dcc.Link('basic callbacks', href=tools.relpath('/basic-callbacks')),
         '.'
     ]),
 
@@ -274,9 +274,15 @@ dcc.DatePickerRange(
              href=tools.relpath("/dash-core-components/markdown")),
 
     html.Hr(),
+<<<<<<< HEAD:dash_docs/chapters/dash_core_components/index.py
 
     html.H2(dcc.Link('Upload Component', href=tools.relpath('/dash-core-components/upload'))),
     rc.Markdown('''
+=======
+  
+    html.H3(dcc.Link('Upload Component', href=tools.relpath('/dash-core-components/upload'))),
+    rc.Markdown('''
+>>>>>>> ignore-sidebar:dash_docs/tutorial/core_components.py
 
     The `dcc.Upload` component allows users to upload files into your app
     through drag-and-drop or the system's native file explorer.

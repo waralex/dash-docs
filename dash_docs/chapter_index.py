@@ -124,7 +124,7 @@ URLS = [
                 'content': chapters.installation.index.layout
             },
             {
-                'url': '/getting-started',
+                'url': '/layout',
                 'name': 'Part 2. Layout',
                 'description': (
                     'The Dash `layout` describes what your app will '
@@ -134,7 +134,7 @@ URLS = [
                 'content': chapters.getting_started.index.layout
             },
             {
-                'url': '/getting-started-part-2',
+                'url': '/basic-callbacks',
                 'name': 'Part 3. Basic Callbacks',
                 'description': (
                     "Dash apps are made interactive through Dash "
@@ -144,24 +144,11 @@ URLS = [
                     "can be chained, allowing one update in the "
                     "UI to trigger several updates across the app."
                 ),
-                'content': chapters.callbacks.index.layout
-            },
-            {
-                'url': '/state',
-                'name': 'Part 4. More About Callbacks',
-                'description': (
-                    "Basic callbacks are fired whenever the values "
-                    "change. Use Dash `State` with Dash `Inputs` to "
-                    "pass in extra values whenever the `Inputs` "
-                    "change. `State` is useful for UIs that contain "
-                    "forms or buttons. Use the `PreventUpdate` exception "
-                    "to leave the callback output unchanged"
-                ),
-                'content': chapters.state.index.layout
+                'content': chapters.basic_callbacks.index.layout
             },
             {
                 'url': '/interactive-graphing',
-                'name': 'Part 5. Interactive Graphing and Crossfiltering',
+                'name': 'Part 4. Interactive Graphing and Crossfiltering',
                 'description': 'Bind interactivity to the Dash `Graph` ' \
                                'component whenever you hover, click, or ' \
                                'select points on your chart.',
@@ -169,7 +156,7 @@ URLS = [
             },
             {
                 'url': '/sharing-data-between-callbacks',
-                'name': 'Part 6. Sharing Data Between Callbacks',
+                'name': 'Part 5. Sharing Data Between Callbacks',
                 'description': '`global` variables will break your Dash apps. ' \
                                'However, there are other ways to share data ' \
                                'between callbacks. This chapter is useful for ' \
@@ -179,11 +166,52 @@ URLS = [
             },
             {
                 'url': '/faqs',
-                'name': 'Part 7. FAQs & Gotchas',
+                'name': 'Part 6. FAQs',
                 'description': 'If you have read through the rest of the ' \
                 'tutorial and still have questions or are encountering ' \
                 'unexpected behaviour, this chapter may be useful.',
                 'content': chapters.faq_gotchas.index.layout
+            }
+        ]
+    },
+
+    {
+        'name': 'Dash Callbacks',
+        'chapters': [
+            {
+                'url': '/basic-callbacks',
+                'name': 'Basic Callbacks',
+                'description': 'Go through this introductory chapter to '
+                'learn the foundations of the Dash callback.',
+                'content': chapters.basic_callbacks.index.layout
+            },
+            {
+                'url': '/advanced-callbacks',
+                'name': 'Advanced Callbacks',
+                'description': 'Now that you\'ve gotten through the basics, '
+                'take a look at other things you can do with callbacks - '
+                'from performance improvements to callback contexts.',
+                'content': chapters.advanced_callbacks.layout
+            },
+            {
+                'url': '/clientside-callbacks',
+                'name': 'Clientside Callbacks',
+                'description': 'You might want to execute a callback in '
+                'the frontend as opposed to the backend if you want to '
+                'avoid the extra time that it takes to make a roundtrip '
+                'to the server. Clientside callbacks allow you to write '
+                'your callbacks in JavaScript that runs in the browser.',
+                'content': chapters.clientside_callbacks.layout
+            },
+            {
+                'url': '/callback-gotchas',
+                'name': 'Callback Gotchas',
+                'description': 'Dash callbacks have some idiosyncracies that '
+                'should be taken into consideration when building a Dash app. '
+                'If you\'re running into unexpected callback behavior, '
+                'and the rest of the documentation hasn\'t shed any light on '
+                'the situation, try taking a look in this section.',
+                'content': chapters.callback_gotchas.layout
             }
         ]
     },

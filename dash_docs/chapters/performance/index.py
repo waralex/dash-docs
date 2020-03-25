@@ -14,34 +14,23 @@ The main performance limitation of dash apps is likely the callbacks in
 the application code itself. If you can speed up your callbacks, your app
 will feel snappier.
 
-### Memoization
+***
+
+## Memoization
+
+
 
 Since Dash's callbacks are functional in nature (they don't contain any state),
 it's easy to add memoization caching. Memoization stores the results of a
 function after it is called and re-uses the result if the function is called
 with the same arguments.
 
-To better understand how memoization works, let's start with a simple example.
-
-'''),
-
-    rc.Syntax('''
-import time
-import functools32
-
-@functools32.lru_cache(maxsize=32)
-def slow_function(input):
-    time.sleep(10)
-    return 'Input was {}'.format(input)
-    '''),
-
-    rc.Markdown('''
-
-Calling `slow_function('test')` the first time will take 10 seconds.
-Calling it a second time with the same argument will take almost no time
-since the previously computed result was saved in memory and reused.
-
-***
+<blockquote>
+For a simple example of using memoization in a Dash app to improve
+performance, see the "Improving performance with memoization" section
+in the <dccLink href="/advanced-callbacks" children="advanced callbacks"/>
+chapter.
+</blockquote>
 
 Dash apps are frequently deployed across multiple processes or threads.
 In these cases, each process or thread contains its own memory, it doesn't
@@ -78,7 +67,9 @@ several callbacks.
 
 ***
 
-### Graphs
+## Graphs
+
+
 
 [Plotly.js](https://github.com/plotly/plotly.js) is pretty fast out of the box.
 
@@ -103,118 +94,16 @@ your company would like to sponsor this work,
 
 ***
 
-### Clientside Callbacks
+## Clientside Callbacks
 
-Sometimes callbacks can incur a significant overhead, especially when they :
-- receive and/or return very large quantities of data (transfer time)
-- are called very often (network latency, queuing, handshake)
-- are part of a callback chain that requires multiple roundtrips
-between the browser and Dash
+Clientside callbacks execute your code in the client in JavaScript rather than
+on the server in Python.
 
+Read more about clientside callbacks in the
+<dccLink href="/clientside-callbacks" children="clientside callbacks"/>
+chapter.
 
-When the overhead cost of a callback becomes too great and that no
-other optimization is possible, the callback can be modified to be run
-directly in the browser instead of a making a request to Dash.
-
-The syntax for the callback is almost exactly the same; you use
-`Input` and `Output` as you normally would when declaring a callback,
-but you also define a JavaScript function as the first argument to the
-`@app.callback` decorator.
-
-For example, the following callback:
-
-'''),
-
-    rc.Syntax('''
-@app.callback(
-    Output('out-component', 'value'),
-    [Input('in-component1', 'value'), Input('in-component2', 'value')]
-)
-def large_params_function(largeValue1, largeValue2):
-    largeValueOutput = someTransform(largeValue1, largeValue2)
-
-    return largeValueOutput
-    '''),
-
-    rc.Markdown('''
-
-***
-
-Can be rewritten to use JavaScript like so:
-
-'''),
-
-    rc.Syntax('''
-from dash.dependencies import Input, Output
-
-app.clientside_callback(
-    """
-    function(largeValue1, largeValue2) {
-        return someTransform(largeValue1, largeValue2);
-    }
-    """,
-    Output('out-component', 'value'),
-    [Input('in-component1', 'value'), Input('in-component2', 'value')]
-)
-    '''),
-
-    rc.Markdown('''
-
-***
-
-You also have the option of defining the function in a `.js` file in
-your `assets/` folder. To achieve the same result as the code above,
-the contents of the `.js` file would look like this:
-
-'''),
-
-    rc.Syntax('''
-window.dash_clientside = Object.assign({}, window.dash_clientside, {
-    large_params_function: function(largeValue1, largeValue2) {
-        return someTransform(largeValue1, largeValue2);
-    }
-});
-    '''),
-
-    rc.Markdown('''
-
-***
-
-In Dash, the callback would now be written as:
-
-'''),
-
-    rc.Syntax('''
-from dash.dependencies import ClientsideFunction, Input, Output
-
-app.clientside_callback(
-    ClientsideFunction(
-        namespace='clientside',
-        function_name='large_params_function'
-    ),
-    Output('out-component', 'value'),
-    [Input('in-component1', 'value'), Input('in-component2', 'value')]
-)
-    '''),
-
-
-
-    rc.Markdown('''
-
-***
-
-**Note**: There are a few limitations to keep in mind:
-
-1. Clientside callbacks execute on the browser's main thread and wil block
-rendering and events processing while being executed.
-2. Dash does not currently support asynchronous clientside callbacks and will
-fail if a `Promise` is returned.
-3. Clientside callbacks are not possible if you need to refer to global
-variables on the server or a DB call is required.
-
-***
-
-### Sponsoring Performance Enhancements
+## Sponsoring Performance Enhancements
 
 There are many other ways that we can improve the performance of dash apps,
 like caching front-end requests, pre-filling the cache, improving plotly.js's

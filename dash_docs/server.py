@@ -136,9 +136,23 @@ def redirect_dcc_confirm():
 def redirect_faq():
     return redirect('/faqs', code=301)
 
+
 @server.route('/search')
 def redirect_search():
     return redirect('/', code=302)
+
+
+@server.route('/getting-started')
+def redirect_getting_started():
+    return redirect('/layout', code=301)
+
+@server.route('/getting-started-part-2')
+def redirect_getting_started_2():
+    return redirect('/basic-callbacks', code=301)
+
+@server.route('/state')
+def redirect_state():
+    return redirect('/basic-callbacks', code=301)
 
 
 @server.before_request
