@@ -46,7 +46,7 @@ def test_snap001_index_page_links(dash_doc, index_pages):
                     logger.info(msg)
                     bad_links.append(msg)
 
-            dash_doc.driver.back()
+            dash_doc.driver.execute_script("window.history.go(-1)")
 
     assert bad_links == []
 
