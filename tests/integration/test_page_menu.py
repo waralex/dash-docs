@@ -24,7 +24,8 @@ def test_sidebar001(dash_doc):
     for i in range(len(testing_links)):
         dash_doc.wait_for_text_to_equal(
             '#page-menu--link-{}'.format(i),
-            testing_links[i]
+            testing_links[i],
+            timeout=20
         )
 
     dash_doc.find_element('#logo-home').click()
@@ -46,5 +47,6 @@ def test_sidebar001(dash_doc):
     for i in range(len(home_links)):
         dash_doc.wait_for_text_to_equal(
             '#page-menu--link-{}'.format(i),
-            home_links[i]
+            home_links[i],
+            timeout=20
         )
