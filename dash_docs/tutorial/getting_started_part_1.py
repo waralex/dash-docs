@@ -97,6 +97,7 @@ layout = html.Div([
         custom CSS stylesheet to modify the default styles of the elements.
         You can learn more in the <dccLink href="/external-resources" children="css tutorial"/>,
         but for now you can initialize your app with
+
     ```
     external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
@@ -114,8 +115,8 @@ layout = html.Div([
 
     Give it a try: change the title "Hello Dash" in your application or change the `x` or the `y` data. Your app should auto-refresh with your change.
 
-> Don't like hot-reloading? You can turn this off with `app.run_server(dev_tools_hot_reload=False)`.
-> Learn more in <dccLink href="/devtools" children="Dash Dev Tools documentation"/> Questions? See the [community forum hot reloading discussion](https://community.plot.ly/t/announcing-hot-reload/14177).
+    > Don't like hot-reloading? You can turn this off with `app.run_server(dev_tools_hot_reload=False)`.
+    > Learn more in <dccLink href="/devtools" children="Dash Dev Tools documentation"/> Questions? See the [community forum hot reloading discussion](https://community.plot.ly/t/announcing-hot-reload/14177).
 
     #### More about HTML
 
