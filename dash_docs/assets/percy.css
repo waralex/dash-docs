@@ -1,5 +1,5 @@
 @media only percy {
-    .hide-in-percy {
+    /* .hide-in-percy {
         visibility: hidden;
     }
     .page-menu {
@@ -8,5 +8,5 @@
     .page-menu.testing,
     .page-menu.home {
         visibility: visible;
-    }
+    } */
 }
