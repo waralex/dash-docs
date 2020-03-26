@@ -31,10 +31,13 @@ def test_page_menu_001(dash_doc):
         'Percy Snapshots',
     ]
 
+    # Long sleep because the `wait_for_text_to_equal` command
+    # was raising "StaleElementReferenceException" exceptions
+    # See https://github.com/plotly/dash/issues/1164
     time.sleep(25)
 
     for i in range(len(testing_links)):
-        retry_wait_for_text_to_equal(
+        dash_doc.wait_for_text_to_equal(
             dash_doc,
             '#page-menu--link-{}'.format(i),
             testing_links[i],
@@ -59,7 +62,7 @@ def test_page_menu_001(dash_doc):
     time.sleep(25)
 
     for i in range(len(home_links)):
-        retry_wait_for_text_to_equal(
+        dash_doc.wait_for_text_to_equal(
             dash_doc,
             '#page-menu--link-{}'.format(i),
             home_links[i]
