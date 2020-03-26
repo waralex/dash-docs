@@ -87,13 +87,17 @@ class PageMenu extends Component {
 
     render() {
         const {id, loading_state} = this.props;
+        let pathnameClassName = replace(/\//g, '', window.location.pathname);
+        if (pathnameClassName === '') {
+            pathnameClassName = 'home';
+        }
         return (
             <div
                 data-dash-is-loading={
                     (loading_state && loading_state.is_loading) || undefined
                 }
                 id={id}
-                className='page-menu'
+                className={`page-menu ${pathnameClassName}`}
             >
                 <div className='page-menu--header'>{'On This Page'}</div>
                 <div id="page-menu--links"/>
