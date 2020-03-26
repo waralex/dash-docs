@@ -1,6 +1,28 @@
 import time
 import pytest
 import sys
+from retrying import retry
+import selenium
+
+def _retry_if_stale_error(exception):
+    return isinstance(
+        exception,
+        selenium.common.exceptions.StaleElementReferenceException
+    )
+
+
+@retry(
+    retry_on_exception=_retry_if_stale_error,
+    stop_max_attempt_number=5,
+    wait_exponential_multiplier=1000,
+    wait_exponential_max=10000
+)
+def retry_wait_for_text_to_equal(dash_doc, selector, text):
+    dash_doc.wait_for_text_to_equal(
+        selector,
+        text,
+        timeout=20
+    )
 
 
 @pytest.mark.skipif(
@@ -30,15 +52,15 @@ def test_page_menu_001(dash_doc):
         'Selenium Snapshots',
         'Percy Snapshots',
     ]
+
     for i in range(len(testing_links)):
-        dash_doc.wait_for_text_to_equal(
+        retry_wait_for_text_to_equal(
+            dash_doc,
             '#page-menu--link-{}'.format(i),
             testing_links[i],
-            timeout=20
         )
 
     dash_doc.find_element('#logo-home').click()
-    time.sleep(5)
     dash_doc.wait_for_element_by_id("page-menu--links")
 
     home_links = [
@@ -55,8 +77,8 @@ def test_page_menu_001(dash_doc):
     ]
 
     for i in range(len(home_links)):
-        dash_doc.wait_for_text_to_equal(
+        retry_wait_for_text_to_equal(
+            dash_doc,
             '#page-menu--link-{}'.format(i),
-            home_links[i],
-            timeout=20
+            home_links[i]
         )
