@@ -4,7 +4,7 @@ import sys
 
 
 @pytest.mark.skipif(
-    sys.version_info < (3, 6),
+    sys.version_info < (3, 7),
     reason="skip non-essential, potentially flaky tests"
 )
 def test_page_menu_001(dash_doc):
