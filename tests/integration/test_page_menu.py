@@ -1,28 +1,29 @@
 import time
 import pytest
 import sys
-from retrying import retry
 import selenium
 
-def _retry_if_stale_error(exception):
-    return isinstance(
-        exception,
-        selenium.common.exceptions.StaleElementReferenceException
-    )
-
-
-@retry(
-    retry_on_exception=_retry_if_stale_error,
-    stop_max_attempt_number=5,
-    wait_exponential_multiplier=1000,
-    wait_exponential_max=10000
-)
 def retry_wait_for_text_to_equal(dash_doc, selector, text):
-    dash_doc.wait_for_text_to_equal(
-        selector,
-        text,
-        timeout=20
-    )
+    i = 0
+    while True:
+        i += 1
+        try:
+            return dash_doc.wait_for_text_to_equal(
+                selector,
+                text,
+                timeout=20
+            )
+        except selenium.common.exceptions.StaleElementReferenceException as e:
+            if i == 10:
+                raise Exception(
+                    'Attempted 10 times to check that {} == "{}"'.format(
+                        selector,
+                        text
+                    )
+                )
+            time.sleep(3)
+        except Exception as e:
+            raise e
 
 
 @pytest.mark.skipif(
