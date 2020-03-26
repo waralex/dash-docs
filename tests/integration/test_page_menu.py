@@ -9,6 +9,10 @@ import sys
 )
 def test_page_menu_001(dash_doc):
     dash_doc.driver.get(dash_doc.server_url + '/testing')
+
+    # make window very wide so that pagemenu isn't hidden from media query
+    dash_doc.driver.set_window_size(2000, 1000)
+
     dash_doc.wait_for_element_by_id("page-menu--links")
     testing_links = [
         'Dash Testing',
