@@ -5,4 +5,8 @@
     .page-menu {
         visibility: hidden;
     }
+    .page-menu.testing,
+    .page-menu.home {
+        visibility: visible;
+    }
 }
