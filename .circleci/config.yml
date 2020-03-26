@@ -41,7 +41,7 @@ jobs:
               . venv/bin/activate
               set -eo pipefail
               pip install --progress-bar off -e git+https://github.com/plotly/dash.git@test-window-store#egg=dash[testing]
-              pytest --log-cli-level INFO --nopercyfinalize --junitxml=test-reports/snapshots.xml tests/integration/test_page_menu.py
+              pytest --log-cli-level INFO --nopercyfinalize --junitxml=test-reports/snapshots.xml tests/integration
       - store_artifacts:
           path: test-reports
       - store_test_results:
