@@ -1,4 +1,4 @@
-def test_sidebar001(dash_doc):
+def test_page_menu_001(dash_doc):
     dash_doc.driver.get(dash_doc.server_url + '/testing')
     dash_doc.wait_for_element_by_id("page-menu--links")
     testing_links = [
