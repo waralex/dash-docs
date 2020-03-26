@@ -1,3 +1,5 @@
+import time
+
 def test_page_menu_001(dash_doc):
     dash_doc.driver.get(dash_doc.server_url + '/testing')
     dash_doc.wait_for_element_by_id("page-menu--links")
@@ -29,7 +31,8 @@ def test_page_menu_001(dash_doc):
         )
 
     dash_doc.find_element('#logo-home').click()
-
+    time.sleep(5)
+    dash_doc.wait_for_element_by_id("page-menu--links")
 
     home_links = [
         'Dash User Guide',
