@@ -4,16 +4,10 @@ import dash_core_components as dcc
 import dash_html_components as html
 
 from dash_docs import styles
-from dash_docs import reusable_components
-
-def Syntax(content):
-    return reusable_components.Markdown(
-        '```python  \n' + content.strip() + '  \n```',
-        style=styles.code_container
-    )
+from dash_docs.reusable_components import Syntax, Markdown
 
 layout = html.Div([
-    reusable_components.Markdown(
+    Markdown(
     """
     # Integrating Dash with Existing Web Apps
 
@@ -27,13 +21,13 @@ layout = html.Div([
     towards the address of a deployed Dash app. This allows you to place your
     Dash app in a specific location within an existing web page with your
     desired dimensions:"""),
-    reusable_components.Markdown(
+    Markdown(
     '''
     ```html
     <iframe src="http://localhost:8050" width=700 height=600>
     ```
     '''),
-    reusable_components.Markdown(
+    Markdown(
     """
     ## Embedding a Dash app within an Existing Flask App
 
@@ -69,7 +63,7 @@ layout = html.Div([
             app.run_server(debug=True)
         '''
     ),
-    reusable_components.Markdown(
+    Markdown(
     """
     > **Note**: it is important to set the `name` parameter of the Dash instance
     to the value `__name__`, so that Dash can correctly detect the location of
@@ -77,7 +71,7 @@ layout = html.Div([
     """
     ),
     html.Hr(),
-    reusable_components.Markdown(
+    Markdown(
     """
     ## Combining One or More Dash Apps with Existing WSGI Apps
 
@@ -91,7 +85,7 @@ layout = html.Div([
     with a Flask app.
     """
     ),
-    reusable_components.Markdown("`flask_app.py`"),
+    Markdown("`flask_app.py`"),
     Syntax(
         '''
             from flask import Flask
@@ -104,7 +98,7 @@ layout = html.Div([
         '''
     ),
     html.Hr(),
-    reusable_components.Markdown("`app1.py`"),
+    Markdown("`app1.py`"),
     Syntax(
         """
             import dash
@@ -119,7 +113,7 @@ layout = html.Div([
         """
     ),
     html.Hr(),
-    reusable_components.Markdown("`app2.py`"),
+    Markdown("`app2.py`"),
     Syntax(
         """
             import dash
@@ -134,7 +128,7 @@ layout = html.Div([
             """
     ),
     html.Hr(),
-    reusable_components.Markdown("`wsgi.py`"),
+    Markdown("`wsgi.py`"),
     Syntax(
         """
             from werkzeug.wsgi import DispatcherMiddleware
@@ -148,7 +142,7 @@ layout = html.Div([
             })
         """
     ),
-    reusable_components.Markdown(
+    Markdown(
         """
             In this example, the Flask app has been mounted at `/` and the two Dash apps
             have been mounted at `/app1` and `/app2`. In this approach, we do not pass
@@ -164,7 +158,7 @@ layout = html.Div([
         """
     ),
     Syntax("$ gunicorn wsgi:application"),
-    reusable_components.Markdown(
+    Markdown(
     """
     Alternatively, you can use the Werkzeug development server (which is not
     suitable for production) to run the app:
@@ -189,7 +183,7 @@ layout = html.Div([
                 run_simple('localhost', 8050, application)
         """
     ),
-    reusable_components.Markdown(
+    Markdown(
     """
     If you need access to the Dash development tools when using this approach
     (whether running with a WSGI server, or using the Werkzeug development
@@ -203,7 +197,7 @@ layout = html.Div([
             app2.enable_dev_tools(debug=True)
         """
     ),
-    reusable_components.Markdown(
+    Markdown(
     """
     > **Note:** debug mode should not be enabled in production. When using debug
         mode with Gunicorn, the `--reload` command line flag is required for hot

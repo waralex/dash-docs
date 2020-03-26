@@ -4,7 +4,7 @@ import dash_html_components as html
 
 from dash_docs import styles, tools
 from dash_docs.tools import load_example
-from dash_docs.tutorial.components import Example, Syntax
+from dash_docs.reusable_components import Example, Syntax
 from dash_docs import reusable_components
 
 examples = [
