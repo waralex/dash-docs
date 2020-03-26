@@ -10,18 +10,18 @@ app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
 app.layout = html.Div([
     html.H1('Dash Tabs component demo'),
-    dcc.Tabs(id="tabs-example", value='tab-1-example', children=[
-        dcc.Tab(label='Tab One', value='tab-1-example'),
-        dcc.Tab(label='Tab Two', value='tab-2-example'),
+    dcc.Tabs(id="tabs-example-graph", value='tab-1-example-graph', children=[
+        dcc.Tab(label='Tab One', value='tab-1-example-graph'),
+        dcc.Tab(label='Tab Two', value='tab-2-example-graph'),
     ]),
-    html.Div(id='tabs-content-example')
+    html.Div(id='tabs-content-example-graph')
 ])
 
 
-@app.callback(Output('tabs-content-example', 'children'),
-              [Input('tabs-example', 'value')])
+@app.callback(Output('tabs-content-example-graph', 'children'),
+              [Input('tabs-example-graph', 'value')])
 def render_content(tab):
-    if tab == 'tab-1-example':
+    if tab == 'tab-1-example-graph':
         return html.Div([
             html.H3('Tab content 1'),
             dcc.Graph(
@@ -35,7 +35,7 @@ def render_content(tab):
                 }
             )
         ])
-    elif tab == 'tab-2-example':
+    elif tab == 'tab-2-example-graph':
         return html.Div([
             html.H3('Tab content 2'),
             dcc.Graph(
