@@ -1,33 +1,10 @@
 import time
 import pytest
 import sys
-import selenium
-
-def retry_wait_for_text_to_equal(dash_doc, selector, text):
-    i = 0
-    while True:
-        i += 1
-        try:
-            return dash_doc.wait_for_text_to_equal(
-                selector,
-                text,
-                timeout=20
-            )
-        except selenium.common.exceptions.StaleElementReferenceException as e:
-            if i == 10:
-                raise Exception(
-                    'Attempted 10 times to check that {} == "{}"'.format(
-                        selector,
-                        text
-                    )
-                )
-            time.sleep(3)
-        except Exception as e:
-            raise e
 
 
 @pytest.mark.skipif(
-    sys.version_info < (3, 7),
+    sys.version_info < (3, 6),
     reason="skip non-essential, potentially flaky tests"
 )
 def test_page_menu_001(dash_doc):
@@ -54,6 +31,8 @@ def test_page_menu_001(dash_doc):
         'Percy Snapshots',
     ]
 
+    time.sleep(25)
+
     for i in range(len(testing_links)):
         retry_wait_for_text_to_equal(
             dash_doc,
@@ -76,6 +55,8 @@ def test_page_menu_001(dash_doc):
         'Getting Help',
         'Dash Enterprise',
     ]
+
+    time.sleep(25)
 
     for i in range(len(home_links)):
         retry_wait_for_text_to_equal(
