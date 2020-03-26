@@ -8,49 +8,49 @@ from dash_docs import reusable_components
 
 layout = html.Div([
     reusable_components.Markdown('''
-    # Authentication
+        # Authentication
 
-    Authentication for dash apps is provided through a separate
-    [`dash-auth`](https://github.com/plotly/dash-auth) package.
+        Authentication for dash apps is provided through a separate
+        [`dash-auth`](https://github.com/plotly/dash-auth) package.
 
-    `dash-auth` provides two methods of authentication:
-    **HTTP Basic Auth** and **Plotly OAuth**.
+        `dash-auth` provides two methods of authentication:
+        **HTTP Basic Auth** and **Plotly OAuth**.
 
-    HTTP Basic Auth is one of the simplest forms of authentication on the web.
-    As a Dash developer, you hardcode a set of usernames and passwords in your
-    code and send those usernames and passwords to your viewers.
-    There are a few limitations to HTTP Basic Auth:
-    - Users can not log out of applications
-    - You are responsible for sending the usernames and passwords
-      to your viewers over a secure channel
-    - Your viewers can not create their own account and cannot change their
-      password
-    - You are responsible for safely storing the username and password pairs in
-      your code.
+        HTTP Basic Auth is one of the simplest forms of authentication on the web.
+        As a Dash developer, you hardcode a set of usernames and passwords in your
+        code and send those usernames and passwords to your viewers.
+        There are a few limitations to HTTP Basic Auth:
+        - Users can not log out of applications
+        - You are responsible for sending the usernames and passwords
+          to your viewers over a secure channel
+        - Your viewers can not create their own account and cannot change their
+          password
+        - You are responsible for safely storing the username and password pairs in
+          your code.
 
-    Plotly OAuth provides authentication through your online Plotly account
-    or through your company's [Plotly Enterprise server](https://plot.ly/products/on-premise).
-    As a Dash developer, this requires a paid Plotly subscription.
-    Here's where you can [subscribe to Plotly Cloud](https://plot.ly/products/cloud),
-    and here's where you can
-    [contact us about Plotly Enterprise](https://go.plot.ly/chart-studio-demo).
-    The viewers of your app will need a Plotly account but they do not need to
-    upgrade to a paid subscription.
+        Plotly OAuth provides authentication through your online Plotly account
+        or through your company's [Plotly Enterprise server](https://plot.ly/products/on-premise).
+        As a Dash developer, this requires a paid Plotly subscription.
+        Here's where you can [subscribe to Plotly Cloud](https://plot.ly/products/cloud),
+        and here's where you can
+        [contact us about Plotly Enterprise](https://go.plot.ly/chart-studio-demo).
+        The viewers of your app will need a Plotly account but they do not need to
+        upgrade to a paid subscription.
 
-    Plotly OAuth allows you to share your apps with other users who have Plotly
-    accounts. With Plotly Enterprise, this includes sharing apps through
-    the integrated LDAP system. Apps that you have saved will appear in your
-    list of files at [https://plot.ly/organize](https://plot.ly/organize)
-    and you can manage the permissions of the apps there. Viewers create and
-    manage their own accounts.
+        Plotly OAuth allows you to share your apps with other users who have Plotly
+        accounts. With Plotly Enterprise, this includes sharing apps through
+        the integrated LDAP system. Apps that you have saved will appear in your
+        list of files at [https://plot.ly/organize](https://plot.ly/organize)
+        and you can manage the permissions of the apps there. Viewers create and
+        manage their own accounts.
 
-    '''.replace('    ', '')),
+    '''),
 
     reusable_components.Markdown('''
     ## Basic Auth Example
 
     Logging in through Basic Auth looks like this:
-    '''.replace('    ', '')),
+    '''),
 
     html.Img(
         src='https://raw.githubusercontent.com/plotly/dash-docs/master/images/basic-auth.gif',
@@ -62,21 +62,21 @@ layout = html.Div([
 
     reusable_components.Markdown('''
     Installation:
-    '''.replace('    ', '')),
+    '''),
 
     reusable_components.Markdown('''
     ```shell
     pip install dash=={}
     pip install dash-auth=={}
     ```
-    '''.replace('    ', '').format(
+    '''.format(
         dash.__version__,
         dash_auth.__version__
     ), style=styles.code_container),
 
     reusable_components.Markdown('''
     Example Code:
-    '''.replace('    ', '')),
+    '''),
 
     reusable_components.Markdown('''
     ```python
@@ -136,7 +136,7 @@ layout = html.Div([
     ## Plotly OAuth Example
 
     Logging in through Plotly OAuth looks like this:
-    '''.replace('   ', '')),
+    '''),
 
     html.Img(
         src='https://raw.githubusercontent.com/plotly/dash-docs/master/images/plotly-auth.gif',
@@ -147,22 +147,22 @@ layout = html.Div([
         }),
 
     reusable_components.Markdown('''
-    Installation:
-    '''.replace('    ', '')),
+        Installation:
+    '''),
 
     reusable_components.Markdown('''
     ```shell
-        pip install dash=={}
-        pip install dash-auth=={}
+    pip install dash=={}
+    pip install dash-auth=={}
     ```
-    '''.replace('    ', '').format(
+    '''.format(
         dash.__version__,
         dash_auth.__version__
     ), style=styles.code_container),
 
     reusable_components.Markdown('''
     Example Code:
-    '''.replace('    ', '')),
+    '''),
 
     reusable_components.Markdown('''
     ```python
@@ -268,22 +268,22 @@ layout = html.Div([
         }),
 
     reusable_components.Markdown('''
-    Installation:
-    '''.replace('    ', '')),
+        Installation:
+    '''),
 
     reusable_components.Markdown('''
     ```shell
-        pip install dash=={}  # The core dash backend
-        pip install dash-auth=={}  # Dash Auth components
+    pip install dash=={}  # The core dash backend
+    pip install dash-auth=={}  # Dash Auth components
     ```
-    '''.replace('    ', '').format(
+    '''.format(
         dash.__version__,
         dash_auth.__version__,
     ), style=styles.code_container),
 
     reusable_components.Markdown('''
     Example Code:
-    '''.replace('    ', '')),
+    '''),
 
     reusable_components.Markdown('''
     ```py
