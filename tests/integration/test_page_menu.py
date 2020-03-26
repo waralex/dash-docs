@@ -34,7 +34,7 @@ def test_page_menu_001(dash_doc):
     # Long sleep because the `wait_for_text_to_equal` command
     # was raising "StaleElementReferenceException" exceptions
     # See https://github.com/plotly/dash/issues/1164
-    time.sleep(25)
+    time.sleep(60)
 
     for i in range(len(testing_links)):
         dash_doc.wait_for_text_to_equal(
@@ -59,7 +59,7 @@ def test_page_menu_001(dash_doc):
         'Dash Enterprise',
     ]
 
-    time.sleep(25)
+    time.sleep(60)
 
     for i in range(len(home_links)):
         dash_doc.wait_for_text_to_equal(
