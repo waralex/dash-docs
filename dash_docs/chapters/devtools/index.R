@@ -3,7 +3,7 @@ library(dashCoreComponents)
 library(dashHtmlComponents)
 
 utils <- new.env()
-source('dashr/utils.R', local=utils)
+source('dash_docs/utils.R', local=utils)
 
 examples <- list(
   local_css = utils$LoadExampleCode('dash_docs/chapters/external_resources/examples/local-css.R'),

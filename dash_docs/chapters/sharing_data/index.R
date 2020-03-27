@@ -3,9 +3,9 @@ library(dashCoreComponents)
 library(dashHtmlComponents)
 
 utils <- new.env()
-source('dashr/utils.R', local=utils)
-source('dashr/styles.R')
-source('dashr/components.R')
+source('dash_docs/utils.R', local=utils)
+source('dash_docs/styles.R')
+source('dash_docs/components.R')
 
 examples <- list(
    scoping_wrong = utils$LoadExampleCode('dash_docs/chapters/sharing_data/examples/scoping_wrong.R'),

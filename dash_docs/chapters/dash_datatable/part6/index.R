@@ -4,7 +4,7 @@ library(dashHtmlComponents)
 library(dashTable)
 
 utils <- new.env()
-source('dashr/utils.R', local=utils)
+source('dash_docs/utils.R', local=utils)
 
 examples <- list(
   addRemoveColumns = utils$LoadExampleCode('dash_docs/chapters/dash_datatable/part6/examples/addRemoveColumns.R'),

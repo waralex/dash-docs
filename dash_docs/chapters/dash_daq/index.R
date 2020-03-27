@@ -1,8 +1,8 @@
 #Source assets
 utils <- new.env()
-source('dashr/utils.R', local=utils)
+source('dash_docs/utils.R', local=utils)
 styles <- new.env()
-source('dashr/styles.R', local=styles)
+source('dash_docs/styles.R', local=styles)
 
 # Load Necessary Packages
 library('dash')
@@ -313,7 +313,7 @@ daqToggleSwitch(
 # List holding output of LoadExampleCode for darkThemeProvider below
 dtEx <-
   list(
-    dtprovider = utils$LoadExampleCode("dashr/chapters/dash_daq/examples/darkThemeMainPageEx.R")
+    dtprovider = utils$LoadExampleCode("dash_docs/chapters/dash_daq/examples/darkThemeMainPageEx.R")
   )
 
 darkThemeProvider <- htmlDiv(list(

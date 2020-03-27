@@ -3,7 +3,7 @@ library(dashHtmlComponents)
 library(dashCanvas)
 library(jsonlite)
 
-source("dashr/chapters/dash_canvas/examples/canvas_utils.R")
+source("dash_docs/chapters/dash_canvas/examples/canvas_utils.R")
 
 
 filename = 'https://upload.wikimedia.org/wikipedia/commons/e/e4/Mitochondria%2C_mammalian_lung_-_TEM_%282%29.jpg'

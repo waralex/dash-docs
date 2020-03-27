@@ -1,4 +1,4 @@
-source('dashr/utils.R', local=utils)
+source('dash_docs/utils.R', local=utils)
 datepickerproptable =utils$props_to_list('dccDatePickerRange')
 x <- data.table::rbindlist(datepickerproptable, fill = TRUE)
 

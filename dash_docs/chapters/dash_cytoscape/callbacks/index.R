@@ -4,7 +4,7 @@ library(dashHtmlComponents)
 library(dashCytoscape)
 
 utils <- new.env()
-source('dashr/utils.R', local=utils)
+source('dash_docs/utils.R', local=utils)
 
 examples <- list(
   p4e1 = utils$LoadExampleCode('dash_docs/chapters/dash_cytoscape/callbacks/examples/p4e1.R'),

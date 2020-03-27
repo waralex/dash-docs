@@ -9,9 +9,9 @@ library(data.table)
 library(dashTable)
 
 utils <- new.env()
-source('dashr/styles.R')
-source('dashr/utils.R')
-source('dashr/utils.R', local=utils)
+source('dash_docs/styles.R')
+source('dash_docs/utils.R')
+source('dash_docs/utils.R', local=utils)
 
 examples <- list(
   defaultMolecule2dViewer=utils$LoadExampleCode('dash_docs/chapters/dash_bio/molecule2dviewer/examples/defaultMolecule2dViewer.R')

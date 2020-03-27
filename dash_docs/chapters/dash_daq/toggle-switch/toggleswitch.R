@@ -4,12 +4,12 @@ library(data.table)
 library(dashTable)
 
 utils <- new.env()
-source('dashr/styles.R')
-source('dashr/utils.R', local=utils)
+source('dash_docs/styles.R')
+source('dash_docs/utils.R', local=utils)
 
 examples <- list(
   defaultToggleSwitch = utils$LoadExampleCode(
-    "dashr/chapters/dash_daq/toggle-switch/examples/defaultToggleSwitch.R")
+    "dash_docs/chapters/dash_daq/toggle-switch/examples/defaultToggleSwitch.R")
 )
 
 dashdaq_intro <- htmlDiv(list(

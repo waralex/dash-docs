@@ -1,4 +1,4 @@
-source('dashr/styles.R')
+source('dash_docs/styles.R')
 
 # Added Reuseable Components
 

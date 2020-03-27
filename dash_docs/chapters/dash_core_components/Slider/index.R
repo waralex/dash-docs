@@ -3,9 +3,9 @@ library(dashHtmlComponents)
 library(dash)
 
 utils <- new.env()
-source('dashr/utils.R', local=utils)
-source('dashr/styles.R')
-source('dashr/components.R')
+source('dash_docs/utils.R', local=utils)
+source('dash_docs/styles.R')
+source('dash_docs/components.R')
 
 examples <- list(
   simpleslider = utils$LoadExampleCode('dash_docs/chapters/dash_core_components/Slider/examples/slider1.R'),

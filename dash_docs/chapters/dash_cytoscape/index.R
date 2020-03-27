@@ -4,9 +4,9 @@ library(dashHtmlComponents)
 library(dashCytoscape)
 
 utils <- new.env()
-source('dashr/utils.R', local=utils)
+source('dash_docs/utils.R', local=utils)
 components <- new.env()
-source('dashr/components.R', local=components)
+source('dash_docs/components.R', local=components)
 
 examples <- list(
   quickStart = utils$LoadExampleCode('dash_docs/chapters/dash_cytoscape/examples/quickStart.R')

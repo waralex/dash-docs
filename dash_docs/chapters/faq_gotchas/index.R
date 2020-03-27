@@ -3,7 +3,7 @@ library(dashCoreComponents)
 library(dashHtmlComponents)
 
 utils <- new.env()
-source('dashr/utils.R', local=utils)
+source('dash_docs/utils.R', local=utils)
 
 examples <- list(
  last_clicked_button=utils$LoadExampleCode('dash_docs/chapters/faq_gotchas/examples/last_clicked_button.R')

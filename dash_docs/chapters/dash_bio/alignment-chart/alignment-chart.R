@@ -5,9 +5,9 @@ library(data.table)
 library(dashTable)
 
 utils <- new.env()
-source('dashr/styles.R')
-source('dashr/utils.R')
-source('dashr/utils.R', local=utils)
+source('dash_docs/styles.R')
+source('dash_docs/utils.R')
+source('dash_docs/utils.R', local=utils)
 
 examples <- list(
   defaultAlignmentChart=utils$LoadExampleCode('dash_docs/chapters/dash_bio/alignment-chart/examples/defaultAlignmentChart.R'),

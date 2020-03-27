@@ -3,7 +3,7 @@ library(dashCoreComponents)
 library(dashHtmlComponents)
 
 utils <- new.env()
-source('dashr/utils.R', local=utils)
+source('dash_docs/utils.R', local=utils)
 
 layout = htmlDiv(list(dccMarkdown("
 # Encapuslating D3.js Charts as R Dash Components

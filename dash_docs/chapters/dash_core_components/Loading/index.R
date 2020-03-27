@@ -3,11 +3,11 @@ library(dashHtmlComponents)
 library(dash)
 
 utils <- new.env()
-source('dashr/utils.R', local=utils)
+source('dash_docs/utils.R', local=utils)
 
 examples <- list(
-  loading = utils$LoadExampleCode('dash_docs/chapters/dash_core_components/LoadingComponent/examples/loading.R'),
-  loadingproptable = utils$LoadExampleCode('dash_docs/chapters/dash_core_components/LoadingComponent/examples/loadingcomponentproptable.R')
+  loading = utils$LoadExampleCode('dash_docs/chapters/dash_core_components/Loading/examples/loading.R'),
+  loadingproptable = utils$LoadExampleCode('dash_docs/chapters/dash_core_components/Loading/examples/loadingcomponentproptable.R')
   
 )
 

@@ -4,8 +4,8 @@ library(dashHtmlComponents)
 library(data.table)
 
 utils <- new.env()
-source('dashr/utils.R')
-source('dashr/utils.R', local=utils)
+source('dash_docs/utils.R')
+source('dash_docs/utils.R', local=utils)
 
 examples <- list(
   hello.world=utils$LoadExampleCode('dash_docs/chapters/getting_started/examples/hello-world.R'),

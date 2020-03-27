@@ -4,7 +4,7 @@ library(dashHtmlComponents)
 library(dashTable)
 
 utils <- new.env()
-source('dashr/utils.R', local=utils)
+source('dash_docs/utils.R', local=utils)
 
 df <- data.frame(
   Date = c("2015-01-01", "2015-10-24", "2016-05-10", "2017-01-10", "2018-05-10", "2018-08-15"),

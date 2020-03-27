@@ -4,13 +4,13 @@ library(dash)
 library(dashTable)
 
 utils <- new.env()
-source('dashr/utils.R', local=utils)
+source('dash_docs/utils.R', local=utils)
 
 examples <- list(
-  uploadcomp = utils$LoadExampleCode('dash_docs/chapters/dash_core_components/UploadComponent/examples/uploadcomp.R'),
-  uploadcomp3 = utils$LoadExampleCode('dash_docs/chapters/dash_core_components/UploadComponent/examples/uploadcomp3.R'),
-  uploadcomp2 = utils$LoadExampleCode('dash_docs/chapters/dash_core_components/UploadComponent/examples/uploadcomp2.R'),
-  uploadproptable = utils$LoadExampleCode('dash_docs/chapters/dash_core_components/UploadComponent/examples/uploadproptable.R')
+  uploadcomp = utils$LoadExampleCode('dash_docs/chapters/dash_core_components/Upload/examples/uploadcomp.R'),
+  uploadcomp3 = utils$LoadExampleCode('dash_docs/chapters/dash_core_components/Upload/examples/uploadcomp3.R'),
+  uploadcomp2 = utils$LoadExampleCode('dash_docs/chapters/dash_core_components/Upload/examples/uploadcomp2.R'),
+  uploadproptable = utils$LoadExampleCode('dash_docs/chapters/dash_core_components/Upload/examples/uploadproptable.R')
 )
 
 layout <- htmlDiv(list(

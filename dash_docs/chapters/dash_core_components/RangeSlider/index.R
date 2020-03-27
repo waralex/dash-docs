@@ -3,7 +3,7 @@ library(dashHtmlComponents)
 library(dash)
 
 utils <- new.env()
-source('dashr/utils.R', local=utils)
+source('dash_docs/utils.R', local=utils)
 
 examples <- list(
   rangeslider1 = utils$LoadExampleCode('dash_docs/chapters/dash_core_components/RangeSlider/examples/rangeslider1.R'),

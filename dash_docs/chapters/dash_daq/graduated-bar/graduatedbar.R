@@ -4,12 +4,12 @@ library(data.table)
 library(dashTable)
 
 utils <- new.env()
-source('dashr/styles.R')
-source('dashr/utils.R', local=utils)
+source('dash_docs/styles.R')
+source('dash_docs/utils.R', local=utils)
 
 examples <- list(
   defaultGraduatedbar = utils$LoadExampleCode(
-    "dashr/chapters/dash_daq/graduated-bar/examples/defaultGraduatedBar.R")
+    "dash_docs/chapters/dash_daq/graduated-bar/examples/defaultGraduatedBar.R")
 )
 
 dashdaq_intro <- htmlDiv(list(

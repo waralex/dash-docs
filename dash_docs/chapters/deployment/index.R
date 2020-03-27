@@ -3,7 +3,7 @@ library(dashCoreComponents)
 library(dashHtmlComponents)
 
 utils <- new.env()
-source('dashr/utils.R', local=utils)
+source('dash_docs/utils.R', local=utils)
 
 layout <- htmlDiv(list(
   htmlH1('Deploying Dash Apps'),

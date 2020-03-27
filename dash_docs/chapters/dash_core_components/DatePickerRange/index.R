@@ -3,7 +3,7 @@ library(dashHtmlComponents)
 library(dash)
 
 utils <- new.env()
-source('dashr/utils.R', local = utils)
+source('dash_docs/utils.R', local = utils)
 
 examples <- list(
   pickerrange  =  utils$LoadExampleCode('dash_docs/chapters/dash_core_components/DatePickerRange/examples/datepickerrange.R'),

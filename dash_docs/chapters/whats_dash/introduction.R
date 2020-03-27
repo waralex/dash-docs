@@ -1,7 +1,7 @@
 
 
 utils <- new.env()
-source('dashr/utils.R', local=utils)
+source('dash_docs/utils.R', local=utils)
 
 layout = htmlDiv(list(
   htmlH2("Introduction to Dash"),

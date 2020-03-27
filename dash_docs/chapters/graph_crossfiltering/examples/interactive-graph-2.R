@@ -4,7 +4,7 @@ library(dashHtmlComponents)
 
 app <- Dash$new()
 
-df <- read.csv('dashr/chapters/callbacks/examples/indicators.csv', header = TRUE, sep = ",")
+df <- read.csv('dash_docs/chapters/basic_callbacks/examples/indicators.csv', header = TRUE, sep = ",")
 available_indicators <- unique(df$Indicator_Name)
 option_indicator <- lapply(available_indicators, function(x) list(label = x, value = x))
 

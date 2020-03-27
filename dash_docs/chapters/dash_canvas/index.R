@@ -4,7 +4,7 @@ library(dashCoreComponents)
 library(dashTable)
 
 utils <- new.env()
-source('dashr/utils.R', local=utils)
+source('dash_docs/utils.R', local=utils)
 
 examples <- list(
 
