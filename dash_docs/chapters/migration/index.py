@@ -105,7 +105,7 @@ layout = html.Div([
     ## `dash_core_components`
 
     ### Removed `SyntaxHighlighter` component
-    This is now built into `rc.Markdown` using triple backticks, with optional
+    This is now built into `dcc.Markdown` using triple backticks, with optional
     short or long language name on the opening line:
     ````
     rc.Markdown(\'\'\'
@@ -120,7 +120,7 @@ layout = html.Div([
     If all lines (other than whitespace-only or blank lines) start with the
     same whitespace, it will be removed. Disable this with
     ```py
-    rc.Markdown(dedent=False)
+    dcc.Markdown(dedent=False)
     ```
 
     ### Renamed `Checklist.values` prop to `value`

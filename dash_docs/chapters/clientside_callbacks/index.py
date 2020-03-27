@@ -3,6 +3,7 @@ import dash_html_components as html
 
 from dash_docs import tools, styles
 from dash_docs import reusable_components as rc
+from textwrap import dedent
 
 examples = tools.load_examples(__file__)
 
@@ -48,7 +49,8 @@ layout = html.Div([
 
 '''),
 
-    rc.Syntax('''
+    rc.Syntax(dedent(
+    '''
     from dash.dependencies import Input, Output
 
     app.clientside_callback(
@@ -60,7 +62,7 @@ layout = html.Div([
         Output('out-component', 'value'),
         [Input('in-component1', 'value'), Input('in-component2', 'value')]
     )
-    '''),
+    ''')),
 
     rc.Markdown('''
 
@@ -72,7 +74,8 @@ layout = html.Div([
 
     '''),
 
-    rc.Syntax('''
+    rc.Syntax(dedent(
+    '''
     window.dash_clientside = Object.assign({}, window.dash_clientside, {
         clientside: {
             large_params_function: function(largeValue1, largeValue2) {
@@ -80,7 +83,7 @@ layout = html.Div([
             }
         }
     });
-    '''),
+    ''')),
 
     rc.Markdown('''
 
@@ -90,7 +93,8 @@ layout = html.Div([
 
     '''),
 
-    rc.Syntax('''
+    rc.Syntax(dedent(
+    '''
     from dash.dependencies import ClientsideFunction, Input, Output
 
     app.clientside_callback(
@@ -101,7 +105,7 @@ layout = html.Div([
         Output('out-component', 'value'),
         [Input('in-component1', 'value'), Input('in-component2', 'value')]
     )
-    '''),
+    ''')),
 
     rc.Markdown('''
 

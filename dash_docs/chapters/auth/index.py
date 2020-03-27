@@ -5,6 +5,7 @@ import dash_html_components as html
 import dash_auth
 from dash_docs import styles
 from dash_docs import reusable_components as rc
+from textwrap import dedent
 
 layout = html.Div([
     rc.Markdown('''
@@ -12,7 +13,7 @@ layout = html.Div([
     >
     > 1. `dash-enterprise-auth`, the authentication and authorization layer built-in
     > to Plotly's commercial product, [Dash Enterprise](https://plotly.com/dash).
-    > 
+    >
     > 2. `dash-auth`, a simple [basic auth](https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication)
     > implementation.
 
@@ -58,8 +59,7 @@ layout = html.Div([
     ## Dash Enterprise Auth Example
     '''),
 
-    rc.Syntax('''
-    ```python
+    rc.Syntax(dedent('''
     import dash
     from dash.dependencies import Input, Output
     import dash_core_components as dcc
@@ -133,7 +133,9 @@ layout = html.Div([
 
     if __name__ == '__main__':
         app.run_server(debug=True)
-    ```
+    ''')),
+
+    rc.Markdown('''
 
     ***
 

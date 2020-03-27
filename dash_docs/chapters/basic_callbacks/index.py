@@ -246,7 +246,7 @@ layout = html.Div([
     before calling the final callback. This prevents your callbacks from being
     called with inconsistent state like with `"America"` and `"Montréal"`.
 
-    ### State
+    ## State
 
     In some cases, you might have a "form"-type pattern in your
     application. In such a situation, you might want to read the value

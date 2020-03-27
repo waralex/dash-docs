@@ -18,11 +18,9 @@ layout = html.Div(children=[
     rc.Syntax(examples['button_basic.py'][0]),
     rc.Example(examples['button_basic.py'][1]),
     html.Br(),
-    html.H2('Button with n_clicks_timestamp'),
-    rc.Markdown("This example utilizes the `n_clicks_timestamp` property, \
-    which returns an integer representation of time. This was useful for \
-    determining when the button was last clicked, however you can now \
-    use `dash.callback_context` to determine which property changed."),
+    html.H2(['Determining which Button Changed with ', html.Code('callback_context')]),
+    rc.Markdown("This example utilizes the `dash.callback_context` property, \
+    to determine which input was changed."),
     rc.Syntax(examples['button_ctx.py'][0]),
     rc.Example(examples['button_ctx.py'][1]),
     html.Br(),

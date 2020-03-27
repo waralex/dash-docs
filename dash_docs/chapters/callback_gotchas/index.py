@@ -18,7 +18,7 @@ layout = html.Div([
     [Dash Community forums](https://community.plot.ly/c/dash) is a great place
     to ask them.
 
-    ## Callbacks require their `Inputs`, `States`, and `Output` to be present in the layout
+    ### Callbacks require their `Inputs`, `States`, and `Output` to be present in the layout
 
     By default, Dash applies validation to your callbacks, which performs checks
     such as validating the types of callback arguments and checking to see
@@ -35,7 +35,7 @@ layout = html.Div([
         app.config.suppress_callback_exceptions = True
 
 
-    ## Callbacks require *all* `Inputs` and `States` to be rendered on the page
+    ### Callbacks require *all* `Inputs` and `States` to be rendered on the page
 
     If you have disabled callback validation in order to support dynamic
     layouts, then you won't be automatically alerted to the situation where a
@@ -46,7 +46,7 @@ layout = html.Div([
     callback will simply not fire at all.
 
 
-    ## A component/property pair can only be the `Output` of one callback
+    ### A component/property pair can only be the `Output` of one callback
 
     For a given component/property pair (eg `'my-graph'`, `'figure'`), it can
     only be registered as the `Output` of one callback. If you want to associate
@@ -59,7 +59,7 @@ layout = html.Div([
     determine which `Input` has changed?*.
 
 
-    ## All callbacks must be defined before the server starts
+    ### All callbacks must be defined before the server starts
 
     All your callbacks must be defined before your Dash app's server starts
     running, which is to say, before you call `app.run_server(debug=True)`. This means
@@ -85,7 +85,7 @@ layout = html.Div([
     using the `callback` decorator, see this [Dash Community forum
     post](https://community.plot.ly/t/callback-for-dynamically-created-graph/5511).
 
-    ## All Dash Core Components in a layout should be registered with a callback.
+    ### All Dash Core Components in a layout should be registered with a callback.
 
     Note: This section is present for legacy purposes. Prior to v0.40.0, setProps was only defined if the component was connected to a
     callback. This required complex state management within the component like [this](https://github.com/plotly/dash-core-components/blob/63be1c258c15b419a82fb66366e1a31e66fbfaef/src/components/Input.react.js#L51-L59).
