@@ -10,7 +10,6 @@ from dash_docs import reusable_components as rc
 
 
 
-
 layout = html.Div([
     rc.Markdown('''
     # FAQs

@@ -1,7 +1,6 @@
 import dash_html_components as html
 import dash_core_components as dcc
 import dash_table
-from textwrap import dedent
 
 from dash_docs import tools
 from dash_docs import styles
@@ -17,7 +16,7 @@ Display = rc.CreateDisplay({
 
 layout = html.Div([
 
-    rc.Markdown(dedent(
+    rc.Markdown(
         '''
         # Editable DataTable
 
@@ -36,11 +35,11 @@ layout = html.Div([
         - Clearable, deletable, renamable, and hideable columns
         - Export DataTable
         '''
-    )),
+    ),
 
     rc.Markdown('***'),
 
-    rc.Markdown(dedent(
+    rc.Markdown(
         '''
         ## Predefined Columns
 
@@ -61,9 +60,9 @@ layout = html.Div([
         by adding `include_headers_on_copy_paste=True`. However, headers are ignored
         when copying between two tables in the same tab.
         '''
-    )),
+    ),
 
-    rc.Markdown(dedent('''
+    rc.Markdown('''
     # Editable DataTable
 
     The DataTable is editable. Like a spreadsheet, it can be used
@@ -101,7 +100,7 @@ layout = html.Div([
     between two tables in different tabs, you can choose to include column headers
     by adding `include_headers_on_copy_paste=True`. However, headers are ignored
     when copying between two tables in the same tab.
-    ''')),
+    '''),
 
     rc.Markdown(
         examples['editing_simple.py'][0],
@@ -113,7 +112,7 @@ layout = html.Div([
         className='example-container'
     ),
 
-    rc.Markdown(dedent('''
+    rc.Markdown('''
     ## Integration with Dash loading states
 
     As of table version 4.3.0, Dash loading states also have some
@@ -135,7 +134,7 @@ layout = html.Div([
     value is loading; if you select `data`, you won't. Try it out
     yourself!
 
-    ''')),
+    '''),
 
     rc.Markdown(
         examples['editing_loading_state.py'][0],
@@ -147,7 +146,7 @@ layout = html.Div([
     ),
 
 
-    rc.Markdown(dedent('''
+    rc.Markdown('''
     ## Filtering out Empty Cells
     The DataTable will always return all of the cells in the table, even
     if the cells haven't been filled out. So, you'll likely want to filter
@@ -166,7 +165,7 @@ layout = html.Div([
     This is just one way to prune data; you may want to clean your data
     differently in your application.
 
-    ''')),
+    '''),
 
     rc.Markdown(
         examples['editing_prune_empty_cells.py'][0],
@@ -178,7 +177,7 @@ layout = html.Div([
     ),
 
 
-    rc.Markdown(dedent('''
+    rc.Markdown('''
     ## Uploading Data
 
     A nice recipe is to tie the
@@ -191,7 +190,7 @@ layout = html.Div([
     Try it out by [downloading this file](https://raw.githubusercontent.com/plotly/datasets/master/2014_apple_stock.csv)
     and then uploading it.
     '''
-    )),
+    ),
 
     rc.Markdown(
         examples['editing_uploading.py'][0],
@@ -202,7 +201,7 @@ layout = html.Div([
         className='example-container'
     ),
 
-    rc.Markdown(dedent(
+    rc.Markdown(
     '''
     ## Adding or removing columns
 
@@ -212,7 +211,7 @@ layout = html.Div([
 
     This is a simple example that plots the data in the spreadsheet as a
     heatmap. Try adding or removing columns!
-    ''')),
+    '''),
 
     rc.Markdown(
         examples['editing_columns.py'][0],
@@ -223,7 +222,7 @@ layout = html.Div([
         className='example-container'
     ),
 
-    rc.Markdown(dedent(
+    rc.Markdown(
     '''
     ## Adding or removing rows
 
@@ -231,7 +230,7 @@ layout = html.Div([
     but not for adding rows. You can add rows to the table through an
     external button.
     '''
-    )),
+    ),
 
     rc.Markdown(
         examples['editing_rows_and_columns.py'][0],
@@ -242,7 +241,7 @@ layout = html.Div([
         className='example-container'
     ),
 
-    rc.Markdown(dedent(
+    rc.Markdown(
     '''
     ## Updating Columns of the Same Table
 
@@ -260,7 +259,7 @@ layout = html.Div([
     This example mimics a traditional spreadsheet like excel by computing
     certain columns based off of other other columns.
     '''
-    )),
+    ),
 
     rc.Markdown(
         examples['editing_updating_self.py'][0],
@@ -271,7 +270,7 @@ layout = html.Div([
         className='example-container'
     ),
 
-    rc.Markdown(dedent(
+    rc.Markdown(
     '''
     ## Modify the data table content
 
@@ -295,7 +294,7 @@ layout = html.Div([
     through the toggle columns button.
 
     '''
-    )),
+    ),
 
     Display(
         '''
@@ -328,7 +327,7 @@ layout = html.Div([
         )
         '''),
 
-    rc.Markdown(dedent(
+    rc.Markdown(
     '''
     ## Export Data Table
     The table data can be exported either as csv or xlsx file. You can customize table
@@ -341,7 +340,7 @@ layout = html.Div([
     - Note that `display` mode is only supported for `export_format: xlsx` due to the fact that
     headers in csv files can not be merged.
     '''
-    )),
+    ),
 
     Display(
         '''

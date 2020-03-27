@@ -1,7 +1,6 @@
 import dash_core_components as dcc
 import dash_html_components as html
 import dash_cytoscape
-from textwrap import dedent
 
 from dash_docs import styles
 from dash_docs import tools
@@ -11,10 +10,10 @@ examples = tools.load_examples(__file__)
 
 preamble = html.Div([
 
-    rc.Markdown(dedent('''
+    rc.Markdown('''
     # Dash Cytoscape
 
-    ''')),
+    '''),
 
     html.Iframe(
         src="https://ghbtns.com/github-btn.html?user=plotly&repo=dash-cytoscape&type=star&count=true&size=large",
@@ -23,7 +22,7 @@ preamble = html.Div([
         style={'border': 'none'}
     ),
 
-    rc.Markdown(dedent('''
+    rc.Markdown('''
     > Released on February 5th, 2019**
     >
     > Dash Cytoscape is a graph visualization component for creating easily
@@ -35,7 +34,7 @@ preamble = html.Div([
     > science libraries such as Biopython and networkX.
     >
     > -- xhlulu and the Dash Team
-    ''')),
+    '''),
 
     rc.Section('Quickstart', [
         rc.Markdown(
@@ -54,7 +53,7 @@ preamble = html.Div([
 
         html.Div(examples['simple.py'][1], className='example-container'),
 
-        rc.Markdown(dedent('''
+        rc.Markdown('''
         > Dash Cytoscape graphs are interactive! Scroll to zoom and drag on
         > the canvas to move the entire graph around. You can move nodes by
         > *dragging* it, or by *clicking, holding, and moving your mouse*
@@ -63,7 +62,7 @@ preamble = html.Div([
         > This also work in mobile! Tap-and-hold on a node to move it, or on
         > the canvas to move the entire graph. Pinch your fingers outwards to
         > zoom in, or pinch them together to zoom out.
-        ''')),
+        '''),
     ]),
 
     rc.Section('Dash Cytoscape User Guide', [])

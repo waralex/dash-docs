@@ -21,7 +21,7 @@ layout = html.Div(className="gallery", children=[
         The source is on GitHub at [plotly/dash-core-components](https://github.com/plotly/dash-core-components).
 
         These docs are using version {}.
-    '''.replace('    ', '').format(dcc.__version__)),
+    '''.format(dcc.__version__)),
 
     rc.Markdown('''
     ```py
@@ -29,7 +29,7 @@ layout = html.Div(className="gallery", children=[
     >>> print(dcc.__version__)
     {}
     ```
-    '''.replace('    ', '').format(dcc.__version__),
+    '''.format(dcc.__version__),
     style=styles.code_container),
 
     html.Hr(),
@@ -279,7 +279,7 @@ dcc.DatePickerRange(
     rc.Markdown('''
     The `dcc.Upload` component allows users to upload files into your app
     through drag-and-drop or the system's native file explorer.
-    '''.replace('    ', '')),
+    '''),
 
     dcc.Link(
         className="image-link",
@@ -295,7 +295,7 @@ dcc.DatePickerRange(
 
     rc.Markdown('''
     ***
-    '''.replace('    ', '')),
+    '''),
 
     html.H2(dcc.Link('Tabs', href='/dash-core-components/tabs')),
     rc.Markdown('''
@@ -319,7 +319,7 @@ dcc.DatePickerRange(
     The `Graph` component shares the same syntax as the open-source
     `plotly.py` library. View the [plotly.py docs](https://plot.ly/python)
     to learn more.
-    '''.replace('    ', '')),
+    '''),
     rc.ComponentBlock('''import dash_core_components as dcc
 
 dcc.Graph(
@@ -503,13 +503,13 @@ confirm = dcc.ConfirmDialogProvider(
     - `hash` = `"#quiz"`
     '''),
 
-    rc.Markdown(('''
+    rc.Markdown('''
     ```python
     import dash_core_components as dcc
 
     location = dcc.Location(id='url', refresh=False)
     ```
-    '''), style=styles.code_container),
+    ''', style=styles.code_container),
 
     html.Br(),
 

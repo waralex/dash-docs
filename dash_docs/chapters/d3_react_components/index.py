@@ -1,8 +1,7 @@
 import dash_core_components as dcc
-from textwrap import dedent
 from dash_docs import reusable_components as rc
 
-layout = rc.Markdown(dedent(
+layout = rc.Markdown(
     '''
     # Encapuslating D3.js Charts as Python Dash Components
 
@@ -31,4 +30,4 @@ layout = rc.Markdown(dedent(
     > Dash interface to `plotly.js`.
 
     '''
-))
+)

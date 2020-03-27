@@ -29,9 +29,10 @@ layout = html.Div([
     This tutorial will walk you through a fundamental aspect of Dash apps, the
     app `layout`, through {} self-contained apps.
 
-    '''.format(len(examples)).replace('    ', '')),
+    '''.format(len(examples))),
 
-    rc.Markdown('''***
+    rc.Markdown('''
+    ***
 
     Dash apps are composed of two parts. The first part is the "`layout`" of
     the app and it describes what the application looks like.
@@ -44,7 +45,7 @@ layout = html.Div([
     but you can also [build your own](https://github.com/plotly/dash-component-boilerplate)
     with JavaScript and React.js.
 
-    '''.replace('    ', '')),
+    '''),
 
     rc.Syntax(examples['getting_started_layout_1.py'][0], summary='''
         To get started, create a file named `app.py` with the following code:
@@ -59,7 +60,7 @@ layout = html.Div([
 
     and visit [http://127.0.0.1:8050/](http://127.0.0.1:8050/)
     in your web browser. You should see an app that looks like this.
-    '''.replace('    ', '')),
+    '''),
 
     rc.Example(examples['getting_started_layout_1.py'][1]),
 
@@ -87,6 +88,7 @@ layout = html.Div([
         custom CSS stylesheet to modify the default styles of the elements.
         You can learn more in the <dccLink href="/external-resources" children="css tutorial"/>,
         but for now you can initialize your app with
+
     ```
     external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
@@ -94,25 +96,25 @@ layout = html.Div([
     ```
     to get the same look and feel of these examples.
 
-### Making your first change
+    ### Making your first change
 
-**New in dash 0.30.0 and dash-renderer 0.15.0**
+    **New in dash 0.30.0 and dash-renderer 0.15.0**
 
-Dash includes "hot-reloading", this features is activated by default when
-you run your app with `app.run_server(debug=True)`. This means that Dash
-will automatically refresh your browser when you make a change in your code.
+    Dash includes "hot-reloading", this features is activated by default when
+    you run your app with `app.run_server(debug=True)`. This means that Dash
+    will automatically refresh your browser when you make a change in your code.
 
-Give it a try: change the title "Hello Dash" in your application or change the `x` or the `y` data. Your app should auto-refresh with your change.
+    Give it a try: change the title "Hello Dash" in your application or change the `x` or the `y` data. Your app should auto-refresh with your change.
 
-> Don't like hot-reloading? You can turn this off with `app.run_server(dev_tools_hot_reload=False)`.
-> Learn more in <dccLink href="/devtools" children="Dash Dev Tools documentation"/> Questions? See the [community forum hot reloading discussion](https://community.plot.ly/t/announcing-hot-reload/14177).
+    > Don't like hot-reloading? You can turn this off with `app.run_server(dev_tools_hot_reload=False)`.
+    > Learn more in <dccLink href="/devtools" children="Dash Dev Tools documentation"/> Questions? See the [community forum hot reloading discussion](https://community.plot.ly/t/announcing-hot-reload/14177).
 
-#### More about HTML
+    #### More about HTML
 
-The `dash_html_components` library contains a component class for every
-HTML tag as well as keyword arguments for all of the HTML arguments.
+    The `dash_html_components` library contains a component class for every
+    HTML tag as well as keyword arguments for all of the HTML arguments.
 
-    '''.replace('    ', '')),
+    '''),
 
     rc.Syntax(examples['getting_started_layout_2.py'][0], summary='''
         Let's customize the text in our app by modifying the inline styles of the
@@ -183,7 +185,7 @@ HTML tag as well as keyword arguments for all of the HTML arguments.
         Check out the [plotly.py documentation and gallery](https://plot.ly/python)
         to learn more.
 
-    '''.replace('    ', '')),
+    '''),
 
     rc.Syntax(examples['getting_started_viz.py'][0], summary='''
     Here's an example that creates a scatter plot from a Pandas dataframe.
@@ -204,7 +206,7 @@ HTML tag as well as keyword arguments for all of the HTML arguments.
         it can be tedious to write your copy in HTML.
         For writing blocks of text, you can use the `Markdown` component in the
         `dash_core_components` library.
-    '''.replace('    ', '')),
+    '''),
 
     rc.Syntax(examples['getting_started_markdown.py'][0]),
 
@@ -219,7 +221,7 @@ HTML tag as well as keyword arguments for all of the HTML arguments.
         Like all Dash components, they are described entirely declaratively.
         Every option that is configurable is available as a keyword argument
         of the component.
-    '''.replace('    ', '')),
+    '''),
 
     html.P(['''
         We'll see many of these components throughout the tutorial.
@@ -244,7 +246,7 @@ HTML tag as well as keyword arguments for all of the HTML arguments.
         Call `help` in your Python console on any of the components to
         learn more about a component and its available arguments.
 
-    '''.replace('    ', '')),
+    '''),
 
     html.Div(
         rc.Markdown('''```shell
@@ -286,7 +288,7 @@ class Dropdown(dash.development.base_component.Component)
           components like controls and graphs.
 
         For reference, see:
-    '''.replace('    ', '')),
+    '''),
 
     html.Ul([
         html.Li(

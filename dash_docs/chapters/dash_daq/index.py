@@ -20,7 +20,7 @@ daq_library_heading =  rc.Markdown('''
     The source is on GitHub at [plotly/dash-daq](https://github.com/plotly/dash-daq).
 
     These docs are using version {}.
-    '''.replace('    ', '').format(daq.__version__)
+    '''.format(daq.__version__)
 )
 
 daq_install_instructions = rc.Markdown('''
@@ -29,7 +29,7 @@ daq_install_instructions = rc.Markdown('''
     >>> print(daq.__version__)
     {}
     ```
-    '''.replace('    ', '').format(daq.__version__),
+    '''.format(daq.__version__),
     style=styles.code_container)
 
 

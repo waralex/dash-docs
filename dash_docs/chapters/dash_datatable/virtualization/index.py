@@ -4,7 +4,6 @@ from dash.dependencies import Input, Output
 import dash_core_components as dcc
 import dash_html_components as html
 import pandas as pd
-from textwrap import dedent
 
 from dash_docs import tools
 from dash_docs import styles
@@ -14,7 +13,7 @@ examples = tools.load_examples(__file__)
 
 layout = html.Div(
     [
-        rc.Markdown(dedent(
+        rc.Markdown(
         """
         # Virtualization
 
@@ -35,7 +34,6 @@ layout = html.Div(
         The example below prevents runtime style changes by fixing the column
         widths and setting the white-space CSS property in the cells to normal.
         """
-            )
         ),
 
         rc.Markdown(

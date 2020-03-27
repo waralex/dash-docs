@@ -1,5 +1,3 @@
-from textwrap import dedent
-
 import dash_html_components as html
 import dash_core_components as dcc
 
@@ -12,7 +10,7 @@ examples = tools.load_examples(__file__)
 layout = html.Div(
     [
 
-        rc.Markdown(dedent("""
+        rc.Markdown("""
         # DataTable Interactivity
 
         `DataTable` includes several features for modifying and transforming
@@ -41,9 +39,9 @@ layout = html.Div(
         > you need to wrap them in quotes.
         > Single quotes `'`, double quotes `"`, or backticks `\\`` all work.
         > <dccLink href="/datatable/filtering" children="Full filter syntax reference"/>
-        """)),
+        """),
 
-        rc.Markdown(dedent("""
+        rc.Markdown("""
         By default, these transformations are done clientside.
         Your Dash callbacks can respond to these modifications
         by listening to the `data` property as an `Input`.
@@ -52,7 +50,7 @@ layout = html.Div(
         `data` will be passed over the network: if your dataframe is large,
         then this will become slow. For large dataframes, you can perform the
         <dccLink href="/datatable/callbacks" children="sorting or filtering in Python instead"/>.
-        """)),
+        """),
 
         rc.Markdown(
             examples['interactivity_connected_to_graph.py'][0],
@@ -64,7 +62,7 @@ layout = html.Div(
             className='example-container'
         ),
 
-        rc.Markdown(dedent("""
+        rc.Markdown("""
         ## Row IDs
 
         When using transformations - sorting, filtering, pagination - it can be
@@ -125,7 +123,7 @@ layout = html.Div(
         back, we can just pass the IDs.
         Even the full set of IDs is only necessary in order to sync with
         sorting and filtering.
-        """)),
+        """),
 
         rc.Markdown(
             examples['interactivity_row_ids.py'][0],

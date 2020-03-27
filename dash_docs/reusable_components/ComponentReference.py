@@ -13,14 +13,14 @@ def ComponentReference(component_name, lib=dcc):
     regex = r'''^([^\(]*)\s*\(([^;]*);\s*(.+?)\):\s*(.*?)\s*$'''
 
     return_div = [
-        Markdown(dedent(
+        Markdown(
             '''
             > Access this documentation in your Python terminal with:
             > ```shell
             > >>> help({}.{})
             > ```
             '''.format(lib.__name__, component_name)
-        ))
+        )
     ]
 
     props = component_doc.split('\n-')[1:]
@@ -105,13 +105,13 @@ def ComponentReference(component_name, lib=dcc):
             prop_type = '*{}*; '.format(prop_type)
             prop_type = prop_type.replace('|', '*|*')
 
-        return_div.append(Markdown(dedent(
+        return_div.append(Markdown(
             '''**`{}`** ({}{}): {}'''.format(
                 prop_name,
                 prop_type,
                 prop_optional,
                 prop_desc
             )
-        )))
+        ))
 
     return html.Div(return_div, className='reference')
