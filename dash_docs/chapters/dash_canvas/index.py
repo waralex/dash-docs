@@ -66,10 +66,10 @@ layout = html.Div([
     '''),
 
     rc.Markdown(
-          examples['canvas_annotations.py'][0],
+          examples['canvas_image.py'][0],
           style=styles.code_container
     ),
-    html.Div(examples['canvas_annotations.py'][1], className='example-container'),
+    html.Div(examples['canvas_image.py'][1], className='example-container'),
 
     rc.Markdown('''
     The height of the canvas is adjusted automatically by keeping the aspect
@@ -111,10 +111,10 @@ layout = html.Div([
     '''),
 
     rc.Markdown(
-          examples['canvas_copy_annotations.py'][0],
+          examples['canvas_annotations.py'][0],
           style=styles.code_container
     ),
-    html.Div(examples['canvas_copy_annotations.py'][1], className='example-container'),
+    html.Div(examples['canvas_annotations.py'][1], className='example-container'),
 
     rc.Markdown('''
     You can either write custom functions to parse the JSON string, or
@@ -124,10 +124,10 @@ layout = html.Div([
     '''),
 
     rc.Markdown(
-          examples['canvas_image.py'][0],
+          examples['canvas_copy_annotations.py'][0],
           style=styles.code_container
     ),
-    html.Div(examples['canvas_image.py'][1], className='example-container'),
+    html.Div(examples['canvas_copy_annotations.py'][1], className='example-container'),
 
     rc.Markdown('''
     The above example uses the ``array_to_data_url`` utility function to
