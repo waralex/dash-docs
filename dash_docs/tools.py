@@ -40,7 +40,7 @@ def load_examples(index_filename, omit=[]):
     examples = {}
     for filename in example_filenames:
         full_filename = os.path.join(example_dir, filename)
-        if filename not in omit and os.path.isfile(full_filename):
+        if filename not in omit and os.path.isfile(full_filename) and filename.endswith('.py'):
             examples[filename] = load_example(full_filename)
     return examples
 
