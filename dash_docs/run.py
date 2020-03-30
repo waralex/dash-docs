@@ -50,7 +50,7 @@ header = html.Div(
             html.Span([
                 html.A(html.Img(
                     src='/assets/images/logo-plotly.png',
-                ), href='https://plot.ly'),
+                ), href='https://plotly.com'),
                 html.Img(
                     src='/assets/images/logo-seperator.png',
                 ),
@@ -64,9 +64,9 @@ header = html.Div(
             # make sure to check that the responsive design still works
             # The breakpoints are set in override.css
             html.Div(className='links', children=[
-                html.A('Announcements', href='https://community.plot.ly/tag/announcements'),
-                html.A('Show & Tell', href='https://community.plot.ly/tag/show-and-tell'),
-                html.A('Community Forum', href='https://community.plot.ly/c/dash'),
+                html.A('Announcements', href='https://community.plotly.com/tag/announcements'),
+                html.A('Show & Tell', href='https://community.plotly.com/tag/show-and-tell'),
+                html.A('Community Forum', href='https://community.plotly.com/c/dash'),
                 html.Iframe(
                     src="https://ghbtns.com/github-btn.html?user=plotly&repo=dash&type=star&count=true&size=small",
                     style={

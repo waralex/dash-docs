@@ -30,7 +30,7 @@ layout = html.Div([
     The `figure` argument in the `dash_core_components.Graph` component is
     the same `figure` argument that is used by `plotly.py`, Plotly's
     open source Python graphing library.
-    Check out the [plotly.py documentation and gallery](https://plot.ly/python)
+    Check out the [plotly.py documentation and gallery](https://plotly.com/python)
     to learn more.
 
     Dash components are described declaratively by a set of attributes.
@@ -98,7 +98,7 @@ layout = html.Div([
 
     > As an aside, if you find yourself filtering and visualizing
     highly-dimensional datasets, you should consider checking out the
-    [parallel coordinates](https://plot.ly/python/parallel-coordinates-plot/)
+    [parallel coordinates](https://plotly.com/python/parallel-coordinates-plot/)
     chart type.
     '''),
 
@@ -115,7 +115,7 @@ layout = html.Div([
 
     There's a lot that you can do with these interactive plotting features.
     If you need help exploring your use case, open up a thread in the
-    [Dash Community Forum](https://community.plot.ly/c/dash).
+    [Dash Community Forum](https://community.plotly.com/c/dash).
 
     ***
 

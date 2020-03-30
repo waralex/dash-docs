@@ -105,7 +105,7 @@ URLS = [
                 'content': chapters.migration.index.layout
             },
             {
-                'url': 'https://go.plot.ly/dash-club',
+                'url': 'https://go.plotly.com/dash-club',
                 'name': 'Dash Club',
                 'description': '''
                     An email newsletter by chriddyp, the creator of Dash.
@@ -745,7 +745,7 @@ URLS = [
         'name': 'Getting Help',
         'chapters': [
             {
-                'url': 'https://community.plot.ly/c/dash',
+                'url': 'https://community.plotly.com/c/dash',
                 'description': '',
                 'name': 'The Dash Community Forum'
             },
@@ -769,7 +769,7 @@ URLS = [
         'chapters': [
             {
                 'name': 'About Dash Enterprise',
-                'url': 'https://plot.ly/dash/'
+                'url': 'https://plotly.com/dash/'
             },
             {
                 'name': 'Dash Enterprise Documentation',

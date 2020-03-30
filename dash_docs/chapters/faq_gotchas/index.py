@@ -111,7 +111,7 @@ layout = html.Div([
     **Q:** *Where did those cool undo and redo buttons go?*
 
     **A:** OK, mostly we got the opposite question:
-    [How do I get rid of the undo/redo buttons](https://community.plot.ly/t/is-it-possible-to-hide-the-floating-toolbar/4911/10).
+    [How do I get rid of the undo/redo buttons](https://community.plotly.com/t/is-it-possible-to-hide-the-floating-toolbar/4911/10).
     While this feature is neat from a technical standpoint most people don't
     find it valuable in practice. As of Dash 1.0 the buttons are removed by
     default, no hacky CSS tricks needed. If you want them back, use
@@ -123,7 +123,7 @@ layout = html.Div([
 
     **Q:** *I have more questions! Where can I go to ask them?*
 
-    **A:** The [Dash Community forums](https://community.plot.ly/c/dash) is full
+    **A:** The [Dash Community forums](https://community.plotly.com/c/dash) is full
       of people discussing Dash topics, helping each other with questions, and
       sharing Dash creations. Jump on over and join the discussion.
 

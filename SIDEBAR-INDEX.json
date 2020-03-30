@@ -25,7 +25,7 @@
         "meta_keywords": "children, key, href, rel, dir, hidden, lang, style, form, name, type, width, open, accept, action, content, low, max, min, start, label, multiple, size, headers, rows, default, options, clearable, date, multi, config, list, interval, debug, dedent, tooltip, data, content_style, columns, css, editable, fill_width, fixed_columns, fixed_rows, page_action, page_current, page_size, dropdown, dropdown_conditional, dropdown_data, tooltip_conditional, tooltip_data, filter_query, filter_action, sort_action, sort_mode, sort_as_null, style_cell, style_data, style_header, style_cell_conditional, style_data_conditional, style_header_conditional, derived_filter_query_structure, on, base"
       },
       {
-        "url": "https://go.plot.ly/dash-club",
+        "url": "https://go.plotly.com/dash-club",
         "name": "Dash Club",
         "description": "\n                    An email newsletter by chriddyp, the creator of Dash.\n                "
       }
@@ -1503,7 +1503,7 @@
     "name": "Getting Help",
     "chapters": [
       {
-        "url": "https://community.plot.ly/c/dash",
+        "url": "https://community.plotly.com/c/dash",
         "description": "",
         "name": "The Dash Community Forum"
       },
@@ -1521,7 +1521,7 @@
     "chapters": [
       {
         "name": "About Dash Enterprise",
-        "url": "https://plot.ly/dash/"
+        "url": "https://plotly.com/dash/"
       },
       {
         "name": "Dash Enterprise Documentation",
