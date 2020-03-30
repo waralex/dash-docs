@@ -107,7 +107,7 @@ layout = html.Div([
     This is now built into `dcc.Markdown` using triple backticks, with optional
     short or long language name on the opening line:
     ````
-    rc.Markdown(\'\'\'
+    dcc.Markdown(\'\'\'
     ```py
     def f(a, b):
         return a + b

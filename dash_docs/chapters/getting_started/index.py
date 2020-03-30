@@ -64,7 +64,8 @@ layout = html.Div([
 
     rc.Example(examples['getting_started_layout_1.py'][1]),
 
-    rc.Markdown('''
+    rc.Markdown(
+    '''
     Note:
 
     1. The `layout` is composed of a tree of "components" like `html.Div`
@@ -106,8 +107,8 @@ layout = html.Div([
 
     Give it a try: change the title "Hello Dash" in your application or change the `x` or the `y` data. Your app should auto-refresh with your change.
 
-> Don't like hot-reloading? You can turn this off with `app.run_server(dev_tools_hot_reload=False)`.
-> Learn more in <dccLink href="/devtools" children="Dash Dev Tools documentation"/> Questions? See the [community forum hot reloading discussion](https://community.plotly.com/t/announcing-hot-reload/14177).
+    > Don't like hot-reloading? You can turn this off with `app.run_server(dev_tools_hot_reload=False)`.
+    > Learn more in <dccLink href="/devtools" children="Dash Dev Tools documentation"/> Questions? See the [community forum hot reloading discussion](https://community.plotly.com/t/announcing-hot-reload/14177).
 
     #### More about HTML
 
