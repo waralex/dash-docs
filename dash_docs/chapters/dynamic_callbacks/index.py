@@ -82,7 +82,7 @@ layout = html.Div([
 
     rc.Markdown(
     '''
-    Notes:
+    Notes about this example:
     - The `display_dropdowns` callback returns two elements with the _same_
     `index`: a dropdown and an output component.
     - The second callback uses the `MATCH` selector. With this selector,
