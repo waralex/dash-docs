@@ -82,13 +82,18 @@ layout = html.Div([
     '''
     Notes about this example:
     - The `display_dropdowns` callback returns two elements with the _same_
-    `index`: a dropdown and an output component.
+    `index`: a dropdown and a div.
     - The second callback uses the `MATCH` selector. With this selector,
-    we're asking Dash to "update the component with `'type': 'dynamic-output'`
-    and the _same `index`_ of the input component with the
-    ID `'type': 'dynamic-dropdown'` whenever the `value` property of
-    any of the components with `'type': 'dynamic-dropdown'` changes. Also,
-    pass along the `id` property of that same component to the callback."
+    we're asking Dash to:
+
+      1. Fire the callback whenever the `value` property of any component
+      with the id `'type': 'dynamic-dropdown'` changes:
+      `Input({'type': 'dynamic-dropdown', 'index': MATCH}, 'value')`
+      2. Update the component with the id `'type': 'dynamic-output'`
+      and the `index` that _matches_ the same `index` of the input:
+      `Output({'type': 'dynamic-output', 'index': MATCH}, 'children')`
+      3. Pass along the `id` of the dropdown into the callback:
+      `State({'type': 'dynamic-dropdown', 'index': MATCH}, 'id')`
     - With the `MATCH` selector, only a _single_ value is passed into the callback
     for each `Input` or `State`. This is unlike the previous example with the
     `ALL` selector where Dash passed _all_ of the values into the callback.
