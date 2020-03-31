@@ -53,8 +53,12 @@ layout = html.Div([
     The same callback would have worked with `Input({'index': ALL})`.
     We included `'type': 'filter-dropdown'` as an extra specifier in case you
     create multiple sets of dynamic components.
-    - The compontent properties themselves, in this case `value`, are not dynamic.
+    - The compontent properties themselves (e.g. `value`) are not dynamic.
     Only the IDs are dynamic.
+    - This example uses a common pattern with `State` - the currently displayed
+    set of dropdowns within the `dropdown-container` component are passed into
+    the callback when the button is clicked. Within the callback, the new
+    dropdown is appended to the list.
     '''
     ),
 
@@ -75,6 +79,30 @@ layout = html.Div([
     rc.Syntax(examples['simple_match.py'][0]),
 
     rc.Example(examples['simple_match.py'][1], style={'overflowX': 'initial'}),
+
+    rc.Markdown(
+    '''
+    Notes:
+    - The `display_dropdowns` callback returns two elements with the _same_
+    `index`: a dropdown and an output component.
+    - The second callback uses the `MATCH` selector. With this selector,
+    we're asking Dash to "update the component with `'type': 'dynamic-output'`
+    and the _same `index`_ of the input component with the
+    ID `'type': 'dynamic-dropdown'` whenever the `value` property of
+    any of the components with `'type': 'dynamic-dropdown'` changes. Also,
+    pass along the `id` property of that same component to the callback."
+    - With the `MATCH` selector, only a _single_ value is passed into the callback
+    for each `Input` or `State`. This is unlike the previous example with the
+    `ALL` selector where Dash passed _all_ of the values into the callback.
+    - Notice how it's important to design IDs dictionaries that "line up" the
+    inputs with outputs. The `MATCH` contract is that Dash will update
+    whichever output has the same dynamic ID as the id. In this case, the
+    "dynamic ID" is the value of the `index`, which we've designed to be equal
+    to the index of the dropdown.
+    - In some cases, it's may be important to know _which_ dynamic component changed.
+    As above, you can access this by setting `id` as `State` in the callback.
+    '''
+    ),
 
     html.H2('TODO App'),
 
