@@ -69,10 +69,8 @@ layout = html.Div([
     Like `ALL`, `MATCH` will fire the callback when any of the
     component's properties change. However, instead of passing _all_ of the
     values into the callback, `MATCH` will pass just a single value into the
-    callback.
-
-    In this example, whenever a dropdown changes, its associated output
-    component is updated.
+    callback. Instead of updating a single output, it will update the dynamic
+    output that is "matched" with.
     '''
     ),
 
