@@ -204,6 +204,12 @@ URLS = [
                 'content': chapters.clientside_callbacks.index.layout
             },
             {
+                'url': '/dynamic-callbacks',
+                'name': 'Dynamic Callbacks',
+                'description': '',
+                'content': chapters.dynamic_callbacks.index.layout
+            },
+            {
                 'url': '/callback-gotchas',
                 'name': 'Callback Gotchas',
                 'description': 'Dash callbacks have some idiosyncracies that '

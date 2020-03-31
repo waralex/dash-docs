@@ -34,3 +34,4 @@ from .import devtools
 from .import loading
 from .import testing
 from .import integrating_dash
+from .import dynamic_callbacks
