@@ -1016,7 +1016,6 @@ def _search_keywords(children):
                 unicode_or_str1 += unicode(unicode_or_str2)
             except Exception as e2:
                 print(unicode_or_str2)
-                import pdb; pdb.set_trace()
                 raise e2
 
         return unicode_or_str2
