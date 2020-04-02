@@ -263,7 +263,7 @@ app$layout(htmlDiv(
         ),
         className = 'rhs-content container-width'),
 
-        pageMenu(id = 'pagemenu')
+        PageMenu(id = 'pagemenu')
 
       )
     )
