@@ -1,14 +1,15 @@
+import dash_core_components as dcc
 import dash_html_components as html
 
+from .Markdown import Markdown
 from dash_docs import styles
-from . import Markdown
 
 from textwrap import dedent
 
 def Syntax(children, style=styles.code_container, summary=''):
     code = dedent(children).strip()
     if not code.startswith('```'):
-        code = '```py\n' + code.strip() + '\n```'
+        code = '```py\n' + code + '\n```'
 
     if summary:
         return html.Details([

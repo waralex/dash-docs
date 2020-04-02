@@ -10,9 +10,8 @@ from .server import app, server
 
 from .import chapter_index
 from dash_docs import tools
-from dash_docs.tutorial import home
+from dash_docs.chapters.home.index import layout as home
 
-from dash_docs.tutorial import search
 import dash_user_guide_components as dugc
 
 def create_contents(contents):
@@ -238,7 +237,7 @@ def flat_list(*args):
               [Input('location', 'pathname')])
 def display_content(pathname):
     if pathname is None or pathname == '/':
-        return [home.layout, '', {'borderBottom': 'none'}, '', '']
+        return [home, '', {'borderBottom': 'none'}, '', '']
     pathname = pathname.rstrip('/')
 
     backlinks = create_backlinks(pathname)
@@ -250,9 +249,6 @@ def display_content(pathname):
 
     if pathname in chapter_index.URL_TO_CONTENT_MAP:
         children = make_page(pathname)
-
-    elif pathname == '/search':
-        children = flat_list(create_backlinks(pathname), html.Br(), search.layout)
 
     elif pathname == '/all':
         children = build_all()
@@ -271,7 +267,7 @@ def display_content(pathname):
             if partial_path in chapter_index.URL_TO_CONTENT_MAP:
                 return flat_list(warning_box, make_page(partial_path))
 
-        children = flat_list(warning_box, home.layout)
+        children = flat_list(warning_box, home)
     return [children, backlinks, {'borderBottom': 'thin lightgrey solid'}, backlinks, '']
 
 

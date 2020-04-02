@@ -39,7 +39,7 @@ In `tutorial/dash_deployment_server_examples.py` create a variable to define the
 ```
 NewChapter = html.Div(children=[
     html.H1('Chapter Heading'),
-    reusable_components.Markdown('''
+    rc.Markdown('''
 
     ### Title
 
@@ -50,8 +50,8 @@ NewChapter = html.Div(children=[
 
 ##### Best Practices
 
-When adding **text** use: ```reusable_components.Markdown()```    
-When adding **code** use: ```reusable_components.Markdown()``` with triple backticks.
+When adding **text** use: ```rc.Markdown()```    
+When adding **code** use: ```rc.Markdown()``` with triple backticks.
 When adding **images** add the images to `tutorial/assets/images/dds/` and use a relative link in the text.      
 When adding **links** use relative links where possible.
 

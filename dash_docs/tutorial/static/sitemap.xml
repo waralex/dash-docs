@@ -75,11 +75,7 @@
     <loc>https://dash.plotly.com/search</loc>
 </url>
 <url>
-<<<<<<< HEAD
     <loc>https://dash.plotly.com/getting-started</loc>
-=======
-    <loc>https://dash.plotly.com/layout</loc>
->>>>>>> master
 </url>
 <url>
     <loc>https://dash.plotly.com/installation</loc>
