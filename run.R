@@ -284,7 +284,7 @@ app$callback(
       '/introduction' = return(chapters.whats_dash$layout),
       # Dash Tutorial
       '/installation' = return(chapters.installation$layout),
-      '/getting-started' = return(chapters.getting_started$layout),
+      '/layout' = return(chapters.getting_started$layout),
       '/basic-callbacks' = return(chapters.callbacks$layout),
       '/interactive-graphing' = return(chapters.graph_crossfiltering$layout),
       '/sharing-data-between-callbacks' = return(chapters.sharing_data$layout),
