@@ -196,7 +196,8 @@ ul {
   margin-left: 15x;
 }
 ol {
-  list-style: decimal inside; }
+  list-style: decimal outside;
+}
 ol, ul {
   padding-left: 0;
   margin-top: 0; }
