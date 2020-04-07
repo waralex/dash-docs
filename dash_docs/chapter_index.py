@@ -204,10 +204,10 @@ URLS = [
                 'content': chapters.clientside_callbacks.index.layout
             },
             {
-                'url': '/dynamic-callbacks',
-                'name': 'Dynamic Callbacks',
+                'url': '/pattern-matching-callbacks',
+                'name': 'Pattern Matching Callbacks',
                 'description': '',
-                'content': chapters.dynamic_callbacks.index.layout
+                'content': chapters.pattern_matching_callbacks.index.layout
             },
             {
                 'url': '/callback-gotchas',
