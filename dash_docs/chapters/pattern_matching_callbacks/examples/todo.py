@@ -40,8 +40,8 @@ style_done.update(style_todo)
     ],
     [
         State("new-item", "value"),
-        State({"item": ALL}, "children"),
-        State({"item": ALL, "action": "done"}, "value")
+        State({"index": ALL}, "children"),
+        State({"index": ALL, "type": "done"}, "value")
     ]
 )
 def edit_list(add, add2, clear, new_item, items, items_done):
@@ -57,12 +57,12 @@ def edit_list(add, add2, clear, new_item, items, items_done):
     new_list = [
         html.Div([
             dcc.Checklist(
-                id={"item": i, "action": "done"},
+                id={"index": i, "type": "done"},
                 options=[{"label": "", "value": "done"}],
                 value=done,
                 style={"display": "inline"}
             ),
-            html.Div(text, id={"item": i}, style=style_done if done else style_todo)
+            html.Div(text, id={"index": i}, style=style_done if done else style_todo)
         ], style={"clear": "both"})
         for i, (text, done) in enumerate(new_spec)
     ]
@@ -70,8 +70,8 @@ def edit_list(add, add2, clear, new_item, items, items_done):
 
 
 @app.callback(
-    Output({"item": MATCH}, "style"),
-    [Input({"item": MATCH, "action": "done"}, "value")]
+    Output({"index": MATCH}, "style"),
+    [Input({"index": MATCH, "type": "done"}, "value")]
 )
 def mark_done(done):
     return style_done if done else style_todo
@@ -79,7 +79,7 @@ def mark_done(done):
 
 @app.callback(
     Output("totals", "children"),
-    [Input({"item": ALL, "action": "done"}, "value")]
+    [Input({"index": ALL, "type": "done"}, "value")]
 )
 def show_totals(done):
     count_all = len(done)
