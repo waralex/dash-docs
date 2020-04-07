@@ -41,14 +41,19 @@ chapters.getting_started <- new.env()
 source('dash_docs/chapters/getting_started/index.R', local=chapters.getting_started)
 chapters.callbacks <- new.env()
 source('dash_docs/chapters/basic_callbacks/index.R', local=chapters.callbacks)
-chapters.state <- new.env()
-source('dash_docs/chapters/state/index.R', local=chapters.state)
 chapters.graph_crossfiltering <- new.env()
 source('dash_docs/chapters/graph_crossfiltering/index.R', local=chapters.graph_crossfiltering)
 chapters.sharing_data <- new.env()
 source('dash_docs/chapters/sharing_data/index.R', local=chapters.sharing_data)
 chapters.faq_gotchas <- new.env()
 source('dash_docs/chapters/faq_gotchas/index.R', local=chapters.faq_gotchas)
+# Dash Callbacks
+chapters.advanced_callbacks <- new.env()
+source('dash_docs/chapters/advanced_callbacks/index.R', local=chapters.advanced_callbacks)
+chapters.clientside_callbacks <- new.env()
+source('dash_docs/chapters/clientside_callbacks/index.R', local=chapters.clientside_callbacks)
+chapters.callback_gotchas <- new.env()
+source('dash_docs/chapters/callback_gotchas/index.R', local=chapters.callback_gotchas)
 # Component Libraries (Dash Core Components)
 chapters.dashCoreComponents <- new.env()
 source('dash_docs/chapters/dash_core_components/index.R', local=chapters.dashCoreComponents)
@@ -176,8 +181,8 @@ source('dash_docs/chapters/dash_cytoscape/phylogeny/index.R', local=chapters.das
 chapters.dashCytoscape7 <- new.env()
 source('dash_docs/chapters/dash_cytoscape/reference/index.R', local=chapters.dashCytoscape7)
 # Component Libraries (Dash Bio)
-# chapters.dashBio <- new.env()
-# source('dash_docs/chapters/dash_bio/index.R', local=chapters.dashBio)
+chapters.dashBio <- new.env()
+source('dash_docs/chapters/dash_bio/index.R', local=chapters.dashBio)
 chapters.alignment <- new.env()
 source('dash_docs/chapters/dash_bio/alignment-chart/alignment-chart.R', local=chapters.alignment)
 chapters.circos <- new.env()
@@ -263,7 +268,7 @@ app$layout(htmlDiv(
         ),
         className = 'rhs-content container-width'),
 
-        pageMenu(id = 'pagemenu')
+        PageMenu(id = 'pagemenu')
 
       )
     )
@@ -279,12 +284,15 @@ app$callback(
       '/introduction' = return(chapters.whats_dash$layout),
       # Dash Tutorial
       '/installation' = return(chapters.installation$layout),
-      '/getting-started' = return(chapters.getting_started$layout),
-      '/getting-started-part-2' = return(chapters.callbacks$layout),
-      '/state' = return(chapters.state$layout),
+      '/layout' = return(chapters.getting_started$layout),
+      '/basic-callbacks' = return(chapters.callbacks$layout),
       '/interactive-graphing' = return(chapters.graph_crossfiltering$layout),
       '/sharing-data-between-callbacks' = return(chapters.sharing_data$layout),
       '/faqs' = return(chapters.faq_gotchas$layout),
+      # Dash Callbacks
+      '/advanced-callbacks' = return(chapters.advanced_callbacks$layout),
+      '/clientside-callbacks' = return(chapters.clientside_callbacks$layout),
+      '/callback-gotchas' = return(chapters.callback_gotchas$layout),
       # Component Libraries (Dash Core Components)
       '/dash-core-components' = return(chapters.dashCoreComponents$layout),
       '/dash-core-components/dropdown' = return(chapters.dccDropdown$layout),
@@ -419,43 +427,68 @@ app$callback(
                 ),
                 components$Chapter(
                 'Part 3. Basic Callbacks',
-                href='/getting-started-part-2',
+                href='/basic-callbacks',
                 caption="Dash apps are made interactive through Dash Callbacks:
                 R functions that are automatically called whenever an input component's property changes. Callbacks can be chained,
                 allowing one update in the UI to trigger several updates across the app."
                 ),
                 components$Chapter(
-                'Part 4. More About Callbacks',
-                href='/state',
-                caption="Basic callbacks are fired whenever the values change.
-                Use Dash `state` with Dash `inputs` to pass in extra values whenever the `inputs` change.
-                `state` is useful for UIs that contain forms or buttons."
-                ),
-                components$Chapter(
-                'Part 5. Interactive Graphing and Crossfiltering',
+                'Part 4. Interactive Graphing and Crossfiltering',
                 href='/interactive-graphing',
                 caption="Bind interactivity to the Dash `Graph` component whenever you hover, click, or
                 select points on your chart."
                 ),
                 components$Chapter(
-                'Part 6. Sharing Data Between Callbacks',
+                'Part 5. Sharing Data Between Callbacks',
                 href='/sharing-data-between-callbacks',
                 caption="`global` variables will break your Dash apps.
                 However, there are other ways to share data between callbacks.
                 This chapter is useful for callbacks that run expensive data processing tasks or process large data."
                 ),
                 components$Chapter(
-                'Part 7. FAQs and Gotchas',
+                'Part 6. FAQs and Gotchas',
                 href='/faqs',
                 caption="If you have read through the rest of the tutorial and still have questions
                 or are encountering unexpected behaviour, this chapter may be useful."
                 )
               )
             ),
-
-
+            
+            
             components$Section(
-              'Component Libraries',
+              'Dash Callbacks',
+              list(
+                components$Chapter(
+                  'Basic Callbacks',
+                  href='/basic-callbacks',
+                  caption="Go through this introductory chapter to learn the foundations of the Dash callback."
+                ),
+                components$Chapter(
+                  'Advanced Callbacks',
+                  href='/advanced-callbacks',
+                  caption="Now that you've gotten through the basics, take a look at other things you can do with
+                  callbacks - from performance improvements to callback contexts."
+                ),
+                components$Chapter(
+                  'Clientside Callbacks',
+                  href='/clientside-callbacks',
+                  caption="You might want to execute a callback in the frontend as opposed to the backend if you 
+                  want to avoid the extra time that it takes to make a roundtrip to the server. Clientside 
+                  callbacks allow you to write your callbacks in JavaScript that runs in the browser."
+                ),
+                components$Chapter(
+                  'Callback Gotchas',
+                  href='/callback-gotchas',
+                  caption="Dash callbacks have some idiosyncracies that should be taken into consideration when 
+                  building a Dash app. If you're running into unexpected callback behavior, and the rest of the 
+                  documentation hasn't shed any light on the situation, try taking a look in this section."
+                )
+              )
+            ),
+
+            
+            components$Section(
+              'Open Source Component Libraries',
               list(
                 components$Chapter(
                 'Dash Core Components',
@@ -613,5 +646,35 @@ app$callback(
     function_name = 'pagemenu'
   )
 )
+
+plugin <- list(
+  on_attach = function(server) {
+    router <- server$plugins$request_routr
+    route <- routr::Route$new()
+    redirect_getting_started <- function(request, response, keys, ...) {
+      response$status <- 301L
+      response$set_header('Location', '/layout')
+      TRUE
+    }
+    redirect_getting_started_2 <- function(request, response, keys, ...) {
+      response$status <- 301L
+      response$set_header('Location', '/basic-callbacks')
+      TRUE
+    }
+    redirect_state <- function(request, response, keys, ...) {
+      response$status <- 301L
+      response$set_header('Location', '/basic-callbacks')
+      TRUE
+    }
+    route$add_handler('get', '/getting-started', redirect_getting_started)
+    route$add_handler('get', '/getting-started-part-2', redirect_getting_started_2)
+    route$add_handler('get', '/state', redirect_state)
+    router$add_route(route, "redirects")
+  },
+  name = 'redirect_urls',
+  require = 'request_routr'
+)
+
+app$server$attach(plugin)
 
 app$run_server(host = "0.0.0.0")

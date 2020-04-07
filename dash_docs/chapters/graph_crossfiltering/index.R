@@ -17,8 +17,8 @@ layout <- htmlDiv(list(
   dccMarkdown("
 # Interactive Visualizations
 
-> This is the *5th* chapter of the [Dash Tutorial](/).
-> The [previous chapter](/state) covered callbacks with `state`
+> This is the *4th* chapter of the [Dash Tutorial](/).
+> The [previous chapter](/basic-callbacks) covered callbacks with `state`
 > and the [next chapter](/sharing-data-between-callbacks) describes how to
 > share data between callbacks.
 > Just getting started? Make sure to [install the necessary dependencies](/installation).
@@ -115,7 +115,7 @@ If you need help exploring your use case, open up a thread in the [Dash Communit
 The next chapter of the Dash User Guide explains how to share data between callbacks.
   "),
   dccLink(
-    'Dash Tutorial Part 6. Sharing Data Between Callbacks',
+    'Dash Tutorial Part 5. Sharing Data Between Callbacks',
     href='/sharing-data-between-callbacks'
   ),
   htmlHr(),
