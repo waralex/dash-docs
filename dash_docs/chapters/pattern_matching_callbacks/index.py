@@ -15,8 +15,9 @@ layout = html.Div([
     '''
     🎉 New in Dash 1.11.0!
 
-    The pattern-matching callback selectors `MATCH`, `ALL`, & `ALLSMALLER` allow you to write
-    callbacks that respond to or update an arbitrary number of elements.
+    The pattern-matching callback selectors `MATCH`, `ALL`, & `ALLSMALLER`
+    allow you to write callbacks that respond to or update an
+    arbitrary or dynamic number of components.
 
     ## Simple Example with `ALL`
 
