@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 import os
 from .import chapters
 import json
@@ -212,7 +211,7 @@ URLS = [
                     '& `ALLSMALLER` allow you to write '
                     'callbacks that respond to or update an arbitrary or dynamic '
                     'number of components. '
-                    'New in Dash 1.11.0 🎉'
+                    'New in Dash 1.11.0!'
                 ),
                 'content': chapters.pattern_matching_callbacks.index.layout
             },
