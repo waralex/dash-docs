@@ -36,7 +36,7 @@ layout = html.Div([
     '''
     Some notes about this example:
     - Notice how the `id` in `dcc.Dropdown` is a _dictionary_ rather than a _string_.
-    This is a new feature that we enabled for dynamic callbacks
+    This is a new feature that we enabled for pattern-matching callbacks
     (previously, IDs had to be strings).
     - In our second callback, we have `Input({'type': 'dropdown', 'index': ALL}, 'value')`.
     This means "match any input that has an ID dictionary where `'type'` is `'dropdown'`
@@ -54,8 +54,8 @@ layout = html.Div([
     The same callback would have worked with `Input({'index': ALL})`.
     We included `'type': 'filter-dropdown'` as an extra specifier in case you
     create multiple sets of dynamic components.
-    - The compontent properties themselves (e.g. `value`) are not dynamic.
-    Only the IDs are dynamic.
+    - The compontent properties themselves (e.g. `value`) cannot be matched by
+    a pattern, only the IDs are dynamic.
     - This example uses a common pattern with `State` - the currently displayed
     set of dropdowns within the `dropdown-container` component are passed into
     the callback when the button is clicked. Within the callback, the new
