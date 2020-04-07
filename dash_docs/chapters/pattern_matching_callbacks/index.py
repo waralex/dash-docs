@@ -51,15 +51,15 @@ layout = html.Div([
     components but you may have multiple sets of dynamic components in more
     complex apps or if you are using `MATCH` (see below).
     - In fact, in this example, we didn't actually _need_ `'type': 'filter-dropdown'`.
-    The same callback would have worked with `Input({'index': ALL})`.
+    The same callback would have worked with `Input({'index': ALL}, 'value')`.
     We included `'type': 'filter-dropdown'` as an extra specifier in case you
     create multiple sets of dynamic components.
-    - The compontent properties themselves (e.g. `value`) cannot be matched by
+    - The component properties themselves (e.g. `value`) cannot be matched by
     a pattern, only the IDs are dynamic.
     - This example uses a common pattern with `State` - the currently displayed
     set of dropdowns within the `dropdown-container` component are passed into
     the callback when the button is clicked. Within the callback, the new
-    dropdown is appended to the list.
+    dropdown is appended to the list and then returned.
     '''
     ),
 
@@ -103,20 +103,21 @@ layout = html.Div([
     whichever output has the same dynamic ID as the id. In this case, the
     "dynamic ID" is the value of the `index` and we've designed our layout to
     return dropdowns & divs with identical values of `index`.
-    - In some cases, it's may be important to know _which_ dynamic component changed.
+    - In some cases, it may be important to know _which_ dynamic component changed.
     As above, you can access this by setting `id` as `State` in the callback.
     '''
     ),
 
-    rc.Markdown('Simple Example with `ALLSMALLER`'),
+    rc.Markdown('## Simple Example with `ALLSMALLER`'),
 
     rc.Markdown(
     '''
-    In the example below, `ALLSMALLER` is used to match the new dropdown's
-    value in addition to the ones that have already been rendered on the page.
+    In the example below, `ALLSMALLER` is used to pass in the values of
+    all of the dropdowns on the page that have an index smaller than the
+    index corresponding to the div.
 
-    The user interface in the example below displays the filter results as
-    we apply each additional dropdown.
+    The user interface in the example below displays filter results that are
+    increasingly specific in each as we apply each additional dropdown.
 
     `ALLSMALLER` can only be used in `Input` and `State` items, and
     must be used on a key that has `MATCH` in the `Output` item(s).
