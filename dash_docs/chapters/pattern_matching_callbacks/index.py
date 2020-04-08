@@ -60,6 +60,57 @@ layout = html.Div([
     set of dropdowns within the `dropdown-container` component are passed into
     the callback when the button is clicked. Within the callback, the new
     dropdown is appended to the list and then returned.
+    - You can also use `dash.callback_context` to access the inputs and state
+    and to know which input changed.
+    Here is what that data might look like with two dropdowns rendered on the page.
+      - `dash.callback_context.triggered`. Note that the `prop_id` is a stringified dictionary with no whitespace.
+      ```
+      [
+        {
+          'prop_id': '{"index":0,"type":"filter-dropdown"}.value',
+          'value': 'NYC'
+        }
+      ]
+      ```
+      - `dash.callback_context.inputs`. Note that the key is a stringified dictionary with no whitespace.
+      ```
+      {
+        '{"index":0,"type":"filter-dropdown"}.value': 'NYC',
+        '{"index":1,"type":"filter-dropdown"}.value': 'LA'
+      }
+      ```
+      - `dash.callback_context.inputs_list`. Each element of the list corresponds to
+      one of the input declarations. If one of the input declarations matches a
+      pattern then it will contain a list of values.
+      ```
+      [
+        [
+          {
+            'id': {
+              'index': 0,
+              'type': 'filter-dropdown'
+            },
+            'property': 'value',
+            'value': 'NYC'
+          },
+          {
+            'id': {
+              'index': 1,
+              'type': 'filter-dropdown'
+            },
+            'property': 'value',
+            'value': 'LA'
+          }
+        ]
+      ]
+      ```
+      - `dash.callback_context.outputs_list`
+      ```
+      {
+        'id': 'dropdown-container-output',
+        'property': 'children'
+      }
+      ```
     '''
     ),
 
@@ -105,6 +156,54 @@ layout = html.Div([
     return dropdowns & divs with identical values of `index`.
     - In some cases, it may be important to know _which_ dynamic component changed.
     As above, you can access this by setting `id` as `State` in the callback.
+    - You can also use `dash.callback_context` to access the inputs and state
+    and to know which input changed. `outputs_list` is particularly useful with
+    `MATCH` because it can tell you _which_ dynamic component this particular
+    invocation of the callback is responsible for updating.
+    Here is what that data might look like with two dropdowns rendered on the page after
+    we change the first dropdown.
+      - `dash.callback_context.triggered`. Note that the `prop_id` is a stringified dictionary with no whitespace.
+      ```
+      [
+        {
+          'prop_id': '{"index":0,"type":"dynamic-dropdown"}.value',
+          'value': 'NYC'
+        }
+      ]
+      ```
+      - `dash.callback_context.inputs`. Note that the key is a stringified dictionary with no whitespace.
+      ```
+      {
+        '{"index":0,"type":"dynamic-dropdown"}.value': 'NYC'
+      }
+      ```
+      - `dash.callback_context.inputs_list`. Each element of the list corresponds to
+      one of the input declarations. If one of the input declarations matches a
+      pattern then it will contain a list of values.
+      ```
+      [
+        [
+          {
+            'id': {
+              'index': 0,
+              'type': 'dynamic-dropdown'
+            },
+            'property': 'value',
+            'value': 'NYC'
+          }
+        ]
+      ]
+      ```
+      - `dash.callback_context.outputs_list`
+      ```
+      {
+        'id': {
+            'index': 0,
+            'type': dynamic-output'
+        },
+        'property': 'children'
+      }
+      ```
     '''
     ),
 
@@ -142,6 +241,61 @@ layout = html.Div([
     - So, if there are 10 filters added and the first dropdown has changed, Dash
     will fire your callback 10 times, once to update each `html.Div` that depends
     on the `dcc.Dropdown` that changed.
+    - As above, you can also use `dash.callback_context` to access the inputs and state
+    and to know which input changed.
+    Here is what that data might look like when updating the second div
+    with two dropdowns rendered on the page after we change the first dropdown.
+      - `dash.callback_context.triggered`. Note that the `prop_id` is a stringified dictionary with no whitespace.
+      ```
+      [
+        {
+          'prop_id': '{"index":0,"type":"filter-dropdown-ex3"}.value',
+          'value': 'Canada'
+        }
+      ]
+      ```
+      - `dash.callback_context.inputs`. Note that the key is a stringified dictionary with no whitespace.
+      ```
+      {
+        '{"index":1,"type":"filter-dropdown-ex3"}.value': 'Albania',
+        '{"index":0,"type":"filter-dropdown-ex3"}.value': 'Canada'
+      }
+      ```
+      - `dash.callback_context.inputs_list`. Each element of the list corresponds to
+      one of the input declarations. If one of the input declarations matches a
+      pattern then it will contain a list of values.
+      ```
+      [
+        {
+          'id': {
+            'index': 1,
+            'type': 'filter-dropdown-ex3'
+          },
+          'property': 'value',
+          'value': 'Albania'
+        },
+        [
+          {
+            'id': {
+              'index': 0,
+              'type': 'filter-dropdown-ex3'
+            },
+            'property': 'value',
+            'value': 'Canada'
+          }
+        ]
+      ]
+      ```
+      - `dash.callback_context.outputs_list`
+      ```
+      {
+        'id': {
+            'index': 1,
+            'type': output-ex3'
+        },
+        'property': 'children'
+      }
+      ```
     '''
     ),
 
