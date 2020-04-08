@@ -193,10 +193,11 @@ label > .label-body {
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 ul {
   list-style: circle outside;
-  margin-left: 15x;
+  margin-left: 15px;
 }
 ol {
   list-style: decimal outside;
+  margin-left: 15px;
 }
 ol, ul {
   padding-left: 0;
