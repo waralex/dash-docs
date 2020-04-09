@@ -441,7 +441,7 @@ a {
 }
 
 @media (max-width: 950px) {
-    .sidebar {
+    .sidebar-container {
         display: none;
     }
     .content {
