@@ -220,24 +220,19 @@ summary:hover {
     margin-bottom: 10px;
 }
 
-.sidebar-container {
-    position: relative;
-    height: calc(100vh - 60px);
-}
 .sidebar {
     /* height of header + height of sidebar ad + padding */
-    height: calc(100vh - 60px - 300px - 30px);
+    height: calc(100vh - 60px - 200px - 30px);
     overflow-y: auto;
 }
 
 
 
 .sidebar-ad {
-    max-height: 300px;
-    margin: 10px;
-    max-width: calc(100% - 20px);
-    bottom: 0;
-    position: absolute;
+    max-height: 200px;
+    left: 10px;
+    bottom: 10px;
+    position: fixed;
 }
 
 /* Header */
