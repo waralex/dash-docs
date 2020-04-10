@@ -34,3 +34,4 @@ from .import devtools
 from .import loading
 from .import testing
 from .import integrating_dash
+from .import pattern_matching_callbacks
