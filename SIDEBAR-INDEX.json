@@ -94,6 +94,12 @@
         "meta_keywords": "children, rel, shape, dir, style, form, name, type, content, low, min, label, async, multiple, required, rows, options, date, multi, figure, debug, count, data, contents, css, on, scale, stylesheet, layout, pan, styles"
       },
       {
+        "url": "/pattern-matching-callbacks",
+        "name": "Pattern-Matching Callbacks",
+        "description": "The pattern-matching callback selectors `MATCH`, `ALL`, & `ALLSMALLER` allow you to write callbacks that respond to or update an arbitrary or dynamic number of components. New in Dash 1.11.0!",
+        "meta_keywords": "children, n_clicks, key, style, form, name, type, content, low, min, reversed, label, multiple, options, displayed, date, multi, list, pattern, n_submit, debug, color, pathname, count, included, data, dropdown, on, elements, layout, pan, container"
+      },
+      {
         "url": "/callback-gotchas",
         "name": "Callback Gotchas",
         "description": "Dash callbacks have some idiosyncracies that should be taken into consideration when building a Dash app. If you're running into unexpected callback behavior, and the rest of the documentation hasn't shed any light on the situation, try taking a look in this section.",
@@ -180,7 +186,7 @@
             "url": "/dash-core-components/link",
             "name": "dcc.Link",
             "description": "Official examples and reference documentation for dcc.Link. dcc.Link is a dash_core_components component.",
-            "meta_keywords": "children, key, href, style, name, type, low, min, default, list, refresh, on, elements, styles"
+            "meta_keywords": "children, key, href, target, style, title, form, name, type, open, low, min, required, default, list, refresh, on, elements, styles"
           },
           {
             "url": "/dash-core-components/loading",

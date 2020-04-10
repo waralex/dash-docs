@@ -6,11 +6,13 @@ utils <- new.env()
 source('dash_docs/utils.R', local=utils)
 
 examples <- list(
-  simple.callbacks=utils$LoadExampleCode('dash_docs/chapters/basic_callbacks/examples/simple-callback.R'),
-  simple.slider=utils$LoadExampleCode('dash_docs/chapters/basic_callbacks/examples/hello-slider.R'),
-  multi.inputs=utils$LoadExampleCode('dash_docs/chapters/basic_callbacks/examples/multi-inputs.R'),
-  multi.output=utils$LoadExampleCode('dash_docs/chapters/basic_callbacks/examples/multi-output.R'),
-  multi.output2=utils$LoadExampleCode('dash_docs/chapters/basic_callbacks/examples/multi-output-v2.R')
+  simple_callbacks=utils$LoadExampleCode('dash_docs/chapters/basic_callbacks/examples/simple-callback.R'),
+  simple_slider=utils$LoadExampleCode('dash_docs/chapters/basic_callbacks/examples/hello-slider.R'),
+  multi_inputs=utils$LoadExampleCode('dash_docs/chapters/basic_callbacks/examples/multi-inputs.R'),
+  multi_output=utils$LoadExampleCode('dash_docs/chapters/basic_callbacks/examples/multi-output.R'),
+  multi_output2=utils$LoadExampleCode('dash_docs/chapters/basic_callbacks/examples/multi-output-v2.R'),
+  basic_input=utils$LoadExampleCode('dash_docs/chapters/basic_callbacks/examples/basic-input.R'),
+  basic_state=utils$LoadExampleCode('dash_docs/chapters/basic_callbacks/examples/basic-state.R')
 )
 
 layout <- htmlDiv(
@@ -45,17 +47,17 @@ Let's get started with a simple example.
     #
     # Example of basic callbacks
     # dccSyntaxHighlighter(
-    #   examples$simple.callbacks$source_code,
+    #   examples$simple_callbacks$source_code,
     #   language='r',
     #   customStyle=styles.code_container
     # ),
 
-    # htmlDiv(examples$simple.callbacks$layout,
+    # htmlDiv(examples$simple_callbacks$layout,
     #          className="example-container"),
     #
 
-    examples$simple.callbacks$source_code,
-    examples$simple.callbacks$layout,
+    examples$simple_callbacks$source_code,
+    examples$simple_callbacks$layout,
 
     dccMarkdown("
 Try typing in the text box. The children property of the output component updates
@@ -113,8 +115,8 @@ Let's take a look at another example where a `dccSlider` updates a
 
 
     # Example of slicer
-    examples$simple.slider$source_code,
-    examples$simple.slider$layout,
+    examples$simple_slider$source_code,
+    examples$simple_slider$layout,
 
     dccMarkdown("
 In this example, the `value` property of the `dccSlider` is the input of the app
@@ -159,8 +161,8 @@ a list in the second argument.
 "),
 
     # Example of mutli-inputs
-    examples$multi.inputs$source_code,
-    examples$multi.inputs$layout,
+    examples$multi_inputs$source_code,
+    examples$multi_inputs$layout,
 
     dccMarkdown("
 In this example, the `callback` function is activated whenever the
@@ -180,13 +182,28 @@ Let's extend our example to include multiple outputs.
 
 #### Multiple Outputs
 
-Each Dash callback function can only update a single output property.
-To update multiple Outputs, just write multiple functions.
+So far all the callbacks we've written only update a single Output property. We
+can also update several at once: put all the properties you want to update as a 
+list in the decorator, and return that many items from the callback. This is
+particularly nice if two outputs depend on the same computationally intense intermediate 
+result, such as a slow database query. The only change we have to make is setting the `Output`
+as a list of `outputs`, and returning a list of each of the consecutive results.
   "),
 
     # Example of mutli-output
-    examples$multi.output$source_code,
-    examples$multi.output$layout,
+    examples$multi_output$source_code,
+    examples$multi_output$layout,
+    
+    dccMarkdown("
+A word of caution: it's not always a good idea to combine Outputs, even if
+you can:
+
+- If the Outputs depend on some but not all of the same Inputs, keeping
+  them separate can avoid unnecessary updates.
+- If they have the same Inputs but do independent computations with these
+  inputs, keeping the callbacks separate can allow them to run in parallel.
+  
+  "),
 
     dccMarkdown("
 #### Chained Callbacks
@@ -200,8 +217,8 @@ Here's a simple example.
   "),
 
     # Example of mutli-output
-    examples$multi.output2$source_code,
-    examples$multi.output2$layout,
+    examples$multi_output2$source_code,
+    examples$multi_output2$layout,
 
     dccMarkdown("
 The first callback updates the available options in the second `dccRadioItems`
@@ -215,6 +232,51 @@ If you change the `value` of the countries `dccRadioItems` component, Dash
 will wait until the `value` of the cities component is updated
 before calling the final callback. This prevents your callbacks from being
 called with inconsistent state like with `\"USA\"` and `\"Montr\U{00E9}al\"`.
+  "),
+    
+dccMarkdown("
+#### State
+
+In some cases, you might have a 'form'-type pattern in your
+application. In such a situation, you might want to read the value
+of the input component, but only when the user is finished
+entering all of his or her information in the form.
+
+Attaching a callback to the input values directly can look like
+this:
+
+  "),
+
+#example of callback tied to input value
+examples$basic_input$source,
+examples$basic_input$layout,
+
+dccMarkdown("
+In this example, the callback function is fired whenever any of the
+attributes described by the `input` change.
+Try it for yourself by entering data in the inputs above.
+
+`state` allows you to pass along extra values without
+firing the callbacks. Here's the same example as above but with the
+`dccInput` as `state` and a button as
+`input`.
+  "),
+
+#example of one input and two states
+examples$basic_state$source,
+examples$basic_state$layout,
+
+dccMarkdown("
+In this example, changing text in the `dccInput` boxes won't fire
+the callback but clicking on the button will. The current values of
+the `dccInput` values are still passed into the callback even though
+they don't trigger the callback function itself.
+
+Note that we're triggering the callback by listening to the
+`n_clicks` property of the `htmlButton` component. `n_clicks` is a
+property that gets incremented every time the component has been
+clicked on. It is available in every component in the
+`dashHtmlComponents` package.
   "),
 
     dccMarkdown("
@@ -237,8 +299,8 @@ Dash callbacks: `state`
   "),
 
     dccLink(
-      'Dash Tutorial Part 4: More about callbacks',
-      href="/state"
+      'Dash Tutorial Part 4: Interactive Graphing',
+      href="/interactive-graphing"
     ),
 
     htmlHr(),

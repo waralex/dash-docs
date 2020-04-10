@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import os
 from .import chapters
 import json
@@ -202,6 +203,18 @@ URLS = [
                 'to the server. Clientside callbacks allow you to write '
                 'your callbacks in JavaScript that runs in the browser.',
                 'content': chapters.clientside_callbacks.index.layout
+            },
+            {
+                'url': '/pattern-matching-callbacks',
+                'name': 'Pattern-Matching Callbacks',
+                'description': (
+                    'The pattern-matching callback selectors `MATCH`, `ALL`, '
+                    '& `ALLSMALLER` allow you to write '
+                    'callbacks that respond to or update an arbitrary or dynamic '
+                    'number of components. '
+                    'New in Dash 1.11.0!'
+                ),
+                'content': chapters.pattern_matching_callbacks.index.layout
             },
             {
                 'url': '/callback-gotchas',
@@ -1016,7 +1029,6 @@ def _search_keywords(children):
                 unicode_or_str1 += unicode(unicode_or_str2)
             except Exception as e2:
                 print(unicode_or_str2)
-                import pdb; pdb.set_trace()
                 raise e2
 
         return unicode_or_str2
@@ -1054,6 +1066,8 @@ def _search_keywords(children):
                 component = getattr(component_library, component_name)()
             elif component_name == 'Circos':
                 component = getattr(component_library, component_name)(layout=None)
+            elif component_name == 'Link':
+                component = getattr(component_library, component_name)(href='')
             else:
                 try:
                     component = getattr(component_library, component_name)(id='_')
