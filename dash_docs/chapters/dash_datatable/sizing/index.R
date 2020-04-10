@@ -93,11 +93,6 @@ The default styles work well for a small number of columns and short text.
 However, if you are rendering a large number of columns or cells with long contents,
 then you'll need to employ one of the following \"overflow strategies\" to keep the table within its container.
 
-> Heads up! In the future,
-> we may modify our default styles to better accommodate wide content
-> while keeping the table full-width and responsive. Subscribe to
-> [plotly/dash-table#197](https://github.com/plotly/dash-table/issues/197) for more.
-
 View Datasets
                 "),
 
@@ -120,7 +115,7 @@ df_election <- data.frame(
 ```
               "),
   dccMarkdown("
-## Overflow Strategies - Multiple Lines
+## Overflow Strategies - Wrapping onto Multiple Lines
 
 If your cells contain contain text with spaces,
 then you can overflow your content into multiple lines.
@@ -172,6 +167,10 @@ then the column will only take up the necessary amount of horizontal space.
   examples$horizontalScrollPseudo2$source_code,
   examples$horizontalScroll2$layout,
 
+  dccMarkdown("
+Here is the same example but with fixed-width cells & ellipses.
+  "),
+
   examples$horizontalScrollPseudo3$source_code,
   examples$horizontalScroll3$layout,
 
@@ -191,10 +190,6 @@ In this case, the column's width will be constant, even if its contents are shor
 
 You can also add a horizontal scrollbar to your table by
 fixing the leftmost columns with `fixed_columns`.
-
-> Note that fixing columns introduces some changes to the underlying markup of the table
-> and may impact the way that your columns are rendered or sized.
-> For more information, subscribe to [`dash-table#201`](https://github.com/plotly/dash-table/issues/201).
               "),
 
   examples$fixedColumnsPseudo1$source_code,
