@@ -487,10 +487,25 @@ layout = html.Div(
 
         rc.Markdown(
         '''
-        ## Table Height and Vertical Scrolling
+        # Table Height and Vertical Scrolling
 
         By default, the table's height will expand in order
-        to render all of the rows.
+        to render up to 250 rows.
+        After 250 rows, the table with display a **pagination** UI
+        that allows you to navigate through 250 rows at a time.
+
+        ## Setting Table Height with Pagination
+
+        If you are using pagination, you can set the height by displaying
+        less rows at a time. Instead of 250 rows, you could display
+        10 rows at a time. By default and without wrapping,
+        each row takes up 30px. So 10 rows with one header would set the
+        table to be 330px tall.
+        '''),
+
+        rc.Markdown(
+        '''
+        ## Setting Table Height with Virtualization
 
         You can constrain the height of the table by setting a `maxHeight`
         and adding a scrollbar with `overflowY: 'scroll'`.
