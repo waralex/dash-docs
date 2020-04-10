@@ -1121,5 +1121,9 @@ def create_urls_without_content(url_set):
             section.pop('content')
         if 'preamble' in section:
             section.pop('preamble')
+        if 'ad' in section:
+            section.pop('ad')
+        if 'adhref' in section:
+            section.pop('adhref')
         if 'chapters' in section:
             create_urls_without_content(section['chapters'])
