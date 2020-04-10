@@ -167,10 +167,6 @@ layout = html.Div(
         text. However, if you are rendering a large number of columns or
         cells with long contents, then you'll need to employ one of the
         following "overflow strategies" to keep the table within its container.
-
-        > Heads up! In the future, we may modify our default styles to
-        > better accommodate wide content while keeping the table full-width
-        > and responsive. Subscribe to [plotly/dash-table#197](https://github.com/plotly/dash-table/issues/197) for more.
         '''
         ),
 
@@ -334,11 +330,6 @@ layout = html.Div(
 
         You can also add a horizontal scrollbar to your table by fixing
         the leftmost columns with `fixed_columns`.
-
-        > Note that fixing columns introduces some changes to the underlying
-        > markup of the table and may impact the way that your columns
-        > are rendered or sized.
-        > For more information, subscribe to [dash-table#201](https://github.com/plotly/dash-table/issues/201).
         '''
         ),
 
