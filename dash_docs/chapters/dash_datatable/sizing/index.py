@@ -338,9 +338,16 @@ layout = html.Div(
         dash_table.DataTable(
             data=df_election.to_dict('records'),
             columns=[{'id': c, 'name': c} for c in df_election.columns],
-            fixed_columns={ 'headers': True, 'data': 1 },
+            fixed_columns={'headers': True, 'data': 1},
+            style_table={'minWidth': '100%'}
         )
         '''),
+
+        rc.Markdown(
+        '''
+        Here is the same example but with fixed-width cells & ellipses.
+        '''
+        ),
 
         Display(
         '''
@@ -348,6 +355,7 @@ layout = html.Div(
             data=df_election.to_dict('records'),
             columns=[{'id': c, 'name': c} for c in df_election.columns],
             fixed_columns={ 'headers': True, 'data': 1 },
+            style_table={'minWidth': '100%'},
             style_cell={
                 # all three widths are needed
                 'minWidth': '180px', 'width': '180px', 'maxWidth': '180px',
