@@ -749,7 +749,9 @@ URLS = [
                 'url': '/authentication',
                 'content': chapters.auth.index.layout,
                 'name': 'Authentication',
-                'description': ''
+                'description': '',
+                'ad': 'dash-enterprise-authentication.jpg',
+                'adhref': 'https://plotly.com/get-demo?utm_source=docs&utm_medium=ad&utm_campaign=april&utm_content=authentication'
             },
 
             {
