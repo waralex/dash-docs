@@ -172,7 +172,7 @@ layout = html.Div(
 
         rc.Markdown(
         '''
-        ### Overflow Strategies - Multiple Lines
+        ### Overflow Strategies - Wrapping onto Multiple Lines
 
         If your cells contain contain text with spaces, then you can overflow
         your content into multiple lines.
