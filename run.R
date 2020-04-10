@@ -223,6 +223,118 @@ source('dash_docs/chapters/urls/index.R', local=chapters.urls)
 chapters.devtools <- new.env()
 source('dash_docs/chapters/devtools/index.R', local=chapters.devtools)
 
+current_chapter_urls <-
+  c(
+    "/introduction",
+    "/installation",
+    "/layout",
+    "/basic-callbacks",
+    "/interactive-graphing",
+    "/sharing-data-between-callbacks",
+    "/faqs",
+    "/advanced-callbacks",
+    "/clientside-callbacks",
+    "/callback-gotchas",
+    "/dash-core-components",
+    "/dash-core-components/dropdown",
+    "/dash-core-components/slider",
+    "/dash-core-components/rangeslider",
+    "/dash-core-components/input",
+    "/dash-core-components/textarea",
+    "/dash-core-components/checklist",
+    "/dash-core-components/radioitems",
+    "/dash-core-components/button",
+    "/dash-core-components/datepickersingle",
+    "/dash-core-components/datepickerrange",
+    "/dash-core-components/markdown",
+    "/dash-core-components/uploadcomponent",
+    "/dash-core-components/confirmdialog",
+    "/dash-core-components/confirmdialogprovider",
+    "/dash-core-components/store",
+    "/dash-core-components/location",
+    "/dash-core-components/loadingcomponent",
+    "/dash-core-components/graph",
+    "/dash-core-components/tabs",
+    "/dash-core-components/uploadcomponent",
+    "/dash-html-components",
+    "/datatable",
+    "/datatable/sizing",
+    "/datatable/style",
+    "/datatable/interactivity",
+    "/datatable/callbacks",
+    "/datatable/typing",
+    "/datatable/editable",
+    "/datatable/dropdowns",
+    "/datatable/virtualization",
+    "/datatable/filtering",
+    "/datatable/reference",
+    "/dash-daq",
+    "/dash-daq/booleanswitch",
+    "/dash-daq/colorpicker",
+    "/dash-daq/gauge",
+    "/dash-daq/graduatedbar",
+    "/dash-daq/indicator",
+    "/dash-daq/joystick",
+    "/dash-daq/knob",
+    "/dash-daq/leddisplay",
+    "/dash-daq/numericinput",
+    "/dash-daq/powerbutton",
+    "/dash-daq/precisioninput",
+    "/dash-daq/slider",
+    "/dash-daq/stopbutton",
+    "/dash-daq/tank",
+    "/dash-daq/thermometer",
+    "/dash-daq/toggleswitch",
+    "/dash-daq/darkthemeprovider",
+    "/dash-canvas",
+    "/cytoscape",
+    "/cytoscape/elements",
+    "/cytoscape/layout",
+    "/cytoscape/styling",
+    "/cytoscape/callbacks",
+    "/cytoscape/events",
+    "/cytoscape/phylogeny",
+    "/cytoscape/reference",
+    "/dash-bio",
+    "/dash-bio/alignmentchart",
+    "/dash-bio/circos",
+    "/dash-bio/clustergram",
+    "/dash-bio/ideogram",
+    "/dash-bio/manhattanplot",
+    "/dash-bio/molecule2dviewer",
+    "/dash-bio/molecule3dviewer",
+    "/dash-bio/volcanoplot",
+    "/dash-bio/needleplot",
+    "/dash-bio/oncoprint",
+    "/dash-bio/sequenceviewer",
+    "/dash-bio/speck",
+    "/deployment",
+    "/external-resources",
+    "/urls",
+    "/devtools",
+    "/support",
+    "/plugins",
+    "/d3-react-components"
+  )
+
+SIDEBAR_INDEX <- jsonlite::read_json('SIDEBAR-INDEX.json')
+
+# Filter the Index to only R Docs pages
+for (i in seq_along(SIDEBAR_INDEX)) {
+  for (n in seq_along(SIDEBAR_INDEX[[i]]$chapters)) {
+    if(!is.null(SIDEBAR_INDEX[[i]]$chapters[[n]]$chapters)) {
+      for (m in seq_along(SIDEBAR_INDEX[[i]]$chapters[[n]]$chapters)) {
+        subchapter_url <- SIDEBAR_INDEX[[i]]$chapters[[n]]$chapters[[m]]$url
+        if (!(subchapter_url %in% current_chapter_urls)) {
+          SIDEBAR_INDEX[[i]]$chapters[[n]]$chapters[[m]] <- NA
+        }
+      }
+    }
+    chapter_url <- SIDEBAR_INDEX[[i]]$chapters[[n]]$url
+    print(chapter_url)
+  }
+}
+
 header <- htmlDiv(
   className = 'header',
   list(
@@ -260,6 +372,7 @@ app$layout(htmlDiv(
     htmlDiv(
       className = 'content-wrapper',
       children = list(
+        Sidebar(urls=SIDEBAR_INDEX),
         htmlDiv(list(
           htmlDiv(id = 'backlinks-top', className = 'backlinks'),
           htmlDiv(htmlDiv(id = 'chapter', className = 'content'),
