@@ -1069,7 +1069,7 @@
             "breadcrumb": "Dash DataTable",
             "description": "`dash_table.DataTable` is an interactive table that supports rich styling, conditional formatting, editing, sorting, filtering, and more.",
             "autogenerate_index": true,
-            "meta_keywords": "rel, style, cite, form, name, type, height, width, action, content, high, low, min, start, multiple, headers, rows, default, date, multi, responsive, figure, config, list, debug, color, included, data, colors, columns, editable, dropdown, virtualization, on, theme, layout, pan, view"
+            "meta_keywords": "rel, style, cite, form, name, type, height, width, action, content, high, low, min, start, multiple, headers, rows, wrap, default, date, multi, responsive, figure, config, list, debug, color, included, vertical, data, colors, columns, editable, dropdown, virtualization, on, theme, layout, pan, view"
           },
           {
             "url": "/datatable/reference",
@@ -1078,15 +1078,21 @@
             "meta_keywords": "n_clicks, n_clicks_timestamp, key, media, rel, dir, hidden, style, controls, form, name, type, height, width, open, accept, action, content, low, min, start, label, selected, multiple, required, size, headers, rows, default, options, persistence, persisted_props, persistence_type, displayed, clearable, date, multi, config, list, pattern, refresh, count, included, tooltip, vertical, data, contents, active_cell, columns, include_headers_on_copy_paste, locale_format, css, data_previous, data_timestamp, editable, end_cell, export_columns, export_format, export_headers, fill_width, hidden_columns, is_focused, merge_duplicate_headers, fixed_columns, fixed_rows, column_selectable, row_deletable, row_selectable, selected_cells, selected_rows, selected_columns, selected_row_ids, start_cell, style_as_list_view, page_action, page_current, page_count, page_size, dropdown, dropdown_conditional, dropdown_data, tooltip_conditional, tooltip_data, tooltip_delay, tooltip_duration, filter_query, filter_action, sort_action, sort_mode, sort_by, sort_as_null, style_table, style_cell, style_data, style_filter, style_header, style_cell_conditional, style_data_conditional, style_filter_conditional, style_header_conditional, virtualization, derived_filter_query_structure, derived_viewport_data, derived_viewport_indices, derived_viewport_row_ids, derived_viewport_selected_columns, derived_viewport_selected_rows, derived_viewport_selected_row_ids, derived_virtual_data, derived_virtual_indices, derived_virtual_row_ids, derived_virtual_selected_rows, derived_virtual_selected_row_ids, on, base, units, elements, container, perspective, styles, selection, view"
           },
           {
-            "url": "/datatable/sizing",
-            "name": "Sizing",
-            "description": "\n                            All about sizing the DataTable. Examples include:\n                            - Setting the width and the height of the table\n                            - Responsive table design\n                            - Setting the widths of individual columns\n                            - Handling long text\n                            - Fixing rows and columns\n                        ",
-            "meta_keywords": "shape, hidden, style, form, name, height, width, open, sizes, content, low, max, min, multiple, size, headers, rows, default, date, multi, responsive, search, data, contents, columns, fixed_columns, fixed_rows, style_table, style_cell, style_data, style_cell_conditional, on, base, pan, container, styles, range"
+            "url": "/datatable/height",
+            "name": "DataTable Height",
+            "description": "\n                            How to set the height of the DataTable.\n                            Examples include how to set the height with\n                            vertical scroll, pagination, virtualization, and\n                            fixed headers.\n                        ",
+            "meta_keywords": "children, href, shape, hidden, style, form, name, height, width, open, action, sizes, content, low, max, min, size, headers, rows, wrap, default, date, responsive, list, search, tooltip, vertical, data, contents, columns, css, fixed_rows, page_action, page_size, style_table, style_cell, style_header, virtualization, on, base, elements, pan, container, range"
+          },
+          {
+            "url": "/datatable/width",
+            "name": "DataTable & Column Width",
+            "description": "\n                            How to set the width of the table and the columns.\n                            Examples include how to handle word wrapping,\n                            cell clipping, horizontal scroll, fixed columns,\n                            and more.\n                        ",
+            "meta_keywords": "shape, dir, hidden, style, form, name, type, height, width, open, method, sizes, content, low, max, min, multiple, required, size, headers, rows, default, date, multi, list, search, tooltip, data, contents, columns, css, fixed_columns, tooltip_data, tooltip_duration, style_table, style_cell, style_data, style_cell_conditional, on, layout, pan, container, styles, range"
           },
           {
             "url": "/datatable/style",
             "name": "Styling",
-            "description": "\n                            The style of the DataTable is highly customizable. This chapter\n                            includes examples for:\n                            - Conditional formatting\n                            - Displaying multiple rows of headers\n                            - Highlighting rows, columns, and cells\n                            - Styling the table as a list view\n                            - Changing the colors (including a dark theme!)\n\n                            The sizing API for the table has been particularly tricky for\n                            us to nail down, so be sure to read this chapter to understand the nuances,\n                            limitations, and the APIs that we're exploring.\n                        ",
+            "description": "\n                            The style of the DataTable is highly customizable. This chapter\n                            includes examples for:\n                            - Conditional formatting\n                            - Displaying multiple rows of headers\n                            - Highlighting rows, columns, and cells\n                            - Styling the table as a list view\n                            - Changing the colors (including a dark theme!)\n                        ",
             "meta_keywords": "children, key, href, lang, style, alt, form, name, type, content, high, low, multiple, headers, rows, default, date, multi, list, color, vertical, data, colors, columns, editable, merge_duplicate_headers, style_as_list_view, filter_query, style_cell, style_data, style_filter, style_header, style_cell_conditional, style_data_conditional, style_filter_conditional, style_header_conditional, on, base, backgroundColor, elements, styles, padding, range, view"
           },
           {
