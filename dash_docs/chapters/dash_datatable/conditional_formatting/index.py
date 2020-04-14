@@ -70,209 +70,52 @@ Display = rc.CreateDisplay({
 layout = html.Div(
     children=[
         rc.Markdown("""
-        # Styling the DataTable
+        # Conditional Formatting
 
-        ## Default Styles
+        Conditional formatting is provided through the `style_data_conditional`
+        property. The `if` keyword provides a set of conditional formatting
+        statements and the rest of the keywords are camelCased CSS properties.
 
-        By default, the DataTable has grey headers and borders
-        around each cell. It resembles a spreadsheet and the headers are
-        clearly defined.
+        The `if` syntax supports three operators: `row_index`, `column_id`,
+        and `filter_query`. `filter_query` is the most flexible option.
+        Here is an example of all three:
         """),
+
         Display("""
         dash_table.DataTable(
             data=df.to_dict('records'),
-            columns=[{'id': c, 'name': c} for c in df.columns],
-        )
-        """),
-
-        rc.Markdown("""
-        ## Column Alignment
-
-        When displaying numerical data, it's a good practice to use
-        monospaced fonts, to right-align the data, and to provide the same
-        number of decimals throughout the column.
-
-        > To learn about formatting numbers and dates, see the
-        > <dccLink href="/datatable/typing" children="data types section"/>
-
-        For textual data, left-aligning the text is usually easier to read.
-
-        In both cases, the column headers should have the same alignment
-        as the cell content.
-        """),
-        Display("""
-        dash_table.DataTable(
-            data=df.to_dict('records'),
-            columns=[{'id': c, 'name': c} for c in df.columns],
-            style_cell={'textAlign': 'left'},
-            style_cell_conditional=[
+            columns=[
+                {"name": i, "id": i} for i in df.columns
+            ],
+            style_data_conditional=[
                 {
-                    'if': {'column_id': 'Region'},
-                    'textAlign': 'left'
-                }
+                    'if': {
+                        'row_index': 5
+                    },
+                    'backgroundColor': 'hotpink',
+                    'color': 'white'
+                },
+                {
+                    'if': {
+                        'column_id': 'Region',
+                    },
+                    'backgroundColor': '#0074D9',
+                    'color': 'white'
+                },
+                {
+                    'if': {
+                        'filter_query': '{Humidity} > 19 && {Humidity} < 41',
+                        'column_id': 'Humidity'
+                    },
+                    'backgroundColor': '#3D9970',
+                    'color': 'white'
+                },
             ]
         )
         """),
 
         rc.Markdown("""
-        ## Styling the Table as a List
-
-        The gridded view is a good default view for an editable table as it
-        looks and feels like a spreadsheet.
-        If your table isn't editable, then in many cases it can look cleaner
-        without the vertical grid lines.
-        """),
-        Display("""
-        dash_table.DataTable(
-            data=df.to_dict('records'),
-            columns=[{'id': c, 'name': c} for c in df.columns],
-            style_cell_conditional=[
-                {
-                    'if': {'column_id': c},
-                    'textAlign': 'left'
-                } for c in ['Date', 'Region']
-            ],
-
-            style_as_list_view=True,
-        )
-        """),
-
-        rc.Markdown("""
-        ## List Style with Minimal Headers
-
-        In some contexts, the grey background can look a little heavy.
-        You can lighten this up by giving it a white background and
-        a bold text.
-        """),
-        Display("""
-        dash_table.DataTable(
-            data=df.to_dict('records'),
-            columns=[{'id': c, 'name': c} for c in df.columns],
-            style_as_list_view=True,
-            style_cell={'padding': '5px'},
-            style_header={
-                'backgroundColor': 'white',
-                'fontWeight': 'bold'
-            },
-            style_cell_conditional=[
-                {
-                    'if': {'column_id': c},
-                    'textAlign': 'left'
-                } for c in ['Date', 'Region']
-            ],
-        )
-        """),
-
-        rc.Markdown("""
-        ## Striped Rows
-
-        When you're viewing datasets where you need to compare values within
-        individual rows, it can sometimes be helpful to give the rows
-        alternating background colors.
-        We recommend using colors that are faded so as to
-        not attract too much attention to the stripes.
-
-        Notice the three different groups you can style: "cell" is the whole
-        table, "header" is just the header rows, and "data" is just the data rows.
-        To use even/odd or other styling based on `row_index` you must use
-        `style_data_conditional`.
-        """),
-        Display("""
-        dash_table.DataTable(
-            data=df.to_dict('records'),
-            columns=[{'id': c, 'name': c} for c in df.columns],
-
-            style_cell_conditional=[
-                {
-                    'if': {'column_id': c},
-                    'textAlign': 'left'
-                } for c in ['Date', 'Region']
-            ],
-            style_data_conditional=[
-                {
-                    'if': {'row_index': 'odd'},
-                    'backgroundColor': 'rgb(248, 248, 248)'
-                }
-            ],
-            style_header={
-                'backgroundColor': 'rgb(230, 230, 230)',
-                'fontWeight': 'bold'
-            }
-        )
-        """),
-
-        rc.Markdown("""
-        ## Multi-Headers
-
-        Multi-headers are natively supported in the `DataTable`.
-        Just set `name` inside `columns` as a list of strings instead of a
-        single string and toggle `merge_duplicate_headers=True`.
-        `DataTable` will check the neighbors of each header row and, if they
-        match, will merge them into a single cell automatically.
-        """),
-        Display("""
-        dash_table.DataTable(
-            columns=[
-                {"name": ["", "Year"], "id": "year"},
-                {"name": ["City", "Montreal"], "id": "montreal"},
-                {"name": ["City", "Toronto"], "id": "toronto"},
-                {"name": ["City", "Ottawa"], "id": "ottawa"},
-                {"name": ["City", "Vancouver"], "id": "vancouver"},
-                {"name": ["Climate", "Temperature"], "id": "temp"},
-                {"name": ["Climate", "Humidity"], "id": "humidity"},
-            ],
-            data=[
-                {
-                    "year": i,
-                    "montreal": i * 10,
-                    "toronto": i * 100,
-                    "ottawa": i * -1,
-                    "vancouver": i * -10,
-                    "temp": i * -100,
-                    "humidity": i * 5,
-                }
-                for i in range(10)
-            ],
-            merge_duplicate_headers=True,
-        )
-        """),
-
-        rc.Markdown("""
-        ## Dark Theme with Cells
-
-        You have full control over all of the elements in the table.
-        If you are viewing your table in an app with a dark background,
-        you can provide inverted background and font colors.
-        """),
-        Display("""
-        dash_table.DataTable(
-            data=df.to_dict('records'),
-            columns=[{'id': c, 'name': c} for c in df.columns],
-
-            style_header={'backgroundColor': 'rgb(30, 30, 30)'},
-            style_cell={
-                'backgroundColor': 'rgb(50, 50, 50)',
-                'color': 'white'
-            },
-        )
-        """),
-
-        Display("""
-        dash_table.DataTable(
-            data=df.to_dict('records'),
-            columns=[{'id': c, 'name': c} for c in df.columns],
-
-            style_as_list_view=True,
-            style_header={'backgroundColor': 'rgb(30, 30, 30)'},
-            style_cell={
-                'backgroundColor': 'rgb(50, 50, 50)',
-                'color': 'white'
-            },
-        )
-        """),
-
-        rc.Markdown("""
-        ## Conditional Formatting - Highlighting Certain Rows
+        ## Highlighting Certain Rows by Index
 
         You can draw attention to certain rows by providing a unique
         background color, bold text, or colored text.
@@ -305,7 +148,7 @@ layout = html.Div(
         """),
 
         rc.Markdown("""
-        ## Conditional Formatting - Highlighting Columns
+        ## Highlighting Columns
 
         Similarly, certain columns can be highlighted.
         """),
@@ -324,7 +167,7 @@ layout = html.Div(
         """),
 
         rc.Markdown("""
-        ## Conditional Formatting - Highlighting Cells
+        ## Highlighting Cells
 
         You can also highlight certain cells. For example, you may want to
         highlight certain cells that exceed a threshold or that match
@@ -345,7 +188,7 @@ layout = html.Div(
                 {
                     'if': {
                         'column_id': 'Region',
-                        'filter_query': '{Region} eq "Montreal"'
+                        'filter_query': '{Region} == "Montreal"'
                     },
                     'backgroundColor': '#3D9970',
                     'color': 'white',
@@ -353,7 +196,7 @@ layout = html.Div(
                 {
                     'if': {
                         'column_id': 'Humidity',
-                        'filter_query': '{Humidity} eq 20'
+                        'filter_query': '{Humidity} == 20'
                     },
                     'backgroundColor': '#3D9970',
                     'color': 'white',
@@ -369,75 +212,5 @@ layout = html.Div(
             ]
         )
         """),
-
-        rc.Markdown("""
-        ## Styles Priority
-
-        There is a specific order of priority for the style\_\* properties.
-        If there are multiple style_* props, the one with higher priority will
-        take precedence. Within each prop, rules for higher indices will be
-        prioritized over those for lower indices. Previously applied styles of equal
-        priority win over later ones (applied top to bottom, left to right).
-
-        These are the priorities of style_* props, in decreasing order:
-
-            1. style_data_conditional
-            2. style_data
-            3. style_filter_conditional
-            4. style_filter
-            5. style_header_conditional
-            6. style_header
-            7. style_cell_conditional
-            8. style_cell
-        """),
-        Display("""
-        dash_table.DataTable(
-            data=df.to_dict('records'),
-            columns=[{'id': c, 'name': c} for c in df.columns],
-            style_header={ 'border': '1px solid black' },
-            style_cell={ 'border': '1px solid grey' },
-        )
-        """),
-
-        rc.Markdown("""
-        ## Adding Borders
-
-        Customize the table borders by adding `border` to style_* props.
-        """),
-        Display("""
-        dash_table.DataTable(
-            data=df.to_dict('records'),
-            columns=[{'id': c, 'name': c} for c in df.columns],
-            style_data={ 'border': '1px solid blue' },
-            style_header={ 'border': '1px solid pink' },
-        )
-        """),
-
-        rc.Markdown("""
-        ## Styling Editable Columns
-
-        Editable columns can be styled using  `column_editable` in
-        style_header_conditional, style_filter_conditional, and
-        style_data_conditional props.
-        """),
-        Display("""
-        dash_table.DataTable(
-            data=df.to_dict('records'),
-            columns=[
-                {'id': c, 'name': c, 'editable': (c == 'Humidity')}
-                for c in df.columns
-            ],
-            style_data_conditional=[{
-                'if': {'column_editable': False},
-                'backgroundColor': 'rgb(30, 30, 30)',
-                'color': 'white'
-            }],
-            style_header_conditional=[{
-                'if': {'column_editable': False},
-                'backgroundColor': 'rgb(30, 30, 30)',
-                'color': 'white'
-            }],
-        )
-        """)
     ]
 )
