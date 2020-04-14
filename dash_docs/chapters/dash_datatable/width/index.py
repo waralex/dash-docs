@@ -316,7 +316,7 @@ layout = html.Div(
         2. It is not possible to set a max-height. All of the cells need to be
         the same height.
 
-        Subscribe to plotly/dash-table#737 for updates or other workarounds
+        Subscribe to [plotly/dash-table#737](https://github.com/plotly/dash-table/issues/737) for updates or other workarounds
         on this issue.
         '''
         ),
@@ -373,6 +373,12 @@ layout = html.Div(
                 'maxWidth': 0
             },
         )
+        '''),
+
+        rc.Markdown(
+        '''
+        > In the example above, ellipsis are not displayed for the header.
+        > We consider this a bug, subscribe to [plotly/dash-table#735](https://github.com/plotly/dash-table/issues/735) for updates.
         '''),
 
         rc.Markdown(
