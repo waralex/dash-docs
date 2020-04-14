@@ -315,16 +315,26 @@ URLS = [
                     },
 
                     {
-                        'url': '/datatable/sizing',
-                        'content': chapters.dash_datatable.sizing.index.layout,
-                        'name': 'Sizing',
+                        'url': '/datatable/height',
+                        'content': chapters.dash_datatable.height.index.layout,
+                        'name': 'DataTable Height',
                         'description': '''
-                            All about sizing the DataTable. Examples include:
-                            - Setting the width and the height of the table
-                            - Responsive table design
-                            - Setting the widths of individual columns
-                            - Handling long text
-                            - Fixing rows and columns
+                            How to set the height of the DataTable.
+                            Examples include how to set the height with
+                            vertical scroll, pagination, virtualization, and
+                            fixed headers.
+                        '''
+                    },
+
+                    {
+                        'url': '/datatable/width',
+                        'content': chapters.dash_datatable.width.index.layout,
+                        'name': 'DataTable & Column Width',
+                        'description': '''
+                            How to set the width of the table and the columns.
+                            Examples include how to handle word wrapping,
+                            cell clipping, horizontal scroll, fixed columns,
+                            and more.
                         '''
                     },
 
