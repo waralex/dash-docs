@@ -343,7 +343,9 @@ layout = html.Div(
                     for column, value in row.items()
                 } for row in df_moby_dick.to_dict('rows')
             ],
-            tooltip_duration=None
+            tooltip_duration=None,
+
+            style_cell={'textAlign': 'left'} # left align text in columns for readability
         )
         """),
 
