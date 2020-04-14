@@ -428,7 +428,7 @@ layout = html.Div(
         dash_table.DataTable(
             data=df_election.to_dict('records'),
             columns=[{'id': c, 'name': c} for c in df_election.columns],
-            style_table={'overflowX': 'scroll'},
+            style_table={'overflowX': 'auto'},
         )
         '''),
 
@@ -497,7 +497,7 @@ layout = html.Div(
         dash_table.DataTable(
             data=df_election.to_dict('records'),
             columns=[{'id': c, 'name': c} for c in df_election.columns],
-            style_table={'overflowX': 'scroll'},
+            style_table={'overflowX': 'auto'},
             style_cell={
                 'height': 'auto',
                 # all three widths are needed
@@ -514,7 +514,7 @@ layout = html.Div(
         dash_table.DataTable(
             data=df_election.to_dict('records'),
             columns=[{'id': c, 'name': c} for c in df_election.columns],
-            style_table={'overflowX': 'scroll'},
+            style_table={'overflowX': 'auto'},
             style_cell={
                 # all three widths are needed
                 'minWidth': '180px', 'width': '180px', 'maxWidth': '180px',
@@ -643,7 +643,7 @@ layout = html.Div(
                 },
             ],
             style_table={
-                'overflowX': 'scroll'
+                'overflowX': 'auto'
             }
         )
         '''),
