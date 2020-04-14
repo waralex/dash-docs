@@ -886,6 +886,65 @@ layout = html.Div(
 
         rc.Markdown(
         '''
+        ## Expanding to the height of the container
+
+        In some cases, you may not be able to set height of the table itself,
+        you may only have control over setting the height of the container.
+        For example, if your container is responsive and changes based off
+        of the height of other elements on the page.
+
+        In this case, you can set the overflow within the table.
+        '''
+        ),
+
+        Display(
+        '''
+        html.Div(
+            style={'height': 300},
+            children=dash_table.DataTable(
+                data=df_numeric.to_dict('records'),
+                columns=[{'id': c, 'name': c} for c in df_numeric.columns],
+                virtualization=True,
+                fixed_rows={'headers': True},
+                style_cell={'minWidth': 95, 'width': 95, 'maxWidth': 95},
+                style_table={'height': '100%'},
+                css=[{'selector': '#table', 'rule': 'height: 100%'}]
+            )
+        )
+        '''),
+
+        Display(
+        '''
+        html.Div(
+            style={'height': 300},
+            children=dash_table.DataTable(
+                data=df_numeric.to_dict('records'),
+                columns=[{'id': c, 'name': c} for c in df_numeric.columns],
+                style_cell={'minWidth': 95, 'width': 95, 'maxWidth': 95},
+                style_table={'height': '100%', 'overflowY': 'auto'},
+                css=[{'selector': '#table', 'rule': 'height: 100%'}]
+            )
+        )
+        '''),
+
+        Display(
+        '''
+        html.Div(
+            style={'height': 300},
+            children=dash_table.DataTable(
+                data=df_numeric.to_dict('records'),
+                columns=[{'id': c, 'name': c} for c in df_numeric.columns],
+                style_cell={'minWidth': 95, 'width': 95, 'maxWidth': 95},
+                fixed_rows={'headers': True},
+                style_table={'height': '100%'},
+                css=[{'selector': '#table', 'rule': 'height: 100%'}]
+            )
+        )
+        '''),
+
+        rc.Markdown("## Height vs Max Height"),
+        rc.Markdown(
+        '''
         With `max-height`, if the table's contents are shorter than the
         `max-height`, then the container will be shorter.
         If you want a container with a constant height no matter the
