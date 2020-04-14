@@ -461,6 +461,7 @@ layout = html.Div(
         rc.Markdown(
         '''
         **Limitations**
+
         1. With virtualization, the browser doesn't know the width of the columns
         in advance; it can only determine the width of the columns when they
         are rendered. So, your columns may change size as you scroll unless
