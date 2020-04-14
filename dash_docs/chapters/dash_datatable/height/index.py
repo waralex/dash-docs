@@ -273,12 +273,6 @@ layout = html.Div(
         If you have less than ~1000 rows, then you could remove pagination,
         constrain the height, and display a vertical scrollbar.
 
-        **Limitations**
-
-        If you have more than 1000 rows, then the browser will slow
-        down when trying to render the table. With more than 1000 rows, we
-        recommend switching to browser or server pagination (as above) or
-        virtualization (as below).
         '''),
 
         Display(
@@ -290,6 +284,17 @@ layout = html.Div(
             style_table={'height': '300px', 'overflowY': 'auto'}
         )
         '''),
+
+        rc.Markdown(
+        '''
+        **Limitations**
+
+        If you have more than 1000 rows, then the browser will slow
+        down when trying to render the table. With more than 1000 rows, we
+        recommend switching to browser or server pagination (as above) or
+        virtualization (as below).
+        '''
+        ),
 
         rc.Markdown(
         '''
