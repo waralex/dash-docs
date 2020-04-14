@@ -69,6 +69,12 @@ header = html.Div(
     )
 )
 
+DEFAULT_AD = dict(
+    alt='Ad for Dash Enterprise: A Kubernetes platform for rapid Dash app deployment.',
+    src=tools.relpath('/assets/images/ads/dash-enterprise-kubernetes.jpg'),
+    href='https://plotly.com/get-demo?utm_source=docs&utm_medium=ad&utm_campaign=april&utm_content=kubernetes'
+)
+
 app.title = 'Dash User Guide and Documentation - Dash by Plotly'
 
 app.layout = html.Div(
@@ -87,7 +93,15 @@ app.layout = html.Div(
         header,
 
         html.Div(className='content-wrapper', children=[
-            dugc.Sidebar(urls=SIDEBAR_INDEX),
+            html.Div([
+                dugc.Sidebar(urls=SIDEBAR_INDEX),
+                html.A(html.Img(
+                    id='sidebar-ad-img',
+                    className='sidebar-ad',
+                    src=DEFAULT_AD['src'],
+                    alt=DEFAULT_AD['alt']
+                ), id='sidebar-ad-link', href=DEFAULT_AD['href'])
+            ], className='sidebar-container'),
 
             html.Div([
                 html.Div(id='backlinks-top', className='backlinks'),
@@ -218,11 +232,13 @@ def flat_list(*args):
                Output('backlinks-top', 'style'),
                Output('backlinks-bottom', 'children'),
                # dummy variable so that a loading state is triggered
-               Output('pagemenu', 'dummy2')],
+               Output('pagemenu', 'dummy2'),
+               Output('sidebar-ad-img', 'src'),
+               Output('sidebar-ad-link', 'href')],
               [Input('location', 'pathname')])
 def display_content(pathname):
     if pathname is None or pathname == '/':
-        return [home, '', {'borderBottom': 'none'}, '', '']
+        return [home, '', {'borderBottom': 'none'}, '', '', DEFAULT_AD['src'], DEFAULT_AD['href']]
     pathname = pathname.rstrip('/')
 
     backlinks = create_backlinks(pathname)
@@ -253,14 +269,31 @@ def display_content(pathname):
                 return flat_list(warning_box, make_page(partial_path))
 
         children = flat_list(warning_box, home)
-    return [children, backlinks, {'borderBottom': 'thin lightgrey solid'}, backlinks, '']
+
+    # update the sidebar ad
+    ad = DEFAULT_AD['src']
+    adhref = DEFAULT_AD['href']
+    if (pathname in chapter_index.URL_TO_META_MAP and
+            'ad' in chapter_index.URL_TO_META_MAP[pathname]):
+        ad = tools.relpath('/assets/images/ads/{}'.format(
+            chapter_index.URL_TO_META_MAP[pathname]['ad']
+        ))
+        adhref = chapter_index.URL_TO_META_MAP[pathname]['adhref']
+    return [
+        children,
+        backlinks,
+        {'borderBottom': 'thin lightgrey solid'},
+        backlinks,
+        '',
+        ad,
+        adhref
+    ]
 
 
 # dummy callback to trigger a pagemenu rerender
 app.clientside_callback(
     '''
     function(children) {
-        console.warn('updating pagemenu');
         return '';
     }
     ''',

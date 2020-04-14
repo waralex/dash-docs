@@ -22,7 +22,11 @@ from .reusable_components import TOC, TOCChapters
 ## in the root of this repo.
 
 
-def component_list(package, content_module, base_url, import_alias, component_library, escape_tags=False):
+def component_list(
+        package, content_module, base_url, import_alias,
+        component_library, escape_tags=False,
+        ad='dash-enterprise-kubernetes.jpg',
+        adhref='https://plotly.com/get-demo?utm_source=docs&utm_medium=ad&utm_campaign=april&utm_content=kubernetes'):
     return [
         {
             'url': tools.relpath('/{}/{}'.format(base_url, component.lower())),
@@ -55,7 +59,9 @@ def component_list(package, content_module, base_url, import_alias, component_li
                         escape_tags=escape_tags
                     ),
                 ])
-            )
+            ),
+            'ad': ad,
+            'adhref': adhref
         } for component in sorted(dir(package))
         if not component.startswith('_') and
         component[0].upper() == component[0]
@@ -252,13 +258,17 @@ URLS = [
                         'of higher-level components like sliders, graphs, '
                         'dropdowns, tables, and more.'
                     ),
-                    'content': chapters.dash_core_components.index.layout
+                    'content': chapters.dash_core_components.index.layout,
+                    'ad': 'dash-enterprise-design-kit.jpg',
+                    'adhref': 'https://plotly.com/get-demo?utm_source=docs&utm_medium=ad&utm_campaign=april&utm_content=htmlcore'
                 }] + component_list(
                     dcc,
                     chapters.dash_core_components.content_module,
                     'dash-core-components',
                     'dcc',
-                    'dash_core_components'
+                    'dash_core_components',
+                    ad='dash-enterprise-design-kit.jpg',
+                    adhref='https://plotly.com/get-demo?utm_source=docs&utm_medium=ad&utm_campaign=april&utm_content=htmlcore'
                 )
             },
 
@@ -274,7 +284,9 @@ URLS = [
                                        'explains how this works and the few important ' \
                                        'key differences between Dash HTML components ' \
                                        'and standard html.',
-                        'content': chapters.dash_html_components.index.layout
+                        'content': chapters.dash_html_components.index.layout,
+                        'ad': 'dash-enterprise-design-kit.jpg',
+                        'adhref': 'https://plotly.com/get-demo?utm_source=docs&utm_medium=ad&utm_campaign=april&utm_content=htmlcore'
                     }
                 ] + component_list(
                     html,
@@ -282,7 +294,9 @@ URLS = [
                     'dash-html-components',
                     'html',
                     'dash_html_components',
-                    escape_tags=True
+                    escape_tags=True,
+                    ad='dash-enterprise-design-kit.jpg',
+                    adhref='https://plotly.com/get-demo?utm_source=docs&utm_medium=ad&utm_campaign=april&utm_content=htmlcore'
                 )
             },
 
@@ -634,6 +648,8 @@ URLS = [
                                'compatible interface to these components in Python.',
                 'url': '/plugins',
                 'content': chapters.plugins.index.layout,
+                'ad': 'dash-enterprise-design-kit.jpg',
+                'adhref': 'https://plotly.com/get-demo?utm_source=docs&utm_medium=ad&utm_campaign=april&utm_content=create'
             },
 
             {
@@ -739,7 +755,9 @@ URLS = [
                 'url': '/authentication',
                 'content': chapters.auth.index.layout,
                 'name': 'Authentication',
-                'description': ''
+                'description': '',
+                'ad': 'dash-enterprise-authentication.jpg',
+                'adhref': 'https://plotly.com/get-demo?utm_source=docs&utm_medium=ad&utm_campaign=april&utm_content=authentication'
             },
 
             {
@@ -755,7 +773,9 @@ URLS = [
                 'content': chapters.integrating_dash.index.layout,
                 'name': 'Integrating Dash with Existing Web Apps',
                 'description': 'Strategies for integrating Dash apps with existing web ' \
-                               'apps.'
+                               'apps.',
+                'ad': 'dash-enterprise-embedded.jpg',
+                'adhref': 'https://plotly.com/get-demo?utm_source=docs&utm_medium=ad&utm_campaign=april&utm_content=embedded'
             }
         ]
     },
@@ -1107,5 +1127,9 @@ def create_urls_without_content(url_set):
             section.pop('content')
         if 'preamble' in section:
             section.pop('preamble')
+        if 'ad' in section:
+            section.pop('ad')
+        if 'adhref' in section:
+            section.pop('adhref')
         if 'chapters' in section:
             create_urls_without_content(section['chapters'])
