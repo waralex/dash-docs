@@ -340,10 +340,6 @@ URLS = [
                             - Highlighting rows, columns, and cells
                             - Styling the table as a list view
                             - Changing the colors (including a dark theme!)
-
-                            The sizing API for the table has been particularly tricky for
-                            us to nail down, so be sure to read this chapter to understand the nuances,
-                            limitations, and the APIs that we're exploring.
                         '''
                     },
 

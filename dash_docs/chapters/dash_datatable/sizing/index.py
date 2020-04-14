@@ -45,6 +45,34 @@ data_election = OrderedDict(
         ),
     ]
 )
+moby_dick_text = [
+    'Call me Ishmael. ',
+    ''.join([
+        'Some years ago- never mind how long precisely- having little or no money ',
+        'in my purse, and nothing particular to interest me on shore, ',
+        'I thought I would sail about a little and see the watery part of the world. ',
+    ]),
+    'It is a way I have of driving off the spleen and regulating the circulation.'
+]
+
+moby_dick = OrderedDict(
+    [
+        (
+            'Sentence Number', [i+1 for i in range(len(moby_dick_text))],
+        ),
+        (
+            'Text', [i for i in moby_dick_text]
+        )
+    ]
+)
+
+data_numeric = pd.DataFrame(OrderedDict(
+    [
+        [
+            'Column {}'.format(i + 1), list(range(30))
+        ] for i in range(15)
+    ]
+))
 
 df_election = pd.DataFrame(data_election)
 df_long = pd.DataFrame(
@@ -57,12 +85,27 @@ df_long_columns = pd.DataFrame(
     }
 )
 
+many_columns = OrderedDict(
+    [
+        ('Column {}'.format(i+1), [51231.431, 3124.31, 1234.124, 122412.31])
+        for i in range(15)
+    ]
+)
+df_15_columns = pd.DataFrame(many_columns)
+df_moby_dick = pd.DataFrame(moby_dick)
+
+df_numeric = pd.DataFrame(data_numeric)
+
 Display = rc.CreateDisplay({
     'dash_table': dash_table,
+    'html': html,
     'df': df,
     'df_election': df_election,
     'df_long': df_long,
     'df_long_columns': df_long_columns,
+    'df_15_columns': df_15_columns,
+    'df_moby_dick': df_moby_dick,
+    'df_numeric': df_numeric,
     'pd': pd
 })
 
@@ -70,9 +113,9 @@ Display = rc.CreateDisplay({
 layout = html.Div(
     children=[
 
-        html.H1('DataTable Sizing'),
+        html.H1('DataTable Width & Column Width'),
 
-        html.H3('Default Styles'),
+        html.H2('Default Width'),
         rc.Markdown(
         '''
         By default, the table will expand to the width of its container.
@@ -117,6 +160,13 @@ layout = html.Div(
 
             df = pd.DataFrame(data)
 
+            many_columns = OrderedDict(
+                [
+                    ('Column {}'.format(i), [51231.431, 3124.31, 1234.124, 122412.31])
+                    for i in range(15)
+                ]
+            )
+
             election_data = OrderedDict(
                 [
                     (
@@ -145,6 +195,35 @@ layout = html.Div(
                 ]
             )
 
+            data_numeric = pd.DataFrame(OrderedDict(
+                [
+                    [
+                        'Column {}'.format(i + 1), list(range(30))
+                    ] for i in range(15)
+                ]
+            ))
+
+            moby_dick_text = [
+                'Call me Ishmael. ',
+                ''.join([
+                    'Some years ago- never mind how long precisely- having little or no money ',
+                    'in my purse, and nothing particular to interest me on shore, ',
+                    'I thought I would sail about a little and see the watery part of the world. ',
+                ]),
+                'It is a way I have of driving off the spleen and regulating the circulation.'
+            ]
+
+            moby_dick = OrderedDict(
+                [
+                    (
+                        'Sentence Number', [i+1 for i in range(len(moby_dick_text))],
+                    ),
+                    (
+                        'Text', [i for i in moby_dick_text]
+                    )
+                ]
+            )
+
             df_election = pd.DataFrame(election_data)
             df_long = pd.DataFrame(
                 OrderedDict([(name, col_data * 10) for (name, col_data) in election_data.items()])
@@ -155,6 +234,9 @@ layout = html.Div(
                     for i in range(10)
                 }
             )
+            df_15_columns = pd.DataFrame(many_columns)
+            df_numeric = pd.DataFrame(data_numeric)
+            df_moby_dick = pd.DataFrame(long_cells)
             ```
             ''')
         ]),
@@ -166,20 +248,16 @@ layout = html.Div(
         The default styles work well for a small number of columns and short
         text. However, if you are rendering a large number of columns or
         cells with long contents, then you'll need to employ one of the
-        following "overflow strategies" to keep the table within its container.
+        following overflow strategies to keep the table within its container.
         '''
         ),
 
         rc.Markdown(
         '''
-        ### Overflow Strategies - Wrapping onto Multiple Lines
+        ## Wrapping onto Multiple Lines
 
         If your cells contain contain text with spaces, then you can overflow
         your content into multiple lines.
-
-        > We find that this interface is a little too complex.
-        > We're looking at simplifying this in this issue:
-        > [https://github.com/plotly/dash-table/issues/188](https://github.com/plotly/dash-table/issues/188)
         '''
         ),
         Display(
@@ -187,7 +265,7 @@ layout = html.Div(
         dash_table.DataTable(
             style_data={
                 'whiteSpace': 'normal',
-                'height': 'auto'
+                'height': 'auto',
             },
             data=df_election.to_dict('records'),
             columns=[{'id': c, 'name': c} for c in df_election.columns]
@@ -195,8 +273,83 @@ layout = html.Div(
         '''),
 
         rc.Markdown(
+        '''
+        ### Denser Multi-Line Cells with Line-Height
+
+        If you are display lots of text in your cells, then you may want to
+        make the text appear a little more dense by shortening up the line-height.
+        By default (as above), it's around 22px. Here, it's 15px.
+        '''
+        ),
+        Display(
+        '''
+        dash_table.DataTable(
+            style_data={
+                'whiteSpace': 'normal',
+                'height': 'auto',
+                'lineHeight': '15px'
+            },
+            data=df_election.to_dict('records'),
+            columns=[{'id': c, 'name': c} for c in df_election.columns]
+        )
+        '''),
+
+        rc.Markdown(
+        '''
+        ### Wrapping onto Multiple Lines while Constraining the Height of Cells
+
+        If your text is really long, then you can constrain the height of the
+        cells and display a tooltip when hovering over the cell.
+
+        This is a little tricky because, [by CSS 2.1 rules](https://www.w3.org/TR/CSS21/tables.html#height-layout),
+        the height of a table cell is “the minimum height required by the content”.
+        So, here we are setting the height of the cell indirectly
+        by setting the div _within_ the cell.
+
+        In this example, we display two lines of data by setting the `line-height`
+        to be 15px and the height of each cell to be 30px.
+        In this example, the second sentence is cut off.
+
+        There are a few limitations with this method:
+
+        1. Note that it is not possible to display ellipses with this method.
+        2. It is not possible to set a max-height. All of the cells need to be
+        the same height.
+
+        Subscribe to plotly/dash-table#737 for updates or other workarounds
+        on this issue.
+        '''
+        ),
+        Display(
         """
-        ### Overflow Strategies - Overflowing Into Ellipses
+        dash_table.DataTable(
+            style_data={
+                'whiteSpace': 'normal',
+            },
+            data=df_moby_dick.to_dict('records'),
+            columns=[{'id': c, 'name': c} for c in df_moby_dick.columns],
+            css=[{
+                'selector': '.dash-spreadsheet td div',
+                'rule': '''
+                    line-height: 15px;
+                    max-height: 30px; min-height: 30px; height: 30px;
+                    display: block;
+                    overflow-y: hidden;
+                '''
+            }],
+            tooltip_data=[
+                {
+                    column: {'value': str(value), 'type': 'markdown'}
+                    for column, value in row.items()
+                } for row in df_moby_dick.to_dict('rows')
+            ],
+            tooltip_duration=None
+        )
+        """),
+
+        rc.Markdown(
+        """
+        ## Overflowing Into Ellipses
 
         Alternatively, you can keep the content on a single line but display
         a set of ellipses if the content is too long to fit into the cell.
@@ -217,14 +370,47 @@ layout = html.Div(
             style_cell={
                 'overflow': 'hidden',
                 'textOverflow': 'ellipsis',
-                'maxWidth': 0,
+                'maxWidth': 0
             },
         )
         '''),
 
         rc.Markdown(
         '''
-        ### Overflow Strategies - Horizontal Scroll
+        ### Ellipses & Tooltips
+
+        If you are display text data that is cut off by ellipses, then you can
+        include tooltips so that the full text appears on hover.
+
+        By setting `tooltip_duration` to `None`, the tooltip won't disappear
+        as long as you are hovered on it. You can override this by passing in
+        a number in milliseconds (e.g. 2000 if you want it to disappear after
+        two seconds).
+        '''
+        ),
+        Display(
+        '''
+        dash_table.DataTable(
+            data=df_election.to_dict('records'),
+            columns=[{'id': c, 'name': c} for c in df_election.columns],
+            style_cell={
+                'overflow': 'hidden',
+                'textOverflow': 'ellipsis',
+                'maxWidth': 0,
+            },
+            tooltip_data=[
+                {
+                    column: {'value': str(value), 'type': 'markdown'}
+                    for column, value in row.items()
+                } for row in df_election.to_dict('rows')
+            ],
+            tooltip_duration=None
+        )
+        '''),
+
+        rc.Markdown(
+        '''
+        ## Horizontal Scroll
 
         Instead of trying to fit all of the content in the container, you could
         overflow the entire container into a scrollable container.
@@ -249,6 +435,8 @@ layout = html.Div(
         giving the table as much width as needs in order to fit the entire
         width of the cell contents on a single line.
 
+        ### Horizontal Scroll with Max-Width & Wrapping
+
         We can combine some of these strategies by bounding the `maxWidth` of
         a column and overflowing into multiple lines (or ellipses) if the
         content exceeds that width while rendering the table within a
@@ -272,6 +460,8 @@ layout = html.Div(
         )
         '''),
 
+        rc.Markdown('### Horizontal Scroll with Max-Width & Ellipses'),
+
         Display(
         '''
         dash_table.DataTable(
@@ -285,6 +475,8 @@ layout = html.Div(
             }
         )
         '''),
+
+        rc.Markdown('### Horizontal Scroll with Fixed-Width Columns & Cell Wrapping'),
 
         rc.Markdown(
         '''
@@ -308,6 +500,8 @@ layout = html.Div(
             }
         )
         '''),
+
+        rc.Markdown('### Horizontal Scroll with Fixed-Width & Ellipses'),
 
         Display(
         '''
@@ -345,7 +539,7 @@ layout = html.Div(
 
         rc.Markdown(
         '''
-        Here is the same example but with fixed-width cells & ellipses.
+        Here is the same example but with *fixed-width cells & ellipses*.
         '''
         ),
 
@@ -366,10 +560,12 @@ layout = html.Div(
         '''),
 
 
-        rc.Markdown("### Individual Column Widths"),
+        rc.Markdown("## Individual Column Widths"),
 
         rc.Markdown(
         '''
+        ### Percentage Based Widths
+
         The widths of individual columns can be supplied through the
         `style_cell_conditional` property. These widths can be specified as
         percentages or fixed pixels. You can supply the widths for _all_ of the
@@ -377,11 +573,6 @@ layout = html.Div(
         '''
         ),
 
-        # html_table(
-        #     df,
-        #     table_style={"width": "100%"},
-        #     column_style={"Region": {"width": "50%"}},
-        # ),
         Display(
         '''
         dash_table.DataTable(
@@ -394,6 +585,14 @@ layout = html.Div(
                  'width': '30%'},
             ]
         )
+        '''),
+
+        rc.Markdown(
+        '''
+        ### Individual Column Widths with Pixels
+
+        In this example, we set three columns to have fixed-widths. The remaining
+        two columns will be take up the remaining space.
         '''),
 
         Display(
@@ -412,82 +611,40 @@ layout = html.Div(
         )
         '''),
 
-        # rc.Markdown("### Underspecified Widths"),
-        # rc.Markdown(
-        # '''
-        # The widths can be under-specified. Here, we're only setting the width for
-        # the three columns in the middle, the rest of the columns are
-        # automatically sized to fit the rest of the container.
-        # The columns have a width of 50px, or the width of this line:
-        # '''
-        # ),
-        # html.Div(
-        #     style={"width": 50, "height": 10, "backgroundColor": "hotpink"}
-        # ),
-        # # html_table(
-        # #     df,
-        # #     table_style={"width": "100%"},
-        # #     column_style={
-        # #         "Dem": {"width": 50},
-        # #         "Rep": {"width": 50},
-        # #         "Ind": {"width": 50},
-        # #     },
-        # # ),
-        # Display(
-        # '''
-        # dash_table.DataTable(
-        #     data=df_election.to_dict('records'),
-        #     columns=[{'id': c, 'name': c} for c in df_election.columns],
-        #     style_cell_conditional=[
-        #         {'if': {'column_id': 'Dem'},
-        #          'width': 50},
-        #         {'if': {'column_id': 'Rep'},
-        #          'width': 50},
-        #         {'if': {'column_id': 'Ind'},
-        #          'width': 50},
-        #     ]
-        # )
-        # '''),
+        rc.Markdown(
+        '''
+        ### Overriding a single column's width
 
-        # rc.Markdown("### Widths that are smaller than the content"),
-        # rc.Markdown(
-        # '''
-        # In this case, we're setting the width to 20px, which is smaller
-        # than the "10924" number in the "Ind" column.
-        # The table does not allow it.
-        # '''
-        # ),
-        # html.Div(
-        #     style={"width": 20, "height": 10, "backgroundColor": "hotpink"}
-        # ),
-        # # html_table(
-        # #     df,
-        # #     table_style={"width": "100%"},
-        # #     column_style={
-        # #         "Dem": {"width": 20},
-        # #         "Rep": {"width": 20},
-        # #         "Ind": {"width": 20},
-        # #     },
-        # # ),
-        # Display(
-        # '''
-        # dash_table.DataTable(
-        #     data=df_election.to_dict('records'),
-        #     columns=[{'id': c, 'name': c} for c in df_election.columns],
-        #     style_cell_conditional=[
-        #         {'if': {'column_id': 'Dem'},
-        #          'width': 20},
-        #         {'if': {'column_id': 'Rep'},
-        #          'width': 20},
-        #         {'if': {'column_id': 'Ind'},
-        #          'width': 20},
-        #     ]
-        # )
-        # '''),
+        You can set the width of all of the columns with `style_data` and
+        override a single column with `style_cell_conditional`.
+        '''
+        ),
+
+        Display(
+        '''
+        dash_table.DataTable(
+            data=df.to_dict('records'),
+            columns=[{'id': c, 'name': c} for c in df.columns],
+            style_data={
+                'width': '100px',
+                'maxWidth': '100px',
+                'minWidth': '100px',
+            },
+            style_cell_conditional=[
+                {
+                    'if': {'column_id': 'Region'},
+                    'width': '250px'
+                },
+            ],
+            style_table={
+                'overflowX': 'scroll'
+            }
+        )
+        '''),
 
         rc.Markdown(
         '''
-        # Table Height and Vertical Scrolling
+        # DataTable Height
 
         By default, the table's height will expand in order
         to render up to 250 rows.
@@ -500,56 +657,233 @@ layout = html.Div(
         less rows at a time. Instead of 250 rows, you could display
         10 rows at a time. By default and without wrapping,
         each row takes up 30px. So 10 rows with one header would set the
-        table to be 330px tall.
+        table to be 330px tall. The pagination UI itself is around 60px tall.
         '''),
 
-        rc.Markdown(
-        '''
-        ## Setting Table Height with Virtualization
-
-        You can constrain the height of the table by setting a `maxHeight`
-        and adding a scrollbar with `overflowY: 'scroll'`.
-        With `maxHeight`, the table's contents will only become scrollable
-        if the contents are taller than that height.
-        '''),
         Display(
         '''
         dash_table.DataTable(
             data=df_long.to_dict('records'),
             columns=[{'id': c, 'name': c} for c in df.columns],
-            style_table={
-                'maxHeight': '300px',
-                'overflowY': 'scroll'
+            page_size=10
+        )
+        '''),
+
+        rc.Markdown(
+        '''
+        <blockquote>
+        In this example, the pagination is done natively in the browser:
+        all of the data is sent upfront to the browser and
+        Dash renders new pages as you click on the buttons. You can also
+        do pagination in the backend so that only 10 rows are sent to the
+        browser at a time (lowering network costs and memory). This is a good
+        strategy if you have more than 10,000-50,000 rows.
+        <dccLink children="Learn about backend pagination" href="/datatable/callbacks"/>.
+        </blockquote>
+        '''
+        ),
+
+        rc.Markdown(
+        '''
+        ## Setting Table Height with Vertical Scroll
+
+        If you have less than ~1000 rows, then you could remove pagination,
+        constrain the height, and display a vertical scrollbar.
+
+        **Limitations**
+
+        If you have more than 1000 rows, then the browser will slow
+        down when trying to render the table. With more than 1000 rows, we
+        recommend switching to browser or server pagination (as above) or
+        virtualization (as below).
+        '''),
+
+        Display(
+        '''
+        dash_table.DataTable(
+            data=df_long.to_dict('records'),
+            columns=[{'id': c, 'name': c} for c in df.columns],
+            page_action='none',
+            style_table={'height': '300px', 'overflowY': 'auto'}
+        )
+        '''),
+
+        rc.Markdown(
+        '''
+        ### Vertical Scroll With Pagination
+
+        If you have more than ~1000 rows, then you could keep pagination at
+        the bottom of the table, constrain the height, and display a
+        vertical scrollbar.
+        '''),
+
+        Display(
+        '''
+        dash_table.DataTable(
+            data=df_long.to_dict('records'),
+            columns=[{'id': c, 'name': c} for c in df.columns],
+            page_size=20,  # we have less data in this example, so setting to 20
+            style_table={'height': '300px', 'overflowY': 'auto'}
+        )
+        '''),
+
+        rc.Markdown(
+        '''
+        ### Vertical Scroll With Fixed Headers
+
+        You can also fix headers so that the table content scrolls but the
+        headers remain visible.
+        '''),
+
+        Display(
+        '''
+        dash_table.DataTable(
+            data=df_long.to_dict('records'),
+            columns=[{'id': c, 'name': c} for c in df.columns],
+            fixed_rows={'headers': True},
+            style_table={'height': 400}  # defaults to 500
+        )
+        '''),
+
+        rc.Markdown(
+        '''
+        **Limitations**
+
+        If a column header is wider than the data within that column and the
+        table's container isn't wide enough to display the headers,
+        then the column will be as wide as the data and the header text
+        will overflow onto the next column. This is a bug.
+        The current workaround is to hide the overflow or
+        <dccLink children="fix the width of the columns in pixels" href="/datatable/width"/>.
+        See [plotly/dash-table#740](https://github.com/plotly/dash-table/issues/740) for updates.
+
+        There are also a few limitations with this workaround:
+
+        1. In those scenarios where the header is cut off, it is not possible
+        to set ellipses within the header.
+        See [plotly/dash-table#735](https://github.com/plotly/dash-table/issues/735) for updates.
+        2. When the text is cutoff, it is useful to display tooltips displaying the
+        entire text. It is not yet possible to add tooltips to headers.
+        See [plotly/dash-table#295](https://github.com/plotly/dash-table/issues/295) for updates.
+        3. If the header text is cut-off, then the header overflow is visible.
+        The current workaround is to hide the overflow with `overflow: 'hidden'`.
+        '''
+        ),
+
+        rc.Markdown(
+        '''
+        **Example of the limitation**
+
+        This limitation will only happen if the headers are wider than the
+        cells and the table's container isn't wide enough to display all of the
+        headers:
+        '''
+        ),
+
+        Display(
+        '''
+        dash_table.DataTable(
+            data=df_numeric.to_dict('records'),
+            columns=[{'id': c, 'name': c} for c in df_numeric.columns],
+            fixed_rows={'headers': True}
+        )
+        '''),
+
+        rc.Markdown(
+        '''
+        **Workaround Option 1: Hiding the header overflow**
+        '''),
+
+        Display(
+        '''
+        dash_table.DataTable(
+            data=df_numeric.to_dict('records'),
+            columns=[{'id': c, 'name': c} for c in df_numeric.columns],
+            fixed_rows={'headers': True},
+            style_header={
+                'overflow': 'hidden',
+                'textOverflow': 'ellipsis',
+                'maxWidth': 0,
             },
         )
         '''),
 
         rc.Markdown(
         '''
-        ### Vertical Scrolling via Fixed Rows
-
-        In the example above, the headers become hidden when you scroll down.
-
-        You can keep these headers visible by supplying `fixed_rows={ 'headers': True, 'data': 0 }`.
-
-        > Note that fixing rows introduces some changes to the underlying
-        > markup of the table and may impact the way that your
-        > columns are rendered or sized.
-        > In particular, you'll need to set an explicit pixel-based widths
-        > for each of the columns.
-        > For more information, subscribe to [dash-table#201](https://github.com/plotly/dash-table/issues/201).
+        **Workaround Option 2: Fixing the width of the columns**
         '''),
+
         Display(
         '''
         dash_table.DataTable(
-            data=df_long.to_dict('records'),
-            columns=[{'id': c, 'name': c} for c in df_long.columns],
-            fixed_rows={ 'headers': True, 'data': 0 },
-            style_cell={'width': '150px'}
+            data=df_numeric.to_dict('records'),
+            columns=[{'id': c, 'name': c} for c in df_numeric.columns],
+            fixed_rows={'headers': True},
+            style_cell={
+                'minWidth': 95, 'maxWidth': 95, 'width': 95
+            }
         )
         '''),
 
-        rc.Markdown("### Height vs Max Height"),
+        rc.Markdown(
+        '''
+        **Workaround Option 3: Setting the width of the table**
+        '''),
+
+        Display(
+        '''
+        dash_table.DataTable(
+            data=df_numeric.to_dict('records'),
+            columns=[{'id': c, 'name': c} for c in df_numeric.columns],
+            fixed_rows={'headers': True},
+            style_table={
+                'width': 95 * len(df_numeric.columns),
+                'overflowY': 'auto'
+            }
+        )
+        '''),
+
+        rc.Markdown(
+        '''
+        ### Vertical Scroll with Virtualization
+
+        As mentioned above, the browser has difficultiy rendering 1000s of
+        rows in a table. Virtualization works around rendering performance
+        issues in the web browser by rendering rows _on the fly_ as you scroll.
+
+        All of the data for your table will still be sent over the network
+        to the browser, so if you are displaying more than 10,000-100,000 rows
+        you may consider using <dccLink href="/datatable/calblacks" children="backend pagination"/>
+        to reduce the network costs and memory usage.
+        '''),
+
+        Display(
+        '''
+        dash_table.DataTable(
+            data=df_numeric.to_dict('records'),
+            columns=[{'id': c, 'name': c} for c in df_numeric.columns],
+            virtualization=True,
+            fixed_rows={'headers': True},
+            style_cell={'minWidth': 95, 'width': 95, 'maxWidth': 95},
+            style_table={'height': 300}  # default is 500
+        )
+        '''),
+
+        rc.Markdown(
+        '''
+        **Limitations**
+        1. With virtualization, the browser doesn't know the width of the columns
+        in advance; it can only determine the width of the columns when they
+        are rendered. So, your columns may change size as you scroll unless
+        you <dccLink href="/datatable/width" children="fix the column widths"/>.
+        2. Since, with virtualization, we're rendering rows _on the fly_ as we scroll,
+        the rendering performance will be slower than the browser-optimized
+        native vertical scrolling. You may notice that table will appear blank
+        for an instance before the cells are rendered if you scroll quickly.
+        3. The same `fixed_rows` limitations exist as mentioned above.
+        '''
+        ),
+
         rc.Markdown(
         '''
         With `max-height`, if the table's contents are shorter than the
@@ -563,10 +897,7 @@ layout = html.Div(
         html.Div(
             style={"width": 5, "height": 300, "backgroundColor": "hotpink"}
         ),
-        # html.Div(
-        #     style={"maxHeight": 300, "overflowY": "scroll"},
-        #     children=html_table(df, table_style={"width": "100%"}),
-        # ),
+
         Display(
         '''
         dash_table.DataTable(
@@ -574,7 +905,7 @@ layout = html.Div(
             columns=[{'id': c, 'name': c} for c in df.columns],
             style_table={
                 'maxHeight': '300px',
-                'overflowY': 'scroll',
+                'overflowY': 'auto',
                 'border': 'thin lightgrey solid'
             },
         )
@@ -585,10 +916,7 @@ layout = html.Div(
         container takes up all 300px.
 
         '''),
-        # html.Div(
-        #     style={"height": 300, "overflowY": "scroll"},
-        #     children=html_table(df, table_style={"width": "100%"}),
-        # ),
+
         Display(
         '''
         dash_table.DataTable(
@@ -596,7 +924,7 @@ layout = html.Div(
             columns=[{'id': c, 'name': c} for c in df.columns],
             style_table={
                 'height': '300px',
-                'overflowY': 'scroll',
+                'overflowY': 'auto',
                 'border': 'thin lightgrey solid'
             },
         )
