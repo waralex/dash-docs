@@ -13,15 +13,60 @@ layout = html.Div(
         rc.Markdown("""
         # DataTable Filtering
 
-        As discussed in the [interactivity chapter](), `DataTable` includes
-        filtering capabilities. Users can turn on filtering options by defining
-        the `filtering` attribute. `filter_action='native'` will initiate clientside
-        (front-end) filtering. Alternatively you can specify `filter_action='native'`.
-        If the DataTable is quite large, clientside filtering will likely
-        become slow. Using the back-end filtering option: `filter_action='custom'`
-        will allow serverside filtering.
+        As discussed in the [interactivity chapter](/interactivity), `DataTable` includes
+        filtering capabilities.
+        Set `filter_action='native'` for clientside (front-end) filtering
+        or `filter_action='custom'` to perform your own filtering in Python.
 
+        `filter_action='native'` will work well up to 10,000-100,000 rows.
+        After which, you may want to use `filter_action='custom'` so that your
+        app sends less data over the network into the browser.
+        """),
+
+        rc.Markdown(
+            examples['filtering_fe.py'][0],
+            style=styles.code_container
+        ),
+
+        html.Div(
+            examples['filtering_fe.py'][1],
+            className='example-container'
+        ),
+
+        rc.Markdown(
+        '''
+        Notes:
+        - As above, we recommend fixing column widths with filtering. Otherwise, the column
+        widths will grow or shrink depending on how wide the data is within the columns.
+        - The default filtering behavior will depend on the data type of the column (see below).
+        Data types are not inferred, so you have to set them manually.
+
+        The example below **determines the datatype of the column automatically with Pandas**:
+        '''
+        ),
+
+        rc.Markdown(
+            examples['filtering_fe_autotype.py'][0],
+            style=styles.code_container
+        ),
+
+        html.Div(
+            examples['filtering_fe_autotype.py'][1],
+            className='example-container'
+        ),
+
+        rc.Markdown("""
         ## Filtering Syntax
+
+        The filtering syntax is data-type specific.
+        Data types are not inferred, they must be [set manually](/datatable/typing).
+        If a type is not specified, then we assume it is a string (text).
+
+        **Text & String Filtering**
+        The following are valid filtering expressions:
+        - `Bosnia`
+
+
 
         To filter on a column you can enter either an operator and a value
         (for example `> 5000`) or just a value (`5000`) to use the default
@@ -104,21 +149,6 @@ layout = html.Div(
             """))
         ])]),
         html.Br(),
-
-        rc.Markdown("""
-
-        ## Frontend Filtering Example:
-
-        """),
-        rc.Markdown(
-            examples['filtering_fe.py'][0],
-            style=styles.code_container
-        ),
-
-        html.Div(
-            examples['filtering_fe.py'][1],
-            className='example-container'
-        ),
 
         rc.Markdown("""
         ## Back-end Filtering

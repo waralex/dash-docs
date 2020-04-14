@@ -16,13 +16,28 @@ df['Mock Date'] = [
 
 app = dash.Dash(__name__)
 
+def table_type(df_column):
+    # Note - this only works with Pandas >= 1.0.0
+    if isinstance(df_column.dtype, pd.DatetimeTZDtype):
+        return 'datetime',
+    elif (isinstance(df_column.dtype, pd.StringDtype) or
+            isinstance(df_column.dtype, pd.BooleanDtype) or
+            isinstance(df_column.dtype, pd.CategoricalDtype) or
+            isinstance(df_column.dtype, pd.PeriodDtype)):
+        return 'text'
+    elif (isinstance(df_column.dtype, pd.SparseDtype) or
+            isinstance(df_column.dtype, pd.IntervalDtype) or
+            isinstance(df_column.dtype, pd.Int8Dtype) or
+            isinstance(df_column.dtype, pd.Int16Dtype) or
+            isinstance(df_column.dtype, pd.Int32Dtype) or
+            isinstance(df_column.dtype, pd.Int64Dtype)):
+        return 'numeric'
+    else:
+        return 'any'
+
 app.layout = dash_table.DataTable(
     columns=[
-        {'name': 'Continent', 'id': 'continent', 'type': 'numeric'},
-        {'name': 'Country', 'id': 'country', 'type': 'text'},
-        {'name': 'Population', 'id': 'pop', 'type': 'numeric'},
-        {'name': 'Life Expectancy', 'id': 'lifeExp', 'type': 'numeric'},
-        {'name': 'Mock Dates', 'id': 'Mock Date', 'type': 'datetime'}
+        {'name': i, 'id': i, 'type': table_type(df[i])} for i in df.columns
     ],
     data=df.to_dict('records'),
     filter_action='native',
