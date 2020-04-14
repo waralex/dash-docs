@@ -442,7 +442,7 @@ layout = html.Div(
 
         All of the data for your table will still be sent over the network
         to the browser, so if you are displaying more than 10,000-100,000 rows
-        you may consider using <dccLink href="/datatable/calblacks" children="backend pagination"/>
+        you may consider using <dccLink href="/datatable/callbacks" children="backend pagination"/>
         to reduce the network costs and memory usage.
         '''),
 
