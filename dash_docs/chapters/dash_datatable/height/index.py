@@ -421,7 +421,8 @@ layout = html.Div(
             fixed_rows={'headers': True},
             style_table={
                 'width': 95 * len(df_numeric.columns),
-                'overflowY': 'auto'
+                'overflowY': 'auto',
+                'overflowX': 'auto'
             }
         )
         '''),
