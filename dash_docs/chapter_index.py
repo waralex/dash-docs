@@ -343,7 +343,7 @@ URLS = [
                     {
                         'url': '/datatable/width',
                         'content': chapters.dash_datatable.width.index.layout,
-                        'name': 'DataTable & Column Width',
+                        'name': 'DataTable Width & Column Width',
                         'description': '''
                             How to set the width of the table and the columns.
                             Examples include how to handle word wrapping,
