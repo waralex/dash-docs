@@ -1087,7 +1087,7 @@
             "url": "/datatable/width",
             "name": "DataTable & Column Width",
             "description": "\n                            How to set the width of the table and the columns.\n                            Examples include how to handle word wrapping,\n                            cell clipping, horizontal scroll, fixed columns,\n                            and more.\n                        ",
-            "meta_keywords": "shape, dir, hidden, style, form, name, type, height, width, open, method, sizes, content, low, max, min, multiple, required, size, headers, rows, default, date, multi, list, search, tooltip, data, contents, columns, css, fixed_columns, tooltip_data, tooltip_duration, style_table, style_cell, style_data, style_cell_conditional, on, layout, pan, container, styles, range"
+            "meta_keywords": "shape, dir, hidden, style, form, name, type, height, width, open, method, sizes, content, low, max, min, multiple, required, size, headers, rows, default, displayed, date, multi, list, search, tooltip, data, contents, columns, css, fixed_columns, tooltip_data, tooltip_duration, style_table, style_cell, style_data, style_cell_conditional, on, layout, pan, container, styles, range"
           },
           {
             "url": "/datatable/style",
