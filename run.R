@@ -320,20 +320,23 @@ current_chapter_urls <-
 SIDEBAR_INDEX <- jsonlite::read_json('SIDEBAR-INDEX.json')
 
 # Filter the Index to only R Docs pages
-for (i in seq_along(SIDEBAR_INDEX)) {
-  for (n in seq_along(SIDEBAR_INDEX[[i]]$chapters)) {
-    if(!is.null(SIDEBAR_INDEX[[i]]$chapters[[n]]$chapters)) {
-      for (m in seq_along(SIDEBAR_INDEX[[i]]$chapters[[n]]$chapters)) {
-        subchapter_url <- SIDEBAR_INDEX[[i]]$chapters[[n]]$chapters[[m]]$url
-        if (!(subchapter_url %in% current_chapter_urls)) {
-          SIDEBAR_INDEX[[i]]$chapters[[n]]$chapters[[m]] <- NA
-        }
-      }
-    }
-    chapter_url <- SIDEBAR_INDEX[[i]]$chapters[[n]]$url
-    print(chapter_url)
-  }
-}
+# for (i in seq_along(SIDEBAR_INDEX)) {
+#   for (n in seq_along(SIDEBAR_INDEX[[i]]$chapters)) {
+#     if(!is.null(SIDEBAR_INDEX[[i]]$chapters[[n]]$chapters)) {
+#       for (m in seq_along(SIDEBAR_INDEX[[i]]$chapters[[n]]$chapters)) {
+#         subchapter_url <- SIDEBAR_INDEX[[i]]$chapters[[n]]$chapters[[m]]$url
+#         if (!(subchapter_url %in% current_chapter_urls)) {
+#           SIDEBAR_INDEX[[i]]$chapters[[n]]$chapters[[m]] <- NA
+#         }
+#       }
+#     }
+#     chapter_url <- SIDEBAR_INDEX[[i]]$chapters[[n]]$url
+#     if (!is.null(chapter_url) && !(chapter_url %in% current_chapter_urls)) {
+#       SIDEBAR_INDEX[[i]]$chapters[[n]] <- NA
+#     }
+#   }
+# }
+
 
 header <- htmlDiv(
   className = 'header',
