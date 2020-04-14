@@ -441,46 +441,8 @@ layout = html.Div(
         giving the table as much width as needs in order to fit the entire
         width of the cell contents on a single line.
 
-        ### Horizontal Scroll with Max-Width & Wrapping
-
-        We can combine some of these strategies by bounding the `maxWidth` of
-        a column and overflowing into multiple lines (or ellipses) if the
-        content exceeds that width while rendering the table within a
-        scrollable horizontal container. If the column's contents don't
-        exceed the `maxWidth`, then the column will only take up the
-        necessary amount of horizontal space.
         '''
         ),
-
-        Display(
-        '''
-        dash_table.DataTable(
-            data=df_election.to_dict('records'),
-            columns=[{'id': c, 'name': c} for c in df_election.columns],
-            style_table={'overflowX': 'scroll'},
-            style_cell={
-                'height': 'auto',
-                'minWidth': '0px', 'maxWidth': '180px',
-                'whiteSpace': 'normal'
-            }
-        )
-        '''),
-
-        rc.Markdown('### Horizontal Scroll with Max-Width & Ellipses'),
-
-        Display(
-        '''
-        dash_table.DataTable(
-            data=df_election.to_dict('records'),
-            columns=[{'id': c, 'name': c} for c in df_election.columns],
-            style_table={'overflowX': 'scroll'},
-            style_cell={
-                'minWidth': '0px', 'maxWidth': '180px',
-                'overflow': 'hidden',
-                'textOverflow': 'ellipsis',
-            }
-        )
-        '''),
 
         rc.Markdown('### Horizontal Scroll with Fixed-Width Columns & Cell Wrapping'),
 
