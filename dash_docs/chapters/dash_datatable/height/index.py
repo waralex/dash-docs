@@ -343,7 +343,7 @@ layout = html.Div(
         will overflow onto the next column. This is a bug.
         The current workaround is to hide the overflow or
         <dccLink children="fix the width of the columns in pixels" href="/datatable/width"/>.
-        See [plotly/dash-table#740](https://github.com/plotly/dash-table/issues/740) for updates.
+        See [plotly/dash-table#432](https://github.com/plotly/dash-table/issues/432) for updates.
 
         There are also a few limitations with this workaround:
 
