@@ -302,7 +302,7 @@ layout = html.Div(
         cells and display a tooltip when hovering over the cell.
 
         This is a little tricky because, [by CSS 2.1 rules](https://www.w3.org/TR/CSS21/tables.html#height-layout),
-        the height of a table cell is “the minimum height required by the content”.
+        the height of a table cell is "the minimum height required by the content".
         So, here we are setting the height of the cell indirectly
         by setting the div _within_ the cell.
 
