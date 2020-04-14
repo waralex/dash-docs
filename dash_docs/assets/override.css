@@ -234,6 +234,13 @@ summary:hover {
     width: calc(100% - 4px);
 }
 
+#fade-out {
+    height: 30px;
+    margin-right: -2px;
+    background-image: linear-gradient(to bottom, transparent, white);
+}
+
+
 /* Header */
 .header {
   background-color: white;
