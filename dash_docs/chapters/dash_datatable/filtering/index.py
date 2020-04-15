@@ -38,6 +38,9 @@ layout = html.Div(
         Notes:
         - As above, we recommend fixing column widths with filtering. Otherwise, the column
         widths will grow or shrink depending on how wide the data is within the columns.
+        - There is a bug with `fixed_rows` that prevents horizontal scroll
+        when no filter results are returned. Until this bug is fixed, we recommend
+        avoiding `fixed_rows`. For updates, see [plotly/dash-table#746](https://github.com/plotly/dash-table/issues/746)
         - The default filtering behavior will depend on the data type of the column (see below).
         Data types are not inferred, so you have to set them manually.
 
