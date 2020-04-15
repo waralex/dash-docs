@@ -66,9 +66,37 @@ layout = html.Div(
         If a type is not specified, then we assume it is a string (text).
 
         **Text & String Filtering**
-        The following are valid filtering expressions:
-        - `Bosnia`
 
+        - `United`
+        - `United States`
+        - `"United States"`
+        - `= United States`
+        - `= "United States"`
+        - `contains United`
+
+        By default, the columns with the "text" type use the
+        `contains` operator.
+
+        So, searching `United` is the same as `contains United`
+
+        **Numeric Filtering**
+
+        - `43.828`
+        - `= 43.828`
+        - `> 43.828`
+        - `>= 43.828`
+        - `< 43.828`
+        - `<= 43.828`
+
+        By default, columns with the `numeric` type use the `=` operator.
+        So, searching `43.828` is the same as `= 43.828`.
+
+        **Datetime Filtering**
+
+        - `2020`
+        - `2020-01`
+        - `2020-01-01`
+        - `2020-01-01T00`
 
 
         To filter on a column you can enter either an operator and a value
