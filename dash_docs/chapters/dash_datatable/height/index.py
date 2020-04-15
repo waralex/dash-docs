@@ -337,30 +337,29 @@ layout = html.Div(
         '''
         **Limitations**
 
-        If a column header is wider than the data within that column and the
-        table's container isn't wide enough to display the headers,
-        then the column will be as wide as the data and the header text
-        will overflow onto the next column. This is a bug.
-        The current workaround is to hide the overflow or
-        <dccLink children="fix the width of the columns in pixels" href="/datatable/width"/>.
-        See [plotly/dash-table#432](https://github.com/plotly/dash-table/issues/432) for updates.
+        1. Percentage-based column widths are not supported. [plotly/dash-table#745](https://github.com/plotly/dash-table/issues/745)
+        2. If a column header is wider than the data within that column and the
+            table's container isn't wide enough to display the headers,
+            then the column will be as wide as the data and the header text
+            will overflow onto the next column.
+            This is a bug ([plotly/dash-table#432](https://github.com/plotly/dash-table/issues/432)).
+            The current workaround is to hide the overflow or
+            <dccLink children="fix the width of the columns in pixels" href="/datatable/width"/>.
+            When using this workaround, you may run into a few of these issues:
 
-        There are also a few limitations with this workaround:
-
-        1. In those scenarios where the header is cut off, it is not possible
-        to set ellipses within the header.
-        See [plotly/dash-table#735](https://github.com/plotly/dash-table/issues/735) for updates.
-        2. When the text is cutoff, it is useful to display tooltips displaying the
-        entire text. It is not yet possible to add tooltips to headers.
-        See [plotly/dash-table#295](https://github.com/plotly/dash-table/issues/295) for updates.
-        3. If the header text is cut-off, then the header overflow is visible.
-        The current workaround is to hide the overflow with `overflow: 'hidden'`.
+            1. In those scenarios where the header is cut off, it is not possible
+            to set ellipses within the header. For updates, see [plotly/dash-table#735](https://github.com/plotly/dash-table/issues/735)
+            2. When the text is cutoff, it is useful to display tooltips displaying the
+            entire text. It is not yet possible to add tooltips to headers.
+            For updates, see [plotly/dash-table#295](https://github.com/plotly/dash-table/issues/295)
+            3. If the header text is cut-off, then the header overflow is visible.
+            The current workaround is to hide the overflow with `overflow: 'hidden'`.
         '''
         ),
 
         rc.Markdown(
         '''
-        **Example of the limitation**
+        **Example of the wide-header limitation**
 
         This limitation will only happen if the headers are wider than the
         cells and the table's container isn't wide enough to display all of the
