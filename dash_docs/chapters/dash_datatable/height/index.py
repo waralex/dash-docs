@@ -414,25 +414,6 @@ layout = html.Div(
 
         rc.Markdown(
         '''
-        **Workaround Option 3: Setting the width of the table**
-        '''),
-
-        Display(
-        '''
-        dash_table.DataTable(
-            data=df_numeric.to_dict('records'),
-            columns=[{'id': c, 'name': c} for c in df_numeric.columns],
-            fixed_rows={'headers': True},
-            style_table={
-                'width': 95 * len(df_numeric.columns),
-                'overflowY': 'auto',
-                'overflowX': 'auto'
-            }
-        )
-        '''),
-
-        rc.Markdown(
-        '''
         ### Vertical Scroll with Virtualization
 
         As mentioned above, the browser has difficultiy rendering 1000s of
