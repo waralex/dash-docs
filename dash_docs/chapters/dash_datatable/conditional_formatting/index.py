@@ -175,8 +175,6 @@ layout = html.Div(
 
         The `filter` keyword in `style_data_conditional` uses the same
         filtering expression language as the table's interactive filter UI.
-        See the <dccLink href="/datatable/filtering" children="DataTable filtering chapter"/> for more
-        info.
         """),
         Display("""
         dash_table.DataTable(
@@ -204,13 +202,60 @@ layout = html.Div(
                 {
                     'if': {
                         'column_id': 'Temperature',
-                        'filter_query': '{Temperature} > 3.9'
+                        'filter_query': '''
+                            {Temperature} > 3.9 && {Temperature} < 5.1
+                        '''
                     },
                     'backgroundColor': '#3D9970',
                     'color': 'white',
                 },
+                {
+                    'if': {
+                        'column_id': 'Temperature',
+                        'filter_query': '{Date} datestartswith 2019-01'
+                    },
+                    'backgroundColor': '#3D9970',
+                    'color': 'white',
+                },
+
+                {
+                    'if': {
+                        'column_id': 'Temperature',
+                        'filter_query': '{Date} datestartswith 2019-02-05'
+                    },
+                    'backgroundColor': '#3D9970',
+                    'color': 'white',
+                },
+
+                {
+                    'if': {
+                        'filter_query': '{id} = 1'
+                    },
+                    'backgroundColor': '#3D9970',
+                    'color': 'white',
+                },
+
+                {
+                    'if': {
+                        'filter_query': '{Temperature} > {Humidity}'
+                    },
+                    'backgroundColor': '#3D9970',
+                    'color': 'white',
+                },
+
             ]
         )
         """),
+
+
+        rc.Markdown(
+        '''
+        ## Highlighting thousands of cells
+
+        If you are highlighting thousands of cells, this can slow down.
+        '''
+        )
+        # TODO - Example of a hidden column with something like {highlight}=1
+
     ]
 )

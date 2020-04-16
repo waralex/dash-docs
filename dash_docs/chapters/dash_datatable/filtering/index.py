@@ -59,7 +59,7 @@ layout = html.Div(
         ),
 
         rc.Markdown("""
-        ## Filtering Syntax
+        ## Filtering Operators
 
         The filtering syntax is data-type specific.
         Data types are not inferred, they must be [set manually](/datatable/typing).
@@ -73,11 +73,20 @@ layout = html.Div(
         - `= United States`
         - `= "United States"`
         - `contains United`
+        - `> United`
+        - `>= United`
+        - `< United`
+        - `<= United`
 
         By default, the columns with the "text" type use the
-        `contains` operator.
+        `contains` operator. So, searching `United` is the same as
+        `contains United`
 
-        So, searching `United` is the same as `contains United`
+        For legacy purposes, `eq` can also be substituted for `=`.
+
+        `>`, `>=`, `<`, and `<=` compare strings in dictionary order,
+        with numbers and most symbols coming before letters,
+        and uppercase coming before lowercase.
 
         **Numeric Filtering**
 
@@ -96,8 +105,13 @@ layout = html.Div(
         - `2020`
         - `2020-01`
         - `2020-01-01`
-        - `2020-01-01T00`
-
+        - `2020-01-01 04:01`
+        - `2020-01-01 04:01:10`
+        - `datestartswith 2020`
+        - `datestartswith 2020-01`
+        - `datestartswith 2020-01-01`
+        - `datestartswith 2020-01-01 04:01`
+        - `datestartswith 2020-01-01 04:01:10`
 
         To filter on a column you can enter either an operator and a value
         (for example `> 5000`) or just a value (`5000`) to use the default
