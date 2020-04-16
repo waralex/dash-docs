@@ -299,7 +299,7 @@ layout = html.Div(
         '''
         ### Denser Multi-Line Cells with Line-Height
 
-        If you are display lots of text in your cells, then you may want to
+        If you are displaying lots of text in your cells, then you may want to
         make the text appear a little more dense by shortening up the line-height.
         By default (as above), it's around 22px. Here, it's 15px.
         '''
@@ -419,8 +419,9 @@ layout = html.Div(
         If you are display text data that is cut off by ellipses, then you can
         include tooltips so that the full text appears on hover.
 
-        By setting `tooltip_duration` to `None`, the tooltip won't disappear
-        as long as you are hovered on it. You can override this by passing in
+        By setting `tooltip_duration` to `None`, the tooltip will persist
+        as long as the mouse pointer is above the cell, and it will disappear
+        when the pointer moves away. You can override this by passing in
         a number in milliseconds (e.g. 2000 if you want it to disappear after
         two seconds).
         '''
@@ -467,9 +468,9 @@ layout = html.Div(
         '''
         Note how we haven't explicitly set the width of the individual columns
         yet. The widths of the columns have been computed dynamically depending
-        on the width of the table and the width of the cells contents.
+        on the width of the table and the width of the cell's contents.
         In the example above, by providing a scrollbar, we're effectively
-        giving the table as much width as needs in order to fit the entire
+        giving the table as much width as it needs in order to fit the entire
         width of the cell contents on a single line.
 
         '''
@@ -679,7 +680,7 @@ layout = html.Div(
 
         rc.Markdown(
         '''
-        ### Overriding a single column's width
+        ### Overriding a Single Column's Width
 
         You can set the width of all of the columns with `style_data` and
         override a single column with `style_cell_conditional`.
