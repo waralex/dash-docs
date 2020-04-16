@@ -345,10 +345,10 @@ layout = html.Div(
         has some issues when resizing the window. See [plotly/dash-table#747](https://github.com/plotly/dash-table/issues/747)
         3. If <dccLink children="filtering" href="/datatable/filtering"/> is enabled, then horizontal
         scroll does not work with wide tables. [plotly/dash-table#746](https://github.com/plotly/dash-table/issues/746)
-        4. (Firefox-only) If a column header is wider than the data within that column and the
+        4. If a column header is wider than the data within that column and the
             table's container isn't wide enough to display the headers,
             then the column will be as wide as the data and the header text
-            will overflow onto the next column.
+            will either be truncated (most browsers) or overflow onto the next column (Firefox).
             This is a bug ([plotly/dash-table#432](https://github.com/plotly/dash-table/issues/432)).
             The current workaround is to hide the overflow or
             <dccLink children="fix the width of the columns in pixels" href="/datatable/width"/>.
@@ -368,11 +368,10 @@ layout = html.Div(
         '''
         **Example of the wide-header limitation**
 
-        (Firefox-only)
-
         If the headers are wider than the cells and the table's
         container isn't wide enough to display all of the headers,
-        then the column headers will be truncated.
+        then the column headers will be truncated on most browsers or
+        will overflow on Firefox.
         '''
         ),
 
@@ -387,7 +386,9 @@ layout = html.Div(
 
         rc.Markdown(
         '''
-        **Workaround Option 1: Hiding the header overflow**
+        **Workaround Option 1: Hiding the header overflow for Firefox users**
+
+        (If you are not on Firefox, then this example will look the same as above)
         '''),
 
         Display(
