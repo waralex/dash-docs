@@ -337,10 +337,14 @@ layout = html.Div(
         '''
         **Limitations**
 
-        1. Percentage-based column widths are not supported. [plotly/dash-table#745](https://github.com/plotly/dash-table/issues/745)
-        2. If <dccLink children="filtering" href="/datatable/filtering"/> is enabled, then horizontal
+
+        1. Percentage-based column widths is not available with `fixed_rows` & `table-layout: fixed`.
+        See [plotly/dash-table#745](https://github.com/plotly/dash-table/issues/748)
+        2. Percentage-based widths with `fixed_rows` and without `table-layout: fixed`
+        has some issues when resizing the window. See [plotly/dash-table#747](https://github.com/plotly/dash-table/issues/747)
+        3. If <dccLink children="filtering" href="/datatable/filtering"/> is enabled, then horizontal
         scroll with wide tables. [plotly/dash-table#746](https://github.com/plotly/dash-table/issues/746)
-        3. If a column header is wider than the data within that column and the
+        4. If a column header is wider than the data within that column and the
             table's container isn't wide enough to display the headers,
             then the column will be as wide as the data and the header text
             will overflow onto the next column.
