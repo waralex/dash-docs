@@ -559,7 +559,7 @@ layout = html.Div(
         '''),
 
 
-        rc.Markdown("## Individual Column Widths"),
+        rc.Markdown("## Setting Column Widths"),
 
         rc.Markdown(
         '''
@@ -567,8 +567,7 @@ layout = html.Div(
 
         The widths of individual columns can be supplied through the
         `style_cell_conditional` property. These widths can be specified as
-        percentages or fixed pixels. You can supply the widths for _all_ of the
-        columns or just a few of them.
+        percentages or fixed pixels.
         '''
         ),
 
@@ -585,6 +584,74 @@ layout = html.Div(
             ]
         )
         '''),
+
+        rc.Markdown(
+        '''
+        By default, the column width is the maximum of the percentage given
+        and the width of the content. So, if the content in the column is wide,
+        the column may be wider than the percentage given. This prevents overflow.
+
+        In the example below, note the first column is actually wider than 10%;
+        if it were shorter, the text "New York City" would overflow.
+        '''
+        ),
+
+        Display(
+        '''
+        html.Div([
+            html.Div('10%', style={'backgroundColor': 'hotpink', 'color': 'white', 'width': '10%'}),
+            dash_table.DataTable(
+                data=df.to_dict('records'),
+                columns=[{'id': c, 'name': c} for c in df.columns if c != 'Date'],
+                style_cell_conditional=[
+                    {'if': {'column_id': 'Region'},
+                     'width': '10%'}
+                ]
+            )
+        ])
+        '''),
+
+        rc.Markdown(
+        '''
+        To force columns to be a certain width (even if that causes overflow)
+        use `table-layout: fixed`.
+
+        ### Percentage Based Widths and `table-layout: fixed`
+        If you want all columns to have the same percentage-based width,
+        use `style_data` and `table-layout: fixed`.
+        '''
+        ),
+
+        Display(
+        '''
+        dash_table.DataTable(
+            data=df.to_dict('records'),
+            columns=[{'id': c, 'name': c} for c in df.columns],
+
+            css=[{'selector': 'table', 'rule': 'table-layout: fixed'}],
+            style_cell={
+                'width': '{}%'.format(len(df.columns)),
+                'textOverflow': 'ellipsis',
+                'overflow': 'hidden'
+            }
+        )
+        '''),
+
+        rc.Markdown(
+        '''
+        Setting consistent percentage-based widths is a good option if you are using
+        `virtualization`, sorting (`sort_action`), or `filtering` (`filter_action`).
+        Without fixed column widths, the table will dynamically resize the
+        columns depending on the width of the data that is displayed.
+
+        **Limitations**
+
+        1. Percentage-based widths is not available with `fixed_rows` & `table-layout: fixed`.
+        See [plotly/dash-table#745](https://github.com/plotly/dash-table/issues/748)
+        2. Percentage-based widths with `fixed_rows` and without `table-layout: fixed`
+        has some issues when resizing the window. See [plotly/dash-table#747](https://github.com/plotly/dash-table/issues/747)
+        '''
+        ),
 
         rc.Markdown(
         '''
