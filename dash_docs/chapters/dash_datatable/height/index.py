@@ -344,7 +344,7 @@ layout = html.Div(
         2. Percentage-based widths with `fixed_rows` and without `table-layout: fixed`
         has some issues when resizing the window. See [plotly/dash-table#747](https://github.com/plotly/dash-table/issues/747)
         3. If <dccLink children="filtering" href="/datatable/filtering"/> is enabled, then horizontal
-        scroll with wide tables. [plotly/dash-table#746](https://github.com/plotly/dash-table/issues/746)
+        scroll does not work with wide tables. [plotly/dash-table#746](https://github.com/plotly/dash-table/issues/746)
         4. (Firefox-only) If a column header is wider than the data within that column and the
             table's container isn't wide enough to display the headers,
             then the column will be as wide as the data and the header text
