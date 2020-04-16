@@ -42,11 +42,13 @@ app.layout = dash_table.DataTable(
     data=df.to_dict('records'),
     filter_action='native',
 
+    css=[{
+        'selector': 'table',
+        'rule': 'table-layout: fixed'  # note - this does not work with fixed_rows
+    }],
     style_table={'height': 400},
     style_data={
-        'minWidth': '{}%'.format(100 / len(df.columns)),
-        'width': '{}%'.format(100 / len(df.columns)),
-        'maxWidth': '{}%'.format(100 / len(df.columns)),
+        'width': '{}%'.format(100. / len(df.columns)),
         'textOverflow': 'hidden'
     }
 )
