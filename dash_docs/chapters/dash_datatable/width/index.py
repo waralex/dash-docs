@@ -260,6 +260,29 @@ layout = html.Div(
         your content into multiple lines.
         '''
         ),
+
+        Display(
+        '''
+        dash_table.DataTable(
+            style_cell={
+                'whiteSpace': 'normal',
+                'height': 'auto',
+            },
+            data=df_election.to_dict('records'),
+            columns=[{'id': c, 'name': c} for c in df_election.columns]
+        )
+        '''),
+
+        rc.Markdown(
+        '''
+        `style_cell` updates the styling for the data cells & the header cells.
+        To specify header styles, use `style_header`.
+        To specify data cell styles, use `style_data`.
+
+        This example keeps the header on a single line while wrapping the data cells.
+        '''
+        ),
+
         Display(
         '''
         dash_table.DataTable(
@@ -300,24 +323,6 @@ layout = html.Div(
 
         If your text is really long, then you can constrain the height of the
         cells and display a tooltip when hovering over the cell.
-
-        This is a little tricky because, [by CSS 2.1 rules](https://www.w3.org/TR/CSS21/tables.html#height-layout),
-        the height of a table cell is "the minimum height required by the content".
-        So, here we are setting the height of the cell indirectly
-        by setting the div _within_ the cell.
-
-        In this example, we display two lines of data by setting the `line-height`
-        to be 15px and the height of each cell to be 30px.
-        In this example, the second sentence is cut off.
-
-        There are a few limitations with this method:
-
-        1. Note that it is not possible to display ellipses with this method.
-        2. It is not possible to set a max-height. All of the cells need to be
-        the same height.
-
-        Subscribe to [plotly/dash-table#737](https://github.com/plotly/dash-table/issues/737) for updates or other workarounds
-        on this issue.
         '''
         ),
         Display(
@@ -350,6 +355,30 @@ layout = html.Div(
         """),
 
         rc.Markdown(
+        '''
+        Hover over the cells to see the tooltip.
+
+        Why the `css`? Fixed height cells are tricky because, [by CSS 2.1 rules](https://www.w3.org/TR/CSS21/tables.html#height-layout),
+        the height of a table cell is "the minimum height required by the content".
+        So, here we are setting the height of the cell indirectly
+        by setting the div _within_ the cell.
+
+        In this example, we display two lines of data by setting the `line-height`
+        to be 15px and the height of each cell to be 30px.
+        The second sentence is cut off.
+
+        There are a few **limitations** with this method:
+
+        1. It is not possible to display ellipses with this method.
+        2. It is not possible to set a max-height. All of the cells need to be
+        the same height.
+
+        Subscribe to [plotly/dash-table#737](https://github.com/plotly/dash-table/issues/737) for updates or other workarounds
+        on this issue.
+        '''
+        ),
+
+        rc.Markdown(
         """
         ## Overflowing Into Ellipses
 
@@ -373,7 +402,7 @@ layout = html.Div(
                 'overflow': 'hidden',
                 'textOverflow': 'ellipsis',
                 'maxWidth': 0
-            },
+            }
         )
         '''),
 
