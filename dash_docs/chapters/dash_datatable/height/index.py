@@ -76,7 +76,7 @@ data_numeric = pd.DataFrame(OrderedDict(
 
 df_election = pd.DataFrame(data_election)
 df_long = pd.DataFrame(
-    OrderedDict([(name, col_data * 10) for (name, col_data) in data.items()])
+    OrderedDict([(name, col_data * 3) for (name, col_data) in data.items()])
 )
 df_long_columns = pd.DataFrame(
     {
