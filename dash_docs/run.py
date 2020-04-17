@@ -71,7 +71,7 @@ header = html.Div(
 
 DEFAULT_AD = dict(
     alt='Ad for Dash Enterprise: A Kubernetes platform for rapid Dash app deployment.',
-    src=tools.relpath('/assets/images/ads/dash-enterprise-kubernetes.jpg'),
+    src=tools.relpath('/assets/images/sidebar/dash-enterprise-kubernetes.jpg'),
     href='https://plotly.com/get-demo?utm_source=docs&utm_medium=ad&utm_campaign=april&utm_content=kubernetes'
 )
 
@@ -275,7 +275,7 @@ def display_content(pathname):
     adhref = DEFAULT_AD['href']
     if (pathname in chapter_index.URL_TO_META_MAP and
             'ad' in chapter_index.URL_TO_META_MAP[pathname]):
-        ad = tools.relpath('/assets/images/ads/{}'.format(
+        ad = tools.relpath('/assets/images/sidebar/{}'.format(
             chapter_index.URL_TO_META_MAP[pathname]['ad']
         ))
         adhref = chapter_index.URL_TO_META_MAP[pathname]['adhref']
