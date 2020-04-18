@@ -114,6 +114,18 @@ layout = html.Div(
         )
         """),
 
+        rc.Markdown(
+        """
+        ## Conditional Formatting via Pandas
+
+        `filter_query` can be slow if you are writing many expressions.
+
+        An easier and faster way to filter many cells is to perform the filter
+        in the backend in Python and include the filter results as a hidden
+        column.
+        """
+        ),
+
         rc.Markdown("""
         ## Highlighting Certain Rows by Index
 
