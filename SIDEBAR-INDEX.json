@@ -1081,7 +1081,7 @@
             "url": "/datatable/height",
             "name": "DataTable Height",
             "description": "\n                            How to set the height of the DataTable.\n                            Examples include how to set the height with\n                            vertical scroll, pagination, virtualization, and\n                            fixed headers.\n                        ",
-            "meta_keywords": "children, href, shape, hidden, style, form, name, height, width, open, action, sizes, content, low, max, min, size, headers, rows, wrap, default, date, responsive, list, search, tooltip, vertical, data, contents, columns, css, fixed_rows, page_action, page_size, style_table, style_cell, style_header, virtualization, on, base, elements, layout, pan, container, range, view"
+            "meta_keywords": "children, href, shape, hidden, style, form, name, height, width, open, action, sizes, content, low, max, min, size, headers, rows, wrap, default, date, list, search, tooltip, vertical, data, contents, columns, fixed_rows, page_action, page_size, style_table, style_cell, style_header, virtualization, on, base, layout, pan, container, range, view"
           },
           {
             "url": "/datatable/width",
