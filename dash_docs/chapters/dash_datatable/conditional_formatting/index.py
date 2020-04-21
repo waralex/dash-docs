@@ -567,6 +567,13 @@ layout = html.Div(
                 data_bars(df_gapminder, 'lifeExp') +
                 data_bars(df_gapminder, 'gdpPercap')
             ),
+            style_cell={
+                'width': '{}%'.format(100. / len(df_gapminder.columns)),
+                'minWidth': '{}%'.format(100. / len(df_gapminder.columns)),
+                'maxWidth': '{}%'.format(100. / len(df_gapminder.columns)),
+                'overflow': 'hidden',
+                'textOverflow': 'ellipsis',
+            },
             page_size=20
         )
         '''
