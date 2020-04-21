@@ -567,6 +567,7 @@ layout = html.Div(
                 data_bars(df_gapminder, 'lifeExp') +
                 data_bars(df_gapminder, 'gdpPercap')
             ),
+            # TODO - These widths aren't right...
             style_cell={
                 'width': '{}%'.format(100. / len(df_gapminder.columns)),
                 'minWidth': '{}%'.format(100. / len(df_gapminder.columns)),
