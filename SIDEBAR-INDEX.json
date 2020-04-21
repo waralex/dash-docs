@@ -1069,7 +1069,7 @@
             "breadcrumb": "Dash DataTable",
             "description": "`dash_table.DataTable` is an interactive table that supports rich styling, conditional formatting, editing, sorting, filtering, and more.",
             "autogenerate_index": true,
-            "meta_keywords": "rel, style, cite, form, name, type, height, width, action, content, high, low, min, start, multiple, headers, rows, wrap, default, date, multi, responsive, figure, config, list, debug, color, included, vertical, data, colors, columns, editable, dropdown, virtualization, on, theme, layout, pan, view"
+            "meta_keywords": "rel, style, cite, form, name, type, height, width, action, content, high, low, min, start, multiple, headers, rows, wrap, default, date, multi, responsive, figure, config, list, debug, color, included, vertical, data, colors, columns, editable, dropdown, virtualization, on, theme, base, layout, pan, view"
           },
           {
             "url": "/datatable/reference",
@@ -1092,8 +1092,14 @@
           {
             "url": "/datatable/style",
             "name": "Styling",
-            "description": "\n                            The style of the DataTable is highly customizable. This chapter\n                            includes examples for:\n                            - Conditional formatting\n                            - Displaying multiple rows of headers\n                            - Highlighting rows, columns, and cells\n                            - Styling the table as a list view\n                            - Changing the colors (including a dark theme!)\n                        ",
-            "meta_keywords": "children, key, href, lang, style, alt, form, name, type, content, high, low, multiple, headers, rows, default, date, multi, list, color, vertical, data, colors, columns, editable, merge_duplicate_headers, style_as_list_view, filter_query, style_cell, style_data, style_filter, style_header, style_cell_conditional, style_data_conditional, style_filter_conditional, style_header_conditional, on, base, backgroundColor, elements, styles, padding, range, view"
+            "description": "\n                            The style of the DataTable is highly customizable. This chapter\n                            includes examples for:\n                            - Displaying multiple rows of headers\n                            - Text alignment\n                            - Styling the table as a list view\n                            - Changing the colors (including a dark theme!)\n                        ",
+            "meta_keywords": "children, href, style, alt, form, name, type, content, high, low, multiple, headers, rows, default, date, multi, list, color, vertical, data, colors, columns, editable, merge_duplicate_headers, style_as_list_view, style_cell, style_data, style_filter, style_header, style_cell_conditional, style_data_conditional, style_filter_conditional, style_header_conditional, on, base, backgroundColor, elements, styles, padding, range, view"
+          },
+          {
+            "url": "/datatable/conditional-formatting",
+            "name": "Conditional Formatting",
+            "description": "\n                            Several examples of how to highlight certain cells,\n                            rows, or columns based on their value or state.\n                        ",
+            "meta_keywords": "key, hidden, lang, style, form, name, type, action, high, low, max, min, start, rows, displayed, date, list, color, included, data, colors, columns, css, editable, style_as_list_view, filter_query, sort_action, style_table, style_data, style_data_conditional, on, backgroundColor, layout, styles, range, view"
           },
           {
             "url": "/datatable/interactivity",
@@ -1135,7 +1141,7 @@
             "url": "/datatable/filtering",
             "name": "Filtering Syntax",
             "description": "\n                            An explanation and examples of filtering syntax for both frontend\n                            and backend filtering in the DataTable.\n                        ",
-            "meta_keywords": "children, key, href, rel, lang, style, form, name, type, height, width, accept, action, method, content, low, min, start, label, selected, size, placeholder, rows, wrap, default, options, date, config, list, debug, count, data, columns, css, editable, page_action, page_size, filter_query, filter_action, style_cell, virtualization, derived_filter_query_structure, on, base, precision, layout, pan"
+            "meta_keywords": "children, key, href, rel, hidden, lang, style, form, name, type, height, width, accept, action, method, content, low, min, start, label, selected, size, headers, placeholder, rows, wrap, default, options, date, config, list, debug, search, count, data, columns, css, editable, fixed_rows, page_action, page_size, filter_query, filter_action, style_table, style_cell, style_data, virtualization, derived_filter_query_structure, on, base, precision, layout, pan, range"
           }
         ]
       },
