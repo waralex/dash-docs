@@ -1,10 +1,10 @@
 /* prefixed by https://autoprefixer.github.io (PostCSS: v7.0.26, autoprefixer: v9.7.3) */
 
 body {
-  font-size: 16px;
+  font-size: 15px;
   line-height: 17px;
   letter-spacing: 0px;
-  font-family: "Campaign", serif;
+  font-family: "campaign", sans-serif;
   color: #20293d;
   font-weight: 400;
   font-stretch: normal;
@@ -17,7 +17,7 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: "jubilat", sans-serif;
+  font-family: "jubilat", serif;
   margin-top: 0;
   margin-bottom: 0;
   font-weight: 300;
