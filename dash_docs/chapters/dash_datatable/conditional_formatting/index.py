@@ -335,7 +335,7 @@ layout = html.Div(
             data=df_wide.to_dict('records'),
             sort_action='native',
             columns=[{'name': i, 'id': i} for i in df_wide.columns if i != 'id'],
-            style_data_conditional=style_row_by_max(df_wide)
+            style_data_conditional=style_table_by_max_value(df_wide)
         )
         '''),
 
@@ -506,12 +506,6 @@ layout = html.Div(
         rc.Markdown('''
         ### Highlighting `NaN`, `None`, or empty strings
         '''),
-
-        rc.Display(
-        '''
-
-        '''
-        ),
 
         rc.Markdown('''
         ### Displaying special values for `NaN`, `None`, or empty strings
