@@ -6,6 +6,8 @@ import pandas as pd
 import dash_table
 from dash_docs import reusable_components as rc
 
+
+df_gapminder = pd.read_csv('https://raw.githubusercontent.com/plotly/datasets/master/gapminderDataFiveYear.csv')
 data = OrderedDict(
     [
         ("Date", ["2015-01-01", "2015-10-24", "2016-05-10", "2017-01-10", "2018-05-10", "2018-08-15"]),
@@ -72,12 +74,14 @@ Display = rc.CreateDisplay({
     'df_long': df_long,
     'df_long_columns': df_long_columns,
     'df_wide': df_wide,
+    'df_gapminder': df_gapminder,
     'pd': pd
 })
 
 
 layout = html.Div(
     children=[
+
         rc.Markdown("""
         # Conditional Formatting
 
@@ -526,6 +530,101 @@ layout = html.Div(
         rc.Markdown('''
         ### Displaying data bars
         '''),
+
+        Display(
+        '''
+        def data_bars(df, column):
+            styles = []
+            col_max = df[column].max()
+            col_min = df[column].min()
+            for value in df[column]:
+                percentage = 100 * (value - col_min) / (col_max - col_min)
+                styles.append({
+                    'if': {
+                        'filter_query': (
+                            '{{{column}}} = {value}'
+                        ).format(column=column, value=value),
+                        'column_id': column
+                    },
+                    'background': (
+                        """
+                            linear-gradient(90deg,
+                            #0074D9 0%,
+                            #0074D9 {percentage}%,
+                            white {percentage}%,
+                            white 100%)
+                        """.format(percentage=percentage)
+                    )
+                })
+            return styles
+
+
+        result = dash_table.DataTable(
+            data=df_gapminder.to_dict('records'),
+            sort_action='native',
+            columns=[{'name': i, 'id': i} for i in df_gapminder.columns],
+            style_data_conditional=(
+                data_bars(df_gapminder, 'lifeExp') +
+                data_bars(df_gapminder, 'gdpPercap')
+            ),
+            page_size=20
+        )
+        '''
+        ),
+
+        # TODO - Research this more... is it useful? It is faster than
+        # comparing each value.
+        rc.Markdown(
+        '''
+        ## Highlighting Quantiles
+        '''
+        ),
+        Display(
+        '''
+        def quantiles(df, column):
+            n_bins = 100
+            bounds = [i * (1.0 / n_bins) for i in range(n_bins + 1)]
+            ranges = [
+                ((df[column].max() - df[column].min()) * i) + df[column].min()
+                for i in bounds
+            ]
+            styles = []
+            for i in range(1, len(bounds)):
+                min_bound = ranges[i - 1]
+                max_bound = ranges[i]
+                max_bound_percentage = bounds[i] * 100
+                styles.append({
+                    'if': {
+                        'filter_query': (
+                            '{{{column}}} >= {min_bound}' +
+                            ('&& {{{column}}} < {max_bound}' if (i < len(bounds) - 1) else '')
+                        ).format(column=column, min_bound=min_bound, max_bound=max_bound),
+                        'column_id': column
+                    },
+                    'background': (
+                        """
+                            linear-gradient(90deg,
+                            #0074D9 0%,
+                            #0074D9 {max_bound_percentage}%,
+                            white {max_bound_percentage}%,
+                            white 100%)
+                        """.format(max_bound_percentage=max_bound_percentage)
+                    )
+                })
+
+            return styles
+
+        result = dash_table.DataTable(
+            data=df_gapminder.to_dict('records'),
+            sort_action='native',
+            columns=[{'name': i, 'id': i} for i in df_gapminder.columns],
+            style_data_conditional=(
+                quantiles(df_gapminder, 'lifeExp')
+            ),
+            page_size=20
+        )
+        '''
+        ),
 
         rc.Markdown('''
         ### Highlighting months
