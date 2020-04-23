@@ -640,13 +640,23 @@ layout = html.Div(
                     {
                         'name': i,
                         'id': i,
+                        'type': 'numeric',
                         'format': Format(
-                            nully='N/A'  # TODO - This doesn't work?
+                            nully='N/A'
                         )
                     } for i in df_with_none.columns
                 ]
             )
         ])
+        '''
+        ),
+
+        # TODO - Clean up this language
+        rc.Markdown(
+        '''
+        **Limitations**
+        - 'type': 'numeric' needs to be set: https://github.com/plotly/dash-table/issues/762
+        - doesn't handle empty strings: https://github.com/plotly/dash-table/issues/763
         '''
         ),
 
