@@ -2,6 +2,7 @@ from collections import OrderedDict
 import dash_core_components as dcc
 import dash_html_components as html
 import pandas as pd
+import numpy as np
 
 import dash_table
 from dash_docs import reusable_components as rc
@@ -59,22 +60,34 @@ df_long_columns = pd.DataFrame(
     }
 )
 # TODO - ADD THIS TO THE MARKUP
+# DRY this up too
 wide_data = [
     {'Firm': 'Acme', '2017': 13, '2018': 5, '2019': 10, '2020': 4},
     {'Firm': 'Olive', '2017': 3, '2018': 3, '2019': 13, '2020': 3},
     {'Firm': 'Barnwood', '2017': 6, '2018': 7, '2019': 3, '2020': 6},
-    {'Firm': 'Henrietta', '2017': 8, '2018': 1, '2019': 13, '2020': 1},
+    {'Firm': 'Henrietta', '2017': 14, '2018': 1, '2019': 13, '2020': 1},
 ]
 df_wide = pd.DataFrame(wide_data)
 
+data_with_none = [
+    {'Firm': 'Acme', '2017': '', '2018': 5, '2019': 10, '2020': 4},
+    {'Firm': 'Olive', '2017': None, '2018': 3, '2019': 13, '2020': 3},
+    {'Firm': 'Barnwood', '2017': np.NaN, '2018': 7, '2019': 3, '2020': 6},
+    {'Firm': 'Henrietta', '2017': 14, '2018': 1, '2019': 13, '2020': 1},
+]
+df_with_none = pd.DataFrame(data_with_none)
+
+
 Display = rc.CreateDisplay({
     'dash_table': dash_table,
+    'html': html,
     'df': df,
     'df_election': df_election,
     'df_long': df_long,
     'df_long_columns': df_long_columns,
     'df_wide': df_wide,
     'df_gapminder': df_gapminder,
+    'df_with_none': df_with_none,
     'pd': pd
 })
 
@@ -97,6 +110,7 @@ layout = html.Div(
         Display("""
         dash_table.DataTable(
             data=df.to_dict('records'),
+            sort_action='native',
             columns=[
                 {"name": i, "id": i} for i in df.columns
             ],
@@ -138,12 +152,64 @@ layout = html.Div(
             ]
         )
         """),
+        rc.Markdown(
+        '''
+        Notes:
+        - `row_index` is absolute - if you filter or sort your table, the highlighted row will not change.
+        '''
+        ),
+
+        rc.Markdown(
+        '''
+        ## Alternative Highlighting Styles
+
+        Instead of highlighting the background cell, you can change the color
+        of the text, bold the text, add underlines, or style it using any
+        other css property.
+        '''
+        ),
+
+        Display("""
+        from dash_table.Format import Format, Sign
+
+        result = dash_table.DataTable(
+            data=df.to_dict('records'),
+            sort_action='native',
+            columns=[
+                {"name": i, "id": i}
+                if i != 'Temperature' else
+                {
+                    'name': i, 'id': i,
+                    'type': 'numeric',
+                    'format': Format(sign=Sign.parantheses)
+                }
+                for i in df.columns
+            ],
+            style_data_conditional=[
+                {
+                    'if': {
+                        'filter_query': '{Humidity} > 19 && {Humidity} < 41',
+                        'column_id': 'Humidity'
+                    },
+                    'color': 'tomato',
+                    'fontWeight': 'bold'
+                },
+                {
+                    'if': {
+                        'filter_query': '{Pressure} > 19',
+                        'column_id': 'Pressure'
+                    },
+                    'textDecoration': 'underline'
+                }
+            ]
+        )
+        """),
 
         rc.Markdown(
         '''
         ## Filtering & Conditional Formatting Recipes
 
-        ### Highlighting the max and min value in a column
+        ### Highlighting the max value in a column
         '''),
         Display("""
         dash_table.DataTable(
@@ -160,7 +226,19 @@ layout = html.Div(
                     'backgroundColor': '#FF4136',
                     'color': 'white'
                 },
+            ]
+        )
+        """),
 
+        rc.Markdown('### Highlighting a row with the min value'),
+
+        Display("""
+        dash_table.DataTable(
+            data=df.to_dict('records'),
+            columns=[
+                {"name": i, "id": i} for i in df.columns
+            ],
+            style_data_conditional=[
                 {
                     'if': {
                         'filter_query': '{{Temperature}} = {}'.format(df['Temperature'].min()),
@@ -171,6 +249,7 @@ layout = html.Div(
             ]
         )
         """),
+
         rc.Markdown(
         '''
         Notes:
@@ -375,7 +454,7 @@ layout = html.Div(
             style_data_conditional=[
                 {
                     'if': {
-                        'filter_query': '{{{}}} >= 5 && {{{}}} < 10'.format(col, col),
+                        'filter_query': '{{{col}}} >= 5 && {{{col}}} < 10'.format(col=col),
                         'column_id': col
                     },
                     'backgroundColor': '#B10DC9',
@@ -386,11 +465,11 @@ layout = html.Div(
         '''),
         rc.Markdown(
         '''
-        _Let's break down `{{{}}}`. We want the final expression to look something like
+        _Let's break down `{{{col}}}`. We want the final expression to look something like
         `{2017} > 5 & {2017} < 10` where 2017 is the name of the column.
         Since we're using `.format()`, we need to escape the brackets,
-        so `{2017}` would be `{{2017}}`. Then, we need to replace `2017` with `{}`
-        for the find-and-replace, so `{{2017}}` becomes `{{{}}}`._
+        so `{2017}` would be `{{2017}}`. Then, we need to replace `2017` with `{col}`
+        for the find-and-replace, so `{{2017}}` becomes `{{{col}}}.format(col=col)`_
         '''
         ),
 
@@ -421,7 +500,7 @@ layout = html.Div(
         dash_table.DataTable(
             data=df_wide.to_dict('records'),
             sort_action='native',
-            columns=[{'name': i, 'id': i} for i in df_wide.columns],
+            columns=[{'name': i, 'id': i} for i in df_wide.columns if i != 'id'],
             style_data_conditional=[
                 {
                     'if': {
@@ -511,21 +590,216 @@ layout = html.Div(
         ### Highlighting `NaN`, `None`, or empty strings
         '''),
 
+        Display(
+        '''
+        result = html.Div([
+            html.Pre(repr(df_with_none)),
+            dash_table.DataTable(
+                data=df_with_none.to_dict('records'),
+                columns=[{'name': i, 'id': i} for i in df_with_none.columns],
+                style_data_conditional=(
+                    [
+                        {
+                            'if': {
+                                'filter_query': '{{{}}} = ""'.format(col),
+                                'column_id': col
+                            },
+                            'backgroundColor': 'tomato'
+                        } for col in df_with_none.columns
+                    ] +
+                    [
+                        {
+                            'if': {
+                                # TODO - This doesn't work?
+                                'filter_query': '{{{}}} = null'.format(col),
+                                'column_id': col
+                            },
+                            'backgroundColor': 'tomato'
+                        } for col in df_with_none.columns
+                    ]
+                )
+            )
+
+        ])
+        '''
+        ),
+
         rc.Markdown('''
         ### Displaying special values for `NaN`, `None`, or empty strings
         '''),
+
+        Display(
+        '''
+        from dash_table.Format import Format
+
+        result = html.Div([
+            html.Pre(repr(df_with_none)),
+            dash_table.DataTable(
+                data=df_with_none.to_dict('records'),
+                columns=[
+                    {
+                        'name': i,
+                        'id': i,
+                        'format': Format(
+                            nully='N/A'  # TODO - This doesn't work?
+                        )
+                    } for i in df_with_none.columns
+                ]
+            )
+        ])
+        '''
+        ),
 
         rc.Markdown('''
         ### Highlighting text that contains a value
         '''),
 
+        Display(
+        '''
+        dash_table.DataTable(
+            data=df.to_dict('records'),
+            columns=[
+                {'name': i, 'id': i} for i in df.columns
+            ],
+            style_data_conditional=[
+                {
+                    'if': {
+                        'filter_query': '{Region} contains "New"'
+                    },
+                    'backgroundColor': '#0074D9',
+                    'color': 'white'
+                }
+            ]
+        )
+        '''
+        ),
+
         rc.Markdown('''
         ### Highlighting text that equals a value
         '''),
 
+        Display(
+        '''
+        dash_table.DataTable(
+            data=df.to_dict('records'),
+            columns=[
+                {'name': i, 'id': i} for i in df.columns
+            ],
+            style_data_conditional=[
+                {
+                    'if': {
+                        'filter_query': '{Region} = "San Francisco"'
+                    },
+                    'backgroundColor': '#0074D9',
+                    'color': 'white'
+                }
+            ]
+        )
+        '''
+        ),
+
         rc.Markdown('''
-        ### Highlighting cells by value like a heatmap
+        ### Highlighting cells by value with a colorscale like a heatmap
         '''),
+
+        Display(
+        '''
+        import colorlover
+
+        def discrete_background_color_bins(df, n_bins=5, columns='all'):
+            bounds = [i * (1.0 / n_bins) for i in range(n_bins + 1)]
+            if columns == 'all':
+                if 'id' in df:
+                    numeric_columns = df.select_dtypes('number').drop(['id'], axis=1)
+                else:
+                    numeric_columns = df.select_dtypes('number')
+            else:
+                numeric_columns = columns
+            df_max = numeric_columns.max().max()
+            df_min = numeric_columns.min().min()
+            ranges = [
+                ((df_max - df_min) * i) + df_min
+                for i in bounds
+            ]
+            styles = []
+            for i in range(1, len(bounds)):
+                min_bound = ranges[i - 1]
+                max_bound = ranges[i]
+                for column in numeric_columns:
+                    styles.append({
+                        'if': {
+                            'filter_query': (
+                                '{{{column}}} >= {min_bound}' +
+                                (' && {{{column}}} < {max_bound}' if (i < len(bounds) - 1) else '')
+                            ).format(column=column, min_bound=min_bound, max_bound=max_bound),
+                            'column_id': column
+                        },
+                        'backgroundColor': colorlover.scales[str(n_bins)]['seq']['Blues'][i - 1],
+                        'color': 'white' if i > len(bounds) / 2. else 'inherit'
+                    })
+            return styles
+
+        result = dash_table.DataTable(
+            data=df_wide.to_dict('records'),
+            sort_action='native',
+            columns=[{'name': i, 'id': i} for i in df_wide.columns],
+            style_data_conditional=discrete_background_color_bins(df_wide)
+        )
+        '''
+        ),
+
+        rc.Markdown('''
+        ### Highlighting with a colorscale on a single column
+        '''),
+
+        Display(
+        '''
+        import colorlover
+
+        def discrete_background_color_bins(df, n_bins=5, columns='all'):
+            bounds = [i * (1.0 / n_bins) for i in range(n_bins + 1)]
+            if columns == 'all':
+                if 'id' in df:
+                    numeric_columns = df.select_dtypes('number').drop(['id'], axis=1)
+                else:
+                    numeric_columns = df.select_dtypes('number')
+            else:
+                numeric_columns = df[columns]
+            df_max = numeric_columns.max().max()
+            df_min = numeric_columns.min().min()
+            ranges = [
+                ((df_max - df_min) * i) + df_min
+                for i in bounds
+            ]
+            styles = []
+            for i in range(1, len(bounds)):
+                min_bound = ranges[i - 1]
+                max_bound = ranges[i]
+                for column in numeric_columns:
+                    styles.append({
+                        'if': {
+                            'filter_query': (
+                                '{{{column}}} >= {min_bound}' +
+                                (' && {{{column}}} < {max_bound}' if (i < len(bounds) - 1) else '')
+                            ).format(column=column, min_bound=min_bound, max_bound=max_bound),
+                            'column_id': column
+                        },
+                        'backgroundColor': colorlover.scales[str(n_bins)]['seq']['Blues'][i - 1],
+                        'color': 'white' if i > len(bounds) / 2. else 'inherit'
+                    })
+            return styles
+
+        result = dash_table.DataTable(
+            data=df_wide.to_dict('records'),
+            sort_action='native',
+            columns=[{'name': i, 'id': i} for i in df_wide.columns],
+            style_data_conditional=discrete_background_color_bins(
+                df_wide,
+                columns=['2018']
+            )
+        )
+        '''
+        ),
 
         rc.Markdown('''
         ### Displaying data bars
@@ -580,11 +854,84 @@ layout = html.Div(
         '''
         ),
 
-        # TODO - Research this more... is it useful? It is faster than
-        # comparing each value.
+        rc.Markdown('''
+        ### Displaying data bars
+        '''),
+
+        Display(
+        '''
+        def data_bars_diverging(df, column, color_above='#3D9970', color_below='#FF4136'):
+            styles = []
+            col_max = df[column].max()
+            col_min = df[column].min()
+            midpoint = (col_max + col_min) / 2.
+
+            for value in df[column]:
+                percentage = 100. * (value - col_min) / (col_max - col_min)
+                if value > midpoint:
+                    background = (
+                        """
+                            linear-gradient(90deg,
+                            white 0%,
+                            white 50%,
+                            {color_above} 50%,
+                            {color_above} {percentage}%,
+                            white {percentage}%,
+                            white 100%)
+                        """.format(percentage=percentage, color_above=color_above)
+                    )
+                else:
+                    background = (
+                        """
+                            linear-gradient(90deg,
+                            white 0%,
+                            white {percentage}%,
+                            {color_below} {percentage}%,
+                            {color_below} 50%,
+                            white 50%,
+                            white 100%)
+                        """.format(percentage=percentage, color_below=color_below)
+                    )
+
+                styles.append({
+                    'if': {
+                        'filter_query': (
+                            '{{{column}}} = {value}'
+                        ).format(column=column, value=value),
+                        'column_id': column
+                    },
+                    'background': background
+                })
+            return styles
+
+        result = dash_table.DataTable(
+            data=df_gapminder.to_dict('records'),
+            sort_action='native',
+            columns=[{'name': i, 'id': i} for i in df_gapminder.columns],
+            style_data_conditional=(
+                data_bars_diverging(df_gapminder, 'lifeExp') +
+                data_bars_diverging(df_gapminder, 'gdpPercap')
+            ),
+            # TODO - These widths aren't right...
+            style_cell={
+                'width': '{}%'.format(100. / len(df_gapminder.columns)),
+                'minWidth': '{}%'.format(100. / len(df_gapminder.columns)),
+                'maxWidth': '{}%'.format(100. / len(df_gapminder.columns)),
+                'overflow': 'hidden',
+                'textOverflow': 'ellipsis',
+            },
+            page_size=20
+        )
+        '''
+        ),
+
+        # TODO - Maybe incorporate this into the computation above since it
+        # is faster if the number of bins is less than the number of unique
+        # values. Check to see what the granularity looks like with 100 bins,
+        # maybe you won't be able to tell a difference?
         rc.Markdown(
         '''
-        ## Highlighting Quantiles
+        ### Discretized Data Bars
         '''
         ),
         Display(
@@ -605,7 +952,7 @@ layout = html.Div(
                     'if': {
                         'filter_query': (
                             '{{{column}}} >= {min_bound}' +
-                            ('&& {{{column}}} < {max_bound}' if (i < len(bounds) - 1) else '')
+                            (' && {{{column}}} < {max_bound}' if (i < len(bounds) - 1) else '')
                         ).format(column=column, min_bound=min_bound, max_bound=max_bound),
                         'column_id': column
                     },
@@ -635,167 +982,26 @@ layout = html.Div(
         ),
 
         rc.Markdown('''
-        ### Highlighting months
+        ### Highlighting dates
         '''),
-
-        rc.Markdown('''
-        ### Highlighting days
-        '''),
-
-        rc.Markdown(
-        """
-        ## Conditional Formatting via Pandas
-
-        `filter_query` can be slow if you are writing many expressions.
-
-        An easier and faster way to filter many cells is to perform the filter
-        in the backend in Python and include the filter results as a hidden
-        column.
-        """
-        ),
-
-        rc.Markdown("""
-        ## Highlighting Certain Rows by Index
-
-        You can draw attention to certain rows by providing a unique
-        background color, bold text, or colored text.
-        """),
-        Display("""
+        Display(
+        '''
         dash_table.DataTable(
             data=df.to_dict('records'),
             columns=[
-                {"name": i, "id": i} for i in df.columns
+                {'name': i, 'id': i}
+                if i != 'Date' else
+                {'name': 'Date', 'id': 'Date', 'type': 'datetime'}
+                for i in df.columns
             ],
             style_data_conditional=[{
-                "if": {"row_index": 4},
-                "backgroundColor": "#3D9970",
+                'if': {'filter_query': '{Date} datestartswith "2015-10"'},
+                'backgroundColor': '#85144b',
                 'color': 'white'
             }]
         )
-        """),
-        Display("""
-        dash_table.DataTable(
-            data=df.to_dict('records'),
-            columns=[
-                {"name": i, "id": i} for i in df.columns
-            ],
-            style_as_list_view=True,
-            style_data_conditional=[{
-                "if": {"row_index": 4},
-                "fontWeight": "bold"
-            }]
-        )
-        """),
-
-        rc.Markdown("""
-        ## Highlighting Columns
-
-        Similarly, certain columns can be highlighted.
-        """),
-        Display("""
-        dash_table.DataTable(
-            data=df.to_dict('records'),
-            columns=[
-                {'name': i, 'id': i} for i in df.columns
-            ],
-            style_data_conditional=[{
-                'if': {'column_id': 'Temperature'},
-                'backgroundColor': '#3D9970',
-                'color': 'white',
-            }]
-        )
-        """),
-
-        rc.Markdown("""
-        ## Highlighting Cells
-
-        You can also highlight certain cells. For example, you may want to
-        highlight certain cells that exceed a threshold or that match
-        a filter elsewhere in the app.
-
-        The `filter` keyword in `style_data_conditional` uses the same
-        filtering expression language as the table's interactive filter UI.
-        """),
-        Display("""
-        dash_table.DataTable(
-            data=df.to_dict('records'),
-            columns=[
-                {'name': i, 'id': i} for i in df.columns
-            ],
-            style_data_conditional=[
-                {
-                    'if': {
-                        'column_id': 'Region',
-                        'filter_query': '{Region} == "Montreal"'
-                    },
-                    'backgroundColor': '#3D9970',
-                    'color': 'white',
-                },
-                {
-                    'if': {
-                        'column_id': 'Humidity',
-                        'filter_query': '{Humidity} == 20'
-                    },
-                    'backgroundColor': '#3D9970',
-                    'color': 'white',
-                },
-                {
-                    'if': {
-                        'column_id': 'Temperature',
-                        'filter_query': '''
-                            {Temperature} > 3.9 && {Temperature} < 5.1
-                        '''
-                    },
-                    'backgroundColor': '#3D9970',
-                    'color': 'white',
-                },
-                {
-                    'if': {
-                        'column_id': 'Temperature',
-                        'filter_query': '{Date} datestartswith 2019-01'
-                    },
-                    'backgroundColor': '#3D9970',
-                    'color': 'white',
-                },
-
-                {
-                    'if': {
-                        'column_id': 'Temperature',
-                        'filter_query': '{Date} datestartswith 2019-02-05'
-                    },
-                    'backgroundColor': '#3D9970',
-                    'color': 'white',
-                },
-
-                {
-                    'if': {
-                        'filter_query': '{id} = 1'
-                    },
-                    'backgroundColor': '#3D9970',
-                    'color': 'white',
-                },
-
-                {
-                    'if': {
-                        'filter_query': '{Temperature} > {Humidity}'
-                    },
-                    'backgroundColor': '#3D9970',
-                    'color': 'white',
-                },
-
-            ]
-        )
-        """),
-
-
-        rc.Markdown(
         '''
-        ## Highlighting thousands of cells
-
-        If you are highlighting thousands of cells, this can slow down.
-        '''
-        )
-        # TODO - Example of a hidden column with something like {highlight}=1
+        ),
 
     ]
 )
