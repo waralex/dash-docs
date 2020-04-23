@@ -97,7 +97,7 @@ app.layout = html.Div(
                 dugc.Sidebar(urls=SIDEBAR_INDEX),
                 html.A(html.Img(
                     id='sidebar-ad-img',
-                    className='sidebar-ad',
+                    className='sidebar-image',
                     src=DEFAULT_AD['src'],
                     alt=DEFAULT_AD['alt']
                 ), id='sidebar-ad-link', href=DEFAULT_AD['href'])
