@@ -135,6 +135,10 @@ h6 { font-size: 20px; line-height: 1.6;  margin-bottom: 0.75rem; margin-top: 0.7
     border-right: thin lightgrey solid;
     font-size: 12px;
     max-width: 250px;
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 60px);
+    justify-content: space-between;
 }
 
 .sidebar input[type="text"],
@@ -221,18 +225,19 @@ summary:hover {
 }
 
 .sidebar {
-    /* height of header + height of sidebar ad + padding */
-    height: calc(100vh - 60px - 200px - 30px);
     overflow-y: auto;
 }
 
 
 
 .sidebar-image {
-    max-height: 200px;
-    left: 10px;
-    bottom: 10px;
-    position: fixed;
+   width: calc(100% - 4px);
+}
+
+#fade-out {
+    height: 30px;
+    margin-right: -2px;
+    background-image: linear-gradient(to bottom, rgb(224, 242, 246), white);
 }
 
 /* Header */
