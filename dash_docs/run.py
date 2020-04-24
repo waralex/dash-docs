@@ -97,13 +97,13 @@ app.layout = html.Div(
                 dugc.Sidebar(urls=SIDEBAR_INDEX),
                 html.A([
                     html.Img(
-                        id='sidebar-ad-img',
-                        className='sidebar-ad',
+                        id='sidebar-image-img',
+                        className='sidebar-image',
                         src=DEFAULT_AD['src'],
                         alt=DEFAULT_AD['alt']
                     ),
                     html.Div(id='fade-out')
-                ], id='sidebar-ad-link', href=DEFAULT_AD['href']),
+                ], id='sidebar-image-link', href=DEFAULT_AD['href']),
             ], className='sidebar-container'),
 
             html.Div([
@@ -236,8 +236,8 @@ def flat_list(*args):
                Output('backlinks-bottom', 'children'),
                # dummy variable so that a loading state is triggered
                Output('pagemenu', 'dummy2'),
-               Output('sidebar-ad-img', 'src'),
-               Output('sidebar-ad-link', 'href')],
+               Output('sidebar-image-img', 'src'),
+               Output('sidebar-image-link', 'href')],
               [Input('location', 'pathname')])
 def display_content(pathname):
     if pathname is None or pathname == '/':
