@@ -95,12 +95,15 @@ app.layout = html.Div(
         html.Div(className='content-wrapper', children=[
             html.Div([
                 dugc.Sidebar(urls=SIDEBAR_INDEX),
-                html.A(html.Img(
-                    id='sidebar-ad-img',
-                    className='sidebar-image',
-                    src=DEFAULT_AD['src'],
-                    alt=DEFAULT_AD['alt']
-                ), id='sidebar-ad-link', href=DEFAULT_AD['href'])
+                html.A([
+                    html.Img(
+                        id='sidebar-ad-img',
+                        className='sidebar-ad',
+                        src=DEFAULT_AD['src'],
+                        alt=DEFAULT_AD['alt']
+                    ),
+                    html.Div(id='fade-out')
+                ], id='sidebar-ad-link', href=DEFAULT_AD['href']),
             ], className='sidebar-container'),
 
             html.Div([
