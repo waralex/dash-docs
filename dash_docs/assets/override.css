@@ -237,7 +237,7 @@ summary:hover {
 #fade-out {
     height: 30px;
     margin-right: -2px;
-    background-image: linear-gradient(to bottom, transparent, white);
+    background-image: linear-gradient(to bottom, rgb(224, 242, 246), white);
 }
 
 /* Header */
