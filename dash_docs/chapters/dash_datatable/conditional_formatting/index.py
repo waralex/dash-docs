@@ -9,6 +9,7 @@ import dash_table
 from dash_docs import reusable_components as rc
 from dash_docs import tools
 
+from dash_docs import datasets
 from .heatmap_recipe import discrete_background_color_bins
 discrete_background_color_bins_string = tools.read_file(os.path.join(
     os.path.dirname(__file__),
@@ -20,90 +21,19 @@ databars_string = tools.read_file(os.path.join(
     'databars_recipes.py'
 ))
 
-
-df_gapminder = pd.read_csv('https://raw.githubusercontent.com/plotly/datasets/master/gapminderDataFiveYear.csv')
-data = OrderedDict(
-    [
-        ("Date", ["2015-01-01", "2015-10-24", "2016-05-10", "2017-01-10", "2018-05-10", "2018-08-15"]),
-        ("Region", ["Montreal", "Toronto", "New York City", "Miami", "San Francisco", "London"]),
-        ("Temperature", [1, -20, 3.512, 4, 10423, -441.2]),
-        ("Humidity", [10, 20, 30, 40, 50, 60]),
-        ("Pressure", [2, 10924, 3912, -10, 3591.2, 15]),
-    ]
-)
-
-df = pd.DataFrame(data)
-
-data_election = OrderedDict(
-    [
-        (
-            "Date",
-            [
-                "July 12th, 2013 - July 25th, 2013",
-                "July 12th, 2013 - August 25th, 2013",
-                "July 12th, 2014 - August 25th, 2014",
-            ],
-        ),
-        (
-            "Election Polling Organization",
-            ["The New York Times", "Pew Research", "The Washington Post"],
-        ),
-        ("Rep", [1, -20, 3.512]),
-        ("Dem", [10, 20, 30]),
-        ("Ind", [2, 10924, 3912]),
-        (
-            "Region",
-            [
-                "Northern New York State to the Southern Appalachian Mountains",
-                "Canada",
-                "Southern Vermont",
-            ],
-        ),
-    ]
-)
-
-df_election = pd.DataFrame(data_election)
-df_long = pd.DataFrame(
-    OrderedDict([(name, col_data * 10) for (name, col_data) in data.items()])
-)
-df_long_columns = pd.DataFrame(
-    {
-        "This is Column {} Data".format(i): [1, 2]
-        for i in range(10)
-    }
-)
-# TODO - ADD THIS TO THE MARKUP
-# DRY this up too
-wide_data = [
-    {'Firm': 'Acme', '2017': 13, '2018': 5, '2019': 10, '2020': 4},
-    {'Firm': 'Olive', '2017': 3, '2018': 3, '2019': 13, '2020': 3},
-    {'Firm': 'Barnwood', '2017': 6, '2018': 7, '2019': 3, '2020': 6},
-    {'Firm': 'Henrietta', '2017': -3, '2018': -10, '2019': -5, '2020': -6},
-]
-df_wide = pd.DataFrame(wide_data)
-
-data_with_none = [
-    {'Firm': 'Acme', '2017': '', '2018': 5, '2019': 10, '2020': 4},
-    {'Firm': 'Olive', '2017': None, '2018': 3, '2019': 13, '2020': 3},
-    {'Firm': 'Barnwood', '2017': np.NaN, '2018': 7, '2019': 3, '2020': 6},
-    {'Firm': 'Henrietta', '2017': 14, '2018': 1, '2019': 13, '2020': 1},
-]
-df_with_none = pd.DataFrame(data_with_none)
-
-
 Display = rc.CreateDisplay({
     'discrete_background_color_bins': discrete_background_color_bins,
     'data_bars': data_bars,
     'data_bars_diverging': data_bars_diverging,
     'dash_table': dash_table,
     'html': html,
-    'df': df,
-    'df_election': df_election,
-    'df_long': df_long,
-    'df_long_columns': df_long_columns,
-    'df_wide': df_wide,
-    'df_gapminder': df_gapminder,
-    'df_with_none': df_with_none,
+    'df_regions': datasets.df_regions,
+    'df_election': datasets.df_election,
+    'df_long': datasets.df_long,
+    'df_long_columns': datasets.df_long_columns,
+    'df_wide': datasets.df_wide,
+    'df_gapminder': datasets.df_gapminder,
+    'df_with_none': datasets.df_with_none,
     'pd': pd
 })
 
@@ -124,6 +54,7 @@ layout = html.Div(
         """),
 
         Display("""
+        df = df_regions # no-display
         df['id'] = df.index
         result = dash_table.DataTable(
             data=df.to_dict('records'),
@@ -222,6 +153,8 @@ layout = html.Div(
         Display("""
         from dash_table.Format import Format, Sign
 
+        df = df_regions # no-display
+
         result = dash_table.DataTable(
             data=df.to_dict('records'),
             sort_action='native',
@@ -266,6 +199,7 @@ layout = html.Div(
 
         Display("""
         # -*- coding: utf-8 -*-
+        df = df_regions # no-display
 
         df['Rating'] = df['Humidity'].apply(lambda x:
             '⭐⭐⭐' if x > 30 else (
@@ -293,7 +227,9 @@ layout = html.Div(
         ### Highlighting the max value in a column
         '''),
         Display("""
-        dash_table.DataTable(
+        df = df_regions # no-display
+
+        result = dash_table.DataTable(
             data=df.to_dict('records'),
             columns=[
                 {"name": i, "id": i} for i in df.columns
@@ -314,7 +250,9 @@ layout = html.Div(
         rc.Markdown('### Highlighting a row with the min value'),
 
         Display("""
-        dash_table.DataTable(
+        df = df_regions # no-display
+
+        result = dash_table.DataTable(
             data=df.to_dict('records'),
             columns=[
                 {"name": i, "id": i} for i in df.columns
@@ -334,8 +272,11 @@ layout = html.Div(
         rc.Markdown('''
         ### Highlighting the top three or bottom three values in a column
         '''),
+
         Display("""
-        dash_table.DataTable(
+        df = df_regions # no-display
+
+        result = dash_table.DataTable(
             data=df.to_dict('records'),
             columns=[
                 {"name": i, "id": i} for i in df.columns
@@ -389,15 +330,16 @@ layout = html.Div(
                 )
             ]
 
-        df_wide['id'] = df_wide.index
+        df = df_wide # no-display
+        df['id'] = df.index
         result = dash_table.DataTable(
-            data=df_wide.to_dict('records'),
+            data=df.to_dict('records'),
             sort_action='native',
-            columns=[{'name': i, 'id': i} for i in df_wide.columns if i != 'id'],
-            style_data_conditional=highlight_max_row(df_wide)
+            columns=[{'name': i, 'id': i} for i in df.columns if i != 'id'],
+            style_data_conditional=highlight_max_row(df)
         )
 
-        del df_wide['id']  # no-display
+        del df['id']  # no-display
         """
         ),
 
@@ -423,12 +365,13 @@ layout = html.Div(
                     })
             return styles
 
-        df_wide['id'] = df_wide.index
+        df = df_wide  # no-display
+        df['id'] = df.index
         result = dash_table.DataTable(
-            data=df_wide.to_dict('records'),
+            data=df.to_dict('records'),
             sort_action='native',
-            columns=[{'name': i, 'id': i} for i in df_wide.columns if i != 'id'],
-            style_data_conditional=style_row_by_top_values(df_wide)
+            columns=[{'name': i, 'id': i} for i in df.columns if i != 'id'],
+            style_data_conditional=style_row_by_top_values(df)
         )
 
         del df_wide['id']  # no-display
@@ -462,12 +405,14 @@ layout = html.Div(
                     })
             return styles
 
-        df_wide['id'] = df_wide.index
+
+        df = df_wide  # no-display
+        df['id'] = df.index
         result = dash_table.DataTable(
-            data=df_wide.to_dict('records'),
+            data=df.to_dict('records'),
             sort_action='native',
-            columns=[{'name': i, 'id': i} for i in df_wide.columns if i != 'id'],
-            style_data_conditional=style_table_by_max_value(df_wide)
+            columns=[{'name': i, 'id': i} for i in df.columns if i != 'id'],
+            style_data_conditional=style_table_by_max_value(df)
         )
 
         del df_wide['id']  # no-display
@@ -479,10 +424,11 @@ layout = html.Div(
 
         Display(
         '''
-        dash_table.DataTable(
-            data=df_wide.to_dict('records'),
+        df = df_wide  # no-display
+        result = dash_table.DataTable(
+            data=df.to_dict('records'),
             sort_action='native',
-            columns=[{'name': i, 'id': i} for i in df_wide.columns],
+            columns=[{'name': i, 'id': i} for i in df.columns],
             style_data_conditional=[
                 {
                     'if': {
@@ -498,10 +444,12 @@ layout = html.Div(
 
         Display(
         '''
-        dash_table.DataTable(
-            data=df_wide.to_dict('records'),
+        df = df_wide  # no-display
+
+        result = dash_table.DataTable(
+            data=df.to_dict('records'),
             sort_action='native',
-            columns=[{'name': i, 'id': i} for i in df_wide.columns],
+            columns=[{'name': i, 'id': i} for i in df.columns],
             style_data_conditional=[
                 {
                     'if': {
@@ -510,7 +458,7 @@ layout = html.Div(
                     },
                     'backgroundColor': '#B10DC9',
                     'color': 'white'
-                } for col in df_wide.columns
+                } for col in df.columns
             ]
         )
         '''),
@@ -529,10 +477,11 @@ layout = html.Div(
         '''),
         Display(
         '''
-        dash_table.DataTable(
-            data=df_wide.to_dict('records'),
+        df = df_wide  # no-display
+        result = dash_table.DataTable(
+            data=df.to_dict('records'),
             sort_action='native',
-            columns=[{'name': i, 'id': i} for i in df_wide.columns],
+            columns=[{'name': i, 'id': i} for i in df.columns],
             style_data_conditional=[
                 {
                     'if': {
@@ -541,17 +490,18 @@ layout = html.Div(
                     },
                     'backgroundColor': '#B10DC9',
                     'color': 'white'
-                } for (col, value) in df_wide.quantile(0.9).iteritems()
+                } for (col, value) in df.quantile(0.9).iteritems()
             ]
         )
         '''),
 
         Display(
         '''
-        dash_table.DataTable(
-            data=df_wide.to_dict('records'),
+        df = df_wide  # no-display
+        result = dash_table.DataTable(
+            data=df.to_dict('records'),
             sort_action='native',
-            columns=[{'name': i, 'id': i} for i in df_wide.columns if i != 'id'],
+            columns=[{'name': i, 'id': i} for i in df.columns if i != 'id'],
             style_data_conditional=[
                 {
                     'if': {
@@ -560,7 +510,7 @@ layout = html.Div(
                     },
                     'backgroundColor': '#B10DC9',
                     'color': 'white'
-                } for (col, value) in df_wide.quantile(0.1).iteritems()
+                } for (col, value) in df.quantile(0.1).iteritems()
             ]
         )
         '''),
@@ -572,10 +522,11 @@ layout = html.Div(
         rc.Markdown('Here, the highlighting is done _per column_'),
         Display(
         '''
-        dash_table.DataTable(
-            data=df_wide.to_dict('records'),
+        df = df_regions # no-display
+        result = dash_table.DataTable(
+            data=df.to_dict('records'),
             sort_action='native',
-            columns=[{'name': i, 'id': i} for i in df_wide.columns],
+            columns=[{'name': i, 'id': i} for i in df.columns],
             style_data_conditional=(
                 [
                     {
@@ -585,7 +536,7 @@ layout = html.Div(
                         },
                         'backgroundColor': '#3D9970',
                         'color': 'white'
-                    } for (col, value) in df_wide.quantile(0.1).iteritems()
+                    } for (col, value) in df.quantile(0.1).iteritems()
                 ] +
                 [
                     {
@@ -595,7 +546,7 @@ layout = html.Div(
                         },
                         'backgroundColor': '#FF4136',
                         'color': 'white'
-                    } for (col, value) in df_wide.quantile(0.5).iteritems()
+                    } for (col, value) in df.quantile(0.5).iteritems()
                 ]
             )
         )
@@ -630,12 +581,13 @@ layout = html.Div(
                 ]
             )
 
-        df_wide['id'] = df_wide.index
+        df = df_wide  # no-display
+        df['id'] = df.index
         result = dash_table.DataTable(
-            data=df_wide.to_dict('records'),
+            data=df.to_dict('records'),
             sort_action='native',
-            columns=[{'name': i, 'id': i} for i in df_wide.columns if 'id' not in df_wide],
-            style_data_conditional=highlight_above_and_below_max(df_wide)
+            columns=[{'name': i, 'id': i} for i in df.columns if 'id' not in df],
+            style_data_conditional=highlight_above_and_below_max(df)
         )
         del df_wide['id'] # no-display
         '''),
@@ -646,11 +598,12 @@ layout = html.Div(
 
         Display(
         '''
+        df = df_with_none  # no-display
         result = html.Div([
-            html.Pre(repr(df_with_none)),
+            html.Pre(repr(df)),
             dash_table.DataTable(
-                data=df_with_none.to_dict('records'),
-                columns=[{'name': i, 'id': i} for i in df_with_none.columns],
+                data=df.to_dict('records'),
+                columns=[{'name': i, 'id': i} for i in df.columns],
                 style_data_conditional=(
                     [
                         {
@@ -660,7 +613,7 @@ layout = html.Div(
                             },
                             'backgroundColor': 'tomato',
                             'color': 'white'
-                        } for col in df_with_none.columns
+                        } for col in df.columns
                     ]
                 )
             )
@@ -679,12 +632,13 @@ layout = html.Div(
 
         Display(
         '''
-        df_with_none_copy = df_with_none.fillna('')
+        df = df_with_none
+        df = df.fillna('')
         result = html.Div([
-            html.Pre(repr(df_with_none_copy)),
+            html.Pre(repr(df)),
             dash_table.DataTable(
-                data=df_with_none_copy.to_dict('records'),
-                columns=[{'name': i, 'id': i} for i in df_with_none_copy.columns],
+                data=df.to_dict('records'),
+                columns=[{'name': i, 'id': i} for i in df.columns],
                 style_data_conditional=(
                     [
                         {
@@ -694,7 +648,7 @@ layout = html.Div(
                             },
                             'backgroundColor': 'tomato',
                             'color': 'white'
-                        } for col in df_with_none_copy.columns
+                        } for col in df.columns
                     ]
                 )
             )
@@ -710,10 +664,11 @@ layout = html.Div(
         '''
         from dash_table.Format import Format
 
+        df = df_with_none
         result = html.Div([
-            html.Pre(repr(df_with_none)),
+            html.Pre(repr(df)),
             dash_table.DataTable(
-                data=df_with_none.to_dict('records'),
+                data=df.to_dict('records'),
                 columns=[
                     {
                         'name': i,
@@ -722,7 +677,7 @@ layout = html.Div(
                         'format': Format(
                             nully='N/A'
                         )
-                    } for i in df_with_none.columns
+                    } for i in df.columns
                 ],
                 editable=True
             )
@@ -744,13 +699,13 @@ layout = html.Div(
         Display(
         '''
         from dash_table.Format import Format
-
-        df_with_none_copy = df_with_none.fillna('N/A').replace('', 'N/A')
+        df = df_with_none
+        df = df.fillna('N/A').replace('', 'N/A')
         result = html.Div([
-            html.Pre(repr(df_with_none_copy)),
+            html.Pre(repr(df)),
             dash_table.DataTable(
-                data=df_with_none_copy.to_dict('records'),
-                columns=[{'name': i, 'id': i} for i in df_with_none_copy.columns],
+                data=df.to_dict('records'),
+                columns=[{'name': i, 'id': i} for i in df.columns],
                 editable=True,
                 style_data_conditional=[
                     {
@@ -760,7 +715,7 @@ layout = html.Div(
                         },
                         'backgroundColor': 'tomato',
                         'color': 'white'
-                    } for col in df_with_none_copy.columns
+                    } for col in df.columns
                 ]
             )
         ])
@@ -782,7 +737,8 @@ layout = html.Div(
 
         Display(
         '''
-        dash_table.DataTable(
+        df = df_regions  # no-display
+        result = dash_table.DataTable(
             data=df.to_dict('records'),
             columns=[
                 {'name': i, 'id': i} for i in df.columns
@@ -806,7 +762,8 @@ layout = html.Div(
 
         Display(
         '''
-        dash_table.DataTable(
+        df = df_regions  # no-display
+        result = dash_table.DataTable(
             data=df.to_dict('records'),
             columns=[
                 {'name': i, 'id': i} for i in df.columns
@@ -840,15 +797,15 @@ layout = html.Div(
 
         Display(
         '''
-
-        (styles, legend) = discrete_background_color_bins(df_wide)
+        df = df_wide  # no-display
+        (styles, legend) = discrete_background_color_bins(df)
 
         result = html.Div([
             html.Div(legend, style={'float': 'right'}),
             dash_table.DataTable(
-                data=df_wide.to_dict('records'),
+                data=df.to_dict('records'),
                 sort_action='native',
-                columns=[{'name': i, 'id': i} for i in df_wide.columns],
+                columns=[{'name': i, 'id': i} for i in df.columns],
                 style_data_conditional=styles
             ),
         ])
@@ -861,14 +818,15 @@ layout = html.Div(
 
         Display(
         '''
+        df = df_wide  # no-display
         (styles, legend) = discrete_background_color_bins(df_wide, columns=['2018'])
 
         result = html.Div([
             legend,
             dash_table.DataTable(
-                data=df_wide.to_dict('records'),
+                data=df.to_dict('records'),
                 sort_action='native',
-                columns=[{'name': i, 'id': i} for i in df_wide.columns],
+                columns=[{'name': i, 'id': i} for i in df.columns],
                 style_data_conditional=styles
             )
         ])
@@ -888,14 +846,14 @@ layout = html.Div(
 
         Display(
         '''
-        df_gapminder_500 = df_gapminder[:500]
+        df = df_gapminder[:500]  # no-display
         result = dash_table.DataTable(
-            data=df_gapminder_500.to_dict('records'),
+            data=df.to_dict('records'),
             sort_action='native',
-            columns=[{'name': i, 'id': i} for i in df_gapminder_500.columns],
+            columns=[{'name': i, 'id': i} for i in df.columns],
             style_data_conditional=(
-                data_bars(df_gapminder_500, 'lifeExp') +
-                data_bars(df_gapminder_500, 'gdpPercap')
+                data_bars(df, 'lifeExp') +
+                data_bars(df, 'gdpPercap')
             ),
             style_cell={
                 'width': '100px',
@@ -919,13 +877,13 @@ layout = html.Div(
         Display(
         '''
         df_gapminder['gdpPercap relative values'] = df_gapminder['gdpPercap']
-        df_gapminder_500 = df_gapminder[:500]
+        df = df_gapminder[:500]  # no-display
         result = dash_table.DataTable(
-            data=df_gapminder_500.to_dict('records'),
+            data=df.to_dict('records'),
             sort_action='native',
-            columns=[{'name': i, 'id': i} for i in df_gapminder_500.columns],
+            columns=[{'name': i, 'id': i} for i in df.columns],
             style_data_conditional=(
-                data_bars(df_gapminder_500, 'gdpPercap relative values') + [{
+                data_bars(df, 'gdpPercap relative values') + [{
                     'if': {'column_id': 'gdpPercap relative values'},
                     'color': 'transparent'
                 }]
@@ -940,7 +898,7 @@ layout = html.Div(
             page_size=20
         )
 
-        del df_gapminder['gdpPercap relative values'] # no-display
+        del df['gdpPercap relative values'] # no-display
         '''
         ),
 
@@ -958,14 +916,14 @@ layout = html.Div(
 
         Display(
         '''
-        df_gapminder_500 = df_gapminder[:500]
+        df = df_gapminder[:500]  # no-display
         result = dash_table.DataTable(
-            data=df_gapminder_500.to_dict('records'),
+            data=df.to_dict('records'),
             sort_action='native',
-            columns=[{'name': i, 'id': i} for i in df_gapminder_500.columns],
+            columns=[{'name': i, 'id': i} for i in df.columns],
             style_data_conditional=(
-                data_bars_diverging(df_gapminder_500, 'lifeExp') +
-                data_bars_diverging(df_gapminder_500, 'gdpPercap')
+                data_bars_diverging(df, 'lifeExp') +
+                data_bars_diverging(df, 'gdpPercap')
             ),
             style_cell={
                 'width': '100px',
@@ -984,7 +942,8 @@ layout = html.Div(
         '''),
         Display(
         '''
-        dash_table.DataTable(
+        df = df_regions # no-display
+        result = dash_table.DataTable(
             data=df.to_dict('records'),
             columns=[
                 {'name': i, 'id': i}
