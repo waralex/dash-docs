@@ -71,8 +71,8 @@ header = html.Div(
 
 DEFAULT_AD = dict(
     alt='Ad for Dash Enterprise: A Kubernetes platform for rapid Dash app deployment.',
-    src=tools.relpath('/assets/images/ads/dash-enterprise-kubernetes.jpg'),
-    href='https://plotly.com/get-demo?utm_source=docs&utm_medium=ad&utm_campaign=april&utm_content=kubernetes'
+    src=tools.relpath('/assets/images/sidebar/dash-enterprise-kubernetes.jpg'),
+    href='https://plotly.com/get-demo/?utm_source=docs&utm_medium=ad&utm_campaign=april&utm_content=kubernetes'
 )
 
 app.title = 'Dash User Guide and Documentation - Dash by Plotly'
@@ -97,14 +97,13 @@ app.layout = html.Div(
                 dugc.Sidebar(urls=SIDEBAR_INDEX),
                 html.A([
                     html.Img(
-                        id='sidebar-ad-img',
-                        className='sidebar-ad',
+                        id='sidebar-image-img',
+                        className='sidebar-image',
                         src=DEFAULT_AD['src'],
                         alt=DEFAULT_AD['alt']
                     ),
                     html.Div(id='fade-out')
-                ], id='sidebar-ad-link', href=DEFAULT_AD['href']),
-
+                ], id='sidebar-image-link', href=DEFAULT_AD['href']),
             ], className='sidebar-container'),
 
             html.Div([
@@ -237,8 +236,8 @@ def flat_list(*args):
                Output('backlinks-bottom', 'children'),
                # dummy variable so that a loading state is triggered
                Output('pagemenu', 'dummy2'),
-               Output('sidebar-ad-img', 'src'),
-               Output('sidebar-ad-link', 'href')],
+               Output('sidebar-image-img', 'src'),
+               Output('sidebar-image-link', 'href')],
               [Input('location', 'pathname')])
 def display_content(pathname):
     if pathname is None or pathname == '/':
@@ -279,7 +278,7 @@ def display_content(pathname):
     adhref = DEFAULT_AD['href']
     if (pathname in chapter_index.URL_TO_META_MAP and
             'ad' in chapter_index.URL_TO_META_MAP[pathname]):
-        ad = tools.relpath('/assets/images/ads/{}'.format(
+        ad = tools.relpath('/assets/images/sidebar/{}'.format(
             chapter_index.URL_TO_META_MAP[pathname]['ad']
         ))
         adhref = chapter_index.URL_TO_META_MAP[pathname]['adhref']

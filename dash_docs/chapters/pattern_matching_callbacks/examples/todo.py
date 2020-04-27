@@ -60,7 +60,8 @@ def edit_list(add, add2, clear, new_item, items, items_done):
                 id={"index": i, "type": "done"},
                 options=[{"label": "", "value": "done"}],
                 value=done,
-                style={"display": "inline"}
+                style={"display": "inline"},
+                labelStyle={"display": "inline"}
             ),
             html.Div(text, id={"index": i}, style=style_done if done else style_todo)
         ], style={"clear": "both"})
