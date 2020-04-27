@@ -1081,13 +1081,13 @@
             "url": "/datatable/height",
             "name": "DataTable Height",
             "description": "\n                            How to set the height of the DataTable.\n                            Examples include how to set the height with\n                            vertical scroll, pagination, virtualization, and\n                            fixed headers.\n                        ",
-            "meta_keywords": "children, href, shape, hidden, style, form, name, height, width, open, action, sizes, content, low, max, min, size, headers, rows, wrap, default, date, list, search, tooltip, vertical, data, contents, columns, fixed_rows, page_action, page_size, style_table, style_cell, style_header, virtualization, on, base, layout, pan, container, range, view"
+            "meta_keywords": "children, href, hidden, style, form, name, height, width, action, content, low, max, min, size, headers, rows, wrap, default, date, tooltip, vertical, data, columns, fixed_rows, page_action, page_size, style_table, style_cell, style_header, virtualization, on, base, layout, pan, container, view"
           },
           {
             "url": "/datatable/width",
             "name": "DataTable Width & Column Width",
             "description": "\n                            How to set the width of the table and the columns.\n                            Examples include how to handle word wrapping,\n                            cell clipping, horizontal scroll, fixed columns,\n                            and more.\n                        ",
-            "meta_keywords": "shape, dir, hidden, style, form, name, type, height, width, open, action, method, sizes, content, low, max, min, multiple, required, size, headers, rows, wrap, default, displayed, date, multi, list, color, search, tooltip, data, contents, columns, css, fixed_columns, fixed_rows, tooltip_data, tooltip_duration, filter_action, sort_action, style_table, style_cell, style_data, style_header, style_cell_conditional, virtualization, on, base, force, backgroundColor, layout, pan, container, styles, range"
+            "meta_keywords": "dir, hidden, style, form, name, type, height, width, action, method, content, low, max, min, multiple, required, size, headers, rows, wrap, default, displayed, date, multi, color, tooltip, data, contents, columns, css, fixed_columns, fixed_rows, tooltip_data, tooltip_duration, filter_action, sort_action, style_table, style_cell, style_data, style_header, style_cell_conditional, virtualization, on, base, force, backgroundColor, layout, pan, container, styles"
           },
           {
             "url": "/datatable/style",
@@ -1099,7 +1099,7 @@
             "url": "/datatable/conditional-formatting",
             "name": "Conditional Formatting",
             "description": "\n                            Several examples of how to highlight certain cells,\n                            rows, or columns based on their value or state.\n                        ",
-            "meta_keywords": "key, hidden, lang, style, form, name, type, action, high, low, max, min, start, rows, displayed, date, list, color, included, data, colors, columns, css, editable, style_as_list_view, filter_query, sort_action, style_table, style_data, style_data_conditional, on, backgroundColor, layout, styles, range, view"
+            "meta_keywords": "children, key, rel, dir, hidden, style, alt, form, name, type, height, width, icon, action, method, content, high, low, max, min, start, size, displayed, date, color, marks, data, colors, contents, columns, css, editable, page_size, filter_query, sort_action, style_table, style_cell, style_data, style_data_conditional, derived_virtual_data, on, scale, backgroundColor, layout, colorscale, styles, padding, range, legend"
           },
           {
             "url": "/datatable/interactivity",
