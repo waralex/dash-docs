@@ -154,6 +154,10 @@ def redirect_getting_started_2():
 def redirect_state():
     return redirect('/basic-callbacks', code=301)
 
+@server.route('/sizing')
+def redirect_sizing():
+    return redirect('/height', code=301)
+
 
 @server.before_request
 def clear_trailing():

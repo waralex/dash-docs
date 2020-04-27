@@ -103,8 +103,8 @@ source('dash_docs/chapters/dash_html_components/index.R', local=chapters.dashHtm
 # Component Libraries (Dash DataTable)
 chapters.dashDataTable <- new.env()
 source('dash_docs/chapters/dash_datatable/index.R', local=chapters.dashDataTable)
-chapters.dashDataTable1 <- new.env()
-source('dash_docs/chapters/dash_datatable/part1/index.R', local=chapters.dashDataTable1)
+chapters.dashDataTableSizing <- new.env()
+source('dash_docs/chapters/dash_datatable/sizing/index.R', local=chapters.dashDataTableSizing)
 chapters.dashDataTable2 <- new.env()
 source('dash_docs/chapters/dash_datatable/part2/index.R', local=chapters.dashDataTable2)
 chapters.dashDataTable3 <- new.env()
@@ -319,7 +319,7 @@ app$callback(
       '/dash-html-components' = return(chapters.dashHtmlComponents$layout),
       # Component Libraries (Dash DataTable)
       '/datatable' = return(chapters.dashDataTable$layout),
-      '/datatable/sizing' = return(chapters.dashDataTable1$layout),
+      '/datatable/sizing' = return(chapters.dashDataTableSizing$layout),
       '/datatable/style' = return(chapters.dashDataTable2$layout),
       '/datatable/interactivity' = return(chapters.dashDataTable3$layout),
       '/datatable/callbacks' = return(chapters.dashDataTable4$layout),
@@ -453,8 +453,8 @@ app$callback(
                 )
               )
             ),
-            
-            
+
+
             components$Section(
               'Dash Callbacks',
               list(
@@ -472,21 +472,21 @@ app$callback(
                 components$Chapter(
                   'Clientside Callbacks',
                   href='/clientside-callbacks',
-                  caption="You might want to execute a callback in the frontend as opposed to the backend if you 
-                  want to avoid the extra time that it takes to make a roundtrip to the server. Clientside 
+                  caption="You might want to execute a callback in the frontend as opposed to the backend if you
+                  want to avoid the extra time that it takes to make a roundtrip to the server. Clientside
                   callbacks allow you to write your callbacks in JavaScript that runs in the browser."
                 ),
                 components$Chapter(
                   'Callback Gotchas',
                   href='/callback-gotchas',
-                  caption="Dash callbacks have some idiosyncracies that should be taken into consideration when 
-                  building a Dash app. If you're running into unexpected callback behavior, and the rest of the 
+                  caption="Dash callbacks have some idiosyncracies that should be taken into consideration when
+                  building a Dash app. If you're running into unexpected callback behavior, and the rest of the
                   documentation hasn't shed any light on the situation, try taking a look in this section."
                 )
               )
             ),
 
-            
+
             components$Section(
               'Open Source Component Libraries',
               list(

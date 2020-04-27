@@ -228,8 +228,6 @@ summary:hover {
     overflow-y: auto;
 }
 
-
-
 .sidebar-image {
    width: calc(100% - 4px);
 }
@@ -239,6 +237,7 @@ summary:hover {
     margin-right: -2px;
     background-image: linear-gradient(to bottom, rgb(224, 242, 246), white);
 }
+
 
 /* Header */
 .header {
