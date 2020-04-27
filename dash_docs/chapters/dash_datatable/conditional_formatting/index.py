@@ -121,7 +121,7 @@ layout = html.Div(
         to `row_index` for highlighting data by index. Since each row has a
         unique `id`, the conditional formatting associated with this `id`
         will remain associated with that data after sorting and filtering.
-        - `RebeccaPurple`, `hotpink`, `DogerBlue`... These are
+        - `RebeccaPurple`, `hotpink`, `DodgerBlue`... These are
         [named CSS colors](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords).
         We recommend avoiding the common color names like
         `red`, `blue`, `green`  as they look very outdated. For other color
