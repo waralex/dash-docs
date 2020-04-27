@@ -97,7 +97,7 @@
         "url": "/pattern-matching-callbacks",
         "name": "Pattern-Matching Callbacks",
         "description": "The pattern-matching callback selectors `MATCH`, `ALL`, & `ALLSMALLER` allow you to write callbacks that respond to or update an arbitrary or dynamic number of components. New in Dash 1.11.0!",
-        "meta_keywords": "children, n_clicks, key, style, form, name, type, content, low, min, reversed, label, multiple, options, displayed, date, multi, list, pattern, n_submit, debug, color, pathname, count, included, data, dropdown, on, elements, layout, pan, container"
+        "meta_keywords": "children, n_clicks, key, style, form, name, type, content, low, min, reversed, label, multiple, options, labelStyle, displayed, date, multi, list, pattern, n_submit, debug, color, pathname, count, included, data, dropdown, on, elements, layout, pan, container"
       },
       {
         "url": "/callback-gotchas",
@@ -1081,13 +1081,13 @@
             "url": "/datatable/height",
             "name": "DataTable Height",
             "description": "\n                            How to set the height of the DataTable.\n                            Examples include how to set the height with\n                            vertical scroll, pagination, virtualization, and\n                            fixed headers.\n                        ",
-            "meta_keywords": "children, href, shape, hidden, style, form, name, height, width, open, action, sizes, content, low, max, min, size, headers, rows, wrap, default, date, responsive, list, search, tooltip, vertical, data, contents, columns, css, fixed_rows, page_action, page_size, style_table, style_cell, style_header, virtualization, on, base, elements, pan, container, range"
+            "meta_keywords": "children, href, shape, hidden, style, form, name, height, width, open, action, sizes, content, low, max, min, size, headers, rows, wrap, default, date, list, search, tooltip, vertical, data, contents, columns, fixed_rows, page_action, page_size, style_table, style_cell, style_header, virtualization, on, base, layout, pan, container, range, view"
           },
           {
             "url": "/datatable/width",
             "name": "DataTable Width & Column Width",
             "description": "\n                            How to set the width of the table and the columns.\n                            Examples include how to handle word wrapping,\n                            cell clipping, horizontal scroll, fixed columns,\n                            and more.\n                        ",
-            "meta_keywords": "shape, dir, hidden, style, form, name, type, height, width, open, method, sizes, content, low, max, min, multiple, required, size, headers, rows, default, displayed, date, multi, list, search, tooltip, data, contents, columns, css, fixed_columns, tooltip_data, tooltip_duration, style_table, style_cell, style_data, style_cell_conditional, on, layout, pan, container, styles, range"
+            "meta_keywords": "shape, dir, hidden, style, form, name, type, height, width, open, action, method, sizes, content, low, max, min, multiple, required, size, headers, rows, wrap, default, displayed, date, multi, list, color, search, tooltip, data, contents, columns, css, fixed_columns, fixed_rows, tooltip_data, tooltip_duration, filter_action, sort_action, style_table, style_cell, style_data, style_header, style_cell_conditional, virtualization, on, base, force, backgroundColor, layout, pan, container, styles, range"
           },
           {
             "url": "/datatable/style",

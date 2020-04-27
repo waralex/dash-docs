@@ -26,7 +26,7 @@ def component_list(
         package, content_module, base_url, import_alias,
         component_library, escape_tags=False,
         ad='dash-enterprise-kubernetes.jpg',
-        adhref='https://plotly.com/get-demo?utm_source=docs&utm_medium=ad&utm_campaign=april&utm_content=kubernetes'):
+        adhref='https://plotly.com/get-demo/?utm_source=docs&utm_medium=ad&utm_campaign=april&utm_content=kubernetes'):
     return [
         {
             'url': tools.relpath('/{}/{}'.format(base_url, component.lower())),
@@ -260,7 +260,7 @@ URLS = [
                     ),
                     'content': chapters.dash_core_components.index.layout,
                     'ad': 'dash-enterprise-design-kit.jpg',
-                    'adhref': 'https://plotly.com/get-demo?utm_source=docs&utm_medium=ad&utm_campaign=april&utm_content=htmlcore'
+                    'adhref': 'https://plotly.com/get-demo/?utm_source=docs&utm_medium=ad&utm_campaign=april&utm_content=htmlcore'
                 }] + component_list(
                     dcc,
                     chapters.dash_core_components.content_module,
@@ -268,7 +268,7 @@ URLS = [
                     'dcc',
                     'dash_core_components',
                     ad='dash-enterprise-design-kit.jpg',
-                    adhref='https://plotly.com/get-demo?utm_source=docs&utm_medium=ad&utm_campaign=april&utm_content=htmlcore'
+                    adhref='https://plotly.com/get-demo/?utm_source=docs&utm_medium=ad&utm_campaign=april&utm_content=htmlcore'
                 )
             },
 
@@ -286,7 +286,7 @@ URLS = [
                                        'and standard html.',
                         'content': chapters.dash_html_components.index.layout,
                         'ad': 'dash-enterprise-design-kit.jpg',
-                        'adhref': 'https://plotly.com/get-demo?utm_source=docs&utm_medium=ad&utm_campaign=april&utm_content=htmlcore'
+                        'adhref': 'https://plotly.com/get-demo/?utm_source=docs&utm_medium=ad&utm_campaign=april&utm_content=htmlcore'
                     }
                 ] + component_list(
                     html,
@@ -296,7 +296,7 @@ URLS = [
                     'dash_html_components',
                     escape_tags=True,
                     ad='dash-enterprise-design-kit.jpg',
-                    adhref='https://plotly.com/get-demo?utm_source=docs&utm_medium=ad&utm_campaign=april&utm_content=htmlcore'
+                    adhref='https://plotly.com/get-demo/?utm_source=docs&utm_medium=ad&utm_campaign=april&utm_content=htmlcore'
                 )
             },
 
@@ -658,7 +658,7 @@ URLS = [
                 'url': '/plugins',
                 'content': chapters.plugins.index.layout,
                 'ad': 'dash-enterprise-design-kit.jpg',
-                'adhref': 'https://plotly.com/get-demo?utm_source=docs&utm_medium=ad&utm_campaign=april&utm_content=create'
+                'adhref': 'https://plotly.com/get-demo/?utm_source=docs&utm_medium=ad&utm_campaign=april&utm_content=create'
             },
 
             {
@@ -766,7 +766,7 @@ URLS = [
                 'name': 'Authentication',
                 'description': '',
                 'ad': 'dash-enterprise-authentication.jpg',
-                'adhref': 'https://plotly.com/get-demo?utm_source=docs&utm_medium=ad&utm_campaign=april&utm_content=authentication'
+                'adhref': 'https://plotly.com/get-demo/?utm_source=docs&utm_medium=ad&utm_campaign=april&utm_content=authentication'
             },
 
             {
@@ -784,7 +784,7 @@ URLS = [
                 'description': 'Strategies for integrating Dash apps with existing web ' \
                                'apps.',
                 'ad': 'dash-enterprise-embedded.jpg',
-                'adhref': 'https://plotly.com/get-demo?utm_source=docs&utm_medium=ad&utm_campaign=april&utm_content=embedded'
+                'adhref': 'https://plotly.com/get-demo/?utm_source=docs&utm_medium=ad&utm_campaign=april&utm_content=embedded'
             }
         ]
     },

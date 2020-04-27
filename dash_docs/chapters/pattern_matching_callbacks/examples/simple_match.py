@@ -8,7 +8,6 @@ app = dash.Dash(__name__, suppress_callback_exceptions=True)
 app.layout = html.Div([
     html.Button("Add Filter", id="dynamic-add-filter", n_clicks=0),
     html.Div(id='dynamic-dropdown-container', children=[]),
-    html.Div(id='dynamic-dropdown-container-output')
 ])
 
 @app.callback(

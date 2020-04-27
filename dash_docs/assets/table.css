@@ -1,3 +1,7 @@
+.dash-table-container {
+    margin-bottom: 10px;
+}
+
 .dash-table-container > div.previous-next-container input.current-page {
     padding: 1px;
 }

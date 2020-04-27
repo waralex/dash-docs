@@ -63,6 +63,29 @@ layout = html.Div(
         your content into multiple lines.
         '''
         ),
+
+        Display(
+        '''
+        dash_table.DataTable(
+            style_cell={
+                'whiteSpace': 'normal',
+                'height': 'auto',
+            },
+            data=df_election.to_dict('records'),
+            columns=[{'id': c, 'name': c} for c in df_election.columns]
+        )
+        '''),
+
+        rc.Markdown(
+        '''
+        `style_cell` updates the styling for the data cells & the header cells.
+        To specify header styles, use `style_header`.
+        To specify data cell styles, use `style_data`.
+
+        This example keeps the header on a single line while wrapping the data cells.
+        '''
+        ),
+
         Display(
         '''
         df = df_election # no-display
@@ -80,7 +103,7 @@ layout = html.Div(
         '''
         ### Denser Multi-Line Cells with Line-Height
 
-        If you are display lots of text in your cells, then you may want to
+        If you are displaying lots of text in your cells, then you may want to
         make the text appear a little more dense by shortening up the line-height.
         By default (as above), it's around 22px. Here, it's 15px.
         '''
@@ -105,24 +128,6 @@ layout = html.Div(
 
         If your text is really long, then you can constrain the height of the
         cells and display a tooltip when hovering over the cell.
-
-        This is a little tricky because, [by CSS 2.1 rules](https://www.w3.org/TR/CSS21/tables.html#height-layout),
-        the height of a table cell is "the minimum height required by the content".
-        So, here we are setting the height of the cell indirectly
-        by setting the div _within_ the cell.
-
-        In this example, we display two lines of data by setting the `line-height`
-        to be 15px and the height of each cell to be 30px.
-        In this example, the second sentence is cut off.
-
-        There are a few limitations with this method:
-
-        1. Note that it is not possible to display ellipses with this method.
-        2. It is not possible to set a max-height. All of the cells need to be
-        the same height.
-
-        Subscribe to [plotly/dash-table#737](https://github.com/plotly/dash-table/issues/737) for updates or other workarounds
-        on this issue.
         '''
         ),
         Display(
@@ -156,6 +161,30 @@ layout = html.Div(
         """),
 
         rc.Markdown(
+        '''
+        Hover over the cells to see the tooltip.
+
+        Why the `css`? Fixed height cells are tricky because, [by CSS 2.1 rules](https://www.w3.org/TR/CSS21/tables.html#height-layout),
+        the height of a table cell is "the minimum height required by the content".
+        So, here we are setting the height of the cell indirectly
+        by setting the div _within_ the cell.
+
+        In this example, we display two lines of data by setting the `line-height`
+        to be 15px and the height of each cell to be 30px.
+        The second sentence is cut off.
+
+        There are a few **limitations** with this method:
+
+        1. It is not possible to display ellipses with this method.
+        2. It is not possible to set a max-height. All of the cells need to be
+        the same height.
+
+        Subscribe to [plotly/dash-table#737](https://github.com/plotly/dash-table/issues/737) for updates or other workarounds
+        on this issue.
+        '''
+        ),
+
+        rc.Markdown(
         """
         ## Overflowing Into Ellipses
 
@@ -180,7 +209,7 @@ layout = html.Div(
                 'overflow': 'hidden',
                 'textOverflow': 'ellipsis',
                 'maxWidth': 0
-            },
+            }
         )
         '''),
 
@@ -197,8 +226,9 @@ layout = html.Div(
         If you are display text data that is cut off by ellipses, then you can
         include tooltips so that the full text appears on hover.
 
-        By setting `tooltip_duration` to `None`, the tooltip won't disappear
-        as long as you are hovered on it. You can override this by passing in
+        By setting `tooltip_duration` to `None`, the tooltip will persist
+        as long as the mouse pointer is above the cell, and it will disappear
+        when the pointer moves away. You can override this by passing in
         a number in milliseconds (e.g. 2000 if you want it to disappear after
         two seconds).
         '''
@@ -247,9 +277,9 @@ layout = html.Div(
         '''
         Note how we haven't explicitly set the width of the individual columns
         yet. The widths of the columns have been computed dynamically depending
-        on the width of the table and the width of the cells contents.
+        on the width of the table and the width of the cell's contents.
         In the example above, by providing a scrollbar, we're effectively
-        giving the table as much width as needs in order to fit the entire
+        giving the table as much width as it needs in order to fit the entire
         width of the cell contents on a single line.
 
         '''
@@ -343,7 +373,7 @@ layout = html.Div(
         '''),
 
 
-        rc.Markdown("## Individual Column Widths"),
+        rc.Markdown("## Setting Column Widths"),
 
         rc.Markdown(
         '''
@@ -351,8 +381,7 @@ layout = html.Div(
 
         The widths of individual columns can be supplied through the
         `style_cell_conditional` property. These widths can be specified as
-        percentages or fixed pixels. You can supply the widths for _all_ of the
-        columns or just a few of them.
+        percentages or fixed pixels.
         '''
         ),
 
@@ -386,6 +415,74 @@ layout = html.Div(
 
         rc.Markdown(
         '''
+        By default, the column width is the maximum of the percentage given
+        and the width of the content. So, if the content in the column is wide,
+        the column may be wider than the percentage given. This prevents overflow.
+
+        In the example below, note the first column is actually wider than 10%;
+        if it were shorter, the text "New York City" would overflow.
+        '''
+        ),
+
+        Display(
+        '''
+        html.Div([
+            html.Div('10%', style={'backgroundColor': 'hotpink', 'color': 'white', 'width': '10%'}),
+            dash_table.DataTable(
+                data=df.to_dict('records'),
+                columns=[{'id': c, 'name': c} for c in df.columns if c != 'Date'],
+                style_cell_conditional=[
+                    {'if': {'column_id': 'Region'},
+                     'width': '10%'}
+                ]
+            )
+        ])
+        '''),
+
+        rc.Markdown(
+        '''
+        To force columns to be a certain width (even if that causes overflow)
+        use `table-layout: fixed`.
+
+        ### Percentage Based Widths and `table-layout: fixed`
+        If you want all columns to have the same percentage-based width,
+        use `style_data` and `table-layout: fixed`.
+        '''
+        ),
+
+        Display(
+        '''
+        dash_table.DataTable(
+            data=df.to_dict('records'),
+            columns=[{'id': c, 'name': c} for c in df.columns],
+
+            css=[{'selector': 'table', 'rule': 'table-layout: fixed'}],
+            style_cell={
+                'width': '{}%'.format(len(df.columns)),
+                'textOverflow': 'ellipsis',
+                'overflow': 'hidden'
+            }
+        )
+        '''),
+
+        rc.Markdown(
+        '''
+        Setting consistent percentage-based widths is a good option if you are using
+        `virtualization`, sorting (`sort_action`), or `filtering` (`filter_action`).
+        Without fixed column widths, the table will dynamically resize the
+        columns depending on the width of the data that is displayed.
+
+        **Limitations**
+
+        1. Percentage-based widths is not available with `fixed_rows` & `table-layout: fixed`.
+        See [plotly/dash-table#745](https://github.com/plotly/dash-table/issues/748)
+        2. Percentage-based widths with `fixed_rows` and without `table-layout: fixed`
+        has some issues when resizing the window. See [plotly/dash-table#747](https://github.com/plotly/dash-table/issues/747)
+        '''
+        ),
+
+        rc.Markdown(
+        '''
         ### Individual Column Widths with Pixels
 
         In this example, we set three columns to have fixed-widths. The remaining
@@ -410,7 +507,7 @@ layout = html.Div(
 
         rc.Markdown(
         '''
-        ### Overriding a single column's width
+        ### Overriding a Single Column's Width
 
         You can set the width of all of the columns with `style_data` and
         override a single column with `style_cell_conditional`.
