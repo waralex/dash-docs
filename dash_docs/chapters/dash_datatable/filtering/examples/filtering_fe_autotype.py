@@ -3,7 +3,7 @@ from dash.dependencies import Input, Output
 import dash_table
 import dash_html_components as html
 import datetime
-
+import sys
 import pandas as pd
 
 
@@ -18,6 +18,10 @@ app = dash.Dash(__name__)
 
 def table_type(df_column):
     # Note - this only works with Pandas >= 1.0.0
+
+    if sys.version_info < (3, 0):  # Pandas 1.0.0 does not support Python 2
+        return 'any'
+
     if isinstance(df_column.dtype, pd.DatetimeTZDtype):
         return 'datetime',
     elif (isinstance(df_column.dtype, pd.StringDtype) or
