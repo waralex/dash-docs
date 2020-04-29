@@ -3943,3 +3943,152 @@ Git = html.Div(children=[
 
     ''')
 ])
+
+WorkspacesUsage = html.Div(children=[
+    html.H1('Using Workspaces'),
+
+    Blockquote(),
+
+    html.H2('Creating a Workspace'),
+    rc.Markdown('''
+        Find Workspaces by going to an app (deployed or not) and going to the
+        **Workspaces** section. From here, you can **Create Workspace**. This
+        has two different behaviors depending on whether or not you already
+        have an app deployed:
+
+        1. If the app is already deployed, it will start up a workspace with
+        the same process that it does to deploy an app to production. This
+        means that you will have access to the same environment variables,
+        databases, and Python/R packages as in production.
+
+        2. If the app is not deployed, it will automatically start a workspace
+        with the basic python sample app found in the App Templates. To do
+        this, you must initialize an app without pushing anything and create a
+        workspace from there.
+    '''),
+
+    rc.Markdown('''***'''),
+    html.H2('Managing a Workspace'),
+    rc.Markdown('''
+        After clicking **Create Workspace**, it may take a few minutes to
+        create and takes a similar amount of time as deployment for the reason
+        that it is mimicking the deployment setup. Keep in mind that R apps
+        take a substantially longer time to set up. Once finished, you can:
+
+        - **Open Workspace**, which opens the Dash Enterprise IDE.
+        - **Open Development App**, which opens the app run within the IDE.
+        - **Restart Workspace**, which restarts the workspace container,
+        preserving any changed files, and updating to reflect changed
+        environment variables, attached databases, apt-packages and python
+        packages in requirements.txt.
+        - **Delete Workspace**, which destroys everything related to the
+        workspace and is non-recoverable.
+    ''')
+])
+
+WorkspacesIDE = html.Div(children=[
+    html.H1('Using the IDE'),
+
+    Blockquote(),
+
+    rc.Markdown('''
+        Once you are in the IDE itself, it functions basically like a web-based
+        version of VS Code, although some of the functionality is slightly
+        different (See Warnings & Limitations Below). Right now, it may open to
+        an empty screen. I would suggest clicking the pages icon on the
+        left-hand side to open the file view and opening a Terminal by going to
+        Terminal in the top bar and clicking **New Terminal**.
+    '''),
+
+    rc.Markdown('''***'''),
+    html.H2('Setting Up'),
+    rc.Markdown('''
+        In the file view, you should see either the files for the deployed app
+        or the python sample app, depending on how you created your workspace.
+        In the terminal, you can run any commands you would be able to on an
+        linux machine, such as pip and apt package installs.
+    '''),
+
+    rc.Markdown('''***'''),
+    html.H2('Starting the Development App'),
+    rc.Markdown('''
+        You can start the Development App by typing `python app.py` or start it
+        with the gunicorn command in your Procfile (usually something like
+        `gunicorn app:server –workers 2`). Because it shares the production
+        databases, you are able to dynamically update data without the need to
+        re-deploy your app.
+    '''),
+
+    rc.Markdown('''***'''),
+    html.H2('Jupyter'),
+    rc.Markdown('''
+        You also have access to Jupyter notebooks, which can be started by
+        pressing **F1** – this should open a command pallete – and typing
+        `Python: Create New Blank Jupyter Notebook`. When creating one,
+        sometimes it disconnects for a few seconds. This is normal. Just wait
+        for a bit, and it should reconnect. This is a good way to quickly
+        visualize figures before putting them into your Dash app.
+    '''),
+
+    rc.Markdown('''***'''),
+    html.H2('Live Preview'),
+    rc.Markdown('''
+        You may also open up a live preview of the Development App that you
+        started by pressing **F1** and typing `Preview: Open Url`. This should
+        open a prompt to open a view of a page. Enter
+        `https://DE-SERVER-DOMAIN/Workspaces/view/APPNAME/`, replacing
+        `DE_SERVER_DOMAIN` with your Dash Enterprise domain name and `APPNAME`
+        with the name of your app. If you update your code in the IDE, you
+        should see your app instantly update.
+    '''),
+
+    rc.Markdown('''***'''),
+    html.H2('Pushing Changes'),
+    rc.Markdown('''
+        When you're ready to send your changes to production, all you have to
+        do is commit your changes and type
+        ```shell
+        $ git push
+        ```
+    ''')
+])
+
+WorkspacesWarnings = html.Div(children=[
+    html.H1('Warnings, Limitations, and Gotchas'),
+
+    Blockquote(),
+
+    rc.Markdown('''
+        - Only the owner of the app has the ability to create, view, restart,
+        or delete a workspace for that app.
+        - Databases are the same as production, which means that it is possible
+        to delete data from a production database while using a workspace.
+        - It is currently not available in HA mode.
+        - In order to use its full functionality in airgapped mode, you should
+        add versions of `jupyter` and `python-language-server` to your internal
+        pypi server for the default python version of 3.7.4. You should also
+        add any other versions that you might specify in runtime.txt for an
+        app. This is to guarantee that jupyter and syntax highlighting work for
+        your specific python versions.
+        - The debugger does not work.
+        - The URL printed when you start the app with `python app.py` doesn't
+        work. Instead, click on the **Open Development App** Button on the
+        Workspaces page for that app.
+    ''')
+
+])
+
+WorkspacesErrors = html.Div(children=[
+    html.H1('Common Errors'),
+
+    Blockquote(),
+
+    rc.Markdown('''
+        - If your app is running `dash<1.10.0`, you must either update dash or
+        add `host='0.0.0.0'` to your `app.run_server()` command in order to view
+        your development app.
+        - If your workspace has a process currently running in the terminal, if
+        you refresh the page, it sometimes gets caught in a loading state. The
+        solution to this is to empty your cache/cookies.
+    ''')
+])
