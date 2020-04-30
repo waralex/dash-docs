@@ -4,6 +4,6 @@ from dash_docs import reusable_components as rc
 
 
 layout = html.Div([
-    html.H1('dash_table.DataTable Reference'),
+    html.H1(html.Code('dash_table.DataTable')),
     rc.ComponentReference('DataTable', dash_table)
 ])
