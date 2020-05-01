@@ -13,8 +13,8 @@ layout = html.Div(
         rc.Markdown("""
         # DataTable Filtering
 
-        As discussed in the [interactivity chapter](/interactivity), `DataTable` includes
-        filtering capabilities.
+        As discussed in the <dccLink href="/datatable/interactivity">interactivity chapter</dccLink>,
+        `DataTable` includes filtering capabilities.
         Set `filter_action='native'` for clientside (front-end) filtering
         or `filter_action='custom'` to perform your own filtering in Python.
 
