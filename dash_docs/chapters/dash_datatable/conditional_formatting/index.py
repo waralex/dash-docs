@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*- 
 from collections import OrderedDict
 import dash_core_components as dcc
 import dash_html_components as html
