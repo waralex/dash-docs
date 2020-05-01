@@ -192,6 +192,10 @@ layout = html.Div(
         suggestions, see [http://clrs.cc/](http://clrs.cc/).
         - Since we're using `.format`, we escape `{` with `{{` and `}` with `}}`.
         - To highlight a row, omit `column_id`. To highlight a particular cell, include `column_id`.
+        - `style_cell_conditional` (all cells, including headers),
+        `style_header_conditional` (header cells),
+        `style_filter_conditional` (filter input boxes)
+        are alternative keywords that can be used for filtering other parts of the table.
         - Limitation - If the table is editable, then the maximum value could change
         if the user edits the table. Since this example hard codes the
         maximum value in the filter expression, the highlighting value
