@@ -68,6 +68,7 @@ layout = html.Div(
         **Text & String Filtering**
 
         - `United`
+        - `= United`
         - `United States`
         - `"United States"`
         - `= United States`
@@ -87,6 +88,10 @@ layout = html.Div(
         `>`, `>=`, `<`, and `<=` compare strings in dictionary order,
         with numbers and most symbols coming before letters,
         and uppercase coming before lowercase.
+
+        If you have quotes in the string, you can use a different quote, or
+        escape the quote character. So `eq 'Say "Yes!"'` and
+        `="Say \\"Yes!\\""` are the same.
 
         **Numeric Filtering**
 
@@ -112,30 +117,14 @@ layout = html.Div(
         - `datestartswith 2020-01-01`
         - `datestartswith 2020-01-01 04:01`
         - `datestartswith 2020-01-01 04:01:10`
-
-        To filter on a column you can enter either an operator and a value
-        (for example `> 5000`) or just a value (`5000`) to use the default
-        operator for that column's data type.
-
-        Simple strings can be entered plain:
-        - `= Asia` in the "continent" column
-        - `B` in the "country" column matches all countries that contain a
-          capital B
-
-        But if you have spaces or special characters (including `-`,
-        particularly in dates)  you need to wrap them in quotes.
-        Single quotes `'`, double quotes `"`, or backticks `` ` `` all work.
-        - `= "Bosnia and Herzegovina"`
-        - `>='2008-12-01'`
-
-        If you have quotes in the string, you can use a different quote, or
-        escape the quote character. So `eq 'Say "Yes!"'` and
-        `="Say \\"Yes!\\""` are the same.
-
-        Numbers can be entered plain (previously they needed to be wrapped in
-        `num()`):
-        - `> 5000` in the "gdpPercap" column
-        - `< 80` in the `lifeExp` column
+        - `> 2020-01`
+        - `> 2020-01-20`
+        - `>= 2020-01`
+        - `>= 2020-01-20`
+        - `< 2020-01`
+        - `< 2020-01-20`
+        - `<= 2020-01`
+        - `<= 2020-01-20`
 
         ## Operators
 

@@ -30,13 +30,8 @@ app.layout = dash_table.DataTable(
     style_table={
         'height': 400,
     },
-    css=[{
-        'selector': 'table',
-        'rule': 'table-layout: fixed'  # note - this does not work with fixed_rows
-    }],
-    fixed_rows={'headers': True},
     style_data={
-        'width': '{}%'.format(100. / len(df.columns)),
+        'width': '150px', 'minWidth': '150px', 'maxWidth': '150px',
         'overflow': 'hidden',
         'textOverflow': 'ellipsis',
     }
