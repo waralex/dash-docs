@@ -13,6 +13,12 @@ data = OrderedDict(
 )
 df_regions = pd.DataFrame(data)
 
+df_datatypes = df_regions
+df_datatypes['Delivery'] = [
+    "2015-01-02", "2015-10-24", "2016-05-15",
+    "2017-01-14", "2018-05-10", "2018-08-11"
+]
+
 data_election = OrderedDict(
     [
         (

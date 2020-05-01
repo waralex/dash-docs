@@ -48,9 +48,12 @@ layout = html.Div(
         property. The `if` keyword provides a set of conditional formatting
         statements and the rest of the keywords are camelCased CSS properties.
 
-        The `if` syntax supports three operators: `row_index`, `column_id`,
-        and `filter_query`. `filter_query` is the most flexible option.
-        Here is an example of all three:
+        The `if` syntax supports several operators, `row_index`, `column_id`,
+        `filter_query`, `column_type`, `column_editable`, and `state`.
+
+        `filter_query` is the most flexible option when dealing with data.
+
+        Here is an example of all operators:
         """),
 
         Display("""
@@ -60,9 +63,14 @@ layout = html.Div(
             data=df.to_dict('records'),
             sort_action='native',
             columns=[
-                {"name": i, "id": i} for i in df.columns
-                if i != 'id'
+                {'name': 'Date', 'id': 'Date', 'type': 'datetime', 'editable': False},
+                {'name': 'Delivery', 'id': 'Delivery', 'type': 'datetime'},
+                {'name': 'Region', 'id': 'Region', 'type': 'text'},
+                {'name': 'Temperature', 'id': 'Temperature', 'type': 'numeric'},
+                {'name': 'Humidity', 'id': 'Humidity', 'type': 'numeric'},
+                {'name': 'Pressure', 'id': 'Pressure', 'type': 'any'},
             ],
+            editable=True,
             style_data_conditional=[
                 {
                     'if': {
@@ -93,7 +101,7 @@ layout = html.Div(
 
                 {
                     'if': {
-                        'row_index': 5,
+                        'row_index': 5,  # number | 'odd' | 'even'
                         'column_id': 'Region'
                     },
                     'backgroundColor': 'hotpink',
@@ -102,21 +110,77 @@ layout = html.Div(
 
                 {
                     'if': {
-                        'filter_query': '{id} = 4',
+                        'filter_query': '{id} = 4',  # matching rows of a hidden column with the id, `id`
                         'column_id': 'Region'
                     },
                     'backgroundColor': 'RebeccaPurple'
-                }
+                },
+
+                {
+                    'if': {
+                        'filter_query': '{Delivery} > {Date}', # comparing columns to each other
+                        'column_id': 'Delivery'
+                    },
+                    'backgroundColor': '#3D9970'
+                },
+
+                {
+                    'if': {
+                        'column_editable': False  # True | False
+                    },
+                    'backgroundColor': 'rgb(240, 240, 240)',
+                    'cursor': 'not-allowed'
+                },
+
+                {
+                    'if': {
+                        'column_type': 'text'  # 'text' | 'any' | 'datetime' | 'numeric'
+                    },
+                    'textAlign': 'left'
+                },
+
             ]
         )
         del df['id']  # no-display
         """),
+
+        # TODO - Add this block in when 1.13 is out.
+        # {
+        #     'if': {
+        #         'state': 'active'  # 'active' | 'selected'
+        #     },
+        #     'backgroundColor': 'DodgerBlue',
+        #     'opacity': 0.5,
+        #     'border': '2px solid DodgerBlue'
+        # }
+
         rc.Markdown(
         '''
         Notes:
+        - `filter_query` supports different operators depending on the data type
+        of the column:
+
+          - `=`, `>`, `>=`, `<`, `<=`, and `contains` are supported by
+          all data types (`numeric`, `text`, `datetime`, and `any`)
+          - With `contains`, the right-hand-side needs to be a string,
+          so `{Date} contains "01"` will work but `{Date} contains 1` will not.
+          - `datestartswith` is supported by `datetime`
+          - `is nil` is supported by all data types
+          - `is blank` is supported by all data types
+
+        - A column's default data type is `any`
+        - `column_type` refers to the data type of the column (`numeric`, `text`, `datetime`, and `any`)
+        - `column_editable` can be equal to `True` or `False` (new in Dash 1.12.0)
+        - `state` can be equal to `'active'` or `'selected'` (new in Dash 1.12.0)
         - `row_index` is absolute - if you filter or sort your table,
            the 5th row will remain highlighted. Try sorting the columns and
            notice how "San Francisco" remains highlighted but "London" does not.
+        - `column_id`, `row_index`, and `header_index` can be equal to a scalar
+        (as above) or a _list of values_. For example, `'column_id': ['Region', 'Pressure']`
+        is valid (new in Dash 1.12.0). `DataTable` filtering & conditional formatting
+        performs faster when specified a list of values vs a list of separate `if` blocks.
+        - Note `'filter_query': '{Delivery} > {Date}'`: Filter queries can compare columns
+        to each other!
         - `id` is a special hidden column that can be used as an alternative
         to `row_index` for highlighting data by index. Since each row has a
         unique `id`, the conditional formatting associated with this `id`
@@ -592,48 +656,18 @@ layout = html.Div(
         del df_wide['id'] # no-display
         '''),
 
-        rc.Markdown('''
-        ### Highlighting empty strings
-        '''),
-
-        Display(
-        '''
-        df = df_with_none  # no-display
-        result = html.Div([
-            html.Pre(repr(df)),
-            dash_table.DataTable(
-                data=df.to_dict('records'),
-                columns=[{'name': i, 'id': i} for i in df.columns],
-                style_data_conditional=(
-                    [
-                        {
-                            'if': {
-                                'filter_query': '{{{}}} = ""'.format(col),
-                                'column_id': col
-                            },
-                            'backgroundColor': 'tomato',
-                            'color': 'white'
-                        } for col in df.columns
-                    ]
-                )
-            )
-        ])
-        '''
-        ),
-
         rc.Markdown('### Highlighting None, NaN, or empty string values'),
 
         rc.Markdown('''
-        Filter queries cannot match None, NaN, or null values. So, to match
-        these values we have to convert these cells to an empty string.
-        See [plotly/dash-table#768](https://github.com/plotly/dash-table/issues/768)
-        for updates on support to do this without `.fillna`.
+        Three filter queries help with empty or blank values:
+        - `{my_column} is nil` will match `None` values
+        - `{my_column} is blank` will match `None` values and empty strings
+        - `{my_column} = ""` will match empty strings
         '''),
 
         Display(
         '''
         df = df_with_none
-        df = df.fillna('')
         result = html.Div([
             html.Pre(repr(df)),
             dash_table.DataTable(
@@ -643,7 +677,7 @@ layout = html.Div(
                     [
                         {
                             'if': {
-                                'filter_query': '{{{}}} = ""'.format(col),
+                                'filter_query': '{{{}}} is blank'.format(col),
                                 'column_id': col
                             },
                             'backgroundColor': 'tomato',
