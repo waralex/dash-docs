@@ -234,7 +234,7 @@
             "url": "/dash-core-components/store",
             "name": "dcc.Store",
             "description": "Official examples and reference documentation for dcc.Store. dcc.Store is a dash_core_components component.",
-            "meta_keywords": "children, n_clicks, key, style, form, name, type, content, low, max, min, label, selected, required, size, colSpan, rows, default, options, date, multi, figure, list, refresh, debug, count, included, storage_type, data, clear_data, modified_timestamp, columns, css, on, stylesheet, layout, pan, styles"
+            "meta_keywords": "children, n_clicks, key, style, form, name, type, content, low, max, min, label, selected, required, size, colSpan, rows, default, options, date, multi, figure, list, refresh, debug, count, storage_type, data, clear_data, modified_timestamp, columns, css, on, stylesheet, layout, pan, styles"
           },
           {
             "url": "/dash-core-components/tab",
