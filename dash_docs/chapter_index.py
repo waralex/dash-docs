@@ -359,11 +359,20 @@ URLS = [
                         'description': '''
                             The style of the DataTable is highly customizable. This chapter
                             includes examples for:
-                            - Conditional formatting
                             - Displaying multiple rows of headers
-                            - Highlighting rows, columns, and cells
+                            - Text alignment
                             - Styling the table as a list view
                             - Changing the colors (including a dark theme!)
+                        '''
+                    },
+
+                    {
+                        'url': '/datatable/conditional-formatting',
+                        'content': chapters.dash_datatable.conditional_formatting.index.layout,
+                        'name': 'Conditional Formatting',
+                        'description': '''
+                            Several examples of how to highlight certain cells,
+                            rows, or columns based on their value or state.
                         '''
                     },
 

@@ -5,107 +5,19 @@ import pandas as pd
 
 import dash_table
 from dash_docs import reusable_components as rc
-
-data = OrderedDict(
-    [
-        ("Date", ["2015-01-01", "2015-10-24", "2016-05-10", "2017-01-10", "2018-05-10", "2018-08-15"]),
-        ("Region", ["Montreal", "Toronto", "New York City", "Miami", "San Francisco", "London"]),
-        ("Temperature", [1, -20, 3.512, 4, 10423, -441.2]),
-        ("Humidity", [10, 20, 30, 40, 50, 60]),
-        ("Pressure", [2, 10924, 3912, -10, 3591.2, 15]),
-    ]
-)
-
-df = pd.DataFrame(data)
-
-data_election = OrderedDict(
-    [
-        (
-            "Date",
-            [
-                "July 12th, 2013 - July 25th, 2013",
-                "July 12th, 2013 - August 25th, 2013",
-                "July 12th, 2014 - August 25th, 2014",
-            ],
-        ),
-        (
-            "Election Polling Organization",
-            ["The New York Times", "Pew Research", "The Washington Post"],
-        ),
-        ("Rep", [1, -20, 3.512]),
-        ("Dem", [10, 20, 30]),
-        ("Ind", [2, 10924, 3912]),
-        (
-            "Region",
-            [
-                "Northern New York State to the Southern Appalachian Mountains",
-                "Canada",
-                "Southern Vermont",
-            ],
-        ),
-    ]
-)
-moby_dick_text = [
-    'Call me Ishmael. ',
-    ''.join([
-        'Some years ago- never mind how long precisely- having little or no money ',
-        'in my purse, and nothing particular to interest me on shore, ',
-        'I thought I would sail about a little and see the watery part of the world. ',
-    ]),
-    'It is a way I have of driving off the spleen and regulating the circulation.'
-]
-
-moby_dick = OrderedDict(
-    [
-        (
-            'Sentence Number', [i+1 for i in range(len(moby_dick_text))],
-        ),
-        (
-            'Text', [i for i in moby_dick_text]
-        )
-    ]
-)
-
-data_numeric = pd.DataFrame(OrderedDict(
-    [
-        [
-            'Column {}'.format(i + 1), list(range(30))
-        ] for i in range(15)
-    ]
-))
-
-df_election = pd.DataFrame(data_election)
-df_long = pd.DataFrame(
-    OrderedDict([(name, col_data * 10) for (name, col_data) in data.items()])
-)
-df_long_columns = pd.DataFrame(
-    {
-        "This is Column {} Data".format(i): [1, 2]
-        for i in range(10)
-    }
-)
-
-many_columns = OrderedDict(
-    [
-        ('Column {}'.format(i+1), [51231.431, 3124.31, 1234.124, 122412.31])
-        for i in range(15)
-    ]
-)
-df_15_columns = pd.DataFrame(many_columns)
-df_moby_dick = pd.DataFrame(moby_dick)
-
-df_numeric = pd.DataFrame(data_numeric)
+from dash_docs import datasets
 
 Display = rc.CreateDisplay({
     'dash_table': dash_table,
     'html': html,
-    'df': df,
-    'df_election': df_election,
-    'df_long': df_long,
-    'df_long_columns': df_long_columns,
-    'df_15_columns': df_15_columns,
-    'df_moby_dick': df_moby_dick,
-    'df_numeric': df_numeric,
+    'df': datasets.df_regions,
+    'df_regions': datasets.df_regions,
+    'df_election': datasets.df_election,
+    'df_long': datasets.df_long,
+    'df_long_columns': datasets.df_long_columns,
+    'df_15_columns': datasets.df_15_columns,
+    'df_moby_dick': datasets.df_moby_dick,
+    'df_numeric': datasets.df_numeric,
     'pd': pd
 })
 
@@ -125,121 +37,12 @@ layout = html.Div(
         ),
         Display(
         '''
-        dash_table.DataTable(
+        result = dash_table.DataTable(
             data=df.to_dict('records'),
             columns=[{'id': c, 'name': c} for c in df.columns]
         )
         '''
         ),
-
-        rc.Markdown(
-        '''
-        > The set of examples on this page are rendered with a few different
-        > dataframes that have different sizes and shapes. In particular,
-        > some of the dataframes have a large number of columns or have cells
-        > with long contents. If you'd like to follow along on your own
-        > machine, then open up the menu below to copy and paste
-        > the code behind these datasets.
-        '''
-        ),
-
-        html.Details(open=False, children=[
-            html.Summary('View the Datasets'),
-            rc.Markdown(
-            '''
-            ```python
-            data = OrderedDict(
-                [
-                    ("Date", ["2015-01-01", "2015-10-24", "2016-05-10", "2017-01-10", "2018-05-10", "2018-08-15"]),
-                    ("Region", ["Montreal", "Toronto", "New York City", "Miami", "San Francisco", "London"]),
-                    ("Temperature", [1, -20, 3.512, 4, 10423, -441.2]),
-                    ("Humidity", [10, 20, 30, 40, 50, 60]),
-                    ("Pressure", [2, 10924, 3912, -10, 3591.2, 15]),
-                ]
-            )
-
-            df = pd.DataFrame(data)
-
-            many_columns = OrderedDict(
-                [
-                    ('Column {}'.format(i), [51231.431, 3124.31, 1234.124, 122412.31])
-                    for i in range(15)
-                ]
-            )
-
-            election_data = OrderedDict(
-                [
-                    (
-                        "Date",
-                        [
-                            "July 12th, 2013 - July 25th, 2013",
-                            "July 12th, 2013 - August 25th, 2013",
-                            "July 12th, 2014 - August 25th, 2014",
-                        ],
-                    ),
-                    (
-                        "Election Polling Organization",
-                        ["The New York Times", "Pew Research", "The Washington Post"],
-                    ),
-                    ("Rep", [1, -20, 3.512]),
-                    ("Dem", [10, 20, 30]),
-                    ("Ind", [2, 10924, 3912]),
-                    (
-                        "Region",
-                        [
-                            "Northern New York State to the Southern Appalachian Mountains",
-                            "Canada",
-                            "Southern Vermont",
-                        ],
-                    ),
-                ]
-            )
-
-            data_numeric = pd.DataFrame(OrderedDict(
-                [
-                    [
-                        'Column {}'.format(i + 1), list(range(30))
-                    ] for i in range(15)
-                ]
-            ))
-
-            moby_dick_text = [
-                'Call me Ishmael. ',
-                ''.join([
-                    'Some years ago- never mind how long precisely- having little or no money ',
-                    'in my purse, and nothing particular to interest me on shore, ',
-                    'I thought I would sail about a little and see the watery part of the world. ',
-                ]),
-                'It is a way I have of driving off the spleen and regulating the circulation.'
-            ]
-
-            moby_dick = OrderedDict(
-                [
-                    (
-                        'Sentence Number', [i+1 for i in range(len(moby_dick_text))],
-                    ),
-                    (
-                        'Text', [i for i in moby_dick_text]
-                    )
-                ]
-            )
-
-            df_election = pd.DataFrame(election_data)
-            df_long = pd.DataFrame(
-                OrderedDict([(name, col_data * 10) for (name, col_data) in election_data.items()])
-            )
-            df_long_columns = pd.DataFrame(
-                {
-                    "This is Column {} Data".format(i): [1, 2]
-                    for i in range(10)
-                }
-            )
-            df_15_columns = pd.DataFrame(many_columns)
-            df_numeric = pd.DataFrame(data_numeric)
-            df_moby_dick = pd.DataFrame(long_cells)
-            ```
-            ''')
-        ]),
 
         html.Hr(),
 
@@ -285,13 +88,14 @@ layout = html.Div(
 
         Display(
         '''
-        dash_table.DataTable(
+        df = df_election # no-display
+        result = dash_table.DataTable(
             style_data={
                 'whiteSpace': 'normal',
                 'height': 'auto',
             },
-            data=df_election.to_dict('records'),
-            columns=[{'id': c, 'name': c} for c in df_election.columns]
+            data=df.to_dict('records'),
+            columns=[{'id': c, 'name': c} for c in df.columns]
         )
         '''),
 
@@ -306,14 +110,15 @@ layout = html.Div(
         ),
         Display(
         '''
-        dash_table.DataTable(
+        df = df_election # no-display
+        result = dash_table.DataTable(
             style_data={
                 'whiteSpace': 'normal',
                 'height': 'auto',
                 'lineHeight': '15px'
             },
-            data=df_election.to_dict('records'),
-            columns=[{'id': c, 'name': c} for c in df_election.columns]
+            data=df.to_dict('records'),
+            columns=[{'id': c, 'name': c} for c in df.columns]
         )
         '''),
 
@@ -327,12 +132,13 @@ layout = html.Div(
         ),
         Display(
         """
-        dash_table.DataTable(
+        df = df_moby_dick # no-display
+        result = dash_table.DataTable(
             style_data={
                 'whiteSpace': 'normal',
             },
-            data=df_moby_dick.to_dict('records'),
-            columns=[{'id': c, 'name': c} for c in df_moby_dick.columns],
+            data=df.to_dict('records'),
+            columns=[{'id': c, 'name': c} for c in df.columns],
             css=[{
                 'selector': '.dash-spreadsheet td div',
                 'rule': '''
@@ -346,7 +152,7 @@ layout = html.Div(
                 {
                     column: {'value': str(value), 'type': 'markdown'}
                     for column, value in row.items()
-                } for row in df_moby_dick.to_dict('rows')
+                } for row in df.to_dict('rows')
             ],
             tooltip_duration=None,
 
@@ -395,9 +201,10 @@ layout = html.Div(
         ),
         Display(
         '''
-        dash_table.DataTable(
-            data=df_election.to_dict('records'),
-            columns=[{'id': c, 'name': c} for c in df_election.columns],
+        df = df_election # no-display
+        result = dash_table.DataTable(
+            data=df.to_dict('records'),
+            columns=[{'id': c, 'name': c} for c in df.columns],
             style_cell={
                 'overflow': 'hidden',
                 'textOverflow': 'ellipsis',
@@ -428,9 +235,10 @@ layout = html.Div(
         ),
         Display(
         '''
-        dash_table.DataTable(
-            data=df_election.to_dict('records'),
-            columns=[{'id': c, 'name': c} for c in df_election.columns],
+        df = df_election # no-display
+        result = dash_table.DataTable(
+            data=df.to_dict('records'),
+            columns=[{'id': c, 'name': c} for c in df.columns],
             style_cell={
                 'overflow': 'hidden',
                 'textOverflow': 'ellipsis',
@@ -440,7 +248,7 @@ layout = html.Div(
                 {
                     column: {'value': str(value), 'type': 'markdown'}
                     for column, value in row.items()
-                } for row in df_election.to_dict('rows')
+                } for row in df.to_dict('rows')
             ],
             tooltip_duration=None
         )
@@ -457,9 +265,10 @@ layout = html.Div(
 
         Display(
         '''
-        dash_table.DataTable(
-            data=df_election.to_dict('records'),
-            columns=[{'id': c, 'name': c} for c in df_election.columns],
+        df = df_election # no-display
+        result = dash_table.DataTable(
+            data=df.to_dict('records'),
+            columns=[{'id': c, 'name': c} for c in df.columns],
             style_table={'overflowX': 'auto'},
         )
         '''),
@@ -488,9 +297,10 @@ layout = html.Div(
 
         Display(
         '''
-        dash_table.DataTable(
-            data=df_election.to_dict('records'),
-            columns=[{'id': c, 'name': c} for c in df_election.columns],
+        df = df_election # no-display
+        result = dash_table.DataTable(
+            data=df.to_dict('records'),
+            columns=[{'id': c, 'name': c} for c in df.columns],
             style_table={'overflowX': 'auto'},
             style_cell={
                 'height': 'auto',
@@ -505,9 +315,10 @@ layout = html.Div(
 
         Display(
         '''
-        dash_table.DataTable(
-            data=df_election.to_dict('records'),
-            columns=[{'id': c, 'name': c} for c in df_election.columns],
+        df = df_election # no-display
+        result = dash_table.DataTable(
+            data=df.to_dict('records'),
+            columns=[{'id': c, 'name': c} for c in df.columns],
             style_table={'overflowX': 'auto'},
             style_cell={
                 # all three widths are needed
@@ -529,9 +340,10 @@ layout = html.Div(
 
         Display(
         '''
-        dash_table.DataTable(
-            data=df_election.to_dict('records'),
-            columns=[{'id': c, 'name': c} for c in df_election.columns],
+        df = df_election # no-display
+        result = dash_table.DataTable(
+            data=df.to_dict('records'),
+            columns=[{'id': c, 'name': c} for c in df.columns],
             fixed_columns={'headers': True, 'data': 1},
             style_table={'minWidth': '100%'}
         )
@@ -545,9 +357,10 @@ layout = html.Div(
 
         Display(
         '''
-        dash_table.DataTable(
-            data=df_election.to_dict('records'),
-            columns=[{'id': c, 'name': c} for c in df_election.columns],
+        df = df_election # no-display
+        result = dash_table.DataTable(
+            data=df.to_dict('records'),
+            columns=[{'id': c, 'name': c} for c in df.columns],
             fixed_columns={ 'headers': True, 'data': 1 },
             style_table={'minWidth': '100%'},
             style_cell={
@@ -574,7 +387,21 @@ layout = html.Div(
 
         Display(
         '''
-        dash_table.DataTable(
+        result = dash_table.DataTable(
+            data=df.to_dict('records'),
+            columns=[{'id': c, 'name': c} for c in df.columns],
+            style_cell_conditional=[
+                {'if': {'column_id': 'Date'},
+                 'width': '30%'},
+                {'if': {'column_id': 'Region'},
+                 'width': '30%'},
+            ]
+        )
+        '''),
+
+        Display(
+        '''
+        result = dash_table.DataTable(
             data=df.to_dict('records'),
             columns=[{'id': c, 'name': c} for c in df.columns],
             style_cell_conditional=[
@@ -664,7 +491,7 @@ layout = html.Div(
 
         Display(
         '''
-        dash_table.DataTable(
+        result = dash_table.DataTable(
             data=df.to_dict('records'),
             columns=[{'id': c, 'name': c} for c in df.columns],
             style_cell_conditional=[
@@ -689,7 +516,7 @@ layout = html.Div(
 
         Display(
         '''
-        dash_table.DataTable(
+        result = dash_table.DataTable(
             data=df.to_dict('records'),
             columns=[{'id': c, 'name': c} for c in df.columns],
             style_data={

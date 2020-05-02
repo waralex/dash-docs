@@ -13,39 +13,118 @@ layout = html.Div(
         rc.Markdown("""
         # DataTable Filtering
 
-        As discussed in the [interactivity chapter](), `DataTable` includes
-        filtering capabilities. Users can turn on filtering options by defining
-        the `filtering` attribute. `filter_action='native'` will initiate clientside
-        (front-end) filtering. Alternatively you can specify `filter_action='native'`.
-        If the DataTable is quite large, clientside filtering will likely
-        become slow. Using the back-end filtering option: `filter_action='custom'`
-        will allow serverside filtering.
+        As discussed in the <dccLink href="/datatable/interactivity">interactivity chapter</dccLink>,
+        `DataTable` includes filtering capabilities.
+        Set `filter_action='native'` for clientside (front-end) filtering
+        or `filter_action='custom'` to perform your own filtering in Python.
 
-        ## Filtering Syntax
+        `filter_action='native'` will work well up to 10,000-100,000 rows.
+        After which, you may want to use `filter_action='custom'` so that your
+        app sends less data over the network into the browser.
+        """),
 
-        To filter on a column you can enter either an operator and a value
-        (for example `> 5000`) or just a value (`5000`) to use the default
-        operator for that column's data type.
+        rc.Markdown(
+            examples['filtering_fe.py'][0],
+            style=styles.code_container
+        ),
 
-        Simple strings can be entered plain:
-        - `= Asia` in the "continent" column
-        - `B` in the "country" column matches all countries that contain a
-          capital B
+        html.Div(
+            examples['filtering_fe.py'][1],
+            className='example-container'
+        ),
 
-        But if you have spaces or special characters (including `-`,
-        particularly in dates)  you need to wrap them in quotes.
-        Single quotes `'`, double quotes `"`, or backticks `` ` `` all work.
-        - `= "Bosnia and Herzegovina"`
-        - `>='2008-12-01'`
+        rc.Markdown(
+        '''
+        Notes:
+        - As above, we recommend fixing column widths with filtering. Otherwise, the column
+        widths will grow or shrink depending on how wide the data is within the columns.
+        - There is a bug with `fixed_rows` that prevents horizontal scroll
+        when no filter results are returned. Until this bug is fixed, we recommend
+        avoiding `fixed_rows`. For updates, see [plotly/dash-table#746](https://github.com/plotly/dash-table/issues/746)
+        - The default filtering behavior will depend on the data type of the column (see below).
+        Data types are not inferred, so you have to set them manually.
+
+        The example below **determines the datatype of the column automatically with Pandas**:
+        '''
+        ),
+
+        rc.Markdown(
+            examples['filtering_fe_autotype.py'][0],
+            style=styles.code_container
+        ),
+
+        html.Div(
+            examples['filtering_fe_autotype.py'][1],
+            className='example-container'
+        ),
+
+        rc.Markdown("""
+        ## Filtering Operators
+
+        The filtering syntax is data-type specific.
+        Data types are not inferred, they must be [set manually](/datatable/typing).
+        If a type is not specified, then we assume it is a string (text).
+
+        **Text & String Filtering**
+
+        - `United`
+        - `= United`
+        - `United States`
+        - `"United States"`
+        - `= United States`
+        - `= "United States"`
+        - `contains United`
+        - `> United`
+        - `>= United`
+        - `< United`
+        - `<= United`
+
+        By default, the columns with the "text" type use the
+        `contains` operator. So, searching `United` is the same as
+        `contains United`
+
+        For legacy purposes, `eq` can also be substituted for `=`.
+
+        `>`, `>=`, `<`, and `<=` compare strings in dictionary order,
+        with numbers and most symbols coming before letters,
+        and uppercase coming before lowercase.
 
         If you have quotes in the string, you can use a different quote, or
         escape the quote character. So `eq 'Say "Yes!"'` and
         `="Say \\"Yes!\\""` are the same.
 
-        Numbers can be entered plain (previously they needed to be wrapped in
-        `num()`):
-        - `> 5000` in the "gdpPercap" column
-        - `< 80` in the `lifeExp` column
+        **Numeric Filtering**
+
+        - `43.828`
+        - `= 43.828`
+        - `> 43.828`
+        - `>= 43.828`
+        - `< 43.828`
+        - `<= 43.828`
+
+        By default, columns with the `numeric` type use the `=` operator.
+        So, searching `43.828` is the same as `= 43.828`.
+
+        **Datetime Filtering**
+
+        - `2020`
+        - `2020-01`
+        - `2020-01-01`
+        - `2020-01-01 04:01`
+        - `2020-01-01 04:01:10`
+        - `datestartswith 2020`
+        - `datestartswith 2020-01`
+        - `datestartswith 2020-01-01`
+        - `datestartswith 2020-01-01 04:01`
+        - `datestartswith 2020-01-01 04:01:10`
+        - `> 2020-01`
+        - `> 2020-01-20`
+        - `>= 2020-01`
+        - `>= 2020-01-20`
+        - `< 2020-01`
+        - `< 2020-01-20`
+        - `<= 2020-01`
+        - `<= 2020-01-20`
 
         ## Operators
 
@@ -104,21 +183,6 @@ layout = html.Div(
             """))
         ])]),
         html.Br(),
-
-        rc.Markdown("""
-
-        ## Frontend Filtering Example:
-
-        """),
-        rc.Markdown(
-            examples['filtering_fe.py'][0],
-            style=styles.code_container
-        ),
-
-        html.Div(
-            examples['filtering_fe.py'][1],
-            className='example-container'
-        ),
 
         rc.Markdown("""
         ## Back-end Filtering
