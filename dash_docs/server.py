@@ -2,14 +2,13 @@
 from dash import Dash
 from flask import redirect, escape, request
 
-from .chapter_index import URL_TO_CONTENT_MAP
 from .convert_to_html import convert_to_html
 
 
 class CustomDash(Dash):
     def interpolate_index(self, **kwargs):
         # import later to prevent circular imports - yikes
-        from .chapter_index import URL_TO_META_MAP
+        from .chapter_index import URL_TO_META_MAP, URL_TO_CONTENT_MAP
         kwargs.pop('title')
 
         if request.path in URL_TO_META_MAP:
@@ -24,15 +23,20 @@ class CustomDash(Dash):
             ),
             **kwargs
         )
-        if 'request.path' not in URL_TO_CONTENT_MAP:
+        if request.path not in URL_TO_CONTENT_MAP:
             meta_kwargs['ssr_content'] = '404'
         else:
             try:
-                meta_kwargs['ssr_content'] = convert_to_html(
-                    URL_TO_CONTENT_MAP[request.path])
+                meta_kwargs['entry_point'] = '''
+                    <div id="react-entry-point">
+                        {ssr_content}
+                    </div>
+                '''.format(ssr_content=convert_to_html(
+                    URL_TO_CONTENT_MAP[request.path]))
+
             except Exception as e:
                 print(e)
-                meta_kwargs['ssr_content'] = 'Error rendering content: \n{}'.format(e)
+                meta_kwargs['entry_point'] = '<div>Error rendering content: \n{}</div>'.format(e)
 
         return ('''<!DOCTYPE html>
         <html>
@@ -61,8 +65,7 @@ class CustomDash(Dash):
                 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N6T2RXG"
                     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         ''' + '''
-                {ssr_content}
-                {app_entry}
+                {entry_point}
                 <footer>
                     {config}
                     {scripts}
