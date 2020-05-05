@@ -18,7 +18,7 @@ html_tag_regex = re.compile(
                  <
                  /?                  # Permit closing tags
                  ([A-Za-z][^\s>/]*)  # Capture the tag name to backreference 1
-                 (?:                 # Attribute value branch:  
+                 (?:                 # Attribute value branch:
                     = \s*            #   Signals the start of an attribute value
                     (?: "[^"]*"      #   Double-quoted attribute value
                     | '[^']*'        #   Single-quoted attribute value
@@ -102,6 +102,8 @@ def dcc_to_html(component):
 def convert_to_html(component):
     if isinstance(component, str):
         component = html.Span(component)
+    if component is None:
+        return ''
     component_dict = component.to_plotly_json()
     if component_dict['type'] == 'Link':
         component_dict['namespace'] = 'dash_html_components'
