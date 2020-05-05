@@ -1,11 +1,13 @@
+/* Hide ._dash-loading on first paint since SSR content will be visible */
+._dash-loading {
+    display: none;
+}
+
 #chapter[data-dash-is-loading="true"] {
     display: none;
     cursor: progress;
 }
 
-#chapter[data-dash-is-loading="true"]:after {
-    content: "Loading...";
-}
 #pagemenu[data-dash-is-loading="true"] {
     display: none;
     cursor: progress;
