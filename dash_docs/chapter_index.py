@@ -16,6 +16,7 @@ import dash_bio
 
 from dash_docs import reusable_components as rc, tools
 from .reusable_components import TOC, TOCChapters
+from .convert_to_html import convert_to_html
 
 ## The chapters dict is used to generate the dash-docs search index
 ## If edited, update the search index by running `python dash_search_index.py`
@@ -1020,6 +1021,7 @@ normalize_description_and_urls(URLS)
 
 URL_TO_CONTENT_MAP = {}
 URL_TO_BREADCRUMB_MAP = {}
+URL_TO_SSR_MAP = {}
 def create_url_mapping(url_set):
     for section in url_set:
         if 'url' in section:
@@ -1032,6 +1034,14 @@ def create_url_mapping(url_set):
                 'breadcrumb',
                 section['name']
             )
+            # TODO - Remove try/except before pushing to prod
+            try:
+                URL_TO_SSR_MAP[stripped_url] = convert_to_html(
+                    section['content']
+                )
+            except Exception as e:
+                print(e)
+                URL_TO_SSR_MAP[stripped_url] = ''
         if 'chapters' in section:
             create_url_mapping(section['chapters'])
 create_url_mapping(URLS)

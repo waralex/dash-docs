@@ -2,13 +2,11 @@
 from dash import Dash
 from flask import redirect, escape, request
 
-from .convert_to_html import convert_to_html
-
 
 class CustomDash(Dash):
     def interpolate_index(self, **kwargs):
         # import later to prevent circular imports - yikes
-        from .chapter_index import URL_TO_META_MAP, URL_TO_CONTENT_MAP
+        from .chapter_index import URL_TO_META_MAP, URL_TO_CONTENT_MAP, URL_TO_SSR_MAP
         kwargs.pop('title')
 
         if request.path in URL_TO_META_MAP:
@@ -23,16 +21,7 @@ class CustomDash(Dash):
             ),
             **kwargs
         )
-        if request.path not in URL_TO_CONTENT_MAP:
-            meta_kwargs['ssr_content'] = ''
-        else:
-            try:
-                meta_kwargs['ssr_content'] = convert_to_html(
-                    URL_TO_CONTENT_MAP[request.path])
-
-            except Exception as e:
-                print(e)
-                meta_kwargs['ssr_content'] = ''
+        meta_kwargs['ssr_content'] = URL_TO_SSR_MAP.get(request.path, '')
 
         return ('''<!DOCTYPE html>
         <html>
@@ -64,7 +53,6 @@ class CustomDash(Dash):
                 <div id="react-entry-point">
                     {ssr_content}
                 </div>
-                {entry_point}
                 <footer>
                     {config}
                     {scripts}
