@@ -3,7 +3,7 @@ import sys
 from dash_docs.convert_to_html import convert_to_html
 
 @pytest.mark.skipif(
-    sys.version_info < (3, 6),
+    sys.version_info < (3, 7),
     reason="skip non-essential, potentially flaky tests"
 )
 def test_html_conversion():
