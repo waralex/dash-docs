@@ -35,7 +35,7 @@ def test_html_conversion():
         )
 
         error_message += '\n\n\nThese URLs still had dccLink in their content:\n{}'.format(
-            '-' + '\n-'.join([i[0] for i in exceptions])
+            '-' + '\n-'.join(dcc_link)
         )
 
         error_message += '\n\n{} OK, {} need to be fixed, {} need dccLink fixed'.format(
