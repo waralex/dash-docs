@@ -24,19 +24,15 @@ class CustomDash(Dash):
             **kwargs
         )
         if request.path not in URL_TO_CONTENT_MAP:
-            meta_kwargs['ssr_content'] = '404'
+            meta_kwargs['ssr_content'] = ''
         else:
             try:
-                meta_kwargs['entry_point'] = '''
-                    <div id="react-entry-point">
-                        {ssr_content}
-                    </div>
-                '''.format(ssr_content=convert_to_html(
-                    URL_TO_CONTENT_MAP[request.path]))
+                meta_kwargs['ssr_content'] = convert_to_html(
+                    URL_TO_CONTENT_MAP[request.path])
 
             except Exception as e:
                 print(e)
-                meta_kwargs['entry_point'] = '<div>Error rendering content: \n{}</div>'.format(e)
+                meta_kwargs['ssr_content'] = ''
 
         return ('''<!DOCTYPE html>
         <html>
@@ -65,6 +61,9 @@ class CustomDash(Dash):
                 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N6T2RXG"
                     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         ''' + '''
+                <div id="react-entry-point">
+                    {ssr_content}
+                </div>
                 {entry_point}
                 <footer>
                     {config}
