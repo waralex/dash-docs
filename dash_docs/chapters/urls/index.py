@@ -5,7 +5,7 @@ from dash_docs import styles
 from dash_docs import tools
 from dash_docs import reusable_components as rc
 
-layout = [rc.Markdown('''
+layout = html.Div(children=[rc.Markdown('''
     # Multi-Page Apps and URL Support
 
     Dash renders web applications as a "single-page app". This means that
@@ -573,4 +573,4 @@ layout = [rc.Markdown('''
     would ultimately require itself to be already imported, which cannot be
     satisfied.
     '''),
-]
+])

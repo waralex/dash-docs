@@ -1,7 +1,8 @@
 import dash_core_components as dcc
+import dash_html_components as html
 from dash_docs import reusable_components as rc
 
-layout = [rc.Markdown('''
+layout = html.Div(children=[rc.Markdown('''
 # Live Updating Components
 
 ## The `dash_core_components.Interval` component
@@ -171,4 +172,4 @@ if __name__ == '__main__':
 You can combine this with <dccLink children="time-expiring caching" href="/performance"/>
 and serve a unique `layout` every hour or every day and serve the computed `layout`
 from memory in between.
-''')]
+''')])
