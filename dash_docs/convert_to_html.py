@@ -110,6 +110,8 @@ def convert_to_html(component):
         component_dict['type'] = 'A'
     if component_dict['props'].get('children'):
         comp_children = component_dict['props']['children']
+        if isinstance(comp_children, (int, float)):
+            comp_children = [comp_children]
         if len(comp_children) == 1 and not isinstance(comp_children, list):
             comp_children = [comp_children]
     if component_dict['namespace'] != 'dash_html_components':
@@ -134,8 +136,8 @@ def convert_to_html(component):
     attrib_str = ' '.join([attrib_str, style_str, bool_str]).strip()
     children = component_dict['props'].get('children') or ''
     initial_indent = 0
-    if isinstance(children, str):
-        children = children
+    if isinstance(children, (str, int, float)):
+        children = str(children)
         closing_tag = '</{}>'.format(tag) if tag not in empty_tags else ''
     else:
         children = '\n' + '\n'.join([re.sub('^', '\g<0>' + (' ' * i if tag not in list_tags else ' ' * 2),
