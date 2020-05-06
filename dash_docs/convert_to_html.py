@@ -156,6 +156,7 @@ def markdown_to_html(md_text, extensions=md_extensions):
     https://python-markdown.github.io/extensions/
     """
     escape_html = html_tag_regex.sub('&lt;\g<1>&gt;', md_text)
+    # convert http://example.com to <a href="http://example.com">http://example.com</a>
     link_standalone_urls = re.sub('(\s|\n|^)(https?://.*?)($|\s)',
                                   '\g<1><a href="\g<2>">\g<2></a>\g<3>',
                                   escape_html)
