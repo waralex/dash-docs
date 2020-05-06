@@ -162,7 +162,7 @@
             "url": "/dash-core-components/dropdown",
             "name": "dcc.Dropdown",
             "description": "Official examples and reference documentation for dcc.Dropdown. dcc.Dropdown is a dash_core_components component.",
-            "meta_keywords": "children, key, style, disabled, form, name, type, height, action, low, min, start, label, selected, multiple, required, placeholder, rows, wrap, default, options, persistence, persisted_props, persistence_type, clearable, date, optionHeight, multi, searchable, search_value, list, refresh, debug, search, data, css, dropdown, on, stylesheet, layout, container, styles, selection"
+            "meta_keywords": "children, key, style, title, disabled, form, name, type, height, action, low, min, start, label, selected, multiple, required, placeholder, rows, wrap, default, options, persistence, persisted_props, persistence_type, clearable, date, optionHeight, multi, searchable, search_value, list, refresh, debug, search, data, css, dropdown, on, stylesheet, layout, container, styles, selection"
           },
           {
             "url": "/dash-core-components/graph",
