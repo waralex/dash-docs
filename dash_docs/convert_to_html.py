@@ -4,10 +4,10 @@ https://learning.oreilly.com/library/view/regular-expressions-cookbook/978144932
 """
 import re
 import textwrap
+import sys
 
 import dash_core_components as dcc
 import dash_html_components as html
-import markdown
 
 html_tags = [tag for tag in dir(html) if tag[0].isupper()] + ['menu']
 
@@ -155,6 +155,13 @@ def markdown_to_html(md_text, extensions=md_extensions):
     Please see the documentation for details:
     https://python-markdown.github.io/extensions/
     """
+    # markdown isn't supported in Python 2, so protect the import
+    # we don'ta actually deploy the docs on Python 2, we're
+    # just running some tests, so the SSR functionality doesn't
+    # need to work
+    if sys.version_info < (3, 5):
+        return md_text
+    import markdown
     escape_html = html_tag_regex.sub('&lt;\g<1>&gt;', md_text)
     # convert http://example.com to <a href="http://example.com">http://example.com</a>
     link_standalone_urls = re.sub('(\s|\n|^)(https?://.*?)($|\s)',
