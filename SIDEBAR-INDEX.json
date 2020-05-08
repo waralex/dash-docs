@@ -162,7 +162,7 @@
             "url": "/dash-core-components/dropdown",
             "name": "dcc.Dropdown",
             "description": "Official examples and reference documentation for dcc.Dropdown. dcc.Dropdown is a dash_core_components component.",
-            "meta_keywords": "children, key, style, disabled, form, name, type, height, action, low, min, start, label, selected, multiple, required, placeholder, rows, wrap, default, options, persistence, persisted_props, persistence_type, clearable, date, optionHeight, multi, searchable, search_value, list, refresh, debug, search, data, css, dropdown, on, stylesheet, layout, container, styles, selection"
+            "meta_keywords": "children, key, style, title, disabled, form, name, type, height, action, low, min, start, label, selected, multiple, required, placeholder, rows, wrap, default, options, persistence, persisted_props, persistence_type, clearable, date, optionHeight, multi, searchable, search_value, list, refresh, debug, search, data, css, dropdown, on, stylesheet, layout, container, styles, selection"
           },
           {
             "url": "/dash-core-components/graph",
@@ -1454,7 +1454,7 @@
         "url": "/urls",
         "name": "URL Routing and Multiple Apps",
         "description": "Dash provides two components (`dcc.Link` and `dcc.Location`) that allow you to easily make fast multipage apps using its own \"Single Page App (SPA)\" design pattern.",
-        "meta_keywords": "children, n_clicks, href, rel, style, form, name, type, content, low, label, selected, required, rows, options, date, multi, config, refresh, debug, pathname, included, css, dropdown, on, elements, stylesheet, layout, styles, range, view"
+        "meta_keywords": "children, n_clicks, href, rel, style, form, name, type, content, low, label, selected, required, rows, options, date, multi, refresh, debug, pathname, included, css, dropdown, on, elements, stylesheet, layout, styles, range, view"
       },
       {
         "url": "/persistence",
