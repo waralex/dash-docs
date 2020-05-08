@@ -150,9 +150,9 @@ def convert_to_html(component):
 
 
 def _dccLink_to_a_href(text):
-    dcclink_regex = re.compile(r'<dccLink .*?/>')
-    href_regex = re.compile(r'<dccLink .*?href="(.*?)".*/>')
-    children_regex = re.compile(r'<dccLink .*?children="(.*?)".*/>')
+    dcclink_regex = re.compile('(?ms)<dccLink .*?/>')
+    href_regex = re.compile('(?ms)<dccLink .*?href="(.*?)".*?/>')
+    children_regex = re.compile('(?ms)<dccLink .*?children="(.*?)".*?/>')
 
     replacements = []
     hrefs = re.findall(href_regex, text)
@@ -164,6 +164,12 @@ def _dccLink_to_a_href(text):
                          for x in zip(re.split(dcclink_regex, text),
                                       replacements + [''])])
     return converted
+
+
+def _convert_blockquotes(text):
+    """Convert <blockquote>.*?</blockquote> to `> `."""
+    return re.sub('(?ms).*<blockquote>\n\s{,4}(.*?)</blockquote>.*',
+                  '> \g<1>', text)
 
 
 def markdown_to_html(md_text, extensions=md_extensions):
@@ -179,7 +185,8 @@ def markdown_to_html(md_text, extensions=md_extensions):
     if sys.version_info < (3, 5):
         return md_text
     import markdown
-    convert_dccLinks = _dccLink_to_a_href(md_text)
+    convert_blockquotes = _convert_blockquotes(md_text)
+    convert_dccLinks = _dccLink_to_a_href(convert_blockquotes)
     escape_html = html_tag_regex.sub('&lt;\g<1>&gt;', convert_dccLinks)
     # convert http://example.com to <a href="http://example.com">http://example.com</a>
     link_standalone_urls = re.sub('(\s|\n|^)(https?://.*?)($|\s)',
