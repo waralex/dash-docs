@@ -1052,21 +1052,15 @@ def find_section(url_set, name):
         elif 'chapters' in section:
             return find_section(section['chapters'], name)
 
+
 def _search_keywords(children):
     # Check if any of the component's proptypes are in the chapter so that
     # users can search for particular proptypes like selected_rows
 
     def _concat(unicode_or_str1, unicode_or_str2):
-        try:
-            unicode_or_str1 += unicode_or_str2.decode('utf8')
-        except Exception as e1:
-            try:
-                unicode_or_str1 += unicode(unicode_or_str2)
-            except Exception as e2:
-                print(unicode_or_str2)
-                raise e2
-
-        return unicode_or_str2
+        if type(unicode_or_str1) == type(unicode_or_str2):
+            return unicode_or_str1 + unicode_or_str2
+        return unicode_or_str1 + unicode_or_str2.decode('utf8')
 
     stringified_children = u''
     if not hasattr(children, '_traverse'):
@@ -1075,10 +1069,10 @@ def _search_keywords(children):
         if isinstance(item, six.string_types):
             # I don't really get this, but there seems to be a mix
             # of unicode and strings here
-            stringified_children += item
+            stringified_children = _concat(stringified_children, item)
         elif (hasattr(item, 'children') and
               isinstance(item.children, six.string_types)):
-            stringified_children += item.children
+            stringified_children = _concat(stringified_children, item.children)
 
     keywords = []
     common_keywords_to_ignore = [
