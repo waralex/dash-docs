@@ -26,7 +26,7 @@ def component_list(
         package, content_module, base_url, import_alias,
         component_library, escape_tags=False,
         ad='dash-enterprise-kubernetes.jpg',
-        adhref='https://plotly.com/get-demo?utm_source=docs&utm_medium=ad&utm_campaign=april&utm_content=kubernetes'):
+        adhref='https://plotly.com/get-demo/?utm_source=docs&utm_medium=ad&utm_campaign=april&utm_content=kubernetes'):
     return [
         {
             'url': tools.relpath('/{}/{}'.format(base_url, component.lower())),
@@ -260,7 +260,7 @@ URLS = [
                     ),
                     'content': chapters.dash_core_components.index.layout,
                     'ad': 'dash-enterprise-design-kit.jpg',
-                    'adhref': 'https://plotly.com/get-demo?utm_source=docs&utm_medium=ad&utm_campaign=april&utm_content=htmlcore'
+                    'adhref': 'https://plotly.com/get-demo/?utm_source=docs&utm_medium=ad&utm_campaign=april&utm_content=htmlcore'
                 }] + component_list(
                     dcc,
                     chapters.dash_core_components.content_module,
@@ -268,7 +268,7 @@ URLS = [
                     'dcc',
                     'dash_core_components',
                     ad='dash-enterprise-design-kit.jpg',
-                    adhref='https://plotly.com/get-demo?utm_source=docs&utm_medium=ad&utm_campaign=april&utm_content=htmlcore'
+                    adhref='https://plotly.com/get-demo/?utm_source=docs&utm_medium=ad&utm_campaign=april&utm_content=htmlcore'
                 )
             },
 
@@ -286,7 +286,7 @@ URLS = [
                                        'and standard html.',
                         'content': chapters.dash_html_components.index.layout,
                         'ad': 'dash-enterprise-design-kit.jpg',
-                        'adhref': 'https://plotly.com/get-demo?utm_source=docs&utm_medium=ad&utm_campaign=april&utm_content=htmlcore'
+                        'adhref': 'https://plotly.com/get-demo/?utm_source=docs&utm_medium=ad&utm_campaign=april&utm_content=htmlcore'
                     }
                 ] + component_list(
                     html,
@@ -296,7 +296,7 @@ URLS = [
                     'dash_html_components',
                     escape_tags=True,
                     ad='dash-enterprise-design-kit.jpg',
-                    adhref='https://plotly.com/get-demo?utm_source=docs&utm_medium=ad&utm_campaign=april&utm_content=htmlcore'
+                    adhref='https://plotly.com/get-demo/?utm_source=docs&utm_medium=ad&utm_campaign=april&utm_content=htmlcore'
                 )
             },
 
@@ -329,16 +329,26 @@ URLS = [
                     },
 
                     {
-                        'url': '/datatable/sizing',
-                        'content': chapters.dash_datatable.sizing.index.layout,
-                        'name': 'Sizing',
+                        'url': '/datatable/height',
+                        'content': chapters.dash_datatable.height.index.layout,
+                        'name': 'DataTable Height',
                         'description': '''
-                            All about sizing the DataTable. Examples include:
-                            - Setting the width and the height of the table
-                            - Responsive table design
-                            - Setting the widths of individual columns
-                            - Handling long text
-                            - Fixing rows and columns
+                            How to set the height of the DataTable.
+                            Examples include how to set the height with
+                            vertical scroll, pagination, virtualization, and
+                            fixed headers.
+                        '''
+                    },
+
+                    {
+                        'url': '/datatable/width',
+                        'content': chapters.dash_datatable.width.index.layout,
+                        'name': 'DataTable Width & Column Width',
+                        'description': '''
+                            How to set the width of the table and the columns.
+                            Examples include how to handle word wrapping,
+                            cell clipping, horizontal scroll, fixed columns,
+                            and more.
                         '''
                     },
 
@@ -349,15 +359,20 @@ URLS = [
                         'description': '''
                             The style of the DataTable is highly customizable. This chapter
                             includes examples for:
-                            - Conditional formatting
                             - Displaying multiple rows of headers
-                            - Highlighting rows, columns, and cells
+                            - Text alignment
                             - Styling the table as a list view
                             - Changing the colors (including a dark theme!)
+                        '''
+                    },
 
-                            The sizing API for the table has been particularly tricky for
-                            us to nail down, so be sure to read this chapter to understand the nuances,
-                            limitations, and the APIs that we're exploring.
+                    {
+                        'url': '/datatable/conditional-formatting',
+                        'content': chapters.dash_datatable.conditional_formatting.index.layout,
+                        'name': 'Conditional Formatting',
+                        'description': '''
+                            Several examples of how to highlight certain cells,
+                            rows, or columns based on their value or state.
                         '''
                     },
 
@@ -643,7 +658,7 @@ URLS = [
                 'url': '/plugins',
                 'content': chapters.plugins.index.layout,
                 'ad': 'dash-enterprise-design-kit.jpg',
-                'adhref': 'https://plotly.com/get-demo?utm_source=docs&utm_medium=ad&utm_campaign=april&utm_content=create'
+                'adhref': 'https://plotly.com/get-demo/?utm_source=docs&utm_medium=ad&utm_campaign=april&utm_content=create'
             },
 
             {
@@ -751,7 +766,7 @@ URLS = [
                 'name': 'Authentication',
                 'description': '',
                 'ad': 'dash-enterprise-authentication.jpg',
-                'adhref': 'https://plotly.com/get-demo?utm_source=docs&utm_medium=ad&utm_campaign=april&utm_content=authentication'
+                'adhref': 'https://plotly.com/get-demo/?utm_source=docs&utm_medium=ad&utm_campaign=april&utm_content=authentication'
             },
 
             {
@@ -769,7 +784,7 @@ URLS = [
                 'description': 'Strategies for integrating Dash apps with existing web ' \
                                'apps.',
                 'ad': 'dash-enterprise-embedded.jpg',
-                'adhref': 'https://plotly.com/get-demo?utm_source=docs&utm_medium=ad&utm_campaign=april&utm_content=embedded'
+                'adhref': 'https://plotly.com/get-demo/?utm_source=docs&utm_medium=ad&utm_campaign=april&utm_content=embedded'
             }
         ]
     },

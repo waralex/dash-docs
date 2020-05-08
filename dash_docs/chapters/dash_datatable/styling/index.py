@@ -272,105 +272,10 @@ layout = html.Div(
         """),
 
         rc.Markdown("""
-        ## Conditional Formatting - Highlighting Certain Rows
+        ## Conditional Formatting
 
-        You can draw attention to certain rows by providing a unique
-        background color, bold text, or colored text.
-        """),
-        Display("""
-        dash_table.DataTable(
-            data=df.to_dict('records'),
-            columns=[
-                {"name": i, "id": i} for i in df.columns
-            ],
-            style_data_conditional=[{
-                "if": {"row_index": 4},
-                "backgroundColor": "#3D9970",
-                'color': 'white'
-            }]
-        )
-        """),
-        Display("""
-        dash_table.DataTable(
-            data=df.to_dict('records'),
-            columns=[
-                {"name": i, "id": i} for i in df.columns
-            ],
-            style_as_list_view=True,
-            style_data_conditional=[{
-                "if": {"row_index": 4},
-                "fontWeight": "bold"
-            }]
-        )
-        """),
+        See the new [conditional formatting chapter](/datatable/conditional-formatting).
 
-        rc.Markdown("""
-        ## Conditional Formatting - Highlighting Columns
-
-        Similarly, certain columns can be highlighted.
-        """),
-        Display("""
-        dash_table.DataTable(
-            data=df.to_dict('records'),
-            columns=[
-                {'name': i, 'id': i} for i in df.columns
-            ],
-            style_data_conditional=[{
-                'if': {'column_id': 'Temperature'},
-                'backgroundColor': '#3D9970',
-                'color': 'white',
-            }]
-        )
-        """),
-
-        rc.Markdown("""
-        ## Conditional Formatting - Highlighting Cells
-
-        You can also highlight certain cells. For example, you may want to
-        highlight certain cells that exceed a threshold or that match
-        a filter elsewhere in the app.
-
-        The `filter` keyword in `style_data_conditional` uses the same
-        filtering expression language as the table's interactive filter UI.
-        See the <dccLink href="/datatable/filtering" children="DataTable filtering chapter"/> for more
-        info.
-        """),
-        Display("""
-        dash_table.DataTable(
-            data=df.to_dict('records'),
-            columns=[
-                {'name': i, 'id': i} for i in df.columns
-            ],
-            style_data_conditional=[
-                {
-                    'if': {
-                        'column_id': 'Region',
-                        'filter_query': '{Region} eq "Montreal"'
-                    },
-                    'backgroundColor': '#3D9970',
-                    'color': 'white',
-                },
-                {
-                    'if': {
-                        'column_id': 'Humidity',
-                        'filter_query': '{Humidity} eq 20'
-                    },
-                    'backgroundColor': '#3D9970',
-                    'color': 'white',
-                },
-                {
-                    'if': {
-                        'column_id': 'Temperature',
-                        'filter_query': '{Temperature} > 3.9'
-                    },
-                    'backgroundColor': '#3D9970',
-                    'color': 'white',
-                },
-            ]
-        )
-        """),
-
-        rc.Markdown("""
         ## Styles Priority
 
         There is a specific order of priority for the style\_\* properties.
