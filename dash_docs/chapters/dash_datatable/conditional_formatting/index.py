@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# -*- coding: utf-8 -*- 
+# -*- coding: utf-8 -*-
 from collections import OrderedDict
 import dash_core_components as dcc
 import dash_html_components as html
@@ -141,20 +141,17 @@ layout = html.Div(
                     'textAlign': 'left'
                 },
 
+                {
+                    'if': {
+                        'state': 'active'  # 'active' | 'selected'
+                    },
+                   'backgroundColor': 'rgba(0, 116, 217, 0.3)'
+                }
+
             ]
         )
         del df['id']  # no-display
         """),
-
-        # TODO - Add this block in when 1.13 is out.
-        # {
-        #     'if': {
-        #         'state': 'active'  # 'active' | 'selected'
-        #     },
-        #     'backgroundColor': 'DodgerBlue',
-        #     'opacity': 0.5,
-        #     'border': '2px solid DodgerBlue'
-        # }
 
         rc.Markdown(
         '''

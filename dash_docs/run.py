@@ -1,9 +1,8 @@
 # -*- coding: utf-8 -*-
-import dash
+from copy import deepcopy
+
 import dash_html_components as html
 import dash_core_components as dcc
-import json
-
 from dash.dependencies import Input, Output
 
 from .server import app, server
@@ -14,6 +13,7 @@ from dash_docs.chapters.home.index import layout as home
 
 import dash_user_guide_components as dugc
 
+
 def create_contents(contents):
     h = []
     for i in contents:
@@ -23,9 +23,10 @@ def create_contents(contents):
             h.append(html.Li(i))
     return html.Ul(h)
 
-with open('SIDEBAR-INDEX.json', 'r') as f:
-    SIDEBAR_INDEX = json.loads(f.read())
 
+SIDEBAR_INDEX = deepcopy(chapter_index.URLS)
+chapter_index.index_pages(SIDEBAR_INDEX)
+chapter_index.create_urls_without_content(SIDEBAR_INDEX)
 
 header = html.Div(
     className='header',
