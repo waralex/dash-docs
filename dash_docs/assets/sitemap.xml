@@ -690,6 +690,9 @@
     <loc>https://dash.plotly.com/datatable/callbacks</loc>
 </url>
 <url>
+    <loc>https://dash.plotly.com/datatable/conditional-formatting</loc>
+</url>
+<url>
     <loc>https://dash.plotly.com/datatable/dropdowns</loc>
 </url>
 <url>
@@ -699,13 +702,13 @@
     <loc>https://dash.plotly.com/datatable/filtering</loc>
 </url>
 <url>
+    <loc>https://dash.plotly.com/datatable/height</loc>
+</url>
+<url>
     <loc>https://dash.plotly.com/datatable/interactivity</loc>
 </url>
 <url>
     <loc>https://dash.plotly.com/datatable/reference</loc>
-</url>
-<url>
-    <loc>https://dash.plotly.com/datatable/sizing</loc>
 </url>
 <url>
     <loc>https://dash.plotly.com/datatable/style</loc>
@@ -715,6 +718,9 @@
 </url>
 <url>
     <loc>https://dash.plotly.com/datatable/virtualization</loc>
+</url>
+<url>
+    <loc>https://dash.plotly.com/datatable/width</loc>
 </url>
 <url>
     <loc>https://dash.plotly.com/deployment</loc>

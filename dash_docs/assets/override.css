@@ -1,10 +1,10 @@
 /* prefixed by https://autoprefixer.github.io (PostCSS: v7.0.26, autoprefixer: v9.7.3) */
 
 body {
-  font-size: 16px;
+  font-size: 15px;
   line-height: 17px;
   letter-spacing: 0px;
-  font-family: "Campaign", serif;
+  font-family: "open-sans", sans-serif;
   color: #20293d;
   font-weight: 400;
   font-stretch: normal;
@@ -17,7 +17,7 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: "jubilat", sans-serif;
+  font-family: "jubilat", serif;
   margin-top: 0;
   margin-bottom: 0;
   font-weight: 300;
@@ -135,6 +135,10 @@ h6 { font-size: 20px; line-height: 1.6;  margin-bottom: 0.75rem; margin-top: 0.7
     border-right: thin lightgrey solid;
     font-size: 12px;
     max-width: 250px;
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 60px);
+    justify-content: space-between;
 }
 
 .sidebar input[type="text"],
@@ -221,19 +225,19 @@ summary:hover {
 }
 
 .sidebar {
-    /* height of header + height of sidebar ad + padding */
-    height: calc(100vh - 60px - 200px - 30px);
     overflow-y: auto;
 }
 
-
-
-.sidebar-ad {
-    max-height: 200px;
-    left: 10px;
-    bottom: 10px;
-    position: fixed;
+.sidebar-image {
+   width: calc(100% - 4px);
 }
+
+#fade-out {
+    height: 30px;
+    margin-right: -2px;
+    background-image: linear-gradient(to bottom, rgb(224, 242, 246), white);
+}
+
 
 /* Header */
 .header {

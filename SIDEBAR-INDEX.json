@@ -97,7 +97,7 @@
         "url": "/pattern-matching-callbacks",
         "name": "Pattern-Matching Callbacks",
         "description": "The pattern-matching callback selectors `MATCH`, `ALL`, & `ALLSMALLER` allow you to write callbacks that respond to or update an arbitrary or dynamic number of components. New in Dash 1.11.0!",
-        "meta_keywords": "children, n_clicks, key, style, form, name, type, content, low, min, reversed, label, multiple, options, labelStyle, displayed, date, multi, list, pattern, n_submit, debug, color, pathname, count, included, data, dropdown, on, elements, layout, pan, container"
+        "meta_keywords": "children, n_clicks, key, style, form, name, type, content, low, min, reversed, label, multiple, options, labelStyle, displayed, date, multi, list, pattern, n_submit, debug, color, count, included, data, dropdown, on, elements, layout, pan, container"
       },
       {
         "url": "/callback-gotchas",
@@ -162,7 +162,7 @@
             "url": "/dash-core-components/dropdown",
             "name": "dcc.Dropdown",
             "description": "Official examples and reference documentation for dcc.Dropdown. dcc.Dropdown is a dash_core_components component.",
-            "meta_keywords": "children, key, style, disabled, form, name, type, height, action, low, min, start, label, selected, multiple, required, placeholder, rows, wrap, default, options, persistence, persisted_props, persistence_type, clearable, date, optionHeight, multi, searchable, search_value, list, refresh, debug, search, data, css, dropdown, on, stylesheet, layout, container, styles, selection"
+            "meta_keywords": "children, key, style, title, disabled, form, name, type, height, action, low, min, start, label, selected, multiple, required, placeholder, rows, wrap, default, options, persistence, persisted_props, persistence_type, clearable, date, optionHeight, multi, searchable, search_value, list, refresh, debug, search, data, css, dropdown, on, stylesheet, layout, container, styles, selection"
           },
           {
             "url": "/dash-core-components/graph",
@@ -1069,7 +1069,7 @@
             "breadcrumb": "Dash DataTable",
             "description": "`dash_table.DataTable` is an interactive table that supports rich styling, conditional formatting, editing, sorting, filtering, and more.",
             "autogenerate_index": true,
-            "meta_keywords": "rel, style, cite, form, name, type, height, width, action, content, high, low, min, start, multiple, headers, rows, default, date, multi, responsive, figure, config, list, debug, color, included, data, colors, columns, editable, dropdown, virtualization, on, theme, layout, pan, view"
+            "meta_keywords": "rel, style, cite, form, name, type, height, width, action, content, high, low, min, start, multiple, headers, rows, wrap, default, date, multi, responsive, figure, config, list, debug, color, included, vertical, data, colors, columns, editable, dropdown, virtualization, on, theme, base, layout, pan, view"
           },
           {
             "url": "/datatable/reference",
@@ -1078,16 +1078,28 @@
             "meta_keywords": "n_clicks, n_clicks_timestamp, key, media, rel, dir, hidden, style, controls, form, name, type, height, width, open, accept, action, content, low, min, start, label, selected, multiple, required, size, headers, rows, default, options, persistence, persisted_props, persistence_type, displayed, clearable, date, multi, config, list, pattern, refresh, count, included, tooltip, vertical, data, contents, active_cell, columns, include_headers_on_copy_paste, locale_format, css, data_previous, data_timestamp, editable, end_cell, export_columns, export_format, export_headers, fill_width, hidden_columns, is_focused, merge_duplicate_headers, fixed_columns, fixed_rows, column_selectable, row_deletable, row_selectable, selected_cells, selected_rows, selected_columns, selected_row_ids, start_cell, style_as_list_view, page_action, page_current, page_count, page_size, dropdown, dropdown_conditional, dropdown_data, tooltip_conditional, tooltip_data, tooltip_delay, tooltip_duration, filter_query, filter_action, sort_action, sort_mode, sort_by, sort_as_null, style_table, style_cell, style_data, style_filter, style_header, style_cell_conditional, style_data_conditional, style_filter_conditional, style_header_conditional, virtualization, derived_filter_query_structure, derived_viewport_data, derived_viewport_indices, derived_viewport_row_ids, derived_viewport_selected_columns, derived_viewport_selected_rows, derived_viewport_selected_row_ids, derived_virtual_data, derived_virtual_indices, derived_virtual_row_ids, derived_virtual_selected_rows, derived_virtual_selected_row_ids, on, base, units, elements, container, perspective, styles, selection, view"
           },
           {
-            "url": "/datatable/sizing",
-            "name": "Sizing",
-            "description": "\n                            All about sizing the DataTable. Examples include:\n                            - Setting the width and the height of the table\n                            - Responsive table design\n                            - Setting the widths of individual columns\n                            - Handling long text\n                            - Fixing rows and columns\n                        ",
-            "meta_keywords": "shape, hidden, style, form, name, height, width, open, sizes, content, low, max, min, multiple, size, headers, rows, default, date, multi, responsive, search, data, contents, columns, fixed_columns, fixed_rows, style_table, style_cell, style_data, style_cell_conditional, on, base, pan, container, styles, range"
+            "url": "/datatable/height",
+            "name": "DataTable Height",
+            "description": "\n                            How to set the height of the DataTable.\n                            Examples include how to set the height with\n                            vertical scroll, pagination, virtualization, and\n                            fixed headers.\n                        ",
+            "meta_keywords": "children, href, hidden, style, form, name, height, width, action, content, low, max, min, size, headers, rows, wrap, default, date, tooltip, vertical, data, columns, fixed_rows, page_action, page_size, style_table, style_cell, style_header, virtualization, on, base, layout, pan, container, view"
+          },
+          {
+            "url": "/datatable/width",
+            "name": "DataTable Width & Column Width",
+            "description": "\n                            How to set the width of the table and the columns.\n                            Examples include how to handle word wrapping,\n                            cell clipping, horizontal scroll, fixed columns,\n                            and more.\n                        ",
+            "meta_keywords": "dir, hidden, style, form, name, type, height, width, action, method, content, low, max, min, multiple, required, size, headers, rows, wrap, default, displayed, date, multi, color, tooltip, data, contents, columns, css, fixed_columns, fixed_rows, tooltip_data, tooltip_duration, filter_action, sort_action, style_table, style_cell, style_data, style_header, style_cell_conditional, virtualization, on, base, force, backgroundColor, layout, pan, container, styles"
           },
           {
             "url": "/datatable/style",
             "name": "Styling",
-            "description": "\n                            The style of the DataTable is highly customizable. This chapter\n                            includes examples for:\n                            - Conditional formatting\n                            - Displaying multiple rows of headers\n                            - Highlighting rows, columns, and cells\n                            - Styling the table as a list view\n                            - Changing the colors (including a dark theme!)\n\n                            The sizing API for the table has been particularly tricky for\n                            us to nail down, so be sure to read this chapter to understand the nuances,\n                            limitations, and the APIs that we're exploring.\n                        ",
-            "meta_keywords": "children, key, href, lang, style, alt, form, name, type, content, high, low, multiple, headers, rows, default, date, multi, list, color, vertical, data, colors, columns, editable, merge_duplicate_headers, style_as_list_view, filter_query, style_cell, style_data, style_filter, style_header, style_cell_conditional, style_data_conditional, style_filter_conditional, style_header_conditional, on, base, backgroundColor, elements, styles, padding, range, view"
+            "description": "\n                            The style of the DataTable is highly customizable. This chapter\n                            includes examples for:\n                            - Displaying multiple rows of headers\n                            - Text alignment\n                            - Styling the table as a list view\n                            - Changing the colors (including a dark theme!)\n                        ",
+            "meta_keywords": "children, href, style, alt, form, name, type, content, high, low, multiple, headers, rows, default, date, multi, list, color, vertical, data, colors, columns, editable, merge_duplicate_headers, style_as_list_view, style_cell, style_data, style_filter, style_header, style_cell_conditional, style_data_conditional, style_filter_conditional, style_header_conditional, on, base, backgroundColor, elements, styles, padding, range, view"
+          },
+          {
+            "url": "/datatable/conditional-formatting",
+            "name": "Conditional Formatting",
+            "description": "\n                            Several examples of how to highlight certain cells,\n                            rows, or columns based on their value or state.\n                        ",
+            "meta_keywords": "children, key, rel, dir, hidden, style, alt, form, name, type, height, width, icon, action, method, content, high, low, max, min, start, selected, size, headers, rows, default, displayed, date, list, color, marks, data, colors, contents, columns, css, editable, page_size, filter_query, sort_action, style_table, style_cell, style_data, style_filter, style_header, style_cell_conditional, style_data_conditional, style_filter_conditional, style_header_conditional, derived_virtual_data, on, scale, backgroundColor, layout, colorscale, styles, padding, range, legend"
           },
           {
             "url": "/datatable/interactivity",
@@ -1129,7 +1141,7 @@
             "url": "/datatable/filtering",
             "name": "Filtering Syntax",
             "description": "\n                            An explanation and examples of filtering syntax for both frontend\n                            and backend filtering in the DataTable.\n                        ",
-            "meta_keywords": "children, key, href, rel, lang, style, form, name, type, height, width, accept, action, method, content, low, min, start, label, selected, size, placeholder, rows, wrap, default, options, date, config, list, debug, count, data, columns, css, editable, page_action, page_size, filter_query, filter_action, style_cell, virtualization, derived_filter_query_structure, on, base, precision, layout, pan"
+            "meta_keywords": "children, key, href, rel, hidden, lang, style, form, name, type, height, width, accept, action, method, content, low, max, min, start, label, selected, size, placeholder, rows, default, options, date, config, list, debug, search, count, data, columns, css, editable, fixed_rows, page_action, page_size, filter_query, filter_action, style_table, style_cell, style_data, virtualization, derived_filter_query_structure, on, base, precision, layout, pan, range"
           }
         ]
       },
@@ -1238,13 +1250,13 @@
             "url": "/dash-daq/booleanswitch",
             "name": "dash_daq.BooleanSwitch",
             "description": "Official examples and reference documentation for dash_daq.BooleanSwitch.",
-            "meta_keywords": "children, key, style, disabled, form, name, type, high, low, min, label, default, displayed, date, config, debug, color, vertical, css, on, theme, labelPosition, stylesheet, layout, styles"
+            "meta_keywords": "children, key, style, disabled, form, name, type, action, high, low, min, label, rows, default, persistence, persisted_props, persistence_type, displayed, date, config, list, refresh, debug, color, vertical, data, css, on, theme, labelPosition, stylesheet, layout, styles"
           },
           {
             "url": "/dash-daq/colorpicker",
             "name": "dash_daq.ColorPicker",
             "description": "Official examples and reference documentation for dash_daq.ColorPicker.",
-            "meta_keywords": "children, key, style, disabled, form, name, type, width, low, min, label, selected, size, default, displayed, date, config, debug, color, css, on, theme, labelPosition, stylesheet, layout, styles"
+            "meta_keywords": "children, key, style, disabled, form, name, type, width, action, low, min, label, selected, size, rows, default, persistence, persisted_props, persistence_type, displayed, date, config, list, refresh, debug, color, data, css, on, theme, labelPosition, stylesheet, layout, styles"
           },
           {
             "url": "/dash-daq/darkthemeprovider",
@@ -1280,7 +1292,7 @@
             "url": "/dash-daq/knob",
             "name": "dash_daq.Knob",
             "description": "Official examples and reference documentation for dash_daq.Knob.",
-            "meta_keywords": "children, key, style, disabled, form, name, type, low, max, min, start, label, multiple, size, default, displayed, date, multi, config, list, interval, debug, color, marks, colors, css, on, theme, labelPosition, scale, stylesheet, layout, styles, labels, range"
+            "meta_keywords": "children, key, style, disabled, form, name, type, action, low, max, min, start, label, multiple, size, rows, default, persistence, persisted_props, persistence_type, displayed, date, multi, config, list, interval, refresh, debug, color, marks, data, colors, css, on, theme, labelPosition, scale, stylesheet, layout, styles, labels, range"
           },
           {
             "url": "/dash-daq/leddisplay",
@@ -1292,25 +1304,25 @@
             "url": "/dash-daq/numericinput",
             "name": "dash_daq.NumericInput",
             "description": "Official examples and reference documentation for dash_daq.NumericInput.",
-            "meta_keywords": "children, key, style, disabled, form, name, type, low, max, min, label, size, default, displayed, date, config, debug, css, on, theme, labelPosition, stylesheet, layout, styles"
+            "meta_keywords": "children, key, style, disabled, form, name, type, action, low, max, min, label, size, rows, default, persistence, persisted_props, persistence_type, displayed, date, config, list, refresh, debug, data, css, on, theme, labelPosition, stylesheet, layout, styles"
           },
           {
             "url": "/dash-daq/powerbutton",
             "name": "dash_daq.PowerButton",
             "description": "Official examples and reference documentation for dash_daq.PowerButton.",
-            "meta_keywords": "children, key, style, disabled, form, name, type, low, min, label, size, default, displayed, date, config, debug, color, css, on, theme, labelPosition, stylesheet, layout, styles"
+            "meta_keywords": "children, key, style, disabled, form, name, type, action, low, min, label, size, rows, default, persistence, persisted_props, persistence_type, displayed, date, config, list, refresh, debug, color, data, css, on, theme, labelPosition, stylesheet, layout, styles"
           },
           {
             "url": "/dash-daq/precisioninput",
             "name": "dash_daq.PrecisionInput",
             "description": "Official examples and reference documentation for dash_daq.PrecisionInput.",
-            "meta_keywords": "children, key, style, disabled, form, name, type, low, max, min, label, size, default, displayed, date, figure, config, debug, css, on, theme, labelPosition, precision, stylesheet, layout, styles"
+            "meta_keywords": "children, key, style, disabled, form, name, type, action, low, max, min, label, size, rows, default, persistence, persisted_props, persistence_type, displayed, date, figure, config, list, refresh, debug, data, css, on, theme, labelPosition, precision, stylesheet, layout, styles"
           },
           {
             "url": "/dash-daq/slider",
             "name": "dash_daq.Slider",
             "description": "Official examples and reference documentation for dash_daq.Slider.",
-            "meta_keywords": "children, key, target, style, disabled, form, name, type, low, max, min, start, label, multiple, size, default, updatemode, date, multi, config, list, step, debug, color, marks, dots, included, vertical, colors, css, on, theme, labelPosition, showCurrentValue, targets, handleLabel, stylesheet, layout, orientation, styles, labels, range"
+            "meta_keywords": "children, key, target, style, disabled, form, name, type, action, low, max, min, start, label, multiple, size, rows, default, persistence, persisted_props, persistence_type, updatemode, date, multi, config, list, step, refresh, debug, color, marks, dots, included, vertical, data, colors, css, on, theme, labelPosition, showCurrentValue, targets, handleLabel, stylesheet, layout, orientation, styles, labels, range"
           },
           {
             "url": "/dash-daq/stopbutton",
@@ -1334,7 +1346,7 @@
             "url": "/dash-daq/toggleswitch",
             "name": "dash_daq.ToggleSwitch",
             "description": "Official examples and reference documentation for dash_daq.ToggleSwitch.",
-            "meta_keywords": "children, key, style, disabled, form, name, type, high, low, min, label, size, default, displayed, date, config, list, debug, color, vertical, css, on, theme, labelPosition, stylesheet, layout, orientation, styles"
+            "meta_keywords": "children, key, style, disabled, form, name, type, action, high, low, min, label, size, rows, default, persistence, persisted_props, persistence_type, displayed, date, config, list, refresh, debug, color, vertical, data, css, on, theme, labelPosition, stylesheet, layout, orientation, styles"
           }
         ]
       },

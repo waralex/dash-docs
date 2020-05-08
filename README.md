@@ -23,14 +23,21 @@ source activate dash_docs
 ```
 
 2. `pip install -r requirements.txt`
-3. `gunicorn run:server`
+3. `gunicorn --preload index:server` 
+
+Alternatively, for development purposes, you can run:
+`while true; do IGNORE_DASH_BIO=true python index.py; sleep 2; done`
+
+The `while true` loop restarts Dash when there's syntax errors outside of the callbacks, 
+and `IGNORE_DASH_BIO=true` constant prevents the loading of heavy Dash Bio examples, which makes hotreloading faster.
+
 4. open http://127.0.0.1:8000 in your browser
 
 
 on Windows systems `waitress` can be a replacement for `gunicorn`
 
 3. `pip install waitress`
-4. `waitress-serve --listen=*:8000 run:server`
+4. `waitress-serve --listen=*:8000 index:server`
 5. open http://127.0.0.1:8000 in your browser
 
 
