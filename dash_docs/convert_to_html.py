@@ -157,8 +157,8 @@ def _dccLink_to_a_href(text):
     replacements = []
     hrefs = re.findall(href_regex, text)
     children = re.findall(children_regex, text)
-    for href, child in zip(hrefs, children):
-        replacements.append(f'[{child}]({href})')
+    for child, href in zip(children, hrefs):
+        replacements.append('[{}]({})'.format(child, href))
     # split by <dccLink .* /> then stitch with `replacements`
     converted = ''.join([''.join(x)
                          for x in zip(re.split(dcclink_regex, text),
