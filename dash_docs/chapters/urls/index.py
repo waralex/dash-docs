@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-import dash_core_components as dcc
 import dash_html_components as html
 from dash_docs import styles
 from dash_docs import tools
@@ -12,9 +11,9 @@ layout = html.Div(children=[rc.Markdown('''
     the application does not completely reload when the user navigates the
     application, making browsing very fast.
 
-    There are two new components that aid page navigation:
-    <dccLink href="/dash-core-components/location" children="`dash_core_components.Location`"/>
-    and <dccLink href="/dash-core-components/link" children="`dash_core_components.Link`"/>.
+    There are two components that aid page navigation:
+    <dccLink href="/dash-core-components/location" children="dash_core_components.Location"/>
+    and <dccLink href="/dash-core-components/link" children="dash_core_components.Link"/>.
 
     `dash_core_components.Location` represents the location bar in your web browser
     through the `pathname` property. Here's a simple example:
@@ -92,18 +91,12 @@ layout = html.Div(children=[rc.Markdown('''
     import dash_core_components as dcc
     import dash_html_components as html
 
-    print(dcc.__version__) # 0.6.0 or above is required
-
-    external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
-
-    app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
-
     # Since we're adding callbacks to elements that don't exist in the app.layout,
     # Dash will raise an exception to warn us that we might be
     # doing something wrong.
     # In this case, we're adding the elements through a callback, so we can ignore
     # the exception.
-    app.config.suppress_callback_exceptions = True
+    app = dash.Dash(__name__, suppress_callback_exceptions=True)
 
     app.layout = html.Div([
         dcc.Location(id='url', refresh=False),
@@ -191,10 +184,11 @@ layout = html.Div(children=[rc.Markdown('''
     - Since we're adding callbacks to elements that don't exist in the app.layout,
     Dash will raise an exception to warn us that we might be doing something
     wrong.  In this case, we're adding the elements through a callback, so we can
-    ignore the exception by setting `app.config.suppress_callback_exceptions = True`.
-    It is also possible to do this without suppressing callback exceptions. See the example
-    below for details.
-    - You can modify this example to import the different page's `layout`s in different files.
+    ignore the exception by setting `suppress_callback_exceptions=True`.
+    It is also possible to do this without suppressing callback exceptions.
+    See the example below for details.
+    - You can modify this example to import the different page's `layout`s in
+    different files.
     - This Dash Userguide that you're looking at is itself a multi-page Dash app, using
     these same principles.
     '''),
@@ -214,10 +208,13 @@ layout = html.Div(children=[rc.Markdown('''
     of the layout (such as multi-page apps), not every component appearing in your
     callbacks will be included in the initial layout.
 
-    Since this validation is done before flask has any request context, you can create
-    a layout function that checks `flask.has_request_context()` and returns a complete
-    layout to the validator if there is no request context and returns the incomplete
-    index layout otherwise.
+    *New in Dash 1.12* You can set `app.validation_layout` to a "complete" layout
+    that contains all the components you'll use in any of the pages / sections.
+    `app.validation_layout` must be a Dash component, not a function. Then set
+    `app.layout` to just the index layout. In previous Dash versions there was a
+    trick you could use to achieve the same result, checking
+    `flask.has_request_context` inside a layout function - that will still work
+    but is no longer recommended.
     '''),
     rc.Markdown('''
     ```py
@@ -228,10 +225,7 @@ layout = html.Div(children=[rc.Markdown('''
 
     import flask
 
-    app = dash.Dash(
-        __name__,
-        external_stylesheets=['https://codepen.io/chriddyp/pen/bWLwgP.css']
-    )
+    app = dash.Dash(__name__)
 
     url_bar_and_content_div = html.Div([
         dcc.Location(id='url', refresh=False),
@@ -270,19 +264,16 @@ layout = html.Div(children=[rc.Markdown('''
         dcc.Link('Navigate to "/page-1"', href='/page-1'),
     ])
 
+    # index layout
+    app.layout = url_bar_and_content_div
 
-    def serve_layout():
-        if flask.has_request_context():
-            return url_bar_and_content_div
-        return html.Div([
-            url_bar_and_content_div,
-            layout_index,
-            layout_page_1,
-            layout_page_2,
-        ])
-
-
-    app.layout = serve_layout
+    # "complete" layout
+    app.validation_layout = html.Div([
+        url_bar_and_content_div,
+        layout_index,
+        layout_page_1,
+        layout_page_2,
+    ])
 
 
     # Index callbacks
@@ -349,11 +340,8 @@ layout = html.Div(children=[rc.Markdown('''
     ```py
     import dash
 
-    external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
-
-    app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
+    app = dash.Dash(__name__, suppress_callback_exceptions=True)
     server = app.server
-    app.config.suppress_callback_exceptions = True
     ```
     ''', style=styles.code_container),
 
@@ -454,11 +442,8 @@ layout = html.Div(children=[rc.Markdown('''
     ```py
     import dash
 
-    external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
-
-    app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
+    app = dash.Dash(__name__, suppress_callback_exceptions=True)
     server = app.server
-    app.config.suppress_callback_exceptions = True
     ```
     ''', style=styles.code_container),
 
