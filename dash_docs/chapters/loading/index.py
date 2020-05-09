@@ -60,7 +60,7 @@ layout = html.Div([
 
     if __name__ == "__main__":
         app.run_server(debug=False)
-
+    ```
     ''', style=styles.code_container),
     html.Br(),
     rc.Markdown('''

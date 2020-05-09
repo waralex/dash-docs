@@ -149,6 +149,29 @@ def convert_to_html(component):
     return '<{}{}>{}{}'.format(tag, attrib_str, children, closing_tag)
 
 
+def _dccLink_to_a_href(text):
+    dcclink_regex = re.compile('(?ms)<dccLink .*?/>')
+    href_regex = re.compile('(?ms)<dccLink .*?href="(.*?)".*?/>')
+    children_regex = re.compile('(?ms)<dccLink .*?children="(.*?)".*?/>')
+
+    replacements = []
+    hrefs = re.findall(href_regex, text)
+    children = re.findall(children_regex, text)
+    for href, child in zip(hrefs, children):
+        replacements.append(f'[{child}]({href})')
+    # split by <dccLink .* /> then stitch with `replacements`
+    converted = ''.join([''.join(x)
+                         for x in zip(re.split(dcclink_regex, text),
+                                      replacements + [''])])
+    return converted
+
+
+def _convert_blockquotes(text):
+    """Convert <blockquote>.*?</blockquote> to `> `."""
+    return re.sub('(?ms).*<blockquote>\n\s{,4}(.*?)</blockquote>.*',
+                  '> \g<1>', text)
+
+
 def markdown_to_html(md_text, extensions=md_extensions):
     """Convert ``md_text`` to HTML string.
     To enable/disable ``extensions`` simply add/remove from the list.
@@ -156,13 +179,15 @@ def markdown_to_html(md_text, extensions=md_extensions):
     https://python-markdown.github.io/extensions/
     """
     # markdown isn't supported in Python 2, so protect the import
-    # we don'ta actually deploy the docs on Python 2, we're
+    # we don't actually deploy the docs on Python 2, we're
     # just running some tests, so the SSR functionality doesn't
     # need to work
     if sys.version_info < (3, 5):
         return md_text
     import markdown
-    escape_html = html_tag_regex.sub('&lt;\g<1>&gt;', md_text)
+    convert_blockquotes = _convert_blockquotes(md_text)
+    convert_dccLinks = _dccLink_to_a_href(convert_blockquotes)
+    escape_html = html_tag_regex.sub('&lt;\g<1>&gt;', convert_dccLinks)
     # convert http://example.com to <a href="http://example.com">http://example.com</a>
     link_standalone_urls = re.sub('(\s|\n|^)(https?://.*?)($|\s)',
                                   '\g<1><a href="\g<2>">\g<2></a>\g<3>',
