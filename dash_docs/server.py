@@ -21,7 +21,10 @@ class CustomDash(Dash):
             ),
             **kwargs
         )
-        meta_kwargs['ssr_content'] = URL_TO_SSR_MAP.get(request.path, '')
+        meta_kwargs['ssr_content'] = convert_to_html(
+            URL_TO_CONTENT_MAP['content']
+        )
+        # meta_kwargs['ssr_content'] = URL_TO_SSR_MAP.get(request.path, '')
 
         return ('''<!DOCTYPE html>
         <html>
