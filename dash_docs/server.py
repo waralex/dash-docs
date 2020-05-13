@@ -7,7 +7,7 @@ from dash_docs.convert_to_html import convert_to_html
 class CustomDash(Dash):
     def interpolate_index(self, **kwargs):
         # import later to prevent circular imports - yikes
-        from .chapter_index import URL_TO_META_MAP, URL_TO_CONTENT_MAP, URL_TO_SSR_MAP
+        from .chapter_index import URL_TO_META_MAP, URL_TO_CONTENT_MAP
         kwargs.pop('title')
 
         if request.path in URL_TO_META_MAP:
@@ -28,7 +28,6 @@ class CustomDash(Dash):
             )
         else:
             meta_kwargs['ssr_content'] = ''
-        # meta_kwargs['ssr_content'] = URL_TO_SSR_MAP.get(request.path, '')
 
         return ('''<!DOCTYPE html>
         <html>

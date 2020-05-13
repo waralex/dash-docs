@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import dash_core_components as dcc
 import dash_html_components as html
-from dash_docs.chapter_index import URLS, URL_TO_SSR_MAP, URL_TO_CONTENT_MAP
+from dash_docs.chapter_index import URLS, URL_TO_CONTENT_MAP
 
 from dash_docs.convert_to_html import convert_to_html
 from dash_docs.reusable_components import TOC
@@ -36,4 +36,3 @@ layout = html.Div([
 # dict.
 # So, we add it here as a side effect from importing.
 URL_TO_CONTENT_MAP['/'] = layout
-# URL_TO_SSR_MAP['/'] = convert_to_html(layout)
