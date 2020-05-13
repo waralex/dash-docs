@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from dash import Dash
 from flask import redirect, escape, request
+from dash_docs.convert_to_html import convert_to_html
 
 
 class CustomDash(Dash):

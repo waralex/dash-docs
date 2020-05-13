@@ -1024,7 +1024,6 @@ URL_TO_CONTENT_MAP = {}
 URL_TO_BREADCRUMB_MAP = {}
 URL_TO_SSR_MAP = {}
 def create_url_mapping(url_set):
-    return None # see if this function is causing the heroku timeout issues
     for section in url_set:
         if 'url' in section and section['url'].startswith('/'):
             stripped_url = section['url'].rstrip('/')
@@ -1037,14 +1036,14 @@ def create_url_mapping(url_set):
                 section['name']
             )
             # TODO - Remove try/except before pushing to prod
-            try:
-                URL_TO_SSR_MAP[stripped_url] = convert_to_html(
-                    section['content']
-                )
-            except Exception as e:
-                print('Error creating SSR for {}'.format(stripped_url))
-                print(traceback.format_exc())
-                URL_TO_SSR_MAP[stripped_url] = ''
+            # try:
+            #     URL_TO_SSR_MAP[stripped_url] = convert_to_html(
+            #         section['content']
+            #     )
+            # except Exception as e:
+            #     print('Error creating SSR for {}'.format(stripped_url))
+            #     print(traceback.format_exc())
+            #     URL_TO_SSR_MAP[stripped_url] = ''
         if 'chapters' in section:
             create_url_mapping(section['chapters'])
 create_url_mapping(URLS)
