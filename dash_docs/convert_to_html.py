@@ -32,7 +32,7 @@ html_tag_regex = re.compile(
 
 
 empty_tags = ['area', 'base', 'basefont', 'br', 'col', 'embed', 'frame',
-              'hr', 'iframe', 'img', 'input', 'isindex', 'keygen', 'link',
+              'hr', 'img', 'input', 'isindex', 'keygen', 'link',
               'meta', 'param', 'source', 'track', 'wbr']
 
 # boolean attributes that don't take a value (their presence is enough)
