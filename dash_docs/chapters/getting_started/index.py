@@ -250,7 +250,7 @@ layout = html.Div([
     '''),
 
     html.Div(
-        rc.Markdown('''```shell
+        rc.Markdown('''```python
 >>> help(dcc.Dropdown)
 class Dropdown(dash.development.base_component.Component)
 |  A Dropdown component.
