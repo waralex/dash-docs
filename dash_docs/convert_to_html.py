@@ -8,6 +8,7 @@ import sys
 
 import dash_core_components as dcc
 import dash_html_components as html
+from dash.development.base_component import Component
 
 html_tags = [tag for tag in dir(html) if tag[0].isupper()] + ['menu']
 
@@ -100,20 +101,16 @@ def dcc_to_html(component):
 
 
 def convert_to_html(component):
-    if isinstance(component, str):
-        component = html.Span(component)
     if component is None:
         return ''
+    if not isinstance(component, Component):
+        # likely a str, int, float
+        return str(component)        
     component_dict = component.to_plotly_json()
     if component_dict['type'] == 'Link':
         component_dict['namespace'] = 'dash_html_components'
         component_dict['type'] = 'A'
-    if component_dict['props'].get('children'):
-        comp_children = component_dict['props']['children']
-        if isinstance(comp_children, (int, float)):
-            comp_children = [comp_children]
-        if len(comp_children) == 1 and not isinstance(comp_children, list):
-            comp_children = [comp_children]
+
     if component_dict['namespace'] != 'dash_html_components':
         component = dcc_to_html(component)
         component_dict = component.to_plotly_json()
@@ -134,17 +131,22 @@ def convert_to_html(component):
     if 'style' in component_dict['props']:
         style_str = 'style=' + _style_to_attrib(component_dict['props']['style'])
     attrib_str = ' '.join([attrib_str, style_str, bool_str]).strip()
-    children = component_dict['props'].get('children') or ''
     initial_indent = 0
-    if isinstance(children, (str, int, float)):
-        children = str(children)
-        closing_tag = '</{}>'.format(tag) if tag not in empty_tags else ''
+
+    comp_children = component_dict['props'].get('children', None)
+    if comp_children:
+        if isinstance(comp_children, (tuple, list)):
+            children = '\n' + '\n'.join([re.sub('^', '\g<0>' + (' ' * i if tag not in list_tags else ' ' * 2),
+                                            convert_to_html(child))
+                                            for i, child in enumerate(comp_children)])
+        else:
+            children = convert_to_html(comp_children)
     else:
-        children = '\n' + '\n'.join([re.sub('^', '\g<0>' + (' ' * i if tag not in list_tags else ' ' * 2),
-                                     convert_to_html(child))
-                                     for i, child in enumerate(children, 1)])
-        initial_indent += 2
-        closing_tag = '\n</{}>'.format(tag) if tag not in empty_tags else ''
+        # e.g. html.Img doesn't have any children
+        children = ''
+
+    initial_indent += 2
+    closing_tag = '\n</{}>'.format(tag) if tag not in empty_tags else ''
     attrib_str = ' ' + attrib_str if attrib_str else ''
     return '<{}{}>{}{}'.format(tag, attrib_str, children, closing_tag)
 
