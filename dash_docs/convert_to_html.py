@@ -105,7 +105,7 @@ def convert_to_html(component):
         return ''
     if not isinstance(component, Component):
         # likely a str, int, float
-        return str(component)        
+        return str(component)
     component_dict = component.to_plotly_json()
     if component_dict['type'] == 'Link':
         component_dict['namespace'] = 'dash_html_components'
@@ -171,7 +171,7 @@ def _dccLink_to_a_href(text):
 def _convert_blockquotes(text):
     """Convert <blockquote>.*?</blockquote> to `> `."""
     return re.sub('(?ms).*<blockquote>\n\s{,4}(.*?)</blockquote>.*',
-                  '> \g<1>', text)
+                  '> \g<1>', str(text))
 
 
 def markdown_to_html(md_text, extensions=md_extensions):
