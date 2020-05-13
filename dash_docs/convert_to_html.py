@@ -103,7 +103,7 @@ def convert_to_html(component):
     if isinstance(component, str):
         component = html.Span(component)
     if component is None:
-        component = ''
+        return ''
     component_dict = component.to_plotly_json()
     if component_dict['type'] == 'Link':
         component_dict['namespace'] = 'dash_html_components'
