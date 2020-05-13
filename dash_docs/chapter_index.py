@@ -5,6 +5,7 @@ import json
 import plotly
 import six
 import textwrap
+import traceback
 
 import dash
 import dash_html_components as html
@@ -1024,7 +1025,7 @@ URL_TO_BREADCRUMB_MAP = {}
 URL_TO_SSR_MAP = {}
 def create_url_mapping(url_set):
     for section in url_set:
-        if 'url' in section:
+        if 'url' in section and section['url'].startswith('/'):
             stripped_url = section['url'].rstrip('/')
             URL_TO_CONTENT_MAP[stripped_url] = section.get(
                 'content',
@@ -1040,7 +1041,8 @@ def create_url_mapping(url_set):
                     section['content']
                 )
             except Exception as e:
-                print(e)
+                print('Error creating SSR for {}'.format(stripped_url))
+                print(traceback.format_exc())
                 URL_TO_SSR_MAP[stripped_url] = ''
         if 'chapters' in section:
             create_url_mapping(section['chapters'])
