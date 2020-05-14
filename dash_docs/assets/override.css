@@ -471,13 +471,13 @@ a {
     }
 }
 
-@media (max-width: 670px) {
+@media (max-width: 705px) {
     .header .links iframe {
         display: none;
     }
 }
 
-@media (max-width: 570px) {
+@media (max-width: 600px) {
     .header .links {
         display: none;
     }
