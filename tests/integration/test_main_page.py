@@ -6,6 +6,10 @@ from dash_docs.chapter_index import URL_TO_CONTENT_MAP
 logger = logging.getLogger(__name__)
 
 
+@pytest.mark.skipif(
+    sys.version_info < (3, 0),
+    reason="skip non-essential, potentially flaky tests"
+)
 def test_snap001_index_page_links(dash_doc, index_pages):
     dash_doc.wait_for_element(".toc .toc--chapter-content")
     dash_doc.percy_snapshot("index - 1")
