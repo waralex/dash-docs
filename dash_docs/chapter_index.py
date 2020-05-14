@@ -5,6 +5,7 @@ import json
 import plotly
 import six
 import textwrap
+import traceback
 
 import dash
 import dash_html_components as html
@@ -16,6 +17,7 @@ import dash_bio
 
 from dash_docs import reusable_components as rc, tools
 from .reusable_components import TOC, TOCChapters
+from .convert_to_html import convert_to_html
 
 ## The chapters dict is used to generate the dash-docs search index
 ## If edited, update the search index by running `python dash_search_index.py`
@@ -1022,7 +1024,7 @@ URL_TO_CONTENT_MAP = {}
 URL_TO_BREADCRUMB_MAP = {}
 def create_url_mapping(url_set):
     for section in url_set:
-        if 'url' in section:
+        if 'url' in section and section['url'].startswith('/'):
             stripped_url = section['url'].rstrip('/')
             URL_TO_CONTENT_MAP[stripped_url] = section.get(
                 'content',

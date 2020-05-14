@@ -1,10 +1,11 @@
 import dash_core_components as dcc
+import dash_html_components as html
 from dash_docs import tools
 from dash_docs import reusable_components as rc
 
 examples = tools.load_examples(__file__)
 
-layout = [
+layout = html.Div(children=[
     rc.Markdown('''# Performance
 
 This chapter contains several recommendations for improving the performance
@@ -115,4 +116,4 @@ these types of enhancements, [please get in touch](https://plotly.com/products/c
 we'd love to help.
 
 ''')
-]
+])

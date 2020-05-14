@@ -1,8 +1,9 @@
 import dash_core_components as dcc
+import dash_html_components as html
 from dash_docs import styles
 from dash_docs import reusable_components as rc
 
-layout = [rc.Markdown('''
+layout = html.Div(children=[rc.Markdown('''
 # Deploying Dash Apps
 
 By default, Dash apps run on `localhost` - you can only access them on your
@@ -258,4 +259,4 @@ This workflow for deploying apps on heroku is very similar to how deployment
 works with the Plotly Enterprise's Dash Enterprise.
 [Learn more](https://plotly.com/dash/pricing/) or [get in touch](https://go.plotly.com/dash-doc).
 ''')
-]
+])

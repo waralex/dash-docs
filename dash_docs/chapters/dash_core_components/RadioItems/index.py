@@ -14,9 +14,9 @@ layout = html.Div(children=[
     rc.Markdown(
     '''
     `dcc.RadioItems` is a component for rendering a set of checkboxes.
-    See also <dccLink href="/dash-core-components/checklist">Checklist</dccLink>
+    See also <dccLink href="/dash-core-components/checklist" children="Checklist"/>
     for selecting multiple options at a time
-    <dccLink href="/dash-core-components/dropdown">Dropdown</dccLink> for
+    <dccLink href="/dash-core-components/dropdown" children="Dropdown"/> for
     a more compact view.
     '''
     ),

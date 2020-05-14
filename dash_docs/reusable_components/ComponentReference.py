@@ -16,7 +16,7 @@ def ComponentReference(component_name, lib=dcc):
         Markdown(
             '''
             > Access this documentation in your Python terminal with:
-            > ```shell
+            > ```python
             > >>> help({}.{})
             > ```
             '''.format(lib.__name__, component_name)

@@ -1,15 +1,23 @@
 from time import sleep
 import logging
+import pytest
+import sys
+
 
 from dash_docs.chapter_index import URL_TO_CONTENT_MAP
 
 logger = logging.getLogger(__name__)
 
 
+@pytest.mark.skipif(
+    sys.version_info < (3, 0),
+    reason="Python 2.7's dev flask server is timing out on many pages now"
+)
 def test_snap001_index_page_links(dash_doc, index_pages):
     dash_doc.wait_for_element(".toc .toc--chapter-content")
     dash_doc.percy_snapshot("index - 1")
     bad_links = []
+    timeout_pages = []
 
     good_links = ['/', '/search']
 
@@ -34,7 +42,12 @@ def test_snap001_index_page_links(dash_doc, index_pages):
                 #     "div.dash-debug-alert"
                 # ), "devtools should not raise an error alert"
             else:
-                dash_doc.visit_and_snapshot(res, hook_id=hook_id, stay_on_page=True, assert_check=False)
+                try:
+                    dash_doc.visit_and_snapshot(res, hook_id=hook_id, stay_on_page=True, assert_check=False)
+                except Exception as e:
+                    timeout_pages.append('{} --- on page {}'.format(
+                        str(e), resource
+                    ))
 
             linked_paths = dash_doc.driver.execute_script(
                 'return Array.from(document.querySelectorAll(\'a[href^="/"]\'))'
@@ -54,7 +67,7 @@ def test_snap001_index_page_links(dash_doc, index_pages):
                     e
                 ])
 
-    assert bad_links == []
+    assert (bad_links + timeout_pages) == []
 
 
 def test_snap002_external_resources(dash_doc):

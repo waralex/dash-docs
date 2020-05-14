@@ -14,9 +14,9 @@ layout = html.Div(children=[
     rc.Markdown(
     '''
     `dcc.Checklist` is a component for rendering a set of checkboxes.
-    See also <dccLink href="/dash-core-components/radioitems">RadioItems</dccLink>
+    See also <dccLink href="/dash-core-components/radioitems" children="RadioItems"/>
     for selecting a single option at a time or
-    <dccLink href="/dash-core-components/dropdown">Dropdown</dccLink> for
+    <dccLink href="/dash-core-components/dropdown" children="Dropdown"/> for
     a more compact view.
     '''
     ),

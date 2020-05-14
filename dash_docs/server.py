@@ -1,12 +1,13 @@
 # -*- coding: utf-8 -*-
 from dash import Dash
 from flask import redirect, escape, request
+from dash_docs.convert_to_html import convert_to_html
 
 
 class CustomDash(Dash):
     def interpolate_index(self, **kwargs):
         # import later to prevent circular imports - yikes
-        from .chapter_index import URL_TO_META_MAP
+        from .chapter_index import URL_TO_META_MAP, URL_TO_CONTENT_MAP
         kwargs.pop('title')
 
         if request.path in URL_TO_META_MAP:
@@ -21,6 +22,12 @@ class CustomDash(Dash):
             ),
             **kwargs
         )
+        if request.path in URL_TO_CONTENT_MAP:
+            meta_kwargs['ssr_content'] = convert_to_html(
+                URL_TO_CONTENT_MAP[request.path]
+            )
+        else:
+            meta_kwargs['ssr_content'] = ''
 
         return ('''<!DOCTYPE html>
         <html>
@@ -49,7 +56,9 @@ class CustomDash(Dash):
                 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N6T2RXG"
                     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         ''' + '''
-                {app_entry}
+                <div id="react-entry-point">
+                    {ssr_content}
+                </div>
                 <footer>
                     {config}
                     {scripts}
