@@ -235,7 +235,7 @@ layout = html.Div([
 
     Plotly Auth uses the environment variables `PLOTLY_USERNAME` and `PLOTLY_API_KEY`.
     You can find your username and API key at [https://plotly.com/settings/api](https://plotly.com/settings/api) or,
-    if you are using [Dash Enterprise](https://plotly/dash/pricing), at https://your-plotly-server.com/settings/api.
+    if you are using [Dash Enterprise](https://plotly/dash), at https://your-plotly-server.com/settings/api.
 
     You can set these variables directly in your code with:
     '''.replace('   ', '')),

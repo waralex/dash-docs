@@ -19,7 +19,7 @@ a demo of Dash and Dash Enterprise too.
 
 If you or your company would like to sponsor a specific feature or enterprise
 customization, get in touch with our
-[advanced development team](https://plotly.com/dash/pricing/).
+[advanced development team](https://plotly.com/products/consulting-and-oem).
 ### Community Support
 Our community forum at [community.plotly.com](https://community.plotly.com) has
 a topic dedicated on [Dash](https://community.plotly.com/c/dash).

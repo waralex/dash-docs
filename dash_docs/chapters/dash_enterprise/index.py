@@ -12,7 +12,7 @@ layout = html.Div(className='toc', children=[
                 """Dash Enterprise is Plotly's commercial offering
                    for managing and improving your Dash apps in your
                    organization. [Learn more](https://plotly.com/dash) or
-                   [request a trial](https://go.plotly.com/dash-doc).""")
+                   [request a trial](https://plotly.com/get-demo/).""")
     ]) if 'DASH_DOCS_URL_PREFIX' not in os.environ else '',
 
     rc.Section("Deployment", [
