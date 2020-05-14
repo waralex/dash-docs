@@ -17,7 +17,7 @@ If you or your team would like to demo, trial, or license a Dash Enterprise,
 
 If you or your company would like to sponsor a specific feature or enterprise
 customization, get in touch with our
-[advanced development team](https://plotly.com/dash/pricing/).
+[advanced development team](https://plotly.com/products/consulting-and-oem).
 
 ### Community Support
 

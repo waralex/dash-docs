@@ -53,6 +53,7 @@ header = html.Div(
             # The breakpoints are set in override.css
             html.Div(className='links', children=[
                 html.A('Announcements', href='https://community.plotly.com/tag/announcements'),
+                html.A('Gallery', href='https://dash-gallery.plotly.host'),
                 html.A('Show & Tell', href='https://community.plotly.com/tag/show-and-tell'),
                 html.A('Community Forum', href='https://community.plotly.com/c/dash'),
                 html.Iframe(

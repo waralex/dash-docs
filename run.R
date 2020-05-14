@@ -235,7 +235,7 @@ header <- htmlDiv(
           src = 'https://dash.plotly.com/assets/images/logo-plotly.png'
         ), href = 'https://plotly.com/products/dash', className='logo-link'),
         htmlDiv(className='links', children = list(
-          htmlA('pricing', className='link', href = 'https://plotly.com/dash/pricing'),
+          htmlA('pricing', className='link', href = 'https://plotly.com/dash'),
           htmlA('user guide', className='link', href = '/'),
           htmlA('plotly', className='link', href = 'https://plotly.com/')
         ))
@@ -606,7 +606,7 @@ app$callback(
               list(
                 components$Chapter(
                 'About Dash Deployment Server',
-                href='https://plotly.com/dash/pricing/?_ga=2.180458663.1075922756.1562168385-916141078.1562168385'
+                href='https://plotly.com/dash/?_ga=2.180458663.1075922756.1562168385-916141078.1562168385'
                 ),
                 components$Chapter(
                 'Dash Deployment Server Documentation',
