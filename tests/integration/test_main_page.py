@@ -1,5 +1,8 @@
 from time import sleep
 import logging
+import pytest
+import sys
+
 
 from dash_docs.chapter_index import URL_TO_CONTENT_MAP
 
