@@ -2,6 +2,7 @@ import dash
 import dash_core_components as dcc
 import dash_html_components as html
 import pandas as pd
+import plotly.express as px
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
@@ -81,21 +82,15 @@ def update_graph(xaxis_column_name, yaxis_column_name,
                  xaxis_type, yaxis_type,
                  year_value):
     dff = df[df['Year'] == year_value]
-
-    return {
-        'data': [dict(
-            x=dff[dff['Indicator Name'] == xaxis_column_name]['Value'],
+    
+    fig = px.scatter(x=dff[dff['Indicator Name'] == xaxis_column_name]['Value'],
             y=dff[dff['Indicator Name'] == yaxis_column_name]['Value'],
-            text=dff[dff['Indicator Name'] == yaxis_column_name]['Country Name'],
-            customdata=dff[dff['Indicator Name'] == yaxis_column_name]['Country Name'],
-            mode='markers',
-            marker={
-                'size': 15,
-                'opacity': 0.5,
-                'line': {'width': 0.5, 'color': 'white'}
-            }
-        )],
-        'layout': dict(
+            hover_name=dff[dff['Indicator Name'] == yaxis_column_name]['Country Name']
+            )
+    
+    fig.update_traces(customdata=dff[dff['Indicator Name'] == yaxis_column_name]['Country Name'])
+        
+    fig.update_layout(
             xaxis={
                 'title': xaxis_column_name,
                 'type': 'linear' if xaxis_type == 'Linear' else 'log'
@@ -104,33 +99,25 @@ def update_graph(xaxis_column_name, yaxis_column_name,
                 'title': yaxis_column_name,
                 'type': 'linear' if yaxis_type == 'Linear' else 'log'
             },
-            margin={'l': 40, 'b': 30, 't': 10, 'r': 0},
-            height=450,
-            hovermode='closest'
-        )
-    }
+            margin={'l': 40, 'b': 40, 't': 10, 'r': 0},
+            hovermode='closest')
+
+    return fig
 
 
 def create_time_series(dff, axis_type, title):
-    return {
-        'data': [dict(
-            x=dff['Year'],
-            y=dff['Value'],
-            mode='lines+markers'
-        )],
-        'layout': {
-            'height': 225,
-            'margin': {'l': 20, 'b': 30, 'r': 10, 't': 10},
-            'annotations': [{
-                'x': 0, 'y': 0.85, 'xanchor': 'left', 'yanchor': 'bottom',
-                'xref': 'paper', 'yref': 'paper', 'showarrow': False,
-                'align': 'left', 'bgcolor': 'rgba(255, 255, 255, 0.5)',
-                'text': title
-            }],
-            'yaxis': {'type': 'linear' if axis_type == 'Linear' else 'log'},
-            'xaxis': {'showgrid': False}
-        }
-    }
+    
+    fig = px.scatter(x=dff['Year'],
+            y=dff['Value'])
+    
+    fig.update_traces(mode='lines+markers')
+    
+    fig.update_layout(height=225, margin={'l': 20, 'b': 30, 'r': 10, 't': 10},
+                      annotations=[{'x': 0, 'y': 0.85, 'xanchor': 'left', 'yanchor': 'bottom','xref': 'paper', 'yref': 'paper', 'showarrow': False, 'align': 'left', 'bgcolor': 'rgba(255, 255, 255, 0.5)',  'text': title}],
+                      yaxis={'type': 'linear' if axis_type == 'Linear' else 'log'}, 
+                      xaxis={'showgrid': False})
+    
+    return fig
 
 
 @app.callback(

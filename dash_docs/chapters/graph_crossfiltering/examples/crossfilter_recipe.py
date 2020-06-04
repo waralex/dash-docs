@@ -4,6 +4,7 @@ import dash_html_components as html
 import numpy as np
 import pandas as pd
 from dash.dependencies import Input, Output
+import plotly.express as px
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
@@ -11,7 +12,7 @@ app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
 # make a sample data frame with 6 columns
 np.random.seed(0)
-df = pd.DataFrame({"Col " + str(i+1): np.random.rand(30) for i in range(6)})
+df = pd.DataFrame({"Col " + str(i+1): np.random.rand(15) for i in range(6)})
 
 app.layout = html.Div([
     html.Div(
@@ -43,35 +44,16 @@ def get_figure(df, x_col, y_col, selectedpoints, selectedpoints_local):
     # attribute. see
     # https://medium.com/@plotlygraphs/notes-from-the-latest-plotly-js-release-b035a5b43e21
     # for an explanation
-    return {
-        'data': [{
-            'x': df[x_col],
-            'y': df[y_col],
-            'text': df.index,
-            'textposition': 'top',
-            'selectedpoints': selectedpoints,
-            'customdata': df.index,
-            'type': 'scatter',
-            'mode': 'markers+text',
-            'marker': { 'color': 'rgba(0, 116, 217, 0.7)', 'size': 12 },
-            'unselected': {
-                'marker': { 'opacity': 0.3 },
-                # make text transparent when not selected
-                'textfont': { 'color': 'rgba(0, 0, 0, 0)' }
-            }
-        }],
-        'layout': {
-            'margin': {'l': 20, 'r': 0, 'b': 15, 't': 5},
-            'dragmode': 'select',
-            'hovermode': False,
-            # Display a rectangle to highlight the previously selected region
-            'shapes': [dict({
-                'type': 'rect',
-                'line': { 'width': 1, 'dash': 'dot', 'color': 'darkgrey' }
-            }, **selection_bounds
-            )]
-        }
-    }
+    fig = px.scatter(x=df[x_col], y=df[y_col], text=df.index)
+    
+    fig.update_traces(selectedpoints=selectedpoints, customdata=df.index, 
+                      mode='markers+text', marker={ 'color': 'rgba(0, 116, 217, 0.7)', 'size': 20 }, unselected={'marker': { 'opacity': 0.3 }, 'textfont': { 'color': 'rgba(0, 0, 0, 0)' }})
+    
+    fig.update_layout(margin={'l': 20, 'r': 0, 'b': 15, 't': 5}, dragmode='select', 
+                      hovermode=False, 
+                      shapes=[dict({'type': 'rect',
+                                    'line': { 'width': 1, 'dash': 'dot', 'color': 'darkgrey' }}, **selection_bounds)])
+    return fig
 
 # this callback defines 3 figures
 # as a function of the intersection of their 3 selections
