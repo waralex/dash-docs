@@ -1,41 +1,23 @@
 import dash
 import dash_core_components as dcc
 import dash_html_components as html
-import pandas as pd
+import plotly.express as px
+
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
-df = pd.read_csv('https://gist.githubusercontent.com/chriddyp/5d1ea79569ed194d432e56108a04d188/raw/a9f9e8076b837d541398e999dcbac2b2826a81f8/gdp-life-exp-2007.csv')
+df = px.data.gapminder()
 
+fig = px.scatter(df, x="gdpPercap", y="lifeExp", animation_frame="year", animation_group="country",
+           size="pop", color="continent", hover_name="country", facet_col="continent",
+           log_x=True, size_max=45, range_x=[100,100000], range_y=[25,90])
 
 app.layout = html.Div([
     dcc.Graph(
         id='life-exp-vs-gdp',
-        figure={
-            'data': [
-                dict(
-                    x=df[df['continent'] == i]['gdp per capita'],
-                    y=df[df['continent'] == i]['life expectancy'],
-                    text=df[df['continent'] == i]['country'],
-                    mode='markers',
-                    opacity=0.7,
-                    marker={
-                        'size': 15,
-                        'line': {'width': 0.5, 'color': 'white'}
-                    },
-                    name=i
-                ) for i in df.continent.unique()
-            ],
-            'layout': dict(
-                xaxis={'type': 'log', 'title': 'GDP Per Capita'},
-                yaxis={'title': 'Life Expectancy'},
-                margin={'l': 40, 'b': 40, 't': 10, 'r': 10},
-                legend={'x': 0, 'y': 1},
-                hovermode='closest'
-            )
-        }
+        figure=fig
     )
 ])
 

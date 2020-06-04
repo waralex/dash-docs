@@ -2,10 +2,13 @@
 import dash
 import dash_core_components as dcc
 import dash_html_components as html
+import plotly.express as px
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
+
+fig = px.bar(x=[1,2,3,4,5], y=[6,7,8,9,10])
 
 app.layout = html.Div(children=[
     html.H1(children='Hello Dash'),
@@ -16,15 +19,7 @@ app.layout = html.Div(children=[
 
     dcc.Graph(
         id='example-graph',
-        figure={
-            'data': [
-                {'x': [1, 2, 3], 'y': [4, 1, 2], 'type': 'bar', 'name': 'SF'},
-                {'x': [1, 2, 3], 'y': [2, 4, 5], 'type': 'bar', 'name': u'Montréal'},
-            ],
-            'layout': {
-                'title': 'Dash Data Visualization'
-            }
-        }
+        figure=fig
     )
 ])
 
