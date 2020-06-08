@@ -123,7 +123,7 @@ layout = html.Div([
     1. We're using the [Pandas](http://pandas.pydata.org/) library for
        importing and filtering datasets in memory.
     2. We load our dataframe at the start of the app:
-       `df = px.data.gapminder()`.
+       `df = pd.read_csv('...')`.
        This dataframe `df` is in the global state of the app and can be
        read inside the callback functions.
     3. Loading data into memory can be expensive. By loading querying data at

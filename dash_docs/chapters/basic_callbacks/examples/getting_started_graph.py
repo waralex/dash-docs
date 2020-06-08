@@ -6,7 +6,7 @@ import plotly.express as px
 
 import pandas as pd
 
-df = px.data.gapminder()
+df = pd.read_csv('https://raw.githubusercontent.com/plotly/datasets/master/gapminderDataFiveYear.csv')
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
@@ -31,8 +31,7 @@ app.layout = html.Div([
 def update_figure(selected_year):
     filtered_df = df[df.year == selected_year]
     
-    fig = px.scatter(filtered_df, x="gdpPercap", y="lifeExp", animation_frame="year",
-                     animation_group="country",size="pop", color="continent", hover_name="country", log_x=True, size_max=55, range_x=[100,100000], range_y=[25,90])
+    fig = px.scatter(filtered_df, x="gdpPercap", y="lifeExp", size="pop", color="continent", hover_name="country", log_x=True, size_max=55, range_x=[100,100000], range_y=[25,90])
     
     fig.update_layout(transition_duration=500)
 
