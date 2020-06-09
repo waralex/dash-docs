@@ -11,7 +11,8 @@ app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 df = px.data.gapminder()
 
 fig = px.scatter(df.query("year==2007"), x="gdpPercap", y="lifeExp", 
-                 size="pop", color="continent", hover_name="country", log_x=True, size_max=60)
+                 size="pop", color="continent", hover_name="country", 
+                 log_x=True, size_max=60)
 
 app.layout = html.Div([
     dcc.Graph(

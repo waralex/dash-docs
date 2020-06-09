@@ -12,7 +12,7 @@ app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
 # make a sample data frame with 6 columns
 np.random.seed(0)
-df = pd.DataFrame({"Col " + str(i+1): np.random.rand(15) for i in range(6)})
+df = pd.DataFrame({"Col " + str(i+1): np.random.rand(30) for i in range(6)})
 
 app.layout = html.Div([
     html.Div(
@@ -44,15 +44,17 @@ def get_figure(df, x_col, y_col, selectedpoints, selectedpoints_local):
     # attribute. see
     # https://medium.com/@plotlygraphs/notes-from-the-latest-plotly-js-release-b035a5b43e21
     # for an explanation
-    fig = px.scatter(df, x='x_col', y='y_col', text=df.index, customdata=df.index)
+    fig = px.scatter(df, x=df[x_col], y=df[y_col], text=df.index)
     
     fig.update_traces(selectedpoints=selectedpoints, 
+                      customdata=df.index,
                       mode='markers+text', marker={ 'color': 'rgba(0, 116, 217, 0.7)', 'size': 20 }, unselected={'marker': { 'opacity': 0.3 }, 'textfont': { 'color': 'rgba(0, 0, 0, 0)' }})
     
-    fig.update_layout(margin={'l': 20, 'r': 0, 'b': 15, 't': 5}, dragmode='select', 
-                      hovermode=False, 
-                      shapes=[dict({'type': 'rect',
-                                    'line': { 'width': 1, 'dash': 'dot', 'color': 'darkgrey' }}, **selection_bounds)])
+    fig.update_layout(margin={'l': 20, 'r': 0, 'b': 15, 't': 5}, dragmode='select', hovermode=False)
+    
+    fig.add_shape(dict({'type': 'rect', 
+                        'line': { 'width': 1, 'dash': 'dot', 'color': 'darkgrey' }}, 
+                       **selection_bounds))
     return fig
 
 # this callback defines 3 figures

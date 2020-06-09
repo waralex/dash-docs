@@ -5,6 +5,7 @@ import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output
 import plotly.express as px
+import pandas as pd
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
@@ -17,7 +18,14 @@ styles = {
     }
 }
 
-fig = px.scatter(x=[1, 2, 3, 4], y=[4, 1, 3, 5], text=['a', 'b', 'c', 'd'])
+df = pd.DataFrame({
+    "x": [1,2,1,2],
+    "y": [1,2,3,4],
+    "customdata": [1,2,3,4],
+    "fruit": ["apple", "apple", "orange", "orange"]
+})
+
+fig = px.scatter(df, x="x", y="y", color="fruit", custom_data=["customdata"])
 
 fig.update_layout(clickmode='event+select')
 
