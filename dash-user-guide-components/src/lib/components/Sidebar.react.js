@@ -282,6 +282,8 @@ class TreeSidebar extends Component {
             const chapter = urls[i];
             if(!chapter) {
                 continue;
+            } else if (chapter.chapters && chapter.hide_chapters_in_sidebar) {
+                chapter_elements.push(link(chapter));
             } else if (chapter.chapters) {
 
                 const open = (
