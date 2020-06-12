@@ -161,7 +161,11 @@ layout_children = generate_docs(
 layout_children.insert(1, daq_install_instructions)
 
 dtp = load_example(
-    'dash_docs/chapters/dash_daq/examples/darkthemeprovider_daq.py'
+    os.path.join(
+        os.path.dirname(os.path.relpath(__file__)),
+        'examples',
+        'darkthemeprovider_daq.py'
+    )
 )
 
 layout_children += [
