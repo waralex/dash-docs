@@ -1,7 +1,7 @@
 # AUTO GENERATED FILE - DO NOT EDIT
 
-Sidebar <- function(id=NULL, urls=NULL, depth=NULL) {
-
+sidebar <- function(id=NULL, urls=NULL, depth=NULL) {
+    
     props <- list(id=id, urls=urls, depth=depth)
     if (length(props) > 0) {
         props <- props[!vapply(props, is.null, logical(1))]
