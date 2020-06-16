@@ -2628,7 +2628,7 @@ Redis = html.Div(children=[
     Redis instances support 16 databases, and each database is accessible via the
     specified broker URL using its index.
 
-    Within Dash Workspaces, the `DASH_WORKSPACE_ENV` environment variable provides 
+    Within Dash Workspaces, the `DASH_ENTERPRISE_ENV` environment variable provides 
     application developers with a convenient method for conditionally appending 
     a database index when defining `REDIS_URL`.
 
@@ -2640,7 +2640,7 @@ Redis = html.Div(children=[
     rc.Markdown(
     '''
     ```python
-    if 'DASH_WORKSPACE_ENV' in os.environ:
+    if os.getenv('DASH_ENTERPRISE_ENV') == 'WORKSPACE':
         REDIS_URL = os.environ["REDIS_URL"] + '/' + str(1 % 16) 
     else:
         REDIS_URL = os.environ.get('REDIS_URL', 'redis://127.0.0.1:6379')
