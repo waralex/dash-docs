@@ -2617,15 +2617,28 @@ Redis = html.Div(children=[
     ```shell
     redis_instance = redis.StrictRedis.from_url(os.environ["REDIS_URL"])
     ```
+    ''',
+    style=styles.code_container,
+    ),
+
+    rc.Markdown('''
+   
+    &nbsp;
 
     Redis instances support 16 databases, and each database is accessible via the
     specified broker URL using its index.
 
-    Using the `WORKSPACE_ENV` environment variable, application developers can
-    conditionally append a database index when defining `REDIS_URL` so that an  
-    application running in a given workspace does not share its Redis database.
-    For example:
+    Within Dash Workspaces, the `WORKSPACE_ENV` environment variable provides 
+    application developers with a convenient method for conditionally appending 
+    a database index when defining `REDIS_URL`.
 
+    This helps ensure that an application running in a given workspace does not
+    share its Redis database. For example:
+
+    '''),
+
+    rc.Markdown(
+    '''
     ```python
     if 'WORKSPACE_ENV' in os.environ:
         REDIS_URL = os.environ["REDIS_URL"] + '/' + str(1 % 16) 
