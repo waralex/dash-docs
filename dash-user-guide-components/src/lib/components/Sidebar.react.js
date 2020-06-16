@@ -52,6 +52,9 @@ function traverse(obj, pathArray, func) {
 
 function searchChapter(chapter, searchWord) {
     return (searchWord) => {
+        if(chapter.hide_in_sidebar) {
+            return false;
+        }
         const terms = [
             'name', 'description', 'description_short',
             'url', 'meta_keywords'
