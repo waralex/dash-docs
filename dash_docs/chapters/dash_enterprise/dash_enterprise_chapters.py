@@ -2617,6 +2617,23 @@ Redis = html.Div(children=[
     ```shell
     redis_instance = redis.StrictRedis.from_url(os.environ["REDIS_URL"])
     ```
+
+    Redis instances support 16 databases, and each database is accessible via the
+    specified broker URL using its index.
+
+    Using the `WORKSPACE_ENV` environment variable, application developers can
+    conditionally append a database index when defining `REDIS_URL` so that an  
+    application running in a given workspace does not share its Redis database.
+    For example:
+
+    ```python
+    if 'WORKSPACE_ENV' in os.environ:
+        REDIS_URL = os.environ["REDIS_URL"] + '/' + str(1 % 16) 
+    else:
+        REDIS_URL = os.environ.get('REDIS_URL', 'redis://127.0.0.1:6379')
+
+    celery_app = Celery("Celery App", broker=REDIS_URL)
+    ```    
     ''',
     style=styles.code_container,
     ),
