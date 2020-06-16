@@ -2710,6 +2710,12 @@ Celery = html.Div(children=[
 
     &nbsp;
 
+    When combined with Dash Workspaces, Celery offers the capacity to offload
+    longer running and computationally intensive tasks while centralizing
+    development activities. For more details on working with Celery within
+    Dash Workspaces, see [Referencing Redis in Your Code](redis-database)
+    within the Redis chapter of our documentation.    
+
     For more information about Celery, visit
     [Celery's documentation](http://docs.celeryproject.org/en/latest/).
 
