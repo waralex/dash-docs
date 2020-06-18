@@ -2710,10 +2710,7 @@ Celery = html.Div(children=[
 
     &nbsp;
 
-    When combined with Dash Workspaces, Celery offers the capacity to offload
-    longer running and computationally intensive tasks while centralizing
-    development activities. For more details on working with Celery within
-    Dash Workspaces, see [Referencing Redis in Your Code](redis-database)
+    Celery requires Redis. In Workspaces, the same Redis instance is shared between the Workspace environment and the deployed application. A shared Redis database between two different apps can cause requests to be intercepted by the wrong app. To configure Redis with Celery in a Workspace-compatible way, see [Referencing Redis in Your Code](/dash-enterprise/redis-database).
     within the Redis chapter of our documentation.    
 
     For more information about Celery, visit
