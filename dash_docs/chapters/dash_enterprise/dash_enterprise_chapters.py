@@ -2628,12 +2628,12 @@ Redis = html.Div(children=[
     Redis instances support 16 databases, and each database is accessible via the
     specified broker URL using its index.
 
-    Within Dash Workspaces, the `DASH_ENTERPRISE_ENV` environment variable provides 
-    application developers with a convenient method for conditionally appending 
-    a database index when defining `REDIS_URL`.
+    **Workspaces**
 
-    This helps ensure that an application running in a given workspace does not
-    share its Redis database. For example:
+    Note: The same `REDIS_URL` and Redis instance is used by deployed applications and workspaces.
+    If you want to use a different Redis database (but the same Redis instance), then specify a 
+    different Redis database number if the code is run within a Workspace by checking the 
+    `DASH_ENTERPRISE_ENV` variable. Redis supports 16 databases on the same instance.
 
     '''),
 
