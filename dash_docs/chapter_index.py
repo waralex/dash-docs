@@ -1136,5 +1136,9 @@ def create_urls_without_content(url_set):
             section.pop('ad')
         if 'adhref' in section:
             section.pop('adhref')
+        if ('description' in section and
+                isinstance(section['description'],
+                dash.development.base_component.Component)):
+            section.pop('description')
         if 'chapters' in section:
             create_urls_without_content(section['chapters'])
