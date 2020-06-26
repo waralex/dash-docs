@@ -19,6 +19,8 @@ else:
 
 
 def Blockquote():
+    if 'DASH_DOCS_URL_PREFIX' in os.environ:
+        return None
     return rc.Markdown('''
         > This documentation is for [Dash Enterprise](https://plotly.com/dash),
         Plotly's commercial platform for managing and improving

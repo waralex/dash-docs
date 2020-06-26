@@ -171,7 +171,9 @@ export default class Sidebar extends Component {
                         urls={urls}
                         depth={depth}
                         force_closed={
-                            window.location.pathname === '/' &&
+                            (window.location.pathname === '/' ||
+                             window.location.pathname === '/Docs' ||
+                             window.location.pathname === '/Docs/') &&
                             this.state.search === ''
                         }
                     />
