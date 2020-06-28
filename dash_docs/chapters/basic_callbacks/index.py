@@ -40,7 +40,7 @@ layout = html.Div([
     '''),
 
     html.H4('''
-    Dash App Layout
+    Interactive Dash App Layout
     ''', id='dash-app-layout'),
 
     rc.Markdown(
@@ -55,7 +55,15 @@ layout = html.Div([
     right away. Let's break down what's happening here:
 
     1. The "inputs" and "outputs" of our application interface are described
-       declaratively through the `app.callback` decorator.
+       declaratively as the arguments of the `@app.callback` decorator function.
+    '''),
+
+    rc.Syntax('''Decorator functions are used in Dash to update user interface elements in response to user input. a powerful feature of the Python language.  that allow users to The concept of decorating functions is built into the Python language. functions that wrap other functions in order to modify their behavior. Typically, they are denoted with the `@` prefix. In the context of Dash, they allow users to set up  ''', summary='''
+    Learn more about using decorators in Dash apps.
+    '''),
+
+
+    rc.Markdown('''
     2. In Dash, the inputs and outputs of our application are simply the
        properties of a particular component. In this example,
        our input is the "`value`" property of the component that has the ID
