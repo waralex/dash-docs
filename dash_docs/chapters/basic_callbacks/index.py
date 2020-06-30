@@ -61,11 +61,15 @@ layout = html.Div([
         rc.Markdown('''
         a. By writing this decorator, we're telling Dash to call this function for us whenever the value of the "input" component (the text box) changes in order to update the children of the "output" component on the page (the HTML div).
 
-        b. You can use any name for the function that is wrapped by the `@app.callback` decorator and for its arguments. However, you must use the same argument name inside the callback function as you do in its definition, just like in a regular Python function.
+        b. You can use any name for the function that is wrapped by the `@app.callback` decorator. The convention is that the name describes the callback output(s).
 
-        c. You must use the same `id` you gave a Dash component in the `app.layout` when referring to it as either an input or output of the `@app.callback` decorator.
+        c. You can use any name for the function arguments, but you must use the same names inside the callback function as you do in its definition, just like in a regular Python function. The arguments are positional: first the `Input` items and then any `State` items are given in the same order as in the decorator.
 
-        d. The `@app.callback` decorator needs to be directly above the callback function declaration. If there is a blank line between the decorator and the function definition, the callback registration will not be successful.  If you're curious about what the decorator syntax means under the hood, you can read [this StackOverflow answer](https://stackoverflow.com/questions/739654/how-to-make-a-chain-of-function-decorators/1594484#1594484) and learn more about decorators by reading [PEP 318 -- Decorators for Functions and Methods](https://www.python.org/dev/peps/pep-0318/#current-syntax).
+        d. You must use the same `id` you gave a Dash component in the `app.layout` when referring to it as either an input or output of the `@app.callback` decorator.
+
+        e. The `@app.callback` decorator needs to be directly above the callback function declaration. If there is a blank line between the decorator and the function definition, the callback registration will not be successful.
+
+        f. If you're curious about what the decorator syntax means under the hood, you can read [this StackOverflow answer](https://stackoverflow.com/questions/739654/how-to-make-a-chain-of-function-decorators/1594484#1594484) and learn more about decorators by reading [PEP 318 -- Decorators for Functions and Methods](https://www.python.org/dev/peps/pep-0318/#current-syntax).
         ''', style={'marginTop': 10}),
     ], style={'marginBottom': 25}),
 
