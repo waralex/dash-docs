@@ -92,7 +92,7 @@ In Python 3 you can use the builtin module `venv`:
 
 ## Cookiecutter boilerplate
 
-Now that we have Node.js and Python up and running, we can generate a dash component project using the [cookiecutter dash-component-boilerplate](https://github.com/plotly/dash-component-boilerplate).
+Now that we have Node.js and Python up and running, we can generate a Dash component project using the [cookiecutter dash-component-boilerplate](https://github.com/plotly/dash-component-boilerplate).
 
 The boilerplate is built using [cookiecutter](https://github.com/audreyr/cookiecutter),
 a project template renderer made with jinja2.
@@ -102,7 +102,7 @@ This allows users to create a project with custom values formatted for the proje
 
 `pip install cookiecutter`
 
-### Generate a new dash component project
+### Generate a new Dash component project
 
 - Run the cookiecutter: `cookiecutter https://github.com/plotly/dash-component-boilerplate.git`
 - Answer the questions about the project:
@@ -133,7 +133,7 @@ This allows users to create a project with custom values formatted for the proje
   - package.json              # npm package info and build commands.
   - setup.py                  # Python package info
   - requirements.txt          # Python requirements for building the components and running usage.py
-  - usage.py                  # Sample Python dash app to run the custom component.
+  - usage.py                  # Sample Python Dash app to run the custom component.
   - webpack.config.js         # The webpack configs used to generate the bundles.
   - webpack.serve.config.js   # webpack configs to run the demo.
   - MANIFEST.in               # Contains a list of files to include in the Python package.

@@ -99,7 +99,7 @@ layout = html.Div([
     ## Example
 
     ```python
-    # 1. imports of your dash app
+    # 1. imports of your Dash app
     import dash
     import dash_html_components as html
 
@@ -112,7 +112,7 @@ layout = html.Div([
         app = dash.Dash(__name__)
         app.layout = html.Div(id="nully-wrapper", children=0)
 
-        # 4. host the app locally in a thread, all dash server configs could be
+        # 4. host the app locally in a thread, all Dash server configs could be
         # passed after the first app argument
         dash_duo.start_server(app)
 
@@ -381,12 +381,12 @@ layout = html.Div([
     | `wait_for_style_to_equal(selector, style, value, timeout=None)` | explicit wait until the element's style has expected `value`. shortcut to `WebDriverWait` with custom wait condition `style_to_equal`. `timeout` if not set, equals to the fixture's `wait_timeout`  |
     | `wait_for_text_to_equal(selector, text, timeout=None)` | explicit wait until the element's text equals the expected `text`. shortcut to `WebDriverWait` with custom wait condition `text_to_equal`. `timeout` if not set, equals to the fixture's `wait_timeout` |
     | `wait_for_contains_text(selector, text, timeout=None)` | explicit wait until the element's text contains the expected `text`. shortcut to `WebDriverWait` with custom wait condition `contains_text` condition. `timeout` if not set, equals to the fixture's `wait_timeout` |
-    | `wait_for_page(url=None, timeout=10)` | navigate to the `url` in webdriver and wait until the dash renderer is loaded in browser. use `server_url` if `url` is None |
+    | `wait_for_page(url=None, timeout=10)` | navigate to the `url` in webdriver and wait until the Dash renderer is loaded in browser. use `server_url` if `url` is None |
     | `toggle_window()` | switch between the current working window and the newly opened one. |
     | `switch_window(idx)` | switch to window by window index. shortcut to `driver.switch_to.window`. raise `BrowserError` if no second window present in browser |
     | `open_new_tab(url=None)` | open a new tab in browser with window name `new window`. `url` if not set, equals to `server_url` |
     | `percy_snapshot(name, wait_for_callbacks=False)` | visual test API shortcut to `percy_runner.snapshot`. it also combines the snapshot `name` with the actual python versions. The `wait_for_callbacks` parameter controls whether the snapshot is taken only after all callbacks have fired; the default is `False`. |
-    | `visit_and_snapshot(resource_path, hook_id, wait_for_callbacks=True, assert_check=True)` | This method automates a common task during dash-docs testing: the URL described by `resource_path` is visited, and completion of page loading is assured by waiting until the element described by `hook_id` is fetched. Once `hook_id` is available, `visit_and_snapshot` acquires a snapshot of the page and returns to the main page. `wait_for_callbacks` controls if the snapshot is taken until all dash callbacks are fired, default True. `assert_check` is a switch to enable/disable an assertion that there is no devtools error alert icon. |
+    | `visit_and_snapshot(resource_path, hook_id, wait_for_callbacks=True, assert_check=True)` | This method automates a common task during dash-docs testing: the URL described by `resource_path` is visited, and completion of page loading is assured by waiting until the element described by `hook_id` is fetched. Once `hook_id` is available, `visit_and_snapshot` acquires a snapshot of the page and returns to the main page. `wait_for_callbacks` controls if the snapshot is taken until all Dash callbacks are fired, default True. `assert_check` is a switch to enable/disable an assertion that there is no devtools error alert icon. |
     | `take_snapshot(name)` | hook method to take a snapshot while selenium test fails. the snapshot is placed under `/tmp/dash_artifacts` in Linux or `%TEMP` in windows with a filename combining test case `name` and the running selenium session id |
     | `zoom_in_graph_by_ratio(elem_or_selector, start_fraction=0.5, zoom_box_fraction=0.2, compare=True)` | zoom out a graph (provided with either a Selenium WebElement or CSS selector) with a zoom box fraction of component dimension, default start at middle with a rectangle of 1/5 of the dimension use `compare` to control if we check the SVG get changed |
     | `click_at_coord_fractions(elem_or_selector, fx, fy)` |  Use `ActionChains` to click a Selenium WebElement at a location a given fraction of the way `fx` between its left (0) and right (1) edges, and `fy` between its top (0) and bottom (1) edges. |
@@ -395,7 +395,7 @@ layout = html.Div([
     | `driver` | property exposes the Selenium WebDriver as fixture property |
     | `session_id` | property returns the selenium session_id, shortcut to `driver.session_id` |
     | `server_url` | set the server_url as setter so the selenium is aware of the local server port, it also implicitly calls `wait_for_page`. return the server_url as property |
-    | `download_path` | property returns the download_path, note that dash fixtures are initialized with a temporary path from pytest `tmpdir` |
+    | `download_path` | property returns the download_path, note that Dash fixtures are initialized with a temporary path from pytest `tmpdir` |
 
     ### Dash APIs
 
@@ -495,7 +495,7 @@ layout = html.Div([
 
     There are two customized `pytest` arguments to tune Percy runner:
 
-    1. `--nopercyfinalize` disables the Percy finalize in dash fixtures. This
+    1. `--nopercyfinalize` disables the Percy finalize in Dash fixtures. This
     is required if you run your tests in parallel, then you add an extra
     `percy finalize --all` step at the end. For more details, please visit
     [Percy Documents](https://docs.percy.io/docs/parallel-test-suites).

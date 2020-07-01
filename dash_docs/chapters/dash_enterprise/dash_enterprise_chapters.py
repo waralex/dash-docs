@@ -42,7 +42,7 @@ Initialize = html.Div(children=[
         > This is the *1st* deployment chapter of the <dccLink href="/dash-enterprise" children="Dash Enterprise Documentation"/>.
         > The <dccLink href="/dash-enterprise/deployment" children="next chapter"/> covers deploying a Dash App on Dash Enterprise.
 
-        Before creating or deploying a dash app locally, you need to initialize
+        Before creating or deploying a Dash app locally, you need to initialize
         an app on Dash Enterprise.
 
         This can be achieved by visiting the Dash App Manager at
@@ -61,7 +61,7 @@ Initialize = html.Div(children=[
         &nbsp;
 
         2. In the top right-hand corner, select **Create App**. The
-        'Create Dash App' modal should appear. Here, name your dash app
+        'Create Dash App' modal should appear. Here, name your Dash app
         (app names must start with a lowercase letter and may
         contain only lowercase letters, numbers, and -) and then
         hit **Create**. It is important to keep in mind that this name is going
@@ -100,7 +100,7 @@ Initialize = html.Div(children=[
 
         &nbsp;
 
-        4. Now, select the dash app to access the app overview.
+        4. Now, select the Dash app to access the app overview.
 
     '''),
 
@@ -701,7 +701,7 @@ Requirements = html.Div(children=[
 
     rc.Markdown(
     '''
-    To deploy dash apps to Dash Enterprise, there
+    To deploy Dash apps to Dash Enterprise, there
     are a few files required for successful deployment. Below is a common
     Dash App folder structure and a brief description of each file's function.
 
@@ -3048,7 +3048,7 @@ Troubleshooting = html.Div(children=[
         > To see the latest changes of any package, check the GitHub repo's CHANGELOG.md file:
         > - [dash & dash-renderer changelog](https://github.com/plotly/dash/blob/master/CHANGELOG.md)
         >   - `dash-renderer` is a separate package installed automatically with
-        >     dash but its updates are included in the main dash changelog.
+        >     Dash but its updates are included in the main Dash changelog.
         >     These docs are using dash-renderer=={}.
         > - [dash-core-components changelog](https://github.com/plotly/dash-core-components/blob/master/CHANGELOG.md)
         > - [dash-html-components changelog](https://github.com/plotly/dash-html-components/blob/master/CHANGELOG.md)
@@ -3056,7 +3056,7 @@ Troubleshooting = html.Div(children=[
         > - [plotly changelog](https://github.com/plotly/plotly.py/blob/master/CHANGELOG.md)
         >   - the `plotly` package is also installed automatically with dash. It is
         >     the Python interface to the plotly.js graphing library, so is mainly
-        >     used by dash-core-components, but it's also used by dash itself.
+        >     used by dash-core-components, but it's also used by Dash itself.
         >     These docs are using plotly=={}.
         >
         > All of these packages adhere to [semver](https://semver.org/).

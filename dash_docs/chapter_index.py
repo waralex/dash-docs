@@ -105,7 +105,7 @@ URLS = [
                 'description': (
                     "Dash v1.0 is out! If you're new to Dash, just head down to "
                     "the tutorial section below and get started. This section is "
-                    "for users Dash v0.x upgrading to v1.0. We've learned a lot "
+                    "for users of Dash v0.x upgrading to v1.0. We've learned a lot "
                     "from working with the amazing Dash community, and Dash v1.0 "
                     "makes a number of changes to make your apps even more "
                     "intuitive, powerful, and extensible as Dash continues to "
@@ -129,7 +129,7 @@ URLS = [
             {
                 'url': '/installation',
                 'name': 'Part 1. Installation',
-                'description': 'How to install and upgrade dash libraries with pip',
+                'description': 'How to install and upgrade Dash.',
                 'content': chapters.installation.index.layout
             },
             {
@@ -146,8 +146,8 @@ URLS = [
                 'url': '/basic-callbacks',
                 'name': 'Part 3. Basic Callbacks',
                 'description': (
-                    "Dash apps are made interactive through Dash "
-                    "Callbacks: Python functions that are "
+                    "Dash apps are made interactive through the use of Dash "
+                    "callbacks: Python functions that are "
                     "automatically called whenever an input "
                     "component's property changes. Callbacks "
                     "can be chained, allowing one update in the "
@@ -166,8 +166,8 @@ URLS = [
             {
                 'url': '/sharing-data-between-callbacks',
                 'name': 'Part 5. Sharing Data Between Callbacks',
-                'description': '`global` variables will break your Dash apps. ' \
-                               'However, there are other ways to share data ' \
+                'description': "Although the use of `global` variables is incompatible with Dash's architecture, " \
+                               'there are other ways to share data ' \
                                'between callbacks. This chapter is useful for ' \
                                'callbacks that run expensive data processing ' \
                                'tasks or process large data.',
@@ -284,8 +284,8 @@ URLS = [
                         'description': 'Dash provides all of the available HTML tags ' \
                                        'as user-friendly Python classes. This chapter ' \
                                        'explains how this works and the few important ' \
-                                       'key differences between Dash HTML components ' \
-                                       'and standard html.',
+                                       'key differences between working with Dash HTML components ' \
+                                       'as compared to standard HTML tags.',
                         'content': chapters.dash_html_components.index.layout,
                         'ad': 'dash-enterprise-design-kit.jpg',
                         'adhref': 'https://plotly.com/dash/design-kit/?utm_source=docs&utm_medium=sidebar&utm_campaign=june&utm_content=htmlcore'
@@ -697,7 +697,7 @@ URLS = [
                 'name': 'Live Updates',
                 'description': '''
                     Update your apps on page load or
-                    on a predefined interval (e.g. every 5 seconds)
+                    on a predefined interval (e.g. every 5 seconds).
                 '''
             },
 
@@ -706,7 +706,7 @@ URLS = [
                 'content': chapters.external_resources.index.layout,
                 'name': 'Adding CSS & JS and Overriding the Page-Load Template',
                 'description': '''
-                    New in dash v0.22.0! Learn how to add custom CSS and JS to your
+                    New in Dash v0.22.0! Learn how to add custom CSS and JS to your
                     application with the `assets` directory. Also, learn how to
                     customize the HTML template that Dash serves on page load in order
                     to add custom meta tags, customize the page's title, and more.
@@ -739,21 +739,21 @@ URLS = [
                 'url': '/devtools',
                 'content': chapters.devtools.index.layout,
                 'name': 'Dev tools',
-                'description': 'Dash dev tools reference'
+                'description': 'Dash dev tools reference.'
             },
 
             {
                 'url': '/loading-states',
                 'content': chapters.loading.index.layout,
                 'name': 'Loading States',
-                'description': 'Getting the loading state of a component and adding a loading component'
+                'description': 'Getting the loading state of a component and adding a loading placeholder component.'
             },
 
             {
                 'url': '/testing',
                 'content': chapters.testing.index.layout,
                 'name': 'Dash Testing',
-                'description': 'An introduction to testing your dash app with selenium'
+                'description': 'An introduction to testing Dash apps with Selenium.'
             }
 
         ],
@@ -776,14 +776,14 @@ URLS = [
                 'content': chapters.deployment.index.layout,
                 'name': 'Deployment',
                 'description': 'To share a Dash app, you need to "deploy" your Dash ' \
-                               'app to a server'
+                               'app to a server.'
             },
 
             {
                 'url': '/integrating-dash',
                 'content': chapters.integrating_dash.index.layout,
                 'name': 'Integrating Dash with Existing Web Apps',
-                'description': 'Strategies for integrating Dash apps with existing web ' \
+                'description': 'Strategies for integrating Dash apps into existing web ' \
                                'apps.',
                 'ad': 'dash-enterprise-embedded.jpg',
                 'adhref': 'https://plotly.com/dash/embedding/?utm_source=docs&utm_medium=sidebar&utm_campaign=june&utm_content=embedded'
@@ -812,8 +812,7 @@ URLS = [
         'name': 'Dash Enterprise',
         'description': (
             '''
-            Dash Enterprise is Plotly's commercial offering for managing
-            and improving your Dash apps in your organization.
+            Dash Enterprise, Plotly's commercial offering, is the world's most trusted framework for building ML and data science web apps.
             '''
         ),
         'chapters': [

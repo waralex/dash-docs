@@ -1406,7 +1406,7 @@ Upload = html.Div([
         Dash component. Clicking on the children element will trigger the
         upload action, as will dragging and dropping files.
         Here are a few different ways that you could style the upload
-        component using standard dash components.
+        component using standard Dash components.
     ''')),
     Example(examples['upload-gallery'][1]),
 

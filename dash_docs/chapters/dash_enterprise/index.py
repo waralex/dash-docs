@@ -117,6 +117,6 @@ rc.Section("User Interface", [
                 'https://github.com/plotly/dds-api-docs',
                 'Reference documentation for Dash Enterprise\'s GraphQL API. '
                 'Use this to programmatically add collaborators, '
-                'initialize dash apps and more.')
+                'initialize Dash apps and more.')
     ])
 ])

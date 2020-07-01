@@ -33,21 +33,21 @@ project.")
     ),
 
   Example(examples$uploadcomp$layout),
-  
+
 Syntax(
 children = examples$uploadcomp2$source,
 summary = dccMarkdown("This next example responds to image uploads by displaying them
 in the app with the `htmlImg` component.")
   ),
 Example(examples$uploadcomp2$layout),
-  
+
 Syntax(
 children = examples$uploadcomp3$source,
 summary = dccMarkdown("The `children` attribute of the `Upload` component accepts any
 Dash component. Clicking on the children element will trigger the
 upload action, as will dragging and dropping files.
 Here are a few different ways that you could style the upload
-component using standard dash components.")
+component using standard Dash components.")
     ),
 Example(examples$uploadcomp3$layout),
 
@@ -58,6 +58,3 @@ htmlH2('Upload Component Properties'),
 examples$uploadproptable$layout
 
 ))
-
-
-

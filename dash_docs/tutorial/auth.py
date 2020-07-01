@@ -10,7 +10,7 @@ layout = html.Div([
     reusable_components.Markdown('''
     # Authentication
 
-    Authentication for dash apps is provided through a separate
+    Authentication for Dash apps is provided through a separate
     [`dash-auth`](https://github.com/plotly/dash-auth) package.
 
     `dash-auth` provides two methods of authentication:
@@ -273,7 +273,7 @@ layout = html.Div([
 
     reusable_components.Markdown('''
     ```shell
-    pip install dash=={}  # The core dash backend
+    pip install dash=={}  # The core Dash backend
     pip install dash-auth=={}  # Dash Auth components
     ```
     '''.format(

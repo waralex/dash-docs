@@ -8,7 +8,7 @@ class Sidebar(Component):
 
 
 Keyword arguments:
-- children (a list of or a singular dash component, string or number; optional): Custom content in the "no results found" panel
+- children (a list of or a singular Dash component, string or number; optional): Custom content in the "no results found" panel
 - id (string; optional): The ID used to identify this component in Dash callbacks.
 - urls (list; optional): URLs
 - depth (number; default 0): depth"""

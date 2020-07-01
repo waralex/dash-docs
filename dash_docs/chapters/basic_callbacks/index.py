@@ -187,7 +187,7 @@ layout = html.Div([
 
     ## Multiple Outputs
 
-    *New in dash 0.39.0*
+    *New in Dash v0.39.0*
 
     So far all the callbacks we've written only update a
     single `Output` property. We can also update several at once: put all the

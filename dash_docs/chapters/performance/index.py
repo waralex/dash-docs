@@ -9,9 +9,9 @@ layout = html.Div(children=[
     rc.Markdown('''# Performance
 
 This chapter contains several recommendations for improving the performance
-of your dash apps.
+of your Dash apps.
 
-The main performance limitation of dash apps is likely the callbacks in
+The main performance limitation of Dash apps is likely the callbacks in
 the application code itself. If you can speed up your callbacks, your app
 will feel snappier.
 
@@ -87,7 +87,7 @@ The high performance, WebGL alternatives include:
 - `heatmapgl`: A webgl implementation of the `heatmap` chart type. [Reference](https://plotly.com/python/reference/#heatmapgl)
 
 
-Currently, dash redraws the entire graph on update using the `plotly.js`
+Currently, Dash redraws the entire graph on update using the `plotly.js`
 `newPlot` call. The performance of updating a chart could be improved
 considerably by introducing `restyle` calls into this logic. If you or
 your company would like to sponsor this work,
@@ -106,7 +106,7 @@ chapter.
 
 ## Sponsoring Performance Enhancements
 
-There are many other ways that we can improve the performance of dash apps,
+There are many other ways that we can improve the performance of Dash apps,
 like caching front-end requests, pre-filling the cache, improving plotly.js's
 webgl capabilities, reducing JavaScript bundle sizes, and more.
 

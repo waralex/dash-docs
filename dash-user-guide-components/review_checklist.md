@@ -26,7 +26,7 @@
 
     Should all of them be settable from the back-end or are some only relevant to user interactions in the front-end?
 
--   Have you provided some basic documentation about your component? The Dash community uses [react docstrings](https://github.com/plotly/dash-docs/blob/master/tutorial/plugins.py#L45) to provide basic information about dash components. Take a look at this [Checklist component example](https://github.com/plotly/dash-core-components/blob/master/src/components/Checklist.react.js) and others from the dash-core-components repository.
+-   Have you provided some basic documentation about your component? The Dash community uses [react docstrings](https://github.com/plotly/dash-docs/blob/master/tutorial/plugins.py#L45) to provide basic information about Dash components. Take a look at this [Checklist component example](https://github.com/plotly/dash-core-components/blob/master/src/components/Checklist.react.js) and others from the dash-core-components repository.
 
     At a minimum, you should describe what your component does, and describe its props and the features they enable.
 

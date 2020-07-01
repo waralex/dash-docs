@@ -5,7 +5,7 @@ from dash_docs import reusable_components as rc
 layout = rc.Markdown('''
 # Writing your own components
 
-One of the really cool things about dash is that
+One of the really cool things about Dash is that
 it is built on top of [React.js](https://facebook.github.io/react/),
 a JavaScript library for building web components.
 
@@ -32,7 +32,7 @@ Dash provides a framework that converts React components
 compatible with the Dash ecosystem.
 
 On a high level, this is how that works:
-- Components in dash are serialized as [JSON](https://www.json.org/).
+- Components in Dash are serialized as [JSON](https://www.json.org/).
   To write a dash-compatible component, all of the props
   shared between the Python code and the React code must be serializable as JSON.
   Numbers, Strings, Booleans, or Arrays or Objects containing Numbers, Strings, Booleans.

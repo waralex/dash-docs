@@ -43,11 +43,11 @@ preamble = html.Div([
     > We're excited to continue to work with users and companies
     > that [invest in DataTable's future](https://plotly.com/products/consulting-and-oem/).
     >
-    > With `dash-table v4.0.0` - included in `dash v1.0.0` and released on
+    > With `dash-table v4.0.0` - included in `Dash v1.0.0` and released on
     > June 20, 2019 - we consider the API stable. We don't expect any
     > breaking changes any time soon, but if there are they will be
     > accompanied by a new major version of dash. If you've been using
-    > DataTable with `dash v0.x` / `dash-table v3.x`, check out the
+    > DataTable with `Dash v0.x` / `dash-table v3.x`, check out the
     > [Dash 1.0 Migration Guide](/dash-1-0-migration) for the full list of
     > changes.
     >

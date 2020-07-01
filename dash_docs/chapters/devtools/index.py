@@ -14,7 +14,7 @@ layout = html.Div([
 
     ## Hot Reloading
 
-    **New in dash 0.30.0 and dash-renderer 0.15.0**
+    **New in Dash v0.30.0 and dash-renderer v0.15.0**
 
     By default, Dash includes "hot-reloading". This means that Dash will automatically refresh your browser when you make a change in your Python or CSS code.
 
@@ -35,10 +35,10 @@ layout = html.Div([
 
     ## Dev Tools UI
 
-    **New in dash 0.42.0 and dash-renderer 0.23.0**
+    **New in Dash v0.42.0 and dash-renderer v0.23.0**
 
     The new Dev Tools UI provides a simple interface, which consolidates both frontend and backend errors into an "error popup" at the top-right corner.
-    This could reduce your context switch among *terminal*, *code editor*, *browser* and *browser debug console* while developping a dash app.
+    This could reduce your context switch among *terminal*, *code editor*, *browser* and *browser debug console* while developping a Dash app.
 
     To better understand the interaction of callbacks, we visualize the callback function definitions into
     a DAG (Directed Acyclic Graph). A **Callback Graph** icon is available after clicking the debug icon at the bottom-right corner.

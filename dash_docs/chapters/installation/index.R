@@ -5,10 +5,17 @@ library(dashHtmlComponents)
 layout <- htmlDiv(list(
 htmlH1('Dash Installation'),
 dccMarkdown("
-In your terminal, install several dash libraries.
-These libraries are under active development, so install and upgrade frequently.
-Make sure you're on at least version `3.0.2` of R.
+
+In order to use Dash, you need to make sure that
+the Dash R package is present in your local
+development environment. As Dash is under active development,
+upgrading your Dash version frequently is recommended
+in order to ensure you can take advantage of the latest
+features and performance improvements. Make sure you're on at least version `3.0.2` of R.
 You can see what version of R you have by entering version in the R CLI.
+
+Run the following command in your development environment to install the latest version of Dash:
+
 "),
 
 dccMarkdown("

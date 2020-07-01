@@ -56,7 +56,7 @@ layout = html.Div([
 
     ## Adding Your Own CSS and JavaScript to Dash Apps
 
-    **New in dash 0.22.0**
+    **New in Dash v0.22.0**
 
     Including custom CSS or JavaScript in your Dash apps is simple.
     Just create a folder named `assets` in the root of your app directory
@@ -198,7 +198,7 @@ layout = html.Div([
 
     5 - Your custom CSS will be included _after_ the Dash component CSS
 
-    6 - It is recommended to add `__name__` to the dash init to ensure the resources
+    6 - It is recommended to add `__name__` to the Dash init to ensure the resources
     in the assets folder are loaded, eg: `app = dash.Dash(__name__, meta_tags=[...])`.
     When you run your application through some other command line (like the
     flask command or gunicorn/waitress), the `__main__` module will no
@@ -334,7 +334,7 @@ Starting with Dash 1.0.0, `serve_locally` defaults to `True`.
 
     ## Customizing Dash's HTML Index Template
 
-    **New in dash 0.22.0**
+    **New in Dash v0.22.0**
 
     Dash's UI is generated dynamically with Dash's React.js front-end. So,
     on page load, Dash serves a very small HTML template string that includes
@@ -528,7 +528,7 @@ Starting with Dash 1.0.0, `serve_locally` defaults to `True`.
     component libraries are being used in your application and will automatically
     serve these files in order to render the application.
 
-    By default, dash serves the JavaScript and CSS resources from the
+    By default, Dash serves the JavaScript and CSS resources from the
     local files on the server where Dash is running. This is the more flexible
     and robust option: in some cases, such as firewalled or airgapped
     environments, it is the only option. It also avoids some hard-to-debug
@@ -557,7 +557,7 @@ Starting with Dash 1.0.0, `serve_locally` defaults to `True`.
     rc.Markdown('''
 
     This will load the bundles from the https://unpkg.com/ cdn which is a community-maintained project that serves JavaScript bundles from NPM. We don't maintain it, so we cannot attest or guarantee to its uptime, performance, security, or long term availability.
-    
+
     Also note that we don't publish the dev bundles to `unpkg`, so when running the app locally with `python app.py`, the local JS files will be served. When the app is deployed with `gunicorn`, it'll switch to the CDN.
 
     ***
