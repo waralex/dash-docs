@@ -78,8 +78,8 @@ layout = html.Div([
     2. In Dash, the inputs and outputs of our application are simply the
        properties of a particular component. In this example,
        our input is the "`value`" property of the component that has the ID
-       "`input-id`". Our output is the "`children`" property of the
-       component with the ID "`output-id`".
+       "`my-input`". Our output is the "`children`" property of the
+       component with the ID "`my-output`".
     3. Whenever an input property changes, the function that the
        callback decorator wraps will get called automatically.
        Dash provides the function with the new value of the input property as
@@ -92,11 +92,11 @@ layout = html.Div([
        `dash_core_components.Input` object. The former is just used in these
        callbacks and the latter is an actual component.
     6. Notice how we don't set a value for the `children` property of the
-       `my-div` component in the `layout`. When the Dash app starts, it
+       `my-output` component in the `layout`. When the Dash app starts, it
        automatically calls all of the callbacks with the initial values of the
        input components in order to populate the initial state of the output
        components. In this example, if you specified something like
-       `html.Div(id='my-div', children='Hello world')`, it would get
+       `html.Div(id='my-output', children='Hello world')`, it would get
        overwritten when the app starts.
 
     It's sort of like programming with Microsoft Excel:
