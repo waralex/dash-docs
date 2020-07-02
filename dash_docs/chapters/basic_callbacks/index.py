@@ -78,8 +78,8 @@ layout = html.Div([
     2. In Dash, the inputs and outputs of our application are simply the
        properties of a particular component. In this example,
        our input is the "`value`" property of the component that has the ID
-       "`input-id`". Our output is the "`children`" property of the
-       component with the ID "`output-id`".
+       "`my-input`". Our output is the "`children`" property of the
+       component with the ID "`my-output`".
     3. Whenever an input property changes, the function that the
        callback decorator wraps will get called automatically.
        Dash provides the function with the new value of the input property as
