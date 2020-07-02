@@ -92,11 +92,11 @@ layout = html.Div([
        `dash_core_components.Input` object. The former is just used in these
        callbacks and the latter is an actual component.
     6. Notice how we don't set a value for the `children` property of the
-       `my-div` component in the `layout`. When the Dash app starts, it
+       `my-output` component in the `layout`. When the Dash app starts, it
        automatically calls all of the callbacks with the initial values of the
        input components in order to populate the initial state of the output
        components. In this example, if you specified something like
-       `html.Div(id='my-div', children='Hello world')`, it would get
+       `html.Div(id='my-output', children='Hello world')`, it would get
        overwritten when the app starts.
 
     It's sort of like programming with Microsoft Excel:
