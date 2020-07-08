@@ -2,7 +2,13 @@
 
 The [Dash Userguide](https://plotly.com/dash): everything that you need to know to be productive with Dash.
 
-The Dash Userguide is hosted online at: [https://plotly.com/dash](https://plotly.com/dash). 
+The Dash Userguide is hosted online at: [https://plotly.com/dash](https://plotly.com/dash). Note: In the past, some corporate networks have blocked our website at https://dash.plot.ly. We created a PDF for those community members.
+
+We have since resolved these issues by moving to https://dash.plotly.com and we’ve stopped maintaining this PDF documentation.
+
+Is your network still blocking our docs and do you still need a PDF version?
+
+If so, please comment on this issue: https://github.com/plotly/dash-docs/issues/897. 
 
 ### Running an app locally
 
@@ -46,11 +52,3 @@ on Windows systems `waitress` can be a replacement for `gunicorn`
 PRs accepted! The Dash user guide is itself a Dash app. Each file in `tutorial` represents a "chapter" of the docs.
 
 Changes to master will get deployed automatically.
-
-Note: In the past, some corporate networks have blocked our website at https://dash.plot.ly. We created a PDF for those community members.
-
-We have since resolved these issues by moving to https://dash.plotly.com and we’ve stopped maintaining this PDF documentation.
-
-Is your network still blocking our docs and do you still need a PDF version?
-
-If so, please comment on this issue: https://github.com/plotly/dash-docs/issues/897A. 
