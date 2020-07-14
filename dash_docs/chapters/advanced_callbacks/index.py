@@ -89,5 +89,21 @@ def slow_function(input):
     The [Performance](/performance) section of the Dash docs delves a
     little deeper into leveraging multiple processes and threads in
     conjunction with memoization to further improve performance.
-    ''')
+    '''),
+
+    rc.Markdown('''
+    ## The Callback Chain
+
+    - Upon initial load of a Dash app or based on later interactions, all of the related callbacks are collected, based on both the existence of newly-created outputs and newly-changed inputs.
+      - Upon initial load or in the case of callbacks returning `children` with new compononets, none of the inputs are conisidered to have "changed" unless (1) they're outputs of another callback, or (2) the callback is updating something *outside* the new `children` (not possible upon initial load).
+      - But, the callback will still be queued as an "initial call", unless ALL of its outputs are outputs of something else- then it's no longer considered an "initial call", but it's still put into the callback queue on the assumption that those outputs will change.
+    - Callbacks are then executed in the order that their inputs are ready.
+      - First dispatched are callbacks that have no inputs that are the outputs of another callback.
+      - As callbacks return, if their outputs were prevented from updateing, these are removed as "changed" in any other callbacks that they are inputs for. Either way, they're marked as no longer blocking the other callback.
+      - If a callback has no changed props and is not an "initial call", then it is removed from the callback queue.
+      - Then, Dash dispatches any callbacks that are no longer blocked by any of their inputs.
+      - This process is repeated until the callback queue is empty.
+
+
+'''),
 ])
