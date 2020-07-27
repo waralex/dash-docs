@@ -360,7 +360,7 @@ Starting with Dash 1.0.0, `serve_locally` defaults to `True`.
 
     By default, it is Dash.
 
-    In Dash 1.13.5, you can customize this title with the `title=` keyword:
+    As of Dash 1.13.5, you can customize this title with the `title=` keyword:
     ```py
     app = dash.Dash(__name__, title='Weekly Analytics')
     ```
