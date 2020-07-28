@@ -95,12 +95,14 @@ def slow_function(input):
     ## The Callback Chain
 
     - Upon initial load of a Dash app or based on later interactions, all of the related callbacks are collected, based on both the existence of newly-created outputs and newly-changed inputs.
+      - This is a recursive process: Dash collects not only those callbacks whose inputs changed directly, but also those callbacks whose inputs include outputs of another callback that has already been collected. It's important that Dash collects the entire callback chain up front, or else it wouldn't be able tell for sure which callbacks are blocking others.
+        - For example, dropdown (A) is an input for for one callback (X) that sets the value of dropdown (B). A second callback, (Y) has both (A) and (B) as inputs and outputs to store (C). A third callback (Z) uses the store to create a graph (D). All three callbacks are collected, but (Y) is blocked until (X) completes and (Z) is blocked until (Y) completes.
       - Upon initial load or in the case of callbacks returning `children` with new compononets, none of the inputs are conisidered to have "changed" unless (1) they're outputs of another callback, or (2) the callback is updating something *outside* the new `children` (not possible upon initial load).
       - But, the callback will still be queued as an "initial call", unless ALL of its outputs are outputs of something else- then it's no longer considered an "initial call", but it's still put into the callback queue on the assumption that those outputs will change.
-    - Callbacks are then executed in the order that their inputs are ready.
+    - Callbacks are then executed in the order that their inputs are ready. Many server-side callbacks can be requested simultaneously, if they're all unblocked together- and assuming the program is running on a multi-process server they can execute in parallel.
       - First dispatched are callbacks that have no inputs that are the outputs of another callback.
-      - As callbacks return, if their outputs were prevented from updateing, these are removed as "changed" in any other callbacks that they are inputs for. Either way, they're marked as no longer blocking the other callback.
-      - If a callback has no changed props and is not an "initial call", then it is removed from the callback queue.
+      - As callbacks return, if their outputs were prevented from updating using `raise PreventUpdate` or `return dash.no_update`, these are removed as "changed" in any other callbacks that they are inputs for. Either way, they're marked as no longer blocking the other callback.
+      - If a callback has no changed props and is not an "initial call", then it is removed from the callback queue and all of its outputs are also removed as "changed" in other callbacks, possibly resulting in these callbacks being removed as well.
       - Then, Dash dispatches any callbacks that are no longer blocked by any of their inputs.
       - This process is repeated until the callback queue is empty.
 
