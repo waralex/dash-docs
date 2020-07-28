@@ -372,7 +372,7 @@ Starting with Dash 1.0.0, `serve_locally` defaults to `True`.
     ## Update the Document Title Dynamically based off of the URL or Tab
 
     To set the document title dynamically, you can use a clientside callback
-    that updates the `document.title` as a side affect. The example below
+    that updates the `document.title` as a side effect. The example below
     sets the `document.title` based off of the currently selected tab.
 
     ```python
