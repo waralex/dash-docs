@@ -294,7 +294,7 @@ Starting with Dash 1.0.0, `serve_locally` defaults to `True`.
     rc.Markdown(
     '''
     > If placing images inside the `assets` folder isn't an option, then you can
-    > you can also embed images "inline" with base64 encoding:
+    > also embed images "inline" with base64 encoding:
     ```py
     import base64
     import dash
