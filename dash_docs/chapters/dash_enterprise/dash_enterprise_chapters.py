@@ -3332,6 +3332,83 @@ Troubleshooting = html.Div(children=[
 
     ]),
 
+    rc.Markdown(
+    '''
+    ***
+
+    #### Dash App Timing Out?
+
+    '''),
+
+    html.Details([
+        html.Summary("Timeout locally?"),
+
+        html.Br(),
+
+        rc.Markdown(
+            '''
+            Running the built-in flask development server has no timeouts. You can run this locally with: 
+            ```shell
+            python app.py
+            ```
+
+            gunicorn has a default 
+            [30 second timeout for requests](https://docs.gunicorn.org/en/stable/settings.html#timeout),
+            but you can use the `--timeout` flag to specify an integer number of seconds for timeout. For example, to specify a 60 second timeout:
+            ```shell
+            gunicorn app:server --timeout 60 
+            ```
+
+            > Note: If your app requests take longer than 30 seconds, you should consider queuing and polling (with a progress indicator)
+            for a better user experience.
+
+
+        '''),
+
+        
+    ]),
+
+    html.Details([
+        html.Summary("Timeout in Workspaces?"),
+
+        html.Br(),
+
+        rc.Markdown(
+            '''
+            gunicorn has a default 
+            [30 second timeout for requests](https://docs.gunicorn.org/en/stable/settings.html#timeout),
+            but you can use the `--timeout` flag to specify an integer number of seconds for timeout. For example, to specify a 60 second timeout:
+            ```shell
+            gunicorn app:server --timeout 60 
+            ```
+
+            > Note: If your app requests take longer than 30 seconds, you should consider queuing and polling (with a progress indicator)
+            for a better user experience.
+            '''),
+
+    ]),
+
+    html.Details([
+        html.Summary("Timeout when Deployed to DE?"),
+
+        html.Br(),
+
+        rc.Markdown(
+            '''
+            Deployed Dash apps are set to 60 second timeout on Dash Enterprise. Since gunicorn has a default 
+            [30 second timeout for requests](https://docs.gunicorn.org/en/stable/settings.html#timeout),
+            you can modify your `Procfile` to specify a 60 second timeout. For example, your `Procfile` may looke like:
+            ```
+            web: gunicorn app:server --timeout 60 --workers 4
+            ``` 
+
+            > Note: If your app requests take longer than 30 seconds, you should consider queuing and polling (with a progress indicator)
+            for a better user experience.
+            '''),
+
+
+    ]),
+
 ])
 
 
