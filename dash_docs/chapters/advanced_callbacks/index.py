@@ -94,18 +94,78 @@ def slow_function(input):
     rc.Markdown('''
     ## The Callback Chain
 
-    - Upon initial load of a Dash app or based on later interactions, all of the related callbacks are collected, based on both the existence of newly-created outputs and newly-changed inputs.
-      - This is a recursive process: Dash collects not only those callbacks whose inputs changed directly, but also those callbacks whose inputs include outputs of another callback that has already been collected. It's important that Dash collects the entire callback chain up front, or else it wouldn't be able tell for sure which callbacks are blocking others.
-        - For example, dropdown (A) is an input for for one callback (X) that sets the value of dropdown (B). A second callback, (Y) has both (A) and (B) as inputs and outputs to store (C). A third callback (Z) uses the store to create a graph (D). All three callbacks are collected, but (Y) is blocked until (X) completes and (Z) is blocked until (Y) completes.
-      - Upon initial load or in the case of callbacks returning `children` with new compononets, none of the inputs are conisidered to have "changed" unless (1) they're outputs of another callback, or (2) the callback is updating something *outside* the new `children` (not possible upon initial load).
+    To better understand the order in which callbacks are fired, consider the following example.
+    '''),
+
+    rc.Syntax('''
+import dash
+from dash.dependencies import Input, Output
+import dash_html_components as html
+from datetime import datetime
+import time
+
+app = dash.Dash()
+app.layout = html.Div(
+    [
+        html.Button("start callback chain", id="btn"),
+        html.P("first output of callback A", id="p1"),
+        html.P("second output of callback A", id="p2"),
+        html.P("output of callback B", id="p3"),
+        html.P("output of callback C", id="p4"),
+    ]
+)
+
+
+@app.callback(
+    [Output("p1", "children"), Output("p2", "children")],
+    [Input("btn", "n_clicks")],
+    prevent_initial_call=True,
+)
+def first(n):
+    now = datetime.now()
+    current_time = now.strftime("%H:%M:%S")
+    return ["in callback A it is " + current_time, "in callback A it is " + current_time]
+
+
+@app.callback(
+    Output("p3", "children"), [Input("p2", "children")], prevent_initial_call=True
+)
+def second(n):
+    time.sleep(2)
+    now = datetime.now()
+    current_time = now.strftime("%H:%M:%S")
+    return "in callback B it is " + current_time
+
+
+@app.callback(
+    Output("p4", "children"),
+    [Input("p1", "children"), Input("p3", "children")],
+    prevent_initial_call=True,
+)
+def third(n, m):
+    time.sleep(2)
+    now = datetime.now()
+    current_time = now.strftime("%H:%M:%S")
+    return "in callback C it is " + current_time
+
+
+app.run_server(debug=True)
+
+    '''),
+
+
+    rc.Markdown('''
+    - The `dash-renderer` front-end introspects the app's entire callback chain (1) when an app is initially loaded; (2) when it learns that the value of an input to a callback changes; and (3) when new components are inserted into the app's layout. This is a recursive process: the `dash-renderer` collects not only those callbacks whose inputs changed directly, but also those callbacks whose inputs include outputs of another callback that has already been collected.
+      - Once it has collected all the callbacks that it knows will need to fire as the result of a changed input, the `dash-renderer` separates them into two categories: those callbacks which can be fired right away with newly changed values for their inputs and those which are currently blocked from firing because their inputs are the outputs of callbacks that haven't fired yet.
+      - In the example above, all three callbacks are collected when the button is clicked since they will all need to fire as a result of the changed input. Callback A is in the first category, while callbacks B and C are in the second. It's important that the `dash-renderer` collects the entire callback chain up front, or else it wouldn't be able tell for sure which callbacks are blocking others.
+    - Upon initial load or in the case of callbacks returning `children` with new compononets, none of the inputs are conisidered to have "changed" unless (1) they're outputs of another callback, or (2) the callback is updating something *outside* the new `children` (not possible upon initial load).
       - But, the callback will still be queued as an "initial call", unless ALL of its outputs are outputs of something else- then it's no longer considered an "initial call", but it's still put into the callback queue on the assumption that those outputs will change.
-    - Callbacks are then executed in the order that their inputs are ready. Many server-side callbacks can be requested simultaneously, if they're all unblocked together- and assuming the program is running on a multi-process server they can execute in parallel.
+      - To prevent callbacks from firing when an app is initially loaded, you can use the [`prevent_initial_call`](#add link here#) attribute.
+    - After they are collected and categorized, callbacks are then executed in the order that their inputs are ready. Many server-side callbacks can be requested simultaneously, if they're all unblocked together- and assuming the program is running on a multi-process server they can execute in parallel.
       - First dispatched are callbacks that have no inputs that are the outputs of another callback.
-      - As callbacks return, if their outputs were prevented from updating using `raise PreventUpdate` or `return dash.no_update`, these are removed as "changed" in any other callbacks that they are inputs for. Either way, they're marked as no longer blocking the other callback.
-      - If a callback has no changed props and is not an "initial call", then it is removed from the callback queue and all of its outputs are also removed as "changed" in other callbacks, possibly resulting in these callbacks being removed as well.
-      - Then, Dash dispatches any callbacks that are no longer blocked by any of their inputs.
-      - This process is repeated until the callback queue is empty.
-
-
+      - As callbacks return, if their outputs were prevented from updating using `raise PreventUpdate` or `return dash.no_update`, these outputs are removed as "changed" in any other callbacks that they are inputs for. Regardless of which methord is used, they're marked as no longer blocking the other callback.
+      - If a callback has no changed inputs and is not an "initial call", then it is removed from the callback queue and all of its outputs are also removed as "changed" in other callbacks, possibly resulting in these callbacks being removed as well.
+      - Then, the `dash-renderer` dispatches any callbacks that are no longer blocked by any of their inputs.
+      - This process is repeated until the callback collection is empty.
 '''),
 ])
