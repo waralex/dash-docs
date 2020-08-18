@@ -92,9 +92,68 @@ def slow_function(input):
     '''),
 
     rc.Markdown('''
-    ## The Callback Chain
+    ## When Are Callbacks Executed?
 
-    To better understand the order in which callbacks are fired, consider the following example.
+    This section describes the circumstances under which the `dash-renderer` front-end client can make a request to the Dash back-end server to execute a callback function.
+
+    ### When A Dash App First Loads
+
+    All of the callbacks in a Dash app are executed with the initial value of their inputs when the app is first loaded. This is known as the "initial call" of the callback. To learn how to suppress this behavior, see the documentation for the [`prevent_initial_call`](#insert-link-here) attribute of Dash callbacks.
+
+    It is important to note that when a Dash app is initially loaded in a web browser by the `dash-renderer` front-end client, its entire callback chain is introspected recursively.
+
+    This allows the `dash-renderer` to predict the order in which callbacks will need to be executed, as callbacks are blocked when their inputs are outputs of other callbacks which have not yet fired. In order to unblock the execution of these callbacks, first callbacks whose inputs are immediately available must be executed. This process helps the `dash-renderer` to minimize the number of network requests it needs to make by making sure it only requests that a callback is executed when all of the callback's inputs have changed.
+
+    Examine the following Dash app:
+    '''),
+
+    rc.Syntax('''
+import dash
+from dash.dependencies import Input, Output
+import dash_html_components as html
+
+app = dash.Dash()
+app.layout = html.Div(
+    [
+        html.Button("execute callback", id="button"),
+        html.Div(children="callback not executed", id="first_output"),
+        html.Div(children="callback not executed", id="second_output"),
+    ]
+)
+
+
+@app.callback(
+    [Output("first_output", "children"), Output("second_output", "children")],
+    [Input("button", "n_clicks")]
+)
+def change_text(n_clicks):
+    if n_clicks is None:
+        return ["n_clicks is None", "n_clicks is None"]
+    return ["n_clicks is " + str(n_clicks), "n_clicks is " + str(n_clicks)]
+
+app.run_server(debug=True)
+
+    '''),
+
+    rc.Markdown('''
+    Notice that when this app is finished being loaded by a web browser and ready for user interaction, the `children` of the `html.Div` components is not the text that is defined when the components are declared in the app's layout but rather is the result of the `change_text()` callback being executed. This is because the "initial call" of the callback occured with `n_clicks` having the value of `None`.
+
+    ### As A Direct Result of User Interaction
+
+    Most frequently, callbacks are executed as a direct result of user interaction, such as clicking a button or selecting an item in a dropdown menu. When such interactions occur, Dash components communicate their new values to the `dash-renderer` front-end client, which then requests that the Dash server execute any callback function that has the newly changed value as input.
+
+    If a Dash app has multiple callbacks, the `dash-renderer` batches requests for callbacks to be executed based on whether or not they can be immediately executed with the newly changed inputs. If several inputs change simultaneously, then requests are made to execute them all.
+
+    Whether or not these requests are executed in a synchronous or asyncrounous manner depends on the specific setup of the Dash back-end server. If it is running in a multi-threaded environment, then all of the callbacks can be executed simultaneously, and they will return values based on their speed of execution. In a single-threaded environment however, callbacks will be executed one at a time in the order they are received by the server.
+
+    In the example application above, clicking the button results in the callback being executed.
+
+    ### As An Indirect Result of User Interaction
+
+    When a user interacts with a component, the resulting callback might have outputs that are themselves the input of other callbacks. The `dash-renderer` will block the execution of such a callback until the callback whose output is its input has been executed.
+
+    Take the following Dash app:
+
     '''),
 
     rc.Syntax('''
@@ -107,69 +166,116 @@ import time
 app = dash.Dash()
 app.layout = html.Div(
     [
-        html.Button("execute callbacks", id="btn"),
-        html.P("first output of callback A", id="p1"),
-        html.P("second output of callback A", id="p2"),
-        html.P("output of callback B", id="p3"),
-        html.P("output of callback C", id="p4"),
+        html.Button("execute fast callback", id="button"),
+        html.Button("execute slow callback", id="button-two"),
+        html.Div(children="callback not executed", id="first_output"),
+        html.Div(children="callback not executed", id="second_output"),
+        html.Div(children="callback not executed", id="third_output"),
     ]
 )
 
 
 @app.callback(
-    [Output("p1", "children"), Output("p2", "children")],
-    [Input("btn", "n_clicks")],
-    prevent_initial_call=True,
-)
-def a(n):
+    Output("first_output", "children"),
+    [Input("button", "n_clicks")])
+def first_callback(n):
     now = datetime.now()
     current_time = now.strftime("%H:%M:%S")
-    return ["in callback A it is " + current_time, "in callback A it is " + current_time]
+    return "in the fast callback it is " + current_time
 
 
 @app.callback(
-    Output("p3", "children"), [Input("p2", "children")], prevent_initial_call=True
-)
-def b(n):
-    time.sleep(2)
+    Output("second_output", "children"), [Input("button-two", "n_clicks")])
+def second_callback(n):
+    time.sleep(5)
     now = datetime.now()
     current_time = now.strftime("%H:%M:%S")
-    return "in callback B it is " + current_time
+    return "in the slow callback it is " + current_time
 
 
 @app.callback(
-    Output("p4", "children"),
-    [Input("p1", "children"), Input("p3", "children")],
-    prevent_initial_call=True,
+    Output("third_output", "children"),
+    [Input("first_output", "children"), Input("second_output", "children")])
+def third_callback(n, m):
+    now = datetime.now()
+    current_time = now.strftime("%H:%M:%S")
+    return "in the third callback it is " + current_time
+
+
+app.run_server(debug=True)
+
+
+    '''),
+
+        rc.Markdown('''
+
+    The above Dash app demonstrates how callbacks chain together. Notice that if you first click "execute slow callback" and then click "execute fast callback", the third callback is not executed until after the slow callback finishes executing. This is because the third callback has the second callback's output as its input, which lets the `dash-renderer` know that it should delay its execution until after the second callback finishes.
+
+
+    ### When Dash Components Are Added To The Layout
+
+    It is possible for a callback to insert new Dash components into a Dash app's layout. If these new components are themselves the inputs to other callback functions, then their appearance in the Dash app's layout will trigger those callback functions to be executed.
+
+    In this circumstance, it is possible that multiple requests are made to execute the same callback function. This would occur if the callback in question has already been requested and its output returned before the new components which are also its inputs are added to the layout.
+
+    '''),
+
+
+    rc.Markdown('''
+    ## Prevent Callbacks from Being Executed on Initial Load
+
+    You can use the `prevent_initial_call` attribute to prevent callbacks from being fired when the app initially loads, as in the following example app.
+    '''),
+
+    rc.Syntax('''
+import dash
+from dash.dependencies import Input, Output
+import dash_html_components as html
+from datetime import datetime
+import time
+
+app = dash.Dash()
+app.layout = html.Div(
+    [
+        html.Button("execute callbacks", id="button"),
+        html.Div(children="callback not executed", id="first_output"),
+        html.Div(children="callback not executed", id="second_output"),
+        html.Div(children="callback not executed", id="third_output"),
+        html.Div(children="callback not executed", id="fourth_output"),
+    ]
 )
-def c(n, m):
+
+
+@app.callback(
+    [Output("first_output", "children"), Output("second_output", "children")],
+    [Input("button", "n_clicks")])
+def first_callback(n):
+    now = datetime.now()
+    current_time = now.strftime("%H:%M:%S")
+    return ["in the first callback it is " + current_time, "in the first callback it is " + current_time]
+
+
+@app.callback(
+    Output("third_output", "children"), [Input("second_output", "children")])
+def second_callback(n):
     time.sleep(2)
     now = datetime.now()
     current_time = now.strftime("%H:%M:%S")
-    return "in callback C it is " + current_time
+    return "in the second callback it is " + current_time
+
+
+@app.callback(
+    Output("fourth_output", "children"),
+    [Input("first_output", "children"), Input("third_output", "children")])
+def third_output(n, m):
+    time.sleep(2)
+    now = datetime.now()
+    current_time = now.strftime("%H:%M:%S")
+    return "in the third callback it is " + current_time
 
 
 app.run_server(debug=True)
 
     '''),
 
-
-    rc.Markdown('''
-    - Determining whether or not a network request is sent to the server to execute a callback is handled by the [`dash-renderer`](https://github.com/plotly/dash/tree/dev/dash-renderer). This is the client-side front-end of every Dash app, written using the React.js library.
-    - Once a Dash app is initially loaded by a web browser, the `dash-renderer` introspects the entire app's callback chain in order to understand which callbacks need to be executed when a user interacts with a Dash component. When a Dash component changes state (for example, the `n_clicks` attribute of a button increases by 1 because a user clicked it), this change is communicated to the `dash-renderer` by the component (to learn more about how Dash components communicate their state to the `dash-renderer`, see http://dash.plotly.com/react-for-python-developers).
-    - When the `dash-renderer` learns that an input to a callback has changed, it looks for every callback that depends on that input and groups them in a collection. In this collection, callbacks are then grouped into two categories: those that can be executed right away and those that are blocked from executing because they depend on inputs which have not yet changed. This process occurs before the first network request is made by the `dash-renderer` front-end client to the Dash back-end server.
-    - After they are collected and categorized, callbacks are then executed in the order that their inputs are ready. Many server-side callbacks can be requested simultaneously, if they're all unblocked together. Whether or not these requests are executed in a synchronous or asyncrounous manner depends on the specific setup of the Dash back-end server. If it is running in a multi-threaded environment, then all of the callbacks can be executed simultaneously, in which case they will return values to the `dash-renderer` based on their speed of execution. In a single-threaded environment, they will be executed and returned in the order they are received.
-      - First dispatched are callbacks that have no inputs that are the outputs of another callback.
-      - As callbacks return, if their outputs were prevented from updating using `raise PreventUpdate` or `return dash.no_update`, these outputs are removed as "changed" in any other callbacks that they are inputs for. Regardless of which methord is used, they're marked as no longer blocking the other callback.
-      - If a callback has no changed inputs and is not an "initial call", then it is removed from the callback collection and all of its outputs are also removed as "changed" in other callbacks, possibly resulting in these callbacks being removed as well.
-      - Then, the `dash-renderer` dispatches any callbacks that are no longer blocked by any of their inputs.
-      - This process is repeated until the callback collection is empty. When the `dash-renderer` receives the output of a callback, it once again goes over the collection of callbacks it has grouped to determine if this new output allows for callbacks that were previously blocked to be executed.
-      -
-    - In the example code above, when the button is clicked, all three callbacks are collected.
-      - Callback A is placed in the first category while callbacks B and C are placed in the second category. This is because callback A can be executed right away since it only depends on the newly changed `n_clicks` attribute of the button, which is immediately available. Callback B is blocked from executing because it depends on an input that will only change once callback A has been executed, and callback C is blocked because it is blocked from executing because it depends on inputs that will only change when both callbacks A and B have been executed.
-      - Since only callback A is not blocked, it gets executed first. Once it executes, that allows callback B to be executed with its newly changed input value, leading to another network request. Finally, callback C can be executed with a final network request.
-    - It is important to note that this process occurs upon intital load of a Dash app as well. If you want to suppress this behavior, see the documentation for the `prevent_initial_call` attribute of callbacks. 
-    - Upon initial load or in the case of callbacks returning `children` with new compononets, none of the inputs are considered to have "changed" unless (1) they're outputs of another callback, or (2) the callback is updating something *outside* the new `children` (not possible upon initial load).
-      - But, the callback will still be queued as an "initial call", unless ALL of its outputs are outputs of something else- then it's no longer considered an "initial call", but it's still put into the callback collection on the assumption that those outputs will change.
-'''),
 ])
