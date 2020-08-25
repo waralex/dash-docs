@@ -892,7 +892,7 @@ URLS = [
                     {
                         'url': '/dash-enterprise/configure-system-dependencies',
                         'content': chapters.dash_enterprise.dash_enterprise_chapters.ConfigSys,
-                        'name': 'Configuring System Dependency',
+                        'name': 'Configuring System Dependencies',
                         'description': 'Install and configure system dependencies such '
                         'as database drivers or the Java JRE environment.'
                     },
