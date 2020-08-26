@@ -38,7 +38,7 @@ layout = html.Div([
     **New in dash 0.42.0 and dash-renderer 0.23.0**
 
     The new Dev Tools UI provides a simple interface, which consolidates both frontend and backend errors into an "error popup" at the top-right corner.
-    This could reduce your context switch among *terminal*, *code editor*, *browser* and *browser debug console* while developping a dash app.
+    This could reduce your context switch among *terminal*, *code editor*, *browser* and *browser debug console* while developing a dash app.
 
     To better understand the interaction of callbacks, we visualize the callback function definitions into
     a DAG (Directed Acyclic Graph). A **Callback Graph** icon is available after clicking the debug icon at the bottom-right corner.
