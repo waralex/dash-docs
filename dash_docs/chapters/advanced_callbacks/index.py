@@ -246,7 +246,7 @@ app.layout = html.Div(
 
 @app.callback(
     [Output("first_output", "children"), Output("second_output", "children")],
-    [Input("button", "n_clicks")])
+    [Input("button", "n_clicks")], prevent_initial_call=True)
 def first_callback(n):
     now = datetime.now()
     current_time = now.strftime("%H:%M:%S")
@@ -254,7 +254,7 @@ def first_callback(n):
 
 
 @app.callback(
-    Output("third_output", "children"), [Input("second_output", "children")])
+    Output("third_output", "children"), [Input("second_output", "children")], prevent_initial_call=True)
 def second_callback(n):
     time.sleep(2)
     now = datetime.now()
@@ -264,7 +264,7 @@ def second_callback(n):
 
 @app.callback(
     Output("fourth_output", "children"),
-    [Input("first_output", "children"), Input("third_output", "children")])
+    [Input("first_output", "children"), Input("third_output", "children")], prevent_initial_call=True)
 def third_output(n, m):
     time.sleep(2)
     now = datetime.now()
