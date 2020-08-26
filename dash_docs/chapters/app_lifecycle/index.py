@@ -6,7 +6,8 @@ from dash_docs import reusable_components as rc
 examples = tools.load_examples(__file__)
 
 layout = html.Div(children=[
-    rc.Markdown('''# Dash App Life Cycle
+    rc.Markdown('''
+    # Dash App Life Cycle
 
     This section describes the lifecyle of a Dash app.
 
