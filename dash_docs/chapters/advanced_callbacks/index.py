@@ -127,8 +127,6 @@ app.layout = html.Div(
     [Input("button", "n_clicks")]
 )
 def change_text(n_clicks):
-    if n_clicks is None:
-        return ["n_clicks is None", "n_clicks is None"]
     return ["n_clicks is " + str(n_clicks), "n_clicks is " + str(n_clicks)]
 
 app.run_server(debug=True)
