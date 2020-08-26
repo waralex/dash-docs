@@ -103,7 +103,7 @@ dccMarkdown('''
       - But, the callback will still be queued as an "initial call", unless ALL of its inputs are outputs of something else- then it's no longer considered an "initial call", but it's still put into the callback queue on the assumption that those inputs will change.
     - Callbacks are then executed in the order that their inputs are ready.
       - First dispatched are callbacks that have no inputs that are the outputs of another callback.
-      - As callbacks return, if their outputs were prevented from updateing, these are removed as "changed" in any other callbacks that they are inputs for. Either way, they're marked as no longer blocking the other callback.
+      - As callbacks return, if their outputs were prevented from updating, these are removed as "changed" in any other callbacks that they are inputs for. Either way, they're marked as no longer blocking the other callback.
       - If a callback has no changed props and is not an "initial call", then it is removed from the callback queue.
       - Then, Dash dispatches any callbacks that are no longer blocked by any of their inputs.
       - This process is repeated until the callback queue is empty.
