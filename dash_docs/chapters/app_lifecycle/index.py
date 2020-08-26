@@ -11,7 +11,7 @@ layout = html.Div(children=[
 
     This section describes the lifecyle of a Dash app.
 
-    1. When `python app.py` or `gunicorn app:server` is run, all of the files in a Dash app are executed. This means that if you have a statement such as `df = pd.read_csv('...')`, it is run when the program starts, rather than when the page is loaded. Therefore, if the CSV changes after the program starts, the `df` will not be updated until the program restarts. For this reason, it is recommended that users provide their data via a periodic `celery` task or by using a function to generate the `app.layout`.
+    1. When `python app.py` or `gunicorn app:server` is run, all of the files in a Dash app are executed. This means that if you have a statement such as `df = pd.read_csv('...')`, it is run when the program starts, rather than when the page is loaded. Therefore, if the CSV changes after the program starts, `df` will not be updated until the program restarts. In this case, it is recommended to provide data via a periodic `celery` task or by setting `app.layout` as a function to regenerate the layout with each page load.
 
     2. The `app.layout` is rendered and the app's callback chain is introspected to determine the relationships between inputs, callbacks, and outputs.
         - Note that this is a recursive process:  the `dash-renderer` collects not only those callbacks whose inputs can be changed directly through user interaction, but also those callbacks whose inputs are outputs of another callback that has already been collected. It's important that the `dash-renderer` collects the entire callback chain up front, or else it wouldn't be able to determine which callbacks are blocking others.
