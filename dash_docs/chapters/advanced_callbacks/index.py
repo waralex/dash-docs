@@ -107,31 +107,8 @@ def slow_function(input):
     Examine the following Dash app:
     '''),
 
-    rc.Syntax('''
-import dash
-from dash.dependencies import Input, Output
-import dash_html_components as html
-
-app = dash.Dash()
-app.layout = html.Div(
-    [
-        html.Button("execute callback", id="button"),
-        html.Div(children="callback not executed", id="first_output"),
-        html.Div(children="callback not executed", id="second_output"),
-    ]
-)
-
-
-@app.callback(
-    [Output("first_output", "children"), Output("second_output", "children")],
-    [Input("button", "n_clicks")]
-)
-def change_text(n_clicks):
-    return ["n_clicks is " + str(n_clicks), "n_clicks is " + str(n_clicks)]
-
-app.run_server(debug=True)
-
-    '''),
+    rc.Syntax(examples['callbacks-initial-call.py'][0]),
+    rc.Example(examples['callbacks-initial-call.py'][1]),
 
     rc.Markdown('''
     Notice that when this app is finished being loaded by a web browser and ready for user interaction, the `html.Div` components do not say "callback not executed" as declared in the app's layout, but rather "n_clicks is None," the result of the `change_text()` callback being executed. This is because the "initial call" of the callback occurred with `n_clicks` having the value of `None`.
@@ -154,56 +131,8 @@ app.run_server(debug=True)
 
     '''),
 
-    rc.Syntax('''
-import dash
-from dash.dependencies import Input, Output
-import dash_html_components as html
-from datetime import datetime
-import time
-
-app = dash.Dash()
-app.layout = html.Div(
-    [
-        html.Button("execute fast callback", id="button"),
-        html.Button("execute slow callback", id="button-two"),
-        html.Div(children="callback not executed", id="first_output"),
-        html.Div(children="callback not executed", id="second_output"),
-        html.Div(children="callback not executed", id="third_output"),
-    ]
-)
-
-
-@app.callback(
-    Output("first_output", "children"),
-    [Input("button", "n_clicks")])
-def first_callback(n):
-    now = datetime.now()
-    current_time = now.strftime("%H:%M:%S")
-    return "in the fast callback it is " + current_time
-
-
-@app.callback(
-    Output("second_output", "children"), [Input("button-two", "n_clicks")])
-def second_callback(n):
-    time.sleep(5)
-    now = datetime.now()
-    current_time = now.strftime("%H:%M:%S")
-    return "in the slow callback it is " + current_time
-
-
-@app.callback(
-    Output("third_output", "children"),
-    [Input("first_output", "children"), Input("second_output", "children")])
-def third_callback(n, m):
-    now = datetime.now()
-    current_time = now.strftime("%H:%M:%S")
-    return "in the third callback it is " + current_time
-
-
-app.run_server(debug=True)
-
-
-    '''),
+    rc.Syntax(examples['callbacks-user-interaction.py'][0]),
+    rc.Example(examples['callbacks-user-interaction.py'][1]),
 
         rc.Markdown('''
 
@@ -225,55 +154,7 @@ app.run_server(debug=True)
     You can use the `prevent_initial_call` attribute of callbacks to prevent callbacks from being fired when the app initially loads, as in the following example app.
     '''),
 
-    rc.Syntax('''
-import dash
-from dash.dependencies import Input, Output
-import dash_html_components as html
-from datetime import datetime
-import time
-
-app = dash.Dash()
-app.layout = html.Div(
-    [
-        html.Button("execute callbacks", id="button"),
-        html.Div(children="callback not executed", id="first_output"),
-        html.Div(children="callback not executed", id="second_output"),
-        html.Div(children="callback not executed", id="third_output"),
-        html.Div(children="callback not executed", id="fourth_output"),
-    ]
-)
-
-
-@app.callback(
-    [Output("first_output", "children"), Output("second_output", "children")],
-    [Input("button", "n_clicks")], prevent_initial_call=True)
-def first_callback(n):
-    now = datetime.now()
-    current_time = now.strftime("%H:%M:%S")
-    return ["in the first callback it is " + current_time, "in the first callback it is " + current_time]
-
-
-@app.callback(
-    Output("third_output", "children"), [Input("second_output", "children")], prevent_initial_call=True)
-def second_callback(n):
-    time.sleep(2)
-    now = datetime.now()
-    current_time = now.strftime("%H:%M:%S")
-    return "in the second callback it is " + current_time
-
-
-@app.callback(
-    Output("fourth_output", "children"),
-    [Input("first_output", "children"), Input("third_output", "children")], prevent_initial_call=True)
-def third_output(n, m):
-    time.sleep(2)
-    now = datetime.now()
-    current_time = now.strftime("%H:%M:%S")
-    return "in the third callback it is " + current_time
-
-
-app.run_server(debug=True)
-
-    '''),
+    rc.Syntax(examples['callbacks-prevent-initial-call.py'][0]),
+    rc.Example(examples['callbacks-prevent-initial-call.py'][1]),
 
 ])
