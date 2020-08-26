@@ -141,7 +141,7 @@ layout = html.Div([
     rc.Markdown("`wsgi.py`"),
     rc.Syntax(
         """
-            from werkzeug.wsgi import DispatcherMiddleware
+            from werkzeug.middleware.dispatcher import DispatcherMiddleware
 
             from flask_app import flask_app
             from app1 import app as app1
