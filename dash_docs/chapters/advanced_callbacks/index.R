@@ -96,18 +96,39 @@ conjunction with memoization to further improve performance.
 "),
 
 dccMarkdown('''
-    ## The Callback Chain
+    ## When Are Callbacks Executed?
 
-    - Upon initial load of a Dash app or based on later interactions, all of the related callbacks are collected, based on both the existence of newly-created outputs and newly-changed inputs.
-      - Upon initial load or in the case of callbacks returning `children` with new compononets, none of the inputs are conisidered to have "changed" unless (1) they're outputs of another callback, or (2) the callback is updating something *outside* the new `children` (not possible upon initial load).
-      - But, the callback will still be queued as an "initial call", unless ALL of its inputs are outputs of something else- then it's no longer considered an "initial call", but it's still put into the callback queue on the assumption that those inputs will change.
-    - Callbacks are then executed in the order that their inputs are ready.
-      - First dispatched are callbacks that have no inputs that are the outputs of another callback.
-      - As callbacks return, if their outputs were prevented from updating, these are removed as "changed" in any other callbacks that they are inputs for. Either way, they're marked as no longer blocking the other callback.
-      - If a callback has no changed props and is not an "initial call", then it is removed from the callback queue.
-      - Then, Dash dispatches any callbacks that are no longer blocked by any of their inputs.
-      - This process is repeated until the callback queue is empty.
+    This section describes the circumstances under which the `dash-renderer` front-end client can make a request to the Dash back-end server to execute a callback function.
 
+    ### When A Dash App First Loads
+
+    All of the callbacks in a Dash app are executed with the initial value of their inputs when the app is first loaded. This is known as the "initial call" of the callback. To learn how to suppress this behavior, see the documentation for the [`prevent_initial_call`](#prevent-callbacks-from-being-executed-on-initial-load) attribute of Dash callbacks.
+
+    It is important to note that when a Dash app is initially loaded in a web browser by the `dash-renderer` front-end client, its entire callback chain is introspected recursively.
+
+    This allows the `dash-renderer` to predict the order in which callbacks will need to be executed, as callbacks are blocked when their inputs are outputs of other callbacks which have not yet fired. In order to unblock the execution of these callbacks, first callbacks whose inputs are immediately available must be executed. This process helps the `dash-renderer` to minimize the time and effort it uses, and avoid unnecessarily redrawing the page, by making sure it only requests that a callback is executed when all of the callback\'s inputs have reached their final values.
+
+    ### As A Direct Result of User Interaction
+
+    Most frequently, callbacks are executed as a direct result of user interaction, such as clicking a button or selecting an item in a dropdown menu. When such interactions occur, Dash components communicate their new values to the `dash-renderer` front-end client, which then requests that the Dash server execute any callback function that has the newly changed value as input.
+
+    If a Dash app has multiple callbacks, the `dash-renderer` requests callbacks to be executed based on whether or not they can be immediately executed with the newly changed inputs. If several inputs change simultaneously, then requests are made to execute them all.
+
+    Whether or not these requests are executed in a synchronous or asyncrounous manner depends on the specific setup of the Dash back-end server. If it is running in a multi-threaded environment, then all of the callbacks can be executed simultaneously, and they will return values based on their speed of execution. In a single-threaded environment however, callbacks will be executed one at a time in the order they are received by the server.
+
+    ### As An Indirect Result of User Interaction
+
+    When a user interacts with a component, the resulting callback might have outputs that are themselves the input of other callbacks. The `dash-renderer` will block the execution of such a callback until the callback whose output is its input has been executed.
+
+    ### When Dash Components Are Added To The Layout
+
+    It is possible for a callback to insert new Dash components into a Dash app\'s layout. If these new components are themselves the inputs to other callback functions, then their appearance in the Dash app\'s layout will trigger those callback functions to be executed.
+
+    In this circumstance, it is possible that multiple requests are made to execute the same callback function. This would occur if the callback in question has already been requested and its output returned before the new components which are also its inputs are added to the layout.
+
+    ## Prevent Callbacks From Being Executed on Initial Load
+
+    You can use the `prevent_initial_call` attribute of callbacks to prevent callbacks from being fired when the app initially loads.
 
 '''),
 
