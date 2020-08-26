@@ -134,7 +134,7 @@ app.run_server(debug=True)
     '''),
 
     rc.Markdown('''
-    Notice that when this app is finished being loaded by a web browser and ready for user interaction, the `children` of the `html.Div` components is not the text that is defined when the components are declared in the app's layout but rather is the result of the `change_text()` callback being executed. This is because the "initial call" of the callback occured with `n_clicks` having the value of `None`.
+    Notice that when this app is finished being loaded by a web browser and ready for user interaction, the `html.Div` components do not say "callback not executed" as declared in the app's layout, but rather "n_clicks is None," the result of the `change_text()` callback being executed. This is because the "initial call" of the callback occurred with `n_clicks` having the value of `None`.
 
     ### As A Direct Result of User Interaction
 
