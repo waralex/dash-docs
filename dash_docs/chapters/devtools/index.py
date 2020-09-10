@@ -90,7 +90,7 @@ This includes:
 - Click on a **green box** to see the **detailed view** about the callback. This includes:
     - `type` - Whether the callback was a [clientside callback](/clientside-callbacks) or a serverside callback.
     - `call count` - The number of times the callback was called during your session
-    - `status` - Whether the callback was successful or not
+    - `status` - Whether the callback was successful or not.
     - `time (avg milliseconds)` - How long the request took. This is the same as the summary on the green box
         - `total` - The total time of the request
         - `compute` - The time spent running your callback function and serializing & deserializing the data. Serialization and deserialization is a data conversion step that the `dash` framework framework performs when receiving and sending data to the client.
