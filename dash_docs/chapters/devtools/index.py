@@ -66,7 +66,7 @@ in [#1179](https://github.com/plotly/dash/pull/1179). Many thanks `@jjaraalm`!_
 
 ***
 
-**30 second demo video (no sound)**
+**60 second demo video (no sound)**
 '''),
 
 html.Video(style={'maxWidth': '100%'}, controls=True, children=[
