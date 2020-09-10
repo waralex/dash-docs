@@ -56,8 +56,8 @@ features on and off.
 
 ## Callback Graph
 
-_This feature was originally sponsored by a customer in Dash v0.23.0 and
-was recently improved in Dash v1.16.0 by community member [`@jjaraalm`](https://github.com/jjaraalm)
+_This feature was originally sponsored by a customer in Dash v0.42.0 and
+was recently improved in Dash v1.16.0 by Community Member [`@jjaraalm`](https://github.com/jjaraalm)
 in [#1179](https://github.com/plotly/dash/pull/1179). Many thanks `@jjaraalm`!_
 
 **Screenshot**
