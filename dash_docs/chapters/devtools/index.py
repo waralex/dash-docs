@@ -2,6 +2,7 @@ import dash
 import dash_html_components as html
 import dash_core_components as dcc
 
+from dash_docs import tools
 from dash_docs import reusable_components as rc
 
 layout = html.Div([
@@ -128,9 +129,18 @@ _This feature was improved in Dash v1.16.0 by community member [`@jjaraalm`](htt
 in [#1179](https://github.com/plotly/dash/pull/1179)_
 
 ![The Dash Dev Tools Callback Graph](/assets/images/devtools/callback-graph.png)
+'''),
 
-![A Demo of the Dash Dev Tools Callback Graph](/assets/images/devtools/callback-graph.mp4)
+html.Video(style={'maxWidth': '100%'}, controls=True, children=[
+    html.Source(src=misc.relpath('/assets/images/devtools/callback-graph.mp4'), type='video/mp4'),
+    html.P([
+        "Your browser doesn't support HTML5 video. Here is a ",
+        html.A('link to the video', href=tools.relpath('/assets/images/devtools/callback-graph.mp4')),
+        'instead.'
+    ])
+]),
 
+dcc.Markdown('''
 The Dash Dev Tools Callback Graph provides **Live Introspection**, **Profiling**, and **Live Debuging** of your callback graph. This includes:
 
 - The **rounded green boxes** represent your **callback functions**:
@@ -180,11 +190,11 @@ def update_graph(value):
 With this, the custom timing data is available in two places:
 1. In the detailed view
 
-![The Dash Dev Tools Callback Graph Reporting Custom Timing Events](/assets/dash-docs/callback-graph-custom-timing-events.png)
+![The Dash Dev Tools Callback Graph Reporting Custom Timing Events](/assets/images/devtools/callback-graph-custom-timing-events.png)
 
 2. In your browser's network panel under the `_dash-update-component` request.
 
-![Custom Timing in the Browser's Network Pane](/assets/dash-docs/browser-custom-timing.png)
+![Custom Timing in the Browser's Network Pane](/assets/images/devtools/browser-custom-timing.png)
 
 ```
 help(dash.callback_context.record_timing)
@@ -202,7 +212,7 @@ Our intention was to reduce the context switch during development between *termi
 
 To hide the error message, click on the Blue Dev Tools icon in the bottom right corner and then click on the "Toggle Errors" icon.
 
-![Displaying error messages in the web browser](/assets/devtools/dash-devtools-error-message.png)
+![Displaying error messages in the web browser](/assets/images/devtools/dash-devtools-error-message.png)
 
 ## Component Validation
 
