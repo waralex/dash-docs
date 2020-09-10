@@ -139,13 +139,13 @@ With this, the custom timing data is available in two places:
 **Reference**
 
 ```
-help(dash.callback_context.record_timing)
+>>> help(dash.callback_context.record_timing)
 
 ```
 '''),
 
 (
-    dcc.Markdown('dash.callack_context.record_timing' +
+    dcc.Pre('dash.callack_context.record_timing' +
     str(inspect.signature(dash.callback_context.record_timing)))
     if sys.version_info >= (3, 0) else ''
 ),
@@ -229,18 +229,21 @@ when `dev_tools_serve_dev_bundles=True`. In production they will be omitted.
 
 #### Configuring with `run_server`
 
-Dev Tools is configured by the `run_server` command:
+Dev Tools is configured by the `run_server` command, which is typically:
 ```python
 app.run_server(debug=True)
 ```
 
-'''),
 
-(
-    html.Pre('app.run_server' +
-    str(inspect.signature(dummy_app.run_server)), style={'fontFamily': 'monospace'})
+**Full Reference**
+```python
+{signature}
+```
+
+'''.format(signature=
+    'app.run_server' + str(inspect.signature(dummy_app.run_server))
     if sys.version_info >= (3, 0) else ''
-),
+)),
 
 dcc.Markdown(
 '''
