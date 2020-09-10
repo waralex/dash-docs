@@ -4,6 +4,10 @@ import dash_core_components as dcc
 
 from dash_docs import tools
 from dash_docs import reusable_components as rc
+import inspect
+import sys
+
+dummy_app = dash.Dash(__name__)
 
 layout = html.Div([
     rc.Markdown('''
@@ -35,65 +39,20 @@ and logs from Flask, Dash's underlying web server
 
 - **Serving Dev Bundles & Source Maps** - For component authors, you can serve a different JavaScript bundle during development
 
-> This initiative was sponsored by a Dash Enterprise customer.
-> Interested in furthering our work here?
-> Ask your organization to [sponsor Dash development](http://plotly.com/products/consulting-and-oem/)
-> or [license Dash Enterprise](https://plotly.com/dash).
 
-## Configuring Dash Dev Tools
-
-#### Configuring with `run_server`
-
-Dev Tools is configured by the `run_server` command:
+These Dev Tools features are turned on when the app is run in development
+with `run_server` and when `debug=True`:
 ```python
 app.run_server(debug=True)
 ```
 
-With `debug=True`, *all of the Dev Tools features listed below enabled*.
+See the "Configuring Dash Dev Tools" section at the bottom to turn individual
+features on and off.
 
-Individual dev tools featured can be turned on or off with keyword arguments in `app.run_server`:
-
-- `debug`, bool, activate all the dev tools listed below
-- `use_reloader`, bool, set to `False` to turn off Code Reloading. Code Reloading restarts
-your application when you change code.
-- `dev_tools_ui`, bool, set to `False` to explicitly disable dev tools UI in debugger mode (default=True).
-This UI is the blue button in the bottom right corner that contains the error messages, server status, and
-the callback graph.
-- `dev_tools_props_check`, bool, set to `False` to explicitly disable Component Validation (default=True)
-- `dev_tools_hot_reload`, bool, set to `True` to enable hot reloading (default=False).
-    - `dev_tools_hot_reload_interval`, float, interval in seconds at which the renderer will request the reload hash and update the browser page if it changed. (default=3).
-    - `dev_tools_hot_reload_watch_interval`, float, delay in seconds between each walk of the assets folder to detect file changes. (default=0.5 seconds)
-    - `dev_tools_hot_reload_max_retry`, int, number of times the reloader is allowed to fail before stopping and sending an alert. (default=8)
-- `dev_tools_silence_routes_logging`, bool, remove the routes access logging from the console.
-- `dev_tools_serve_dev_bundles`, bool, serve the dev JavaScript bundles.
-- `dev_tools_prune_errors`, bool, simplify tracebacks to just user code, omitting stack frames from Dash and Flask internals. (default=True)
-
-For example, to turn off the automatic reloader but keep the rest of the development features, you could run:
-```
-app.run_server(debug=True, use_reloader=False)
-```
-
-#### Configuring with Environment Variables
-
-All the `dev_tools` variables can be set with environment variables, just replace the `dev_tools_` with `dash_` and convert to uppercase.
-This allows you to have different run configs without changing the code.
-
-Linux/macOS:
-
-`export DASH_HOT_RELOAD=false`
-
-Windows:
-
-`set DASH_DEBUG=true`
-
-> By placing these features in `run_server`, we prevent you from using these
-> features in production. As a reminder, `run_server` should not be used
-> when deploying your application in production. Instead, the app should
-> be run with `gunicorn` on the `server = app.server` instance.
-> We don't run use dev tools in production because:
-> - Displaying serverside tracebacks is a security vulnerability
-> - Dev Tools features incur a performance penalty: component validation and loading source maps
-> has a cost.
+> This initiative was sponsored by a Dash Enterprise customer.
+> Interested in furthering our work here?
+> Ask your organization to [sponsor Dash development](http://plotly.com/products/consulting-and-oem/)
+> or [license Dash Enterprise](https://plotly.com/dash).
 
 ## Callback Graph
 
@@ -108,8 +67,6 @@ in [#1179](https://github.com/plotly/dash/pull/1179)_
 
 **30 second demo video (no sound)**
 '''),
-
-
 
 html.Video(style={'maxWidth': '100%'}, controls=True, children=[
     html.Source(src=tools.relpath('/assets/images/devtools/callback-graph.mp4'), type='video/mp4'),
@@ -137,7 +94,7 @@ This includes:
         - `total` - The total time of the request
         - `compute` - The time spent running your callback function and serializing & deserializing the data. Serialization and deserialization is a data conversion step that the `dash` framework framework performs when receiving and sending data to the client.
         - `network` - The time spent transfering the data from the browser client to the server and back
-        - `user: <task-id>` - (Optional) Custom timing events captured by `dash.callback_context.record_timing` (see below)
+        - `user: <task-id>` - (Optional) Custom timing events captured by `dash.callback_context.record_timing` (see "Custom Timing Events" below)
     - `data transfer (avg bytes)`
         - `download` - The number of bytes sent from the browser client to the server. This is the data that is passed into your callback function: the `Input` & `State`
         - `upload` - The number of bytes sent from the server back to the browser callback. This is the data that is returned from your callback function: the `Output`
@@ -179,11 +136,19 @@ With this, the custom timing data is available in two places:
 
 ![Custom Timing in the Browser's Network Pane](/assets/images/devtools/browser-custom-timing.png)
 
+**Reference**
+
 ```
 help(dash.callback_context.record_timing)
+
 ```
 '''),
 
+(
+    dcc.Markdown('dash.callack_context.record_timing' +
+    str(inspect.signature(dash.callback_context.record_timing)))
+    if sys.version_info >= (3, 0) else ''
+),
 dcc.Markdown(dash.callback_context.record_timing.__doc__),
 
 dcc.Markdown(
@@ -258,6 +223,77 @@ In dev mode, component authors can include source maps or dev bundles in their c
 when `dev_tools_serve_dev_bundles=True`. In production they will be omitted.
 
 > The component libraries that are maintained by Plotly (including `dash-core-components`, `dash-html-components`, `dash-table`) provide the sourcemaps via `async` loading. This means that they will be loaded _on-the-fly_ when requested by the browser in the browser's console regardless of the value of `dev_tools_serve_dev_bundles`.
+
+
+## Configuring Dash Dev Tools & `app.run_server` Reference
+
+#### Configuring with `run_server`
+
+Dev Tools is configured by the `run_server` command:
+```python
+app.run_server(debug=True)
+```
+
+'''),
+
+(
+    html.Pre('app.run_server' +
+    str(inspect.signature(dummy_app.run_server)), style={'fontFamily': 'monospace'})
+    if sys.version_info >= (3, 0) else ''
+),
+
+dcc.Markdown(
+'''
+With `debug=True`, *all of the Dev Tools features listed below enabled*.
+
+Individual dev tools featured can be turned on or off with keyword
+arguments in `app.run_server`. These include:
+
+- `debug`, bool, activate all the dev tools listed below
+- `use_reloader`, bool, set to `False` to turn off Code Reloading. Code Reloading restarts
+your application when you change code.
+- `dev_tools_ui`, bool, set to `False` to explicitly disable dev tools UI in debugger mode (default=True).
+This UI is the blue button in the bottom right corner that contains the error messages, server status, and
+the callback graph.
+- `dev_tools_props_check`, bool, set to `False` to explicitly disable Component Validation (default=True)
+- `dev_tools_hot_reload`, bool, set to `True` to enable hot reloading (default=False).
+    - `dev_tools_hot_reload_interval`, float, interval in seconds at which the renderer will request the reload hash and update the browser page if it changed. (default=3).
+    - `dev_tools_hot_reload_watch_interval`, float, delay in seconds between each walk of the assets folder to detect file changes. (default=0.5 seconds)
+    - `dev_tools_hot_reload_max_retry`, int, number of times the reloader is allowed to fail before stopping and sending an alert. (default=8)
+- `dev_tools_silence_routes_logging`, bool, remove the routes access logging from the console.
+- `dev_tools_serve_dev_bundles`, bool, serve the dev JavaScript bundles.
+- `dev_tools_prune_errors`, bool, simplify tracebacks to just user code, omitting stack frames from Dash and Flask internals. (default=True)
+
+For example, to turn off the automatic reloader but keep the rest of the development features, you could run:
+```
+app.run_server(debug=True, use_reloader=False)
+```
+'''),
+
+dcc.Markdown(
+'''
+#### Configuring with Environment Variables
+
+All the `dev_tools` variables can be set with environment variables, just replace the `dev_tools_` with `dash_` and convert to uppercase.
+This allows you to have different run configs without changing the code.
+
+Linux/macOS:
+
+`export DASH_HOT_RELOAD=false`
+
+Windows:
+
+`set DASH_DEBUG=true`
+
+> By placing these features in `run_server`, we prevent you from using these
+> features in production. As a reminder, `run_server` should not be used
+> when deploying your application in production. Instead, the app should
+> be run with `gunicorn` on the `server = app.server` instance.
+> We don't run use dev tools in production because:
+> - Displaying serverside tracebacks is a security vulnerability
+> - Dev Tools features incur a performance penalty: component validation and loading source maps
+> has a cost.
+
 
 ''')
 ])
