@@ -524,9 +524,9 @@ app$callback(
                 user-friendly R interface to create beautiful, customizable, interactive and reactive graphs."
                 ),
                 components$Chapter(
-                  'Dash Booststrap Components',
+                  'Dash Bootstrap Components',
                   href='https://dash-bootstrap-components.opensource.faculty.ai/',
-                  caption="A library of Bootstrap components created by [faculty.ai](https://faculty.ai/). Dash Boostrap Components makes it easier
+                  caption="A library of Bootstrap components created by [faculty.ai](https://faculty.ai/). Dash Bootstrap Components makes it easier
                   to build consistently styled apps with complex, responsive layouts."
                 )
               )
