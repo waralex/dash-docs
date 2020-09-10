@@ -15,14 +15,14 @@ These tools are enabled when developing your Dash app and are not intended
 when deploying your application to production.
 
 Dash Dev Tools includes:
+- **Callback Graph** - Dash displays a visual representation of your callbacks:
+which order they are fired in, how long they take, and what data is passed back and forth.
+
 - **Code Reloading** - Dash restarts your app when you change code in your project.
 
 - **Hot Reloading** - Dash automatically refreshes the web browser and
 your CSS files when you make a code change so that you don't need to manually
 refresh your browser.
-
-- **Callback Graph** - Dash displays a visual representation of your callbacks:
-which order they are fired in, how long they take, and what data is passed back and forth.
 
 - **In-App Error Reporting** - Dash reports error messages in the browser
 instead of your terminal so that you can stay focussed on your app and your code.
@@ -58,7 +58,7 @@ Individual dev tools featured can be turned on or off with keyword arguments in 
 your application when you change code.
 - `dev_tools_ui`, bool, set to `False` to explicitly disable dev tools UI in debugger mode (default=True).
 This UI is the blue button in the bottom right corner that contains the error messages, server status, and
-the error messages.
+the callback graph.
 - `dev_tools_props_check`, bool, set to `False` to explicitly disable Component Validation (default=True)
 - `dev_tools_hot_reload`, bool, set to `True` to enable hot reloading (default=False).
     - `dev_tools_hot_reload_interval`, float, interval in seconds at which the renderer will request the reload hash and update the browser page if it changed. (default=3).
@@ -95,41 +95,21 @@ Windows:
 > - Dev Tools features incur a performance penalty: component validation and loading source maps
 > has a cost.
 
-
-## Code Reloading & Hot Reloading
-
-By default, Dash includes Code Reloading & Hot Reloading. This means that Dash will automatically refresh your browser when you make a change in your Python or CSS code.
-
-The Code Reloading feature is provided by Flask & Werkzeug via the `use_reloader` keyword.
-A caveat of Code Reloading is that your app code is run _twice_ when
-starting: once to start the parent process and another time to run the child process that gets reloaded.
-
-Hot reloading works by running a "file watcher" that examines your working directory to check for changes. When a change is detected, Dash reloads your application in an efficient way automatically.
-
-A few notes about **how Code Reloading & Hot Reloading works**:
-- Hot reloading is triggered when you _save_ a file.
-- Dash examines the files in your working directory.
-- CSS files are automatically "watched" by examining the `assets/` folder. <dccLink href="/external-resources" children="Learn more about css"/>
-- If only CSS changed, then Dash will only refresh that CSS file.
-- When your Python code has changed, Dash will re-run the entire file and then refresh the application in the browser.
-- Hot reloading will not save the application's _state_. For example, if you've selected some items in a dropdown, then that item will be cleared on hot-reload.
-- Hot reloading is configurable through a set of parameters: `use_reloader`, `dev_tools_hot_reload`, and the `dev_tools_hot_reload_interval`, `dev_tools_hot_reload_watch_interval`,
-`dev_tools_hot_reload_max_retry`
-
-**If Hot-Reloading is Too Slow**
-
-If your application initialization is too slow for hot reloading, then consider:
-
-- Saving certain initialization steps to a file in development. For example, if your app initialization downloads a static file from a remote service, perhaps you could include it locally. Consider using the `.arrow` file format so that loading the file is fast or a `pickle` file to save & load all of your variables.
-- Consider using [JupyterDash](https://medium.com/plotly/introducing-jupyterdash-811f1f57c02e) to isolate your initialization routines from your Dash app & callbacks. Execute your initialization routines in their own cell(s) separate from your Dash app so that you don't need to re-run these cells when iterating on your app code.
-
 ## Callback Graph
 
 _This feature was improved in Dash v1.16.0 by community member [`@jjaraalm`](https://github.com/jjaraalm)
 in [#1179](https://github.com/plotly/dash/pull/1179)_
 
+**Screenshot**
+
 ![The Dash Dev Tools Callback Graph](/assets/images/devtools/callback-graph.png)
+
+***
+
+**30 second demo video (no sound)**
 '''),
+
+
 
 html.Video(style={'maxWidth': '100%'}, controls=True, children=[
     html.Source(src=tools.relpath('/assets/images/devtools/callback-graph.mp4'), type='video/mp4'),
@@ -141,12 +121,15 @@ html.Video(style={'maxWidth': '100%'}, controls=True, children=[
 ]),
 
 dcc.Markdown('''
-The Dash Dev Tools Callback Graph provides **Live Introspection**, **Profiling**, and **Live Debuging** of your callback graph. This includes:
+The Dash Dev Tools Callback Graph provides **Live Introspection**,
+**Profiling**, and **Live Debuging** of your callback graph.
+
+This includes:
 
 - The **rounded green boxes** represent your **callback functions**:
     - The top number represents the number of times the function has been called
-    The bottom number represents how long the request took. This includes the network time (sending the data from the browser client to the backend and back) and the compute time (the total time minus the network time or how long the function spent in Python).
-- Click on a green box to see the **detailed view** about the callback. This includes:
+    - The bottom number represents how long the request took. This includes the network time (sending the data from the browser client to the backend and back) and the compute time (the total time minus the network time or how long the function spent in Python).
+- Click on a **green box** to see the **detailed view** about the callback. This includes:
     - `type` - Whether the callback was a [clientside callback](/clientside-callbacks) or a serverside callback.
     - `call count` - The number of times the callback was called during your session
     - `status` - Whether the callback was successful or not
@@ -165,7 +148,7 @@ The Dash Dev Tools Callback Graph provides **Live Introspection**, **Profiling**
 - The **dashed arrows** (not visible in the screenshot) represent `State`
 - The **dropdown** in the top right corner enables you to switch layouts
 
-**Custom Timing Events**
+### Custom Timing Events
 
 The timing data reported above includes the entire time that the callback is running.
 
@@ -205,6 +188,33 @@ dcc.Markdown(dash.callback_context.record_timing.__doc__),
 
 dcc.Markdown(
 '''
+## Code Reloading & Hot Reloading
+
+By default, Dash includes Code Reloading & Hot Reloading. This means that Dash will automatically refresh your browser when you make a change in your Python or CSS code.
+
+The Code Reloading feature is provided by Flask & Werkzeug via the `use_reloader` keyword.
+A caveat of Code Reloading is that your app code is run _twice_ when
+starting: once to start the parent process and another time to run the child process that gets reloaded.
+
+Hot reloading works by running a "file watcher" that examines your working directory to check for changes. When a change is detected, Dash reloads your application in an efficient way automatically.
+
+A few notes about **how Code Reloading & Hot Reloading works**:
+- Hot reloading is triggered when you _save_ a file.
+- Dash examines the files in your working directory.
+- CSS files are automatically "watched" by examining the `assets/` folder. <dccLink href="/external-resources" children="Learn more about css"/>
+- If only CSS changed, then Dash will only refresh that CSS file.
+- When your Python code has changed, Dash will re-run the entire file and then refresh the application in the browser.
+- Hot reloading will not save the application's _state_. For example, if you've selected some items in a dropdown, then that item will be cleared on hot-reload.
+- Hot reloading is configurable through a set of parameters: `use_reloader`, `dev_tools_hot_reload`, and the `dev_tools_hot_reload_interval`, `dev_tools_hot_reload_watch_interval`,
+`dev_tools_hot_reload_max_retry`
+
+**If Hot-Reloading is Too Slow**
+
+If your application initialization is too slow for hot reloading, then consider:
+
+- Saving certain initialization steps to a file in development. For example, if your app initialization downloads a static file from a remote service, perhaps you could include it locally. Consider using the `.arrow` file format so that loading the file is fast or a `pickle` file to save & load all of your variables.
+- Consider using [JupyterDash](https://medium.com/plotly/introducing-jupyterdash-811f1f57c02e) to isolate your initialization routines from your Dash app & callbacks. Execute your initialization routines in their own cell(s) separate from your Dash app so that you don't need to re-run these cells when iterating on your app code.
+
 ## In-App Error Reporting
 
 Callback error messages and JavaScript error messages are displayed as a pop-up within your application instead of in your terminal.
