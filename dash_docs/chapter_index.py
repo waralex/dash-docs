@@ -652,7 +652,7 @@ URLS = [
             },
 
             {
-                'name': 'Dash Boostrap Components',
+                'name': 'Dash Bootstrap Components',
                 'chapters': [
                     {
                         'url': 'https://dash-bootstrap-components.opensource.faculty.ai/',
@@ -660,7 +660,7 @@ URLS = [
                         'description': (
                             'A library of Bootstrap components '
                             'created by [faculty.ai](https://faculty.ai/). '
-                            'Dash Boostrap Components makes it easier to '
+                            'Dash Bootstrap Components makes it easier to '
                             'build consistently styled '
                             'apps with complex, responsive layouts.'
                         ),
