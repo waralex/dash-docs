@@ -98,7 +98,7 @@ This includes:
         - `user: <task-id>` - (Optional) Custom timing events captured by `dash.callback_context.record_timing` (see "Custom Timing Events" below)
     - `data transfer (avg bytes)`
         - `download` - The number of bytes sent from the browser client to the server. This is the data that is passed into your callback function: the `Input` & `State`.
-        - `upload` - The number of bytes sent from the server back to the browser callback. This is the data that is returned from your callback function: the `Output`.       
+        - `upload` - The number of bytes sent from the server back to the browser callback. This is the data that is returned from your callback function: the `Output`.
     - `outputs` - A JSON representation of the data that was returned from the callback.
     - `inputs` - A JSON representation of the data that was passed to your callback function as `Input`.
     - `state` - A JSON representation of the data that was passed to your callback function as `State`.
@@ -205,9 +205,11 @@ dcc.Dropdown(options=[{'label': 'New York', 'value': 'NYC'}])
 ```
 
 Then you'll see an error message like:
-> Invalid argument `options[0]` passed into RadioItems with ID "countries-radio".
-> Expected `object`.
-> Was supplied type `string`.
+```
+Invalid argument `options[0]` passed into RadioItems with ID "countries-radio".
+Expected `object`.
+Was supplied type `string`.
+```
 
 ![A screenshot of the devtools component validation error message](/assets/images/devtools/dash-devtools-component-validation.png)
 
