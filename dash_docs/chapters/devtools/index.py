@@ -42,7 +42,7 @@ and logs from Flask, Dash's underlying web server
 
 ## Configuring Dash Dev Tools
 
-**Configuring with `run_server`**
+#### Configuring with `run_server`
 
 Dev Tools is configured by the `run_server` command:
 ```python
@@ -73,7 +73,7 @@ For example, to turn off the automatic reloader but keep the rest of the develop
 app.run_server(debug=True, use_reloader=False)
 ```
 
-**Configuring with Environment Variables**
+#### Configuring with Environment Variables
 
 All the `dev_tools` variables can be set with environment variables, just replace the `dev_tools_` with `dash_` and convert to uppercase.
 This allows you to have different run configs without changing the code.
