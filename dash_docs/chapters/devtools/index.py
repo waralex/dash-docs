@@ -132,7 +132,7 @@ in [#1179](https://github.com/plotly/dash/pull/1179)_
 '''),
 
 html.Video(style={'maxWidth': '100%'}, controls=True, children=[
-    html.Source(src=misc.relpath('/assets/images/devtools/callback-graph.mp4'), type='video/mp4'),
+    html.Source(src=tools.relpath('/assets/images/devtools/callback-graph.mp4'), type='video/mp4'),
     html.P([
         "Your browser doesn't support HTML5 video. Here is a ",
         html.A('link to the video', href=tools.relpath('/assets/images/devtools/callback-graph.mp4')),
