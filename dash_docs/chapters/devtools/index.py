@@ -242,7 +242,7 @@ app.run_server(debug=True)
 if sys.version_info >= (3, 0) else '' +
 '''
 ```
-'''),
+''', style={'wordBreak': 'break-word'}),
 
 dcc.Markdown(
 '''
