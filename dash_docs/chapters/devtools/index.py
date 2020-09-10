@@ -91,19 +91,19 @@ This includes:
     - `type` - Whether the callback was a [clientside callback](/clientside-callbacks) or a serverside callback.
     - `call count` - The number of times the callback was called during your session
     - `status` - Whether the callback was successful or not.
-    - `time (avg milliseconds)` - How long the request took. This is the same as the summary on the green box
-        - `total` - The total time of the request
+    - `time (avg milliseconds)` - How long the request took. This is the same as the summary on the green box.
+        - `total` - The total time of the request.
         - `compute` - The time spent running your callback function and serializing & deserializing the data. Serialization and deserialization is a data conversion step that the `dash` framework framework performs when receiving and sending data to the client.
-        - `network` - The time spent transfering the data from the browser client to the server and back
+        - `network` - The time spent transfering the data from the browser client to the server and back.
         - `user: <task-id>` - (Optional) Custom timing events captured by `dash.callback_context.record_timing` (see "Custom Timing Events" below)
     - `data transfer (avg bytes)`
-        - `download` - The number of bytes sent from the browser client to the server. This is the data that is passed into your callback function: the `Input` & `State`
-        - `upload` - The number of bytes sent from the server back to the browser callback. This is the data that is returned from your callback function: the `Output`
-    - `outputs` - A JSON representation of the data that was returned from the callback
-    - `inputs` - A JSON representation of the data that was passed to your callback function as `Input`
-    - `state` - A JSON representation of the data that was passed to your callback function as `State`
+        - `download` - The number of bytes sent from the browser client to the server. This is the data that is passed into your callback function: the `Input` & `State`.
+        - `upload` - The number of bytes sent from the server back to the browser callback. This is the data that is returned from your callback function: the `Output`.       
+    - `outputs` - A JSON representation of the data that was returned from the callback.
+    - `inputs` - A JSON representation of the data that was passed to your callback function as `Input`.
+    - `state` - A JSON representation of the data that was passed to your callback function as `State`.
 - The **blue boxes** represent the input and output properties. Click on the box to see a JSON representation of their current values.
-- The **dashed arrows** (not visible in the screenshot) represent `State`
+- The **dashed arrows** (not visible in the screenshot) represent `State`.
 - The **dropdown** in the top right corner enables you to switch layouts
 
 ### Custom Timing Events
@@ -252,13 +252,13 @@ With `debug=True`, *all of the Dev Tools features listed below enabled*.
 Individual dev tools featured can be turned on or off with keyword
 arguments in `app.run_server`. These include:
 
-- `debug`, bool, activate all the dev tools listed below
-- `use_reloader`, bool, set to `False` to turn off Code Reloading. Code Reloading restarts
+- `debug`, bool, activate all the dev tools listed below.
+- `use_reloader`, bool, set to `False` to turn off Code Reloading. Code Reloading restarts.
 your application when you change code.
 - `dev_tools_ui`, bool, set to `False` to explicitly disable dev tools UI in debugger mode (default=True).
 This UI is the blue button in the bottom right corner that contains the error messages, server status, and
 the callback graph.
-- `dev_tools_props_check`, bool, set to `False` to explicitly disable Component Validation (default=True)
+- `dev_tools_props_check`, bool, set to `False` to explicitly disable Component Validation (default=True).
 - `dev_tools_hot_reload`, bool, set to `True` to enable hot reloading (default=False).
     - `dev_tools_hot_reload_interval`, float, interval in seconds at which the renderer will request the reload hash and update the browser page if it changed. (default=3).
     - `dev_tools_hot_reload_watch_interval`, float, delay in seconds between each walk of the assets folder to detect file changes. (default=0.5 seconds)
