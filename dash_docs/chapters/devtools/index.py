@@ -145,7 +145,7 @@ With this, the custom timing data is available in two places:
 '''),
 
 (
-    dcc.Pre('dash.callack_context.record_timing' +
+    html.Pre('dash.callack_context.record_timing' +
     str(inspect.signature(dash.callback_context.record_timing)))
     if sys.version_info >= (3, 0) else ''
 ),
