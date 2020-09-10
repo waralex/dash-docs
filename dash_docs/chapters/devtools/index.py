@@ -237,13 +237,12 @@ app.run_server(debug=True)
 
 **Full Reference**
 ```python
-{signature}
+''' +
+'app.run_server' + str(inspect.signature(dummy_app.run_server))
+if sys.version_info >= (3, 0) else '' +
+'''
 ```
-
-'''.format(signature=
-    'app.run_server' + str(inspect.signature(dummy_app.run_server))
-    if sys.version_info >= (3, 0) else ''
-)),
+'''),
 
 dcc.Markdown(
 '''
