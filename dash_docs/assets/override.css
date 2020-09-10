@@ -413,6 +413,14 @@ a {
     margin-bottom: 10px;
 }
 
+/* Images */
+.content-wrapper img {
+    max-width: 100%;
+    border: thin lightgrey solid;
+}
+
+/* Media queries */
+
 @media (min-width: 0px) {
   .toc-chapters {
     -moz-column-count: 1;
