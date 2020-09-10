@@ -35,7 +35,7 @@ instead of your terminal so that you can stay focussed on your app and your code
 malformed data to your components.
 
 - **Better Error Messages** - Dash prunes certain stack traces from Flask & Dash internals
-and logs from Flask, Dash's underlying web server
+and logs from Flask, Dash's underlying web server.
 
 - **Serving Dev Bundles & Source Maps** - For component authors, you can serve a different JavaScript bundle during development
 
