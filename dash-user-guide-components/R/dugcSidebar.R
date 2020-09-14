@@ -1,16 +1,16 @@
 # AUTO GENERATED FILE - DO NOT EDIT
 
-pageMenu <- function(id=NULL, dummy=NULL, dummy2=NULL, loading_state=NULL) {
+dugcSidebar <- function(children=NULL, id=NULL, urls=NULL, depth=NULL) {
     
-    props <- list(id=id, dummy=dummy, dummy2=dummy2, loading_state=loading_state)
+    props <- list(children=children, id=id, urls=urls, depth=depth)
     if (length(props) > 0) {
         props <- props[!vapply(props, is.null, logical(1))]
     }
     component <- list(
         props = props,
-        type = 'PageMenu',
+        type = 'Sidebar',
         namespace = 'dash_user_guide_components',
-        propNames = c('id', 'dummy', 'dummy2', 'loading_state'),
+        propNames = c('children', 'id', 'urls', 'depth'),
         package = 'dashUserGuideComponents'
         )
 

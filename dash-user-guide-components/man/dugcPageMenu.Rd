@@ -1,7 +1,7 @@
 % Auto-generated: do not edit by hand
-\name{pageMenu}
+\name{dugcPageMenu}
 
-\alias{pageMenu}
+\alias{dugcPageMenu}
 
 \title{PageMenu component}
 
@@ -10,7 +10,7 @@
 }
 
 \usage{
-pageMenu(id=NULL, dummy=NULL, dummy2=NULL, loading_state=NULL)
+dugcPageMenu(id=NULL, dummy=NULL, dummy2=NULL, loading_state=NULL)
 }
 
 \arguments{
@@ -26,3 +26,6 @@ those elements have the following types:
   - prop_name (character; optional): holds which property is loading
   - component_name (character; optional): holds the name of the component that is loading. Object that holds the loading state object coming from dash-renderer}
 }
+
+\value{named list of JSON elements corresponding to React.js properties and their values}
+

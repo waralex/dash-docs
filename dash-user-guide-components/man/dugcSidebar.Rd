@@ -1,7 +1,7 @@
 % Auto-generated: do not edit by hand
-\name{sidebar}
+\name{dugcSidebar}
 
-\alias{sidebar}
+\alias{dugcSidebar}
 
 \title{Sidebar component}
 
@@ -10,7 +10,7 @@
 }
 
 \usage{
-sidebar(children=NULL, id=NULL, urls=NULL, depth=NULL)
+dugcSidebar(children=NULL, id=NULL, urls=NULL, depth=NULL)
 }
 
 \arguments{
@@ -22,3 +22,6 @@ sidebar(children=NULL, id=NULL, urls=NULL, depth=NULL)
 
 \item{depth}{Numeric. depth}
 }
+
+\value{named list of JSON elements corresponding to React.js properties and their values}
+
