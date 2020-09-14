@@ -95,14 +95,14 @@ little deeper into leveraging multiple processes and threads in
 conjunction with memoization to further improve performance.
 "),
 
-dccMarkdown('''
+dccMarkdown("
     ## When Are Callbacks Executed?
 
     This section describes the circumstances under which the `dash-renderer` front-end client can make a request to the Dash back-end server to execute a callback function.
 
     ### When A Dash App First Loads
 
-    All of the callbacks in a Dash app are executed with the initial value of their inputs when the app is first loaded. This is known as the "initial call" of the callback. To learn how to suppress this behavior, see the documentation for the [`prevent_initial_call`](#prevent-callbacks-from-being-executed-on-initial-load) attribute of Dash callbacks.
+    All of the callbacks in a Dash app are executed with the initial value of their inputs when the app is first loaded. This is known as the \"initial call\" of the callback. To learn how to suppress this behavior, see the documentation for the [`prevent_initial_call`](#prevent-callbacks-from-being-executed-on-initial-load) attribute of Dash callbacks.
 
     It is important to note that when a Dash app is initially loaded in a web browser by the `dash-renderer` front-end client, its entire callback chain is introspected recursively.
 
@@ -129,8 +129,7 @@ dccMarkdown('''
     ## Prevent Callbacks From Being Executed on Initial Load
 
     You can use the `prevent_initial_call` attribute of callbacks to prevent callbacks from being fired when the app initially loads.
-
-'''),
+    "),
 
     htmlHr(),
     dccMarkdown("
