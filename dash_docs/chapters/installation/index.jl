@@ -10,25 +10,24 @@ app.layout = html_div() do
     dcc_markdown("""
     ## Dash Installation
 
-    In order to use Dash, you need to have a version of Julia >= 1.2.
+    In order to use Dash, please ensure that you are using a version of Julia >= 1.2.
 
-    To install the most recent version of Dash, run the following command:
+    To install the most recently version:
 
     ```julia
-        using Pkg;
-        Pkg.add(PackageSpec(url="https://github.com/plotly/Dash.jl.git"))
+        pkg> add Dash DashCoreComponents DashHtmlComponents DashTable
     ```
 
-    To install the latest stable development version of Dash, run the following commands:
+    To install the latest (stable) development version of Dash instead:
 
     ```julia
         using Pkg;
+        Pkg.add(PackageSpec(url="https://github.com/plotly/DashBase.jl.git"))
+        Pkg.add(PackageSpec(url="https://github.com/plotly/dash-html-components.git", rev="master"))
+        Pkg.add(PackageSpec(url="https://github.com/plotly/dash-core-components.git", rev="master"))
+        Pkg.add(PackageSpec(url="https://github.com/plotly/dash-table.git", rev="master"))
         Pkg.add(PackageSpec(url="https://github.com/plotly/Dash.jl.git", rev="dev"))
-        Pkg.add(PackageSpec(url="https://github.com/plotly/dash-html-components.git", rev="jl"))
-        Pkg.add(PackageSpec(url="https://github.com/plotly/dash-core-components.git", rev="jl"))
-        Pkg.add(PackageSpec(url="https://github.com/plotly/dash-table.git", rev="jl"))
     ```
-
 
     Once you have installed Dash, you are ready to [make your first Dash app](/getting-started).
 

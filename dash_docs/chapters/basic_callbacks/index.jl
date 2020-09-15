@@ -79,15 +79,58 @@ app.layout = html_div() do
     dcc_markdown("""
     Let's take a look at another example where a `dcc_slider` updates a `dcc_graph`.
     """),
-    html_h1(""),
+    html_h1("Multiple Inputs"),
     dcc_markdown("""
     """),
-    html_h1(""),
+    html_h1("Multiple Outputs"),
+    dcc_markdown("""
+    So far all the callbacks we've written only update a single Output property. We can also
+    update several at once: put all the properties you want to update as inputs to the callback,
+    and return that many items from the callback. This is particularly nice if two outputs depend
+    on the same computationaly intense itermediate result, such as a slow database query.
+
+    ```julia
+    using Dash
+    using DashHtmlComponents
+    using DashCoreComponents
+
+    app =
+        dash(external_stylesheets = ["https://codepen.io/chriddyp/pen/bWLwgP.css"])
+
+    app.layout = html_div() do
+        dcc_input(id = "input", value = "1", type = "text"),
+        html_tr((html_td("x^2"), html_td(id="square"))),
+        html_tr((html_td("x^3"), html_td(id="cube"))),
+        html_tr((html_td("2^x"), html_td(id="twos"))),
+        html_tr((html_td("3^x"), html_td(id="threes"))),
+        html_tr((html_td("x^x"), html_td(id="xx")))
+    end
+
+    callback!(
+        app,
+        Output("square", "children"),
+        Output("cube", "children"),
+        Output("twos", "children"),
+        Output("threes", "children"),
+        Output("xx", "children"),
+        Input("input", "value"),
+    ) do x
+        x = parse(Int64, x)
+        return (x^2, x^3, 2^x, 3^x, x^x)
+    end
+
+    run_server(app, "0.0.0.0", 8000)
+    ```
+    """),
+    html_h1("Chained Callbacks"),
     dcc_markdown("""
     """),
-    html_h1(""),
+    html_h1("State"),
     dcc_markdown("""
-    """)
+    """),
+    html_h1("Summary"),
+    dcc_markdown("""
+    """),
 
 end
 
