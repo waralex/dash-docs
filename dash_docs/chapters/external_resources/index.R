@@ -179,11 +179,11 @@ examples$embeddingImages$source_code,
 dccMarkdown("
 ## Adding external CSS/Javascript 
 
-You can add resources hosted externally to your Dash app with the 
+You can add resources hosted externally to your Dash app with the
 `external_stylesheets/stylesheets` init keywords.
 
 The resources can be either a string or 
-a dict containing the tag attributes (src, integrity, crossorigin, etc). 
+a list containing the tag attributes (`src`, `integrity`, `crossorigin`, etc).
 You can mix both.
             
 External css/js files are loaded before the assets.
