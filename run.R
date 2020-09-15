@@ -220,6 +220,8 @@ chapters.deployment <- new.env()
 source('dash_docs/chapters/deployment/index.R', local=chapters.deployment)
 chapters.urls <- new.env()
 source('dash_docs/chapters/urls/index.R', local=chapters.urls)
+chapters.routes <- new.env()
+source('dash_docs/chapters/routes/index.R', local=chapters.routes)
 chapters.devtools <- new.env()
 source('dash_docs/chapters/devtools/index.R', local=chapters.devtools)
 
@@ -374,6 +376,7 @@ app$callback(
       # Beyond the Basics
       '/external-resources' = chapters.external_resources$layout,
       '/urls' = chapters.urls$layout,
+      '/routes' = chapters.routes$layout,
       '/devtools' = chapters.devtools$layout,
       '/support' = chapters.support$layout,
       '/plugins' = chapters.plugins$layout,
@@ -567,6 +570,11 @@ app$callback(
                 'URL Routing & Multiple Apps',
                 href='/urls',
                 caption="Dash provides two components (`dccLink` and `dccLocation`) that allow you to easily make fast multipage apps using its own \"Single Page App (SPA)\" design pattern."
+                ),
+                components$Chapter(
+                'Server Routes & Redirects',
+                href='/routes',
+                caption="Dash offers two methods (`server_route` and `redirect`) to simplify the process of specifying user-defined routes and redirects for your apps."
                 ),
                 components$Chapter(
                 'Dev tools',
