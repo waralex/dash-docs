@@ -50,7 +50,9 @@ instead:
 ```
 
 
-We could also incorporate a wildcard to handle subpaths:
+We could also incorporate a wildcard to handle subpaths -
+in this case redirecting `/getting-started/` with anything
+after it to just `/layout`:
 
 
 ```r
