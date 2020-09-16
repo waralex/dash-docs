@@ -10,13 +10,11 @@ layout <- htmlDiv(list(
   dccMarkdown("
 As discussed in the [`Deployment Chapter`](deployment), 
 Dash for R uses the Fiery web framework under the hood.
-Fiery leverages the `routr` package to handle routing,
-but with an interface that may feel unfamiliar to Dash
-developers.
-
-To make it straightforward to specify user-defined routes
-and redirects in your Dash app, we've added some convenience
-methods that are more user-friendly.
+Fiery leverages the `routr` package to handle routing.
+While it's possible to access this directly via
+`app$server$attach` and `server$plugins$request_routr`, 
+we've added some convenience methods that are more
+user-friendly for redirects and other user-defined routes.
 
 The `server_route` method takes three arguments: a `path`
 which references the URL for which routing should be performed,
