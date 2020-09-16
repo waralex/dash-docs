@@ -78,6 +78,12 @@ app.layout = html_div() do
     html_hr(),
     dcc_markdown("""
     Let's take a look at another example where a `dcc_slider` updates a `dcc_graph`.
+
+
+###CODE GOES HERE#########
+
+
+
     """),
     html_h1("Multiple Inputs"),
     dcc_markdown("""
