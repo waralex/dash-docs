@@ -479,13 +479,13 @@ a {
     }
 }
 
-@media (max-width: 705px) {
+@media (max-width: 800px) {
     .header .links iframe {
         display: none;
     }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 700px) {
     .header .links {
         display: none;
     }

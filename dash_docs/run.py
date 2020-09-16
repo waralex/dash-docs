@@ -66,7 +66,7 @@ header = html.Div(
                         'width': '120px',
                     } 
                 ),
-                html.A('dash enterprise demo', className='Links', href='https://plotly.com/get-demo/?utm_source=docs&utm_medium=banner&utm_campaign=sept&utm_content=demo', 
+                html.A('dash enterprise demo', className='demo-button', href='https://plotly.com/get-demo/?utm_source=docs&utm_medium=banner&utm_campaign=sept&utm_content=demo', 
                     style={
                         'background-color': '#f4564e', 
                         'border-radius': '1.22rem',
@@ -81,6 +81,7 @@ header = html.Div(
                         'padding': '.55rem 1.22rem',
                         'margin-right': '5px',
                         'text-align': 'center',
+                        'verticalAlign': 'middle',
                         'text-decoration': 'none',
                         'text-transform': 'uppercase',
                         'transition': 'background-color .2s ease-in-out'
