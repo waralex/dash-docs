@@ -66,11 +66,11 @@ header = html.Div(
                         'width': '120px',
                     } 
                 ),
-                html.A('get a demo', className='Links', href='https://plotly.com/get-demo/', 
+                html.A('dash enterprise demo', className='Links', href='https://plotly.com/get-demo/?utm_source=docs&utm_medium=banner&utm_campaign=sept&utm_content=demo', 
                     style={
-                        'background-color': '#60bab6', 
+                        'background-color': '#f4564e', 
                         'border-radius': '1.22rem',
-                        'color': '#fff!important',
+                        'color': 'white',
                         'cursor': 'pointer',
                         'display': 'inline-block',
                         'font-style': 'italic',
