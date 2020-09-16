@@ -97,7 +97,7 @@ used to construct it, and `methods` works exactly as
 above (with `get` as its default option).
 
 For a simple path-to-path redirect, this syntax is as
-concise as it gets. Here we redirect all traffic to
+concise as it gets. Here we redirect all traffic from
 `/getting-started` to `/layout`, while returning a
 `301` HTTP status code.
 
