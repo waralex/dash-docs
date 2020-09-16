@@ -47,7 +47,7 @@ header = html.Div(
                 ), href='/', id='logo-home'),
             ], className='logo'),
 
-            # HEADS UP!
+            # HEADS UP! 
             # If you are modifying these header links,
             # make sure to check that the responsive design still works
             # The breakpoints are set in override.css
@@ -63,7 +63,27 @@ header = html.Div(
                         'height': '30px',
                         'verticalAlign': 'middle',
                         'marginTop': '9px',
-                        'width': '120px'
+                        'width': '120px',
+                    } 
+                ),
+                html.A('get a demo', className='Links', href='https://plotly.com/get-demo/', 
+                    style={
+                        'background-color': '#60bab6', 
+                        'border-radius': '1.22rem',
+                        'color': '#fff!important',
+                        'cursor': 'pointer',
+                        'display': 'inline-block',
+                        'font-style': 'italic',
+                        'font-weight': '700',
+                        'line-height': '1.2',
+                        'letter-spacing': '1.33px',
+                        'outline': 'none',
+                        'padding': '.55rem 1.22rem',
+                        'margin-right': '5px',
+                        'text-align': 'center',
+                        'text-decoration': 'none',
+                        'text-transform': 'uppercase',
+                        'transition': 'background-color .2s ease-in-out'
                     }
                 ),
             ])
