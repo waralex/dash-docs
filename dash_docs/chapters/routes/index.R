@@ -85,10 +85,9 @@ expect the handler to be formatted:
 ## Adding redirects to your Dash application
 
 While the `server_route` method is powerful and easy to
-use, if you're just looking to add a few redirects from
-one path to another, it can feel a bit verbose. Dash also
-supports a `redirect` method that makes it even simpler
-to add permanent redirects to your app.
+use, if you're just looking to add permanent redirects from
+one path to another, Dash also supports a simple `redirect`
+method.
 
 Like `server_route`, the `redirect` method takes three
 arguments. The `old_path` argument specifies the path to
