@@ -23,7 +23,7 @@ for that path, and (optionally) the `methods` supported for
 the request. If you don't specify `methods`, Dash will assume
 that the desired method is `get`.
 
-The URL path is comprised of strings, parameters (strings
+The URL path is composed of strings, parameters (strings
 prefixed with `:`), and wildcards (`*`) which are separated
 by `/`. The wildcards allow you to match any path element,
 while parameters allow you to reuse a segment of the path
