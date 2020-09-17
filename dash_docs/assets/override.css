@@ -479,14 +479,23 @@ a {
     }
 }
 
-@media (max-width: 800px) {
-    .header .links iframe {
+@media (max-width: 1000px) {
+    .header .links a.links--announcements {
+        display: none;
+    }
+    .header .links a.links--gallery {
+        display: none;
+    }
+    .header .links a.links--show-and-tell {
+        display: none;
+    }
+    .header .links a.links--community-forum {
         display: none;
     }
 }
 
-@media (max-width: 700px) {
-    .header .links {
+@media (max-width: 550px) {
+    .header .links Iframe {
         display: none;
     }
 }
