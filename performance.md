@@ -17,13 +17,22 @@ in Dash apps.
         - Consider Jupyter.
         - Consider arrow.
 
-2. Data served up by `/_dash-layout`
+2. Index page is served
+
+    - Nothing to do here, but there are some hooks available
+
+3. JavaScript bundles are served
+
+    - `serve_locally=False`
+    - `plotly.js` bundle
+
+4. Data served up by `/_dash-layout`
 
     Network request number 1.
 
     Things to consider: `serve_layout`
 
-3. User Interaction
+5. User Interaction
 
     Sometimes user interactions don't involve network requests.
     For example:
@@ -31,25 +40,25 @@ in Dash apps.
     `hoverData`
     - In `dcc.Input`, listening to `n_blur` instead of `value`
 
-4. Callback Request Part 1: Request made over network from client's browser to your backend
+6. Callback Request Part 1: Request made over network from client's browser to your backend
 
-5. [...] Part 2: Backend deserializes request
+7. [...] Part 2: Backend deserializes request
 
     You don't have any control over this.
     As a framework, we might consider faster serialization in the future.
 
-6. [...] Part 3: Backend calls your callback
+8. [...] Part 3: Backend calls your callback
 
-7. [...] Part 4: Backend serializes your response
+9. [...] Part 4: Backend serializes your response
 
-8. [...] Part 5: Backend sends response back to client
+10. [...] Part 5: Backend sends response back to client
 
-9. [...] Part 6: Dash's front end processes request (bookkeeping)
+11. [...] Part 6: Dash's front end processes request (bookkeeping)
 
     You don't have any control over this.
     We recently optimized these pathways.
 
-9. [...] Part 7: Dash's component rerenders with the new data
+12. [...] Part 7: Dash's component rerenders with the new data
 
 ## Finding the Bottleneck
 
@@ -163,6 +172,8 @@ Pitch DE on K8S
     Move databases closer to Dash apps
 
     Network throughput on GCP?
+
+15. Make plotly.js bundle smaller
 
 ## Edge Cases
 
