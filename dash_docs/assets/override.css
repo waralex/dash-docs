@@ -444,14 +444,17 @@ a {
   }
 }
 
-@media (max-width: 1150px) {
+/* @media (max-width: 1150px) {
     .page-menu {
         display: none;
     }
-}
+} */
 
-@media (max-width: 950px) {
+@media (max-width: 1000px) {
     .sidebar-container {
+        display: none;
+    }
+    .page-menu {
         display: none;
     }
     .content {
