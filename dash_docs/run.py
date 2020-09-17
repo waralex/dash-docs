@@ -52,10 +52,10 @@ header = html.Div(
             # make sure to check that the responsive design still works
             # The breakpoints are set in override.css
             html.Div(className='links', children=[
-                html.A('Announcements', href='https://community.plotly.com/tag/announcements'),
-                html.A('Gallery', href='https://dash-gallery.plotly.host'),
-                html.A('Show & Tell', href='https://community.plotly.com/tag/show-and-tell'),
-                html.A('Community Forum', href='https://community.plotly.com/c/dash'),
+                html.A('Announcements', className='announcements', href='https://community.plotly.com/tag/announcements'),
+                html.A('Gallery', className='gallery', href='https://dash-gallery.plotly.host'),
+                html.A('Show & Tell', className='show-and-tell', href='https://community.plotly.com/tag/show-and-tell'),
+                html.A('Community Forum', className='community-forum', href='https://community.plotly.com/c/dash'),
                 html.Iframe(
                     src="https://ghbtns.com/github-btn.html?user=plotly&repo=dash&type=star&count=true&size=small",
                     style={
@@ -87,7 +87,7 @@ header = html.Div(
                         'transition': 'background-color .2s ease-in-out'
                     }
                 ),
-            ])
+            ]),           
         ]
     )
 )
