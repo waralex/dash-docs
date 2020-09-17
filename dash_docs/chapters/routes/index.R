@@ -8,7 +8,7 @@ source('dash_docs/utils.R', local=utils)
 layout <- htmlDiv(list(
   htmlH1('Server Routes and Redirects'),
   dccMarkdown("
-As discussed in the [`Deployment Chapter`](deployment), 
+As covered in the [`Deployment Chapter`](deployment), 
 Dash for R uses the Fiery web framework under the hood.
 Fiery leverages the `routr` package to handle routing.
 While it's possible to access this directly via
