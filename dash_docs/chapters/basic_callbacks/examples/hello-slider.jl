@@ -21,23 +21,25 @@ app =
 
 
 app.layout = html_div() do
-    dcc_graph(id="graph"),
+    dcc_graph(figure=p1, id="graph"),
     dcc_slider(
         id = "year-slider",
         min = 0,
         max = length(years) - 1,
         marks = years,
         value = 0),
-    html_div("kj;ksjf;lkdajfs", id="input",)
+    html_br(),
+    html_br(),
+    html_div("year goes here", id="input",)
 
 end
 
 callback!(
     app,
-    Output("graph", "figure"),
-    Input("input", "children"),
-) do
-    return Plot(iris, x=:SepalLength, y=:SepalWidth, mode="markers", marker_size=8, group=:Species)
+    Output("input", "children"),
+    Input("year-slider", "value"),
+) do index
+    return years[index+1]
 end
 
 
