@@ -48,7 +48,7 @@ layout = html.Div([
 
     rc.Markdown(
     '''
-    ## Format Helper
+    ## Using Format Helper
     '''),
 
     rc.Markdown('''
