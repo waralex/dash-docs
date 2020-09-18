@@ -115,7 +115,10 @@ def load_example(path, relative_path=False):
             )
 
         if skip_id_check in _example:
-            _example = _example.replace(skip_id_check, '')
+            _example = '\n'.join(
+                line.replace(skip_id_check, '')
+                for line in _example.splitlines()
+            )
 
         if '$tools' in _example:
             _example = _example.replace('$tools', os.path.dirname(os.path.realpath(__file__)))
