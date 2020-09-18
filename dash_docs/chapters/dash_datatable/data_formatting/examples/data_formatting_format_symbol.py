@@ -6,18 +6,18 @@ from dash_table.Format import Format, Symbol
 app = dash.Dash(__name__)
 
 columns_1 = [
-    dict(id='a', name='Default', type='numeric', format=Format()),
-    dict(id='a', name='No Symbol', type='numeric', format=Format(symbol=Symbol.no)),
-    dict(id='a', name='$ Symbol', type='numeric', format=Format(symbol=Symbol.yes)),
-    dict(id='a', name='$ Symbol / Locale prefix', type='numeric', format=Format().symbol(Symbol.yes).symbol_prefix('@')),
-    dict(id='a', name='$ Symbol / Locale prefix+suffix', type='numeric', format=Format().symbol(Symbol.yes).symbol_prefix('@').symbol_suffix('*'))
+    dict(id='a', name='Default', type='numeric', format=Format()), # skip-id-check
+    dict(id='a', name='No Symbol', type='numeric', format=Format(symbol=Symbol.no)), # skip-id-check
+    dict(id='a', name='$ Symbol', type='numeric', format=Format(symbol=Symbol.yes)), # skip-id-check
+    dict(id='a', name='$ Symbol / Locale prefix', type='numeric', format=Format().symbol(Symbol.yes).symbol_prefix('@')), # skip-id-check
+    dict(id='a', name='$ Symbol / Locale prefix+suffix', type='numeric', format=Format().symbol(Symbol.yes).symbol_prefix('@').symbol_suffix('*')) # skip-id-check
 ]
 
 columns_2 = [
-    dict(id='a', name='Binary', type='numeric', format=Format(symbol=Symbol.binary)),
-    dict(id='a', name='Octal', type='numeric', format=Format(symbol=Symbol.octal)),
-    dict(id='a', name='Hex', type='numeric', format=Format(symbol=Symbol.hex)),
-    dict(id='a', name='Custom', type='numeric', format=dict(locale=dict(symbol=['@', '*']), specifier='$'))
+    dict(id='a', name='Binary', type='numeric', format=Format(symbol=Symbol.binary)), # skip-id-check
+    dict(id='a', name='Octal', type='numeric', format=Format(symbol=Symbol.octal)), # skip-id-check
+    dict(id='a', name='Hex', type='numeric', format=Format(symbol=Symbol.hex)), # skip-id-check
+    dict(id='a', name='Custom', type='numeric', format=dict(locale=dict(symbol=['@', '*']), specifier='$')) # skip-id-check
 ]
 
 values = [123.1, 123.12, 1234.123, 12345.12]
