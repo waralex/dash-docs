@@ -94,7 +94,7 @@ def slow_function(input):
     rc.Markdown('''
     ## When Are Callbacks Executed?
 
-    This section describes the circumstances under which the `dash-renderer` front-end client can make a request to the Dash back-end server to execute a callback function.
+    This section describes the circumstances under which the `dash-renderer` front-end client can make a request to the Dash back-end server (or the clientside callback code) to execute a callback function.
 
     ### When A Dash App First Loads
 
