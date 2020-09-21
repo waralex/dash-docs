@@ -9,23 +9,11 @@ using PlotlyJS
 url = "https://raw.githubusercontent.com/plotly/datasets/master/gapminderDataFiveYear.csv"
 download(url, "gapminder-data.csv")
 df = CSV.read("gapminder-data.csv")
-iris = dataset("datasets", "iris")
 
-continents = unique(df["continent"])
-years = unique(df["year"])
-traces = []
+continents = unique(df[:continent])
+years = unique(df[:year])
 
-figure = (
-    data = [
-        (x = ["giraffes", "orangutans", "monkeys"], y = [20, 14, 23], type = "bar", name = "SF"),
-    ],
-    layout = (title = "Dash Data Visualization", barmode="group")
-)
-
-p1 = Plot(iris, x=:SepalLength, y=:SepalWidth, mode="markers", marker_size=8, group=:Species)
-
-app =
-    dash(external_stylesheets = ["https://codepen.io/chriddyp/pen/bWLwgP.css"])
+app = dash()
 
 
 app.layout = html_div() do
@@ -43,23 +31,16 @@ callback!(
     Output("graph", "figure"),
     Input("year-slider", "value"),
 ) do index
-    #=
-    println(years[index+1])
 
-    for cont in continents
-        print(cont)
-    end
-
-    =#
-
-    df_sub = df[in.(df.year, Ref([years[index+1]])), :]
+    single_year_df = filter(row -> row.year == years[index+1], df)
 
     figure_data = []
 
     for cont in continents
+        single_continent_df = filter(row -> row.continent == cont, single_year_df)
         push!(figure_data,
-             (x = df_sub["gdpPercap"],
-              y = df_sub["lifeExp"],
+             (x = single_continent_df[:gdpPercap],
+              y = single_continent_df[:lifeExp],
               type = "scatter",
               mode = "markers",
               opacity=0.5,
@@ -71,6 +52,7 @@ callback!(
         data = figure_data,
         layout = (xaxis = ((type="log"), (title="GDP")),
                   yaxis = ((title="Life Expectancy"), range=(20, 90)),
+                  transition_duration=500
         ),
     )
 

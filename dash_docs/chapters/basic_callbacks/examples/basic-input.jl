@@ -2,16 +2,25 @@ using Dash
 using DashHtmlComponents
 using DashCoreComponents
 
-app =
-    dash(external_stylesheets = ["https://codepen.io/chriddyp/pen/bWLwgP.css"])
+
+app = dash()
 
 app.layout = html_div() do
-    dcc_input(id="input", value="initial value", type = "text"),
-    html_div(id="output")
+    dcc_input(id="input-1", type="text", value="Montreal"),
+    dcc_input(id="input-2", type="text", value="Canada"),
+    html_div(id="output-keywords")
+
 end
 
-callback!(app, Output("output", "children"), Input("input", "value")) do input_value
-    "You've entered $(input_value)"
+callback!(
+    app,
+    Output("output-keywords", "children"),
+    Input("input-1", "value"),
+    Input("input-2", "value"),
+) do input_1, input_2
+
+    return "Input 1 is \"$input_1\" and Input 2 is \"$input_2\""
+
 end
 
 run_server(app, "0.0.0.0", 8000)
