@@ -6,9 +6,10 @@ using DashCoreComponents
 using PlotlyJS
 
 
-url = "https://gist.githubusercontent.com/chriddyp/cb5392c35661370d95f300086accea51/raw/8e0768211f6b747c0db42a9ce9a0937dafcbd8b2/indicators.csv"
+url = "https://plotly.github.io/datasets/country_indicators.csv"
 download(url, "country-indicators.csv")
-df = CSV.read("country-indicators.csv")
+df = CSV.File("country-indicators.csv") |> DataFrame
+dropmissing!(df)
 
 rename!(df, Dict(:"Indicator Name" => "Indicator"))
 available_indicators = unique(df[:Indicator])
@@ -69,23 +70,23 @@ callback!(
     Input("xaxis-type", "value"),
     Input("yaxis-type", "value"),
     Input("year-slider", "value"),
-) do xaxis_column_name, yaxis_column_name, xaxis_type, yaxis_type, year_value
+) do x_axis_value, y_axis_value, x_axis_type, y_axis_type, year_value
 
     dff = filter(row -> row.Year == years[year_value+1], df)
 
-    figure_data = (
-        x = filter(row -> row.Indicator == xaxis_column_name, dff)[:Value],
-        y = filter(row -> row.Indicator == yaxis_column_name, dff)[:Value],
-        type = "scatter",
-    )
+    x_axis_data = filter(row -> row.Indicator == x_axis_value, dff)["Value"]
+    y_axis_data = filter(row -> row.Indicator == y_axis_value, dff)["Value"]
 
     figure = (
-        data = figure_data,
+        data = [
+            (x = x_axis_data, y = y_axis_data, type = "scatter", mode="markers"),
+        ],
+        layout = (xaxis = ((title=x_axis_value), (type=x_axis_type)),
+                  yaxis = ((title=y_axis_value), (type=y_axis_type)))
     )
 
     return figure
 
 end
-
 
 run_server(app, "0.0.0.0", 8000)

@@ -357,6 +357,49 @@ app.layout = html_div() do
     In this example, the callback function is fired whenever any of the attributes
     described by the `Input` change. Try it for yourself by entering data in the inputs
     above.
+
+    `State` allows you pass along extra values without firing the callbacks. Here's the same
+    example as above but with the `Input` as `State` and a button as an `Input`.exec
+
+    ```
+    using Dash
+    using DashHtmlComponents
+    using DashCoreComponents
+
+
+    app = dash()
+
+    app.layout = html_div() do
+        dcc_input(id="input-1-state", type="text", value="Montreal"),
+        dcc_input(id="input-2-state", type="text", value="Canada"),
+        html_button(id="submit-button-state", children="submit", n_clicks=0),
+        html_div(id="output-state")
+
+    end
+
+    callback!(
+        app,
+        Output("output-state", "children"),
+        Input("submit-button-state", "n_clicks"),
+        State("input-1-state", "value"),
+        State("input-2-state", "value")
+    ) do clicks, input_1, input_2
+
+        return "The Button has been pressed \"$clicks\" times, Input 1 is \"$input_1\" and Input 2 is \"$input_2\""
+
+    end
+
+    run_server(app, "0.0.0.0", 8000)
+
+    ```
+
+    In this example, changing text in the `Input` boxes won't fire the callback but clicking on the button will.
+    The current values of the `Input` values are still passed into the callback even though they don't trigger the
+    callback function itself.
+
+    Note that we're triggering the callback by listening to the `n_clicks` property of the `Button` component. `n_clicks`
+    is a property that gets incremented every time the component has been clicked on. It is available in
+    every component in the `DashHtmlComponents` components library. 
     """),
     html_h1("Summary"),
     dcc_markdown("""
