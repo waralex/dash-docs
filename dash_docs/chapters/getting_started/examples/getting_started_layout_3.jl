@@ -21,8 +21,7 @@ function generate_table(dataframe, max_rows = 10)
 end
 
 
-app =
-    dash(external_stylesheets = ["https://codepen.io/chriddyp/pen/bWLwgP.css"])
+app = dash()
 
 app.layout = html_div() do
     html_h4("US Agriculture Exports (2011)"),

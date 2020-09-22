@@ -9,8 +9,7 @@ using PlotlyJS
 app = dash()
 
 all_options = Dict("America"=>["New York City", "San Francisco", "Cincinnati"],
-                   "Canada"=>["Montreal", "Toronto", "Ottawa"]
-)
+                   "Canada"=>["Montreal", "Toronto", "Ottawa"])
 
 app.layout = html_div() do
     html_div(

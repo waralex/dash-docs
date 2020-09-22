@@ -2,8 +2,7 @@ using Dash
 using DashHtmlComponents
 using DashCoreComponents
 
-app =
-    dash(external_stylesheets = ["https://codepen.io/chriddyp/pen/bWLwgP.css"])
+app = dash()
 
 
 app.layout = html_div() do

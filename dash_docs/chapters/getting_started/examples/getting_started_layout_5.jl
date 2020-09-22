@@ -3,8 +3,7 @@ using DashHtmlComponents
 using DashCoreComponents
 
 
-app =
-    dash(external_stylesheets = ["https://codepen.io/chriddyp/pen/bWLwgP.css"])
+app = dash()
 markdown_text = "
 ### Dash and Markdown
 

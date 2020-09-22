@@ -12,8 +12,7 @@ df = DataFrame(CSV.File(gdp_life_expectancy_2007_csv))
 
 fig = Plot(df, x=:"gdp per capita", y=:"life expectancy")
 
-app =
-    dash(external_stylesheets = ["https://codepen.io/chriddyp/pen/bWLwgP.css"])
+app = dash()
 
 app.layout = html_div() do
     html_h4("GDP vs Life Expectancy"),
@@ -35,8 +34,7 @@ iris = dataset("datasets", "iris")
 
 p1 = Plot(iris, x=:SepalLength, y=:SepalWidth, mode="markers", marker_size=8, group=:Species)
 
-app =
-    dash(external_stylesheets = ["https://codepen.io/chriddyp/pen/bWLwgP.css"])
+app = dash()
 
 app.layout = html_div() do
     html_h4("Iris Sepal Length vs Sepal Width"),

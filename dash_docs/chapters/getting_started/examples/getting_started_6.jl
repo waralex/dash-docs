@@ -3,8 +3,7 @@ using DashHtmlComponents
 using DashCoreComponents
 
 
-app =
-    dash(external_stylesheets = ["https://codepen.io/chriddyp/pen/bWLwgP.css"])
+app = dash()
 
 dropdown_options = [
     Dict("label" => "New York City", "value" => "NYC"),

@@ -2,8 +2,7 @@ using Dash
 using DashHtmlComponents
 using DashCoreComponents
 
-app =
-    dash(external_stylesheets = ["https://codepen.io/chriddyp/pen/bWLwgP.css"])
+app =  dash()
 
 
 app.layout = html_div() do
@@ -176,11 +175,120 @@ app.layout = html_div() do
     """),
     html_h1("Dash App With Multiple Inputs"),
     dcc_markdown("""
-    In Dash, any `Output` can have multiple `Input` components. Here's a simple example that binds five Inputs (the `value` property of 2 `Dropdown` components, 2 `RadioItems` components, and 1 `Slider` component) to 1 Output component (the `figure` property of the `Graph` component).
+    In Dash, any `Output` can have multiple `Input` components.
+    Here's a simple example that binds five Inputs (the `value` property of
+    2 `Dropdown` components, 2 `RadioItems` components, and
+    1 `Slider` component) to 1 Output component (the `figure` property of the `Graph` component).
 
     ```julia
+    using CSV
+    using DataFrames
+    using Dash
+    using DashHtmlComponents
+    using DashCoreComponents
+    using PlotlyJS
+
+
+    url = "https://plotly.github.io/datasets/country_indicators.csv"
+    download(url, "country-indicators.csv")
+    df = CSV.File("country-indicators.csv") |> DataFrame
+    dropmissing!(df)
+
+    rename!(df, Dict(:"Indicator Name" => "Indicator"))
+    available_indicators = unique(df[:Indicator])
+    years = unique(df[:Year])
+
+    app = dash()
+
+    app.layout = html_div() do
+        html_div(
+            children = [
+                dcc_dropdown(
+                    id = "xaxis-column",
+                    options = [
+                        (label = i, value = i) for i in available_indicators
+                    ],
+                    value = "Fertility rate, total (births per woman)",
+                ),
+                dcc_radioitems(
+                    id = "xaxis-type",
+                    options = [(label = i, value = i) for i in ["linear", "log"]],
+                    value="linear"
+                ),
+            ],
+            style = (width = "48%", display = "inline-block"),
+        ),
+        html_div(
+            children = [
+                dcc_dropdown(
+                    id = "yaxis-column",
+                    options = [
+                        (label = i, value = i) for i in available_indicators
+                    ],
+                    value = "Life expectancy at birth, total (years)",
+                ),
+                dcc_radioitems(
+                    id = "yaxis-type",
+                    options = [(label = i, value = i) for i in ["linear", "log"]],
+                    value="linear",
+                ),
+            ],
+            style = (width = "48%", display = "inline-block", float = "right"),
+        ),
+        dcc_graph(id = "indicator-graphic"),
+        dcc_slider(
+            id = "year-slider",
+            min = 0,
+            max = length(years) - 1,
+            value = 0,
+            marks = years,
+        )
+    end
+
+    callback!(
+        app,
+        Output("indicator-graphic", "figure"),
+        Input("xaxis-column", "value"),
+        Input("yaxis-column", "value"),
+        Input("xaxis-type", "value"),
+        Input("yaxis-type", "value"),
+        Input("year-slider", "value"),
+    ) do x_axis_value, y_axis_value, x_axis_type, y_axis_type, year_value
+
+        dff = filter(row -> row.Year == years[year_value+1], df)
+
+        x_axis_data = filter(row -> row.Indicator == x_axis_value, dff)["Value"]
+        y_axis_data = filter(row -> row.Indicator == y_axis_value, dff)["Value"]
+
+        figure = (
+            data = [
+                (x = x_axis_data, y = y_axis_data, type = "scatter", mode="markers"),
+            ],
+            layout = (xaxis = ((title=x_axis_value), (type=x_axis_type)),
+                      yaxis = ((title=y_axis_value), (type=y_axis_type)))
+        )
+
+        return figure
+
+    end
+
+    run_server(app, "0.0.0.0", 8000)
 
     ```
+
+    In this example, the callback function gets called whenever the `value`
+    property of the `Dropdown`, `Slider`, or `RadioItems` components change.
+
+    THe input arguments of the callback function are the new or current value of
+    each of the `Input` properties, in the order that they were specified.
+
+    Even though only a single `Input` changes at a time (a user can only
+    change the value of a single `Dropdown` at a given moment), Dash collects
+    the current state of all of the specified `Input` properties and passes them
+    into your callback function for you. Your callback functions are always
+    guaranteed to have be passed the representative state of the app.
+
+    Let's extend our example to include multiple outputs.
     """),
     html_h1("Dash App With Multiple Outputs"),
     dcc_markdown("""
@@ -385,7 +493,7 @@ app.layout = html_div() do
         State("input-2-state", "value")
     ) do clicks, input_1, input_2
 
-        return "The Button has been pressed \"$clicks\" times, Input 1 is \"$input_1\" and Input 2 is \"$input_2\""
+        return "The Button has been pressed \"\$clicks\" times, Input 1 is \"\$input_1\" and Input 2 is \"\$input_2\""
 
     end
 
@@ -399,10 +507,21 @@ app.layout = html_div() do
 
     Note that we're triggering the callback by listening to the `n_clicks` property of the `Button` component. `n_clicks`
     is a property that gets incremented every time the component has been clicked on. It is available in
-    every component in the `DashHtmlComponents` components library. 
+    every component in the `DashHtmlComponents` components library.
     """),
     html_h1("Summary"),
     dcc_markdown("""
+    We've covered the fundamentals of callback functions in Dash. Dash apps are built on a set of
+    simple but powerful principles: declarative UIs that are customizable through
+    reaction and functional Julia callbacks. Every element attribute of the
+    declarative components can be updated through a callback and a subset of the
+    attributes, like the `value` property of a `Dropdown`, are editable by the user
+    in the interface.
+    """),
+    dcc_markdown("""
+    The next part of the Dash  tutorial covers interactive graphing.
+
+    [Dash Tutorial Part 4: Interactive Graphing](/interactive-graphing)
     """)
 
 end
