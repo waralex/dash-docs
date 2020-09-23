@@ -10,8 +10,8 @@ url = "https://raw.githubusercontent.com/plotly/datasets/master/gapminderDataFiv
 download(url, "gapminder-data.csv")
 df = DataFrame(CSV.File("gapminder-data.csv"))
 
-continents = unique(df[:continent])
-years = unique(df[:year])
+continents = unique(df[:, "continent"])
+years = unique(df[:, "year"])
 
 app = dash()
 
@@ -39,8 +39,8 @@ callback!(
     for cont in continents
         single_continent_df = filter(row -> row.continent == cont, single_year_df)
         push!(figure_data,
-             (x = single_continent_df[:gdpPercap],
-              y = single_continent_df[:lifeExp],
+             (x = single_continent_df[:, "gdpPercap"],
+              y = single_continent_df[:, "lifeExp"],
               type = "scatter",
               mode = "markers",
               opacity=0.5,

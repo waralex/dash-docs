@@ -13,8 +13,8 @@ df = DataFrame(CSV.File("country-indicators.csv"))
 dropmissing!(df)
 
 rename!(df, Dict(:"Indicator Name" => "Indicator"))
-available_indicators = unique(df[:Indicator])
-years = unique(df[:Year])
+available_indicators = unique(df[:, "Indicator"])
+years = unique(df[:, "Year"])
 
 app = dash()
 
@@ -104,8 +104,8 @@ callback!(
 
     dff = filter(row -> row.Year == years[year_value+1], df)
 
-    x_axis_data = filter(row -> row.Indicator == x_axis_value, dff)["Value"]
-    y_axis_data = filter(row -> row.Indicator == y_axis_value, dff)["Value"]
+    x_axis_data = filter(row -> row.Indicator == x_axis_value, dff)[:, "Value"]
+    y_axis_data = filter(row -> row.Indicator == y_axis_value, dff)[:, "Value"]
 
     figure = (
         data = [

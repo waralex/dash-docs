@@ -14,7 +14,7 @@ app = dash()
 app.layout = html_div() do
     dcc_dropdown(id="dropdown",
                  options = [
-                    (label = i, value = i) for i in df["c"]
+                    (label = i, value = i) for i in df[:, "c"]
                  ],
                  value="x"
     ),

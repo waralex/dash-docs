@@ -12,7 +12,7 @@ df = DataFrame(x = [1, 2, 1, 2],
 
 fig = (
     data = [
-        (x = df["x"], y = df["y"], type = "scatter", color=df["fruit"], mode="markers", custom_data=df["customdata"]),
+        (x = df[:, "x"], y = df[:, "y"], type = "scatter", color=df[:, "fruit"], mode="markers", custom_data=df[:, "customdata"]),
     ],
     layout = (clickmode = "event+select")
 )

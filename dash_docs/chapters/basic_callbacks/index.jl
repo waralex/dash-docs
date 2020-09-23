@@ -96,8 +96,8 @@ app.layout = html_div() do
     download(url, "gapminder-data.csv")
     df = DataFrame(CSV.File("gapminder-data.csv"))
 
-    continents = unique(df[:continent])
-    years = unique(df[:year])
+    continents = unique(df[:, "continent"])
+    years = unique(df[:, "year"])
 
     app = dash()
 
@@ -124,8 +124,8 @@ app.layout = html_div() do
         for cont in continents
             single_continent_df = filter(row -> row.continent == cont, single_year_df)
             push!(figure_data,
-                (x = single_continent_df[:gdpPercap],
-                y = single_continent_df[:lifeExp],
+                (x = single_continent_df[:, "gdpPercap"],
+                y = single_continent_df[:, "lifeExp"],
                 type = "scatter",
                 mode = "markers",
                 opacity=0.5,
@@ -184,8 +184,8 @@ app.layout = html_div() do
     dropmissing!(df)
 
     rename!(df, Dict(:"Indicator Name" => "Indicator"))
-    available_indicators = unique(df[:Indicator])
-    years = unique(df[:Year])
+    available_indicators = unique(df[:, "Indicator"])
+    years = unique(df[:, "Year"])
 
     app = dash()
 
