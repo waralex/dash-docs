@@ -26,8 +26,10 @@ app.layout = html_div() do
     although most can be modified slightly to function in that environment.
 
     To get started, create a file called `app.jl` with the following code:
+    """),
+    dcc_markdown("""
 
-    ```julia
+    ```
     using Dash
     using DashHtmlComponents
     using DashCoreComponents
@@ -51,13 +53,16 @@ app.layout = html_div() do
 
     run_server(app, "0.0.0.0", 8000)
     ```
+    """),
+
+    dcc_markdown("""
 
     Run the app with
     ```
     \$ julia app.jl
     ```
 
-    In the `julia` REPL you can run, assuming that `app.jl` is in your current working directory.
+    In the `julia` REPL you can run the follwing code, assuming that `app.jl` is in your current working directory.
     ```
     julia> include("app.jl")
     ```
@@ -81,8 +86,6 @@ app.layout = html_div() do
     you can initialize your app with
 
     `app = dash(external_stylesheets = ["https://codepen.io/chriddyp/pen/bWLwgP.css"])`
-
-
     """),
     html_h1("More About HTML"),
     dcc_markdown("""
@@ -90,13 +93,14 @@ app.layout = html_div() do
     HTML arguments.
 
     Let's customize the text in our app by modifying the inline styles of the components:
-    ```julia
+    """),
+    dcc_markdown("""
+    ```
     using Dash
     using DashHtmlComponents
     using DashCoreComponents
 
-    app =
-        dash(external_stylesheets = ["https://codepen.io/chriddyp/pen/bWLwgP.css"])
+    app = dash()
 
     app.layout = html_div(style = Dict("backgroundColor" => "#111111")) do
         html_h1(
@@ -137,6 +141,8 @@ app.layout = html_div() do
 
     run_server(app, "0.0.0.0", 8000)
     ```
+    """),
+    dcc_markdown("""
 
     In this example, we modified the inline styles of the `html_div` and
     `html_h1` components with the style property. `html_h1("Hello Dash",
@@ -160,7 +166,9 @@ app.layout = html_div() do
 
     Here's a quick example that generates a `Table` from a `DataFrame`.
     Create a file named `app.jl` with the following code:
-    ```julia
+    """),
+    dcc_markdown("""
+    ```
     using DataFrames, CSV
     using Dash
     using DashHtmlComponents
@@ -207,8 +215,10 @@ app.layout = html_div() do
 
     Here's an example that creates a scatter plot from a `DataFrame`. Create a file named `app.jl`
     with the following code:
+    """),
+    dcc_markdown("""
 
-    ```julia
+    ```
     using DataFrames, CSV, HTTP
     using Dash
     using DashHtmlComponents
@@ -221,8 +231,7 @@ app.layout = html_div() do
 
     p1 = Plot(iris, x=:SepalLength, y=:SepalWidth, mode="markers", marker_size=8, group=:Species)
 
-    app =
-        dash(external_stylesheets = ["https://codepen.io/chriddyp/pen/bWLwgP.css"])
+    app = dash()
 
     app.layout = html_div() do
         html_h4("Iris Sepal Length vs Sepal Width"),
@@ -234,6 +243,8 @@ app.layout = html_div() do
 
     run_server(app, "0.0.0.0", 8000)
     ```
+    """),
+    dcc_markdown("""
 
     These graphs are interactive and responsive. *Hover* over points to see their values, *click* on legend items to
     toggle traces, *click and drag* to zoom, *hold down shift and click and drag* to pan.
@@ -243,15 +254,16 @@ app.layout = html_div() do
     dcc_markdown("""
     While Dash exposes HTML through the `DashHtmlComponents` package, it can be tedious to write your
     copy in HTML. For writing blocks of text, you can use the `dcc_markdown` component in the `DashCoreComponents` package.
+    """),
+    dcc_markdown("""
 
-    ```julia
+    ```
     using Dash
     using DashHtmlComponents
     using DashCoreComponents
 
 
-    app =
-        dash(external_stylesheets = ["https://codepen.io/chriddyp/pen/bWLwgP.css"])
+    app = dash()
     markdown_text = "
     ### Dash and Markdown
 
@@ -268,7 +280,6 @@ app.layout = html_div() do
 
     run_server(app, "0.0.0.0", 8000)
     ```
-
     """),
     html_h1("Core Components"),
     dcc_markdown("""
@@ -276,14 +287,15 @@ app.layout = html_div() do
     dropdowns, graphs, markdown blocks, and more. Like all Dash components, they are described
     entirely declaratively. Every optiion that is configuragble is available as a keyword
     argument to the component.
-    ```julia
+    """),
+    dcc_markdown("""
+    ```
     using Dash
     using DashHtmlComponents
     using DashCoreComponents
 
 
-    app =
-        dash(external_stylesheets = ["https://codepen.io/chriddyp/pen/bWLwgP.css"])
+    app = dash()
 
     dropdown_options = [
         Dict("label" => "New York City", "value" => "NYC"),
@@ -309,11 +321,7 @@ app.layout = html_div() do
 
     run_server(app, "0.0.0.0", 8000)
     ```
-
-    """),
-
-
-
+    """)
 end
 
 run_server(app, "0.0.0.0", 8000)

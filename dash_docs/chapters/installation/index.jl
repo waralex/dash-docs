@@ -13,13 +13,13 @@ app.layout = html_div() do
 
     To install the most recently version:
 
-    ```julia
+    ```
         pkg> add Dash DashCoreComponents DashHtmlComponents DashTable
     ```
 
     To install the latest (stable) development version of Dash instead:
 
-    ```julia
+    ```
         using Pkg;
         Pkg.add(PackageSpec(url="https://github.com/plotly/DashBase.jl.git"))
         Pkg.add(PackageSpec(url="https://github.com/plotly/dash-html-components.git", rev="master"))
@@ -35,8 +35,7 @@ app.layout = html_div() do
     be the latest versions available.
     To check which version that you have installed, you can run:
 
-    ```julia
-
+    ```
     Pkg.status("Dash")
     Pkg.status("DashHtmlComponents")
     Pkg.status("DashCoreComponents")

@@ -22,13 +22,12 @@ app.layout = html_div() do
     Let's get started with a simple example.
     "),
     dcc_markdown("""
-    ```julia
+    ```
     using Dash
     using DashHtmlComponents
     using DashCoreComponents
 
-    app =
-        dash(external_stylesheets = ["https://codepen.io/chriddyp/pen/bWLwgP.css"])
+    app = dash()
 
     app.layout = html_div() do
         dcc_input(id="input", value="initial value", type = "text"),
@@ -83,8 +82,9 @@ app.layout = html_div() do
     Let's take a look at another example where a `Slider` updates a `Graph`.
 
     ## Dash App Layout With Figure and Slider
-
-    ```julia
+    """),
+    dcc_markdown("""
+    ```
     using CSV
     using DataFrames
     using Dash
@@ -146,7 +146,9 @@ app.layout = html_div() do
 
     run_server(app, "0.0.0.0", 8000)
     ```
+    """),
 
+    dcc_markdown("""
     In this example, the `value` property of the `Slider` component is the input of the app and the output of the app is the `figure` property of the `Graph` component. When the `value` of the `Slider` changes, Dash calls the callback function with new value. The function filters the dataframe with this new value, constructs a `figure` object, and returns it to the Dash app.
 
     There are a few nice patterns in this example:
@@ -167,8 +169,11 @@ app.layout = html_div() do
     Here's a simple example that binds five Inputs (the `value` property of
     2 `Dropdown` components, 2 `RadioItems` components, and
     1 `Slider` component) to 1 Output component (the `figure` property of the `Graph` component).
+    """),
 
-    ```julia
+    dcc_markdown("""
+
+    ```
     using CSV
     using DataFrames
     using Dash
@@ -264,6 +269,8 @@ app.layout = html_div() do
     run_server(app, "0.0.0.0", 8000)
 
     ```
+    """),
+    dcc_markdown("""
 
     In this example, the callback function gets called whenever the `value`
     property of the `Dropdown`, `Slider`, or `RadioItems` components change.
@@ -285,14 +292,16 @@ app.layout = html_div() do
     update several at once: put all the properties you want to update as inputs to the callback,
     and return that many items from the callback. This is particularly nice if two outputs depend
     on the same computationaly intense itermediate result, such as a slow database query.
+    """),
 
-    ```julia
+    dcc_markdown("""
+
+    ```
     using Dash
     using DashHtmlComponents
     using DashCoreComponents
 
-    app =
-        dash(external_stylesheets = ["https://codepen.io/chriddyp/pen/bWLwgP.css"])
+    app = dash()
 
     app.layout = html_div() do
         dcc_input(id = "input", value = "1", type = "text"),
@@ -318,6 +327,8 @@ app.layout = html_div() do
 
     run_server(app, "0.0.0.0", 8000)
     ```
+    """),
+    dcc_markdown("""
 
     A word of caution: it's not always a good idea to combine Outputs, even if you can:
     - If the Outputs depend on some but not all of the same inputs, keeping them separate
@@ -332,8 +343,11 @@ app.layout = html_div() do
 
     This pattern can be used to create dynamic UIs where one input component updates the available
     options of the next input component. Here's a simple example:
+    """),
 
-    ```julia
+    dcc_markdown("""
+
+    ```
     using CSV
     using DataFrames
     using Dash
@@ -399,6 +413,9 @@ app.layout = html_div() do
     run_server(app, "0.0.0.0", 8000)
 
     ```
+    """),
+
+    dcc_markdown("""
 
     The first callback updates the available options in the second
     `RadioItems` component.
@@ -420,8 +437,10 @@ app.layout = html_div() do
     the form.
 
     Attaching a callback to the input values directly can look like this:
+    """),
+    dcc_markdown("""
 
-    ```julia
+    ```
     using Dash
     using DashHtmlComponents
     using DashCoreComponents
@@ -450,13 +469,17 @@ app.layout = html_div() do
     run_server(app, "0.0.0.0", 8000)
 
     ```
+    """),
+    dcc_markdown("""
 
     In this example, the callback function is fired whenever any of the attributes
     described by the `Input` change. Try it for yourself by entering data in the inputs
     above.
 
     `State` allows you pass along extra values without firing the callbacks. Here's the same
-    example as above but with the `Input` as `State` and a button as an `Input`.exec
+    example as above but with the `Input` as `State` and a button as an `Input`.
+    """),
+    dcc_markdown("""
 
     ```
     using Dash
@@ -489,6 +512,8 @@ app.layout = html_div() do
     run_server(app, "0.0.0.0", 8000)
 
     ```
+    """),
+    dcc_markdown("""
 
     In this example, changing text in the `Input` boxes won't fire the callback but clicking on the button will.
     The current values of the `Input` values are still passed into the callback even though they don't trigger the
@@ -512,7 +537,6 @@ app.layout = html_div() do
 
     [Dash Tutorial Part 4: Interactive Graphing](/interactive-graphing)
     """)
-
 end
 
 run_server(app, "0.0.0.0", 8000)

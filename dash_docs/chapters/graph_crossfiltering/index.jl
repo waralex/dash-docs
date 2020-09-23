@@ -32,13 +32,12 @@ app.layout = html_div() do
     Here's a simple example that prints these attributes to the screen.
     "),
     dcc_markdown("""
-    ```julia
+    ```
     using Dash
     using DashHtmlComponents
     using DashCoreComponents
 
-    app =
-        dash(external_stylesheets = ["https://codepen.io/chriddyp/pen/bWLwgP.css"])
+    app = dash()
 
     app.layout = html_div() do
         dcc_input(id="input", value="initial value", type = "text"),
@@ -59,6 +58,9 @@ app.layout = html_div() do
     Let's update our world indicators example from the previous chapter by updating time series
     when we hover over points in our scatter plot.
 
+    """),
+    dcc_markdown("""
+
     ```
         ##CODE GOES HERE##
     ```
@@ -74,9 +76,15 @@ app.layout = html_div() do
     Here's a slightly more generic example for crossfiltering across a six-column dataset.
     Each scatter plot's selection filters the underlying dataset.
 
+    """),
+    dcc_markdown("""
+
     ```
         ##CODE GOES HERE##
     ```
+
+    """),
+    dcc_markdown("""
 
     Try clicking and dragging in any of the plots to filter different regions.
     On every selection, the three graph callbacks are fired with the latest selected regions of each plot.

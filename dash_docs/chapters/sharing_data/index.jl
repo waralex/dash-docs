@@ -48,7 +48,7 @@ app.layout = html_div() do
 
     "),
     dcc_markdown("""
-    ```julia
+    ```
 
     ```
     """),
@@ -65,6 +65,9 @@ app.layout = html_div() do
     2. On the disk (e.g. on a file or on a new database).
 
     The following examples illustrate these approaches.
+
+    """),
+    dcc_markdown("""
 
     ### Example 1 - Storing Data in the Browser With A Hidden div
 
@@ -92,9 +95,15 @@ app.layout = html_div() do
     output as JSON, and provide it as an input to the other callbacks. This example uses standard Dash callbacks
     and stores the JSON-ifed data inside a hidden div in the app.
 
+    """),
+    dcc_markdown("""
+
     ```
         ##CODE GOES HERE##
     ```
+
+    """),
+    dcc_markdown("""
 
     ### Example 2 - Computing Aggregations Upfront
 
@@ -106,6 +115,9 @@ app.layout = html_div() do
     aggregations to the remaining callbacks.
 
     Here's a simple example of how you might transport filtered or aggregated data to multiple callbacks.
+
+    """),
+    dcc_markdown("""
 
     ```
     ###CODE GOES HERE
