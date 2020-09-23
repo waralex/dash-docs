@@ -8,7 +8,7 @@ using PlotlyJS
 
 url = "https://raw.githubusercontent.com/plotly/datasets/master/gapminderDataFiveYear.csv"
 download(url, "gapminder-data.csv")
-df = CSV.read("gapminder-data.csv")
+df = DataFrame(CSV.File("gapminder-data.csv"))
 
 continents = unique(df[:continent])
 years = unique(df[:year])

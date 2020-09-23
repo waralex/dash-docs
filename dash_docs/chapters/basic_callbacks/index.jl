@@ -50,33 +50,20 @@ app.layout = html_div() do
     1. The "inputs" and "outputs" of our application interface are described
     declaratively by the `callback!` function definition.
 
-    2. We load our dataframe at the start of the app: `df = CSV.read("...")`. This dataframe `df` is in the global state of the app and can be read inside callback functions.
-
-    3.Loading data into memory can be expensive. By loading data at the start of the app instead of inside callback functions, we ensure that this operation is only done with the app server starts. When a user visits the app or interacts with the app, the data (the `df`) is already in memory. If possible, expensive initialization (like downloading or querying data) should be done in the global scope of the app instead of within callback functions.
-
-    The callback does not modify the original data, it just creates copies of the dataframe by filtering. This is important: *your callbacks should never mutate variables outside of their scope*. If your callbacks modify global state, then one user's session might affect the next user's session and when the app is deployed on a server with multiple processes or threads, those modifications will not be shared across sessions.
-
-    4. We are turning on transitions with `layout.transition` to give an idea of how the dataset evolves with time: transitions allow the chart to update from one state to the next smoothly, as if it were animated.
-
-    4. We are turning on transitions with `layout.transition` to give an idea of how the dataset evolves with time: transitions allow the chart to update from one state to the next smoothly, as if it were animated.
-
-    * The "inputs" and "outputs" of our application interface are described
-    declaratively by the `callback!` function definition.
-
-    * In Dash, the inputs and outputs of our application are simply the
+    2. In Dash, the inputs and outputs of our application are simply the
     properties of a particular component. In this example, our input is the `value`
     property of of the component with the ID `input`. Our output is the `children` property
     of the compnoent with the ID `output`.
 
-    * Whenever an input property changes, the callback function will be executed automatically.
+    3. Whenever an input property changes, the callback function will be executed automatically.
     Dash provides the callback function with the new value of the input property as an input argument
     and Dash updates the property of the output component with whatever was returned by the callback
     function.
 
-    * Don't confuse the `Dash::Input` object with the `DashCoreComponents::Input` object. The former is just used to declare
+    4. Don't confuse the `Dash::Input` object with the `DashCoreComponents::Input` object. The former is just used to declare
     inputs of callback functions while the latter is an UI component which is used to render HTML input elements.
 
-    * Notice how we don't set a value for the `children` property of the `input` component in the `layout`. When
+    5. Notice how we don't set a value for the `children` property of the `input` component in the `layout`. When
     the Dash app starts, it automatically calls all the callbacks with the initial values of the input componets in
     order to populate the initial state of the output components. In this example, if you specified something like
     `html_div(id=\"output\", children=\"hello world\")`, it would get overwritten when the app starts by what is
@@ -107,7 +94,7 @@ app.layout = html_div() do
 
     url = "https://raw.githubusercontent.com/plotly/datasets/master/gapminderDataFiveYear.csv"
     download(url, "gapminder-data.csv")
-    df = CSV.read("gapminder-data.csv")
+    df = DataFrame(CSV.File("gapminder-data.csv"))
 
     continents = unique(df[:continent])
     years = unique(df[:year])
@@ -165,13 +152,14 @@ app.layout = html_div() do
     There are a few nice patterns in this example:
 
     1. We're using the `CSV` and `DataFrames` libraries to import and filter datasets in memory.
+
     2. We load our dataframe at the start of the app: `df = CSV.read("...")`. This dataframe `df` is in the global state of the app and can be read inside callback functions.
 
     3.Loading data into memory can be expensive. By loading data at the start of the app instead of inside callback functions, we ensure that this operation is only done with the app server starts. When a user visits the app or interacts with the app, the data (the `df`) is already in memory. If possible, expensive initialization (like downloading or querying data) should be done in the global scope of the app instead of within callback functions.
 
-    The callback does not modify the original data, it just creates copies of the dataframe by filtering. This is important: *your callbacks should never mutate variables outside of their scope*. If your callbacks modify global state, then one user's session might affect the next user's session and when the app is deployed on a server with multiple processes or threads, those modifications will not be shared across sessions.
+    4, The callback does not modify the original data, it just creates copies of the dataframe by filtering. This is important: *your callbacks should never mutate variables outside of their scope*. If your callbacks modify global state, then one user's session might affect the next user's session and when the app is deployed on a server with multiple processes or threads, those modifications will not be shared across sessions.
 
-    4. We are turning on transitions with `layout.transition` to give an idea of how the dataset evolves with time: transitions allow the chart to update from one state to the next smoothly, as if it were animated.
+    5. We are turning on transitions with `layout.transition` to give an idea of how the dataset evolves with time: transitions allow the chart to update from one state to the next smoothly, as if it were animated.
     """),
     html_h1("Dash App With Multiple Inputs"),
     dcc_markdown("""
@@ -191,7 +179,8 @@ app.layout = html_div() do
 
     url = "https://plotly.github.io/datasets/country_indicators.csv"
     download(url, "country-indicators.csv")
-    df = CSV.File("country-indicators.csv") |> DataFrame
+    df = DataFrame(CSV.File("country-indicators.csv"))
+
     dropmissing!(df)
 
     rename!(df, Dict(:"Indicator Name" => "Indicator"))

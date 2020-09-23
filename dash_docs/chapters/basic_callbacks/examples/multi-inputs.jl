@@ -8,7 +8,8 @@ using PlotlyJS
 
 url = "https://plotly.github.io/datasets/country_indicators.csv"
 download(url, "country-indicators.csv")
-df = CSV.File("country-indicators.csv") |> DataFrame
+df = DataFrame(CSV.File("country-indicators.csv"))
+
 dropmissing!(df)
 
 rename!(df, Dict(:"Indicator Name" => "Indicator"))

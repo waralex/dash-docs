@@ -1,14 +1,11 @@
-using DataFrames, CSV, HTTP
+using DataFrames, CSV
 using Dash
 using DashHtmlComponents
 using DashCoreComponents
 
-
-usa_2011_agriculture_exports_csv =
-    HTTP.get("https://raw.githubusercontent.com/plotly/datasets/master/2011_us_ag_exports.csv").body;
-
-df = DataFrame(CSV.File(usa_2011_agriculture_exports_csv))
-
+url = "https://raw.githubusercontent.com/plotly/datasets/master/2011_us_ag_exports.csv"
+download(url, "usa-agriculture.csv")
+df = DataFrame(CSV.File("usa-agriculture.csv"))
 
 function generate_table(dataframe, max_rows = 10)
     html_table([
