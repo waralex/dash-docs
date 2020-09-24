@@ -222,6 +222,8 @@ chapters.urls <- new.env()
 source('dash_docs/chapters/urls/index.R', local=chapters.urls)
 chapters.devtools <- new.env()
 source('dash_docs/chapters/devtools/index.R', local=chapters.devtools)
+chapters.app_lifecycle <- new.env()
+source('dash_docs/chapters/app_lifecycle/index.R', local=chapters.app_lifecycle)
 
 header <- htmlDiv(
   className = 'header',
@@ -262,7 +264,7 @@ app$layout(htmlDiv(
         ),
         className = 'rhs-content container-width'),
 
-        PageMenu(id = 'pagemenu')
+        dugcPageMenu(id = 'pagemenu')
 
       )
     )
@@ -378,6 +380,7 @@ app$callback(
       '/support' = chapters.support$layout,
       '/plugins' = chapters.plugins$layout,
       '/d3-react-components' = chapters.d3$layout,
+      '/app_lifecycle' = chapters.app_lifecycle$layout,
       {
         htmlDiv(
           list(
@@ -524,9 +527,9 @@ app$callback(
                 user-friendly R interface to create beautiful, customizable, interactive and reactive graphs."
                 ),
                 components$Chapter(
-                  'Dash Booststrap Components',
+                  'Dash Bootstrap Components',
                   href='https://dash-bootstrap-components.opensource.faculty.ai/',
-                  caption="A library of Bootstrap components created by [faculty.ai](https://faculty.ai/). Dash Boostrap Components makes it easier
+                  caption="A library of Bootstrap components created by [faculty.ai](https://faculty.ai/). Dash Bootstrap Components makes it easier
                   to build consistently styled apps with complex, responsive layouts."
                 )
               )
@@ -572,6 +575,11 @@ app$callback(
                 'Dev tools',
                 href='/devtools',
                 caption="Dash dev tools reference"
+                ),
+                components$Chapter(
+                'App Lifecycle',
+                href='/app_lifecycle',
+                caption="Learn more about the lifecycle of a Dash app."
                 )
               )
             ),
