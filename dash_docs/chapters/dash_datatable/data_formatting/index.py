@@ -53,6 +53,12 @@ layout = html.Div([
 
     rc.Markdown('''
     ### Group
+
+    Grouping is defined with the format nested props `group` and `groups`.
+    `group` takes values `True` and `Group.yes` to toggle digit grouping.
+    `groups` takes a list of numbers used to define the digits grouping pattern.
+    If the number has more digits than what's defined in `groups`, it cycles through the
+    list again until it runs out of numbers to group.
     '''),
 
     rc.Markdown(
@@ -66,6 +72,12 @@ layout = html.Div([
 
     rc.Markdown('''
     ### Align and Fill
+
+    Alignment and filling is defined with the format nested props `align`, `fill`, and `padding_width`.
+    The `Align` helper takes values `left`, `right`, and `center`.
+    `fill` is single character that will be used for filling.
+    `padding_width` is the minimum length of the filled string.
+    If the formatted number requires more space than `padding_width` allows for, it will do so.
     '''),
 
     rc.Markdown(
@@ -79,6 +91,9 @@ layout = html.Div([
 
     rc.Markdown('''
     ### Padding and Padding Width
+
+    Padding and padding width is defined with the format nested props `padding` and `padding_width` and they behave similarly
+    to `fill` and `padding_width`, but do not allow alignment.
     '''),
 
     rc.Markdown(
@@ -105,6 +120,9 @@ layout = html.Div([
 
     rc.Markdown('''
     ### Sign
+
+    When to display a sign and what type of sign to display is defined with the format nested prop `sign`.
+    The `Sign` helper takes values `negative` (show sign when negative), `positive` (always show sign), `parantheses` (when negative)
     '''),
 
     rc.Markdown(
@@ -118,6 +136,10 @@ layout = html.Div([
 
     rc.Markdown('''
     ### Symbol
+
+    Displaying of symbols is defined with the format nested prop `symbol` and the prefix/suffix symbols are defined with the locale nested prop `symbol`.
+    The `Symbol` helper takes values `yes` and `no`.
+    The locale `symbol` nested prop is a list of strings of length 2 of the form `[prefix, suffix]`. Strings in symbol can be of any length.
     '''),
 
     rc.Markdown(
