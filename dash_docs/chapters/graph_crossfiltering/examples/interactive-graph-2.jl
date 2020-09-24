@@ -4,6 +4,7 @@ using Dash
 using DashHtmlComponents
 using DashCoreComponents
 using PlotlyJS
+using PlotlyJS
 
 
 url = "https://plotly.github.io/datasets/country_indicators.csv"
@@ -13,6 +14,8 @@ df = DataFrame(CSV.File("country-indicators.csv"))
 dropmissing!(df)
 
 rename!(df, Dict(:"Indicator Name" => "Indicator"))
+rename!(df, Dict(:"Country Name" => "Country"))
+
 available_indicators = unique(df[:, "Indicator"])
 years = unique(df[:, "Year"])
 
@@ -106,6 +109,7 @@ callback!(
 
     x_axis_data = filter(row -> row.Indicator == x_axis_value, dff)[:, "Value"]
     y_axis_data = filter(row -> row.Indicator == y_axis_value, dff)[:, "Value"]
+    country_names = filter(row -> row.Indicator == y_axis_value, dff)[:, "Country"]
 
     figure = (
         data = [
@@ -114,6 +118,7 @@ callback!(
                 y = y_axis_data,
                 type = "scatter",
                 mode = "markers",
+                text = country_names
             ),
         ],
         layout = (
@@ -125,5 +130,81 @@ callback!(
     return figure
 
 end
+
+callback!(
+    app,
+    Output("x-time-series", "figure"),
+    Input("crossfilter-indicator-scatter", "hoverData"),
+    Input("crossfilter-xaxis-column", "value"),
+    Input("crossfilter-xaxis-type", "value"),
+) do hoverData, x_axis_column_name, axis_type
+
+    if hoverData == nothing
+        return PreventUpdate()
+    end
+
+    country = hoverData[1][1][:text]
+
+    dff = filter(row -> row.Country == country, df)
+    dff = filter!(row -> row.Indicator == x_axis_column_name, dff)
+
+    figure = (
+        data = [
+            (
+                x = dff[:, "Year"],
+                y = dff[:, "Value"],
+                type = "scatter",
+                mode = "markers+lines"
+            )
+        ],
+        layout = (
+            title = country,
+            xaxis = ((title = "Year"), (type = axis_type)),
+            yaxis = ((title = x_axis_column_name), (type = axis_type)),
+        ),
+    )
+
+    return figure
+
+end
+
+callback!(
+    app,
+    Output("y-time-series", "figure"),
+    Input("crossfilter-indicator-scatter", "hoverData"),
+    Input("crossfilter-yaxis-column", "value"),
+    Input("crossfilter-yaxis-type", "value"),
+) do hoverData, y_axis_column_name, axis_type
+
+    if hoverData == nothing
+        return PreventUpdate()
+    end
+
+    country = hoverData[1][1][:text]
+
+    dff = filter(row -> row.Country == country, df)
+    dff = filter!(row -> row.Indicator == y_axis_column_name, dff)
+
+    figure = (
+        data = [
+            (
+                x = dff[:, "Year"],
+                y = dff[:, "Value"],
+                type = "scatter",
+                mode = "markers+lines"
+            )
+        ],
+        layout = (
+            title = country,
+            xaxis = ((title = "Year"), (type = axis_type)),
+            yaxis = ((title = y_axis_column_name), (type = axis_type)),
+        ),
+    )
+
+    return figure
+
+end
+
+
 
 run_server(app, "0.0.0.0", 8000)

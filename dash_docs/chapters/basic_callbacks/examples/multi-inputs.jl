@@ -77,10 +77,14 @@ callback!(
 
     x_axis_data = filter(row -> row.Indicator == x_axis_value, dff)[:, "Value"]
     y_axis_data = filter(row -> row.Indicator == y_axis_value, dff)[:, "Value"]
-
+    country_names = filter(row -> row.Indicator == y_axis_value, dff)[:, "Country Name"]
     figure = (
         data = [
-            (x = x_axis_data, y = y_axis_data, type = "scatter", mode="markers"),
+            (x = x_axis_data,
+             y = y_axis_data,
+             type = "scatter",
+             mode="markers",
+             text=country_names),
         ],
         layout = (xaxis = ((title=x_axis_value), (type=x_axis_type)),
                   yaxis = ((title=y_axis_value), (type=y_axis_type)))

@@ -49,9 +49,95 @@ app.layout = html_div() do
     "),
     dcc_markdown("""
     ```
+    using CSV
+    using DataFrames
+    using Dash
+    using DashHtmlComponents
+    using DashCoreComponents
+    using JSON3
+
+    df = DataFrame(a = [1, 2, 3],
+                   b = [4, 1, 4],
+                   c = ["x", "y", "z"])
+
+    app = dash()
+
+    app.layout = html_div() do
+        dcc_dropdown(id="dropdown",
+                     options = [
+                        (label = i, value = i) for i in df[:, "c"]
+                     ],
+                     value="x"
+        ),
+        html_div(id="output")
+    end
+
+    callback!(
+        app,
+        Output("output", "children"),
+        Input("dropdown", "value"),
+    ) do value
+        # Here, `df` is an example of a variable that is
+        # 'outside the scope of this function'.
+        # It is not safe to modify or reassign this variable
+        # inside this callback.
+        # do not do this, this is not safe!
+        global df = filter!(row -> row.c == value, df)
+        return length(df[1, :])
+    end
+
+    run_server(app, "0.0.0.0", 8000)
+
 
     ```
     """),
+
+
+    dcc_markdown("""
+    To fix this example, simply re-assign the filtered dataset to a new variable
+    inside the callback, or follow one of the strategies outlined in the next
+    part of this guide.
+
+    """),
+
+    dcc_markdown(
+    """
+    ```
+    using Dash
+    using DashHtmlComponents
+    using DashCoreComponents
+    using DataFrames
+
+    df = DataFrame(a = [1, 2, 3],
+                   b = [4, 1, 4],
+                   c = ["x", "y", "z"])
+
+    app = dash()
+
+    app.layout = html_div() do
+        dcc_dropdown(id="dropdown",
+                     options = [
+                        (label = i, value = i) for i in df[:, "c"]
+                     ],
+                     value="x"
+        ),
+        html_div(id="output")
+    end
+
+    callback!(
+        app,
+        Output("output", "children"),
+        Input("dropdown", "value"),
+    ) do value
+        dff = filter(row -> row.c == value, df)
+        return length(dff[1, :])
+    end
+
+    run_server(app, "0.0.0.0", 8000, debug=true)
+    ```
+    """
+    ),
+
 
     dcc_markdown("""
     ### Sharing Data Between Callbacks
@@ -99,7 +185,45 @@ app.layout = html_div() do
     dcc_markdown("""
 
     ```
-        ##CODE GOES HERE##
+    global_df = DataFrame(CSV.File("..."))
+
+    app.layout = html_div() do
+        dcc_graph(id="graph"),
+        html_table(id="table"),
+        dcc_dropdown(id="dropdown"),
+        html_div(id="intermediate-value", style = (display = "None"))
+
+    end
+
+    callback!(
+        app,
+        Output("intermediate-value", "children"),
+        Input("dropdown", "value"),
+    ) do value
+
+        dff = your_expensive_clean_or_compute_step(value)
+        return JSON.json(dff)
+    end
+
+    callback!(
+        app,
+        Output("graph", "figure"),
+        Input("intermediate-value", "children"),
+    ) do dff
+
+        figure = create_figure(dff)
+        return figure
+    end
+
+    callback!(
+        app,
+        Output("table", "children"),
+        Input("intermediate-value", "children"),
+    ) do dff
+
+        table = create_table(dff)
+        return table
+    end
     ```
 
     """),
@@ -120,7 +244,57 @@ app.layout = html_div() do
     dcc_markdown("""
 
     ```
-    ###CODE GOES HERE
+    callback!(
+        app,
+        Output("intermediate-value", "children"),
+        Input("dropdown", "value"),
+    ) do value
+
+        df = your_expensive_clearn_or_compute_step(value)
+
+        # a few filter steps that compute the data
+        # as it's needed in the future callback
+
+        df1 = filter(row -> row.Fruit == "apples")
+        df2 = filter(row -> row.Fruit == "oranges")
+        df3 = filter(row -> row.Fruit == "figs")
+
+        datasets = Dict("df1"=>JSON.json(df1), "df2"=>JSON.json(df2), "df3"=>JSON.json(df3))
+        return JSON.json(datasets)
+    end
+
+    callback!(
+        app,
+        Output("graph", figure"),
+        Input("intermediate-value", "children"),
+    ) do dff
+
+        figure = create_figure_1(dff)
+        return figure
+
+    end
+
+    callback!(
+        app,
+        Output("graph", figure"),
+        Input("intermediate-value", "children"),
+    ) do dff
+
+        figure = create_figure_2(dff)
+        return figure
+
+    end
+
+    callback!(
+        app,
+        Output("graph", figure"),
+        Input("intermediate-value", "children"),
+    ) do dff
+
+        figure = create_figure_3(dff)
+        return figure
+
+    end
     ```
 
     """)
