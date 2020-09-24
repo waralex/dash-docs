@@ -1,15 +1,13 @@
-using CSV
-using DataFrames
-using Dash
-using DashHtmlComponents
-using DashCoreComponents
-using RDatasets
-using PlotlyJS
+using CSV, DataFrames
+using Dash, DashHtmlComponents, DashCoreComponents
+
 
 app = dash()
 
-all_options = Dict("America"=>["New York City", "San Francisco", "Cincinnati"],
-                   "Canada"=>["Montreal", "Toronto", "Ottawa"])
+all_options = Dict(
+    "America" => ["New York City", "San Francisco", "Cincinnati"],
+    "Canada" => ["Montreal", "Toronto", "Ottawa"],
+)
 
 app.layout = html_div() do
     html_div(
@@ -17,14 +15,13 @@ app.layout = html_div() do
             dcc_radioitems(
                 id = "countries-radio",
                 options = [(label = i, value = i) for i in keys(all_options)],
-                value="America"
+                value = "America",
             ),
             html_hr(),
-            dcc_radioitems(id="cities-radio"),
+            dcc_radioitems(id = "cities-radio"),
             html_hr(),
-            html_div(id="display-selected-values")
-
-        ]
+            html_div(id = "display-selected-values"),
+        ],
     )
 end
 
@@ -42,7 +39,6 @@ callback!(
     app,
     Output("cities-radio", "value"),
     Input("cities-radio", "options"),
-
 ) do available_options
 
     return available_options[1][:value]
