@@ -1,16 +1,14 @@
-using Dash
-using DashHtmlComponents
-using DashCoreComponents
+using Dash, DashHtmlComponents, DashCoreComponents
 
 app = dash()
 
 app.layout = html_div() do
     dcc_input(id = "input", value = "1", type = "text"),
-    html_tr((html_td("x^2"), html_td(id="square"))),
-    html_tr((html_td("x^3"), html_td(id="cube"))),
-    html_tr((html_td("2^x"), html_td(id="twos"))),
-    html_tr((html_td("3^x"), html_td(id="threes"))),
-    html_tr((html_td("x^x"), html_td(id="xx")))
+    html_tr((html_td("x^2 ="), html_td(id = "square"))),
+    html_tr((html_td("x^3 ="), html_td(id = "cube"))),
+    html_tr((html_td("2^x ="), html_td(id = "twos"))),
+    html_tr((html_td("3^x ="), html_td(id = "threes"))),
+    html_tr((html_td("x^x ="), html_td(id = "xx")))
 end
 
 callback!(
@@ -22,6 +20,10 @@ callback!(
     Output("xx", "children"),
     Input("input", "value"),
 ) do x
+    if x == "" || x == nothing
+        return ("", "", "", "", "")
+    end
+
     x = parse(Int64, x)
     return (x^2, x^3, 2^x, 3^x, x^x)
 end

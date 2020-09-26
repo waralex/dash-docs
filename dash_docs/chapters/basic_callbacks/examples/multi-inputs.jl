@@ -1,9 +1,4 @@
-using CSV
-using DataFrames
-using Dash
-using DashHtmlComponents
-using DashCoreComponents
-using PlotlyJS
+using CSV, DataFrames, Dash, DashHtmlComponents, DashCoreComponents
 
 
 url = "https://plotly.github.io/datasets/country_indicators.csv"
@@ -13,8 +8,9 @@ df = DataFrame(CSV.File("country-indicators.csv"))
 dropmissing!(df)
 
 rename!(df, Dict(:"Indicator Name" => "Indicator"))
-available_indicators = unique(df[:, "Indicator"])
-years = unique(df[:, "Year"])
+
+available_indicators = unique(df[!, "Indicator"])
+years = unique(df[!, "Year"])
 
 app = dash()
 
@@ -72,12 +68,11 @@ callback!(
     Input("yaxis-type", "value"),
     Input("year-slider", "value"),
 ) do x_axis_value, y_axis_value, x_axis_type, y_axis_type, year_value
+    dff = df[df.Year .== years[year_value+1], :]
+    x_axis_data = dff[dff.Indicator .== x_axis_value, :][:, "Value"]
+    y_axis_data = dff[dff.Indicator .== y_axis_value, :][:, "Value"]
+    country_names = dff[dff.Indicator .== y_axis_value, :][:, "Country Name"]
 
-    dff = filter(row -> row.Year == years[year_value+1], df)
-
-    x_axis_data = filter(row -> row.Indicator == x_axis_value, dff)[:, "Value"]
-    y_axis_data = filter(row -> row.Indicator == y_axis_value, dff)[:, "Value"]
-    country_names = filter(row -> row.Indicator == y_axis_value, dff)[:, "Country Name"]
     figure = (
         data = [
             (x = x_axis_data,

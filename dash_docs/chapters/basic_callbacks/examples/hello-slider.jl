@@ -1,20 +1,14 @@
-using CSV
-using DataFrames
-using Dash
-using DashHtmlComponents
-using DashCoreComponents
-using RDatasets
-using PlotlyJS
+using CSV, DataFrames, Dash, DashHtmlComponents, DashCoreComponents
+
 
 url = "https://raw.githubusercontent.com/plotly/datasets/master/gapminderDataFiveYear.csv"
 download(url, "gapminder-data.csv")
 df = DataFrame(CSV.File("gapminder-data.csv"))
 
-continents = unique(df[:, "continent"])
-years = unique(df[:, "year"])
+continents = unique(df[!, :continent])
+years = unique(df[!, :year])
 
 app = dash()
-
 
 app.layout = html_div() do
     dcc_graph(id="graph"),
@@ -31,18 +25,18 @@ callback!(
     Output("graph", "figure"),
     Input("year-slider", "value"),
 ) do index
-
-    single_year_df = filter(row -> row.year == years[index+1], df)
+    single_year_df = df[df.year .== years[index+1], :]
 
     figure_data = []
 
     for cont in continents
-        single_continent_df = filter(row -> row.continent == cont, single_year_df)
+        single_continent_df = single_year_df[single_year_df.continent .== cont, :]
         push!(figure_data,
-             (x = single_continent_df[:, "gdpPercap"],
-              y = single_continent_df[:, "lifeExp"],
+             (x = single_continent_df[:, :gdpPercap],
+              y = single_continent_df[:, :lifeExp],
               type = "scatter",
               mode = "markers",
+              hovertext = single_continent_df[:, :country],
               opacity=0.5,
               name = cont)
         )
@@ -58,6 +52,5 @@ callback!(
 
     return figure
 end
-
 
 run_server(app, "0.0.0.0", 8000)

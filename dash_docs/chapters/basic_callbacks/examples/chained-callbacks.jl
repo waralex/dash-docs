@@ -30,9 +30,7 @@ callback!(
     Output("cities-radio", "options"),
     Input("countries-radio", "value"),
 ) do selected_country
-
     return [(label = i, value = i) for i in all_options[selected_country]]
-
 end
 
 callback!(
@@ -40,7 +38,6 @@ callback!(
     Output("cities-radio", "value"),
     Input("cities-radio", "options"),
 ) do available_options
-
     return available_options[1][:value]
 end
 
@@ -50,9 +47,7 @@ callback!(
     Input("countries-radio", "value"),
     Input("cities-radio", "value"),
 ) do selected_country, selected_city
-
     return "$(selected_city) is a city in $(selected_country) "
 end
-
 
 run_server(app, "0.0.0.0", 8000)

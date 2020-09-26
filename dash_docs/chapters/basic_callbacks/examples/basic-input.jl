@@ -7,7 +7,6 @@ app.layout = html_div() do
     dcc_input(id = "input-1", type = "text", value = "Montreal"),
     dcc_input(id = "input-2", type = "text", value = "Canada"),
     html_div(id = "output-keywords")
-
 end
 
 callback!(

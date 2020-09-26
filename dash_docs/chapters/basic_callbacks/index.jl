@@ -96,8 +96,8 @@ app.layout = html_div() do
     download(url, "gapminder-data.csv")
     df = DataFrame(CSV.File("gapminder-data.csv"))
 
-    continents = unique(df[:, "continent"])
-    years = unique(df[:, "year"])
+    continents = unique(df[!, :continent])
+    years = unique(df[!, :year])
 
     app = dash()
 
