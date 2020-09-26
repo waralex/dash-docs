@@ -317,8 +317,6 @@ app.layout = html_div() do
 
     [Dash Tutorial Part 5: Sharing Data Between Callbacks](/sharing-data-between-callbacks)
     """)
-
-
 end
 
 run_server(app, "0.0.0.0", 8000)
