@@ -1,6 +1,5 @@
-using Dash
-using DashHtmlComponents
-using DashCoreComponents
+using Dash, DashHtmlComponents, DashCoreComponents
+
 
 app = dash()
 

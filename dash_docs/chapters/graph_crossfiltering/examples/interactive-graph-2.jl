@@ -1,9 +1,4 @@
-using CSV
-using DataFrames
-using Dash
-using DashHtmlComponents
-using DashCoreComponents
-using PlotlyJS
+using CSV, DataFrames, Dash, DashHtmlComponents, DashCoreComponents
 using PlotlyJS
 
 
@@ -103,27 +98,27 @@ callback!(
     Input("crossfilter-xaxis-type", "value"),
     Input("crossfilter-yaxis-type", "value"),
     Input("crossfilter-year-slider", "value"),
-) do x_axis_value, y_axis_value, x_axis_type, y_axis_type, year_value
+) do x_indicator, y_indicator, x_axis_type, y_axis_type, year_slider_value
 
-    dff = filter(row -> row.Year == years[year_value+1], df)
+    dff = df[df.Year .== years[year_slider_value+1], :]
 
-    x_axis_data = filter(row -> row.Indicator == x_axis_value, dff)[:, "Value"]
-    y_axis_data = filter(row -> row.Indicator == y_axis_value, dff)[:, "Value"]
-    country_names = filter(row -> row.Indicator == y_axis_value, dff)[:, "Country"]
+    x_indicator_data = dff[dff.Indicator .== x_indicator, :][:, :Value]
+    y_indicator_data = dff[dff.Indicator .== y_indicator, :][:, :Value]
+    country_names = dff[dff.Indicator .== y_indicator, :][:, :Country]
 
     figure = (
         data = [
             (
-                x = x_axis_data,
-                y = y_axis_data,
+                x = x_indicator_data,
+                y = y_indicator_data,
                 type = "scatter",
                 mode = "markers",
                 text = country_names
             ),
         ],
         layout = (
-            xaxis = ((title = x_axis_value), (type = x_axis_type)),
-            yaxis = ((title = y_axis_value), (type = y_axis_type)),
+            xaxis = ((title = x_indicator), (type = x_axis_type)),
+            yaxis = ((title = y_indicator), (type = y_axis_type)),
         ),
     )
 
@@ -137,7 +132,7 @@ callback!(
     Input("crossfilter-indicator-scatter", "hoverData"),
     Input("crossfilter-xaxis-column", "value"),
     Input("crossfilter-xaxis-type", "value"),
-) do hoverData, x_axis_column_name, axis_type
+) do hoverData, x_indicator, axis_type
 
     if hoverData == nothing
         return PreventUpdate()
@@ -145,14 +140,14 @@ callback!(
 
     country = hoverData[1][1][:text]
 
-    dff = filter(row -> row.Country == country, df)
-    dff = filter!(row -> row.Indicator == x_axis_column_name, dff)
+    dff = df[df.Country .== country, :]
+    dff = dff[dff.Indicator .== x_indicator, :]
 
     figure = (
         data = [
             (
-                x = dff[:, "Year"],
-                y = dff[:, "Value"],
+                x = dff[!, "Year"],
+                y = dff[!, "Value"],
                 type = "scatter",
                 mode = "markers+lines"
             )
@@ -160,7 +155,7 @@ callback!(
         layout = (
             title = country,
             xaxis = ((title = "Year"), (type = axis_type)),
-            yaxis = ((title = x_axis_column_name), (type = axis_type)),
+            yaxis = ((title = x_indicator), (type = axis_type)),
         ),
     )
 
@@ -174,7 +169,7 @@ callback!(
     Input("crossfilter-indicator-scatter", "hoverData"),
     Input("crossfilter-yaxis-column", "value"),
     Input("crossfilter-yaxis-type", "value"),
-) do hoverData, y_axis_column_name, axis_type
+) do hoverData, y_indicator, axis_type
 
     if hoverData == nothing
         return PreventUpdate()
@@ -182,14 +177,14 @@ callback!(
 
     country = hoverData[1][1][:text]
 
-    dff = filter(row -> row.Country == country, df)
-    dff = filter!(row -> row.Indicator == y_axis_column_name, dff)
+    dff = df[df.Country .== country, :]
+    dff = dff[dff.Indicator .== y_indicator, :]
 
     figure = (
         data = [
             (
-                x = dff[:, "Year"],
-                y = dff[:, "Value"],
+                x = dff[!, "Year"],
+                y = dff[!, "Value"],
                 type = "scatter",
                 mode = "markers+lines"
             )
@@ -197,14 +192,11 @@ callback!(
         layout = (
             title = country,
             xaxis = ((title = "Year"), (type = axis_type)),
-            yaxis = ((title = y_axis_column_name), (type = axis_type)),
+            yaxis = ((title = y_indicator), (type = axis_type)),
         ),
     )
 
     return figure
-
 end
-
-
 
 run_server(app, "0.0.0.0", 8000)

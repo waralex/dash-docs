@@ -1,8 +1,7 @@
-using Dash
-using DashHtmlComponents
-using DashCoreComponents
+using Dash, DashHtmlComponents, DashCoreComponents
 
-app = dash(external_stylesheets = ["https://codepen.io/chriddyp/pen/bWLwgP.css"])
+
+app = dash()
 
 app.layout = html_div() do
     html_h1("Hello Dash"),

@@ -30,11 +30,10 @@ app.layout = html_div() do
     dcc_markdown("""
 
     ```
-    using Dash
-    using DashHtmlComponents
-    using DashCoreComponents
+    using Dash, DashHtmlComponents, DashCoreComponents
 
-    app = dash(external_stylesheets = ["https://codepen.io/chriddyp/pen/bWLwgP.css"])
+
+    app = dash()
 
     app.layout = html_div() do
         html_h1("Hello Dash"),
@@ -96,9 +95,8 @@ app.layout = html_div() do
     """),
     dcc_markdown("""
     ```
-    using Dash
-    using DashHtmlComponents
-    using DashCoreComponents
+    using Dash, DashHtmlComponents, DashCoreComponents
+
 
     app = dash()
 
@@ -170,9 +168,7 @@ app.layout = html_div() do
     dcc_markdown("""
     ```
     using DataFrames, CSV
-    using Dash
-    using DashHtmlComponents
-    using DashCoreComponents
+    using Dash, DashHtmlComponents, DashCoreComponents
 
 
     url = "https://raw.githubusercontent.com/plotly/datasets/master/2011_us_ag_exports.csv"
@@ -186,19 +182,17 @@ app.layout = html_div() do
                 html_tr([html_td(dataframe[r, c]) for c in names(dataframe)]) for r = 1:min(nrow(dataframe), max_rows)
             ]),
         ])
-
     end
 
 
-    app =
-        dash(external_stylesheets = [\"https://codepen.io/chriddyp/pen/bWLwgP.css\"])
+    app = dash()
 
     app.layout = html_div() do
-        html_h4(\"US Agriculture Exports (2011)\"),
+        html_h4("US Agriculture Exports (2011)"),
         generate_table(df, 10)
     end
 
-    run_server(app, \"0.0.0.0\", 8000)
+    run_server(app, "0.0.0.0", 8000)
     ```
     """),
     html_h1("More About Visualization"),
@@ -219,12 +213,8 @@ app.layout = html_div() do
     dcc_markdown("""
 
     ```
-    using DataFrames, CSV, HTTP
-    using Dash
-    using DashHtmlComponents
-    using DashCoreComponents
-    using PlotlyJS
-    using RDatasets
+    using DataFrames, CSV, PlotlyJS, RDatasets
+    using Dash, DashHtmlComponents, DashCoreComponents
 
 
     iris = dataset("datasets", "iris")
@@ -242,6 +232,7 @@ app.layout = html_div() do
     end
 
     run_server(app, "0.0.0.0", 8000)
+
     ```
     """),
     dcc_markdown("""
@@ -258,9 +249,7 @@ app.layout = html_div() do
     dcc_markdown("""
 
     ```
-    using Dash
-    using DashHtmlComponents
-    using DashCoreComponents
+    using Dash, DashHtmlComponents, DashCoreComponents
 
 
     app = dash()
@@ -290,9 +279,7 @@ app.layout = html_div() do
     """),
     dcc_markdown("""
     ```
-    using Dash
-    using DashHtmlComponents
-    using DashCoreComponents
+    using Dash, DashHtmlComponents, DashCoreComponents
 
 
     app = dash()
@@ -302,21 +289,23 @@ app.layout = html_div() do
         Dict("label" => "Montreal", "value" => "MTL"),
         Dict("label" => "San Francisco", "value" => "SF"),
     ]
-    app.layout = html_div(style=Dict("columnCount" => 2)) do
+    app.layout = html_div(style = Dict("columnCount" => 2)) do
         html_label("Dropdown"),
         dcc_dropdown(options = dropdown_options, value = "MTL"),
         html_label("Multi-Select Dropdown"),
-        dcc_dropdown(options = dropdown_options, value = ["MTL", "SF"], multi=true),
+        dcc_dropdown(
+            options = dropdown_options,
+            value = ["MTL", "SF"],
+            multi = true,
+        ),
         html_label("Radio Items"),
-        dcc_radioitems(options = dropdown_options, value = "MTL" ),
+        dcc_radioitems(options = dropdown_options, value = "MTL"),
         html_label("Checkboxes"),
         dcc_checklist(options = dropdown_options, value = ["MTL", "SF"]),
         html_label("Text Input"),
         dcc_input(value = "MTL", type = "text"),
         html_label("Slider"),
         dcc_slider(min = 0, max = 9, marks = ["", "Label 1", "Label 3"], value = 5)
-
-
     end
 
     run_server(app, "0.0.0.0", 8000)

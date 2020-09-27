@@ -1,9 +1,5 @@
-using DataFrames, CSV
-using Dash
-using DashHtmlComponents
-using DashCoreComponents
-using PlotlyJS
-using RDatasets
+using DataFrames, CSV, PlotlyJS, RDatasets
+using Dash, DashHtmlComponents, DashCoreComponents
 
 
 iris = dataset("datasets", "iris")

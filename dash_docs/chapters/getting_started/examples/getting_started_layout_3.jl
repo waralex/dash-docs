@@ -1,7 +1,5 @@
 using DataFrames, CSV
-using Dash
-using DashHtmlComponents
-using DashCoreComponents
+using Dash, DashHtmlComponents, DashCoreComponents
 
 
 url = "https://raw.githubusercontent.com/plotly/datasets/master/2011_us_ag_exports.csv"
@@ -15,7 +13,6 @@ function generate_table(dataframe, max_rows = 10)
             html_tr([html_td(dataframe[r, c]) for c in names(dataframe)]) for r = 1:min(nrow(dataframe), max_rows)
         ]),
     ])
-
 end
 
 

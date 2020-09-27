@@ -1,7 +1,5 @@
 
-using DataFrames, Dash, DashHtmlComponents, DashCoreComponents
-using RDatasets, JSON3
-using PlotlyJS
+using DataFrames, Dash, DashHtmlComponents, DashCoreComponents, PlotlyJS
 
 
 df = DataFrame(Dict(("Col $(i)" => rand(30)) for i = 1:6))
@@ -43,15 +41,15 @@ app = dash()
 
 app.layout = html_div() do
     html_div(
-        children = [dcc_graph(id = "graph1")],
+        dcc_graph(id = "graph1"),
         style = (width = "32%", display = "inline-block"),
     ),
     html_div(
-        children = [dcc_graph(id = "graph2")],
+        dcc_graph(id = "graph2"),
         style = (width = "32%", display = "inline-block"),
     ),
     html_div(
-        children = [dcc_graph(id = "graph3")],
+        dcc_graph(id = "graph3"),
         style = (width = "32%", display = "inline-block"),
     )
 end
@@ -74,8 +72,8 @@ callback!(
     end
 
     return create_figure(df, "Col 1", "Col 2", selectedpoints, selection1),
-    create_figure(df, "Col 3", "Col 4", selectedpoints, selection2),
-    create_figure(df, "Col 5", "Col 6", selectedpoints, selection3)
+           create_figure(df, "Col 3", "Col 4", selectedpoints, selection2),
+           create_figure(df, "Col 5", "Col 6", selectedpoints, selection3)
 end
 
 run_server(app, "0.0.0.0", 8000)

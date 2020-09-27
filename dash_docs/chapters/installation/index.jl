@@ -1,9 +1,7 @@
-using Dash
-using DashHtmlComponents
-using DashCoreComponents
+using Dash, DashHtmlComponents, DashCoreComponents
+
 
 app = dash()
-
 
 app.layout = html_div() do
     dcc_markdown("""

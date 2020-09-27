@@ -1,7 +1,4 @@
-using Dash
-using DashHtmlComponents
-using DashCoreComponents
-using DataFrames
+using Dash, DashHtmlComponents, DashCoreComponents, DataFrames
 
 df = DataFrame(a = [1, 2, 3],
                b = [4, 1, 4],
@@ -24,7 +21,7 @@ callback!(
     Output("output", "children"),
     Input("dropdown", "value"),
 ) do value
-    dff = filter(row -> row.c == value, df)
+    dff = df[df.c .== value, :]
     return length(dff[1, :])
 end
 

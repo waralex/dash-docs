@@ -23,9 +23,7 @@ app.layout = html_div() do
     "),
     dcc_markdown("""
     ```
-    using Dash
-    using DashHtmlComponents
-    using DashCoreComponents
+    using Dash, DashHtmlComponents, DashCoreComponents
 
     app = dash()
 
@@ -85,12 +83,8 @@ app.layout = html_div() do
     """),
     dcc_markdown("""
     ```
-    using CSV
-    using DataFrames
-    using Dash
-    using DashHtmlComponents
-    using DashCoreComponents
-    using PlotlyJS
+    using CSV, DataFrames, Dash, DashHtmlComponents, DashCoreComponents
+
 
     url = "https://raw.githubusercontent.com/plotly/datasets/master/gapminderDataFiveYear.csv"
     download(url, "gapminder-data.csv")
@@ -116,33 +110,33 @@ app.layout = html_div() do
         Output("graph", "figure"),
         Input("year-slider", "value"),
     ) do index
-
-        single_year_df = filter(row -> row.year == years[index+1], df)
+        single_year_df = df[df.year .== years[index+1], :]
 
         figure_data = []
 
         for cont in continents
-            single_continent_df = filter(row -> row.continent == cont, single_year_df)
+            single_continent_df = single_year_df[single_year_df.continent .== cont, :]
             push!(figure_data,
-                (x = single_continent_df[:, "gdpPercap"],
-                y = single_continent_df[:, "lifeExp"],
-                type = "scatter",
-                mode = "markers",
-                opacity=0.5,
-                name = cont)
+                 (x = single_continent_df[:, :gdpPercap],
+                  y = single_continent_df[:, :lifeExp],
+                  type = "scatter",
+                  mode = "markers",
+                  hovertext = single_continent_df[:, :country],
+                  opacity=0.5,
+                  name = cont)
             )
         end
 
         figure = (
             data = figure_data,
             layout = (xaxis = ((type="log"), (title="GDP")),
-                    yaxis = ((title="Life Expectancy"), range=(20, 90)),
+                      yaxis = ((title="Life Expectancy"), range=(20, 90)),
+                      transition_duration=500
             ),
         )
 
         return figure
     end
-
 
     run_server(app, "0.0.0.0", 8000)
     ```
@@ -174,12 +168,7 @@ app.layout = html_div() do
     dcc_markdown("""
 
     ```
-    using CSV
-    using DataFrames
-    using Dash
-    using DashHtmlComponents
-    using DashCoreComponents
-    using PlotlyJS
+    using CSV, DataFrames, Dash, DashHtmlComponents, DashCoreComponents
 
 
     url = "https://plotly.github.io/datasets/country_indicators.csv"
@@ -189,8 +178,9 @@ app.layout = html_div() do
     dropmissing!(df)
 
     rename!(df, Dict(:"Indicator Name" => "Indicator"))
-    available_indicators = unique(df[:, "Indicator"])
-    years = unique(df[:, "Year"])
+
+    available_indicators = unique(df[!, "Indicator"])
+    years = unique(df[!, "Year"])
 
     app = dash()
 
@@ -248,15 +238,18 @@ app.layout = html_div() do
         Input("yaxis-type", "value"),
         Input("year-slider", "value"),
     ) do x_axis_value, y_axis_value, x_axis_type, y_axis_type, year_value
-
-        dff = filter(row -> row.Year == years[year_value+1], df)
-
-        x_axis_data = filter(row -> row.Indicator == x_axis_value, dff)["Value"]
-        y_axis_data = filter(row -> row.Indicator == y_axis_value, dff)["Value"]
+        dff = df[df.Year .== years[year_value+1], :]
+        x_axis_data = dff[dff.Indicator .== x_axis_value, :][:, "Value"]
+        y_axis_data = dff[dff.Indicator .== y_axis_value, :][:, "Value"]
+        country_names = dff[dff.Indicator .== y_axis_value, :][:, "Country Name"]
 
         figure = (
             data = [
-                (x = x_axis_data, y = y_axis_data, type = "scatter", mode="markers"),
+                (x = x_axis_data,
+                 y = y_axis_data,
+                 type = "scatter",
+                 mode="markers",
+                 text=country_names),
             ],
             layout = (xaxis = ((title=x_axis_value), (type=x_axis_type)),
                       yaxis = ((title=y_axis_value), (type=y_axis_type)))
@@ -267,7 +260,6 @@ app.layout = html_div() do
     end
 
     run_server(app, "0.0.0.0", 8000)
-
     ```
     """),
     dcc_markdown("""
@@ -297,19 +289,17 @@ app.layout = html_div() do
     dcc_markdown("""
 
     ```
-    using Dash
-    using DashHtmlComponents
-    using DashCoreComponents
+    using Dash, DashHtmlComponents, DashCoreComponents
 
     app = dash()
 
     app.layout = html_div() do
         dcc_input(id = "input", value = "1", type = "text"),
-        html_tr((html_td("x^2"), html_td(id="square"))),
-        html_tr((html_td("x^3"), html_td(id="cube"))),
-        html_tr((html_td("2^x"), html_td(id="twos"))),
-        html_tr((html_td("3^x"), html_td(id="threes"))),
-        html_tr((html_td("x^x"), html_td(id="xx")))
+        html_tr((html_td("x^2 ="), html_td(id = "square"))),
+        html_tr((html_td("x^3 ="), html_td(id = "cube"))),
+        html_tr((html_td("2^x ="), html_td(id = "twos"))),
+        html_tr((html_td("3^x ="), html_td(id = "threes"))),
+        html_tr((html_td("x^x ="), html_td(id = "xx")))
     end
 
     callback!(
@@ -321,6 +311,10 @@ app.layout = html_div() do
         Output("xx", "children"),
         Input("input", "value"),
     ) do x
+        if x == "" || x == nothing
+            return ("", "", "", "", "")
+        end
+
         x = parse(Int64, x)
         return (x^2, x^3, 2^x, 3^x, x^x)
     end
@@ -348,18 +342,15 @@ app.layout = html_div() do
     dcc_markdown("""
 
     ```
-    using CSV
-    using DataFrames
-    using Dash
-    using DashHtmlComponents
-    using DashCoreComponents
-    using RDatasets
-    using PlotlyJS
+    using CSV, DataFrames
+    using Dash, DashHtmlComponents, DashCoreComponents
+
 
     app = dash()
 
-    all_options = Dict("America"=>["New York City", "San Francisco", "Cincinnati"],
-                       "Canada"=>["Montreal", "Toronto", "Ottawa"]
+    all_options = Dict(
+        "America" => ["New York City", "San Francisco", "Cincinnati"],
+        "Canada" => ["Montreal", "Toronto", "Ottawa"],
     )
 
     app.layout = html_div() do
@@ -368,14 +359,13 @@ app.layout = html_div() do
                 dcc_radioitems(
                     id = "countries-radio",
                     options = [(label = i, value = i) for i in keys(all_options)],
-                    value="America"
+                    value = "America",
                 ),
                 html_hr(),
-                dcc_radioitems(id="cities-radio"),
+                dcc_radioitems(id = "cities-radio"),
                 html_hr(),
-                html_div(id="display-selected-values")
-
-            ]
+                html_div(id = "display-selected-values"),
+            ],
         )
     end
 
@@ -384,18 +374,14 @@ app.layout = html_div() do
         Output("cities-radio", "options"),
         Input("countries-radio", "value"),
     ) do selected_country
-
         return [(label = i, value = i) for i in all_options[selected_country]]
-
     end
 
     callback!(
         app,
         Output("cities-radio", "value"),
         Input("cities-radio", "options"),
-
     ) do available_options
-
         return available_options[1][:value]
     end
 
@@ -405,13 +391,10 @@ app.layout = html_div() do
         Input("countries-radio", "value"),
         Input("cities-radio", "value"),
     ) do selected_country, selected_city
-
-        return \"\$(selected_city) is a city in \$(selected_country)\"
+        return "\$(selected_city) is a city in \$(selected_country) "
     end
 
-
     run_server(app, "0.0.0.0", 8000)
-
     ```
     """),
 
@@ -441,18 +424,15 @@ app.layout = html_div() do
     dcc_markdown("""
 
     ```
-    using Dash
-    using DashHtmlComponents
-    using DashCoreComponents
+    using Dash, DashHtmlComponents, DashCoreComponents
 
 
     app = dash()
 
     app.layout = html_div() do
-        dcc_input(id="input-1", type="text", value="Montreal"),
-        dcc_input(id="input-2", type="text", value="Canada"),
-        html_div(id="output-keywords")
-
+        dcc_input(id = "input-1", type = "text", value = "Montreal"),
+        dcc_input(id = "input-2", type = "text", value = "Canada"),
+        html_div(id = "output-keywords")
     end
 
     callback!(
@@ -461,13 +441,10 @@ app.layout = html_div() do
         Input("input-1", "value"),
         Input("input-2", "value"),
     ) do input_1, input_2
-
         return "Input 1 is \"\$input_1\" and Input 2 is \"\$input_2\""
-
     end
 
     run_server(app, "0.0.0.0", 8000)
-
     ```
     """),
     dcc_markdown("""
@@ -482,19 +459,16 @@ app.layout = html_div() do
     dcc_markdown("""
 
     ```
-    using Dash
-    using DashHtmlComponents
-    using DashCoreComponents
+    using Dash, DashHtmlComponents, DashCoreComponents
 
 
     app = dash()
 
     app.layout = html_div() do
-        dcc_input(id="input-1-state", type="text", value="Montreal"),
-        dcc_input(id="input-2-state", type="text", value="Canada"),
-        html_button(id="submit-button-state", children="submit", n_clicks=0),
-        html_div(id="output-state")
-
+        dcc_input(id = "input-1-state", type = "text", value = "Montreal"),
+        dcc_input(id = "input-2-state", type = "text", value = "Canada"),
+        html_button(id = "submit-button-state", children = "submit", n_clicks = 0),
+        html_div(id = "output-state")
     end
 
     callback!(
@@ -502,15 +476,12 @@ app.layout = html_div() do
         Output("output-state", "children"),
         Input("submit-button-state", "n_clicks"),
         State("input-1-state", "value"),
-        State("input-2-state", "value")
+        State("input-2-state", "value"),
     ) do clicks, input_1, input_2
-
         return "The Button has been pressed \"\$clicks\" times, Input 1 is \"\$input_1\" and Input 2 is \"\$input_2\""
-
     end
 
     run_server(app, "0.0.0.0", 8000)
-
     ```
     """),
     dcc_markdown("""

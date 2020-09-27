@@ -49,12 +49,8 @@ app.layout = html_div() do
     "),
     dcc_markdown("""
     ```
-    using CSV
-    using DataFrames
-    using Dash
-    using DashHtmlComponents
-    using DashCoreComponents
-    using JSON3
+    using Dash, DashHtmlComponents, DashCoreComponents, DataFrames
+
 
     df = DataFrame(a = [1, 2, 3],
                    b = [4, 1, 4],
@@ -87,8 +83,6 @@ app.layout = html_div() do
     end
 
     run_server(app, "0.0.0.0", 8000)
-
-
     ```
     """),
 
@@ -103,10 +97,7 @@ app.layout = html_div() do
     dcc_markdown(
     """
     ```
-    using Dash
-    using DashHtmlComponents
-    using DashCoreComponents
-    using DataFrames
+    using Dash, DashHtmlComponents, DashCoreComponents, DataFrames
 
     df = DataFrame(a = [1, 2, 3],
                    b = [4, 1, 4],
@@ -129,7 +120,7 @@ app.layout = html_div() do
         Output("output", "children"),
         Input("dropdown", "value"),
     ) do value
-        dff = filter(row -> row.c == value, df)
+        dff = df[df.c .== value, :]
         return length(dff[1, :])
     end
 
@@ -296,8 +287,10 @@ app.layout = html_div() do
 
     end
     ```
-
-    """)
+    """),
+    dcc_markdown("
+    [Dash Tutorial Part 6: FAQs and Gotchas](/faqs)
+    ")
 end
 
 run_server(app, "0.0.0.0", 8000)

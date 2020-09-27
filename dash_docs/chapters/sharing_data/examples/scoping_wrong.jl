@@ -1,9 +1,5 @@
-using CSV
-using DataFrames
-using Dash
-using DashHtmlComponents
-using DashCoreComponents
-using JSON3
+using Dash, DashHtmlComponents, DashCoreComponents, DataFrames
+
 
 df = DataFrame(a = [1, 2, 3],
                b = [4, 1, 4],
