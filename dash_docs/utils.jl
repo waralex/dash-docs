@@ -16,7 +16,7 @@ function LoadExampleCode(filename, wd = nothing)
     newWd = string(currentWd, "/", wd)
     example_ready_for_eval = string("cd(example_ready_for_eval, newWd)")
   end
-  eval(Meta.parse(example_ready_for_eval))
+  include_string(Main, example_ready_for_eval)
   return (
       "layout" => html_div(
           className = "example-container",
@@ -41,7 +41,7 @@ function LoadAndDisplayComponent(example_string)
         style = ("border-left" => "thin lightgrey solid",)
       ),
       html_div(
-        children = eval(Meta.parse(example_string)),
+        children = include_string(Main, example_string)
         className = "example-container",
         style = ("margin-bottom" => "10px", "overflow-x" => "initial", )
       ),
@@ -58,7 +58,7 @@ function LoadAndDisplayComponent2(example_string)
         style = ("border-left" => "thin lightgrey solid",)
       ),
       html_div(
-        children = eval(Meta.parse(example_string)),
+        children = include_string(Main, example_string),
         className = "example-container",
         style = ("margin-bottom" => "10px", "padding-bottom" => "30px", )
       ),
