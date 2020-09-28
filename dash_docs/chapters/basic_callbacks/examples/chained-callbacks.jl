@@ -50,4 +50,4 @@ callback!(
     return "$(selected_city) is a city in $(selected_country) "
 end
 
-run_server(app, "0.0.0.0", 8000)
+run_server(app, "0.0.0.0", 8000, debug=true)

@@ -40,4 +40,4 @@ app.layout = html_div(style = Dict("backgroundColor" => "#111111")) do
     )
 end
 
-run_server(app, "0.0.0.0", 8000)
+run_server(app, "0.0.0.0", 8000, debug=true)

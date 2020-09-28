@@ -77,7 +77,7 @@ app.layout = html_div() do
     detect which of the relevant `inputs` triggered the callback inside the function. For `html_button`
     elements, detecting which one triggered the callback can be done using the `n_clicks_timestamp` property.
 
-    ### All callbacks must be defined before the server starts 
+    ### All callbacks must be defined before the server starts
 
     All your callbacks must be defined before your Dash app's server starts running, which is to say, before
     you call `run_server(app)`. This means that while you can assemble changed layout fragments dynamically
@@ -100,4 +100,4 @@ app.layout = html_div() do
     dcc_markdown("[Back to the table of contents](/)")
 end
 
-run_server(app, "0.0.0.0", 8000)
+run_server(app, "0.0.0.0", 8000, debug=true)

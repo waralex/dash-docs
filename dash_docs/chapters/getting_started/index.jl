@@ -50,7 +50,7 @@ app.layout = html_div() do
         )
     end
 
-    run_server(app, "0.0.0.0", 8000)
+    run_server(app, "0.0.0.0", 8000, debug=true)
     ```
     """),
 
@@ -137,7 +137,8 @@ app.layout = html_div() do
         )
     end
 
-    run_server(app, "0.0.0.0", 8000)
+    run_server(app, "0.0.0.0", 8000, debug=true)
+
     ```
     """),
     dcc_markdown("""
@@ -192,7 +193,8 @@ app.layout = html_div() do
         generate_table(df, 10)
     end
 
-    run_server(app, "0.0.0.0", 8000)
+    run_server(app, "0.0.0.0", 8000, debug=true)
+
     ```
     """),
     html_h1("More About Visualization"),
@@ -231,7 +233,8 @@ app.layout = html_div() do
         )
     end
 
-    run_server(app, "0.0.0.0", 8000)
+    run_server(app, "0.0.0.0", 8000, debug=true)
+
 
     ```
     """),
@@ -267,7 +270,8 @@ app.layout = html_div() do
         dcc_markdown(markdown_text)
     end
 
-    run_server(app, "0.0.0.0", 8000)
+    run_server(app, "0.0.0.0", 8000, debug=true)
+
     ```
     """),
     html_h1("Core Components"),
@@ -308,9 +312,10 @@ app.layout = html_div() do
         dcc_slider(min = 0, max = 9, marks = ["", "Label 1", "Label 3"], value = 5)
     end
 
-    run_server(app, "0.0.0.0", 8000)
+    run_server(app, "0.0.0.0", 8000, debug=true)
+
     ```
     """)
 end
 
-run_server(app, "0.0.0.0", 8000)
+run_server(app, "0.0.0.0", 8000, debug=true)
