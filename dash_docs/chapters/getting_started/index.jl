@@ -2,7 +2,12 @@ using Dash
 using DashHtmlComponents
 using DashCoreComponents
 
+include("../../utils.jl")
+
+example = LoadExampleCode("dash_docs/chapters/getting_started/examples/getting_started_layout_1.jl")
+
 app = dash()
+
 
 
 app.layout = html_div() do

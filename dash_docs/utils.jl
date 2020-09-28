@@ -3,6 +3,7 @@ using Dash, DashCoreComponents, DashHtmlComponents, Printf
 function LoadExampleCode(filename, wd = nothing)
   example_file_as_string = read(filename, String)
   example_ready_for_eval = example_file_as_string
+  #=
   replacements = [
       r"app.layout =" => "layout ="
       r"app =.*dash\((.*?)\)"m => ""
@@ -16,6 +17,7 @@ function LoadExampleCode(filename, wd = nothing)
     newWd = string(currentWd, "/", wd)
     example_ready_for_eval = string("cd(example_ready_for_eval, newWd)")
   end
+  =#
   include_string(Main, example_ready_for_eval)
   return (
       "layout" => html_div(
@@ -41,7 +43,7 @@ function LoadAndDisplayComponent(example_string)
         style = ("border-left" => "thin lightgrey solid",)
       ),
       html_div(
-        children = include_string(Main, example_string)
+        children = include_string(Main, example_string),
         className = "example-container",
         style = ("margin-bottom" => "10px", "overflow-x" => "initial", )
       ),
