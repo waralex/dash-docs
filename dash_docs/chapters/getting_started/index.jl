@@ -153,7 +153,7 @@ app.layout = html_div() do
     1. The `style` property in HTML is a semicolon separated string. In Dash, you can just suppy a `Dict`.
     2. The keys in the `style` `Dict` are [camelCased]("https://en.wikipedia.org/wiki/Camel_case"). So instead of `text-align`, it's `textAlign`.
     3. The HTML `class` attribute is `className` in Dash.
-    4. The children of the HTML tag is specified through the `children` keywork argument. By convention, this is
+    4. The children of the HTML tag is specified through the `children` keyword argument. By convention, this is
     always the first argument and so it is often omitted. Besides that, all of the available HTML attributes and
     tags are available to you within your Julia context.
     """),
