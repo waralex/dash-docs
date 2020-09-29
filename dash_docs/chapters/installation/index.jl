@@ -9,7 +9,7 @@ app.layout = html_div() do
 
     In order to use Dash, please ensure that you are using a version of Julia >= 1.2.
 
-    To install the most recently version:
+    To install the most recent version:
 
     ```
         pkg> add Dash DashCoreComponents DashHtmlComponents DashTable
