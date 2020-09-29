@@ -207,7 +207,7 @@ app.layout = html_div() do
 
     The `figure` argument in the `dcc_graph` component is the same `figure` argument
     that is used by `plotly.py`, Plotly's open-source Python graphing library. Check out the
-    plotly.py documentatioin and gallery to learn more.
+    plotly.py documentation and gallery to learn more.
 
     Here's an example that creates a scatter plot from a `DataFrame`. Create a file named `app.jl`
     with the following code:
