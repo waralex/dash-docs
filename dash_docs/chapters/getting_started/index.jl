@@ -278,7 +278,7 @@ app.layout = html_div() do
     dcc_markdown("""
     The `DashCoreComponents` package includes a set of higher level components like
     dropdowns, graphs, markdown blocks, and more. Like all Dash components, they are described
-    entirely declaratively. Every optiion that is configuragble is available as a keyword
+    entirely declaratively. Every option that is configurable is available as a keyword
     argument to the component.
     """),
     dcc_markdown("""
