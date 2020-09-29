@@ -27,7 +27,7 @@ app.layout = html_div() do
     but you can also build your own with JavaScript and React.js
 
     Note: Throughout this documentation, Julia code examples are meant to be saved as files and executed using `julia app.jl`.
-    These examples are not intented to run in Jupyter notebooks as-is,
+    These examples are not intended to run in Jupyter notebooks as-is,
     although most can be modified slightly to function in that environment.
 
     To get started, create a file called `app.jl` with the following code:
@@ -55,7 +55,7 @@ app.layout = html_div() do
         )
     end
 
-    run_server(app, "0.0.0.0", debug=true)
+    run_server(app, debug=true)
     ```
     """),
 
@@ -66,12 +66,12 @@ app.layout = html_div() do
     \$ julia app.jl
     ```
 
-    In the `julia` REPL you can run the follwing code, assuming that `app.jl` is in your current working directory.
+    In the `julia` REPL you can run the following code, assuming that `app.jl` is in your current working directory.
     ```
     julia> include("app.jl")
     ```
 
-    You can visit the app by visiting the URL http://127.0.0.1:8000.
+    You can visit the app by visiting the URL http://127.0.0.1:8050.
 
     Note:
 
@@ -81,7 +81,7 @@ app.layout = html_div() do
     3. Not all components are pure HTML. The `DashCoreComponents` package describes higher level components
     that are interactive and genrated with JavaScript, HTML, and CSS through the React.js library.
     4. Each component is described entirely through keyword attributes. Dash is *declarative*: you will
-    priimarily describe your application through these attributes.
+    primarily describe your application through these attributes.
     5. The `children` property is special. By convention, it's always the first attribute which means that you can omit it;
     `html_div(children="Hello Dash")` is the same as `html_div("Hello Dash")`. Also, it can contain a string, a number, a single
     component, or a list of components.
@@ -155,10 +155,10 @@ app.layout = html_div() do
 
     There are a few important differences between the `DashHtmlComponents` and HTML attributes:
 
-    1. The `style` property in HTML is a semicolon separated string. In Dash, you can just suppy a `Dict`.
+    1. The `style` property in HTML is a semicolon separated string. In Dash, you can just supply a `Dict`.
     2. The keys in the `style` `Dict` are [camelCased]("https://en.wikipedia.org/wiki/Camel_case"). So instead of `text-align`, it's `textAlign`.
     3. The HTML `class` attribute is `className` in Dash.
-    4. The children of the HTML tag is specified through the `children` keywork argument. By convention, this is
+    4. The children of the HTML tag is specified through the `children` keyword argument. By convention, this is
     always the first argument and so it is often omitted. Besides that, all of the available HTML attributes and
     tags are available to you within your Julia context.
     """),
@@ -212,7 +212,7 @@ app.layout = html_div() do
 
     The `figure` argument in the `dcc_graph` component is the same `figure` argument
     that is used by `plotly.py`, Plotly's open-source Python graphing library. Check out the
-    plotly.py documentatioin and gallery to learn more.
+    plotly.py documentation and gallery to learn more.
 
     Here's an example that creates a scatter plot from a `DataFrame`. Create a file named `app.jl`
     with the following code:
@@ -283,7 +283,7 @@ app.layout = html_div() do
     dcc_markdown("""
     The `DashCoreComponents` package includes a set of higher level components like
     dropdowns, graphs, markdown blocks, and more. Like all Dash components, they are described
-    entirely declaratively. Every optiion that is configuragble is available as a keyword
+    entirely declaratively. Every option that is configurable is available as a keyword
     argument to the component.
     """),
     dcc_markdown("""

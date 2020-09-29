@@ -27,7 +27,7 @@ app.layout = html_div() do
     then share the results with the rest of the callbacks.
 
     This need has been somewhat ameliorated now that you can have [multiple outputs](/basic-callbacks) for one callback.
-    This way, that expensive task can be done once and immediately outsed in all the outputs. But in some cases this
+    This way, that expensive task can be done once and immediately used in all the outputs. But in some cases this
     still isn't ideal, for example if there are simple follow-on tasks that modify the results, like unit conversions.
     We shouldn't need to repeat a large database query just to change the results from Fahrenheit to Celsius!
 
