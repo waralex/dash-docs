@@ -22,7 +22,7 @@ app.layout = html_div() do
     but you can also build your own with JavaScript and React.js
 
     Note: Throughout this documentation, Julia code examples are meant to be saved as files and executed using `julia app.jl`.
-    These examples are not intented to run in Jupyter notebooks as-is,
+    These examples are not intended to run in Jupyter notebooks as-is,
     although most can be modified slightly to function in that environment.
 
     To get started, create a file called `app.jl` with the following code:
