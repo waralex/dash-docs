@@ -16,4 +16,4 @@ app.layout = html_div() do
     dcc_markdown(markdown_text)
 end
 
-run_server(app, "0.0.0.0", 8000, debug=true)
+run_server(app, "0.0.0.0", debug=true)

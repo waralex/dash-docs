@@ -152,7 +152,7 @@ app.layout = html_div() do
         return string(relayout_data)
     end
 
-    run_server(app, "0.0.0.0", 8000, debug=true)
+    run_server(app, "0.0.0.0", debug=true)
     ```
     """),
 
@@ -403,4 +403,4 @@ app.layout = html_div() do
     """)
 end
 
-run_server(app, "0.0.0.0", 8000, debug=true)
+run_server(app, "0.0.0.0", debug=true)

@@ -7,7 +7,7 @@ function LoadExampleCode(filename, wd = nothing)
   replacements = [
       r"app.layout =" => "layout ="
       r"app =.*dash\((.*?)\)"m => ""
-      r"run_server(app, \"0.0.0.0\", 8000)" => ""
+      r"run_server(app, \"0.0.0.0\")" => ""
   ]
   for replacement in replacements
     example_ready_for_eval = replace(example_ready_for_eval, replacement)

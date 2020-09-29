@@ -36,7 +36,7 @@ app.layout = html_div() do
         "You've entered \$(input_value)"
     end
 
-    run_server(app, "0.0.0.0", 8000, debug=true)
+    run_server(app, "0.0.0.0", debug=true)
     ```
     """),
 
@@ -138,7 +138,7 @@ app.layout = html_div() do
         return figure
     end
 
-    run_server(app, "0.0.0.0", 8000, debug=true)
+    run_server(app, "0.0.0.0", debug=true)
 
     ```
     """),
@@ -259,7 +259,7 @@ app.layout = html_div() do
 
     end
 
-    run_server(app, "0.0.0.0", 8000, debug=true)
+    run_server(app, "0.0.0.0", debug=true)
     ```
     """),
     dcc_markdown("""
@@ -319,7 +319,7 @@ app.layout = html_div() do
         return (x^2, x^3, 2^x, 3^x, x^x)
     end
 
-    run_server(app, "0.0.0.0", 8000, debug=true)
+    run_server(app, "0.0.0.0", debug=true)
     ```
     """),
     dcc_markdown("""
@@ -394,7 +394,7 @@ app.layout = html_div() do
         return "\$(selected_city) is a city in \$(selected_country) "
     end
 
-    run_server(app, "0.0.0.0", 8000, debug=true)
+    run_server(app, "0.0.0.0", debug=true)
     ```
     """),
 
@@ -444,7 +444,7 @@ app.layout = html_div() do
         return "Input 1 is \"\$input_1\" and Input 2 is \"\$input_2\""
     end
 
-    run_server(app, "0.0.0.0", 8000, debug=true)
+    run_server(app, "0.0.0.0", debug=true)
     ```
     """),
     dcc_markdown("""
@@ -481,7 +481,7 @@ app.layout = html_div() do
         return "The Button has been pressed \"\$clicks\" times, Input 1 is \"\$input_1\" and Input 2 is \"\$input_2\""
     end
 
-    run_server(app, "0.0.0.0", 8000, debug=true)
+    run_server(app, "0.0.0.0", debug=true)
     ```
     """),
     dcc_markdown("""
@@ -510,4 +510,4 @@ app.layout = html_div() do
     """)
 end
 
-run_server(app, "0.0.0.0", 8000, debug=true)
+run_server(app, "0.0.0.0", debug=true)

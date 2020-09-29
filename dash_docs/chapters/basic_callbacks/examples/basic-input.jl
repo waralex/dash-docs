@@ -18,4 +18,4 @@ callback!(
     return "Input 1 is \"$input_1\" and Input 2 is \"$input_2\""
 end
 
-run_server(app, "0.0.0.0", 8000, debug=true)
+run_server(app, "0.0.0.0", debug=true)

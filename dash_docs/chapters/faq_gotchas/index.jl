@@ -100,4 +100,4 @@ app.layout = html_div() do
     dcc_markdown("[Back to the table of contents](/)")
 end
 
-run_server(app, "0.0.0.0", 8000, debug=true)
+run_server(app, "0.0.0.0", debug=true)
