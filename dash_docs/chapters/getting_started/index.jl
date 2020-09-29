@@ -61,7 +61,7 @@ app.layout = html_div() do
     \$ julia app.jl
     ```
 
-    In the `julia` REPL you can run the follwing code, assuming that `app.jl` is in your current working directory.
+    In the `julia` REPL you can run the following code, assuming that `app.jl` is in your current working directory.
     ```
     julia> include("app.jl")
     ```
