@@ -50,7 +50,7 @@ app.layout = html_div() do
         )
     end
 
-    run_server(app, "0.0.0.0", 8000, debug=true)
+    run_server(app, debug=true)
     ```
     """),
 
