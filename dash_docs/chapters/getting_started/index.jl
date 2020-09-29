@@ -76,7 +76,7 @@ app.layout = html_div() do
     3. Not all components are pure HTML. The `DashCoreComponents` package describes higher level components
     that are interactive and genrated with JavaScript, HTML, and CSS through the React.js library.
     4. Each component is described entirely through keyword attributes. Dash is *declarative*: you will
-    priimarily describe your application through these attributes.
+    primarily describe your application through these attributes.
     5. The `children` property is special. By convention, it's always the first attribute which means that you can omit it;
     `html_div(children="Hello Dash")` is the same as `html_div("Hello Dash")`. Also, it can contain a string, a number, a single
     component, or a list of components.
