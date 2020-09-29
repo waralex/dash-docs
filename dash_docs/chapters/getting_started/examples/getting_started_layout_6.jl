@@ -24,7 +24,12 @@ app.layout = html_div(style = Dict("columnCount" => 2)) do
     html_label("Text Input"),
     dcc_input(value = "MTL", type = "text"),
     html_label("Slider"),
-    dcc_slider(min = 0, max = 9, marks = ["", "Label 1", "Label 3"], value = 5)
+    dcc_slider(
+        min = 0,
+        max = 9,
+        marks = Dict([i => (i == 1 ? "Label $(i)" : "$(i)") for i = 1:6]),
+        value = 5,
+    )
 end
 
-run_server(app, "0.0.0.0", 8000)
+run_server(app, "0.0.0.0", 8000, debug = true)

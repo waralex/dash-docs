@@ -76,4 +76,4 @@ callback!(
            create_figure(df, "Col 5", "Col 6", selectedpoints, selection3)
 end
 
-run_server(app, "0.0.0.0", 8000)
+run_server(app, "0.0.0.0", 8000, debug=true)

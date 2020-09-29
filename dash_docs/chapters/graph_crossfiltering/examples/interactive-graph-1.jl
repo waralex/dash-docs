@@ -117,4 +117,4 @@ callback!(
     return string(relayout_data)
 end
 
-run_server(app, "0.0.0.0", 8000)
+run_server(app, "0.0.0.0", 8000, debug=true)

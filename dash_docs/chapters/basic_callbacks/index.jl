@@ -36,7 +36,7 @@ app.layout = html_div() do
         "You've entered \$(input_value)"
     end
 
-    run_server(app, "0.0.0.0", 8000)
+    run_server(app, "0.0.0.0", 8000, debug=true)
     ```
     """),
 
@@ -97,12 +97,12 @@ app.layout = html_div() do
 
     app.layout = html_div() do
         dcc_graph(id="graph"),
-        dcc_slider(
-            id = "year-slider",
-            min = 0,
-            max = length(years) - 1,
-            marks = years,
-            value = 0)
+        dcc_slider(id = "year-slider",
+            min = minimum(years),
+            max = maximum(years),
+            marks = Dict([Symbol(v)=>Symbol(v) for v in years]),
+            value = minimum(years),
+            step = nothing)
     end
 
     callback!(
@@ -110,7 +110,7 @@ app.layout = html_div() do
         Output("graph", "figure"),
         Input("year-slider", "value"),
     ) do index
-        single_year_df = df[df.year .== years[index+1], :]
+        single_year_df = df[df.year .== index, :]
 
         figure_data = []
 
@@ -138,7 +138,8 @@ app.layout = html_div() do
         return figure
     end
 
-    run_server(app, "0.0.0.0", 8000)
+    run_server(app, "0.0.0.0", 8000, debug=true)
+
     ```
     """),
 
@@ -220,13 +221,12 @@ app.layout = html_div() do
             style = (width = "48%", display = "inline-block", float = "right"),
         ),
         dcc_graph(id = "indicator-graphic"),
-        dcc_slider(
-            id = "year-slider",
-            min = 0,
-            max = length(years) - 1,
-            value = 0,
-            marks = years,
-        )
+        dcc_slider(id = "year-slider",
+            min = minimum(years),
+            max = maximum(years),
+            marks = Dict([Symbol(v)=>Symbol(v) for v in years]),
+            value = minimum(years),
+            step = nothing)
     end
 
     callback!(
@@ -238,7 +238,7 @@ app.layout = html_div() do
         Input("yaxis-type", "value"),
         Input("year-slider", "value"),
     ) do x_axis_value, y_axis_value, x_axis_type, y_axis_type, year_value
-        dff = df[df.Year .== years[year_value+1], :]
+        dff = df[df.Year .== year_value, :]
         x_axis_data = dff[dff.Indicator .== x_axis_value, :][:, "Value"]
         y_axis_data = dff[dff.Indicator .== y_axis_value, :][:, "Value"]
         country_names = dff[dff.Indicator .== y_axis_value, :][:, "Country Name"]
@@ -259,7 +259,7 @@ app.layout = html_div() do
 
     end
 
-    run_server(app, "0.0.0.0", 8000)
+    run_server(app, "0.0.0.0", 8000, debug=true)
     ```
     """),
     dcc_markdown("""
@@ -319,7 +319,7 @@ app.layout = html_div() do
         return (x^2, x^3, 2^x, 3^x, x^x)
     end
 
-    run_server(app, "0.0.0.0", 8000)
+    run_server(app, "0.0.0.0", 8000, debug=true)
     ```
     """),
     dcc_markdown("""
@@ -394,7 +394,7 @@ app.layout = html_div() do
         return "\$(selected_city) is a city in \$(selected_country) "
     end
 
-    run_server(app, "0.0.0.0", 8000)
+    run_server(app, "0.0.0.0", 8000, debug=true)
     ```
     """),
 
@@ -444,7 +444,7 @@ app.layout = html_div() do
         return "Input 1 is \"\$input_1\" and Input 2 is \"\$input_2\""
     end
 
-    run_server(app, "0.0.0.0", 8000)
+    run_server(app, "0.0.0.0", 8000, debug=true)
     ```
     """),
     dcc_markdown("""
@@ -481,7 +481,7 @@ app.layout = html_div() do
         return "The Button has been pressed \"\$clicks\" times, Input 1 is \"\$input_1\" and Input 2 is \"\$input_2\""
     end
 
-    run_server(app, "0.0.0.0", 8000)
+    run_server(app, "0.0.0.0", 8000, debug=true)
     ```
     """),
     dcc_markdown("""
@@ -510,4 +510,4 @@ app.layout = html_div() do
     """)
 end
 
-run_server(app, "0.0.0.0", 8000)
+run_server(app, "0.0.0.0", 8000, debug=true)

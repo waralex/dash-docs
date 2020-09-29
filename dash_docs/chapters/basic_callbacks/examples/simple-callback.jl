@@ -11,4 +11,4 @@ callback!(app, Output("output", "children"), Input("input", "value")) do input_v
     "You've entered $(input_value)"
 end
 
-run_server(app, "0.0.0.0", 8000)
+run_server(app, "0.0.0.0", 8000, debug=true)

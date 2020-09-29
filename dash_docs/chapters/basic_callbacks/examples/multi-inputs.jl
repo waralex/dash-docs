@@ -1,15 +1,14 @@
-using CSV, DataFrames, Dash, DashHtmlComponents, DashCoreComponents
+using CSV, DataFrames, Dash, DashHtmlComponents, DashCoreComponents, PlotlyJS
 
 
 url = "https://plotly.github.io/datasets/country_indicators.csv"
 download(url, "country-indicators.csv")
+
 df = DataFrame(CSV.File("country-indicators.csv"))
 
 dropmissing!(df)
 
-rename!(df, Dict(:"Indicator Name" => "Indicator"))
-
-available_indicators = unique(df[!, "Indicator"])
+available_indicators = unique(df[!, "Indicator Name"])
 years = unique(df[!, "Year"])
 
 app = dash()
@@ -27,7 +26,7 @@ app.layout = html_div() do
             dcc_radioitems(
                 id = "xaxis-type",
                 options = [(label = i, value = i) for i in ["linear", "log"]],
-                value="linear"
+                value = "linear",
             ),
         ],
         style = (width = "48%", display = "inline-block"),
@@ -44,7 +43,7 @@ app.layout = html_div() do
             dcc_radioitems(
                 id = "yaxis-type",
                 options = [(label = i, value = i) for i in ["linear", "log"]],
-                value="linear",
+                value = "linear",
             ),
         ],
         style = (width = "48%", display = "inline-block", float = "right"),
@@ -52,10 +51,11 @@ app.layout = html_div() do
     dcc_graph(id = "indicator-graphic"),
     dcc_slider(
         id = "year-slider",
-        min = 0,
-        max = length(years) - 1,
-        value = 0,
-        marks = years,
+        min = minimum(years),
+        max = maximum(years),
+        marks = Dict([Symbol(v) => Symbol(v) for v in years]),
+        value = minimum(years),
+        step = nothing,
     )
 end
 
@@ -67,26 +67,29 @@ callback!(
     Input("xaxis-type", "value"),
     Input("yaxis-type", "value"),
     Input("year-slider", "value"),
-) do x_axis_value, y_axis_value, x_axis_type, y_axis_type, year_value
-    dff = df[df.Year .== years[year_value+1], :]
-    x_axis_data = dff[dff.Indicator .== x_axis_value, :][:, "Value"]
-    y_axis_data = dff[dff.Indicator .== y_axis_value, :][:, "Value"]
-    country_names = dff[dff.Indicator .== y_axis_value, :][:, "Country Name"]
-
-    figure = (
-        data = [
-            (x = x_axis_data,
-             y = y_axis_data,
-             type = "scatter",
-             mode="markers",
-             text=country_names),
+) do xaxis_column_name, yaxis_column_name, xaxis_type, yaxis_type, year_value
+    dff = df[df.Year.== year_value, :]
+    return Plot(
+        dff[dff[!, Symbol("Indicator Name")] .== xaxis_column_name, :Value],
+        dff[dff[!, Symbol("Indicator Name")] .== yaxis_column_name, :Value],
+        Layout(
+            xaxis_type = xaxis_type == "Linear" ? "linear" : "log",
+            xaxis_title = xaxis_column_name,
+            yaxis_title = yaxis_column_name,
+            yaxis_type = yaxis_type == "Linear" ? "linear" : "log",
+            hovermode = "closest",
+        ),
+        kind = "scatter",
+        text = dff[
+            dff[Symbol("Indicator Name")] .== yaxis_column_name,
+            Symbol("Country Name"),
         ],
-        layout = (xaxis = ((title=x_axis_value), (type=x_axis_type)),
-                  yaxis = ((title=y_axis_value), (type=y_axis_type)))
+        mode = "markers",
+        marker_size = 15,
+        marker_opacity = 0.5,
+        marker_line_width = 0.5,
+        marker_line_color = "white"
     )
-
-    return figure
-
 end
 
-run_server(app, "0.0.0.0", 8000)
+run_server(app, "0.0.0.0", 8000, debug = true)
