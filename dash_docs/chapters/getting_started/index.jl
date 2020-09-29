@@ -66,7 +66,7 @@ app.layout = html_div() do
     julia> include("app.jl")
     ```
 
-    You can visit the app by visiting the URL http://127.0.0.1:8000.
+    You can visit the app by visiting the URL http://127.0.0.1:8050.
 
     Note:
 
