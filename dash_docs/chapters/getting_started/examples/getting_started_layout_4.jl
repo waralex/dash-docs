@@ -11,7 +11,7 @@ app = dash()
 app.layout = html_div() do
     html_h4("Iris Sepal Length vs Sepal Width"),
     dcc_graph(
-        id = "example-graph",
+        id = "example-graph-3",
         figure = p1,
     )
 end

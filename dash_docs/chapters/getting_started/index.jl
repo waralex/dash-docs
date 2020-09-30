@@ -2,13 +2,21 @@ using Dash
 using DashHtmlComponents
 using DashCoreComponents
 
-include("../../utils.jl")
+include("/Users/josephdamiba/Downloads/code/work/plotly/dash-docs/dash_docs/utils.jl")
 
-example = LoadExampleCode("dash_docs/chapters/getting_started/examples/getting_started_layout_1.jl")
+getting_started_layout_1 = LoadExampleCode("./dash_docs/chapters/getting_started/examples/getting_started_layout_1.jl")
+
+getting_started_layout_2 = LoadExampleCode("./dash_docs/chapters/getting_started/examples/getting_started_layout_2.jl")
+
+getting_started_layout_3 = LoadExampleCode("./dash_docs/chapters/getting_started/examples/getting_started_layout_3.jl")
+
+getting_started_layout_4 = LoadExampleCode("./dash_docs/chapters/getting_started/examples/getting_started_layout_4.jl")
+
+getting_started_layout_5 = LoadExampleCode("./dash_docs/chapters/getting_started/examples/getting_started_layout_5.jl")
+
+getting_started_layout_6 = LoadExampleCode("./dash_docs/chapters/getting_started/examples/getting_started_layout_6.jl")
 
 app = dash()
-
-
 
 app.layout = html_div() do
     html_h1("Dash Layout"),
@@ -32,32 +40,8 @@ app.layout = html_div() do
 
     To get started, create a file called `app.jl` with the following code:
     """),
-    dcc_markdown("""
-
-    ```
-    using Dash, DashHtmlComponents, DashCoreComponents
-
-
-    app = dash()
-
-    app.layout = html_div() do
-        html_h1("Hello Dash"),
-        html_div("Dash: A web application framework for Julia"),
-        dcc_graph(
-            id = "example-graph",
-            figure = (
-                data = [
-                    (x = ["giraffes", "orangutans", "monkeys"], y = [20, 14, 23], type = "bar", name = "SF"),
-                    (x = ["giraffes", "orangutans", "monkeys"], y = [12, 18, 29], type = "bar", name = "Montréal"),
-                ],
-                layout = (title = "Dash Data Visualization", barmode="group")
-            )
-        )
-    end
-
-    run_server(app, debug=true)
-    ```
-    """),
+    getting_started_layout_1[:2][2],
+    getting_started_layout_1[:1][2],
 
     dcc_markdown("""
 
@@ -98,54 +82,10 @@ app.layout = html_div() do
 
     Let's customize the text in our app by modifying the inline styles of the components:
     """),
-    dcc_markdown("""
-    ```
-    using Dash, DashHtmlComponents, DashCoreComponents
 
+    getting_started_layout_2[:2][2],
+    getting_started_layout_2[:1][2],
 
-    app = dash()
-
-    app.layout = html_div(style = Dict("backgroundColor" => "#111111")) do
-        html_h1(
-            "Hello Dash",
-            style = Dict("color" => "#7FDBFF", "textAlign" => "center"),
-        ),
-        html_div(
-            "Dash: A web application framework for Julia",
-            style = Dict("color" => "#7FDBFF"),
-        ),
-        dcc_graph(
-            id = "example-graph",
-            figure = (
-                data = [
-                    (
-                        x = ["giraffes", "orangutans", "monkeys"],
-                        y = [20, 14, 23],
-                        type = "bar",
-                        name = "SF",
-                    ),
-                    (
-                        x = ["giraffes", "orangutans", "monkeys"],
-                        y = [12, 18, 29],
-                        type = "bar",
-                        name = "Montréal",
-                    ),
-                ],
-                layout = (
-                    title = "Dash Data Visualization",
-                    barmode = "group",
-                    plot_bgcolor = "#111111",
-                    paper_bgcolor = "#111111",
-                    font = Dict("color" => "#7FDBFF"),
-                ),
-            ),
-        )
-    end
-
-    run_server(app, "0.0.0.0", debug=true)
-
-    ```
-    """),
     dcc_markdown("""
 
     In this example, we modified the inline styles of the `html_div` and
@@ -171,37 +111,8 @@ app.layout = html_div() do
     Here's a quick example that generates a `Table` from a `DataFrame`.
     Create a file named `app.jl` with the following code:
     """),
-    dcc_markdown("""
-    ```
-    using DataFrames, CSV
-    using Dash, DashHtmlComponents, DashCoreComponents
-
-
-    url = "https://raw.githubusercontent.com/plotly/datasets/master/2011_us_ag_exports.csv"
-    download(url, "usa-agriculture.csv")
-    df = DataFrame(CSV.File("usa-agriculture.csv"))
-
-    function generate_table(dataframe, max_rows = 10)
-        html_table([
-            html_thead(html_tr([html_th(col) for col in names(df)])),
-            html_tbody([
-                html_tr([html_td(dataframe[r, c]) for c in names(dataframe)]) for r = 1:min(nrow(dataframe), max_rows)
-            ]),
-        ])
-    end
-
-
-    app = dash()
-
-    app.layout = html_div() do
-        html_h4("US Agriculture Exports (2011)"),
-        generate_table(df, 10)
-    end
-
-    run_server(app, "0.0.0.0", debug=true)
-
-    ```
-    """),
+    getting_started_layout_3[:2][2],
+    getting_started_layout_3[:1][2],
     html_h1("More About Visualization"),
     dcc_markdown("""
     The `DashCoreComponents` package includes a component called `graph`.
@@ -217,32 +128,8 @@ app.layout = html_div() do
     Here's an example that creates a scatter plot from a `DataFrame`. Create a file named `app.jl`
     with the following code:
     """),
-    dcc_markdown("""
-
-    ```
-    using DataFrames, CSV, PlotlyJS, RDatasets
-    using Dash, DashHtmlComponents, DashCoreComponents
-
-
-    iris = dataset("datasets", "iris")
-
-    p1 = Plot(iris, x=:SepalLength, y=:SepalWidth, mode="markers", marker_size=8, group=:Species)
-
-    app = dash()
-
-    app.layout = html_div() do
-        html_h4("Iris Sepal Length vs Sepal Width"),
-        dcc_graph(
-            id = "example-graph",
-            figure = p1,
-        )
-    end
-
-    run_server(app, "0.0.0.0", debug=true)
-
-
-    ```
-    """),
+    getting_started_layout_4[:2][2],
+    getting_started_layout_4[:1][2],
     dcc_markdown("""
 
     These graphs are interactive and responsive. *Hover* over points to see their values, *click* on legend items to
@@ -254,31 +141,8 @@ app.layout = html_div() do
     While Dash exposes HTML through the `DashHtmlComponents` package, it can be tedious to write your
     copy in HTML. For writing blocks of text, you can use the `dcc_markdown` component in the `DashCoreComponents` package.
     """),
-    dcc_markdown("""
-
-    ```
-    using Dash, DashHtmlComponents, DashCoreComponents
-
-
-    app = dash()
-    markdown_text = "
-    ### Dash and Markdown
-
-    Dash apps can be written in Markdown.
-    Dash uses the [CommonMark](http://commonmark.org/)
-    specification of Markdown.
-    Check out their [60 Second Markdown Tutorial](http://commonmark.org/help/)
-    if this is your first introduction to Markdown!
-    "
-
-    app.layout = html_div() do
-        dcc_markdown(markdown_text)
-    end
-
-    run_server(app, "0.0.0.0", debug=true)
-
-    ```
-    """),
+    getting_started_layout_5[:2][2],
+    getting_started_layout_5[:1][2],
     html_h1("Core Components"),
     dcc_markdown("""
     The `DashCoreComponents` package includes a set of higher level components like
@@ -286,41 +150,8 @@ app.layout = html_div() do
     entirely declaratively. Every option that is configurable is available as a keyword
     argument to the component.
     """),
-    dcc_markdown("""
-    ```
-    using Dash, DashHtmlComponents, DashCoreComponents
-
-
-    app = dash()
-
-    dropdown_options = [
-        Dict("label" => "New York City", "value" => "NYC"),
-        Dict("label" => "Montreal", "value" => "MTL"),
-        Dict("label" => "San Francisco", "value" => "SF"),
-    ]
-    app.layout = html_div(style = Dict("columnCount" => 2)) do
-        html_label("Dropdown"),
-        dcc_dropdown(options = dropdown_options, value = "MTL"),
-        html_label("Multi-Select Dropdown"),
-        dcc_dropdown(
-            options = dropdown_options,
-            value = ["MTL", "SF"],
-            multi = true,
-        ),
-        html_label("Radio Items"),
-        dcc_radioitems(options = dropdown_options, value = "MTL"),
-        html_label("Checkboxes"),
-        dcc_checklist(options = dropdown_options, value = ["MTL", "SF"]),
-        html_label("Text Input"),
-        dcc_input(value = "MTL", type = "text"),
-        html_label("Slider"),
-        dcc_slider(min = 0, max = 9, marks = ["", "Label 1", "Label 3"], value = 5)
-    end
-
-    run_server(app, "0.0.0.0", debug=true)
-
-    ```
-    """)
+    getting_started_layout_6[:2][2],
+    getting_started_layout_6[:1][2]
 end
 
 run_server(app, "0.0.0.0", debug=true)

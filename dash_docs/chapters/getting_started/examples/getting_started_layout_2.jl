@@ -13,7 +13,7 @@ app.layout = html_div(style = Dict("backgroundColor" => "#111111")) do
         style = Dict("color" => "#7FDBFF"),
     ),
     dcc_graph(
-        id = "example-graph",
+        id = "example-graph-2",
         figure = (
             data = [
                 (
@@ -26,7 +26,7 @@ app.layout = html_div(style = Dict("backgroundColor" => "#111111")) do
                     x = ["giraffes", "orangutans", "monkeys"],
                     y = [12, 18, 29],
                     type = "bar",
-                    name = "Montréal",
+                    name = "Montreal",
                 ),
             ],
             layout = (
