@@ -18,18 +18,18 @@ function LoadExampleCode(filename, wd = nothing)
   end
   include_string(Main, example_ready_for_eval)
   return (
-      "layout" => html_div(
+      layout = html_div(
           className = "example-container",
           children = layout,
           style = Dict("margin-bottom" => "10px"),
       ),
-      "source_code" => html_div(
+      source_code = html_div(
           children = dcc_markdown(
               @sprintf("```Julia\n%s\n```", example_file_as_string)
           ),
           className = "code-container",
           style = Dict("border-left" => "thin lightgrey solid"),
-      ),
+      )
   )
 end
 
