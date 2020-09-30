@@ -40,8 +40,8 @@ app.layout = html_div() do
 
     To get started, create a file called `app.jl` with the following code:
     """),
-    getting_started_layout_1[:2][2],
-    getting_started_layout_1[:1][2],
+    getting_started_layout_1.source_code,
+    getting_started_layout_1.layout,
 
     dcc_markdown("""
 
@@ -83,8 +83,8 @@ app.layout = html_div() do
     Let's customize the text in our app by modifying the inline styles of the components:
     """),
 
-    getting_started_layout_2[:2][2],
-    getting_started_layout_2[:1][2],
+    getting_started_layout_2.source_code,
+    getting_started_layout_2.layout,
 
     dcc_markdown("""
 
@@ -111,8 +111,8 @@ app.layout = html_div() do
     Here's a quick example that generates a `Table` from a `DataFrame`.
     Create a file named `app.jl` with the following code:
     """),
-    getting_started_layout_3[:2][2],
-    getting_started_layout_3[:1][2],
+    getting_started_layout_3.source_code,
+    getting_started_layout_3.layout,
     html_h1("More About Visualization"),
     dcc_markdown("""
     The `DashCoreComponents` package includes a component called `graph`.
@@ -128,8 +128,8 @@ app.layout = html_div() do
     Here's an example that creates a scatter plot from a `DataFrame`. Create a file named `app.jl`
     with the following code:
     """),
-    getting_started_layout_4[:2][2],
-    getting_started_layout_4[:1][2],
+    getting_started_layout_4.source_code,
+    getting_started_layout_4.layout,
     dcc_markdown("""
 
     These graphs are interactive and responsive. *Hover* over points to see their values, *click* on legend items to
@@ -141,8 +141,8 @@ app.layout = html_div() do
     While Dash exposes HTML through the `DashHtmlComponents` package, it can be tedious to write your
     copy in HTML. For writing blocks of text, you can use the `dcc_markdown` component in the `DashCoreComponents` package.
     """),
-    getting_started_layout_5[:2][2],
-    getting_started_layout_5[:1][2],
+    getting_started_layout_5.source_code,
+    getting_started_layout_5.layout,
     html_h1("Core Components"),
     dcc_markdown("""
     The `DashCoreComponents` package includes a set of higher level components like
@@ -150,8 +150,8 @@ app.layout = html_div() do
     entirely declaratively. Every option that is configurable is available as a keyword
     argument to the component.
     """),
-    getting_started_layout_6[:2][2],
-    getting_started_layout_6[:1][2]
+    getting_started_layout_6.source_code,
+    getting_started_layout_6.layout
 end
 
 run_server(app, "0.0.0.0", debug=true)

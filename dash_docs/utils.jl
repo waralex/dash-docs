@@ -7,6 +7,7 @@ function LoadExampleCode(filename, wd = nothing)
       r"app.layout =" => "layout ="
       r"app =.*dash\((.*?)\)"m => ""
       r"run_server\(.*?\)" => ""
+      r"callback!\(.*?\)"m => ""
   ]
   for replacement in replacements
     example_ready_for_eval = replace(example_ready_for_eval, replacement)
@@ -16,19 +17,21 @@ function LoadExampleCode(filename, wd = nothing)
     newWd = string(currentWd, "/", wd)
     example_ready_for_eval = string("cd(example_ready_for_eval, newWd)")
   end
+  println(example_ready_for_eval)
+
   include_string(Main, example_ready_for_eval)
   return (
-      "layout" => html_div(
+      layout = html_div(
           className = "example-container",
           children = layout,
-          style = Dict("margin-bottom" => "10px"),
+          style = Dict("marginBottom" => "10px"),
       ),
-      "source_code" => html_div(
+      source_code = html_div(
           children = dcc_markdown(
-              @sprintf("```Julia\n%s\n```", example_file_as_string)
+              @sprintf("```julia\n%s\n```", example_file_as_string)
           ),
           className = "code-container",
-          style = Dict("border-left" => "thin lightgrey solid"),
+          style = Dict("borderLeft" => "thin lightgrey solid"),
       ),
   )
 end
@@ -39,12 +42,12 @@ function LoadAndDisplayComponent(example_string)
       html_div(
         children = dcc_markdown(@printf("```Julia\n%s```", example_string)),
         className = "code-container",
-        style = Dict("border-left" => "thin lightgrey solid")
+        style = Dict("borderLeft" => "thin lightgrey solid")
       ),
       html_div(
         children = include_string(Main, example_string),
         className = "example-container",
-        style = Dict("margin-bottom" => "10px", "overflow-x" => "initial")
+        style = Dict("marginBottom" => "10px", "overflow-x" => "initial")
       ),
     )
   )
@@ -56,12 +59,12 @@ function LoadAndDisplayComponent2(example_string)
       html_div(
         children = dcc_markdown(@printf("```Julia\n%s```", example_string)),
         className = "code-container",
-        style = Dict("border-left" => "thin lightgrey solid")
+        style = Dict("borderLeft" => "thin lightgrey solid")
       ),
       html_div(
         children = include_string(Main, example_string),
         className = "example-container",
-        style = Dict("margin-bottom" => "10px", "padding-bottom" => "30px")
+        style = Dict("marginBottom" => "10px", "padding-bottom" => "30px")
       ),
     )
   )

@@ -38,8 +38,8 @@ app.layout = html_div() do
     Let's get started with a simple example.
     "),
 
-    simple_callback[:2][2],
-    simple_callback[:1][2],
+    simple_callback.source_code,
+    simple_callback.layout,
 
     dcc_markdown("""
     Try typing in the text box. The `children` property of the output
@@ -82,8 +82,9 @@ app.layout = html_div() do
 
     ## Dash App Layout With Figure and Slider
     """),
-    hello_slider[:2][2],
-    hello_slider[:1][2],
+    hello_slider.source_code,
+
+    hello_slider.layout,
 
     dcc_markdown("""
     In this example, the `value` property of the `Slider` component is the input of the app and the output of the app is the `figure` property of the `Graph` component. When the `value` of the `Slider` changes, Dash calls the callback function with new value. The function filters the dataframe with this new value, constructs a `figure` object, and returns it to the Dash app.
@@ -107,9 +108,9 @@ app.layout = html_div() do
     2 `Dropdown` components, 2 `RadioItems` components, and
     1 `Slider` component) to 1 Output component (the `figure` property of the `Graph` component).
     """),
+    multi_inputs.source_code,
 
-    multi_inputs[:2][2],
-    multi_inputs[:1][2],
+    multi_inputs.layout,
     dcc_markdown("""
 
     In this example, the callback function gets called whenever the `value`
@@ -133,9 +134,9 @@ app.layout = html_div() do
     and return that many items from the callback. This is particularly nice if two outputs depend
     on the same computationaly intense itermediate result, such as a slow database query.
     """),
+    multi_outputs.source_code,
 
-    multi_outputs[:2][2],
-    multi_outputs[:1][2],
+    multi_outputs.layout,
     dcc_markdown("""
 
     A word of caution: it's not always a good idea to combine Outputs, even if you can:
@@ -152,9 +153,9 @@ app.layout = html_div() do
     This pattern can be used to create dynamic UIs where one input component updates the available
     options of the next input component. Here's a simple example:
     """),
+    callback_chain.source_code,
 
-    callback_chain[:2][2],
-    callback_chain[:1][2],
+    callback_chain.layout,
 
     dcc_markdown("""
 
@@ -179,8 +180,9 @@ app.layout = html_div() do
 
     Attaching a callback to the input values directly can look like this:
     """),
-    basic_input[:2][2],
-    basic_input[:1][2],
+    basic_input.source_code,
+
+    basic_input.layout,
     dcc_markdown("""
 
     In this example, the callback function is fired whenever any of the attributes
@@ -190,8 +192,9 @@ app.layout = html_div() do
     `State` allows you pass along extra values without firing the callbacks. Here's the same
     example as above but with the `Input` as `State` and a button as an `Input`.
     """),
-    basic_state[:2][2],
-    basic_state[:1][2],
+    basic_state.source_code,
+
+    basic_state.layout,
     dcc_markdown("""
 
     In this example, changing text in the `Input` boxes won't fire the callback but clicking on the button will.
