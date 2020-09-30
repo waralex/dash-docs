@@ -2,6 +2,22 @@ using Dash
 using DashHtmlComponents
 using DashCoreComponents
 
+include("/Users/josephdamiba/Downloads/code/work/plotly/dash-docs/dash_docs/utils.jl")
+
+basic_input = LoadExampleCode("./dash_docs/chapters/basic_callbacks/examples/basic-input.jl")
+
+basic_state = LoadExampleCode("./dash_docs/chapters/basic_callbacks/examples/basic-state.jl")
+
+callback_chain = LoadExampleCode("./dash_docs/chapters/basic_callbacks/examples/getting-started-callback-chain.jl")
+
+hello_slider = LoadExampleCode("./dash_docs/chapters/basic_callbacks/examples/hello-slider.jl")
+
+multi_inputs = LoadExampleCode("./dash_docs/chapters/basic_callbacks/examples/multi-inputs.jl")
+
+multi_outputs = LoadExampleCode("./dash_docs/chapters/basic_callbacks/examples/multi-outputs.jl")
+
+simple_callback = LoadExampleCode("./dash_docs/chapters/basic_callbacks/examples/simple-callback.jl")
+
 app =  dash()
 
 
@@ -21,24 +37,9 @@ app.layout = html_div() do
 
     Let's get started with a simple example.
     "),
-    dcc_markdown("""
-    ```
-    using Dash, DashHtmlComponents, DashCoreComponents
 
-    app = dash()
-
-    app.layout = html_div() do
-        dcc_input(id="input", value="initial value", type = "text"),
-        html_div(id="output")
-    end
-
-    callback!(app, Output("output", "children"), Input("input", "value")) do input_value
-        "You've entered \$(input_value)"
-    end
-
-    run_server(app, "0.0.0.0", debug=true)
-    ```
-    """),
+    simple_callback[:2][2],
+    simple_callback[:1][2],
 
     dcc_markdown("""
     Try typing in the text box. The `children` property of the output
@@ -81,67 +82,8 @@ app.layout = html_div() do
 
     ## Dash App Layout With Figure and Slider
     """),
-    dcc_markdown("""
-    ```
-    using CSV, DataFrames, Dash, DashHtmlComponents, DashCoreComponents
-
-
-    url = "https://raw.githubusercontent.com/plotly/datasets/master/gapminderDataFiveYear.csv"
-    download(url, "gapminder-data.csv")
-    df = DataFrame(CSV.File("gapminder-data.csv"))
-
-    continents = unique(df[!, :continent])
-    years = unique(df[!, :year])
-
-    app = dash()
-
-    app.layout = html_div() do
-        dcc_graph(id="graph"),
-        dcc_slider(id = "year-slider",
-            min = minimum(years),
-            max = maximum(years),
-            marks = Dict([Symbol(v)=>Symbol(v) for v in years]),
-            value = minimum(years),
-            step = nothing)
-    end
-
-    callback!(
-        app,
-        Output("graph", "figure"),
-        Input("year-slider", "value"),
-    ) do index
-        single_year_df = df[df.year .== index, :]
-
-        figure_data = []
-
-        for cont in continents
-            single_continent_df = single_year_df[single_year_df.continent .== cont, :]
-            push!(figure_data,
-                 (x = single_continent_df[:, :gdpPercap],
-                  y = single_continent_df[:, :lifeExp],
-                  type = "scatter",
-                  mode = "markers",
-                  hovertext = single_continent_df[:, :country],
-                  opacity=0.5,
-                  name = cont)
-            )
-        end
-
-        figure = (
-            data = figure_data,
-            layout = (xaxis = ((type="log"), (title="GDP")),
-                      yaxis = ((title="Life Expectancy"), range=(20, 90)),
-                      transition_duration=500
-            ),
-        )
-
-        return figure
-    end
-
-    run_server(app, "0.0.0.0", debug=true)
-
-    ```
-    """),
+    hello_slider[:2][2],
+    hello_slider[:1][2],
 
     dcc_markdown("""
     In this example, the `value` property of the `Slider` component is the input of the app and the output of the app is the `figure` property of the `Graph` component. When the `value` of the `Slider` changes, Dash calls the callback function with new value. The function filters the dataframe with this new value, constructs a `figure` object, and returns it to the Dash app.
@@ -166,102 +108,8 @@ app.layout = html_div() do
     1 `Slider` component) to 1 Output component (the `figure` property of the `Graph` component).
     """),
 
-    dcc_markdown("""
-
-    ```
-    using CSV, DataFrames, Dash, DashHtmlComponents, DashCoreComponents
-
-
-    url = "https://plotly.github.io/datasets/country_indicators.csv"
-    download(url, "country-indicators.csv")
-    df = DataFrame(CSV.File("country-indicators.csv"))
-
-    dropmissing!(df)
-
-    rename!(df, Dict(:"Indicator Name" => "Indicator"))
-
-    available_indicators = unique(df[!, "Indicator"])
-    years = unique(df[!, "Year"])
-
-    app = dash()
-
-    app.layout = html_div() do
-        html_div(
-            children = [
-                dcc_dropdown(
-                    id = "xaxis-column",
-                    options = [
-                        (label = i, value = i) for i in available_indicators
-                    ],
-                    value = "Fertility rate, total (births per woman)",
-                ),
-                dcc_radioitems(
-                    id = "xaxis-type",
-                    options = [(label = i, value = i) for i in ["linear", "log"]],
-                    value="linear"
-                ),
-            ],
-            style = (width = "48%", display = "inline-block"),
-        ),
-        html_div(
-            children = [
-                dcc_dropdown(
-                    id = "yaxis-column",
-                    options = [
-                        (label = i, value = i) for i in available_indicators
-                    ],
-                    value = "Life expectancy at birth, total (years)",
-                ),
-                dcc_radioitems(
-                    id = "yaxis-type",
-                    options = [(label = i, value = i) for i in ["linear", "log"]],
-                    value="linear",
-                ),
-            ],
-            style = (width = "48%", display = "inline-block", float = "right"),
-        ),
-        dcc_graph(id = "indicator-graphic"),
-        dcc_slider(id = "year-slider",
-            min = minimum(years),
-            max = maximum(years),
-            marks = Dict([Symbol(v)=>Symbol(v) for v in years]),
-            value = minimum(years),
-            step = nothing)
-    end
-
-    callback!(
-        app,
-        Output("indicator-graphic", "figure"),
-        Input("xaxis-column", "value"),
-        Input("yaxis-column", "value"),
-        Input("xaxis-type", "value"),
-        Input("yaxis-type", "value"),
-        Input("year-slider", "value"),
-    ) do x_axis_value, y_axis_value, x_axis_type, y_axis_type, year_value
-        dff = df[df.Year .== year_value, :]
-        x_axis_data = dff[dff.Indicator .== x_axis_value, :][:, "Value"]
-        y_axis_data = dff[dff.Indicator .== y_axis_value, :][:, "Value"]
-        country_names = dff[dff.Indicator .== y_axis_value, :][:, "Country Name"]
-
-        figure = (
-            data = [
-                (x = x_axis_data,
-                 y = y_axis_data,
-                 type = "scatter",
-                 mode="markers",
-                 text=country_names),
-            ],
-            layout = (xaxis = ((title=x_axis_value), (type=x_axis_type)),
-                      yaxis = ((title=y_axis_value), (type=y_axis_type)))
-        )
-
-        return figure
-
-    end
-
-    run_server(app, "0.0.0.0", debug=true)
-    ```
-    """),
+    multi_inputs[:2][2],
+    multi_inputs[:1][2],
     dcc_markdown("""
 
     In this example, the callback function gets called whenever the `value`
@@ -286,42 +134,8 @@ app.layout = html_div() do
     on the same computationaly intense itermediate result, such as a slow database query.
     """),
 
-    dcc_markdown("""
-
-    ```
-    using Dash, DashHtmlComponents, DashCoreComponents
-
-    app = dash()
-
-    app.layout = html_div() do
-        dcc_input(id = "input", value = "1", type = "text"),
-        html_tr((html_td("x^2 ="), html_td(id = "square"))),
-        html_tr((html_td("x^3 ="), html_td(id = "cube"))),
-        html_tr((html_td("2^x ="), html_td(id = "twos"))),
-        html_tr((html_td("3^x ="), html_td(id = "threes"))),
-        html_tr((html_td("x^x ="), html_td(id = "xx")))
-    end
-
-    callback!(
-        app,
-        Output("square", "children"),
-        Output("cube", "children"),
-        Output("twos", "children"),
-        Output("threes", "children"),
-        Output("xx", "children"),
-        Input("input", "value"),
-    ) do x
-        if x == "" || x == nothing
-            return ("", "", "", "", "")
-        end
-
-        x = parse(Int64, x)
-        return (x^2, x^3, 2^x, 3^x, x^x)
-    end
-
-    run_server(app, "0.0.0.0", debug=true)
-    ```
-    """),
+    multi_outputs[:2][2],
+    multi_outputs[:1][2],
     dcc_markdown("""
 
     A word of caution: it's not always a good idea to combine Outputs, even if you can:
@@ -339,64 +153,8 @@ app.layout = html_div() do
     options of the next input component. Here's a simple example:
     """),
 
-    dcc_markdown("""
-
-    ```
-    using CSV, DataFrames
-    using Dash, DashHtmlComponents, DashCoreComponents
-
-
-    app = dash()
-
-    all_options = Dict(
-        "America" => ["New York City", "San Francisco", "Cincinnati"],
-        "Canada" => ["Montreal", "Toronto", "Ottawa"],
-    )
-
-    app.layout = html_div() do
-        html_div(
-            children = [
-                dcc_radioitems(
-                    id = "countries-radio",
-                    options = [(label = i, value = i) for i in keys(all_options)],
-                    value = "America",
-                ),
-                html_hr(),
-                dcc_radioitems(id = "cities-radio"),
-                html_hr(),
-                html_div(id = "display-selected-values"),
-            ],
-        )
-    end
-
-    callback!(
-        app,
-        Output("cities-radio", "options"),
-        Input("countries-radio", "value"),
-    ) do selected_country
-        return [(label = i, value = i) for i in all_options[selected_country]]
-    end
-
-    callback!(
-        app,
-        Output("cities-radio", "value"),
-        Input("cities-radio", "options"),
-    ) do available_options
-        return available_options[1][:value]
-    end
-
-    callback!(
-        app,
-        Output("display-selected-values", "children"),
-        Input("countries-radio", "value"),
-        Input("cities-radio", "value"),
-    ) do selected_country, selected_city
-        return "\$(selected_city) is a city in \$(selected_country) "
-    end
-
-    run_server(app, "0.0.0.0", debug=true)
-    ```
-    """),
+    callback_chain[:2][2],
+    callback_chain[:1][2],
 
     dcc_markdown("""
 
@@ -421,32 +179,8 @@ app.layout = html_div() do
 
     Attaching a callback to the input values directly can look like this:
     """),
-    dcc_markdown("""
-
-    ```
-    using Dash, DashHtmlComponents, DashCoreComponents
-
-
-    app = dash()
-
-    app.layout = html_div() do
-        dcc_input(id = "input-1", type = "text", value = "Montreal"),
-        dcc_input(id = "input-2", type = "text", value = "Canada"),
-        html_div(id = "output-keywords")
-    end
-
-    callback!(
-        app,
-        Output("output-keywords", "children"),
-        Input("input-1", "value"),
-        Input("input-2", "value"),
-    ) do input_1, input_2
-        return "Input 1 is \"\$input_1\" and Input 2 is \"\$input_2\""
-    end
-
-    run_server(app, "0.0.0.0", debug=true)
-    ```
-    """),
+    basic_input[:2][2],
+    basic_input[:1][2],
     dcc_markdown("""
 
     In this example, the callback function is fired whenever any of the attributes
@@ -456,34 +190,8 @@ app.layout = html_div() do
     `State` allows you pass along extra values without firing the callbacks. Here's the same
     example as above but with the `Input` as `State` and a button as an `Input`.
     """),
-    dcc_markdown("""
-
-    ```
-    using Dash, DashHtmlComponents, DashCoreComponents
-
-
-    app = dash()
-
-    app.layout = html_div() do
-        dcc_input(id = "input-1-state", type = "text", value = "Montreal"),
-        dcc_input(id = "input-2-state", type = "text", value = "Canada"),
-        html_button(id = "submit-button-state", children = "submit", n_clicks = 0),
-        html_div(id = "output-state")
-    end
-
-    callback!(
-        app,
-        Output("output-state", "children"),
-        Input("submit-button-state", "n_clicks"),
-        State("input-1-state", "value"),
-        State("input-2-state", "value"),
-    ) do clicks, input_1, input_2
-        return "The Button has been pressed \"\$clicks\" times, Input 1 is \"\$input_1\" and Input 2 is \"\$input_2\""
-    end
-
-    run_server(app, "0.0.0.0", debug=true)
-    ```
-    """),
+    basic_state[:2][2],
+    basic_state[:1][2],
     dcc_markdown("""
 
     In this example, changing text in the `Input` boxes won't fire the callback but clicking on the button will.

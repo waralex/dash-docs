@@ -3,7 +3,7 @@ using Dash, DashHtmlComponents, DashCoreComponents
 app = dash()
 
 app.layout = html_div() do
-    dcc_input(id = "input", value = "1", type = "text"),
+    dcc_input(id = "input-4", value = "1", type = "text"),
     html_tr((html_td("x^2 ="), html_td(id = "square"))),
     html_tr((html_td("x^3 ="), html_td(id = "cube"))),
     html_tr((html_td("2^x ="), html_td(id = "twos"))),
@@ -18,7 +18,7 @@ callback!(
     Output("twos", "children"),
     Output("threes", "children"),
     Output("xx", "children"),
-    Input("input", "value"),
+    Input("input-4", "value"),
 ) do x
     if x == "" || x == nothing
         return ("", "", "", "", "")

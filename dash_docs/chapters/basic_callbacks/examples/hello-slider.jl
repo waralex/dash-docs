@@ -12,7 +12,7 @@ app = dash()
 app.layout = html_div() do
     dcc_graph(id = "graph"),
     dcc_slider(
-        id = "year-slider",
+        id = "year-slider-1",
         min = minimum(years),
         max = maximum(years),
         marks = Dict([Symbol(v) => Symbol(v) for v in years]),
@@ -24,7 +24,7 @@ end
 callback!(
     app,
     Output("graph", "figure"),
-    Input("year-slider", "value"),
+    Input("year-slider-1", "value"),
 ) do selected_year
     return Plot(
         df[df.year.== selected_year, :],

@@ -50,7 +50,7 @@ app.layout = html_div() do
     ),
     dcc_graph(id = "indicator-graphic"),
     dcc_slider(
-        id = "year-slider",
+        id = "year-slider-2",
         min = minimum(years),
         max = maximum(years),
         marks = Dict([Symbol(v) => Symbol(v) for v in years]),
@@ -66,7 +66,7 @@ callback!(
     Input("yaxis-column", "value"),
     Input("xaxis-type", "value"),
     Input("yaxis-type", "value"),
-    Input("year-slider", "value"),
+    Input("year-slider-2", "value"),
 ) do xaxis_column_name, yaxis_column_name, xaxis_type, yaxis_type, year_value
     dff = df[df.Year.== year_value, :]
     return Plot(
