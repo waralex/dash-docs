@@ -142,5 +142,5 @@ layout = html.Div([
     DatePickerRange to strip the time portion of persisted `date`, `start_date`,
     and `end_date` props. You can check out the [PR in
     dash-core-components](https://github.com/plotly/dash-core-components/pull/854).
-
+  ''')
 ])
