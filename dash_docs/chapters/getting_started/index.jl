@@ -1,8 +1,7 @@
 using Dash
 using DashHtmlComponents
 using DashCoreComponents
-
-include("/Users/josephdamiba/Downloads/code/work/plotly/dash-docs/dash_docs/utils.jl")
+include("../../utils.jl")
 
 getting_started_layout_1 = LoadExampleCode("./dash_docs/chapters/getting_started/examples/getting_started_layout_1.jl")
 

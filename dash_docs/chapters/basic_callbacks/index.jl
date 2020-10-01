@@ -2,9 +2,8 @@ using Dash
 using DashHtmlComponents
 using DashCoreComponents
 
-include("/Users/josephdamiba/Downloads/code/work/plotly/dash-docs/dash_docs/utils.jl")
+include("../../utils.jl")
 
-app =  dash()
 
 basic_input = LoadExampleCode("./dash_docs/chapters/basic_callbacks/examples/basic-input.jl")
 
@@ -19,6 +18,16 @@ multi_inputs = LoadExampleCode("./dash_docs/chapters/basic_callbacks/examples/mu
 multi_outputs = LoadExampleCode("./dash_docs/chapters/basic_callbacks/examples/multi-outputs.jl")
 
 simple_callback = LoadExampleCode("./dash_docs/chapters/basic_callbacks/examples/simple-callback.jl")
+
+app =  dash()
+basic_input.callback!(app)
+basic_state.callback!(app)
+callback_chain.callback!(app)
+hello_slider.callback!(app)
+multi_inputs.callback!(app)
+multi_outputs.callback!(app)
+simple_callback.callback!(app)
+
 
 app.layout = html_div() do
     html_h1("Basic Dash Callbacks"),
